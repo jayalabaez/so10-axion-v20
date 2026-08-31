@@ -1,0 +1,301 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V78 master and V79 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "H8(B(Z4 x Z2);Z) ring and cup products",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A3",
+      "requirement": "all four V78 divisible rows and 256 half-pairs",
+      "status": "PASS_EXHAUSTIVE"
+    },
+    {
+      "id": "A4",
+      "requirement": "selected-row integral half-pairs",
+      "status": "PASS_64"
+    },
+    {
+      "id": "A5",
+      "requirement": "selected-row zero-Y source-free half",
+      "status": "PASS_UNIQUE_ONE"
+    },
+    {
+      "id": "A6",
+      "requirement": "selected-row ordinary U-bilinear-zero pairs",
+      "status": "PASS_28"
+    },
+    {
+      "id": "A7",
+      "requirement": "selected-row distinct ordinary bilinear classes",
+      "status": "PASS_SEVEN"
+    },
+    {
+      "id": "A8",
+      "requirement": "mixed r2s2 class ordinary-spin detection",
+      "status": "PASS_RP7_MINUS_ONE"
+    },
+    {
+      "id": "A9",
+      "requirement": "RP7 compatibility with H78 w2 lock",
+      "status": "REJECTED_NOT_H78"
+    },
+    {
+      "id": "A10",
+      "requirement": "ordinary Spin total-degree-seven AHSS input",
+      "status": "PASS_E2_ONLY"
+    },
+    {
+      "id": "A11",
+      "requirement": "actual H78 Thom spectrum and Omega7",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A12",
+      "requirement": "U-lattice primary Wu shift from a mod 2Lambda",
+      "status": "PASS_TRIVIAL"
+    },
+    {
+      "id": "A13",
+      "requirement": "shifted differential WuCS secondary character",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A14",
+      "requirement": "parent eta selects canonical zero half",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A15",
+      "requirement": "bridge and cap anomaly-line gluing identity",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A16",
+      "requirement": "h4 repeated-J translation projector rank",
+      "status": "PASS_64_TOTAL"
+    },
+    {
+      "id": "A17",
+      "requirement": "h4 repeated-J three complete bulk families",
+      "status": "REJECTED_EXACT"
+    },
+    {
+      "id": "A18",
+      "requirement": "all possible h4 constructions",
+      "status": "OPEN_NOT_CLASSIFIED"
+    },
+    {
+      "id": "A19",
+      "requirement": "h6/h8 changed-parent projectors and local ledger",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A20",
+      "requirement": "same-action microscopic completion",
+      "status": "OPEN_FAILED"
+    },
+    {
+      "id": "A21",
+      "requirement": "spectrum, vacuum, thresholds, cosmology and phenomenology",
+      "status": "BLOCKED_BY_ACTION"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "6bcc3f056ceb0f3d3cf51e973da4195837749de68de1e69648f1dc3e03e5a8f7",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "64fefaa91c18552f3ab2c8fa2c149000b1b455600cecaf31c2c9f61215d630e2"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "current_action_status": "REJECTED",
+    "exact_gains": [
+      "H8(B(Z4 x Z2);Z)=Z4{r4}+Z2{r3s,r2s2,rs3,s4}",
+      "all 256 integral half-pairs and ordinary U-bilinear products classified",
+      "selected twice-Y row: 64 halves, one zero-Y half, 28 zero bilinears, seven classes",
+      "r2s2 detected by -1 on ordinary-spin diagonal RP7, which is not an H78 probe",
+      "ordinary Spin total-degree-seven AHSS inputs displayed without claiming the abutment",
+      "explicit h4 repeated-J block rejected for three complete bulk 16 families"
+    ],
+    "remaining_global_blockers": [
+      "the actual H78 seven-bordism group and eta character",
+      "the shifted differential WuCS secondary torsion character",
+      "cap, bridge and determinant gluing on the H78 category",
+      "a complete h6 or h8 projector and fixed-point anomaly ledger",
+      "curved off-shell supersymmetry, BV/BRST descent and phenomenology"
+    ],
+    "research_program_status": "VIABLE_NARROWED_FRONTIER",
+    "retired_shortcuts": [
+      "calling uniqueness of the twice-Y correction uniqueness of the quantum half",
+      "equating zero ordinary U bilinear with zero Bianchi/tadpole class",
+      "using ordinary group cohomology or Spin bordism as the uncomputed H78 bordism group",
+      "claiming a trivial primary flat WCS phase closes the eta/bridge/cap anomaly line",
+      "promoting the V78 h4 J-block without a weightwise translation projector",
+      "generalizing the explicit h4 J-block rejection to every possible h4 action"
+    ],
+    "selected_open_candidates": [
+      "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+      "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+      "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+    ],
+    "strongest_action_scaffold": "frozen h=0 parent + the V78 H78 class with zero pure-internal half on the canonical vacuum + level-one bridge + future eta/WuCS/cap completion"
+  },
+  "core_sha256": "7e7e754d6c3d2cd3a7cac56899cd23a5311958feb158a1fee65e9cc50b217a0b",
+  "date": "2026-08-31",
+  "gate_ledger": {
+    "G1": "OPEN: the canonical zero half is not selected by a computed H78 eta/WuCS/bridge/cap identity.",
+    "G2": "OPEN: no accepted Wilsonian action, SUSY-breaking sector or regulator-defined spectrum exists.",
+    "G3": "OPEN: H78 field/ghost descent, caps, junctions and a positive vacuum Hessian are absent.",
+    "G4": "OPEN: the BV/BRST KK operator, determinant-line metric, regulator and thresholds are absent.",
+    "G5": "OPEN: neutral zero modes and a complete supersymmetric stabilization sector remain unresolved.",
+    "G6": "OPEN: strings/defects, reheating, relics and BBN are not derived from an accepted action.",
+    "G7": "OPEN: the explicit h4 J-block is rejected for three bulk families; h6/h8 projectors and phenomenology are open.",
+    "G8": "OPEN: Omega7(H78) and the bordism-wide global anomaly trivialization are not computed."
+  },
+  "input_core_hashes": {
+    "V78_master": "5a605cae7157a01ab5cf6c04597510faf4007dde60de9ae76c96eb9b29805ebd",
+    "V78_route_via_V79_lineage": "1e2d44a6aedff03614cb712d3ba3a88f42d214638edf758ecea532c03d8c4e58",
+    "V79_route": "d12328e303fbb41dfa9ee8ebcff816161fd3cc2bb826fceb02f14cbd3dadc203"
+  },
+  "lineage": {
+    "new_route": "B79",
+    "parent_master": "V78",
+    "parent_route_count": 6,
+    "parent_route_matrix_sha256": "57cc2543df0f403b5d561430cc77f792dea9a923e36c2e09e540c47f761160ae",
+    "supersession_scope": "refines V78's selected correction from twice-Y arithmetic to every integral half and rejects only its explicit h4 J-block family realization"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "fallback_if_h0_falsified": "compute h6 and h8 field-by-field projectors and fixed-point anomaly ledgers; do not reuse the rejected h4 conclusion as proof for them",
+    "id": "F80_H78_BORDISM_ETA_CAP_OR_H6_H8_PROJECTOR",
+    "primary_objective": "construct the H78 Thom/bordism problem and a generating seven-manifold test set, then evaluate the complete parent eta x shifted-WuCS x bridge x cap phase"
+  },
+  "regression_scope": {
+    "inherited_V78_scope_sha256": "b30e62147a0eafd39ee91c016ee50573e68bbe21e31dcf624b5eb2878a03e522",
+    "new_test_files": [
+      "test_susy_v79_multipath_g1_frontier_master_audit.py",
+      "test_susy_v79_torsion_half_refinement_h4_projector_audit.py"
+    ],
+    "recommended_full_pattern": "test_susy_v*.py"
+  },
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    }
+  ],
+  "schema": "susy_v79_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "789e24a3b24c151b7e55353906d4bde37d80aa181fc78c0f1831d9cd72e0d19d",
+    "count": 19,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V79_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V78_MASTER_AND_V79_ROUTE_CORES_BOUND__TWICE_Y_AND_QUANTUM_HALF_LOGIC_SEPARATED__ALL_256_HALF_PAIRS_AND_H8_PRODUCTS_EXACT__CANONICAL_ZERO_HALF_RETAINED_BUT_ETA_UNSELECTED__EXPLICIT_H4_J_BLOCK_THREE_FAMILY_ROUTE_REJECTED__H6_H8_FALLBACKS_OPEN__H78_BORDISM_WUCS_CAP_BRST_AND_CURVED_SUSY_OPEN__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "Omega7_H78_computed": false,
+    "all_h4_parent_actions_rejected": false,
+    "all_half_pair_count": 256,
+    "canonical_zero_half_full_baseline_WCS_phase_computed": false,
+    "canonical_zero_half_primary_relative_torsion_increment_trivial": true,
+    "canonical_zero_half_selected_by_parent_eta": false,
+    "closed_gates": [],
+    "combined_anomaly_line_trivialized": false,
+    "complete_theory": false,
+    "current_action_status": "REJECTED",
+    "explicit_h4_J_block_three_family_projector_rejected": true,
+    "h4_translation_multiplicity_per_weight": 2,
+    "h6_or_h8_changed_parent_accepted": false,
+    "honest_outcome": "V79 removes a false uniqueness claim and one changed-parent route.  The zero-half h=0 scaffold remains possible, but G1 requires an actual H78 eta/WuCS/bridge/cap identity; h6/h8 are only fallback scouts.",
+    "research_program_status": "VIABLE_NARROWED_FRONTIER",
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate_accepted": false,
+    "selected_distinct_bilinear_classes": 7,
+    "selected_half_pair_count": 64,
+    "selected_twice_Y_row_unique": true,
+    "selected_twice_Y_row_unique_quantum_half": false,
+    "selected_zero_Y_pair_count": 1,
+    "selected_zero_bilinear_count": 28
+  },
+  "version": "V79"
+}

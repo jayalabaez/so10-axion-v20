@@ -1,0 +1,1492 @@
+{
+  "action_redesign": {
+    "accepted": false,
+    "exactly_resolved": [
+      "all integral half ambiguities of every V78 globally divisible twice-Y row",
+      "the H8 ordinary U-bilinear class of all 256 half pairs",
+      "nontriviality of r^2s^2 on an ordinary spin diagonal RP7 probe",
+      "the three-family impossibility of the explicit h4 repeated J-block"
+    ],
+    "not_resolved": [
+      "the actual H78 seven-bordism group and eta character",
+      "the shifted differential WuCS secondary torsion character",
+      "cap, bridge and determinant gluing on the H78 category",
+      "a complete h6 or h8 projector and fixed-point anomaly ledger",
+      "curved off-shell supersymmetry, BV/BRST descent and phenomenology"
+    ],
+    "status": "CANONICAL_ZERO_HALF_RETAINED_AS_OPEN_SCAFFOLD__H4_J_BLOCK_REMOVED",
+    "strongest_same_parent_scaffold": "frozen h=0 parent + the V78 H78 class with zero pure-internal half on the canonical vacuum + level-one bridge + future eta/WuCS/cap completion"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "8cf88bfb4d8034b1971dc25278d271c2297917eeeccf3e6576ca00156a50ae14",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "16d99ea72276e1fba304212057f9b1b7544a6596b7be9c97e1ac0ad0e6d06158"
+  },
+  "candidate_adjudication": {
+    "accepted_ids": [],
+    "selected_ids": [
+      "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+      "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+      "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+    ]
+  },
+  "candidate_matrix": [
+    {
+      "accepted": false,
+      "id": "F79A_TWICE_Y_UNIQUELY_SELECTS_QUANTUM_REFINEMENT",
+      "reason": "the selected twice-Y row has 64 integral halves and seven ordinary bilinear classes",
+      "result": "REJECTED_EXACT_64_HALF_AMBIGUITY",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+      "reason": "the sole zero-Y half has trivial relative pure-torsion U increment but neither the baseline WCS nor eta determinant is evaluated",
+      "result": "SELECTED_OPEN_SOURCE_FREE_CANONICAL_VACUUM_CHOICE",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F79C_MINIMAL_HALF_S2_MINUS_R2",
+      "reason": "Y=(s^2,-r^2) has nonzero source and class r^2s^2",
+      "result": "REJECTED_NONZERO_TADPOLE_AND_MIXED_PRIMARY_PHASE",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F79D_H4_EXPLICIT_REPEATED_J_BLOCK",
+      "reason": "translations leave only two copies of every spinor weight before rotation",
+      "result": "REJECTED_THREE_COMPLETE_16_PROJECTOR",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+      "reason": "these are the remaining parity-allowed integrated rows after the explicit h4 rejection",
+      "result": "SELECTED_OPEN_NOT_COMPUTED",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY",
+      "reason": "the H78 Thom spectrum, determinant and cap gluing data remain absent",
+      "result": "SELECTED_OPEN_CORRECT_G1_TARGET",
+      "selected": true
+    }
+  ],
+  "cohomology_and_bordism_probe_audit": {
+    "actual_required_tangential_structure": {
+      "H78_Thom_spectrum_constructed": false,
+      "Omega7_H78_computed": false,
+      "equal_to_Spin_times_BGamma": false,
+      "name": "H78",
+      "ordinary_spin_probe_sufficient_for_G1": false,
+      "relations": [
+        "w2(T)=r mod2",
+        "w2(E)=r+s mod2"
+      ]
+    },
+    "integral_cohomology_degree8": {
+      "basis_order": [
+        "r^4",
+        "r^3s",
+        "r^2s^2",
+        "rs^3",
+        "s^4"
+      ],
+      "derivation": "even-degree integral Kunneth tensor monomials",
+      "flat_action_group": "H^7(BGamma;U(1)) = Tor H^8(BGamma;Z) = Z4 + Z2^4",
+      "group": "Z4{r^4} + Z2{r^3s} + Z2{r^2s^2} + Z2{rs^3} + Z2{s^4}"
+    },
+    "ordinary_spin_AHSS_total_degree7": {
+      "E2_3_4": {
+        "group": "Z4 + Z2^2",
+        "kunneth": {
+          "Z2": 2,
+          "Z4": 1
+        }
+      },
+      "E2_5_2": {
+        "group": "Z2^6",
+        "mod2_dimension": 6
+      },
+      "E2_6_1": {
+        "group": "Z2^7",
+        "mod2_dimension": 7
+      },
+      "E2_7_0": {
+        "group": "Z4 + Z2^4",
+        "kunneth": {
+          "Z2": 4,
+          "Z4": 1
+        }
+      },
+      "Omega7SpinBGamma_claimed": false,
+      "coefficient_groups": {
+        "Omega0Spin": "Z",
+        "Omega1Spin": "Z2",
+        "Omega2Spin": "Z2",
+        "Omega4Spin": "Z",
+        "other_q_le_7_used_here": "0"
+      },
+      "differentials_and_extensions_resolved": false,
+      "warning": "the direct sum of E2 terms is not the bordism group; Adams/AHSS differentials and extensions must be completed"
+    },
+    "scope": "finite-group anomaly phases are characters of the relevant bordism group.  Ordinary group cohomology and the displayed Spin AHSS are exact probes, but neither substitutes for the twisted H78 bordism calculation",
+    "status": "EXACT_H8_RING_AND_ORDINARY_SPIN_AHSS_INPUT__H78_ABUTMENT_OPEN"
+  },
+  "core_sha256": "d12328e303fbb41dfa9ee8ebcff816161fd3cc2bb826fceb02f14cbd3dadc203",
+  "date": "2026-08-31",
+  "gate_ledger": {
+    "G1": "OPEN: the canonical zero half is not selected by a computed H78 eta/WuCS/bridge/cap identity.",
+    "G2": "OPEN: no accepted Wilsonian action, SUSY-breaking sector or regulator-defined spectrum exists.",
+    "G3": "OPEN: H78 field/ghost descent, caps, junctions and a positive vacuum Hessian are absent.",
+    "G4": "OPEN: the BV/BRST KK operator, determinant-line metric, regulator and thresholds are absent.",
+    "G5": "OPEN: neutral zero modes and a complete supersymmetric stabilization sector remain unresolved.",
+    "G6": "OPEN: strings/defects, reheating, relics and BBN are not derived from an accepted action.",
+    "G7": "OPEN: the explicit h4 J-block is rejected for three bulk families; h6/h8 projectors and phenomenology are open.",
+    "G8": "OPEN: Omega7(H78) and the bordism-wide global anomaly trivialization are not computed."
+  },
+  "h4_half32_projector_audit": {
+    "canonical_positive_lift_fragment_table_per_block": {
+      "16_exterior_form_split_over_four_phases": [
+        4,
+        6,
+        4,
+        2
+      ],
+      "Theta_on_translation_invariants": "zeta^(5-2k+(-1)^l)",
+      "bar16_split_over_four_phases": [
+        4,
+        6,
+        4,
+        2
+      ],
+      "every_selected_sector_is_an_incomplete_Spin10_fragment": true,
+      "scalar_intrinsic_phase_selects_one_sector": true,
+      "spectrum": {
+        "+1": {
+          "16": 6,
+          "bar16": 6,
+          "total": 12
+        },
+        "+i": {
+          "16": 4,
+          "bar16": 4,
+          "total": 8
+        },
+        "-1": {
+          "16": 2,
+          "bar16": 2,
+          "total": 4
+        },
+        "-i": {
+          "16": 4,
+          "bar16": 4,
+          "total": 8
+        }
+      },
+      "zeta": "exp(i*pi/4)"
+    },
+    "changed_parent_frontier": {
+      "accepted_changed_parent_exists": false,
+      "h4_explicit_J_block": "REJECTED_THREE_COMPLETE_16_PROJECTOR",
+      "h6_projector_constructed": false,
+      "h6_warning": "anomaly-coefficient Gram determinant zero and b=-a/2",
+      "h8_projector_constructed": false,
+      "next_integrated_even_rows": [
+        6,
+        8
+      ]
+    },
+    "h4_two_block_bound": {
+      "Z4_projection_can_increase_multiplicity": false,
+      "convention_independent": true,
+      "half32_count": 4,
+      "minimum_multiplicity_for_three_complete_16s": 3,
+      "three_complete_bulk_16s_possible": false,
+      "translation_invariant_multiplicity_per_spinor_weight": 2,
+      "translation_projector_total_rank": 64,
+      "two_flavor_block_count": 2
+    },
+    "one_two_half32_block": {
+      "projector": "P_T=(I+J tensor what)/2",
+      "projector_rank": 32,
+      "rank_before_projection": 64,
+      "relations": [
+        "J^2=-I",
+        "what^2=-I",
+        "T1^2=T2^2=+I"
+      ],
+      "space": "C^2_flavor tensor C^32_spinor",
+      "translation_invariant_multiplicity_per_spinor_weight": 1,
+      "translations": "T1=T2=J tensor what",
+      "weightwise_reason": "for what eigenvalue mu=+/-i, translation invariance fixes the unique one-dimensional J eigenspace with eigenvalue mu^-1"
+    },
+    "rank_breaking_fragment": {
+      "Lambda0_singlet_phase": "-i",
+      "Lambda5_conjugate_singlet_phase": "+i",
+      "clean_isolated_rank_pair_constructed": false,
+      "either_phase_retains_additional_spinor_fragments": true
+    },
+    "scope": {
+      "central_signs_can_evade_weight_multiplicity_bound": false,
+      "missing_for_full_changed_parent": [
+        "symplectic-reality and 4D N=1 intrinsic-phase conventions",
+        "vector and seven-11 projectors",
+        "fixed-point characters and the complete local anomaly ledger"
+      ],
+      "not_rejected": "all possible h=4 translation representations or non-flat backgrounds",
+      "rejected": "the explicit repeated V78 J-block realization at h=4"
+    },
+    "status": "EXPLICIT_H4_J_BLOCK_THREE_COMPLETE_16_PROJECTOR_REJECTED"
+  },
+  "lineage": {
+    "V78_master_core": "5a605cae7157a01ab5cf6c04597510faf4007dde60de9ae76c96eb9b29805ebd",
+    "V78_route_core": "1e2d44a6aedff03614cb712d3ba3a88f42d214638edf758ecea532c03d8c4e58",
+    "V78_selected_delta": [
+      "r^2",
+      "2r^2+s^2"
+    ],
+    "supersession_scope": "refines V78's selected correction from twice-Y arithmetic to every integral half and rejects only its explicit h4 J-block family realization"
+  },
+  "open_obligations": [
+    "construct the H78 Thom spectrum and compute the relevant seven-bordism group or a generating test set",
+    "supply every parent fermion and BRST-ghost equivariant representation and evaluate its eta character",
+    "construct the shifted differential U-WuCS character and cap state, then prove the gluing identity",
+    "derive the bridge's curved supersymmetric completion and all partner anomalies",
+    "if the h0 identity fails, compute full h6 and h8 projectors before any changed parent is promoted",
+    "only after an accepted action, compute G2-G7 spectrum, vacuum, thresholds, cosmology and phenomenology"
+  ],
+  "primary_sources": [
+    {
+      "id": "dai_freed_1994",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "eta invariants with boundary are determinant-line elements; variation, holonomy and gluing"
+    },
+    {
+      "id": "von_gersdorff_2006",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "bulk-fermion contributions to fixed-point anomalies on six-dimensional Zn orbifolds"
+    },
+    {
+      "id": "zhang_2026",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326",
+      "use": "equivariant APS fixed-point density as an orbifold anomaly polynomial"
+    },
+    {
+      "id": "von_gersdorff_quiros_2003",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "path-integral localized anomalies with Scherk--Schwarz boundary data and GS inflow"
+    },
+    {
+      "id": "monnier_2011",
+      "title": "The global gravitational anomaly of the self-dual field theory",
+      "url": "https://arxiv.org/abs/1110.4639",
+      "use": "self-dual partition/anomaly line and its quadratic-refinement data"
+    },
+    {
+      "id": "monnier_2013",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642",
+      "use": "self-dual anomaly line in backgrounds with gauge fields and Wu-class refinements"
+    },
+    {
+      "id": "monnier_2016",
+      "title": "Topological field theories on manifolds with Wu structures",
+      "url": "https://arxiv.org/abs/1607.01396",
+      "use": "seven-dimensional Wu--Chern--Simons anomaly theories and quadratic refinements"
+    },
+    {
+      "id": "monnier_moore_2018",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "smooth-spin six-dimensional GS/WuCS construction, charge lattice and characteristic element; not an orbifold theorem"
+    },
+    {
+      "id": "witten_yonekura_2019",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "regulated fermion phases as eta-invariant anomaly inflow"
+    },
+    {
+      "id": "erler_1993",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104",
+      "use": "smooth six-dimensional multiplet anomaly polynomial and H-V+29T relation"
+    },
+    {
+      "id": "alvarez_gaume_witten_1984",
+      "title": "Gravitational Anomalies",
+      "url": "https://doi.org/10.1016/0550-3213(84)90066-X",
+      "use": "gauge-fixed Rarita complex, reality normalization and chiral gravitational anomaly indices"
+    },
+    {
+      "id": "riccioni_2001",
+      "title": "All couplings of minimal six-dimensional supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074",
+      "use": "six-dimensional (1,0) gravity, tensor, vector and hypermultiplet field content"
+    },
+    {
+      "id": "lupercio_uribe_2003",
+      "title": "Differential Characters on Orbifolds and String Connections I",
+      "url": "https://arxiv.org/abs/math/0311008",
+      "use": "Cheeger--Simons/Beilinson--Deligne differential characters on global quotient orbifolds"
+    },
+    {
+      "id": "laurent_gengoux_tu_xu_2004",
+      "title": "Chern-Weil map for principal bundles over groupoids",
+      "url": "https://arxiv.org/abs/math/0401420",
+      "use": "characteristic classes of orbifold and equivariant bundles through Lie groupoids"
+    },
+    {
+      "id": "sati_2010",
+      "title": "Geometric and topological structures related to M-branes II: Twisted String and String^c structures",
+      "url": "https://arxiv.org/abs/1007.5419",
+      "use": "Spin^c and String^c characteristic-class refinements"
+    },
+    {
+      "id": "ohmori_shimizu_tachikawa_yonekura_2014",
+      "title": "Anomaly polynomial of general 6d SCFTs",
+      "url": "https://arxiv.org/abs/1408.5572",
+      "use": "six-dimensional (1,0) hyper, vector and tensor SU2R anomaly polynomials"
+    },
+    {
+      "id": "intriligator_morrison_seiberg_1997",
+      "title": "Five-Dimensional Supersymmetric Gauge Theories and Degenerations of Calabi-Yau Spaces",
+      "url": "https://arxiv.org/abs/hep-th/9702198",
+      "use": "five-dimensional supersymmetric cubic prepotentials and Chern--Simons couplings"
+    },
+    {
+      "id": "guo_ohmori_putrov_wan_wang_2018",
+      "title": "Fermionic Finite-Group Gauge Theories and Interacting Symmetric/Crystalline Orders via Cobordisms",
+      "url": "https://arxiv.org/abs/1812.11959",
+      "use": "finite-group spin anomaly theories as Pontryagin duals of spin bordism, the Spin AHSS/Adams setup for B(Z2 x Z4), and the distinction from group cohomology"
+    },
+    {
+      "id": "dierigl_tartaglia_2025",
+      "title": "(Quadratically) Refined Discrete Anomaly Cancellation",
+      "url": "https://arxiv.org/abs/2504.02934",
+      "use": "six-dimensional discrete fermion anomalies, chiral two-form quadratic refinements and the need to match them on bordism generators"
+    }
+  ],
+  "question": "Does the V78 twice-Y correction uniquely define the quantum torsion sector, and can its explicit h=4 changed parent produce three complete bulk families?",
+  "schema": "susy_v79_torsion_half_refinement_h4_projector_audit_v1",
+  "shifted_WuCS_contract_audit": {
+    "bare_eta_computable_from_V78_inputs": false,
+    "cap_state_constructed": false,
+    "combined_anomaly_line_trivialized": false,
+    "full_shifted_WCS_constructed": false,
+    "not_implied_by_primary_class": [
+      "a differential quadratic refinement and its secondary torsion character",
+      "the eta phase of every fermion and BRST ghost representation",
+      "cap and junction state vectors with APS domains",
+      "gluing-compatible trivialization on the full H78 category"
+    ],
+    "selected_zero_half": {
+      "baseline_smooth_class": [
+        "lambda4",
+        "lambda4"
+      ],
+      "finite_phase_identity_still_required": "A_bare * A_bridge * A_cap = 1",
+      "full_baseline_WCS_phase": "UNCOMPUTED",
+      "ordinary_pure_internal_U_bilinear_class": "0",
+      "possible_shift_cross_term": "lambda4 cup (k+k') for Y=(lambda4+k,lambda4+k')",
+      "primary_relative_flat_torsion_increment": "1",
+      "pure_internal_Y": [
+        "0",
+        "0"
+      ]
+    },
+    "sharp_falsifier": "if any allowed H78 seven-bordism has nontrivial bare x bridge x cap holonomy while the zero-half WCS phase is one, the V78 zero-half choice fails",
+    "status": "EXACT_PRIMARY_TORSION_CONTRACT__SHIFTED_DIFFERENTIAL_THEORY_OPEN",
+    "tensor_lattice": {
+      "Lambda": "U",
+      "a_mod_2Lambda": [
+        0,
+        0
+      ],
+      "characteristic_vector_a": [
+        2,
+        2
+      ],
+      "even_unimodular": true,
+      "pairing": "[[0,1],[1,0]]",
+      "primary_Wu_structure_shift_from_a_mod2": "TRIVIAL"
+    }
+  },
+  "source_manifest": {
+    "catalog_sha256": "789e24a3b24c151b7e55353906d4bde37d80aa181fc78c0f1831d9cd72e0d19d",
+    "count": 19,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V79_TORSION_HALF_REFINEMENT_H4_PROJECTOR_AUDIT__V78_ROUTE_AND_MASTER_CORES_BOUND__H8_RING_AND_ALL_256_INTEGRAL_HALF_PAIRS_EXACT__V78_SELECTED_TWICE_Y_ROW_HAS_64_HALVES_28_ZERO_BILINEARS_SEVEN_CLASSES_AND_ONE_ZERO_Y_HALF__MIXED_CLASS_DETECTED_ON_ORDINARY_SPIN_RP7__H78_BORDISM_AND_ETA_SELECTION_OPEN__EXPLICIT_H4_J_BLOCK_THREE_FAMILY_PROJECTOR_REJECTED__H6_H8_CHANGED_PARENTS_OPEN__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "Omega7_H78_computed": false,
+    "V78_selected_twice_Y_row_unique": true,
+    "V78_selected_twice_Y_row_unique_quantum_half": false,
+    "accepted_full_parent_action_exists": false,
+    "all_h4_parent_actions_rejected": false,
+    "canonical_zero_half_full_baseline_WCS_phase_computed": false,
+    "canonical_zero_half_primary_relative_torsion_increment_trivial": true,
+    "canonical_zero_half_selected_by_parent_eta": false,
+    "closed_gates": [],
+    "combined_anomaly_line_trivialized": false,
+    "current_action_status": "REJECTED",
+    "explicit_h4_J_block_three_family_projector_rejected": true,
+    "h6_or_h8_changed_parent_accepted": false,
+    "honest_outcome": "V79 removes a false uniqueness claim and one changed-parent route.  The zero-half h=0 scaffold remains possible, but G1 requires an actual H78 eta/WuCS/bridge/cap identity; h6/h8 are only fallback scouts.",
+    "research_program_status": "VIABLE_NARROWED_FRONTIER",
+    "selected_candidate_accepted": false,
+    "selected_row_distinct_bilinear_classes": 7,
+    "selected_row_integral_half_pair_count": 64,
+    "selected_row_ordinary_bilinear_zero_count": 28,
+    "selected_row_zero_Y_pair_count": 1,
+    "theory_complete": false
+  },
+  "torsion_half_refinement_audit": {
+    "logic_separation": [
+      "2Y divisible is an integrality condition",
+      "Y=0 is the pure-internal source/tadpole-free condition",
+      "Y1 cup Y2=0 is only the ordinary U-lattice bilinear-phase condition",
+      "the full shifted differential WuCS character is a stronger datum"
+    ],
+    "minimal_V78_repair_example": {
+      "V78_half": [
+        "s^2",
+        "-r^2"
+      ],
+      "class_nonzero": true,
+      "corrected_twice_Y": [
+        "0",
+        "2r^2"
+      ],
+      "delta": [
+        "r^2",
+        "s^2"
+      ],
+      "ordinary_bilinear_class": "r^2s^2"
+    },
+    "ordinary_spin_diagonal_probe": {
+      "H78_failure": "w2(TRP7)=0 but r mod2=a^2 is nonzero",
+      "RP7_is_spin": true,
+      "class_on_BGamma": "r^2s^2",
+      "diagonal_embedding": "Z2 -> Z4 x Z2, 1 |-> (2,1)",
+      "half": [
+        "rs",
+        "rs"
+      ],
+      "is_an_H78_probe": false,
+      "order2_DW_holonomy": "-1",
+      "probe_manifold": "RP7 with its generator a in H1(RP7;Z2)",
+      "restriction": "r^2s^2 |-> u^4",
+      "restriction_coefficient_mod2": 1,
+      "use": "proves that the mixed universal class is not formal zero; it does not evaluate the required twisted H78 anomaly theory"
+    },
+    "row_count": 4,
+    "rows": [
+      {
+        "coordinate_half_counts": [
+          8,
+          8
+        ],
+        "corrected_twice_Y": [
+          "0",
+          "2r^2"
+        ],
+        "corrected_twice_Y_tuples": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        "delta": [
+          "r^2",
+          "s^2"
+        ],
+        "delta_tuples": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "distinct_ordinary_bilinear_class_count": 22,
+        "integral_half_pair_count": 64,
+        "ordinary_U_bilinear": "(1/2) Omega(Y,Y)=Y1 cup Y2",
+        "ordinary_bilinear_classes": [
+          {
+            "class": "0",
+            "multiplicity": 8,
+            "tuple": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^2s^2",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^2s^2+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "r^3s",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "r^3s+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+r^2s^2",
+            "multiplicity": 4,
+            "tuple": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "2r^4",
+            "multiplicity": 8,
+            "tuple": [
+              2,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "2r^4+r^3s",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              2,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+r^2s^2",
+            "multiplicity": 4,
+            "tuple": [
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ],
+        "ordinary_bilinear_nonzero_count": 56,
+        "ordinary_bilinear_zero_count": 8,
+        "zero_Y_pair_count": 0
+      },
+      {
+        "coordinate_half_counts": [
+          8,
+          8
+        ],
+        "corrected_twice_Y": [
+          "0",
+          "0"
+        ],
+        "corrected_twice_Y_tuples": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "delta": [
+          "r^2",
+          "2r^2+s^2"
+        ],
+        "delta_tuples": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            1
+          ]
+        ],
+        "distinct_ordinary_bilinear_class_count": 7,
+        "integral_half_pair_count": 64,
+        "ordinary_U_bilinear": "(1/2) Omega(Y,Y)=Y1 cup Y2",
+        "ordinary_bilinear_classes": [
+          {
+            "class": "0",
+            "multiplicity": 28,
+            "tuple": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "s^4",
+            "multiplicity": 4,
+            "tuple": [
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "rs^3",
+            "multiplicity": 8,
+            "tuple": [
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "rs^3+s^4",
+            "multiplicity": 8,
+            "tuple": [
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "r^2s^2",
+            "multiplicity": 4,
+            "tuple": [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^2s^2+s^4",
+            "multiplicity": 4,
+            "tuple": [
+              0,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "r^2s^2+rs^3",
+            "multiplicity": 8,
+            "tuple": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          }
+        ],
+        "ordinary_bilinear_nonzero_count": 36,
+        "ordinary_bilinear_zero_count": 28,
+        "zero_Y_pair_count": 1
+      },
+      {
+        "coordinate_half_counts": [
+          8,
+          8
+        ],
+        "corrected_twice_Y": [
+          "2r^2",
+          "2r^2"
+        ],
+        "corrected_twice_Y_tuples": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        "delta": [
+          "3r^2",
+          "s^2"
+        ],
+        "delta_tuples": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "distinct_ordinary_bilinear_class_count": 18,
+        "integral_half_pair_count": 64,
+        "ordinary_U_bilinear": "(1/2) Omega(Y,Y)=Y1 cup Y2",
+        "ordinary_bilinear_classes": [
+          {
+            "class": "r^4",
+            "multiplicity": 2,
+            "tuple": [
+              1,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^4+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "r^4+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              1,
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "r^4+r^2s^2",
+            "multiplicity": 6,
+            "tuple": [
+              1,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^4+r^2s^2+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              1,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "r^4+r^3s",
+            "multiplicity": 4,
+            "tuple": [
+              1,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^4+r^3s+rs^3+s^4",
+            "multiplicity": 4,
+            "tuple": [
+              1,
+              1,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "r^4+r^3s+r^2s^2",
+            "multiplicity": 4,
+            "tuple": [
+              1,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^4+r^3s+r^2s^2+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              1,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "3r^4",
+            "multiplicity": 2,
+            "tuple": [
+              3,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "3r^4+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              3,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "3r^4+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              3,
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "3r^4+r^2s^2",
+            "multiplicity": 6,
+            "tuple": [
+              3,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "3r^4+r^2s^2+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              3,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "3r^4+r^3s",
+            "multiplicity": 4,
+            "tuple": [
+              3,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "3r^4+r^3s+rs^3+s^4",
+            "multiplicity": 4,
+            "tuple": [
+              3,
+              1,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "3r^4+r^3s+r^2s^2",
+            "multiplicity": 4,
+            "tuple": [
+              3,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "3r^4+r^3s+r^2s^2+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              3,
+              1,
+              1,
+              1,
+              0
+            ]
+          }
+        ],
+        "ordinary_bilinear_nonzero_count": 64,
+        "ordinary_bilinear_zero_count": 0,
+        "zero_Y_pair_count": 0
+      },
+      {
+        "coordinate_half_counts": [
+          8,
+          8
+        ],
+        "corrected_twice_Y": [
+          "2r^2",
+          "0"
+        ],
+        "corrected_twice_Y_tuples": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "delta": [
+          "3r^2",
+          "2r^2+s^2"
+        ],
+        "delta_tuples": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            1
+          ]
+        ],
+        "distinct_ordinary_bilinear_class_count": 22,
+        "integral_half_pair_count": 64,
+        "ordinary_U_bilinear": "(1/2) Omega(Y,Y)=Y1 cup Y2",
+        "ordinary_bilinear_classes": [
+          {
+            "class": "0",
+            "multiplicity": 8,
+            "tuple": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^2s^2",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^2s^2+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "r^3s",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "r^3s+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+r^2s^2",
+            "multiplicity": 4,
+            "tuple": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "r^3s+r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              0,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "2r^4",
+            "multiplicity": 8,
+            "tuple": [
+              2,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "class": "2r^4+r^3s",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+rs^3",
+            "multiplicity": 4,
+            "tuple": [
+              2,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+r^2s^2",
+            "multiplicity": 4,
+            "tuple": [
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+r^2s^2+rs^3",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "class": "2r^4+r^3s+r^2s^2+rs^3+s^4",
+            "multiplicity": 2,
+            "tuple": [
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ],
+        "ordinary_bilinear_nonzero_count": 56,
+        "ordinary_bilinear_zero_count": 8,
+        "zero_Y_pair_count": 0
+      }
+    ],
+    "selected_V78_twice_Y_row": {
+      "corrected_twice_Y": [
+        "0",
+        "0"
+      ],
+      "delta": [
+        "r^2",
+        "2r^2+s^2"
+      ],
+      "distinct_ordinary_bilinear_class_count": 7,
+      "example_nontrivial_bilinear_class": "r^2s^2",
+      "example_nontrivial_bilinear_half": [
+        "rs",
+        "rs"
+      ],
+      "example_nonzero_source_but_zero_bilinear": [
+        "s^2",
+        "0"
+      ],
+      "integral_half_pair_count": 64,
+      "nonzero_Y_pair_count": 63,
+      "ordinary_bilinear_nonzero_count": 36,
+      "ordinary_bilinear_zero_count": 28,
+      "zero_Y_pair_count": 1,
+      "zero_half": [
+        "0",
+        "0"
+      ],
+      "zero_half_is_permitted_not_selected_by_twice_Y": true
+    },
+    "status": "EXACT_ALL_INTEGRAL_HALVES_AND_ORDINARY_U_BILINEAR_CLASSES",
+    "theorem": "V78 uniquely identified a correction that permits Y=0, but 2Y alone does not select a quantum refinement: that row has 64 halves, one zero Y pair, 28 zero ordinary bilinears, and seven bilinear classes",
+    "total_half_pair_count": 256
+  },
+  "version": "V79"
+}
