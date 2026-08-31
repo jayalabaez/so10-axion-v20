@@ -1,0 +1,288 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V75 master and V76 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "total two-corner ordinary free-index period",
+      "status": "REJECTED_ODD_QUARTER"
+    },
+    {
+      "id": "A3",
+      "requirement": "four-line diagonal eta/index representative",
+      "status": "PASS_CORRELATED_ONLY"
+    },
+    {
+      "id": "A4",
+      "requirement": "seven-Weyl local parent-residue inverse",
+      "status": "PASS_EXACT_LOCAL"
+    },
+    {
+      "id": "A5",
+      "requirement": "seven-Weyl two-corner gluing",
+      "status": "REJECTED_QUARTER_DIAGONAL"
+    },
+    {
+      "id": "A6",
+      "requirement": "general pure-gauge integer/half-index repair",
+      "status": "REJECTED_EXACT"
+    },
+    {
+      "id": "A7",
+      "requirement": "T2/Z4 four-image level-four chain",
+      "status": "PASS_TOPOLOGICAL_SCAFFOLD"
+    },
+    {
+      "id": "A8",
+      "requirement": "V75 level-four component centers",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A9",
+      "requirement": "ordinary complete 6D/5D multiplet lift",
+      "status": "REJECTED_SCOPED"
+    },
+    {
+      "id": "A10",
+      "requirement": "minimal localized N1 singlet driver lift",
+      "status": "REJECTED_CENTER"
+    },
+    {
+      "id": "A11",
+      "requirement": "nowhere-zero normal-charged driver on all backgrounds",
+      "status": "REJECTED_TOPOLOGY"
+    },
+    {
+      "id": "A12",
+      "requirement": "dynamical driver anomaly ledger",
+      "status": "REJECTED_CHANGES_TARGET"
+    },
+    {
+      "id": "A13",
+      "requirement": "off-shell normal-supergravity invariant and BPS cap",
+      "status": "OPEN"
+    },
+    {
+      "id": "A14",
+      "requirement": "refined self-dual/interacting one-eighth sector",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A15",
+      "requirement": "full regulator-consistent parent determinant",
+      "status": "SELECTED_OPEN"
+    },
+    {
+      "id": "A16",
+      "requirement": "same-action microscopic completion",
+      "status": "OPEN_FAILED"
+    },
+    {
+      "id": "A17",
+      "requirement": "spectrum, thresholds and phenomenology",
+      "status": "OPEN"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "3552fa3076a7966c5078a1a478bfe177e456b24af4cd8d8317749b7e794e5db0",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "88dbd87116017eb7f2103e9d7dc73c8c85efd459a80e652d326d6c3bbc387b39"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "current_action_status": "REJECTED",
+    "exact_gains": [
+      "representation-independent two-corner odd-quarter no-go for ordinary Weyl, integer bridge and standard half-eta sectors",
+      "four-line common-K index representative for the diagonal quarter plus its forced eta-gravity spectator",
+      "seven-Weyl local inverse and exact two-corner rejection",
+      "general pure-gauge endpoint coset theorem with optional flavor included",
+      "four-image T2/Z4 chain boundary for a level-four opposite-corner scaffold",
+      "component-center pass followed by exact bulk/local multiplet diagnostics",
+      "normal-driver center, topology, isotropy, rank and anomaly-ledger obstructions"
+    ],
+    "open_new_physics": [
+      "a complete regulator-consistent parent determinant that changes the residual ledger",
+      "a concrete quarter-refined self-dual/higher-spin/interacting anomaly theory",
+      "spin-gauge locking with a fully specified new line, action and anomaly ledger"
+    ],
+    "research_program_status": "VIABLE_ONLY_AT_REFINED_RECOMPUTED_PARENT_OR_CHANGED_STRUCTURE_FRONTIER",
+    "retired_routes": [
+      "ordinary free localized-Weyl or standard half-eta repair",
+      "seven-Weyl equal-corner two-endpoint completion",
+      "ordinary pure-gauge correlated endpoint completion",
+      "literal ordinary 6D/5D realization of the V75 level-four ledger",
+      "minimal neutral singlet-chiral normal-charge driver sector"
+    ],
+    "selected_open_candidate": "F76_FULL_EQUIVARIANT_PARENT_DETERMINANT"
+  },
+  "core_sha256": "202b5c000d2a540179419980f3daac4896fe340670787933cebd8d27943c5247",
+  "date": "2026-08-31",
+  "gate_ledger": {
+    "G1": "OPEN: every ordinary localized-Weyl, integer-bridge and standard half-eta repair of the equal-corner residue is excluded by the total odd-quarter period, while no refined/self-dual same-action inverse has been constructed.",
+    "G2": "OPEN: no accepted Wilsonian action, soft sector or physical pole spectrum contains the V76 endpoint physics.",
+    "G3": "OPEN: the four-image chain is topological only; quotient normalization, caps, BPS projectors, moduli and a positive Hessian are absent.",
+    "G4": "OPEN: the gauge-fixed KK determinant, regulator, hierarchy and thresholds are absent.",
+    "G5": "OPEN: component centers pass, but complete multiplets and a globally full-rank supersymmetric mass sector fail.",
+    "G6": "OPEN: reheating, defect production, relic abundances and BBN are uncomputed.",
+    "G7": "OPEN: the surviving charge-five pair lacks an accepted decay portal, and flavor/proton predictions are not derived from a completed action.",
+    "G8": "OPEN: the full equivariant Dai-Freed/bordism phase, self-dual lattice, caps and regulator-level anomaly trivialization are absent."
+  },
+  "input_core_hashes": {
+    "V75_master": "08eff5ecc6e44cd7595c2cdc75de7b28c3d1174fd5cc015031507c5cea9efed2",
+    "V75_route_via_V76_lineage": "cd11d5412d0fa9ed28ac1cced7ad8b429bc3ee36b56fcb3cdf418814a6eb96f6",
+    "V76_route": "5c971c7730d8b2ff90f60df4791381517edc59a2c30600aeeb476baf5ef48e1a"
+  },
+  "lineage": {
+    "new_route": "B76",
+    "parent_master": "V75",
+    "parent_route_count": 3,
+    "parent_route_matrix_sha256": "3f63c3c030052312475dc313998272efbca318cb35ec83c50fc76c64947c4f21",
+    "supersession_scope": "retires the proposed literal ordinary level-four multiplet/mass realization attempt and the new ordinary correlated free-field repair class; does not claim a no-go for refined interacting or changed-parent physics"
+  },
+  "regression_scope": {
+    "inherited_V75_scope_sha256": "99c5f8ce7ff065fe24f2dec43d7cfddee14eb8ac0f0406451aa32935d18ba6df",
+    "new_test_files": [
+      "test_susy_v76_multipath_g1_frontier_master_audit.py",
+      "test_susy_v76_correlated_residue_multiplet_realization_audit.py"
+    ],
+    "recommended_full_pattern": "test_susy_v*.py"
+  },
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F76_FULL_EQUIVARIANT_PARENT_DETERMINANT"
+    }
+  ],
+  "schema": "susy_v76_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": [
+    {
+      "record_sha256": "f2e993bd05a75dbb52eb6d99e325cb67551252d5430b8b3b0a569fc7e140eba5",
+      "scope": "eta invariants obey determinant-line variation and gluing laws; the citation does not construct the missing equivariant orbifold phase",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012"
+    },
+    {
+      "record_sha256": "ab375f9be517e7afcca8ed1b21a5e4c0286da082ad63a838782f7fe62c0fd47d",
+      "scope": "fermion anomalies are encoded by eta-invariant inflow; this supports the index-period test, not a microscopic V76 endpoint sector",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775"
+    },
+    {
+      "record_sha256": "49f81886b9e91498d89a6189be9574eb95d2e308ee0cebf51147e1121ff9931f",
+      "scope": "localized integer residues may be canceled by suitable localized fermions and remnant gravitational symmetries act on localized fields; the paper does not supply the present multiplet or mass action",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "record_sha256": "b3bf56b63f76ae0f109ce92aa93ef5db294b0539e05b8744528d13aa34874780",
+      "scope": "a 6D (1,0) vector has an SU2R-doublet gaugino, a tensor has an SU2R-doublet tensorino, and a hyper has an SU2R-singlet hyperino; complete couplings include all bosonic and fermionic partners",
+      "title": "All Couplings of Minimal Six-dimensional Supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074"
+    },
+    {
+      "record_sha256": "d462ce9af79d228e6c37dd5db5f43794fb5ffb20d0a10168f221a8258b531f49",
+      "scope": "a 6D hypermultiplet requires a complete 4D N=1 superfield pair/CNM description; an isolated endpoint Weyl ledger is not such a lift",
+      "title": "6D Supersymmetry, Projective Superspace and 4D, N=1 Superfields",
+      "url": "https://arxiv.org/abs/hep-th/0508187"
+    },
+    {
+      "record_sha256": "d2f7ed578c2961d8a9d700ecec1ef0cca76ec6fec8460d5a4a98c46df4375a94",
+      "scope": "the 6D vector decomposes into V and Sigma with distinct T2/ZN phases; this fixes the ordinary Z4 projection diagnostic and does not construct the proposed higher-normal-charge endpoint fields",
+      "title": "Quantum Corrections to Non-Abelian SUSY Theories on Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0602155"
+    },
+    {
+      "record_sha256": "936ca8a6e925f94dab9e1079ef260f7b8b68bc6cc0113c20aafa958328162229",
+      "scope": "5D vector and hypermultiplets split into opposite-parity N=1 halves at an orbifold boundary; T2/Z4 has no such fixed wall",
+      "title": "Supersymmetric theories with compact extra dimensions in N=1 superfields",
+      "url": "https://arxiv.org/abs/hep-th/0106256"
+    },
+    {
+      "record_sha256": "da72b82d63c6fc5948655b05f82aedf911e3f1e9f157c129643e7bbf32f45425",
+      "scope": "the off-shell vector-linear density uses full ordinary multiplets; it does not by itself turn the normal Lorentz connection into an independent Yang-Mills vector multiplet",
+      "title": "Off-Shell N=(1,0) Linear Multiplets in Six Dimensions",
+      "url": "https://arxiv.org/abs/2010.14655"
+    },
+    {
+      "record_sha256": "fc94f509ae1e41b1009136eaa43ca5dbc8c930f22d8f95499e85722694e9833c",
+      "scope": "supersymmetric curvature invariants require complete Weyl/compensator multiplets and auxiliary fields, not an isolated normal-curvature term",
+      "title": "Curvature squared invariants in six-dimensional N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1808.00459"
+    },
+    {
+      "record_sha256": "ed46ada02ee6185671bb815b8808779d2cb01cac516af8494a2d9ada1e6b1241",
+      "scope": "Wess-Zumino consistency ties an R anomaly to a Q-supersymmetry anomaly; a formal bosonic axion term is not a full superinvariant",
+      "title": "Supersymmetry anomalies in N=1 conformal supergravity",
+      "url": "https://arxiv.org/abs/1902.06717"
+    },
+    {
+      "record_sha256": "164d2447df8d03c318ce500538e2267b6ce531990103f4a4c9432d5c415a1d4e",
+      "scope": "global 6D Green-Schwarz terms depend on the integral string-charge lattice and characteristic gravitational coefficient",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334"
+    },
+    {
+      "record_sha256": "a8ec517be2e8ab346f378158f316a020ec97b2be27dd6d8b628672fe04c931a8",
+      "scope": "self-dual-field anomalies are refined global theories; adding such a field changes the complete higher-dimensional anomaly system",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642"
+    },
+    {
+      "record_sha256": "3dcc97a83dce5c9850ec009cd0f539e38342e9d13438f19466a0ca28fe29521d",
+      "scope": "Maxwell duality can have fractional refined anomalies, but in a different duality/tangential structure from the required normal-U1 class",
+      "title": "Anomaly of the Electromagnetic Duality of Maxwell Theory",
+      "url": "https://arxiv.org/abs/1905.08943"
+    },
+    {
+      "record_sha256": "09250ee773e2759e25f2dc8147b29d1888279f874d0689b340eb514883c3a6b1",
+      "scope": "six-dimensional anomaly cancellation constrains complete bulk multiplet spectra and Green-Schwarz couplings",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104"
+    }
+  ],
+  "status": "V76_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V75_MASTER_AND_V76_ROUTE_CORES_BOUND__TOTAL_TWO_CORNER_ORDINARY_FREE_INDEX_ODD_QUARTER_NO_GO_EXACT__FOUR_LINE_CORRELATED_DIAGONAL_REPRESENTATIVE_EXACT__SEVEN_WEYL_LOCAL_INVERSE_TWO_CORNER_REJECTED__LEVEL4_COMPONENT_AND_FOUR_IMAGE_CHAIN_PASS_ONLY__LITERAL_V75_LEVEL4_6D_5D_LIFT_REJECTED_SCOPED__MINIMAL_NEUTRAL_SINGLET_N1_DRIVER_REJECTED__NORMAL_DRIVER_EQUIVARIANCE_TOPOLOGY_AND_ANOMALY_FAILURES_EXACT__REFINED_EXOTIC_SECTOR_UNCONSTRUCTED__FULL_PARENT_DETERMINANT_SELECTED_OPEN__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_Spin11_action_status": "REJECTED",
+    "four_line_correlated_representative_constructed": true,
+    "level4_complete_multiplets_constructed": false,
+    "level4_component_centers_pass": true,
+    "normal_driver_no_go_on_original_backgrounds": true,
+    "ordinary_free_field_two_corner_routes_closed": true,
+    "pure_diagonal_quarter_refinement_constructed": false,
+    "reason": "V76 closes two tempting free-field continuations without closing a theory gate.  A representation-independent two-witness theorem excludes every ordinary localized-Weyl, integer-bridge and standard half-eta completion of the total equal-corner residue.  A four-line index gives an exact correlated representative of the required diagonal quarter but forces an eta-gravity spectator.  The seven-Weyl module cancels the bound residue at one corner but its forced same-sign two-corner gauge sum has forbidden quarter periods and is not an integer/half-index AB bridge.  Every pure-gauge local inverse has the same two-corner diagonal-quarter obstruction, including the optional-flavor extension.  Every V75 level-four component passes its quotient-center multiplet pattern, but no complete 6D multiplets are present and its normal-charged mass drivers cannot be nowhere zero on the admissible CP3 bundle.  The present action remains rejected; the research program remains viable only through a full same-action equivariant determinant or genuinely new correlated/changed-structure physics.",
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate": "F76_FULL_EQUIVARIANT_PARENT_DETERMINANT",
+    "selected_candidate_accepted": false
+  },
+  "version": "V76"
+}
