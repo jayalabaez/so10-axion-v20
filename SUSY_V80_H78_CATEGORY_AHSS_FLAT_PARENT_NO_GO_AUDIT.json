@@ -1,0 +1,972 @@
+{
+  "action_redesign": {
+    "accepted_new_action": false,
+    "flat_half32_route": "REJECTED_FOR_ALL_INTEGRATED_ONE_TENSOR_ROWS",
+    "least_new_physics_route": "retain h=0 and construct the full parent H_Gamma stratified anomaly theory with a forgetful map to reduced H78, without assuming missing values",
+    "mandatory_reaudit_after_change": [
+      "integrated and fixed-point anomaly polynomials",
+      "H-structure and all fermion/ghost lifts",
+      "GS/WuCS differential cocycle and bordism character",
+      "caps, bridge partners, masses, vacuum and phenomenology"
+    ],
+    "minimal_changed_action_requirement": "add a gauge-dependent projector/boundary sector that distinguishes the rank singlet from its identical-Q/W color character, or keep families localized",
+    "status": "H0_CATEGORY_COMPLETION_OR_GENUINELY_CHANGED_PROJECTOR_REQUIRED"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "74909152e2d29754633d0b88b5acd5040b1de06c553b32c036d42d22aea1598e",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "d11c6df0152761bc50a40c538a2460c76e5ef696ff68a67008ed09eeaedf9a5b"
+  },
+  "candidate_adjudication": {
+    "accepted_ids": [],
+    "selected_ids": [
+      "F80A_CANONICAL_ZERO_HALF_H0",
+      "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+      "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+    ]
+  },
+  "candidate_matrix": [
+    {
+      "accepted": false,
+      "id": "F80A_CANONICAL_ZERO_HALF_H0",
+      "reason": "unique source-minimal convention, but the common anomaly category and functors are absent",
+      "result": "SELECTED_OPEN_NON_IDENTIFIABLE_ILL_TYPED_TARGET",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F80B_REDUCED_SMOOTH_H78_E3_AS_FULL_BORDISM",
+      "reason": "the exact E3 page is not Omega7 and cannot close the anomaly",
+      "result": "REJECTED_LATER_DIFFERENTIALS_AND_EXTENSIONS_OPEN",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F80C_H6_FLAT_HALF32_PARENT",
+      "reason": "p<=3 but p>=6 is required; b=-a/2 also fails the frozen positive chamber",
+      "result": "REJECTED_GENERAL_THREE_FAMILY_BOUND_AND_FROZEN_KINETIC_SIGN",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F80D_H8_FLAT_HALF32_PARENT",
+      "reason": "p<=4 but p>=6 is required; j dot b is negative in the frozen chamber",
+      "result": "REJECTED_GENERAL_THREE_FAMILY_BOUND_AND_FROZEN_KINETIC_SIGN",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F80E_ANY_INTEGRATED_FLAT_QW_BULK_THREE_FAMILY_PARENT",
+      "reason": "the projector and anomaly-family bounds have no common h",
+      "result": "REJECTED_H_MIN_12_EXCEEDS_INTEGRATED_H_MAX_9",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+      "reason": "construct full-parent C80, its forgetful map to reduced H78, all factor functors and the natural trivialization",
+      "result": "SELECTED_OPEN_CORRECT_SAME_PARENT_TARGET",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR",
+      "reason": "needed to separate singlets from color partners or abandon bulk-family assembly",
+      "result": "SELECTED_OPEN_CHANGED_ACTION_ONLY",
+      "selected": true
+    }
+  ],
+  "core_sha256": "fbc86cd48cb51df580487a8e777ca547723591b3267da2dafada17c8da1bc2ea",
+  "date": "2026-08-31",
+  "flat_changed_parent_projector_audit": {
+    "exterior_degree_check": {
+      "16": "Lambda^0 + Lambda^2 + Lambda^4 = 1+10+5",
+      "bar16": "Lambda^1 + Lambda^3 + Lambda^5 = 5+10+1",
+      "dimension_16": 16,
+      "dimension_bar16": 16
+    },
+    "frozen_tensor_chamber": {
+      "V70_j": [
+        "1/2",
+        "1"
+      ],
+      "V70_j2": "1",
+      "h6": {
+        "Gram_det": 0,
+        "a": [
+          2,
+          2
+        ],
+        "b": [
+          -1,
+          -1
+        ],
+        "b_equals_minus_a_over_2": true,
+        "j_dot_a": "3",
+        "j_dot_b": "-3/2",
+        "positive_gauge_kinetic_in_frozen_chamber": false
+      },
+      "h8": {
+        "Gram_det": -4,
+        "a": [
+          2,
+          2
+        ],
+        "b": [
+          -2,
+          -1
+        ],
+        "j_dot_a": "3",
+        "j_dot_b": "-5/2",
+        "positive_gauge_kinetic_in_frozen_chamber": false
+      },
+      "scope": "a different tensor-cone orientation would require a new string/orientation and vacuum audit; the independent projector no-go already rejects both rows"
+    },
+    "general_flat_flavor_bound": {
+      "all_integrated_family_rows_rejected_for_bulk_three_families": true,
+      "bounds_compatible": false,
+      "complex_decomposition": "V_(sigma1,sigma2), F_i=i sigma_i",
+      "constant_modes": "only V++/V-- contribute; mixed sectors contribute none",
+      "h6_rejected": true,
+      "h8_rejected": true,
+      "h_minimum": 12,
+      "integrated_h_maximum": 9,
+      "integrated_neutral_count": "n0=266-27h",
+      "p_minimum": 6,
+      "reality": "dim V++=dim V--=p, dim V+-=dim V-+=r, h=2(p+r)",
+      "required_K_eigenvectors_per_phase": 3,
+      "scope": "general commuting real flat flavor translations with the current Q/W gauge twists; localized families or a new gauge-dependent projector are outside",
+      "translation_relations": "F1^2=F2^2=-1 and [F1,F2]=0",
+      "two_qhat_phases_inside_what_minus_i_16": [
+        "zeta^1",
+        "zeta^5"
+      ],
+      "weightwise_upper_bound": "p<=h/2"
+    },
+    "joint_character_counts": {
+      "16|zeta^1|+i": 6,
+      "16|zeta^1|-i": 4,
+      "16|zeta^5|+i": 2,
+      "16|zeta^5|-i": 4,
+      "bar16|zeta^3|+i": 4,
+      "bar16|zeta^3|-i": 2,
+      "bar16|zeta^7|+i": 4,
+      "bar16|zeta^7|-i": 6
+    },
+    "rank_breaking_joint_character_obstruction": {
+      "bar_nu_c": {
+        "dimension": 1,
+        "joint_character": [
+          "zeta^3",
+          "+i"
+        ],
+        "weight": "k=5,(a,l)=(2,3)"
+      },
+      "clean_D_flat_rank_pair_from_QW_projectors": false,
+      "inseparable_color_partner": {
+        "dimension": 3,
+        "joint_character": [
+          "zeta^5",
+          "-i"
+        ],
+        "representation": "bar3",
+        "weight": "k=4,(a,l)=(2,2)"
+      },
+      "inseparable_conjugate_color_partner": {
+        "dimension": 3,
+        "joint_character": [
+          "zeta^3",
+          "+i"
+        ],
+        "representation": "3",
+        "weight": "k=1,(a,l)=(0,1)"
+      },
+      "nu_c": {
+        "dimension": 1,
+        "joint_character": [
+          "zeta^5",
+          "-i"
+        ],
+        "weight": "k=0,(a,l)=(0,0)"
+      },
+      "required_new_structure": "an additional gauge-dependent Wilson line, boundary operator or mass sector that changes the action and anomaly ledger"
+    },
+    "repeated_J_block": {
+      "blocks_per_phase_for_three_families": 3,
+      "h6_block_count": 3,
+      "h6_three_complete_16s": false,
+      "h8_block_count": 4,
+      "h8_one_each_phase_reconstructs": "one vectorlike 16+bar16 Spin(11) 32",
+      "h8_three_complete_16s": false,
+      "minimum_h": 24,
+      "minimum_two_half_hyper_blocks": 12,
+      "per_block_spectrum": {
+        "+1": {
+          "16": 6,
+          "bar16": 6,
+          "total": 12
+        },
+        "+i": {
+          "16": 4,
+          "bar16": 4,
+          "total": 8
+        },
+        "-1": {
+          "16": 2,
+          "bar16": 2,
+          "total": 4
+        },
+        "-i": {
+          "16": 4,
+          "bar16": 4,
+          "total": 8
+        }
+      },
+      "phase_classes_in_one_complete_16": 4,
+      "tau_formula": "tau=zeta^(5-2k+(-1)^l)"
+    },
+    "status": "ALL_INTEGRATED_ONE_TENSOR_FLAT_QW_BULK_THREE_FAMILY_PARENTS_REJECTED",
+    "weight_formula": {
+      "degeneracy": "C(2,a) C(3,l)",
+      "labels": "a=# negative weights in first two planes, l=# in last three, k=a+l",
+      "qhat": "zeta^(5-2k)",
+      "rows": [
+        {
+          "a": 0,
+          "chirality": "16",
+          "degeneracy": 1,
+          "k": 0,
+          "l": 0,
+          "qhat": "zeta^5",
+          "qhat_exponent_mod8": 5,
+          "tau_exponent_mod8": 6,
+          "what": "-i"
+        },
+        {
+          "a": 0,
+          "chirality": "bar16",
+          "degeneracy": 3,
+          "k": 1,
+          "l": 1,
+          "qhat": "zeta^3",
+          "qhat_exponent_mod8": 3,
+          "tau_exponent_mod8": 2,
+          "what": "+i"
+        },
+        {
+          "a": 1,
+          "chirality": "bar16",
+          "degeneracy": 2,
+          "k": 1,
+          "l": 0,
+          "qhat": "zeta^3",
+          "qhat_exponent_mod8": 3,
+          "tau_exponent_mod8": 4,
+          "what": "-i"
+        },
+        {
+          "a": 0,
+          "chirality": "16",
+          "degeneracy": 3,
+          "k": 2,
+          "l": 2,
+          "qhat": "zeta^1",
+          "qhat_exponent_mod8": 1,
+          "tau_exponent_mod8": 2,
+          "what": "-i"
+        },
+        {
+          "a": 1,
+          "chirality": "16",
+          "degeneracy": 6,
+          "k": 2,
+          "l": 1,
+          "qhat": "zeta^1",
+          "qhat_exponent_mod8": 1,
+          "tau_exponent_mod8": 0,
+          "what": "+i"
+        },
+        {
+          "a": 2,
+          "chirality": "16",
+          "degeneracy": 1,
+          "k": 2,
+          "l": 0,
+          "qhat": "zeta^1",
+          "qhat_exponent_mod8": 1,
+          "tau_exponent_mod8": 2,
+          "what": "-i"
+        },
+        {
+          "a": 0,
+          "chirality": "bar16",
+          "degeneracy": 1,
+          "k": 3,
+          "l": 3,
+          "qhat": "zeta^7",
+          "qhat_exponent_mod8": 7,
+          "tau_exponent_mod8": 6,
+          "what": "+i"
+        },
+        {
+          "a": 1,
+          "chirality": "bar16",
+          "degeneracy": 6,
+          "k": 3,
+          "l": 2,
+          "qhat": "zeta^7",
+          "qhat_exponent_mod8": 7,
+          "tau_exponent_mod8": 0,
+          "what": "-i"
+        },
+        {
+          "a": 2,
+          "chirality": "bar16",
+          "degeneracy": 3,
+          "k": 3,
+          "l": 1,
+          "qhat": "zeta^7",
+          "qhat_exponent_mod8": 7,
+          "tau_exponent_mod8": 6,
+          "what": "+i"
+        },
+        {
+          "a": 1,
+          "chirality": "16",
+          "degeneracy": 2,
+          "k": 4,
+          "l": 3,
+          "qhat": "zeta^5",
+          "qhat_exponent_mod8": 5,
+          "tau_exponent_mod8": 4,
+          "what": "+i"
+        },
+        {
+          "a": 2,
+          "chirality": "16",
+          "degeneracy": 3,
+          "k": 4,
+          "l": 2,
+          "qhat": "zeta^5",
+          "qhat_exponent_mod8": 5,
+          "tau_exponent_mod8": 6,
+          "what": "-i"
+        },
+        {
+          "a": 2,
+          "chirality": "bar16",
+          "degeneracy": 1,
+          "k": 5,
+          "l": 3,
+          "qhat": "zeta^3",
+          "qhat_exponent_mod8": 3,
+          "tau_exponent_mod8": 2,
+          "what": "+i"
+        }
+      ],
+      "what": "-i for l even, +i for l odd",
+      "zeta": "exp(i*pi/4)"
+    }
+  },
+  "gate_ledger": {
+    "G1": "OPEN: the h=0 anomaly identity is ill-typed on current data; all flat h6/h8 Q/W fallbacks are rejected.",
+    "G2": "OPEN: no accepted Wilsonian action, regulator-defined soft spectrum or SUSY-breaking sector exists.",
+    "G3": "OPEN: full parent H_Gamma field/ghost descent, physical caps/junctions and a positive stabilized vacuum are absent.",
+    "G4": "OPEN: full BV/BRST KK operators, determinant/Pfaffian orientations, thresholds and regulator are absent.",
+    "G5": "OPEN: at least ten neutral zero modes and the all-order supersymmetric stabilization sector remain unresolved.",
+    "G6": "OPEN: string/source completion, reheating, relics and BBN are not derived from an accepted action.",
+    "G7": "OPEN: the integrated flat Q/W bulk-family route is rejected; no accepted alternate flavor/proton/collider sector exists.",
+    "G8": "OPEN: the reduced smooth H78 AHSS is exact only through E3 plus a split Z4; full-parent stratified bordism and trivialization are uncomputed."
+  },
+  "lineage": {
+    "V70_route_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V77_route_core": "fa54bc8ad2ed0991bb7923d6ef7d2da80505e27673d32d22c814369df7c152bb",
+    "V78_route_core": "1e2d44a6aedff03614cb712d3ba3a88f42d214638edf758ecea532c03d8c4e58",
+    "V79_master_core": "7e7e754d6c3d2cd3a7cac56899cd23a5311958feb158a1fee65e9cc50b217a0b",
+    "V79_route_core": "d12328e303fbb41dfa9ee8ebcff816161fd3cc2bb826fceb02f14cbd3dadc203",
+    "supersession_scope": "defines the reduced smooth GS/tangential H78 Thom target, computes its d2 page, types the still-missing full-parent H_Gamma stratified anomaly identity, and closes the integrated flat Q/W bulk-family fallback"
+  },
+  "open_obligations": [
+    "construct a full-parent H_Gamma lift of the reduced Q4^7 generator, then evaluate A_bare times WCS on it",
+    "finish d3/d4/d5 and extensions for the remaining reduced smooth H78 AHSS",
+    "construct every raw field and BV/BRST H_Gamma bundle, operator, domain, zero-mode measure and regulator",
+    "construct the self-dual polarization/quadratic refinement and evaluate the full shifted WCS character",
+    "either restrict explicitly to [Y]=0 backgrounds, or cancel PD[Y] with strings plus worldsheet inflow",
+    "build curved-supersymmetric bridge partners and physical caps/junctions, then test them on separate relative/stratified generators",
+    "if changing the projector, rebuild the action and anomaly ledger before spectrum or phenomenology claims"
+  ],
+  "primary_sources": [
+    {
+      "id": "dai_freed_1994",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "eta invariants with boundary are determinant-line elements; variation, holonomy and gluing"
+    },
+    {
+      "id": "von_gersdorff_2006",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "bulk-fermion contributions to fixed-point anomalies on six-dimensional Zn orbifolds"
+    },
+    {
+      "id": "zhang_2026",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326",
+      "use": "equivariant APS fixed-point density as an orbifold anomaly polynomial"
+    },
+    {
+      "id": "von_gersdorff_quiros_2003",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "path-integral localized anomalies with Scherk--Schwarz boundary data and GS inflow"
+    },
+    {
+      "id": "monnier_2011",
+      "title": "The global gravitational anomaly of the self-dual field theory",
+      "url": "https://arxiv.org/abs/1110.4639",
+      "use": "self-dual partition/anomaly line and its quadratic-refinement data"
+    },
+    {
+      "id": "monnier_2013",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642",
+      "use": "self-dual anomaly line in backgrounds with gauge fields and Wu-class refinements"
+    },
+    {
+      "id": "monnier_2016",
+      "title": "Topological field theories on manifolds with Wu structures",
+      "url": "https://arxiv.org/abs/1607.01396",
+      "use": "seven-dimensional Wu--Chern--Simons anomaly theories and quadratic refinements"
+    },
+    {
+      "id": "monnier_moore_2018",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "smooth-spin six-dimensional GS/WuCS construction, charge lattice and characteristic element; not an orbifold theorem"
+    },
+    {
+      "id": "witten_yonekura_2019",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "regulated fermion phases as eta-invariant anomaly inflow"
+    },
+    {
+      "id": "erler_1993",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104",
+      "use": "smooth six-dimensional multiplet anomaly polynomial and H-V+29T relation"
+    },
+    {
+      "id": "alvarez_gaume_witten_1984",
+      "title": "Gravitational Anomalies",
+      "url": "https://doi.org/10.1016/0550-3213(84)90066-X",
+      "use": "gauge-fixed Rarita complex, reality normalization and chiral gravitational anomaly indices"
+    },
+    {
+      "id": "riccioni_2001",
+      "title": "All couplings of minimal six-dimensional supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074",
+      "use": "six-dimensional (1,0) gravity, tensor, vector and hypermultiplet field content"
+    },
+    {
+      "id": "lupercio_uribe_2003",
+      "title": "Differential Characters on Orbifolds and String Connections I",
+      "url": "https://arxiv.org/abs/math/0311008",
+      "use": "Cheeger--Simons/Beilinson--Deligne differential characters on global quotient orbifolds"
+    },
+    {
+      "id": "laurent_gengoux_tu_xu_2004",
+      "title": "Chern-Weil map for principal bundles over groupoids",
+      "url": "https://arxiv.org/abs/math/0401420",
+      "use": "characteristic classes of orbifold and equivariant bundles through Lie groupoids"
+    },
+    {
+      "id": "sati_2010",
+      "title": "Geometric and topological structures related to M-branes II: Twisted String and String^c structures",
+      "url": "https://arxiv.org/abs/1007.5419",
+      "use": "Spin^c and String^c characteristic-class refinements"
+    },
+    {
+      "id": "ohmori_shimizu_tachikawa_yonekura_2014",
+      "title": "Anomaly polynomial of general 6d SCFTs",
+      "url": "https://arxiv.org/abs/1408.5572",
+      "use": "six-dimensional (1,0) hyper, vector and tensor SU2R anomaly polynomials"
+    },
+    {
+      "id": "intriligator_morrison_seiberg_1997",
+      "title": "Five-Dimensional Supersymmetric Gauge Theories and Degenerations of Calabi-Yau Spaces",
+      "url": "https://arxiv.org/abs/hep-th/9702198",
+      "use": "five-dimensional supersymmetric cubic prepotentials and Chern--Simons couplings"
+    },
+    {
+      "id": "guo_ohmori_putrov_wan_wang_2018",
+      "title": "Fermionic Finite-Group Gauge Theories and Interacting Symmetric/Crystalline Orders via Cobordisms",
+      "url": "https://arxiv.org/abs/1812.11959",
+      "use": "finite-group spin anomaly theories as Pontryagin duals of spin bordism, the Spin AHSS/Adams setup for B(Z2 x Z4), and the distinction from group cohomology"
+    },
+    {
+      "id": "dierigl_tartaglia_2025",
+      "title": "(Quadratically) Refined Discrete Anomaly Cancellation",
+      "url": "https://arxiv.org/abs/2504.02934",
+      "use": "six-dimensional discrete fermion anomalies, chiral two-form quadratic refinements and the need to match them on bordism generators"
+    },
+    {
+      "id": "garcia_etxebarria_montero_2018",
+      "title": "Dai-Freed anomalies in particle physics",
+      "url": "https://arxiv.org/abs/1808.00009",
+      "use": "low-degree BSpin homology and Steenrod data used in the H78 AHSS"
+    },
+    {
+      "id": "debray_dierigl_heckman_montero_2023",
+      "title": "The Chronicles of IIBordia: Dualities, Bordisms, and the Swampland",
+      "url": "https://arxiv.org/abs/2302.00007",
+      "use": "Spin-Z8 Thom equivalence, Omega7=Z4, the Q4^7 generator and its eta invariant"
+    },
+    {
+      "id": "freed_2014",
+      "title": "Anomalies and Invertible Field Theories",
+      "url": "https://arxiv.org/abs/1404.7224",
+      "use": "anomaly theories as invertible functors and cancellation as a natural trivialization"
+    },
+    {
+      "id": "kumar_taylor_2009",
+      "title": "A bound on 6D N=1 supergravities",
+      "url": "https://arxiv.org/abs/0910.1586",
+      "use": "positive kinetic terms as a consistency condition in one-tensor six-dimensional supergravity"
+    }
+  ],
+  "question": "Can the canonical h=0 zero-internal half close G1, or can the remaining h=6/h=8 flat half-spinor parents replace it?",
+  "schema": "susy_v80_h78_category_ahss_flat_parent_no_go_audit_v1",
+  "smooth_reduced_H78_Thom_AHSS_audit": {
+    "bulk_classifying_space": {
+      "Thom_spectrum": "MTH78=Th(BH78;-theta)",
+      "base": "B0=BSO x BSO(11) x BC4 x BC2",
+      "bordism_definition": "Omega_n^H78=pi_n(MTH78)",
+      "classes": {
+        "b": "rho2(s)=a^2",
+        "r": "c1(L_r) in H2(BC4;Z)",
+        "s": "c1(L_s) in H2(BC2;Z)",
+        "y": "rho2(r)"
+      },
+      "definition": "BH78=hofib_0(F)",
+      "derived_relation": "w2(E)=y+b",
+      "full_parent_HGamma_defined": false,
+      "group": "Gamma=C4 x C2",
+      "nullhomotopies": [
+        "Spin^c lift of T with determinant L_r",
+        "Spin^c lift of T+E with determinant L_s"
+      ],
+      "obstruction_map": "F=(w2(T)+y, w2(T)+w2(E)+b):B0 -> K(Z2,2)^2",
+      "smooth_reduced_bulk_defined": true,
+      "stratified_orbifold_extension_defined": false,
+      "tangential_map": "theta:BH78 -> BSO is projection to T",
+      "third_independent_nullhomotopy_imposed": false
+    },
+    "known_bordism_direct_summand": {
+      "associated_graded_filtration_placement": "UNRESOLVED",
+      "background": "s=0, F_E trivial, equivalently E stably R^9+(L_r)_R",
+      "detecting_invariant": "eta_D^(3/2)-eta_D^(1/2)=1/4 mod Z",
+      "detecting_invariant_notation": "the superscripts are Spin-Z8 character weights/twists of Dirac operators, not a Rarita-spin-3/2 minus Dirac-spin-1/2 parent phase",
+      "evaluated_for_the_V80_parent_field_content": false,
+      "full_parent_HGamma_lift_constructed": false,
+      "generator": "the structured Spin-Z8 pair (Q_4^7,L_r,spin lift), with L_4^5 -> Q_4^7 -> S^2=CP1",
+      "group": "Z4",
+      "is_currently_a_full_parent_test_generator": false,
+      "origin": "Omega_7^(Spin-Z8)(pt)",
+      "scope": "this proves a split Z4 inside the reduced smooth Omega_7^H78; it does not compute the reduced BC2/BSpin(11)/mixed summands, nor prove a lift to the full parent H_Gamma category",
+      "split_inclusion": "basepoint inclusion into (BSpin(11) x BC2)_+ with collapse retraction"
+    },
+    "mixed_class_E3_probe": {
+      "E_infinity_status": "UNRESOLVED",
+      "bordism_obstruction_claimed": false,
+      "class": "c=y^2 a^3",
+      "in_image_D_X5_plus_Sq1_X6": false,
+      "pairs_with_an_E3_7_0_survivor": true,
+      "relation_to_integral_class": "mod-2 shadow of beta^-1(r^2 s^2)",
+      "scope": "the H78 twist does not remove this mixed probe at d2; a later differential may still kill it",
+      "survival_proved_through": "E3"
+    },
+    "mod2_calculation": {
+      "active_basis_dimensions": {
+        "X3": 4,
+        "X4": 6,
+        "X5": 8,
+        "X6": 11,
+        "X7": 15,
+        "X8": 19
+      },
+      "basis_scope": "the active X8 basis omits u^2 and w8 because none of the displayed D/Sq1 images lands there; the full degree-eight dimension is 21",
+      "cohomology": "H*(BG;F2)=Lambda(x) tensor F2[y,a]",
+      "degree8_passive_BSpin_generators": [
+        "u^2",
+        "w8"
+      ],
+      "degrees": {
+        "a": 1,
+        "u=w4": 4,
+        "v=w6": 6,
+        "x": 1,
+        "y": 2,
+        "z=w7": 7
+      },
+      "full_X8_dimension": 21,
+      "integral_E2_7_0_kernel": {
+        "d2_outputs_in_dual_X5_basis": {
+          "a7_2": [],
+          "ua3_2": [],
+          "uxy_4": [
+            8
+          ],
+          "uya_2": [
+            7
+          ],
+          "va_2": [
+            7
+          ],
+          "vx_2": [
+            8
+          ],
+          "xy3_4": [
+            6
+          ],
+          "y2a3_2": [],
+          "y3a_2": [
+            3
+          ],
+          "ya5_2": [
+            1,
+            2
+          ]
+        },
+        "d2_rank": 5,
+        "kernel_order_power_of_two": 7,
+        "kernel_structure": "Z4 + Z2^5",
+        "order4_kernel_witness": "uxy_4+vx_2",
+        "ordered_generators": [
+          "a7_2",
+          "ya5_2",
+          "y2a3_2",
+          "y3a_2",
+          "xy3_4",
+          "ua3_2",
+          "uya_2",
+          "uxy_4",
+          "va_2",
+          "vx_2"
+        ],
+        "orders": {
+          "a7_2": 2,
+          "ua3_2": 2,
+          "uxy_4": 4,
+          "uya_2": 2,
+          "va_2": 2,
+          "vx_2": 2,
+          "xy3_4": 4,
+          "y2a3_2": 2,
+          "y3a_2": 2,
+          "ya5_2": 2
+        },
+        "other_Z4_parity_output": "xy3_4 maps to unique e6 and must be even",
+        "source_order_power_of_two": 12
+      },
+      "q0_incoming_d2_rank": 5,
+      "q0_outgoing_d2_rank": 5,
+      "ranks": {
+        "rank_D_X4_to_X6": 4,
+        "rank_D_X5_to_X7": 6,
+        "rank_D_X6_to_X8": 7,
+        "rank_Sq1_X6_to_X7": 5,
+        "rank_Sq1_X7_to_X8": 8,
+        "rank_span_D5_plus_Sq1_6": 10,
+        "rank_span_D6_plus_Sq1_7": 13
+      },
+      "steenrod_data": [
+        "Sq1(x)=Sq1(y)=0",
+        "Sq1(a^k)=(k mod2)a^(k+1)",
+        "Sq2(u)=v",
+        "Sq1(v)=z",
+        "Sq1(u)=Sq2(v)=0"
+      ]
+    },
+    "scope": {
+      "does_not_include": [
+        "the full parent Spin-SU2R-Sp266-Spin11 H_Gamma structure",
+        "field/ghost representations",
+        "strata, defects, caps or junctions"
+      ],
+      "includes": [
+        "T",
+        "E11",
+        "C4",
+        "C2",
+        "two Spin^c lifts"
+      ],
+      "is_full_parent_bordism_problem": false,
+      "structure": "reduced GS/tangential H78"
+    },
+    "stable_low_degree_presentation": {
+      "AHSS_E2": "E2_(p,q)=H_p(BSpin(11)xBG;Omega_q^Spin)",
+      "Spin_Z8_factorization": "MTH78 ~= MSpin-Z8 smash (BSpin(11) x BC2)_+ through degree 8",
+      "d2_cohomology_operator": "D=Sq^2+y cup after mod-2 reduction",
+      "inverse_relations": [
+        "T=W-(L_r)_R",
+        "E=F_E-(L_s)_R+(L_r)_R"
+      ],
+      "spectrum": "MTH78 ~= MSpin smash (BSpin(11) x BG)^{barL_r}, barL_r=(L_r)_R-R^2",
+      "spin_gauge_bundle": "F_E=E+(L_s)_R-(L_r)_R",
+      "spin_tangent_bundle": "W=T+(L_r)_R",
+      "through_degree": 8
+    },
+    "status": "SMOOTH_REDUCED_GS_TANGENTIAL_BH78_MTH78_EXPLICIT__TOTAL_DEGREE7_AHSS_EXACT_THROUGH_E3",
+    "total_degree7_E2": {
+      "E2_3_4": "Z4 + Z2^2",
+      "E2_5_2": "Z2^8",
+      "E2_6_1": "Z2^11",
+      "E2_7_0": "Z4^2 + Z2^8",
+      "E2_7_0_kunneth": [
+        "H7(BG)=Z4+Z2^4",
+        "H4(BSpin11) tensor H3(BG)=Z4+Z2^2",
+        "H6(BSpin11) tensor H1(BG)=Z2^2"
+      ]
+    },
+    "total_degree7_E3": {
+      "E3_3_4": "Z4 + Z2^2",
+      "E3_5_2": "Z2^2",
+      "E3_6_1": "Z2^2",
+      "E3_7_0": "Z4 + Z2^5",
+      "Omega7_H78_computed": false,
+      "extensions_resolved": false,
+      "later_differentials_resolved": false,
+      "total_order": 32768,
+      "total_order_power_of_two": 15
+    }
+  },
+  "source_manifest": {
+    "catalog_sha256": "4ccd25e631ae22c69add1f012d2fef282225aa823cbd2be44cf56041959de090",
+    "count": 23,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025",
+      "garcia_etxebarria_montero_2018",
+      "debray_dierigl_heckman_montero_2023",
+      "freed_2014",
+      "kumar_taylor_2009"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V80_H78_CATEGORY_AHSS_FLAT_PARENT_NO_GO_AUDIT__V70_V77_V78_V79_CORES_BOUND__SMOOTH_REDUCED_BH78_AND_MTH78_EXPLICIT__TOTAL_DEGREE7_AHSS_E3_EXACT_ORDER_2POW15__LATER_DIFFERENTIALS_AND_OMEGA7_OPEN__H0_ANOMALY_PRODUCT_ILL_TYPED_ON_CURRENT_DATA__ZERO_HALF_NEITHER_ACCEPTED_NOR_FALSIFIED__H6_H8_AND_ALL_INTEGRATED_FLAT_QW_BULK_THREE_FAMILY_PARENTS_REJECTED__RANK_SINGLET_COLOR_DEGENERACY_EXACT__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "AHSS_E3_total_order": 32768,
+    "AHSS_total_degree7_computed_through_E3": true,
+    "Q4_full_parent_HGamma_lift_constructed": false,
+    "accepted_full_parent_action_exists": false,
+    "all_integrated_flat_QW_bulk_three_family_parents_rejected": true,
+    "canonical_zero_internal_half_accepted": false,
+    "canonical_zero_internal_half_distinguished": true,
+    "canonical_zero_internal_half_falsified": false,
+    "clean_rank_breaking_pair_from_current_QW_projectors": false,
+    "closed_gates": [],
+    "current_action_status": "REJECTED",
+    "full_parent_stratified_category_constructed": false,
+    "h6_flat_parent_rejected": true,
+    "h8_flat_parent_rejected": true,
+    "honest_outcome": "V80 closes the h6/h8 flat half-spinor fallback and replaces an undefined reduced H78 target with an exact smooth Thom/E3 calculation.  The full parent H_Gamma lift/category is still absent.  The h0 zero-half route is neither inconsistent nor complete: its total anomaly product is not yet a well-typed functorial statement.",
+    "parent_eta_selection_computed": false,
+    "reduced_Omega7_H78_computed": false,
+    "reduced_Omega7_H78_split_Z4_proved": true,
+    "research_program_status": "VIABLE_ONLY_AFTER_EXPLICIT_CATEGORY_OR_CHANGED_PROJECTOR",
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate_accepted": false,
+    "smooth_reduced_BH78_defined": true,
+    "smooth_reduced_MTH78_low_degree_presentation_defined": true,
+    "split_Z4_parent_phase_evaluated": false,
+    "theory_complete": false,
+    "total_anomaly_identity_well_typed": false
+  },
+  "typed_H0_anomaly_contract_audit": {
+    "canonical_half": {
+      "baseline_q_Arf_eta_cap_phase_known": false,
+      "canonical_flat_product_Y": [
+        "lambda4",
+        "lambda4"
+      ],
+      "canonical_half_accepted": false,
+      "canonical_half_falsified": false,
+      "canonical_zero_internal_half_distinguished": true,
+      "full_checkY_globally_zero": false,
+      "parent_eta_selection_computed": false,
+      "reason_distinguished": "unique no-extra-pure-internal-source choice among F79's 64 internal torsion halves on the selected canonical flat product",
+      "relative_t0_action_shift_mod1": "0",
+      "relative_t0_phase_ratio": "1",
+      "selected_twice_Y_half_count": 64,
+      "strict_zero_internal_half_count": 1,
+      "unique_global_differential_refinement": false
+    },
+    "cap_criterion": {
+      "cap_choice_independence": "Z_tot(C union -C_prime)=1",
+      "formal_inverse_cap_is_physical_construction": false,
+      "necessary_closed_cycle_test": "total holonomy is one on every closed allowed full-parent cycle",
+      "nonbounding_Omega6_components": "require chosen reference states or physical defect sectors",
+      "reason": "declaring A_cap=(A_bare WCS bridge)^-1 is tautological and changes the theory unless a local supersymmetric cap sector is built",
+      "relative_test": "each defect restriction lies in the image of an allowed physical cap anomaly theory, with iterated junction coherence"
+    },
+    "closed_cycle_identity": "Z_bare(U) Z_WCS(U;checkY78,t=0) Z_bridge(U_strata) Z_cap/junction(U_strata)=1",
+    "factors": [
+      {
+        "current_input": "smooth/aggregate index shadows only",
+        "functor_on_C80_defined": false,
+        "id": "A_bare_DF_SD"
+      },
+      {
+        "current_input": "integral Y78 formula plus a conditional differential ansatz and the source-minimal t=0 choice on the selected flat product; no canonical global refinement or full holonomy",
+        "functor_on_C80_defined": false,
+        "id": "WCS_shifted_U"
+      },
+      {
+        "current_input": "exact free common-stratum bosonic curvature",
+        "functor_on_C80_defined": false,
+        "id": "bridge_level1_minus_nuAB"
+      },
+      {
+        "current_input": "no physical local/supersymmetric cap theory",
+        "functor_on_C80_defined": false,
+        "id": "cap_junction"
+      }
+    ],
+    "flat_non_identifiability": {
+      "full_parent_stratified_statement": {
+        "B_over_S_nonzero_proved": false,
+        "closed_flat_difference_group": "Hom(Omega_7^{H_Gamma^parent,strat},U(1)), after local curvatures cancel",
+        "identifiability_criterion": "restriction Hom(B,U1)->Hom(S,U1) is injective",
+        "physical_parent_flat_ambiguity_proved": false,
+        "tested_subgroup": "S generated by the actually evaluated parent bordisms"
+      },
+      "local_data_uniquely_determine_eta": false,
+      "reduced_smooth_statement": {
+        "Q4_reduced_phase_pinned_by_current_data": false,
+        "extension_to_full_parent_HGamma_category_proved": false,
+        "flat_character_count_on_split_summand": 4,
+        "proved_bordism_summand": "Z4"
+      },
+      "scope": "the reduced smooth Z4 proves mathematical flat characters, but their extension to the full parent stratified theory is unproved",
+      "space_group_flat_character_count": 8,
+      "space_group_scope": "sensitivity probes, not eight accepted supergravity lifts"
+    },
+    "required_common_category": {
+      "analytic_decorations": "APS/spectral sections belong to the analytic construction or to an auxiliary decorated category with a proved descent/choice-independence map",
+      "constructed_from_current_action": false,
+      "forgetful_map": "H_Gamma^parent,strat -> reduced GS/tangential H78 carrying Y78",
+      "morphisms": "seven-dimensional stratified bordisms; physical caps and junctions are morphisms/states used by a trivialization, not intrinsic object data",
+      "objects": "six-dimensional stratified orbifold backgrounds with the full parent H_Gamma structure, all field/ghost bundles, U lattice/local system, a=(2,2), Wu/shift and differential-refinement data, plus defect/corner labels and boundary-condition types",
+      "specified_as_completion_target": true,
+      "symbol": "C80=Bord_(7,6)^{H_Gamma^parent,strat}(checkY78,t=0)",
+      "t0_notation": "t=0 labels the torsion half; it does not mean checkY78=0"
+    },
+    "required_natural_isomorphism": "tau: A_bare^(DF+SD) tensor WCS^s_(U,a)(checkY78,t=0) tensor i_*B^k=1_(-nuAB) tensor A_cap/junction ~= 1_C80",
+    "smooth_empty_strata_reduction": "on a lifted smooth Q4^7 cycle the bridge and cap/junction factors are identities, so the test is Z_bare Z_WCS=1",
+    "status": "NON_IDENTIFIABLE_FROM_EXISTING_H0_DATA__TOTAL_IDENTITY_ILL_TYPED",
+    "typing_decision": {
+      "common_stratified_domain_defined": false,
+      "identity_currently_evaluable": false,
+      "identity_currently_well_formed": false,
+      "reason": "the tensor factors are not yet functors on one category",
+      "total_natural_isomorphism_defined": false,
+      "total_phase_evaluated_on_generators": false
+    },
+    "updated_input_contract": [
+      {
+        "id": "D1",
+        "input": "square-orbifold strata and space-group relations",
+        "status": "PRESENT"
+      },
+      {
+        "id": "D2",
+        "input": "h=0 integrated spectrum, U lattice and smooth I8",
+        "status": "PRESENT"
+      },
+      {
+        "id": "D3",
+        "input": "aggregate charged Z4 characters",
+        "status": "PRESENT_AGGREGATE_ONLY"
+      },
+      {
+        "id": "D4",
+        "input": "neutral-hyper local isotropy witness",
+        "status": "PRESENT_ONE_WITNESS"
+      },
+      {
+        "id": "D5",
+        "input": "full parent Spin-SU2R-Sp266-Spin11 H_Gamma orbibundle and stratum restrictions",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D6",
+        "input": "raw gravitino, supersymmetry FP and Nielsen-Kallosh complexes",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D7",
+        "input": "tensorino, self-dual fields, tensor ghosts and ghosts-for-ghosts",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D8",
+        "input": "Yang-Mills, diffeomorphism and Lorentz BV/BRST complexes",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D9",
+        "input": "fieldwise chirality, reality and full H_Gamma representations/lifts",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D10",
+        "input": "self-dual polarization, Wu choice and quadratic refinement",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D11",
+        "input": "zero-mode measure/orientation or full-rank supersymmetric masses",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D12",
+        "input": "physical caps, APS projectors, endpoint conditions and junction coherence",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D13",
+        "input": "symmetry-compatible regulator, reference eta and kernel-jump rule",
+        "status": "ABSENT"
+      },
+      {
+        "id": "D14",
+        "input": "integral topological Y78 formula and conditional differential ansatz exist; canonical differential refinement, Wu/shift data, holonomy and parent descent do not",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "D15",
+        "input": "global source/string cancellation or an explicit [Y]=0 bordism domain",
+        "status": "ABSENT"
+      }
+    ]
+  },
+  "version": "V80"
+}

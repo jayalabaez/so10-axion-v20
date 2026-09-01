@@ -1,0 +1,361 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V79 master and V80 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "smooth reduced GS/tangential BH78 homotopy-fiber definition",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A3",
+      "requirement": "two Spin-c nullhomotopies without redundant third lift",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A4",
+      "requirement": "low-degree MTH78 stable presentation",
+      "status": "PASS_THROUGH_DEGREE8"
+    },
+    {
+      "id": "A5",
+      "requirement": "total-degree-seven AHSS E2 page",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A6",
+      "requirement": "D=Sq2+y and Sq1 matrix ranks",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A7",
+      "requirement": "total-degree-seven AHSS E3 page",
+      "status": "PASS_ORDER_2POW15"
+    },
+    {
+      "id": "A8",
+      "requirement": "later AHSS differentials and extensions",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A9",
+      "requirement": "published reduced smooth Spin-Z8 direct bordism summand",
+      "status": "PASS_SPLIT_Z4"
+    },
+    {
+      "id": "A10",
+      "requirement": "full-parent H_Gamma lift of structured Q4^7",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A11",
+      "requirement": "A_bare x WCS on a lifted smooth Q4^7",
+      "status": "OPEN_UNDEFINED_UNEVALUATED"
+    },
+    {
+      "id": "A12",
+      "requirement": "full reduced smooth Omega7(H78)",
+      "status": "OPEN_COMPLEMENT_UNCOMPUTED"
+    },
+    {
+      "id": "A13",
+      "requirement": "common full-parent H_Gamma stratified category",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A14",
+      "requirement": "bare Dai-Freed/self-dual anomaly functor",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A15",
+      "requirement": "shifted U-WuCS functor and full holonomy",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A16",
+      "requirement": "supersymmetric bridge functor",
+      "status": "OPEN_BOSONIC_CURVATURE_ONLY"
+    },
+    {
+      "id": "A17",
+      "requirement": "physical cap/junction functor",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A18",
+      "requirement": "total natural anomaly trivialization",
+      "status": "OPEN_ILL_TYPED"
+    },
+    {
+      "id": "A19",
+      "requirement": "t=0 internal source minimality among F79 flat halves",
+      "status": "PASS_UNIQUE_SCOPED"
+    },
+    {
+      "id": "A20",
+      "requirement": "canonical zero half parent-eta selection",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A21",
+      "requirement": "general flat flavor three-family lower bound",
+      "status": "PASS_H_GE_12"
+    },
+    {
+      "id": "A22",
+      "requirement": "integrated one-tensor family upper bound",
+      "status": "PASS_H_LE_9"
+    },
+    {
+      "id": "A23",
+      "requirement": "h6 and h8 flat Q/W changed parents",
+      "status": "REJECTED_EXACT"
+    },
+    {
+      "id": "A24",
+      "requirement": "all integrated flat Q/W bulk-family parents",
+      "status": "REJECTED_EXACT"
+    },
+    {
+      "id": "A25",
+      "requirement": "clean rank-breaking singlet with Q/W characters",
+      "status": "REJECTED_TRIPLET_DEGENERACY"
+    },
+    {
+      "id": "A26",
+      "requirement": "same-action microscopic completion",
+      "status": "OPEN_FAILED"
+    },
+    {
+      "id": "A27",
+      "requirement": "spectrum, vacuum, thresholds, cosmology and phenomenology",
+      "status": "BLOCKED_BY_ACTION"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "d12ebe0de072586ae09b1b63d8ad35306e38723efd6fd48af50b69b64cf8371d",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "06a98b96f82af14e43102c00001df3e0acec63200c1f75778cc34383c06cddf8"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "current_action_status": "REJECTED",
+    "exact_gains": [
+      "reduced BH78=hofib_0(w2(T)+y,w2(T)+w2(E)+b) with exactly two Spin-c lifts",
+      "reduced MTH78 low-degree Spin-Z8 x BSpin11 x BC2 presentation",
+      "reduced total-degree-seven AHSS E3 page of order 2^15",
+      "published split Z4 in reduced smooth Omega7(H78), represented by structured Q4^7",
+      "t=0 is source-minimal among F79's 64 halves on the selected flat product",
+      "general flat-family bound h>=12 versus integrated anomaly bound h<=9",
+      "h6/h8 and every integrated flat Q/W bulk-family parent rejected",
+      "rank singlet/color-triplet joint-character degeneracy proved"
+    ],
+    "remaining_global_blockers": [
+      "construct a full-parent H_Gamma lift of the reduced Q4^7 generator, then evaluate A_bare times WCS on it",
+      "finish d3/d4/d5 and extensions for the remaining reduced smooth H78 AHSS",
+      "construct every raw field and BV/BRST H_Gamma bundle, operator, domain, zero-mode measure and regulator",
+      "construct the self-dual polarization/quadratic refinement and evaluate the full shifted WCS character",
+      "either restrict explicitly to [Y]=0 backgrounds, or cancel PD[Y] with strings plus worldsheet inflow",
+      "build curved-supersymmetric bridge partners and physical caps/junctions, then test them on separate relative/stratified generators",
+      "if changing the projector, rebuild the action and anomaly ledger before spectrum or phenomenology claims"
+    ],
+    "research_program_status": "VIABLE_ONLY_AFTER_EXPLICIT_CATEGORY_OR_CHANGED_PROJECTOR",
+    "retired_shortcuts": [
+      "calling the exact reduced E3 page the full H78 or parent bordism group",
+      "treating a reduced split Z4 as the complete or full-parent Omega7",
+      "calling structured Q4^7 a parent test before constructing its H_Gamma lift",
+      "including bridge/cap factors on a smooth empty-strata Q4 cycle",
+      "multiplying anomaly factors that are not functors on a common category",
+      "accepting or falsifying t=0 from local curvature data alone",
+      "continuing h6/h8 after the general h>=12 versus h<=9 contradiction",
+      "isolating a rank singlet using only its degenerate Q/W character"
+    ],
+    "selected_open_candidates": [
+      "F80A_CANONICAL_ZERO_HALF_H0",
+      "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+      "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+    ],
+    "strongest_same_parent_scaffold": "h=0 parent + V78 checkY78 with canonical t=0 internal convention + future full-parent H_Gamma stratified anomaly theory"
+  },
+  "core_sha256": "948ee32fe6772f5973411eeb918963614fdbfdfb14e72d00d2a8f315df4109d2",
+  "date": "2026-08-31",
+  "gate_ledger": {
+    "G1": "OPEN: the h=0 anomaly identity is ill-typed on current data; all flat h6/h8 Q/W fallbacks are rejected.",
+    "G2": "OPEN: no accepted Wilsonian action, regulator-defined soft spectrum or SUSY-breaking sector exists.",
+    "G3": "OPEN: full parent H_Gamma field/ghost descent, physical caps/junctions and a positive stabilized vacuum are absent.",
+    "G4": "OPEN: full BV/BRST KK operators, determinant/Pfaffian orientations, thresholds and regulator are absent.",
+    "G5": "OPEN: at least ten neutral zero modes and the all-order supersymmetric stabilization sector remain unresolved.",
+    "G6": "OPEN: string/source completion, reheating, relics and BBN are not derived from an accepted action.",
+    "G7": "OPEN: the integrated flat Q/W bulk-family route is rejected; no accepted alternate flavor/proton/collider sector exists.",
+    "G8": "OPEN: the reduced smooth H78 AHSS is exact only through E3 plus a split Z4; full-parent stratified bordism and trivialization are uncomputed."
+  },
+  "input_core_hashes": {
+    "V79_master": "7e7e754d6c3d2cd3a7cac56899cd23a5311958feb158a1fee65e9cc50b217a0b",
+    "V80_route": "fbc86cd48cb51df580487a8e777ca547723591b3267da2dafada17c8da1bc2ea"
+  },
+  "lineage": {
+    "new_route": "B80",
+    "parent_master": "V79",
+    "parent_route_count": 7,
+    "parent_route_matrix_sha256": "2c2bea305aaf38c2fdc7d6ada3aaabd248619622781a4026496ba4fc9c133481",
+    "supersession_scope": "defines the reduced smooth GS/tangential H78 Thom target, computes its d2 page, types the still-missing full-parent H_Gamma stratified anomaly identity, and closes the integrated flat Q/W bulk-family fallback"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "changed_action_boundary": "do not revive h6/h8 in the same flat Q/W skeleton; any new projector must carry a rebuilt fixed-point and global anomaly ledger",
+    "id": "F81_FULL_PARENT_HGAMMA_LIFT_AND_SEPARATE_SMOOTH_RELATIVE_TESTS",
+    "primary_objective": "construct the full-parent H_Gamma category and a lift of the structured Q4^7 reduced-H78 representative, then evaluate A_bare x WCS on that smooth empty-strata cycle",
+    "stratified_objective": "evaluate bridge and cap/junction factors separately on physical relative and stratified generators, with cap-choice independence",
+    "topological_objective": "resolve later AHSS differentials/extensions for complementary reduced smooth summands and formulate full-parent relative/stratified groups"
+  },
+  "regression_scope": {
+    "inherited_V79_scope_sha256": "91a87915a9349180abfbabd60a9e6cff3a28721ecf0b7f0af0bdea4254ea7154",
+    "new_test_files": [
+      "test_susy_v80_multipath_g1_frontier_master_audit.py",
+      "test_susy_v80_h78_category_ahss_flat_parent_no_go_audit.py"
+    ],
+    "recommended_full_pattern": "test_susy_v*.py"
+  },
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "H78 category/AHSS and general flat half-spinor parent adjudication",
+      "ordinal": 8,
+      "route_id": "B80",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F80A_CANONICAL_ZERO_HALF_H0",
+        "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+        "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+      ]
+    }
+  ],
+  "schema": "susy_v80_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "4ccd25e631ae22c69add1f012d2fef282225aa823cbd2be44cf56041959de090",
+    "count": 23,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025",
+      "garcia_etxebarria_montero_2018",
+      "debray_dierigl_heckman_montero_2023",
+      "freed_2014",
+      "kumar_taylor_2009"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V80_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V79_MASTER_AND_V80_ROUTE_CORES_BOUND__SMOOTH_REDUCED_H78_THOM_AND_E3_EXACT__SPLIT_Z4_REDUCED_BORDISM_SUMMAND_PROVED__FULL_PARENT_HGAMMA_LIFT_ABSENT__H0_TOTAL_ANOMALY_IDENTITY_ILL_TYPED__ZERO_HALF_NEITHER_ACCEPTED_NOR_FALSIFIED__ALL_INTEGRATED_FLAT_QW_BULK_THREE_FAMILY_PARENTS_REJECTED__NO_ACCEPTED_EXTENSION__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "AHSS_E3_total_order": 32768,
+    "AHSS_through_E3": true,
+    "D14_status": "PARTIAL",
+    "D15_status": "ABSENT",
+    "Q4_full_parent_HGamma_lift_constructed": false,
+    "Q4_is_currently_full_parent_test_generator": false,
+    "accepted_full_parent_action_exists": false,
+    "all_integrated_flat_QW_bulk_family_parents_rejected": true,
+    "canonical_zero_half_accepted": false,
+    "canonical_zero_half_distinguished": true,
+    "canonical_zero_half_falsified": false,
+    "clean_rank_breaking_pair_from_QW": false,
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_action_status": "REJECTED",
+    "flat_three_family_h_min": 12,
+    "full_parent_stratified_category_constructed": false,
+    "full_reduced_Omega7_H78_computed": false,
+    "honest_outcome": "V80 closes the h6/h8 flat half-spinor fallback and replaces an undefined reduced H78 target with an exact smooth Thom/E3 calculation.  The full parent H_Gamma lift/category is still absent.  The h0 zero-half route is neither inconsistent nor complete: its total anomaly product is not yet a well-typed functorial statement.",
+    "integrated_parent_h_max": 9,
+    "parent_eta_selection_computed": false,
+    "reduced_MTH78_low_degree_presentation_defined": true,
+    "reduced_Omega7_H78_split_Z4_proved": true,
+    "research_program_status": "VIABLE_ONLY_AFTER_EXPLICIT_CATEGORY_OR_CHANGED_PROJECTOR",
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate_accepted": false,
+    "smooth_reduced_BH78_defined": true,
+    "split_Z4_parent_phase_evaluated": false,
+    "split_Z4_structured_representative": "the structured Spin-Z8 pair (Q_4^7,L_r,spin lift), with L_4^5 -> Q_4^7 -> S^2=CP1",
+    "total_anomaly_identity_well_typed": false
+  },
+  "version": "V80"
+}
