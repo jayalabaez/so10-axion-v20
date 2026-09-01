@@ -1,0 +1,788 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V83 master and V84 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "all central translation-deck choices enumerated",
+      "status": "PASS_EXACT_1024"
+    },
+    {
+      "id": "A3",
+      "requirement": "unchanged five-factor Kmin satisfies both Gammahat relations",
+      "status": "REJECTED_PURE_Z11_FORCED"
+    },
+    {
+      "id": "A4",
+      "requirement": "Kmax localized 16 descent",
+      "status": "REJECTED_ODD_SPIN11_CENTER"
+    },
+    {
+      "id": "A5",
+      "requirement": "Kmax SO11 Green-Schwarz quantization",
+      "status": "REJECTED_B_NOT_IN_2U"
+    },
+    {
+      "id": "A6",
+      "requirement": "C4F diagonal kernel keeps Spin11 faithful",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A7",
+      "requirement": "independent C4F gauge/flavor translation signs",
+      "status": "PASS_EXACT_8_OF_16_BY_PARITY"
+    },
+    {
+      "id": "A8",
+      "requirement": "C4F smooth descent and localized pure-center repair",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A9",
+      "requirement": "C4F charge/stabilizer ledger with fatal adjoint trilinear identified",
+      "status": "PASS_EXACT_SCOPED_OPERATOR_LEDGER"
+    },
+    {
+      "id": "A10",
+      "requirement": "C4F complete fixed-stratum isotropy",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A11",
+      "requirement": "C4F discrete and mixed Dai-Freed anomalies",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A12",
+      "requirement": "C4F full BV/regulator/WCS parent",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A13",
+      "requirement": "Q4 coefficient-line eta tables",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A14",
+      "requirement": "gauge-fixed Rarita Vec-1 contribution",
+      "status": "PASS_EXACT_ONE_HALF"
+    },
+    {
+      "id": "A15",
+      "requirement": "smooth cyclic Q4 bare phase conjugacy class",
+      "status": "PASS_EXACT_PRIMITIVE_FOURTH_ROOT"
+    },
+    {
+      "id": "A16",
+      "requirement": "determinant/Pfaffian convention selects +i versus -i",
+      "status": "OPEN_CONJUGATION_PIN"
+    },
+    {
+      "id": "A17",
+      "requirement": "reference even-U WCS cancels bare phase",
+      "status": "REJECTED_ODD_TOTAL_CHARACTER"
+    },
+    {
+      "id": "A18",
+      "requirement": "sixteen algebraic r2 coefficient shifts cancel",
+      "status": "REJECTED_SCREEN_WCS_ONLY_PLUS_MINUS_ONE"
+    },
+    {
+      "id": "A19",
+      "requirement": "algebraic r2 screen classifies physical refinements",
+      "status": "OPEN_FALSE_BOUNDARY_NOT_A_CLASSIFICATION"
+    },
+    {
+      "id": "A20",
+      "requirement": "odd reduced-Z4 counterterm extends globally",
+      "status": "OPEN_UNPROVED_AND_ACTION_CHANGING"
+    },
+    {
+      "id": "A21",
+      "requirement": "H2(F4) equals frozen U lattice with S=b and K=a",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A22",
+      "requirement": "so11 Lie algebra on F4 has frozen 3 vectors and 266 neutral hypers",
+      "status": "PASS_EXACT_SCAFFOLD"
+    },
+    {
+      "id": "A23",
+      "requirement": "F4 fiber is critical heterotic string with full (24,12)",
+      "status": "PASS_PUBLISHED_UV_SECTOR"
+    },
+    {
+      "id": "A24",
+      "requirement": "both Q4 residues have coefficient-minimal effective lifts",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A25",
+      "requirement": "residue lifts are elementary irreducible strings",
+      "status": "REJECTED_FIXED_SECTION_COMPONENTS"
+    },
+    {
+      "id": "A26",
+      "requirement": "junction worldsheet/inflow/WCS glue",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A27",
+      "requirement": "explicit compact non-split I2star Weierstrass model",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A28",
+      "requirement": "Mordell-Weil and global Spin11 form",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A29",
+      "requirement": "unwarped constant-scalar H=0 T2xS4 half-BPS ansatz",
+      "status": "REJECTED_NO_PARALLEL_S4_SPINOR"
+    },
+    {
+      "id": "A30",
+      "requirement": "ordinary product relative cap and source trivialization",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A31",
+      "requirement": "product cap double realizes Q4",
+      "status": "REJECTED_FORGETFUL_CLASS_ZERO_VS_ORDER4"
+    },
+    {
+      "id": "A32",
+      "requirement": "entangled warped/fluxed Q4-relative source",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A33",
+      "requirement": "potential incoming AHSS d3/d4 source pages survive to the required pages",
+      "status": "OPEN_PRECURSOR_PAGE_SURVIVAL_AND_DIFFERENTIAL_VALUES"
+    },
+    {
+      "id": "A34",
+      "requirement": "half-vector eta resolves delta",
+      "status": "REJECTED_FILLING_DEPENDENT"
+    },
+    {
+      "id": "A35",
+      "requirement": "delta exact order",
+      "status": "OPEN_ZERO_OR_ORDER2"
+    },
+    {
+      "id": "A36",
+      "requirement": "same-action microscopic completion",
+      "status": "REJECTED_EXACT_IN_SCOPED_ORDINARY_PARENT"
+    },
+    {
+      "id": "A37",
+      "requirement": "redesigned full parent action",
+      "status": "OPEN_C4F_F4_NOT_GLOBALLY_GLued"
+    },
+    {
+      "id": "A38",
+      "requirement": "vacuum, spectrum, thresholds, cosmology and phenomenology",
+      "status": "BLOCKED_BY_FULL_ACTION"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "5da48948dcadc70f562a978ba710e6db9e112e9d01749c439e401d1a8e296ea3",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "470c63ffbc440f17cf3c8b2bbfbdc4333117034be1427283f5565ee79d6a235f"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "current_action_status": "REJECTED",
+    "exact_gains": [
+      "every unchanged central translation lift forces the pure Spin11 center",
+      "localized 16 descent and SO11 strong quantization independently reject the forced Kmax quotient",
+      "a minimal non-R C4F factor repairs the central algebra without killing Spin11",
+      "eight of sixteen independent C4F gauge/flavor sign rows pass exactly by the parity-sum theorem",
+      "the C4F charge ledger preserves displayed Yukawa/rank terms while retaining V65's fatal spinor-adjoint warning",
+      "the smooth cyclic Q4 bare Dai-Freed phase is a primitive fourth root up to conjugation",
+      "the reference WCS branch and sixteen over-inclusive algebraic r2 coefficient-shift rows cannot cancel that phase",
+      "F4 identifies S=b, F as the null heterotic charge, and K as the gravitational vector",
+      "the so11 Lie algebra on the -4 section reproduces exactly three vectors and 266 neutral hypers",
+      "the critical heterotic fiber string has interacting (20,6) and full (24,12) central charges",
+      "S+F and 3S+F are the unique coefficient-minimal effective lifts of the two Q4 residues",
+      "negative section intersection proves both residue lifts are reducible charge/curve configurations and only candidate junctions",
+      "a bounding product cap gives an ordinary flat-ambiguity-free source trivialization",
+      "the restricted direct product is non-BPS and every product double is bordism-distinct from Q4",
+      "four explicit target-side AHSS maps adjacent to h0*p plus every r>=5 map are eliminated; potential incoming d3/d4 source-page survival and values remain open"
+    ],
+    "remaining_global_blockers": [
+      "construct every C4F-extended fixed-stratum isotropy representation and localized VEV profile",
+      "compute all C4F discrete, mixed, Dai-Freed and fixed-point anomalies on one full H_Gamma bordism theory",
+      "descend the complete raw/BV/BRST/regulator complex and fix Pfaffian orientations",
+      "build an explicit compact non-split I2* so11 Weierstrass model on F4 and derive its Hodge/Mordell-Weil/global-form data",
+      "realize C4F as a genuine UV flat flavor or gerbe sector compatible with the F4/heterotic dual",
+      "select the full differential Y/WCS refinement or a globally extending odd counterterm and verify total character one",
+      "construct and anomaly-match physical junction sectors, if any, from the reducible F+S charge/curve lifts for both Q4 residues",
+      "audit precursor maps and page survival for the potential delta d3 source H7(BSpin11;Z8)=Z2 and d4 source H8(BSpin11;Z), then compute surviving maps, prove the chain-level identification and resolve the remaining extension",
+      "replace the rejected product source by an entangled warped/fluxed half-BPS Q4-relative solution",
+      "only after a full action exists, recompute vacuum, spectrum, thresholds, cosmology and phenomenology"
+    ],
+    "research_program_status": "VIABLE_C4F_F4_REDESIGN_FRONTIER__FULL_QUANTUM_PARENT_OPEN",
+    "retired_shortcuts": [
+      "repairing the unchanged Gammahat relations with flavor signs alone",
+      "killing z11 and retaining localized spinors or the frozen odd component of b",
+      "calling the C4F central algebra a complete stratified quantum parent",
+      "selecting +i or -i without a determinant/Pfaffian convention pin",
+      "identifying a Lambda/4Lambda coefficient scan with V78 local 2Y corrections or physical WCS refinements",
+      "calling a topological F4 spectrum match an explicit compact Weierstrass model",
+      "calling S+F or 3S+F an irreducible elementary string",
+      "calling ordinary differential source trivialization WCS/worldsheet glue",
+      "using an unwarped round S4 instanton product as a half-BPS solution",
+      "using a product double to represent the Q4 order-four bordism class",
+      "using filling-dependent half eta to decide delta"
+    ],
+    "selected_open_candidates": [
+      "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+      "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD"
+    ],
+    "strongest_redesigned_scaffold": "C4F diagonal spin-charge parent algebra plus F4 so11 Lie-algebra/heterotic UV lattice and reducible effective residue lifts"
+  },
+  "core_sha256": "e07199ef930779c29988e2b4713a660f27c6b73dd19b06ee898dfadc30ec32ed",
+  "date": "2026-09-01",
+  "fail_closed_logic": {
+    "C4F_algebra_is_not_full_stratified_parent": true,
+    "F4_topological_spectrum_match_is_not_explicit_compact_UV_model": true,
+    "G1_requires_one_full_action_regulator_and_global_parent": true,
+    "G6_requires_junction_and_entangled_source_glue": true,
+    "G8_requires_selected_physical_total_anomaly_character_one": true,
+    "accept_if_scaffolds_only": false,
+    "algebraic_coefficient_scan_is_not_physical_refinement_classification": true,
+    "ordinary_cap_is_not_WCS_or_Dai_Freed_glue": true,
+    "smooth_cycle_phase_is_not_full_HGamma_source_completed_phase": true,
+    "unchanged_parent_no_go_does_not_reject_action_changes": true
+  },
+  "gate_ledger": {
+    "G1": "OPEN: the unchanged ordinary five-factor parent is exactly rejected; the C4F central algebra passes, but a full stratified H_Gamma action, common regulator and accepted UV completion do not exist.",
+    "G2": "OPEN: no accepted C4F/F4 Wilsonian action, supersymmetry-breaking sector, soft spectrum or threshold calculation exists.",
+    "G3": "OPEN: C4F translation relations pass centrally, but complete localized isotropy, global bundles, VEV profiles and an explicit compact F4 geometry remain absent.",
+    "G4": "OPEN: the candidate smooth-Q4 Dai-Freed exponent is a primitive fourth root up to conjugation, but the full-parent BV/Pfaffian orientation, zero-mode measure and common regulator are absent.",
+    "G5": "OPEN: the redesigned stabilizer has only a local Hessian witness; neutral zero modes, the fatal spinor-adjoint selector and all-order stabilization remain unresolved.",
+    "G6": "OPEN: the F4 fiber string, reducible residue charges and an ordinary product cap exist, but junction inflow, differential WCS glue and an entangled on-shell half-BPS source do not.",
+    "G7": "OPEN: no accepted redesigned action yields a derived family, proton, collider, flavor or cosmological prediction.",
+    "G8": "OPEN: the reference and algebraic r2 screens fail, while the physical full-HGamma WCS refinement, possible odd counterterm, source-page survival and values of potential incoming delta d3/d4 maps, the hidden extension and total anomaly trivialization remain unknown."
+  },
+  "input_core_hashes": {
+    "V83_master": "b4a626429afcd28a9147c6b0ab2dd00e2304fc611c7499df1eb39dd76fa217f6",
+    "V84_route": "ca9bbf53dcceb9fc422119e73b969b6d3b2c4db1619c8846134320768a26275f"
+  },
+  "lineage": {
+    "new_route": "B84",
+    "parent_master": "V83",
+    "parent_route_count": 11,
+    "parent_route_matrix_sha256": "b53e8421d3bcf4acdb4c974608e93685eae8969c6b76bf28c20f954e12f9b585",
+    "supersession_scope": "executes F84 and supersedes V83's open translation, bare-phase and formal-charge-lift questions; it does not supersede the full-parent acceptance boundary"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F85_C4F_F4_WEIERSTRASS_GLOBAL_FORM_AND_DIFFERENTIAL_ORBIFOLD_GLUE",
+    "primary_objective": "construct the explicit compact F4 so11 geometry and determine its global gauge form while realizing the C4F diagonal spin-charge parent on all strata with a common regulator",
+    "secondary_objective": "select the physical differential WCS/q2 refinement, determine whether the reducible F+S lifts define junction sectors, and glue any resulting sector to an entangled Q4-relative source"
+  },
+  "primary_sources": [
+    {
+      "id": "dai_freed_1994",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "eta invariants with boundary are determinant-line elements; variation, holonomy and gluing"
+    },
+    {
+      "id": "von_gersdorff_2006",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "bulk-fermion contributions to fixed-point anomalies on six-dimensional Zn orbifolds"
+    },
+    {
+      "id": "zhang_2026",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326",
+      "use": "equivariant APS fixed-point density as an orbifold anomaly polynomial"
+    },
+    {
+      "id": "von_gersdorff_quiros_2003",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "path-integral localized anomalies with Scherk--Schwarz boundary data and GS inflow"
+    },
+    {
+      "id": "monnier_2011",
+      "title": "The global gravitational anomaly of the self-dual field theory",
+      "url": "https://arxiv.org/abs/1110.4639",
+      "use": "self-dual partition/anomaly line and its quadratic-refinement data"
+    },
+    {
+      "id": "monnier_2013",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642",
+      "use": "self-dual anomaly line in backgrounds with gauge fields and Wu-class refinements"
+    },
+    {
+      "id": "monnier_2016",
+      "title": "Topological field theories on manifolds with Wu structures",
+      "url": "https://arxiv.org/abs/1607.01396",
+      "use": "seven-dimensional Wu--Chern--Simons anomaly theories and quadratic refinements"
+    },
+    {
+      "id": "monnier_moore_2018",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "smooth-spin six-dimensional GS/WuCS construction, charge lattice and characteristic element; not an orbifold theorem"
+    },
+    {
+      "id": "witten_yonekura_2019",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "regulated fermion phases as eta-invariant anomaly inflow"
+    },
+    {
+      "id": "erler_1993",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104",
+      "use": "smooth six-dimensional multiplet anomaly polynomial and H-V+29T relation"
+    },
+    {
+      "id": "alvarez_gaume_witten_1984",
+      "title": "Gravitational Anomalies",
+      "url": "https://doi.org/10.1016/0550-3213(84)90066-X",
+      "use": "gauge-fixed Rarita complex, reality normalization and chiral gravitational anomaly indices"
+    },
+    {
+      "id": "riccioni_2001",
+      "title": "All couplings of minimal six-dimensional supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074",
+      "use": "six-dimensional (1,0) gravity, tensor, vector and hypermultiplet field content"
+    },
+    {
+      "id": "lupercio_uribe_2003",
+      "title": "Differential Characters on Orbifolds and String Connections I",
+      "url": "https://arxiv.org/abs/math/0311008",
+      "use": "Cheeger--Simons/Beilinson--Deligne differential characters on global quotient orbifolds"
+    },
+    {
+      "id": "laurent_gengoux_tu_xu_2004",
+      "title": "Chern-Weil map for principal bundles over groupoids",
+      "url": "https://arxiv.org/abs/math/0401420",
+      "use": "characteristic classes of orbifold and equivariant bundles through Lie groupoids"
+    },
+    {
+      "id": "sati_2010",
+      "title": "Geometric and topological structures related to M-branes II: Twisted String and String^c structures",
+      "url": "https://arxiv.org/abs/1007.5419",
+      "use": "Spin^c and String^c characteristic-class refinements"
+    },
+    {
+      "id": "ohmori_shimizu_tachikawa_yonekura_2014",
+      "title": "Anomaly polynomial of general 6d SCFTs",
+      "url": "https://arxiv.org/abs/1408.5572",
+      "use": "six-dimensional (1,0) hyper, vector and tensor SU2R anomaly polynomials"
+    },
+    {
+      "id": "intriligator_morrison_seiberg_1997",
+      "title": "Five-Dimensional Supersymmetric Gauge Theories and Degenerations of Calabi-Yau Spaces",
+      "url": "https://arxiv.org/abs/hep-th/9702198",
+      "use": "five-dimensional supersymmetric cubic prepotentials and Chern--Simons couplings"
+    },
+    {
+      "id": "guo_ohmori_putrov_wan_wang_2018",
+      "title": "Fermionic Finite-Group Gauge Theories and Interacting Symmetric/Crystalline Orders via Cobordisms",
+      "url": "https://arxiv.org/abs/1812.11959",
+      "use": "finite-group spin anomaly theories as Pontryagin duals of spin bordism, the Spin AHSS/Adams setup for B(Z2 x Z4), and the distinction from group cohomology"
+    },
+    {
+      "id": "dierigl_tartaglia_2025",
+      "title": "(Quadratically) Refined Discrete Anomaly Cancellation",
+      "url": "https://arxiv.org/abs/2504.02934",
+      "use": "six-dimensional discrete fermion anomalies, chiral two-form quadratic refinements and the need to match them on bordism generators"
+    },
+    {
+      "id": "garcia_etxebarria_montero_2018",
+      "title": "Dai-Freed anomalies in particle physics",
+      "url": "https://arxiv.org/abs/1808.00009",
+      "use": "low-degree BSpin homology and Steenrod data used in the H78 AHSS"
+    },
+    {
+      "id": "debray_dierigl_heckman_montero_2023",
+      "title": "The Chronicles of IIBordia: Dualities, Bordisms, and the Swampland",
+      "url": "https://arxiv.org/abs/2302.00007",
+      "use": "Spin-Z8 Thom equivalence, Omega7=Z4, the Q4^7 generator and its eta invariant"
+    },
+    {
+      "id": "freed_2014",
+      "title": "Anomalies and Invertible Field Theories",
+      "url": "https://arxiv.org/abs/1404.7224",
+      "use": "anomaly theories as invertible functors and cancellation as a natural trivialization"
+    },
+    {
+      "id": "kumar_taylor_2009",
+      "title": "A bound on 6D N=1 supergravities",
+      "url": "https://arxiv.org/abs/0910.1586",
+      "use": "positive kinetic terms as a consistency condition in one-tensor six-dimensional supergravity"
+    },
+    {
+      "id": "muller_2020",
+      "title": "Extended Functorial Field Theories and Anomalies in Quantum Field Theories",
+      "url": "https://arxiv.org/abs/2003.08217",
+      "use": "extended anomaly theories, symmetric monoidal bicategories and APS corners"
+    },
+    {
+      "id": "monnier_moore_2018_gs",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "compact-six-dimensional charge cancellation and the seven-dimensional WCS bordism domain"
+    },
+    {
+      "id": "shimizu_tachikawa_2016_strings",
+      "title": "Anomaly of strings of 6d N=(1,0) theories",
+      "url": "https://arxiv.org/abs/1608.05894",
+      "use": "self-dual-string Bianchi identity and local worldsheet inflow formula"
+    },
+    {
+      "id": "kim_shiu_vafa_2019_branes",
+      "title": "Branes and the Swampland",
+      "url": "https://arxiv.org/abs/1905.08261",
+      "use": "indefinite-lattice supergravity-string anomaly, central charges, levels and necessary unitarity bound"
+    },
+    {
+      "id": "seiberg_taylor_2011_lattices",
+      "title": "Charge Lattices and Consistency of 6D Supergravity",
+      "url": "https://arxiv.org/abs/1103.0019",
+      "use": "integral unimodular string-charge lattice"
+    },
+    {
+      "id": "del_zotto_lockhart_2018_bps_strings",
+      "title": "Universal Features of BPS Strings in Six-dimensional SCFTs",
+      "url": "https://arxiv.org/abs/1804.09694",
+      "use": "4 SO(11) matter table, (0,4) Sp(k) quiver, anomaly polynomial and central charges"
+    },
+    {
+      "id": "francis_2011_bspin",
+      "title": "Integrals on spin manifolds and the K-theory of K(Z,4)",
+      "url": "https://sites.math.northwestern.edu/~jnkf/writ/bspin2011.pdf",
+      "use": "low BSpin structure and the independent integral lift (p2-lambda^2)/2"
+    },
+    {
+      "id": "braeger_debray_dierigl_heckman_montero_2025_cobordism_utopia",
+      "title": "Cobordism Utopia: U-Dualities, Bordisms, and the Swampland",
+      "url": "https://arxiv.org/abs/2505.15885",
+      "use": "A(1) Ext calculation locating the mixed candidate at h0 p"
+    },
+    {
+      "id": "lee_tachikawa_2020_global_gauge_anomalies",
+      "title": "Some comments on 6d global gauge anomalies",
+      "url": "https://arxiv.org/abs/2012.11622",
+      "use": "low-degree BSpin bordism module description"
+    },
+    {
+      "id": "hsieh_2018_discrete_anomalies",
+      "title": "Discrete gauge anomalies revisited",
+      "url": "https://arxiv.org/abs/1808.02881",
+      "use": "reduced APS eta normalization and Dai-Freed phase convention"
+    },
+    {
+      "id": "bahri_gilkey_1987_eta_lens_bundles",
+      "title": "The eta invariant, Pin^c bordism, and equivariant Spin^c bordism for cyclic 2-groups",
+      "url": "https://msp.org/pjm/1987/128-1/pjm-v128-n1-p01-p.pdf",
+      "use": "primary lens-space-bundle eta formula"
+    },
+    {
+      "id": "kumar_morrison_taylor_2009_f4_so",
+      "title": "Mapping 6D N=1 supergravities to F-theory",
+      "url": "https://arxiv.org/abs/0911.3393",
+      "use": "Hirzebruch-surface intersection data and SO(N) matter rule on F4"
+    },
+    {
+      "id": "morrison_taylor_2012_f_theory_bases",
+      "title": "Classifying bases for 6D F-theory models",
+      "url": "https://arxiv.org/abs/1201.1943",
+      "use": "F4 section/fiber geometry and effective cone"
+    },
+    {
+      "id": "lee_lerche_weigand_2018_tensionless_strings",
+      "title": "Tensionless Strings and the Weak Gravity Conjecture",
+      "url": "https://arxiv.org/abs/1808.05958",
+      "use": "D3 brane on the Hirzebruch fiber as the critical six-dimensional heterotic string"
+    }
+  ],
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "H78 category/AHSS and general flat half-spinor parent adjudication",
+      "ordinal": 8,
+      "route_id": "B80",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F80A_CANONICAL_ZERO_HALF_H0",
+        "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+        "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Q4 parent-lift, eta-shadow and relative Bord765 cap adjudication",
+      "ordinal": 9,
+      "route_id": "B81",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+        "F81D_NONFLAT_Q1_COMPENSATOR",
+        "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+        "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "qhat Q4 bordism, optional D15 defect and scoped compensator adjudication",
+      "ordinal": 10,
+      "route_id": "B82",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F82A_QHAT_Q4_REDUCED_CLASS",
+        "F82B_RELATIVE_QHAT_MINUS_BASEPOINT_CLASS",
+        "F82D_ORDINARY_CLOSED7_QHAT_Q4_TEST",
+        "F82E2_GENERAL_NONFLAT_SAME_RANK_COMPENSATOR",
+        "F82G_OPTIONAL_CLOSED7_DEFECT_RESIDUES",
+        "F82H_CANDIDATE_POSITIVE_CHARGE_LIFTS",
+        "F82J_FULL_D15_WORLDSHEET_SECTOR",
+        "F82K_FULL_PARENT_ANOMALY_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "cyclic bulk parent, Q4 WCS shadow and 4 SO(11) instanton-string adjudication",
+      "ordinal": 11,
+      "route_id": "B83",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F83A_SMOOTH_BULK_CYCLIC_C4_QUOTIENT",
+        "F83A2_FULL_SQUARE_SPACE_GROUP_HGAMMA",
+        "F83A3_UNIQUE_GLOBAL_CENTER_KERNEL",
+        "F83B_Q4_TORSION_LINKING_FORM",
+        "F83B2_EVEN_U_REFERENCE_WCS_SHADOW",
+        "F83B3_PHYSICAL_WCS_REFINEMENT",
+        "F83B4_REGULATED_BARE_ETA_PHASE",
+        "F83B5_BARE_TIMES_WCS_IDENTITY",
+        "F83C_BULK_4SO11_INSTANTON_STRING",
+        "F83C2_4SO11_WORLDSHEET",
+        "F83C3_COMPACT6_INCIDENCE",
+        "F83C4_COMPACT6_HALF_BPS_SOLUTION",
+        "F83C7_FULL_HGAMMA_D15_GLUE",
+        "F83D_DELTA_PRIMARY_DETECTOR",
+        "F83D2_DELTA_H0_HIDDEN_EXTENSION",
+        "F83E_SAME_ACTION_COMPLETION"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "full-Gammahat no-go, C4F spinor grading and F4 heterotic-string redesign",
+      "ordinal": 12,
+      "route_id": "B84",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+        "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD"
+      ]
+    }
+  ],
+  "schema": "susy_v84_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "016d1611c6835684f487805f138088966db121db43b164400f41cc6597e74292",
+    "count": 37,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025",
+      "garcia_etxebarria_montero_2018",
+      "debray_dierigl_heckman_montero_2023",
+      "freed_2014",
+      "kumar_taylor_2009",
+      "muller_2020",
+      "monnier_moore_2018_gs",
+      "shimizu_tachikawa_2016_strings",
+      "kim_shiu_vafa_2019_branes",
+      "seiberg_taylor_2011_lattices",
+      "del_zotto_lockhart_2018_bps_strings",
+      "francis_2011_bspin",
+      "braeger_debray_dierigl_heckman_montero_2025_cobordism_utopia",
+      "lee_tachikawa_2020_global_gauge_anomalies",
+      "hsieh_2018_discrete_anomalies",
+      "bahri_gilkey_1987_eta_lens_bundles",
+      "kumar_morrison_taylor_2009_f4_so",
+      "morrison_taylor_2012_f_theory_bases",
+      "lee_lerche_weigand_2018_tensionless_strings"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V84_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V83_MASTER_AND_V84_ROUTE_CORES_BOUND__UNCHANGED_FIVE_FACTOR_GAMMAHAT_REJECTED_EXACT__C4F_SPINOR_GRADING_REDESIGN_SELECTED_OPEN__SMOOTH_Q4_BARE_PHASE_PRIMITIVE_FOURTH_ROOT__ALGEBRAIC_R2_SCREEN_NONCANCELLING__F4_SO11_LIE_ALGEBRA_SPECTRUM_HETEROTIC_STRING_AND_REDUCIBLE_EFFECTIVE_RESIDUE_LIFTS_EXACT__PRODUCT_CAP_ORDINARY_ONLY__DELTA_SOURCE_PAGE_D3_D4_AND_EXTENSION_OPEN__NO_ACCEPTED_EXTENSION__CURRENT_ACTION_REJECTED__REDESIGN_PROGRAM_VIABLE__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "C4F_Spin11_faithful": true,
+    "C4F_direct_matched_representative_rows_pass": true,
+    "C4F_fatal_spinor_adjoint_target_vacuum_admissible": false,
+    "C4F_full_localized_isotropy_constructed": false,
+    "C4F_full_quantum_parent_constructed": false,
+    "C4F_independent_sign_rows_passing": 8,
+    "C4F_kernel_contains_pure_z11": false,
+    "C4F_localized_pure_center_repaired": true,
+    "F4_global_gauge_group_matched": false,
+    "F4_section_fiber_canonical": [
+      [
+        2,
+        -1
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "F4_so11_Lie_algebra_vector_and_neutral_hypers": [
+      3,
+      266
+    ],
+    "accepted_extension_count": 0,
+    "accepted_full_parent_action_exists": false,
+    "algebraic_r2_screen_classifies_physical_refinements": false,
+    "algebraic_r2_shift_WCS_counts": {
+      "0": 4,
+      "2": 12
+    },
+    "all_full_HGamma_WCS_refinements_fail": false,
+    "bare_phase_fully_BV_orientation_pinned": false,
+    "closed_gates": [],
+    "critical_heterotic_full_central_charges": [
+      24,
+      12
+    ],
+    "current_action_status": "REJECTED",
+    "delta_chain_level_candidate_identification_proved": false,
+    "delta_d3_source_page_survival_computed": false,
+    "delta_d3_value_computed": false,
+    "delta_d4_source_page_survival_computed": false,
+    "delta_d4_value_computed": false,
+    "delta_exact_order": "OPEN_ZERO_OR_ORDER2",
+    "delta_post_Einfinity_extension_resolved": false,
+    "delta_potential_associated_graded_candidate_differentials": [
+      "potential incoming d3:E3_7,1 -> E3_4,3; E2 source H7(BSpin11;Z8)=Z2, E3 source survival uncomputed",
+      "potential incoming d4:E4_8,0 -> E4_4,3; E2 source H8(BSpin11;Z), E4 source survival uncomputed"
+    ],
+    "explicit_compact_F4_Weierstrass_parent_constructed": false,
+    "honest_outcome": "The unchanged ordinary five-factor parent is now exactly rejected.  A minimal C4F algebraic/operator redesign and an F4 heterotic/F-theory scaffold solve two sharp structural obstructions, while the reference WCS branch, a new over-inclusive sixteen-row smooth r2 screen and the product source route fail.  No explicit global UV model, full stratified/BV parent, physical WCS refinement or entangled source glue exists yet.",
+    "inherited_AHSS_E3_total_order": 32768,
+    "inherited_AHSS_through_E3": true,
+    "inherited_qhat_Q4_reduced_order": 4,
+    "inherited_split_Z4_proved": true,
+    "minimal_effective_residue_lifts": [
+      [
+        1,
+        -1
+      ],
+      [
+        5,
+        -3
+      ]
+    ],
+    "ordinary_relative_product_cap_constructed": true,
+    "product_cap_double_represents_Q4": false,
+    "pure_Spin11_center_forced": true,
+    "research_program_status": "VIABLE_C4F_F4_REDESIGN_FRONTIER__FULL_QUANTUM_PARENT_OPEN",
+    "residue_lifts_irreducible": false,
+    "restricted_T2xS4_half_BPS_solution_exists": false,
+    "same_action_microscopic_completion_found": false,
+    "smooth_Q4_bare_phase_primitive_fourth_root": true,
+    "smooth_Q4_bare_phase_values": [
+      "i",
+      "-i"
+    ],
+    "theory_complete": false,
+    "unchanged_Gammahat_assignments_enumerated": 1024,
+    "unchanged_five_factor_parent_rejected_exactly": true
+  },
+  "version": "V84"
+}

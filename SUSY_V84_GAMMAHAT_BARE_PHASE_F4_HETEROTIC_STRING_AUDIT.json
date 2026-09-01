@@ -1,0 +1,2330 @@
+{
+  "C4F_spinor_grading_repair_scout": {
+    "accepted_full_parent": false,
+    "charge_assignment_mod4": {
+      "16_matter": 1,
+      "A0": 2,
+      "A_hyper_11": 2,
+      "B0": 2,
+      "B_hyper_11": 2,
+      "C_hyper_11": 2,
+      "C_spinor": 1,
+      "Cbar_spinor": 3,
+      "H_d": 2,
+      "H_dSigma": 0,
+      "H_u": 2,
+      "P_A": 2,
+      "S0": 0,
+      "S_B": 0,
+      "S_X": 0,
+      "X": 2,
+      "Xbar": 2,
+      "gravity_tensor_gauge_Sigma_neutral266": 0
+    },
+    "extended_kernel": {
+      "Spin11_remains_faithful": true,
+      "contains_pure_Spin11_center": false,
+      "coordinate_order": [
+        "T",
+        "Spin11",
+        "R",
+        "H3",
+        "H266",
+        "f"
+      ],
+      "elements": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      ],
+      "is_Z2_squared": true,
+      "krot": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "kspin": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "lift_choice": {
+      "A_F": "1",
+      "U_11": "z11^u what",
+      "U_F": "f^u j",
+      "U_H3_equals_V_H3": "-I",
+      "V_11": "z11^v what",
+      "V_F": "f^v j",
+      "all_four_direct_bit_matched_rows_pass": true,
+      "all_independent_gauge_flavor_sign_rows": [
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            0,
+            0
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            0,
+            0
+          ],
+          "passes": true
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            0,
+            1
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            0,
+            0
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            1,
+            0
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            0,
+            0
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            1,
+            1
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            0,
+            0
+          ],
+          "passes": true
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            0,
+            0
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            0,
+            1
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            0,
+            1
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            0,
+            1
+          ],
+          "passes": true
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            1,
+            0
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            0,
+            1
+          ],
+          "passes": true
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            1,
+            1
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            0,
+            1
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            0,
+            0
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            1,
+            0
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            0,
+            1
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            1,
+            0
+          ],
+          "passes": true
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            1,
+            0
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            1,
+            0
+          ],
+          "passes": true
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            1,
+            1
+          ],
+          "gauge_parity": 1,
+          "gauge_u_v": [
+            1,
+            0
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            0,
+            0
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            1,
+            1
+          ],
+          "passes": true
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            0,
+            1
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            1,
+            1
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flavor_parity": 1,
+          "flavor_r_s": [
+            1,
+            0
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            1,
+            1
+          ],
+          "passes": false
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "flavor_parity": 0,
+          "flavor_r_s": [
+            1,
+            1
+          ],
+          "gauge_parity": 0,
+          "gauge_u_v": [
+            1,
+            1
+          ],
+          "passes": true
+        }
+      ],
+      "direct_bit_matched_representative_rows": [
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "beta": 0,
+          "relations_exact_mod_KF": true,
+          "u": 0,
+          "v": 0
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "beta": 1,
+          "relations_exact_mod_KF": true,
+          "u": 0,
+          "v": 1
+        },
+        {
+          "D1": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "D2": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "beta": 1,
+          "relations_exact_mod_KF": true,
+          "u": 1,
+          "v": 0
+        },
+        {
+          "D1": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "D2": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "beta": 0,
+          "relations_exact_mod_KF": true,
+          "u": 1,
+          "v": 1
+        }
+      ],
+      "independent_rows_passing": 8,
+      "independent_rows_total": 16,
+      "pass_criterion": "u+v=r+s mod2",
+      "tangent_and_Sp1R_translations": "trivial",
+      "unmatched_parity_rows_pass": false
+    },
+    "new_factor": {
+      "f": "j^2",
+      "group": "C4_F=<j | j^4=1>",
+      "kind": "non-R finite spinor grading",
+      "supercharge_charge_mod4": 0
+    },
+    "open_consistency": [
+      "krot character and A,UA,UA2 isotropy for every localized field",
+      "equivariance of localized rank and spinor-Higgs VEVs",
+      "all superpotential, Kahler, higher-dimensional and proton-selector operators",
+      "a selector or dynamical replacement that excludes the V65-fatal Cbar 45 C trilinear",
+      "mixed C4F-Spin11, C4F-gravity, cubic, fixed-point and Dai-Freed anomalies",
+      "diagonal Spin11-C4F GS/WCS quantization and line/end-point consistency",
+      "raw ghosts, BV brackets, antifields, regulators, Pfaffian orientations and zero-mode measures",
+      "self-dual polarization, differential WCS, caps, junctions and relative source glue",
+      "neutral Sp266 bundle and compactification phenomenology"
+    ],
+    "operator_audit": {
+      "C4F_invariance_classification_matches": true,
+      "doublet_heavy_row_retained": "(sqrt(2) g v_B, mu_B)",
+      "fatal_but_C4F_allowed_operator": "Cbar 45 C",
+      "fatal_operator_bound_to_V65_B5": true,
+      "old_optional_driver_terms_forbidden": [
+        "old B0 H_uB H_dC",
+        "old A0 H_uA H_dC"
+      ],
+      "rows": [
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "16_matter",
+            "16_matter",
+            "H_u"
+          ],
+          "operator": "16 16 H_u",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "16_matter",
+            "16_matter",
+            "H_d"
+          ],
+          "operator": "10 5bar H_d",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "16_matter",
+            "16_matter",
+            "H_u"
+          ],
+          "operator": "5bar N H_u",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "16_matter",
+            "16_matter",
+            "X"
+          ],
+          "operator": "N N X",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "X",
+            "Xbar"
+          ],
+          "operator": "X Xbar",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "Cbar_spinor",
+            "C_spinor"
+          ],
+          "operator": "Cbar C",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "16_matter",
+            "16_matter",
+            "Cbar_spinor",
+            "Cbar_spinor"
+          ],
+          "operator": "16 16 Cbar Cbar",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "F_45^MN = y (Cbar gamma^MN C); the D-flat spinor VEV has plane expectation value v^2/2 in every one of the five planes, so F=0 forces v=0 and rank breaking dies",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "Cbar_spinor",
+            "gravity_tensor_gauge_Sigma_neutral266",
+            "C_spinor"
+          ],
+          "operator": "Cbar 45 C",
+          "target_vacuum_admissible": false
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "B0",
+            "B_hyper_11",
+            "H_dSigma"
+          ],
+          "operator": "B0 H_uB H_dSigma",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "B_hyper_11",
+            "C_hyper_11"
+          ],
+          "operator": "mu_B H_uB H_dC",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": true,
+          "charge_mod4": 0,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": true,
+          "fields": [
+            "S0",
+            "A_hyper_11",
+            "C_hyper_11"
+          ],
+          "operator": "S0 H_uA H_dC",
+          "target_vacuum_admissible": true
+        },
+        {
+          "C4F_invariant": false,
+          "charge_mod4": 2,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": false,
+          "fields": [
+            "B0",
+            "B_hyper_11",
+            "C_hyper_11"
+          ],
+          "operator": "old B0 H_uB H_dC",
+          "target_vacuum_admissible": false
+        },
+        {
+          "C4F_invariant": false,
+          "charge_mod4": 2,
+          "dynamical_note": "no additional V65 obstruction bound in this row",
+          "expected_C4F_invariance": false,
+          "fields": [
+            "A0",
+            "A_hyper_11",
+            "C_hyper_11"
+          ],
+          "operator": "old A0 H_uA H_dC",
+          "target_vacuum_admissible": false
+        }
+      ],
+      "spinor_Higgs_vacuum_selector_still_required": true
+    },
+    "representation_descent": {
+      "all_V83_smooth_rows_annihilate_krot": true,
+      "charged_hyper_projectors_unchanged": true,
+      "full_localized_krot_and_isotropy_descent": false,
+      "localized_16_odd_F_times_odd_Spin11_is_even": true,
+      "localized_16_pure_center_repaired": true,
+      "reason_projectors_unchanged": "j=-1 and the Sp3 translation center=-1 on charge-two 11 hypers",
+      "smooth_C4F_charges_are_even": true,
+      "smooth_vector_adjoint_rows_annihilate_kspin": true
+    },
+    "stabilizer_redesign": {
+      "C4F_charges": {
+        "P_A": 2,
+        "S_B": 0,
+        "S_X": 0
+      },
+      "W": "S_B(B0^2-v_B^2)+S_X(X Xbar-v_X^2)+M_A A0 P_A",
+      "Z4R_charges": {
+        "P_A": 0,
+        "S_B": 2,
+        "S_X": 2
+      },
+      "global_supersymmetric_profile_constructed": false,
+      "local_Hessian_blocks_nondegenerate_after_gauge_null": true
+    },
+    "status": "PASS_EXACT_CENTRAL_ALGEBRA_AND_OPERATOR_SCAFFOLD__FULL_PARENT_OPEN"
+  },
+  "F4_SO11_heterotic_string_scaffold": {
+    "UV_acceptance_boundary": {
+      "Hodge_count_derived_from_geometry": false,
+      "Mordell_Weil_and_global_Spin11_form": false,
+      "anomaly_divisor_heterotic_dual_scaffold": true,
+      "explicit_compact_non_split_I2star_Weierstrass": false,
+      "full_HGamma_lift": false,
+      "residual_discriminant_and_nonminimal_4_6_audit": false
+    },
+    "critical_heterotic_fiber_string": {
+      "D3_worldsheet_in_this_model_constructed": false,
+      "Q": [
+        -1,
+        0
+      ],
+      "Q2": 0,
+      "Q_dot_K": -2,
+      "Q_dot_b": 1,
+      "Spin11_Sugawara_c": "11/2",
+      "Spin11_level": 1,
+      "Sugawara_below_cL": true,
+      "center_of_mass_cL_cR": [
+        4,
+        6
+      ],
+      "conditional_on_explicit_F4_Ftheory_realization": true,
+      "full_cL_cR": [
+        24,
+        12
+      ],
+      "interacting_cL_cR": [
+        20,
+        6
+      ],
+      "k_l": "0",
+      "matches_published_critical_heterotic_fiber_sector": true
+    },
+    "effective_Q4_residue_lifts": {
+      "both_targets_reached": true,
+      "coefficient_minimal_lifts_unique": true,
+      "coefficient_minimal_representative_selected_in_F4_effective_cone": true,
+      "effective_cone": "Z_nonnegative{S,F}",
+      "elementary_new_string_constructed": false,
+      "infinitely_many_nonminimal_effective_lifts_remain": true,
+      "junction_inflow_and_glue_computed": false,
+      "rows": [
+        {
+          "Q": [
+            1,
+            -1
+          ],
+          "Q2": -2,
+          "Q_dot_S": -3,
+          "Q_dot_b": -3,
+          "S_is_forced_component": true,
+          "congruence_solutions_a_c_mod4": [
+            [
+              1,
+              1
+            ]
+          ],
+          "decomposition": "1S+F",
+          "effective_congruence": "a=1 mod4, c=1 mod4",
+          "formal_charge_decomposition": "F+1S; a physical junction is not constructed",
+          "irreducible_curve": false,
+          "minimal_coefficients_a_c": [
+            1,
+            1
+          ],
+          "name": "base",
+          "sample_all_lifts_add_4S_or_4F": [
+            {
+              "Q": [
+                1,
+                -1
+              ],
+              "a": 1,
+              "adds_4S_or_4F": false,
+              "c": 1,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "7/4"
+            },
+            {
+              "Q": [
+                -3,
+                -1
+              ],
+              "a": 1,
+              "adds_4S_or_4F": true,
+              "c": 5,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "11/4"
+            },
+            {
+              "Q": [
+                -7,
+                -1
+              ],
+              "a": 1,
+              "adds_4S_or_4F": true,
+              "c": 9,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "15/4"
+            },
+            {
+              "Q": [
+                9,
+                -5
+              ],
+              "a": 5,
+              "adds_4S_or_4F": true,
+              "c": 1,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "31/4"
+            },
+            {
+              "Q": [
+                5,
+                -5
+              ],
+              "a": 5,
+              "adds_4S_or_4F": true,
+              "c": 5,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "35/4"
+            },
+            {
+              "Q": [
+                1,
+                -5
+              ],
+              "a": 5,
+              "adds_4S_or_4F": true,
+              "c": 9,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "39/4"
+            },
+            {
+              "Q": [
+                17,
+                -9
+              ],
+              "a": 9,
+              "adds_4S_or_4F": true,
+              "c": 1,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "55/4"
+            },
+            {
+              "Q": [
+                13,
+                -9
+              ],
+              "a": 9,
+              "adds_4S_or_4F": true,
+              "c": 5,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "59/4"
+            },
+            {
+              "Q": [
+                9,
+                -9
+              ],
+              "a": 9,
+              "adds_4S_or_4F": true,
+              "c": 9,
+              "residue": [
+                1,
+                3
+              ],
+              "tension": "63/4"
+            }
+          ],
+          "target_residue_mod4": [
+            1,
+            3
+          ],
+          "tension": "7/4"
+        },
+        {
+          "Q": [
+            5,
+            -3
+          ],
+          "Q2": -30,
+          "Q_dot_S": -11,
+          "Q_dot_b": -11,
+          "S_is_forced_component": true,
+          "congruence_solutions_a_c_mod4": [
+            [
+              3,
+              1
+            ]
+          ],
+          "decomposition": "3S+F",
+          "effective_congruence": "a=3 mod4, c=1 mod4",
+          "formal_charge_decomposition": "F+3S; a physical junction is not constructed",
+          "irreducible_curve": false,
+          "minimal_coefficients_a_c": [
+            3,
+            1
+          ],
+          "name": "qhat",
+          "sample_all_lifts_add_4S_or_4F": [
+            {
+              "Q": [
+                5,
+                -3
+              ],
+              "a": 3,
+              "adds_4S_or_4F": false,
+              "c": 1,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "19/4"
+            },
+            {
+              "Q": [
+                1,
+                -3
+              ],
+              "a": 3,
+              "adds_4S_or_4F": true,
+              "c": 5,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "23/4"
+            },
+            {
+              "Q": [
+                -3,
+                -3
+              ],
+              "a": 3,
+              "adds_4S_or_4F": true,
+              "c": 9,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "27/4"
+            },
+            {
+              "Q": [
+                13,
+                -7
+              ],
+              "a": 7,
+              "adds_4S_or_4F": true,
+              "c": 1,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "43/4"
+            },
+            {
+              "Q": [
+                9,
+                -7
+              ],
+              "a": 7,
+              "adds_4S_or_4F": true,
+              "c": 5,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "47/4"
+            },
+            {
+              "Q": [
+                5,
+                -7
+              ],
+              "a": 7,
+              "adds_4S_or_4F": true,
+              "c": 9,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "51/4"
+            },
+            {
+              "Q": [
+                21,
+                -11
+              ],
+              "a": 11,
+              "adds_4S_or_4F": true,
+              "c": 1,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "67/4"
+            },
+            {
+              "Q": [
+                17,
+                -11
+              ],
+              "a": 11,
+              "adds_4S_or_4F": true,
+              "c": 5,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "71/4"
+            },
+            {
+              "Q": [
+                13,
+                -11
+              ],
+              "a": 11,
+              "adds_4S_or_4F": true,
+              "c": 9,
+              "residue": [
+                1,
+                1
+              ],
+              "tension": "75/4"
+            }
+          ],
+          "target_residue_mod4": [
+            1,
+            1
+          ],
+          "tension": "19/4"
+        }
+      ]
+    },
+    "geometry": {
+      "V70_witness_same_positive_cone_component": false,
+      "adjunction_genera": {
+        "F": 0,
+        "S": 0
+      },
+      "basis_e_f": {
+        "e": [
+          1,
+          0
+        ],
+        "e2": 0,
+        "e_dot_f": 1,
+        "f": [
+          0,
+          1
+        ],
+        "f2": 0
+      },
+      "canonical_K": [
+        2,
+        2
+      ],
+      "chamber_redesign_required": true,
+      "fiber_F": [
+        -1,
+        0
+      ],
+      "geometric_Kahler_witness": {
+        "j": [
+          "-2",
+          "-1/4"
+        ],
+        "j2": "1",
+        "j_dot_F": "1/4",
+        "j_dot_K": "-9/2",
+        "j_dot_S": "3/2"
+      },
+      "intersections": {
+        "F2": 0,
+        "K2": 8,
+        "K_dot_F": -2,
+        "K_dot_S": 2,
+        "S2": -4,
+        "S_dot_F": 1
+      },
+      "section_S": [
+        2,
+        -1
+      ]
+    },
+    "so11_Lie_algebra_divisor_spectrum": {
+      "H_charged": 33,
+      "H_neutral": 266,
+      "H_total": 299,
+      "N": 11,
+      "T": 1,
+      "V": 55,
+      "divisor": "S with S^2=-4",
+      "flavor": "Sp(3)",
+      "global_gauge_group_or_line_operator_match": false,
+      "matches_frozen_Lie_algebra_and_multiplicity_scaffold": true,
+      "published_rule": "SO(N) on F4 has N-8 vector hypers",
+      "smooth_CY3_h21_if_realized": 265,
+      "spinor_hypers": 0,
+      "vector_hypers": 3
+    },
+    "status": "PASS_EXACT_F4_TOPOLOGICAL_SO11_LIE_ALGEBRA_HETEROTIC_STRING_SCAFFOLD__EXPLICIT_UV_MODEL_OPEN"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "bff5fcaa9642ebe1c9ead6f19856dd389d42bc1e33a4fc680a81fe4bbd99f196",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "6f313ef0ec37e0b64d9ee49764bcf557fbdef8eda9f26d3bccb99ac6176a7313"
+  },
+  "candidate_adjudication": {
+    "accepted_ids": [],
+    "selected_ids": [
+      "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+      "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD"
+    ]
+  },
+  "candidate_matrix": [
+    {
+      "accepted": false,
+      "id": "F84_UNCHANGED_FIVE_FACTOR_HGAMMA",
+      "selected": false,
+      "status": "REJECTED_EXACT_PURE_SPIN11_CENTER_FORCED"
+    },
+    {
+      "accepted": false,
+      "id": "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+      "selected": true,
+      "status": "PASS_EXACT_CENTRAL_ALGEBRA_AND_OPERATOR_SCAFFOLD__GLOBAL_ANOMALY_BV_WCS_OPEN"
+    },
+    {
+      "accepted": false,
+      "id": "F84_REFERENCE_AND_ALGEBRAIC_LAMBDA_MOD4_R2_SHIFT_SCREEN",
+      "selected": false,
+      "status": "FAIL_SCREEN_EXACT_ODD_TOTAL_MU4_CHARACTER__NOT_PHYSICAL_REFINEMENT_CLASSIFICATION"
+    },
+    {
+      "accepted": false,
+      "id": "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD",
+      "selected": true,
+      "status": "PASS_EXACT_TOPOLOGICAL_SPECTRUM_AND_STRING_SCAFFOLD__WEIERSTRASS_GLOBAL_FORM_OPEN"
+    },
+    {
+      "accepted": false,
+      "id": "F84_PRODUCT_RELATIVE_CAP_TO_Q4",
+      "selected": false,
+      "status": "REJECTED_EXACT_PRODUCT_DOUBLE_BORDISM_CLASS_ZERO"
+    }
+  ],
+  "core_sha256": "ca9bbf53dcceb9fc422119e73b969b6d3b2c4db1619c8846134320768a26275f",
+  "date": "2026-09-01",
+  "gate_ledger": {
+    "G1": "OPEN: the unchanged ordinary five-factor parent is exactly rejected; the C4F central algebra passes, but a full stratified H_Gamma action, common regulator and accepted UV completion do not exist.",
+    "G2": "OPEN: no accepted C4F/F4 Wilsonian action, supersymmetry-breaking sector, soft spectrum or threshold calculation exists.",
+    "G3": "OPEN: C4F translation relations pass centrally, but complete localized isotropy, global bundles, VEV profiles and an explicit compact F4 geometry remain absent.",
+    "G4": "OPEN: the candidate smooth-Q4 Dai-Freed exponent is a primitive fourth root up to conjugation, but the full-parent BV/Pfaffian orientation, zero-mode measure and common regulator are absent.",
+    "G5": "OPEN: the redesigned stabilizer has only a local Hessian witness; neutral zero modes, the fatal spinor-adjoint selector and all-order stabilization remain unresolved.",
+    "G6": "OPEN: the F4 fiber string, reducible residue charges and an ordinary product cap exist, but junction inflow, differential WCS glue and an entangled on-shell half-BPS source do not.",
+    "G7": "OPEN: no accepted redesigned action yields a derived family, proton, collider, flavor or cosmological prediction.",
+    "G8": "OPEN: the reference and algebraic r2 screens fail, while the physical full-HGamma WCS refinement, possible odd counterterm, source-page survival and values of potential incoming delta d3/d4 maps, the hidden extension and total anomaly trivialization remain unknown."
+  },
+  "lineage": {
+    "V65_route_core": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae",
+    "V70_route_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V71_route_core": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+    "V78_route_core": "1e2d44a6aedff03614cb712d3ba3a88f42d214638edf758ecea532c03d8c4e58",
+    "V81_route_core": "dff11c6502c8a7e709fc2ad5096ce4a0825ee75547810226f59ed4c286967ea1",
+    "V82_route_core": "d35058abac1ad10f96dbf2d383d5b68d67826e4c42403d688d800f1f852f7105",
+    "V83_master_core": "b4a626429afcd28a9147c6b0ab2dd00e2304fc611c7499df1eb39dd76fa217f6",
+    "V83_route_core": "a2133df04b79a28d87dc9248aa5fac52c9392137e21ce1099034a6cba2048456",
+    "supersession_scope": "executes F84 and supersedes V83's open translation, bare-phase and formal-charge-lift questions; it does not supersede the full-parent acceptance boundary"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F85_C4F_F4_WEIERSTRASS_GLOBAL_FORM_AND_DIFFERENTIAL_ORBIFOLD_GLUE",
+    "primary_objective": "construct the explicit compact F4 so11 geometry and determine its global gauge form while realizing the C4F diagonal spin-charge parent on all strata with a common regulator",
+    "secondary_objective": "select the physical differential WCS/q2 refinement, determine whether the reducible F+S lifts define junction sectors, and glue any resulting sector to an entangled Q4-relative source"
+  },
+  "open_obligations": [
+    "construct every C4F-extended fixed-stratum isotropy representation and localized VEV profile",
+    "compute all C4F discrete, mixed, Dai-Freed and fixed-point anomalies on one full H_Gamma bordism theory",
+    "descend the complete raw/BV/BRST/regulator complex and fix Pfaffian orientations",
+    "build an explicit compact non-split I2* so11 Weierstrass model on F4 and derive its Hodge/Mordell-Weil/global-form data",
+    "realize C4F as a genuine UV flat flavor or gerbe sector compatible with the F4/heterotic dual",
+    "select the full differential Y/WCS refinement or a globally extending odd counterterm and verify total character one",
+    "construct and anomaly-match physical junction sectors, if any, from the reducible F+S charge/curve lifts for both Q4 residues",
+    "audit precursor maps and page survival for the potential delta d3 source H7(BSpin11;Z8)=Z2 and d4 source H8(BSpin11;Z), then compute surviving maps, prove the chain-level identification and resolve the remaining extension",
+    "replace the rejected product source by an entangled warped/fluxed half-BPS Q4-relative solution",
+    "only after a full action exists, recompute vacuum, spectrum, thresholds, cosmology and phenomenology"
+  ],
+  "primary_sources": [
+    {
+      "id": "dai_freed_1994",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "eta invariants with boundary are determinant-line elements; variation, holonomy and gluing"
+    },
+    {
+      "id": "von_gersdorff_2006",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "bulk-fermion contributions to fixed-point anomalies on six-dimensional Zn orbifolds"
+    },
+    {
+      "id": "zhang_2026",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326",
+      "use": "equivariant APS fixed-point density as an orbifold anomaly polynomial"
+    },
+    {
+      "id": "von_gersdorff_quiros_2003",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "path-integral localized anomalies with Scherk--Schwarz boundary data and GS inflow"
+    },
+    {
+      "id": "monnier_2011",
+      "title": "The global gravitational anomaly of the self-dual field theory",
+      "url": "https://arxiv.org/abs/1110.4639",
+      "use": "self-dual partition/anomaly line and its quadratic-refinement data"
+    },
+    {
+      "id": "monnier_2013",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642",
+      "use": "self-dual anomaly line in backgrounds with gauge fields and Wu-class refinements"
+    },
+    {
+      "id": "monnier_2016",
+      "title": "Topological field theories on manifolds with Wu structures",
+      "url": "https://arxiv.org/abs/1607.01396",
+      "use": "seven-dimensional Wu--Chern--Simons anomaly theories and quadratic refinements"
+    },
+    {
+      "id": "monnier_moore_2018",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "smooth-spin six-dimensional GS/WuCS construction, charge lattice and characteristic element; not an orbifold theorem"
+    },
+    {
+      "id": "witten_yonekura_2019",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "regulated fermion phases as eta-invariant anomaly inflow"
+    },
+    {
+      "id": "erler_1993",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104",
+      "use": "smooth six-dimensional multiplet anomaly polynomial and H-V+29T relation"
+    },
+    {
+      "id": "alvarez_gaume_witten_1984",
+      "title": "Gravitational Anomalies",
+      "url": "https://doi.org/10.1016/0550-3213(84)90066-X",
+      "use": "gauge-fixed Rarita complex, reality normalization and chiral gravitational anomaly indices"
+    },
+    {
+      "id": "riccioni_2001",
+      "title": "All couplings of minimal six-dimensional supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074",
+      "use": "six-dimensional (1,0) gravity, tensor, vector and hypermultiplet field content"
+    },
+    {
+      "id": "lupercio_uribe_2003",
+      "title": "Differential Characters on Orbifolds and String Connections I",
+      "url": "https://arxiv.org/abs/math/0311008",
+      "use": "Cheeger--Simons/Beilinson--Deligne differential characters on global quotient orbifolds"
+    },
+    {
+      "id": "laurent_gengoux_tu_xu_2004",
+      "title": "Chern-Weil map for principal bundles over groupoids",
+      "url": "https://arxiv.org/abs/math/0401420",
+      "use": "characteristic classes of orbifold and equivariant bundles through Lie groupoids"
+    },
+    {
+      "id": "sati_2010",
+      "title": "Geometric and topological structures related to M-branes II: Twisted String and String^c structures",
+      "url": "https://arxiv.org/abs/1007.5419",
+      "use": "Spin^c and String^c characteristic-class refinements"
+    },
+    {
+      "id": "ohmori_shimizu_tachikawa_yonekura_2014",
+      "title": "Anomaly polynomial of general 6d SCFTs",
+      "url": "https://arxiv.org/abs/1408.5572",
+      "use": "six-dimensional (1,0) hyper, vector and tensor SU2R anomaly polynomials"
+    },
+    {
+      "id": "intriligator_morrison_seiberg_1997",
+      "title": "Five-Dimensional Supersymmetric Gauge Theories and Degenerations of Calabi-Yau Spaces",
+      "url": "https://arxiv.org/abs/hep-th/9702198",
+      "use": "five-dimensional supersymmetric cubic prepotentials and Chern--Simons couplings"
+    },
+    {
+      "id": "guo_ohmori_putrov_wan_wang_2018",
+      "title": "Fermionic Finite-Group Gauge Theories and Interacting Symmetric/Crystalline Orders via Cobordisms",
+      "url": "https://arxiv.org/abs/1812.11959",
+      "use": "finite-group spin anomaly theories as Pontryagin duals of spin bordism, the Spin AHSS/Adams setup for B(Z2 x Z4), and the distinction from group cohomology"
+    },
+    {
+      "id": "dierigl_tartaglia_2025",
+      "title": "(Quadratically) Refined Discrete Anomaly Cancellation",
+      "url": "https://arxiv.org/abs/2504.02934",
+      "use": "six-dimensional discrete fermion anomalies, chiral two-form quadratic refinements and the need to match them on bordism generators"
+    },
+    {
+      "id": "garcia_etxebarria_montero_2018",
+      "title": "Dai-Freed anomalies in particle physics",
+      "url": "https://arxiv.org/abs/1808.00009",
+      "use": "low-degree BSpin homology and Steenrod data used in the H78 AHSS"
+    },
+    {
+      "id": "debray_dierigl_heckman_montero_2023",
+      "title": "The Chronicles of IIBordia: Dualities, Bordisms, and the Swampland",
+      "url": "https://arxiv.org/abs/2302.00007",
+      "use": "Spin-Z8 Thom equivalence, Omega7=Z4, the Q4^7 generator and its eta invariant"
+    },
+    {
+      "id": "freed_2014",
+      "title": "Anomalies and Invertible Field Theories",
+      "url": "https://arxiv.org/abs/1404.7224",
+      "use": "anomaly theories as invertible functors and cancellation as a natural trivialization"
+    },
+    {
+      "id": "kumar_taylor_2009",
+      "title": "A bound on 6D N=1 supergravities",
+      "url": "https://arxiv.org/abs/0910.1586",
+      "use": "positive kinetic terms as a consistency condition in one-tensor six-dimensional supergravity"
+    },
+    {
+      "id": "muller_2020",
+      "title": "Extended Functorial Field Theories and Anomalies in Quantum Field Theories",
+      "url": "https://arxiv.org/abs/2003.08217",
+      "use": "extended anomaly theories, symmetric monoidal bicategories and APS corners"
+    },
+    {
+      "id": "monnier_moore_2018_gs",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "compact-six-dimensional charge cancellation and the seven-dimensional WCS bordism domain"
+    },
+    {
+      "id": "shimizu_tachikawa_2016_strings",
+      "title": "Anomaly of strings of 6d N=(1,0) theories",
+      "url": "https://arxiv.org/abs/1608.05894",
+      "use": "self-dual-string Bianchi identity and local worldsheet inflow formula"
+    },
+    {
+      "id": "kim_shiu_vafa_2019_branes",
+      "title": "Branes and the Swampland",
+      "url": "https://arxiv.org/abs/1905.08261",
+      "use": "indefinite-lattice supergravity-string anomaly, central charges, levels and necessary unitarity bound"
+    },
+    {
+      "id": "seiberg_taylor_2011_lattices",
+      "title": "Charge Lattices and Consistency of 6D Supergravity",
+      "url": "https://arxiv.org/abs/1103.0019",
+      "use": "integral unimodular string-charge lattice"
+    },
+    {
+      "id": "del_zotto_lockhart_2018_bps_strings",
+      "title": "Universal Features of BPS Strings in Six-dimensional SCFTs",
+      "url": "https://arxiv.org/abs/1804.09694",
+      "use": "4 SO(11) matter table, (0,4) Sp(k) quiver, anomaly polynomial and central charges"
+    },
+    {
+      "id": "francis_2011_bspin",
+      "title": "Integrals on spin manifolds and the K-theory of K(Z,4)",
+      "url": "https://sites.math.northwestern.edu/~jnkf/writ/bspin2011.pdf",
+      "use": "low BSpin structure and the independent integral lift (p2-lambda^2)/2"
+    },
+    {
+      "id": "braeger_debray_dierigl_heckman_montero_2025_cobordism_utopia",
+      "title": "Cobordism Utopia: U-Dualities, Bordisms, and the Swampland",
+      "url": "https://arxiv.org/abs/2505.15885",
+      "use": "A(1) Ext calculation locating the mixed candidate at h0 p"
+    },
+    {
+      "id": "lee_tachikawa_2020_global_gauge_anomalies",
+      "title": "Some comments on 6d global gauge anomalies",
+      "url": "https://arxiv.org/abs/2012.11622",
+      "use": "low-degree BSpin bordism module description"
+    },
+    {
+      "id": "hsieh_2018_discrete_anomalies",
+      "title": "Discrete gauge anomalies revisited",
+      "url": "https://arxiv.org/abs/1808.02881",
+      "use": "reduced APS eta normalization and Dai-Freed phase convention"
+    },
+    {
+      "id": "bahri_gilkey_1987_eta_lens_bundles",
+      "title": "The eta invariant, Pin^c bordism, and equivariant Spin^c bordism for cyclic 2-groups",
+      "url": "https://msp.org/pjm/1987/128-1/pjm-v128-n1-p01-p.pdf",
+      "use": "primary lens-space-bundle eta formula"
+    },
+    {
+      "id": "kumar_morrison_taylor_2009_f4_so",
+      "title": "Mapping 6D N=1 supergravities to F-theory",
+      "url": "https://arxiv.org/abs/0911.3393",
+      "use": "Hirzebruch-surface intersection data and SO(N) matter rule on F4"
+    },
+    {
+      "id": "morrison_taylor_2012_f_theory_bases",
+      "title": "Classifying bases for 6D F-theory models",
+      "url": "https://arxiv.org/abs/1201.1943",
+      "use": "F4 section/fiber geometry and effective cone"
+    },
+    {
+      "id": "lee_lerche_weigand_2018_tensionless_strings",
+      "title": "Tensionless Strings and the Weak Gravity Conjecture",
+      "url": "https://arxiv.org/abs/1808.05958",
+      "use": "D3 brane on the Hirzebruch fiber as the critical six-dimensional heterotic string"
+    }
+  ],
+  "question": "Can F84 complete the unchanged parent, or identify and test a minimal redesigned physics route?",
+  "regulated_Q4_bare_and_WCS_audit": {
+    "Rarita_Vec_minus_one": {
+      "formula": "2(eta[3,0]+eta[1,0])+eta[3,+2]+eta[1,-2]",
+      "numerator_over_16": 8,
+      "quantity_in_anomaly_ledger": "contribution to (1/2) xi_Rprime after one-root SMW bookkeeping",
+      "value_mod1": "1/2"
+    },
+    "SMW_pair_normalization_proof": {
+      "Rarita_R_pair_has_two_equal_conjugate_root_contributions": true,
+      "adjoint_full_R_pair_dimension": 110,
+      "adjoint_one_R_root_dimension": 55,
+      "common_BV_Pfaffian_orientation_constructed": false,
+      "computed_exponent": "(1/2)xi_Rprime=G-[eta(R)-eta(Ad)]",
+      "eta_conjugate_partner_equality": "eta[m,b]=eta[3-m,-b]",
+      "hyper_full_complex_pair_dimension": 598,
+      "hyper_one_root_dimension": 299,
+      "outer_half_already_consumed_by_pair_doubling": true,
+      "pair_identity": "(1/2) xi(full conjugate pair)=one-root reduced eta contribution",
+      "reduced_eta_definition_includes_kernel_h": true
+    },
+    "algebraic_r2_coefficient_shift_screen": {
+      "V78_half_choice_from_delta_2Y_to_delta_Y_constructed": false,
+      "WCS_exponent_counts": {
+        "0": 4,
+        "2": 12
+      },
+      "WCS_phases": [
+        "+1",
+        "-1"
+      ],
+      "all_sixteen_fail_cancellation": true,
+      "classification_boundary": "new over-inclusive Lambda/4Lambda coefficient scan on the smooth s=0 cycle; not V78's 16 local corrections to 2Y and not 16 physical refinements",
+      "formula": "4q0(Y+t_pq)=2+2pq mod4",
+      "possible_total_exponents_are_odd": [
+        1,
+        3
+      ],
+      "reference_branch_total_nontrivial": true,
+      "rows": [
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 0,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 0,
+          "t": "(0u,0u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 0,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 1,
+          "t": "(0u,1u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 0,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 2,
+          "t": "(0u,2u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 0,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 3,
+          "t": "(0u,3u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 1,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 0,
+          "t": "(1u,0u)"
+        },
+        {
+          "WCS_exponent_mod4": 0,
+          "WCS_phase": "+1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 1,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 1,
+          "t": "(1u,1u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 1,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 2,
+          "t": "(1u,2u)"
+        },
+        {
+          "WCS_exponent_mod4": 0,
+          "WCS_phase": "+1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 1,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 3,
+          "t": "(1u,3u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 2,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 0,
+          "t": "(2u,0u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 2,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 1,
+          "t": "(2u,1u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 2,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 2,
+          "t": "(2u,2u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 2,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 3,
+          "t": "(2u,3u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 3,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 0,
+          "t": "(3u,0u)"
+        },
+        {
+          "WCS_exponent_mod4": 0,
+          "WCS_phase": "+1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 3,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 1,
+          "t": "(3u,1u)"
+        },
+        {
+          "WCS_exponent_mod4": 2,
+          "WCS_phase": "-1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 3,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 2,
+          "t": "(3u,2u)"
+        },
+        {
+          "WCS_exponent_mod4": 0,
+          "WCS_phase": "+1",
+          "cancels_for_any_allowed_bare_convention": false,
+          "p": 3,
+          "possible_total_exponents_mod4": [
+            1,
+            3
+          ],
+          "q": 3,
+          "t": "(3u,3u)"
+        }
+      ]
+    },
+    "bare_character": {
+      "full_HGamma_physical_bare_character_constructed": false,
+      "fully_BV_orientation_pinned": false,
+      "possible_exponents_mod4": [
+        1,
+        3
+      ],
+      "possible_phases": [
+        "i",
+        "-i"
+      ],
+      "preferred_primary_calibrated_exponent_mod4": 3,
+      "preferred_primary_calibrated_phase": "-i",
+      "primitive_fourth_root_proved": true
+    },
+    "counterterm_boundary": {
+      "adding_counterterm_changes_quantum_integrand": true,
+      "extension_to_full_Omega7_HGamma_proved": false,
+      "reduced_character_exists_algebraically": true,
+      "reduced_subgroup": "<jq(q)>=Z4",
+      "required_counterterm_exponent_parity": "odd"
+    },
+    "eta_table_symmetry": "eta[m,b]=eta[3-m,-b]",
+    "eta_tables_numerator_over_16": {
+      "-2": [
+        3,
+        5,
+        -1,
+        -7
+      ],
+      "0": [
+        -2,
+        2,
+        2,
+        -2
+      ],
+      "2": [
+        -7,
+        -1,
+        5,
+        3
+      ]
+    },
+    "normalization_contract": {
+      "IIBordia_Hsieh_table": "reduced APS eta; no extra h term is added",
+      "Monnier_Moore": "log An/(2pi i)=1/2 xi_Rprime; xi=(spectral eta+h)/2",
+      "disk_orientation_gap": "V81 does not pin the determinant/Pfaffian identification xi_MM=+eta_table versus -eta_table",
+      "orientation_reversal": "complex conjugates the phase",
+      "primary_source_calibration": "xi_MM=-eta_IIB, preferred exponent 3 and phase -i"
+    },
+    "scope": {
+      "all_physical_full_HGamma_refinements_rejected": false,
+      "all_sixteen_new_algebraic_r2_coefficient_shifts_fail_reference_q0_cancellation": true,
+      "mixed_localized_translation_torsion_classified": false,
+      "reference_branch_rejected": true
+    },
+    "spin_half_ledger": {
+      "V81_row_is_one_root_quaternionic_ledger": true,
+      "Vec_minus_one_already_gauge_fixed_Rarita_virtual_class": true,
+      "eta_R_minus_eta_Ad": "-3/4",
+      "halving_V81_again_allowed": false
+    },
+    "stable_tangent_virtual_bundle": "(TQ-R)_C=2(Lr+Lr^-1)+(Lr O(2)+Lr^-1 O(-2))",
+    "status": "PASS_EXACT_PRIMITIVE_FOURTH_ROOT_BARE_CONJUGACY__SIXTEEN_ALGEBRAIC_R2_SHIFTS_SCREENED"
+  },
+  "relative_cap_BPS_and_delta_audit": {
+    "delta_AHSS_d3_d4_candidate_audit": {
+      "Adams_name": "h0*p",
+      "candidate_d4_value_computed": false,
+      "chain_level_identification_of_delta_with_candidate_proved": false,
+      "coefficient_and_homology_input_data": {
+        "H1_BSpin11": 0,
+        "H2_BSpin11": 0,
+        "H6_BSpin11_Z": "Z2",
+        "H6_BSpin11_Z8": "Z2",
+        "H7_BSpin11_Z": 0,
+        "H7_BSpin11_Z8_by_UCT": "Z2 from Tor(H6,Z8)",
+        "H9_BSpin11_Z": "NOT_AUDITED",
+        "Omega1_SpinZ8": "Z8",
+        "Omega2_SpinZ8": 0,
+        "Omega6_SpinZ8": 0
+      },
+      "complex_vector_and_spinor_rho_mod1": [
+        0,
+        0
+      ],
+      "counterexample": "on S8 a stable Spin11 generator can have lambda=0,p2=+/-6 and twisted index -p2/6 odd",
+      "d3_value_computed": false,
+      "degree8_d4_controller": "q2=(p2-lambda^2)/2 reducing to w8",
+      "delta_exact_order": "OPEN_ZERO_OR_ORDER2",
+      "differential_elimination": [
+        {
+          "map": "outgoing d2:E4,3->E2,4",
+          "zero_reason": "H2(BSpin11)=0"
+        },
+        {
+          "map": "outgoing d3:E4,3->E1,5",
+          "zero_reason": "H1(BSpin11)=0"
+        },
+        {
+          "map": "outgoing d4:E4,3->E0,6",
+          "zero_reason": "Omega6^Spin-Z8=0"
+        },
+        {
+          "map": "incoming d2:E6,2->E4,3",
+          "zero_reason": "Omega2^Spin-Z8=0"
+        },
+        {
+          "map": "r>=5",
+          "zero_reason": "first-quadrant degree bounds"
+        }
+      ],
+      "half_vector_eta": "1/2",
+      "half_vector_eta_is_bordism_character": false,
+      "lower_characteristic_test_decides": false,
+      "mixed_associated_graded_candidate": "E4,3=H4(BSpin11;Omega3^Spin-Z8)=Z2",
+      "physical_q2_refinement_selected": false,
+      "post_Einfinity_hidden_extension_resolved": false,
+      "potential_incoming_AHSS_differentials_on_associated_graded_candidate": [
+        "potential incoming d3:E3_7,1 -> E3_4,3; E2 source H7(BSpin11;Z8)=Z2, E3 source survival uncomputed",
+        "potential incoming d4:E4_8,0 -> E4_4,3; E2 source H8(BSpin11;Z), E4 source survival uncomputed"
+      ],
+      "q2_counterterm_could_remove_filling_flip": true,
+      "qhat_w4": 0,
+      "qhat_w6": 0,
+      "qhat_w8": "r^4 nonzero",
+      "source_page_precursor_audit": {
+        "d3_source_E3_survival_computed": false,
+        "d3_source_incoming_d2": "E2_9,0=H9(BSpin11;Z) -> E2_7,1; source group and differential not audited",
+        "d3_source_outgoing_d2": "E2_7,1 -> E2_5,2=0 because Omega2^Spin-Z8=0",
+        "d4_source_E4_survival_computed": false,
+        "d4_source_outgoing_d2": "E2_8,0=H8(BSpin11;Z) -> E2_6,1=H6(BSpin11;Z8)=Z2; value not computed"
+      }
+    },
+    "ordinary_relative_cap": {
+      "C7": "V3 x S4 with boundary T2 x S4",
+      "H2_RmodZ": 0,
+      "H3_RmodZ": 0,
+      "V3": "S1 x D2 for a bounding/even T2 spin structure",
+      "W3": "V3 x {point}",
+      "WCS_Wu_quadratic_trivialization_constructed": false,
+      "Y": "-b u_C",
+      "flat_ambiguity": false,
+      "homotopy_type": "S1 x S4",
+      "ordinary_differential_trivialization_exists": true,
+      "residual": [
+        0,
+        0
+      ],
+      "source": "+b PD_C(W3)",
+      "worldsheet_Dai_Freed_glue_constructed": false
+    },
+    "product_double_no_go": {
+      "Q4_forgetful_order": 4,
+      "S4_class_in_Omega4Spin": 0,
+      "SpinZ8_datum_factors_through_N3": true,
+      "double_form": "N3 x S4",
+      "entangled_Q4_fibration_relative_source_excluded": false,
+      "example_N3": "L(4,1)",
+      "forgetful_product_class_in_Omega7SpinZ8": 0,
+      "product_double_equals_Q4": false
+    },
+    "restricted_T2xS4_BPS_audit": {
+      "ansatz": "unwarped direct product, round S4, constant tensor scalar, H=0, Spin11 anti-instanton",
+      "bounding_even_T2_spin_structure_has_parallel_spinor": false,
+      "flat_T2_Einstein_equation_with_nonzero_longitudinal_YM_and_string_stress": false,
+      "fully_periodic_parallel_T2_spin_structure_bounds": false,
+      "gauge_instanton_twists_supercharge": false,
+      "gaugino_projection_can_hold": true,
+      "gravitino_equation_reduces_to_parallel_spinor": true,
+      "half_BPS_solution_in_restricted_ansatz": false,
+      "round_S4_has_parallel_spinor": false,
+      "warped_fluxed_singular_or_R_twisted_generalization_excluded": false
+    },
+    "status": "PASS_EXACT_ORDINARY_PRODUCT_CAP__REJECTED_DIRECT_PRODUCT_BPS_AND_Q4_DOUBLE__DELTA_SOURCE_PAGE_D3_D4_AND_EXTENSION_OPEN"
+  },
+  "schema": "susy_v84_gammahat_bare_phase_f4_heterotic_string_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "016d1611c6835684f487805f138088966db121db43b164400f41cc6597e74292",
+    "count": 37,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025",
+      "garcia_etxebarria_montero_2018",
+      "debray_dierigl_heckman_montero_2023",
+      "freed_2014",
+      "kumar_taylor_2009",
+      "muller_2020",
+      "monnier_moore_2018_gs",
+      "shimizu_tachikawa_2016_strings",
+      "kim_shiu_vafa_2019_branes",
+      "seiberg_taylor_2011_lattices",
+      "del_zotto_lockhart_2018_bps_strings",
+      "francis_2011_bspin",
+      "braeger_debray_dierigl_heckman_montero_2025_cobordism_utopia",
+      "lee_tachikawa_2020_global_gauge_anomalies",
+      "hsieh_2018_discrete_anomalies",
+      "bahri_gilkey_1987_eta_lens_bundles",
+      "kumar_morrison_taylor_2009_f4_so",
+      "morrison_taylor_2012_f_theory_bases",
+      "lee_lerche_weigand_2018_tensionless_strings"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V84_GAMMAHAT_BARE_PHASE_F4_HETEROTIC_STRING_AUDIT__V65_V70_V71_V78_V81_V82_V83_CORES_BOUND__UNCHANGED_FIVE_FACTOR_GAMMAHAT_REJECTED_PURE_SPIN11_CENTER_FORCED__C4F_SPINOR_GRADING_CENTRAL_ALGEBRA_AND_OPERATOR_SCAFFOLD_PASS_EXACT__FULL_PARENT_OPEN__SMOOTH_Q4_BARE_PHASE_PRIMITIVE_FOURTH_ROOT__SIXTEEN_ALGEBRAIC_R2_WCS_SHIFTS_SCREENED__F4_SO11_LIE_ALGEBRA_HETEROTIC_STRING_AND_MINIMAL_EFFECTIVE_RESIDUE_LIFTS_EXACT__UV_WEIERSTRASS_OPEN__PRODUCT_CAP_EXACT__DIRECT_PRODUCT_BPS_AND_Q4_DOUBLE_REJECTED__DELTA_AHSS_SOURCE_PAGE_D3_D4_AND_EXTENSION_OPEN__NO_ACCEPTED_EXTENSION__CURRENT_ACTION_REJECTED__REDESIGN_PROGRAM_VIABLE__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "C4F_discrete_anomaly_BV_WCS_parent_constructed": false,
+    "C4F_extended_central_algebra_constructed": true,
+    "C4F_full_localized_isotropy_constructed": false,
+    "C4F_smooth_descent_and_localized_pure_center_repair": true,
+    "F4_charge_lattice_and_so11_Lie_algebra_spectrum_match": true,
+    "accepted_full_parent_action_exists": false,
+    "all_full_HGamma_WCS_refinements_fail": false,
+    "all_sixteen_algebraic_r2_shift_screen_rows_fail": true,
+    "both_Q4_residues_have_minimal_effective_F4_charge_lifts": true,
+    "closed_gates": [],
+    "critical_heterotic_fiber_string_anomaly_ledger_matches_known_UV_sector": true,
+    "current_action_status": "REJECTED",
+    "delta_exact_order": "OPEN_ZERO_OR_ORDER2",
+    "explicit_compact_F4_Weierstrass_parent_constructed": false,
+    "honest_outcome": "The unchanged ordinary five-factor parent is now exactly rejected.  A minimal C4F algebraic/operator redesign and an F4 heterotic/F-theory scaffold solve two sharp structural obstructions, while the reference WCS branch, a new over-inclusive sixteen-row smooth r2 screen and the product source route fail.  No explicit global UV model, full stratified/BV parent, physical WCS refinement or entangled source glue exists yet.",
+    "ordinary_relative_product_cap_constructed": true,
+    "product_cap_double_represents_Q4": false,
+    "pure_Spin11_center_forced": true,
+    "research_program_status": "VIABLE_C4F_F4_REDESIGN_FRONTIER__FULL_QUANTUM_PARENT_OPEN",
+    "restricted_T2xS4_half_BPS_solution_exists": false,
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate_accepted": false,
+    "smooth_Q4_bare_phase_conjugacy_class_computed": true,
+    "smooth_Q4_bare_phase_possible_values": [
+      "i",
+      "-i"
+    ],
+    "theory_complete": false,
+    "unchanged_five_factor_parent_rejected_exactly": true
+  },
+  "unchanged_five_factor_Gammahat_no_go": {
+    "center_coordinates": [
+      "T",
+      "Spin11",
+      "R",
+      "H3",
+      "H266"
+    ],
+    "conclusion": "the unchanged five-factor H_Gamma parent is impossible within the enumerated ordinary-quotient scope",
+    "fatal_consequences": {
+      "Kmax_global_gauge_form": "SO(11)",
+      "b": [
+        2,
+        -1
+      ],
+      "b_in_2U": false,
+      "localized_16_center_character": "odd on 10_-1 + 5bar_3 + 1_-5",
+      "localized_16_descends_through_Kmax": false,
+      "multiplicity_repairs_center_character": false,
+      "rank_fields_repair_obstruction": false,
+      "strong_quantization_requires": "b in 2U"
+    },
+    "finite_enumeration": {
+      "Kmin_solutions": 0,
+      "N1_and_smooth_kernel_compatible": 64,
+      "N1_preserving": 256,
+      "SO11_GS_quantization_solutions": 0,
+      "contains_e11": 1024,
+      "kernel_dimension_2": 128,
+      "kernel_dimension_3": 896,
+      "localized_16_descent_solutions": 0,
+      "raw": 1024,
+      "smooth_kernel_compatible": 128,
+      "unchanged_bound_smooth_operator": 16
+    },
+    "presentation": "<A,U,V | A^4=1,[U,V]=1,AUA^-1=V,AVA^-1=U^-1>",
+    "smooth_annihilator": {
+      "Kmax": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "Kmax_forced": true,
+      "Kmin": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "elements": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    "status": "REJECTED_EXACT_UNCHANGED_FIVE_FACTOR_PARENT",
+    "unchanged_smooth_defect_pairs": [
+      {
+        "D1": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "D2": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "multiplicity": 4
+      },
+      {
+        "D1": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "D2": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "multiplicity": 4
+      },
+      {
+        "D1": [
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "D2": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "multiplicity": 4
+      },
+      {
+        "D1": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "D2": [
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "multiplicity": 4
+      }
+    ],
+    "universal_relation_theorem": {
+      "D1": "x+y",
+      "D1_plus_D2": "e11",
+      "D2": "x+y+e11",
+      "arbitrary_translation_deck_choices": "x,y in F2^5",
+      "gerbe_2group_or_added_spin_charge_factor_excluded": false,
+      "pure_Spin11_center_forced_for_every_assignment": true,
+      "scope": "fixed V70 gauge Wilson, fixed V83 rotation roots and parity rows, ordinary group quotient"
+    },
+    "vectors": {
+      "a=d+e11": [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "d": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "e11": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "version": "V84"
+}
