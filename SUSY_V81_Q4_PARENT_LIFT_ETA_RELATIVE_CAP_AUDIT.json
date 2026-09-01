@@ -1,0 +1,705 @@
+{
+  "Q4_eta_shadow_audit": {
+    "V71_qhat_projector_character_shadow": {
+      "adjoint_same_chirality_eta_shadow": "-5/8",
+      "background": "qhat/projector-decorated Q4, not the V80 BSpin11 basepoint",
+      "formal_eta_shadow_mod1": "1/4",
+      "formal_spin_half_matter_plus_gaugino_shadow": "-3/4",
+      "neutral_266_counts_m0123": [
+        74,
+        64,
+        64,
+        64
+      ],
+      "neutral_266_eta_shadow": "-5/4",
+      "opposite_chirality_gaugino_eta_shadow": "5/8",
+      "three_11_eta_shadow": "-1/8",
+      "three_11_intrinsic_m": [
+        3,
+        0,
+        1
+      ]
+    },
+    "flat_character_ambiguity": {
+      "V79_V80_t0_scope": "relative action shift zero on one canonical flat product",
+      "split_Z4_character_values": [
+        "1",
+        "i",
+        "-1",
+        "-i"
+      ],
+      "t0_determines_WCS_on_Q4": false
+    },
+    "nonidentification_theorem": {
+      "reasons": [
+        "SMW/Pfaffian reality normalization and modified xi kernel terms are absent",
+        "tensorino and self-dual-field quadratic refinement are absent",
+        "gauge-fixed Rarita/local-SUSY ghost complex and zero-mode measure are absent",
+        "the regulator and determinant/Pfaffian orientations are absent",
+        "the full H_Gamma lift and differential WCS holonomy are absent",
+        "the qhat background is a different reduced class from V80's split basepoint"
+      ],
+      "shadow_is_A_bare_times_WCS": false,
+      "shadow_is_physical_A_bare": false,
+      "shadow_selects_t0": false
+    },
+    "physical_parent_phase_evaluated": false,
+    "published_Q4_Dirac_eta": {
+      "difference_equals_split_detector": true,
+      "eta_3over2_minus_eta_1over2": "1/4",
+      "eta_m0123": [
+        "-1/8",
+        "1/8",
+        "1/8",
+        "-1/8"
+      ],
+      "normalization": "fractional ordinary complex Dirac eta invariant modulo Z for the chosen Spin-Z8 structure and orientation",
+      "twist_parameter": "q=m+1/2, m=0,1,2,3"
+    },
+    "status": "EXACT_ORDINARY_COMPLEX_DIRAC_TABLE_AND_QHAT_CHARACTER_SHADOW_ONLY"
+  },
+  "Q4_source_domain_audit": {
+    "D15_status": "ABSENT",
+    "Q4_tangent_geometry": {
+      "base": "CP1 with x=p^*c1(O(1)) and x^2=0",
+      "c1_C": "4r+2x=2x",
+      "c2_C": "6r^2+6rx=2r^2+2rx",
+      "cohomology": "H^4(Q4;Z)=Z4{r^2}+Z4{rx}",
+      "complex_bundle_for_W": "C=3L_r+(L_r tensor p^*O(2))",
+      "lambda_W": "c1(C)^2/2-c2(C)=2r^2+2rx",
+      "orders": {
+        "r^2": 4,
+        "rx": 4
+      },
+      "qT": "lambda(W)-r^2=r^2+2rx",
+      "qT_nonzero": true,
+      "qT_restriction_to_L45": "r^2 != 0",
+      "sign_convention_independent": "r or x sign reversal leaves r^2+2rx unchanged in Z4+Z4",
+      "spin_bundle": "W=TQ4+(L_r)_R",
+      "stable_tangent_splitting": "TQ4+R^2=R^3+2(L_r)_R+(L_r tensor p^*O(2))_R"
+    },
+    "V80_basepoint_restriction": {
+      "Y_restriction": [
+        "r^2+2rx",
+        "3r^2+2rx"
+      ],
+      "admissible_in_source_free_Y_zero_category": false,
+      "both_components_nonzero": true,
+      "lambda_F_E": "0",
+      "p1_E": "r^2",
+      "physical_test_requires_D15_source_worldsheet_sector": true,
+      "proof": "each component has an odd r^2 coefficient in Z4{r^2}+Z4{rx}",
+      "qT": "r^2+2rx",
+      "qTE": "2r^2+2rx",
+      "qTE_relation": "qTE=qT+r^2",
+      "s": 0,
+      "simultaneous_Y_zero_possible": false
+    },
+    "qhat_decorated_restriction": {
+      "Y_restriction": [
+        "r^2+2rx",
+        "r^2+2rx"
+      ],
+      "admissible_in_source_free_Y_zero_category": false,
+      "lambda_F_E": "2r^2",
+      "p1_E": "5r^2",
+      "proof": "qT=r^2+2rx is nonzero because its r^2 coefficient is odd",
+      "qT": "r^2+2rx",
+      "qTE": "2rx",
+      "qTE_relation": "qTE=qT+3r^2",
+      "qT_on_qhat_decorated_Q4_evaluated": true,
+      "qhat_equalizes_Y_components": true,
+      "s": 0,
+      "source_free_verdict": "REJECTED_SOURCE_REQUIRED"
+    },
+    "required_D15_data": [
+      "self-dual strings whose charge cancels PD[Y]",
+      "worldsheet chiral fields and their anomaly inflow",
+      "differential cocycle trivialization with the sources removed",
+      "compatibility with the Q4 test background and any cap boundaries"
+    ],
+    "s_zero_identity": "qTE=qT+r^2+lambda(F_E), derived by stable additivity without dividing an unspecified torsion representative",
+    "selected_H78_class": {
+      "Y1": "qT+r^2+s^2-p1(E)",
+      "Y2": "qTE+r^2+s^2",
+      "qT": "(p1(T)-r^2)/2",
+      "qTE": "(p1(T)+p1(E)-s^2)/2"
+    },
+    "status": "BASEPOINT_AND_QHAT_Q4_EXACTLY_OUTSIDE_SOURCE_FREE_DOMAIN"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "eaccd65f58a4fe3f3ab0aaa4a810e022844666fadb6c5ef94ea22048afd1582c",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "ced56eddeafb971fb4a0ce2614c043e02ecc605c0c67aa62ea753fd8af8a72f8"
+  },
+  "candidate_adjudication": {
+    "accepted_ids": [],
+    "selected_ids": [
+      "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+      "F81D_NONFLAT_Q1_COMPENSATOR",
+      "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+      "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+    ]
+  },
+  "candidate_matrix": [
+    {
+      "accepted": false,
+      "id": "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+      "reason": "the recorded tangent/gauge/R/neutral-flavor fourth powers share a candidate center, but K and all representations are not globalized",
+      "result": "CONDITIONAL_TOPOLOGICAL_SCAFFOLD_ONLY",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F81B_DIRECT_CURRENT_QHAT_FLAT_LIFT_OF_SPLIT_Q4",
+      "reason": "the BSpin11 basepoint lambda=0 is changed to nonzero 2r^2",
+      "result": "REJECTED_LAMBDA_2R2",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F81C_ONE_PLANE_FLAT_QHAT1",
+      "reason": "it matches the basepoint bundle but has SO9xSO2 rather than U5 centralizer",
+      "result": "REJECTED_CHANGES_FIXED_GROUP",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F81D_NONFLAT_Q1_COMPENSATOR",
+      "reason": "a same-projector repair needs an equivariant lambda=2r^2 compensator compatible with every stratum",
+      "result": "SELECTED_OPEN_UNCONSTRUCTED",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+      "reason": "this is a distinct reduced background with nonzero Y; its order and full-parent/source-sector completion are uncomputed",
+      "result": "SELECTED_OPEN_BORDISM_CLASS__SOURCE_REQUIRED_EXACT",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F81F_ETA_SHADOW_AS_PHYSICAL_BARE_PHASE",
+      "reason": "the exact complex-Dirac shadow omits the physical complexes and is not evaluated on V80's basepoint",
+      "result": "REJECTED_NORMALIZATION_TYPING_AND_BACKGROUND_MISMATCH",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F81G_T0_SELECTS_Q4_CHARACTER",
+      "reason": "a relative zero shift on one flat product does not fix a Z4 character on Q4",
+      "result": "REJECTED_NONIDENTIFIABILITY",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F81H_FORMAL_INVERSE_CAP",
+      "reason": "a cap must be an allowed physical bordism/morphism whose image is one state; a coherent family must satisfy gluing/double independence, not be a defined inverse anomaly",
+      "result": "REJECTED_TAUTOLOGICAL_ACTION_CHANGE",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY",
+      "reason": "construct H_Gamma, smooth and Bord765 functors, sources, caps and the total natural trivialization",
+      "result": "SELECTED_OPEN_CORRECT_TARGET",
+      "selected": true
+    }
+  ],
+  "core_sha256": "dff11c6502c8a7e709fc2ad5096ce4a0825ee75547810226f59ed4c286967ea1",
+  "cyclic_parent_group_candidate_audit": {
+    "all_field_and_ghost_representations_descend": false,
+    "fail_closed_interpretation": "absence of a primary H2 obstruction for this candidate does not prove a parent lift; the parent group and its representations are not defined",
+    "full_HGamma_defined": false,
+    "full_parent_Q4_lift_constructed": false,
+    "minimal_cyclic_diagonal_candidate": {
+      "candidate_H2_assignment": "w2(T)=w2(E)=o_R=o_F266=y",
+      "kernel_generator": "(z_T,c_11,z_R,z_F266)",
+      "primary_degree2_obstruction_seen_in_recorded_roots": false,
+      "recorded_fourth_powers": {
+        "A_F266^4": "z_F266=-I",
+        "Ltheta^4": "z_T=-1",
+        "U_R^4": "z_R=-I",
+        "qhat^4": "c_11=-1"
+      },
+      "scope": "a necessary cyclic-center scaffold for the tangent, Spin(11), SU2R and neutral-266 roots; it is not the full orbifold parent group",
+      "tuple_fourth_power_is_candidate_kernel_generator": true
+    },
+    "missing_global_data": [
+      "the actual central kernel K including all charged-hyper flavor factors",
+      "the full space-group extension Gammahat and its translation lifts",
+      "all raw-field and BV/BRST center-parity representations",
+      "the H_Gamma orbibundle and forgetful map to reduced H78",
+      "the global composite Sp(1) connection and neutral-hyper bundle"
+    ],
+    "status": "FIXED_QUOTIENT_CECH_CENTER_CRITERION__LOCAL_ROOT_CANDIDATE_ONLY",
+    "universal_criterion": {
+      "character_form": "for every center character chi annihilating K, chi_T w2(T)+chi_11 w2(E)+chi_R o_R+chi_F o_F+...=0",
+      "coefficient_system": "K_rho, including any Gamma action on the center",
+      "cover": "Spin(T) x Spin(11) x SU(2)_R x Sp(266) x remaining flavor/BRST covers",
+      "lift_condition": "for a fixed quotient, coefficient system and compatible projected bundles, o lies in the image of H^2(Q4;K_rho)",
+      "obstruction_tuple": "o=(w2(T),w2(E),o_R,o_F,...) in H^2(Q4; projected center system)",
+      "representation_condition": "the center-parity character of every raw field, BV ghost, antifield and regulator representation annihilates K",
+      "rotation_power_condition": "(Ltheta,qhat,U_R,A_F,...)^4 belongs to K",
+      "unknown_kernel": "K subset Z_T x Z_11 x Z_R x Z_F x ..."
+    }
+  },
+  "date": "2026-09-01",
+  "gate_ledger": {
+    "G1": "OPEN: the direct flat qhat lift of the split Q4 is rejected; the distinct qhat class/nonflat compensator and full physical anomaly remain open.",
+    "G2": "OPEN: no accepted Wilsonian action, SUSY-breaking sector, regulator-defined soft spectrum or thresholds exist.",
+    "G3": "OPEN: the full parent incidence category, field/ghost descent, physical caps and a stabilized supersymmetric vacuum are absent.",
+    "G4": "OPEN: the BV/BRST KK operators, Pfaffian orientations, zero-mode measures and regulator are absent.",
+    "G5": "OPEN: neutral zero modes and their all-order supersymmetric stabilization remain unresolved.",
+    "G6": "OPEN: the required self-dual-string/worldsheet source sector, reheating, relics and BBN are not derived.",
+    "G7": "OPEN: no accepted alternate family/proton/collider sector follows from the rejected current action.",
+    "G8": "OPEN: the qhat-decorated Q4 class, full parent/relative bordism and total anomaly trivialization are uncomputed."
+  },
+  "lineage": {
+    "V71_route_core": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+    "V74_route_core": "853833b9206e0eacb3a57ef72b7615c4d8c2b28b87a99155c93dc46d803e5603",
+    "V78_route_core": "1e2d44a6aedff03614cb712d3ba3a88f42d214638edf758ecea532c03d8c4e58",
+    "V80_master_core": "948ee32fe6772f5973411eeb918963614fdbfdfb14e72d00d2a8f315df4109d2",
+    "V80_route_core": "fbc86cd48cb51df580487a8e777ca547723591b3267da2dafada17c8da1bc2ea",
+    "supersession_scope": "executes F81 by testing the physical qhat decoration of the reduced split Q4, computing only its justified eta shadow, auditing the source domain, and defining the separate relative cap contract"
+  },
+  "next_required_action": {
+    "acceptance_boundary": "do not use the eta shadow as A_bare and do not evaluate a bridge contribution or cap/reference-state datum on a smooth empty-strata Q4",
+    "accepted": false,
+    "id": "F82_QHAT_Q4_CLASS_NONFLAT_COMPENSATOR_AND_PARENT_INCIDENCE_CATEGORY",
+    "parent_objective": "define K and Gammahat with all field/ghost representations and construct the forgetful map to H78",
+    "primary_objective": "compute the reduced bordism class/order of qhat-decorated Q4 and construct its required D15 source sector; in parallel test a lambda=2r^2 equivariant compensator",
+    "relative_objective": "construct the z00/z11/z2 incidence diagram and Bord_(7,6,5) before attempting bridge/cap phase cancellation"
+  },
+  "open_obligations": [
+    "construct the qhat-decorated Q4 reduced H78 bordism class and compute its order/filtration",
+    "alternatively construct an equivariant Spin11 lambda=2r^2 compensator preserving qhat, U5 and every isotropy stratum",
+    "define the full central kernel K, Gammahat extension, H_Gamma orbibundle and all raw/BV field descents",
+    "construct the SMW/Rarita/ghost/self-dual Dai-Freed anomaly functor with regulator and zero-mode measures",
+    "construct the differential shifted WCS functor and evaluate it on the same full-parent/source-decorated cycles",
+    "supply D15 self-dual strings and worldsheet inflow wherever [Y] is nonzero",
+    "construct Bord_(7,6,5), the supersymmetric bridge functor, physical caps and prove cap/junction independence"
+  ],
+  "primary_sources": [
+    {
+      "id": "dai_freed_1994",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "eta invariants with boundary are determinant-line elements; variation, holonomy and gluing"
+    },
+    {
+      "id": "von_gersdorff_2006",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "bulk-fermion contributions to fixed-point anomalies on six-dimensional Zn orbifolds"
+    },
+    {
+      "id": "zhang_2026",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326",
+      "use": "equivariant APS fixed-point density as an orbifold anomaly polynomial"
+    },
+    {
+      "id": "von_gersdorff_quiros_2003",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "path-integral localized anomalies with Scherk--Schwarz boundary data and GS inflow"
+    },
+    {
+      "id": "monnier_2011",
+      "title": "The global gravitational anomaly of the self-dual field theory",
+      "url": "https://arxiv.org/abs/1110.4639",
+      "use": "self-dual partition/anomaly line and its quadratic-refinement data"
+    },
+    {
+      "id": "monnier_2013",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642",
+      "use": "self-dual anomaly line in backgrounds with gauge fields and Wu-class refinements"
+    },
+    {
+      "id": "monnier_2016",
+      "title": "Topological field theories on manifolds with Wu structures",
+      "url": "https://arxiv.org/abs/1607.01396",
+      "use": "seven-dimensional Wu--Chern--Simons anomaly theories and quadratic refinements"
+    },
+    {
+      "id": "monnier_moore_2018",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "smooth-spin six-dimensional GS/WuCS construction, charge lattice and characteristic element; not an orbifold theorem"
+    },
+    {
+      "id": "witten_yonekura_2019",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "regulated fermion phases as eta-invariant anomaly inflow"
+    },
+    {
+      "id": "erler_1993",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104",
+      "use": "smooth six-dimensional multiplet anomaly polynomial and H-V+29T relation"
+    },
+    {
+      "id": "alvarez_gaume_witten_1984",
+      "title": "Gravitational Anomalies",
+      "url": "https://doi.org/10.1016/0550-3213(84)90066-X",
+      "use": "gauge-fixed Rarita complex, reality normalization and chiral gravitational anomaly indices"
+    },
+    {
+      "id": "riccioni_2001",
+      "title": "All couplings of minimal six-dimensional supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074",
+      "use": "six-dimensional (1,0) gravity, tensor, vector and hypermultiplet field content"
+    },
+    {
+      "id": "lupercio_uribe_2003",
+      "title": "Differential Characters on Orbifolds and String Connections I",
+      "url": "https://arxiv.org/abs/math/0311008",
+      "use": "Cheeger--Simons/Beilinson--Deligne differential characters on global quotient orbifolds"
+    },
+    {
+      "id": "laurent_gengoux_tu_xu_2004",
+      "title": "Chern-Weil map for principal bundles over groupoids",
+      "url": "https://arxiv.org/abs/math/0401420",
+      "use": "characteristic classes of orbifold and equivariant bundles through Lie groupoids"
+    },
+    {
+      "id": "sati_2010",
+      "title": "Geometric and topological structures related to M-branes II: Twisted String and String^c structures",
+      "url": "https://arxiv.org/abs/1007.5419",
+      "use": "Spin^c and String^c characteristic-class refinements"
+    },
+    {
+      "id": "ohmori_shimizu_tachikawa_yonekura_2014",
+      "title": "Anomaly polynomial of general 6d SCFTs",
+      "url": "https://arxiv.org/abs/1408.5572",
+      "use": "six-dimensional (1,0) hyper, vector and tensor SU2R anomaly polynomials"
+    },
+    {
+      "id": "intriligator_morrison_seiberg_1997",
+      "title": "Five-Dimensional Supersymmetric Gauge Theories and Degenerations of Calabi-Yau Spaces",
+      "url": "https://arxiv.org/abs/hep-th/9702198",
+      "use": "five-dimensional supersymmetric cubic prepotentials and Chern--Simons couplings"
+    },
+    {
+      "id": "guo_ohmori_putrov_wan_wang_2018",
+      "title": "Fermionic Finite-Group Gauge Theories and Interacting Symmetric/Crystalline Orders via Cobordisms",
+      "url": "https://arxiv.org/abs/1812.11959",
+      "use": "finite-group spin anomaly theories as Pontryagin duals of spin bordism, the Spin AHSS/Adams setup for B(Z2 x Z4), and the distinction from group cohomology"
+    },
+    {
+      "id": "dierigl_tartaglia_2025",
+      "title": "(Quadratically) Refined Discrete Anomaly Cancellation",
+      "url": "https://arxiv.org/abs/2504.02934",
+      "use": "six-dimensional discrete fermion anomalies, chiral two-form quadratic refinements and the need to match them on bordism generators"
+    },
+    {
+      "id": "garcia_etxebarria_montero_2018",
+      "title": "Dai-Freed anomalies in particle physics",
+      "url": "https://arxiv.org/abs/1808.00009",
+      "use": "low-degree BSpin homology and Steenrod data used in the H78 AHSS"
+    },
+    {
+      "id": "debray_dierigl_heckman_montero_2023",
+      "title": "The Chronicles of IIBordia: Dualities, Bordisms, and the Swampland",
+      "url": "https://arxiv.org/abs/2302.00007",
+      "use": "Spin-Z8 Thom equivalence, Omega7=Z4, the Q4^7 generator and its eta invariant"
+    },
+    {
+      "id": "freed_2014",
+      "title": "Anomalies and Invertible Field Theories",
+      "url": "https://arxiv.org/abs/1404.7224",
+      "use": "anomaly theories as invertible functors and cancellation as a natural trivialization"
+    },
+    {
+      "id": "kumar_taylor_2009",
+      "title": "A bound on 6D N=1 supergravities",
+      "url": "https://arxiv.org/abs/0910.1586",
+      "use": "positive kinetic terms as a consistency condition in one-tensor six-dimensional supergravity"
+    },
+    {
+      "id": "muller_2020",
+      "title": "Extended Functorial Field Theories and Anomalies in Quantum Field Theories",
+      "url": "https://arxiv.org/abs/2003.08217",
+      "use": "extended anomaly theories, symmetric monoidal bicategories and APS corners"
+    }
+  ],
+  "question": "Does the structured Q4^7 split generator lift to the physical full parent, what phase can be computed on it, and how must bridge/cap tests be typed?",
+  "relative_stratified_cap_audit": {
+    "cap_choice_independence_evaluated": false,
+    "cap_existence_and_independence_contract": [
+      "bounding components require an allowed relative cap; nonbounding components require physical reference states",
+      "for caps C,C' with common boundary M, Z_tot(C union_M -C')=1",
+      "naturality, monoidality, orientation duality and cylinder normalization",
+      "APS/spectral-section independence after the exact spectral-flow correction",
+      "junction associativity and compatibility at codimension-two corners",
+      "reference states for nonbounding Omega6 and localized Omega4 classes",
+      "PD[Y] is cancelled by strings/worldsheet inflow or the domain is explicitly restricted to [Y]=0"
+    ],
+    "cap_sector_constructed": false,
+    "correct_functorial_split": {
+      "cap_is_arbitrary_inverse_factor": false,
+      "cap_role": "a coherent family of physical cap/reference states supplies the monoidal natural trivialization tau:A_pre=>1; one cap supplies one state",
+      "formal_inverse_cap_verdict": "REJECTED_TAUTOLOGICAL_ACTION_CHANGE",
+      "pre_cap_functor": "A_pre=A_bare tensor WCS tensor i_*B_bridge tensor i_*A_physical_defect"
+    },
+    "exact_existing_bridge_witnesses": {
+      "class": "r=nu A B",
+      "endpoint_diagonal_values": {
+        "z00": 6,
+        "z11": -6
+      },
+      "localized_source": "J2=PD(boundary(gamma))=delta11-delta00",
+      "ordinary_CP2xCP1_period": 1,
+      "ordinary_level_one_quantized": true,
+      "scope": "exact bosonic curvature witnesses, not parent bordism generators",
+      "spin_S2cubed_period": 2
+    },
+    "incidence_objects": {
+      "common_stratum": "K_gauge=U2 x U3; the full K quotient including U1_L, SU2_R, flavor and center data remains unknown",
+      "required_decorations": [
+        "raw and BV/BRST bundles",
+        "checkY78 and Wu/polarization data",
+        "boundary-condition types and normal representations",
+        "physical defect/source-sector labels"
+      ],
+      "z00": "C4 isotropy <A>, fixed group U5",
+      "z11": "C4 isotropy <UA>, fixed group U5'",
+      "z2": "C2 isotropy <UA^2>, fixed group Spin4 x Spin7"
+    },
+    "minimum_category": {
+      "V80_Bord_7_6_role": "closed-cycle/state-line shadow only",
+      "constructed": false,
+      "kind": "extended stratified bordism bicategory (or equivalent higher category)",
+      "symbol": "C81=Bord_(7,6,5)^{H_Gamma^parent,S,checkY78,t=0}"
+    },
+    "route_matrix": [
+      {
+        "id": "R81_1",
+        "requirement": "parent incidence diagram",
+        "status": "ABSENT"
+      },
+      {
+        "id": "R81_2",
+        "requirement": "Bord_(7,6,5) parent category",
+        "status": "OPEN_UNCONSTRUCTED"
+      },
+      {
+        "id": "R81_3",
+        "requirement": "bosonic bridge curvature and level",
+        "status": "PASS_EXACT_SCOPED"
+      },
+      {
+        "id": "R81_4",
+        "requirement": "bridge as parent functor",
+        "status": "OPEN_UNCONSTRUCTED"
+      },
+      {
+        "id": "R81_5",
+        "requirement": "supersymmetric bridge partners",
+        "status": "OPEN"
+      },
+      {
+        "id": "R81_6",
+        "requirement": "Gamma orbit/isotropy extension",
+        "status": "OPEN"
+      },
+      {
+        "id": "R81_7",
+        "requirement": "relative bordism generators",
+        "status": "OPEN"
+      },
+      {
+        "id": "R81_8",
+        "requirement": "physical cap/source sector",
+        "status": "ABSENT"
+      },
+      {
+        "id": "R81_9",
+        "requirement": "cap-choice independence",
+        "status": "NOT_EVALUABLE"
+      },
+      {
+        "id": "R81_10",
+        "requirement": "junction coherence",
+        "status": "NOT_EVALUABLE"
+      },
+      {
+        "id": "R81_11",
+        "requirement": "total relative trivialization",
+        "status": "ILL_TYPED"
+      }
+    ],
+    "smooth_Q4_rule": {
+      "bridge_or_cap_inserted_on_smooth_empty_strata_Q4": false,
+      "can_appear_as_cap_double_after_parent_and_D15_completion": true,
+      "formal_empty_strata_phase": "A_bare tensor WCS; neither actual Q4 is currently in the source-free physical domain",
+      "reason": "a lifted smooth Q4 may equal C union -C' and then tests cap-choice independence, without acquiring a separate cap factor",
+      "source_completed_factor": "the physical source/worldsheet anomaly factor must then be included"
+    },
+    "status": "CORRECT_RELATIVE_BORD765_CONTRACT_TYPED__PARENT_BRIDGE_AND_CAPS_UNCONSTRUCTED",
+    "total_relative_identity_well_typed": false
+  },
+  "schema": "susy_v81_q4_parent_lift_eta_relative_cap_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "a079238e1feb83acc11a11dbb91b8a172d7bd0542a3a13df0ffb038ceda34895",
+    "count": 24,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025",
+      "garcia_etxebarria_montero_2018",
+      "debray_dierigl_heckman_montero_2023",
+      "freed_2014",
+      "kumar_taylor_2009",
+      "muller_2020"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V81_Q4_PARENT_LIFT_ETA_RELATIVE_CAP_AUDIT__V71_V74_V78_V80_CORES_BOUND__UNIVERSAL_CENTRAL_LIFT_CONTRACT_EXPLICIT__DIRECT_FLAT_QHAT_LIFT_OF_SPLIT_Q4_REJECTED_BY_LAMBDA_EQUALS_2R2__GENERAL_COMPENSATED_LIFT_OPEN__BASEPOINT_AND_QHAT_Q4_BOTH_NOT_SOURCE_FREE__EXACT_Q4_DIRAC_ETA_TABLE_AND_QHAT_CHARACTER_SHADOW_COMPUTED__PHYSICAL_BARE_TIMES_WCS_PHASE_UNEVALUATED__RELATIVE_BORD765_CAP_CONTRACT_TYPED_BUT_UNCONSTRUCTED__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "structured_Q4_direct_lift_audit": {
+    "V80_split_basepoint": {
+      "E": "R^9 + (L_r)_R",
+      "F_E": "E+(L_s)_R-(L_r)_R = R^11 stably",
+      "is_basepoint_in_BSpin11_factor": true,
+      "lambda_F_E": "0",
+      "s": 0
+    },
+    "cohomology_input": {
+      "fiber_group": "H^4(L_4^5;Z)=Z4{r^2}",
+      "fibration": "L_4^5 -> Q_4^7 -> CP1",
+      "nonzero_class": "2r^2 != 0",
+      "restriction": "r^2 on Q4 restricts to the Z4 generator on L_4^5"
+    },
+    "comparison": {
+      "direct_flat_qhat_lift_of_V80_split_representative_exists": false,
+      "general_full_parent_lift_rejected": false,
+      "qhat_decorated_Q4_bordism_order_and_filtration": "OPEN_UNCOMPUTED",
+      "qhat_decorated_Q4_is_a_separate_reduced_H78_background": true,
+      "reason": "lambda changes from 0 to the nonzero torsion class 2r^2",
+      "same_reduced_structured_background": false
+    },
+    "one_plane_flat_alternative": {
+      "centralizer": "SO(9)xSO(2)",
+      "matches_V80_basepoint": true,
+      "preserves_required_U5_fixed_group": false,
+      "root": "qhat_1=exp(pi B_1/4)",
+      "vector_bundle": "R^9+(L_r)_R",
+      "verdict": "REJECTED_CHANGED_PROJECTOR_AND_ACTION"
+    },
+    "physical_five_plane_qhat": {
+      "centralizer_in_vector_representation": "U(5)",
+      "chern_class": "c2(4L_r)=C(4,2)r^2=6r^2",
+      "lambda_F_E": "2r^2",
+      "lambda_computation": "lambda(F_E,qhat)=-c2(4L_r)=-6r^2=2r^2",
+      "lambda_nonzero": true,
+      "qhat": "product_(a=1..5) exp(pi B_a/4)",
+      "spin_check": "c1(4L_r)=4r=0",
+      "stable_spin_bundle": "F_E,qhat=R^3+4(L_r)_R",
+      "vector_bundle": "E_qhat=R+5(L_r)_R"
+    },
+    "published_detector": "eta_D^(3/2)-eta_D^(1/2)=1/4 mod Z",
+    "published_split_generator": "the structured Spin-Z8 pair (Q_4^7,L_r,spin lift), with L_4^5 -> Q_4^7 -> S^2=CP1",
+    "same_projector_nonflat_repair": {
+      "characteristic_shift": "Delta lambda=2r^2 is necessary",
+      "compatibility_with_qhat_and_U5": "OPEN",
+      "constructed": false,
+      "extension_over_all_orbifold_strata": "OPEN",
+      "fixed_rank_equivariant_realization_follows_from_bookkeeping": false,
+      "required_compensator": "an equivariant Spin(11) sector/bundle with lambda=2r^2",
+      "stable_bookkeeping": "2r^2 is order two and cancels itself under Whitney addition"
+    },
+    "status": "DIRECT_FLAT_QHAT_LIFT_OF_SPLIT_Q4_REJECTED_LAMBDA_2R2__GENERAL_LIFT_OPEN"
+  },
+  "terminal_decision": {
+    "V80_basepoint_admissible_source_free": false,
+    "accepted_full_parent_action_exists": false,
+    "cap_choice_independence_evaluated": false,
+    "closed_gates": [],
+    "current_action_status": "REJECTED",
+    "direct_flat_qhat_lift_lambda": "2r^2",
+    "direct_flat_qhat_lift_of_split_Q4_rejected": true,
+    "full_HGamma_defined": false,
+    "general_compensated_full_parent_lift_constructed": false,
+    "general_compensated_full_parent_lift_rejected": false,
+    "honest_outcome": "F81 converts the undefined Q4 parent-lift question into an exact fork.  The direct flat physical qhat decoration of V80's split representative fails by lambda=2r^2, and both the basepoint and qhat-decorated background have nonzero selected Y.  A distinct qhat reduced class or a nonflat compensator may still work only with the required source sector; its bordism class and the full parent anomaly theory remain open.",
+    "ordinary_Q4_Dirac_eta_table_computed": true,
+    "physical_A_bare_phase_evaluated": false,
+    "physical_A_bare_times_WCS_evaluated": false,
+    "physical_WCS_phase_evaluated": false,
+    "physical_cap_sector_constructed": false,
+    "primary_degree2_obstruction_seen_for_minimal_recorded_roots": false,
+    "qhat_Q4_admissible_source_free": false,
+    "qhat_Q4_source_free_verdict_computed": true,
+    "qhat_character_eta_shadow_computed": true,
+    "qhat_decorated_Q4_bordism_class_computed": false,
+    "qhat_decorated_Q4_is_separate_reduced_background": true,
+    "relative_Bord765_parent_category_constructed": false,
+    "research_program_status": "VIABLE_ONLY_AFTER_QHAT_CLASS_OR_NONFLAT_COMPENSATOR_AND_FULL_PARENT_CATEGORY",
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate_accepted": false,
+    "theory_complete": false,
+    "total_relative_anomaly_identity_well_typed": false
+  },
+  "updated_input_contract": [
+    {
+      "id": "D5",
+      "input": "full parent H_Gamma group/space-group extension",
+      "status": "PARTIAL_CYCLIC_CENTER_CRITERION_ONLY"
+    },
+    {
+      "id": "D9",
+      "input": "all parent field and ghost descents",
+      "status": "PARTIAL_RECORDED_LOCAL_ROOTS_ONLY"
+    },
+    {
+      "id": "D10",
+      "input": "global BV/BRST elliptic complex and regulator",
+      "status": "ABSENT"
+    },
+    {
+      "id": "D12",
+      "input": "differential shifted WuCS functor and holonomy",
+      "status": "PARTIAL_INTEGRAL_CLASS_ONLY"
+    },
+    {
+      "id": "D14",
+      "input": "global differential half/source convention",
+      "status": "PARTIAL_T0_FLAT_PRODUCT_ONLY"
+    },
+    {
+      "id": "D15",
+      "input": "self-dual-string/worldsheet source sector",
+      "status": "ABSENT"
+    },
+    {
+      "id": "D16",
+      "input": "extended relative Bord_(7,6,5) incidence category",
+      "status": "ABSENT"
+    },
+    {
+      "id": "D17",
+      "input": "physical cap states and cap-choice theorem",
+      "status": "ABSENT"
+    }
+  ],
+  "version": "V81"
+}

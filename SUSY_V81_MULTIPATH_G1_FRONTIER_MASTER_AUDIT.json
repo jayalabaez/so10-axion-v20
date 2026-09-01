@@ -1,0 +1,515 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V80 master and V81 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "universal Cech/center parent-lift criterion",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A3",
+      "requirement": "minimal recorded cyclic-center root equations",
+      "status": "PASS_CONDITIONAL_SCAFFOLD"
+    },
+    {
+      "id": "A4",
+      "requirement": "complete central kernel K and Gammahat extension",
+      "status": "OPEN_UNDEFINED"
+    },
+    {
+      "id": "A5",
+      "requirement": "all raw and BV/BRST representations descend",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A6",
+      "requirement": "V80 Q4 basepoint versus physical five-plane qhat comparison",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A7",
+      "requirement": "direct flat qhat lift of split Q4",
+      "status": "REJECTED_LAMBDA_2R2"
+    },
+    {
+      "id": "A8",
+      "requirement": "one-plane flat root preserving V80 basepoint",
+      "status": "REJECTED_CHANGES_U5_PROJECTOR"
+    },
+    {
+      "id": "A9",
+      "requirement": "same-projector nonflat lambda=2r2 compensator",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A10",
+      "requirement": "qhat-decorated Q4 reduced bordism class/order",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A11",
+      "requirement": "V80 basepoint in source-free selected-Y domain",
+      "status": "REJECTED_EXACT"
+    },
+    {
+      "id": "A12",
+      "requirement": "qhat-decorated Q4 in source-free selected-Y domain",
+      "status": "REJECTED_NONZERO_Y"
+    },
+    {
+      "id": "A13",
+      "requirement": "D15 self-dual-string/worldsheet source sector",
+      "status": "ABSENT"
+    },
+    {
+      "id": "A14",
+      "requirement": "ordinary complex Dirac eta table on Q4",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A15",
+      "requirement": "V71 qhat/projector complex-Dirac character shadow",
+      "status": "PASS_EXACT_SCOPED"
+    },
+    {
+      "id": "A16",
+      "requirement": "physical SMW/Rarita/self-dual bare anomaly phase",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A17",
+      "requirement": "shifted WCS phase on the same lifted cycle",
+      "status": "OPEN_UNEVALUATED"
+    },
+    {
+      "id": "A18",
+      "requirement": "physical A_bare times WCS identity",
+      "status": "OPEN_ILL_TYPED"
+    },
+    {
+      "id": "A19",
+      "requirement": "parent Bord_(7,6,5) incidence category",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A20",
+      "requirement": "bosonic level-one bridge curvature/quantization",
+      "status": "PASS_EXACT_SCOPED"
+    },
+    {
+      "id": "A21",
+      "requirement": "supersymmetric parent bridge functor",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A22",
+      "requirement": "physical cap/source sector",
+      "status": "ABSENT"
+    },
+    {
+      "id": "A23",
+      "requirement": "cap-choice and junction coherence theorem",
+      "status": "NOT_EVALUABLE"
+    },
+    {
+      "id": "A24",
+      "requirement": "formal inverse anomaly as a cap",
+      "status": "REJECTED_TAUTOLOGICAL_ACTION_CHANGE"
+    },
+    {
+      "id": "A25",
+      "requirement": "reduced H78 AHSS through E3 and split Z4",
+      "status": "PASS_INHERITED_V80"
+    },
+    {
+      "id": "A26",
+      "requirement": "integrated flat QW bulk-family fallback",
+      "status": "REJECTED_INHERITED_V80"
+    },
+    {
+      "id": "A27",
+      "requirement": "same-action microscopic completion",
+      "status": "OPEN_FAILED"
+    },
+    {
+      "id": "A28",
+      "requirement": "spectrum, vacuum, thresholds, cosmology and phenomenology",
+      "status": "BLOCKED_BY_ACTION"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "8312149f3526506cea33c502c48a05683058e11beb8d80563b3180a9402fc205",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "3ba623cb57540d3773e222e757b385df4816f8a6dafe6037be8a1767667c0778"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "current_action_status": "REJECTED",
+    "exact_gains": [
+      "universal center-character criterion for a full-parent lift",
+      "direct physical qhat decoration of V80 split Q4 rejected by nonzero lambda=2r^2",
+      "one-plane basepoint root rejected because it changes U5 to SO9xSO2",
+      "published tangent splitting gives qT=r^2+2rx nonzero exactly",
+      "both split-basepoint and qhat-decorated Q4 proved outside the source-free selected-Y domain",
+      "fractional ordinary Q4 Dirac eta table modulo Z and V71 qhat character shadow computed exactly",
+      "eta shadow separated from the physical bare/WCS anomaly",
+      "relative Bord_(7,6,5) cap/double/junction contract typed",
+      "level-one bosonic bridge witnesses retained with their exact limited scope"
+    ],
+    "remaining_global_blockers": [
+      "construct the qhat-decorated Q4 reduced H78 bordism class and compute its order/filtration",
+      "alternatively construct an equivariant Spin11 lambda=2r^2 compensator preserving qhat, U5 and every isotropy stratum",
+      "define the full central kernel K, Gammahat extension, H_Gamma orbibundle and all raw/BV field descents",
+      "construct the SMW/Rarita/ghost/self-dual Dai-Freed anomaly functor with regulator and zero-mode measures",
+      "construct the differential shifted WCS functor and evaluate it on the same full-parent/source-decorated cycles",
+      "supply D15 self-dual strings and worldsheet inflow wherever [Y] is nonzero",
+      "construct Bord_(7,6,5), the supersymmetric bridge functor, physical caps and prove cap/junction independence"
+    ],
+    "research_program_status": "VIABLE_ONLY_AFTER_QHAT_CLASS_OR_NONFLAT_COMPENSATOR_AND_FULL_PARENT_CATEGORY",
+    "retired_shortcuts": [
+      "identifying the physical five-plane qhat background with V80's BSpin11 basepoint",
+      "promoting the scoped lambda mismatch to a no-go for every compensated parent lift",
+      "using the V80 basepoint in a source-free category without D15",
+      "calling a complex Dirac character sum the SMW/Rarita/self-dual bare anomaly",
+      "using t=0 on one flat product to choose a Z4 character on Q4",
+      "evaluating a bridge contribution or cap/reference-state datum on a smooth empty-strata Q4 cycle",
+      "defining a cap to be the formal inverse anomaly",
+      "calling curvature witnesses full-parent relative generators"
+    ],
+    "selected_open_candidates": [
+      "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+      "F81D_NONFLAT_Q1_COMPENSATOR",
+      "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+      "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+    ],
+    "strongest_same_parent_scaffold": "h=0 parent + V78 checkY78/t=0 + either the distinct physical qhat-decorated Q4 class or a lambda=2r^2 compensator + a full H_Gamma smooth/relative anomaly theory"
+  },
+  "core_sha256": "5b29972fe8291ac599644cadb595f9f0893e414fbe96fbf4d0075850ae936144",
+  "date": "2026-09-01",
+  "exact_frontier_objects": {
+    "cap_contract": [
+      "bounding components require an allowed relative cap; nonbounding components require physical reference states",
+      "for caps C,C' with common boundary M, Z_tot(C union_M -C')=1",
+      "naturality, monoidality, orientation duality and cylinder normalization",
+      "APS/spectral-section independence after the exact spectral-flow correction",
+      "junction associativity and compatibility at codimension-two corners",
+      "reference states for nonbounding Omega6 and localized Omega4 classes",
+      "PD[Y] is cancelled by strings/worldsheet inflow or the domain is explicitly restricted to [Y]=0"
+    ],
+    "eta_scope": {
+      "reasons": [
+        "SMW/Pfaffian reality normalization and modified xi kernel terms are absent",
+        "tensorino and self-dual-field quadratic refinement are absent",
+        "gauge-fixed Rarita/local-SUSY ghost complex and zero-mode measure are absent",
+        "the regulator and determinant/Pfaffian orientations are absent",
+        "the full H_Gamma lift and differential WCS holonomy are absent",
+        "the qhat background is a different reduced class from V80's split basepoint"
+      ],
+      "shadow_is_A_bare_times_WCS": false,
+      "shadow_is_physical_A_bare": false,
+      "shadow_selects_t0": false
+    },
+    "physical_qhat_Q4": {
+      "centralizer_in_vector_representation": "U(5)",
+      "chern_class": "c2(4L_r)=C(4,2)r^2=6r^2",
+      "lambda_F_E": "2r^2",
+      "lambda_computation": "lambda(F_E,qhat)=-c2(4L_r)=-6r^2=2r^2",
+      "lambda_nonzero": true,
+      "qhat": "product_(a=1..5) exp(pi B_a/4)",
+      "spin_check": "c1(4L_r)=4r=0",
+      "stable_spin_bundle": "F_E,qhat=R^3+4(L_r)_R",
+      "vector_bundle": "E_qhat=R+5(L_r)_R"
+    },
+    "relative_category": {
+      "V80_Bord_7_6_role": "closed-cycle/state-line shadow only",
+      "constructed": false,
+      "kind": "extended stratified bordism bicategory (or equivalent higher category)",
+      "symbol": "C81=Bord_(7,6,5)^{H_Gamma^parent,S,checkY78,t=0}"
+    },
+    "source_domain": {
+      "D15_status": "ABSENT",
+      "Q4_tangent_geometry": {
+        "base": "CP1 with x=p^*c1(O(1)) and x^2=0",
+        "c1_C": "4r+2x=2x",
+        "c2_C": "6r^2+6rx=2r^2+2rx",
+        "cohomology": "H^4(Q4;Z)=Z4{r^2}+Z4{rx}",
+        "complex_bundle_for_W": "C=3L_r+(L_r tensor p^*O(2))",
+        "lambda_W": "c1(C)^2/2-c2(C)=2r^2+2rx",
+        "orders": {
+          "r^2": 4,
+          "rx": 4
+        },
+        "qT": "lambda(W)-r^2=r^2+2rx",
+        "qT_nonzero": true,
+        "qT_restriction_to_L45": "r^2 != 0",
+        "sign_convention_independent": "r or x sign reversal leaves r^2+2rx unchanged in Z4+Z4",
+        "spin_bundle": "W=TQ4+(L_r)_R",
+        "stable_tangent_splitting": "TQ4+R^2=R^3+2(L_r)_R+(L_r tensor p^*O(2))_R"
+      },
+      "V80_basepoint_restriction": {
+        "Y_restriction": [
+          "r^2+2rx",
+          "3r^2+2rx"
+        ],
+        "admissible_in_source_free_Y_zero_category": false,
+        "both_components_nonzero": true,
+        "lambda_F_E": "0",
+        "p1_E": "r^2",
+        "physical_test_requires_D15_source_worldsheet_sector": true,
+        "proof": "each component has an odd r^2 coefficient in Z4{r^2}+Z4{rx}",
+        "qT": "r^2+2rx",
+        "qTE": "2r^2+2rx",
+        "qTE_relation": "qTE=qT+r^2",
+        "s": 0,
+        "simultaneous_Y_zero_possible": false
+      },
+      "qhat_decorated_restriction": {
+        "Y_restriction": [
+          "r^2+2rx",
+          "r^2+2rx"
+        ],
+        "admissible_in_source_free_Y_zero_category": false,
+        "lambda_F_E": "2r^2",
+        "p1_E": "5r^2",
+        "proof": "qT=r^2+2rx is nonzero because its r^2 coefficient is odd",
+        "qT": "r^2+2rx",
+        "qTE": "2rx",
+        "qTE_relation": "qTE=qT+3r^2",
+        "qT_on_qhat_decorated_Q4_evaluated": true,
+        "qhat_equalizes_Y_components": true,
+        "s": 0,
+        "source_free_verdict": "REJECTED_SOURCE_REQUIRED"
+      },
+      "required_D15_data": [
+        "self-dual strings whose charge cancels PD[Y]",
+        "worldsheet chiral fields and their anomaly inflow",
+        "differential cocycle trivialization with the sources removed",
+        "compatibility with the Q4 test background and any cap boundaries"
+      ],
+      "s_zero_identity": "qTE=qT+r^2+lambda(F_E), derived by stable additivity without dividing an unspecified torsion representative",
+      "selected_H78_class": {
+        "Y1": "qT+r^2+s^2-p1(E)",
+        "Y2": "qTE+r^2+s^2",
+        "qT": "(p1(T)-r^2)/2",
+        "qTE": "(p1(T)+p1(E)-s^2)/2"
+      },
+      "status": "BASEPOINT_AND_QHAT_Q4_EXACTLY_OUTSIDE_SOURCE_FREE_DOMAIN"
+    },
+    "split_Q4_basepoint": {
+      "E": "R^9 + (L_r)_R",
+      "F_E": "E+(L_s)_R-(L_r)_R = R^11 stably",
+      "is_basepoint_in_BSpin11_factor": true,
+      "lambda_F_E": "0",
+      "s": 0
+    }
+  },
+  "gate_ledger": {
+    "G1": "OPEN: the direct flat qhat lift of the split Q4 is rejected; the distinct qhat class/nonflat compensator and full physical anomaly remain open.",
+    "G2": "OPEN: no accepted Wilsonian action, SUSY-breaking sector, regulator-defined soft spectrum or thresholds exist.",
+    "G3": "OPEN: the full parent incidence category, field/ghost descent, physical caps and a stabilized supersymmetric vacuum are absent.",
+    "G4": "OPEN: the BV/BRST KK operators, Pfaffian orientations, zero-mode measures and regulator are absent.",
+    "G5": "OPEN: neutral zero modes and their all-order supersymmetric stabilization remain unresolved.",
+    "G6": "OPEN: the required self-dual-string/worldsheet source sector, reheating, relics and BBN are not derived.",
+    "G7": "OPEN: no accepted alternate family/proton/collider sector follows from the rejected current action.",
+    "G8": "OPEN: the qhat-decorated Q4 class, full parent/relative bordism and total anomaly trivialization are uncomputed."
+  },
+  "input_core_hashes": {
+    "V80_master": "948ee32fe6772f5973411eeb918963614fdbfdfb14e72d00d2a8f315df4109d2",
+    "V81_route": "dff11c6502c8a7e709fc2ad5096ce4a0825ee75547810226f59ed4c286967ea1"
+  },
+  "lineage": {
+    "new_route": "B81",
+    "parent_master": "V80",
+    "parent_route_count": 8,
+    "parent_route_matrix_sha256": "f9f09b63f1b755619b5e7a74fec04f9d8a826347ad4ad9ec55d40e11f20ace52",
+    "supersession_scope": "executes F81 by testing the physical qhat decoration of the reduced split Q4, computing only its justified eta shadow, auditing the source domain, and defining the separate relative cap contract"
+  },
+  "next_required_action": {
+    "acceptance_boundary": "do not use the eta shadow as A_bare and do not evaluate a bridge contribution or cap/reference-state datum on a smooth empty-strata Q4",
+    "accepted": false,
+    "id": "F82_QHAT_Q4_CLASS_NONFLAT_COMPENSATOR_AND_PARENT_INCIDENCE_CATEGORY",
+    "parent_objective": "define K and Gammahat with all field/ghost representations and construct the forgetful map to H78",
+    "primary_objective": "compute the reduced bordism class/order of qhat-decorated Q4 and construct its required D15 source sector; in parallel test a lambda=2r^2 equivariant compensator",
+    "relative_objective": "construct the z00/z11/z2 incidence diagram and Bord_(7,6,5) before attempting bridge/cap phase cancellation"
+  },
+  "regression_scope": {
+    "inherited_V80_scope_sha256": "4a2e4eb4958e0bc3548c4ffc171dff1825cae6bad0f02baa85dbdcca38cd5543",
+    "new_test_files": [
+      "test_susy_v81_multipath_g1_frontier_master_audit.py",
+      "test_susy_v81_q4_parent_lift_eta_relative_cap_audit.py"
+    ],
+    "recommended_full_pattern": "test_susy_v*.py"
+  },
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "H78 category/AHSS and general flat half-spinor parent adjudication",
+      "ordinal": 8,
+      "route_id": "B80",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F80A_CANONICAL_ZERO_HALF_H0",
+        "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+        "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Q4 parent-lift, eta-shadow and relative Bord765 cap adjudication",
+      "ordinal": 9,
+      "route_id": "B81",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+        "F81D_NONFLAT_Q1_COMPENSATOR",
+        "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+        "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+      ]
+    }
+  ],
+  "schema": "susy_v81_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "a079238e1feb83acc11a11dbb91b8a172d7bd0542a3a13df0ffb038ceda34895",
+    "count": 24,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997",
+      "guo_ohmori_putrov_wan_wang_2018",
+      "dierigl_tartaglia_2025",
+      "garcia_etxebarria_montero_2018",
+      "debray_dierigl_heckman_montero_2023",
+      "freed_2014",
+      "kumar_taylor_2009",
+      "muller_2020"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V81_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V80_MASTER_AND_V81_ROUTE_CORES_BOUND__DIRECT_FLAT_QHAT_LIFT_OF_SPLIT_Q4_REJECTED_LAMBDA_2R2__GENERAL_COMPENSATED_LIFT_AND_DISTINCT_QHAT_CLASS_OPEN__BASEPOINT_AND_QHAT_Q4_BOTH_NOT_SOURCE_FREE__ETA_SHADOW_NOT_PHYSICAL_PHASE__RELATIVE_BORD765_AND_CAPS_UNCONSTRUCTED__NO_ACCEPTED_EXTENSION__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "D15_status": "ABSENT",
+    "Q4_qT": "lambda(W)-r^2=r^2+2rx",
+    "V80_basepoint_Y": [
+      "r^2+2rx",
+      "3r^2+2rx"
+    ],
+    "V80_basepoint_admissible_source_free": false,
+    "accepted_full_parent_action_exists": false,
+    "canonical_zero_half_accepted": false,
+    "canonical_zero_half_falsified": false,
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_action_status": "REJECTED",
+    "direct_flat_qhat_lift_of_split_Q4_rejected": true,
+    "direct_lift_obstruction": "2r^2",
+    "full_HGamma_defined": false,
+    "general_compensated_lift_constructed": false,
+    "general_compensated_lift_rejected": false,
+    "honest_outcome": "F81 converts the undefined Q4 parent-lift question into an exact fork.  The direct flat physical qhat decoration of V80's split representative fails by lambda=2r^2, and both the basepoint and qhat-decorated background have nonzero selected Y.  A distinct qhat reduced class or a nonflat compensator may still work only with the required source sector; its bordism class and the full parent anomaly theory remain open.",
+    "inherited_AHSS_E3_total_order": 32768,
+    "inherited_flat_QW_bulk_family_parents_rejected": true,
+    "inherited_full_reduced_Omega7_computed": false,
+    "inherited_reduced_H78_AHSS_through_E3": true,
+    "inherited_split_Z4_proved": true,
+    "ordinary_Q4_eta_table": [
+      "-1/8",
+      "1/8",
+      "1/8",
+      "-1/8"
+    ],
+    "physical_bare_times_WCS_evaluated": false,
+    "physical_cap_sector_constructed": false,
+    "qhat_Q4_Y": [
+      "r^2+2rx",
+      "r^2+2rx"
+    ],
+    "qhat_Q4_admissible_source_free": false,
+    "qhat_Q4_bordism_class_computed": false,
+    "qhat_Q4_is_separate_reduced_background": true,
+    "qhat_Q4_source_free_verdict_computed": true,
+    "qhat_eta_shadow": "-3/4",
+    "relative_Bord765_constructed": false,
+    "research_program_status": "VIABLE_ONLY_AFTER_QHAT_CLASS_OR_NONFLAT_COMPENSATOR_AND_FULL_PARENT_CATEGORY",
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate_accepted": false,
+    "total_relative_identity_well_typed": false
+  },
+  "version": "V81"
+}
