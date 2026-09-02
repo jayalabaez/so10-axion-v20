@@ -1,0 +1,515 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V88 master and V89 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "exhaustive C8 exponent projection for the frozen V88 non-C8 lifts",
+      "status": "PASS_EXACT_8_TRANSLATION_PAIRS_8_NECESSARY_PROJECTOR_TRIPLES"
+    },
+    {
+      "id": "A3",
+      "requirement": "primitive k in the C8-factor projection with V88 non-C8 lifts frozen",
+      "status": "REJECTED_C8_FACTOR_PROJECTION_CONTAINED_IN_K2_C4"
+    },
+    {
+      "id": "A4",
+      "requirement": "independent external C8 kernel parity and audited bulk descent",
+      "status": "PASS_EXACT_KERNEL_PARITY_AND_BULK_ONLY__LOCAL_WALL_QUOTIENT_OPEN"
+    },
+    {
+      "id": "A5",
+      "requirement": "external C8 quantum gauging",
+      "status": "OPEN_NO_COMMON_REGULATOR_OR_ETA"
+    },
+    {
+      "id": "A6",
+      "requirement": "explicit z00 split-U5 local phase candidate",
+      "status": "PASS_EXACT_PHASE_ROWS__GLOBAL_WALL_REPRESENTATION_OPEN"
+    },
+    {
+      "id": "A7",
+      "requirement": "z00 placement inherited from V70/V88",
+      "status": "REJECTED_NOT_PREVIOUSLY_FIXED"
+    },
+    {
+      "id": "A8",
+      "requirement": "smooth connected Spin11 six-dimensional I8",
+      "status": "PASS_EXACT_FACTORIZED"
+    },
+    {
+      "id": "A9",
+      "requirement": "gauged continuous U1_T with current spectrum and U lattice",
+      "status": "REJECTED_GRAVITY_COUNT_AND_THREE_GS_EQUATIONS"
+    },
+    {
+      "id": "A10",
+      "requirement": "charged-fermion gauge/log-twist fixed-wall component",
+      "status": "PASS_EXACT_ZERO"
+    },
+    {
+      "id": "A11",
+      "requirement": "full gravity/tensor/neutral/normal fixed-wall character",
+      "status": "OPEN_REQUIRED_INPUTS_NOT_FROZEN"
+    },
+    {
+      "id": "A12",
+      "requirement": "one common BV/BRST/regulator complex and Dai-Freed/WCS trivialization",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A13",
+      "requirement": "global projective crepant compact-torsor blowups",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A14",
+      "requirement": "generic smooth compact resolved member",
+      "status": "PASS_EXACT_EXISTENCE"
+    },
+    {
+      "id": "A15",
+      "requirement": "one frozen rational member and resolved Rees/Jacobian saturation",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A16",
+      "requirement": "natural order-four root (U,V,W)->(V,-U,iW)",
+      "status": "REJECTED_NOT_AN_EIGENACTION"
+    },
+    {
+      "id": "A17",
+      "requirement": "classification or construction of another literal global order-four action",
+      "status": "OPEN"
+    },
+    {
+      "id": "A18",
+      "requirement": "diagonal resolved Gammahat orbibundle",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A19",
+      "requirement": "same-action microscopic quantum completion",
+      "status": "REJECTED_NOT_FOUND"
+    },
+    {
+      "id": "A20",
+      "requirement": "soft spectrum, thresholds, unification, cosmology and likelihood",
+      "status": "BLOCKED_BY_ACCEPTED_PARENT"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "1585e822eeafa1e5cf3eb5aa7d47fedb5d9510564f122c9f5db9646f61f3c762",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "73773219da1ff795fcfcbccbca24eab7fc88598fe39afd1399781d2bbe188cfb"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "exact_gains": [
+      "all eight necessary projector-preserving C8 exponent triples are enumerated for the frozen V88 non-C8 lifts",
+      "every such triple has even exponents and generates at most <k^2>=C4",
+      "an independent primitive external C8 has exact kernel-parity compatibility on assigned characters and full descent on the audited bulk representations",
+      "one new z00 split-U5 local phase candidate has exact gauge, intrinsic and center phases",
+      "the complete smooth connected Spin11 polynomial and charged-fermion gauge/log-twist wall component are exact",
+      "the gauged continuous U1_T parent is rejected by the added-vector gravity count and three incompatible GS equations",
+      "the frozen inputs omit placement, wall-group, neutral, regulator and normal-bundle data required for the full fixed-wall character",
+      "the three compact torsor blowups are global, projective and crepant",
+      "a nonempty Zariski-open family of smooth compact resolved members exists",
+      "the natural order-four root of the deck involution is rejected exactly"
+    ],
+    "explicit_non_promotions": [
+      "the existing square-space-group geometry does not generate primitive k",
+      "the z00 placement is a new action choice rather than a consequence of V70/V88",
+      "formal BV charge pairing is not a common regulator or eta invariant",
+      "the continuous U1_T no-go does not by itself reject its finite C4 subgroup",
+      "generic existence is not a frozen rational member or a Rees/Jacobian saturation",
+      "one rejected natural root is not a classification of every global order-four automorphism",
+      "the center-coset relation j^2=z is not a diagonal orbibundle"
+    ],
+    "next_required_action": {
+      "accepted": false,
+      "id": "F90_EXTERNAL_U1_8_BV_FIXED_WALL_OR_EQUIVARIANT_GEOMETRY_DECISION",
+      "parallel_objective": "freeze one rational smooth compact torsor member, build its Rees blowup presentation and saturation, then solve the global equivariance equations rather than assuming an order-four root",
+      "primary_objective": "select the external U1_8-to-C8 route as new action data, freeze all localized/neutral isotropy, and construct one BV regulator plus the signed fixed-wall Dai-Freed/WCS character"
+    },
+    "research_program_status": "OPEN_WITH_EXACT_V89_GAINS_AND_ONE_CONTINUOUS_PARENT_NO_GO",
+    "selected_branch_status": "EXTERNAL_C8_KERNEL_PARITY_AND_GENERIC_COMPACT_RESOLUTION__LOCAL_WALL_AND_QUANTUM_PARENT_OPEN",
+    "selected_light_Higgs_pair": [
+      "H_uA",
+      "H_dC"
+    ],
+    "strongest_C8_result": "for frozen V88 non-C8 lifts every allowed C8-factor exponent projection is even; the selected full cocycle projects to C4, while external C8 kernel parity and bulk descent pass",
+    "strongest_anomaly_result": "the smooth connected I8 and charged gauge/log-twist wall sums are exact; gauged U1_T fails both the added-vector gravity count and the Abelian GS system",
+    "strongest_geometry_result": "global projective crepant compact-torsor blowups and a nonempty generic smooth family exist",
+    "strongest_localized_result": "one explicit z00 split-U5 local phase assignment exists with independent component characters; localized wall-quotient representations and full character inputs are not frozen"
+  },
+  "core_sha256": "30f7ffe459ca396dede6f255a03722180fd38c320cb4aa0e8982522078a86511",
+  "date": "2026-09-02",
+  "fail_closed_logic": {
+    "C8_valued_lift_is_not_primitive_C8_image": true,
+    "accept_if_partial_scaffolds_only": false,
+    "charged_wall_sum_is_not_full_Gysin_eta_trivialization": true,
+    "connected_I8_is_not_stratified_finite_character": true,
+    "continuous_U1T_no_go_does_not_reject_finite_C4": true,
+    "generic_compact_existence_is_not_frozen_saturation": true,
+    "global_crepant_resolution_is_not_diagonal_orbibundle": true,
+    "kernel_parity_is_not_local_wall_descent_or_quantum_gauging": true,
+    "natural_root_rejection_is_not_all_automorphisms_classified": true,
+    "new_localized_candidate_is_not_inherited_action_data": true
+  },
+  "gate_ledger": {
+    "G1": "OPEN: V89 constructs external-C8 kernel parity plus bulk descent and a new z00 split-U5 phase candidate, and globalizes the compact crepant blowups with generic smooth existence; localized wall-group descent, a primitive geometric C8 and a quantum same-action parent remain absent.",
+    "G2": "OPEN: the V88 rank-one light Higgs pair is retained, but the external C8/compensator sector has no accepted SUSY-breaking action, soft spectrum or complete thresholds.",
+    "G3": "OPEN: one z00 split-U5 isotropy candidate is explicit, but its component characters and placement are new, its rank VEVs break primitive C8, and the full fixed-wall/neutral sector plus one common BV/regulator complex are not constructed.",
+    "G4": "OPEN: the charged-fermion gauge/log-twist component vanishes, but placement, wall-group, gravity/tensor/neutral, normal-bundle and regulator inputs for the full character are not frozen, and no Dai-Freed/WCS trivialization exists.",
+    "G5": "OPEN: charge-conjugate regulator representations are algebraically available, but no common elliptic gauge-fixed KK complex, stratified boundary conditions, Pfaffian orientation or determinant exists.",
+    "G6": "OPEN: no accepted spectrum from a same-action quantum parent has been propagated through two-loop running and compact thresholds.",
+    "G7": "OPEN: the signed C8 selector survives as an external classical candidate, but its U1_8/GM origin, nonzero compensator mass, decay/Higgs/proton certificate, cosmology and likelihood remain absent.",
+    "G8": "OPEN: a global crepant resolution and generic smooth compact member now exist, but no explicit frozen member/Rees saturation, literal order-four action, diagonal orbibundle, anomaly theory or UV-complete same action exists."
+  },
+  "input_core_hashes": {
+    "V88_master": "d9fe56874c7ad8da417b03ce332f9b2260550b1eaf83609493fa1d12a5dd235a",
+    "V89_route": "afece33b67225eb97b4813a643914fe979a744cea5d233e4886c80be59fbf3e7"
+  },
+  "lineage": {
+    "new_route": "B89",
+    "parent_master": "V88",
+    "parent_route_count": 16,
+    "parent_route_matrix_sha256": "55f2db0c0877a2f42164481054468bdca03e6f438cb5920b985192f575ce259d",
+    "supersession_scope": [
+      "replace V88's uncomputed full-order-eight lift by an exact space-group enumeration and external-sector boundary",
+      "add one explicitly new z00 split-U5 classical candidate without pretending V70 fixed its component characters or placement",
+      "promote relative torsor blowups to a global projective crepant sequence and prove generic compact smooth existence"
+    ]
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F90_EXTERNAL_U1_8_BV_FIXED_WALL_OR_EQUIVARIANT_GEOMETRY_DECISION",
+    "parallel_objective": "freeze one rational smooth compact torsor member, build its Rees blowup presentation and saturation, then solve the global equivariance equations rather than assuming an order-four root",
+    "primary_objective": "select the external U1_8-to-C8 route as new action data, freeze all localized/neutral isotropy, and construct one BV regulator plus the signed fixed-wall Dai-Freed/WCS character"
+  },
+  "open_obligations": [
+    "choose and derive, from one action, either an external U1_8/C8 gauge sector or a different geometric primitive-C8 compactification",
+    "if a continuous parent is retained, add charged matter and/or tensor/GS data that solve all Abelian six-dimensional anomaly equations",
+    "freeze the localized placement and every intrinsic phase, including neutral, tensor, gravity, ghost, antifield and regulator sectors",
+    "construct one elliptic BV/BRST/Pauli-Villars complex and compute every fixed-wall logarithmic twist/Gysin contribution",
+    "evaluate the full Dai-Freed eta character and construct a quantized differential GS/WCS trivialization",
+    "freeze explicit rational compact coefficients and compute the resolved Rees/Jacobian saturation",
+    "construct or globally rule out an equivariant order-four action and glue the diagonal Gammahat orbibundle",
+    "construct the U1_8 breaking, charge-four GM spurion, compensator mass/decay and proton-safe Higgs sector",
+    "only after a same-action quantum parent exists, compute thresholds, unification, cosmology and likelihood"
+  ],
+  "primary_sources": [
+    {
+      "id": "vonGersdorff2006",
+      "role": "localized six-dimensional orbifold anomalies depend on the full fixed-point twist",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "id": "Hsieh2018",
+      "role": "Dai-Freed classification of four-dimensional discrete fermion anomalies and symmetry extensions",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "id": "MonnierMoore2018",
+      "role": "global six-dimensional Green-Schwarz/Wu-Chern-Simons quantization and residual finite-group anomalies",
+      "url": "https://arxiv.org/abs/1808.01334"
+    },
+    {
+      "id": "GrootNibbelinkHillenbach2006",
+      "role": "orbifold-compatible supersymmetric bulk and fixed-point quantum structures",
+      "url": "https://arxiv.org/abs/hep-th/0602155"
+    },
+    {
+      "id": "BraunMorrison2014",
+      "role": "genus-one fibrations, Tate-Shafarevich data and F-theory without a section",
+      "url": "https://arxiv.org/abs/1401.7844"
+    },
+    {
+      "id": "Park2011",
+      "role": "six-dimensional nonabelian and abelian anomaly/Green-Schwarz equations",
+      "url": "https://arxiv.org/abs/1111.2351"
+    },
+    {
+      "id": "WittenYonekura2019",
+      "role": "nonperturbative anomaly inflow and eta-invariant formulation",
+      "url": "https://arxiv.org/abs/1909.08775"
+    }
+  ],
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "H78 category/AHSS and general flat half-spinor parent adjudication",
+      "ordinal": 8,
+      "route_id": "B80",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F80A_CANONICAL_ZERO_HALF_H0",
+        "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+        "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Q4 parent-lift, eta-shadow and relative Bord765 cap adjudication",
+      "ordinal": 9,
+      "route_id": "B81",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+        "F81D_NONFLAT_Q1_COMPENSATOR",
+        "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+        "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "qhat Q4 bordism, optional D15 defect and scoped compensator adjudication",
+      "ordinal": 10,
+      "route_id": "B82",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F82A_QHAT_Q4_REDUCED_CLASS",
+        "F82B_RELATIVE_QHAT_MINUS_BASEPOINT_CLASS",
+        "F82D_ORDINARY_CLOSED7_QHAT_Q4_TEST",
+        "F82E2_GENERAL_NONFLAT_SAME_RANK_COMPENSATOR",
+        "F82G_OPTIONAL_CLOSED7_DEFECT_RESIDUES",
+        "F82H_CANDIDATE_POSITIVE_CHARGE_LIFTS",
+        "F82J_FULL_D15_WORLDSHEET_SECTOR",
+        "F82K_FULL_PARENT_ANOMALY_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "cyclic bulk parent, Q4 WCS shadow and 4 SO(11) instanton-string adjudication",
+      "ordinal": 11,
+      "route_id": "B83",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F83A_SMOOTH_BULK_CYCLIC_C4_QUOTIENT",
+        "F83A2_FULL_SQUARE_SPACE_GROUP_HGAMMA",
+        "F83A3_UNIQUE_GLOBAL_CENTER_KERNEL",
+        "F83B_Q4_TORSION_LINKING_FORM",
+        "F83B2_EVEN_U_REFERENCE_WCS_SHADOW",
+        "F83B3_PHYSICAL_WCS_REFINEMENT",
+        "F83B4_REGULATED_BARE_ETA_PHASE",
+        "F83B5_BARE_TIMES_WCS_IDENTITY",
+        "F83C_BULK_4SO11_INSTANTON_STRING",
+        "F83C2_4SO11_WORLDSHEET",
+        "F83C3_COMPACT6_INCIDENCE",
+        "F83C4_COMPACT6_HALF_BPS_SOLUTION",
+        "F83C7_FULL_HGAMMA_D15_GLUE",
+        "F83D_DELTA_PRIMARY_DETECTOR",
+        "F83D2_DELTA_H0_HIDDEN_EXTENSION",
+        "F83E_SAME_ACTION_COMPLETION"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "full-Gammahat no-go, C4F spinor grading and F4 heterotic-string redesign",
+      "ordinal": 12,
+      "route_id": "B84",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+        "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact F4 non-split I2star, C4F fixed-stratum and AHSS precursor route",
+      "ordinal": 13,
+      "route_id": "B85",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F85_COMPACT_F4_ORDINARY_JACOBIAN",
+        "F85_C4F_STRATIFIED_CLASSICAL_EXTENSION",
+        "F85_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Hodge correction, bisection target, C4F anomaly no-go and scoped AHSS closure",
+      "ordinal": 14,
+      "route_id": "B86",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F86_CONTINUOUS_U1F_DIAGONAL_PARENT",
+        "F86_ORDER2_PRODUCT_BACKGROUND_INFLOW",
+        "F86_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact ambient/flatness, period-two bisection, B-neutral fixed-phase candidate and smooth GF character",
+      "ordinal": 15,
+      "route_id": "B87",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "F87A",
+        "F87B",
+        "F87C",
+        "F87D"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "exact smooth-bulk Gammahat, relative crepant bisection, corrected anomaly topology and signed-C8 selector scout",
+      "ordinal": 16,
+      "route_id": "B88",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "the copy-dependent discrete character is placed in the exact reduced flavor centralizer Sp2_AC x Sp1_B",
+        "the selected u=v=r=s=0 lift satisfies every square-space-group relation modulo K_F",
+        "the quotient kernel contains no pure Spin11 center",
+        "all A/B/C projectors at z00, z11, z10 and z01 equal the V70 projectors",
+        "a projective crepant blowup sequence resolves every simple-root chart over S",
+        "the bisection meets affine-D6 node alpha3 with degree two and the same nontrivial Spin11 center coset as V86 node alpha1",
+        "the signed Sp3 Cartan and its traces are explicit, together with one explicitly scoped minimal integer lift of the four-dimensional table",
+        "the discrete zero-mode residue screen remains zero",
+        "within the stated ordinary SW-polynomial subring the degree-five reduction leaves only a*w4, and the displayed witness requires no a*w4 term",
+        "V85's Cbar-45-C row is bound as a retracted mixed-action obligation",
+        "a separate C8 charge assignment enforces B0 parity for neutral driver coefficients and a proposed localized vectorlike 5+5bar cancels every displayed mod-eight residue"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "frozen-lift C8 exponent exhaustion, continuous-U1T anomaly no-go, split-U5 localized candidate and compact torsor globalization",
+      "ordinal": 17,
+      "route_id": "B89",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "all eight necessary projector-preserving C8 exponent triples are enumerated for the frozen V88 non-C8 lifts",
+        "every such triple has even exponents and generates at most <k^2>=C4",
+        "an independent primitive external C8 has exact kernel-parity compatibility on assigned characters and full descent on the audited bulk representations",
+        "one new z00 split-U5 local phase candidate has exact gauge, intrinsic and center phases",
+        "the complete smooth connected Spin11 polynomial and charged-fermion gauge/log-twist wall component are exact",
+        "the gauged continuous U1_T parent is rejected by the added-vector gravity count and three incompatible GS equations",
+        "the frozen inputs omit placement, wall-group, neutral, regulator and normal-bundle data required for the full fixed-wall character",
+        "the three compact torsor blowups are global, projective and crepant",
+        "a nonempty Zariski-open family of smooth compact resolved members exists",
+        "the natural order-four root of the deck involution is rejected exactly"
+      ]
+    }
+  ],
+  "schema": "susy_v89_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "c1ab8d8aa167ec7921282264ce99939ba5f2205981794d1cfdd8c66fd976f64b",
+    "count": 7,
+    "ids": [
+      "vonGersdorff2006",
+      "Hsieh2018",
+      "MonnierMoore2018",
+      "GrootNibbelinkHillenbach2006",
+      "BraunMorrison2014",
+      "Park2011",
+      "WittenYonekura2019"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V89_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V88_MASTER_AND_V89_ROUTE_CORES_BOUND__C8_EXPONENT_PROJECTIONS_EXHAUSTED_FOR_FROZEN_V88_LIFTS__C8_FACTOR_PROJECTION_ONLY_K2_C4__INDEPENDENT_EXTERNAL_C8_KERNEL_PARITY_AND_BULK_DESCENT__NEW_Z00_SPLIT_U5_LOCAL_PHASE_CANDIDATE_EXACT__GAUGED_CONTINUOUS_U1T_REJECTED_BY_GRAVITY_COUNT_AND_EXACT_6D_GS_SYSTEM__CHARGED_FERMION_GAUGE_LOG_TWIST_COMPONENT_ZERO__FULL_BV_DAIFREED_WCS_OPEN__GLOBAL_PROJECTIVE_CREPANT_TORSOR_BLOWUPS_EXACT__GENERIC_COMPACT_SMOOTH_MEMBER_EXISTS__FROZEN_REES_SATURATION_OPEN__NATURAL_ORDER4_ROOT_REJECTED__GLOBAL_EQUIVARIANT_ACTION_AND_DIAGONAL_BUNDLE_OPEN__NO_ACCEPTED_PARENT__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "C8_exponent_projections_enumerated_for_frozen_V88_lifts": true,
+    "accepted_full_parent_action_exists": false,
+    "audited_bulk_G8_representation_descent_constructed": true,
+    "charged_fermion_gauge_log_twist_component_zero": true,
+    "closed_gates": [],
+    "common_BV_regulator_constructed": false,
+    "diagonal_resolved_Gammahat_orbibundle_constructed": false,
+    "external_C8_quantum_gauging_accepted": false,
+    "fixed_wall_character_required_inputs_fully_frozen": false,
+    "gauged_continuous_U1_T_parent_current_spectrum": false,
+    "generic_compact_smooth_resolved_member_exists": true,
+    "global_projective_crepant_torsor_blowups_constructed": true,
+    "honest_outcome": "V89 turns the C8 and compact-global questions into exact positive/negative statements: external-C8 kernel parity, audited bulk descent and a generic smooth compact resolution exist, but the existing geometry generates only C4 and localized wall-group/quantum data remain incomplete.",
+    "independent_external_C8_kernel_parity_assignment_constructed": true,
+    "literal_global_order4_action_constructed": false,
+    "localized_wall_quotient_representation_descent_constructed": false,
+    "natural_order4_root_rejected": true,
+    "new_U1_vector_irreducible_gravity_obstruction": true,
+    "new_z00_split_U5_local_phase_candidate_constructed": true,
+    "primitive_k_in_C8_factor_projection_for_frozen_V88_lifts": false,
+    "rank_VEVs_preserve_primitive_C8": false,
+    "signed_fixed_wall_character_computed": false,
+    "smooth_connected_Spin11_I8_computed": true,
+    "specific_compact_member_frozen_and_saturated": false,
+    "split_U5_component_characters_are_new_action_data": true,
+    "theory_complete": false,
+    "z00_placement_inherited_from_V70": false
+  },
+  "supersession_ledger": {
+    "V88_compact_smoothness_promoted_to_generic_existence": true,
+    "V88_external_C8_promoted_to_quantum_gauging": false,
+    "V88_external_C8_scout_promoted_to_kernel_parity_and_audited_bulk_descent": true,
+    "V88_full_fixed_wall_character_now_computed": false,
+    "V88_full_order8_lift_open_replaced_by_exhaustive_exponent_projection_no_go_for_frozen_nonC8_lifts": true,
+    "V88_localized_isotropy_absence_replaced_by_one_new_split_U5_conditional_candidate": true,
+    "V88_relative_resolution_promoted_to_global_projective_crepant_blowups": true,
+    "diagonal_orbibundle_complete": false,
+    "literal_global_order4_action_complete": false,
+    "specific_member_and_Rees_saturation_complete": false
+  },
+  "version": "V89"
+}

@@ -1,0 +1,983 @@
+{
+  "C8_space_group_enumeration": {
+    "all_projector_preserving_exponents": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "all_projector_preserving_exponents_even": true,
+    "any_necessary_triple_projects_to_primitive_k": false,
+    "classification_scope": "C8 exponents with the non-C8 Spin11, tangent, R and flavor lift data frozen to V88; only the selected representative has its complete correlated center defects certified here",
+    "contains_pure_Spin11_center": false,
+    "cover": "Spin(T) x Spin(11) x Sp(1)_R x (Sp(2)_AC x Sp(1)_B) x Sp(266)_H x C8",
+    "descent_congruences": [
+      "t+c+r+h3+h266=0 mod 2",
+      "c+q8=0 mod 2"
+    ],
+    "every_exponent_triple_is_a_fully_correlated_Gammahat_cocycle": false,
+    "exact_conclusion": "Under the frozen V88 non-C8 lift, every allowed C8 exponent projection lies in <k^2> and therefore has order at most four.  The selected representative reproduces the full V88 cocycle.  A primitive k must be independent or require different non-C8/geometric data.",
+    "kernel_coordinate_order": [
+      "T",
+      "Spin11",
+      "R",
+      "H3",
+      "H266",
+      "k4"
+    ],
+    "kernel_generators": {
+      "krot": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "kspin_equals_z_times_k4": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "primitive_k_in_selected_C8_factor_projection": false,
+    "projector_condition": "u=v=2 mod 4 so k^u and k^v act as (-1,+1,-1) on (A,B,C)",
+    "projector_preserving_translation_pairs": [
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        6
+      ]
+    ],
+    "projector_preserving_triple_count": 8,
+    "projector_preserving_triples_alpha_u_v": [
+      [
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        6
+      ],
+      [
+        0,
+        6,
+        2
+      ],
+      [
+        0,
+        6,
+        6
+      ],
+      [
+        4,
+        2,
+        2
+      ],
+      [
+        4,
+        2,
+        6
+      ],
+      [
+        4,
+        6,
+        2
+      ],
+      [
+        4,
+        6,
+        6
+      ]
+    ],
+    "raw_translation_pair_count": 8,
+    "raw_translation_pairs_u_v": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        6
+      ]
+    ],
+    "rotation_condition": "alpha in {0,4} preserves the z00 projectors",
+    "selected_generated_C8_subgroup_exponents": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "selected_lifts": {
+      "A": "(qhat,A3,1)",
+      "U": "(what,H_AC,k^2)",
+      "V": "(what,H_AC,k^2)"
+    },
+    "selected_relation_C8_exponents": {
+      "A4": 0,
+      "AUAinvVinv": 0,
+      "AVAinvU": 4,
+      "UVUinvVinv": 0
+    },
+    "selected_representative_alpha_u_v": [
+      0,
+      2,
+      2
+    ],
+    "status": "PASS_EXACT_C8_FACTOR_PROJECTION_FOR_FROZEN_V88_LIFTS__NO_ELEMENT_PROJECTS_TO_PRIMITIVE_K",
+    "translation_equations": [
+      "u-v in {0,4} mod 8",
+      "u+v in {0,4} mod 8"
+    ]
+  },
+  "artifact_hashes": {
+    "generator_sha256": "24eee3ffc3e21c319709686b0f5c77b3809bf32bc84bfda81d4da0383b8867f7",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "d9515d10f270a7d3113d7f98e14fb04a2fdd08f45d1ebeca1e0754e470c9b20e"
+  },
+  "compact_globalization": {
+    "Cox_and_Rees_boundary": {
+      "V87_32_cone_fan_applies_to": "resolved Tate/Jacobian ambient",
+      "applies_to_P112_torsor_binomial_blowups": false,
+      "explicit_resolved_Jacobian_saturation_computed": false,
+      "required_preblowup_away_S_ideal": "((F,F_U,F_V,F_W,F_s,F_t,F_r0,F_r1):s^infinity):B_Cox^infinity",
+      "resolved_Rees_algebra_presentation_constructed": false
+    },
+    "base": {
+      "anticanonical_class": "Kbar=2S+6F",
+      "fiber": "F",
+      "negative_section": "S with S^2=-4",
+      "surface": "F4"
+    },
+    "diagonal_bundle_boundary": {
+      "Cech_lift_obeying_w2_equals_a2_constructed": false,
+      "Sp3_H_AC_bundle_constructed": false,
+      "bisection_deck_data": "branched C2 cover",
+      "center_coset_j2_equals_z_is_necessary_not_sufficient": true,
+      "diagonal_resolved_Gammahat_orbibundle_constructed": false,
+      "exceptional_divisor_linearisations_constructed": false,
+      "localized_isotropy_and_regulator_glued": false,
+      "ordinary_principal_C4_bundle_constructed": false
+    },
+    "generic_compact_smoothness": {
+      "Bertini_nonempty_Zariski_open_smooth_away_from_S": true,
+      "F4_h0_formula": "sum_(k=0)^a max(b-4k+1,0)",
+      "Lprime_class": "2S+12F",
+      "Lprime_globally_generated": true,
+      "Ri_class": "S+12F",
+      "Ri_globally_generated": true,
+      "V88_resolved_charts_smooth_over_S": true,
+      "basepoint_free_case_split": {
+        "U2_minus_V2_nonzero": "choose deltaLprime nonzero at the base point",
+        "U2_minus_V2_zero": "U and V are both nonzero, so choose a quartic monomial and deltaRi nonzero",
+        "weighted_singular_section_U_equals_V_equals_zero": "all moving directions vanish but fixed F0=W^2 is nonzero, so this section is outside every affine-family hypersurface"
+      },
+      "full_span_including_fixed_F0_basepoint_free_on_s_nonzero": true,
+      "generic_compact_smooth_resolved_member_exists": true,
+      "moving_directions": [
+        "s^2 deltaLprime (U^2-V^2)^2",
+        "s^3 deltaRi U^(4-i)V^i"
+      ],
+      "moving_directions_basepoint_free_where_U_V_not_both_zero": true,
+      "rational_member_exists_over_infinite_field_Q": true,
+      "section_counts": {
+        "h0_2S_plus_12F": 27,
+        "h0_3S_plus_12F": 28,
+        "h0_S_plus_12F": 22
+      },
+      "specific_rational_coefficients_frozen": false
+    },
+    "global_blowup_sequence": {
+      "C_plus_C_minus_ambient_codimension": 3,
+      "C_plus_C_minus_disjoint": true,
+      "C_plus_C_minus_hypersurface_multiplicity": 2,
+      "C_plus_C_minus_smooth_copies_of_S": true,
+      "D0_tilde_ambient_codimension": 2,
+      "D0_tilde_hypersurface_multiplicity": 1,
+      "D0_tilde_smooth": true,
+      "D0_tilde_smooth_reason": "C_plus and C_minus are Cartier divisors inside smooth D0=(s,W)",
+      "all_blowups_projective": true,
+      "centers": [
+        "C_+=(s,W,U-V)",
+        "C_-=(s,W,U+V)",
+        "D0_tilde=weak transform of (s,W)"
+      ],
+      "discrepancies": [
+        0,
+        0,
+        0
+      ],
+      "discrepancy_formulas": [
+        "3-1-2=0",
+        "3-1-2=0",
+        "2-1-1=0"
+      ],
+      "global_projective_crepant_sequence": true,
+      "strict_transform_class": "4H+2Kbar-2E_plus-2E_minus-E0=-K_Atilde"
+    },
+    "order_four_action_audit": {
+      "U2_minus_V2_squared_factor": 1,
+      "W_squared_factor": -1,
+      "all_possible_order4_automorphisms_classified": false,
+      "alternative_requires": [
+        "a specified equivariant base automorphism",
+        "coefficient eigensections",
+        "weighted-projective order relations"
+      ],
+      "boundary_quartic_after": "p0 V^4-p1 U V^3",
+      "boundary_quartic_before": "p0 U^4+p1 U^3 V",
+      "boundary_quartic_is_plus_or_minus_original": false,
+      "literal_global_order4_action_constructed": false,
+      "manifest_deck_order": 2,
+      "manifest_global_deck_involution": "W -> -W",
+      "natural_order4_root_rejected": true,
+      "natural_root_candidate": "(U,V,W)->(V,-U,iW)",
+      "scope_of_tested_candidate": "identity base action with the frozen boundary coefficients",
+      "single_hypersurface_eigenvalue_exists": false
+    },
+    "status": "PASS_EXACT_GLOBAL_PROJECTIVE_CREPANT_BLOWUPS_AND_GENERIC_COMPACT_SMOOTH_EXISTENCE__EQUIVARIANT_ACTION_OPEN",
+    "weighted_projective_ambient": {
+      "coordinate_classes": {
+        "U": "H",
+        "V": "H",
+        "W": "2H+Kbar"
+      },
+      "fiber": "P(1,1,2)",
+      "hypersurface_class": "4H+2Kbar=-K_A",
+      "weighted_singular_section_avoided": "at [U:V:W]=[0:0:1], F=W^2 is nonzero"
+    }
+  },
+  "continuous_Cartan_and_charged_wall_anomaly_audit": {
+    "C8_integer_lift_ambiguity": {
+      "V88_signed_U1_8_tensor_is_four_dimensional_I6_shadow": true,
+      "continuous_U1_8_parent_requires_new_matter_or_GS_tensor_data": true,
+      "examples": [
+        {
+          "q2": [
+            25,
+            9
+          ],
+          "q4": [
+            625,
+            81
+          ],
+          "same_residue_mod8": [
+            5,
+            -3
+          ]
+        },
+        {
+          "q2": [
+            4,
+            36
+          ],
+          "q4": [
+            16,
+            1296
+          ],
+          "same_residue_mod8": [
+            2,
+            -6
+          ]
+        }
+      ],
+      "mod8_residues_determine_six_dimensional_I8": false
+    },
+    "Sp3_Cartan_hyper_contribution": {
+      "SMW_effective_moments": {
+        "1": 0,
+        "2": 8,
+        "3": 0,
+        "4": 32
+      },
+      "T_weights_on_6": [
+        2,
+        0,
+        2,
+        -2,
+        0,
+        -2
+      ],
+      "character_expansion": "2 exp(2x)+2+2 exp(-2x)=6+8x^2+(8/3)x^4+...",
+      "charged_hyper_Delta_I8_only": "+(11/6) p1(T) x^2-4 ch2(11) x^2-(44/3) x^4",
+      "dimension_weighted_q2": 88,
+      "dimension_weighted_q4": 352,
+      "interpretation": "charged-hyper contribution from one negative-chirality SMW half-hyper in 11 tensor 6",
+      "normalization_conventions": {
+        "bridge_to_Park": "the q^2 and q^4 moments below enter Park's Abelian equations in his trace/F_T normalization",
+        "ch2_11": "degree-four component of Tr_11 exp(iF_Spin11/2pi)",
+        "chirality_and_reality_factor": "overall -1/2 for a negative-chirality symplectic-Majorana-Weyl half-hyper",
+        "p1": "degree-four tangent Pontryagin class in the A-hat genus",
+        "x": "F_T/(2*pi)"
+      },
+      "raw_moments_Tr6_T_power": {
+        "1": 0,
+        "2": 16,
+        "3": 0,
+        "4": 64
+      }
+    },
+    "charged_fermion_gauge_log_twist_component": {
+      "component_sum_zero": true,
+      "distributional_degree_eight_formula": "I8_dist=sum_f delta_f^(2) wedge I6_f",
+      "effective_Z4_weights_F0_over_2pi": {
+        "-1": "-1/8",
+        "-i": "-3/8",
+        "1": "3/8",
+        "i": "1/8"
+      },
+      "fixed_wall_degree_six_formula": "I6_f uses F0_f=-i log(-P_f) in the charged-fermion gauge/log-twist component",
+      "full_gravity_tensor_neutral_normal_bundle_Gysin_term_computed": false,
+      "z00_U5_coefficient_sum_in_B_units": {
+        "A_m3": "1/2",
+        "B_m0": "1/2",
+        "C_m1": "-1/2",
+        "sum": "0",
+        "vector": "-1/2"
+      },
+      "z01_SU2_doublets": 20,
+      "z10_SU2_doublets": 20,
+      "z10_z01_ordinary_Witten_parity_even": true,
+      "z11_conjugate_U5_coefficient_sum_in_Bprime_units": {
+        "A_m3": "1/2",
+        "B_m0": "1/2",
+        "C_m1": "-1/2",
+        "sum": "0",
+        "vector": "-1/2"
+      }
+    },
+    "continuous_U1_T_GS_equations": {
+      "a": [
+        2,
+        2
+      ],
+      "b_Spin11": [
+        2,
+        -1
+      ],
+      "equations": [
+        "a.c=-88/6=-44/3",
+        "(b/2).c=8",
+        "3 c^2=352"
+      ],
+      "finite_C4_subgroup_rejected_by_this_continuous_no_go": false,
+      "gauged_continuous_U1_T_parent_with_current_spectrum_and_lattice": false,
+      "integral_lattice_first_equation_impossible": true,
+      "lambda_B5": 2,
+      "primitive_T_over_2_rescaling_repairs_equations": false,
+      "rational_solution_a_dot_c": "-44/3",
+      "rational_solution_b_over_2_dot_c": "8",
+      "rational_solution_c_squared": "-4784/81",
+      "required_c_squared": "352/3",
+      "string_charge_lattice": "U with Omega=[[0,1],[1,0]]",
+      "third_equation_fails_even_over_Q": true,
+      "unique_rational_solution_first_two": [
+        "-92/9",
+        "26/9"
+      ],
+      "unknown": "c=b_TT"
+    },
+    "new_U1_vector_gravitational_obstruction": {
+      "H_minus_V_plus_29T_minus_273": -1,
+      "after_gauging_H_V_T": [
+        299,
+        56,
+        1
+      ],
+      "baseline_H_V_T": [
+        299,
+        55,
+        1
+      ],
+      "irreducible_trR4_obstruction": true,
+      "one_added_neutral_hyper_would_repair_gravity_count_only": true,
+      "three_Abelian_GS_equations_still_fail_after_that_repair": true,
+      "uncancelled_polynomial": "+[trR4+(5/4)(trR2)^2]/5760"
+    },
+    "quantum_boundary": {
+      "WCS_admissibility_and_trivialization_constructed": false,
+      "complete_six_dimensional_polynomial_including_finite_background": false,
+      "finite_C4_or_C8_Dai_Freed_character_computed": false,
+      "full_fixed_wall_log_twist_and_Gysin_terms": false
+    },
+    "smooth_connected_parent": {
+      "expanded_I8": "-1/16 (trR2)^2-1/16 trR2 trF2+1/8 (trF2)^2",
+      "factorized_I8": "-1/16 (trR2-trF2)(trR2+2trF2)",
+      "irreducible_trF4_zero": true,
+      "irreducible_trR4_zero": true,
+      "is_orbifold_fixed_wall_polynomial": false,
+      "spectrum": "T=1, V=55, three bulk 11 hypers, 266 neutral hypers",
+      "trace_convention": "tr=tr_11"
+    },
+    "status": "PASS_EXACT_CONNECTED_SPIN11_POLYNOMIAL_AND_CHARGED_WALL_SUMS__GAUGED_CONTINUOUS_U1_T_REJECTED__FINITE_CHARACTER_OPEN"
+  },
+  "core_sha256": "afece33b67225eb97b4813a643914fe979a744cea5d233e4886c80be59fbf3e7",
+  "date": "2026-09-02",
+  "fixed_wall_quantum_determinacy": {
+    "BV_regulator_decision": {
+      "Dai_Freed_WCS_trivialization_constructed": false,
+      "all_stratified_boundary_conditions_specified": false,
+      "formal_charge_conjugate_pairs_can_be_written": true,
+      "one_common_elliptic_gauge_fixed_complex_specified": false,
+      "regulator_preserves_gauge_C8_and_supersymmetry_proved": false,
+      "signed_fixed_wall_anomaly_character_computed": false
+    },
+    "V70_effective_Z4_weights": {
+      "-1": "-1/8",
+      "-i": "-3/8",
+      "1": "3/8",
+      "i": "1/8"
+    },
+    "dependence": "A fixed-wall anomaly depends on the logarithmic fermion twist at each inequivalent stratum, the support of localized multiplets, normal-bundle data, and the chosen regulator/eta convention.",
+    "missing_frozen_inputs": [
+      "family and rank-field placement among z00, z11 and the z10/z01 orbit",
+      "intrinsic phases for every localized multiplet",
+      "neutral-hyper, tensorino, gravitino and self-dual-field isotropy",
+      "ghost, antifield and Pauli-Villars boundary conditions",
+      "Pfaffian orientation and differential GS/WCS cocycle"
+    ],
+    "ordinary_screens_retained": {
+      "V70_pointwise_charged_polynomial_zero": true,
+      "these_screens_imply_full_eta_trivialization": false
+    },
+    "same_4D_spectrum_different_field_support_example": {
+      "choice_A": "place the three anomaly-free family 16s at z00",
+      "choice_B": "place the same three anomaly-free family 16s at z11",
+      "computes_a_nonzero_difference_of_anomaly_characters": false,
+      "demonstrates_localized_placement_not_frozen": true,
+      "different_delta_function_support": true,
+      "is_by_itself_a_proof_that_the_eta_characters_differ": false,
+      "localized_family_support_A_z00_z11_z2orbit": [
+        3,
+        0,
+        0
+      ],
+      "localized_family_support_B_z00_z11_z2orbit": [
+        0,
+        3,
+        0
+      ],
+      "same_integrated_4D_family_spectrum": true,
+      "same_ordinary_local_U5_anomaly_zero": true
+    },
+    "status": "INPUT_UNDERSPECIFIED__FULL_FIXED_WALL_CHARACTER_NOT_COMPUTABLE_FROM_FROZEN_INPUTS"
+  },
+  "gate_ledger": {
+    "G1": "OPEN: V89 constructs external-C8 kernel parity plus bulk descent and a new z00 split-U5 phase candidate, and globalizes the compact crepant blowups with generic smooth existence; localized wall-group descent, a primitive geometric C8 and a quantum same-action parent remain absent.",
+    "G2": "OPEN: the V88 rank-one light Higgs pair is retained, but the external C8/compensator sector has no accepted SUSY-breaking action, soft spectrum or complete thresholds.",
+    "G3": "OPEN: one z00 split-U5 isotropy candidate is explicit, but its component characters and placement are new, its rank VEVs break primitive C8, and the full fixed-wall/neutral sector plus one common BV/regulator complex are not constructed.",
+    "G4": "OPEN: the charged-fermion gauge/log-twist component vanishes, but placement, wall-group, gravity/tensor/neutral, normal-bundle and regulator inputs for the full character are not frozen, and no Dai-Freed/WCS trivialization exists.",
+    "G5": "OPEN: charge-conjugate regulator representations are algebraically available, but no common elliptic gauge-fixed KK complex, stratified boundary conditions, Pfaffian orientation or determinant exists.",
+    "G6": "OPEN: no accepted spectrum from a same-action quantum parent has been propagated through two-loop running and compact thresholds.",
+    "G7": "OPEN: the signed C8 selector survives as an external classical candidate, but its U1_8/GM origin, nonzero compensator mass, decay/Higgs/proton certificate, cosmology and likelihood remain absent.",
+    "G8": "OPEN: a global crepant resolution and generic smooth compact member now exist, but no explicit frozen member/Rees saturation, literal order-four action, diagonal orbibundle, anomaly theory or UV-complete same action exists."
+  },
+  "independent_external_C8_extension": {
+    "all_assigned_central_characters_annihilate_z_times_k4": true,
+    "bulk_G8_representations_descend": true,
+    "bulk_SMW_reality_pairs_q8": {
+      "A_11": [
+        6,
+        2
+      ],
+      "B_11": [
+        4,
+        4
+      ],
+      "C_11": [
+        6,
+        2
+      ],
+      "each_pair_sums_to_zero_mod8": true,
+      "role": "explicit charge-conjugate symplectic-Majorana-Weyl components"
+    },
+    "conjugation_stability": {
+      "BV_PV_reality_statistics_mass_and_boundary_conditions_supplied": false,
+      "antifield_charge_rule": "q8 -> -q8",
+      "formal_center_character_conjugation_pairing_available": true,
+      "formal_vectorlike_pair_rule": "R_q plus Rbar_-q also annihilates (z,k^4)",
+      "parity_preserved_under_charge_reversal": true
+    },
+    "field_rows": [
+      {
+        "Spin11_center_parity": 1,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "three local U5 family combinations",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local",
+        "q8": 5,
+        "representation": "assigned spinor-origin center parity before wall-group construction"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "bulk 11 A",
+        "full_G8_representation_descent_certified": true,
+        "locus_scope": "bulk",
+        "q8": 6,
+        "representation": "Spin11 vector"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "bulk 11 B",
+        "full_G8_representation_descent_certified": true,
+        "locus_scope": "bulk",
+        "q8": 4,
+        "representation": "Spin11 vector"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "bulk 11 C",
+        "full_G8_representation_descent_certified": true,
+        "locus_scope": "bulk",
+        "q8": 6,
+        "representation": "Spin11 vector"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "A0",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local_or_driver_unspecified",
+        "q8": 2,
+        "representation": "assigned singlet central character"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "B0",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local_or_driver_unspecified",
+        "q8": 4,
+        "representation": "assigned singlet central character"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "P_A",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local_or_driver_unspecified",
+        "q8": 6,
+        "representation": "assigned singlet central character"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "X(+10)",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local",
+        "q8": 6,
+        "representation": "assigned center-even rank-field character"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "Xbar(-10)",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local",
+        "q8": 2,
+        "representation": "assigned center-even rank-field character"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "compensator 5_0",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local",
+        "q8": 0,
+        "representation": "assigned center-even U5 character"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "compensator 5bar_4",
+        "full_G8_representation_descent_certified": false,
+        "locus_scope": "local",
+        "q8": 4,
+        "representation": "assigned center-even U5 character"
+      },
+      {
+        "Spin11_center_parity": 0,
+        "assigned_central_character_annihilates_z_times_k4": true,
+        "c_plus_q8_mod2": 0,
+        "field": "gauge ghosts",
+        "full_G8_representation_descent_certified": true,
+        "locus_scope": "bulk",
+        "q8": 0,
+        "representation": "Spin11 adjoint"
+      }
+    ],
+    "group": "G8=(Spin(11) x C8)/<(z,k^4)>",
+    "localized_global_U5_and_U5prime_group_forms_frozen": false,
+    "localized_induced_wall_quotient_representations_constructed": false,
+    "new_physics_choice": "adjoin a primitive central internal generator K=k independently of the frozen square-space-group C8-factor projection",
+    "scope_boundary": {
+      "Pfaffian_orientation_and_eta_phase_computed": false,
+      "bulk_G8_representation_descent_constructed": true,
+      "continuous_U1_8_parent_action_constructed": false,
+      "external_C8_quantum_gauging_accepted": false,
+      "gauge_fixed_kinetic_complex_constructed": false,
+      "localized_wall_quotient_representation_descent_constructed": false,
+      "orbifold_boundary_conditions_for_every_ghost_antifield_and_regulator": false,
+      "primitive_external_C8_kernel_parity_assignment_defined": true,
+      "primitive_k_generated_in_frozen_V88_geometric_C8_factor": false,
+      "symmetry_preserving_regulator_proved": false
+    },
+    "status": "PASS_EXACT_KERNEL_PARITY_FOR_ALL_ASSIGNED_CHARACTERS_AND_BULK_G8_DESCENT__LOCAL_WALL_QUOTIENT_AND_QUANTUM_GAUGING_OPEN"
+  },
+  "input_core_hashes": {
+    "V69_route": "090843c54f6ce041c758f0301289c3cbc91024cd120ab1bafd86fd7bbad3ef1a",
+    "V70_route": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V87_route": "2cc908183f77848f292ced26a8cd5dd6bf923fb7ef11140d9d20ac35d0c07e9e",
+    "V88_master": "d9fe56874c7ad8da417b03ce332f9b2260550b1eaf83609493fa1d12a5dd235a",
+    "V88_route": "d8172ac25c3336ae622b250cf29b8a48089be4f15455c0163562a86a49b55033"
+  },
+  "lineage": {
+    "parent_master": "V88",
+    "requested_action": {
+      "accepted": false,
+      "id": "F89_C8_GAMMAHAT_LOCALIZED_ISOTROPY_AND_COMPACT_GLOBAL_GLUE",
+      "parallel_objective": "globalize the relative crepant resolution, realize the literal order-four action and glue the diagonal orbibundle",
+      "primary_objective": "construct or rule out the full order-eight Gammahat lift on smooth and localized sectors with one BV/regulator complex, then compute the signed fixed-wall anomaly character"
+    },
+    "route_id": "B89",
+    "supersession_scope": [
+      "replace V88's uncomputed full-order-eight lift by an exact space-group enumeration and external-sector boundary",
+      "add one explicitly new z00 split-U5 classical candidate without pretending V70 fixed its component characters or placement",
+      "promote relative torsor blowups to a global projective crepant sequence and prove generic compact smooth existence"
+    ]
+  },
+  "localized_z00_candidate": {
+    "all_displayed_components_invariant": true,
+    "all_displayed_fields_annihilate_z_times_k4": true,
+    "all_fourth_powers_match_Spin11_center": true,
+    "central_character_completion": {
+      "center_even_equation": "t+r+h3+h266=0 mod2",
+      "center_even_solution_count": 8,
+      "spinor_equation": "t+r+h3+h266=1 mod2",
+      "spinor_solution_count": 8,
+      "unfixed_bits": [
+        "t",
+        "r",
+        "h3",
+        "h266"
+      ]
+    },
+    "gauge_twist_rule": "Q_x=zeta^(-x)",
+    "local_ordinary_gauge_anomaly_screen": {
+      "V70_integer_m301_bulk_pointwise_polynomial_zero": true,
+      "V88_integrated_compensated_mod8_residues_zero": true,
+      "X_Xbar": "vectorlike",
+      "compensator_5_5bar": "gauge-vectorlike",
+      "is_full_fixed_wall_Dai_Freed_character": false,
+      "three_split_U5_family_combinations": "each 10+5bar+1 combination is U5-anomaly-free, bound from V70"
+    },
+    "new_action_datum": {
+      "changes_the_action_data": true,
+      "fixed_algebra": "u(5)",
+      "independent_10_and_5bar_plus_1_intrinsic_characters": true,
+      "one_scalar_intrinsic_character_on_irreducible_Spin11_16": false,
+      "placement": "put three split local U5 families (10_-1+5bar_3+1_-5), X, Xbar and 5_0+5bar_4 at z00",
+      "split_component_characters_are_additional_action_data": true,
+      "was_fixed_by_V70_or_V88": false
+    },
+    "phase_rows": [
+      {
+        "Spin11_center_parity": 1,
+        "U1X_charge": -1,
+        "field": "split U5 family:10_-1",
+        "fourth_power_matches_center": true,
+        "gauge_exponent_equals_minus_X_mod8": true,
+        "gauge_times_intrinsic_exponent_mod8": 0,
+        "gauge_twist_zeta_exponent": 1,
+        "intrinsic_fourth_power_sign": -1,
+        "intrinsic_zeta_exponent": 7,
+        "invariant_component": true,
+        "q8": 5,
+        "required_fourth_power_sign": -1,
+        "z_times_k4_exponent_mod2": 0
+      },
+      {
+        "Spin11_center_parity": 1,
+        "U1X_charge": 3,
+        "field": "split U5 family:5bar_+3",
+        "fourth_power_matches_center": true,
+        "gauge_exponent_equals_minus_X_mod8": true,
+        "gauge_times_intrinsic_exponent_mod8": 0,
+        "gauge_twist_zeta_exponent": 5,
+        "intrinsic_fourth_power_sign": -1,
+        "intrinsic_zeta_exponent": 3,
+        "invariant_component": true,
+        "q8": 5,
+        "required_fourth_power_sign": -1,
+        "z_times_k4_exponent_mod2": 0
+      },
+      {
+        "Spin11_center_parity": 1,
+        "U1X_charge": -5,
+        "field": "split U5 family:1_-5",
+        "fourth_power_matches_center": true,
+        "gauge_exponent_equals_minus_X_mod8": true,
+        "gauge_times_intrinsic_exponent_mod8": 0,
+        "gauge_twist_zeta_exponent": 5,
+        "intrinsic_fourth_power_sign": -1,
+        "intrinsic_zeta_exponent": 3,
+        "invariant_component": true,
+        "q8": 5,
+        "required_fourth_power_sign": -1,
+        "z_times_k4_exponent_mod2": 0
+      },
+      {
+        "Spin11_center_parity": 0,
+        "U1X_charge": 10,
+        "field": "X_+10",
+        "fourth_power_matches_center": true,
+        "gauge_exponent_equals_minus_X_mod8": true,
+        "gauge_times_intrinsic_exponent_mod8": 0,
+        "gauge_twist_zeta_exponent": 6,
+        "intrinsic_fourth_power_sign": 1,
+        "intrinsic_zeta_exponent": 2,
+        "invariant_component": true,
+        "q8": 6,
+        "required_fourth_power_sign": 1,
+        "z_times_k4_exponent_mod2": 0
+      },
+      {
+        "Spin11_center_parity": 0,
+        "U1X_charge": -10,
+        "field": "Xbar_-10",
+        "fourth_power_matches_center": true,
+        "gauge_exponent_equals_minus_X_mod8": true,
+        "gauge_times_intrinsic_exponent_mod8": 0,
+        "gauge_twist_zeta_exponent": 2,
+        "intrinsic_fourth_power_sign": 1,
+        "intrinsic_zeta_exponent": 6,
+        "invariant_component": true,
+        "q8": 2,
+        "required_fourth_power_sign": 1,
+        "z_times_k4_exponent_mod2": 0
+      },
+      {
+        "Spin11_center_parity": 0,
+        "U1X_charge": -2,
+        "field": "5_0 with X=-2",
+        "fourth_power_matches_center": true,
+        "gauge_exponent_equals_minus_X_mod8": true,
+        "gauge_times_intrinsic_exponent_mod8": 0,
+        "gauge_twist_zeta_exponent": 2,
+        "intrinsic_fourth_power_sign": 1,
+        "intrinsic_zeta_exponent": 6,
+        "invariant_component": true,
+        "q8": 0,
+        "required_fourth_power_sign": 1,
+        "z_times_k4_exponent_mod2": 0
+      },
+      {
+        "Spin11_center_parity": 0,
+        "U1X_charge": 2,
+        "field": "5bar_4 with X=+2",
+        "fourth_power_matches_center": true,
+        "gauge_exponent_equals_minus_X_mod8": true,
+        "gauge_times_intrinsic_exponent_mod8": 0,
+        "gauge_twist_zeta_exponent": 6,
+        "intrinsic_fourth_power_sign": 1,
+        "intrinsic_zeta_exponent": 2,
+        "invariant_component": true,
+        "q8": 4,
+        "required_fourth_power_sign": 1,
+        "z_times_k4_exponent_mod2": 0
+      }
+    ],
+    "scope_boundary": {
+      "candidate_selected_as_existing_V70_action_without_new_assumption": false,
+      "classical_z00_split_U5_local_phase_candidate_constructed": true,
+      "common_BV_regulator_constructed": false,
+      "every_fixed_wall_sector_and_image_bundle_constructed": false,
+      "full_localized_stabilizer_group_representation_constructed": false,
+      "localized_rank_VEVs_X_and_Xbar_invariant_under_Q_times_intrinsic_isotropy": true,
+      "localized_rank_VEVs_invariant_under_primitive_k": false,
+      "neutral_tensor_gravity_sector_isotropy_constructed": false,
+      "primitive_C8_broken_by_X_Xbar_VEVs_to_gauge_diagonal_subgroup": true,
+      "quantum_localized_completion_accepted": false
+    },
+    "status": "PASS_EXACT_NEW_Z00_SPLIT_U5_LOCAL_PHASE_CANDIDATE__GLOBAL_WALL_QUOTIENT_AND_QUANTUM_COMPLETION_OPEN",
+    "zeta": "exp(i*pi/4)"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F90_EXTERNAL_U1_8_BV_FIXED_WALL_OR_EQUIVARIANT_GEOMETRY_DECISION",
+    "parallel_objective": "freeze one rational smooth compact torsor member, build its Rees blowup presentation and saturation, then solve the global equivariance equations rather than assuming an order-four root",
+    "primary_objective": "select the external U1_8-to-C8 route as new action data, freeze all localized/neutral isotropy, and construct one BV regulator plus the signed fixed-wall Dai-Freed/WCS character"
+  },
+  "open_obligations": [
+    "choose and derive, from one action, either an external U1_8/C8 gauge sector or a different geometric primitive-C8 compactification",
+    "if a continuous parent is retained, add charged matter and/or tensor/GS data that solve all Abelian six-dimensional anomaly equations",
+    "freeze the localized placement and every intrinsic phase, including neutral, tensor, gravity, ghost, antifield and regulator sectors",
+    "construct one elliptic BV/BRST/Pauli-Villars complex and compute every fixed-wall logarithmic twist/Gysin contribution",
+    "evaluate the full Dai-Freed eta character and construct a quantized differential GS/WCS trivialization",
+    "freeze explicit rational compact coefficients and compute the resolved Rees/Jacobian saturation",
+    "construct or globally rule out an equivariant order-four action and glue the diagonal Gammahat orbibundle",
+    "construct the U1_8 breaking, charge-four GM spurion, compensator mass/decay and proton-safe Higgs sector",
+    "only after a same-action quantum parent exists, compute thresholds, unification, cosmology and likelihood"
+  ],
+  "primary_sources": [
+    {
+      "id": "vonGersdorff2006",
+      "role": "localized six-dimensional orbifold anomalies depend on the full fixed-point twist",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "id": "Hsieh2018",
+      "role": "Dai-Freed classification of four-dimensional discrete fermion anomalies and symmetry extensions",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "id": "MonnierMoore2018",
+      "role": "global six-dimensional Green-Schwarz/Wu-Chern-Simons quantization and residual finite-group anomalies",
+      "url": "https://arxiv.org/abs/1808.01334"
+    },
+    {
+      "id": "GrootNibbelinkHillenbach2006",
+      "role": "orbifold-compatible supersymmetric bulk and fixed-point quantum structures",
+      "url": "https://arxiv.org/abs/hep-th/0602155"
+    },
+    {
+      "id": "BraunMorrison2014",
+      "role": "genus-one fibrations, Tate-Shafarevich data and F-theory without a section",
+      "url": "https://arxiv.org/abs/1401.7844"
+    },
+    {
+      "id": "Park2011",
+      "role": "six-dimensional nonabelian and abelian anomaly/Green-Schwarz equations",
+      "url": "https://arxiv.org/abs/1111.2351"
+    },
+    {
+      "id": "WittenYonekura2019",
+      "role": "nonperturbative anomaly inflow and eta-invariant formulation",
+      "url": "https://arxiv.org/abs/1909.08775"
+    }
+  ],
+  "same_action_synthesis": {
+    "accepted_same_action_parent": false,
+    "exact_gains": [
+      "all eight necessary projector-preserving C8 exponent triples are enumerated for the frozen V88 non-C8 lifts",
+      "every such triple has even exponents and generates at most <k^2>=C4",
+      "an independent primitive external C8 has exact kernel-parity compatibility on assigned characters and full descent on the audited bulk representations",
+      "one new z00 split-U5 local phase candidate has exact gauge, intrinsic and center phases",
+      "the complete smooth connected Spin11 polynomial and charged-fermion gauge/log-twist wall component are exact",
+      "the gauged continuous U1_T parent is rejected by the added-vector gravity count and three incompatible GS equations",
+      "the frozen inputs omit placement, wall-group, neutral, regulator and normal-bundle data required for the full fixed-wall character",
+      "the three compact torsor blowups are global, projective and crepant",
+      "a nonempty Zariski-open family of smooth compact resolved members exists",
+      "the natural order-four root of the deck involution is rejected exactly"
+    ],
+    "hard_boundaries": [
+      "the existing square-space-group geometry does not generate primitive k",
+      "the z00 placement is a new action choice rather than a consequence of V70/V88",
+      "formal BV charge pairing is not a common regulator or eta invariant",
+      "the continuous U1_T no-go does not by itself reject its finite C4 subgroup",
+      "generic existence is not a frozen rational member or a Rees/Jacobian saturation",
+      "one rejected natural root is not a classification of every global order-four automorphism",
+      "the center-coset relation j^2=z is not a diagonal orbibundle"
+    ]
+  },
+  "schema": "susy_v89_c8_localized_bv_compact_globalization_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "c1ab8d8aa167ec7921282264ce99939ba5f2205981794d1cfdd8c66fd976f64b",
+    "count": 7,
+    "ids": [
+      "vonGersdorff2006",
+      "Hsieh2018",
+      "MonnierMoore2018",
+      "GrootNibbelinkHillenbach2006",
+      "BraunMorrison2014",
+      "Park2011",
+      "WittenYonekura2019"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V89_C8_LOCALIZED_BV_COMPACT_GLOBALIZATION_AUDIT__V70_V87_V88_CORES_BOUND__C8_EXPONENT_PROJECTIONS_ENUMERATED_FOR_FROZEN_V88_NONC8_LIFTS__EVERY_SURVIVING_EXPONENT_IS_EVEN__NO_PRIMITIVE_K_IN_C8_FACTOR_PROJECTION_FOR_FROZEN_V88_NONC8_LIFTS__INDEPENDENT_EXTERNAL_C8_KERNEL_PARITY_COMPATIBLE__NEW_Z00_SPLIT_U5_LOCAL_PHASE_CANDIDATE_EXACT__WALL_QUOTIENT_OPEN__COMPONENT_CHARACTERS_AND_PLACEMENT_NEW__CONTINUOUS_SP3_CARTAN_U1_GAUGING_REJECTED_BY_GRAVITY_COUNT_AND_THREE_EXACT_GS_EQUATIONS__CHARGED_FERMION_GAUGE_LOG_TWIST_COMPONENT_ZERO__FULL_CHARACTER_INPUTS_UNDERSPECIFIED_AND_COMMON_BV_REGULATOR_OPEN__COMPACT_TORSOR_BLOWUPS_GLOBAL_PROJECTIVE_AND_CREPANT__GENERIC_COMPACT_SMOOTH_MEMBER_EXISTS__NO_FROZEN_MEMBER_OR_REES_SATURATION__NATURAL_ORDER4_ROOT_REJECTED__LITERAL_GLOBAL_ORDER4_ACTION_AND_DIAGONAL_ORBIBUNDLE_OPEN__NO_ACCEPTED_PARENT__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "C8_exponent_projections_enumerated_for_frozen_V88_lifts": true,
+    "accepted_full_parent_action_exists": false,
+    "audited_bulk_G8_representation_descent_constructed": true,
+    "charged_fermion_gauge_log_twist_component_zero": true,
+    "closed_gates": [],
+    "common_BV_regulator_constructed": false,
+    "diagonal_resolved_Gammahat_orbibundle_constructed": false,
+    "external_C8_quantum_gauging_accepted": false,
+    "fixed_wall_character_required_inputs_fully_frozen": false,
+    "gauged_continuous_U1_T_parent_current_spectrum": false,
+    "generic_compact_smooth_resolved_member_exists": true,
+    "global_projective_crepant_torsor_blowups_constructed": true,
+    "honest_outcome": "V89 turns the C8 and compact-global questions into exact positive/negative statements: external-C8 kernel parity, audited bulk descent and a generic smooth compact resolution exist, but the existing geometry generates only C4 and localized wall-group/quantum data remain incomplete.",
+    "independent_external_C8_kernel_parity_assignment_constructed": true,
+    "literal_global_order4_action_constructed": false,
+    "localized_wall_quotient_representation_descent_constructed": false,
+    "natural_order4_root_rejected": true,
+    "new_U1_vector_irreducible_gravity_obstruction": true,
+    "new_z00_split_U5_local_phase_candidate_constructed": true,
+    "primitive_k_in_C8_factor_projection_for_frozen_V88_lifts": false,
+    "rank_VEVs_preserve_primitive_C8": false,
+    "signed_fixed_wall_character_computed": false,
+    "smooth_connected_Spin11_I8_computed": true,
+    "specific_compact_member_frozen_and_saturated": false,
+    "split_U5_component_characters_are_new_action_data": true,
+    "theory_complete": false,
+    "z00_placement_inherited_from_V70": false
+  },
+  "version": "V89"
+}
