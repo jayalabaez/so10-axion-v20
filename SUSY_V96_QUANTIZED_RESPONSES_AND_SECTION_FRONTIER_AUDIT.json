@@ -1,0 +1,2769 @@
+{
+  "artifact_hashes": {
+    "generator_sha256": "a0ff3569da261e814b04f49397a5b8493d3f7f14d00aa03d65255f37735f8817",
+    "test_sha256": "c4cc7dd4f0d860abfb85fed1efde0cc5802df883d8c74d18539327441c5471b3",
+    "test_v96_defect_relative_invertible_audit.py": "d5c9db7db7be3dd90ef5691d3a630029e5b3e3e6ff58e543d94cef6f3a3f5c3e",
+    "test_v96_local_transport_quantization_audit.py": "90f7b5296f632b7497637adfb4c3c0e2fd1f4774a80f437e7b0f43612b105939",
+    "test_v96_normal_relative_cs_audit.py": "96043404a569545778811932f5f07fe303dfa9c6702b4107884c7d0146afdd59",
+    "test_v96_original_section_search_audit.py": "3e6a3e3f2c1661cc63dad2058db156323205214b9e4e4e2dd7e29dbf94d0ffee",
+    "v96_defect_relative_invertible_audit.py": "6989bece5ef24a59b0f585281f7ce6a35b07c2c8e6372bd7af3ea153fa7da264",
+    "v96_local_transport_quantization_audit.py": "eeea4b55bdcfcb1826e21b73ede27215eb5b5cedf19a1246739e072edb2c52c6",
+    "v96_normal_relative_cs_audit.py": "5c02794ebde77db1ce92a1b2d059a5e72ceb0074e73060a432ade9feb2a9ba13",
+    "v96_original_section_search_audit.py": "1fc07a3719e351bf40682f337b617b240ac2c3a1c9eb5910f6b968e73215ee31"
+  },
+  "core_sha256": "2c1575f64d2aa3414e6b504d72c20a9a76160825aac7389259ac26402ab8f215",
+  "defect_relative_invertible": {
+    "complete_restricted_character_cancellation": {
+      "C4": {
+        "all_restricted_reduced_characters_cancel": true,
+        "bare_T_phase": "-1",
+        "bare_lens_phase": "exp(2*pi*i*1/8)",
+        "class_count": 16,
+        "inverse_T_phase": "-1",
+        "inverse_lens_phase": "exp(2*pi*i*7/8)",
+        "rows": [
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              0,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              0,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "7/8",
+            "bare_exponent_mod1": "1/8",
+            "bordism_coordinates": [
+              1,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/8",
+            "bare_exponent_mod1": "5/8",
+            "bordism_coordinates": [
+              1,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              2,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              2,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "5/8",
+            "bare_exponent_mod1": "3/8",
+            "bordism_coordinates": [
+              3,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/8",
+            "bare_exponent_mod1": "7/8",
+            "bordism_coordinates": [
+              3,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              4,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              4,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/8",
+            "bare_exponent_mod1": "5/8",
+            "bordism_coordinates": [
+              5,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "7/8",
+            "bare_exponent_mod1": "1/8",
+            "bordism_coordinates": [
+              5,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              6,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              6,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/8",
+            "bare_exponent_mod1": "7/8",
+            "bordism_coordinates": [
+              7,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "5/8",
+            "bare_exponent_mod1": "3/8",
+            "bordism_coordinates": [
+              7,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          }
+        ]
+      },
+      "C8": {
+        "all_restricted_reduced_characters_cancel": true,
+        "bare_T_phase": "-1",
+        "bare_lens_phase": "+i",
+        "class_count": 32,
+        "inverse_T_phase": "-1",
+        "inverse_lens_phase": "-i",
+        "rows": [
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              0,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              0,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              1,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              1,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              2,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              2,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              3,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              3,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              4,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              4,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              5,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              5,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              6,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              6,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              7,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              7,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              8,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              8,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              9,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              9,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              10,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              10,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              11,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              11,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              12,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              12,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              13,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              13,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/2",
+            "bare_exponent_mod1": "1/2",
+            "bordism_coordinates": [
+              14,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "0",
+            "bare_exponent_mod1": "0",
+            "bordism_coordinates": [
+              14,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "1/4",
+            "bare_exponent_mod1": "3/4",
+            "bordism_coordinates": [
+              15,
+              0
+            ],
+            "total_exponent_mod1": "0"
+          },
+          {
+            "CS_ABK_inverse_exponent_mod1": "3/4",
+            "bare_exponent_mod1": "1/4",
+            "bordism_coordinates": [
+              15,
+              1
+            ],
+            "total_exponent_mod1": "0"
+          }
+        ]
+      }
+    },
+    "core_sha256": "2de351386e62a13e502280d68569fe47453521ad281c11740d55c620fb6607f9",
+    "effective_C4_pullback": {
+      "all_bordism_images": [
+        {
+          "C4_bordism": [
+            0,
+            0
+          ],
+          "C8_bordism": [
+            0,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            0,
+            1
+          ],
+          "C8_bordism": [
+            0,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            0
+          ],
+          "C8_bordism": [
+            1,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            1
+          ],
+          "C8_bordism": [
+            1,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            0
+          ],
+          "C8_bordism": [
+            2,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            1
+          ],
+          "C8_bordism": [
+            2,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            0
+          ],
+          "C8_bordism": [
+            3,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            1
+          ],
+          "C8_bordism": [
+            3,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            0,
+            0
+          ],
+          "C8_bordism": [
+            4,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            0,
+            1
+          ],
+          "C8_bordism": [
+            4,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            0
+          ],
+          "C8_bordism": [
+            5,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            1
+          ],
+          "C8_bordism": [
+            5,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            0
+          ],
+          "C8_bordism": [
+            6,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            1
+          ],
+          "C8_bordism": [
+            6,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            0
+          ],
+          "C8_bordism": [
+            7,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            1
+          ],
+          "C8_bordism": [
+            7,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            0,
+            0
+          ],
+          "C8_bordism": [
+            8,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            0,
+            1
+          ],
+          "C8_bordism": [
+            8,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            0
+          ],
+          "C8_bordism": [
+            9,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            1
+          ],
+          "C8_bordism": [
+            9,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            0
+          ],
+          "C8_bordism": [
+            10,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            1
+          ],
+          "C8_bordism": [
+            10,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            0
+          ],
+          "C8_bordism": [
+            11,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            1
+          ],
+          "C8_bordism": [
+            11,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            0,
+            0
+          ],
+          "C8_bordism": [
+            12,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            0,
+            1
+          ],
+          "C8_bordism": [
+            12,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            0
+          ],
+          "C8_bordism": [
+            13,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            2,
+            1
+          ],
+          "C8_bordism": [
+            13,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            0
+          ],
+          "C8_bordism": [
+            14,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            4,
+            1
+          ],
+          "C8_bordism": [
+            14,
+            1
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            0
+          ],
+          "C8_bordism": [
+            15,
+            0
+          ]
+        },
+        {
+          "C4_bordism": [
+            6,
+            1
+          ],
+          "C8_bordism": [
+            15,
+            1
+          ]
+        }
+      ],
+      "character_pullback_kernel": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "effective_C4_completion_is_not_forced_by_C8_character_alone": true,
+      "four_copies_C4_bare_remaining_character": [
+        4,
+        0
+      ],
+      "four_copies_C8_bare_trivial": true,
+      "group_map": "pi:C8->C4 sends k8 to k4; rho1(C4) pulls back to rho2(C8)",
+      "image_L8": [
+        2,
+        0
+      ],
+      "image_T8": [
+        0,
+        1
+      ],
+      "image_order": 8,
+      "inverse_C4_preimages_of_actual_C8_inverse": [
+        [
+          3,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "kernel": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "kernel_group": "Z4",
+      "kernel_order": 4,
+      "natural_spectrum_selected_C4_inverse": [
+        7,
+        1
+      ],
+      "not_every_effective_C4_background_lifts_to_C8": true,
+      "pi_star_on_bordism": "(a mod16,b mod2) -> (2a mod8,b mod2)",
+      "pullback_on_characters": "(r mod8,s mod2) -> (4r mod16,s mod2)",
+      "representation_factorization": "3 complex rho1 plus3 real rho2 on effective C4; physical C8 charges are2 and4, not coefficient-bundle charges6 and0"
+    },
+    "fermionic_quantization_screen": {
+      "ABK_surface_on_T3": "PD(a2)=odd-spin T2 has ABK=4; odd ABK level supplies precisely-1.",
+      "CS_only_inverse_possible": false,
+      "T3_exact_obstruction_to_CS_only": "On T=S1 x odd-spin T2, every finite character line is topologically trivial with flat holonomy only along S1. Its background CS invariant is zero (also rho_complex is an integer), while the real sign Pfaffian is -1.",
+      "bosonic_DW_only_cannot_supply_T3_sign": "The classifying map on this test factors through S1, so any bosonic H3(BCn;U1) action pulls back to zero; its phase is+1.",
+      "bosonic_DW_only_inverse_possible": false,
+      "integer_level_quantization_obstructs_CS3_ABK3": false,
+      "level_classes": {
+        "C4": {
+          "ABK_level_period_on_this_restriction": 4,
+          "CS_level_period_for_D_on_this_restriction": 8,
+          "all_matching_ABK_levels_odd": true,
+          "matching_CS_ABK_level_pairs_mod_these_periods": [
+            [
+              3,
+              3
+            ],
+            [
+              7,
+              1
+            ]
+          ]
+        },
+        "C8": {
+          "ABK_level_period_on_this_restriction": 2,
+          "CS_level_period_for_D_on_this_restriction": 4,
+          "all_matching_ABK_levels_odd": true,
+          "matching_CS_ABK_level_pairs_mod_these_periods": [
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      },
+      "no_go_against_all_fermionic_relative_inflow_sectors": false,
+      "odd_spin_refinement_needed_in_CS_ABK_family": true,
+      "spin4_period_example": "On S2 x S2 with c1(D)=a*x+b*y, integral c1(D)^2=2ab and level3 change=3ab in the exponent over2*pi*i, an integer."
+    },
+    "inherited_restricted_model": {
+      "C8_physical_complex_charge2_count": 3,
+      "C8_physical_real_charge4_count": 3,
+      "D": "rho2 on C8; rho1 on effective C4",
+      "effective_C4_complex_charge1_count": 3,
+      "effective_C4_model_extension": "The same isolated tubular construction has D=rho1, N=D^-4=1 and Nspin=D^-2=sign. This is an abstract extension of the factorized defect representation, not a claim that every effective C4 bundle lifts through the microscopic gauge group.",
+      "effective_C4_real_charge2_count": 3,
+      "full_Gammahat_replaced_by_Spin_times_C8": false,
+      "k_squared_is_total_fermion_parity": false,
+      "normal": "N=D^-4=1",
+      "normal_spin_root": "D^-2=sign",
+      "ordinary_spin_C8_local_tubular_admissibility_inherited": true,
+      "tangent_spin_compensation": "induced spin=s+a2; S(s+a2) tensor D^-1 equals physical S(s) tensor rho2 on C8; a coefficient-neutral Majorana becomes the physical sign character"
+    },
+    "input_core_hashes": {
+      "v95_defect": "fb8b6a33de1a19a48dff70bee4592298b2f58205db2c36fbe29e39432812ee37",
+      "v95_master": "7a20530db05af160ce76e1b5e297001befc5eafd3696a13ba9ac692bbe94dd88",
+      "v95_route": "e8ed3aa98cc23726cd41d0b62bbfb8822253d7a9282f1184ba22a77956cb4729"
+    },
+    "limitations": {
+      "actual_same_action_bulk_defect_inflow_constructed": false,
+      "bare_defect_or_total_theory_declared_anomaly_free_without_response": false,
+      "differential_normal_curvature_inflow_with_torsion_glued": false,
+      "full_Gammahat_tangential_structure_bordism_computed": false,
+      "new_ABK_sector_placed_in_existing_compact_action": false,
+      "physical_relative_Dai_Freed_trivialization_constructed": false,
+      "regulated_heavy_mass_determinant_or_bump_inflow_constructed": false,
+      "same_action_parent_or_any_gate_closed": false,
+      "supersymmetric_or_microscopic_realization_proved": false,
+      "unsubtracted_gravitational_anomaly_cancelled": false
+    },
+    "normalization": {
+      "bare_phase": "exp(-2*pi*i*(3*rho_D+(3/2)*rho_sign))",
+      "lens_sign": "V95 exact negative-DT spectral sum; reverse both response and bare anomaly if reversing common orientation/chirality",
+      "physical_pure_gravitational_anomaly_cancelled": false,
+      "real_half_before_modulo_one": true,
+      "remaining_pure_gravitational_central_charge": "9/2",
+      "rho": "xi_twisted-xi_neutral on the same physical spin background",
+      "same_action_bulk_sign_dictionary_resolved": false,
+      "subtracted_reference_is_not_new_physical_fermions": true,
+      "xi": "(eta_spectral+h)/2"
+    },
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/abs/hep-th/0505235",
+        "use": "Belov-Moore Eq(1.3), Section2.1 and(2.7) normalize integral-curvature background spin CS as exp(i*pi*integral K F^2), including integral odd K; Section2.1 states OmegaSpin3(BU1^N)=0, and Section2.2 relates CS to kernel-inclusive xi. Gauge fields are not integrated over in this certificate."
+      },
+      {
+        "url": "https://arxiv.org/abs/1406.7329",
+        "use": "Section6 gives the Smith isomorphism for an independent internal unitary Z2 with g^2=1, and its induced Pin-minus structure on PD(a). Section5 describes the Z8 ABK generator. The ordinary-spin scope is essential."
+      },
+      {
+        "url": "https://arxiv.org/abs/1812.11959",
+        "use": "Sections3.1-3.3 give low spin bordism coefficients, Eq(3.9) the ABK Gauss sum, ABK=4Arf on oriented surfaces, and the induced Pin-minus structure on PD(a). These calibrate the genuine spin response, not a new microscopic wall assignment."
+      },
+      {
+        "url": "https://arxiv.org/abs/2606.18380",
+        "use": "Section3.1(3.4),(3.7),(3.9),(3.12)-(3.15) fixes kernel-inclusive APS xi, rank-zero subtraction, complex determinant and real Pfaffian phases, and the even quaternionic index needed before halving."
+      },
+      {
+        "url": "https://arxiv.org/abs/2604.19634",
+        "use": "Eq(2.18) independently confirms Z_(2n) x Z2 and lens/odd-T2-product generators when4 divides n. Here the generator dictionary is also proved by AHSS-bound saturation and exact real/complex eta separation; a complex mod-one torus formula is never halved."
+      },
+      {
+        "url": "https://arxiv.org/abs/2504.02934",
+        "use": "AppendixC(C.2) is the finite lens sum inherited through V95, with our explicitly opposite Dirac sign. Exact spectral values and both spin lifts, not residues, fix the Pfaffian."
+      }
+    ],
+    "quantized_inverse_response": {
+      "ABK_calibration_checks": {
+        "RP2_ABK_mod8": 1,
+        "RP2_Gauss_sum": "(1+i)/sqrt(2)",
+        "RP2_quadratic_values": [
+          0,
+          1
+        ],
+        "V95_RP3_real_half_exact": "1/8",
+        "V95_RP3_real_rho_exact": "1/4",
+        "odd_T2_ABK_mod8": 4,
+        "odd_T2_Gauss_sum": "-1",
+        "odd_T2_quadratic_values": [
+          0,
+          2,
+          2,
+          2
+        ]
+      },
+      "ABK_definition": "PD(a2) has the Pin-minus structure induced by spin(Y). For its quadratic enhancement q:H1(PD;Z2)->Z4, exp(2*pi*i*ABK/8)=|H1|^(-1/2)*sum_x i^q(x).",
+      "ABK_eta_global_identification": "Smith identifies reduced OmegaSpin3(BZ2) with OmegaPin-minus2=Z8 and sends the RP3 generator to RP2. Both ABK/8 and rho_sign/2 are bordism characters, and the calibrated generator agrees, hence they agree on every ordinary spin3/Z2 background and on their C4/C8 pullbacks.",
+      "ABK_level_mod8": 3,
+      "ABK_sign_calibration": "Choose the induced Pin-minus quadratic-sign convention so the V95 canonical (RP3,sign) maps to (RP2,q(generator)=1): rho_sign/2=1/8=ABK/8. The opposite shared convention conjugates all expressions.",
+      "APS_identification": "For the rank-zero complex line twist, APS gives rho_D=(1/2)*integral_W c1(D)^2 mod1. The same boundary orientation/Dirac convention as V95 is used; changing it conjugates the response and the bare anomaly together.",
+      "CS_level_for_D": 3,
+      "D_and_a2": "C8: D=rho2(a), a2=a mod2; effective C4: D=rho1(a), a2=a mod2",
+      "actual_same_action_bulk_inflow_constructed": false,
+      "auxiliary_ABK_surface_scope": "PD(a2) is a symmetry-wall surface in the three-dimensional anomaly test manifold; it has not been identified with an additional placed microscopic Phi defect.",
+      "background_connection_is_not_integrated_over": true,
+      "covering_unit_line_scope": "rho1(a) is an auxiliary associated line of the restricted C8 bundle, not an added Spin^c11-singlet representation; the response is fundamentally written with the inherited determinant line D=rho2.",
+      "equivalent_CS_level_for_C8_covering_unit_line": 12,
+      "explicit_inverse": "Zinv(Y,s,a)=exp(2*pi*i*[3*Q_s(D)+3*ABK_s(PD(a2))/8])",
+      "full_extended_functor_or_boundary_state_spaces_implemented_in_code": false,
+      "quadratic_lens_checks": [
+        {
+          "charge": 0,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 0
+        },
+        {
+          "charge": 1,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 0
+        },
+        {
+          "charge": 2,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "-1",
+          "spin_shift": 0
+        },
+        {
+          "charge": 3,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "-3",
+          "spin_shift": 0
+        },
+        {
+          "charge": 0,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 2
+        },
+        {
+          "charge": 1,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 2
+        },
+        {
+          "charge": 2,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 2
+        },
+        {
+          "charge": 3,
+          "n": 4,
+          "rho_q_minus_q_squared_rho1_exact": "1",
+          "spin_shift": 2
+        },
+        {
+          "charge": 0,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 0
+        },
+        {
+          "charge": 1,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 0
+        },
+        {
+          "charge": 2,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "-1",
+          "spin_shift": 0
+        },
+        {
+          "charge": 3,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "-3",
+          "spin_shift": 0
+        },
+        {
+          "charge": 4,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "-6",
+          "spin_shift": 0
+        },
+        {
+          "charge": 5,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "-10",
+          "spin_shift": 0
+        },
+        {
+          "charge": 6,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "-15",
+          "spin_shift": 0
+        },
+        {
+          "charge": 7,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "-21",
+          "spin_shift": 0
+        },
+        {
+          "charge": 0,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 4
+        },
+        {
+          "charge": 1,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 4
+        },
+        {
+          "charge": 2,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 4
+        },
+        {
+          "charge": 3,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 4
+        },
+        {
+          "charge": 4,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "0",
+          "spin_shift": 4
+        },
+        {
+          "charge": 5,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "1",
+          "spin_shift": 4
+        },
+        {
+          "charge": 6,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "2",
+          "spin_shift": 4
+        },
+        {
+          "charge": 7,
+          "n": 8,
+          "rho_q_minus_q_squared_rho1_exact": "3",
+          "spin_shift": 4
+        }
+      ],
+      "quantized_abstract_restricted_inverse_response_constructed": true,
+      "spin_CS_definition": "Q_s(D)=(1/2)*integral_W (F_D/(2*pi))^2 mod1, for a spin4 extension with boundary(Y,s); the U1 bundle/connection extends, not necessarily its finite reduction",
+      "spin_CS_extension_exists": "OmegaSpin3(BU1)=0. In the low-degree AHSS, the only possible totaldegree3 term H2(BU1;Z2) is killed by d2:H4(BU1;Z)->H2(BU1;Z2), dual to Sq2(u)=u^2; also stated in Belov-Moore Section2.1.",
+      "spin_CS_extension_independence": "On a closed spin4 manifold, c1(D)^2 is even by Wu/intersection parity. Integer level k makes exp(2*pi*i*k*c1(D)^2/2)=1, so every choice of extension gives the same response.",
+      "tautological_eta_inverse_alone": "Complex conjugation always supplies an abstract inverse eta character; the additional result here is its independently quantized spin-CS/ABK decomposition and the complete restricted bordism check.",
+      "this_is_dynamical_U1_level3_CS_with_anyons": false
+    },
+    "restricted_bordism_classification": {
+      "C4": {
+        "ABK_over8_character": [
+          2,
+          1
+        ],
+        "ABK_over8_pullback_order": 4,
+        "ABK_values_mod8_on_all_bordism_classes": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "AHSS_order_upper_bound": 16,
+        "AHSS_total_degree3_E2": [
+          {
+            "order": 4,
+            "p": 3,
+            "q": 0,
+            "term": "H3(BCn;Z)=Zn"
+          },
+          {
+            "order": 2,
+            "p": 2,
+            "q": 1,
+            "term": "H2(BCn;Z2)=Z2"
+          },
+          {
+            "order": 2,
+            "p": 1,
+            "q": 2,
+            "term": "H1(BCn;Z2)=Z2"
+          },
+          {
+            "order": 1,
+            "p": 0,
+            "q": 3,
+            "term": "OmegaSpin3(pt)=0"
+          }
+        ],
+        "L_generator": "L3_n(1,1), primitive flat Cn holonomy, V95 canonical lens Dirac sign/spin lift",
+        "T_generator": "S1_R x odd-spin T2, primitive Cn holonomy on S1 and no transverse holonomy",
+        "alpha_T_exponent_mod1": "0",
+        "alpha_evaluation_pair": [
+          5,
+          0
+        ],
+        "alpha_lens_exponent_exact": "-3/8",
+        "bare_defect_character": [
+          1,
+          1
+        ],
+        "bare_defect_exact_order": 8,
+        "beta_T_exponent_mod1": "1/2",
+        "beta_evaluation_pair": [
+          6,
+          1
+        ],
+        "beta_lens_exponent_exact": "-1/4",
+        "category": "ordinary spin bordism with independent internal C4",
+        "character_coordinate_convention": "chi(a*L+b*T)=exp(2*pi*i*(r*a/(2n)+s*b/2)); coordinate=(r mod2n,s mod2)",
+        "distinct_probe_products_from_eta_evaluations": 16,
+        "full_physical_Gammahat_bordism_identified_with_this_group": false,
+        "full_restricted_bordism_basis_proved": true,
+        "group": "Z8 x Z2",
+        "inverse_character": [
+          7,
+          1
+        ],
+        "inverse_exact_order": 8,
+        "opposite_lens_spin_lift_bordism_coordinates": [
+          5,
+          1
+        ],
+        "order": 16,
+        "probe_definitions": {
+          "alpha": "exp(-2*pi*i*rho_unit_complex)",
+          "beta": "exp(-pi*i*rho_real_sign_complexification); half before modulo one",
+          "rank_zero_flat_eta_is_a_bordism_character": "APS cancels local densities against the same-rank trivial twist; a real twist has even spin4 Dirac index, so the Pfaffian half also descends.",
+          "unit_C8_probe_added_to_physical_parent_spectrum": false,
+          "unit_charge_probe_scope": "The unit character is a mathematical test representation of ordinary Spin3 x Cn, not a new physical field. In particular a q1 Spin11-singlet does NOT descend to the frozen Spin^c11 parent: odd U1 charge would require odd Spin11 center parity. The actual C8 defect and its inverse use D=rho2, never a physical q1 singlet."
+        },
+        "proof": [
+          "Spin bordism coefficients in degrees0,1,2,3 are Z,Z2,Z2,0. The three finite AHSS terms give order at most4n; differentials can only lower it.",
+          "alpha(L) is a primitive2n-th root, alpha(T)=1 and beta(T)=-1. The4n products alpha^a beta^b, 0<=a<2n and b=0,1, have distinct evaluations on the actual L,T manifolds, independently of any assumed generator dictionary.",
+          "The upper bound is saturated, so these characters exhaust the dual. Their values show L has order2n and T has order2. T cannot lie in <L>, since alpha(T)=1 but beta(T)=-1. Consequently L,T give the displayed direct-product basis."
+        ]
+      },
+      "C8": {
+        "ABK_over8_character": [
+          8,
+          1
+        ],
+        "ABK_over8_pullback_order": 2,
+        "ABK_values_mod8_on_all_bordism_classes": [
+          0,
+          4
+        ],
+        "AHSS_order_upper_bound": 32,
+        "AHSS_total_degree3_E2": [
+          {
+            "order": 8,
+            "p": 3,
+            "q": 0,
+            "term": "H3(BCn;Z)=Zn"
+          },
+          {
+            "order": 2,
+            "p": 2,
+            "q": 1,
+            "term": "H2(BCn;Z2)=Z2"
+          },
+          {
+            "order": 2,
+            "p": 1,
+            "q": 2,
+            "term": "H1(BCn;Z2)=Z2"
+          },
+          {
+            "order": 1,
+            "p": 0,
+            "q": 3,
+            "term": "OmegaSpin3(pt)=0"
+          }
+        ],
+        "L_generator": "L3_n(1,1), primitive flat Cn holonomy, V95 canonical lens Dirac sign/spin lift",
+        "T_generator": "S1_R x odd-spin T2, primitive Cn holonomy on S1 and no transverse holonomy",
+        "alpha_T_exponent_mod1": "0",
+        "alpha_evaluation_pair": [
+          9,
+          0
+        ],
+        "alpha_lens_exponent_exact": "-7/16",
+        "bare_defect_character": [
+          4,
+          1
+        ],
+        "bare_defect_exact_order": 4,
+        "beta_T_exponent_mod1": "1/2",
+        "beta_evaluation_pair": [
+          8,
+          1
+        ],
+        "beta_lens_exponent_exact": "-1/2",
+        "category": "ordinary spin bordism with independent internal C8",
+        "character_coordinate_convention": "chi(a*L+b*T)=exp(2*pi*i*(r*a/(2n)+s*b/2)); coordinate=(r mod2n,s mod2)",
+        "distinct_probe_products_from_eta_evaluations": 32,
+        "full_physical_Gammahat_bordism_identified_with_this_group": false,
+        "full_restricted_bordism_basis_proved": true,
+        "group": "Z16 x Z2",
+        "inverse_character": [
+          12,
+          1
+        ],
+        "inverse_exact_order": 4,
+        "opposite_lens_spin_lift_bordism_coordinates": [
+          9,
+          0
+        ],
+        "order": 32,
+        "probe_definitions": {
+          "alpha": "exp(-2*pi*i*rho_unit_complex)",
+          "beta": "exp(-pi*i*rho_real_sign_complexification); half before modulo one",
+          "rank_zero_flat_eta_is_a_bordism_character": "APS cancels local densities against the same-rank trivial twist; a real twist has even spin4 Dirac index, so the Pfaffian half also descends.",
+          "unit_C8_probe_added_to_physical_parent_spectrum": false,
+          "unit_charge_probe_scope": "The unit character is a mathematical test representation of ordinary Spin3 x Cn, not a new physical field. In particular a q1 Spin11-singlet does NOT descend to the frozen Spin^c11 parent: odd U1 charge would require odd Spin11 center parity. The actual C8 defect and its inverse use D=rho2, never a physical q1 singlet."
+        },
+        "proof": [
+          "Spin bordism coefficients in degrees0,1,2,3 are Z,Z2,Z2,0. The three finite AHSS terms give order at most4n; differentials can only lower it.",
+          "alpha(L) is a primitive2n-th root, alpha(T)=1 and beta(T)=-1. The4n products alpha^a beta^b, 0<=a<2n and b=0,1, have distinct evaluations on the actual L,T manifolds, independently of any assumed generator dictionary.",
+          "The upper bound is saturated, so these characters exhaust the dual. Their values show L has order2n and T has order2. T cannot lie in <L>, since alpha(T)=1 but beta(T)=-1. Consequently L,T give the displayed direct-product basis."
+        ]
+      }
+    },
+    "schema": "v96_restricted_defect_spin_CS_ABK_inverse_v1",
+    "status": "RESTRICTED_REDUCED_DEFECT_INVERSE_CONSTRUCTED_AS_QUANTIZED_BACKGROUND_SPIN_CS_ABK__SAME_ACTION_GLUE_OPEN"
+  },
+  "formal_combination_and_quotient_periods": {
+    "C4_compact_remaining_I6": "f*(sum(e_i^2)+4*f*t+126*f^2-p-2*u*t+39*f*u-23*u^2); t=sum(e_i) or reflected U5 trace",
+    "integrated_virtual_normal_delta_I6": "-2*f*u**2",
+    "physical_C2_compact_remaining_I6": "2*f*(e1^2+e2^2-e3^2-e4^2-e5^2)-32*f^3/3-f*p/12-f*u^2",
+    "quotient_period_witness": {
+      "J2_equals_index_of_D_period": "0",
+      "R_flavor_curvatures": "zero",
+      "all_genuine_ordinary_Weyl_index_periods_on_this_background_are_integer": true,
+      "gauge_Spin_c11_determinant": "D=det(E)=O(1), c1(D)=H, f=H/2",
+      "gauge_quotient_admissibility": "w2(V11)=c1(E)=H mod2=c1(D) mod2; the canonical U5-to-Spin^c11 lift supplies this bundle",
+      "gauge_vector_bundle": "V11=E_real+R, E=O(1)+1^4",
+      "manifold": "ordinary spin CP3, integral H^3=1, p1=4H^2",
+      "new_normal_counterterm_and_Weyl_I6_period": "0",
+      "normal_line_and_root": "N=M^2 trivial, u=0",
+      "ordinary_local_Weyls_alone_can_remove_these_fractions": false,
+      "physical_local_periods": [
+        "61/4",
+        "61/4",
+        "-1/2"
+      ],
+      "pure_J2_transport_can_remove_these_fractions": false,
+      "sum_physical_periods": "30",
+      "test_is_a_full_Gammahat_orbifold_Dai_Freed_calculation": false,
+      "test_rejects_every_equivariant_or_topological_completion": false
+    },
+    "rows": [
+      {
+        "integral_covering_flux_CP3_period": "122",
+        "normal_repair_added": "-e1*e2*u - e1*e3*u - e1*e4*u - e1*e5*u - e2*e3*u - e2*e4*u - e2*e5*u - e3*e4*u - e3*e5*u - e4*e5*u + p*u/4 + u**3",
+        "quotient_mixed_gauge_CP3_period": "61/4",
+        "quotient_period_mod_one": "1/4",
+        "remaining_I6": "e1**2*f + 4*e1*f**2 - 2*e1*f*u + e2**2*f + 4*e2*f**2 - 2*e2*f*u + e3**2*f + 4*e3*f**2 - 2*e3*f*u + e4**2*f + 4*e4*f**2 - 2*e4*f*u + e5**2*f + 4*e5*f**2 - 2*e5*f*u + 126*f**3 + 39*f**2*u - f*p - 23*f*u**2",
+        "remaining_f_zero": "0",
+        "stratum": "z00",
+        "virtual_transport_added": "f**3/3 - f*p/48 - 5*f*u**2/4"
+      },
+      {
+        "integral_covering_flux_CP3_period": "122",
+        "normal_repair_added": "-e1*e2*u + e1*e3*u + e1*e4*u + e1*e5*u + e2*e3*u + e2*e4*u + e2*e5*u - e3*e4*u - e3*e5*u - e4*e5*u + p*u/4 + u**3",
+        "quotient_mixed_gauge_CP3_period": "61/4",
+        "quotient_period_mod_one": "1/4",
+        "remaining_I6": "e1**2*f + 4*e1*f**2 - 2*e1*f*u + e2**2*f + 4*e2*f**2 - 2*e2*f*u + e3**2*f - 4*e3*f**2 + 2*e3*f*u + e4**2*f - 4*e4*f**2 + 2*e4*f*u + e5**2*f - 4*e5*f**2 + 2*e5*f*u + 126*f**3 + 39*f**2*u - f*p - 23*f*u**2",
+        "remaining_f_zero": "0",
+        "stratum": "z11",
+        "virtual_transport_added": "f**3/3 - f*p/48 - 5*f*u**2/4"
+      },
+      {
+        "integral_covering_flux_CP3_period": "-11",
+        "normal_repair_added": "0",
+        "quotient_mixed_gauge_CP3_period": "-1/2",
+        "quotient_period_mod_one": "1/2",
+        "remaining_I6": "2*e1**2*f + 2*e2**2*f - 2*e3**2*f - 2*e4**2*f - 2*e5**2*f - 32*f**3/3 - f*p/12 - f*u**2",
+        "remaining_f_zero": "0",
+        "stratum": "physical_C2_orbit",
+        "virtual_transport_added": "-2*f**3/3 + f*p/24 + f*u**2/2"
+      }
+    ],
+    "scope": {
+      "R_curvature_terms_from_new_wall_fields_have_been_cancelled": false,
+      "formal_f_zero_match_is_full_anomaly_cancellation": false,
+      "normal_countertheory_and_virtual_transport_are_a_common_action": false,
+      "quantized_responses_in_dimensions_five_and_three_have_been_glued": false,
+      "square_torus_mass_curve_is_the_original_F4_Jacobian": false
+    },
+    "status": "FORMAL_CURVATURE_COMBINATION_STILL_HAS_FRACTIONAL_MIXED_GAUGE_PERIODS"
+  },
+  "gate_ledger": {
+    "G1": "OPEN: explicit restricted countertheories and a mass-profile candidate exist, but they have not been realized in one common microscopic action.",
+    "G2": "OPEN: new equivariant masses have forced zeros; their projected localized spectrum, full interactions and SUSY-breaking scales remain uncomputed.",
+    "G3": "OPEN: new wall candidates pass known center equations, not full Gammahat representations, fixed-locus placement or supersymmetric coupling tests.",
+    "G4": "OPEN: the restricted reduced defect character has an explicit inverse, but mixed gauge periods 61/4, 61/4, -1/2 and R/normal terms remain uncancelled in the common theory.",
+    "G5": "OPEN: no common full-Gammahat determinant, relative Dai-Freed refinement, regulator or boundary orientation dictionary has been constructed.",
+    "G6": "OPEN: no accepted same-action full spectrum, thresholds or two-loop unification prediction follows from the partial sectors.",
+    "G7": "OPEN: spin-CS/ABK resolves the abstract reduced defect target, not the full quantum selector, unsubtracted gravity or cosmology.",
+    "G8": "OPEN: original torsion remains trivial and 0<=rank<=11; low-degree polynomial ansatz exclusions do not supply the required section, exact rank, height or matter spectrum."
+  },
+  "input_core_hashes": {
+    "v93_route": "4f81852d9e272d3fb12946ad41cb01d9f93462f75cef69123106a80b03f092f2",
+    "v95_master": "7a20530db05af160ce76e1b5e297001befc5eafd3696a13ba9ac692bbe94dd88",
+    "v95_route": "e8ed3aa98cc23726cd41d0b62bbfb8822253d7a9282f1184ba22a77956cb4729"
+  },
+  "local_transport_quantization": {
+    "core_sha256": "021441b42d70fa012933e6b213c236822ed3e3424676c55278afcb08ce41c8df",
+    "embedded_v95_local_profile_core": "fcecfcfe68e40050682562b7536a1a1c2c47e350b9794cc60f9fd2923e992b5d",
+    "equivariant_scope_and_missing_data": {
+      "elementary_equivariant_index_example": [
+        {
+          "C4_character_weight": 0,
+          "character": [
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "identity_sector_contribution": "1/4",
+          "invariant_index": 1,
+          "nonidentity_contribution": "3/4"
+        },
+        {
+          "C4_character_weight": 1,
+          "character": [
+            "1",
+            "I",
+            "-1",
+            "-I"
+          ],
+          "identity_sector_contribution": "1/4",
+          "invariant_index": 0,
+          "nonidentity_contribution": "-1/4"
+        },
+        {
+          "C4_character_weight": 2,
+          "character": [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          "identity_sector_contribution": "1/4",
+          "invariant_index": 0,
+          "nonidentity_contribution": "-1/4"
+        },
+        {
+          "C4_character_weight": 3,
+          "character": [
+            "1",
+            "-I",
+            "-1",
+            "I"
+          ],
+          "identity_sector_contribution": "1/4",
+          "invariant_index": 0,
+          "nonidentity_contribution": "-1/4"
+        }
+      ],
+      "example_scope": "a one-dimensional C4 equivariant index representation; its invariant multiplicity is integral while its identity contribution is fractional. This is not the index of a constructed new physical field.",
+      "explicit_new_global_requirements": [
+        "a compatible determinant-line eta or differential refinement on the actual Gammahat orbifold and its fixed strata",
+        "equivariant gluing for the order4 torus phase, including tangent/normal spin structures rather than a separate unconstrained scalar root",
+        "the induced mixed normal term and all R/flavor anomaly curvatures",
+        "the forced mass-zero defect spectra, allowed supersymmetric couplings and common regulator",
+        "finite/global anomaly and orientation data of the proposed virtual determinant ratio and its endpoint sectors"
+      ],
+      "fixed_locus_warning": "orbifold eta/index formulas include nonidentity stabilizer terms. Dividing only the ordinary cover index by4 omits precisely the possible corrections under investigation",
+      "free_fourfold_cover": "a quotient ordinary spin Dirac index pulls back to four times that index; this alone cannot manufacture a quarter-level physical edge",
+      "ordinary_CP3_obstruction_is_full_equivariant_no_go": false
+    },
+    "equivariant_torus_phase": {
+      "checks": {
+        "A_preserves_curve_zero_locus": true,
+        "g_fourth_descends": true,
+        "g_has_character_i": true,
+        "quotient_t_is_invariant": true
+      },
+      "coarse_quotient_coordinate": "t=X^2",
+      "coarse_quotient_map_degree": 4,
+      "connection_one_form": "beta=d(arg(g))/(2*pi) on the punctured cover; beta is A-invariant and descends with the displayed rational loop periods",
+      "cover_degree_argument_is_not_a_no_go_against_equivariant_fractions": true,
+      "cover_degree_sum": 0,
+      "curve": "E0:Y^2=X^3-X",
+      "divisor": "O+P0-P+-P-",
+      "divisor_rows": [
+        {
+          "coarse_t": "infinity",
+          "curve_point": "O",
+          "ord_X": -2,
+          "ord_Y": -3,
+          "ord_g": 1,
+          "point": "z00",
+          "stabilizer": 4
+        },
+        {
+          "coarse_t": "0",
+          "curve_point": "P0=(0,0)",
+          "ord_X": 2,
+          "ord_Y": 1,
+          "ord_g": 1,
+          "point": "z11",
+          "stabilizer": 4
+        },
+        {
+          "coarse_t": "1",
+          "curve_point": "P+=(1,0)",
+          "ord_X": 0,
+          "ord_Y": 1,
+          "ord_g": -1,
+          "point": "z10",
+          "stabilizer": 2
+        },
+        {
+          "coarse_t": "1",
+          "curve_point": "P-=(-1,0)",
+          "ord_X": 0,
+          "ord_Y": 1,
+          "ord_g": -1,
+          "point": "z01",
+          "stabilizer": 2
+        }
+      ],
+      "formal_local_descent": "S_local=2*pi*i*integral beta wedge CS5(D), dCS5=J2: delta S_local=2*pi*i*integral d(beta) wedge I4^(1), with physical source weights(1/4,1/4,-1/2)",
+      "formal_local_descent_is_a_global_quantized_functional": false,
+      "fourth_power_identity": "g^4=t/(t-1)^2",
+      "g": "X/Y",
+      "g_is_an_explicit_equivariant_meromorphic_section": true,
+      "g_is_an_ordinary_function_on_the_quotient": false,
+      "local_orbifold_loop_phase_residues": {
+        "physical_C2_orbit": "-1/2",
+        "z00": "1/4",
+        "z11": "1/4"
+      },
+      "minimum_invariant_positive_power_of_g": 4,
+      "missing_quantum_data": "an equivariant differential/eta refinement for the order4 phase line, stabilizer corrections, and relative endpoint gluing; an ordinary quarter power of eta is not supplied by the meromorphic identity",
+      "normalized_square_torus_uniformization": "X proportional to wp(z), Y proportional to wp'(z); scaling is irrelevant to the divisor and phase",
+      "orbifold_flat_line_character_on_A": "i",
+      "quarter_turn_A": "(X,Y)->(-X,iY), corresponding to z->i*z"
+    },
+    "free_edge_transport_obstruction": {
+      "cover_integer_source_divisor": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "cover_points": [
+        "z00",
+        "z11",
+        "z10",
+        "z01"
+      ],
+      "effective_stabilizer_orders_on_cover": [
+        4,
+        4,
+        2,
+        2
+      ],
+      "equivariant_fractional_transport_in_general_excluded": false,
+      "fourfold_counterterm_cancels_original_fractional_classes": false,
+      "fourfold_target_cover_boundary": [
+        4,
+        4,
+        -4,
+        -4
+      ],
+      "fourfold_target_integer_edge_levels": [
+        1,
+        1
+      ],
+      "free_edge_orbit_boundary_on_cover": [
+        [
+          "4",
+          "0"
+        ],
+        [
+          "0",
+          "4"
+        ],
+        [
+          "-2",
+          "-2"
+        ],
+        [
+          "-2",
+          "-2"
+        ]
+      ],
+      "generic_cover_degree": 4,
+      "integer_cover_divisor_alone_proves_ordinary_quantization": false,
+      "integer_free_edge_orbits_generate_requested_divisor": false,
+      "minimal_multiple_of_target_in_integer_edge_boundary_lattice": 4,
+      "ordinary_quotient_edge_incidence": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "-1",
+          "-1"
+        ]
+      ],
+      "physical_vertices": [
+        "z00",
+        "z11",
+        "physical_C2_orbit"
+      ],
+      "proof_for_any_equivariant_subdivision": "All nontrivial rotations of the square torus have isolated fixed points. Choose an equivariant cell subdivision with free open edges. A four-edge orbit contributes a multiple4 at a C4 endpoint and a multiple2 at each C2 endpoint. After division by cover degree4 and summing the C2 orbit, every physical endpoint level is integral. Adding integer-level edges and cycles cannot change this.",
+      "quotient_push_matrix": [
+        [
+          "1/4",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/4",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1/4",
+          "1/4"
+        ]
+      ],
+      "quotient_source_coefficients": [
+        "1/4",
+        "1/4",
+        "-1/2"
+      ],
+      "required_levels_on_two_reference_edges": [
+        "1/4",
+        "1/4"
+      ],
+      "scope": "ordinary integer-level determinant-line eta-CS on free edge orbits, with no isotropy-dependent endpoint refinement or additional topological transport sector"
+    },
+    "input_core_hashes": {
+      "v70": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+      "v71": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+      "v91": "4a581af0dd4cfc6fd3f66ef1e3ea2801b9770c67822d984a02deb602865c0322",
+      "v94_route": "17fd3a60008545b7bde77756ed8b5ec7dd590c18c1cbb1344a5a7cc67dd2686f",
+      "v95_master": "7a20530db05af160ce76e1b5e297001befc5eafd3696a13ba9ac692bbe94dd88",
+      "v95_route": "e8ed3aa98cc23726cd41d0b62bbfb8822253d7a9282f1184ba22a77956cb4729"
+    },
+    "ordinary_eta_CS_quantization": {
+      "J2": "4*f**3/3 - f*p/12",
+      "J2_in_integral_determinant_class": "c**3/6 - c*p/24",
+      "all_equivariant_or_relative_fractional_inflow_excluded": false,
+      "bounding_formula": "Z_k=exp(2*pi*i*k*integral_W6 J2); APS relates this to eta and makes the integer-level expression independent of fillings",
+      "charge_one_gauge_singlet_is_a_genuine_representation": false,
+      "charge_two_singlet_is_a_genuine_gauge_representation": true,
+      "closed_spin6_integrality": "integral J2 = index(D_spin tensor D) in Z by the ordinary twisted spin index theorem",
+      "full_Gammahat_spin_refinement_constructed": false,
+      "gauge_group": "Spin^c(11) is a GAUGE quotient; tangent bundles remain independently ordinary spin",
+      "half_or_quarter_eta_power_has_a_canonical_local_refinement_from_this_data": false,
+      "necessary_and_sufficient_levels_in_the_one_parameter_J2_family": "integers",
+      "necessity_scope": "standalone ordinary spin eta-CS with precisely k*J2 curvature on arbitrary allowed gauge bundles, without additional boundary or topological data",
+      "nonbounding_definition_uses_eta_not_an_assumption_of_bounding": true,
+      "on_boundaries_value_is_a_relative_determinant_line_element": true,
+      "ordinary_integer_level_refinement_exists": true,
+      "physical_line": "D=det(gauge Spin^c11), c1(D)=c=2f; (g,z) acts on D by z^2",
+      "primitive_witness": {
+        "Spin11_bundle": "trivial",
+        "c1_tangent": "4H",
+        "covering_line": "L=O(1)",
+        "determinant_line": "D=L^2=O(2)",
+        "gauge_quotient_admissible": true,
+        "manifold": "CP3",
+        "p1": "4H^2",
+        "period_J2": "1",
+        "spin": true
+      },
+      "reason": "An independent edge filling can be changed by a disjoint closed CP3 without changing the others. Correlating fillings is additional relative data, not ordinary independent edge CS.",
+      "requested_levels": [
+        {
+          "CP3_extension_ambiguity": "1/4",
+          "ambiguity_phase": "+i",
+          "level": "1/4",
+          "ordinary_independent_edge_quantized": false
+        },
+        {
+          "CP3_extension_ambiguity": "1/4",
+          "ambiguity_phase": "+i",
+          "level": "1/4",
+          "ordinary_independent_edge_quantized": false
+        },
+        {
+          "CP3_extension_ambiguity": "-1/2",
+          "ambiguity_phase": "-1",
+          "level": "-1/2",
+          "ordinary_independent_edge_quantized": false
+        }
+      ],
+      "same_test_is_the_F95_defect_lens_phase": false,
+      "spin_CS_definition_on_closed_Y5": "Z_k(Y5,D)=exp(2*pi*i*k*xi(D_Y5 tensor D)), xi=(eta+h)/2, k in Z; the sign is the chosen positive inflow convention",
+      "sum_of_three_ambiguities": "0",
+      "zero_sum_makes_independent_fillings_unambiguous": false
+    },
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/abs/math/0307120",
+        "use": "Reduced eta modulo integers and its Chern-Simons transgression, sections1-2; integer powers are the ordinary eta refinement used here."
+      },
+      {
+        "url": "https://arxiv.org/abs/1909.08775",
+        "use": "APS index and relative determinant/Pfaffian interpretation; curvature matching alone does not supply the full anomaly gluing."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/0305024",
+        "use": "Section5.1 constructs local forms for globally vanishing localized anomalies; the form-level construction does not itself establish the new global level quantization sought here."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/0612212",
+        "use": "Shifted fixed-point characters and normal Lorentz anomaly terms; the exact m1-m2 calculation is derived from the bound V71 normalization."
+      },
+      {
+        "url": "https://dlmf.nist.gov/23.3",
+        "use": "Weierstrass differential equation used to normalize the square elliptic curve; divisor, character and fourth-power identity are computed explicitly here."
+      },
+      {
+        "url": "https://dlmf.nist.gov/23.5",
+        "use": "Section23.5(iii) identifies the lemniscatic square lattice; no assertion of a quantum field-theory completion is taken from this mathematical source."
+      }
+    ],
+    "schema": "v96_local_transport_quantization_v1",
+    "scope": "ordinary spin determinant-line CS quantization, a restricted free-edge obstruction, and an exact equivariant torus/matrix candidate with its uncanceled normal terms",
+    "smooth_equivariant_mass_intertwiner": {
+      "checks": {
+        "SMW_quaternionic_mass_reality": true,
+        "mass_intertwines_two_twists": true,
+        "preserves_continuous_U1_charge": true,
+        "translation_intertwiner_is_periodic": true,
+        "twist_ratio": true
+      },
+      "cover_mass_zero_windings": {
+        "z00": 1,
+        "z01": -1,
+        "z10": -1,
+        "z11": 1
+      },
+      "cover_signed_winding_sum": 0,
+      "cover_winding_divided_by_four_is_automatically_a_physical_Weyl_count": false,
+      "holomorphic_superpotential_mass_profile": false,
+      "invariant_point_obstruction": "m=i*m at either A-fixed C4 point and m=-m at either A^2-fixed C2 point, so every continuous equivariant profile of this character vanishes at all four points",
+      "mass_matrix": [
+        [
+          "mbar",
+          "0"
+        ],
+        [
+          "0",
+          "m"
+        ]
+      ],
+      "mass_matrix_equivariance": "M(Az)=H_m1*M(z)*H_m2^-1",
+      "mass_scale_potential_and_finite_energy_defect_solution_constructed": false,
+      "nowhere_nonzero_profile": false,
+      "only_constant_charge_preserving_mass": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "profile": "m=g/(1+|g|^2), g=X/Y on the square torus",
+      "profile_quarter_turn": "m(Az)=i*m(z)",
+      "projected_defect_zero_modes_and_their_Gammahat_representations_computed": false,
+      "smooth_extension_at_g_pole": "v=1/g=z*a(z): m=conjugate(v)/(1+|v|^2), so winding-1",
+      "smooth_extension_at_g_zero": "g=z*a(z), a(0)!=0: m=z*a(z)/(1+|z*a(z)|^2), so winding+1",
+      "smooth_matrix_witness_is_a_quantized_relative_action": false,
+      "smooth_on_whole_cover": true
+    },
+    "terminal_decision": {
+      "accepted_extensions": 0,
+      "all_equivariant_or_topological_repairs_excluded": false,
+      "closed_gates": [],
+      "equivariant_quantized_relative_transport_action_constructed": false,
+      "explicit_order4_torus_phase_and_smooth_mass_intertwiner_found": true,
+      "introduced_normal_anomaly_canceled": false,
+      "ordinary_integer_eta_CS_family_quantized_on_product_spin_backgrounds": true,
+      "requested_fractional_free_edge_transport_quantized_as_standalone_ordinary_CS": false,
+      "same_action_parent_accepted": false,
+      "virtual_character_difference_matches_pure_U1_transport": true
+    },
+    "virtual_shifted_determinant_profile": {
+      "SMW_factor": "1/2 before summing the conjugate pair",
+      "all_zero_mode_projectors_vanish_in_each_virtual_term": true,
+      "bulk_gap_survives_a_nonconstant_mass_profile_without_defect_modes": false,
+      "continuous_charge_magnitude": 2,
+      "full_Gammahat_or_finite_7D_anomaly_trivialization_constructed": false,
+      "full_R_and_flavor_curvature_polynomial_constructed": false,
+      "integrated_delta_I6": "-f*x**2/2",
+      "integrated_pure_U1_delta_I6": "0",
+      "matrix_blocks": [
+        {
+          "C2_cover_I6": "-f**3/6 + f*p/96 + f*x**2/32",
+          "C4_I6": "f**3/6 - f**2*x/4 - f*p/96 - 5*f*x**2/32 + p*x/192 + 11*x**3/192",
+          "H_C2": [
+            [
+              "-I",
+              "0"
+            ],
+            [
+              "0",
+              "I"
+            ]
+          ],
+          "H_C4": [
+            [
+              "sqrt(2)*I*(1 + I)/2",
+              "0"
+            ],
+            [
+              "0",
+              "sqrt(2)*I*(-1 + I)/2"
+            ]
+          ],
+          "Q": [
+            [
+              "2",
+              "0"
+            ],
+            [
+              "0",
+              "-2"
+            ]
+          ],
+          "checks": {
+            "C2_full_SMW_trace_matches_half_formula": true,
+            "C4_full_SMW_trace_matches_half_formula": true,
+            "H_fourth_is_minus_identity": true,
+            "N1_pairing_constraint": true,
+            "Q_commutes": true,
+            "Q_symplectic": true,
+            "effective_U_V_translations_are_identity": true,
+            "quaternionic_reality": true,
+            "symplectic": true,
+            "unitary": true
+          },
+          "constant_N1_projector_ranks": [
+            0,
+            0
+          ],
+          "external_K": [
+            [
+              "I",
+              "0"
+            ],
+            [
+              "0",
+              "-I"
+            ]
+          ],
+          "flavor_U_V": [
+            [
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "-1"
+            ]
+          ],
+          "m": 1,
+          "minus_phase": "-1",
+          "plus_phase": "I"
+        },
+        {
+          "C2_cover_I6": "f**3/6 - f*p/96 - f*x**2/32",
+          "C4_I6": "-f**3/6 - f**2*x/4 + f*p/96 + 5*f*x**2/32 + p*x/192 + 11*x**3/192",
+          "H_C2": [
+            [
+              "I",
+              "0"
+            ],
+            [
+              "0",
+              "-I"
+            ]
+          ],
+          "H_C4": [
+            [
+              "sqrt(2)*(-1 - I)/2",
+              "0"
+            ],
+            [
+              "0",
+              "sqrt(2)*(-1 + I)/2"
+            ]
+          ],
+          "Q": [
+            [
+              "2",
+              "0"
+            ],
+            [
+              "0",
+              "-2"
+            ]
+          ],
+          "checks": {
+            "C2_full_SMW_trace_matches_half_formula": true,
+            "C4_full_SMW_trace_matches_half_formula": true,
+            "H_fourth_is_minus_identity": true,
+            "N1_pairing_constraint": true,
+            "Q_commutes": true,
+            "Q_symplectic": true,
+            "effective_U_V_translations_are_identity": true,
+            "quaternionic_reality": true,
+            "symplectic": true,
+            "unitary": true
+          },
+          "constant_N1_projector_ranks": [
+            0,
+            0
+          ],
+          "external_K": [
+            [
+              "I",
+              "0"
+            ],
+            [
+              "0",
+              "-I"
+            ]
+          ],
+          "flavor_U_V": [
+            [
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "-1"
+            ]
+          ],
+          "m": 2,
+          "minus_phase": "I",
+          "plus_phase": "-1"
+        }
+      ],
+      "meaning_of_minus": "formal difference of two same-charge shifted index/Pfaffian densities; interpreting the inverse determinant as opposite6D chirality requires new matter, action and regulator data",
+      "new_normal_anomaly_canceled": false,
+      "new_normal_terms": {
+        "physical_C2_orbit": "f*x**2/8",
+        "z00": "-5*f*x**2/16",
+        "z11": "-5*f*x**2/16"
+      },
+      "new_virtual_blocks_replace_the_267_hyper_spectrum": false,
+      "opposite_chirality_pair_is_an_accepted_6D_N1_sector": false,
+      "orbifold_average_at_all_cover_points": "1/4",
+      "per_C2_cover_delta_I6": "-f**3/3 + f*p/48 + f*x**2/16",
+      "per_physical_stratum_delta_I6": {
+        "physical_C2_orbit": "-2*f**3/3 + f*p/24 + f*x**2/8",
+        "z00": "f**3/3 - f*p/48 - 5*f*x**2/16",
+        "z11": "f**3/3 - f*p/48 - 5*f*x**2/16"
+      },
+      "pure_U1_restriction_matches_requested_transfer": true,
+      "status": "EXACT_VIRTUAL_SHIFTED_DETERMINANT_PROFILE_NOT_A_NEW_ACCEPTED_BULK_SECTOR",
+      "unlocalized_six_dimensional_index_difference": "0: both virtual terms have the same charge representation and dimension before the equivariant twists"
+    }
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F97_EQUIVARIANT_MASS_DEFECT_INDEX_AND_FULL_RELATIVE_GLUE",
+    "not_a_valid_shortcut": "Do not identify separately quantized five- and three-dimensional responses with a single microscopic theory, divide cover winding by four to count physical fermions, or turn a bounded section search into a rank-zero proof.",
+    "parallel": "Solve or rigorously exclude the remaining x_section=-24*T^3+a2*T^2+a1*T+a0 polynomial branch over C(X), or compute stronger Picard/Galois data for the original Jacobian. Preserve the conditional height 37S+192F in the doubled-charge convention; neither a cover point nor a changed twist supplies it.",
+    "primary": "Compute the orbifold-projected defect index and actual localized representations for the smooth H_m1/H_m2 mass profile, then test a common Gammahat-compatible relative action. It must cancel the mixed gauge periods 61/4, 61/4, -1/2, retain all new normal/R/flavor terms, and realize the restricted spin-CS/ABK response with the parent orientation and regulator."
+  },
+  "normal_relative_CS": {
+    "core_sha256": "5d64a2cd3768eebe7b5088da69a2d723e56541ca4d27e663c5123326a6df9d34",
+    "descent_obstruction_to_natural_Spin_c_category": {
+      "adding_integrally_quantized_counterterms_removes_half_period": false,
+      "all_these_backgrounds_proved_admissible_in_full_Gammahat_orbifold": false,
+      "category": "Spin^c(T)=(Spin(T) x Spin2)/<(-1,-1)> with determinant normal line N, NOT the independent Spin^c11 gauge group",
+      "cohomology": "a^3=b^2=0, integral(a^2*b)=1",
+      "construction_of_Spin_c_structure": "canonical complex determinant3a+2b twisted by O(-1,0), giving determinant a+2b",
+      "determinant_parity_matches_tangent_w2": true,
+      "extension_ambiguity_phase": "-1",
+      "holomorphic_check": "write k=2j+1; the twisted complex Dirac index is chi(O(j-1,2j))=j*(j+1)*(2j+1)/2",
+      "no_separate_integral_normal_root_u_exists": true,
+      "normal_determinant_class_x": "a+2b",
+      "odd_k_Spin_c_index_period": "(k^3-k)/8, integral for odd k",
+      "scope": "excludes descent of this unchanged-polynomial absolute countertheory to the entire natural Spin^c tangential category. It does not exclude a restricted background domain, extra coupled relative data, changed curvatures, or a new full Gammahat completion.",
+      "tangent_p1": "3a^2",
+      "tangent_w2": "a mod2",
+      "test_manifold": "CP2 x CP1",
+      "unchanged_combined_target_period": "3/2",
+      "unchanged_polynomial_defines_an_absolute_invertible_countertheory_on_all_these_backgrounds": false
+    },
+    "frozen_target": {
+      "U5_bundle": "ordinary rank5 E at one C4 wall; use the corresponding reflected U5 at the other wall",
+      "bare_C4_f_zero_I6": "c2*u - p*u/4 - u**3",
+      "chosen_normal_Spin2_root": "M, u=c1(M), x=2u",
+      "normal_SO2_class": "x",
+      "p": "p1 of the stabilized tangent bundle",
+      "repair_target_I6": "-c2*u + p*u/4 + u**3",
+      "scope": "f=0 and independent internal R/flavor curvatures zero; one C4 normal/gauge/gravity slice, not full bare I6",
+      "target_is_identical_to_V94_conditional_polynomial": true
+    },
+    "input_core_hashes": {
+      "v94_route": "17fd3a60008545b7bde77756ed8b5ec7dd590c18c1cbb1344a5a7cc67dd2686f",
+      "v95_master": "7a20530db05af160ce76e1b5e297001befc5eafd3696a13ba9ac692bbe94dd88",
+      "v95_route": "e8ed3aa98cc23726cd41d0b62bbfb8822253d7a9282f1184ba22a77956cb4729"
+    },
+    "minimality_scope": {
+      "bosonic_CS_ansatz_excludes_gravitational_CS": true,
+      "minimum_over_all_spin_invertible_or_interacting_theories_claimed": false,
+      "one_odd_charge_Weyl_cannot_have_Trk_minus6": true,
+      "selected_witness": "two Weyls of k=-3 plus K_10; all six-, four- and two-field witnesses are alternatives, not additions to the old28-component module",
+      "six_unit_negative_weights_CS_level": 2,
+      "two_Weyl_minimum_only_within_this_ansatz": true,
+      "two_charge_family": "(-3+2r,-3-2r), r integer",
+      "two_charge_family_CS_level": "12*r**2 + 10",
+      "within_this_ansatz_Trk_required": -6
+    },
+    "new_normal_repairs": [
+      {
+        "CP3_CS_period": "10",
+        "CP3_combined_period": "2",
+        "CP3_fermion_period": "-8",
+        "CS_cubic_integer_level": 10,
+        "CS_curvature_I6": "-c2*u + 10*u**3",
+        "CS_mixed_u_c2_integer_level": -1,
+        "Cartan_and_center_data_construct_full_localized_Gammahat_representations": false,
+        "N1_center_and_phase_bookkeeping": [
+          {
+            "fermion_R_Cartan_weight": -3,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-3/2",
+            "normal_root_weight_k": -3,
+            "scalar_R_Cartan_weight": -2,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "-1",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -3,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-3/2",
+            "normal_root_weight_k": -3,
+            "scalar_R_Cartan_weight": -2,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "-1",
+            "shared_qN_minus_rR_over2": "0"
+          }
+        ],
+        "R_terms_not_cancelled_by_frozen_CS": "p*y/4 - 27*u**2*y - 27*u*y**2 - 9*y**3",
+        "Spin_c6_formal_CS_period": "15/2",
+        "Spin_c6_formal_combined_period": "3/2",
+        "Spin_c6_formal_fermion_period": "-6",
+        "Tr_k": -6,
+        "Tr_k3": -54,
+        "Weyl_components_per_C4": 2,
+        "fermion_I6": "p*u/4 - 9*u**3",
+        "fermions_plus_CS_minus_target": "0",
+        "full_R_Cartan_fermion_I6": "p*u/4 + p*y/4 - 9*u**3 - 27*u**2*y - 27*u*y**2 - 9*y**3",
+        "normal_and_R_roots_identified_in_full_theory": false,
+        "normal_root_charges": [
+          -3,
+          -3
+        ]
+      },
+      {
+        "CP3_CS_period": "6",
+        "CP3_combined_period": "2",
+        "CP3_fermion_period": "-4",
+        "CS_cubic_integer_level": 6,
+        "CS_curvature_I6": "-c2*u + 6*u**3",
+        "CS_mixed_u_c2_integer_level": -1,
+        "Cartan_and_center_data_construct_full_localized_Gammahat_representations": false,
+        "N1_center_and_phase_bookkeeping": [
+          {
+            "fermion_R_Cartan_weight": -3,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-3/2",
+            "normal_root_weight_k": -3,
+            "scalar_R_Cartan_weight": -2,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "-1",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          }
+        ],
+        "R_terms_not_cancelled_by_frozen_CS": "p*y/4 - 15*u**2*y - 15*u*y**2 - 5*y**3",
+        "Spin_c6_formal_CS_period": "9/2",
+        "Spin_c6_formal_combined_period": "3/2",
+        "Spin_c6_formal_fermion_period": "-3",
+        "Tr_k": -6,
+        "Tr_k3": -30,
+        "Weyl_components_per_C4": 4,
+        "fermion_I6": "p*u/4 - 5*u**3",
+        "fermions_plus_CS_minus_target": "0",
+        "full_R_Cartan_fermion_I6": "p*u/4 + p*y/4 - 5*u**3 - 15*u**2*y - 15*u*y**2 - 5*y**3",
+        "normal_and_R_roots_identified_in_full_theory": false,
+        "normal_root_charges": [
+          -3,
+          -1,
+          -1,
+          -1
+        ]
+      },
+      {
+        "CP3_CS_period": "2",
+        "CP3_combined_period": "2",
+        "CP3_fermion_period": "0",
+        "CS_cubic_integer_level": 2,
+        "CS_curvature_I6": "-c2*u + 2*u**3",
+        "CS_mixed_u_c2_integer_level": -1,
+        "Cartan_and_center_data_construct_full_localized_Gammahat_representations": false,
+        "N1_center_and_phase_bookkeeping": [
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          },
+          {
+            "fermion_R_Cartan_weight": -1,
+            "fermion_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "fermion_qN": "-1/2",
+            "normal_root_weight_k": -1,
+            "scalar_R_Cartan_weight": 0,
+            "scalar_kernel_exponents": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "scalar_qN": "0",
+            "shared_qN_minus_rR_over2": "0"
+          }
+        ],
+        "R_terms_not_cancelled_by_frozen_CS": "p*y/4 - 3*u**2*y - 3*u*y**2 - y**3",
+        "Spin_c6_formal_CS_period": "3/2",
+        "Spin_c6_formal_combined_period": "3/2",
+        "Spin_c6_formal_fermion_period": "0",
+        "Tr_k": -6,
+        "Tr_k3": -6,
+        "Weyl_components_per_C4": 6,
+        "fermion_I6": "p*u/4 - u**3",
+        "fermions_plus_CS_minus_target": "0",
+        "full_R_Cartan_fermion_I6": "p*u/4 + p*y/4 - u**3 - 3*u**2*y - 3*u*y**2 - y**3",
+        "normal_and_R_roots_identified_in_full_theory": false,
+        "normal_root_charges": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    ],
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/abs/2011.05768",
+        "use": "Sections3-4 construct globally defined topological actions by differential-character holonomy and distinguish ordinary from equivariant gauging."
+      },
+      {
+        "url": "https://arxiv.org/abs/1207.5449",
+        "use": "Higher differential cup-product Chern-Simons construction, including nonbounding manifolds and integral higher curvature classes; used for the explicit degree-six character, not for Gammahat descent."
+      },
+      {
+        "url": "https://arxiv.org/abs/1010.5002",
+        "use": "Spin-c Dirac and complex K-theory orientation/index framework; the CP2 x CP1 index values are independently derived here by holomorphic Euler characteristic."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/0612212",
+        "use": "Orbifold normal Lorentz anomaly and half-angle R twist context; no source claim of the new wall/CS candidate."
+      }
+    ],
+    "product_category_quantized_CS_construction": {
+      "M_exists_does_not_mean_M_is_trivial": true,
+      "a_global_topological_action_in_the_stated_product_category_is_defined": true,
+      "action": "Z_gamma(Y,M,E)=exp(2*pi*i*<K_gamma,[Y]>), with boundary orientation chosen to assign the displayed inflow contribution",
+      "action_descends_to_full_Gammahat_orbifold": false,
+      "action_requires_a_nowhere_nonzero_section_of_M": false,
+      "backgrounds": "closed oriented five-manifold Y with genuine line bundle M and U5 bundle E, both with connection; fermions additionally require a chosen ordinary spin structure",
+      "character": "K_gamma=-c1hat(M) cup c2hat(E)+gamma*c1hat(M)^3 in Hhat^6(Y;Z), gamma integer",
+      "curvature": "-u*c2(E)+gamma*u^3",
+      "differential_character_degree": 6,
+      "extension_independence": "on a closed six-manifold, -integral(u*c2)+gamma*integral(u^3) is integral, so two bounding extensions give the same phase; differential-character holonomy also defines the action on nonbounding Y",
+      "full_relative_anomaly_trivialization_constructed": false,
+      "identification_with_the_parent_anomaly_functor_proved": false,
+      "not_just_a_deRham_local_form": true
+    },
+    "schema": "v96_normal_product_CS_repair_and_descent_obstruction_v1",
+    "status": "QUANTIZED_PRODUCT_CATEGORY_CS_NORMAL_REPAIRS__FULL_GAMMAHAT_AND_MIXED_COMPLETION_OPEN",
+    "stronger_fermions_only_obstruction": {
+      "CP3_any_odd_charge_Weyl_period_is_multiple_of": 4,
+      "CP3_target_period": "2",
+      "SU5_cubic_cancellation_assumption_needed": false,
+      "assumption": "natural tangent/normal geometric kernel D forces every normal-root weight k=2qN odd, including all internal/gauge multiplicities",
+      "criterion": "Tr k integer and Tr k^3-Tr k divisible by24",
+      "determinant": 24,
+      "internal_curvature_terms_may_be_discarded_in_full_claim": false,
+      "odd_charge_index_lattice_generators": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          27
+        ]
+      ],
+      "ordinary_fermions_alone_match_target": false,
+      "proof": "For odd k, k^3-k is divisible by24. Conversely n3=(Tr k^3-Tr k)/24 and n1=Tr k-3n3 reconstruct the pair using signed charges1 and3; negative multiplicity is implemented by conjugate charge.",
+      "target_Trk_Trk3": [
+        -6,
+        6
+      ],
+      "target_lattice_coordinates": [
+        "-15/2",
+        "1/2"
+      ]
+    },
+    "terminal_decision": {
+      "closed_gates": [],
+      "common_bulk_wall_defect_inflow_action_constructed": false,
+      "full_R_flavor_curvature_anomalies_cancelled": false,
+      "new_global_wall_placement_and_SUSY_action_constructed": false,
+      "normal_restricted_curvature_cancellation": true,
+      "quantized_normal_CS_functionals_on_chosen_product_backgrounds_constructed": true,
+      "same_action_parent_accepted": false,
+      "smaller_D_compatible_fermion_witnesses_constructed": true
+    }
+  },
+  "original_section_frontier": {
+    "actual_K3_moduli_variation": {
+      "Laurent_expansion": "j(T)=j2*T^2+j1*T+j0+O(1/T)",
+      "centered_affine_invariant": "16*(539*X**24 - 2102*X**22 + 2300*X**20 - 3426*X**18 + 3604*X**16 - 6820*X**14 - 1564*X**12 - 2564*X**10 + 3448*X**8 - 6124*X**6 + 16*X**4 - 12128*X**2 + 5824)/((X**4 - X**3 - X + 2)**3*(X**4 + X**3 + X + 2)**3)",
+      "coordinate_invariance": {
+        "coefficient_change_j2_j1_j0": [
+          "alpha**2*j2",
+          "alpha*(2*beta*j2 + j1)",
+          "beta**2*j2 + beta*j1 + j0"
+        ],
+        "coordinate_change": "T=alpha*T_new+beta, alpha!=0",
+        "exact_invariance_residual": "0",
+        "invariant": "J_center=j0-j1^2/(4*j2)",
+        "invariant_is_claimed_complete_moduli_classifier": false,
+        "tail_argument": "O(1/T) remains O(1/T_new) under a nonzero affine rescaling; it contributes no polynomial-part coefficient."
+      },
+      "good_parameter_witness": {
+        "Delta_leading_coefficient": "-10883911680",
+        "X": 1,
+        "degrees_A_B_Delta": [
+          6,
+          9,
+          16
+        ],
+        "infinity_orders_A_B_Delta": [
+          2,
+          3,
+          8
+        ],
+        "invariant_is_regular_here": true,
+        "monic_gcd_Delta_derivative_A_Delta_B_Delta": [
+          "1",
+          "1",
+          "1"
+        ],
+        "rank_of_this_fixed_slice_computed_or_used_as_bound": false
+      },
+      "image_dimension": 1,
+      "invariant_derivative_at_X_one": "-5869312/625",
+      "invariant_is_nonconstant_in_X": true,
+      "invariant_value_at_X_one": "-303952/125",
+      "j_definition": "j=-1728*(4*A)^3/Delta, with A=-27I,B=-27J from the unchanged V91 quartic",
+      "j_numerator_denominator_degrees_T": [
+        18,
+        16
+      ],
+      "j_polynomial_part_at_T_infinity": {
+        "j0": "16*(539*X**24 - 2183*X**22 + 2318*X**20 - 3535*X**18 + 3508*X**16 - 7312*X**14 - 2232*X**12 - 2840*X**10 + 2704*X**8 - 7232*X**6 - 1856*X**4 - 13424*X**2 + 5824)/((X**4 - X**3 - X + 2)**3*(X**4 + X**3 + X + 2)**3)",
+        "j1": "-512*X*(X**2 + 1)*(9*X**8 - 10*X**6 + 16*X**4 - 10*X**2 + 36)/((X**4 - X**3 - X + 2)**2*(X**4 + X**3 + X + 2)**2)",
+        "j2": "-4096/((X**4 - X**3 - X + 2)*(X**4 + X**3 + X + 2))"
+      },
+      "moduli_map_is_nonconstant": true,
+      "polynomial_part_remainder_numerator_degree_T": 15,
+      "unique_double_j_pole": "Sixteen finite I1 fibers give simple poles because gcd(A,Delta)=1; the single I2* at infinity gives the only pole of order2.",
+      "why_only_affine_changes_matter": "Any isomorphism of these Jacobian elliptic surfaces induces a PGL2 change on the ruling that preserves the unique double j-pole; it fixes infinity and is therefore affine."
+    },
+    "charge_normalization_and_descent_preserved": {
+      "V94_anti_invariant_section_non_descent_retracted": false,
+      "actual_charge_unit_or_target_section_proved": false,
+      "displayed_scout_height_S_F": [
+        148,
+        768
+      ],
+      "doubled_charge_required_P_dot_O_divisor_S_F": [
+        17,
+        90
+      ],
+      "doubled_charge_required_component": 1,
+      "doubled_charge_section_height_S_F": [
+        37,
+        192
+      ],
+      "height_scaling": "b_displayed=k^2*b_section; k=2 does not mean b_section=b_displayed",
+      "unit_charge_required_component": 0,
+      "unit_charge_section_height_S_F": [
+        148,
+        768
+      ]
+    },
+    "coefficient_payload": {
+      "L": "t**3",
+      "p0": "r0*r1*s**2*(r0**10 + 2*r1**10) + r0*r1*t**2*(r0**2 + r1**2)",
+      "p1": "s**2*(r0**12 + r1**12) + t**2*(r0**4 + 2*r1**4)",
+      "p2": "0",
+      "p3": "0",
+      "p4": "r0*r1*s**2*(2*r0**10 + 3*r1**10)"
+    },
+    "coefficient_payload_sha256": "f2b6dcad4a90364cff7557f379e4ccdb76bd466553a3289659d08a356119f0cf",
+    "core_sha256": "8640b8736483297c39589f7248ff3936b4e51982530999e68f6b4448ce30eea8",
+    "input_core_hashes": {
+      "v95_geometry": "e064b708a7589a408095501592d6282623057d5e79ddc4e2bc1202647b76dbeb",
+      "v95_master": "7a20530db05af160ce76e1b5e297001befc5eafd3696a13ba9ac692bbe94dd88",
+      "v95_route": "e8ed3aa98cc23726cd41d0b62bbfb8822253d7a9282f1184ba22a77956cb4729"
+    },
+    "limitations": [
+      "The original Mordell-Weil rank is now at most11, but neither its exact value nor a nonzero original-field section is proved.",
+      "The polynomial ansatz excludes degree<=2 x_section and only the leading12 cubic branch. The explicit leading-24 system remains unsolved; sections with higher degree or T denominators are untouched.",
+      "The Picard20 argument uses actual moduli variation and a Noether-Lefschetz theorem, not a fixed-slice rank calculation or a generic-coefficient heuristic.",
+      "The required height37S+192F in the doubled-charge convention is unchanged and unconstructed. No actual Hodge numbers, matter charges, compact Jacobian resolution or quantum completion follow.",
+      "All eight gates remain OPEN. No changed twist or anti-invariant cover section is counted as a completion of the original theory."
+    ],
+    "polynomial_section_search_frontier": {
+      "ansatz_coefficient_field": "C(X); coefficients may be arbitrary rational functions ofX, not just rational numbers",
+      "coordinate_convention": "X is the base parameter r0/r1; x_section and y_section are Weierstrass point coordinates, on s=r1=1 and T=t",
+      "degree_at_most_two": {
+        "RHS_degree_T": 9,
+        "RHS_leading_coefficient": "3456",
+        "also_excluded_after_algebraic_constant_extension": true,
+        "nonzero_section_with_this_ansatz_exists": false,
+        "proof": "A polynomial square has even degree, whereas the unchanged cubic right-hand side has degree9 for every choice of a2,a1,a0.",
+        "x_section": "T**2*a2 + T*a1 + a0"
+      },
+      "degree_three_leading_classification": {
+        "degree_nine_coefficient": "(leading - 12)**2*(leading + 24)",
+        "only_possible_leading_coefficients": [
+          12,
+          -24
+        ],
+        "reason": "The RHS has degree at most9. A polynomial square forces its degree-nine coefficient to vanish."
+      },
+      "leading_twelve_branch": {
+        "P_minus": "-X**4 + X**3 + X - 2",
+        "P_plus": "X**4 + X**3 + X + 2",
+        "P_plus_P_minus_discriminants": [
+          1129,
+          1129
+        ],
+        "P_plus_P_minus_resultant": 288,
+        "RHS_degree_before_next_cancellation": 7,
+        "exact_discriminant_factor": "324^2*P_plus*P_minus",
+        "exclusion_claimed_after_adjoining_the_monodromy_square_root": false,
+        "necessary_T7_equation": "9*(81*X**8 + 324*X**4 - 36*X**3*a2 - 36*X*a2 + 4*a2**2 + 324)",
+        "original_field_cubic_section_on_this_branch_exists": false,
+        "proof": "Degree7 must also cancel. Its quadratic equation for a2 has nonsquare discriminant because P_plus*P_minus has eight simple zeros. Thus it has no root in C(X).",
+        "quadratic_discriminant_in_a2": "-104976*(X**4 - X**3 - X + 2)*(X**4 + X**3 + X + 2)",
+        "squareclass_is_nontrivial_in_C_X": true
+      },
+      "rational_y_integrality_argument": "C(X)[T] is integrally closed. If x_section is polynomial and y_section is rational with y_section^2=x_section^3+A*x_section+B, then y_section is integral over C(X)[T] by its monic quadratic and therefore is polynomial.",
+      "remaining_leading_minus_twenty_four_system": {
+        "after_a2_elimination_equation_count": 8,
+        "after_a2_elimination_unknown_count": 7,
+        "equation_count": 9,
+        "equation_list_sha256": "4902fedcd36719fbcccc4c15959f7b6b6c6a601f2fd5e4b8c9d1b1efb763106a",
+        "equations_T8_through_T0": [
+          "-11664*X**3 - 11664*X - 1296*a2 + b4**2",
+          "-729*X**8 - 2916*X**4 + 324*X**3*a2 + 324*X*a2 - 1296*a1 + 72*a2**2 + 2*b3*b4 - 2916",
+          "-34992*X**11 + 324*X**3*a1 + 324*X*a1 - 58320*X - 1296*a0 + 144*a1*a2 - a2**3 + 2*b2*b4 + b3**2",
+          "-1458*X**16 - 23328*X**14 - 26244*X**12 + 972*X**11*a2 - 36450*X**4 + 324*X**3*a0 - 34992*X**2 + 324*X*a0 + 1620*X*a2 + 144*a0*a2 + 72*a1**2 - 3*a1*a2**2 + 2*b1*b4 + 2*b2*b3 - 2916",
+          "-1458*X**19 - 5832*X**15 + 648*X**14*a2 + 648*X**12*a2 + 972*X**11*a1 - 5832*X**11 - 2187*X**9 - 8748*X**5 + 972*X**4*a2 + 972*X**2*a2 + 1620*X*a1 - 8748*X + 144*a0*a1 - 3*a0*a2**2 - 3*a1**2*a2 + 2*b0*b4 + 2*b1*b3 + b2**2",
+          "-729*X**24 - 23328*X**22 + 648*X**14*a1 + 648*X**12*a1 - 83106*X**12 + 972*X**11*a0 + 972*X**4*a1 + 972*X**2*a1 - 69984*X**2 + 1620*X*a0 + 72*a0**2 - 6*a0*a1*a2 - a1**3 + 2*b0*b3 + 2*b1*b2 - 729",
+          "-2916*X**27 - 5832*X**23 + 648*X**22*a2 - 4374*X**17 - 2916*X**15 + 648*X**14*a0 - 8748*X**13 + 648*X**12*a0 + 2268*X**12*a2 - 5832*X**11 - 4374*X**5 + 972*X**4*a0 + 972*X**2*a0 + 1944*X**2*a2 - 8748*X - 3*a0**2*a2 - 3*a0*a1**2 + 2*b0*b2 + b1**2",
+          "648*X**22*a1 + 2268*X**12*a1 + 1944*X**2*a1 - 3*a0**2*a1 + 2*b0*b1",
+          "-1458*X**35 - 2187*X**25 - 2916*X**23 + 648*X**22*a0 - 4374*X**13 + 2268*X**12*a0 - 1458*X**11 + 1944*X**2*a0 - 2187*X - a0**3 + b0**2"
+        ],
+        "existence_or_nonexistence_solved": false,
+        "highest_equation_solves_a2_as": "-9*X**3 - 9*X + b4**2/1296",
+        "is_complete_for_original_field_degree_three_polynomial_x_ansatz": true,
+        "reduced_equation_list_sha256": "75cfdd09322c47a4d48555443f0d0a32dcd37736e3ada9869301972cb6ad92c7",
+        "solution_over_an_extension_would_require_Galois_descent": true,
+        "unknown_count": 8,
+        "unknowns_over_C_X": [
+          "a2",
+          "a1",
+          "a0",
+          "b4",
+          "b3",
+          "b2",
+          "b1",
+          "b0"
+        ],
+        "x_section": "-24*T**3 + T**2*a2 + T*a1 + a0",
+        "y_section": "T**4*b4 + T**3*b3 + T**2*b2 + T*b1 + b0"
+      },
+      "scope": {
+        "all_rational_sections_excluded": false,
+        "anti_invariant_V94_point_or_changed_twist_used": false,
+        "degree_four_or_higher_polynomial_x_excluded": false,
+        "original_MW_rank_zero_proved_by_ansatz": false,
+        "sections_with_T_denominators_excluded": false,
+        "target_height37_section_is_covered_by_this_small_ansatz": false
+      }
+    },
+    "primary_sources": [
+      {
+        "role": "Kloosterman Theorem1.1, the n=2 discussion immediately below Corollary1.2, and Definition2.10 describe the elliptic-surface moduli and zero-dimensional Picard20 locus. Theorem2.7 is Shioda-Tate.",
+        "url": "https://arxiv.org/html/math/0501454v2"
+      },
+      {
+        "role": "Sections2.6,12.4,13.1 and14.1 give the j convention, K3 periods, Picard20 rigidity and Noether-Lefschetz interpretation. V95 supplies the actual K3 fiber census.",
+        "url": "https://arxiv.org/abs/0907.0298"
+      },
+      {
+        "role": "The inherited preferred Shioda charge normalization and central quotient interpretation remain conditional; no charge rescaling or extension-valued point is promoted to a primitive original section.",
+        "url": "https://arxiv.org/abs/1706.08521"
+      }
+    ],
+    "schema": "v96_original_K3_variation_and_cubic_section_frontier_v1",
+    "status": "PASS_ORIGINAL_FREE_RANK_AT_MOST_11__LOW_DEGREE_BRANCHES_EXCLUDED__CUBIC_NEAR_BRANCH_OPEN",
+    "stronger_original_MW_rank_bound": {
+      "actual_moduli_image_dimension": 1,
+      "constant_extension": "K'=algebraic_closure(C(X))(T)",
+      "dimension_of_NL20": 0,
+      "excluded_generic_Picard_rank": 20,
+      "field": "K=C(X)(T)",
+      "fixed_specialization_rank_injectivity_assumed": false,
+      "generic_Picard_rank_equals19_claimed": false,
+      "generic_Picard_rank_upper_bound": 19,
+      "generic_to_family_argument": [
+        "If the geometric generic K3 had Picard rank20, twenty independent divisor classes are defined over a finite extension of C(X).",
+        "After that finite base change and shrinking the parameter curve, those classes spread to a smooth family of minimal K3 resolutions and stay independent. Equivalently the family maps into one Noether-Lefschetz locus of rank20.",
+        "Such a locus is zero-dimensional in the moduli of Jacobian elliptic surfaces with nonconstant j. The computed nonconstant affine invariant forbids this: finite base change cannot make its nonconstant rational function constant.",
+        "Therefore the geometric generic Picard rank is at most19. Shioda-Tate subtracts the unchanged U plus D6 trivial lattice of rank8, and E(K) injects into E(K')."
+      ],
+      "geometric_constant_extension_rank_upper_bound": 11,
+      "nonzero_original_section_constructed": false,
+      "original_group_form": "Z^r with 0<=r<=11",
+      "original_rank_lower_bound": 0,
+      "original_rank_upper_bound": 11,
+      "original_rank_zero_or_one_proved": false,
+      "original_torsion_order_from_V94": 1,
+      "parameter_count_alone_used_to_assert_rank_zero": false,
+      "previous_original_rank_upper_bound": 12,
+      "same_field_inclusion_as_V95": true,
+      "theorem": "Kloosterman math/0501454 Theorem1.1 and the n=2 discussion: on nonconstant-j Jacobian elliptic surfaces, dim NL_r=20-r.",
+      "theorem_n": 2,
+      "trivial_lattice_rank": 8
+    }
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/2011.05768",
+      "use": "Sections3-4 construct globally defined topological actions by differential-character holonomy and distinguish ordinary from equivariant gauging."
+    },
+    {
+      "url": "https://arxiv.org/abs/1207.5449",
+      "use": "Higher differential cup-product Chern-Simons construction, including nonbounding manifolds and integral higher curvature classes; used for the explicit degree-six character, not for Gammahat descent."
+    },
+    {
+      "url": "https://arxiv.org/abs/1010.5002",
+      "use": "Spin-c Dirac and complex K-theory orientation/index framework; the CP2 x CP1 index values are independently derived here by holomorphic Euler characteristic."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "Shifted fixed-point characters and normal Lorentz anomaly terms; the exact m1-m2 calculation is derived from the bound V71 normalization."
+    },
+    {
+      "url": "https://arxiv.org/abs/math/0307120",
+      "use": "Reduced eta modulo integers and its Chern-Simons transgression, sections1-2; integer powers are the ordinary eta refinement used here."
+    },
+    {
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "APS index and relative determinant/Pfaffian interpretation; curvature matching alone does not supply the full anomaly gluing."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "Section5.1 constructs local forms for globally vanishing localized anomalies; the form-level construction does not itself establish the new global level quantization sought here."
+    },
+    {
+      "url": "https://dlmf.nist.gov/23.3",
+      "use": "Weierstrass differential equation used to normalize the square elliptic curve; divisor, character and fourth-power identity are computed explicitly here."
+    },
+    {
+      "url": "https://dlmf.nist.gov/23.5",
+      "use": "Section23.5(iii) identifies the lemniscatic square lattice; no assertion of a quantum field-theory completion is taken from this mathematical source."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0505235",
+      "use": "Belov-Moore Eq(1.3), Section2.1 and(2.7) normalize integral-curvature background spin CS as exp(i*pi*integral K F^2), including integral odd K; Section2.1 states OmegaSpin3(BU1^N)=0, and Section2.2 relates CS to kernel-inclusive xi. Gauge fields are not integrated over in this certificate."
+    },
+    {
+      "url": "https://arxiv.org/abs/1406.7329",
+      "use": "Section6 gives the Smith isomorphism for an independent internal unitary Z2 with g^2=1, and its induced Pin-minus structure on PD(a). Section5 describes the Z8 ABK generator. The ordinary-spin scope is essential."
+    },
+    {
+      "url": "https://arxiv.org/abs/1812.11959",
+      "use": "Sections3.1-3.3 give low spin bordism coefficients, Eq(3.9) the ABK Gauss sum, ABK=4Arf on oriented surfaces, and the induced Pin-minus structure on PD(a). These calibrate the genuine spin response, not a new microscopic wall assignment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18380",
+      "use": "Section3.1(3.4),(3.7),(3.9),(3.12)-(3.15) fixes kernel-inclusive APS xi, rank-zero subtraction, complex determinant and real Pfaffian phases, and the even quaternionic index needed before halving."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.19634",
+      "use": "Eq(2.18) independently confirms Z_(2n) x Z2 and lens/odd-T2-product generators when4 divides n. Here the generator dictionary is also proved by AHSS-bound saturation and exact real/complex eta separation; a complex mod-one torus formula is never halved."
+    },
+    {
+      "url": "https://arxiv.org/abs/2504.02934",
+      "use": "AppendixC(C.2) is the finite lens sum inherited through V95, with our explicitly opposite Dirac sign. Exact spectral values and both spin lifts, not residues, fix the Pfaffian."
+    },
+    {
+      "url": "https://arxiv.org/html/math/0501454v2",
+      "use": "Kloosterman Theorem1.1, the n=2 discussion immediately below Corollary1.2, and Definition2.10 describe the elliptic-surface moduli and zero-dimensional Picard20 locus. Theorem2.7 is Shioda-Tate."
+    },
+    {
+      "url": "https://arxiv.org/abs/0907.0298",
+      "use": "Sections2.6,12.4,13.1 and14.1 give the j convention, K3 periods, Picard20 rigidity and Noether-Lefschetz interpretation. V95 supplies the actual K3 fiber census."
+    },
+    {
+      "url": "https://arxiv.org/abs/1706.08521",
+      "use": "The inherited preferred Shioda charge normalization and central quotient interpretation remain conditional; no charge rescaling or extension-valued point is promoted to a primitive original section."
+    }
+  ],
+  "schema": "susy_v96_quantized_responses_and_section_frontier_audit_v1",
+  "scope": "separate SUSY/C8 research branch; canonical V21 physical gate evidence unchanged",
+  "status": "V96_RESTRICTED_QUANTIZED_RESPONSES_AND_SMOOTH_EQUIVARIANT_MASS__MIXED_GAUGE_PERIODS_OBSTRUCT_COMPLETION__NO_ACCEPTED_PARENT",
+  "supersession_boundary": {
+    "V95_required_finite_inverse_now_explicit_on_restricted_spin_category": true,
+    "V95_unchanged_28_component_kernel_obstruction_retracted": false,
+    "bounded_polynomial_section_exclusions_prove_rank_zero": false,
+    "new_2_4_6_field_CS_candidates_are_added_on_top_of_old28_fields": false,
+    "new_torus_mass_intertwiner_has_constant_gap_or_holomorphic_SUSY_mass": false,
+    "ordinary_quarter_level_CS_failure_excludes_equivariant_transport": false,
+    "original_free_rank_upper_bound_improves_from_12_to_11": true,
+    "original_nonzero_section_or_target_height_realized": false,
+    "pure_U1_transfer_cancels_new_mixed_gauge_periods": false,
+    "restricted_reduced_inverse_cancels_unsubtracted_gravity_or_full_Gammahat": false
+  },
+  "terminal_decision": {
+    "D_compatible_normal_Weyl_candidates_with_restricted_polynomial_match": true,
+    "actual_original_exact_free_rank_computed": false,
+    "actual_original_nonzero_section_constructed": false,
+    "all_F96_obligations_fully_completed": false,
+    "all_ordinary_spin_C4_C8_reduced_characters_cancel_with_that_response": true,
+    "closed_gates": [],
+    "common_quantized_relative_bulk_wall_defect_action_constructed": false,
+    "full_Gammahat_wall_representations_and_SUSY_action_frozen": false,
+    "full_virtual_normal_terms_retained": true,
+    "new_mixed_gauge_period_obstruction_computed": true,
+    "original_rank_bound_11_and_scoped_polynomial_exclusions_proved": true,
+    "quantized_product_normal_CS_functionals_defined": true,
+    "restricted_reduced_defect_inverse_constructed_as_spin_CS_ABK": true,
+    "same_action_microscopic_parent_accepted": false,
+    "smooth_equivariant_cover_mass_intertwiner_constructed": true,
+    "theory_complete": false
+  },
+  "version": "V96"
+}
