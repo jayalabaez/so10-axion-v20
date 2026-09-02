@@ -1,0 +1,1517 @@
+{
+  "B_neutral_Gammahat_lift": {
+    "cover": {
+      "K_F_elements": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      ],
+      "K_F_generators": {
+        "krot": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "kspin": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "Spin11_remains_faithful": true,
+      "contains_pure_Spin11_center": false,
+      "group": "Spin(T) x Spin(11) x Sp(1)_R x (Sp(2)_AC x Sp(1)_B) x Sp(266)_H x C4_F",
+      "kernel_coordinate_order": [
+        "T",
+        "Spin11",
+        "R",
+        "H3",
+        "H266",
+        "f"
+      ]
+    },
+    "fixed_strata": [
+      {
+        "C4F_lift": "1",
+        "H3_lift": "A3",
+        "combined_copy_factor": [
+          1,
+          1,
+          1
+        ],
+        "cover_power": "Atilde^4=krot",
+        "point": "z00=0",
+        "stabilizer": "A"
+      },
+      {
+        "C4F_lift": "j",
+        "H3_lift": "H_AC*A3",
+        "combined_copy_factor": [
+          1,
+          1,
+          1
+        ],
+        "cover_power": "(Utilde*Atilde)^4=krot",
+        "point": "z11=(1+i)/2",
+        "stabilizer": "U*A"
+      },
+      {
+        "C4F_lift": "j",
+        "H3_lift": "H_AC*A3^2",
+        "combined_copy_factor": [
+          1,
+          1,
+          1
+        ],
+        "cover_power": "(Utilde*Atilde^2)^2=krot*kspin",
+        "point": "z10=1/2",
+        "stabilizer": "U*A^2"
+      },
+      {
+        "C4F_lift": "j",
+        "H3_lift": "H_AC*A3^2",
+        "combined_copy_factor": [
+          1,
+          1,
+          1
+        ],
+        "cover_power": "(Vtilde*Atilde^2)^2=krot*kspin",
+        "point": "z01=i/2",
+        "stabilizer": "V*A^2"
+      }
+    ],
+    "projector_reconstruction": {
+      "B_m0_singlet_and_doublet_restored": true,
+      "all_V70_A_B_C_projectors_restored": true,
+      "n_hypers": 3,
+      "n_strata": 4,
+      "no_color_triplet_zero_modes_reintroduced": true,
+      "rows": [
+        {
+          "H_AC_translation_sign": -1,
+          "V70": {
+            "z00": [
+              "Phi+:i^3 Q",
+              "Phi-:i^0 Q^-1"
+            ],
+            "z10_z01": [
+              "Phi+:-R",
+              "Phi-:+R"
+            ],
+            "z11": [
+              "Phi+:i^3 WQ",
+              "Phi-:i^0 WQ^-1"
+            ]
+          },
+          "all_four_strata_match_V70": true,
+          "combined_translation_factor": 1,
+          "hyper": "A",
+          "j_translation_phase": -1,
+          "m": 3,
+          "qF": 2,
+          "reconstructed": {
+            "z00": [
+              "Phi+:i^3 Q",
+              "Phi-:i^0 Q^-1"
+            ],
+            "z10_z01": [
+              "Phi+:-R",
+              "Phi-:+R"
+            ],
+            "z11": [
+              "Phi+:i^3 WQ",
+              "Phi-:i^0 WQ^-1"
+            ]
+          }
+        },
+        {
+          "H_AC_translation_sign": 1,
+          "V70": {
+            "z00": [
+              "Phi+:i^0 Q",
+              "Phi-:i^3 Q^-1"
+            ],
+            "z10_z01": [
+              "Phi+:+R",
+              "Phi-:-R"
+            ],
+            "z11": [
+              "Phi+:i^0 WQ",
+              "Phi-:i^3 WQ^-1"
+            ]
+          },
+          "all_four_strata_match_V70": true,
+          "combined_translation_factor": 1,
+          "hyper": "B",
+          "j_translation_phase": 1,
+          "m": 0,
+          "qF": 0,
+          "reconstructed": {
+            "z00": [
+              "Phi+:i^0 Q",
+              "Phi-:i^3 Q^-1"
+            ],
+            "z10_z01": [
+              "Phi+:+R",
+              "Phi-:-R"
+            ],
+            "z11": [
+              "Phi+:i^0 WQ",
+              "Phi-:i^3 WQ^-1"
+            ]
+          }
+        },
+        {
+          "H_AC_translation_sign": -1,
+          "V70": {
+            "z00": [
+              "Phi+:i^1 Q",
+              "Phi-:i^2 Q^-1"
+            ],
+            "z10_z01": [
+              "Phi+:-R",
+              "Phi-:+R"
+            ],
+            "z11": [
+              "Phi+:i^1 WQ",
+              "Phi-:i^2 WQ^-1"
+            ]
+          },
+          "all_four_strata_match_V70": true,
+          "combined_translation_factor": 1,
+          "hyper": "C",
+          "j_translation_phase": -1,
+          "m": 1,
+          "qF": 2,
+          "reconstructed": {
+            "z00": [
+              "Phi+:i^1 Q",
+              "Phi-:i^2 Q^-1"
+            ],
+            "z10_z01": [
+              "Phi+:-R",
+              "Phi-:+R"
+            ],
+            "z11": [
+              "Phi+:i^1 WQ",
+              "Phi-:i^2 WQ^-1"
+            ]
+          }
+        }
+      ]
+    },
+    "scope_boundary": {
+      "BV_BRST_ghost_antifield_regulator_representations_constructed": false,
+      "Pfaffian_orientation_and_eta_character_computed": false,
+      "full_physical_HGamma_orbibundle_constructed": false,
+      "global_line_endpoint_form_selected": false,
+      "localized_family_A_UA_UA2_VA2_isotropy_constructed": false,
+      "localized_rank_VEV_profiles_equivariant": false,
+      "smooth_charged_hyper_Gammahat_lift_constructed": true
+    },
+    "square_space_group": {
+      "A": {
+        "C4F": "1",
+        "H3": "A3",
+        "Spin11": "qhat"
+      },
+      "U": {
+        "C4F": "j",
+        "H3": "H_AC",
+        "Spin11": "what"
+      },
+      "V": {
+        "C4F": "j",
+        "H3": "H_AC",
+        "Spin11": "what"
+      },
+      "every_relation_defect_in_K_F": true,
+      "full_algebraic_cocycle_for_selected_smooth_bulk_lift": true,
+      "presentation": "<A,U,V | A^4=1,[U,V]=1,AUA^-1=V,AVA^-1=U^-1>",
+      "relation_defects_mod_center_bits": {
+        "A4": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "AUAinvVinv": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "AVAinvU": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "UVUinvVinv": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "selected_lift_class_u_v_r_s": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "status": "PASS_EXACT_SELECTED_SMOOTH_CHARGED_HYPER_GAMMAHAT_LIFT_AND_ALL_V70_PROJECTORS__LOCALIZED_BV_COMPLETION_OPEN"
+  },
+  "anomaly_scope_correction": {
+    "V87_discrete_zero_mode_shadow": {
+      "all_displayed_discrete_residues_zero": true,
+      "integer_tensor": {
+        "A2": 16,
+        "A3": 12,
+        "FX_squared": 672,
+        "FY6X": 48,
+        "FY6_squared": 432,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 64,
+        "TrF_cubed": 112
+      },
+      "is_full_fixed_wall_Dai_Freed_character": false,
+      "mod4_tensor": {
+        "A2": 0,
+        "A3": 0,
+        "FX_squared": 0,
+        "FY6X": 0,
+        "FY6_squared": 0,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 0,
+        "TrF_cubed": 0
+      },
+      "retained_as_necessary_low_energy_screen": true,
+      "unit_SU2_instanton_phase": "+1"
+    },
+    "V87_tensor_divided_by_four": {
+      "defines_external_continuous_U1_anomaly_polynomial": false,
+      "defines_quantized_GS_or_WCS_coefficients": false,
+      "integer_divisibility_is_true": true,
+      "old_integer_levels": {
+        "A2": 4,
+        "A3": 3,
+        "FX_squared": 168,
+        "FY6X": 12,
+        "FY6_squared": 108,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 16,
+        "TrF_cubed": 28
+      },
+      "proves_I6_equals_FF_times_X4_factorization": false,
+      "retraction_reason": "The physical order-two action on A/C is the mod-four reduction of a signed Sp(3) Cartan. Conjugate hyper components carry -2 rather than +2, so the unsigned four-dimensional zero-mode tensor is not the trace defining a six-dimensional continuous current anomaly."
+    },
+    "correct_continuous_parent_data": {
+      "Cartan_charges_on_6_of_Sp3": [
+        2,
+        0,
+        2,
+        -2,
+        0,
+        -2
+      ],
+      "Cartan_traces": {
+        "TrT": 0,
+        "TrT2": 16,
+        "TrT3": 0,
+        "TrT4": 64
+      },
+      "complete_6D_bulk_anomaly_polynomial_computed": false,
+      "continuous_group_visible_to_this_generator": "U(1)_T subset U(2)_AC subset Sp(3)",
+      "differential_GS_WCS_trivialization_constructed": false,
+      "fixed_stratum_log_twist_terms_computed": false,
+      "localized_fermion_and_normal_bundle_contributions_computed": false
+    },
+    "one_minimal_integer_lift_of_four_dimensional_discrete_table": {
+      "X_Xbar_continuous_lift_is_not_uniquely_fixed_by_discrete_charge_two": true,
+      "changed_continuous_charge": {
+        "field": "A0",
+        "from_discrete_representative": 2,
+        "to_signed_Cartan_charge": -2
+      },
+      "construction_scope": "only the A0 discrete representative is changed from +2 to -2 in one chosen integer-lift convention",
+      "differs_from_V87_in": {
+        "TrF": [
+          64,
+          60
+        ],
+        "TrF_cubed": [
+          112,
+          96
+        ]
+      },
+      "family_and_external_diagonal_charges_are_not_generated_by_U1_T_subset_Sp3": true,
+      "integer_levels_if_divided_by_four": {
+        "A2": 4,
+        "A3": 3,
+        "FX_squared": 168,
+        "FY6X": 12,
+        "FY6_squared": 108,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 15,
+        "TrF_cubed": 24
+      },
+      "integer_tensor": {
+        "A2": 16,
+        "A3": 12,
+        "FX_squared": 672,
+        "FY6X": 48,
+        "FY6_squared": 432,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 60,
+        "TrF_cubed": 96
+      },
+      "is_canonical_continuous_U1_anomaly_tensor": false,
+      "still_not_complete_6D_anomaly_polynomial": true
+    },
+    "ordinary_degree5_characteristic_reduction": {
+      "BGF_model": "hofib[w2(V)+a^2:BSO(11)xBC2->K(Z2,2)]",
+      "adding_k_aw4_equals_one_flips_the_displayed_witness_evaluation": true,
+      "basis_coefficient_of_full_bordism_character_determined": false,
+      "candidate": "omega5=a*w4(V)",
+      "displayed_witness_requires_k_aw4": false,
+      "displayed_zero_mode_SU2_phase": "+1",
+      "full_Gammahat_characteristic_ring_computed": false,
+      "full_spin_bordism_group_computed": false,
+      "integral_torsion_lift": "t=beta(a), 2t=0, rho2(t)=a^2=w2(V)",
+      "omega5_witness_phase": -1,
+      "other_degree5_candidates": {
+        "a3_w2": "a5",
+        "a_w2_squared": "a5",
+        "integral_a5_on_spin_fivefold": "zero by Sq2(a3)=v2(TM)*a3 and v2(TM)=0",
+        "w3_and_w5": "zero because w2 and w4 have integral lifts"
+      },
+      "scope": "ordinary Stiefel-Whitney polynomial subring of BGF with flavor-centralizer, tangent, normal and fixed-wall backgrounds suppressed",
+      "spin_c_class": "q1=(p1(V)-t^2)/2, rho2(q1)=w4(V)",
+      "unique_nonzero_candidate_within_stated_SW_polynomial_subring": true,
+      "witness": "S1 x S4 with a on S1 and a unit embedded SU2 instanton on S4"
+    },
+    "pure_C4_Dai_Freed_shadow": {
+      "Hsieh_untwisted_Z4_cubic_lhs": 3360,
+      "Hsieh_untwisted_Z4_cubic_modulus": 24,
+      "Hsieh_untwisted_Z4_cubic_residue": 0,
+      "Hsieh_untwisted_Z4_linear_lhs": 128,
+      "Hsieh_untwisted_Z4_linear_modulus": 4,
+      "Hsieh_untwisted_Z4_linear_residue": 0,
+      "both_conditions_pass": true,
+      "determines_mixed_Spin11_C4_or_fixed_wall_character": false,
+      "scope": "elementary-field pullback along BC4 to BGF; not a faithful C4 selector on gauge-invariant operators"
+    },
+    "quantum_decision": {
+      "UV_k2_coefficient_determined": false,
+      "V86_k2_required_by_displayed_B_neutral_zero_modes": false,
+      "full_stratified_Dai_Freed_character_vanishes": false,
+      "ordinary_aw4_character_trivialized": false,
+      "quantum_parent_accepted": false
+    },
+    "status": "CORRECTED_DISCRETE_SHADOW_RETAINED__CONTINUOUS_CHARGE4_GS_PROMOTION_RETRACTED__FULL_6D_WCS_OPEN",
+    "torsion_WCS_reduction": {
+      "WCS_admissibility_conditions_checked": false,
+      "a_rho2_t2_equals_a5_whose_spin_characteristic_number_vanishes": true,
+      "a_rho2_t2_is_distinct_from_a_w4": true,
+      "assumptions_for_candidate_labels": "trivial G_F action on Lambda=U and eventual WCS admissibility of the t^2 component",
+      "candidate_fixed_wall_structure_to_test": "possible Gysin/eta coupling to q1 with isotropy and normal Euler data",
+      "candidate_label_space_for_t2_component": "Lambda/2Lambda=(Z2)^2",
+      "candidate_torsion_degree4_class": "t^2 in H^4(BG_F;Z)_tors",
+      "fixed_by_de_Rham_I8": false,
+      "fixed_by_pure_C4_tests": false,
+      "full_degree4_torsion_cohomology_of_BGF_computed": false,
+      "number_of_admissible_WCS_choices_determined": false,
+      "number_of_candidate_labels_for_t2_component": 4,
+      "restriction_to_BC4": "t maps to 2u, so t^2 maps to 4u^2=0",
+      "secondary_term_constructed": false,
+      "string_charge_lattice": "U"
+    }
+  },
+  "artifact_hashes": {
+    "generator_sha256": "aa90fdd7146ec5011a6e942678cb3c08faea1039d195321ee03f1ddcf8bce646",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "87804d7285b0ab25100676ea01e82d45f8e1161af2e54e774718e69cf6a4ec11"
+  },
+  "core_sha256": "d8172ac25c3336ae622b250cf29b8a48089be4f15455c0163562a86a49b55033",
+  "date": "2026-09-02",
+  "flavor_centralizer_audit": {
+    "H_AC": {
+      "centralizer_dimension": 13,
+      "centralizer_in_Sp3": "Sp(2)_AC x Sp(1)_B",
+      "exponents_mod8": [
+        4,
+        0,
+        4,
+        4,
+        0,
+        4
+      ],
+      "full_Sp3_dimension": 21,
+      "full_Sp3_preserved": false,
+      "order": 2,
+      "quaternionic_minus_eigenspace_dimension": 2,
+      "quaternionic_plus_eigenspace_dimension": 1,
+      "signs": [
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1
+      ]
+    },
+    "basis": [
+      "A",
+      "B",
+      "C",
+      "Astar",
+      "Bstar",
+      "Cstar"
+    ],
+    "continuous_Cartan": {
+      "T_fundamental_charges": [
+        2,
+        0,
+        2,
+        -2,
+        0,
+        -2
+      ],
+      "centralizer_dimension": 7,
+      "centralizer_in_Sp3": "U(2)_AC x Sp(1)_B",
+      "exp_i_pi_T_over_2_equals_H_AC": true,
+      "odd_traces_cancel_by_symplectic_pairing": true,
+      "traces": {
+        "TrT": 0,
+        "TrT2": 16,
+        "TrT3": 0,
+        "TrT4": 64
+      }
+    },
+    "literal_unsigned_external_U1": {
+      "charges_on_six_complex_components": [
+        2,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "commutes_with_full_Sp3_fundamental": false,
+      "lies_in_sp3_lie_algebra": false,
+      "symplectic_pair_charge_sums": [
+        4,
+        0,
+        4
+      ],
+      "valid_continuous_parent_of_the_discrete_assignment": false
+    },
+    "representation_scope": "The copy-dependent C4 character is a representation only after the identical-hyper flavor symmetry is reduced to the centralizer of H_AC; its continuous interpolation uses signed conjugate charges.",
+    "status": "PASS_EXACT_REDUCED_DISCRETE_AND_CONTINUOUS_CENTRALIZERS__UNSIGNED_EXTERNAL_U1_REJECTED"
+  },
+  "gate_ledger": {
+    "G1": "OPEN: the B-neutral smooth charged-hyper Gammahat cocycle, all V70 A/B/C projectors and the relative crepant bisection resolution over S are exact, but localized isotropy, quantum trivialization, compact-global completion and one accepted same-action parent remain absent.",
+    "G2": "OPEN: the rank-one light Higgs pair survives V88, but no accepted supersymmetry-breaking sector, soft spectrum or complete thresholds exist.",
+    "G3": "OPEN: the selected smooth-bulk lift is exact, while localized families, rank-VEV profiles, BV/regulator representations and the global line/endpoint form remain unconstructed.",
+    "G4": "OPEN: V88 corrects the continuous-GS overinterpretation and, within a restricted ordinary SW-polynomial subring, reduces the degree-five candidate to a*w4; the displayed witness needs no such term, but the full bordism character, six-dimensional polynomial, fixed-wall logarithmic twist terms and Dai-Freed/WCS trivialization are uncomputed.",
+    "G5": "OPEN: no common gauge-fixed KK determinant, regulator, Pfaffian orientation, self-dual polarization or defect cap/junction complex exists.",
+    "G6": "OPEN: no accepted V88 spectrum has been propagated through complete two-loop running and compact thresholds.",
+    "G7": "OPEN: V85 proves Cbar-45-C was a retracted mixed-action row and the C8 scout forbids odd B0 powers with neutral coefficients, but a charge-four spurion can compensate them; the GM realization, compensator decay/mixing/proton screen, all-order operator closure, cosmology and quantitative phenomenology remain unresolved.",
+    "G8": "OPEN: the resolution is only relative over S; compact geometry, a literal global order-four action, the diagonal orbifold bundle, anomaly theory and empirical likelihood are not one UV-complete action."
+  },
+  "input_core_hashes": {
+    "V70_route": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V84_route": "ca9bbf53dcceb9fc422119e73b969b6d3b2c4db1619c8846134320768a26275f",
+    "V85_route": "7b9e59799cf4e73ba3ec48ed478295a8fc0bda02ede5335ddde841b663d61280",
+    "V86_route": "799af690205811d97df663ab53dab639c79262a6aac60a37da4394b961a691ad",
+    "V87_master": "41866428ddb3274fefcb43c6cacfd45b9641ff2879b988bfb40ca19482adfc2a",
+    "V87_route": "2cc908183f77848f292ced26a8cd5dd6bf923fb7ef11140d9d20ac35d0c07e9e"
+  },
+  "lineage": {
+    "new_route": "B88",
+    "parent_master": "V87",
+    "supersession_scope": "V88 promotes V87's phase-level B-neutral projector candidate to an exact selected smooth-bulk Gammahat cocycle, constructs the relative crepant bisection resolution over S, retracts the tensor/4 continuous-GS interpretation and separately scouts a signed C8 selector parent."
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F89_C8_GAMMAHAT_LOCALIZED_ISOTROPY_AND_COMPACT_GLOBAL_GLUE",
+    "parallel_objective": "globalize the relative crepant resolution, realize the literal order-four action and glue the diagonal orbibundle",
+    "primary_objective": "construct or rule out the full order-eight Gammahat lift on smooth and localized sectors with one BV/regulator complex, then compute the signed fixed-wall anomaly character"
+  },
+  "open_obligations": [
+    "construct every localized-family, rank-VEV, ghost, antifield and regulator representation of the selected Gammahat lift",
+    "compute the signed six-dimensional anomaly polynomial and every fixed-stratum logarithmic twist/Gysin term",
+    "evaluate the full Dai-Freed eta character and construct any differential GS/WCS trivialization",
+    "construct the full order-eight Gammahat action and test the C8 selector with localized isotropy and a common regulator",
+    "construct the charge-four SUSY-breaking/GM spurion and prove compensator decay plus proton safety",
+    "finish compact smoothness away from S, Cox saturation, the global order-four automorphism and diagonal resolved orbibundle",
+    "derive SUSY breaking, thresholds, unification, cosmology and likelihood from the same action"
+  ],
+  "operator_closure_boundary": {
+    "Cbar45C_is_current_obligation": false,
+    "Cbar_Cbar_45_present_in_selected_V70_action": false,
+    "V84_Cbar45C_row": "RETRACTED_MIXED_ACTION_ROW",
+    "all_order_operator_closure_proved": false,
+    "even_B0_potential_symmetry_enforced": false,
+    "odd_B0_driver_terms_allowed": [
+      "S_B*B0"
+    ],
+    "rank_one_light_Higgs_pair_retained": [
+      "H_uA",
+      "H_dC"
+    ],
+    "retracted_operator_names": [
+      "16 16 Cbar Cbar",
+      "Cbar 45 C",
+      "Cbar C"
+    ],
+    "same_action_vacuum_selector_constructed": false,
+    "status": "PASS_EXACT_V85_MIXED_ACTION_RETRACTION_BOUND__OPEN_EVEN_B0_DRIVER_SELECTOR"
+  },
+  "primary_sources": [
+    {
+      "id": "vonGersdorff2006",
+      "role": "six-dimensional orbifold projector and fixed-point anomaly dependence on the full internal twist",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "id": "Hsieh2018",
+      "role": "Dai-Freed discrete anomalies and distinction from continuous-U1 embedding conditions",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "id": "MonnierMoore2018",
+      "role": "global six-dimensional Green-Schwarz/Wu-Chern-Simons quantization and finite-group residual anomalies",
+      "url": "https://arxiv.org/abs/1808.01334"
+    }
+  ],
+  "question": "Can the V87 B-neutral candidate be promoted through an exact square-space-group lift, a relative crepant bisection resolution, a corrected anomaly audit and an even-B0 parent selector without overclaiming a complete theory?",
+  "resolved_bisection_over_S": {
+    "Jacobian_chart_certificate": {
+      "all_eight_simple_root_neighborhoods_resolved": true,
+      "first_blowup_only_residual_singular_chart": "B1_r",
+      "first_blowup_residual_singular_ideal": [
+        "w",
+        "a",
+        "r"
+      ],
+      "nonbranch_unit_locus_check": {
+        "B1_r": "the same residual center (w,a,r) is removed by Bl_(w,a)",
+        "B1_s": "a singular point would force ws=rs=0 and hence G_s=-q, impossible",
+        "B1_w": "a=0 contradicts G_w=1; for a nonzero, the derivative equations with q a unit cannot vanish simultaneously",
+        "B2_a": "partial_r H_a=-1",
+        "B2_w": "partial_r H_w=-c and partial_w H_w=1-c^2 q cannot vanish simultaneously at c=0",
+        "q_is_a_unit": true,
+        "smooth_after_second_blowup": true
+      },
+      "rows": [
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B1_s",
+          "meaning": "s-chart of Bl_(s,W,U\u2213V)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "-q - rs**2*ss + ws**2"
+        },
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B1_w",
+          "meaning": "W-chart of Bl_(s,W,U\u2213V)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "-a**2*q - a*b**2*w + 1"
+        },
+        {
+          "Jacobian_Groebner_basis": [
+            "w",
+            "a",
+            "r"
+          ],
+          "chart": "B1_r",
+          "meaning": "r=(U\u2213V)-chart of Bl_(s,W,U\u2213V)",
+          "residual_singular_center": "(w,a,r)",
+          "smooth": false,
+          "weak_transform": "-a**2*q - a*r + w**2"
+        },
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B2_a",
+          "meaning": "a-chart of the residual Bl_(w,a)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "a*c**2 - a*q - r"
+        },
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B2_w",
+          "meaning": "w-chart of the residual Bl_(w,a)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "-c**2*q*w - c*r + w"
+        }
+      ],
+      "second_blowup_charts_smooth": true
+    },
+    "Spin11_center_coset": {
+      "B5_inverse_Cartan_column_node1_V86": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1/2"
+      ],
+      "B5_inverse_Cartan_column_node3_V88": [
+        "1",
+        "2",
+        "3",
+        "3",
+        "3/2"
+      ],
+      "center_coset_order": 2,
+      "center_extension_class": "j^2=z",
+      "convention": "B5 inverse-Cartan columns are fundamental coweights in the simple-coroot basis",
+      "difference_integral": true,
+      "literal_global_order4_automorphism_inferred_from_center_class": false,
+      "node3_column_nonintegral": true,
+      "node3_minus_node1": [
+        "0",
+        "1",
+        "2",
+        "2",
+        "1"
+      ],
+      "same_nontrivial_Spin11_center_coset": true,
+      "twice_node3_column_integral": true
+    },
+    "fiber_and_bisection_data": {
+      "D0_ideal_on_Y_near_Q": "(s,W)=(W), a Cartier ideal",
+      "F_s_at_Q": "-L, a unit",
+      "Q_avoids_C_plus_and_C_minus": true,
+      "V87_U_equals_zero_divisor_is_irreducible_bisection": true,
+      "V87_index": 2,
+      "V87_period": 2,
+      "W_chart_at_Q": "s=W*c and Q maps to W=c=0 on alpha3",
+      "affine_D6_edges_by_node_index": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ]
+      ],
+      "affine_D6_marks": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "affine_D6_nodes": [
+        "alpha0",
+        "alpha1",
+        "alpha2",
+        "alpha3",
+        "alpha4",
+        "alpha5",
+        "alpha6"
+      ],
+      "bisection_degree_from_marks": 2,
+      "bisection_intersection_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "bisection_point": "Q=[U:V:W]=[0:1:0]",
+      "branch_specialization": "at q=0 the two tips on that side coalesce/enhance, while the resolved total-space charts remain smooth",
+      "component_rows": [
+        {
+          "bisection_intersection": 0,
+          "component": "first + tip",
+          "local_equation": "r=0, c_a=+sqrt(q_+) in the + B2_a chart",
+          "mark": 1,
+          "node": "alpha0"
+        },
+        {
+          "bisection_intersection": 0,
+          "component": "second + tip",
+          "local_equation": "r=0, c_a=-sqrt(q_+) in the + B2_a chart",
+          "mark": 1,
+          "node": "alpha1"
+        },
+        {
+          "bisection_intersection": 0,
+          "component": "+ middle",
+          "local_equation": "(w,r) in the + B2_w chart",
+          "mark": 2,
+          "node": "alpha2"
+        },
+        {
+          "bisection_intersection": 1,
+          "component": "central doubled component",
+          "local_equation": "(w,c), with pullback s=r*w*c",
+          "mark": 2,
+          "node": "alpha3"
+        },
+        {
+          "bisection_intersection": 0,
+          "component": "- middle",
+          "local_equation": "(w,r) in the - B2_w chart",
+          "mark": 2,
+          "node": "alpha4"
+        },
+        {
+          "bisection_intersection": 0,
+          "component": "first - tip",
+          "local_equation": "r=0, c_a=+sqrt(q_-) in the - B2_a chart",
+          "mark": 1,
+          "node": "alpha5"
+        },
+        {
+          "bisection_intersection": 0,
+          "component": "second - tip",
+          "local_equation": "r=0, c_a=-sqrt(q_-) in the - B2_a chart",
+          "mark": 1,
+          "node": "alpha6"
+        }
+      ],
+      "intersected_node": "alpha3",
+      "marks_satisfy_affine_Cartan_null_relation": true,
+      "scope": "generic geometric fiber over algebraic closure of K(S), away from the eight branch roots",
+      "second_blowup_is_isomorphism_near_Q": true
+    },
+    "local_normal_form": {
+      "coordinate_scope": "etale at each simple branch root after absorbing the bound unit A_plus/minus",
+      "equation": "f=w^2-s r^2-s^2 q",
+      "not_asserted_as_one_global_polynomial_chart": true
+    },
+    "relative_model": {
+      "L_on_S": "t^3",
+      "P_minus_on_S": "2*t^2*(r0^4-2*r1^4)",
+      "P_plus_P_minus_no_common_root": true,
+      "P_plus_on_S": "2*t^2*(r0^4-r1^4)",
+      "SR_nonface_proving_t_nonzero_on_S": "s*t",
+      "V87_equation_bound": "W^2=s*L*(U^2-V^2)^2+s^2*sum_i p_i U^(4-i)V^i",
+      "all_blowups_projective": true,
+      "branch_assumption": "the bound V87 P_plus*P_minus has eight simple roots; q=P_plus or P_minus is an etale transverse coordinate at each root",
+      "curve_centers_smooth": true,
+      "curves_disjoint_in_projective_UV_fiber": true,
+      "discrepancy_first_blowup": "codim(C)-1-multiplicity=3-1-2=0",
+      "discrepancy_ledger": [
+        {
+          "ambient_codimension": 3,
+          "center": "C_+",
+          "discrepancy": 0,
+          "hypersurface_multiplicity": 2
+        },
+        {
+          "ambient_codimension": 3,
+          "center": "C_-",
+          "discrepancy": 0,
+          "hypersurface_multiplicity": 2
+        },
+        {
+          "ambient_codimension": 2,
+          "center": "D0_tilde",
+          "discrepancy": 0,
+          "hypersurface_multiplicity": 1
+        }
+      ],
+      "discrepancy_second_blowup": "codim(D0)-1-multiplicity=2-1-1=0",
+      "equation": "F=W^2-s L (U^2-V^2)^2-s^2 P(U,V)",
+      "first_blowups": "blow up C_+ and C_-",
+      "globality": "the blowup centers and sequence are algebraic over a neighborhood of S; the displayed normal form is etale-local",
+      "hypersurface_multiplicity_along_each_curve": 2,
+      "product_has_eight_simple_roots": true,
+      "relative_resolution_crepant": true,
+      "residual_center": "weak transform of D0=(s,W), locally (w,a)",
+      "residual_center_codimension": 2,
+      "residual_multiplicity": 1,
+      "scope": "a neighborhood of the Spin(11) gauge divisor S=(s=0)",
+      "second_blowup": "blow up the residual weak transform of D0",
+      "singular_curves": [
+        "C_+=(s,W,U-V)",
+        "C_-=(s,W,U+V)"
+      ],
+      "unit_absorption": "A_plus/minus=L*(r plus/minus 2)^2 is a unit and r'=sqrt(A_plus/minus)*r etale-locally"
+    },
+    "scope_boundary": {
+      "compact_resolved_bisection_complete": false,
+      "compact_total_space_smooth_away_from_S": false,
+      "diagonal_Gammahat_bundle_on_resolved_compact_space": false,
+      "global_Cox_irrelevant_ideal_saturation_checked": false,
+      "literal_global_order4_automorphism_constructed": false,
+      "ordinary_smoothness_in_all_simple_root_charts": true,
+      "relative_resolution_over_S_constructed": true
+    },
+    "status": "PASS_EXACT_RELATIVE_PROJECTIVE_CREPANT_RESOLUTION_OVER_S__BISECTION_CENTER_COSET_EXACT__COMPACT_GLOBAL_COMPLETION_OPEN"
+  },
+  "same_action_synthesis": {
+    "accepted_full_parent": false,
+    "corrections": [
+      "full Sp3 flavor is reduced by the copy-dependent C4 character",
+      "V87 tensor/4 is arithmetic divisibility, not a continuous six-dimensional anomaly factorization",
+      "the old Cbar-45-C blocker is removed from the selected V70 action lineage",
+      "the bisection resolution is relative over S and not a compact-global completion"
+    ],
+    "exact_gains": [
+      "the copy-dependent discrete character is placed in the exact reduced flavor centralizer Sp2_AC x Sp1_B",
+      "the selected u=v=r=s=0 lift satisfies every square-space-group relation modulo K_F",
+      "the quotient kernel contains no pure Spin11 center",
+      "all A/B/C projectors at z00, z11, z10 and z01 equal the V70 projectors",
+      "a projective crepant blowup sequence resolves every simple-root chart over S",
+      "the bisection meets affine-D6 node alpha3 with degree two and the same nontrivial Spin11 center coset as V86 node alpha1",
+      "the signed Sp3 Cartan and its traces are explicit, together with one explicitly scoped minimal integer lift of the four-dimensional table",
+      "the discrete zero-mode residue screen remains zero",
+      "within the stated ordinary SW-polynomial subring the degree-five reduction leaves only a*w4, and the displayed witness requires no a*w4 term",
+      "V85's Cbar-45-C row is bound as a retracted mixed-action obligation",
+      "a separate C8 charge assignment enforces B0 parity for neutral driver coefficients and a proposed localized vectorlike 5+5bar cancels every displayed mod-eight residue"
+    ],
+    "hard_boundaries": [
+      "localized-family and rank-VEV isotropy representations are not constructed",
+      "BV/BRST ghosts, antifields, regulator and Pfaffian orientation are absent",
+      "the signed 6D anomaly polynomial and fixed-wall Dai-Freed character are uncomputed",
+      "the C8 scout has no full order-eight Gammahat lift, GM spurion sector or compensator decay/proton certificate",
+      "compact smoothness away from S, Cox saturation, a global order-four automorphism and the diagonal resolved bundle remain absent",
+      "the same-action UV completion remains absent"
+    ],
+    "same_action_microscopic_completion": false,
+    "status": "SMOOTH_BULK_PROJECTOR_BLOCKER_REMOVED__QUANTUM_AND_LOCALIZED_PARENT_OPEN"
+  },
+  "schema": "susy_v88_b_neutral_gammahat_cartan_anomaly_correction_audit_v1",
+  "signed_C8_parent_selector_scout": {
+    "action_lineage": {
+      "C_Cbar_45_absent": true,
+      "Cbar45C_not_an_operator_of_selected_action": true,
+      "hybrid_spinor_Higgs_reintroduction": "not selected; would define a new action and reopen its stabilizer/orphan problem",
+      "selected_action": "V70 integer-m301 dynamical reduction"
+    },
+    "neutral_coefficient_B0_driver_parity": {
+      "all_even_powers_allowed_with_neutral_coefficients": true,
+      "all_odd_powers_forbidden_with_neutral_coefficients": true,
+      "charge4_spurion_can_compensate_an_odd_B0_power": true,
+      "even_power_charge_mod8": 0,
+      "odd_power_charge_mod8": 4,
+      "q8_B0": 4,
+      "scope": "S_B times a polynomial in B0 whose coefficients are C8-neutral",
+      "unconditional_all_order_selector_after_charged_spurions": false
+    },
+    "operator_audit": {
+      "B0_HuA_HdC_C8_allowed_but_Z4R_forbidden": true,
+      "GM_spurion_sector_constructed": false,
+      "R_assignment_tradeoff": {
+        "mass_condition": "r(5_0)+r(5bar_4)=2 mod 4",
+        "r5_0": "allows X H_uA 5bar_4 mixing and X 16 16 5_0 decay",
+        "r5_1_or_3": "forbids these mixings but also forbids the simple decay portals, leaving a stable pair",
+        "r5_2": "allows Xbar 5_0 H_dC mixing and the conjugate matter decay portal",
+        "simultaneous_no_mixing_decay_and_proton_safety_constructed": false
+      },
+      "S0_removed": true,
+      "VEV_assisted_Higgs_compensator_mixings_allowed_by_C8": [
+        "X H_uA 5bar_4",
+        "Xbar 5_0 H_dC"
+      ],
+      "charge4_SUSY_breaking_spurion_GM_route_allowed": true,
+      "direct_bilinear_Higgs_compensator_mixings_forbidden_by_C8": true,
+      "direct_light_mu_forbidden": true,
+      "mandatory_B0_HuB_HdSigma_retained": true,
+      "rows": [
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            5,
+            5,
+            6
+          ],
+          "operator": "16 16 H_uA"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            5,
+            5,
+            6
+          ],
+          "operator": "10 5bar H_dC"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            5,
+            5,
+            6
+          ],
+          "operator": "N N X"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 4,
+          "charges": [
+            0,
+            4
+          ],
+          "operator": "S_B B0"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            0,
+            4,
+            4
+          ],
+          "operator": "S_B B0^2"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            0,
+            6,
+            -6
+          ],
+          "operator": "S_X X Xbar"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            -6,
+            6
+          ],
+          "operator": "M_A A0 P_A"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            4,
+            4,
+            0
+          ],
+          "operator": "g B0 H_uB H_dSigma"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 2,
+          "charges": [
+            4,
+            6
+          ],
+          "operator": "mu_B H_uB H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 4,
+          "charges": [
+            0,
+            6,
+            6
+          ],
+          "operator": "S0 H_uA H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 6,
+          "charges": [
+            4,
+            4,
+            6
+          ],
+          "operator": "old B0 H_uB H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 6,
+          "charges": [
+            2,
+            6,
+            6
+          ],
+          "operator": "old A0 H_uA H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 4,
+          "charges": [
+            6,
+            6
+          ],
+          "operator": "direct H_uA H_dC"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            4,
+            6,
+            6
+          ],
+          "operator": "spurion4 H_uA H_dC"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            4,
+            0,
+            4
+          ],
+          "operator": "spurion4 S_B B0"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            4,
+            0,
+            4
+          ],
+          "operator": "B0 5_0 5bar_4"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 6,
+          "charges": [
+            0,
+            6
+          ],
+          "operator": "5_0 H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 2,
+          "charges": [
+            6,
+            4
+          ],
+          "operator": "H_uA 5bar_4"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            6,
+            6,
+            4
+          ],
+          "operator": "X H_uA 5bar_4"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            2,
+            0,
+            6
+          ],
+          "operator": "Xbar 5_0 H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 2,
+          "charges": [
+            5,
+            5,
+            0
+          ],
+          "operator": "16 16 5_0"
+        },
+        {
+          "allowed": false,
+          "charge_mod8": 6,
+          "charges": [
+            5,
+            5,
+            4
+          ],
+          "operator": "16 16 5bar_4"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            6,
+            5,
+            5,
+            0
+          ],
+          "operator": "X 16 16 5_0"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            2,
+            5,
+            5,
+            4
+          ],
+          "operator": "Xbar 16 16 5bar_4"
+        },
+        {
+          "allowed": true,
+          "charge_mod8": 0,
+          "charges": [
+            4,
+            6,
+            6
+          ],
+          "operator": "B0 H_uA H_dC"
+        }
+      ],
+      "spurion4_S_B_B0_C8_allowed": true
+    },
+    "ordinary_anomaly_screen": {
+      "all_displayed_mod8_residues_zero": true,
+      "candidate_compensator_mass_operator": "(Phi_-8/M) B0 5_0 5bar_4",
+      "compensated_mod8": {
+        "A2": 0,
+        "A3": 0,
+        "FX_squared": 0,
+        "FY6X": 0,
+        "FY6_squared": 0,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 0,
+        "TrF_cubed": 0
+      },
+      "compensated_tensor": {
+        "A2": 80,
+        "A3": 64,
+        "FX_squared": 2208,
+        "FY6X": 192,
+        "FY6_squared": 2208,
+        "F_squared_X": 544,
+        "F_squared_Y6": 96,
+        "TrF": 312,
+        "TrF_cubed": 7824
+      },
+      "compensator": "one localized gauge-vectorlike SU5 5_0 + 5bar_4",
+      "compensator_Z4R_condition": "r(5_0)+r(5bar_4)=2 with r(B0)=r(Phi)=0",
+      "compensator_component_rows": [
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 3,
+          "field": "5_0_triplet",
+          "q": 0,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -2
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "5_0_doublet",
+          "q": 0,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 3,
+          "field": "5bar_4_triplet",
+          "q": 4,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "5bar_4_doublet",
+          "q": 4,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        }
+      ],
+      "integer_levels_if_divided_by_8": {
+        "A2": 10,
+        "A3": 8,
+        "FX_squared": 276,
+        "FY6X": 24,
+        "FY6_squared": 276,
+        "F_squared_X": 68,
+        "F_squared_Y6": 12,
+        "TrF": 39,
+        "TrF_cubed": 978
+      },
+      "is_full_C8_Dai_Freed_character": false,
+      "localized_mass_coupling_constructed_and_nonzero": false,
+      "raw_mod8": {
+        "A2": 4,
+        "A3": 4,
+        "FX_squared": 0,
+        "FY6X": 0,
+        "FY6_squared": 0,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 4,
+        "TrF_cubed": 0
+      },
+      "raw_nonzero_residues": [
+        "A3",
+        "A2",
+        "TrF"
+      ],
+      "raw_tensor": {
+        "A2": 76,
+        "A3": 60,
+        "FX_squared": 2128,
+        "FY6X": 192,
+        "FY6_squared": 2088,
+        "F_squared_X": 384,
+        "F_squared_Y6": 96,
+        "TrF": 292,
+        "TrF_cubed": 7504
+      }
+    },
+    "parent_group": {
+      "B0_VEV_diagonal_stabilizer": "(Spin(10) x C4_j)/<(z,j^2)>",
+      "B0_VEV_nongauge_component_group": "C2",
+      "B0_VEV_prequotient_C8_stabilizer": "<j=k^2> is C4",
+      "X_Xbar_VEV_final_nongauge_component": "C2 gauge-diagonal, as in V87",
+      "compatibility_beyond_residual_j_phases_proved": false,
+      "continuous_cover_candidate": "U(1)_8 broken by Phi_(+8),Phi_(-8)",
+      "faithful_global_C4_selector_on_gauge_invariant_operators": false,
+      "finite_group": "G8=(Spin(11) x C8)/<(z,k^4)>",
+      "full_order8_generator_Gammahat_lift_constructed": false,
+      "j_has_literal_order_four_in_the_lift": true,
+      "j_squared": "k^4=z",
+      "prequotient_C8_stabilizer_generator_after_B0_q4_VEV": "j=k^2",
+      "restriction_to_j_reproduces_V88_residual_phase_assignment": true,
+      "translation_C8_factor": "U_F=V_F=k^2=j",
+      "translation_copy_phases_A_B_C": [
+        -1,
+        1,
+        -1
+      ]
+    },
+    "pure_C8_Dai_Freed_shadow": {
+      "both_conditions_pass": true,
+      "cubic_lhs": 704160,
+      "cubic_modulus": 48,
+      "cubic_residue": 0,
+      "linear_lhs": 624,
+      "linear_modulus": 8,
+      "linear_residue": 0,
+      "mixed_diagonal_and_fixed_wall_data_determined": false
+    },
+    "q8_residue_assignment": {
+      "A0": 2,
+      "B0": 4,
+      "H_dC": 6,
+      "H_dSigma": 0,
+      "H_uA": 6,
+      "H_uB": 4,
+      "L": 5,
+      "N_c": 5,
+      "P_A": 6,
+      "Q": 5,
+      "X_plus10": 6,
+      "Xbar_minus10": 2,
+      "d_c": 5,
+      "e_c": 5,
+      "u_c": 5
+    },
+    "residual_C4_charges_mod4": {
+      "A0": 2,
+      "B0": 0,
+      "H_dC": 2,
+      "H_dSigma": 0,
+      "H_uA": 2,
+      "H_uB": 0,
+      "L": 1,
+      "N_c": 1,
+      "P_A": 2,
+      "Q": 1,
+      "X_plus10": 2,
+      "Xbar_minus10": 2,
+      "d_c": 1,
+      "e_c": 1,
+      "u_c": 1
+    },
+    "scope_boundary": {
+      "GM_SUSY_breaking_spurion_sector": false,
+      "accepted_same_action_parent": false,
+      "compensator_mass_operator_charge_and_R_allowed": true,
+      "complete_continuous_U1_8_anomaly_polynomial": false,
+      "full_diagonal_C8_Dai_Freed_character": false,
+      "full_order8_Gammahat_lift": false,
+      "localized_compensator_isotropy_and_nonzero_mass_coupling_constructed": false,
+      "localized_isotropy_and_common_regulator": false,
+      "simultaneous_compensator_decay_exact_Higgs_identity_and_proton_safety": false
+    },
+    "signed_continuous_U1_lift": {
+      "A0": -6,
+      "B0": 4,
+      "H_dC": 6,
+      "H_dSigma": 0,
+      "H_uA": 6,
+      "H_uB": -4,
+      "L": -3,
+      "N_c": -3,
+      "P_A": 6,
+      "Q": -3,
+      "X_plus10": 6,
+      "Xbar_minus10": -6,
+      "d_c": -3,
+      "e_c": -3,
+      "u_c": -3
+    },
+    "signed_continuous_parent_screen": {
+      "all_levels_integer": true,
+      "complete_continuous_anomaly_factorization": false,
+      "differential_GS_Stueckelberg_sector_constructed": false,
+      "integer_levels_if_divided_by_8": {
+        "A2": -3,
+        "A3": -4,
+        "FX_squared": -72,
+        "FY6X": 12,
+        "FY6_squared": -102,
+        "F_squared_X": 28,
+        "F_squared_Y6": 12,
+        "TrF": -13,
+        "TrF_cubed": -22
+      },
+      "tensor": {
+        "A2": -24,
+        "A3": -32,
+        "FX_squared": -576,
+        "FY6X": 96,
+        "FY6_squared": -816,
+        "F_squared_X": 224,
+        "F_squared_Y6": 96,
+        "TrF": -104,
+        "TrF_cubed": -176
+      }
+    },
+    "status": "PASS_EXACT_SIGNED_C8_OPERATOR_AND_ORDINARY_RESIDUE_SCREEN__FULL_C8_DAIFREED_AND_GM_SECTOR_OPEN"
+  },
+  "source_manifest": {
+    "catalog_sha256": "0ff7bbd9238d923b6093ddb29eea08b2e4b1ac15c3f0109c9a6934750a07c772",
+    "count": 3,
+    "ids": [
+      "vonGersdorff2006",
+      "Hsieh2018",
+      "MonnierMoore2018"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V88_B_NEUTRAL_GAMMAHAT_CARTAN_ANOMALY_CORRECTION_AUDIT__V70_V84_V85_V86_V87_CORES_BOUND__REDUCED_FLAVOR_CENTRALIZER_SP2_TIMES_SP1_EXACT__CONTINUOUS_CARTAN_CENTRALIZER_U2_TIMES_SP1_EXACT__SELECTED_UVRS_ZERO_GAMMAHAT_COCYCLE_EXACT_MOD_KROT_KSPIN__NO_PURE_SPIN11_CENTER__ALL_FOUR_STRATA_AND_ALL_V70_A_B_C_PROJECTORS_RESTORED_FOR_SMOOTH_CHARGED_HYPERS__V87_DISCRETE_ZERO_MODE_RESIDUES_RETAINED__V87_TENSOR_DIVIDED_BY_FOUR_NOT_A_CONTINUOUS_6D_GS_FACTORIZATION__ONE_MINIMAL_INTEGER_LIFT_CHANGES_TRF_AND_TRF3__AW4_UNIQUE_ONLY_IN_RESTRICTED_SW_SUBRING__DISPLAYED_WITNESS_NEEDS_NO_AW4_TERM__T2_COHOMOLOGICAL_COMPONENT_HAS_FOUR_CANDIDATE_LABELS__WCS_ADMISSIBILITY_OPEN__RELATIVE_PROJECTIVE_CREPANT_BISECTION_RESOLUTION_OVER_S_AND_CENTER_COSET_EXACT__COMPACT_GLOBAL_GEOMETRY_OPEN__V85_MIXED_ACTION_CBAR45C_RETRACTION_BOUND__C8_NEUTRAL_DRIVER_B0_PARITY_AND_VECTORLIKE_5PAIR_RESIDUE_SCREEN_EXACT__C8_FULL_DAIFREED_AND_GM_SPURION_OPEN__FULL_SIGNED_6D_ANOMALY_WCS_DAIFREED_AND_LOCALIZED_REGULATOR_OPEN__OPERATOR_CLOSURE_COMPACT_RESOLUTION_AND_SAME_ACTION_PARENT_OPEN__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "C8_compensated_displayed_mod8_screen_zero": true,
+    "C8_full_order8_Gammahat_lift_constructed": false,
+    "C8_neutral_coefficient_B0_parity_screen_passes": true,
+    "V87_discrete_zero_mode_residue_screen_retained": true,
+    "V87_tensor_over_four_is_continuous_6D_GS_factorization": false,
+    "accepted_full_parent_action_exists": false,
+    "all_V70_A_B_C_projectors_restored": true,
+    "bisection_center_coset_realizes_j_squared_equals_z": true,
+    "closed_gates": [],
+    "compact_resolved_bisection_complete": false,
+    "complete_signed_6D_anomaly_polynomial": false,
+    "full_fixed_wall_Dai_Freed_trivialization": false,
+    "full_localized_isotropy_and_regulator": false,
+    "honest_outcome": "V88 removes the smooth charged-hyper projector blocker with an exact selected Gammahat lift, but simultaneously narrows the anomaly claim: no continuous GS factorization or quantum parent is yet established.",
+    "operator_closure_and_accepted_even_B0_selector": false,
+    "ordinary_aw4_displayed_witness_requires_no_term": true,
+    "pure_Spin11_center_in_kernel": false,
+    "reduced_flavor_group_exact": true,
+    "relative_projective_crepant_resolution_over_S": true,
+    "same_action_microscopic_completion_found": false,
+    "selected_smooth_bulk_Gammahat_cocycle_constructed": true,
+    "theory_complete": false
+  },
+  "version": "V88"
+}
