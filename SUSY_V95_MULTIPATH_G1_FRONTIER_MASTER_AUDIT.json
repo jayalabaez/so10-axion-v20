@@ -1,0 +1,547 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "canonical V94/V95 lineage and all 22 old route records",
+      "status": "PASS_EXACT_HISTORY_PRESERVED"
+    },
+    {
+      "id": "A2",
+      "requirement": "unchanged 28-Weyl module in the geometric Gammahat pullback",
+      "status": "REJECTED_EIGHT_COMPONENT_KERNEL_FAILURE"
+    },
+    {
+      "id": "A3",
+      "requirement": "repair by independent R, flavor or C8 center characters",
+      "status": "REJECTED_FOR_UNCHANGED_GEOMETRIC_EMBEDDING"
+    },
+    {
+      "id": "A4",
+      "requirement": "N1 partner charges and introduced internal anomaly curvatures",
+      "status": "PASS_EXACT_BOOKKEEPING_NOT_A_WALL_ACTION"
+    },
+    {
+      "id": "A5",
+      "requirement": "ordinary localized Weyl matter alone cancels bare local U1 slices",
+      "status": "REJECTED_FRACTIONAL_INDEX_CLASSES"
+    },
+    {
+      "id": "A6",
+      "requirement": "zero-sum transfer into the enlarged ordinary-Weyl lattice",
+      "status": "PASS_FORMAL_POLYNOMIAL_TARGET_ONLY"
+    },
+    {
+      "id": "A7",
+      "requirement": "isolated unit-defect lens and torus finite anomaly witnesses",
+      "status": "PASS_RESTRICTED_NONTRIVIAL_CHARACTERS"
+    },
+    {
+      "id": "A8",
+      "requirement": "quantized bulk/defect inverse inflow and common orientation dictionary",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A9",
+      "requirement": "original Jacobian torsion and generic-field rank bound",
+      "status": "PASS_TORSION_TRIVIAL_AND_ZERO_TO_TWELVE_BOUND"
+    },
+    {
+      "id": "A10",
+      "requirement": "section height constraints with explicit charge normalization",
+      "status": "PASS_NECESSARY_CONDITIONAL_TARGETS_ONLY"
+    },
+    {
+      "id": "A11",
+      "requirement": "exact original free MW rank and invariant nonzero section",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A12",
+      "requirement": "same-action spectrum, regulator and all eight completion gates",
+      "status": "OPEN_NO_ACCEPTED_PARENT"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "f54d63e9000cc7638b41aa546de2bf8e2cb99332e16f249637f8f707a0870a58",
+    "test_sha256": "93058a85af82c3fdbe88a9c825f1b427f17c7dbc88dfa82003c2a6efcfad4ce9"
+  },
+  "consolidated_theory_card": {
+    "CP3_polynomial_periods_are_not_defect_lens_eta_phases": true,
+    "accepted_extension_count": 0,
+    "actual_Jacobian_free_MW_rank": null,
+    "actual_Jacobian_free_MW_rank_lower_bound": 0,
+    "actual_Jacobian_free_MW_rank_upper_bound": 12,
+    "actual_Jacobian_torsion_order": 1,
+    "actual_original_nonzero_section_constructed": false,
+    "bare_defect_anomaly_rejects_total_theory": false,
+    "conditional_section_height_branches": [
+      {
+        "actual_section_exists": null,
+        "displayed_height_over_section_height": 1,
+        "necessary_conditions_only": true,
+        "q_Sh_over_q_displayed": "1",
+        "q_displayed_over_q_Sh": 1,
+        "required_section_height_class_S_F": [
+          "148",
+          "768"
+        ],
+        "surviving_component_nodes": [
+          0
+        ]
+      },
+      {
+        "actual_section_exists": null,
+        "displayed_height_over_section_height": 4,
+        "necessary_conditions_only": true,
+        "q_Sh_over_q_displayed": "1/2",
+        "q_displayed_over_q_Sh": 2,
+        "required_section_height_class_S_F": [
+          "37",
+          "192"
+        ],
+        "surviving_component_nodes": [
+          1
+        ]
+      }
+    ],
+    "conditional_wall_Weyl_components_per_C4": 28,
+    "finite_witness_scope": "ordinary Spin3 x internal C8 pullback of the isolated four-dimensional unit-defect model",
+    "formal_charge2_index_transfer_coefficients": [
+      "1/4",
+      "1/4",
+      "-1/2"
+    ],
+    "formal_transfer_constructs_quantized_action": false,
+    "formal_transfer_global_sum": "0",
+    "full_quantum_anomaly_cancelled": false,
+    "global_height_formula_is_conditional": true,
+    "independent_internal_centers_rescue_unchanged_wall": false,
+    "lens_sign_convention_glued_to_full_relative_action": false,
+    "new_internal_anomaly_curvatures_retained": true,
+    "physical_U1_slice_CP3_index_periods": {
+      "physical_C2_orbit": "-21/2",
+      "z00": "487/4",
+      "z11": "487/4"
+    },
+    "primitive_global_U1_generator_proved": false,
+    "rank_bound_uses_fixed_numerical_specialization": false,
+    "same_action_spectrum_and_geometry_realized": false,
+    "soft_spectrum_unification_cosmology_complete": false,
+    "unit_defect_primitive_lens_bare_phase_chosen_convention": "+i",
+    "unit_defect_primitive_lens_required_inverse_chosen_convention": "-i",
+    "unit_defect_primitive_torus_bare_phase": "-1",
+    "unit_defect_primitive_torus_required_inverse": "-1",
+    "wall_component_scope": "one conditional module; its assignment at both C4 locations and global transport remain unconstructed",
+    "wall_components_failing_geometric_kernel_per_module": 8
+  },
+  "core_sha256": "7a20530db05af160ce76e1b5e297001befc5eafd3696a13ba9ac692bbe94dd88",
+  "gate_ledger": {
+    "G1": "OPEN: necessary inflow and geometry targets are sharper, but no common microscopic action realizes them.",
+    "G2": "OPEN: the scoped mass-defect operator is unchanged; full interactions, supersymmetry breaking and scales remain missing.",
+    "G3": "OPEN: the unchanged V94 wall module fails the geometric kernel even with independent R/flavor signs; a replacement boundary structure is unconstructed.",
+    "G4": "OPEN: fractional pure-U1 local classes and finite defect inverse phases are computed, not cancelled by a quantized relative action.",
+    "G5": "OPEN: full Gammahat differential inflow, Pfaffian orientation, KK/BV determinant and regulator remain unconstructed.",
+    "G6": "OPEN: there is no accepted common-action spectrum and threshold/two-loop unification calculation.",
+    "G7": "OPEN: finite defect witnesses refine the selector audit; full quantum gluing, stable vacuum and cosmology remain incomplete.",
+    "G8": "OPEN: original MW torsion is trivial and 0<=rank<=12; no original nonzero section, exact rank, realized height or complete matter spectrum is proved."
+  },
+  "input_core_hashes": {
+    "v94_master": "8332984113477ebbbc8a1bc44915475cc3c38003c8c3a7ac9c9a5e35fc11da06",
+    "v95_route": "e8ed3aa98cc23726cd41d0b62bbfb8822253d7a9282f1184ba22a77956cb4729"
+  },
+  "lineage": {
+    "canonical_V21_gate_scope_unchanged": true,
+    "new_route": "B95",
+    "parent_master": "V94",
+    "parent_route_count": 22,
+    "parent_route_matrix_sha256": "922a35cb9ac90c0154dc709f685eb05ecf5f92735d9daca8c6368c538b876ac1",
+    "this_master_gate_scope": "separate SUSY/C8 completion branch"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F96_QUANTIZED_RELATIVE_INFLOW_AND_ORIGINAL_MW_GENERATOR",
+    "not_a_valid_shortcut": "A formal fractional transfer, a nontrivial bare-defect witness, a rank upper bound or a necessary height condition is not a completed quantum theory or a proof of section existence.",
+    "parallel": "Determine the original generic-K3 Picard/Mordell-Weil rank or construct a K-rational non-torsion section. Fix the physical charge normalization before testing its height: the scale-two candidate requires section height37S+192F and near-component intersection, not a primitive height148S+768F by assumption.",
+    "primary": "Construct or exclude a quantized relative inflow action with the pure-U1 fractional source class (+I(q=2)/4,+I(q=2)/4,-I(q=2)/2), all mixed normal/R/nonabelian terms, and inverse isolated-defect phases (-i on the chosen lens convention, -1 on the torus). Specify a valid boundary tangential map and field representations; independent internal signs cannot repair the unchanged V94 module."
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "Sections3.1 and4 distinguish fractional bare bulk fixed-point contributions, localized Weyl anomalies and bulk Green-Schwarz inflow; integrated cancellation alone is insufficient."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0602155",
+      "use": "N1 superfield expansion/action and equations44-45 motivate tracking both superspace and matter twists; no source assertion of the new wall candidate."
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "Index integrality and the distinction between polynomial matching and a differential anomaly theory."
+    },
+    {
+      "url": "https://arxiv.org/abs/0802.0634",
+      "use": "Weyl anomaly as the degree-six Ahat*Chern-character index density; local descent is distinct from global completion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2504.02934",
+      "use": "AppendixC(C.2) finite spectral sum, (C.3)-(C.4) lens polynomials, and (3.13) change of spin lift. Our lens Dirac sign is explicitly the opposite of (C.2); exact sums, not mod-one polynomials, fix the real half."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18380",
+      "use": "Section3.1 (3.4) includes the kernel in APS xi, (3.9) subtracts a same-rank trivial bundle, and (3.12)-(3.15) distinguish determinant/Pfaffian phases and the real-twisted even quaternionic index. The explicit negative-exponential phase convention is used here."
+    },
+    {
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "Section2.4 and Eq(2.52) derive the fermion Pfaffian anomaly factor, including the real versus complex normalization; not an automatic global completion of the present bulk theory."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.19634",
+      "use": "Section2 (2.18)-(2.20) identifies useful lens and odd-T2 product tests for cyclic two-dimensional anomalies. Its complex mod-one product result must not be halved after discarding the kernel integer."
+    },
+    {
+      "url": "https://arxiv.org/abs/0907.0298",
+      "use": "Theorem6.8, Corollaries6.11/6.13, section11.8/Table4, and section13.1 supply the canonical/Euler, Shioda-Tate, local height and characteristic-zero K3 Picard bounds."
+    },
+    {
+      "url": "https://arxiv.org/abs/1706.08521",
+      "use": "Sections2.1-2.3 relate inverse-Cartan Shioda coefficients to central quotients and explain the preferred section/charge normalization. Applied only conditionally to this unconstructed section."
+    },
+    {
+      "url": "https://arxiv.org/abs/1803.07998",
+      "use": "AppendixA, equationsA.18-A.30 define the height pushforward, section self-intersections and nonabelian corrections. Bilinearity gives the squared charge-rescaling factor."
+    },
+    {
+      "url": "https://arxiv.org/abs/1106.3854",
+      "use": "Section6.4 identifies the nonsplit I2* monodromy cover; V93 derives its actual P_plus*P_minus square class, recomputed here."
+    }
+  ],
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "H78 category/AHSS and general flat half-spinor parent adjudication",
+      "ordinal": 8,
+      "route_id": "B80",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F80A_CANONICAL_ZERO_HALF_H0",
+        "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+        "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Q4 parent-lift, eta-shadow and relative Bord765 cap adjudication",
+      "ordinal": 9,
+      "route_id": "B81",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+        "F81D_NONFLAT_Q1_COMPENSATOR",
+        "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+        "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "qhat Q4 bordism, optional D15 defect and scoped compensator adjudication",
+      "ordinal": 10,
+      "route_id": "B82",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F82A_QHAT_Q4_REDUCED_CLASS",
+        "F82B_RELATIVE_QHAT_MINUS_BASEPOINT_CLASS",
+        "F82D_ORDINARY_CLOSED7_QHAT_Q4_TEST",
+        "F82E2_GENERAL_NONFLAT_SAME_RANK_COMPENSATOR",
+        "F82G_OPTIONAL_CLOSED7_DEFECT_RESIDUES",
+        "F82H_CANDIDATE_POSITIVE_CHARGE_LIFTS",
+        "F82J_FULL_D15_WORLDSHEET_SECTOR",
+        "F82K_FULL_PARENT_ANOMALY_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "cyclic bulk parent, Q4 WCS shadow and 4 SO(11) instanton-string adjudication",
+      "ordinal": 11,
+      "route_id": "B83",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F83A_SMOOTH_BULK_CYCLIC_C4_QUOTIENT",
+        "F83A2_FULL_SQUARE_SPACE_GROUP_HGAMMA",
+        "F83A3_UNIQUE_GLOBAL_CENTER_KERNEL",
+        "F83B_Q4_TORSION_LINKING_FORM",
+        "F83B2_EVEN_U_REFERENCE_WCS_SHADOW",
+        "F83B3_PHYSICAL_WCS_REFINEMENT",
+        "F83B4_REGULATED_BARE_ETA_PHASE",
+        "F83B5_BARE_TIMES_WCS_IDENTITY",
+        "F83C_BULK_4SO11_INSTANTON_STRING",
+        "F83C2_4SO11_WORLDSHEET",
+        "F83C3_COMPACT6_INCIDENCE",
+        "F83C4_COMPACT6_HALF_BPS_SOLUTION",
+        "F83C7_FULL_HGAMMA_D15_GLUE",
+        "F83D_DELTA_PRIMARY_DETECTOR",
+        "F83D2_DELTA_H0_HIDDEN_EXTENSION",
+        "F83E_SAME_ACTION_COMPLETION"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "full-Gammahat no-go, C4F spinor grading and F4 heterotic-string redesign",
+      "ordinal": 12,
+      "route_id": "B84",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+        "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact F4 non-split I2star, C4F fixed-stratum and AHSS precursor route",
+      "ordinal": 13,
+      "route_id": "B85",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F85_COMPACT_F4_ORDINARY_JACOBIAN",
+        "F85_C4F_STRATIFIED_CLASSICAL_EXTENSION",
+        "F85_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Hodge correction, bisection target, C4F anomaly no-go and scoped AHSS closure",
+      "ordinal": 14,
+      "route_id": "B86",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F86_CONTINUOUS_U1F_DIAGONAL_PARENT",
+        "F86_ORDER2_PRODUCT_BACKGROUND_INFLOW",
+        "F86_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact ambient/flatness, period-two bisection, B-neutral fixed-phase candidate and smooth GF character",
+      "ordinal": 15,
+      "route_id": "B87",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "F87A",
+        "F87B",
+        "F87C",
+        "F87D"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "exact smooth-bulk Gammahat, relative crepant bisection, corrected anomaly topology and signed-C8 selector scout",
+      "ordinal": 16,
+      "route_id": "B88",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "the copy-dependent discrete character is placed in the exact reduced flavor centralizer Sp2_AC x Sp1_B",
+        "the selected u=v=r=s=0 lift satisfies every square-space-group relation modulo K_F",
+        "the quotient kernel contains no pure Spin11 center",
+        "all A/B/C projectors at z00, z11, z10 and z01 equal the V70 projectors",
+        "a projective crepant blowup sequence resolves every simple-root chart over S",
+        "the bisection meets affine-D6 node alpha3 with degree two and the same nontrivial Spin11 center coset as V86 node alpha1",
+        "the signed Sp3 Cartan and its traces are explicit, together with one explicitly scoped minimal integer lift of the four-dimensional table",
+        "the discrete zero-mode residue screen remains zero",
+        "within the stated ordinary SW-polynomial subring the degree-five reduction leaves only a*w4, and the displayed witness requires no a*w4 term",
+        "V85's Cbar-45-C row is bound as a retracted mixed-action obligation",
+        "a separate C8 charge assignment enforces B0 parity for neutral driver coefficients and a proposed localized vectorlike 5+5bar cancels every displayed mod-eight residue"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "frozen-lift C8 exponent exhaustion, continuous-U1T anomaly no-go, split-U5 localized candidate and compact torsor globalization",
+      "ordinal": 17,
+      "route_id": "B89",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "all eight necessary projector-preserving C8 exponent triples are enumerated for the frozen V88 non-C8 lifts",
+        "every such triple has even exponents and generates at most <k^2>=C4",
+        "an independent primitive external C8 has exact kernel-parity compatibility on assigned characters and full descent on the audited bulk representations",
+        "one new z00 split-U5 local phase candidate has exact gauge, intrinsic and center phases",
+        "the complete smooth connected Spin11 polynomial and charged-fermion gauge/log-twist wall component are exact",
+        "the gauged continuous U1_T parent is rejected by the added-vector gravity count and three incompatible GS equations",
+        "the frozen inputs omit placement, wall-group, neutral, regulator and normal-bundle data required for the full fixed-wall character",
+        "the three compact torsor blowups are global, projective and crepant",
+        "a nonempty Zariski-open family of smooth compact resolved members exists",
+        "the natural order-four root of the deck involution is rejected exactly"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "external G8 quotient and discrete shadows, continuous-parent no-go, conditional smooth-bulk charged-neutral/compensator scout, explicit compact member and projection-descending equivariance classification",
+      "ordinal": 18,
+      "route_id": "B90",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "the component group and nontrivial C2 extension defining G8 are explicit, including its restriction to the V87 C2 background",
+        "localized split-U5 character rows and all four normal isotropy weights are explicit",
+        "every currently computable untwisted four-dimensional C8 anomaly shadow vanishes",
+        "the unmodified continuous U1_8 parent is rejected for every allowed bulk lift under the frozen neutral-sector assumptions",
+        "one charged-neutral smooth-bulk GS arithmetic scout and a U1X-consistent compensator/Higgs operator scout are exact at conditional classical level",
+        "the old V88 compensator decay-portal claim is retracted because its matter cubics have U1X charge plus or minus four modulo ten",
+        "one rational compact torsor member has exact unit Jacobian ideals on all four away-S quotient charts and the inherited resolved near-S chart cover",
+        "the projection-descending stabilizer is mu4 x mu2 and contains a literal C4 over Q(i), but no element squares to deck"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "ordinary Spin^c source quantization, conditional F4 cone, finite torsion and anti-equivariant geometry scout",
+      "ordinal": 19,
+      "route_id": "B91",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "V90 ordinary continuous quotient has order-two source-quantization obstruction",
+        "opposite-sheet F4 Mori cone and all its nonzero effective curve volumes are positive",
+        "new 267-hyper charge distribution solves smooth-bulk equations and complete cocharacter integrality",
+        "ordinary H4(BG8;Z) and 16 source torsion refinements are explicit",
+        "old identity-base deck roots excluded; new member has exact deck-root symmetry and simple boundary roots"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "explicit 267 singlet projectors, ordinary lens WCS screen and compact smooth deck-root member",
+      "ordinal": 20,
+      "route_id": "B92",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "two full smooth-sector projector witnesses with different constant-mode spectra",
+        "conditional normal-aligned witness has eleven chiral modes; local mass ansatz lifts nine under new R assumptions",
+        "selected source passes four ordinary C4/C8 lens tests including the even-U WCS counterterm",
+        "eight of sixteen torsion labels pass this lens screen, not a full bordism character",
+        "compact crepant member is geometrically smooth; regular order-four lift squares to deck",
+        "holomorphic form character is i; diagonal bundle and actual spectrum remain open"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "localized anomaly polynomial, smooth R-equivariant mass extension and actual Jacobian compatibility",
+      "ordinal": 21,
+      "route_id": "B93",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "full shifted-character singlet polynomial and independent charged Cartan/zero-mode crosschecks",
+        "bare bulk ordinary GS span obstruction and independently periodic normal-axion half-period failure",
+        "explicit smooth-sector R action and all four fixed-wall mass characters; heavy anomaly matching retained",
+        "actual Jacobian nonsplit I2* and period-two torsor; conditional nonlocal matter count three matches vector11 census"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "conditional normal-wall completion, Phi defect curvature matching and actual section descent",
+      "ordinal": 22,
+      "route_id": "B94",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "normal Spin2 period screen and alternative 28-Weyl-per-C4 product-lift wall module, not a frozen Gammahat sector",
+        "mass-defect real index and tangent/normal curvature identity; full differential action remains missing",
+        "visible threshold and independent-phase period audit, with forced-zero Higgs-domain distinction",
+        "actual Jacobian torsion triviality; anti-invariant non-torsion cover point and incompatible gauge-changing twist"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "wall-kernel obstruction, local and finite inflow targets, and original-Jacobian rank bound",
+      "ordinal": 23,
+      "route_id": "B95",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "eight of 28 candidate wall Weyl components fail the unchanged geometric Gammahat pullback; independent internal-center assignments do not repair them",
+        "fractional bare local U1 Weyl-index classes and a formal zero-sum redistribution, not a quantized inflow action",
+        "isolated unit-defect lens and torus determinant/Pfaffian characters and required inverse targets in explicitly stated conventions",
+        "original-field free rank bounded by 12 and conditional section heights with both charge normalizations; no nonzero original section constructed"
+      ]
+    }
+  ],
+  "schema": "susy_v95_multipath_g1_frontier_master_v1",
+  "status": "V95_MASTER__WALL_KERNEL_OBSTRUCTION_AND_NECESSARY_INFLOW_TARGETS__ORIGINAL_RANK_BOUND__NO_ACCEPTED_PARENT",
+  "strict_master_decision": {
+    "actual_original_exact_free_rank_computed": false,
+    "actual_original_nonzero_section_constructed": false,
+    "all_F95_obligations_fully_completed": false,
+    "closed_gates": [],
+    "conditional_normalization_aware_height_restrictions_computed": true,
+    "full_Gammahat_wall_representations_frozen": false,
+    "original_free_rank_upper_bound_computed": true,
+    "pure_U1_fractional_inflow_class_computed": true,
+    "quantized_relative_WCS_Dai_Freed_trivialization_constructed": false,
+    "restricted_finite_defect_inverse_phase_targets_computed": true,
+    "same_action_microscopic_parent_accepted": false,
+    "theory_complete": false,
+    "unchanged_wall_independent_center_repair_excluded": true
+  },
+  "supersession_ledger": {
+    "V94_conditional_product_lift_polynomial_identity_retracted": false,
+    "V94_cover_section_descent_obstruction_or_twist_fiber_change_retracted": false,
+    "V94_defect_curvature_match_retracted": false,
+    "bare_defect_phase_is_the_anomaly_of_the_complete_theory": false,
+    "changed_correlated_tangential_embedding_or_new_boundary_structure_excluded": false,
+    "displayed_height_equals_primitive_section_height_without_normalization": false,
+    "enlarged_integer_charge_Weyl_lattice_equals_full_Gammahat_representation_lattice": false,
+    "fractional_inflow_class_is_quantized_action": false,
+    "original_exact_free_rank_known": false,
+    "unchanged_module_repair_by_independent_internal_centers": "REJECTED: D is already the identity before the internal quotient"
+  },
+  "version": "V95"
+}
