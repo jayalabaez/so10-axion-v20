@@ -1,0 +1,496 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "canonical V92/V93 lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "all six singlet local gauge-normal-gravity channels",
+      "status": "PASS_EXACT_SMW_SHIFTED_CHARACTER"
+    },
+    {
+      "id": "A3",
+      "requirement": "bare bulk Cartan polynomial and ordinary zero-mode index",
+      "status": "PASS_EXACT_STATED_NORMAL_TENSOR_LIFT"
+    },
+    {
+      "id": "A4",
+      "requirement": "ordinary bulk GS alone cancels bare local polynomial",
+      "status": "REJECTED_NONBULK_INVARIANT_COMPONENT"
+    },
+    {
+      "id": "A5",
+      "requirement": "isolated period-one normal axion with integer levels",
+      "status": "REJECTED_HALF_INTEGRAL_SU5_INSTANTON_PERIOD"
+    },
+    {
+      "id": "A6",
+      "requirement": "independent smooth-sector R action",
+      "status": "PASS_EXACT_NEW_CLASSICAL_CHOICE"
+    },
+    {
+      "id": "A7",
+      "requirement": "nine-singlet mass fixed-wall characters",
+      "status": "PASS_EXACT_NOT_FULL_FRAME_ACTION"
+    },
+    {
+      "id": "A8",
+      "requirement": "heavy anomaly matching and ordinary spin4 curvature periods",
+      "status": "PASS_LOCAL_PATCH_AND_PERIOD_SCREEN_ONLY"
+    },
+    {
+      "id": "A9",
+      "requirement": "full wall tangential representations and quantized relative anomaly",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A10",
+      "requirement": "actual Jacobian generic codimension-one fibers",
+      "status": "PASS_EXACT_NONSPLIT_I2STAR_AND_I1"
+    },
+    {
+      "id": "A11",
+      "requirement": "actual torsor section, period and index",
+      "status": "NO_SECTION_PERIOD2_INDEX2"
+    },
+    {
+      "id": "A12",
+      "requirement": "three vector11 hypers from Jacobian monodromy",
+      "status": "PASS_CONDITIONAL_NONLOCAL_MATTER_CONTRIBUTION"
+    },
+    {
+      "id": "A13",
+      "requirement": "Jacobian MW rank, height and full U1-charged spectrum",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A14",
+      "requirement": "common diagonal geometric and physical quantum action",
+      "status": "OPEN_NOT_FOUND"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "960c5edac3ea8f60d7f16caa878b14d1bf174ca86615f566ebb815da5f37cf47",
+    "test_sha256": "4a7bce81c3451c5aa0ee1c9b2c7dcb965137cc1868833d50763cad8c698d528d"
+  },
+  "consolidated_theory_card": {
+    "Jacobian_MW_rank": null,
+    "Jacobian_generic_nonabelian_algebra": "B5 = so(11)",
+    "R_action_scope": "smooth bulk centralizer and existing kernel, not all localized representations or quantum R anomalies",
+    "accepted_extension_count": 0,
+    "bulk_singlet_count": 267,
+    "conditional_Jacobian_nonlocal_vector11_hypers": 3,
+    "full_conditional_visible_continuous_anomaly_tensor": [
+      -32,
+      -24,
+      -816,
+      -576,
+      -68,
+      1408,
+      96,
+      384,
+      96
+    ],
+    "full_quantum_anomaly_cancelled": false,
+    "heavy_singlet_TrQ_TrQ3": [
+      36,
+      864
+    ],
+    "independent_normal_axion_half_period_failure": true,
+    "nine_mass_terms_R_and_wall_character_tests_pass": true,
+    "ordinary_GS_span_rank": 9,
+    "primitive_C8_restored": false,
+    "rank_with_bare_local_polynomial": 10,
+    "same_action_spectrum_and_geometry_realized": false,
+    "selected_branch_status": "LOCAL_ANOMALY_TARGET_EXPLICIT__QUANTIZED_BOUNDARY_AND_GEOMETRY_GLUE_OPEN",
+    "selected_constant_singlet_modes": 11,
+    "soft_spectrum_unification_cosmology_complete": false,
+    "torsor_period_and_index": [
+      2,
+      2
+    ]
+  },
+  "core_sha256": "d34479d8daa9a37d090e2d2ace471464171a0c28208d3d88b77e5dc168a97932",
+  "gate_ledger": {
+    "G1": "OPEN: explicit bare local anomaly targets and smooth R matrices exist, but no quantized same-action boundary/relative completion connects them to the geometry.",
+    "G2": "OPEN: all nine extra masses pass the selected R and wall-isotropy characters; full wall/frame tensor, global gauged K\u00e4hler action, SUSY breaking and physical mass scale are missing.",
+    "G3": "OPEN: smooth-sector projectors and R action are explicit; localized family/rank/mediator normal charges and full tangential representations remain unfrozen.",
+    "G4": "OPEN: a nonbulk-invariant local anomaly remains; ordinary bulk GS alone is insufficient, and formal axion descent identities are not globally quantized cancellation.",
+    "G5": "OPEN: common BV/regulator, KK determinant, eta/Pfaffian orientation and the relative boundary complex are absent.",
+    "G6": "OPEN: no accepted same-action physical spectrum has been propagated through thresholds and two-loop unification.",
+    "G7": "OPEN: the heavy-singlet anomaly is matched, not erased; primitive C8 still breaks to C2, and full quantum selector/proton/decay/cosmology tests are incomplete.",
+    "G8": "OPEN: the compact member and its Jacobian pass scoped tests, but the torsor has no section, the Jacobian MW rank/height and full spectrum are unknown, and the Omega-character-compatible diagonal bundle is absent."
+  },
+  "input_core_hashes": {
+    "v92_master": "e38e8b58d4f86e00271402c9580919a092e024b737a4fc5290e4d20709b5aae8",
+    "v93_route": "4f81852d9e272d3fb12946ad41cb01d9f93462f75cef69123106a80b03f092f2"
+  },
+  "lineage": {
+    "canonical_V21_gate_scope_unchanged": true,
+    "new_route": "B93",
+    "parent_master": "V92",
+    "parent_route_count": 20,
+    "parent_route_matrix_sha256": "ad9ffe9b10cceef1a5222c2a415aba76576e71220109ce62e2b5f34cb42f6c33",
+    "this_master_gate_scope": "separate SUSY/C8 completion branch"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F94_QUANTIZED_RELATIVE_WALL_COMPLETION_AND_MW_HEIGHT",
+    "not_a_valid_shortcut": "Neither formal factorization I6=x*A4+f*B4, a smooth-sector R matrix, nor a Jacobian B5 label establishes a globally consistent quantum action.",
+    "parallel": "Determine the actual Jacobian Mordell-Weil rank and height, audit torsor affine-component monodromy and codimension-two matter, and construct the same diagonal R/bundle action compatible with tau*Omega=i*Omega.",
+    "primary": "Freeze the localized fields' normal/tangential representations and construct or rule out a quantized boundary completion of the displayed I6 polynomials, including the Phi-phase matching across zeros and defects; then evaluate one relative differential WCS/Dai-Freed theory on the full Gammahat structure."
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "fixed-point gauge/normal anomalies, bulk-invariant inflow restriction and zero-mode index check; sections3-4"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0602155",
+      "use": "N1 bulk hyper action and geometric partner twists, Eq1 and44-45; not a source of the newly chosen R assignment"
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "Sp1_R doublet hyperscalars versus R-singlet hyperinos; SMW structure, section2.1; even quaternionic Dirac index in4D, section2.2"
+    },
+    {
+      "url": "https://arxiv.org/abs/0802.0634",
+      "use": "index-normalized4D Weyl anomaly and descent, Eq11.28-11.31; local axion matching mechanism, Eq12.6-12.9"
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.02881",
+      "use": "Eq1.2 pure untwisted Spin(4) x C8 fermion restriction only; not the full Gammahat anomaly"
+    },
+    {
+      "url": "https://arxiv.org/abs/2208.14977",
+      "use": "Section 2 gives binary quartic I,J and y^2=x^3-27Ix-27J for its Jacobian; only characteristic-zero invariant formulas are used."
+    },
+    {
+      "url": "https://arxiv.org/abs/1106.3854",
+      "use": "Kodaira/Tate orders and split versus nonsplit fiber classification; the Tate coordinates here are explicitly reconstructed."
+    },
+    {
+      "url": "https://arxiv.org/abs/1401.7844",
+      "use": "Sections 2, 7 and 8 distinguish a genus-one fibration from its Jacobian, permit affine-component monodromies, and relate continuous U1 factors to Jacobian MW rank."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0002012",
+      "use": "Section 3 derives the standard nonlocal hypermultiplet rule g_cover-g_base in the anti-invariant representation, explicitly including so(2k) to so(2k-1). Used conditionally for the Jacobian interpretation."
+    },
+    {
+      "url": "https://arxiv.org/abs/math/0005196",
+      "use": "Theorem 8.2, Proposition 8.9 and Table E give the monodromy contribution, orthogonal adjoint branching, and independent Spin11 intersection formula. No full-spectrum theorem is applied to the torsor."
+    }
+  ],
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "H78 category/AHSS and general flat half-spinor parent adjudication",
+      "ordinal": 8,
+      "route_id": "B80",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F80A_CANONICAL_ZERO_HALF_H0",
+        "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+        "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Q4 parent-lift, eta-shadow and relative Bord765 cap adjudication",
+      "ordinal": 9,
+      "route_id": "B81",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+        "F81D_NONFLAT_Q1_COMPENSATOR",
+        "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+        "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "qhat Q4 bordism, optional D15 defect and scoped compensator adjudication",
+      "ordinal": 10,
+      "route_id": "B82",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F82A_QHAT_Q4_REDUCED_CLASS",
+        "F82B_RELATIVE_QHAT_MINUS_BASEPOINT_CLASS",
+        "F82D_ORDINARY_CLOSED7_QHAT_Q4_TEST",
+        "F82E2_GENERAL_NONFLAT_SAME_RANK_COMPENSATOR",
+        "F82G_OPTIONAL_CLOSED7_DEFECT_RESIDUES",
+        "F82H_CANDIDATE_POSITIVE_CHARGE_LIFTS",
+        "F82J_FULL_D15_WORLDSHEET_SECTOR",
+        "F82K_FULL_PARENT_ANOMALY_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "cyclic bulk parent, Q4 WCS shadow and 4 SO(11) instanton-string adjudication",
+      "ordinal": 11,
+      "route_id": "B83",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F83A_SMOOTH_BULK_CYCLIC_C4_QUOTIENT",
+        "F83A2_FULL_SQUARE_SPACE_GROUP_HGAMMA",
+        "F83A3_UNIQUE_GLOBAL_CENTER_KERNEL",
+        "F83B_Q4_TORSION_LINKING_FORM",
+        "F83B2_EVEN_U_REFERENCE_WCS_SHADOW",
+        "F83B3_PHYSICAL_WCS_REFINEMENT",
+        "F83B4_REGULATED_BARE_ETA_PHASE",
+        "F83B5_BARE_TIMES_WCS_IDENTITY",
+        "F83C_BULK_4SO11_INSTANTON_STRING",
+        "F83C2_4SO11_WORLDSHEET",
+        "F83C3_COMPACT6_INCIDENCE",
+        "F83C4_COMPACT6_HALF_BPS_SOLUTION",
+        "F83C7_FULL_HGAMMA_D15_GLUE",
+        "F83D_DELTA_PRIMARY_DETECTOR",
+        "F83D2_DELTA_H0_HIDDEN_EXTENSION",
+        "F83E_SAME_ACTION_COMPLETION"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "full-Gammahat no-go, C4F spinor grading and F4 heterotic-string redesign",
+      "ordinal": 12,
+      "route_id": "B84",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+        "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact F4 non-split I2star, C4F fixed-stratum and AHSS precursor route",
+      "ordinal": 13,
+      "route_id": "B85",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F85_COMPACT_F4_ORDINARY_JACOBIAN",
+        "F85_C4F_STRATIFIED_CLASSICAL_EXTENSION",
+        "F85_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Hodge correction, bisection target, C4F anomaly no-go and scoped AHSS closure",
+      "ordinal": 14,
+      "route_id": "B86",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F86_CONTINUOUS_U1F_DIAGONAL_PARENT",
+        "F86_ORDER2_PRODUCT_BACKGROUND_INFLOW",
+        "F86_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact ambient/flatness, period-two bisection, B-neutral fixed-phase candidate and smooth GF character",
+      "ordinal": 15,
+      "route_id": "B87",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "F87A",
+        "F87B",
+        "F87C",
+        "F87D"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "exact smooth-bulk Gammahat, relative crepant bisection, corrected anomaly topology and signed-C8 selector scout",
+      "ordinal": 16,
+      "route_id": "B88",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "the copy-dependent discrete character is placed in the exact reduced flavor centralizer Sp2_AC x Sp1_B",
+        "the selected u=v=r=s=0 lift satisfies every square-space-group relation modulo K_F",
+        "the quotient kernel contains no pure Spin11 center",
+        "all A/B/C projectors at z00, z11, z10 and z01 equal the V70 projectors",
+        "a projective crepant blowup sequence resolves every simple-root chart over S",
+        "the bisection meets affine-D6 node alpha3 with degree two and the same nontrivial Spin11 center coset as V86 node alpha1",
+        "the signed Sp3 Cartan and its traces are explicit, together with one explicitly scoped minimal integer lift of the four-dimensional table",
+        "the discrete zero-mode residue screen remains zero",
+        "within the stated ordinary SW-polynomial subring the degree-five reduction leaves only a*w4, and the displayed witness requires no a*w4 term",
+        "V85's Cbar-45-C row is bound as a retracted mixed-action obligation",
+        "a separate C8 charge assignment enforces B0 parity for neutral driver coefficients and a proposed localized vectorlike 5+5bar cancels every displayed mod-eight residue"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "frozen-lift C8 exponent exhaustion, continuous-U1T anomaly no-go, split-U5 localized candidate and compact torsor globalization",
+      "ordinal": 17,
+      "route_id": "B89",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "all eight necessary projector-preserving C8 exponent triples are enumerated for the frozen V88 non-C8 lifts",
+        "every such triple has even exponents and generates at most <k^2>=C4",
+        "an independent primitive external C8 has exact kernel-parity compatibility on assigned characters and full descent on the audited bulk representations",
+        "one new z00 split-U5 local phase candidate has exact gauge, intrinsic and center phases",
+        "the complete smooth connected Spin11 polynomial and charged-fermion gauge/log-twist wall component are exact",
+        "the gauged continuous U1_T parent is rejected by the added-vector gravity count and three incompatible GS equations",
+        "the frozen inputs omit placement, wall-group, neutral, regulator and normal-bundle data required for the full fixed-wall character",
+        "the three compact torsor blowups are global, projective and crepant",
+        "a nonempty Zariski-open family of smooth compact resolved members exists",
+        "the natural order-four root of the deck involution is rejected exactly"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "external G8 quotient and discrete shadows, continuous-parent no-go, conditional smooth-bulk charged-neutral/compensator scout, explicit compact member and projection-descending equivariance classification",
+      "ordinal": 18,
+      "route_id": "B90",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "the component group and nontrivial C2 extension defining G8 are explicit, including its restriction to the V87 C2 background",
+        "localized split-U5 character rows and all four normal isotropy weights are explicit",
+        "every currently computable untwisted four-dimensional C8 anomaly shadow vanishes",
+        "the unmodified continuous U1_8 parent is rejected for every allowed bulk lift under the frozen neutral-sector assumptions",
+        "one charged-neutral smooth-bulk GS arithmetic scout and a U1X-consistent compensator/Higgs operator scout are exact at conditional classical level",
+        "the old V88 compensator decay-portal claim is retracted because its matter cubics have U1X charge plus or minus four modulo ten",
+        "one rational compact torsor member has exact unit Jacobian ideals on all four away-S quotient charts and the inherited resolved near-S chart cover",
+        "the projection-descending stabilizer is mu4 x mu2 and contains a literal C4 over Q(i), but no element squares to deck"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "ordinary Spin^c source quantization, conditional F4 cone, finite torsion and anti-equivariant geometry scout",
+      "ordinal": 19,
+      "route_id": "B91",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "V90 ordinary continuous quotient has order-two source-quantization obstruction",
+        "opposite-sheet F4 Mori cone and all its nonzero effective curve volumes are positive",
+        "new 267-hyper charge distribution solves smooth-bulk equations and complete cocharacter integrality",
+        "ordinary H4(BG8;Z) and 16 source torsion refinements are explicit",
+        "old identity-base deck roots excluded; new member has exact deck-root symmetry and simple boundary roots"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "explicit 267 singlet projectors, ordinary lens WCS screen and compact smooth deck-root member",
+      "ordinal": 20,
+      "route_id": "B92",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "two full smooth-sector projector witnesses with different constant-mode spectra",
+        "conditional normal-aligned witness has eleven chiral modes; local mass ansatz lifts nine under new R assumptions",
+        "selected source passes four ordinary C4/C8 lens tests including the even-U WCS counterterm",
+        "eight of sixteen torsion labels pass this lens screen, not a full bordism character",
+        "compact crepant member is geometrically smooth; regular order-four lift squares to deck",
+        "holomorphic form character is i; diagonal bundle and actual spectrum remain open"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "localized anomaly polynomial, smooth R-equivariant mass extension and actual Jacobian compatibility",
+      "ordinal": 21,
+      "route_id": "B93",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "full shifted-character singlet polynomial and independent charged Cartan/zero-mode crosschecks",
+        "bare bulk ordinary GS span obstruction and independently periodic normal-axion half-period failure",
+        "explicit smooth-sector R action and all four fixed-wall mass characters; heavy anomaly matching retained",
+        "actual Jacobian nonsplit I2* and period-two torsor; conditional nonlocal matter count three matches vector11 census"
+      ]
+    }
+  ],
+  "schema": "susy_v93_multipath_g1_frontier_master_audit_v1",
+  "status": "V93_MASTER__EXPLICIT_LOCAL_ANOMALY_OBLIGATION_AND_SMOOTH_R_MASS_REPAIR__CONDITIONAL_JACOBIAN_MATTER_MATCH__NO_ACCEPTED_PARENT",
+  "strict_master_decision": {
+    "Jacobian_MW_rank_height_and_full_matter_spectrum_computed": false,
+    "actual_Jacobian_B5_codimension_one_test_passes": true,
+    "actual_torsor_period_and_index": [
+      2,
+      2
+    ],
+    "all_F93_obligations_fully_completed": false,
+    "bare_bulk_gauge_normal_gravitational_Cartan_polynomial_computed": true,
+    "closed_gates": [],
+    "conditional_Jacobian_nonlocal_vector11_hyper_count": 3,
+    "full_Gammahat_wall_normal_representations_frozen": false,
+    "independent_smooth_sector_R_action_constructed": true,
+    "mass_cubic_passes_selected_fixed_wall_characters": true,
+    "nine_massive_fields_anomaly_matching_retained": true,
+    "ordinary_bulk_GS_alone_cancels_selected_bare_bulk": false,
+    "quantized_relative_WCS_Dai_Freed_trivialization_constructed": false,
+    "same_action_microscopic_parent_accepted": false,
+    "selected_singlet_six_channel_local_anomaly_computed": true,
+    "theory_complete": false
+  },
+  "supersession_ledger": {
+    "Jacobian_B5_implies_Spin11_global_form_or_required_U1": false,
+    "V92_compact_smoothness_or_four_closed_lens_results_retracted": false,
+    "V92_four_lens_passes_imply_full_local_anomaly_cancellation": false,
+    "V92_local_mass_isotropy_assumption_now_checked_at_all_four_cover_strata": true,
+    "V92_normal_alignment_implies_vanishing_normal_anomaly": false,
+    "V92_smooth_R_assignment_unconstructed_now_replaced_by_explicit_matrices": true,
+    "formal_two_axion_polynomial_identity_is_quantized_WCS": false,
+    "mass_module_is_derived_from_existing_global_action": false,
+    "torsor_no_section_implies_Jacobian_MW_rank_zero": false
+  },
+  "version": "V93"
+}
