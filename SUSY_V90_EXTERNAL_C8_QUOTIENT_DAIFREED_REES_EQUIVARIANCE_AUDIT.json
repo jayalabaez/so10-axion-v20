@@ -1,0 +1,2503 @@
+{
+  "G8_component_extension": {
+    "H1_restriction_obstruction": {
+      "consequence": "a secondary class or a full bordism calculation is required",
+      "image_of_degree_one_generator": 0,
+      "map": "H1(BC4;F2) -> H1(BC2;F2) under 1 -> 2",
+      "product_alpha_w4_can_restrict_to_a_w4": false
+    },
+    "bundle_data": {
+      "component_bundle": "a4 in H1(-;C4)",
+      "extension_sequence": "0 -> C2 -> C8 -> C4 -> 0",
+      "extension_trivialization": "w2(V)+e(a4)=0",
+      "oriented_rank_11_bundle": "V"
+    },
+    "component_group": "C4",
+    "component_group_is_C8": false,
+    "factor_set_formula": "f(r,s)=floor((r+s)/4) mod 2",
+    "factor_set_is_normalized_2_cocycle": true,
+    "factor_set_rows": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "gauge_invariant_operator_consequence": "sum c=0 forces sum q8 even; primitive k may have order eight on gauge-charged fields but order at most four on gauge-invariant operators",
+    "group": "G8=(Spin(11) x C8)/<(z,k^4)>",
+    "kernel": "<epsilon> with epsilon=[z,1]=[1,k^4] isomorphic to C2",
+    "projection": "p([s,k^n])=(rho(s),n mod 4) in SO(11) x C4",
+    "representation_descent_rule": "Spin11 center bit c plus q8 equals 0 mod 2",
+    "restriction_to_j_equals_k2": {
+      "extension_class": "e|BC2=a^2",
+      "factor_set_rows": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "formula": "f(2a,2b)=ab",
+      "recovers_V87_condition": "w2(V)=a^2",
+      "subgroup": "C2 -> C4 sends a to 2a"
+    },
+    "section": "sigma(r)=[1,k^r], r=0,1,2,3",
+    "status": "PASS_EXACT_NONTRIVIAL_C2_EXTENSION_OVER_SO11_X_C4"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "8a6c7750b7370d3c432872aa6469e5372b780a059feb3a4ba331f7dc477e95a8",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "a6288e33e1205f9dbcaa949f946c711bf177ff117d4e483a4b0f8bdda80d06f6"
+  },
+  "charged_neutral_and_compensator_repair": {
+    "GS_solution": {
+      "D4": 437760,
+      "a": [
+        2,
+        2
+      ],
+      "a_dot_c": "-1264",
+      "b_over_2": [
+        1,
+        "-1/2"
+      ],
+      "b_over_2_dot_c": "88",
+      "bulk_P": 88,
+      "c": [
+        -480,
+        -152
+      ],
+      "lattice": "U",
+      "minus_D2_over_6": "-1264",
+      "three_c_squared": "437760"
+    },
+    "accepted_same_action_parent": false,
+    "continuous_charge_table": [
+      {
+        "U1_X_charge": null,
+        "U1_X_charge_by_component": {
+          "1": -5,
+          "10": -1,
+          "5bar": 3
+        },
+        "U5_X_representation": "10_-1 + 5bar_3 + 1_-5",
+        "Z4R": 1,
+        "continuous_U1_8_charge": -3,
+        "field": "F_i",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 5
+      },
+      {
+        "U1_X_charge": 2,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "5_+2",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 6,
+        "field": "H_uA",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 6
+      },
+      {
+        "U1_X_charge": 0,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "1_0",
+        "Z4R": 2,
+        "continuous_U1_8_charge": -6,
+        "field": "A0",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 2
+      },
+      {
+        "U1_X_charge": 0,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "1_0",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 4,
+        "field": "B0",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 4
+      },
+      {
+        "U1_X_charge": 2,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "5_+2",
+        "Z4R": 2,
+        "continuous_U1_8_charge": -4,
+        "field": "H_uB",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 4
+      },
+      {
+        "U1_X_charge": -2,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "5bar_-2",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 6,
+        "field": "H_dC",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 6
+      },
+      {
+        "U1_X_charge": -2,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "5bar_-2",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 0,
+        "field": "H_dSigma",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 0
+      },
+      {
+        "U1_X_charge": 0,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "1_0",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 6,
+        "field": "P_A",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 6
+      },
+      {
+        "U1_X_charge": 10,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "1_+10",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 6,
+        "field": "X",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 6
+      },
+      {
+        "U1_X_charge": -10,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "1_-10",
+        "Z4R": 0,
+        "continuous_U1_8_charge": -6,
+        "field": "Xbar",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 2
+      },
+      {
+        "U1_X_charge": 0,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "1_0",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 8,
+        "field": "Phi_+",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 0
+      },
+      {
+        "U1_X_charge": 0,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "1_0",
+        "Z4R": 0,
+        "continuous_U1_8_charge": -8,
+        "field": "Phi_-",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 0
+      },
+      {
+        "U1_X_charge": 0,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "singlets",
+        "Z4R": 2,
+        "continuous_U1_8_charge": 0,
+        "field": "S_8,S_B,S_X",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 0
+      },
+      {
+        "U1_X_charge": 2,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "5_+2",
+        "Z4R": 0,
+        "continuous_U1_8_charge": 6,
+        "field": "D",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 6
+      },
+      {
+        "U1_X_charge": -2,
+        "U1_X_charge_by_component": null,
+        "U5_X_representation": "5bar_-2",
+        "Z4R": 2,
+        "continuous_U1_8_charge": -2,
+        "field": "Dbar",
+        "finite_is_continuous_mod8": true,
+        "finite_q8": 6
+      }
+    ],
+    "continuous_charge_table_sha256": "bb55101fbede403d6c2b8e6b3d7dcaf9029dcae6ffe850af42b54c56d79d984d",
+    "corrected_compensator": {
+      "GM_operator": {
+        "U1_X_sum": 0,
+        "Z4R_sum": 0,
+        "allowed": true,
+        "bound_operator_ledger_name": "K: Phi- B0^dag H_uA H_dC/M*^2",
+        "continuous_charge_sum": 0,
+        "nonzero_hidden_sector_numerator_constructed": false,
+        "operator": "K contains Phi- B0^dag H_uA H_dC/M*^2 + h.c."
+      },
+      "doublet_mass_matrix": {
+        "columns": [
+          "H_dSigma",
+          "H_dC",
+          "Dbar"
+        ],
+        "left_null_light_Hu": [
+          "M",
+          "0",
+          "-mu"
+        ],
+        "left_null_verified_symbolically": true,
+        "matrix": [
+          [
+            "0",
+            "0",
+            "mu"
+          ],
+          [
+            "a",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "M"
+          ]
+        ],
+        "nonzero_2x2_minor": "M*a",
+        "nonzero_assumption": "a*M != 0",
+        "rank": 2,
+        "right_null_light_Hd": [
+          "0",
+          "1",
+          "0"
+        ],
+        "right_null_verified_symbolically": true,
+        "rows": [
+          "H_uA",
+          "H_uB",
+          "D"
+        ],
+        "triplet_mass_rank": 1,
+        "triplet_scope": "H_uA has no triplet zero mode; localized D and Dbar triplets have mass M"
+      },
+      "local_phase_rows": [
+        {
+          "center_bit": 0,
+          "external_q8": 6,
+          "field": "D",
+          "gauge_exponent": 6,
+          "intrinsic_exponent": 2,
+          "sum_mod8": 0
+        },
+        {
+          "center_bit": 0,
+          "external_q8": 6,
+          "field": "Dbar",
+          "gauge_exponent": 2,
+          "intrinsic_exponent": 6,
+          "sum_mod8": 0
+        }
+      ],
+      "local_wall_quotient_constructed": false,
+      "operator_ledger": [
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "S8",
+            "Phi_+",
+            "Phi_-"
+          ],
+          "operator": "S8(Phi+ Phi- - v8^2)",
+          "operator_kind": "superpotential",
+          "result": "allowed breaking driver",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "SB",
+            "Phi_-",
+            "B0",
+            "B0"
+          ],
+          "operator": "SB(Phi- B0^2/M* - vB^2)",
+          "operator_kind": "superpotential",
+          "result": "allowed breaking driver",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "SX",
+            "X",
+            "Xbar"
+          ],
+          "operator": "SX(X Xbar - vX^2)",
+          "operator_kind": "superpotential",
+          "result": "allowed rank driver",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "A0",
+            "P_A"
+          ],
+          "operator": "M_A A0 P_A",
+          "operator_kind": "superpotential",
+          "result": "allowed rank driver",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "B0",
+            "H_uB",
+            "H_dSigma"
+          ],
+          "operator": "B0 H_uB H_dSigma",
+          "operator_kind": "superpotential",
+          "result": "allowed Higgs entry",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "10",
+            "10",
+            "H_uA"
+          ],
+          "operator": "10 10 H_uA",
+          "operator_kind": "superpotential",
+          "result": "allowed up Yukawa",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "10",
+            "5bar",
+            "H_dC"
+          ],
+          "operator": "10 5bar H_dC",
+          "operator_kind": "superpotential",
+          "result": "allowed down Yukawa",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "5bar",
+            "1",
+            "H_uA"
+          ],
+          "operator": "5bar 1 H_uA",
+          "operator_kind": "superpotential",
+          "result": "allowed neutrino Yukawa",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "Phi_-",
+            "B0",
+            "D",
+            "Dbar"
+          ],
+          "operator": "Phi- B0 D Dbar/M*",
+          "operator_kind": "superpotential",
+          "result": "compensator mass",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "Phi_-",
+            "B0",
+            "H_uA",
+            "Dbar"
+          ],
+          "operator": "Phi- B0 H_uA Dbar/M*",
+          "operator_kind": "superpotential",
+          "result": "Higgs-compensator mixing",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "D",
+            "10",
+            "10"
+          ],
+          "operator": "D 10 10",
+          "operator_kind": "superpotential",
+          "result": "one-sided matter portal",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 2,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "D",
+            "5bar",
+            "1"
+          ],
+          "operator": "D 5bar 1",
+          "operator_kind": "superpotential",
+          "result": "one-sided matter portal",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": true
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 0,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "Phi_+",
+            "Dbar",
+            "10",
+            "5bar"
+          ],
+          "operator": "Phi+ Dbar 10 5bar",
+          "operator_kind": "superpotential",
+          "result": "forbidden by Z4R",
+          "selection_rule_allowed": false,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": false,
+          "U1_8_sum": 12,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 0,
+          "all_continuous_gauge_charges_invariant": false,
+          "factors": [
+            "H_uA",
+            "H_dC"
+          ],
+          "operator": "H_uA H_dC",
+          "operator_kind": "superpotential",
+          "result": "forbidden",
+          "selection_rule_allowed": false,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 0,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "Phi_-",
+            "Phi_-",
+            "B0",
+            "H_uA",
+            "H_dC"
+          ],
+          "operator": "Phi-^2 B0 H_uA H_dC",
+          "operator_kind": "superpotential",
+          "result": "still forbidden by Z4R",
+          "selection_rule_allowed": false,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_allowed": false,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 0,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "Phi_+",
+            "B0",
+            "10",
+            "10",
+            "10",
+            "5bar"
+          ],
+          "operator": "Phi+ B0 F^4",
+          "operator_kind": "superpotential",
+          "result": "proton operator remains forbidden",
+          "selection_rule_allowed": false,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_allowed": true,
+          "U1_8_invariant": true,
+          "U1_8_sum": 0,
+          "U1_X_invariant": true,
+          "U1_X_sum": 0,
+          "Z4R_sum_mod4": 0,
+          "all_continuous_gauge_charges_invariant": true,
+          "factors": [
+            "Phi_-",
+            "B0_dag",
+            "H_uA",
+            "H_dC"
+          ],
+          "operator": "K: Phi- B0^dag H_uA H_dC/M*^2",
+          "operator_kind": "Kahler",
+          "result": "allowed Kahler GM operator",
+          "selection_rule_allowed": true,
+          "superpotential_allowed": false
+        }
+      ],
+      "pair": "D=5_+2 plus Dbar=5bar_-2",
+      "tree_level_elimination": {
+        "A_matter_squared_term_generated_by_this_exchange": false,
+        "colored_scalar_dimension6_and_SUSY_breaking_leakage_closed": false,
+        "effective_superpotential": "-A_matter*H_uA*mu/M",
+        "heavy_field_solution": [
+          "D=-mu*H_uA/M",
+          "Dbar=-A_matter/M"
+        ],
+        "holomorphic_dimension5_four_matter_generated_by_this_exchange": false,
+        "second_derivative_with_respect_to_A_matter": "0",
+        "superpotential": "M D Dbar + mu H_uA Dbar + D A_matter"
+      }
+    },
+    "expected_continuous_charge_table_sha256": "bb55101fbede403d6c2b8e6b3d7dcaf9029dcae6ffe850af42b54c56d79d984d",
+    "moments": {
+      "D2": 7584,
+      "D4": 437760,
+      "bulk_D2": 968,
+      "bulk_D4": 31328,
+      "singlet_D2": 6616,
+      "singlet_D4": 406432
+    },
+    "new_action_data": {
+      "H_V_T": [
+        300,
+        56,
+        1
+      ],
+      "bulk_charge_magnitudes": [
+        6,
+        4,
+        6
+      ],
+      "charged_singlet_hypers": 117,
+      "explicit_SMW_Gammahat_projectors_for_Phi_zero_modes_constructed": false,
+      "irreducible_gravity_check": "300-56+29=273",
+      "localized_continuous_I6_and_inflow_constructed": false,
+      "one_charge8_hyper_added": true,
+      "singlet_hyper_counts_by_charge_magnitude": {
+        "0": 150,
+        "2": 2,
+        "4": 11,
+        "6": 8,
+        "8": 96
+      },
+      "smooth_bulk_GS_equations_solved": true,
+      "total_singlet_hypers": 267,
+      "two_distinct_charge8_hypers_proposed_for_Phi_plus_and_Phi_minus_zero_modes": true,
+      "uncharged_singlet_hypers": 150
+    },
+    "old_V88_compensator_retraction": {
+      "X_plus_or_minus10_insertions_can_neutralize": false,
+      "decay_portals_certified": false,
+      "matter_cubic_U1X_totals_mod10": [
+        6,
+        4
+      ],
+      "pair": "5_-2 + 5bar_+2",
+      "representatives_as_signed_totals": [
+        -4,
+        4
+      ]
+    },
+    "operator_charge_registry": {
+      "1": {
+        "U1_8": -3,
+        "U1_X": -5,
+        "Z4R": 1
+      },
+      "10": {
+        "U1_8": -3,
+        "U1_X": -1,
+        "Z4R": 1
+      },
+      "5bar": {
+        "U1_8": -3,
+        "U1_X": 3,
+        "Z4R": 1
+      },
+      "A0": {
+        "U1_8": -6,
+        "U1_X": 0,
+        "Z4R": 2
+      },
+      "B0": {
+        "U1_8": 4,
+        "U1_X": 0,
+        "Z4R": 0
+      },
+      "B0_dag": {
+        "U1_8": -4,
+        "U1_X": 0,
+        "Z4R": 0
+      },
+      "D": {
+        "U1_8": 6,
+        "U1_X": 2,
+        "Z4R": 0
+      },
+      "Dbar": {
+        "U1_8": -2,
+        "U1_X": -2,
+        "Z4R": 2
+      },
+      "H_dC": {
+        "U1_8": 6,
+        "U1_X": -2,
+        "Z4R": 0
+      },
+      "H_dSigma": {
+        "U1_8": 0,
+        "U1_X": -2,
+        "Z4R": 0
+      },
+      "H_uA": {
+        "U1_8": 6,
+        "U1_X": 2,
+        "Z4R": 0
+      },
+      "H_uB": {
+        "U1_8": -4,
+        "U1_X": 2,
+        "Z4R": 2
+      },
+      "P_A": {
+        "U1_8": 6,
+        "U1_X": 0,
+        "Z4R": 0
+      },
+      "Phi_+": {
+        "U1_8": 8,
+        "U1_X": 0,
+        "Z4R": 0
+      },
+      "Phi_-": {
+        "U1_8": -8,
+        "U1_X": 0,
+        "Z4R": 0
+      },
+      "S8": {
+        "U1_8": 0,
+        "U1_X": 0,
+        "Z4R": 2
+      },
+      "SB": {
+        "U1_8": 0,
+        "U1_X": 0,
+        "Z4R": 2
+      },
+      "SX": {
+        "U1_8": 0,
+        "U1_X": 0,
+        "Z4R": 2
+      },
+      "X": {
+        "U1_8": 6,
+        "U1_X": 10,
+        "Z4R": 0
+      },
+      "Xbar": {
+        "U1_8": -6,
+        "U1_X": -10,
+        "Z4R": 0
+      }
+    },
+    "operator_charge_registry_sha256": "91a8ac3cb785a0f46db3deb4e3a08952b56ce215ca243dbf04ad35f5d35762d2",
+    "status": "PASS_CONDITIONAL_SMOOTH_BULK_GS_POLYNOMIAL_AND_OPERATOR_REPAIR__REJECTED_AS_ACCEPTED_PARENT_PENDING_TENSOR_CONE_AND_QUANTUM_COMPLETION",
+    "tensor_sheets": {
+      "frozen_j_plus": {
+        "U1_kinetic_positive": false,
+        "j": [
+          "1/2",
+          "1"
+        ],
+        "j_dot_b": "3/2",
+        "j_dot_c": "-556",
+        "j_squared": "1"
+      },
+      "opposite_j_minus_scout": {
+        "U1_kinetic_positive": true,
+        "j": [
+          "-2",
+          "-1/4"
+        ],
+        "j_dot_a": "-9/2",
+        "j_dot_b": "3/2",
+        "j_dot_c": "424",
+        "j_squared": "1",
+        "physical_cone_and_string_tensions_certified": false
+      },
+      "repair_accepted_on_physical_tensor_sheet": false
+    },
+    "vacuum": {
+      "D8": "8(|Phi+|^2-|Phi-|^2)+4|B0|^2+6(|X|^2-|Xbar|^2)",
+      "D8_after_symbolic_witness": "0",
+      "D_flat_witness": [
+        "|X|=|Xbar|",
+        "|Phi-|^2-|Phi+|^2=|B0|^2/2"
+      ],
+      "F_and_D_witness_verified_symbolically": true,
+      "F_driver_residuals_after_symbolic_witness": [
+        "0",
+        "0",
+        "0"
+      ],
+      "F_flat_relations": [
+        "Phi+ Phi-=v8^2",
+        "Phi- B0^2/M*=vB^2",
+        "X Xbar=vX^2"
+      ],
+      "VEV_charge_gcd": 2,
+      "VEV_charge_magnitudes_derived_from_action_table": [
+        8,
+        4,
+        6
+      ],
+      "Z4R_preserved": true,
+      "all_VEV_R4_charges_zero": true,
+      "primitive_C8_preserved": false,
+      "unbroken_external_subgroup": "C2",
+      "zero_mode_realization_conditional_on_unbuilt_projectors": true
+    },
+    "visible_zero_mode_conditional_shadow": {
+      "all_visible_entries_zero_mod8": true,
+      "charged_singlet_zero_mode_projectors_frozen": false,
+      "component_rows": [
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 6,
+          "field": "Q",
+          "q": 5,
+          "twoT2": 3,
+          "twoT3": 2,
+          "y6": 1
+        },
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 3,
+          "field": "u_c",
+          "q": 5,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -4
+        },
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 1,
+          "field": "e_c",
+          "q": 5,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 6
+        },
+        {
+          "X": 3,
+          "copies": 3,
+          "dim": 3,
+          "field": "d_c",
+          "q": 5,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": 3,
+          "copies": 3,
+          "dim": 2,
+          "field": "L",
+          "q": 5,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": -5,
+          "copies": 3,
+          "dim": 1,
+          "field": "N_c",
+          "q": 5,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_uA",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_uB",
+          "q": 4,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_dC",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_dSigma",
+          "q": 0,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "A0",
+          "q": 2,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "B0",
+          "q": 4,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "P_A",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 10,
+          "copies": 1,
+          "dim": 1,
+          "field": "X_plus10",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": -10,
+          "copies": 1,
+          "dim": 1,
+          "field": "Xbar_minus10",
+          "q": 2,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 3,
+          "field": "D_triplet",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -2
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "D_doublet",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 3,
+          "field": "Dbar_triplet",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "Dbar_doublet",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        }
+      ],
+      "corrected_visible_tensor": [
+        72,
+        88,
+        2448,
+        2368,
+        352,
+        9664,
+        96,
+        384,
+        192
+      ],
+      "cubic_shadow": 869760,
+      "cubic_shadow_mod48": 0,
+      "full_repaired_action_finite_anomaly_cancelled": false,
+      "inherited_component_to_action_map": {
+        "A0": "A0",
+        "B0": "B0",
+        "H_dC": "H_dC",
+        "H_dSigma": "H_dSigma",
+        "H_uA": "H_uA",
+        "H_uB": "H_uB",
+        "L": "F_i",
+        "N_c": "F_i",
+        "P_A": "P_A",
+        "Q": "F_i",
+        "X_plus10": "X",
+        "Xbar_minus10": "Xbar",
+        "d_c": "F_i",
+        "e_c": "F_i",
+        "u_c": "F_i"
+      },
+      "linear_shadow": 704,
+      "linear_shadow_mod8": 0,
+      "signed_4d_shadow": [
+        -32,
+        -24,
+        -816,
+        -576,
+        -104,
+        544,
+        96,
+        384,
+        96
+      ],
+      "signed_component_rows": [
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 6,
+          "field": "Q",
+          "q": -3,
+          "twoT2": 3,
+          "twoT3": 2,
+          "y6": 1
+        },
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 3,
+          "field": "u_c",
+          "q": -3,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -4
+        },
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 1,
+          "field": "e_c",
+          "q": -3,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 6
+        },
+        {
+          "X": 3,
+          "copies": 3,
+          "dim": 3,
+          "field": "d_c",
+          "q": -3,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": 3,
+          "copies": 3,
+          "dim": 2,
+          "field": "L",
+          "q": -3,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": -5,
+          "copies": 3,
+          "dim": 1,
+          "field": "N_c",
+          "q": -3,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_uA",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_uB",
+          "q": -4,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_dC",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_dSigma",
+          "q": 0,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "A0",
+          "q": -6,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "B0",
+          "q": 4,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "P_A",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 10,
+          "copies": 1,
+          "dim": 1,
+          "field": "X_plus10",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": -10,
+          "copies": 1,
+          "dim": 1,
+          "field": "Xbar_minus10",
+          "q": -6,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 3,
+          "field": "D_triplet",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -2
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "D_doublet",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 3,
+          "field": "Dbar_triplet",
+          "q": -2,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "Dbar_doublet",
+          "q": -2,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        }
+      ],
+      "signed_shadow_is_full_six_dimensional_or_fixed_wall_I8": false,
+      "status": "PASS_DERIVED_VISIBLE_COMPONENT_ROWS__FULL_REPAIRED_ACTION_FINITE_ANOMALY_OPEN",
+      "tensor_order": [
+        "A3",
+        "A2",
+        "F_Y6_squared",
+        "F_X_squared",
+        "TrF",
+        "TrF_cubed",
+        "F_squared_Y6",
+        "F_squared_X",
+        "F_Y6_X"
+      ],
+      "visible_charges_derived_from_continuous_charge_table": true
+    }
+  },
+  "core_sha256": "ec095daa641345934d285a56a1916bf701352ee5cb113018296487ade36b966f",
+  "date": "2026-09-02",
+  "discrete_quantum_shadows": {
+    "BV_regulator_boundary": {
+      "Pfaffian_orientation_computed": false,
+      "antifields_are_opposite_physical_chiral_determinants": false,
+      "compatible_boundary_conditions_all_strata": false,
+      "elliptic_gauge_fixed_complex_constructed": false,
+      "full_G8_Dai_Freed_character_computed": false,
+      "regulator_mass_system_constructed": false,
+      "relative_differential_WCS_cocycle_constructed": false
+    },
+    "Hsieh_conditions_for_n8": [
+      "90 Delta_s3 = 0 mod 48",
+      "2 Delta_s1 = 0 mod 8"
+    ],
+    "neutral_underdetermination_witness": {
+      "change_in_cubic_expression_mod48": 0,
+      "change_in_linear_expression_mod8": 4,
+      "full_quotient_character_change_constructed": false,
+      "two_center_compatible_choices": [
+        0,
+        2
+      ],
+      "two_complete_SMW_Gammahat_realizations_constructed": false,
+      "zero_mode_shadow_can_change_if_both_choices_are_realized": true
+    },
+    "scope": "necessary restrictions to trivial SO(11) quotient backgrounds; they do not test w2(V)=e(a4), massive KK eta phases, normal Gysin maps or differential WCS data",
+    "shadows": {
+      "V88_compensated_full": {
+        "Delta_s1": 312,
+        "Delta_s3": 7824,
+        "cubic_expression": 704160,
+        "cubic_modulus": 48,
+        "cubic_quotient": 14670,
+        "cubic_remainder": 0,
+        "linear_expression": 624,
+        "linear_modulus": 8,
+        "linear_quotient": 78,
+        "linear_remainder": 0,
+        "untwisted_Spin_x_C8_shadow_passes": true
+      },
+      "V88_uncompensated_full": {
+        "Delta_s1": 292,
+        "Delta_s3": 7504,
+        "cubic_expression": 675360,
+        "cubic_modulus": 48,
+        "cubic_quotient": 14070,
+        "cubic_remainder": 0,
+        "linear_expression": 584,
+        "linear_modulus": 8,
+        "linear_quotient": 73,
+        "linear_remainder": 0,
+        "untwisted_Spin_x_C8_shadow_passes": true
+      },
+      "V89_superseded_z00_local_comparison": {
+        "Delta_s1": 268,
+        "Delta_s3": 6544,
+        "cubic_expression": 588960,
+        "cubic_modulus": 48,
+        "cubic_quotient": 12270,
+        "cubic_remainder": 0,
+        "linear_expression": 536,
+        "linear_modulus": 8,
+        "linear_quotient": 67,
+        "linear_remainder": 0,
+        "untwisted_Spin_x_C8_shadow_passes": true
+      },
+      "V90_bulk_zero_mode_remainder": {
+        "Delta_s1": 44,
+        "Delta_s3": 1280,
+        "cubic_expression": 115200,
+        "cubic_modulus": 48,
+        "cubic_quotient": 2400,
+        "cubic_remainder": 0,
+        "linear_expression": 88,
+        "linear_modulus": 8,
+        "linear_quotient": 11,
+        "linear_remainder": 0,
+        "untwisted_Spin_x_C8_shadow_passes": true
+      },
+      "V90_corrected_compensator_z00_visible_candidate": {
+        "Delta_s1": 308,
+        "Delta_s3": 8384,
+        "cubic_expression": 754560,
+        "cubic_modulus": 48,
+        "cubic_quotient": 15720,
+        "cubic_remainder": 0,
+        "linear_expression": 616,
+        "linear_modulus": 8,
+        "linear_quotient": 77,
+        "linear_remainder": 0,
+        "untwisted_Spin_x_C8_shadow_passes": true
+      }
+    },
+    "status": "PASS_ALL_CURRENT_4D_C8_RESTRICTIONS__FULL_G8_QUOTIENT_CHARACTER_OPEN",
+    "tensor_order": [
+      "A3",
+      "A2",
+      "F_Y6_squared",
+      "F_X_squared",
+      "TrF",
+      "TrF_cubed",
+      "F_squared_Y6",
+      "F_squared_X",
+      "F_Y6_X"
+    ],
+    "tensors": {
+      "V88_compensated_full": [
+        null,
+        null,
+        null,
+        null,
+        312,
+        7824,
+        null,
+        null,
+        null
+      ],
+      "V88_uncompensated_full": [
+        null,
+        null,
+        null,
+        null,
+        292,
+        7504,
+        null,
+        null,
+        null
+      ],
+      "V89_superseded_z00_local_comparison": [
+        64,
+        64,
+        1920,
+        2080,
+        268,
+        6544,
+        0,
+        480,
+        0
+      ],
+      "V90_bulk_zero_mode_remainder": [
+        0,
+        16,
+        288,
+        128,
+        44,
+        1280,
+        96,
+        64,
+        192
+      ],
+      "V90_corrected_compensator_z00_visible_candidate": [
+        72,
+        72,
+        2160,
+        2240,
+        308,
+        8384,
+        0,
+        320,
+        0
+      ]
+    },
+    "z00_compensator_replacement_derivation": {
+      "charged_singlet_and_full_wall_projectors_included": false,
+      "corrected_V90_component_rows": [
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 3,
+          "field": "D_triplet",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -2
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "D_doublet",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 3,
+          "field": "Dbar_triplet",
+          "q": 6,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "Dbar_doublet",
+          "q": 6,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        }
+      ],
+      "corrected_component_tensor": {
+        "A2": 12,
+        "A3": 12,
+        "F_X_squared": 240,
+        "F_Y6_X": 0,
+        "F_Y6_squared": 360,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 60,
+        "TrF_cubed": 2160
+      },
+      "corrected_rows_derived_from_action_charge_table_sha256": "bb55101fbede403d6c2b8e6b3d7dcaf9029dcae6ffe850af42b54c56d79d984d",
+      "corrected_visible_local_tensor_is_derived": true,
+      "old_component_tensor": {
+        "A2": 4,
+        "A3": 4,
+        "F_X_squared": 80,
+        "F_Y6_X": 0,
+        "F_Y6_squared": 120,
+        "F_squared_X": 160,
+        "F_squared_Y6": 0,
+        "TrF": 20,
+        "TrF_cubed": 320
+      },
+      "superseded_V89_component_rows": [
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 3,
+          "field": "old_5_triplet",
+          "q": 0,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -2
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "old_5_doublet",
+          "q": 0,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 3,
+          "field": "old_5bar_triplet",
+          "q": 4,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "old_5bar_doublet",
+          "q": 4,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        }
+      ]
+    }
+  },
+  "explicit_compact_member_and_Rees_certificate": {
+    "Rees_presentation": {
+      "Rees_I_minus": "analogous with a replaced by b",
+      "Rees_I_plus": [
+        "W*A_plus-s*B_plus",
+        "a*A_plus-s*C_plus",
+        "a*B_plus-W*C_plus"
+      ],
+      "V88_local_chart_rows_sha256": "21c7f7fdf7d4dd1d207ac2f8ed0129bd21eb8a72f3fdc2e6cf050837ae5e4d58",
+      "V88_nonbranch_unit_locus_smooth_after_second_blowup": true,
+      "all_final_local_chart_bases_are_unit": true,
+      "blowdown_map": {
+        "U": "(a0*e_plus+b0*e_minus)/2",
+        "U_minus_V": "a0*e_plus",
+        "U_plus_V": "b0*e_minus",
+        "V": "(b0*e_minus-a0*e_plus)/2",
+        "W": "w0*e0*e_plus*e_minus",
+        "s": "s0*e0*e_plus*e_minus"
+      },
+      "centers_disjoint_on_semistable_locus": true,
+      "coordinates": "a=U-V, b=U+V",
+      "final_local_chart_rows_bound_from_V88": [
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B1_s",
+          "meaning": "s-chart of Bl_(s,W,U\u2213V)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "-q - rs**2*ss + ws**2"
+        },
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B1_w",
+          "meaning": "W-chart of Bl_(s,W,U\u2213V)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "-a**2*q - a*b**2*w + 1"
+        },
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B2_a",
+          "meaning": "a-chart of the residual Bl_(w,a)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "a*c**2 - a*q - r"
+        },
+        {
+          "Jacobian_Groebner_basis": [
+            "1"
+          ],
+          "chart": "B2_w",
+          "meaning": "w-chart of the residual Bl_(w,a)",
+          "residual_singular_center": null,
+          "smooth": true,
+          "weak_transform": "-c**2*q*w - c*r + w"
+        }
+      ],
+      "first_centers": [
+        "I+=(s,W,a)",
+        "I-=(s,W,b)"
+      ],
+      "local_normal_form": "w^2-s*r^2-s^2*q",
+      "residual_center": "locally (s1,w1), with Rees relation w1*A0-s1*B0=0",
+      "symbolic_pullback_factorization_checked": true,
+      "symbolic_pullback_input_sha256": "183ce62cfad92b6e88cab7cb74c8b23da26c833a4f9a6490cfea6fd4ee44fdbb",
+      "total_pullback_factor": "e0*e_plus^2*e_minus^2",
+      "weak_transform": "e0*w0^2-s0*L*e_plus*e_minus*a0^2*b0^2-e0*s0^2*P(U,V)"
+    },
+    "V87_coefficient_construction_relations_checked": true,
+    "ambient_Cox_degrees": {
+      "L": [
+        3,
+        12
+      ],
+      "each_p_i": [
+        2,
+        12
+      ],
+      "r0": [
+        0,
+        1
+      ],
+      "r1": [
+        0,
+        1
+      ],
+      "s": [
+        1,
+        0
+      ],
+      "t": [
+        1,
+        4
+      ]
+    },
+    "away_from_S": {
+      "F_w_reduction": "F=w^2-Q and dF/dw=2w, so a singular point has w=0 and lies in this ideal",
+      "aggregate_row_sha256": "df77b973b67ce3e6f6620ab1ccf4247724b2a7ef549d70f101657d72150974b5",
+      "all_four_unit_ideals": true,
+      "case_split_logic": "for X=0 test (q,q_T,q_Z)|Y=0; for X nonzero dQ/dX=0 forces q_Y=0, so test (q,q_T,q_Y,q_Z).  Unit bases in both cases prove the original Jacobian ideal has empty algebraic closure locus.",
+      "method": "write Q(T,X,Z)=q(T,Y=X^4,Z), so dQ/dX=4X^3*dq/dY; compute exact QQ Groebner bases in the exhaustive cases X=0 and X nonzero",
+      "rows": [
+        {
+          "Q_as_q_of_Y_equals_X4": "T**3*Z**4 - 2*T**3*Z**2 + T**3 + T**2*Y*Z - 3*T**2*Y + 2*T**2 + 2*Y**3*Z**4 + Y**3 + Z**4 + 1",
+          "Q_derived_directly_from_frozen_payload": true,
+          "Q_in_T_X_Z": "T**3*Z**4 - 2*T**3*Z**2 + T**3 + T**2*X**4*Z - 3*T**2*X**4 + 2*T**2 + 2*X**12*Z**4 + X**12 + Z**4 + 1",
+          "case_X_nonzero_reduced_grevlex_basis": [
+            "1"
+          ],
+          "case_X_zero_reduced_lex_basis": [
+            "1"
+          ],
+          "chart": "s_r0_U",
+          "convention": "s=r0=U=1; T=t, X=r1, Z=V",
+          "input_sha256": "6a1d2069fca840b950ff060e6f9d35c821fc4adedfbfc4612963a5943dc0814f",
+          "term_count": 10,
+          "unit_ideal_by_exhaustive_case_split": true
+        },
+        {
+          "Q_as_q_of_Y_equals_X4": "T**3*Z**4 - 2*T**3*Z**2 + T**3 - 3*T**2*Y*Z**4 + T**2*Y*Z**3 + 2*T**2*Z**4 + Y**3*Z**4 + 2*Y**3 + Z**4 + 1",
+          "Q_derived_directly_from_frozen_payload": true,
+          "Q_in_T_X_Z": "T**3*Z**4 - 2*T**3*Z**2 + T**3 - 3*T**2*X**4*Z**4 + T**2*X**4*Z**3 + 2*T**2*Z**4 + X**12*Z**4 + 2*X**12 + Z**4 + 1",
+          "case_X_nonzero_reduced_grevlex_basis": [
+            "1"
+          ],
+          "case_X_zero_reduced_lex_basis": [
+            "1"
+          ],
+          "chart": "s_r0_V",
+          "convention": "s=r0=V=1; T=t, X=r1, Z=U",
+          "input_sha256": "501a0cf9ba17455ac9698cd5d4e2e7477419dcad8ce469ba1a4a9915830d4188",
+          "term_count": 10,
+          "unit_ideal_by_exhaustive_case_split": true
+        },
+        {
+          "Q_as_q_of_Y_equals_X4": "T**3*Z**4 - 2*T**3*Z**2 + T**3 + 2*T**2*Y + T**2*Z - 3*T**2 + Y**3*Z**4 + Y**3 + 2*Z**4 + 1",
+          "Q_derived_directly_from_frozen_payload": true,
+          "Q_in_T_X_Z": "T**3*Z**4 - 2*T**3*Z**2 + T**3 + 2*T**2*X**4 + T**2*Z - 3*T**2 + X**12*Z**4 + X**12 + 2*Z**4 + 1",
+          "case_X_nonzero_reduced_grevlex_basis": [
+            "1"
+          ],
+          "case_X_zero_reduced_lex_basis": [
+            "1"
+          ],
+          "chart": "s_r1_U",
+          "convention": "s=r1=U=1; T=t, X=r0, Z=V",
+          "input_sha256": "642503063f71c014e3f5afa2f8dfcbe56a201b00ce6998a88e2e1103233caeaa",
+          "term_count": 10,
+          "unit_ideal_by_exhaustive_case_split": true
+        },
+        {
+          "Q_as_q_of_Y_equals_X4": "T**3*Z**4 - 2*T**3*Z**2 + T**3 + 2*T**2*Y*Z**4 - 3*T**2*Z**4 + T**2*Z**3 + Y**3*Z**4 + Y**3 + Z**4 + 2",
+          "Q_derived_directly_from_frozen_payload": true,
+          "Q_in_T_X_Z": "T**3*Z**4 - 2*T**3*Z**2 + T**3 + 2*T**2*X**4*Z**4 - 3*T**2*Z**4 + T**2*Z**3 + X**12*Z**4 + X**12 + Z**4 + 2",
+          "case_X_nonzero_reduced_grevlex_basis": [
+            "1"
+          ],
+          "case_X_zero_reduced_lex_basis": [
+            "1"
+          ],
+          "chart": "s_r1_V",
+          "convention": "s=r1=V=1; T=t, X=r0, Z=U",
+          "input_sha256": "2a46f9272ee32dcd77355515e2d994ee33f95d2595b24a4ac8c780b8bed0c15d",
+          "term_count": 10,
+          "unit_ideal_by_exhaustive_case_split": true
+        }
+      ]
+    },
+    "boundary": {
+      "P_minus": "2*t**2*(r0**4-2*r1**4)",
+      "P_minus_derived_from_payload": true,
+      "P_plus": "2*t**2*(r0**4-r1**4)",
+      "P_plus_derived_from_payload": true,
+      "discriminant_P_minus_dehomogenized": -2048,
+      "discriminant_P_plus_dehomogenized": -256,
+      "eight_simple_pairwise_disjoint_branch_points": true,
+      "gcd_with_derivative_degrees": [
+        0,
+        0
+      ],
+      "resultant_dehomogenized": 1
+    },
+    "coefficient_payload": {
+      "L": "t**3",
+      "Lprime": "0",
+      "R0": "s*(r0**12+r1**12)",
+      "R1": "0",
+      "R2": "0",
+      "R3": "0",
+      "R4": "s*(r0**12+2*r1**12)",
+      "p0": "t**2*(2*r0**4-3*r1**4)+s**2*(r0**12+r1**12)",
+      "p1": "t**2*r1**4",
+      "p2": "0",
+      "p3": "0",
+      "p4": "s**2*(r0**12+2*r1**12)"
+    },
+    "coefficient_payload_sha256": "26a877aab121727573a54ad8b02c346487ed16d0b03e27fe37920ffc0633b31a",
+    "cover_argument": {
+      "away_S_cover": "s nonzero and the four r0/r1 times U/V quotient charts",
+      "finite_standard_open_localization_certificate": true,
+      "literal_named_B_Rees_colon_computed": false,
+      "near_S_cover": "V88 final Rees standard opens at all eight simple roots plus the nonbranch unit locus",
+      "over_S_outside_C_plus_C_minus": "if U^2-V^2 is nonzero then F_s=-L*(U^2-V^2)^2 is a unit; the SR nonface s*t makes L=t^3 nonzero",
+      "residual_blowup_outside_centers": "(s,W) is Cartier on the smooth hypersurface, so its blowup is an isomorphism",
+      "resolved_space_smooth_by_finite_localization_cover": true,
+      "single_printed_homogeneous_colon_Groebner_basis_claimed": false
+    },
+    "equation": "F=W^2-s*L*(U^2-V^2)^2-s^2*sum_i p_i U^(4-i)V^i",
+    "expected_coefficient_payload_sha256": "26a877aab121727573a54ad8b02c346487ed16d0b03e27fe37920ffc0633b31a",
+    "inherited_global_blowups": {
+      "V89_global_projective_crepant_blowups": {
+        "C_plus_C_minus_ambient_codimension": 3,
+        "C_plus_C_minus_disjoint": true,
+        "C_plus_C_minus_hypersurface_multiplicity": 2,
+        "C_plus_C_minus_smooth_copies_of_S": true,
+        "D0_tilde_ambient_codimension": 2,
+        "D0_tilde_hypersurface_multiplicity": 1,
+        "D0_tilde_smooth": true,
+        "D0_tilde_smooth_reason": "C_plus and C_minus are Cartier divisors inside smooth D0=(s,W)",
+        "all_blowups_projective": true,
+        "centers": [
+          "C_+=(s,W,U-V)",
+          "C_-=(s,W,U+V)",
+          "D0_tilde=weak transform of (s,W)"
+        ],
+        "discrepancies": [
+          0,
+          0,
+          0
+        ],
+        "discrepancy_formulas": [
+          "3-1-2=0",
+          "3-1-2=0",
+          "2-1-1=0"
+        ],
+        "global_projective_crepant_sequence": true,
+        "strict_transform_class": "4H+2Kbar-2E_plus-2E_minus-E0=-K_Atilde"
+      },
+      "crepant": true,
+      "projective": true
+    },
+    "mechanically_derived_nonzero_coefficient_bidegrees": {
+      "L": [
+        3,
+        12
+      ],
+      "R0": [
+        1,
+        12
+      ],
+      "R4": [
+        1,
+        12
+      ],
+      "p0": [
+        2,
+        12
+      ],
+      "p1": [
+        2,
+        12
+      ],
+      "p4": [
+        2,
+        12
+      ]
+    },
+    "resolved_compact_member_smooth": true,
+    "specific_compact_member_frozen": true,
+    "status": "PASS_EXACT_RATIONAL_MEMBER_AND_FINITE_STANDARD_OPEN_RESOLVED_SMOOTHNESS_CERTIFICATE"
+  },
+  "gate_ledger": {
+    "G1": "OPEN: the external quotient and local characters are exact, but no full quotient BV/Dai-Freed/WCS trivialization or accepted same-action parent exists.",
+    "G2": "OPEN: the corrected rank-two Higgs/compensator matrix is exact, but the candidate uses an unaccepted tensor sheet and lacks SUSY-breaking, soft terms and thresholds.",
+    "G3": "OPEN: split local component characters and normal weights are exact, but neutral, tensor, gravity, ghost and regulator projectors are not frozen.",
+    "G4": "OPEN: all computed untwisted four-dimensional C8 shadows vanish, but the nontrivial G8 quotient, Gysin, KK eta and differential WCS character are not computed.",
+    "G5": "OPEN: no common elliptic BV/BRST/PV complex, stratified boundary conditions, Pfaffian orientation or KK determinant exists.",
+    "G6": "OPEN: no accepted spectrum has been propagated through two-loop running and compact thresholds.",
+    "G7": "OPEN: a corrected one-sided decay portal and composite GM operator exist, but primitive C8 is broken to C2 and dimension-six proton exchange, hidden-sector mu and cosmology remain open.",
+    "G8": "OPEN: one compact resolved member is smooth and has a literal C4 over Q(i), but no classified element squares to deck and no diagonal orbibundle or UV-complete action exists."
+  },
+  "global_equivariance_classification": {
+    "any_classified_order4_element_squares_to_deck": false,
+    "classification_scope": "Cox-linear grading-preserving regular automorphisms preserving the distinguished negative divisor S and descending the F4/P(1,1,2) compact-fibration projection",
+    "exotic_non_projection_descending_automorphisms_classified": false,
+    "generators": {
+      "deck_d": "W -> -W",
+      "h_rho": "r0 -> rho*r0 with rho^4=1"
+    },
+    "group_elements": [
+      {
+        "deck_bit": 0,
+        "order": 1,
+        "rho_exponent_mod4": 0,
+        "square": [
+          0,
+          0
+        ],
+        "square_is_deck": false
+      },
+      {
+        "deck_bit": 1,
+        "order": 2,
+        "rho_exponent_mod4": 0,
+        "square": [
+          0,
+          0
+        ],
+        "square_is_deck": false
+      },
+      {
+        "deck_bit": 0,
+        "order": 4,
+        "rho_exponent_mod4": 1,
+        "square": [
+          2,
+          0
+        ],
+        "square_is_deck": false
+      },
+      {
+        "deck_bit": 1,
+        "order": 4,
+        "rho_exponent_mod4": 1,
+        "square": [
+          2,
+          0
+        ],
+        "square_is_deck": false
+      },
+      {
+        "deck_bit": 0,
+        "order": 2,
+        "rho_exponent_mod4": 2,
+        "square": [
+          0,
+          0
+        ],
+        "square_is_deck": false
+      },
+      {
+        "deck_bit": 1,
+        "order": 2,
+        "rho_exponent_mod4": 2,
+        "square": [
+          0,
+          0
+        ],
+        "square_is_deck": false
+      },
+      {
+        "deck_bit": 0,
+        "order": 4,
+        "rho_exponent_mod4": 3,
+        "square": [
+          2,
+          0
+        ],
+        "square_is_deck": false
+      },
+      {
+        "deck_bit": 1,
+        "order": 4,
+        "rho_exponent_mod4": 3,
+        "square": [
+          2,
+          0
+        ],
+        "square_is_deck": false
+      }
+    ],
+    "literal_order4_map": "h_i: r0 -> i*r0 over Q(i)",
+    "literal_order4_map_lifts_to_resolved_space": true,
+    "literal_order4_map_preserves_all_three_blowup_centers": true,
+    "literal_order4_map_preserves_member": true,
+    "literal_order4_square": "r0 -> -r0",
+    "literal_order4_square_is_deck": false,
+    "required_diagonal_Gammahat_action_constructed": false,
+    "required_diagonal_relation": "j^2=deck d",
+    "stabilizer_mod_Cox_tori": "mu4 x mu2",
+    "status": "PASS_EXACT_MU4_X_MU2_STABILIZER_IN_CLASSIFIED_SCOPE__C4_OVER_QI__REJECTED_DECK_ROOT",
+    "term_comparison_proof": [
+      "compactness makes the GL2(U,V) coefficients constant",
+      "a weighted shift W -> cW+H2(U,V) creates an uncancellable W-linear term, so H2=0",
+      "S is preserved as the distinguished negative high-discriminant divisor",
+      "the order-s term preserves the unordered pair U=+V and U=-V",
+      "the order-s^2 boundary quartic has the unique triple root U=0",
+      "the nonzero U^3 V term eliminates V -> -V",
+      "an F4 shift t -> alpha*t+s*f4 creates an absent U^2 V^2 coefficient, so f4=0",
+      "preserving r1^4 and 2*r0^4-3*r1^4 leaves only r0/r1 -> rho*r0/r1 with rho^4=1"
+    ]
+  },
+  "input_core_hashes": {
+    "V70_route": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V87_route": "2cc908183f77848f292ced26a8cd5dd6bf923fb7ef11140d9d20ac35d0c07e9e",
+    "V88_route": "d8172ac25c3336ae622b250cf29b8a48089be4f15455c0163562a86a49b55033",
+    "V89_master": "30f7ffe459ca396dede6f255a03722180fd38c320cb4aa0e8982522078a86511",
+    "V89_route": "afece33b67225eb97b4813a643914fe979a744cea5d233e4886c80be59fbf3e7"
+  },
+  "lineage": {
+    "canonical_V21_gate_scope_unchanged": true,
+    "new_route": "B90",
+    "parent_master": "V89",
+    "requested_action": {
+      "accepted": false,
+      "id": "F90_EXTERNAL_U1_8_BV_FIXED_WALL_OR_EQUIVARIANT_GEOMETRY_DECISION",
+      "parallel_objective": "freeze one rational smooth compact torsor member, build its Rees blowup presentation and saturation, then solve the global equivariance equations rather than assuming an order-four root",
+      "primary_objective": "select the external U1_8-to-C8 route as new action data, freeze all localized/neutral isotropy, and construct one BV regulator plus the signed fixed-wall Dai-Freed/WCS character"
+    },
+    "supersession_scope": "V90 supersedes V89 only for the explicit compact-member/saturation obligation, the projection-descending order-four classification, the unmodified U1_8 parent decision, the old compensator portal claim and the listed discrete shadows",
+    "this_report_gate_scope": "separate SUSY/C8 completion branch"
+  },
+  "localized_isotropy_characters": {
+    "corrected_rows_derived_from_action_charge_table_sha256": "bb55101fbede403d6c2b8e6b3d7dcaf9029dcae6ffe850af42b54c56d79d984d",
+    "invariance_rule": "with Q_x=zeta^(-x), the unique intrinsic exponent is s=x mod 8",
+    "kernel_bit_completion": {
+      "by_center_bit": {
+        "0": {
+          "count": 8,
+          "solutions": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        },
+        "1": {
+          "count": 8,
+          "solutions": [
+            [
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              0
+            ]
+          ]
+        }
+      },
+      "equation": "t+r+h3+h266=c mod 2",
+      "physical_completion_selected": false
+    },
+    "neutral_tensor_gravity_projectors_frozen": false,
+    "normal_characters": {
+      "z00": {
+        "complex_normal_weight": 1,
+        "isotropy": "C4"
+      },
+      "z01": {
+        "complex_normal_weight": 1,
+        "isotropy": "C2"
+      },
+      "z10": {
+        "complex_normal_weight": 1,
+        "isotropy": "C2"
+      },
+      "z11": {
+        "complex_normal_weight": 1,
+        "isotropy": "C4"
+      }
+    },
+    "old_and_corrected_compensators_are_same_action_data": false,
+    "phase_rows": [
+      {
+        "Spin11_center_bit": 1,
+        "X_charge": -1,
+        "external_descent_parity": 0,
+        "external_q8": 5,
+        "field": "10_-1",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 1,
+        "intrinsic_exponent": 7,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 1,
+        "X_charge": 3,
+        "external_descent_parity": 0,
+        "external_q8": 5,
+        "field": "5bar_+3",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 5,
+        "intrinsic_exponent": 3,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 1,
+        "X_charge": -5,
+        "external_descent_parity": 0,
+        "external_q8": 5,
+        "field": "1_-5",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 5,
+        "intrinsic_exponent": 3,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": 10,
+        "external_descent_parity": 0,
+        "external_q8": 6,
+        "field": "X_+10",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 6,
+        "intrinsic_exponent": 2,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": -10,
+        "external_descent_parity": 0,
+        "external_q8": 2,
+        "field": "Xbar_-10",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 2,
+        "intrinsic_exponent": 6,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": 2,
+        "external_descent_parity": 0,
+        "external_q8": 6,
+        "field": "V90_D_5_+2",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 6,
+        "intrinsic_exponent": 2,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": -2,
+        "external_descent_parity": 0,
+        "external_q8": 6,
+        "field": "V90_Dbar_5bar_-2",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 2,
+        "intrinsic_exponent": 6,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      }
+    ],
+    "phase_rows_scope": "corrected V90 D plus Dbar conditional local candidate",
+    "reason": "the 10_-1 exponent is 7 while both 5bar_3 and 1_-5 have exponent 3",
+    "required_action_data": "split U(5) component representations and their independent wall characters",
+    "single_intrinsic_character_preserves_full_localized_16": false,
+    "status": "PASS_EXACT_LOCAL_COMPONENT_CHARACTERS__FULL_WALL_REPRESENTATION_OPEN",
+    "superseded_V89_comparison_phase_rows": [
+      {
+        "Spin11_center_bit": 1,
+        "X_charge": -1,
+        "external_descent_parity": 0,
+        "external_q8": 5,
+        "field": "10_-1",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 1,
+        "intrinsic_exponent": 7,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 1,
+        "X_charge": 3,
+        "external_descent_parity": 0,
+        "external_q8": 5,
+        "field": "5bar_+3",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 5,
+        "intrinsic_exponent": 3,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 1,
+        "X_charge": -5,
+        "external_descent_parity": 0,
+        "external_q8": 5,
+        "field": "1_-5",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 5,
+        "intrinsic_exponent": 3,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": 10,
+        "external_descent_parity": 0,
+        "external_q8": 6,
+        "field": "X_+10",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 6,
+        "intrinsic_exponent": 2,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": -10,
+        "external_descent_parity": 0,
+        "external_q8": 2,
+        "field": "Xbar_-10",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 2,
+        "intrinsic_exponent": 6,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": -2,
+        "external_descent_parity": 0,
+        "external_q8": 0,
+        "field": "V89_old_5_-2",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 2,
+        "intrinsic_exponent": 6,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      },
+      {
+        "Spin11_center_bit": 0,
+        "X_charge": 2,
+        "external_descent_parity": 0,
+        "external_q8": 4,
+        "field": "V89_old_5bar_+2",
+        "fourth_power_matches_center": true,
+        "gauge_exponent": 6,
+        "intrinsic_exponent": 2,
+        "local_phase_sum_mod8": 0,
+        "locally_invariant": true
+      }
+    ]
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F91_FINITE_G8_BORDISM_WCS_OR_PHYSICAL_TENSOR_CONE_DECISION",
+    "parallel_objective": "classify exceptional non-projection-descending automorphisms and exceptional-divisor linearisations; either construct a deck-root diagonal action or promote the scoped no-root result to the full compact automorphism group",
+    "primary_objective": "freeze the 267 singlet projectors and wall representations, then either certify a physical positive string-tension cone for c=(-480,-152) or reject that repair; compute Omega^Spin_7(BG8), every wall Omega^Spin_5(BH_sigma), the restriction, Gysin and incidence maps, and one relative differential WCS trivialization"
+  },
+  "open_obligations": [
+    "choose between the charged-neutral tensor-sheet repair and a genuinely finite G8 action",
+    "freeze all neutral, tensor, gravity, ghost, antifield and regulator isotropy projectors",
+    "construct one elliptic BV/BRST/PV complex with boundary conditions at every stratum",
+    "compute the full quotient bordism character, KK eta phases, Gysin/incidence maps and differential WCS trivialization",
+    "certify the physical tensor cone and all string tensions if the continuous repair is retained",
+    "preserve primitive C8 in the complete vacuum or explicitly redesign the selector around the surviving C2",
+    "close colored dimension-six exchange, SUSY-breaking leakage, hidden-sector mu and defect cosmology",
+    "classify the full compact automorphism group beyond projection-descending maps",
+    "only after an accepted parent exists, compute thresholds, unification and likelihood"
+  ],
+  "primary_sources": [
+    {
+      "id": "Hsieh2018",
+      "role": "four-dimensional discrete Spin x Z_n anomaly conditions and sensitivity to symmetry extension",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "id": "MonnierMoore2018",
+      "role": "global six-dimensional Green-Schwarz/Wu-Chern-Simons quantization and residual anomalies",
+      "url": "https://arxiv.org/abs/1808.01334"
+    },
+    {
+      "id": "vonGersdorff2006",
+      "role": "localized six-dimensional orbifold anomalies and fixed-point twists",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "id": "WittenYonekura2019",
+      "role": "eta-invariant formulation of nonperturbative anomaly inflow",
+      "url": "https://arxiv.org/abs/1909.08775"
+    },
+    {
+      "id": "Park2011",
+      "role": "six-dimensional nonabelian and abelian anomaly factorization equations",
+      "url": "https://arxiv.org/abs/1111.2351"
+    },
+    {
+      "id": "BraunMorrison2014",
+      "role": "genus-one fibrations and Tate-Shafarevich data",
+      "url": "https://arxiv.org/abs/1401.7844"
+    }
+  ],
+  "same_action_synthesis": {
+    "accepted_same_action_parent": false,
+    "exact_gains": [
+      "the component group and nontrivial C2 extension defining G8 are explicit, including its restriction to the V87 C2 background",
+      "localized split-U5 character rows and all four normal isotropy weights are explicit",
+      "every currently computable untwisted four-dimensional C8 anomaly shadow vanishes",
+      "the unmodified continuous U1_8 parent is rejected for every allowed bulk lift under the frozen neutral-sector assumptions",
+      "one charged-neutral smooth-bulk GS arithmetic scout and a U1X-consistent compensator/Higgs operator scout are exact at conditional classical level",
+      "the old V88 compensator decay-portal claim is retracted because its matter cubics have U1X charge plus or minus four modulo ten",
+      "one rational compact torsor member has exact unit Jacobian ideals on all four away-S quotient charts and the inherited resolved near-S chart cover",
+      "the projection-descending stabilizer is mu4 x mu2 and contains a literal C4 over Q(i), but no element squares to deck"
+    ],
+    "hard_boundaries": [
+      "four-dimensional C8 shadows do not determine the full G8 quotient Dai-Freed character",
+      "BV antifields are not an opposite physical determinant and no common regulator has been constructed",
+      "the charged-neutral repair has negative U1 kinetic sign on the frozen sheet; the opposite sheet has no physical cone or string-tension certificate",
+      "the 267 singlet-hyper projectors (117 charged and 150 uncharged) and localized continuous inflow are not constructed, so the repaired finite anomaly is open",
+      "the full repair vacuum breaks primitive C8 to C2",
+      "the local corrected compensator phases are not a constructed wall-quotient representation",
+      "a finite standard-open saturation certificate is not claimed as one printed homogeneous colon Groebner basis",
+      "the automorphism no-root classification does not include exotic maps that fail to descend the compact fibration",
+      "no same-action microscopic quantum parent or gate closure follows"
+    ]
+  },
+  "schema": "susy_v90_external_c8_quotient_daifreed_rees_equivariance_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "8b82fd0507a462118df5bee15ac1355aedb973226d7108c6a3125988e52929a7",
+    "count": 6,
+    "kind": "primary_sources_only"
+  },
+  "status": "V90_EXTERNAL_C8_QUOTIENT_DAIFREED_REES_EQUIVARIANCE_AUDIT__V70_V87_V88_V89_CORES_BOUND__G8_COMPONENT_EXTENSION_AND_BUNDLE_CLASS_EXACT__LOCAL_COMPONENT_PHASES_AND_NORMAL_WEIGHTS_EXACT__ALL_COMPUTED_4D_C8_SHADOWS_PASS__FULL_QUOTIENT_FIXED_WALL_BV_DAIFREED_WCS_CHARACTER_UNDERDETERMINED__UNMODIFIED_CONTINUOUS_U1_8_PARENT_UNIVERSALLY_REJECTED_ON_FROZEN_NEUTRAL_SECTOR__CHARGED_NEUTRAL_SMOOTH_BULK_GS_SCOUT_EXACT_AND_CORRECTED_COMPENSATOR_CONDITIONAL__REPAIR_BREAKS_PRIMITIVE_C8_TO_C2_AND_PHYSICAL_TENSOR_CONE_OPEN__ONE_RATIONAL_COMPACT_MEMBER_EXACT_AND_RESOLVED_CHART_COVER_SMOOTH__PROJECTION_DESCENDING_STABILIZER_MU4_X_MU2_EXACT__NO_ORDER4_ELEMENT_SQUARES_TO_DECK__NO_ACCEPTED_SAME_ACTION_PARENT__SUSY_C8_BRANCH_G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "G8_bundle_extension_class_computed": true,
+    "G8_component_extension_computed": true,
+    "G8_component_group_is_C4": true,
+    "Phi_zero_mode_Gammahat_projectors_constructed": false,
+    "V87_C2_extension_recovered": true,
+    "accepted_full_parent_action_exists": false,
+    "all_current_4D_C8_shadows_pass": true,
+    "classified_order4_deck_root_exists": false,
+    "closed_gates": [],
+    "common_BV_regulator_constructed": false,
+    "conditional_smooth_bulk_GS_polynomial_scout_found": true,
+    "corrected_compensator_conditional_operator_scout_found": true,
+    "diagonal_resolved_Gammahat_orbibundle_constructed": false,
+    "differential_WCS_trivialization_constructed": false,
+    "full_G8_quotient_Dai_Freed_character_computed": false,
+    "honest_outcome": "V90 completes the explicit compact smooth-member obligation and turns both the continuous-parent and deck-root routes into exact scoped no-gos.  A conditional smooth-bulk GS polynomial and operator scouts exist, but they change the neutral charges, fails on the frozen tensor sheet and breaks primitive C8; the finite quotient quantum character remains underdetermined.",
+    "literal_global_C4_action_constructed": true,
+    "localized_component_characters_computed": true,
+    "localized_continuous_inflow_constructed": false,
+    "neutral_tensor_gravity_projectors_frozen": false,
+    "normal_isotropy_weights_frozen": true,
+    "old_V88_compensator_decay_portals_retracted": true,
+    "primitive_C8_preserved_by_repair_vacuum": false,
+    "projection_descending_stabilizer_classified": true,
+    "repair_physical_tensor_cone_certified": false,
+    "repaired_action_full_finite_anomaly_cancelled": false,
+    "resolved_compact_member_smooth": true,
+    "specific_rational_compact_member_frozen": true,
+    "theory_complete": false,
+    "unmodified_continuous_U1_8_parent_rejected": true
+  },
+  "unmodified_continuous_parent": {
+    "D2": "11 P + 64 n_Phi",
+    "P_definition": "P=qA^2+qB^2+qC^2",
+    "P_lower_bound": 24,
+    "assumptions": [
+      "bulk charges qA and qC are congruent to plus or minus 2 mod 8, while qB is congruent to 4 mod 8",
+      "the inherited 266 neutral hypers remain U1_8-neutral",
+      "one or two charge-eight breaking hypers are added",
+      "the frozen U lattice, a=(2,2), b/2=(1,-1/2), is retained"
+    ],
+    "contradiction_even_over_R": true,
+    "first_two_equation_solution": {
+      "c1": "-(23 P + 64 n_Phi)/18",
+      "c2": "(13 P - 64 n_Phi)/36",
+      "sign_for_P_at_least_24_and_nPhi_1_or_2": [
+        "negative",
+        "positive"
+      ],
+      "therefore_c_squared": "2 c1 c2 < 0"
+    },
+    "minimal_examples": [
+      {
+        "P_min": 24,
+        "c": [
+          "-308/9",
+          "62/9"
+        ],
+        "c_squared": "-38192/81",
+        "c_squared_negative": true,
+        "n_Phi": 1
+      },
+      {
+        "P_min": 24,
+        "c": [
+          "-340/9",
+          "46/9"
+        ],
+        "c_squared": "-31280/81",
+        "c_squared_negative": true,
+        "n_Phi": 2
+      }
+    ],
+    "n_Phi_values": [
+      1,
+      2
+    ],
+    "quartic_equation": "3 c^2 = 11 sum_i(q_i^4) + 4096 n_Phi > 0",
+    "scope": "charged neutral hypers or changed tensor/lattice data evade the assumptions and are new action data",
+    "status": "REJECTED_UNMODIFIED_CONTINUOUS_U1_8_PARENT_FOR_ALL_ALLOWED_INTEGER_LIFTS",
+    "unmodified_parent_accepted": false
+  },
+  "version": "V90"
+}
