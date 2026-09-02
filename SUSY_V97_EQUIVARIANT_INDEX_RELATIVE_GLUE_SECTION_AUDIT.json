@@ -1,0 +1,2307 @@
+{
+  "artifact_hashes": {
+    "generator_sha256": "fca3a274afb3607e874a66685e1b01032fa2b154856efadc8ad59a182527aa7c",
+    "test_sha256": "c2a1e78158f14f4511306b15476c6202c1beb2911fd014480e2cc0a4a6191f95",
+    "test_v97_equivariant_mass_defect_index_audit.py": "dbd71e84f1bf2f4b389344d592f7cb9589111a4ab0a4e2d7b72b2e65d220c092",
+    "test_v97_mixed_gauge_relative_glue_audit.py": "66d25199dce5b9373f85b2b862fa5c8b4f44a93f0f09122a59fcb4e9d840f84c",
+    "test_v97_normal_SU2_refinement_audit.py": "f46c04508715ba27df1ff8b08a4d935823108b7853a729447c8494a1ffaafad3",
+    "test_v97_original_cubic_section_audit.py": "8ada59f0bdecef7e56bb076f540817973380e867061cd3950aff364e2edbacae",
+    "v97_equivariant_mass_defect_index_audit.py": "eac32082b4f8962931ba0af360e3f2e24f2e54a189caa4002d24628e695f8e65",
+    "v97_mixed_gauge_relative_glue_audit.py": "06cf4626cb89e7a1a2218a06df96b3c32af5c4d3006080f31392723a199052c5",
+    "v97_normal_SU2_refinement_audit.py": "0b99baf55597b0ae1321817f1996bf3729e55b7726c42740e072b8e2c878b96a",
+    "v97_original_cubic_section_audit.py": "b140cd3194317fe1cccc5b3a4f5a247b60d06657149f57488cef5c28adfbbbe4"
+  },
+  "core_sha256": "161eb53a3e453c80b3887d365e31c32c6846d1c6f8d45b474b849f07a3de2020",
+  "cross_sector_scope_checks": {
+    "all_new_candidate_sectors_simultaneously_installed_in_one_action": false,
+    "all_new_quantized_responses_glued_to_parent": false,
+    "common_fractional_inflow_profile": [
+      "1/4",
+      "1/4",
+      "-1/2"
+    ],
+    "common_order4_class_is_the_same_as_isolated_defect_bordism_anomaly": false,
+    "independent_wall_normal_and_Phi_vortex_normal_bundles_identified": false,
+    "new_SU2_wall_model": "Replacing the two equal R Cartan weights by one complete SU2 doublet changes the wall model. It preserves the normal target at R=0, and needs the explicitly computed flat nu_R response in the stated product category.",
+    "new_mixed_carrier": "M*(D-1)^2 is an integer virtual index for P; the actual normal-root isotropy changes the finite lift. A projective compensator is necessary and not yet a Gammahat representation.",
+    "old_charge_two_mass_model_and_new_virtual_P_carrier_are_same_sector": false,
+    "old_mass_model": "The conditional complex Dirac operator uses the frozen V96 determinant-line charge pair and absolute twists. Its index/gap results do not validate the new virtual carrier.",
+    "original_geometry_not_replaced_by_square_transport_torus": true,
+    "unchanged_normal_target_I6": "-e2*u + p*u/4 + u**3",
+    "zero_index_or_a_conditional_gap_cancels_anomalies": false
+  },
+  "equivariant_mass_defect_index": {
+    "charge_reality_and_counting": {
+      "SMW_scope": "V96 supplies J*conj(M)=M*J in flavor space. The transverse map verifies the necessary conjugate pairing including rotation phases. The Lorentz charge-conjugation matrix, symplectic reality condition, kinetic measure and Pfaffian regulator of a new opposite-6D-chirality sector are still required; no additional factor or physical multiplicity is asserted from this complex calculation.",
+      "checks": {
+        "D_minus_dag_sigma3_equals_minus_sigma3_conjugate_D_plus": true,
+        "D_minus_sigma3_equals_minus_sigma3_conjugate_D_plus_dag": true,
+        "index_characters_are_negative_conjugates": true,
+        "left_plus_conjugates_to_right_minus_rotation": true,
+        "right_plus_conjugates_to_left_minus_rotation": true
+      },
+      "conjugate_charge_block_must_not_be_counted_twice": true,
+      "independent_physical_Weyl_multiplicity_is_sum_of_two_complex_charge_tables": false,
+      "status": "EXACT_TRANSVERSE_ANTILINEAR_KERNEL_PAIRING_NOT_A_FULL_SIX_DIMENSIONAL_SMW_CONSTRUCTION",
+      "zero_mode_map": "C_perp(v)=sigma3*conj(v): ker D_plus -> ker D_minus_dag and ker D_plus_dag -> ker D_minus; it reverses charge and four-dimensional chirality"
+    },
+    "common_character_counterfactual": {
+      "new_curvatures_and_global_anomalies_of_alternatives_computed": false,
+      "nonzero_common_twists_preserve_frozen_V96_twists": false,
+      "operation": "Multiply both H1 and H2 on charge+2 by i^s and both conjugate entries by i^-s; M and its divisor are unchanged, but absolute rotation lifts change unless s=0.",
+      "rows": [
+        {
+          "is_the_frozen_absolute_lift": true,
+          "local_C2_phase": "-1",
+          "local_C4_phase": "-1",
+          "mass_intertwiner_ratio_unchanged": true,
+          "neutral_common_C4_weight": 0,
+          "plus_charge_invariant_index": 0
+        },
+        {
+          "is_the_frozen_absolute_lift": false,
+          "local_C2_phase": "1",
+          "local_C4_phase": "-I",
+          "mass_intertwiner_ratio_unchanged": true,
+          "neutral_common_C4_weight": 1,
+          "plus_charge_invariant_index": 1
+        },
+        {
+          "is_the_frozen_absolute_lift": false,
+          "local_C2_phase": "-1",
+          "local_C4_phase": "1",
+          "mass_intertwiner_ratio_unchanged": true,
+          "neutral_common_C4_weight": 2,
+          "plus_charge_invariant_index": -2
+        },
+        {
+          "is_the_frozen_absolute_lift": false,
+          "local_C2_phase": "1",
+          "local_C4_phase": "I",
+          "mass_intertwiner_ratio_unchanged": true,
+          "neutral_common_C4_weight": 3,
+          "plus_charge_invariant_index": 1
+        }
+      ],
+      "same_mass_function_determines_unique_projected_index_without_absolute_lifts": false,
+      "status": "COUNTERFACTUAL_UNDERDETERMINATION_TEST_NOT_AN_ADOPTED_NEW_TWIST",
+      "these_alternative_twists_are_accepted_Gammahat_or_R_flavor_extensions": false
+    },
+    "compact_equivariant_index": {
+      "charge_block_results": [
+        {
+          "characters_identity_A_A2_A3": [
+            "0",
+            "2",
+            "-4",
+            "2"
+          ],
+          "charge": 2,
+          "cover_signed_index": 0,
+          "invariant_signed_index": 0,
+          "local_induced_character_matches_all_four_elements": true,
+          "minimum_cover_kernel_dimensions_left_right_from_character": [
+            2,
+            2
+          ],
+          "multiplicities_chi0_chi1_chi2_chi3": [
+            0,
+            1,
+            -2,
+            1
+          ]
+        },
+        {
+          "characters_identity_A_A2_A3": [
+            "0",
+            "-2",
+            "4",
+            "-2"
+          ],
+          "charge": -2,
+          "cover_signed_index": 0,
+          "invariant_signed_index": 0,
+          "local_induced_character_matches_all_four_elements": true,
+          "minimum_cover_kernel_dimensions_left_right_from_character": [
+            2,
+            2
+          ],
+          "multiplicities_chi0_chi1_chi2_chi3": [
+            0,
+            -1,
+            2,
+            -1
+          ]
+        }
+      ],
+      "charge_minus_cover_protected_character": "2*chi2-chi1-chi3",
+      "charge_plus_cover_protected_character": "chi1+chi3-2*chi2",
+      "homotopy_proof": "D_lambda:H1(T2,E_L)->L2(T2,E_R) is elliptic and C4-equivariant with fixed principal symbol. Smooth mass multiplication is a compact lower-order perturbation in this map, so its index in R(C4) is constant along finite lambda.",
+      "orbifold_index_formula": "index(D_lambda on invariants)=(1/4)*sum_j trace(A^j on virtual kernel); this is an integer representation multiplicity, not the identity-sector contribution alone",
+      "same_conclusion_for_arbitrary_smooth_equivariant_mass_with_same_symbol_and_bundles": true,
+      "same_conclusion_for_unfrozen_fluxes_or_boundary_domains": false,
+      "selected_orbifold_chiral_index": 0,
+      "status": "EXACT_COMPACT_EQUIVARIANT_INDEX_FOR_THE_CONDITIONAL_OPERATOR_AT_EVERY_FINITE_MASS",
+      "zero_index_proves_zero_total_kernel": false,
+      "zero_mass_proof": "On the periodic flat cover, each dplus or dminus has only constant functions in its kernel and cokernel. The constant fibers carry the displayed left and right matrices, so Ind_C4(D0)=[R_left]-[R_right] exactly; nonzero Fourier modes cancel equivariantly."
+    },
+    "conditional_Dirac_operator": {
+      "Clifford_checks": {
+        "four_Hermitian_Clifford_matrices": true,
+        "four_dimensional_chiral_grading": true,
+        "normal_generator_from_Clifford": true,
+        "pairwise_anticommutation": true,
+        "six_dimensional_chirality_relation": true
+      },
+      "Clifford_matrices": {
+        "Gamma6": [
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "-1"
+          ]
+        ],
+        "alpha_s": [
+          [
+            "0",
+            "0",
+            "-I",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "-I"
+          ],
+          [
+            "I",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "I",
+            "0",
+            "0"
+          ]
+        ],
+        "alpha_t": [
+          [
+            "0",
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        ],
+        "beta_Im": [
+          [
+            "0",
+            "0",
+            "0",
+            "I"
+          ],
+          [
+            "0",
+            "0",
+            "-I",
+            "0"
+          ],
+          [
+            "0",
+            "I",
+            "0",
+            "0"
+          ],
+          [
+            "-I",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "beta_Re": [
+          [
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "chiral_grading_left_positive": [
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "-1"
+          ]
+        ],
+        "normal_generator": [
+          [
+            "-1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "-1/2"
+          ]
+        ]
+      },
+      "N1_or_6D_supersymmetric_completion_constructed": false,
+      "charge_blocks": [
+        {
+          "D_adjoint_formal": [
+            [
+              "-dminus",
+              "mbar"
+            ],
+            [
+              "m",
+              "-dplus"
+            ]
+          ],
+          "D_formal": [
+            [
+              "dplus",
+              "mbar"
+            ],
+            [
+              "m",
+              "dminus"
+            ]
+          ],
+          "charge": 2,
+          "checks": {
+            "full_jet_covariance": true,
+            "internal_half_angle_lifts_fourth_minus_one": true,
+            "kinetic_covariance_separately": true,
+            "left_and_right_effective_C4": true,
+            "left_constant_projector_zero": true,
+            "right_constant_projector_zero": true
+          },
+          "left_domain_rotation": [
+            [
+              "I",
+              "0"
+            ],
+            [
+              "0",
+              "-I"
+            ]
+          ],
+          "mass_character": "-I",
+          "mu": "mbar",
+          "right_codomain_rotation": [
+            [
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "-1"
+            ]
+          ],
+          "six_dimensional_minus_internal_H2": "sqrt(2)*(1 + I)**5/8",
+          "six_dimensional_plus_internal_H1": "sqrt(2)*(1 + I)**3/4"
+        },
+        {
+          "D_adjoint_formal": [
+            [
+              "-dminus",
+              "m"
+            ],
+            [
+              "mbar",
+              "-dplus"
+            ]
+          ],
+          "D_formal": [
+            [
+              "dplus",
+              "m"
+            ],
+            [
+              "mbar",
+              "dminus"
+            ]
+          ],
+          "charge": -2,
+          "checks": {
+            "full_jet_covariance": true,
+            "internal_half_angle_lifts_fourth_minus_one": true,
+            "kinetic_covariance_separately": true,
+            "left_and_right_effective_C4": true,
+            "left_constant_projector_zero": true,
+            "right_constant_projector_zero": true
+          },
+          "left_domain_rotation": [
+            [
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "-1"
+            ]
+          ],
+          "mass_character": "I",
+          "mu": "m",
+          "right_codomain_rotation": [
+            [
+              "-I",
+              "0"
+            ],
+            [
+              "0",
+              "I"
+            ]
+          ],
+          "six_dimensional_minus_internal_H2": "sqrt(2)*(1 + I)**3/4",
+          "six_dimensional_plus_internal_H1": "sqrt(2)*(1 + I)**5/8"
+        }
+      ],
+      "component_order": "domain(L,+6,N=-1/2 ; L,-6,N=+1/2), codomain(R,+6,N=+1/2 ; R,-6,N=-1/2)",
+      "coordinates": "z=s+it; A:z->i*z; dplus=partial_s+i*partial_t=2*partial_bar_z, dminus=partial_s-i*partial_t=2*partial_z",
+      "four_dimensional_chiralities": "ker D carries gamma5=-1 (left), ker Ddag carries gamma5=+1 (right); index=left minus right. Reversing this named convention reverses every signed index together.",
+      "full_Gammahat_kernel_and_SMW_action_constructed": false,
+      "gauge_representation": "Spin11 singlet in genuine gauge Spin^c11 determinant line D, charge+2; its conjugate charge-2 is required for the V96 symplectic packaging",
+      "independent_R_and_flavor_connections_included": false,
+      "new_assumptions": [
+        "Flat square cover torus with side length L, periodic cover spin structure, effective U=V=1 and no transverse gauge or flavor connection.",
+        "Promote the V96 virtual plus and minus terms to opposite-six-dimensional-chirality kinetic fields; use H1 on Gamma6=+1 and H2 on Gamma6=-1. This is a proposed quadratic completion, not an inherited six-dimensional supersymmetric multiplet.",
+        "Use the ordinary local Dirac principal symbol below and a real mass scale lambda multiplying the frozen smooth M; no extra localized kinetic terms or self-adjoint defect extensions."
+      ],
+      "operator": "D_mu=[[dplus,lambda*mu],[lambda*conj(mu),dminus]]: E_L->E_R; Ddag=[[-dminus,lambda*mu],[lambda*conj(mu),-dplus]]",
+      "quadratic_action": "L4=i*bar(Psi_L)*slash_partial4*Psi_L+i*bar(Psi_R)*slash_partial4*Psi_R-[bar(Psi_R)*D_mu*Psi_L+h.c.], integrated over the smooth cover and projected to invariant fields",
+      "section_convention": "Psi(Az)=R*Psi(z); active action T_A Psi(z)=R*Psi(A^-1 z). Physical sections have T_A=1.",
+      "self_adjoint_transverse_H": "H=[[0,Ddag],[D,0]], H0=alpha_s*k_s+alpha_t*k_t; mass=beta_Re*Re(lambda*mu)+beta_Im*Im(lambda*mu)",
+      "spin_factors": {
+        "codomain": [
+          "zeta",
+          "zeta^-1"
+        ],
+        "domain": [
+          "zeta^-1",
+          "zeta"
+        ],
+        "zeta": "exp(i*pi/4)"
+      },
+      "status": "EXPLICIT_CONDITIONAL_COMPLEX_DIRAC_KINETIC_COMPLETION_NOT_A_FROZEN_MICROSCOPIC_SECTOR"
+    },
+    "core_sha256": "0fbf4f7945b55a9c3d5add062c48b00e64bb68b462abecf8892de37c7d7cb19d",
+    "embedded_v96_transport_core": "021441b42d70fa012933e6b213c236822ed3e3424676c55278afcb08ce41c8df",
+    "input_core_hashes": {
+      "v96_master": "d8328579f5162e59a855336aa66bff8ca180f1d7062bb066ee241bbed99503b2",
+      "v96_route": "2c1575f64d2aa3414e6b504d72c20a9a76160825aac7389259ac26402ab8f215"
+    },
+    "isolated_core_index_and_projection": {
+      "absence_of_any_accidental_compact_paired_zero_modes_at_arbitrary_mass_proved": false,
+      "cover_winding_divided_by_stabilizer_or_cover_degree_used_as_multiplicity": false,
+      "large_mass_localization_requires_additional_spectral_control": true,
+      "linear_core_calculations": [
+        {
+          "DDdag": "Hosc*I",
+          "DdagD": "Hosc*I-2*alpha*sigma1",
+          "checks": {
+            "DDdag_oscillator_identity": true,
+            "DdagD_oscillator_identity": true,
+            "explicit_Gaussian_zero_mode": true
+          },
+          "complex_kernel_dimensions_D_Ddag": [
+            1,
+            0
+          ],
+          "kernel": "D",
+          "mass_winding": 1,
+          "mu": "alpha*(xx + I*yy)",
+          "normalization_factor": "sqrt(alpha/(2*pi))",
+          "zero_mode_unnormalized": [
+            "exp(-alpha*(xx**2 + yy**2)/2)",
+            "exp(-alpha*(xx**2 + yy**2)/2)"
+          ]
+        },
+        {
+          "DDdag": "Hosc*I+2*alpha*sigma1",
+          "DdagD": "Hosc*I",
+          "checks": {
+            "DDdag_oscillator_identity": true,
+            "DdagD_oscillator_identity": true,
+            "explicit_Gaussian_zero_mode": true
+          },
+          "complex_kernel_dimensions_D_Ddag": [
+            0,
+            1
+          ],
+          "kernel": "Ddag",
+          "mass_winding": -1,
+          "mu": "alpha*(xx - I*yy)",
+          "normalization_factor": "sqrt(alpha/(2*pi))",
+          "zero_mode_unnormalized": [
+            "exp(-alpha*(xx**2 + yy**2)/2)",
+            "-exp(-alpha*(xx**2 + yy**2)/2)"
+          ]
+        }
+      ],
+      "linear_core_models_are_exact_solutions_of_frozen_global_profile": false,
+      "local_linearization": "The bound simple zeros and poles of g give m=a*z+O(|z|^2) or m=conj(a*z)+O(|z|^2), a!=0. A constant component rephasing and rescaling give mu=alpha*z or alpha*bar(z), alpha>0.",
+      "number_of_invariant_protected_linear_core_modes": 0,
+      "oscillator_definition": "Hosc=-partial_s^2-partial_t^2+alpha^2*(s^2+t^2), eigenvalues 2*alpha*(n_s+n_t+1)",
+      "per_cover_charge_block": [
+        {
+          "complex_core_index_before_projection": -1,
+          "continuous_charge": 2,
+          "cover_point": "z00",
+          "four_dimensional_chirality": "right",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 4,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": 1,
+          "winding_of_this_mu": -1
+        },
+        {
+          "complex_core_index_before_projection": -1,
+          "continuous_charge": 2,
+          "cover_point": "z11",
+          "four_dimensional_chirality": "right",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 4,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": 1,
+          "winding_of_this_mu": -1
+        },
+        {
+          "complex_core_index_before_projection": 1,
+          "continuous_charge": 2,
+          "cover_point": "z10",
+          "four_dimensional_chirality": "left",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 2,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": -1,
+          "winding_of_this_mu": 1
+        },
+        {
+          "complex_core_index_before_projection": 1,
+          "continuous_charge": 2,
+          "cover_point": "z01",
+          "four_dimensional_chirality": "left",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 2,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": -1,
+          "winding_of_this_mu": 1
+        },
+        {
+          "complex_core_index_before_projection": 1,
+          "continuous_charge": -2,
+          "cover_point": "z00",
+          "four_dimensional_chirality": "left",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 4,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": 1,
+          "winding_of_this_mu": 1
+        },
+        {
+          "complex_core_index_before_projection": 1,
+          "continuous_charge": -2,
+          "cover_point": "z11",
+          "four_dimensional_chirality": "left",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 4,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": 1,
+          "winding_of_this_mu": 1
+        },
+        {
+          "complex_core_index_before_projection": -1,
+          "continuous_charge": -2,
+          "cover_point": "z10",
+          "four_dimensional_chirality": "right",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 2,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": -1,
+          "winding_of_this_mu": -1
+        },
+        {
+          "complex_core_index_before_projection": -1,
+          "continuous_charge": -2,
+          "cover_point": "z01",
+          "four_dimensional_chirality": "right",
+          "linear_core_invariant_kernel_dimension": 0,
+          "local_projector": [
+            [
+              "0"
+            ]
+          ],
+          "stabilizer_order": 2,
+          "stabilizer_phase_on_Gaussian_mode": "-1",
+          "winding_of_m": -1,
+          "winding_of_this_mu": -1
+        }
+      ],
+      "physical_C2_orbit_representation": {
+        "A_squared": [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        "character": [
+          "2",
+          "0",
+          "-2",
+          "0"
+        ],
+        "decomposition": "chi1+chi3=Ind_C2^C4(sign)",
+        "generator_A": [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        "invariant_dimension": 0,
+        "projector": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "status": "EXACT_ISOLATED_LINEAR_CORE_INDEX_AND_PROJECTORS_NOT_AN_EXACT_COMPACT_SPECTRUM",
+      "unique_kernel_proof": "The oscillator ground state is unique. Exactly one sigma1 eigenspace cancels its energy in DdagD or DDdag; the opposite square has strictly positive spectrum. This proves one complex core mode before projection for the stated linear operator, not for an unspecified fermion-vortex action."
+    },
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/abs/1609.01413",
+        "use": "Equations2.12-2.22 distinguish 4D, normal and 6D chirality and show that an ordinary 6D mass couples opposite 6D chiralities. The selected torus operator and lifts here are derived explicitly, not taken from that paper's rectangle boundary conditions."
+      },
+      {
+        "url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.24.2669",
+        "use": "Weinberg's first-order fermion-vortex index problem relates Higgs topology to an operator index. It does not by itself specify the present compact orbifold action or physical field count."
+      },
+      {
+        "url": "https://arxiv.org/abs/2303.03425",
+        "use": "Equations2.13-2.17 exhibit chiral transverse derivative/Yukawa equations and angular mode constraints. Our simple-core Gaussian and oscillator identities are independently computed for the stated operator, not inferred from a Majorana zero-mode count in a different model."
+      },
+      {
+        "url": "https://arxiv.org/abs/1908.05165",
+        "use": "Equivariant elliptic indices are integer representation multiplicities; finite-group projectors and Fredholm domains. The present character is computed directly from periodic Fourier zero modes."
+      },
+      {
+        "url": "https://arxiv.org/abs/math/0701768",
+        "use": "Orbifold index from equivariant data includes nonidentity stabilizers; supports the distinction from dividing a cover contribution alone by four."
+      }
+    ],
+    "remaining_action_data": [
+      "A full Gammahat-compatible opposite-six-dimensional-chirality field content, actual SMW kinetic/Pfaffian reality, and supersymmetric interactions if required.",
+      "The mass scale, torus metric and transverse gauge/R/flavor backgrounds of the same action, plus any allowed localized terms and global domain.",
+      "If arbitrary-mass kernel multiplicities are wanted, a compact spectral calculation or a stronger vanishing theorem; index zero alone is insufficient.",
+      "The anomaly of the selected dynamical sector with all normal/R/flavor curvatures, its finite/global determinant phase and a common quantized relative inflow/gluing; a gap does not establish any of these."
+    ],
+    "schema": "v97_equivariant_mass_defect_index_v1",
+    "scope": "An explicit conditional kinetic completion: exact isolated linear-core projectors, compact equivariant index, conjugate kernel pairing, and a rigorous small-mass compact gap. No full orbifold relative anomaly cancellation or new accepted matter sector.",
+    "small_mass_compact_gap": {
+      "Neumann_inverse": "D_lambda^-1=(1+D0^-1*B_lambda)^-1*D0^-1 when ||D0^-1*B_lambda||<=|lambda|*L/(4*pi)<1",
+      "absence_of_massless_modes_cancels_local_anomalies": false,
+      "bound_is_for_selected_smooth_domain_and_no_transverse_connections": true,
+      "forced_mass_zeros_alone_force_physical_massless_fields": false,
+      "gap_at_every_mass_or_with_extra_backgrounds_established": false,
+      "gap_proof": "All invariant domain and codomain sections have zero constant Fourier coefficient because their constant C4 projectors vanish. Every nonconstant momentum has |k|>=2*pi/L. Hence ||D0*v||>=2*pi/L*||v||, with the same estimate for D0dag; its invariant inverse exists. The off-diagonal mass multiplication has norm<=|lambda|/2.",
+      "half_minus_modulus": "(s - 1)**2/(2*(s**2 + 1))",
+      "left_and_right_projected_kernel_dimensions_in_that_range": [
+        0,
+        0
+      ],
+      "lower_bound_on_projected_singular_gap": "2*pi/L-|lambda|/2",
+      "mass_modulus": "|m|=s/(1+s^2), s=|g|",
+      "nonzero_mass_example": "lambda=2*pi/L gives lower bound pi/L>0 although M vanishes at all four frozen cover points",
+      "status": "EXACT_NONZERO_MASS_COMPACT_GAP_IN_AN_EXPLICIT_PARAMETER_RANGE",
+      "strict_invertibility_condition": "|lambda|*L<4*pi",
+      "uniform_bound": "|m|<=1/2, including its zero extension at poles",
+      "zero_mass_projected_singular_gap": "2*pi/L"
+    },
+    "terminal_decision": {
+      "accepted_extensions": 0,
+      "all_mass_scales_compact_spectrum_determined": false,
+      "all_possible_defect_completions_excluded": false,
+      "closed_gates": [],
+      "conditional_kinetic_covariance_and_compact_index_computed": true,
+      "exact_no_zero_modes_for_abs_lambda_L_less_than_4pi": true,
+      "frozen_lift_invariant_chiral_index": 0,
+      "full_SMW_Gammahat_same_action_sector_constructed": false,
+      "mixed_gauge_or_finite_relative_anomaly_canceled_by_this_calculation": false,
+      "protected_isolated_linear_core_modes_surviving_projection": 0,
+      "same_action_parent_accepted": false
+    }
+  },
+  "gate_ledger": {
+    "G1": "OPEN: an explicit conditional quadratic model and restricted quantized responses exist, but no common microscopic parent realizes all of them.",
+    "G2": "OPEN: the selected complex operator has index zero and a proved small-mass gap, not the full physical SMW/SUSY spectrum or its mass scales.",
+    "G3": "OPEN: the actual normal-root twist obstructs the uncorrected virtual carrier; the order-eight compensator, wall placement and full Gammahat representations remain unconstructed.",
+    "G4": "OPEN: local integer responses leave a common primitive P/4 profile, whose correlated relative refinement has not been constructed; the SU2 scout also requires its flat Z2 data.",
+    "G5": "OPEN: restricted bordism and phase computations do not supply the full Gammahat determinant, same-action regulator, corner gluing or original bare R-torsion ledger.",
+    "G6": "OPEN: no accepted same-action full spectrum, thresholds or numerical unification prediction follows from the conditional gap.",
+    "G7": "OPEN: the inherited restricted defect inverse is preserved, but its common five-/three-dimensional realization, gravitational anomaly and cosmology remain unresolved.",
+    "G8": "OPEN: original torsion is trivial and 0<=rank<=11; the b4=0 branch is excluded, while four equations with a nonzero-square descent condition remain unsolved."
+  },
+  "input_core_hashes": {
+    "v96_master": "d8328579f5162e59a855336aa66bff8ca180f1d7062bb066ee241bbed99503b2",
+    "v96_route": "2c1575f64d2aa3414e6b504d72c20a9a76160825aac7389259ac26402ab8f215"
+  },
+  "mixed_gauge_relative_glue": {
+    "compatibility_with_restricted_defect_inverse": {
+      "L_scope": "L is an auxiliary character of the U5-preimage subgroup; it is not an added full-Spin11-singlet of odd covering charge.",
+      "P_C8_restriction": "d=2v, u=r*v gives P=4*(2+r)*v^3 in H6(BC8;Z)=Z8",
+      "P_integral_class_at_Mwall_trivial": 0,
+      "all_normal_character_restrictions": [
+        {
+          "P_class_coefficient_mod8": 0,
+          "independent_wall_normal_M_C8_charge": 0
+        },
+        {
+          "P_class_coefficient_mod8": 4,
+          "independent_wall_normal_M_C8_charge": 1
+        },
+        {
+          "P_class_coefficient_mod8": 0,
+          "independent_wall_normal_M_C8_charge": 2
+        },
+        {
+          "P_class_coefficient_mod8": 4,
+          "independent_wall_normal_M_C8_charge": 3
+        },
+        {
+          "P_class_coefficient_mod8": 0,
+          "independent_wall_normal_M_C8_charge": 4
+        },
+        {
+          "P_class_coefficient_mod8": 4,
+          "independent_wall_normal_M_C8_charge": 5
+        },
+        {
+          "P_class_coefficient_mod8": 0,
+          "independent_wall_normal_M_C8_charge": 6
+        },
+        {
+          "P_class_coefficient_mod8": 4,
+          "independent_wall_normal_M_C8_charge": 7
+        }
+      ],
+      "degree6_response_transgressed_to_the_required_degree4_CS_ABK_functor": false,
+      "full_5D_3D_relative_gluing_or_common_orientation_regulator_constructed": false,
+      "inherited_defect_inverse_C8_character": [
+        12,
+        1
+      ],
+      "inherited_defect_inverse_CS_ABK_levels": [
+        3,
+        3
+      ],
+      "inherited_physical_spin_compensation_retained": true,
+      "ordinary_integral_cohomology_ring": "H*(BC8;Z)=Z[v]/(8v), degree(v)=2, for positive-degree torsion powers",
+      "same_D_line_is_available_in_both_restricted_categories": true,
+      "scope_of_zero_P_class": "This is only a degree-six integral characteristic-class pullback. No quarter-level differential refinement, 3D eta phase, or total anomaly cancellation follows from this zero.",
+      "shared_gauge_map": "C8 k -> [(1,exp(pi*i/4))] in gauge Spin^c11; E0,E1 are trivial vector bundles on this pure central restriction, L=rho1, D=L^2=rho2",
+      "wall_normal_choice_for_common_product_restriction": "M_wall=1 is an allowed independent-product choice. The inherited Phi-vortex normal root is instead M_Phi=D^-2=rho4; these are two different geometric normal bundles and are NOT identified here.",
+      "wall_normal_root_identified_with_Phi_defect_normal_root": false
+    },
+    "core_sha256": "42192f27cd064aa00cb33c4a38cc67a3c94c03c6aa10a0cea7ea7348b6e6dd16",
+    "correlated_filling_screen": {
+      "all_32_residue_tests": [
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            0,
+            0
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            0,
+            1
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            1,
+            0
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            1,
+            1
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            2,
+            0
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            2,
+            1
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            3,
+            0
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            0,
+            3,
+            1
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            0,
+            0
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            0,
+            1
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            1,
+            0
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            1,
+            1
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            2,
+            0
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            2,
+            1
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            3,
+            0
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            1,
+            3,
+            1
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            0,
+            0
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            0,
+            1
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            1,
+            0
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            1,
+            1
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            2,
+            0
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            2,
+            1
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            3,
+            0
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            2,
+            3,
+            1
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            0,
+            0
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            0,
+            1
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            1,
+            0
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            1,
+            1
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            2,
+            0
+          ],
+          "phase": "+i",
+          "total_ambiguity_exponent_mod1": "1/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            2,
+            1
+          ],
+          "phase": "-i",
+          "total_ambiguity_exponent_mod1": "3/4"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            3,
+            0
+          ],
+          "phase": "-1",
+          "total_ambiguity_exponent_mod1": "1/2"
+        },
+        {
+          "independent_P_period_changes_mod_4_4_2": [
+            3,
+            3,
+            1
+          ],
+          "phase": "+1",
+          "total_ambiguity_exponent_mod1": "0"
+        }
+      ],
+      "ambiguity_group": "Z4 x Z4 x Z2",
+      "diagonal_correlation_is_supplied_by_existing_orbifold_action": false,
+      "diagonal_correlation_removes_this_period_ambiguity": true,
+      "diagonal_filling_changes": "n0=n1=n2 gives zero for every integer n",
+      "formal_torus_transgression": "The existing V96 beta=darg(g)/(2*pi) has source weights(1/4,1/4,-1/2). The formal inverse term -2*pi*i*integral beta wedge CS5(P) has the needed negative local variation, but its order4 differential/eta refinement remains absent.",
+      "formal_transgression_is_a_quantized_relative_action": false,
+      "independent_endpoint_ambiguity": "exp(2*pi*i*(n0+n1-2*n2)/4), where nj is the closed-spin6 P index added to endpoint j",
+      "independent_local_gauge_transformations_cancel_from_diagonal_sum": false,
+      "kernel_order": 8,
+      "phase_trivial_correlation_condition": "n0+n1-2*n2=0 mod4",
+      "phase_trivial_subgroup": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          3,
+          1,
+          0
+        ],
+        [
+          3,
+          3,
+          1
+        ]
+      ],
+      "possible_relative_route": "A relative construction must supply the common fourth-root/endpoint identification and its gluing law. The period screen permits this correlation but neither constructs it nor excludes additional flat, normal, R, and isotropy obstructions.",
+      "same_background_total": "On an identified common product background, the fractional polynomials sum to zero and the sum has the explicit quantized Z0+Z1+Z2 refinement.",
+      "total_phase_image": "Z4"
+    },
+    "equivariant_virtual_carrier_and_normal_lift": {
+      "cases": {
+        "actual_normal_root_uncompensated": {
+          "C2_cover_full_trace": {
+            "coefficient_of_ch3": "0",
+            "coefficient_of_x_ch2": "0",
+            "delta_I6": "0",
+            "full_SMW_half_times_orbifold_quarter": "1/8 before tracing line and conjugate",
+            "positive_line_H1": "1",
+            "positive_line_H2": "-1"
+          },
+          "C4_full_trace": {
+            "coefficient_of_ch3": "0",
+            "coefficient_of_x_ch2": "0",
+            "delta_I6": "0",
+            "full_SMW_half_times_orbifold_quarter": "1/8 before tracing line and conjugate",
+            "positive_line_H1": "-1",
+            "positive_line_H2": "-I"
+          },
+          "H_fourth_powers": [
+            "1",
+            "1"
+          ],
+          "frozen_H_fourth_minus_identity_condition_passes": false,
+          "physical_sector_or_relative_action_constructed": false,
+          "raw_stratum_profile": [
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        "independent_line_formal": {
+          "C2_cover_full_trace": {
+            "coefficient_of_ch3": "-1/4",
+            "coefficient_of_x_ch2": "0",
+            "delta_I6": "-d**3/4 - d**2*u/4",
+            "full_SMW_half_times_orbifold_quarter": "1/8 before tracing line and conjugate",
+            "positive_line_H1": "-I",
+            "positive_line_H2": "I"
+          },
+          "C4_full_trace": {
+            "coefficient_of_ch3": "1/4",
+            "coefficient_of_x_ch2": "0",
+            "delta_I6": "d**3/4 + d**2*u/4",
+            "full_SMW_half_times_orbifold_quarter": "1/8 before tracing line and conjugate",
+            "positive_line_H1": "sqrt(2)*(1 + I)**3/4",
+            "positive_line_H2": "sqrt(2)*(1 + I)**5/8"
+          },
+          "H_fourth_powers": [
+            "-1",
+            "-1"
+          ],
+          "frozen_H_fourth_minus_identity_condition_passes": true,
+          "physical_sector_or_relative_action_constructed": false,
+          "raw_stratum_profile": [
+            "d**3/4 + d**2*u/4",
+            "d**3/4 + d**2*u/4",
+            "-d**3/2 - d**2*u/2"
+          ]
+        },
+        "normal_root_with_conditional_projective_compensator": {
+          "C2_cover_full_trace": {
+            "coefficient_of_ch3": "-1/4",
+            "coefficient_of_x_ch2": "0",
+            "delta_I6": "-d**3/4 - d**2*u/4",
+            "full_SMW_half_times_orbifold_quarter": "1/8 before tracing line and conjugate",
+            "positive_line_H1": "-I",
+            "positive_line_H2": "I"
+          },
+          "C4_full_trace": {
+            "coefficient_of_ch3": "1/4",
+            "coefficient_of_x_ch2": "0",
+            "delta_I6": "d**3/4 + d**2*u/4",
+            "full_SMW_half_times_orbifold_quarter": "1/8 before tracing line and conjugate",
+            "positive_line_H1": "sqrt(2)*(1 + I)**3/4",
+            "positive_line_H2": "sqrt(2)*(1 + I)**5/8"
+          },
+          "H_fourth_powers": [
+            "-1",
+            "-1"
+          ],
+          "frozen_H_fourth_minus_identity_condition_passes": true,
+          "physical_sector_or_relative_action_constructed": false,
+          "raw_stratum_profile": [
+            "d**3/4 + d**2*u/4",
+            "d**3/4 + d**2*u/4",
+            "-d**3/2 - d**2*u/2"
+          ]
+        }
+      },
+      "chern_components_rank_ch1_ch2_ch3": [
+        "0",
+        "0",
+        "d**2",
+        "d**3 + d**2*u"
+      ],
+      "conditional_compensator": {
+        "F_C2": "diag(-i,i)",
+        "F_fourth": "-I",
+        "commutes_with_diagonal_D_and_normal_charges": true,
+        "compatible_full_Gammahat_kernel_representation_constructed": false,
+        "flavor_curvature_and_quantum_anomaly_of_compensator_fixed": false,
+        "matrix": "F=diag(zeta^-1,zeta)",
+        "minimum_order_of_displayed_compensator": 8,
+        "normal_root_times_F": "diag(zeta,zeta^-1)*F=I",
+        "ordinary_independent_C4_flavor_character": false,
+        "restores_the_frozen_effective_H_and_formal_P_profile_algebraically": true,
+        "unitary_symplectic_and_quaternionic": true
+      },
+      "formal_index_carrier_is_a_quantized_relative_determinant": false,
+      "formal_kernel_reason": "The m1-m2 C4 kernel difference is(1/4,0,-5/32,0), and the C2-cover difference is(-1/4,0,1/32,0). Rank0 and ch1=0 remove every extra normal/gravitational term, leaving the formal quarter/half P profile.",
+      "index_I6": "d**2*(d + u)",
+      "negative_virtual_multiplicity_is_an_accepted_6D_SUSY_multiplet": false,
+      "normal_root_isotropy_must_not_be_omitted": "M is the actual normal Spin2 root u=x/2: its C4 character is zeta=exp(pi*i/4) and C2 character is i. It is not automatically a finite-action-trivial spectator line.",
+      "ordinary_C4_character_repairs": [
+        {
+          "fourth_power_after_M_and_character": "1",
+          "ordinary_C4_character_power": 0,
+          "restores_required_minus_identity": false
+        },
+        {
+          "fourth_power_after_M_and_character": "1",
+          "ordinary_C4_character_power": 1,
+          "restores_required_minus_identity": false
+        },
+        {
+          "fourth_power_after_M_and_character": "1",
+          "ordinary_C4_character_power": 2,
+          "restores_required_minus_identity": false
+        },
+        {
+          "fourth_power_after_M_and_character": "1",
+          "ordinary_C4_character_power": 3,
+          "restores_required_minus_identity": false
+        }
+      ],
+      "signed_line_summands": [
+        {
+          "D_power": 2,
+          "M_power": 1,
+          "multiplicity": 1
+        },
+        {
+          "D_power": 1,
+          "M_power": 1,
+          "multiplicity": -2
+        },
+        {
+          "D_power": 0,
+          "M_power": 1,
+          "multiplicity": 1
+        }
+      ],
+      "uncompensated_zero_trace_is_not_an_anomaly_free_physical_sector": "The raw trace gives zero only after the additional root multiplier has violated the frozen H^4=-I closure. It is an inadmissible candidate under that closure, not a new physical cancellation.",
+      "virtual_bundle": "V=M*(D-1)^2=D^2*M-2*D*M+M"
+    },
+    "exact_index_decomposition": {
+      "C2_Z": "-2*A2*d + 2*B2*d + a**2*d - b**2*d - 5*d**3/6 + d**2*u/2 - d*p/24 - d*u**2/2",
+      "C2_identity": "R_physical_C2=Z_C2-P/2",
+      "C2_integer_index_part": "I(D)+K",
+      "C2_integral_cup_part": "-2*A2*d + 2*B2*d + a**2*d - b**2*d - d**3 - d*u**2",
+      "C4_Z": "-c2*d + 17*d**3 - 4*d**2*ell + 17*d**2*u/2 + 2*d*ell**2 + 2*d*ell*u - d*p/2 - 23*d*u**2/2",
+      "C4_identity": "R_C4=Z_C4+P/4",
+      "C4_integer_index_part": "12*I(D)+17*K",
+      "C4_integral_cup_part": "-c2*d + 15*d**3 - 4*d**2*ell + 2*d*ell**2 + 2*d*ell*u - 20*d*u**2",
+      "I_D": "d**3/6 - d*p/24",
+      "K_integrality": "It is an integer difference of three genuine ordinary twisted spin indices; its half-coefficients are not arbitrary half-level CS.",
+      "K_polynomial": "d**2*u/2 + d*u**2/2",
+      "P_index_identity": "I(D^2*M)-2*I(D*M)+I(M)=d^2*(d+u)",
+      "all_actual_V96_remainders_rebound": [
+        {
+          "V96_remainder": "e1**2*f + 4*e1*f**2 - 2*e1*f*u + e2**2*f + 4*e2*f**2 - 2*e2*f*u + e3**2*f + 4*e3*f**2 - 2*e3*f*u + e4**2*f + 4*e4*f**2 - 2*e4*f*u + e5**2*f + 4*e5*f**2 - 2*e5*f*u + 126*f**3 + 39*f**2*u - f*p - 23*f*u**2",
+          "exact_reconstruction_difference": "0",
+          "stratum": "z00"
+        },
+        {
+          "V96_remainder": "e1**2*f + 4*e1*f**2 - 2*e1*f*u + e2**2*f + 4*e2*f**2 - 2*e2*f*u + e3**2*f - 4*e3*f**2 + 2*e3*f*u + e4**2*f - 4*e4*f**2 + 2*e4*f*u + e5**2*f - 4*e5*f**2 + 2*e5*f*u + 126*f**3 + 39*f**2*u - f*p - 23*f*u**2",
+          "exact_reconstruction_difference": "0",
+          "stratum": "z11"
+        },
+        {
+          "V96_remainder": "2*e1**2*f + 2*e2**2*f - 2*e3**2*f - 2*e4**2*f - 2*e5**2*f - 32*f**3/3 - f*p/12 - f*u**2",
+          "exact_reconstruction_difference": "0",
+          "stratum": "physical_C2_orbit"
+        }
+      ],
+      "common_total_fractional_profile_sum": "0",
+      "common_total_index_part": "25*I(D)+35*K",
+      "common_total_integral_cup_part": "-4*A2*d + a**2*d + b**2*d - 4*b*d**2 + 4*b*d*ell + 2*b*d*u + 29*d**3 - 8*d**2*ell + 4*d*ell**2 + 4*d*ell*u - 41*d*u**2",
+      "fractional_profile": [
+        "1/4",
+        "1/4",
+        "-1/2"
+      ],
+      "index_I": "I(z)=z^3/6-z*p1(T)/24",
+      "index_K": "I(D*M)-I(D)-I(M)",
+      "primitive_P": "d**2*(d + u)",
+      "proof_scope": "Exact characteristic-polynomial equalities plus explicit integral spin-index/differential-CS refinements; they do not identify the unknown original anomaly functor or its possible flat part."
+    },
+    "input_core_hashes": {
+      "v96_finite_inverse": "2de351386e62a13e502280d68569fe47453521ad281c11740d55c620fb6607f9",
+      "v96_master": "d8328579f5162e59a855336aa66bff8ca180f1d7062bb066ee241bbed99503b2",
+      "v96_route": "2c1575f64d2aa3414e6b504d72c20a9a76160825aac7389259ac26402ab8f215",
+      "v96_transport": "021441b42d70fa012933e6b213c236822ed3e3424676c55278afcb08ce41c8df"
+    },
+    "limitations": {
+      "absolute_quarter_P_response_on_all_product_backgrounds_constructed": false,
+      "all_Gammahat_backgrounds_replaced_by_common_product_category": false,
+      "all_equivariant_or_topological_repairs_excluded": false,
+      "common_quantized_equivariant_relative_response_constructed": false,
+      "five_and_three_dimensional_responses_glued": false,
+      "new_positive_multiplicity_SUSY_mass_sector_constructed": false,
+      "normal_root_compensator_full_Gammahat_descent_proved": false,
+      "original_global_anomaly_functor_identified_by_curvature": false,
+      "same_action_parent_or_any_gate_closed": false,
+      "wall_R_flavor_defect_spectra_or_regulator_completed": false
+    },
+    "primary_sources": [
+      {
+        "url": "https://web.math.ucsb.edu/~dai/book.pdf",
+        "use": "Dai, Section2.3 Eq(3.5)-(3.6): canonical U(n)->Spin-c(2n) lift has vector g_real and determinant det(g). The subgroup map and D=det(E)*L^2 relation are derived explicitly here."
+      },
+      {
+        "url": "https://arxiv.org/abs/math/0307120",
+        "use": "Sections1-2: kernel-inclusive reduced eta modulo integers and CS transgression on odd-dimensional spin manifolds. APS supplies the integer-level line-index refinements; no fractional eta power is declared canonical."
+      },
+      {
+        "url": "https://arxiv.org/abs/1207.5449",
+        "use": "Section2.7 and Section3 define integral differential cup-product CS holonomy, including nonbounding manifolds and higher-degree products. Used for the integer cup polynomials, not for an unconstructed fourth-root orbifold action."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/0612212",
+        "use": "Localized orbifold fermion anomalies retain finite shifted characters and normal Lorentz data. The exact SMW kernel and H^4 condition are frozen through V96 and evaluated with the actual normal-root isotropy here."
+      },
+      {
+        "url": "https://arxiv.org/abs/1909.08775",
+        "use": "APS eta and relative determinant-line anomaly inflow: a curvature decomposition or shared filling-period check alone does not construct the full relative anomaly theory or microscopic action."
+      },
+      {
+        "url": "https://pi.math.cornell.edu/~hatcher/AT/AT.pdf",
+        "use": "Examples1B.4 and2.43 and Section3.E model BCn by infinite lens spaces and compute cyclic cohomology. Equivalently the circle Gysin sequence with Euler class n*c gives H*(BCn;Z)=Z[v]/(n*v). Only the degree-six characteristic-class restriction is used."
+      }
+    ],
+    "primitive_period_and_order": {
+      "C4_minimal_positive_quantized_multiple": 4,
+      "P_over4_exact_order_mod_quantized_curvatures": 4,
+      "P_period_group_exactly_Z": "P is an integer spin index/cohomology class on every closed allowed spin6 background and the m=0 CP3 example realizes1.",
+      "gauge_quotient_admissible": "w2(E_real+1)=c1(E) mod2=c1(D) mod2; the canonical U5 spin-c lift is explicit",
+      "ordinary_adding_integral_indices_removes_original_quarters": false,
+      "physical_C2_minimal_positive_quantized_multiple": 2,
+      "rows": [
+        {
+          "P_period": "1",
+          "R_periods": [
+            "61/4",
+            "61/4",
+            "-1/2"
+          ],
+          "R_residues_mod1": [
+            "1/4",
+            "1/4",
+            "1/2"
+          ],
+          "Z_periods": [
+            "15",
+            "15",
+            "0"
+          ],
+          "normal_M_degree": 0
+        },
+        {
+          "P_period": "2",
+          "R_periods": [
+            "25/2",
+            "25/2",
+            "-1"
+          ],
+          "R_residues_mod1": [
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          "Z_periods": [
+            "12",
+            "12",
+            "0"
+          ],
+          "normal_M_degree": 1
+        },
+        {
+          "P_period": "3",
+          "R_periods": [
+            "-53/4",
+            "-53/4",
+            "-5/2"
+          ],
+          "R_residues_mod1": [
+            "3/4",
+            "3/4",
+            "1/2"
+          ],
+          "Z_periods": [
+            "-14",
+            "-14",
+            "-1"
+          ],
+          "normal_M_degree": 2
+        },
+        {
+          "P_period": "4",
+          "R_periods": [
+            "-62",
+            "-62",
+            "-5"
+          ],
+          "R_residues_mod1": [
+            "0",
+            "0",
+            "0"
+          ],
+          "Z_periods": [
+            "-63",
+            "-63",
+            "-3"
+          ],
+          "normal_M_degree": 3
+        }
+      ],
+      "test": "spin CP3 with p1=4H^2, integral H^3=1, E=O(1)+1^4, D=O(1), L trivial, M=O(m)",
+      "this_is_the_order_of_the_full_Gammahat_global_anomaly": false,
+      "this_is_the_same_group_as_the_2D_defect_bordism_character": false,
+      "whole_profile_minimal_positive_independent_quantized_multiple": 4
+    },
+    "quantized_integer_piece_responses": {
+      "C2_integer_eta_levels": {
+        "D*M": 1,
+        "M": -1
+      },
+      "C2_positive_Z_response": "exp(2*pi*i*[xi(D*M)-xi(M)+hol(C2_cup)])",
+      "C4_integer_eta_levels": {
+        "D": -5,
+        "D*M": 17,
+        "M": -17
+      },
+      "C4_positive_Z_response": "exp(2*pi*i*[17*xi(D*M)-5*xi(D)-17*xi(M)+hol(C4_cup)])",
+      "P_integer_eta_levels": {
+        "D*M": -2,
+        "D^2*M": 1,
+        "M": 1
+      },
+      "P_positive_response": "exp(2*pi*i*[xi(D^2*M)-2*xi(D*M)+xi(M)])",
+      "alternative_P_cup_response": "holonomy of d_hat cup d_hat cup(d_hat+u_hat); it has the same P curvature. No uncomputed flat comparison is used to identify it with the eta response.",
+      "combined_original_anomaly_character_proved_cancelled": false,
+      "cup_definition": "An integral degree-six Chern polynomial C has differential refinement Chat; exp(2*pi*i*<Chat,[Y5]>) is defined also on nonbounding manifolds.",
+      "eta_definition": "xi(Y,V)=(eta+h)/2. Integer sums of xi define quantized spin eta-CS; APS gives curvature [Ahat ch(V)]6 and integer filling changes.",
+      "five_dimensional_backgrounds": "closed ordinary spin Y5, bundles E (or A,B), L and M with connection, and D=det(E)*L^2",
+      "full_Gammahat_descent_or_local_boundary_state_gluing_constructed": false,
+      "gauge_or_normal_connections_integrated_over": false,
+      "integer_eta_factors_are_new_physical_Weyl_particles": false,
+      "negative_Z_counterresponses": "Use their complex conjugates to subtract the integer pieces; the remaining curvature profile is(P/4,P/4,-P/2).",
+      "negative_combined_curvature_response_on_common_product_category_constructed": true,
+      "quantized_integer_piece_responses_constructed": true,
+      "same_curvature_fixes_all_flat_or_global_anomalies": false
+    },
+    "quotient_background_category": {
+      "all_local_gauge_backgrounds_or_full_Gammahat_exhausted": false,
+      "common_reduction": "U2_A x U3_B x U1_L, with E0=A+B and E1=A+B*",
+      "common_roots": {
+        "c2_E0": "A2+B2+a*b",
+        "c2_E1": "A2+B2-a*b",
+        "d": "a+b+2*ell",
+        "ell0": "ell",
+        "ell1": "ell+b",
+        "t0": "a+b",
+        "t1": "a-b"
+      },
+      "determinant_relation": "D=det(E) tensor L^2, hence d=c1(D)=t+2ell and f=d/2",
+      "explicit_map": "(g,z)->j(g)*[(1,z)], where j:U5->Spin^c11 has vector projection g_real+1 and determinant det(g)",
+      "local_L_character_is_a_full_Spin11_singlet_with_odd_covering_charge": false,
+      "local_gauge_subgroup": "preimage of U5 in Spin^c11; the canonical U5 lift and a central line L parameterize it by U5 x U1_L",
+      "new_physical_representations_added": false,
+      "reflection_preserves_determinant_relation": true,
+      "tangent_scope": "ordinary spin, independent of the Spin^c11 GAUGE quotient and of the genuine normal root M",
+      "why_L_is_genuine": "Relative to the canonical spin-c structure of E_real+1, any other lift is twisted by an honest line L; its square changes the determinant. Equivalently the displayed subgroup homomorphism is injective and onto the preimage."
+    },
+    "schema": "v97_mixed_gauge_index_and_relative_fourth_root_audit_v1",
+    "status": "EXACT_INTEGER_INDEX_RESPONSES_AND_COMMON_ORDER4_REMAINDER__ACTUAL_NORMAL_ISOTROPY_OBSTRUCTS_UNCOMPENSATED_CARRIER__RELATIVE_GLUE_OPEN"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F98_GAMMAHAT_TRANSPORT_LIFT_AND_ORIGINAL_SQUARE_SECTION",
+    "not_a_valid_shortcut": "Do not infer massless particle counts from cover winding, identify the conditional charge-two kinetic model with the new virtual carrier, omit normal-root isotropy, erase a flat anomaly using curvature matching, or drop the original-field square condition.",
+    "parallel": "Solve or rigorously exclude the surviving original-Jacobian four-equation system in z,H,K over C(X), with z nonzero and a square in C(X). Preserve the original coefficient member and charge-normalized height; higher-degree and denominator-bearing sections require separate arguments.",
+    "primary": "Construct or exclude a full Gammahat-compatible order-eight compensating lift for the actual-normal-root carrier M*(D-1)^2, retaining its R/flavor curvatures, SMW reality and positive physical field content. If a lift exists, build the order-four relative determinant/gluing for P=d^2*(d+u), including the required normal/SU2 flat refinement and the inherited defect response. A common filling-period constraint is not a substitute for this action."
+  },
+  "normal_SU2_refinement": {
+    "changed_representation": {
+      "C4_exponents_mean": "normal zeta^k times frozen R twist zeta^(-r); not an intrinsic-wall projection prescription",
+      "C4_normal_R_weight_exponents_mod8": [
+        6,
+        4
+      ],
+      "Weyl_multiplets": 1,
+      "all_eight_kernel_exponents": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "associated_fermion_bundle": "S_plus(T4) tensor M^(-3) tensor R_fundamental; gauge/flavor singlet",
+      "complete_supermultiplet_or_global_wall_placement_constructed": false,
+      "complex_Weyl_components": 2,
+      "known_center_character_bits": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "new_R_weights": [
+        -1,
+        1
+      ],
+      "new_complete_SU2_R_highest_weight": 1,
+      "normal_root_weight_for_both_components": -3,
+      "old_V96_R_Cartan_weights": [
+        -3,
+        -3
+      ],
+      "preserves_V96_qN_minus_r_over2_zero_for_every_component": false,
+      "representation_of_product_cover_and_known_central_quotient": true,
+      "same_V96_R_representation_claimed": false,
+      "unbroken_SU2_R_at_the_actual_orbifold_wall_established": false
+    },
+    "core_sha256": "8660f7ff7b8deaff7848dd71ee571378a96e4b69ba5cb255746b95632c20ce47",
+    "flat_refinement": {
+      "explicit_flat_inverse_response": "nu_R itself, since nu_R^2=1",
+      "full_Gammahat_or_SU2_twisted_tangential_descent_proved": false,
+      "multiplying_by_nu_R_restores_reference_on_all_stated_product_backgrounds": true,
+      "natural_Spin_c_half_period_from_V96_removed": false,
+      "proof": "the curvature-zero ratio is a character of the computed product bordism Z2; evaluation on its unit-instanton periodic-circle generator uniquely determines it",
+      "reference": "two ordinary-spin line Weyls M^(-3) with R acting trivially, plus K10; a comparison countertheory, not a physical Gammahat representation",
+      "relative_anomaly_character": "nu_R(Y,R)=(-1)^(ind2 D5_Rfund)",
+      "relative_curvature_new_minus_reference": "0",
+      "relative_phase_on_product_generator": "-1",
+      "restores_reference_means_trivializes_reference_anomaly": false,
+      "same_action_5D_inflow_realizing_nu_R_constructed": false,
+      "shared_diagonal_cancellation_proves_independent_endpoint_gluing": false,
+      "two_C4_sectors_cancel_on_shared_diagonal_R_background": true
+    },
+    "forced_Witten_class_in_this_ansatz": {
+      "SU2_highest_weights_required_odd": true,
+      "assumptions": "complete SU2_R multiplets, other internal flavor centers trivial, odd normal-root weight k for each multiplet, and no gravitational CS term so sum(d_R*k)=-6",
+      "changing_only_complete_SU2_multiplets_within_ansatz_removes_it": false,
+      "displayed_bosonic_CS_phase": "+1",
+      "forced_Witten_parity": 1,
+      "full_parent_bare_R_torsion_already_computed": false,
+      "full_parent_total_Witten_anomaly_proved_nonzero": false,
+      "instanton_index_formula": "A_R=d_R*(d_R^2-1)/6",
+      "local_polynomial_cancellation_alone_removes_new_Witten_class": false,
+      "new_fermion_phase": "-1",
+      "parity_proof": "write d_R=2n; A_R-n=4*n*(n-1)*(n+1)/3 is a multiple of4 because three consecutive integers have product divisible by3. Thus A_R=n mod2. Since k is odd, sum A_R=sum(d_R*k)/2=-3=1 mod2.",
+      "required_trace_normal_weight": -6,
+      "sample_rows": [
+        {
+          "Witten_parity": 1,
+          "dimension": 2,
+          "highest_weight": 1,
+          "instanton_index": 1
+        },
+        {
+          "Witten_parity": 0,
+          "dimension": 4,
+          "highest_weight": 3,
+          "instanton_index": 10
+        },
+        {
+          "Witten_parity": 1,
+          "dimension": 6,
+          "highest_weight": 5,
+          "instanton_index": 35
+        },
+        {
+          "Witten_parity": 0,
+          "dimension": 8,
+          "highest_weight": 7,
+          "instanton_index": 84
+        },
+        {
+          "Witten_parity": 1,
+          "dimension": 10,
+          "highest_weight": 9,
+          "instanton_index": 165
+        },
+        {
+          "Witten_parity": 0,
+          "dimension": 12,
+          "highest_weight": 11,
+          "instanton_index": 286
+        },
+        {
+          "Witten_parity": 1,
+          "dimension": 14,
+          "highest_weight": 13,
+          "instanton_index": 455
+        },
+        {
+          "Witten_parity": 0,
+          "dimension": 16,
+          "highest_weight": 15,
+          "instanton_index": 680
+        }
+      ],
+      "scope": "constraint on the added SU2-completed repair sector, not a no-go for the actual parent or a wall preserving only the R Cartan",
+      "symbolic_index_minus_n": "4*n*(n - 1)*(n + 1)/3",
+      "test_background": "S4 unit SU2_R instanton times periodic S1, M and E trivial with trivial connections"
+    },
+    "input_core_hashes": {
+      "v96_master": "d8328579f5162e59a855336aa66bff8ca180f1d7062bb066ee241bbed99503b2",
+      "v96_route": "2c1575f64d2aa3414e6b504d72c20a9a76160825aac7389259ac26402ab8f215"
+    },
+    "nonabelian_curvature_repair": {
+      "R_bundle_need_not_split_into_Cartan_lines": true,
+      "action_on_closed_Y5": "exponentiated holonomy of the degree-six differential character, defined also on nonbounding manifolds",
+      "all_full_theory_anomalies_cancelled": false,
+      "compensating_integer_mixed_R_CS": "-3*u*r2",
+      "definitions": "u=c1(M), e2=c2(E), r2=c2(R), p=p1(T); Cartan restriction r2=-y^2",
+      "differential_character": "-c1hat(M) cup c2hat(E)+10*c1hat(M)^3-3*c1hat(M) cup c2hat(R)",
+      "fermion_I6": "p*u/4 + 3*r2*u - 9*u**3",
+      "integer_CS_I6": "-e2*u - 3*r2*u + 10*u**3",
+      "integer_coefficients": [
+        -1,
+        10,
+        -3
+      ],
+      "new_fermion_R_term": "3*r2*u",
+      "new_sector_total_curvature_independent_of_R": true,
+      "original_bulk_R_flavor_anomalies_have_been_computed_or_cancelled": false,
+      "reference_CS_I6": "-e2*u + 10*u**3",
+      "reference_R_trivial_fermion_I6": "p*u/4 - 9*u**3",
+      "residual": "0",
+      "target_I6": "-e2*u + p*u/4 + u**3"
+    },
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/abs/2011.05768",
+        "use": "Sections3-4 define integral differential-character holonomy and distinguish it from a full equivariant lift; used for the new SU2-invariant degree-six character."
+      },
+      {
+        "url": "https://arxiv.org/abs/1207.5449",
+        "use": "Higher cup-product Chern-Simons actions supply the global construction for integral mixed Chern classes; not a same-action microscopic realization."
+      },
+      {
+        "url": "https://arxiv.org/abs/1810.00844",
+        "use": "Sections2.2-2.3 give the periodic-circle instanton test and SU2 representation parity formula; section2.7 distinguishes ordinary spin from spin-SU2 anomalies."
+      },
+      {
+        "url": "https://arxiv.org/abs/1808.00009",
+        "use": "Section2.2.3 and the SU(n) computation in Section3.4 supply ordinary-spin AHSS d2 as dual Sq2 and Sq2(c2)=c1*c2+c3. The product-group calculation is performed here."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/9405012",
+        "use": "Exponentiated eta invariants, determinant lines and gluing; a curvature-zero ratio is treated as a restricted flat anomaly character, not as a full parent cancellation."
+      }
+    ],
+    "restricted_product_bordism": {
+      "E3_4_1_dimension": 1,
+      "Omega5": "Z2",
+      "Sq2_on_degree2": [
+        "u**2",
+        "t**2"
+      ],
+      "Sq2_on_degree4": [
+        "0",
+        "t**2*u + t*u**2",
+        "0",
+        "e2*t + e3",
+        "0"
+      ],
+      "background_category": "ordinary Spin tangent times U1_M times SU2_R times U5_E, with genuine independent bundles",
+      "d2_incoming_H6_Z_to_H4_Z2": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "d2_outgoing_H4_Z2_to_H2_Z2": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "degree2_basis": [
+        "u",
+        "t"
+      ],
+      "degree4_basis": [
+        "u**2",
+        "t*u",
+        "t**2",
+        "e2",
+        "r2"
+      ],
+      "degree6_basis": [
+        "u**3",
+        "t*u**2",
+        "t**2*u",
+        "t**3",
+        "e2*u",
+        "e2*t",
+        "e3",
+        "r2*u",
+        "r2*t"
+      ],
+      "extension_problem": "one surviving associated-graded group, hence no extension ambiguity",
+      "generator": "S4 with a unit SU2_R instanton times the periodic spin circle; M and E trivial",
+      "generator_mod2_Dirac_index": 1,
+      "higher_differentials": "Only total-degree-five E2 entry is H4(-;Z2). Outgoing d3 lands in H1(-;Omega3)=0; d4 maps finite Z2 to the torsion-free E4_0_4=Z and is zero. Higher outgoing and all higher incoming entries are outside the first quadrant.",
+      "incoming_rank": 2,
+      "order": 2,
+      "outgoing_rank": 2,
+      "surviving_dual_class": "c2(R)",
+      "this_is_the_full_Gammahat_bordism_group": false
+    },
+    "schema": "v97_normal_SU2_refinement_and_flat_torsion_v1",
+    "status": "NONABELIAN_RESTRICTED_CURVATURE_REPAIR_WITH_EXPLICIT_REQUIRED_Z2_REFINEMENT__FULL_PARENT_OPEN",
+    "terminal_decision": {
+      "closed_gates": [],
+      "new_complete_SU2_fermion_representation_on_product_cover": true,
+      "new_sector_normal_and_R_curvature_match_on_product_category": true,
+      "required_flat_Z2_refinement_computed": true,
+      "same_action_parent_accepted": false
+    }
+  },
+  "original_cubic_section": {
+    "b4_zero_subbranch_exclusion": {
+      "branch_and_field_scope": "Only the leading-minus-24 cubic x_section branch is excluded here over algebraic_closure(C(X)). V96's separate leading-plus-12 exclusion is over C(X), not its algebraic closure.",
+      "entire_b4_zero_branch_excluded_over_algebraic_closure_C_X": true,
+      "h_nonzero": {
+        "clearing_h_powers": [
+          6,
+          8,
+          10
+        ],
+        "coefficient_values_alpha_beta_gamma_delta_epsilon": [
+          2,
+          3,
+          3,
+          2,
+          5
+        ],
+        "equations_T7_through_T0": [
+          "4*alpha**2 - beta**2 - 16*q",
+          "alpha**3 - 12*alpha*q - 16*epsilon - 16*gamma + 16*h**2 - 16*p",
+          "32*K*h - 3*alpha**2*q - 20*alpha*epsilon - 4*alpha*gamma - 12*alpha*p - 2*beta*delta + 8*q**2",
+          "16*K**2 + 32*L*h - 4*alpha**2*epsilon - 3*alpha**2*p + 3*alpha*q**2 - beta**2*epsilon + 4*epsilon*q + 4*gamma*q + 16*p*q",
+          "32*K*L + 32*M*h + 4*alpha*epsilon*q + 6*alpha*p*q - delta**2 - 16*epsilon*gamma + 4*epsilon*p + 4*gamma*p + 8*p**2 - q**3",
+          "32*K*M + 16*L**2 - 4*alpha*epsilon*gamma + 4*alpha*epsilon*p + 3*alpha*p**2 - 2*beta*delta*epsilon - 3*p*q**2",
+          "32*L*M + 4*epsilon*gamma*q - 3*p**2*q",
+          "16*M**2 - delta**2*epsilon + 4*epsilon*gamma*p - p**3"
+        ],
+        "first_two_exact_QQ_gcd_at_X_one": "1",
+        "first_two_resultant_mod_prime": 37,
+        "generic_degrees_z": [
+          4,
+          6,
+          7
+        ],
+        "generic_resultant_nonzero": true,
+        "generic_resultant_proof": [
+          "Each numerator is a polynomial in z with coefficients in Q[alpha,beta,gamma,delta,epsilon], hence in Q[X] after inserting the frozen coefficient member; its denominators are nonzero rational constants only.",
+          "The first two generic z-degrees are exactly4 and6, retained at X=1. Their Sylvester determinant therefore specializes to the determinant for these specialized polynomials, up to nonzero rational normalizations.",
+          "The specialized primitive integer polynomials retain degrees4 and6 modulo101 and their exact resultant is37 modulo101. Their characteristic-zero resultant is consequently nonzero.",
+          "The generic resultant cannot be the zero polynomial in X. The two necessary equations have no common zero over an algebraic closure of C(X), so in particular none over C(X). This does not specialize a point, assume bounded parameter denominators, or infer a Mordell-Weil rank from one fiber."
+        ],
+        "h_zero_equation": "5*alpha**4/4 - 5*alpha**2*beta**2/8 - 8*alpha*epsilon + 8*alpha*gamma + beta**4/32 - 2*beta*delta",
+        "modular_degrees_z": [
+          4,
+          6,
+          7
+        ],
+        "modular_polynomials_coefficients_descending": [
+          [
+            10,
+            54,
+            42,
+            52,
+            87
+          ],
+          [
+            75,
+            22,
+            46,
+            39,
+            6,
+            5,
+            41
+          ],
+          [
+            98,
+            15,
+            100,
+            5,
+            79,
+            74,
+            59,
+            85
+          ]
+        ],
+        "numerators_in_z_h_squared": [
+          "3125*alpha**16/67108864 - 3125*alpha**14*beta**2/33554432 - 625*alpha**13*epsilon/524288 + 625*alpha**13*gamma/524288 + 625*alpha**12*beta**4/8388608 - 625*alpha**12*beta*delta/2097152 + 1875*alpha**11*beta**2*epsilon/1048576 - 1875*alpha**11*beta**2*gamma/1048576 - 8125*alpha**10*beta**6/268435456 + 1875*alpha**10*beta**3*delta/4194304 + 375*alpha**10*epsilon**2/32768 - 375*alpha**10*epsilon*gamma/16384 + 375*alpha**10*gamma**2/32768 - 4125*alpha**9*beta**4*epsilon/4194304 + 4125*alpha**9*beta**4*gamma/4194304 + 375*alpha**9*beta*delta*epsilon/65536 - 375*alpha**9*beta*delta*gamma/65536 + 14125*alpha**8*beta**8/2147483648 - 4125*alpha**8*beta**5*delta/16777216 + 375*alpha**8*beta**2*delta**2/524288 - 375*alpha**8*beta**2*epsilon**2/32768 + 375*alpha**8*beta**2*epsilon*gamma/16384 - 375*alpha**8*beta**2*gamma**2/32768 + 125*alpha**7*beta**6*epsilon/524288 - 125*alpha**7*beta**6*gamma/524288 - 375*alpha**7*beta**3*delta*epsilon/65536 + 375*alpha**7*beta**3*delta*gamma/65536 - 25*alpha**7*epsilon**3/512 + 75*alpha**7*epsilon**2*gamma/512 - 75*alpha**7*epsilon*gamma**2/512 + 25*alpha**7*gamma**3/512 - 1625*alpha**6*beta**10/2147483648 + 125*alpha**6*beta**7*delta/2097152 - 375*alpha**6*beta**4*delta**2/524288 + 225*alpha**6*beta**4*epsilon**2/65536 - 225*alpha**6*beta**4*epsilon*gamma/32768 + 225*alpha**6*beta**4*gamma**2/65536 - 75*alpha**6*beta*delta*epsilon**2/2048 + 75*alpha**6*beta*delta*epsilon*gamma/1024 - 75*alpha**6*beta*delta*gamma**2/2048 - 825*alpha**5*beta**8*epsilon/33554432 + 825*alpha**5*beta**8*gamma/33554432 + 225*alpha**5*beta**5*delta*epsilon/131072 - 225*alpha**5*beta**5*delta*gamma/131072 - 75*alpha**5*beta**2*delta**2*epsilon/8192 + 75*alpha**5*beta**2*delta**2*gamma/8192 + 25*alpha**5*beta**2*epsilon**3/1024 - 75*alpha**5*beta**2*epsilon**2*gamma/1024 + 75*alpha**5*beta**2*epsilon*gamma**2/1024 - 25*alpha**5*beta**2*gamma**3/1024 + 25*alpha**4*beta**12/536870912 - 825*alpha**4*beta**9*delta/134217728 + 225*alpha**4*beta**6*delta**2/1048576 - 75*alpha**4*beta**6*epsilon**2/262144 + 75*alpha**4*beta**6*epsilon*gamma/131072 - 75*alpha**4*beta**6*gamma**2/262144 - 25*alpha**4*beta**3*delta**3/32768 + 75*alpha**4*beta**3*delta*epsilon**2/4096 - 75*alpha**4*beta**3*delta*epsilon*gamma/2048 + 75*alpha**4*beta**3*delta*gamma**2/4096 + 5*alpha**4*epsilon**4/64 - 5*alpha**4*epsilon**3*gamma/16 + 15*alpha**4*epsilon**2*gamma**2/32 - 5*alpha**4*epsilon*gamma**3/16 + 5*alpha**4*gamma**4/64 + 75*alpha**3*beta**10*epsilon/67108864 - 75*alpha**3*beta**10*gamma/67108864 - 75*alpha**3*beta**7*delta*epsilon/524288 + 75*alpha**3*beta**7*delta*gamma/524288 + 75*alpha**3*beta**4*delta**2*epsilon/16384 - 75*alpha**3*beta**4*delta**2*gamma/16384 - 5*alpha**3*beta**4*epsilon**3/4096 + 15*alpha**3*beta**4*epsilon**2*gamma/4096 - 15*alpha**3*beta**4*epsilon*gamma**2/4096 + 5*alpha**3*beta**4*gamma**3/4096 + 5*alpha**3*beta*delta*epsilon**3/64 - 15*alpha**3*beta*delta*epsilon**2*gamma/64 + 15*alpha**3*beta*delta*epsilon*gamma**2/64 - 5*alpha**3*beta*delta*gamma**3/64 - 25*alpha**2*beta**14/17179869184 + 75*alpha**2*beta**11*delta/268435456 - 75*alpha**2*beta**8*delta**2/4194304 + 15*alpha**2*beta**8*epsilon**2/2097152 - 15*alpha**2*beta**8*epsilon*gamma/1048576 + 15*alpha**2*beta**8*gamma**2/2097152 + 25*alpha**2*beta**5*delta**3/65536 - 15*alpha**2*beta**5*delta*epsilon**2/16384 + 15*alpha**2*beta**5*delta*epsilon*gamma/8192 - 15*alpha**2*beta**5*delta*gamma**2/16384 + 15*alpha**2*beta**2*delta**2*epsilon**2/512 - 15*alpha**2*beta**2*delta**2*epsilon*gamma/256 + 15*alpha**2*beta**2*delta**2*gamma**2/512 - 5*alpha*beta**12*epsilon/268435456 + 5*alpha*beta**12*gamma/268435456 + 15*alpha*beta**9*delta*epsilon/4194304 - 15*alpha*beta**9*delta*gamma/4194304 - 15*alpha*beta**6*delta**2*epsilon/65536 + 15*alpha*beta**6*delta**2*gamma/65536 + 5*alpha*beta**3*delta**3*epsilon/1024 - 5*alpha*beta**3*delta**3*gamma/1024 + 5*beta**16/274877906944 - 5*beta**13*delta/1073741824 + 15*beta**10*delta**2/33554432 - 5*beta**7*delta**3/262144 + 5*beta**4*delta**4/16384 + z**4*(189*alpha**4/1024 - 21*alpha**2*beta**2/128 + alpha*epsilon/2 + alpha*gamma/2 + 3*beta**4/256 - beta*delta/2) + z**3*(-465*alpha**7/4096 + 495*alpha**5*beta**2/4096 + 11*alpha**4*epsilon/128 - 127*alpha**4*gamma/128 - 531*alpha**3*beta**4/16384 + 187*alpha**3*beta*delta/512 - 51*alpha**2*beta**2*epsilon/512 + 249*alpha**2*beta**2*gamma/512 + 63*alpha*beta**6/32768 - 3*alpha*beta**3*delta/32 + 3*alpha*delta**2/8 + alpha*epsilon**2/2 + alpha*epsilon*gamma - 3*alpha*gamma**2/2 + beta**4*epsilon/128 - 3*beta**4*gamma/128 - 5*beta*delta*epsilon/4 + 3*beta*delta*gamma/4) + z**2*(2923*alpha**10/131072 - 3845*alpha**8*beta**2/131072 - 235*alpha**7*epsilon/2048 + 659*alpha**7*gamma/2048 + 3419*alpha**6*beta**4/262144 - 659*alpha**6*beta*delta/8192 + 201*alpha**5*beta**2*epsilon/2048 - 267*alpha**5*beta**2*gamma/1024 - 2339*alpha**4*beta**6/1048576 + 909*alpha**4*beta**3*delta/16384 - 5*alpha**4*delta**2/128 + 23*alpha**4*epsilon**2/128 - 79*alpha**4*epsilon*gamma/64 + 167*alpha**4*gamma**2/128 - 337*alpha**3*beta**4*epsilon/16384 + 897*alpha**3*beta**4*gamma/16384 + 59*alpha**3*beta*delta*epsilon/256 - 147*alpha**3*beta*delta*gamma/256 + 1049*alpha**2*beta**8/8388608 - 537*alpha**2*beta**5*delta/65536 + 187*alpha**2*beta**2*delta**2/2048 - 13*alpha**2*beta**2*epsilon**2/128 + 15*alpha**2*beta**2*epsilon*gamma/32 - 55*alpha**2*beta**2*gamma**2/128 + 13*alpha*beta**6*epsilon/16384 - 41*alpha*beta**6*gamma/16384 - 19*alpha*beta**3*delta*epsilon/512 + 57*alpha*beta**3*delta*gamma/512 + alpha*delta**2*epsilon/4 - alpha*delta**2*gamma/4 - alpha*epsilon**3 + 3*alpha*epsilon**2*gamma - 3*alpha*epsilon*gamma**2 + alpha*gamma**3 - 5*beta**10/4194304 + 11*beta**7*delta/65536 - 7*beta**4*delta**2/1024 + 5*beta**4*epsilon**2/1024 - 7*beta**4*epsilon*gamma/512 + 13*beta**4*gamma**2/1024 + beta*delta**3/16 - beta*delta*epsilon**2/4 + beta*delta*epsilon*gamma/2 - beta*delta*gamma**2/4) + z*(-1725*alpha**13/1048576 + 1425*alpha**11*beta**2/524288 + 765*alpha**10*epsilon/32768 - 1065*alpha**10*gamma/32768 - 7095*alpha**9*beta**4/4194304 + 1065*alpha**9*beta*delta/131072 - 3555*alpha**8*beta**2*epsilon/131072 + 4905*alpha**8*beta**2*gamma/131072 + 4095*alpha**7*beta**6/8388608 - 585*alpha**7*beta**3*delta/65536 - 99*alpha**7*epsilon**2/1024 + 159*alpha**7*epsilon*gamma/512 - 219*alpha**7*gamma**2/1024 + 21*alpha**6*beta**4*epsilon/2048 - 927*alpha**6*beta**4*gamma/65536 - 159*alpha**6*beta*delta*epsilon/2048 + 219*alpha**6*beta*delta*gamma/2048 - 4389*alpha**5*beta**8/67108864 + 1629*alpha**5*beta**5*delta/524288 - 219*alpha**5*beta**2*delta**2/16384 + 135*alpha**5*beta**2*epsilon**2/2048 - 105*alpha**5*beta**2*epsilon*gamma/512 + 285*alpha**5*beta**2*gamma**2/2048 - 45*alpha**4*beta**6*epsilon/32768 + 255*alpha**4*beta**6*gamma/131072 + 375*alpha**4*beta**3*delta*epsilon/8192 - 525*alpha**4*beta**3*delta*gamma/8192 + 3*alpha**4*epsilon**3/32 - 21*alpha**4*epsilon**2*gamma/32 + 33*alpha**4*epsilon*gamma**2/32 - 15*alpha**4*gamma**3/32 + 255*alpha**3*beta**10/67108864 - 375*alpha**3*beta**7*delta/1048576 + 15*alpha**3*beta**4*delta**2/2048 - 39*alpha**3*beta**4*epsilon**2/4096 + 15*alpha**3*beta**4*epsilon*gamma/512 - 81*alpha**3*beta**4*gamma**2/4096 + 21*alpha**3*beta*delta*epsilon**2/128 - 33*alpha**3*beta*delta*epsilon*gamma/64 + 45*alpha**3*beta*delta*gamma**2/128 + 117*alpha**2*beta**8*epsilon/2097152 - 189*alpha**2*beta**8*gamma/2097152 - 75*alpha**2*beta**5*delta*epsilon/16384 + 117*alpha**2*beta**5*delta*gamma/16384 + 33*alpha**2*beta**2*delta**2*epsilon/512 - 45*alpha**2*beta**2*delta**2*gamma/512 - 3*alpha**2*beta**2*epsilon**3/128 + 15*alpha**2*beta**2*epsilon**2*gamma/128 - 21*alpha**2*beta**2*epsilon*gamma**2/128 + 9*alpha**2*beta**2*gamma**3/128 - 21*alpha*beta**12/268435456 + 99*alpha*beta**9*delta/8388608 - 9*alpha*beta**6*delta**2/16384 + 3*alpha*beta**6*epsilon**2/16384 - 3*alpha*beta**6*epsilon*gamma/4096 + 9*alpha*beta**6*gamma**2/16384 + 15*alpha*beta**3*delta**3/2048 - 3*alpha*beta**3*delta*epsilon**2/256 + 3*alpha*beta**3*delta*epsilon*gamma/64 - 9*alpha*beta**3*delta*gamma**2/256 - 3*beta**10*epsilon/8388608 + 9*beta**10*gamma/8388608 + 3*beta**7*delta*epsilon/65536 - 9*beta**7*delta*gamma/65536 - 3*beta**4*delta**2*epsilon/2048 + 9*beta**4*delta**2*gamma/2048)",
+          "3125*alpha**20/4294967296 - 15625*alpha**18*beta**2/8589934592 - 3125*alpha**17*epsilon/134217728 + 3125*alpha**17*gamma/134217728 + 65625*alpha**16*beta**4/34359738368 - 3125*alpha**16*beta*delta/536870912 + 3125*alpha**15*beta**2*epsilon/67108864 - 3125*alpha**15*beta**2*gamma/67108864 - 9375*alpha**14*beta**6/8589934592 + 3125*alpha**14*beta**3*delta/268435456 + 625*alpha**14*epsilon**2/2097152 - 625*alpha**14*epsilon*gamma/1048576 + 625*alpha**14*gamma**2/2097152 - 625*alpha**13*beta**4*epsilon/16777216 + 625*alpha**13*beta**4*gamma/16777216 + 625*alpha**13*beta*delta*epsilon/4194304 - 625*alpha**13*beta*delta*gamma/4194304 + 50625*alpha**12*beta**8/137438953472 - 625*alpha**12*beta**5*delta/67108864 + 625*alpha**12*beta**2*delta**2/33554432 - 1875*alpha**12*beta**2*epsilon**2/4194304 + 1875*alpha**12*beta**2*epsilon*gamma/2097152 - 1875*alpha**12*beta**2*gamma**2/4194304 + 8125*alpha**11*beta**6*epsilon/536870912 - 8125*alpha**11*beta**6*gamma/536870912 - 1875*alpha**11*beta**3*delta*epsilon/8388608 + 1875*alpha**11*beta**3*delta*gamma/8388608 - 125*alpha**11*epsilon**3/65536 + 375*alpha**11*epsilon**2*gamma/65536 - 375*alpha**11*epsilon*gamma**2/65536 + 125*alpha**11*gamma**3/65536 - 20625*alpha**10*beta**10/274877906944 + 8125*alpha**10*beta**7*delta/2147483648 - 1875*alpha**10*beta**4*delta**2/67108864 + 4125*alpha**10*beta**4*epsilon**2/16777216 - 4125*alpha**10*beta**4*epsilon*gamma/8388608 + 4125*alpha**10*beta**4*gamma**2/16777216 - 375*alpha**10*beta*delta*epsilon**2/262144 + 375*alpha**10*beta*delta*epsilon*gamma/131072 - 375*alpha**10*beta*delta*gamma**2/262144 - 14125*alpha**9*beta**8*epsilon/4294967296 + 14125*alpha**9*beta**8*gamma/4294967296 + 4125*alpha**9*beta**5*delta*epsilon/33554432 - 4125*alpha**9*beta**5*delta*gamma/33554432 - 375*alpha**9*beta**2*delta**2*epsilon/1048576 + 375*alpha**9*beta**2*delta**2*gamma/1048576 + 125*alpha**9*beta**2*epsilon**3/65536 - 375*alpha**9*beta**2*epsilon**2*gamma/65536 + 375*alpha**9*beta**2*epsilon*gamma**2/65536 - 125*alpha**9*beta**2*gamma**3/65536 + 10125*alpha**8*beta**12/1099511627776 - 14125*alpha**8*beta**9*delta/17179869184 + 4125*alpha**8*beta**6*delta**2/268435456 - 125*alpha**8*beta**6*epsilon**2/2097152 + 125*alpha**8*beta**6*epsilon*gamma/1048576 - 125*alpha**8*beta**6*gamma**2/2097152 - 125*alpha**8*beta**3*delta**3/4194304 + 375*alpha**8*beta**3*delta*epsilon**2/262144 - 375*alpha**8*beta**3*delta*epsilon*gamma/131072 + 375*alpha**8*beta**3*delta*gamma**2/262144 + 25*alpha**8*epsilon**4/4096 - 25*alpha**8*epsilon**3*gamma/1024 + 75*alpha**8*epsilon**2*gamma**2/2048 - 25*alpha**8*epsilon*gamma**3/1024 + 25*alpha**8*gamma**4/4096 + 1625*alpha**7*beta**10*epsilon/4294967296 - 1625*alpha**7*beta**10*gamma/4294967296 - 125*alpha**7*beta**7*delta*epsilon/4194304 + 125*alpha**7*beta**7*delta*gamma/4194304 + 375*alpha**7*beta**4*delta**2*epsilon/1048576 - 375*alpha**7*beta**4*delta**2*gamma/1048576 - 75*alpha**7*beta**4*epsilon**3/131072 + 225*alpha**7*beta**4*epsilon**2*gamma/131072 - 225*alpha**7*beta**4*epsilon*gamma**2/131072 + 75*alpha**7*beta**4*gamma**3/131072 + 25*alpha**7*beta*delta*epsilon**3/4096 - 75*alpha**7*beta*delta*epsilon**2*gamma/4096 + 75*alpha**7*beta*delta*epsilon*gamma**2/4096 - 25*alpha**7*beta*delta*gamma**3/4096 - 375*alpha**6*beta**14/549755813888 + 1625*alpha**6*beta**11*delta/17179869184 - 125*alpha**6*beta**8*delta**2/33554432 + 825*alpha**6*beta**8*epsilon**2/134217728 - 825*alpha**6*beta**8*epsilon*gamma/67108864 + 825*alpha**6*beta**8*gamma**2/134217728 + 125*alpha**6*beta**5*delta**3/4194304 - 225*alpha**6*beta**5*delta*epsilon**2/524288 + 225*alpha**6*beta**5*delta*epsilon*gamma/262144 - 225*alpha**6*beta**5*delta*gamma**2/524288 + 75*alpha**6*beta**2*delta**2*epsilon**2/32768 - 75*alpha**6*beta**2*delta**2*epsilon*gamma/16384 + 75*alpha**6*beta**2*delta**2*gamma**2/32768 - 25*alpha**6*beta**2*epsilon**4/8192 + 25*alpha**6*beta**2*epsilon**3*gamma/2048 - 75*alpha**6*beta**2*epsilon**2*gamma**2/4096 + 25*alpha**6*beta**2*epsilon*gamma**3/2048 - 25*alpha**6*beta**2*gamma**4/8192 - 25*alpha**5*beta**12*epsilon/1073741824 + 25*alpha**5*beta**12*gamma/1073741824 + 825*alpha**5*beta**9*delta*epsilon/268435456 - 825*alpha**5*beta**9*delta*gamma/268435456 - 225*alpha**5*beta**6*delta**2*epsilon/2097152 + 225*alpha**5*beta**6*delta**2*gamma/2097152 + 25*alpha**5*beta**6*epsilon**3/524288 - 75*alpha**5*beta**6*epsilon**2*gamma/524288 + 75*alpha**5*beta**6*epsilon*gamma**2/524288 - 25*alpha**5*beta**6*gamma**3/524288 + 25*alpha**5*beta**3*delta**3*epsilon/65536 - 25*alpha**5*beta**3*delta**3*gamma/65536 - 25*alpha**5*beta**3*delta*epsilon**3/8192 + 75*alpha**5*beta**3*delta*epsilon**2*gamma/8192 - 75*alpha**5*beta**3*delta*epsilon*gamma**2/8192 + 25*alpha**5*beta**3*delta*gamma**3/8192 - alpha**5*epsilon**5/128 + 5*alpha**5*epsilon**4*gamma/128 - 5*alpha**5*epsilon**3*gamma**2/64 + 5*alpha**5*epsilon**2*gamma**3/64 - 5*alpha**5*epsilon*gamma**4/128 + alpha**5*gamma**5/128 + 525*alpha**4*beta**16/17592186044416 - 25*alpha**4*beta**13*delta/4294967296 + 825*alpha**4*beta**10*delta**2/2147483648 - 75*alpha**4*beta**10*epsilon**2/268435456 + 75*alpha**4*beta**10*epsilon*gamma/134217728 - 75*alpha**4*beta**10*gamma**2/268435456 - 75*alpha**4*beta**7*delta**3/8388608 + 75*alpha**4*beta**7*delta*epsilon**2/2097152 - 75*alpha**4*beta**7*delta*epsilon*gamma/1048576 + 75*alpha**4*beta**7*delta*gamma**2/2097152 + 25*alpha**4*beta**4*delta**4/1048576 - 75*alpha**4*beta**4*delta**2*epsilon**2/65536 + 75*alpha**4*beta**4*delta**2*epsilon*gamma/32768 - 75*alpha**4*beta**4*delta**2*gamma**2/65536 + 5*alpha**4*beta**4*epsilon**4/32768 - 5*alpha**4*beta**4*epsilon**3*gamma/8192 + 15*alpha**4*beta**4*epsilon**2*gamma**2/16384 - 5*alpha**4*beta**4*epsilon*gamma**3/8192 + 5*alpha**4*beta**4*gamma**4/32768 - 5*alpha**4*beta*delta*epsilon**4/512 + 5*alpha**4*beta*delta*epsilon**3*gamma/128 - 15*alpha**4*beta*delta*epsilon**2*gamma**2/256 + 5*alpha**4*beta*delta*epsilon*gamma**3/128 - 5*alpha**4*beta*delta*gamma**4/512 + 25*alpha**3*beta**14*epsilon/34359738368 - 25*alpha**3*beta**14*gamma/34359738368 - 75*alpha**3*beta**11*delta*epsilon/536870912 + 75*alpha**3*beta**11*delta*gamma/536870912 + 75*alpha**3*beta**8*delta**2*epsilon/8388608 - 75*alpha**3*beta**8*delta**2*gamma/8388608 - 5*alpha**3*beta**8*epsilon**3/4194304 + 15*alpha**3*beta**8*epsilon**2*gamma/4194304 - 15*alpha**3*beta**8*epsilon*gamma**2/4194304 + 5*alpha**3*beta**8*gamma**3/4194304 - 25*alpha**3*beta**5*delta**3*epsilon/131072 + 25*alpha**3*beta**5*delta**3*gamma/131072 + 5*alpha**3*beta**5*delta*epsilon**3/32768 - 15*alpha**3*beta**5*delta*epsilon**2*gamma/32768 + 15*alpha**3*beta**5*delta*epsilon*gamma**2/32768 - 5*alpha**3*beta**5*delta*gamma**3/32768 - 5*alpha**3*beta**2*delta**2*epsilon**3/1024 + 15*alpha**3*beta**2*delta**2*epsilon**2*gamma/1024 - 15*alpha**3*beta**2*delta**2*epsilon*gamma**2/1024 + 5*alpha**3*beta**2*delta**2*gamma**3/1024 - 25*alpha**2*beta**18/35184372088832 + 25*alpha**2*beta**15*delta/137438953472 - 75*alpha**2*beta**12*delta**2/4294967296 + 5*alpha**2*beta**12*epsilon**2/1073741824 - 5*alpha**2*beta**12*epsilon*gamma/536870912 + 5*alpha**2*beta**12*gamma**2/1073741824 + 25*alpha**2*beta**9*delta**3/33554432 - 15*alpha**2*beta**9*delta*epsilon**2/16777216 + 15*alpha**2*beta**9*delta*epsilon*gamma/8388608 - 15*alpha**2*beta**9*delta*gamma**2/16777216 - 25*alpha**2*beta**6*delta**4/2097152 + 15*alpha**2*beta**6*delta**2*epsilon**2/262144 - 15*alpha**2*beta**6*delta**2*epsilon*gamma/131072 + 15*alpha**2*beta**6*delta**2*gamma**2/262144 - 5*alpha**2*beta**3*delta**3*epsilon**2/4096 + 5*alpha**2*beta**3*delta**3*epsilon*gamma/2048 - 5*alpha**2*beta**3*delta**3*gamma**2/4096 - 5*alpha*beta**16*epsilon/549755813888 + 5*alpha*beta**16*gamma/549755813888 + 5*alpha*beta**13*delta*epsilon/2147483648 - 5*alpha*beta**13*delta*gamma/2147483648 - 15*alpha*beta**10*delta**2*epsilon/67108864 + 15*alpha*beta**10*delta**2*gamma/67108864 + 5*alpha*beta**7*delta**3*epsilon/524288 - 5*alpha*beta**7*delta**3*gamma/524288 - 5*alpha*beta**4*delta**4*epsilon/32768 + 5*alpha*beta**4*delta**4*gamma/32768 + beta**20/140737488355328 - 5*beta**17*delta/2199023255552 + 5*beta**14*delta**2/17179869184 - 5*beta**11*delta**3/268435456 + 5*beta**8*delta**4/8388608 - beta**5*delta**5/131072 + z**6*(alpha**2/16 - beta**2/16) + z**5*(-363*alpha**5/4096 + 93*alpha**3*beta**2/1024 + alpha**2*epsilon/32 - 15*alpha**2*gamma/32 - 9*alpha*beta**4/512 + 3*alpha*beta*delta/16 - beta**2*epsilon/16 + 3*beta**2*gamma/16) + z**4*(2401*alpha**8/65536 - 5993*alpha**6*beta**2/131072 - 5*alpha**5*epsilon/2048 + 821*alpha**5*gamma/2048 + 9117*alpha**4*beta**4/524288 - 893*alpha**4*beta*delta/8192 + alpha**3*beta**2*epsilon/512 - 145*alpha**3*beta**2*gamma/512 - 1091*alpha**2*beta**6/524288 + 25*alpha**2*beta**3*delta/512 - 13*alpha**2*delta**2/128 + 9*alpha**2*epsilon**2/32 - 5*alpha**2*epsilon*gamma/16 + 33*alpha**2*gamma**2/32 - 5*alpha*beta**4*epsilon/1024 + 43*alpha*beta**4*gamma/1024 - 5*alpha*beta*delta*epsilon/32 - 13*alpha*beta*delta*gamma/32 + 7*beta**8/262144 - 5*beta**5*delta/2048 + 3*beta**2*delta**2/64 + 5*beta**2*epsilon**2/32 + 3*beta**2*epsilon*gamma/16 - 7*beta**2*gamma**2/32) + z**3*(-3359*alpha**11/524288 + 163*alpha**9*beta**2/16384 + 51*alpha**8*epsilon/4096 - 53*alpha**8*gamma/512 - 11697*alpha**7*beta**4/2097152 + 773*alpha**7*beta*delta/32768 - 465*alpha**6*beta**2*epsilon/32768 + 3547*alpha**6*beta**2*gamma/32768 + 2815*alpha**5*beta**6/2097152 - 175*alpha**5*beta**3*delta/8192 + 13*alpha**5*delta**2/1024 - 9*alpha**5*epsilon**2/512 + 57*alpha**5*epsilon*gamma/256 - 265*alpha**5*gamma**2/512 + 375*alpha**4*beta**4*epsilon/65536 - 2281*alpha**4*beta**4*gamma/65536 - alpha**4*beta*delta*epsilon/1024 + 209*alpha**4*beta*delta*gamma/1024 - 4279*alpha**3*beta**8/33554432 + 85*alpha**3*beta**5*delta/16384 - 259*alpha**3*beta**2*delta**2/8192 + 13*alpha**3*beta**2*epsilon**2/1024 - 41*alpha**3*beta**2*epsilon*gamma/256 + 295*alpha**3*beta**2*gamma**2/1024 - 181*alpha**2*beta**6*epsilon/262144 + 915*alpha**2*beta**6*gamma/262144 + 33*alpha**2*beta**3*delta*epsilon/4096 - 339*alpha**2*beta**3*delta*gamma/4096 + alpha**2*delta**2*epsilon/32 + 3*alpha**2*delta**2*gamma/32 - alpha**2*epsilon**3/2 + alpha**2*epsilon**2*gamma/4 + alpha**2*epsilon*gamma**2 - 3*alpha**2*gamma**3/4 + 51*alpha*beta**10/16777216 - 153*alpha*beta**7*delta/524288 + 27*alpha*beta**4*delta**2/4096 - 17*alpha*beta**4*epsilon**2/4096 + 47*alpha*beta**4*epsilon*gamma/2048 - 129*alpha*beta**4*gamma**2/4096 - 3*alpha*beta*delta**3/128 - 3*alpha*beta*delta*epsilon**2/32 - 3*alpha*beta*delta*epsilon*gamma/16 + 9*alpha*beta*delta*gamma**2/32 + beta**8*epsilon/131072 - 3*beta**8*gamma/65536 - beta**5*delta*epsilon/4096 + 15*beta**5*delta*gamma/4096 - beta**2*delta**2*epsilon/64 - 3*beta**2*delta**2*gamma/64 - beta**2*epsilon**3/32 + 5*beta**2*epsilon**2*gamma/32 - 7*beta**2*epsilon*gamma**2/32 + 3*beta**2*gamma**3/32) + z**2*(4765*alpha**14/8388608 - 18215*alpha**12*beta**2/16777216 - 1283*alpha**11*epsilon/262144 + 3123*alpha**11*gamma/262144 + 53913*alpha**10*beta**4/67108864 - 3123*alpha**10*beta*delta/1048576 + 965*alpha**9*beta**2*epsilon/131072 - 1095*alpha**9*beta**2*gamma/65536 - 38735*alpha**8*beta**6/134217728 + 4035*alpha**8*beta**3*delta/1048576 - 25*alpha**8*delta**2/32768 + 3*alpha**8*epsilon**2/256 - 5*alpha**8*epsilon*gamma/64 + 11*alpha**8*gamma**2/128 - 2027*alpha**7*beta**4*epsilon/524288 + 4329*alpha**7*beta**4*gamma/524288 + 295*alpha**7*beta*delta*epsilon/16384 - 679*alpha**7*beta*delta*gamma/16384 + 27767*alpha**6*beta**8/536870912 - 1767*alpha**6*beta**5*delta/1048576 + 779*alpha**6*beta**2*delta**2/131072 - 233*alpha**6*beta**2*epsilon**2/16384 + 629*alpha**6*beta**2*epsilon*gamma/8192 - 1265*alpha**6*beta**2*gamma**2/16384 + 1745*alpha**5*beta**6*epsilon/2097152 - 3571*alpha**5*beta**6*gamma/2097152 - 495*alpha**5*beta**3*delta*epsilon/32768 + 1071*alpha**5*beta**3*delta*gamma/32768 + 5*alpha**5*delta**2*epsilon/512 - 5*alpha**5*delta**2*gamma/512 - 11*alpha**5*epsilon**3/256 + 49*alpha**5*epsilon**2*gamma/256 - 97*alpha**5*epsilon*gamma**2/256 + 59*alpha**5*gamma**3/256 - 4617*alpha**4*beta**10/1073741824 + 299*alpha**4*beta**7*delta/1048576 - 987*alpha**4*beta**4*delta**2/262144 + 79*alpha**4*beta**4*epsilon**2/16384 - 353*alpha**4*beta**4*epsilon*gamma/16384 + 327*alpha**4*beta**4*gamma**2/16384 + 5*alpha**4*beta*delta**3/2048 - 29*alpha**4*beta*delta*epsilon**2/1024 + 77*alpha**4*beta*delta*epsilon*gamma/512 - 157*alpha**4*beta*delta*gamma**2/1024 - 1097*alpha**3*beta**8*epsilon/16777216 + 2281*alpha**3*beta**8*gamma/16777216 + 421*alpha**3*beta**5*delta*epsilon/131072 - 873*alpha**3*beta**5*delta*gamma/131072 - 87*alpha**3*beta**2*delta**2*epsilon/4096 + 167*alpha**3*beta**2*delta**2*gamma/4096 + 3*alpha**3*beta**2*epsilon**3/128 - 7*alpha**3*beta**2*epsilon**2*gamma/64 + 23*alpha**3*beta**2*epsilon*gamma**2/128 - 3*alpha**3*beta**2*gamma**3/32 + 587*alpha**2*beta**12/4294967296 - 1081*alpha**2*beta**9*delta/67108864 + 563*alpha**2*beta**6*delta**2/1048576 - 13*alpha**2*beta**6*epsilon**2/32768 + 13*alpha**2*beta**6*epsilon*gamma/8192 - 3*alpha**2*beta**6*gamma**2/2048 - 69*alpha**2*beta**3*delta**3/16384 + 15*alpha**2*beta**3*delta*epsilon**2/1024 - 27*alpha**2*beta**3*delta*epsilon*gamma/512 + 47*alpha**2*beta**3*delta*gamma**2/1024 - alpha**2*delta**2*epsilon**2/32 + alpha**2*delta**2*epsilon*gamma/16 - alpha**2*delta**2*gamma**2/32 + alpha**2*epsilon**4/8 - alpha**2*epsilon**3*gamma/2 + 3*alpha**2*epsilon**2*gamma**2/4 - alpha**2*epsilon*gamma**3/2 + alpha**2*gamma**4/8 + 21*alpha*beta**10*epsilon/16777216 - 53*alpha*beta**10*gamma/16777216 - 17*alpha*beta**7*delta*epsilon/131072 + 5*alpha*beta**7*delta*gamma/16384 + 7*alpha*beta**4*delta**2*epsilon/2048 - 7*alpha*beta**4*delta**2*gamma/1024 - 3*alpha*beta**4*epsilon**3/2048 + 13*alpha*beta**4*epsilon**2*gamma/2048 - 21*alpha*beta**4*epsilon*gamma**2/2048 + 11*alpha*beta**4*gamma**3/2048 - alpha*beta*delta**3*epsilon/64 + alpha*beta*delta**3*gamma/64 + alpha*beta*delta*epsilon**3/16 - 3*alpha*beta*delta*epsilon**2*gamma/16 + 3*alpha*beta*delta*epsilon*gamma**2/16 - alpha*beta*delta*gamma**3/16 - 7*beta**14/8589934592 + 11*beta**11*delta/67108864 - 3*beta**8*delta**2/262144 + beta**8*epsilon**2/262144 - beta**8*epsilon*gamma/65536 + 5*beta**8*gamma**2/262144 + 5*beta**5*delta**3/16384 - 3*beta**5*delta*epsilon**2/8192 + 5*beta**5*delta*epsilon*gamma/4096 - 11*beta**5*delta*gamma**2/8192 - beta**2*delta**4/512 + beta**2*delta**2*epsilon**2/128 - beta**2*delta**2*epsilon*gamma/64 + beta**2*delta**2*gamma**2/128) + z*(-8375*alpha**17/268435456 + 4625*alpha**15*beta**2/67108864 + 1225*alpha**14*epsilon/2097152 - 1725*alpha**14*gamma/2097152 - 33225*alpha**13*beta**4/536870912 + 1725*alpha**13*beta*delta/8388608 - 8525*alpha**12*beta**2*epsilon/8388608 + 11775*alpha**12*beta**2*gamma/8388608 + 31075*alpha**11*beta**6/1073741824 - 1425*alpha**11*beta**3*delta/4194304 - 465*alpha**11*epsilon**2/131072 + 765*alpha**11*epsilon*gamma/65536 - 1065*alpha**11*gamma**2/131072 + 11265*alpha**10*beta**4*epsilon/16777216 - 15315*alpha**10*beta**4*gamma/16777216 - 765*alpha**10*beta*delta*epsilon/262144 + 1065*alpha**10*beta*delta*gamma/262144 - 64565*alpha**9*beta**8/8589934592 + 7095*alpha**9*beta**5*delta/33554432 - 1065*alpha**9*beta**2*delta**2/2097152 + 1215*alpha**9*beta**2*epsilon**2/262144 - 945*alpha**9*beta**2*epsilon*gamma/65536 + 2565*alpha**9*beta**2*gamma**2/262144 - 14005*alpha**8*beta**6*epsilon/67108864 + 18855*alpha**8*beta**6*gamma/67108864 + 3555*alpha**8*beta**3*delta*epsilon/1048576 - 4905*alpha**8*beta**3*delta*gamma/1048576 + 13*alpha**8*epsilon**3/2048 - 99*alpha**8*epsilon**2*gamma/2048 + 159*alpha**8*epsilon*gamma**2/2048 - 73*alpha**8*gamma**3/2048 + 4635*alpha**7*beta**10/4294967296 - 4095*alpha**7*beta**7*delta/67108864 + 585*alpha**7*beta**4*delta**2/1048576 - 1059*alpha**7*beta**4*epsilon**2/524288 + 1569*alpha**7*beta**4*epsilon*gamma/262144 - 2079*alpha**7*beta**4*gamma**2/524288 + 99*alpha**7*beta*delta*epsilon**2/8192 - 159*alpha**7*beta*delta*epsilon*gamma/4096 + 219*alpha**7*beta*delta*gamma**2/8192 + 4129*alpha**6*beta**8*epsilon/134217728 - 5589*alpha**6*beta**8*gamma/134217728 - 21*alpha**6*beta**5*delta*epsilon/16384 + 927*alpha**6*beta**5*delta*gamma/524288 + 159*alpha**6*beta**2*delta**2*epsilon/32768 - 219*alpha**6*beta**2*delta**2*gamma/32768 - 55*alpha**6*beta**2*epsilon**3/8192 + 315*alpha**6*beta**2*epsilon**2*gamma/8192 - 465*alpha**6*beta**2*epsilon*gamma**2/8192 + 205*alpha**6*beta**2*gamma**3/8192 - 2833*alpha**5*beta**12/34359738368 + 4389*alpha**5*beta**9*delta/536870912 - 1629*alpha**5*beta**6*delta**2/8388608 + 345*alpha**5*beta**6*epsilon**2/1048576 - 495*alpha**5*beta**6*epsilon*gamma/524288 + 645*alpha**5*beta**6*gamma**2/1048576 + 73*alpha**5*beta**3*delta**3/131072 - 135*alpha**5*beta**3*delta*epsilon**2/16384 + 105*alpha**5*beta**3*delta*epsilon*gamma/4096 - 285*alpha**5*beta**3*delta*gamma**2/16384 + alpha**5*epsilon**4/256 + 3*alpha**5*epsilon**3*gamma/64 - 21*alpha**5*epsilon**2*gamma**2/128 + 11*alpha**5*epsilon*gamma**3/64 - 15*alpha**5*gamma**4/256 - 1065*alpha**4*beta**10*epsilon/536870912 + 1515*alpha**4*beta**10*gamma/536870912 + 45*alpha**4*beta**7*delta*epsilon/262144 - 255*alpha**4*beta**7*delta*gamma/1048576 - 375*alpha**4*beta**4*delta**2*epsilon/131072 + 525*alpha**4*beta**4*delta**2*gamma/131072 + 27*alpha**4*beta**4*epsilon**3/16384 - 123*alpha**4*beta**4*epsilon**2*gamma/16384 + 165*alpha**4*beta**4*epsilon*gamma**2/16384 - 69*alpha**4*beta**4*gamma**3/16384 - 3*alpha**4*beta*delta*epsilon**3/256 + 21*alpha**4*beta*delta*epsilon**2*gamma/256 - 33*alpha**4*beta*delta*epsilon*gamma**2/256 + 15*alpha**4*beta*delta*gamma**3/256 + 215*alpha**3*beta**14/68719476736 - 255*alpha**3*beta**11*delta/536870912 + 375*alpha**3*beta**8*delta**2/16777216 - 135*alpha**3*beta**8*epsilon**2/8388608 + 207*alpha**3*beta**8*epsilon*gamma/4194304 - 279*alpha**3*beta**8*gamma**2/8388608 - 5*alpha**3*beta**5*delta**3/16384 + 39*alpha**3*beta**5*delta*epsilon**2/32768 - 15*alpha**3*beta**5*delta*epsilon*gamma/4096 + 81*alpha**3*beta**5*delta*gamma**2/32768 - 21*alpha**3*beta**2*delta**2*epsilon**2/2048 + 33*alpha**3*beta**2*delta**2*epsilon*gamma/1024 - 45*alpha**3*beta**2*delta**2*gamma**2/2048 + alpha**3*beta**2*epsilon**4/256 - 3*alpha**3*beta**2*epsilon**3*gamma/128 + 3*alpha**3*beta**2*epsilon**2*gamma**2/64 - 5*alpha**3*beta**2*epsilon*gamma**3/128 + 3*alpha**3*beta**2*gamma**4/256 + 53*alpha**2*beta**12*epsilon/1073741824 - 87*alpha**2*beta**12*gamma/1073741824 - 117*alpha**2*beta**9*delta*epsilon/16777216 + 189*alpha**2*beta**9*delta*gamma/16777216 + 75*alpha**2*beta**6*delta**2*epsilon/262144 - 117*alpha**2*beta**6*delta**2*gamma/262144 - 3*alpha**2*beta**6*epsilon**3/65536 + 15*alpha**2*beta**6*epsilon**2*gamma/65536 - 21*alpha**2*beta**6*epsilon*gamma**2/65536 + 9*alpha**2*beta**6*gamma**3/65536 - 11*alpha**2*beta**3*delta**3*epsilon/4096 + 15*alpha**2*beta**3*delta**3*gamma/4096 + 3*alpha**2*beta**3*delta*epsilon**3/1024 - 15*alpha**2*beta**3*delta*epsilon**2*gamma/1024 + 21*alpha**2*beta**3*delta*epsilon*gamma**2/1024 - 9*alpha**2*beta**3*delta*gamma**3/1024 - 51*alpha*beta**16/1099511627776 + 21*alpha*beta**13*delta/2147483648 - 99*alpha*beta**10*delta**2/134217728 + 3*alpha*beta**10*epsilon**2/16777216 - 3*alpha*beta**10*epsilon*gamma/4194304 + 9*alpha*beta**10*gamma**2/16777216 + 3*alpha*beta**7*delta**3/131072 - 3*alpha*beta**7*delta*epsilon**2/131072 + 3*alpha*beta**7*delta*epsilon*gamma/32768 - 9*alpha*beta**7*delta*gamma**2/131072 - 15*alpha*beta**4*delta**4/65536 + 3*alpha*beta**4*delta**2*epsilon**2/4096 - 3*alpha*beta**4*delta**2*epsilon*gamma/1024 + 9*alpha*beta**4*delta**2*gamma**2/4096 - beta**14*epsilon/4294967296 + 3*beta**14*gamma/4294967296 + 3*beta**11*delta*epsilon/67108864 - 9*beta**11*delta*gamma/67108864 - 3*beta**8*delta**2*epsilon/1048576 + 9*beta**8*delta**2*gamma/1048576 + beta**5*delta**3*epsilon/16384 - 3*beta**5*delta**3*gamma/16384)",
+          "15625*alpha**24/1099511627776 - 46875*alpha**22*beta**2/1099511627776 - 9375*alpha**21*epsilon/17179869184 + 9375*alpha**21*gamma/17179869184 + 121875*alpha**20*beta**4/2199023255552 - 9375*alpha**20*beta*delta/68719476736 + 46875*alpha**19*beta**2*epsilon/34359738368 - 46875*alpha**19*beta**2*gamma/34359738368 - 359375*alpha**18*beta**6/8796093022208 + 46875*alpha**18*beta**3*delta/137438953472 + 9375*alpha**18*epsilon**2/1073741824 - 9375*alpha**18*epsilon*gamma/536870912 + 9375*alpha**18*gamma**2/1073741824 - 196875*alpha**17*beta**4*epsilon/137438953472 + 196875*alpha**17*beta**4*gamma/137438953472 + 9375*alpha**17*beta*delta*epsilon/2147483648 - 9375*alpha**17*beta*delta*gamma/2147483648 + 1321875*alpha**16*beta**8/70368744177664 - 196875*alpha**16*beta**5*delta/549755813888 + 9375*alpha**16*beta**2*delta**2/17179869184 - 9375*alpha**16*beta**2*epsilon**2/536870912 + 9375*alpha**16*beta**2*epsilon*gamma/268435456 - 9375*alpha**16*beta**2*gamma**2/536870912 + 28125*alpha**15*beta**6*epsilon/34359738368 - 28125*alpha**15*beta**6*gamma/34359738368 - 9375*alpha**15*beta**3*delta*epsilon/1073741824 + 9375*alpha**15*beta**3*delta*gamma/1073741824 - 625*alpha**15*epsilon**3/8388608 + 1875*alpha**15*epsilon**2*gamma/8388608 - 1875*alpha**15*epsilon*gamma**2/8388608 + 625*alpha**15*gamma**3/8388608 - 196875*alpha**14*beta**10/35184372088832 + 28125*alpha**14*beta**7*delta/137438953472 - 9375*alpha**14*beta**4*delta**2/8589934592 + 1875*alpha**14*beta**4*epsilon**2/134217728 - 1875*alpha**14*beta**4*epsilon*gamma/67108864 + 1875*alpha**14*beta**4*gamma**2/134217728 - 1875*alpha**14*beta*delta*epsilon**2/33554432 + 1875*alpha**14*beta*delta*epsilon*gamma/16777216 - 1875*alpha**14*beta*delta*gamma**2/33554432 - 151875*alpha**13*beta**8*epsilon/549755813888 + 151875*alpha**13*beta**8*gamma/549755813888 + 1875*alpha**13*beta**5*delta*epsilon/268435456 - 1875*alpha**13*beta**5*delta*gamma/268435456 - 1875*alpha**13*beta**2*delta**2*epsilon/134217728 + 1875*alpha**13*beta**2*delta**2*gamma/134217728 + 1875*alpha**13*beta**2*epsilon**3/16777216 - 5625*alpha**13*beta**2*epsilon**2*gamma/16777216 + 5625*alpha**13*beta**2*epsilon*gamma**2/16777216 - 1875*alpha**13*beta**2*gamma**3/16777216 + 76875*alpha**12*beta**12/70368744177664 - 151875*alpha**12*beta**9*delta/2199023255552 + 1875*alpha**12*beta**6*delta**2/2147483648 - 24375*alpha**12*beta**6*epsilon**2/4294967296 + 24375*alpha**12*beta**6*epsilon*gamma/2147483648 - 24375*alpha**12*beta**6*gamma**2/4294967296 - 625*alpha**12*beta**3*delta**3/536870912 + 5625*alpha**12*beta**3*delta*epsilon**2/67108864 - 5625*alpha**12*beta**3*delta*epsilon*gamma/33554432 + 5625*alpha**12*beta**3*delta*gamma**2/67108864 + 375*alpha**12*epsilon**4/1048576 - 375*alpha**12*epsilon**3*gamma/262144 + 1125*alpha**12*epsilon**2*gamma**2/524288 - 375*alpha**12*epsilon*gamma**3/262144 + 375*alpha**12*gamma**4/1048576 + 61875*alpha**11*beta**10*epsilon/1099511627776 - 61875*alpha**11*beta**10*gamma/1099511627776 - 24375*alpha**11*beta**7*delta*epsilon/8589934592 + 24375*alpha**11*beta**7*delta*gamma/8589934592 + 5625*alpha**11*beta**4*delta**2*epsilon/268435456 - 5625*alpha**11*beta**4*delta**2*gamma/268435456 - 4125*alpha**11*beta**4*epsilon**3/67108864 + 12375*alpha**11*beta**4*epsilon**2*gamma/67108864 - 12375*alpha**11*beta**4*epsilon*gamma**2/67108864 + 4125*alpha**11*beta**4*gamma**3/67108864 + 375*alpha**11*beta*delta*epsilon**3/1048576 - 1125*alpha**11*beta*delta*epsilon**2*gamma/1048576 + 1125*alpha**11*beta*delta*epsilon*gamma**2/1048576 - 375*alpha**11*beta*delta*gamma**3/1048576 - 39375*alpha**10*beta**14/281474976710656 + 61875*alpha**10*beta**11*delta/4398046511104 - 24375*alpha**10*beta**8*delta**2/68719476736 + 42375*alpha**10*beta**8*epsilon**2/34359738368 - 42375*alpha**10*beta**8*epsilon*gamma/17179869184 + 42375*alpha**10*beta**8*gamma**2/34359738368 + 1875*alpha**10*beta**5*delta**3/1073741824 - 12375*alpha**10*beta**5*delta*epsilon**2/268435456 + 12375*alpha**10*beta**5*delta*epsilon*gamma/134217728 - 12375*alpha**10*beta**5*delta*gamma**2/268435456 + 1125*alpha**10*beta**2*delta**2*epsilon**2/8388608 - 1125*alpha**10*beta**2*delta**2*epsilon*gamma/4194304 + 1125*alpha**10*beta**2*delta**2*gamma**2/8388608 - 375*alpha**10*beta**2*epsilon**4/1048576 + 375*alpha**10*beta**2*epsilon**3*gamma/262144 - 1125*alpha**10*beta**2*epsilon**2*gamma**2/524288 + 375*alpha**10*beta**2*epsilon*gamma**3/262144 - 375*alpha**10*beta**2*gamma**4/1048576 - 30375*alpha**9*beta**12*epsilon/4398046511104 + 30375*alpha**9*beta**12*gamma/4398046511104 + 42375*alpha**9*beta**9*delta*epsilon/68719476736 - 42375*alpha**9*beta**9*delta*gamma/68719476736 - 12375*alpha**9*beta**6*delta**2*epsilon/1073741824 + 12375*alpha**9*beta**6*delta**2*gamma/1073741824 + 125*alpha**9*beta**6*epsilon**3/8388608 - 375*alpha**9*beta**6*epsilon**2*gamma/8388608 + 375*alpha**9*beta**6*epsilon*gamma**2/8388608 - 125*alpha**9*beta**6*gamma**3/8388608 + 375*alpha**9*beta**3*delta**3*epsilon/16777216 - 375*alpha**9*beta**3*delta**3*gamma/16777216 - 375*alpha**9*beta**3*delta*epsilon**3/1048576 + 1125*alpha**9*beta**3*delta*epsilon**2*gamma/1048576 - 1125*alpha**9*beta**3*delta*epsilon*gamma**2/1048576 + 375*alpha**9*beta**3*delta*gamma**3/1048576 - 15*alpha**9*epsilon**5/16384 + 75*alpha**9*epsilon**4*gamma/16384 - 75*alpha**9*epsilon**3*gamma**2/8192 + 75*alpha**9*epsilon**2*gamma**3/8192 - 75*alpha**9*epsilon*gamma**4/16384 + 15*alpha**9*gamma**5/16384 + 52875*alpha**8*beta**16/4503599627370496 - 30375*alpha**8*beta**13*delta/17592186044416 + 42375*alpha**8*beta**10*delta**2/549755813888 - 4875*alpha**8*beta**10*epsilon**2/34359738368 + 4875*alpha**8*beta**10*epsilon*gamma/17179869184 - 4875*alpha**8*beta**10*gamma**2/34359738368 - 4125*alpha**8*beta**7*delta**3/4294967296 + 375*alpha**8*beta**7*delta*epsilon**2/33554432 - 375*alpha**8*beta**7*delta*epsilon*gamma/16777216 + 375*alpha**8*beta**7*delta*gamma**2/33554432 + 375*alpha**8*beta**4*delta**4/268435456 - 1125*alpha**8*beta**4*delta**2*epsilon**2/8388608 + 1125*alpha**8*beta**4*delta**2*epsilon*gamma/4194304 - 1125*alpha**8*beta**4*delta**2*gamma**2/8388608 + 225*alpha**8*beta**4*epsilon**4/2097152 - 225*alpha**8*beta**4*epsilon**3*gamma/524288 + 675*alpha**8*beta**4*epsilon**2*gamma**2/1048576 - 225*alpha**8*beta**4*epsilon*gamma**3/524288 + 225*alpha**8*beta**4*gamma**4/2097152 - 75*alpha**8*beta*delta*epsilon**4/65536 + 75*alpha**8*beta*delta*epsilon**3*gamma/16384 - 225*alpha**8*beta*delta*epsilon**2*gamma**2/32768 + 75*alpha**8*beta*delta*epsilon*gamma**3/16384 - 75*alpha**8*beta*delta*gamma**4/65536 + 1125*alpha**7*beta**14*epsilon/2199023255552 - 1125*alpha**7*beta**14*gamma/2199023255552 - 4875*alpha**7*beta**11*delta*epsilon/68719476736 + 4875*alpha**7*beta**11*delta*gamma/68719476736 + 375*alpha**7*beta**8*delta**2*epsilon/134217728 - 375*alpha**7*beta**8*delta**2*gamma/134217728 - 825*alpha**7*beta**8*epsilon**3/536870912 + 2475*alpha**7*beta**8*epsilon**2*gamma/536870912 - 2475*alpha**7*beta**8*epsilon*gamma**2/536870912 + 825*alpha**7*beta**8*gamma**3/536870912 - 375*alpha**7*beta**5*delta**3*epsilon/16777216 + 375*alpha**7*beta**5*delta**3*gamma/16777216 + 225*alpha**7*beta**5*delta*epsilon**3/2097152 - 675*alpha**7*beta**5*delta*epsilon**2*gamma/2097152 + 675*alpha**7*beta**5*delta*epsilon*gamma**2/2097152 - 225*alpha**7*beta**5*delta*gamma**3/2097152 - 75*alpha**7*beta**2*delta**2*epsilon**3/131072 + 225*alpha**7*beta**2*delta**2*epsilon**2*gamma/131072 - 225*alpha**7*beta**2*delta**2*epsilon*gamma**2/131072 + 75*alpha**7*beta**2*delta**2*gamma**3/131072 + 15*alpha**7*beta**2*epsilon**5/32768 - 75*alpha**7*beta**2*epsilon**4*gamma/32768 + 75*alpha**7*beta**2*epsilon**3*gamma**2/16384 - 75*alpha**7*beta**2*epsilon**2*gamma**3/16384 + 75*alpha**7*beta**2*epsilon*gamma**4/32768 - 15*alpha**7*beta**2*gamma**5/32768 - 2875*alpha**6*beta**18/4503599627370496 + 1125*alpha**6*beta**15*delta/8796093022208 - 4875*alpha**6*beta**12*delta**2/549755813888 + 75*alpha**6*beta**12*epsilon**2/8589934592 - 75*alpha**6*beta**12*epsilon*gamma/4294967296 + 75*alpha**6*beta**12*gamma**2/8589934592 + 125*alpha**6*beta**9*delta**3/536870912 - 2475*alpha**6*beta**9*delta*epsilon**2/2147483648 + 2475*alpha**6*beta**9*delta*epsilon*gamma/1073741824 - 2475*alpha**6*beta**9*delta*gamma**2/2147483648 - 375*alpha**6*beta**6*delta**4/268435456 + 675*alpha**6*beta**6*delta**2*epsilon**2/16777216 - 675*alpha**6*beta**6*delta**2*epsilon*gamma/8388608 + 675*alpha**6*beta**6*delta**2*gamma**2/16777216 - 75*alpha**6*beta**6*epsilon**4/8388608 + 75*alpha**6*beta**6*epsilon**3*gamma/2097152 - 225*alpha**6*beta**6*epsilon**2*gamma**2/4194304 + 75*alpha**6*beta**6*epsilon*gamma**3/2097152 - 75*alpha**6*beta**6*gamma**4/8388608 - 75*alpha**6*beta**3*delta**3*epsilon**2/524288 + 75*alpha**6*beta**3*delta**3*epsilon*gamma/262144 - 75*alpha**6*beta**3*delta**3*gamma**2/524288 + 75*alpha**6*beta**3*delta*epsilon**4/131072 - 75*alpha**6*beta**3*delta*epsilon**3*gamma/32768 + 225*alpha**6*beta**3*delta*epsilon**2*gamma**2/65536 - 75*alpha**6*beta**3*delta*epsilon*gamma**3/32768 + 75*alpha**6*beta**3*delta*gamma**4/131072 + alpha**6*epsilon**6/1024 - 3*alpha**6*epsilon**5*gamma/512 + 15*alpha**6*epsilon**4*gamma**2/1024 - 5*alpha**6*epsilon**3*gamma**3/256 + 15*alpha**6*epsilon**2*gamma**4/1024 - 3*alpha**6*epsilon*gamma**5/512 + alpha**6*gamma**6/1024 - 1575*alpha**5*beta**16*epsilon/70368744177664 + 1575*alpha**5*beta**16*gamma/70368744177664 + 75*alpha**5*beta**13*delta*epsilon/17179869184 - 75*alpha**5*beta**13*delta*gamma/17179869184 - 2475*alpha**5*beta**10*delta**2*epsilon/8589934592 + 2475*alpha**5*beta**10*delta**2*gamma/8589934592 + 75*alpha**5*beta**10*epsilon**3/1073741824 - 225*alpha**5*beta**10*epsilon**2*gamma/1073741824 + 225*alpha**5*beta**10*epsilon*gamma**2/1073741824 - 75*alpha**5*beta**10*gamma**3/1073741824 + 225*alpha**5*beta**7*delta**3*epsilon/33554432 - 225*alpha**5*beta**7*delta**3*gamma/33554432 - 75*alpha**5*beta**7*delta*epsilon**3/8388608 + 225*alpha**5*beta**7*delta*epsilon**2*gamma/8388608 - 225*alpha**5*beta**7*delta*epsilon*gamma**2/8388608 + 75*alpha**5*beta**7*delta*gamma**3/8388608 - 75*alpha**5*beta**4*delta**4*epsilon/4194304 + 75*alpha**5*beta**4*delta**4*gamma/4194304 + 75*alpha**5*beta**4*delta**2*epsilon**3/262144 - 225*alpha**5*beta**4*delta**2*epsilon**2*gamma/262144 + 225*alpha**5*beta**4*delta**2*epsilon*gamma**2/262144 - 75*alpha**5*beta**4*delta**2*gamma**3/262144 - 3*alpha**5*beta**4*epsilon**5/131072 + 15*alpha**5*beta**4*epsilon**4*gamma/131072 - 15*alpha**5*beta**4*epsilon**3*gamma**2/65536 + 15*alpha**5*beta**4*epsilon**2*gamma**3/65536 - 15*alpha**5*beta**4*epsilon*gamma**4/131072 + 3*alpha**5*beta**4*gamma**5/131072 + 3*alpha**5*beta*delta*epsilon**5/2048 - 15*alpha**5*beta*delta*epsilon**4*gamma/2048 + 15*alpha**5*beta*delta*epsilon**3*gamma**2/1024 - 15*alpha**5*beta*delta*epsilon**2*gamma**3/1024 + 15*alpha**5*beta*delta*epsilon*gamma**4/2048 - 3*alpha**5*beta*delta*gamma**5/2048 + 195*alpha**4*beta**20/9007199254740992 - 1575*alpha**4*beta**17*delta/281474976710656 + 75*alpha**4*beta**14*delta**2/137438953472 - 75*alpha**4*beta**14*epsilon**2/274877906944 + 75*alpha**4*beta**14*epsilon*gamma/137438953472 - 75*alpha**4*beta**14*gamma**2/274877906944 - 825*alpha**4*beta**11*delta**3/34359738368 + 225*alpha**4*beta**11*delta*epsilon**2/4294967296 - 225*alpha**4*beta**11*delta*epsilon*gamma/2147483648 + 225*alpha**4*beta**11*delta*gamma**2/4294967296 + 225*alpha**4*beta**8*delta**4/536870912 - 225*alpha**4*beta**8*delta**2*epsilon**2/67108864 + 225*alpha**4*beta**8*delta**2*epsilon*gamma/33554432 - 225*alpha**4*beta**8*delta**2*gamma**2/67108864 + 15*alpha**4*beta**8*epsilon**4/67108864 - 15*alpha**4*beta**8*epsilon**3*gamma/16777216 + 45*alpha**4*beta**8*epsilon**2*gamma**2/33554432 - 15*alpha**4*beta**8*epsilon*gamma**3/16777216 + 15*alpha**4*beta**8*gamma**4/67108864 - 15*alpha**4*beta**5*delta**5/16777216 + 75*alpha**4*beta**5*delta**3*epsilon**2/1048576 - 75*alpha**4*beta**5*delta**3*epsilon*gamma/524288 + 75*alpha**4*beta**5*delta**3*gamma**2/1048576 - 15*alpha**4*beta**5*delta*epsilon**4/524288 + 15*alpha**4*beta**5*delta*epsilon**3*gamma/131072 - 45*alpha**4*beta**5*delta*epsilon**2*gamma**2/262144 + 15*alpha**4*beta**5*delta*epsilon*gamma**3/131072 - 15*alpha**4*beta**5*delta*gamma**4/524288 + 15*alpha**4*beta**2*delta**2*epsilon**4/16384 - 15*alpha**4*beta**2*delta**2*epsilon**3*gamma/4096 + 45*alpha**4*beta**2*delta**2*epsilon**2*gamma**2/8192 - 15*alpha**4*beta**2*delta**2*epsilon*gamma**3/4096 + 15*alpha**4*beta**2*delta**2*gamma**4/16384 + 75*alpha**3*beta**18*epsilon/140737488355328 - 75*alpha**3*beta**18*gamma/140737488355328 - 75*alpha**3*beta**15*delta*epsilon/549755813888 + 75*alpha**3*beta**15*delta*gamma/549755813888 + 225*alpha**3*beta**12*delta**2*epsilon/17179869184 - 225*alpha**3*beta**12*delta**2*gamma/17179869184 - 5*alpha**3*beta**12*epsilon**3/4294967296 + 15*alpha**3*beta**12*epsilon**2*gamma/4294967296 - 15*alpha**3*beta**12*epsilon*gamma**2/4294967296 + 5*alpha**3*beta**12*gamma**3/4294967296 - 75*alpha**3*beta**9*delta**3*epsilon/134217728 + 75*alpha**3*beta**9*delta**3*gamma/134217728 + 15*alpha**3*beta**9*delta*epsilon**3/67108864 - 45*alpha**3*beta**9*delta*epsilon**2*gamma/67108864 + 45*alpha**3*beta**9*delta*epsilon*gamma**2/67108864 - 15*alpha**3*beta**9*delta*gamma**3/67108864 + 75*alpha**3*beta**6*delta**4*epsilon/8388608 - 75*alpha**3*beta**6*delta**4*gamma/8388608 - 15*alpha**3*beta**6*delta**2*epsilon**3/1048576 + 45*alpha**3*beta**6*delta**2*epsilon**2*gamma/1048576 - 45*alpha**3*beta**6*delta**2*epsilon*gamma**2/1048576 + 15*alpha**3*beta**6*delta**2*gamma**3/1048576 + 5*alpha**3*beta**3*delta**3*epsilon**3/16384 - 15*alpha**3*beta**3*delta**3*epsilon**2*gamma/16384 + 15*alpha**3*beta**3*delta**3*epsilon*gamma**2/16384 - 5*alpha**3*beta**3*delta**3*gamma**3/16384 - 15*alpha**2*beta**22/36028797018963968 + 75*alpha**2*beta**19*delta/562949953421312 - 75*alpha**2*beta**16*delta**2/4398046511104 + 15*alpha**2*beta**16*epsilon**2/4398046511104 - 15*alpha**2*beta**16*epsilon*gamma/2199023255552 + 15*alpha**2*beta**16*gamma**2/4398046511104 + 75*alpha**2*beta**13*delta**3/68719476736 - 15*alpha**2*beta**13*delta*epsilon**2/17179869184 + 15*alpha**2*beta**13*delta*epsilon*gamma/8589934592 - 15*alpha**2*beta**13*delta*gamma**2/17179869184 - 75*alpha**2*beta**10*delta**4/2147483648 + 45*alpha**2*beta**10*delta**2*epsilon**2/536870912 - 45*alpha**2*beta**10*delta**2*epsilon*gamma/268435456 + 45*alpha**2*beta**10*delta**2*gamma**2/536870912 + 15*alpha**2*beta**7*delta**5/33554432 - 15*alpha**2*beta**7*delta**3*epsilon**2/4194304 + 15*alpha**2*beta**7*delta**3*epsilon*gamma/2097152 - 15*alpha**2*beta**7*delta**3*gamma**2/4194304 + 15*alpha**2*beta**4*delta**4*epsilon**2/262144 - 15*alpha**2*beta**4*delta**4*epsilon*gamma/131072 + 15*alpha**2*beta**4*delta**4*gamma**2/262144 - 3*alpha*beta**20*epsilon/562949953421312 + 3*alpha*beta**20*gamma/562949953421312 + 15*alpha*beta**17*delta*epsilon/8796093022208 - 15*alpha*beta**17*delta*gamma/8796093022208 - 15*alpha*beta**14*delta**2*epsilon/68719476736 + 15*alpha*beta**14*delta**2*gamma/68719476736 + 15*alpha*beta**11*delta**3*epsilon/1073741824 - 15*alpha*beta**11*delta**3*gamma/1073741824 - 15*alpha*beta**8*delta**4*epsilon/33554432 + 15*alpha*beta**8*delta**4*gamma/33554432 + 3*alpha*beta**5*delta**5*epsilon/524288 - 3*alpha*beta**5*delta**5*gamma/524288 + beta**24/288230376151711744 - 3*beta**21*delta/2251799813685248 + 15*beta**18*delta**2/70368744177664 - 5*beta**15*delta**3/274877906944 + 15*beta**12*delta**4/17179869184 - 3*beta**9*delta**5/134217728 + beta**6*delta**6/4194304 + z**7*(-7*alpha**3/128 + 3*alpha*beta**2/64) + z**6*(3249*alpha**6/65536 - 105*alpha**4*beta**2/2048 + 9*alpha**3*epsilon/256 + 97*alpha**3*gamma/256 + 189*alpha**2*beta**4/16384 - 31*alpha**2*beta*delta/256 - 3*alpha*beta**2*epsilon/128 - 23*alpha*beta**2*gamma/128 - 3*beta**6/16384 + beta**3*delta/64 - delta**2/4 + epsilon**2/4 + epsilon*gamma/2 + gamma**2/4) + z**5*(-7921*alpha**9/524288 + 20715*alpha**7*beta**2/1048576 - 227*alpha**6*epsilon/16384 - 3549*alpha**6*gamma/16384 - 34719*alpha**5*beta**4/4194304 + 3081*alpha**5*beta*delta/65536 + 673*alpha**4*beta**2*epsilon/32768 + 5709*alpha**4*beta**2*gamma/32768 + 4925*alpha**3*beta**6/4194304 - 441*alpha**3*beta**3*delta/16384 + 55*alpha**3*delta**2/1024 - 21*alpha**3*epsilon**2/256 + 7*alpha**3*epsilon*gamma/128 - 217*alpha**3*gamma**2/256 - 163*alpha**2*beta**4*epsilon/32768 - 1059*alpha**2*beta**4*gamma/32768 + 53*alpha**2*beta*delta*epsilon/512 + 165*alpha**2*beta*delta*gamma/512 - 63*alpha*beta**8/2097152 + 21*alpha*beta**5*delta/8192 - 21*alpha*beta**2*delta**2/512 + alpha*beta**2*epsilon**2/256 - 5*alpha*beta**2*epsilon*gamma/128 + 69*alpha*beta**2*gamma**2/256 + 7*beta**6*epsilon/32768 + 15*beta**6*gamma/32768 - 5*beta**3*delta*epsilon/256 - 9*beta**3*delta*gamma/256 - 5*delta**2*epsilon/8 + 3*delta**2*gamma/8 - epsilon**3/2 + epsilon**2*gamma/2 + epsilon*gamma**2/2 - gamma**3/2) + z**4*(37159*alpha**12/16777216 - 61707*alpha**10*beta**2/16777216 - 343*alpha**9*epsilon/262144 + 11583*alpha**9*gamma/262144 + 75345*alpha**8*beta**4/33554432 - 9123*alpha**8*beta*delta/1048576 + 413*alpha**7*beta**2*epsilon/524288 - 26841*alpha**7*beta**2*gamma/524288 - 81233*alpha**6*beta**6/134217728 + 18711*alpha**6*beta**3*delta/2097152 - 103*alpha**6*delta**2/16384 - 21*alpha**6*epsilon**2/16384 - 683*alpha**6*epsilon*gamma/8192 + 4907*alpha**6*gamma**2/16384 + 13*alpha**5*beta**4*epsilon/2097152 + 39699*alpha**5*beta**4*gamma/2097152 - 281*alpha**5*beta*delta*epsilon/32768 - 3463*alpha**5*beta*delta*gamma/32768 + 72675*alpha**4*beta**8/1073741824 - 22227*alpha**4*beta**5*delta/8388608 + 3943*alpha**4*beta**2*delta**2/262144 + alpha**4*beta**2*epsilon**2/512 + 259*alpha**4*beta**2*epsilon*gamma/4096 - 827*alpha**4*beta**2*gamma**2/4096 - 217*alpha**3*beta**6*epsilon/2097152 - 4899*alpha**3*beta**6*gamma/2097152 + 175*alpha**3*beta**3*delta*epsilon/32768 + 1835*alpha**3*beta**3*delta*gamma/32768 - 9*alpha**3*delta**2*epsilon/512 - 31*alpha**3*delta**2*gamma/512 + 7*alpha**3*epsilon**3/128 - 17*alpha**3*epsilon**2*gamma/128 - 83*alpha**3*epsilon*gamma**2/128 + 93*alpha**3*gamma**3/128 - 1227*alpha**2*beta**10/536870912 + 1809*alpha**2*beta**7*delta/8388608 - 613*alpha**2*beta**4*delta**2/131072 + 3*alpha**2*beta**4*epsilon**2/65536 - 309*alpha**2*beta**4*epsilon*gamma/32768 + 1963*alpha**2*beta**4*gamma**2/65536 + 31*alpha**2*beta*delta**3/2048 + 5*alpha**2*beta*delta*epsilon**2/512 + 31*alpha**2*beta*delta*epsilon*gamma/256 - 163*alpha**2*beta*delta*gamma**2/512 + 27*alpha*beta**8*epsilon/2097152 + 117*alpha*beta**8*gamma/2097152 - 9*alpha*beta**5*delta*epsilon/8192 - 37*alpha*beta**5*delta*gamma/8192 + 9*alpha*beta**2*delta**2*epsilon/512 + 31*alpha*beta**2*delta**2*gamma/512 - 9*alpha*beta**2*epsilon**3/256 + alpha*beta**2*epsilon**2*gamma/256 + 49*alpha*beta**2*epsilon*gamma**2/256 - 41*alpha*beta**2*gamma**3/256 + 13*beta**12/1073741824 - 9*beta**9*delta/4194304 + 17*beta**6*delta**2/131072 - 3*beta**6*gamma**2/8192 - 3*beta**3*delta**3/1024 + beta**3*delta*epsilon**2/512 - beta**3*delta*epsilon*gamma/256 + 13*beta**3*delta*gamma**2/512 + delta**4/64 - delta**2*epsilon**2/8 + delta**2*epsilon*gamma/4 - delta**2*gamma**2/8 + epsilon**4/4 - epsilon**3*gamma + 3*epsilon**2*gamma**2/2 - epsilon*gamma**3 + gamma**4/4) + z**3*(-13995*alpha**15/67108864 + 57405*alpha**13*beta**2/134217728 + 2759*alpha**12*epsilon/2097152 - 10419*alpha**12*gamma/2097152 - 184479*alpha**11*beta**4/536870912 + 9669*alpha**11*beta*delta/8388608 - 4451*alpha**10*beta**2*epsilon/2097152 + 16011*alpha**10*beta**2*gamma/2097152 + 146527*alpha**9*beta**6/1073741824 - 13731*alpha**9*beta**3*delta/8388608 + 205*alpha**9*delta**2/262144 - 3*alpha**9*epsilon**2/16384 + 519*alpha**9*epsilon*gamma/16384 - 179*alpha**9*gamma**2/4096 + 10127*alpha**8*beta**4*epsilon/8388608 - 35553*alpha**8*beta**4*gamma/8388608 - 19*alpha**8*beta*delta*epsilon/4096 + 1217*alpha**8*beta*delta*gamma/65536 - 119457*alpha**7*beta**8/4294967296 + 3411*alpha**7*beta**5*delta/4194304 - 3169*alpha**7*beta**2*delta**2/1048576 + 137*alpha**7*beta**2*epsilon**2/131072 - 2273*alpha**7*beta**2*epsilon*gamma/65536 + 5929*alpha**7*beta**2*gamma**2/131072 - 4777*alpha**6*beta**6*epsilon/16777216 + 17143*alpha**6*beta**6*gamma/16777216 + 1127*alpha**6*beta**3*delta*epsilon/262144 - 4483*alpha**6*beta**3*delta*gamma/262144 - 23*alpha**6*delta**2*epsilon/4096 + 43*alpha**6*delta**2*gamma/4096 - 21*alpha**6*epsilon**3/2048 - 141*alpha**6*epsilon**2*gamma/2048 + 505*alpha**6*epsilon*gamma**2/2048 - 343*alpha**6*gamma**3/2048 + 23637*alpha**5*beta**10/8589934592 - 697*alpha**5*beta**7*delta/4194304 + 4243*alpha**5*beta**4*delta**2/2097152 - 87*alpha**5*beta**4*epsilon**2/131072 + 1505*alpha**5*beta**4*epsilon*gamma/131072 - 1883*alpha**5*beta**4*gamma**2/131072 - 43*alpha**5*beta*delta**3/16384 - 41*alpha**5*beta*delta*epsilon**2/8192 - 283*alpha**5*beta*delta*epsilon*gamma/4096 + 767*alpha**5*beta*delta*gamma**2/8192 + 3327*alpha**4*beta**8*epsilon/134217728 - 13607*alpha**4*beta**8*gamma/134217728 - 1063*alpha**4*beta**5*delta*epsilon/1048576 + 4715*alpha**4*beta**5*delta*gamma/1048576 + 237*alpha**4*beta**2*delta**2*epsilon/32768 - 821*alpha**4*beta**2*delta**2*gamma/32768 + 7*alpha**4*beta**2*epsilon**3/4096 + 221*alpha**4*beta**2*epsilon**2*gamma/4096 - 607*alpha**4*beta**2*epsilon*gamma**2/4096 + 379*alpha**4*beta**2*gamma**3/4096 - 3953*alpha**3*beta**12/34359738368 + 6815*alpha**3*beta**9*delta/536870912 - 3229*alpha**3*beta**6*delta**2/8388608 + 25*alpha**3*beta**6*epsilon**2/262144 - 75*alpha**3*beta**6*epsilon*gamma/65536 + 47*alpha**3*beta**6*gamma**2/32768 + 367*alpha**3*beta**3*delta**3/131072 + alpha**3*beta**3*delta*epsilon**2/2048 + 67*alpha**3*beta**3*delta*epsilon*gamma/2048 - 43*alpha**3*beta**3*delta*gamma**2/1024 + alpha**3*delta**2*epsilon**2/256 - 5*alpha**3*delta**2*epsilon*gamma/128 + 9*alpha**3*delta**2*gamma**2/256 + 5*alpha**3*epsilon**4/64 - 15*alpha**3*epsilon**2*gamma**2/32 + 5*alpha**3*epsilon*gamma**3/8 - 15*alpha**3*gamma**4/64 - 33*alpha**2*beta**10*epsilon/67108864 + 225*alpha**2*beta**10*gamma/67108864 + 23*alpha**2*beta**7*delta*epsilon/524288 - 333*alpha**2*beta**7*delta*gamma/1048576 - 31*alpha**2*beta**4*delta**2*epsilon/32768 + 225*alpha**2*beta**4*delta**2*gamma/32768 + 17*alpha**2*beta**4*epsilon**3/16384 - 135*alpha**2*beta**4*epsilon**2*gamma/16384 + 271*alpha**2*beta**4*epsilon*gamma**2/16384 - 153*alpha**2*beta**4*gamma**3/16384 + 5*alpha**2*beta*delta**3*epsilon/512 - 9*alpha**2*beta*delta**3*gamma/512 + alpha**2*beta*delta*epsilon**3/32 + 5*alpha**2*beta*delta*epsilon**2*gamma/64 - alpha**2*beta*delta*epsilon*gamma**2/4 + 9*alpha**2*beta*delta*gamma**3/64 + 105*alpha*beta**14/68719476736 - 9*alpha*beta**11*delta/33554432 + 135*alpha*beta**8*delta**2/8388608 - 3*alpha*beta**8*epsilon**2/1048576 + 23*alpha*beta**8*epsilon*gamma/1048576 - 33*alpha*beta**8*gamma**2/1048576 - 3*alpha*beta**5*delta**3/8192 + 5*alpha*beta**5*delta*epsilon**2/65536 - 59*alpha*beta**5*delta*epsilon*gamma/32768 + 165*alpha*beta**5*delta*gamma**2/65536 + 9*alpha*beta**2*delta**4/4096 + 7*alpha*beta**2*delta**2*epsilon**2/1024 + 13*alpha*beta**2*delta**2*epsilon*gamma/512 - 33*alpha*beta**2*delta**2*gamma**2/1024 + alpha*beta**2*epsilon**4/128 - 3*alpha*beta**2*epsilon**3*gamma/64 + 3*alpha*beta**2*epsilon**2*gamma**2/32 - 5*alpha*beta**2*epsilon*gamma**3/64 + 3*alpha*beta**2*gamma**4/128 - 3*beta**12*gamma/134217728 + beta**9*delta*epsilon/4194304 + 15*beta**9*delta*gamma/4194304 - beta**6*delta**2*epsilon/32768 - 3*beta**6*delta**2*gamma/16384 - beta**6*epsilon**3/32768 + 5*beta**6*epsilon**2*gamma/32768 - 7*beta**6*epsilon*gamma**2/32768 + 3*beta**6*gamma**3/32768 + beta**3*delta**3*epsilon/1024 + 3*beta**3*delta**3*gamma/1024 + beta**3*delta*epsilon**3/512 - 5*beta**3*delta*epsilon**2*gamma/512 + 7*beta**3*delta*epsilon*gamma**2/512 - 3*beta**3*delta*gamma**3/512) + z**2*(67775*alpha**18/4294967296 - 80325*alpha**16*beta**2/2147483648 - 8015*alpha**15*epsilon/33554432 + 14615*alpha**15*gamma/33554432 + 78135*alpha**14*beta**4/2147483648 - 14615*alpha**14*beta*delta/134217728 + 1915*alpha**13*beta**2*epsilon/4194304 - 27245*alpha**13*beta**2*gamma/33554432 - 80335*alpha**12*beta**6/4294967296 + 52015*alpha**12*beta**3*delta/268435456 - 125*alpha**12*delta**2/4194304 + 2383*alpha**12*epsilon**2/2097152 - 5623*alpha**12*epsilon*gamma/1048576 + 9663*alpha**12*gamma**2/2097152 - 90313*alpha**11*beta**4*epsilon/268435456 + 157953*alpha**11*beta**4*gamma/268435456 + 5373*alpha**11*beta*delta*epsilon/4194304 - 9413*alpha**11*beta*delta*gamma/4194304 + 750393*alpha**10*beta**8/137438953472 - 142053*alpha**10*beta**5*delta/1073741824 + 10913*alpha**10*beta**2*delta**2/33554432 - 3615*alpha**10*beta**2*epsilon**2/2097152 + 3945*alpha**10*beta**2*epsilon*gamma/524288 - 13165*alpha**10*beta**2*gamma**2/2097152 + 64405*alpha**9*beta**6*epsilon/536870912 - 112005*alpha**9*beta**6*gamma/536870912 - 13815*alpha**9*beta**3*delta*epsilon/8388608 + 24065*alpha**9*beta**3*delta*gamma/8388608 + 75*alpha**9*delta**2*epsilon/131072 - 75*alpha**9*delta**2*gamma/131072 - 41*alpha**9*epsilon**3/16384 + 375*alpha**9*epsilon**2*gamma/16384 - 707*alpha**9*epsilon*gamma**2/16384 + 373*alpha**9*gamma**3/16384 - 62445*alpha**8*beta**10/68719476736 + 92865*alpha**8*beta**7*delta/2147483648 - 3025*alpha**8*beta**4*delta**2/8388608 + 15063*alpha**8*beta**4*epsilon**2/16777216 - 31081*alpha**8*beta**4*epsilon*gamma/8388608 + 50719*alpha**8*beta**4*gamma**2/16777216 + 75*alpha**8*beta*delta**3/524288 - 75*alpha**8*beta*delta*epsilon**2/16384 + 79*alpha**8*beta*delta*epsilon*gamma/4096 - 261*alpha**8*beta*delta*gamma**2/16384 - 45797*alpha**7*beta**8*epsilon/2147483648 + 80661*alpha**7*beta**8*gamma/2147483648 + 6019*alpha**7*beta**5*delta*epsilon/8388608 - 10591*alpha**7*beta**5*delta*gamma/8388608 - 1489*alpha**7*beta**2*delta**2*epsilon/524288 + 2313*alpha**7*beta**2*delta**2*gamma/524288 + 105*alpha**7*beta**2*epsilon**3/32768 - 369*alpha**7*beta**2*epsilon**2*gamma/16384 + 1281*alpha**7*beta**2*epsilon*gamma**2/32768 - 81*alpha**7*beta**2*gamma**3/4096 + 715*alpha**6*beta**12/8589934592 - 59481*alpha**6*beta**9*delta/8589934592 + 9371*alpha**6*beta**6*delta**2/67108864 - 3187*alpha**6*beta**6*epsilon**2/16777216 + 6363*alpha**6*beta**6*epsilon*gamma/8388608 - 10279*alpha**6*beta**6*gamma**2/16777216 - 971*alpha**6*beta**3*delta**3/2097152 + 987*alpha**6*beta**3*delta*epsilon**2/262144 - 2013*alpha**6*beta**3*delta*epsilon*gamma/131072 + 3279*alpha**6*beta**3*delta*gamma**2/262144 - 15*alpha**6*delta**2*epsilon**2/4096 + 15*alpha**6*delta**2*epsilon*gamma/2048 - 15*alpha**6*delta**2*gamma**2/4096 + 43*alpha**6*epsilon**4/4096 - 67*alpha**6*epsilon**3*gamma/1024 + 305*alpha**6*epsilon**2*gamma**2/2048 - 147*alpha**6*epsilon*gamma**3/1024 + 203*alpha**6*gamma**4/4096 + 3827*alpha**5*beta**10*epsilon/2147483648 - 885*alpha**5*beta**10*gamma/268435456 - 4079*alpha**5*beta**7*delta*epsilon/33554432 + 7485*alpha**5*beta**7*delta*gamma/33554432 + 897*alpha**5*beta**4*delta**2*epsilon/524288 - 375*alpha**5*beta**4*delta**2*gamma/131072 - 141*alpha**5*beta**4*epsilon**3/131072 + 821*alpha**5*beta**4*epsilon**2*gamma/131072 - 1325*alpha**5*beta**4*epsilon*gamma**2/131072 + 645*alpha**5*beta**4*gamma**3/131072 - 15*alpha**5*beta*delta**3*epsilon/8192 + 15*alpha**5*beta*delta**3*gamma/8192 + 37*alpha**5*beta*delta*epsilon**3/4096 - 215*alpha**5*beta*delta*epsilon**2*gamma/4096 + 351*alpha**5*beta*delta*epsilon*gamma**2/4096 - 173*alpha**5*beta*delta*gamma**3/4096 - 2151*alpha**4*beta**14/549755813888 + 8781*alpha**4*beta**11*delta/17179869184 - 5481*alpha**4*beta**8*delta**2/268435456 + 2021*alpha**4*beta**8*epsilon**2/134217728 - 4061*alpha**4*beta**8*epsilon*gamma/67108864 + 6693*alpha**4*beta**8*gamma**2/134217728 + 1017*alpha**4*beta**5*delta**3/4194304 - 13*alpha**4*beta**5*delta*epsilon**2/16384 + 845*alpha**4*beta**5*delta*epsilon*gamma/262144 - 345*alpha**4*beta**5*delta*gamma**2/131072 - 15*alpha**4*beta**2*delta**4/65536 + 215*alpha**4*beta**2*delta**2*epsilon**2/32768 - 351*alpha**4*beta**2*delta**2*epsilon*gamma/16384 + 519*alpha**4*beta**2*delta**2*gamma**2/32768 - 7*alpha**4*beta**2*epsilon**4/1024 + 37*alpha**4*beta**2*epsilon**3*gamma/1024 - 73*alpha**4*beta**2*epsilon**2*gamma**2/1024 + 63*alpha**4*beta**2*epsilon*gamma**3/1024 - 5*alpha**4*beta**2*gamma**4/256 - 1063*alpha**3*beta**12*epsilon/17179869184 + 2231*alpha**3*beta**12*gamma/17179869184 + 1931*alpha**3*beta**9*delta*epsilon/268435456 - 3963*alpha**3*beta**9*delta*gamma/268435456 - 1015*alpha**3*beta**6*delta**2*epsilon/4194304 + 1935*alpha**3*beta**6*delta**2*gamma/4194304 + 3*alpha**3*beta**6*epsilon**3/32768 - 15*alpha**3*beta**6*epsilon**2*gamma/32768 + 93*alpha**3*beta**6*epsilon*gamma**2/131072 - 45*alpha**3*beta**6*gamma**3/131072 + 147*alpha**3*beta**3*delta**3*epsilon/65536 - 203*alpha**3*beta**3*delta**3*gamma/65536 - 35*alpha**3*beta**3*delta*epsilon**3/8192 + 163*alpha**3*beta**3*delta*epsilon**2*gamma/8192 - 237*alpha**3*beta**3*delta*epsilon*gamma**2/8192 + 109*alpha**3*beta**3*delta*gamma**3/8192 + alpha**3*delta**2*epsilon**3/128 - 3*alpha**3*delta**2*epsilon**2*gamma/128 + 3*alpha**3*delta**2*epsilon*gamma**2/128 - alpha**3*delta**2*gamma**3/128 - alpha**3*epsilon**5/32 + 5*alpha**3*epsilon**4*gamma/32 - 5*alpha**3*epsilon**3*gamma**2/16 + 5*alpha**3*epsilon**2*gamma**3/16 - 5*alpha**3*epsilon*gamma**4/32 + alpha**3*gamma**5/32 + 1395*alpha**2*beta**16/17592186044416 - 1031*alpha**2*beta**13*delta/68719476736 + 2163*alpha**2*beta**10*delta**2/2147483648 - 13*alpha**2*beta**10*epsilon**2/33554432 + 111*alpha**2*beta**10*epsilon*gamma/67108864 - 99*alpha**2*beta**10*gamma**2/67108864 - 465*alpha**2*beta**7*delta**3/16777216 + 21*alpha**2*beta**7*delta*epsilon**2/524288 - 87*alpha**2*beta**7*delta*epsilon*gamma/524288 + 75*alpha**2*beta**7*delta*gamma**2/524288 + 263*alpha**2*beta**4*delta**4/1048576 - 35*alpha**2*beta**4*delta**2*epsilon**2/32768 + 33*alpha**2*beta**4*delta**2*epsilon*gamma/8192 - 105*alpha**2*beta**4*delta**2*gamma**2/32768 + 7*alpha**2*beta**4*epsilon**4/16384 - alpha**2*beta**4*epsilon**3*gamma/512 + 29*alpha**2*beta**4*epsilon**2*gamma**2/8192 - 3*alpha**2*beta**4*epsilon*gamma**3/1024 + 15*alpha**2*beta**4*gamma**4/16384 + 3*alpha**2*beta*delta**3*epsilon**2/512 - 3*alpha**2*beta*delta**3*epsilon*gamma/256 + 3*alpha**2*beta*delta**3*gamma**2/512 - 3*alpha**2*beta*delta*epsilon**4/128 + 3*alpha**2*beta*delta*epsilon**3*gamma/32 - 9*alpha**2*beta*delta*epsilon**2*gamma**2/64 + 3*alpha**2*beta*delta*epsilon*gamma**3/32 - 3*alpha**2*beta*delta*gamma**4/128 + 21*alpha*beta**14*epsilon/34359738368 - 61*alpha*beta**14*gamma/34359738368 - 57*alpha*beta**11*delta*epsilon/536870912 + 159*alpha*beta**11*delta*gamma/536870912 + 27*alpha*beta**8*delta**2*epsilon/4194304 - 69*alpha*beta**8*delta**2*gamma/4194304 - alpha*beta**8*epsilon**3/524288 + alpha*beta**8*epsilon**2*gamma/131072 - 3*alpha*beta**8*epsilon*gamma**2/262144 + 3*alpha*beta**8*gamma**3/524288 - 21*alpha*beta**5*delta**3*epsilon/131072 + 43*alpha*beta**5*delta**3*gamma/131072 + 7*alpha*beta**5*delta*epsilon**3/32768 - 25*alpha*beta**5*delta*epsilon**2*gamma/32768 + 33*alpha*beta**5*delta*epsilon*gamma**2/32768 - 15*alpha*beta**5*delta*gamma**3/32768 + 3*alpha*beta**2*delta**4*epsilon/2048 - 3*alpha*beta**2*delta**4*gamma/2048 - 3*alpha*beta**2*delta**2*epsilon**3/512 + 9*alpha*beta**2*delta**2*epsilon**2*gamma/512 - 9*alpha*beta**2*delta**2*epsilon*gamma**2/512 + 3*alpha*beta**2*delta**2*gamma**3/512 - 3*beta**18/8796093022208 + 13*beta**15*delta/137438953472 - 11*beta**12*delta**2/1073741824 + 3*beta**12*epsilon**2/1073741824 - 5*beta**12*epsilon*gamma/536870912 + 11*beta**12*gamma**2/1073741824 + 9*beta**9*delta**3/16777216 - beta**9*delta*epsilon**2/2097152 + 3*beta**9*delta*epsilon*gamma/2097152 - 3*beta**9*delta*gamma**2/2097152 - 7*beta**6*delta**4/524288 + 7*beta**6*delta**2*epsilon**2/262144 - 9*beta**6*delta**2*epsilon*gamma/131072 + 15*beta**6*delta**2*gamma**2/262144 + beta**3*delta**5/8192 - beta**3*delta**3*epsilon**2/2048 + beta**3*delta**3*epsilon*gamma/1024 - beta**3*delta**3*gamma**2/2048) + z*(-25625*alpha**21/34359738368 + 136875*alpha**19*beta**2/68719476736 + 21125*alpha**18*epsilon/1073741824 - 26125*alpha**18*gamma/1073741824 - 619875*alpha**17*beta**4/274877906944 + 26125*alpha**17*beta*delta/4294967296 - 92125*alpha**16*beta**2*epsilon/2147483648 + 113375*alpha**16*beta**2*gamma/2147483648 + 48375*alpha**15*beta**6/34359738368 - 27875*alpha**15*beta**3*delta/2147483648 - 3325*alpha**15*epsilon**2/16777216 + 4325*alpha**15*epsilon*gamma/8388608 - 5325*alpha**15*gamma**2/16777216 + 20425*alpha**14*beta**4*epsilon/536870912 - 12525*alpha**14*beta**4*gamma/268435456 - 4325*alpha**14*beta*delta*epsilon/33554432 + 5325*alpha**14*beta*delta*gamma/33554432 - 581325*alpha**13*beta**8/1099511627776 + 48225*alpha**13*beta**5*delta/4294967296 - 5325*alpha**13*beta**2*delta**2/268435456 + 11275*alpha**13*beta**2*epsilon**2/33554432 - 14525*alpha**13*beta**2*epsilon*gamma/16777216 + 17775*alpha**13*beta**2*gamma**2/33554432 - 75525*alpha**12*beta**6*epsilon/4294967296 + 92525*alpha**12*beta**6*gamma/4294967296 + 7075*alpha**12*beta**3*delta*epsilon/33554432 - 2175*alpha**12*beta**3*delta*gamma/8388608 + 485*alpha**12*epsilon**3/524288 - 2055*alpha**12*epsilon**2*gamma/524288 + 2655*alpha**12*epsilon*gamma**2/524288 - 1085*alpha**12*gamma**3/524288 + 269775*alpha**11*beta**10/2199023255552 - 86525*alpha**11*beta**7*delta/17179869184 + 17025*alpha**11*beta**4*delta**2/536870912 - 29055*alpha**11*beta**4*epsilon**2/134217728 + 37155*alpha**11*beta**4*epsilon*gamma/67108864 - 45255*alpha**11*beta**4*gamma**2/134217728 + 2055*alpha**11*beta*delta*epsilon**2/2097152 - 2655*alpha**11*beta*delta*epsilon*gamma/1048576 + 3255*alpha**11*beta*delta*gamma**2/2097152 + 155405*alpha**10*beta**8*epsilon/34359738368 - 191005*alpha**10*beta**8*gamma/34359738368 - 34905*alpha**10*beta**5*delta*epsilon/268435456 + 43005*alpha**10*beta**5*delta*gamma/268435456 + 2655*alpha**10*beta**2*delta**2*epsilon/8388608 - 3255*alpha**10*beta**2*delta**2*gamma/8388608 - 1185*alpha**10*beta**2*epsilon**3/1048576 + 4905*alpha**10*beta**2*epsilon**2*gamma/1048576 - 6255*alpha**10*beta**2*epsilon*gamma**2/1048576 + 2535*alpha**10*beta**2*gamma**3/1048576 - 154335*alpha**9*beta**12/8796093022208 + 171505*alpha**9*beta**9*delta/137438953472 - 40755*alpha**9*beta**6*delta**2/2147483648 + 8815*alpha**9*beta**6*epsilon**2/134217728 - 1405*alpha**9*beta**6*epsilon*gamma/8388608 + 13665*alpha**9*beta**6*gamma**2/134217728 + 1085*alpha**9*beta**3*delta**3/33554432 - 585*alpha**9*beta**3*delta*epsilon**2/524288 + 3015*alpha**9*beta**3*delta*epsilon*gamma/1048576 - 1845*alpha**9*beta**3*delta*gamma**2/1048576 - 61*alpha**9*epsilon**4/32768 + 101*alpha**9*epsilon**3*gamma/8192 - 423*alpha**9*epsilon**2*gamma**2/16384 + 181*alpha**9*epsilon*gamma**3/8192 - 221*alpha**9*gamma**4/32768 - 44455*alpha**8*beta**10*epsilon/68719476736 + 55305*alpha**8*beta**10*gamma/68719476736 + 20005*alpha**8*beta**7*delta*epsilon/536870912 - 24855*alpha**8*beta**7*delta*gamma/536870912 - 5805*alpha**8*beta**4*delta**2*epsilon/16777216 + 7155*alpha**8*beta**4*delta**2*gamma/16777216 + 483*alpha**8*beta**4*epsilon**3/1048576 - 1959*alpha**8*beta**4*epsilon**2*gamma/1048576 + 2469*alpha**8*beta**4*epsilon*gamma**2/1048576 - 993*alpha**8*beta**4*gamma**3/1048576 - 101*alpha**8*beta*delta*epsilon**3/32768 + 423*alpha**8*beta*delta*epsilon**2*gamma/32768 - 543*alpha**8*beta*delta*epsilon*gamma**2/32768 + 221*alpha**8*beta*delta*gamma**3/32768 + 3345*alpha**7*beta**14/2199023255552 - 23415*alpha**7*beta**11*delta/137438953472 + 5595*alpha**7*beta**8*delta**2/1073741824 - 10213*alpha**7*beta**8*epsilon**2/1073741824 + 13133*alpha**7*beta**8*epsilon*gamma/536870912 - 16053*alpha**7*beta**8*gamma**2/1073741824 - 1155*alpha**7*beta**5*delta**3/33554432 + 867*alpha**7*beta**5*delta*epsilon**2/2097152 - 561*alpha**7*beta**5*delta*epsilon*gamma/524288 + 1377*alpha**7*beta**5*delta*gamma**2/2097152 - 423*alpha**7*beta**2*delta**2*epsilon**2/262144 + 543*alpha**7*beta**2*delta**2*epsilon*gamma/131072 - 663*alpha**7*beta**2*delta**2*gamma**2/262144 + 95*alpha**7*beta**2*epsilon**4/65536 - 145*alpha**7*beta**2*epsilon**3*gamma/16384 + 585*alpha**7*beta**2*epsilon**2*gamma**2/32768 - 245*alpha**7*beta**2*epsilon*gamma**3/16384 + 295*alpha**7*beta**2*gamma**4/65536 + 1719*alpha**6*beta**12*epsilon/34359738368 - 551*alpha**6*beta**12*gamma/8589934592 - 10733*alpha**6*beta**9*delta*epsilon/2147483648 + 13653*alpha**6*beta**9*delta*gamma/2147483648 + 2019*alpha**6*beta**6*delta**2*epsilon/16777216 - 2529*alpha**6*beta**6*delta**2*gamma/16777216 - 295*alpha**6*beta**6*epsilon**3/4194304 + 1185*alpha**6*beta**6*epsilon**2*gamma/4194304 - 1485*alpha**6*beta**6*epsilon*gamma**2/4194304 + 595*alpha**6*beta**6*gamma**3/4194304 - 181*alpha**6*beta**3*delta**3*epsilon/524288 + 221*alpha**6*beta**3*delta**3*gamma/524288 + 65*alpha**6*beta**3*delta*epsilon**3/32768 - 135*alpha**6*beta**3*delta*epsilon**2*gamma/16384 + 345*alpha**6*beta**3*delta*epsilon*gamma**2/32768 - 35*alpha**6*beta**3*delta*gamma**3/8192 + alpha**6*epsilon**5/1024 - 13*alpha**6*epsilon**4*gamma/1024 + 21*alpha**6*epsilon**3*gamma**2/512 - 29*alpha**6*epsilon**2*gamma**3/512 + 37*alpha**6*epsilon*gamma**4/1024 - 9*alpha**6*gamma**5/1024 - 10881*alpha**5*beta**16/140737488355328 + 3433*alpha**5*beta**13*delta/274877906944 - 11253*alpha**5*beta**10*delta**2/17179869184 + 1335*alpha**5*beta**10*epsilon**2/2147483648 - 1785*alpha**5*beta**10*epsilon*gamma/1073741824 + 2235*alpha**5*beta**10*gamma**2/2147483648 + 3*alpha**5*beta**7*delta**3/262144 - 915*alpha**5*beta**7*delta*epsilon**2/16777216 + 1215*alpha**5*beta**7*delta*epsilon*gamma/8388608 - 1515*alpha**5*beta**7*delta*gamma**2/16777216 - 221*alpha**5*beta**4*delta**4/8388608 + 495*alpha**5*beta**4*delta**2*epsilon**2/524288 - 645*alpha**5*beta**4*delta**2*epsilon*gamma/262144 + 795*alpha**5*beta**4*delta**2*gamma**2/524288 - 71*alpha**5*beta**4*epsilon**4/262144 + 99*alpha**5*beta**4*epsilon**3*gamma/65536 - 381*alpha**5*beta**4*epsilon**2*gamma**2/131072 + 155*alpha**5*beta**4*epsilon*gamma**3/65536 - 183*alpha**5*beta**4*gamma**4/262144 + 13*alpha**5*beta*delta*epsilon**4/4096 - 21*alpha**5*beta*delta*epsilon**3*gamma/1024 + 87*alpha**5*beta*delta*epsilon**2*gamma**2/2048 - 37*alpha**5*beta*delta*epsilon*gamma**3/1024 + 45*alpha**5*beta*delta*gamma**4/4096 - 545*alpha**4*beta**14*epsilon/274877906944 + 745*alpha**4*beta**14*gamma/274877906944 + 645*alpha**4*beta**11*delta*epsilon/2147483648 - 435*alpha**4*beta**11*delta*gamma/1073741824 - 945*alpha**4*beta**8*delta**2*epsilon/67108864 + 1245*alpha**4*beta**8*delta**2*gamma/67108864 + 117*alpha**4*beta**8*epsilon**3/33554432 - 495*alpha**4*beta**8*epsilon**2*gamma/33554432 + 639*alpha**4*beta**8*epsilon*gamma**2/33554432 - 261*alpha**4*beta**8*gamma**3/33554432 + 25*alpha**4*beta**5*delta**3*epsilon/131072 - 125*alpha**4*beta**5*delta**3*gamma/524288 - 69*alpha**4*beta**5*delta*epsilon**3/262144 + 291*alpha**4*beta**5*delta*epsilon**2*gamma/262144 - 375*alpha**4*beta**5*delta*epsilon*gamma**2/262144 + 153*alpha**4*beta**5*delta*gamma**3/262144 + 21*alpha**4*beta**2*delta**2*epsilon**3/8192 - 87*alpha**4*beta**2*delta**2*epsilon**2*gamma/8192 + 111*alpha**4*beta**2*delta**2*epsilon*gamma**2/8192 - 45*alpha**4*beta**2*delta**2*gamma**3/8192 - alpha**4*beta**2*epsilon**5/2048 + 7*alpha**4*beta**2*epsilon**4*gamma/2048 - 9*alpha**4*beta**2*epsilon**3*gamma**2/1024 + 11*alpha**4*beta**2*epsilon**2*gamma**3/1024 - 13*alpha**4*beta**2*epsilon*gamma**4/2048 + 3*alpha**4*beta**2*gamma**5/2048 + 595*alpha**3*beta**18/281474976710656 - 505*alpha**3*beta**15*delta/1099511627776 + 1245*alpha**3*beta**12*delta**2/34359738368 - 143*alpha**3*beta**12*epsilon**2/8589934592 + 211*alpha**3*beta**12*epsilon*gamma/4294967296 - 279*alpha**3*beta**12*gamma**2/8589934592 - 325*alpha**3*beta**9*delta**3/268435456 + 315*alpha**3*beta**9*delta*epsilon**2/134217728 - 459*alpha**3*beta**9*delta*epsilon*gamma/67108864 + 603*alpha**3*beta**9*delta*gamma**2/134217728 + 235*alpha**3*beta**6*delta**4/16777216 - 201*alpha**3*beta**6*delta**2*epsilon**2/2097152 + 285*alpha**3*beta**6*delta**2*epsilon*gamma/1048576 - 369*alpha**3*beta**6*delta**2*gamma**2/2097152 + alpha**3*beta**6*epsilon**4/131072 - 3*alpha**3*beta**6*epsilon**3*gamma/65536 + 3*alpha**3*beta**6*epsilon**2*gamma**2/32768 - 5*alpha**3*beta**6*epsilon*gamma**3/65536 + 3*alpha**3*beta**6*gamma**4/131072 + 29*alpha**3*beta**3*delta**3*epsilon**2/32768 - 37*alpha**3*beta**3*delta**3*epsilon*gamma/16384 + 45*alpha**3*beta**3*delta**3*gamma**2/32768 - alpha**3*beta**3*delta*epsilon**4/2048 + 3*alpha**3*beta**3*delta*epsilon**3*gamma/1024 - 3*alpha**3*beta**3*delta*epsilon**2*gamma**2/512 + 5*alpha**3*beta**3*delta*epsilon*gamma**3/1024 - 3*alpha**3*beta**3*delta*gamma**4/2048 + 149*alpha**2*beta**16*epsilon/4398046511104 - 237*alpha**2*beta**16*gamma/4398046511104 - 121*alpha**2*beta**13*delta*epsilon/17179869184 + 189*alpha**2*beta**13*delta*gamma/17179869184 + 279*alpha**2*beta**10*delta**2*epsilon/536870912 - 423*alpha**2*beta**10*delta**2*gamma/536870912 - 3*alpha**2*beta**10*epsilon**3/67108864 + 15*alpha**2*beta**10*epsilon**2*gamma/67108864 - 21*alpha**2*beta**10*epsilon*gamma**2/67108864 + 9*alpha**2*beta**10*gamma**3/67108864 - 65*alpha**2*beta**7*delta**3*epsilon/4194304 + 93*alpha**2*beta**7*delta**3*gamma/4194304 + 3*alpha**2*beta**7*delta*epsilon**3/524288 - 15*alpha**2*beta**7*delta*epsilon**2*gamma/524288 + 21*alpha**2*beta**7*delta*epsilon*gamma**2/524288 - 9*alpha**2*beta**7*delta*gamma**3/524288 + 37*alpha**2*beta**4*delta**4*epsilon/262144 - 45*alpha**2*beta**4*delta**4*gamma/262144 - 3*alpha**2*beta**4*delta**2*epsilon**3/16384 + 15*alpha**2*beta**4*delta**2*epsilon**2*gamma/16384 - 21*alpha**2*beta**4*delta**2*epsilon*gamma**2/16384 + 9*alpha**2*beta**4*delta**2*gamma**3/16384 - 27*alpha*beta**20/1125899906842624 + 117*alpha*beta**17*delta/17592186044416 - 99*alpha*beta**14*delta**2/137438953472 + alpha*beta**14*epsilon**2/8589934592 - alpha*beta**14*epsilon*gamma/2147483648 + 3*alpha*beta**14*gamma**2/8589934592 + 81*alpha*beta**11*delta**3/2147483648 - 3*alpha*beta**11*delta*epsilon**2/134217728 + 3*alpha*beta**11*delta*epsilon*gamma/33554432 - 9*alpha*beta**11*delta*gamma**2/134217728 - 63*alpha*beta**8*delta**4/67108864 + 3*alpha*beta**8*delta**2*epsilon**2/2097152 - 3*alpha*beta**8*delta**2*epsilon*gamma/524288 + 9*alpha*beta**8*delta**2*gamma**2/2097152 + 9*alpha*beta**5*delta**5/1048576 - alpha*beta**5*delta**3*epsilon**2/32768 + alpha*beta**5*delta**3*epsilon*gamma/8192 - 3*alpha*beta**5*delta**3*gamma**2/32768 - beta**18*epsilon/8796093022208 + 3*beta**18*gamma/8796093022208 + beta**15*delta*epsilon/34359738368 - 3*beta**15*delta*gamma/34359738368 - 3*beta**12*delta**2*epsilon/1073741824 + 9*beta**12*delta**2*gamma/1073741824 + beta**9*delta**3*epsilon/8388608 - 3*beta**9*delta**3*gamma/8388608 - beta**6*delta**4*epsilon/524288 + 3*beta**6*delta**4*gamma/524288)"
+        ],
+        "prime": 101,
+        "primitive_integer_polynomials_at_X_one_coefficients_descending": [
+          [
+            823559979008,
+            2142366597120,
+            -7745237090304,
+            -10983156000768,
+            19595050816005
+          ],
+          [
+            -43980465111040,
+            50027779063808,
+            8158887916077056,
+            -16022182274531328,
+            -1902267636498432,
+            10167433173257472,
+            -5514047299623807
+          ],
+          [
+            117093590311632896,
+            3176040491900731392,
+            -8741921458697011200,
+            -23886076245853601792,
+            41652014165136506880,
+            -5466925327621718016,
+            -10070790148662179328,
+            7758264550570696449
+          ]
+        ],
+        "section_exists_over_algebraic_closure_C_X": false,
+        "solved_coefficients": {
+          "K": "-5*alpha**4/(128*h) + 5*alpha**2*beta**2/(256*h) + alpha*epsilon/(4*h) - alpha*gamma/(4*h) + 3*alpha*h/8 - beta**4/(1024*h) + beta*delta/(16*h)",
+          "L": "-25*alpha**8/(32768*h**3) + 25*alpha**6*beta**2/(32768*h**3) + 5*alpha**5*epsilon/(512*h**3) - 5*alpha**5*gamma/(512*h**3) + 13*alpha**5/(1024*h) - 15*alpha**4*beta**4/(65536*h**3) + 5*alpha**4*beta*delta/(2048*h**3) - 5*alpha**3*beta**2*epsilon/(1024*h**3) + 5*alpha**3*beta**2*gamma/(1024*h**3) - 5*alpha**3*beta**2/(512*h) + 5*alpha**2*beta**6/(262144*h**3) - 5*alpha**2*beta**3*delta/(4096*h**3) - alpha**2*epsilon**2/(32*h**3) + alpha**2*epsilon*gamma/(16*h**3) + alpha**2*epsilon/(32*h) - alpha**2*gamma**2/(32*h**3) + 3*alpha**2*gamma/(32*h) - 13*alpha**2*h/128 + alpha*beta**4*epsilon/(4096*h**3) - alpha*beta**4*gamma/(4096*h**3) + 3*alpha*beta**4/(2048*h) - alpha*beta*delta*epsilon/(64*h**3) + alpha*beta*delta*gamma/(64*h**3) - 3*alpha*beta*delta/(128*h) - beta**8/(2097152*h**3) + beta**5*delta/(16384*h**3) - beta**2*delta**2/(512*h**3) + beta**2*epsilon/(128*h) - 3*beta**2*gamma/(128*h) + beta**2*h/32",
+          "M": "-125*alpha**12/(4194304*h**5) + 375*alpha**10*beta**2/(8388608*h**5) + 75*alpha**9*epsilon/(131072*h**5) - 75*alpha**9*gamma/(131072*h**5) + 205*alpha**9/(262144*h**3) - 825*alpha**8*beta**4/(33554432*h**5) + 75*alpha**8*beta*delta/(524288*h**5) - 75*alpha**7*beta**2*epsilon/(131072*h**5) + 75*alpha**7*beta**2*gamma/(131072*h**5) - 15*alpha**7*beta**2/(16384*h**3) + 25*alpha**6*beta**6/(4194304*h**5) - 75*alpha**6*beta**3*delta/(524288*h**5) - 15*alpha**6*epsilon**2/(4096*h**5) + 15*alpha**6*epsilon*gamma/(2048*h**5) - 23*alpha**6*epsilon/(4096*h**3) - 15*alpha**6*gamma**2/(4096*h**5) + 43*alpha**6*gamma/(4096*h**3) - 103*alpha**6/(16384*h) + 45*alpha**5*beta**4*epsilon/(262144*h**5) - 45*alpha**5*beta**4*gamma/(262144*h**5) + 363*alpha**5*beta**4/(1048576*h**3) - 15*alpha**5*beta*delta*epsilon/(8192*h**5) + 15*alpha**5*beta*delta*gamma/(8192*h**5) - 43*alpha**5*beta*delta/(16384*h**3) - 165*alpha**4*beta**8/(268435456*h**5) + 45*alpha**4*beta**5*delta/(1048576*h**5) - 15*alpha**4*beta**2*delta**2/(65536*h**5) + 15*alpha**4*beta**2*epsilon**2/(8192*h**5) - 15*alpha**4*beta**2*epsilon*gamma/(4096*h**5) + 65*alpha**4*beta**2*epsilon/(16384*h**3) + 15*alpha**4*beta**2*gamma**2/(8192*h**5) - 115*alpha**4*beta**2*gamma/(16384*h**3) + 189*alpha**4*beta**2/(32768*h) - 15*alpha**3*beta**6*epsilon/(1048576*h**5) + 15*alpha**3*beta**6*gamma/(1048576*h**5) - 95*alpha**3*beta**6/(2097152*h**3) + 15*alpha**3*beta**3*delta*epsilon/(16384*h**5) - 15*alpha**3*beta**3*delta*gamma/(16384*h**5) + 25*alpha**3*beta**3*delta/(16384*h**3) + alpha**3*epsilon**3/(128*h**5) - 3*alpha**3*epsilon**2*gamma/(128*h**5) + alpha**3*epsilon**2/(256*h**3) + 3*alpha**3*epsilon*gamma**2/(128*h**5) - 5*alpha**3*epsilon*gamma/(128*h**3) - 9*alpha**3*epsilon/(512*h) - alpha**3*gamma**3/(128*h**5) + 9*alpha**3*gamma**2/(256*h**3) - 31*alpha**3*gamma/(512*h) + 55*alpha**3*h/1024 + 15*alpha**2*beta**10/(536870912*h**5) - 15*alpha**2*beta**7*delta/(4194304*h**5) + 15*alpha**2*beta**4*delta**2/(131072*h**5) - 3*alpha**2*beta**4*epsilon**2/(32768*h**5) + 3*alpha**2*beta**4*epsilon*gamma/(16384*h**5) - 19*alpha**2*beta**4*epsilon/(32768*h**3) - 3*alpha**2*beta**4*gamma**2/(32768*h**5) + 33*alpha**2*beta**4*gamma/(32768*h**3) - 153*alpha**2*beta**4/(131072*h) + 3*alpha**2*beta*delta*epsilon**2/(512*h**5) - 3*alpha**2*beta*delta*epsilon*gamma/(256*h**5) + 5*alpha**2*beta*delta*epsilon/(512*h**3) + 3*alpha**2*beta*delta*gamma**2/(512*h**5) - 9*alpha**2*beta*delta*gamma/(512*h**3) + 31*alpha**2*beta*delta/(2048*h) + 3*alpha*beta**8*epsilon/(8388608*h**5) - 3*alpha*beta**8*gamma/(8388608*h**5) + 27*alpha*beta**8/(16777216*h**3) - 3*alpha*beta**5*delta*epsilon/(65536*h**5) + 3*alpha*beta**5*delta*gamma/(65536*h**5) - 9*alpha*beta**5*delta/(65536*h**3) + 3*alpha*beta**2*delta**2*epsilon/(2048*h**5) - 3*alpha*beta**2*delta**2*gamma/(2048*h**5) + 9*alpha*beta**2*delta**2/(4096*h**3) - alpha*beta**2*epsilon**2/(512*h**3) + alpha*beta**2*epsilon*gamma/(128*h**3) + 3*alpha*beta**2*epsilon/(1024*h) - 3*alpha*beta**2*gamma**2/(512*h**3) + 23*alpha*beta**2*gamma/(1024*h) - 3*alpha*beta**2*h/128 - beta**12/(2147483648*h**5) + 3*beta**9*delta/(33554432*h**5) - 3*beta**6*delta**2/(524288*h**5) + beta**6*epsilon/(131072*h**3) - 3*beta**6*gamma/(131072*h**3) + 3*beta**6/(131072*h) + beta**3*delta**3/(8192*h**5) - beta**3*delta*epsilon/(2048*h**3) + 3*beta**3*delta*gamma/(2048*h**3) - beta**3*delta/(512*h) + delta**2/(32*h) - epsilon**2/(8*h) + epsilon*gamma/(4*h) + 3*epsilon*h/8 - gamma**2/(8*h) + 3*gamma*h/8 - h**3/4",
+          "p": "-alpha**3/8 + 3*alpha*beta**2/64 - epsilon - gamma + h**2",
+          "q": "alpha**2/4 - beta**2/16"
+        },
+        "specialization_X": 1,
+        "specialized_degrees_z": [
+          4,
+          6,
+          7
+        ],
+        "z_definition": "z=h^2; this square test is unnecessary for exclusion because no algebraic z solves the necessary pair"
+      },
+      "h_zero": {
+        "generic_polynomial_is_nonzero": true,
+        "necessary_equation": "5*alpha**4/4 - 5*alpha**2*beta**2/8 - 8*alpha*epsilon + 8*alpha*gamma + beta**4/32 - 2*beta*delta",
+        "section_exists": false,
+        "value_at_X_one": "-1407/32"
+      },
+      "normalization": "b4=0; x_section=-24*T^3+9*(-alpha*T^2+q*T+p), y_section=108*(h*T^3+K*T^2+L*T+M)",
+      "split_is_exhaustive": "h=0 or h!=0; division by h is used only in the latter case"
+    },
+    "coefficient_payload": {
+      "L": "t**3",
+      "p0": "r0*r1*s**2*(r0**10 + 2*r1**10) + r0*r1*t**2*(r0**2 + r1**2)",
+      "p1": "s**2*(r0**12 + r1**12) + t**2*(r0**4 + 2*r1**4)",
+      "p2": "0",
+      "p3": "0",
+      "p4": "r0*r1*s**2*(2*r0**10 + 3*r1**10)"
+    },
+    "coefficient_payload_sha256": "f2b6dcad4a90364cff7557f379e4ccdb76bd466553a3289659d08a356119f0cf",
+    "core_sha256": "f85517eae00d31406b335118ba99ee08193c14b6a4a5e3983b6cbb65216f1a8b",
+    "input_core_hashes": {
+      "v96_geometry": "8640b8736483297c39589f7248ff3936b4e51982530999e68f6b4448ce30eea8",
+      "v96_master": "d8328579f5162e59a855336aa66bff8ca180f1d7062bb066ee241bbed99503b2",
+      "v96_route": "2c1575f64d2aa3414e6b504d72c20a9a76160825aac7389259ac26402ab8f215"
+    },
+    "limitations": [
+      "Only the b4=0 subbranch is newly excluded. The surviving four-equation system is not solved over C(X), and its nonzero-square condition cannot be dropped.",
+      "Resultant specialization certifies a nonzero generic determinant, not a rank specialization theorem or a search over finitely many possible rational functions.",
+      "The original torsion, rank interval and conditional charge-normalized heights are unchanged. No new primitive section, spectrum, Hodge data, same-action completion or gate closure follows."
+    ],
+    "original_model_and_coordinate_change": {
+      "A_residual": "0",
+      "B_residual": "0",
+      "compressed_coefficients": {
+        "alpha": "X**3 + X",
+        "beta": "X**4 + 2",
+        "delta": "X**12 + 1",
+        "epsilon": "2*X**11 + 3*X",
+        "gamma": "X**11 + 2*X"
+      },
+      "coordinate_identity": {
+        "birational_twist_or_field_extension_used": false,
+        "exact_identity_residual": "0",
+        "resolvent_equation": "w^2=s*(s-c)^2-4*a*e*s+b^2*e",
+        "short_Weierstrass_residual_over_resolvent_residual": 729,
+        "x_section": "9*s-6*c",
+        "y_section": "27*w"
+      },
+      "quartic": {
+        "a": "T**3 + T**2*X**3 + T**2*X + X**11 + 2*X",
+        "b": "T**2*X**4 + 2*T**2 + X**12 + 1",
+        "c": "-2*T**3",
+        "d": "0",
+        "e": "T**3 + 2*X**11 + 3*X"
+      },
+      "same_original_K": "C(X)(T)"
+    },
+    "preserved_frontier": {
+      "all_cubic_polynomial_x_sections_excluded": false,
+      "all_rational_sections_excluded": false,
+      "closed_gates": [],
+      "doubled_charge_conditional_section_height_S_F": [
+        37,
+        192
+      ],
+      "every_remaining_cubic_candidate_has_y_degree_exactly_four": true,
+      "exact_original_rank_computed": false,
+      "higher_degree_or_T_denominator_sections_excluded": false,
+      "original_MW_torsion_order": 1,
+      "original_coefficient_member_changed": false,
+      "original_free_rank_lower_bound": 0,
+      "original_free_rank_upper_bound": 11,
+      "same_action_parent_accepted": false,
+      "target_height_or_primitive_generator_constructed": false,
+      "unit_charge_conditional_section_height_S_F": [
+        148,
+        768
+      ]
+    },
+    "primary_sources": [
+      {
+        "url": "https://stacks.math.columbia.edu/tag/00UA",
+        "use": "Sylvester determinant and common-factor criterion over residue fields; the certificate separately verifies degree preservation and an exact modular nonvanishing witness."
+      },
+      {
+        "url": "https://www.math.columbia.edu/~dejong/courses/algebraic_curves/AlgCLN6-1.pdf",
+        "use": "Section4.1 defines the resultant as a polynomial determinant in the coefficients and states its common-root criterion. No specialization rank theorem is used."
+      },
+      {
+        "url": "https://arxiv.org/abs/0907.0298",
+        "use": "The inherited elliptic-surface and Mordell-Weil context. This audit preserves the previously proved generic K3 rank bound rather than promoting a low-degree section search to an exact rank."
+      }
+    ],
+    "remaining_nonzero_b4_system": {
+      "Galois_descent": "If z is nonsquare, this system at most constructs a point over C(X)(sqrt(z))(T). Its x coordinate is fixed and its nonzero y changes sign under the quadratic involution, so it is not an original-field point.",
+      "clearing_z_powers": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "clearing_z_powers_creates_no_extra_points_when_z_nonzero": true,
+      "coefficient_dictionary": {
+        "alpha": "X**3 + X",
+        "beta": "X**4 + 2",
+        "delta": "X**12 + 1",
+        "epsilon": "2*X**11 + 3*X",
+        "gamma": "X**11 + 2*X"
+      },
+      "coefficient_order": "solve q,p from T7,T6 without division by an unknown, then L,M from T5,T4 with the only variable pivot32*z",
+      "degrees_in_z_H_K": [
+        [
+          6,
+          4,
+          2
+        ],
+        [
+          8,
+          4,
+          3
+        ],
+        [
+          9,
+          5,
+          3
+        ],
+        [
+          10,
+          6,
+          4
+        ]
+      ],
+      "equation_count": 4,
+      "equations_T7_through_T0": [
+        "32*H*z + 4*alpha**2 - 12*alpha*z - beta**2 - 16*q + 8*z**2",
+        "16*H**2*z + 32*K*z + alpha**3 - 3*alpha**2*z - 12*alpha*q + 3*alpha*z**2 - 16*epsilon - 16*gamma - 16*p + 16*q*z - z**3",
+        "32*H*K*z + 32*L*z - 3*alpha**2*q - 20*alpha*epsilon - 4*alpha*gamma - 12*alpha*p + 6*alpha*q*z - 2*beta*delta + 4*epsilon*z + 4*gamma*z + 16*p*z + 8*q**2 - 3*q*z**2",
+        "32*H*L*z + 16*K**2*z + 32*M*z - 4*alpha**2*epsilon - 3*alpha**2*p + 4*alpha*epsilon*z + 6*alpha*p*z + 3*alpha*q**2 - beta**2*epsilon + 4*epsilon*q + 4*gamma*q + 16*p*q - 3*p*z**2 - 3*q**2*z",
+        "32*H*M*z + 32*K*L*z + 4*alpha*epsilon*q + 6*alpha*p*q - delta**2 - 16*epsilon*gamma + 4*epsilon*p + 4*gamma*p + 8*p**2 - 6*p*q*z - q**3",
+        "32*K*M*z + 16*L**2*z - 4*alpha*epsilon*gamma + 4*alpha*epsilon*p + 3*alpha*p**2 - 2*beta*delta*epsilon + 4*epsilon*gamma*z - 3*p**2*z - 3*p*q**2",
+        "32*L*M*z + 4*epsilon*gamma*q - 3*p**2*q",
+        "16*M**2*z - delta**2*epsilon + 4*epsilon*gamma*p - p**3"
+      ],
+      "equations_without_square_condition_are_sufficient_over_original_field": false,
+      "exact_equivalence_scope": "On z!=0, the four displayed equations together with z=r^2 in C(X) are equivalent to the remaining original-field cubic-x polynomial-section branch. Reinsert q,p,L,M and either sign of r to reconstruct the point.",
+      "nonzero_original_section_constructed": false,
+      "normalization": "choose r in C(X)^*, z=r^2, b4=108*r; y_section=108*r*(T^4+H*T^3+K*T^2+L*T+M)",
+      "rational_functions_H_K_or_r_assumed_polynomial_in_X": false,
+      "reduced_equation_list_sha256": "ec5b885cb9bff9fbbe5e0a74ec9edd677a471c12e8df63c63563152f35ce4ccd",
+      "reduced_equations_T3_through_T0": [
+        "-12*H**4*alpha*z + 24*H**4*z**2 + 32*H**3*K*z + 19*H**3*alpha**2*z - 30*H**3*alpha*z**2 - H**3*beta**2*z - 3*H**3*z**3 - 12*H**2*K*alpha*z - 48*H**2*K*z**2 + 5*H**2*alpha**4/4 - 27*H**2*alpha**3*z/4 - 5*H**2*alpha**2*beta**2/8 + 3*H**2*alpha**2*z**2 - 8*H**2*alpha*epsilon + 8*H**2*alpha*gamma + 9*H**2*alpha*z**3 + H**2*beta**4/32 + 33*H**2*beta**2*z**2/16 - 2*H**2*beta*delta - 9*H**2*z**4/2 - 48*H*K**2*z - 22*H*K*alpha**2*z + 48*H*K*alpha*z**2 + 4*H*K*beta**2*z - 12*H*K*z**3 - H*alpha**5/16 - 19*H*alpha**4*z/16 - 5*H*alpha**3*beta**2/64 + 6*H*alpha**3*z**2 + 25*H*alpha**2*beta**2*z/32 + 4*H*alpha**2*epsilon - 71*H*alpha**2*z**3/8 + 9*H*alpha*beta**4/256 - 81*H*alpha*beta**2*z**2/64 + 7*H*alpha*epsilon*z + 3*H*alpha*gamma*z + 69*H*alpha*z**4/16 - 19*H*beta**4*z/256 + H*beta**2*epsilon/4 - 3*H*beta**2*gamma/4 + 7*H*beta**2*z**3/16 - 9*H*epsilon*z**2 - 9*H*gamma*z**2 - 3*H*z**5/16 + 24*K**2*alpha*z - 5*K*alpha**4/4 + 31*K*alpha**3*z/4 + 5*K*alpha**2*beta**2/8 - 13*K*alpha**2*z**2 - 9*K*alpha*beta**2*z/8 + 8*K*alpha*epsilon - 8*K*alpha*gamma + 6*K*alpha*z**3 - K*beta**4/32 + K*beta**2*z**2/16 + 2*K*beta*delta - 12*K*epsilon*z - 12*K*gamma*z + K*z**4/2 - 5*alpha**6/64 + 37*alpha**5*z/64 + 9*alpha**4*beta**2/256 - 103*alpha**4*z**2/64 - 17*alpha**3*beta**2*z/128 + alpha**3*epsilon + 133*alpha**3*z**3/64 - 3*alpha**2*beta**4/1024 + 35*alpha**2*beta**2*z**2/256 - 9*alpha**2*epsilon*z/2 - 3*alpha**2*gamma*z/2 - 37*alpha**2*z**4/32 + 3*alpha*beta**4*z/1024 - 7*alpha*beta**2*epsilon/16 - 3*alpha*beta**2*gamma/16 + 23*alpha*epsilon*z**2/4 + 15*alpha*gamma*z**2/4 + 3*alpha*z**5/32 + beta**6/4096 + beta**4*z**2/512 + 3*beta**2*epsilon*z/8 + 3*beta**2*gamma*z/8 - 5*beta**2*z**4/128 - delta**2 + 4*epsilon**2 - 8*epsilon*gamma - 9*epsilon*z**3/4 + 4*gamma**2 - 9*gamma*z**3/4 + 3*z**6/32",
+        "9*H**4*alpha**2*z**2/4 - 15*H**4*alpha*z**3 + 21*H**4*z**4 - 24*H**3*K*alpha*z**2 + 64*H**3*K*z**3 - 15*H**3*alpha**3*z**2/2 + 81*H**3*alpha**2*z**3/2 + 3*H**3*alpha*beta**2*z**2/4 - 231*H**3*alpha*z**4/4 - 9*H**3*beta**2*z**3/4 + 21*H**3*z**5 + 48*H**2*K**2*z**2 + 48*H**2*K*alpha**2*z**2 - 114*H**2*K*alpha*z**3 - 3*H**2*K*beta**2*z**2 + 39*H**2*K*z**4 - 15*H**2*alpha**5*z/32 + 335*H**2*alpha**4*z**2/32 + 15*H**2*alpha**3*beta**2*z/64 - 321*H**2*alpha**3*z**3/8 - 161*H**2*alpha**2*beta**2*z**2/64 + 3*H**2*alpha**2*epsilon*z - 3*H**2*alpha**2*gamma*z + 933*H**2*alpha**2*z**4/16 - 3*H**2*alpha*beta**4*z/256 + 567*H**2*alpha*beta**2*z**3/128 + 3*H**2*alpha*beta*delta*z/4 - 19*H**2*alpha*epsilon*z**2/2 + 21*H**2*alpha*gamma*z**2/2 - 549*H**2*alpha*z**5/16 + 25*H**2*beta**4*z**2/256 - 57*H**2*beta**2*z**4/32 - 3*H**2*beta*delta*z**2 + 99*H**2*z**6/16 - 48*H*K**2*alpha*z**2 + 5*H*K*alpha**4*z/2 - 30*H*K*alpha**3*z**2 - 5*H*K*alpha**2*beta**2*z/4 + 64*H*K*alpha**2*z**3 + 3*H*K*alpha*beta**2*z**2 - 16*H*K*alpha*epsilon*z + 16*H*K*alpha*gamma*z - 39*H*K*alpha*z**4 + H*K*beta**4*z/16 + H*K*beta**2*z**3/8 - 4*H*K*beta*delta*z + 3*H*K*z**5 + 25*H*alpha**6*z/32 - 193*H*alpha**5*z**2/32 - 15*H*alpha**4*beta**2*z/32 + 1143*H*alpha**4*z**3/64 + 67*H*alpha**3*beta**2*z**2/32 - 5*H*alpha**3*epsilon*z + 5*H*alpha**3*gamma*z - 1653*H*alpha**3*z**4/64 + 15*H*alpha**2*beta**4*z/256 - 207*H*alpha**2*beta**2*z**3/64 - 5*H*alpha**2*beta*delta*z/4 + 27*H*alpha**2*epsilon*z**2/2 - 21*H*alpha**2*gamma*z**2/2 + 75*H*alpha**2*z**5/4 - 63*H*alpha*beta**4*z**2/512 + H*alpha*beta**2*epsilon*z/2 - H*alpha*beta**2*gamma*z/2 + 63*H*alpha*beta**2*z**4/32 + 15*H*alpha*beta*delta*z**2/4 - 10*H*alpha*epsilon*z**3 + 3*H*alpha*gamma*z**3 - 6*H*alpha*z**6 - H*beta**6*z/512 + 27*H*beta**4*z**3/512 + H*beta**3*delta*z/8 - 93*H*beta**2*z**5/256 - 21*H*beta*delta*z**3/8 + 9*H*epsilon*z**4/4 + 9*H*gamma*z**4/4 + 15*H*z**7/32 - 16*K**3*z**2 + 7*K**2*alpha**2*z**2 + 2*K**2*beta**2*z**2 - 6*K**2*z**4 - K*alpha**5*z + 47*K*alpha**4*z**2/8 + 25*K*alpha**3*beta**2*z/64 - 23*K*alpha**3*z**3/2 - 11*K*alpha**2*beta**2*z**2/16 + 10*K*alpha**2*epsilon*z - 6*K*alpha**2*gamma*z + 69*K*alpha**2*z**4/8 + 3*K*alpha*beta**4*z/256 - 3*K*alpha*beta**2*z**3/32 + 3*K*alpha*beta*delta*z/2 - 10*K*alpha*epsilon*z**2 + 2*K*alpha*gamma*z**2 - 21*K*alpha*z**5/16 - 11*K*beta**4*z**2/256 + K*beta**2*epsilon*z/4 - 3*K*beta**2*gamma*z/4 + 3*K*beta**2*z**4/8 - 2*K*beta*delta*z**2 + 3*K*epsilon*z**3 + 3*K*gamma*z**3 - 11*K*z**6/16 + 25*alpha**8/1024 - 139*alpha**7*z/512 - 25*alpha**6*beta**2/1024 + 1273*alpha**6*z**2/1024 + 193*alpha**5*beta**2*z/1024 - 5*alpha**5*epsilon/16 + 5*alpha**5*gamma/16 - 777*alpha**5*z**3/256 + 15*alpha**4*beta**4/2048 - 1143*alpha**4*beta**2*z**2/2048 - 5*alpha**4*beta*delta/64 + 69*alpha**4*epsilon*z/32 - 55*alpha**4*gamma*z/32 + 273*alpha**4*z**4/64 - 67*alpha**3*beta**4*z/2048 + 5*alpha**3*beta**2*epsilon/32 - 5*alpha**3*beta**2*gamma/32 + 1653*alpha**3*beta**2*z**3/2048 + 35*alpha**3*beta*delta*z/64 - 163*alpha**3*epsilon*z**2/32 + 93*alpha**3*gamma*z**2/32 - 879*alpha**3*z**5/256 - 5*alpha**2*beta**6/8192 + 207*alpha**2*beta**4*z**2/4096 + 5*alpha**2*beta**3*delta/128 - 27*alpha**2*beta**2*epsilon*z/64 + 21*alpha**2*beta**2*gamma*z/64 - 75*alpha**2*beta**2*z**4/128 - 21*alpha**2*beta*delta*z**2/16 + alpha**2*epsilon**2 - 2*alpha**2*epsilon*gamma + 87*alpha**2*epsilon*z**3/16 + alpha**2*gamma**2 - 21*alpha**2*gamma*z**3/16 + 183*alpha**2*z**6/128 + 21*alpha*beta**6*z/16384 - alpha*beta**4*epsilon/128 + alpha*beta**4*gamma/128 - 63*alpha*beta**4*z**3/2048 - 15*alpha*beta**3*delta*z/128 + 5*alpha*beta**2*epsilon*z**2/16 - 3*alpha*beta**2*gamma*z**2/32 + 3*alpha*beta**2*z**5/16 + alpha*beta*delta*epsilon/2 - alpha*beta*delta*gamma/2 + 21*alpha*beta*delta*z**3/16 + 2*alpha*epsilon**2*z - 2*alpha*epsilon*gamma*z - 11*alpha*epsilon*z**4/4 - 3*alpha*gamma*z**4/4 - 51*alpha*z**7/256 + beta**8/65536 - 9*beta**6*z**2/16384 - beta**5*delta/512 + 93*beta**4*z**4/16384 + 21*beta**3*delta*z**2/256 + beta**2*delta**2/16 - 9*beta**2*epsilon*z**3/128 - 9*beta**2*gamma*z**3/128 - 15*beta**2*z**6/1024 - 5*beta*delta*epsilon*z/4 + 3*beta*delta*gamma*z/4 - 15*beta*delta*z**4/32 - 3*epsilon**2*z**2/4 + 5*epsilon*gamma*z**2/2 + 9*epsilon*z**5/16 - 3*gamma**2*z**2/4 + 9*gamma*z**5/16 - 3*z**8/128",
+        "-9*H**5*alpha**2*z**2/2 + 24*H**5*alpha*z**3 - 30*H**5*z**4 + 24*H**4*K*alpha*z**2 - 64*H**4*K*z**3 + 117*H**4*alpha**3*z**2/8 - 137*H**4*alpha**2*z**3/2 - 9*H**4*alpha*beta**2*z**2/8 + 699*H**4*alpha*z**4/8 + 43*H**4*beta**2*z**3/16 - 24*H**4*z**5 - 32*H**3*K**2*z**2 - 57*H**3*K*alpha**2*z**2 + 126*H**3*K*alpha*z**3 + 3*H**3*K*beta**2*z**2 - 19*H**3*K*z**4 + 15*H**3*alpha**5*z/16 - 20*H**3*alpha**4*z**2 - 15*H**3*alpha**3*beta**2*z/32 + 73*H**3*alpha**3*z**3 + 29*H**3*alpha**2*beta**2*z**2/8 - 6*H**3*alpha**2*epsilon*z + 6*H**3*alpha**2*gamma*z - 771*H**3*alpha**2*z**4/8 + 3*H**3*alpha*beta**4*z/128 - 273*H**3*alpha*beta**2*z**3/64 - 3*H**3*alpha*beta*delta*z/2 + 16*H**3*alpha*epsilon*z**2 - 16*H**3*alpha*gamma*z**2 + 363*H**3*alpha*z**5/8 - H**3*beta**4*z**2/8 - 3*H**3*beta**2*z**4/8 + 4*H**3*beta*delta*z**2 - 57*H**3*z**6/16 + 42*H**2*K**2*alpha*z**2 + 24*H**2*K**2*z**3 - 5*H**2*K*alpha**4*z/2 + 87*H**2*K*alpha**3*z**2/2 + 5*H**2*K*alpha**2*beta**2*z/4 - 76*H**2*K*alpha**2*z**3 - 3*H**2*K*alpha*beta**2*z**2 + 16*H**2*K*alpha*epsilon*z - 16*H**2*K*alpha*gamma*z + 9*H**2*K*alpha*z**4 - H**2*K*beta**4*z/16 - 31*H**2*K*beta**2*z**3/8 + 4*H**2*K*beta*delta*z + 21*H**2*K*z**5 - 99*H**2*alpha**6*z/64 + 397*H**2*alpha**5*z**2/32 + 435*H**2*alpha**4*beta**2*z/512 - 4621*H**2*alpha**4*z**3/128 - 91*H**2*alpha**3*beta**2*z**2/32 + 45*H**2*alpha**3*epsilon*z/4 - 39*H**2*alpha**3*gamma*z/4 + 6117*H**2*alpha**3*z**4/128 - 171*H**2*alpha**2*beta**4*z/2048 + 445*H**2*alpha**2*beta**2*z**3/256 + 39*H**2*alpha**2*beta*delta*z/16 - 27*H**2*alpha**2*epsilon*z**2 + 39*H**2*alpha**2*gamma*z**2/2 - 3495*H**2*alpha**2*z**5/128 + 117*H**2*alpha*beta**4*z**2/2048 - 21*H**2*alpha*beta**2*epsilon*z/32 + 15*H**2*alpha*beta**2*gamma*z/32 + 273*H**2*alpha*beta**2*z**4/128 - 39*H**2*alpha*beta*delta*z**2/8 + 93*H**2*alpha*epsilon*z**3/8 - 63*H**2*alpha*gamma*z**3/8 + 399*H**2*alpha*z**6/128 + 3*H**2*beta**6*z/1024 + 109*H**2*beta**4*z**3/1024 - 3*H**2*beta**3*delta*z/16 - 3*H**2*beta**2*epsilon*z**2/8 + 9*H**2*beta**2*gamma*z**2/8 - 933*H**2*beta**2*z**5/512 + 27*H**2*beta*delta*z**3/16 + 9*H**2*epsilon*z**4/8 + 9*H**2*gamma*z**4/8 + 105*H**2*z**7/64 + 16*H*K**3*z**2 - 6*H*K**2*alpha**2*z**2 - 42*H*K**2*alpha*z**3 - 3*H*K**2*beta**2*z**2 + 39*H*K**2*z**4 + 31*H*K*alpha**5*z/16 - 159*H*K*alpha**4*z**2/16 - 55*H*K*alpha**3*beta**2*z/64 + 37*H*K*alpha**3*z**3/4 - 27*H*K*alpha**2*beta**2*z**2/32 - 16*H*K*alpha**2*epsilon*z + 12*H*K*alpha**2*gamma*z + 59*H*K*alpha**2*z**4/4 + 3*H*K*alpha*beta**4*z/256 + 387*H*K*alpha*beta**2*z**3/64 - 3*H*K*alpha*beta*delta*z + 7*H*K*alpha*epsilon*z**2 + 3*H*K*alpha*gamma*z**2 - 417*H*K*alpha*z**5/16 + 45*H*K*beta**4*z**2/256 - H*K*beta**2*epsilon*z/4 + 3*H*K*beta**2*gamma*z/4 - 65*H*K*beta**2*z**4/16 - 3*H*K*epsilon*z**3 - 3*H*K*gamma*z**3 + 161*H*K*z**6/16 - 25*H*alpha**8/512 + 5*H*alpha**7*z/8 + 25*H*alpha**6*beta**2/512 - 1567*H*alpha**6*z**2/512 - 157*H*alpha**5*beta**2*z/512 + 5*H*alpha**5*epsilon/8 - 5*H*alpha**5*gamma/8 + 59*H*alpha**5*z**3/8 - 15*H*alpha**4*beta**4/1024 + 423*H*alpha**4*beta**2*z**2/1024 + 5*H*alpha**4*beta*delta/32 - 25*H*alpha**4*epsilon*z/4 + 15*H*alpha**4*gamma*z/4 - 1161*H*alpha**4*z**4/128 + 35*H*alpha**3*beta**4*z/2048 - 5*H*alpha**3*beta**2*epsilon/16 + 5*H*alpha**3*beta**2*gamma/16 + 785*H*alpha**3*beta**2*z**3/1024 - 15*H*alpha**3*beta*delta*z/16 + 237*H*alpha**3*epsilon*z**2/16 - 107*H*alpha**3*gamma*z**2/16 + 591*H*alpha**3*z**5/128 + 5*H*alpha**2*beta**6/4096 + 219*H*alpha**2*beta**4*z**2/2048 - 5*H*alpha**2*beta**3*delta/64 + 15*H*alpha**2*beta**2*epsilon*z/32 + 3*H*alpha**2*beta**2*gamma*z/32 - 159*H*alpha**2*beta**2*z**4/64 + 23*H*alpha**2*beta*delta*z**2/16 - 2*H*alpha**2*epsilon**2 + 4*H*alpha**2*epsilon*gamma - 12*H*alpha**2*epsilon*z**3 - 2*H*alpha**2*gamma**2 + 9*H*alpha**2*gamma*z**3/2 + 121*H*alpha**2*z**6/128 + 3*H*alpha*beta**6*z/4096 + H*alpha*beta**4*epsilon/64 - H*alpha*beta**4*gamma/64 - 921*H*alpha*beta**4*z**3/4096 + 3*H*alpha*beta**3*delta*z/32 + 15*H*alpha*beta**2*epsilon*z**2/32 - 47*H*alpha*beta**2*gamma*z**2/32 + 1149*H*alpha*beta**2*z**5/512 - H*alpha*beta*delta*epsilon + H*alpha*beta*delta*gamma - 15*H*alpha*beta*delta*z**3/32 + 9*H*alpha*epsilon*z**4/4 - 3*H*alpha*gamma*z**4/2 - 501*H*alpha*z**7/256 - H*beta**8/32768 - 31*H*beta**6*z**2/8192 + H*beta**5*delta/256 + H*beta**4*epsilon*z/64 - 3*H*beta**4*gamma*z/64 + 933*H*beta**4*z**4/8192 + 5*H*beta**3*delta*z**2/128 - H*beta**2*delta**2/8 - 27*H*beta**2*epsilon*z**3/64 + 57*H*beta**2*gamma*z**3/64 - 349*H*beta**2*z**6/512 - 3*H*beta*delta*z**4/16 - 3*H*epsilon**2*z**2/2 + 5*H*epsilon*gamma*z**2 + 9*H*epsilon*z**5/16 - 3*H*gamma**2*z**2/2 + 9*H*gamma*z**5/16 + 147*H*z**8/256 - 12*K**3*alpha*z**2 + 16*K**3*z**3 + 5*K**2*alpha**4*z/8 - 47*K**2*alpha**3*z**2/8 - 5*K**2*alpha**2*beta**2*z/16 + 37*K**2*alpha**2*z**3/2 + 39*K**2*alpha*beta**2*z**2/16 - 4*K**2*alpha*epsilon*z + 4*K**2*alpha*gamma*z - 21*K**2*alpha*z**4 + K**2*beta**4*z/64 - 61*K**2*beta**2*z**3/32 - K**2*beta*delta*z - 6*K**2*epsilon*z**2 - 6*K**2*gamma*z**2 + 31*K**2*z**5/4 + K*alpha**6*z/32 - 5*K*alpha**5*z**2/8 - 45*K*alpha**4*beta**2*z/256 + 215*K*alpha**4*z**3/64 + 19*K*alpha**3*beta**2*z**2/16 + 5*K*alpha**3*epsilon*z/2 + K*alpha**3*gamma*z/2 - 503*K*alpha**3*z**4/64 + 69*K*alpha**2*beta**4*z/1024 - 335*K*alpha**2*beta**2*z**3/128 - K*alpha**2*beta*delta*z/8 - 4*K*alpha**2*epsilon*z**2 - 3*K*alpha**2*gamma*z**2 + 585*K*alpha**2*z**5/64 - 171*K*alpha*beta**4*z**2/1024 + 11*K*alpha*beta**2*epsilon*z/16 - 17*K*alpha*beta**2*gamma*z/16 + 75*K*alpha*beta**2*z**4/32 + 3*K*alpha*beta*delta*z**2/4 + 9*K*alpha*epsilon*z**3/4 + 13*K*alpha*gamma*z**3/4 - 333*K*alpha*z**6/64 - K*beta**6*z/512 + 49*K*beta**4*z**3/512 + K*beta**3*delta*z/8 - K*beta**2*epsilon*z**2/4 + 3*K*beta**2*gamma*z**2/4 - 189*K*beta**2*z**5/256 - 5*K*beta*delta*z**3/8 - 3*K*epsilon*z**4/4 - 3*K*gamma*z**4/4 + 37*K*z**7/32 + 5*alpha**9/2048 - 27*alpha**8*z/1024 + 15*alpha**7*beta**2/8192 + 221*alpha**7*z**2/2048 - 249*alpha**6*beta**2*z/8192 - 11*alpha**6*epsilon/64 + alpha**6*gamma/64 - 97*alpha**6*z**3/512 - 93*alpha**5*beta**4/32768 + 23*alpha**5*beta**2*z**2/128 - alpha**5*beta*delta/256 + 73*alpha**5*epsilon*z/64 - 5*alpha**5*gamma*z/64 + 57*alpha**5*z**4/2048 + 393*alpha**4*beta**4*z/16384 + 25*alpha**4*beta**2*epsilon/512 + 25*alpha**4*beta**2*gamma/512 - 537*alpha**4*beta**2*z**3/1024 - alpha**4*beta*delta*z/256 - 351*alpha**4*epsilon*z**2/128 + 13*alpha**4*gamma*z**2/128 + 473*alpha**4*z**5/1024 + 25*alpha**3*beta**6/32768 - 305*alpha**3*beta**4*z**2/4096 - 5*alpha**3*beta**3*delta/1024 - 17*alpha**3*beta**2*epsilon*z/256 - 83*alpha**3*beta**2*gamma*z/256 + 1731*alpha**3*beta**2*z**4/2048 + 7*alpha**3*beta*delta*z**2/64 + alpha**3*epsilon**2 - alpha**3*epsilon*gamma + 381*alpha**3*epsilon*z**3/128 - 3*alpha**3*gamma*z**3/128 - 1723*alpha**3*z**6/2048 - 211*alpha**2*beta**6*z/65536 + 5*alpha**2*beta**4*epsilon/512 - 3*alpha**2*beta**4*gamma/128 + 891*alpha**2*beta**4*z**3/8192 + 19*alpha**2*beta**3*delta*z/512 - 15*alpha**2*beta**2*epsilon*z**2/128 + 87*alpha**2*beta**2*gamma*z**2/128 - 3145*alpha**2*beta**2*z**5/4096 + alpha**2*beta*delta*epsilon/4 - 9*alpha**2*beta*delta*z**3/32 - alpha**2*epsilon**2*z + 2*alpha**2*epsilon*gamma*z - 87*alpha**2*epsilon*z**4/64 + 3*alpha**2*gamma*z**4/64 + 717*alpha**2*z**7/1024 - 9*alpha*beta**8/262144 + 573*alpha*beta**6*z**2/131072 + 9*alpha*beta**5*delta/4096 - 51*alpha*beta**4*epsilon*z/2048 + 113*alpha*beta**4*gamma*z/2048 - 2481*alpha*beta**4*z**4/32768 - 69*alpha*beta**3*delta*z**2/1024 + alpha*beta**2*epsilon**2/16 - alpha*beta**2*epsilon*gamma/4 + 27*alpha*beta**2*epsilon*z**3/128 + 3*alpha*beta**2*gamma**2/16 - 9*alpha*beta**2*gamma*z**3/16 + 3021*alpha*beta**2*z**6/8192 - 7*alpha*beta*delta*epsilon*z/16 - 3*alpha*beta*delta*gamma*z/16 + 69*alpha*beta*delta*z**4/256 + 3*alpha*epsilon**2*z**2/8 - 9*alpha*epsilon*gamma*z**2/4 + 11*alpha*epsilon*z**5/128 + 3*alpha*gamma**2*z**2/8 - 17*alpha*gamma*z**5/128 - 75*alpha*z**8/256 + 13*beta**8*z/262144 - beta**6*epsilon/4096 + 3*beta**6*gamma/4096 - 249*beta**6*z**3/131072 - 13*beta**5*delta*z/4096 + 3*beta**4*epsilon*z**2/256 - 15*beta**4*gamma*z**2/512 + 83*beta**4*z**5/4096 + beta**3*delta*epsilon/64 - 3*beta**3*delta*gamma/64 + 9*beta**3*delta*z**3/256 + 9*beta**2*epsilon**2*z/32 - beta**2*epsilon*gamma*z/16 - 39*beta**2*epsilon*z**4/512 - 3*beta**2*gamma**2*z/32 + 81*beta**2*gamma*z**4/512 - 597*beta**2*z**7/8192 + 3*beta*delta*epsilon*z**2/16 + 3*beta*delta*gamma*z**2/16 - 23*beta*delta*z**5/256 - 3*epsilon**2*z**3/8 + 5*epsilon*gamma*z**3/4 + 9*epsilon*z**6/128 - 3*gamma**2*z**3/8 + 9*gamma*z**6/128 + 51*z**9/1024",
+        "9*H**6*alpha**2*z**2/4 - 6*H**6*alpha*z**3 + 3*H**6*z**4 - 12*H**5*K*alpha*z**2 + 16*H**5*K*z**3 - 57*H**5*alpha**3*z**2/8 + 65*H**5*alpha**2*z**3/4 + 3*H**5*alpha*beta**2*z**2/8 + 9*H**5*alpha*z**4/8 - H**5*beta**2*z**3/2 - 27*H**5*z**5/2 + 16*H**4*K**2*z**2 + 28*H**4*K*alpha**2*z**2 - 18*H**4*K*alpha*z**3 - H**4*K*beta**2*z**2 - 37*H**4*K*z**4 - 15*H**4*alpha**5*z/32 + 551*H**4*alpha**4*z**2/64 + 15*H**4*alpha**3*beta**2*z/64 - 227*H**4*alpha**3*z**3/16 - 49*H**4*alpha**2*beta**2*z**2/64 + 3*H**4*alpha**2*epsilon*z - 3*H**4*alpha**2*gamma*z - 529*H**4*alpha**2*z**4/32 - 3*H**4*alpha*beta**4*z/256 - 63*H**4*alpha*beta**2*z**3/128 + 3*H**4*alpha*beta*delta*z/4 - 17*H**4*alpha*epsilon*z**2/2 - H**4*alpha*gamma*z**2/2 + 639*H**4*alpha*z**5/16 + H**4*beta**4*z**2/32 + 13*H**4*beta**2*z**4/8 - H**4*beta*delta*z**2 + 9*H**4*epsilon*z**3 + 9*H**4*gamma*z**3 - 963*H**4*z**6/64 - 18*H**3*K**2*alpha*z**2 - 40*H**3*K**2*z**3 + 5*H**3*K*alpha**4*z/4 - 79*H**3*K*alpha**3*z**2/4 - 5*H**3*K*alpha**2*beta**2*z/8 - 9*H**3*K*alpha**2*z**3 - 3*H**3*K*alpha*beta**2*z**2/8 - 8*H**3*K*alpha*epsilon*z + 8*H**3*K*alpha*gamma*z + 141*H**3*K*alpha*z**4/2 + H**3*K*beta**4*z/32 + 63*H**3*K*beta**2*z**3/16 - 2*H**3*K*beta*delta*z + 12*H**3*K*epsilon*z**2 + 12*H**3*K*gamma*z**2 - 49*H**3*K*z**5/2 + 49*H**3*alpha**6*z/64 - 283*H**3*alpha**5*z**2/64 - 195*H**3*alpha**4*beta**2*z/512 + 295*H**3*alpha**4*z**3/128 + H**3*alpha**3*beta**2*z**2/16 - 25*H**3*alpha**3*epsilon*z/4 + 19*H**3*alpha**3*gamma*z/4 + 2929*H**3*alpha**3*z**4/128 + 51*H**3*alpha**2*beta**4*z/2048 + 695*H**3*alpha**2*beta**2*z**3/256 - 19*H**3*alpha**2*beta*delta*z/16 + 65*H**3*alpha**2*epsilon*z**2/4 + 15*H**3*alpha**2*gamma*z**2/4 - 6153*H**3*alpha**2*z**5/128 + 63*H**3*alpha*beta**4*z**2/2048 + 5*H**3*alpha*beta**2*epsilon*z/32 + H**3*alpha*beta**2*gamma*z/32 - 411*H**3*alpha*beta**2*z**4/128 + 9*H**3*alpha*beta*delta*z**2/8 - 133*H**3*alpha*epsilon*z**3/8 - 177*H**3*alpha*gamma*z**3/8 + 4539*H**3*alpha*z**6/128 - H**3*beta**6*z/1024 - 103*H**3*beta**4*z**3/1024 + H**3*beta**3*delta*z/16 - H**3*beta**2*epsilon*z**2/4 - 3*H**3*beta**2*gamma*z**2/4 + 231*H**3*beta**2*z**5/512 + 15*H**3*beta*delta*z**3/16 + 63*H**3*epsilon*z**4/8 + 63*H**3*gamma*z**4/8 - 579*H**3*z**7/64 - 16*H**2*K**3*z**2 - 5*H**2*K**2*alpha**2*z**2/2 + 45*H**2*K**2*alpha*z**3 + 5*H**2*K**2*beta**2*z**2/2 + 3*H**2*K**2*z**4/2 - H**2*K*alpha**5*z + 35*H**2*K*alpha**4*z**2/16 + 25*H**2*K*alpha**3*beta**2*z/64 + 65*H**2*K*alpha**3*z**3/4 + 11*H**2*K*alpha**2*beta**2*z**2/4 + 10*H**2*K*alpha**2*epsilon*z - 6*H**2*K*alpha**2*gamma*z - 395*H**2*K*alpha**2*z**4/8 + 3*H**2*K*alpha*beta**4*z/256 - 135*H**2*K*alpha*beta**2*z**3/32 + 3*H**2*K*alpha*beta*delta*z/2 - 8*H**2*K*alpha*epsilon*z**2 - 20*H**2*K*alpha*gamma*z**2 + 735*H**2*K*alpha*z**5/16 - 37*H**2*K*beta**4*z**2/256 + H**2*K*beta**2*epsilon*z/4 - 3*H**2*K*beta**2*gamma*z/4 - 5*H**2*K*beta**2*z**4/4 + 2*H**2*K*beta*delta*z**2 + 3*H**2*K*epsilon*z**3 + 3*H**2*K*gamma*z**3 - 31*H**2*K*z**6/2 + 25*H**2*alpha**8/1024 - 9*H**2*alpha**7*z/32 - 25*H**2*alpha**6*beta**2/1024 + 655*H**2*alpha**6*z**2/1024 + 129*H**2*alpha**5*beta**2*z/2048 - 5*H**2*alpha**5*epsilon/16 + 5*H**2*alpha**5*gamma/16 + 1307*H**2*alpha**5*z**3/512 + 15*H**2*alpha**4*beta**4/2048 + 1113*H**2*alpha**4*beta**2*z**2/2048 - 5*H**2*alpha**4*beta*delta/64 + 141*H**2*alpha**4*epsilon*z/32 - 35*H**2*alpha**4*gamma*z/32 - 7657*H**2*alpha**4*z**4/512 + 201*H**2*alpha**3*beta**4*z/8192 + 5*H**2*alpha**3*beta**2*epsilon/32 - 5*H**2*alpha**3*beta**2*gamma/32 - 4499*H**2*alpha**3*beta**2*z**3/2048 + 25*H**2*alpha**3*beta*delta*z/64 - 10*H**2*alpha**3*epsilon*z**2 - 35*H**2*alpha**3*gamma*z**2/8 + 15405*H**2*alpha**3*z**5/512 - 5*H**2*alpha**2*beta**6/8192 - 891*H**2*alpha**2*beta**4*z**2/8192 + 5*H**2*alpha**2*beta**3*delta/128 - 15*H**2*alpha**2*beta**2*epsilon*z/128 - 99*H**2*alpha**2*beta**2*gamma*z/128 + 175*H**2*alpha**2*beta**2*z**4/64 - H**2*alpha**2*beta*delta*z**2/8 + H**2*alpha**2*epsilon**2 - 2*H**2*alpha**2*epsilon*gamma + 375*H**2*alpha**2*epsilon*z**3/32 + H**2*alpha**2*gamma**2 + 579*H**2*alpha**2*gamma*z**3/32 - 15659*H**2*alpha**2*z**6/512 - 3*H**2*alpha*beta**6*z/2048 - H**2*alpha*beta**4*epsilon/128 + H**2*alpha*beta**4*gamma/128 + 441*H**2*alpha*beta**4*z**3/8192 + 3*H**2*alpha*beta**3*delta*z/128 - 17*H**2*alpha*beta**2*epsilon*z**2/64 + 73*H**2*alpha*beta**2*gamma*z**2/64 - 2391*H**2*alpha*beta**2*z**5/2048 + H**2*alpha*beta*delta*epsilon/2 - H**2*alpha*beta*delta*gamma/2 - 27*H**2*alpha*beta*delta*z**3/32 - 3*H**2*alpha*epsilon**2*z - 459*H**2*alpha*epsilon*z**4/32 + 3*H**2*alpha*gamma**2*z - 687*H**2*alpha*gamma*z**4/32 + 8163*H**2*alpha*z**7/512 + H**2*beta**8/65536 + 57*H**2*beta**6*z**2/16384 - H**2*beta**5*delta/512 + H**2*beta**4*epsilon*z/256 + 9*H**2*beta**4*gamma*z/256 + 703*H**2*beta**4*z**4/16384 - 31*H**2*beta**3*delta*z**2/256 + H**2*beta**2*delta**2/16 + 9*H**2*beta**2*epsilon*z**3/64 + 39*H**2*beta**2*gamma*z**3/64 + 61*H**2*beta**2*z**6/1024 - 3*H**2*beta*delta*epsilon*z/4 - 3*H**2*beta*delta*gamma*z/4 + 21*H**2*beta*delta*z**4/32 - 3*H**2*epsilon**2*z**2/4 + 5*H**2*epsilon*gamma*z**2/2 + 297*H**2*epsilon*z**5/32 - 3*H**2*gamma**2*z**2/4 + 297*H**2*gamma*z**5/32 - 1755*H**2*z**8/512 + 12*H*K**3*alpha*z**2 + 16*H*K**3*z**3 - 5*H*K**2*alpha**4*z/8 + 37*H*K**2*alpha**3*z**2/8 + 5*H*K**2*alpha**2*beta**2*z/16 - 8*H*K**2*alpha**2*z**3 - 21*H*K**2*alpha*beta**2*z**2/16 + 4*H*K**2*alpha*epsilon*z - 4*H*K**2*alpha*gamma*z + 27*H*K**2*alpha*z**4/4 - H*K**2*beta**4*z/64 - 95*H*K**2*beta**2*z**3/32 + H*K**2*beta*delta*z - 6*H*K**2*epsilon*z**2 - 6*H*K**2*gamma*z**2 - 35*H*K**2*z**5/4 - H*K*alpha**6*z/32 + 31*H*K*alpha**5*z**2/32 + 45*H*K*alpha**4*beta**2*z/256 - 407*H*K*alpha**4*z**3/64 - 31*H*K*alpha**3*beta**2*z**2/32 - 5*H*K*alpha**3*epsilon*z/2 - H*K*alpha**3*gamma*z/2 + 1135*H*K*alpha**3*z**4/64 - 69*H*K*alpha**2*beta**4*z/1024 + 143*H*K*alpha**2*beta**2*z**3/128 + H*K*alpha**2*beta*delta*z/8 - 5*H*K*alpha**2*epsilon*z**2/2 + 9*H*K*alpha**2*gamma*z**2/2 - 1633*H*K*alpha**2*z**5/64 - 9*H*K*alpha*beta**4*z**2/1024 - 11*H*K*alpha*beta**2*epsilon*z/16 + 17*H*K*alpha*beta**2*gamma*z/16 + 3*H*K*alpha*beta**2*z**4/32 - 3*H*K*alpha*beta*delta*z**2/4 - 25*H*K*alpha*epsilon*z**3/4 - 61*H*K*alpha*gamma*z**3/4 + 1215*H*K*alpha*z**6/64 + H*K*beta**6*z/512 + 83*H*K*beta**4*z**3/512 - H*K*beta**3*delta*z/8 + H*K*beta**2*epsilon*z**2/2 + 3*H*K*beta**2*gamma*z**2/2 - 83*H*K*beta**2*z**5/256 + 5*H*K*beta*delta*z**3/8 + 69*H*K*epsilon*z**4/4 + 69*H*K*gamma*z**4/4 - 185*H*K*z**7/32 - 5*H*alpha**9/2048 + 5*H*alpha**8*z/512 - 15*H*alpha**7*beta**2/8192 + 301*H*alpha**7*z**2/2048 + 331*H*alpha**6*beta**2*z/8192 + 11*H*alpha**6*epsilon/64 - H*alpha**6*gamma/64 - 1377*H*alpha**6*z**3/1024 + 93*H*alpha**5*beta**4/32768 - 259*H*alpha**5*beta**2*z**2/1024 + H*alpha**5*beta*delta/256 - 17*H*alpha**5*epsilon*z/16 - 5*H*alpha**5*gamma*z/32 + 10037*H*alpha**5*z**4/2048 - 321*H*alpha**4*beta**4*z/16384 - 25*H*alpha**4*beta**2*epsilon/512 - 25*H*alpha**4*beta**2*gamma/512 + 1443*H*alpha**4*beta**2*z**3/2048 + H*alpha**4*beta*delta*z/256 + 307*H*alpha**4*epsilon*z**2/128 + 287*H*alpha**4*gamma*z**2/128 - 10175*H*alpha**4*z**5/1024 - 25*H*alpha**3*beta**6/32768 + 271*H*alpha**3*beta**4*z**2/8192 + 5*H*alpha**3*beta**3*delta/1024 - 35*H*alpha**3*beta**2*epsilon*z/256 + 83*H*alpha**3*beta**2*gamma*z/256 - 2087*H*alpha**3*beta**2*z**4/2048 - 7*H*alpha**3*beta*delta*z**2/64 - H*alpha**3*epsilon**2 + H*alpha**3*epsilon*gamma - 599*H*alpha**3*epsilon*z**3/128 - 1071*H*alpha**3*gamma*z**3/128 + 24947*H*alpha**3*z**6/2048 + 19*H*alpha**2*beta**6*z/16384 - 5*H*alpha**2*beta**4*epsilon/512 + 3*H*alpha**2*beta**4*gamma/128 + 87*H*alpha**2*beta**4*z**3/16384 - 19*H*alpha**2*beta**3*delta*z/512 + 45*H*alpha**2*beta**2*epsilon*z**2/128 - 69*H*alpha**2*beta**2*gamma*z**2/128 + 3271*H*alpha**2*beta**2*z**5/4096 - H*alpha**2*beta*delta*epsilon/4 + 9*H*alpha**2*beta*delta*z**3/32 + 13*H*alpha**2*epsilon**2*z/4 + H*alpha**2*epsilon*gamma*z/2 + 291*H*alpha**2*epsilon*z**4/32 - 3*H*alpha**2*gamma**2*z/4 + 57*H*alpha**2*gamma*z**4/4 - 9257*H*alpha**2*z**7/1024 + 9*H*alpha*beta**8/262144 + 219*H*alpha*beta**6*z**2/131072 - 9*H*alpha*beta**5*delta/4096 + 33*H*alpha*beta**4*epsilon*z/2048 + 13*H*alpha*beta**4*gamma*z/2048 - 1569*H*alpha*beta**4*z**4/32768 + 69*H*alpha*beta**3*delta*z**2/1024 - H*alpha*beta**2*epsilon**2/16 + H*alpha*beta**2*epsilon*gamma/4 + 29*H*alpha*beta**2*epsilon*z**3/128 - 3*H*alpha*beta**2*gamma**2/16 + 21*H*alpha*beta**2*gamma*z**3/64 - 2673*H*alpha*beta**2*z**6/8192 + 7*H*alpha*beta*delta*epsilon*z/16 + 3*H*alpha*beta*delta*gamma*z/16 - 69*H*alpha*beta*delta*z**4/256 + 9*H*alpha*epsilon**2*z**2/8 - 3*H*alpha*epsilon*gamma*z**2/4 - 1235*H*alpha*epsilon*z**5/128 + 33*H*alpha*gamma**2*z**2/8 - 1495*H*alpha*gamma*z**5/128 + 963*H*alpha*z**8/256 - 13*H*beta**8*z/262144 + H*beta**6*epsilon/4096 - 3*H*beta**6*gamma/4096 - 331*H*beta**6*z**3/131072 + 13*H*beta**5*delta*z/4096 - H*beta**4*epsilon*z**2/1024 - 63*H*beta**4*gamma*z**2/1024 + 53*H*beta**4*z**5/2048 - H*beta**3*delta*epsilon/64 + 3*H*beta**3*delta*gamma/64 - 9*H*beta**3*delta*z**3/256 + 3*H*beta**2*epsilon**2*z/32 - 3*H*beta**2*epsilon*gamma*z/16 - 225*H*beta**2*epsilon*z**4/512 - 9*H*beta**2*gamma**2*z/32 - 57*H*beta**2*gamma*z**4/512 + 463*H*beta**2*z**7/8192 - 3*H*beta*delta*epsilon*z**2/16 - 3*H*beta*delta*gamma*z**2/16 + 23*H*beta*delta*z**5/256 - 39*H*epsilon**2*z**3/8 - 7*H*epsilon*gamma*z**3/4 + 477*H*epsilon*z**6/128 - 39*H*gamma**2*z**3/8 + 477*H*gamma*z**6/128 - 693*H*z**9/1024 + 4*K**4*z**2 + K**3*alpha**2*z**2 - 6*K**3*alpha*z**3 - K**3*beta**2*z**2 - 3*K**3*z**4 + K**2*alpha**5*z/32 + 3*K**2*alpha**4*z**2/32 + 5*K**2*alpha**3*beta**2*z/128 - K**2*alpha**3*z**3/8 - 27*K**2*alpha**2*beta**2*z**2/64 - 2*K**2*alpha**2*epsilon*z - 19*K**2*alpha**2*z**4/8 - 9*K**2*alpha*beta**4*z/512 + 93*K**2*alpha*beta**2*z**3/128 + 7*K**2*alpha*epsilon*z**2/2 + 3*K**2*alpha*gamma*z**2/2 + 171*K**2*alpha*z**5/32 + 45*K**2*beta**4*z**2/512 - K**2*beta**2*epsilon*z/8 + 3*K**2*beta**2*gamma*z/8 - 5*K**2*beta**2*z**4/32 + 21*K**2*epsilon*z**3/2 + 21*K**2*gamma*z**3/2 - 95*K**2*z**6/32 + K*alpha**7*z/256 - 29*K*alpha**6*z**2/256 + K*alpha**5*beta**2*z/1024 + 211*K*alpha**5*z**3/256 - K*alpha**4*epsilon*z/4 - 715*K*alpha**4*z**4/256 - 29*K*alpha**3*beta**4*z/4096 - 11*K*alpha**3*beta**2*z**3/512 + 7*K*alpha**3*epsilon*z**2/16 - 21*K*alpha**3*gamma*z**2/16 + 1327*K*alpha**3*z**5/256 + 165*K*alpha**2*beta**4*z**2/4096 + 15*K*alpha**2*beta**2*epsilon*z/64 + 3*K*alpha**2*beta**2*gamma*z/64 + 23*K*alpha**2*beta**2*z**4/256 + 55*K*alpha**2*epsilon*z**3/16 + 99*K*alpha**2*gamma*z**3/16 - 1393*K*alpha**2*z**6/256 + 9*K*alpha*beta**6*z/4096 - 255*K*alpha*beta**4*z**3/4096 + 7*K*alpha*beta**2*epsilon*z**2/32 + 3*K*alpha*beta**2*gamma*z**2/32 - 135*K*alpha*beta**2*z**5/1024 - 127*K*alpha*epsilon*z**4/16 - 147*K*alpha*gamma*z**4/16 + 777*K*alpha*z**7/256 - 13*K*beta**6*z**2/4096 + K*beta**4*epsilon*z/64 - 3*K*beta**4*gamma*z/64 + 113*K*beta**4*z**4/4096 - 41*K*beta**2*epsilon*z**3/64 - 21*K*beta**2*gamma*z**3/64 + K*beta**2*z**6/16 - 6*K*epsilon**2*z**2 - 4*K*epsilon*gamma*z**2 + 69*K*epsilon*z**5/16 - 6*K*gamma**2*z**2 + 69*K*gamma*z**5/16 - 179*K*z**8/256 + alpha**10/16384 + 17*alpha**9*z/8192 + 5*alpha**8*beta**2/32768 - 535*alpha**8*z**2/16384 - 105*alpha**7*beta**2*z/32768 - alpha**7*epsilon/128 + 401*alpha**7*z**3/2048 + 7*alpha**6*beta**4/262144 + 707*alpha**6*beta**2*z**2/32768 + 27*alpha**6*epsilon*z/512 + 27*alpha**6*gamma*z/512 - 5373*alpha**6*z**4/8192 - 39*alpha**5*beta**4*z/65536 - 21*alpha**5*beta**2*epsilon/2048 + 3*alpha**5*beta**2*gamma/2048 - 2383*alpha**5*beta**2*z**3/32768 - 31*alpha**5*epsilon*z**2/128 - 15*alpha**5*gamma*z**2/32 + 5659*alpha**5*z**5/4096 - 45*alpha**4*beta**6/524288 + 63*alpha**4*beta**4*z**2/16384 + 57*alpha**4*beta**2*epsilon*z/1024 - 27*alpha**4*beta**2*gamma*z/1024 + 4695*alpha**4*beta**2*z**4/32768 + alpha**4*epsilon**2/4 + 473*alpha**4*epsilon*z**3/512 + 873*alpha**4*gamma*z**3/512 - 15673*alpha**4*z**6/8192 + 353*alpha**3*beta**6*z/524288 + 31*alpha**3*beta**4*epsilon/8192 + 15*alpha**3*beta**4*gamma/8192 - 343*alpha**3*beta**4*z**3/32768 - 73*alpha**3*beta**2*epsilon*z**2/2048 + 243*alpha**3*beta**2*gamma*z**2/2048 - 5729*alpha**3*beta**2*z**5/32768 - alpha**3*epsilon**2*z/2 - alpha**3*epsilon*gamma*z/8 - 69*alpha**3*epsilon*z**4/32 + 3*alpha**3*gamma**2*z/8 - 417*alpha**3*gamma*z**4/128 + 7163*alpha**3*z**7/4096 + 81*alpha**2*beta**8/4194304 - 899*alpha**2*beta**6*z**2/524288 - 23*alpha**2*beta**4*epsilon*z/8192 - 87*alpha**2*beta**4*gamma*z/8192 + 3615*alpha**2*beta**4*z**4/262144 + alpha**2*beta**2*epsilon**2/32 - 3*alpha**2*beta**2*epsilon*gamma/32 - 351*alpha**2*beta**2*epsilon*z**3/2048 - 483*alpha**2*beta**2*gamma*z**3/2048 + 4313*alpha**2*beta**2*z**6/32768 - 47*alpha**2*epsilon**2*z**2/64 - 7*alpha**2*epsilon*gamma*z**2/32 + 1399*alpha**2*epsilon*z**5/512 - 111*alpha**2*gamma**2*z**2/64 + 1767*alpha**2*gamma*z**5/512 - 16707*alpha**2*z**8/16384 - 117*alpha*beta**8*z/2097152 + 9*alpha*beta**6*epsilon/32768 - 27*alpha*beta**6*gamma/32768 + 933*alpha*beta**6*z**3/524288 - 95*alpha*beta**4*epsilon*z**2/8192 + 129*alpha*beta**4*gamma*z**2/8192 - 285*alpha*beta**4*z**5/32768 - 25*alpha*beta**2*epsilon**2*z/128 + 3*alpha*beta**2*epsilon*gamma*z/64 + 291*alpha*beta**2*epsilon*z**4/1024 - 9*alpha*beta**2*gamma**2*z/128 + 225*alpha*beta**2*gamma*z**4/1024 - 1851*alpha*beta**2*z**7/32768 + 69*alpha*epsilon**2*z**3/32 + 15*alpha*epsilon*gamma*z**3/16 - 223*alpha*epsilon*z**6/128 + 81*alpha*gamma**2*z**3/32 - 123*alpha*gamma*z**6/64 + 2823*alpha*z**9/8192 + 169*beta**8*z**2/4194304 - 13*beta**6*epsilon*z/32768 + 39*beta**6*gamma*z/32768 - 85*beta**6*z**4/131072 + beta**4*epsilon**2/1024 - 3*beta**4*epsilon*gamma/512 + 93*beta**4*epsilon*z**3/8192 + 9*beta**4*gamma**2/1024 - 51*beta**4*gamma*z**3/8192 + 275*beta**4*z**6/131072 + 27*beta**2*epsilon**2*z**2/128 + 5*beta**2*epsilon*gamma*z**2/64 - 251*beta**2*epsilon*z**5/2048 + 15*beta**2*gamma**2*z**2/128 - 159*beta**2*gamma*z**5/2048 + 87*beta**2*z**8/8192 - delta**2*epsilon*z + epsilon**3*z - epsilon**2*gamma*z - 75*epsilon**2*z**4/64 - epsilon*gamma**2*z - 19*epsilon*gamma*z**4/32 + 225*epsilon*z**7/512 + gamma**3*z - 75*gamma**2*z**4/64 + 225*gamma*z**7/512 - 843*z**10/16384"
+      ],
+      "solved_coefficients": {
+        "L": "3*H**2*alpha/8 - 3*H**2*z/2 - H*K - 5*H*alpha**2/8 + 15*H*alpha*z/8 + H*beta**2/16 - 21*H*z**2/16 + 3*K*alpha/4 - K*z - 5*alpha**4/(128*z) + 35*alpha**3/128 + 5*alpha**2*beta**2/(256*z) - 21*alpha**2*z/32 - 15*alpha*beta**2/256 + alpha*epsilon/(4*z) - alpha*gamma/(4*z) + 21*alpha*z**2/32 - beta**4/(1024*z) + 21*beta**2*z/512 + beta*delta/(16*z) + 3*epsilon/8 + 3*gamma/8 - 15*z**3/64",
+        "M": "-3*H**3*alpha/8 + H**3*z/2 + H**2*K + 19*H**2*alpha**2/32 - 9*H**2*alpha*z/16 - H**2*beta**2/32 - 15*H**2*z**2/32 - 3*H*K*alpha/4 - H*K*z + 5*H*alpha**4/(128*z) - 25*H*alpha**3/128 - 5*H*alpha**2*beta**2/(256*z) + H*alpha**2*z/16 - 3*H*alpha*beta**2/256 - H*alpha*epsilon/(4*z) + H*alpha*gamma/(4*z) + 27*H*alpha*z**2/64 + H*beta**4/(1024*z) + 31*H*beta**2*z/512 - H*beta*delta/(16*z) + 3*H*epsilon/8 + 3*H*gamma/8 - 21*H*z**3/64 - K**2/2 - K*alpha**2/16 + 3*K*alpha*z/8 + K*beta**2/16 - 5*K*z**2/16 - alpha**5/(512*z) - alpha**4/512 - 5*alpha**3*beta**2/(2048*z) + 7*alpha**3*z/128 + 19*alpha**2*beta**2/1024 + alpha**2*epsilon/(8*z) - 9*alpha**2*z**2/64 + 9*alpha*beta**4/(8192*z) - 69*alpha*beta**2*z/2048 - 7*alpha*epsilon/32 - 3*alpha*gamma/32 + 69*alpha*z**3/512 - 13*beta**4/8192 + beta**2*epsilon/(128*z) - 3*beta**2*gamma/(128*z) + 9*beta**2*z**2/512 + 3*epsilon*z/32 + 3*gamma*z/32 - 23*z**4/512",
+        "p": "H**2*z - 3*H*alpha*z/2 + 2*H*z**2 + 2*K*z - alpha**3/8 + 5*alpha**2*z/8 + 3*alpha*beta**2/64 - 15*alpha*z**2/16 - beta**2*z/16 - epsilon - gamma + 7*z**3/16",
+        "q": "2*H*z + alpha**2/4 - 3*alpha*z/4 - beta**2/16 + z**2/2"
+      },
+      "system_solved_over_C_X": false,
+      "term_counts": [
+        89,
+        172,
+        318,
+        494
+      ],
+      "unknowns_over_C_X": [
+        "z",
+        "H",
+        "K"
+      ],
+      "x_section_reconstruction": "-24*T^3+9*((z-alpha)*T^2+q*T+p)",
+      "z_must_be_nonzero_square_in_C_X": true,
+      "z_zero_is_not_silently_discarded": "The separately certified b4=0 exclusion exhausts z=0 before localization."
+    },
+    "schema": "v97_original_cubic_section_resultant_and_square_descent_v1",
+    "status": "PASS_CUBIC_B4_ZERO_EXCLUSION__NONZERO_B4_FOUR_EQUATIONS_AND_SQUARE_DESCENT_REMAIN_OPEN"
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/2011.05768",
+      "use": "Sections3-4 define integral differential-character holonomy and distinguish it from a full equivariant lift; used for the new SU2-invariant degree-six character."
+    },
+    {
+      "url": "https://arxiv.org/abs/1207.5449",
+      "use": "Section2.7 and Section3 define integral differential cup-product CS holonomy, including nonbounding manifolds and higher-degree products. Used for the integer cup polynomials, not for an unconstructed fourth-root orbifold action."
+    },
+    {
+      "url": "https://arxiv.org/abs/1810.00844",
+      "use": "Sections2.2-2.3 give the periodic-circle instanton test and SU2 representation parity formula; section2.7 distinguishes ordinary spin from spin-SU2 anomalies."
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.00009",
+      "use": "Section2.2.3 and the SU(n) computation in Section3.4 supply ordinary-spin AHSS d2 as dual Sq2 and Sq2(c2)=c1*c2+c3. The product-group calculation is performed here."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "Exponentiated eta invariants, determinant lines and gluing; a curvature-zero ratio is treated as a restricted flat anomaly character, not as a full parent cancellation."
+    },
+    {
+      "url": "https://arxiv.org/abs/1609.01413",
+      "use": "Equations2.12-2.22 distinguish 4D, normal and 6D chirality and show that an ordinary 6D mass couples opposite 6D chiralities. The selected torus operator and lifts here are derived explicitly, not taken from that paper's rectangle boundary conditions."
+    },
+    {
+      "url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.24.2669",
+      "use": "Weinberg's first-order fermion-vortex index problem relates Higgs topology to an operator index. It does not by itself specify the present compact orbifold action or physical field count."
+    },
+    {
+      "url": "https://arxiv.org/abs/2303.03425",
+      "use": "Equations2.13-2.17 exhibit chiral transverse derivative/Yukawa equations and angular mode constraints. Our simple-core Gaussian and oscillator identities are independently computed for the stated operator, not inferred from a Majorana zero-mode count in a different model."
+    },
+    {
+      "url": "https://arxiv.org/abs/1908.05165",
+      "use": "Equivariant elliptic indices are integer representation multiplicities; finite-group projectors and Fredholm domains. The present character is computed directly from periodic Fourier zero modes."
+    },
+    {
+      "url": "https://arxiv.org/abs/math/0701768",
+      "use": "Orbifold index from equivariant data includes nonidentity stabilizers; supports the distinction from dividing a cover contribution alone by four."
+    },
+    {
+      "url": "https://web.math.ucsb.edu/~dai/book.pdf",
+      "use": "Dai, Section2.3 Eq(3.5)-(3.6): canonical U(n)->Spin-c(2n) lift has vector g_real and determinant det(g). The subgroup map and D=det(E)*L^2 relation are derived explicitly here."
+    },
+    {
+      "url": "https://arxiv.org/abs/math/0307120",
+      "use": "Sections1-2: kernel-inclusive reduced eta modulo integers and CS transgression on odd-dimensional spin manifolds. APS supplies the integer-level line-index refinements; no fractional eta power is declared canonical."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "Localized orbifold fermion anomalies retain finite shifted characters and normal Lorentz data. The exact SMW kernel and H^4 condition are frozen through V96 and evaluated with the actual normal-root isotropy here."
+    },
+    {
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "APS eta and relative determinant-line anomaly inflow: a curvature decomposition or shared filling-period check alone does not construct the full relative anomaly theory or microscopic action."
+    },
+    {
+      "url": "https://pi.math.cornell.edu/~hatcher/AT/AT.pdf",
+      "use": "Examples1B.4 and2.43 and Section3.E model BCn by infinite lens spaces and compute cyclic cohomology. Equivalently the circle Gysin sequence with Euler class n*c gives H*(BCn;Z)=Z[v]/(n*v). Only the degree-six characteristic-class restriction is used."
+    },
+    {
+      "url": "https://stacks.math.columbia.edu/tag/00UA",
+      "use": "Sylvester determinant and common-factor criterion over residue fields; the certificate separately verifies degree preservation and an exact modular nonvanishing witness."
+    },
+    {
+      "url": "https://www.math.columbia.edu/~dejong/courses/algebraic_curves/AlgCLN6-1.pdf",
+      "use": "Section4.1 defines the resultant as a polynomial determinant in the coefficients and states its common-root criterion. No specialization rank theorem is used."
+    },
+    {
+      "url": "https://arxiv.org/abs/0907.0298",
+      "use": "The inherited elliptic-surface and Mordell-Weil context. This audit preserves the previously proved generic K3 rank bound rather than promoting a low-degree section search to an exact rank."
+    }
+  ],
+  "schema": "susy_v97_equivariant_index_relative_glue_section_audit_v1",
+  "scope": "Continuation of the separate SUSY/C8 research branch; canonical V21 physical gate evidence remains unchanged.",
+  "status": "V97_CONDITIONAL_GAPPED_DIRAC_COMPLETION_AND_COMMON_ORDER4_GLUE__SU2_FLAT_REFINEMENT_AND_CUBIC_BRANCH_EXCLUSION__NO_ACCEPTED_PARENT",
+  "supersession_boundary": {
+    "V96_equal_R_weights_are_already_a_complete_SU2_doublet": false,
+    "V96_fractional_periods_now_organized_by_one_primitive_order4_class": true,
+    "V96_mixed_periods_retracted": false,
+    "V96_original_rank_bound_11_changed": false,
+    "V96_uncomputed_mass_index_now_computed_for_one_explicit_quadratic_model": true,
+    "b4_zero_cubic_subbranch_now_excluded": true,
+    "forced_mass_zeros_alone_imply_physical_massless_particles": false,
+    "formal_virtual_carrier_is_accepted_physical_transport": false,
+    "new_normal_R_curvature_cancellation_erases_flat_Witten_class": false,
+    "remaining_cubic_equations_solved_or_square_descent_automatic": false,
+    "zero_projected_index_means_arbitrary_mass_kernel_vanishes": false
+  },
+  "terminal_decision": {
+    "SU2_normal_curvature_scout_and_required_flat_Z2_response_computed": true,
+    "actual_normal_isotropy_failure_and_conditional_compensator_computed": true,
+    "all_F97_obligations_fully_completed": false,
+    "closed_gates": [],
+    "common_primitive_order4_remainder_identified": true,
+    "common_quantized_relative_bulk_wall_defect_action_constructed": false,
+    "conditional_kinetic_operator_and_equivariant_index_computed": true,
+    "conditional_small_mass_projected_gap_proved": true,
+    "full_SMW_Gammahat_SUSY_action_constructed": false,
+    "original_b4_zero_section_branch_excluded": true,
+    "quantized_integer_mixed_gauge_response_pieces_constructed": true,
+    "remaining_original_section_system_solved": false,
+    "same_action_microscopic_parent_accepted": false,
+    "theory_complete": false
+  },
+  "version": "V97"
+}
