@@ -1,0 +1,1545 @@
+{
+  "Phi_zero_locus_and_defect_matching": {
+    "core_sha256": "ec80205bd8119a0b5be8675147417769ffcb48e8e067699fbdd2a5066e16164e",
+    "finite_lift_bookkeeping": {
+      "C8_or_Gammahat_eta_invariant_computed": false,
+      "Majorana_mode_is_neutral_under_primitive_k": false,
+      "V93_4D_pure_C8_screen_promoted_to_2D_defect_cancellation": false,
+      "complex_mode_component_exponents_mod8": [
+        2,
+        2
+      ],
+      "complex_mode_multiplicity": 3,
+      "finite_Pfaffian_or_Arf_phase_trivialization_constructed": false,
+      "independent_R4_on_isolated_defect_fermions": 0,
+      "k_squared_is_total_fermion_parity": false,
+      "kernel_k4_on_this_isolated_defect_sector": true,
+      "real_mode_component_exponents_mod8": [
+        4,
+        4
+      ],
+      "real_mode_multiplicity": 3,
+      "reason": "For a pure internal k the ambient spinor has trivial geometric action. Choosing the equivariant normal spin root D^-2 gives phase -1 under k, so the induced tangent spin splitting carries the compensating -1. Treating the real coefficient line as a neutral physical Majorana would lose this sign.",
+      "restricted_internal_C8_only": true,
+      "spin_split_bookkeeping_exponents_mod8": {
+        "D": 2,
+        "N_D_minus4": 0,
+        "complex_coefficient_D_minus1": 6,
+        "induced_tangent_spin_compensator": 4,
+        "normal_spin_root_D_minus2": 4,
+        "real_coefficient": 0,
+        "total_complex_after_tangent_spin_compensator": 2,
+        "total_real_after_tangent_spin_compensator": 4
+      }
+    },
+    "input_core_hashes": {
+      "v93_mass": "c4f752b27ae64d447689e96f1125fc34e6b0b94aeaee95a8ee80f0ed52e6cacf",
+      "v93_route": "4f81852d9e272d3fb12946ad41cb01d9f93462f75cef69123106a80b03f092f2"
+    },
+    "limitations": {
+      "actual_stable_string_solution_constructed": false,
+      "all_KK_and_supergravity_mixing_included": false,
+      "differential_action_across_all_Phi_zeroes_constructed": false,
+      "full_6D_fixed_wall_orbifold_normal_anomaly_cancelled": false,
+      "nonspin_or_full_Gammahat_tangential_extension_constructed": false,
+      "same_action_theory_or_any_gate_closed": false,
+      "supersymmetric_wall_frame_tensor_completion_constructed": false,
+      "torsion_eta_Pfaffian_orientation_or_Dai_Freed_completion_constructed": false
+    },
+    "mass_and_index": {
+      "assumptions": [
+        "four-dimensional nine-field quadratic ansatz with positive nonsingular kinetic metric and isolated straight string; no extra asymptotically gapless fields mixed into this operator",
+        "a smooth vortex profile with nonzero asymptotic mass; regular normalizable modes, and the standard flat-space transverse Fredholm problem",
+        "constant full-rank lambda,kappa; opposite-chirality accidental pairs may occur without changing the index"
+      ],
+      "determinant": "-Phi**9",
+      "dynamically_stable_vortex_or_cosmological_abundance_constructed": false,
+      "frozen_superpotential": "Phi*(S2^T S6 + S4^T S4/2)",
+      "full_SUGRA_gravitino_gaugino_or_KK_operator_index_computed": false,
+      "gapped_boundary_required": "Phi is nonzero on the linking circle and both constant tensors are nonsingular",
+      "general_constant_tensor_determinant": "-Phi^9*det(lambda)^2*det(kappa)",
+      "general_formula_reason": "Permute to (S2,S6,S4); the 6x6 off-diagonal block has determinant (-1)^3 det(lambda)^2, and the remaining block is kappa.",
+      "index_rule": "For the isolated standard vortex operator, det winding counts REAL chiral modes: one complex Dirac channel contributes two, one Majorana channel one.",
+      "matrix": [
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "Phi",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "Phi",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "Phi"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "Phi",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "Phi",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "Phi",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "Phi",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "Phi",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "Phi",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "minimal_decoupled_unit_profile_channels": {
+        "complex_chiral": 3,
+        "real_chiral": 3,
+        "total_real": 9
+      },
+      "net_index_not_absolute_kernel_count": true,
+      "non_diagonal_check": {
+        "det_kappa": 8,
+        "det_lambda": 7,
+        "exact_difference": "0"
+      },
+      "ordered_charges": [
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6
+      ],
+      "orientation_convention": "Positive mass winding defines positive transverse real index. The displayed I4 uses the positive Ahat-index chirality convention; reversing the defect orientation reverses signed anomaly/index data.",
+      "rank_at_Phi_one": 9,
+      "rank_at_Phi_zero": 0,
+      "source_normalization": "Brax et al. section3: (3.29)-(3.30) count real solutions for a Majorana block; (3.41) counts twice the complex solutions for an off-diagonal block. Weinberg's Higgs-winding index supplies homotopy invariance.",
+      "winding_samples": [
+        {
+          "mass_winding": -2,
+          "signed_chiral_central_charge": "-9",
+          "signed_complex_channel_index": -6,
+          "signed_gravitational_I4_coefficient_p1T": "3/8",
+          "signed_real_Majorana_channel_index": -6,
+          "signed_total_real_index": -18,
+          "symmetric_mass_determinant_winding": -18
+        },
+        {
+          "mass_winding": -1,
+          "signed_chiral_central_charge": "-9/2",
+          "signed_complex_channel_index": -3,
+          "signed_gravitational_I4_coefficient_p1T": "3/16",
+          "signed_real_Majorana_channel_index": -3,
+          "signed_total_real_index": -9,
+          "symmetric_mass_determinant_winding": -9
+        },
+        {
+          "mass_winding": 0,
+          "signed_chiral_central_charge": "0",
+          "signed_complex_channel_index": 0,
+          "signed_gravitational_I4_coefficient_p1T": "0",
+          "signed_real_Majorana_channel_index": 0,
+          "signed_total_real_index": 0,
+          "symmetric_mass_determinant_winding": 0
+        },
+        {
+          "mass_winding": 1,
+          "signed_chiral_central_charge": "9/2",
+          "signed_complex_channel_index": 3,
+          "signed_gravitational_I4_coefficient_p1T": "-3/16",
+          "signed_real_Majorana_channel_index": 3,
+          "signed_total_real_index": 9,
+          "symmetric_mass_determinant_winding": 9
+        },
+        {
+          "mass_winding": 2,
+          "signed_chiral_central_charge": "9",
+          "signed_complex_channel_index": 6,
+          "signed_gravitational_I4_coefficient_p1T": "-3/8",
+          "signed_real_Majorana_channel_index": 6,
+          "signed_total_real_index": 18,
+          "symmetric_mass_determinant_winding": 18
+        }
+      ]
+    },
+    "primary_sources": [
+      {
+        "url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.24.2669",
+        "use": "Weinberg1981 vortex index relates the asymptotically massive transverse operator to Higgs winding; used only for the isolated standard defect problem."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/0604198",
+        "use": "Brax et al. section3, equations3.29-3.30 and3.41 distinguish real Majorana counts from complex off-diagonal blocks; section5 explains why gravitino/full-supergravity extensions cannot be inferred."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/0509097",
+        "use": "Harvey lectures, index-density normalization and axion-string section4; equations133-139 emphasize separate tangent/normal anomalies and the need for normal-bundle regularization."
+      },
+      {
+        "url": "https://arxiv.org/abs/hep-th/0007037",
+        "use": "Harvey-Ruchayskiy construct regulated bump-form inflow from zero-mode profiles; this additional differential construction is expressly absent here."
+      },
+      {
+        "url": "https://stacks.math.columbia.edu/tag/0B3P",
+        "use": "Regular divisor normal-line identity; its smooth transverse-section analogue follows directly from the derivative. No holomorphic/BPS string is inferred."
+      },
+      {
+        "url": "https://arxiv.org/abs/1808.01334",
+        "use": "Ordinary spin versus the gauge quotient and differential/Pfaffian anomaly distinctions; not a proof for the full Gammahat structure."
+      }
+    ],
+    "schema": "v94_phi_defect_index_and_curvature_matching_v1",
+    "status": "PASS_CONDITIONAL_PHI_DEFECT_INDEX_AND_TANGENT_NORMAL_CURVATURE_MATCH__GLOBAL_GLUE_OPEN",
+    "topological_patch_constraints": {
+      "closed_spin4_total_zero_surface": {
+        "component_by_component_self_intersection_multiple32_claimed": false,
+        "reason": "integral(d^2)=2*l by the even intersection form of a closed spin four-manifold",
+        "self_intersection": "[Sigma]^2=16*integral(d^2)=32*l"
+      },
+      "determinant_line": "D; d=c1(D)=2*f, where f is the covering U1 curvature",
+      "field_line_powers_of_D": {
+        "Phi_minus": -4,
+        "S2": 1,
+        "S4": 2,
+        "S6": 3
+      },
+      "global_nonvanishing_condition": "Phi_minus nowhere zero trivializes D^4, hence 4*d=0 in integral H2(M4;Z)",
+      "higher_multiplicity_boundary": "For an order-n zero with leading coefficient nowhere zero, N^n = D^-4|Sigma; the unit-zero normal formula must NOT be copied unchanged to a multiple zero.",
+      "inherited_R_and_wall_data": {
+        "Phi_scalar_independent_R4_charge": 0,
+        "heavy_fermion_independent_R4_charges": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "new_assignment_of_unfrozen_wall_normal_charges": false,
+        "new_defect_breaks_selected_independent_R_by_Phi_phase": false,
+        "orbifold_wall_characters_of_selected_Phi": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      "no_independent_square_root_of_D_required": true,
+      "nonzero_patch_does_not_cover_arbitrary_gauge_backgrounds": true,
+      "oriented_simple_zero_surface": {
+        "Poincare_dual_class": "PD[Sigma]=-4*d",
+        "induced_spin_surface": "Since M4 is spin and N has this spin lift, Sigma inherits a spin structure",
+        "normal_Chern_root": "nu=-4*d restricted to Sigma",
+        "normal_is_six_dimensional_orbifold_normal": false,
+        "normal_line": "N = D^-4 restricted to Sigma",
+        "normal_spin_root": "N^(1/2)=D^-2 restricted to Sigma",
+        "notation": "Sigma is an oriented smooth transverse zero; N is its real oriented rank2 normal bundle, viewed as a complex line",
+        "proof": "The derivative of a transverse section identifies its oriented normal plane with the scalar line. Spin(TM4)|Sigma splits into spin(TSigma) and the chosen square root of N."
+      },
+      "setting": "ordinary spin spacetime M4, restricted Spin^c(11) gauge bundle, and the isolated V93 4D mass ansatz",
+      "topological_witness": {
+        "D": "line with d=a+b",
+        "M4": "S2 x S2",
+        "PD_total_zero_coefficients_in_a_b": [
+          -4,
+          -4
+        ],
+        "Phi_phase_curvature_period": -9,
+        "compatible_gauge_SO11_bundle": "underlying real D plus nine trivial real lines: w2=d mod2 and p1=d^2, admitting determinant D Spin^c lift",
+        "holomorphic_or_BPS_section_asserted": false,
+        "integral_d_squared": 2,
+        "integral_p1T4": 0,
+        "intersection_relations": "a^2=b^2=0, integral(a*b)=1",
+        "total_self_intersection": 32
+      },
+      "torsion_or_discrete_flat_data_removed_by_deRham_f_zero": false
+    },
+    "unit_defect_curvature_matching": {
+      "Euler_residue_exact_difference": "0",
+      "Euler_residue_identity": "I6_heavy|Sigma + nu*I4_defect = 0 after nu=-4*d; formal characteristic polynomials, not integrating a6-form on a2-manifold",
+      "V93_phase_coefficient_B4": "-18*f**2 + 3*pM/16",
+      "Whitney_relation": "p1(TM4)|Sigma=p1(TSigma)+nu^2",
+      "bump_form_profile_or_connection_level_transgression_constructed": false,
+      "complex_chiral_I4": "d**2/2 - pT/24",
+      "defect_I4": "3*d**2/2 - 3*pT/16",
+      "defect_I4_in_normal_root": "3*nu^2/32-3*p1(TSigma)/16",
+      "full_inflow_sign_and_Pfaffian_orientation_fixed_on_all_relative_backgrounds": false,
+      "odd_character_identity": "Ahat(N)*(ch(E)-ch(E*))/2 = -nu*(3*cosh(d)+3/2), E=3*(D+D^2+D^3), nu=-4*d",
+      "odd_character_identity_verified": true,
+      "pure_gravitational_matching_alone_used": false,
+      "real_chiral_I4": "-pT/48",
+      "restricted_B4_plus_defect_I4": "0",
+      "restricted_phase_coefficient": "-3*d**2/2 + 3*pT/16",
+      "spinor_bundle_derivation": {
+        "Majorana_coefficient_line": "real untwisted line in the chosen induced spin splitting",
+        "S2_spin_normal_power": -1,
+        "S4_spin_normal_power": 0,
+        "complex_channels": 3,
+        "complex_coefficient_line": "D^-1 (its conjugate gives the same degree4 anomaly)",
+        "conjugate_S6_spin_normal_power": -1,
+        "fractional_normal_charge_needs_mass_determined_fourth_root": true,
+        "normal_connection_charge_for_complex_channel": "1/4 because -d=nu/4",
+        "ordinary_SO2_normal_representations_with_no_extension_claimed": false,
+        "real_channels": 3
+      },
+      "status": "EXACT_CONDITIONAL_UNIT_DEFECT_CURVATURE_IDENTITY__NOT_A_DIFFERENTIAL_ACTION",
+      "tangent_and_defect_normal_curvature_coefficients_both_match": true
+    }
+  },
+  "actual_Jacobian_and_quadratic_section": {
+    "actual_full_torsion_theorem": {
+      "D6_Cartan_matrix": [
+        [
+          2,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          2,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          2,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1,
+          2,
+          -1,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          2
+        ]
+      ],
+      "Smith_diagonal_absolute": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "actual_orders_f_g_Delta_at_S": [
+        2,
+        3,
+        8
+      ],
+      "determinant": 4,
+      "exponent": 2,
+      "free_Mordell_Weil_rank": null,
+      "free_Mordell_Weil_rank_computed": false,
+      "geometric_component_group": "C2 x C2",
+      "local_field": "C(X)((s)) near S in t=r0=1, X=r1; extend only the residue field when computing geometric components",
+      "minimal_Kodaira_fiber_at_S": "I2*",
+      "torsion_injection_argument": [
+        "In residue characteristic zero the formal group has no finite-order point: the leading term of [n](u) is n*u.",
+        "The identity component of an additive Neron fiber is Ga and has no nonzero torsion in characteristic zero.",
+        "Thus torsion injects into the geometric component group of I2*, which has exponent two. The independently proved absence of nonzero two-torsion forces all torsion to vanish."
+      ],
+      "torsion_order": 1,
+      "torsion_subgroup": "trivial",
+      "torsion_triviality_proves_rank_zero": false
+    },
+    "actual_two_torsion_exclusion": {
+      "Jacobian_equation": "y^2=x^3+A*x+B; A=-27*I,B=-27*J from actual coefficients",
+      "field": "K=C(F4)=C(T,X) on s=r0=1, T=t, X=r1",
+      "integral_specialization_proof": [
+        "C[T,X] is integrally closed. A rational root of its monic cubic must lie in C[T,X].",
+        "Evaluation X=0 therefore preserves a hypothetical polynomial root; no denominator or leading coefficient can disappear because the cubic is monic.",
+        "At T=0 the specialized cubic is x^3, so T divides every polynomial root x(T). Set x=3*T*z(T).",
+        "The normalized cubic is monic over C[T]; the degree argument and exact unit ideal exclude every root, with arbitrary complex coefficients."
+      ],
+      "monic_cubic_irreducible_over_C_F4": true,
+      "nonzero_two_torsion_over_C_F4_exists": false,
+      "normalization": "x=3*T*z; divide the equation by 27*T^3",
+      "normalized_root_proof": {
+        "Groebner_basis": [
+          "1"
+        ],
+        "Groebner_domain": "QQ",
+        "Groebner_order": "lex",
+        "Groebner_variables": [
+          "alpha",
+          "beta",
+          "gamma"
+        ],
+        "all_polynomial_roots_have_degree_at_most": 2,
+        "candidate": "T**2*alpha + T*beta + gamma",
+        "coefficient_degrees_linear_constant": [
+          4,
+          6
+        ],
+        "coefficient_equations_T6_through_T0": [
+          "alpha**3 - 48*alpha + 128",
+          "3*alpha**2*beta - 48*beta",
+          "3*alpha**2*gamma + 3*alpha*beta**2 - 48*gamma + 27",
+          "6*alpha*beta*gamma + beta**3",
+          "3*alpha*gamma**2 + 3*beta**2*gamma + 54",
+          "3*beta*gamma**2",
+          "gamma**3 + 27"
+        ],
+        "degree_bound_proof": "For root degree n>2, its cubic has degree 3n, strictly greater than both n+4 and 6, so the leading term cannot cancel.",
+        "excludes_coefficients_over": "C, not just Q",
+        "independent_coefficient_contradiction": {
+          "remaining_gamma_cubed_plus_27": "110565/4096",
+          "steps": [
+            "gamma^3=-27, so gamma is nonzero; the T coefficient gives beta=0",
+            "the T^2 coefficient gives alpha=-18/gamma^2",
+            "the T^4 coefficient then becomes -9-48*gamma=0, so gamma=-3/16"
+          ]
+        },
+        "normalized_cubic": "128*T**6 - 48*T**4*z + 27*T**4 + 54*T**2 + z**3 + 27"
+      },
+      "specialized_cubic_at_X_zero": "3456*T**9 + 729*T**7 - 432*T**6*x + 1458*T**5 + 729*T**3 + x**3",
+      "two_torsion_condition": "nonzero two-torsion has y=0, so x is a K-root of the monic cubic",
+      "uses_number_field_rank_specialization_injectivity": false
+    },
+    "coefficient_payload": {
+      "L": "t**3",
+      "p0": "r0*r1*s**2*(r0**10 + 2*r1**10) + r0*r1*t**2*(r0**2 + r1**2)",
+      "p1": "s**2*(r0**12 + r1**12) + t**2*(r0**4 + 2*r1**4)",
+      "p2": "0",
+      "p3": "0",
+      "p4": "r0*r1*s**2*(2*r0**10 + 3*r1**10)"
+    },
+    "coefficient_payload_sha256": "f2b6dcad4a90364cff7557f379e4ccdb76bd466553a3289659d08a356119f0cf",
+    "core_sha256": "fcf8514839373bdf63352fdd857bf6c62bc47baf32509400ebc8b487c5139bc1",
+    "input_core_hashes": {
+      "v93": "4f81852d9e272d3fb12946ad41cb01d9f93462f75cef69123106a80b03f092f2",
+      "v93_geometry": "0b208eb9ddbfc56c36ed0576afa126431074cd65af8fb30d277f5802cdebe96e"
+    },
+    "limitations": [
+      "The original Jacobian free Mordell-Weil rank is unknown; no rank bound is inferred from the fixed specialization.",
+      "The explicit non-torsion point over a quadratic extension is anti-invariant and none of its nonzero multiples descends; other original-Jacobian sections have not been excluded.",
+      "The quadratic twist has a rational non-torsion section but changes the S fiber from I2* to I2. No compact supersymmetric realization, height pairing or full spectrum for the twist has been constructed.",
+      "Trivial Mordell-Weil torsion alone does not establish the physical global gauge group, a bundle lift or anomaly cancellation.",
+      "All eight gates remain OPEN; the original U1, height148S+768F and complete same-action theory remain unproved."
+    ],
+    "non_torsion_specialization_proof": {
+      "A": -432,
+      "B": 6372,
+      "Weierstrass_discriminant": -12380449536,
+      "base_values": {
+        "r0": 1,
+        "r1": 0,
+        "s": 1,
+        "sqrt_d": 1,
+        "t": 1
+      },
+      "claims_specialization_is_injective_on_free_MW_group": false,
+      "d": 1,
+      "first_five_multiples": [
+        {
+          "n": 1,
+          "x": "12",
+          "y": "54"
+        },
+        {
+          "n": 2,
+          "x": "-24",
+          "y": "-54"
+        },
+        {
+          "n": 3,
+          "x": "21",
+          "y": "-81"
+        },
+        {
+          "n": 4,
+          "x": "192",
+          "y": "2646"
+        },
+        {
+          "n": 5,
+          "x": "84/25",
+          "y": "8802/125"
+        }
+      ],
+      "good_reduction_counts": [
+        {
+          "discriminant_mod_prime": 4,
+          "point_count_including_infinity": 5,
+          "prime": 5,
+          "x_rhs_number_of_y": [
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              1,
+              1,
+              2
+            ],
+            [
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              3,
+              0
+            ],
+            [
+              4,
+              3,
+              0
+            ]
+          ]
+        },
+        {
+          "discriminant_mod_prime": 7,
+          "point_count_including_infinity": 16,
+          "prime": 11,
+          "x_rhs_number_of_y": [
+            [
+              0,
+              3,
+              2
+            ],
+            [
+              1,
+              1,
+              2
+            ],
+            [
+              2,
+              5,
+              2
+            ],
+            [
+              3,
+              10,
+              0
+            ],
+            [
+              4,
+              0,
+              1
+            ],
+            [
+              5,
+              3,
+              2
+            ],
+            [
+              6,
+              3,
+              2
+            ],
+            [
+              7,
+              6,
+              0
+            ],
+            [
+              8,
+              7,
+              0
+            ],
+            [
+              9,
+              1,
+              2
+            ],
+            [
+              10,
+              5,
+              2
+            ]
+          ]
+        }
+      ],
+      "independent_Lutz_Nagell_check": "5P has x=84/25, nonintegral in the displayed integral short Weierstrass equation, and therefore is not torsion.",
+      "point": [
+        12,
+        54
+      ],
+      "point_is_nonzero": true,
+      "rational_torsion_exclusion": "For each prime ell!=5, reduction at5 forces ell to divide5; hence rational torsion can only be 5-primary. Reduction at11 forces that 5-primary torsion to divide16, so it is trivial.",
+      "smooth_specialization_argument": "On the open base where d*Delta is invertible, sqrt(d) defines an etale double cover and the displayed point is a regular section of a smooth elliptic scheme. Any generic torsion identity [n]P=O would extend to this connected open set and specialize at (T,X,sqrt(d))=(1,0,1). Its specialization is infinite-order, so the generic point is infinite-order.",
+      "specialized_rational_torsion_order": 1
+    },
+    "primary_sources": [
+      {
+        "id": "SchuettShioda2010",
+        "role": "Lemmas7.3/7.8 identify the additive I2* component group and torsion injection; sections2.4 and5.4 give group law and quadratic twist/fiber changes. The proof is applied locally in residue characteristic zero.",
+        "url": "https://arxiv.org/abs/0907.0298"
+      },
+      {
+        "id": "MilneEC2",
+        "role": "ChapterII Corollary4.2 gives prime-to-p good-reduction torsion injection; Theorem5.1 gives the independent Lutz-Nagell integrality check.",
+        "url": "https://www.jmilne.org/math/Books/EC2.pdf"
+      },
+      {
+        "id": "Fisher2022",
+        "role": "Section2 fixes the binary-quartic Jacobian normalization, freshly reconstructed from the actual V91 coefficients here.",
+        "url": "https://arxiv.org/abs/2208.14977"
+      }
+    ],
+    "quadratic_extension_point": {
+      "Galois_action": "sigma(P)=-P under sqrt(d)->-sqrt(d)",
+      "Weierstrass_identity_residual": "0",
+      "extension_degree": 2,
+      "field": "K(sqrt(d))",
+      "new_point_proves_original_Jacobian_rank_positive": false,
+      "no_nonzero_integer_multiple_descends_to_K": true,
+      "non_descent_reason": "If nP were fixed by sigma then nP=-nP, forcing 2nP=O, contrary to the proved infinite order.",
+      "point_is_K_rational": false,
+      "point_is_non_torsion": true,
+      "point_x": "12*s*t**3",
+      "point_y": "27*s^2*p1*sqrt(d)",
+      "point_y_sqrt_d_coefficient": "27*s**2*(r0**12*s**2 + r0**4*t**2 + r1**12*s**2 + 2*r1**4*t**2)",
+      "radicand": "d=s*(L+s*p4)",
+      "radicand_is_square_in_K": false,
+      "radicand_order_at_S": 1,
+      "radicand_polynomial": "s*(2*r0**11*r1*s**3 + 3*r0*r1**11*s**3 + t**3)",
+      "trace_to_K": "P+sigma(P)=O"
+    },
+    "quadratic_twist_redesign": {
+      "S_gauge_algebra": "A1 = su(2)",
+      "accepted_as_same_Spin11_U1_completion": false,
+      "actual_height_pairing_computed": false,
+      "equation": "E^d: y^2=x^3+d^2*A*x+d^3*B",
+      "free_rank_lower_bound_for_twist_only": 1,
+      "local_minimal_coordinate_change": "x=s^2*x_min, y=s^3*y_min",
+      "minimal_S_Kodaira_type": "I2",
+      "minimal_S_orders_f_g_Delta": [
+        0,
+        0,
+        2
+      ],
+      "new_compact_Calabi_Yau_or_matter_spectrum_constructed": false,
+      "preserves_required_S_B5_algebra": false,
+      "rational_section": "Q=(12*s*L*d,27*s^2*p1*d^2)",
+      "raw_S_orders_f_g_Delta": [
+        4,
+        6,
+        14
+      ],
+      "rejection_scope": "This explicit quadratic twist has a non-torsion rational section, but changes the required gauge fiber. It is not a completion of the unchanged Spin11 scout.",
+      "same_generic_j_invariant_as_original": true,
+      "section_identity_verified": true,
+      "section_is_non_torsion": true
+    },
+    "schema": "v94_actual_jacobian_torsion_and_quadratic_twist_section_v1",
+    "status": "PASS_ACTUAL_MW_TORSION_TRIVIAL__NON_TORSION_TWIST_SECTION_CHANGES_B5_TO_A1__ORIGINAL_FREE_RANK_OPEN"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "86ac5555d92e44ec3f6fa2b2e0d56b07981d1a5633e5dd62a442c9f7eebb82f6",
+    "test_sha256": "f1073139dbfc59d3b76c9a7fbd59d378e2247124f5d8d70ddbecb06b8dd1906d",
+    "test_v94_jacobian_mordell_weil_audit.py": "7c6ddf237f927bb0e1f06712ee8390dc659e149c6ccac953e014850f5f7f7858",
+    "test_v94_normal_wall_quantization.py": "7c1be7ac52b8a32e31909afdbf761addecdc607ec111ce0b7ec43fe4e22a7e9c",
+    "test_v94_phi_defect_anomaly_matching.py": "2f416e5185816de422125c5c57a4132245577b9b591fcc8a3854d59917679911",
+    "test_v94_visible_higgs_global_patch_audit.py": "dddaa75ca38f0df85bbaa269516c7958069cfc5ff249f8e7d02687bc471d7b3d",
+    "v94_jacobian_mordell_weil_audit.py": "53c9e299a9512f853c088b103be65faab175c53e72728f62ef24696fcc4916e8",
+    "v94_normal_wall_quantization.py": "4fab2ffa486d529b6d7165ccd7a7ac090945282a45373669e8a563cbc160433e",
+    "v94_phi_defect_anomaly_matching.py": "b5815e83220379b6836ccb2e6c55a3bb27f53b67414f0c64f6fe6ab61c4f08ec",
+    "v94_visible_higgs_global_patch_audit.py": "e70f952436484ef4467a60c009973da98afe849cf12d081c35b60ca45c482431"
+  },
+  "core_sha256": "17fd3a60008545b7bde77756ed8b5ec7dd590c18c1cbb1344a5a7cc67dd2686f",
+  "cross_certificate_checks": {
+    "actual_Jacobian_uses_unchanged_V93_coefficients": true,
+    "both_C4_normal_restrictions": [
+      {
+        "bare_plus_conditional_wall_f_zero": "0",
+        "stratum": "z00"
+      },
+      {
+        "bare_plus_conditional_wall_f_zero": "0",
+        "stratum": "z11"
+      }
+    ],
+    "checks_prove_global_same_action_completion": false,
+    "conditional_components_if_independently_replicated_at_both_C4": 56,
+    "conditional_wall_components_per_C4": 28,
+    "defect_B4_plus_I4": "0",
+    "defect_operator_and_visible_threshold_heavy_moments_match": true,
+    "replication_constructs_global_wall_orbibundle": false
+  },
+  "gate_ledger": {
+    "G1": "OPEN: an explicit conditional normal-wall sector exists, but no common Gammahat-compatible quantum parent glues it to the defect theory and geometry.",
+    "G2": "OPEN: the nine-singlet mass loop has a scoped defect index; full interacting mass operators, supersymmetry breaking and scales remain missing.",
+    "G3": "OPEN: proposed wall normal representations require an additional product/central lift; the frozen full localized representation problem is not solved.",
+    "G4": "OPEN: normal-slice cancellation and defect curvature matching pass stated assumptions, but all f-dependent and relative/global anomalies remain untrivialized.",
+    "G5": "OPEN: no common regulated KK/BV determinant, Pfaffian orientation or full relative WCS/Dai-Freed theory has been constructed.",
+    "G6": "OPEN: no accepted same-action full spectrum and threshold/two-loop unification calculation follows from these partial sectors.",
+    "G7": "OPEN: heavy matching is retained across the local defect calculation; finite equivariance, the full quantum selector and cosmology remain incomplete.",
+    "G8": "OPEN: actual Jacobian torsion is trivial, but its free MW rank/height remain unknown; the explicit quadratic section is anti-invariant and its twist changes B5 to A1."
+  },
+  "input_core_hashes": {
+    "v93_master": "d34479d8daa9a37d090e2d2ace471464171a0c28208d3d88b77e5dc168a97932",
+    "v93_route": "4f81852d9e272d3fb12946ad41cb01d9f93462f75cef69123106a80b03f092f2"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F95_RELATIVE_SPIN_NORMAL_DEFECT_GLUE_AND_INVARIANT_MW_SECTION",
+    "not_a_valid_shortcut": "Do not equate an integral restricted anomaly polynomial, a local defect inflow match, or a section on a different curve with an accepted full theory.",
+    "parallel": "Find an invariant non-torsion section of the ORIGINAL Jacobian or prove its free rank; compute its actual height and codimension-two matter. The anti-invariant section and the gauge-changing twist do not solve this obligation.",
+    "primary": "Realize the proposed normal-spin root and wall module in one explicit Gammahat/R-compatible bundle action; cancel the remaining U1-dependent local polynomial and glue the computed Phi defect theory into a quantized relative anomaly trivialization."
+  },
+  "normal_wall_quantization": {
+    "conditional_product_lift_wall_module": {
+      "SU5_and_U5_pure_cubic_gauge_anomalies_cancel": true,
+      "Tr_normal_Q": "-3",
+      "Tr_normal_Q3": "3/4",
+      "all_f_dependent_anomalies_are_cancelled": false,
+      "assumed_tangential_group": "separately supplied Spin4 x Spin2 normal cover, together with the U5 reduction of Spin^c11 gauge data",
+      "bare_C4_f_zero_polynomial": "e1*e2*x/2 + e1*e3*x/2 + e1*e4*x/2 + e1*e5*x/2 + e2*e3*x/2 + e2*e4*x/2 + e2*e5*x/2 + e3*e4*x/2 + e3*e5*x/2 + e4*e5*x/2 - p*x/8 - x**3/8",
+      "complex_Weyl_components": 28,
+      "components_failing_natural_diagonal_spin_kernel": 8,
+      "descends_to_frozen_Gammahat_with_full_wall_R_data": null,
+      "descends_to_natural_Spin4_Spin2_diagonal_quotient": false,
+      "field_blocks": [
+        {
+          "Spin2_integral_weight": 1,
+          "Spin_c11_gauge_center_even": true,
+          "continuous_U1_8_charge": 0,
+          "copies": 1,
+          "dimension": 5,
+          "natural_tangent_normal_diagonal_kernel_exponent_mod2": 0,
+          "normal_charge_qN": "1/2",
+          "one_copy_I6": "e1**3/6 + e1**2*x/4 - e1*p/24 + e1*x**2/8 + e2**3/6 + e2**2*x/4 - e2*p/24 + e2*x**2/8 + e3**3/6 + e3**2*x/4 - e3*p/24 + e3*x**2/8 + e4**3/6 + e4**2*x/4 - e4*p/24 + e4*x**2/8 + e5**3/6 + e5**2*x/4 - e5*p/24 + e5*x**2/8 - 5*p*x/48 + 5*x**3/48",
+          "representation": "E",
+          "weights": [
+            "e1",
+            "e2",
+            "e3",
+            "e4",
+            "e5"
+          ]
+        },
+        {
+          "Spin2_integral_weight": 0,
+          "Spin_c11_gauge_center_even": true,
+          "continuous_U1_8_charge": 0,
+          "copies": 1,
+          "dimension": 5,
+          "natural_tangent_normal_diagonal_kernel_exponent_mod2": 1,
+          "normal_charge_qN": "0",
+          "one_copy_I6": "-e1**3/6 + e1*p/24 - e2**3/6 + e2*p/24 - e3**3/6 + e3*p/24 - e4**3/6 + e4*p/24 - e5**3/6 + e5*p/24",
+          "representation": "E_dual",
+          "weights": [
+            "-e1",
+            "-e2",
+            "-e3",
+            "-e4",
+            "-e5"
+          ]
+        },
+        {
+          "Spin2_integral_weight": 0,
+          "Spin_c11_gauge_center_even": true,
+          "continuous_U1_8_charge": 0,
+          "copies": 1,
+          "dimension": 1,
+          "natural_tangent_normal_diagonal_kernel_exponent_mod2": 1,
+          "normal_charge_qN": "0",
+          "one_copy_I6": "e1**3/6 + e1**2*e2/2 + e1**2*e3/2 + e1**2*e4/2 + e1**2*e5/2 + e1*e2**2/2 + e1*e2*e3 + e1*e2*e4 + e1*e2*e5 + e1*e3**2/2 + e1*e3*e4 + e1*e3*e5 + e1*e4**2/2 + e1*e4*e5 + e1*e5**2/2 - e1*p/24 + e2**3/6 + e2**2*e3/2 + e2**2*e4/2 + e2**2*e5/2 + e2*e3**2/2 + e2*e3*e4 + e2*e3*e5 + e2*e4**2/2 + e2*e4*e5 + e2*e5**2/2 - e2*p/24 + e3**3/6 + e3**2*e4/2 + e3**2*e5/2 + e3*e4**2/2 + e3*e4*e5 + e3*e5**2/2 - e3*p/24 + e4**3/6 + e4**2*e5/2 + e4*e5**2/2 - e4*p/24 + e5**3/6 - e5*p/24",
+          "representation": "det_E",
+          "weights": [
+            "e1 + e2 + e3 + e4 + e5"
+          ]
+        },
+        {
+          "Spin2_integral_weight": -1,
+          "Spin_c11_gauge_center_even": true,
+          "continuous_U1_8_charge": 0,
+          "copies": 1,
+          "dimension": 1,
+          "natural_tangent_normal_diagonal_kernel_exponent_mod2": 0,
+          "normal_charge_qN": "-1/2",
+          "one_copy_I6": "-e1**3/6 - e1**2*e2/2 - e1**2*e3/2 - e1**2*e4/2 - e1**2*e5/2 - e1**2*x/4 - e1*e2**2/2 - e1*e2*e3 - e1*e2*e4 - e1*e2*e5 - e1*e2*x/2 - e1*e3**2/2 - e1*e3*e4 - e1*e3*e5 - e1*e3*x/2 - e1*e4**2/2 - e1*e4*e5 - e1*e4*x/2 - e1*e5**2/2 - e1*e5*x/2 + e1*p/24 - e1*x**2/8 - e2**3/6 - e2**2*e3/2 - e2**2*e4/2 - e2**2*e5/2 - e2**2*x/4 - e2*e3**2/2 - e2*e3*e4 - e2*e3*e5 - e2*e3*x/2 - e2*e4**2/2 - e2*e4*e5 - e2*e4*x/2 - e2*e5**2/2 - e2*e5*x/2 + e2*p/24 - e2*x**2/8 - e3**3/6 - e3**2*e4/2 - e3**2*e5/2 - e3**2*x/4 - e3*e4**2/2 - e3*e4*e5 - e3*e4*x/2 - e3*e5**2/2 - e3*e5*x/2 + e3*p/24 - e3*x**2/8 - e4**3/6 - e4**2*e5/2 - e4**2*x/4 - e4*e5**2/2 - e4*e5*x/2 + e4*p/24 - e4*x**2/8 - e5**3/6 - e5**2*x/4 + e5*p/24 - e5*x**2/8 + p*x/48 - x**3/48",
+          "representation": "det_E_inverse",
+          "weights": [
+            "-e1 - e2 - e3 - e4 - e5"
+          ]
+        },
+        {
+          "Spin2_integral_weight": 2,
+          "Spin_c11_gauge_center_even": true,
+          "continuous_U1_8_charge": 0,
+          "copies": 2,
+          "dimension": 1,
+          "natural_tangent_normal_diagonal_kernel_exponent_mod2": 1,
+          "normal_charge_qN": "1",
+          "one_copy_I6": "-p*x/24 + x**3/6",
+          "representation": "singlet_positive",
+          "weights": [
+            "0"
+          ]
+        },
+        {
+          "Spin2_integral_weight": -1,
+          "Spin_c11_gauge_center_even": true,
+          "continuous_U1_8_charge": 0,
+          "copies": 14,
+          "dimension": 1,
+          "natural_tangent_normal_diagonal_kernel_exponent_mod2": 0,
+          "normal_charge_qN": "-1/2",
+          "one_copy_I6": "p*x/48 - x**3/48",
+          "representation": "singlet_negative",
+          "weights": [
+            "0"
+          ]
+        }
+      ],
+      "full_wall_polynomial": "-e1*e2*x/2 - e1*e3*x/2 - e1*e4*x/2 - e1*e5*x/2 - e2*e3*x/2 - e2*e4*x/2 - e2*e5*x/2 - e3*e4*x/2 - e3*e5*x/2 - e4*e5*x/2 + p*x/8 + x**3/8",
+      "index_integrality_on_closed_spin6": {
+        "I6_Dirac_L_u": "u^3/6-u*p1(T)/24",
+        "all_periods_integer_in_this_product_spin_category": true,
+        "identity": "I6_wall=-u*c2(E)+2*u^3-6*I6_Dirac(L_u)",
+        "reason": "integral Chern products plus an integer multiple of a twisted spin Dirac index",
+        "relative_or_global_anomaly_trivialization_follows": false,
+        "x_equals_2u_polynomial": "-e1*e2*u - e1*e3*u - e1*e4*u - e1*e5*u - e2*e3*u - e2*e4*u - e2*e5*u - e3*e4*u - e3*e5*u - e4*e5*u + p*u/4 + u**3"
+      },
+      "irreducible_multiplets_counted_with_copies": 20,
+      "minimality_claimed": false,
+      "mixed_x2_U5_trace_cancels": true,
+      "new_action_data": [
+        "additional wall fermions and their normal charges",
+        "separate or suitably compensated normal/tangent lift"
+      ],
+      "normal_gauge_gravity_restriction_f_zero_cancelled": true,
+      "polynomial_sum": "0",
+      "status": "EXACT_CONDITIONAL_PRODUCT_LIFT_NORMAL_SECTOR_WITNESS_NOT_ACCEPTED_WALL",
+      "unconstructed": [
+        "Gammahat kernel and fixed-wall isotropy for the new fields",
+        "SUSY scalar/R/frame partners and couplings",
+        "masses, decays and cosmology",
+        "f-dependent inflow",
+        "relative WCS/Dai-Freed and global gluing"
+      ]
+    },
+    "core_sha256": "d96d980252f3bfa8bc96da385812c1e0cb4e173add8b9da77a05fe28678be697",
+    "fixed_allocation_period_screens": {
+      "eightfold_cover_is_intrinsic_after_arbitrary_descent_reallocation": false,
+      "gauge_quotient_geometry": "E is the ordinary rank5 complex U5 bundle in E11=E_real+R; c=c1(det Spin^c11), 2f=c and c=t=c1(E) modulo2",
+      "half_flux_witness_is_an_actual_quotient_bundle": "on S2xS2 take E=L_a+1^4, c=t=a, c2(E)=0, u=b; w2(E11)=c mod2",
+      "integral_f_degree4_four_form": "2*c2 + 78*f**2 - 4*f*t - 87*f*u - p/2 - 8*u**2",
+      "integral_flux_witness_is_admissible": "E trivial, f=a, c=2a, u=b; the gauge quotient parity relation holds",
+      "minimum_normal_cover_Spin_c11": 8,
+      "minimum_normal_cover_integral_f": 4,
+      "necessity": "S4 forces n even. The integral-flux witness requires16|87*n^2, hence4|n. The half-flux witness requires32|87*n^2, hence8|n.",
+      "phase_field_domain": {
+        "S4_half_c2_witness_has_u_zero_and_survives_this_restriction": true,
+        "four_and_eight_bounds_are_no_go_for_restricted_phase_field_domains": false,
+        "general_charge_q_requires": "q*u=0 as an integral class on an everywhere-nonzero patch",
+        "mixed_flux_counterexamples_admit_everywhere_nonzero_charge_one_root_field": false,
+        "mixed_flux_witnesses_test": "only the extension of the independent periodic functional across arbitrary bundles, hence across normal-root zeros/defects or with extra patching data",
+        "nowhere_nonzero_charge_one_root_field_requires": "u=0 as an integral class: its phase is a section trivializing the normal-root line, including its torsion class",
+        "root_zeros_defects_and_patchwise_completion_constructed": false
+      },
+      "proof_and_counterexamples": [
+        {
+          "S2xS2_integral_f_a_u_b": "-87/16",
+          "S2xS2_quotient_c_t_a_u_b": "-87/32",
+          "S4_unit_SU5_instanton": "1/2",
+          "all_integral_f_spin4_periods_integral_iff": false,
+          "all_quotient_spin4_periods_integral_iff": false,
+          "cover_degree": 1
+        },
+        {
+          "S2xS2_integral_f_a_u_b": "-87/4",
+          "S2xS2_quotient_c_t_a_u_b": "-87/8",
+          "S4_unit_SU5_instanton": "1",
+          "all_integral_f_spin4_periods_integral_iff": false,
+          "all_quotient_spin4_periods_integral_iff": false,
+          "cover_degree": 2
+        },
+        {
+          "S2xS2_integral_f_a_u_b": "-783/16",
+          "S2xS2_quotient_c_t_a_u_b": "-783/32",
+          "S4_unit_SU5_instanton": "3/2",
+          "all_integral_f_spin4_periods_integral_iff": false,
+          "all_quotient_spin4_periods_integral_iff": false,
+          "cover_degree": 3
+        },
+        {
+          "S2xS2_integral_f_a_u_b": "-87",
+          "S2xS2_quotient_c_t_a_u_b": "-87/2",
+          "S4_unit_SU5_instanton": "2",
+          "all_integral_f_spin4_periods_integral_iff": true,
+          "all_quotient_spin4_periods_integral_iff": false,
+          "cover_degree": 4
+        },
+        {
+          "S2xS2_integral_f_a_u_b": "-2175/16",
+          "S2xS2_quotient_c_t_a_u_b": "-2175/32",
+          "S4_unit_SU5_instanton": "5/2",
+          "all_integral_f_spin4_periods_integral_iff": false,
+          "all_quotient_spin4_periods_integral_iff": false,
+          "cover_degree": 5
+        },
+        {
+          "S2xS2_integral_f_a_u_b": "-783/4",
+          "S2xS2_quotient_c_t_a_u_b": "-783/8",
+          "S4_unit_SU5_instanton": "3",
+          "all_integral_f_spin4_periods_integral_iff": false,
+          "all_quotient_spin4_periods_integral_iff": false,
+          "cover_degree": 6
+        },
+        {
+          "S2xS2_integral_f_a_u_b": "-4263/16",
+          "S2xS2_quotient_c_t_a_u_b": "-4263/32",
+          "S4_unit_SU5_instanton": "7/2",
+          "all_integral_f_spin4_periods_integral_iff": false,
+          "all_quotient_spin4_periods_integral_iff": false,
+          "cover_degree": 7
+        },
+        {
+          "S2xS2_integral_f_a_u_b": "-348",
+          "S2xS2_quotient_c_t_a_u_b": "-174",
+          "S4_unit_SU5_instanton": "4",
+          "all_integral_f_spin4_periods_integral_iff": true,
+          "all_quotient_spin4_periods_integral_iff": true,
+          "cover_degree": 8
+        }
+      ],
+      "quotient_degree8_four_form": "39*c**2 - 4*c*t - 174*c*u + 4*c2 - p - 64*u**2",
+      "scope": "the frozen V93 allocation A4 as a naive independently periodic functional extended over arbitrary allowed gauge/normal bundles on closed ordinary spin4 bases",
+      "sufficiency": "At n=4 all coefficients are integral except p1/2, an integral spin class. At n=8 with f=c/2 every coefficient is an integer on integral characteristic classes."
+    },
+    "input_core_hashes": {
+      "v91_quotient": "4a581af0dd4cfc6fd3f66ef1e3ea2801b9770c67822d984a02deb602865c0322",
+      "v93_master": "d34479d8daa9a37d090e2d2ace471464171a0c28208d3d88b77e5dc168a97932",
+      "v93_route": "4f81852d9e272d3fb12946ad41cb01d9f93462f75cef69123106a80b03f092f2"
+    },
+    "normal_root_isotropy": {
+      "existing_Gammahat_already_contains_correlated_half_angle_factors": true,
+      "existing_Gammahat_is_proved_to_exclude_the_needed_root": false,
+      "independent_normal_root_descends_through_existing_Gammahat_kernel": null,
+      "new_root_action_requires_explicit_kernel_and_global_compatibility_data": true,
+      "no_root_statement_scope": "no ordinary square-root character on the unchanged effective C4/C2 stabilizers",
+      "spacetime_spin_is_not_the_same_as_equivariant_normal_spin": true,
+      "strata": {
+        "z00": {
+          "checks": {
+            "projection_is_homomorphism": true,
+            "root_kernel_character_is_minus_one": true,
+            "square_of_root_character_is_pulled_normal_character": true
+          },
+          "effective_order": 4,
+          "minimal_cyclic_pullback_order": 8,
+          "normal_weight": 1,
+          "projection_exponents": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            1,
+            2,
+            3
+          ],
+          "projection_kernel": [
+            0,
+            4
+          ],
+          "pulled_normal_character_weight": 2,
+          "root_character_weight_on_pullback": 1,
+          "square_root_characters_on_effective_group": []
+        },
+        "z01": {
+          "checks": {
+            "projection_is_homomorphism": true,
+            "root_kernel_character_is_minus_one": true,
+            "square_of_root_character_is_pulled_normal_character": true
+          },
+          "effective_order": 2,
+          "minimal_cyclic_pullback_order": 4,
+          "normal_weight": 1,
+          "projection_exponents": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "projection_kernel": [
+            0,
+            2
+          ],
+          "pulled_normal_character_weight": 2,
+          "root_character_weight_on_pullback": 1,
+          "square_root_characters_on_effective_group": []
+        },
+        "z10": {
+          "checks": {
+            "projection_is_homomorphism": true,
+            "root_kernel_character_is_minus_one": true,
+            "square_of_root_character_is_pulled_normal_character": true
+          },
+          "effective_order": 2,
+          "minimal_cyclic_pullback_order": 4,
+          "normal_weight": 1,
+          "projection_exponents": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "projection_kernel": [
+            0,
+            2
+          ],
+          "pulled_normal_character_weight": 2,
+          "root_character_weight_on_pullback": 1,
+          "square_root_characters_on_effective_group": []
+        },
+        "z11": {
+          "checks": {
+            "projection_is_homomorphism": true,
+            "root_kernel_character_is_minus_one": true,
+            "square_of_root_character_is_pulled_normal_character": true
+          },
+          "effective_order": 4,
+          "minimal_cyclic_pullback_order": 8,
+          "normal_weight": 1,
+          "projection_exponents": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            1,
+            2,
+            3
+          ],
+          "projection_kernel": [
+            0,
+            4
+          ],
+          "pulled_normal_character_weight": 2,
+          "root_character_weight_on_pullback": 1,
+          "square_root_characters_on_effective_group": []
+        }
+      }
+    },
+    "normal_target_reallocation": {
+      "A4_frozen": "e1*e2/2 + e1*e3/2 + e1*e4/2 + e1*e5/2 - e1*f + e2*e3/2 + e2*e4/2 + e2*e5/2 - e2*f + e3*e4/2 + e3*e5/2 - e3*f + e4*e5/2 - e4*f - e5*f + 39*f**2/2 - 87*f*x/16 - p/8 - x**2/8",
+      "A4_reallocated": "e1*e2/2 + e1*e3/2 + e1*e4/2 + e1*e5/2 + e2*e3/2 + e2*e4/2 + e2*e5/2 + e3*e4/2 + e3*e5/2 + e4*e5/2 - p/8 - x**2/8",
+      "B4_frozen": "e1**2 + 4*e1*f + e2**2 + 4*e2*f + e3**2 + 4*e3*f + e4**2 + 4*e4*f + e5**2 + 4*e5*f + 377*f**2/3 - 47*p/48",
+      "B4_reallocated": "e1**2 + 4*e1*f - e1*x + e2**2 + 4*e2*f - e2*x + e3**2 + 4*e3*f - e3*x + e4**2 + 4*e4*f - e4*x + e5**2 + 4*e5*f - e5*x + 377*f**2/3 + 39*f*x/2 - 47*p/48 - 87*x**2/16",
+      "C2_cover": "the f=0 normal restriction vanishes; its mixed f*x^2 term can be assigned wholly to gauge descent, not deleted",
+      "C4_bare_I6": "e1**2*f + e1*e2*x/2 + e1*e3*x/2 + e1*e4*x/2 + e1*e5*x/2 + 4*e1*f**2 - e1*f*x + e2**2*f + e2*e3*x/2 + e2*e4*x/2 + e2*e5*x/2 + 4*e2*f**2 - e2*f*x + e3**2*f + e3*e4*x/2 + e3*e5*x/2 + 4*e3*f**2 - e3*f*x + e4**2*f + e4*e5*x/2 + 4*e4*f**2 - e4*f*x + e5**2*f + 4*e5*f**2 - e5*f*x + 377*f**3/3 + 39*f**2*x/2 - 47*f*p/48 - 87*f*x**2/16 - p*x/8 - x**3/8",
+      "C4_z11": "the same formulas hold with t=e1+e2-e3-e4-e5 and the associated U5 Chern classes",
+      "Spin2_normal_four_form": "e1*e2 + e1*e3 + e1*e4 + e1*e5 + e2*e3 + e2*e4 + e2*e5 + e3*e4 + e3*e5 + e4*e5 - p/4 - u**2",
+      "c2_U5_definition": "((sum e_i)^2-sum e_i^2)/2",
+      "identity_checks": {
+        "I6_equals_x_A0_plus_f_B0": true,
+        "normal_reallocation_does_not_change_total_I6": true,
+        "x_2u_equals_u_Q4_plus_f_B0": true
+      },
+      "mixed_Bardeen_descent_reallocation_globally_quantized": false,
+      "mixed_form_moved_into_gauge_descent": "-e1 - e2 - e3 - e4 - e5 + 39*f/2 - 87*x/16",
+      "normal_and_gauge_currents_fixed_by_this_identity_alone": false,
+      "reallocation_is_accepted_counterterm": false
+    },
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/abs/hep-th/0612212",
+        "use": "Sections3.2-4 require normal-Lorentz anomaly cancellation and allow localized normal-charged matter; local polynomials do not determine global completion."
+      },
+      {
+        "url": "https://arxiv.org/abs/1808.01334",
+        "use": "Section2.2 distinguishes local index densities, integral periods and full anomaly field theories; the quaternionic4D spin index is even."
+      },
+      {
+        "url": "https://math.berkeley.edu/~teleman/math/RepThry.pdf",
+        "use": "Sections23.6-23.13 describe unitary characters as integral symmetric Laurent polynomials; after det=1, exterior-power generators justify the derived SU5 index parity proof."
+      }
+    ],
+    "reallocated_Spin2_period_screen": {
+      "closed_spin4_pass": true,
+      "closed_spin4_period_formula": "integral(c2)-12*k-integral(u^2), where integral(p1)=48*k",
+      "examples": [
+        {
+          "background": "S4, c2=1,u=0,p=0",
+          "period": "1"
+        },
+        {
+          "background": "K3, c2=0,u=0,p=-48",
+          "period": "12"
+        },
+        {
+          "background": "S2xS2, c2=0,u=a+b,p=0",
+          "period": "-2"
+        },
+        {
+          "background": "S2xS2 quotient E=L_a+1^4,c=t=a,u=b",
+          "period": "0"
+        }
+      ],
+      "full_Gammahat_lift_constructed": false,
+      "minimum_cover_for_half_c2": 2,
+      "nonspin_warning": {
+        "admissible_in_the_stated_Spin4_product_category": false,
+        "formal_period": "-3/4",
+        "obstruction_to_full_Gammahat_claimed": false,
+        "reason": "a generalized nonspin tangential lift needs extra R/flavor data and omitted curvatures; this restricted polynomial cannot decide it",
+        "test": "CP2 with c2=u=0 and p1=3"
+      },
+      "normal_four_form": "c2-p/4-u^2",
+      "normal_root_assumption": "choose a compatible Spin2 root M of N, with u=c1(M) and x=2u; this is not established on the full frozen Gammahat orbibundle",
+      "p1_over4_claimed_integral_in_universal_ordinary_H4_BSpin": false,
+      "period_screen_is_global_differential_trivialization": false,
+      "reason_quotient_flux_does_not_change_this_screen": "the redistributed normal four-form is independent of f and t; c2(E) remains integral for the U5 reduction",
+      "same_screen_with_Spin_c11_gauge_bundles_passes": true,
+      "spin_dependent_gravitational_refinement_needed": true
+    },
+    "schema": "v94_normal_wall_quantization_v1",
+    "scope": "necessary curvature-period screens and explicit conditional normal-sector alternatives; no full Gammahat or relative quantum wall completion",
+    "terminal_decision": {
+      "accepted_extensions": 0,
+      "all_possible_new_boundary_physics_excluded": false,
+      "closed_gates": [],
+      "conditional_product_lift_wall_normal_polynomial_cancellation_found": true,
+      "frozen_Gammahat_wall_orbibundle_constructed": false,
+      "full_bare_I6_cancelled_on_all_backgrounds": false,
+      "normal_lift_or_new_fermions_accepted_as_same_action_physics": false,
+      "ordinary_independent_normal_axion_obstruction_sharpened": true,
+      "quantized_relative_WCS_Dai_Freed_trivialization_constructed": false,
+      "restricted_Spin2_normal_period_screen_passes": true
+    },
+    "wall_fermion_parity_obstruction": {
+      "SU5_cubic_assumption": "sum A(R)=0, including chirality signs; no compensating irreducible SU5 cubic inflow is added",
+      "all_representation_congruence": "ell(R)=A(R) modulo2 for every finite-dimensional complex SU5 representation",
+      "conclusion": "2*sum qN*ell(R)=sum ell(R)=sum A(R)=0 mod2; therefore sum qN*ell(R) is integral, not1/2",
+      "fermions_only_cancel_required_half_in_this_structure": false,
+      "indices_on_exterior_power_generators": [
+        {
+          "cubic_index_A": 1,
+          "dimension": 5,
+          "exterior_power": 1,
+          "quadratic_index_ell": 1,
+          "weight_values_on_H": [
+            1,
+            1,
+            1,
+            1,
+            -4
+          ]
+        },
+        {
+          "cubic_index_A": 1,
+          "dimension": 10,
+          "exterior_power": 2,
+          "quadratic_index_ell": 3,
+          "weight_values_on_H": [
+            2,
+            2,
+            2,
+            -3,
+            2,
+            2,
+            -3,
+            2,
+            -3,
+            -3
+          ]
+        },
+        {
+          "cubic_index_A": -1,
+          "dimension": 10,
+          "exterior_power": 3,
+          "quadratic_index_ell": 3,
+          "weight_values_on_H": [
+            3,
+            3,
+            -2,
+            3,
+            -2,
+            -2,
+            3,
+            -2,
+            -2,
+            -2
+          ]
+        },
+        {
+          "cubic_index_A": -1,
+          "dimension": 5,
+          "exterior_power": 4,
+          "quadratic_index_ell": 1,
+          "weight_values_on_H": [
+            4,
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ],
+      "integer_normal_charges_alone_cancel_required_half": false,
+      "kernel_condition": "(-1)_tangent * exp(2*pi*i*qN)=1 for a Weyl field",
+      "no_go_for_every_Gammahat_or_extended_wall_completion": false,
+      "normalization": "Tr_R F^2=ell(R)Tr_5 F^2 and Tr_R F^3=A(R)Tr_5 F^3; ell(5)=A(5)=1",
+      "product_lift_escape": "allow mixed parity normal weights on separately chosen Spin4 x Spin2, or construct a different correlated tangential/internal-center lift; neither is inherited here",
+      "proof": [
+        "The four exterior powers of5 have (ell,A)=(1,1),(3,1),(3,-1),(1,-1).",
+        "SU5 characters are integral symmetric Laurent polynomials with determinant1, hence integral polynomials in these four exterior-power characters.",
+        "Both indices are additive; on a tensor product they obey J(R tensor S)=dim(S)J(R)+dim(R)J(S), since each linear SU5 trace vanishes.",
+        "Therefore ell-A remains even under sums, differences and products, proving the congruence on the representation ring, not just a finite scan."
+      ],
+      "single_fundamental_check": {
+        "SU5_cubic_A": 1,
+        "cubic_anomaly_free": false,
+        "mixed_x_c2": "-1/2",
+        "qN": "1/2"
+      },
+      "tangential_assumption": "wall Weyls descend from (Spin4 x Spin2)/<(-1,-1)> with no extra center locking, so every2*qN is odd"
+    }
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "Sections3.2-4 require normal-Lorentz anomaly cancellation and allow localized normal-charged matter; local polynomials do not determine global completion."
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "Ordinary spin versus the gauge quotient and differential/Pfaffian anomaly distinctions; not a proof for the full Gammahat structure."
+    },
+    {
+      "url": "https://math.berkeley.edu/~teleman/math/RepThry.pdf",
+      "use": "Sections23.6-23.13 describe unitary characters as integral symmetric Laurent polynomials; after det=1, exterior-power generators justify the derived SU5 index parity proof."
+    },
+    {
+      "url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.24.2669",
+      "use": "Weinberg1981 vortex index relates the asymptotically massive transverse operator to Higgs winding; used only for the isolated standard defect problem."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0604198",
+      "use": "Brax et al. section3, equations3.29-3.30 and3.41 distinguish real Majorana counts from complex off-diagonal blocks; section5 explains why gravitino/full-supergravity extensions cannot be inferred."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0509097",
+      "use": "Harvey lectures, index-density normalization and axion-string section4; equations133-139 emphasize separate tangent/normal anomalies and the need for normal-bundle regularization."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0007037",
+      "use": "Harvey-Ruchayskiy construct regulated bump-form inflow from zero-mode profiles; this additional differential construction is expressly absent here."
+    },
+    {
+      "url": "https://stacks.math.columbia.edu/tag/0B3P",
+      "use": "Regular divisor normal-line identity; its smooth transverse-section analogue follows directly from the derivative. No holomorphic/BPS string is inferred."
+    },
+    {
+      "url": "https://arxiv.org/abs/0907.0298",
+      "use": "Lemmas7.3/7.8 identify the additive I2* component group and torsion injection; sections2.4 and5.4 give group law and quadratic twist/fiber changes. The proof is applied locally in residue characteristic zero."
+    },
+    {
+      "url": "https://www.jmilne.org/math/Books/EC2.pdf",
+      "use": "ChapterII Corollary4.2 gives prime-to-p good-reduction torsion injection; Theorem5.1 gives the independent Lutz-Nagell integrality check."
+    },
+    {
+      "url": "https://arxiv.org/abs/2208.14977",
+      "use": "Section2 fixes the binary-quartic Jacobian normalization, freshly reconstructed from the actual V91 coefficients here."
+    },
+    {
+      "url": "https://arxiv.org/abs/0802.0634",
+      "use": "local anomaly descent and formal axion variation, equations12.6-12.9; not global quantization"
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.02881",
+      "use": "equation1.2 on the explicitly restricted ordinary Spin4 x C8 background"
+    },
+    {
+      "url": "https://arxiv.org/abs/2009.04692",
+      "use": "section4: Goldstone fields require bundle reduction; nonreducible backgrounds force mass-field zeros beyond the Goldstone EFT"
+    }
+  ],
+  "schema": "susy_v94_boundary_defects_and_mw_descent_audit_v1",
+  "scope": "separate SUSY/C8 research branch; canonical V21 physical gate evidence unchanged",
+  "status": "V94_CONDITIONAL_NORMAL_WALL_MODULE_AND_DEFECT_MATCH__QUADRATIC_SECTION_DOES_NOT_DESCEND__NO_ACCEPTED_PARENT",
+  "supersession_boundary": {
+    "V93_half_period_result_retracted": false,
+    "conditional_product_wall_module_is_an_accepted_microscopic_sector": false,
+    "defect_local_index_proves_full_interacting_SUGRA_spectrum": false,
+    "defect_normal_equals_six_dimensional_orbifold_normal": false,
+    "effective_stabilizer_no_root_proves_full_Gammahat_no_root": false,
+    "independent_scalar_period_failure_excludes_Higgs_WZ_with_defects": false,
+    "new_normal_spin_lift_is_same_as_an_independent_ordinary_normal_axion": false,
+    "no_Jacobian_torsion_implies_no_free_MW_generators": false,
+    "quadratic_extension_section_is_an_actual_base_field_U1_generator": false,
+    "quadratic_twist_preserves_the_B5_gauge_fiber": false
+  },
+  "terminal_decision": {
+    "actual_Jacobian_free_rank_and_height_computed": false,
+    "actual_Jacobian_torsion_subgroup_trivial": true,
+    "all_F94_obligations_fully_completed": false,
+    "closed_gates": [],
+    "conditional_normal_spin_period_repair_constructed": true,
+    "conditional_wall_fermion_normal_slice_cancellation_constructed": true,
+    "explicit_non_torsion_section_over_quadratic_extension_constructed": true,
+    "full_Gammahat_wall_representations_frozen": false,
+    "mass_sector_defect_index_and_curvature_matching_computed": true,
+    "quantized_relative_WCS_Dai_Freed_trivialization_constructed": false,
+    "same_action_microscopic_parent_accepted": false,
+    "that_section_or_nonzero_multiple_descends_to_original_field": false,
+    "theory_complete": false
+  },
+  "version": "V94",
+  "visible_Higgs_patch_and_periods": {
+    "boundary": {
+      "all_gates_closed": false,
+      "full_quantized_relative_action_constructed": false,
+      "local_wall_normal_representations_frozen": false
+    },
+    "census": {
+      "full_Phi_pair_odd_moments": [
+        0,
+        0
+      ],
+      "independent_Cartan_crosscheck": true,
+      "light_plus_heavy_equals_full": true,
+      "moments": {
+        "full": {
+          "TrQ": -68,
+          "TrQ3": 1408
+        },
+        "heavy": {
+          "TrQ": 36,
+          "TrQ3": 864
+        },
+        "light": {
+          "TrQ": -104,
+          "TrQ3": 544
+        }
+      },
+      "pure_I6_by_sector": {
+        "full": "704*f**3/3 + 17*f*p/6",
+        "heavy": "144*f**3 - 3*f*p/2",
+        "light": "272*f**3/3 + 13*f*p/3"
+      }
+    },
+    "core_sha256": "d4f19a7b269ce541039619fc862aba0b4b5b8dbb445da9027630fccd2eb95903",
+    "defect_free_domain": {
+      "curvature_free_part_on_actual_nonzero_patch": "[f]_deRham=0, not pointwise F=0 and not trivial finite holonomy",
+      "gauge_Spin_c11_bundle": "for determinant D and f=c1(D)/2, Phi_minus is a section of D^(-4), so 4*c1(D)=0",
+      "meaning": "The failed independent-scalar extension cannot be used to reject the actual nonzero-Higgs EFT: the test background forces Phi zeros and lies outside that patch. A theory including those backgrounds needs defect data or another completion.",
+      "nonspin_or_full_Gammahat_bundle_reduction_solved": false,
+      "nonzero_Phi_requires": "8*c1(L)=0 in integral H2; torsion may survive",
+      "ordinary_covering_bundle": "Phi_minus is a section of L^(-8)",
+      "test_background_admits_everywhere_nonzero_Phi": false,
+      "test_obstruction_class_in_H2_S2xS2": [
+        -8,
+        -8
+      ],
+      "zero_locus_signed_PD_class_if_transverse": "-8*(a+b)"
+    },
+    "input_core_hashes": {
+      "v90_route": "ec095daa641345934d285a56a1916bf701352ee5cb113018296487ade36b966f",
+      "v93_master": "d34479d8daa9a37d090e2d2ace471464171a0c28208d3d88b77e5dc168a97932",
+      "v93_route": "4f81852d9e272d3fb12946ad41cb01d9f93462f75cef69123106a80b03f092f2"
+    },
+    "local_descent": {
+      "B4": "-12*e1**2 + 24*e1*f - 12*e2**2 + 24*e2*f - 16*e3**2 + 16*e3*f - 16*e4**2 + 16*e4*f - 16*e5**2 + 16*e5*f + 704*f**2/3 + 17*p/6",
+      "adding_matching_erases_full_anomaly": false,
+      "below_threshold_variation_cancels_light_polynomial": true,
+      "canceller_plus_heavy_matching_below_threshold": "-3*e1**2*phi/2 + 3*e1*f*phi - 3*e2**2*phi/2 + 3*e2*f*phi - 2*e3**2*phi + 2*e3*f*phi - 2*e4**2*phi + 2*e4*f*phi - 2*e5**2*phi + 2*e5*f*phi + 34*f**2*phi/3 + 13*p*phi/24",
+      "existing_heavy_matching_term": "-18*f**2*phi + 3*p*phi/16",
+      "full_gauge_only_I6": "-12*e1**2*f + 24*e1*f**2 - 12*e2**2*f + 24*e2*f**2 - 16*e3**2*f + 16*e3*f**2 - 16*e4**2*f + 16*e4*f**2 - 16*e5**2*f + 16*e5*f**2 + 704*f**3/3 + 17*f*p/6",
+      "heavy_matching_has_opposite_sign_to_canceller": true,
+      "new_formal_canceller": "-3*e1**2*phi/2 + 3*e1*f*phi - 3*e2**2*phi/2 + 3*e2*f*phi - 2*e3**2*phi + 2*e3*f*phi - 2*e4**2*phi + 2*e4*f*phi - 2*e5**2*phi + 2*e5*f*phi + 88*f**2*phi/3 + 17*p*phi/48",
+      "variation": "12*e1**2*epsilon - 24*e1*epsilon*f + 12*e2**2*epsilon - 24*e2*epsilon*f + 16*e3**2*epsilon - 16*e3*epsilon*f + 16*e4**2*epsilon - 16*e4*epsilon*f + 16*e5**2*epsilon - 16*e5*epsilon*f - 704*epsilon*f**2/3 - 17*epsilon*p/6",
+      "variation_is_minus_full_anomaly": true
+    },
+    "nonabelian_slice_periods": {
+      "SU2_c2_level_in_B_over_8": 3,
+      "SU3_c2_level_in_B_over_8": 4,
+      "covers_all_mixed_quotient_bundles": false,
+      "derivation": "I6_mixed=-A_G*f*c2, with A3=-32 and A2=-24; each unit-instanton period is integral"
+    },
+    "ordinary_period_screen": {
+      "all_global_Higgs_WZ_completions_excluded": false,
+      "assumptions": "independently defined period-one scalar with delta phi=-8 epsilon; ordinary spin4 and integral covering U1 bundle; all other curvatures zero",
+      "full_period_shift_phase": "exp(2*pi*i*2/3)",
+      "naive_full_independent_periodic_scalar_extension_rejected": true,
+      "period_triple_is_the_actual_Phi_phase": false,
+      "periods": [
+        {
+          "S2xS2_f_square_2_period": "68/3",
+          "cancelling_phase_coefficient": "34*f**2/3 + 13*p/24",
+          "passes_independent_periodic_scalar_test": false,
+          "period_mod_one": "2/3",
+          "sector": "light"
+        },
+        {
+          "S2xS2_f_square_2_period": "36",
+          "cancelling_phase_coefficient": "18*f**2 - 3*p/16",
+          "passes_independent_periodic_scalar_test": true,
+          "period_mod_one": "0",
+          "sector": "heavy"
+        },
+        {
+          "S2xS2_f_square_2_period": "176/3",
+          "cancelling_phase_coefficient": "88*f**2/3 + 17*p/48",
+          "passes_independent_periodic_scalar_test": false,
+          "period_mod_one": "2/3",
+          "sector": "full"
+        }
+      ],
+      "required_period_multiple_on_this_one_test_only": 3,
+      "test_line": "c1(L)=f=a+b, integral(f^2)=2, p1=0; allowed liftable Spin^c(11) gauge background with trivial Spin11 bundle",
+      "test_manifold": "S2 x S2, cohomology generators a,b with a^2=b^2=0 and integral(a*b)=1"
+    },
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/abs/0802.0634",
+        "use": "local anomaly descent and formal axion variation, equations12.6-12.9; not global quantization"
+      },
+      {
+        "url": "https://arxiv.org/abs/1808.02881",
+        "use": "equation1.2 on the explicitly restricted ordinary Spin4 x C8 background"
+      },
+      {
+        "url": "https://arxiv.org/abs/2009.04692",
+        "use": "section4: Goldstone fields require bundle reduction; nonreducible backgrounds force mass-field zeros beyond the Goldstone EFT"
+      }
+    ],
+    "pure_C8_restrictions": {
+      "formula": "(n^2+3n+2)*TrQ3=0 mod6n; 2*TrQ=0 modn",
+      "pure_finite_pass_implies_continuous_or_global_anomaly_cancellation": false,
+      "replacing_signed_charges_by_residues_preserves_the_screen": true,
+      "scope": "ordinary Spin4 x C8 pullback with all other backgrounds trivial; not the mixed/full Gammahat anomaly and not the actual full-vacuum unbroken group",
+      "sectors": {
+        "full": {
+          "cubic_modulus": 48,
+          "cubic_numerator": 126720,
+          "cubic_residue": 0,
+          "linear_modulus": 8,
+          "linear_numerator": -136,
+          "linear_residue": 0,
+          "n": 8,
+          "passes_this_restriction": true
+        },
+        "heavy": {
+          "cubic_modulus": 48,
+          "cubic_numerator": 77760,
+          "cubic_residue": 0,
+          "linear_modulus": 8,
+          "linear_numerator": 72,
+          "linear_residue": 0,
+          "n": 8,
+          "passes_this_restriction": true
+        },
+        "light": {
+          "cubic_modulus": 48,
+          "cubic_numerator": 48960,
+          "cubic_residue": 0,
+          "linear_modulus": 8,
+          "linear_numerator": -208,
+          "linear_residue": 0,
+          "n": 8,
+          "passes_this_restriction": true
+        }
+      }
+    },
+    "schema": "v94_visible_higgs_global_patch_audit_v1",
+    "status": "EXACT_VISIBLE_THRESHOLD_AND_PERIOD_SCREEN__DEFECT_FREE_DOMAIN_RESTRICTED__NO_GLOBAL_CANCELLATION"
+  }
+}
