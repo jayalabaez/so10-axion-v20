@@ -1,0 +1,1993 @@
+{
+  "B_neutral_orbifold_redesign": {
+    "Sp3_diagonal_Wilson_lift": {
+      "A3_exponents_mod8": [
+        7,
+        1,
+        3,
+        1,
+        7,
+        5
+      ],
+      "H3_sector_space_group_relations_pass": true,
+      "H_AC": "diag(-1,+1,-1,-1,+1,-1)",
+      "H_AC_exponents_mod8": [
+        4,
+        0,
+        4,
+        4,
+        0,
+        4
+      ],
+      "H_AC_in_Sp3": true,
+      "H_AC_squared": "1",
+      "V85_lift_class_selected": false,
+      "all_V70_A_B_C_projectors_restored": false,
+      "basis": [
+        "A",
+        "B",
+        "C",
+        "Astar",
+        "Bstar",
+        "Cstar"
+      ],
+      "candidate_H3_translation_lifts": "U_H3=V_H3=H_AC instead of the V85 central -I choice",
+      "candidate_fixed_stratum_center_powers_unchanged": true,
+      "candidate_fixed_stratum_phase_rows": [
+        {
+          "C4_action": "1",
+          "H3_action": "A3",
+          "matches_V70": true,
+          "point": "z00=0",
+          "total_action": "A3"
+        },
+        {
+          "C4_action": "H_AC",
+          "H3_action": "H_AC*A3",
+          "matches_V70": true,
+          "point": "z11=(1+i)/2",
+          "total_action": "A3"
+        },
+        {
+          "C4_action": "H_AC",
+          "H3_action": "H_AC*A3^2",
+          "matches_V70": true,
+          "point": "z10=1/2",
+          "total_action": "A3^2"
+        },
+        {
+          "C4_action": "H_AC",
+          "H3_action": "H_AC*A3^2",
+          "matches_V70": true,
+          "point": "z01=i/2",
+          "total_action": "A3^2"
+        }
+      ],
+      "candidate_fixed_stratum_phase_rows_match_V70": true,
+      "commutes_with_A3": true,
+      "full_Gammahat_lift_cocycle_and_kernel_recomputed": false,
+      "global_diagonal_generator_with_J_squared_center_constructed": false,
+      "internal_C4_action_on_three_11s": "H_AC, corresponding to qF(A,B,C)=(2,0,2)",
+      "pure_Spin11_center_added_to_kernel": false,
+      "species_sign_screen_rows": [
+        {
+          "H_AC_sign": -1,
+          "hyper": "A",
+          "j_phase": -1,
+          "product": 1,
+          "qF": 2
+        },
+        {
+          "H_AC_sign": 1,
+          "hyper": "B",
+          "j_phase": 1,
+          "product": 1,
+          "qF": 0
+        },
+        {
+          "H_AC_sign": -1,
+          "hyper": "C",
+          "j_phase": -1,
+          "product": 1,
+          "qF": 2
+        }
+      ]
+    },
+    "charge4_GS_Stueckelberg_screen": {
+      "F_squared_Y6_and_X_obstructions_zero": true,
+      "K": 4,
+      "all_levels_integer": true,
+      "integer_levels_tensor_divided_by_K": {
+        "A2": 4,
+        "A3": 3,
+        "FX_squared": 168,
+        "FY6X": 12,
+        "FY6_squared": 108,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 16,
+        "TrF_cubed": 28
+      },
+      "perturbative_factorization_I6_equals_FF_times_X4_passes": true,
+      "residual_C4_preserved_by_charge4_axion": true,
+      "supersymmetric_differential_cocycle_and_common_regulator_constructed": false
+    },
+    "charge_redesign": {
+      "A_hyper_qF": 2,
+      "B0_qF": 0,
+      "B_hyper_qF": 0,
+      "C_hyper_qF": 2,
+      "H_dC_qF": 2,
+      "H_dSigma_qF": 0,
+      "H_uA_qF": 2,
+      "H_uB_qF": 0,
+      "representation_descent_qF_mod2_equals_Spin_center_parity": true
+    },
+    "operator_and_doublet_mass_audit": {
+      "B0_VEV_preserves_C4F_directly": true,
+      "deleted_term": "mu_B H_uB H_dC",
+      "even_B0_potential_symmetry_enforced": false,
+      "generic_driver_can_still_select_nondegenerate_nonzero_root": true,
+      "heavy_pair": [
+        "H_uB",
+        "H_dSigma"
+      ],
+      "light_pair": [
+        "H_uA",
+        "H_dC"
+      ],
+      "mandatory_bulk_mass_retained": "sqrt(2)*g*v_B H_uB H_dSigma",
+      "matrix_rows_HuA_HuB_cols_HdSigma_HdC": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "sqrt(2)*g*v_B",
+          "0"
+        ]
+      ],
+      "odd_B0_driver_terms_now_allowed": [
+        "S_B*B0"
+      ],
+      "rank_for_g_vB_nonzero": 1,
+      "rows": [
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            1,
+            1,
+            2
+          ],
+          "operator": "16 16 H_uA"
+        },
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            1,
+            1,
+            2
+          ],
+          "operator": "10 5bar H_dC"
+        },
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            1,
+            1,
+            2
+          ],
+          "operator": "N N X"
+        },
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            0,
+            0,
+            0
+          ],
+          "operator": "S_B(B0^2-v_B^2)"
+        },
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            0,
+            2,
+            2
+          ],
+          "operator": "S_X X Xbar"
+        },
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            2,
+            2
+          ],
+          "operator": "M_A A0 P_A"
+        },
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            0,
+            0,
+            0
+          ],
+          "operator": "g B0 H_uB H_dSigma"
+        },
+        {
+          "allowed": false,
+          "charge_mod4": 2,
+          "charges": [
+            0,
+            2
+          ],
+          "operator": "mu_B H_uB H_dC"
+        },
+        {
+          "allowed": true,
+          "charge_mod4": 0,
+          "charges": [
+            0,
+            2,
+            2
+          ],
+          "operator": "S0 H_uA H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod4": 2,
+          "charges": [
+            0,
+            0,
+            2
+          ],
+          "operator": "old B0 H_uB H_dC"
+        },
+        {
+          "allowed": false,
+          "charge_mod4": 2,
+          "charges": [
+            2,
+            2,
+            2
+          ],
+          "operator": "old A0 H_uA H_dC"
+        }
+      ]
+    },
+    "ordinary_zero_mode_anomaly": {
+      "TrF_mod2": 0,
+      "V86_nonzero_residue_was_correct_for_superseded_qF_B_equals_2_branch": true,
+      "all_displayed_discrete_residues_zero": true,
+      "conditional_on_global_realization_of_qF_2_0_2": true,
+      "fields": [
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 6,
+          "field": "Q",
+          "qF": 1,
+          "twoT2": 3,
+          "twoT3": 2,
+          "y6": 1
+        },
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 3,
+          "field": "u_c",
+          "qF": 1,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": -4
+        },
+        {
+          "X": -1,
+          "copies": 3,
+          "dim": 1,
+          "field": "e_c",
+          "qF": 1,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 6
+        },
+        {
+          "X": 3,
+          "copies": 3,
+          "dim": 3,
+          "field": "d_c",
+          "qF": 1,
+          "twoT2": 0,
+          "twoT3": 1,
+          "y6": 2
+        },
+        {
+          "X": 3,
+          "copies": 3,
+          "dim": 2,
+          "field": "L",
+          "qF": 1,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": -5,
+          "copies": 3,
+          "dim": 1,
+          "field": "N_c",
+          "qF": 1,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_uA",
+          "qF": 2,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": 2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_uB",
+          "qF": 0,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": 3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_dC",
+          "qF": 2,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": -2,
+          "copies": 1,
+          "dim": 2,
+          "field": "H_dSigma",
+          "qF": 0,
+          "twoT2": 1,
+          "twoT3": 0,
+          "y6": -3
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "A0",
+          "qF": 2,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "B0",
+          "qF": 0,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 0,
+          "copies": 1,
+          "dim": 1,
+          "field": "P_A",
+          "qF": 2,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": 10,
+          "copies": 1,
+          "dim": 1,
+          "field": "X_plus10",
+          "qF": 2,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        },
+        {
+          "X": -10,
+          "copies": 1,
+          "dim": 1,
+          "field": "Xbar_minus10",
+          "qF": 2,
+          "twoT2": 0,
+          "twoT3": 0,
+          "y6": 0
+        }
+      ],
+      "integer_tensor": {
+        "A2": 16,
+        "A3": 12,
+        "FX_squared": 672,
+        "FY6X": 48,
+        "FY6_squared": 432,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 64,
+        "TrF_cubed": 112
+      },
+      "is_full_fixed_wall_Dai_Freed_character": false,
+      "known_order4_fixed_wall_charged_hyper_shadow": "qA/2+qB/2-qC/2=1+0-1=0 at both U5 loci",
+      "mod4_tensor": {
+        "A2": 0,
+        "A3": 0,
+        "FX_squared": 0,
+        "FY6X": 0,
+        "FY6_squared": 0,
+        "F_squared_X": 0,
+        "F_squared_Y6": 0,
+        "TrF": 0,
+        "TrF_cubed": 0
+      },
+      "unit_SU2_instanton_phase": "+1"
+    },
+    "scope_boundary": {
+      "all_order_operator_closure_proved": false,
+      "copy_dependent_2_0_2_grading_from_bare_bisection_alone": false,
+      "full_fixed_stratum_space_group_lift_constructed": false,
+      "ordinary_field_shadow_is_full_fixed_wall_Dai_Freed_character": false,
+      "required_geometric_origin": "diagonal bisection C4 with Sp3_H Cartan/sign bundle, or split matter/flux",
+      "such_global_diagonal_bundle_constructed": false
+    },
+    "status": "PASS_EXACT_B_NEUTRAL_CHARGE_OPERATOR_ANOMALY_SCREENS_AND_FIXED_PHASE_CANDIDATE__FULL_GAMMAHAT_LIFT_AND_EQUIVARIANT_REGULATOR_OPEN"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "4e02f44e18fd27c1e7d621c344c53a4613e5298c57a68feb7ae74a2b7796997f",
+    "geometry_certificate_generator_sha256": "0de6367902bacda35b169e9f78c49468061e7867dfb17021768b295ba6d7320a",
+    "geometry_certificate_test_sha256": "7b8c46bd0392ffb2a3187d6cc1121e2c3e600740e911e03cf0622c4b7e90d5f7",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "faeb5777b1c41904d3535eee92745bb847ddfad3328d7c8445e65320a66d2c24"
+  },
+  "candidate_adjudication": {
+    "accepted_full_parent_ids": [],
+    "reason_no_acceptance": "the exact pieces are not glued by a compact smooth resolved bisection, full fixed-stratum isotropy/regulator and one microscopic action",
+    "selected_exact_scaffolds": [
+      "F87A",
+      "F87B",
+      "F87C",
+      "F87D"
+    ]
+  },
+  "candidate_matrix": [
+    {
+      "accepted_full_parent": false,
+      "exact_scaffold": true,
+      "id": "F87A",
+      "name": "global crepant ambient, flatness and formal Euler",
+      "same_action_completion": false
+    },
+    {
+      "accepted_full_parent": false,
+      "exact_scaffold": true,
+      "id": "F87B",
+      "name": "period-two bisection with Spin11 Jacobian",
+      "same_action_completion": false
+    },
+    {
+      "accepted_full_parent": false,
+      "exact_scaffold": true,
+      "id": "F87C",
+      "name": "B-neutral charge/operator/anomaly screen and fixed-phase candidate",
+      "same_action_completion": false
+    },
+    {
+      "accepted_full_parent": false,
+      "exact_scaffold": true,
+      "id": "F87D",
+      "name": "ordinary smooth GF characteristic inflow",
+      "same_action_completion": false
+    },
+    {
+      "accepted_full_parent": false,
+      "exact_scaffold": false,
+      "id": "F87E",
+      "name": "full stratified HGamma/Dai-Freed completion",
+      "same_action_completion": false
+    }
+  ],
+  "compact_resolution_globalization": {
+    "Cox_fan": {
+      "global_maximal_four_cone_count": 32,
+      "irrelevant_ideal_definition": "B=<product of rays not in sigma | sigma one of 32 maximal cones>",
+      "local_maximal_cones": [
+        [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        [
+          "e1",
+          "e2",
+          "s"
+        ],
+        [
+          "e1",
+          "e3",
+          "x"
+        ],
+        [
+          "e1",
+          "s",
+          "x"
+        ],
+        [
+          "e2",
+          "e3",
+          "e5"
+        ],
+        [
+          "e2",
+          "e4",
+          "e5"
+        ],
+        [
+          "e2",
+          "e4",
+          "y"
+        ],
+        [
+          "e2",
+          "s",
+          "y"
+        ],
+        [
+          "e3",
+          "e5",
+          "x"
+        ],
+        [
+          "e4",
+          "e5",
+          "x"
+        ],
+        [
+          "e4",
+          "x",
+          "y"
+        ]
+      ],
+      "minimal_nonfaces": [
+        "w*e1",
+        "w*e2",
+        "w*e3",
+        "w*e4",
+        "w*e5",
+        "x*e2",
+        "y*e1",
+        "y*e3",
+        "y*e5",
+        "s*t",
+        "s*e3",
+        "s*e4",
+        "s*e5",
+        "t*e1",
+        "t*e2",
+        "t*e3",
+        "t*e4",
+        "t*e5",
+        "u*v",
+        "e1*e4",
+        "e1*e5",
+        "e3*e4",
+        "w*x*y",
+        "s*x*y"
+      ],
+      "warning": "minimal nonfaces are combinatorial/SR data and must not be added to the Jacobian ideal as equations"
+    },
+    "canonical_compact_completion": {
+      "all_ambient_blowups_projective": true,
+      "all_ambient_centers_smooth": true,
+      "ambient": "P_F4(O + L^2 + L^3), L=-K_F4",
+      "ambient_blowup_sequence_globally_constructed": true,
+      "center_codimensions": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "discrepancies": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fiber_divisor_classes": {
+        "w": "H",
+        "x": "H+2L",
+        "y": "H+3L"
+      },
+      "final_divisor_classes": {
+        "e1": "E1-E2",
+        "e2": "E2-E3",
+        "e3": "E3-E4-E5",
+        "e4": "E4-E5",
+        "e5": "E5",
+        "s": "S-E1",
+        "x": "H+2L-E1-E3",
+        "y": "H+3L-E1-E2-E4"
+      },
+      "global_blowup_centers": [
+        "(x,y,s)",
+        "(y,e1)",
+        "(x,e2)",
+        "(y,e3)",
+        "(e3,e4)"
+      ],
+      "homogeneous_Tate_equation": "y^2*w+s*A1*x*y*w+s^3*A3*y*w^2-x^3-s*A2*x^2*w-s^3*A4*x*w^2-s^5*A6*w^3=0",
+      "hypersurface_multiplicities": [
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "strict_transform": "e2*e4*y^2*w+A1*e1*e2*e3*e4*e5*s*x*y*w-A2*e1*e3*s*x^2*w+A3*e1^2*e2^2*e3*e4*e5*s^3*y*w^2-A4*e1^2*e2*e3*s^3*x*w^2-A6*e1^3*e2^2*e3*s^5*w^3-e1*e3^2*e4*e5^2*x^3",
+      "strict_transform_class": "3H+6L-2E1-E2-E3-E4-E5=-K_X5"
+    },
+    "executable_geometry_certificate": {
+      "chart_jacobian_certificate": {
+        "all_chart_component_ideals_are_unit": true,
+        "branch_Fq_at_double_root": "1/4",
+        "branch_normal_form": {
+          "A1": "c+C*q",
+          "A2": "1",
+          "A3": "d+D*q",
+          "A4": "b+B*q",
+          "A6": "((b+B*q)^2-q)/4",
+          "q_definition": "q=P=A4^2-4*A2*A6"
+        },
+        "coefficient_domain": "QQ(b,c,d,B,C,D)",
+        "local_maximal_cones": [
+          [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          [
+            "e1",
+            "e2",
+            "s"
+          ],
+          [
+            "e1",
+            "e3",
+            "x"
+          ],
+          [
+            "e1",
+            "s",
+            "x"
+          ],
+          [
+            "e2",
+            "e3",
+            "e5"
+          ],
+          [
+            "e2",
+            "e4",
+            "e5"
+          ],
+          [
+            "e2",
+            "e4",
+            "y"
+          ],
+          [
+            "e2",
+            "s",
+            "y"
+          ],
+          [
+            "e3",
+            "e5",
+            "x"
+          ],
+          [
+            "e4",
+            "e5",
+            "x"
+          ],
+          [
+            "e4",
+            "x",
+            "y"
+          ]
+        ],
+        "n_chart_component_pairs": 25,
+        "n_charts": 11,
+        "n_unit_ideals": 25,
+        "rows": [
+          {
+            "chart_index": 1,
+            "chart_polynomial_sha256": "83183bc19bc87df40e6439b112eded348232ca77132b1681c1145365ab6fc0f4",
+            "component": "e1",
+            "cone": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 1,
+            "chart_polynomial_sha256": "83183bc19bc87df40e6439b112eded348232ca77132b1681c1145365ab6fc0f4",
+            "component": "e2",
+            "cone": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 1,
+            "chart_polynomial_sha256": "83183bc19bc87df40e6439b112eded348232ca77132b1681c1145365ab6fc0f4",
+            "component": "e3",
+            "cone": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 2,
+            "chart_polynomial_sha256": "d4aff19fbae0d29fc8fada7e52c4a56eed7912ebc244b60330e34b6b3e299f53",
+            "component": "e1",
+            "cone": [
+              "e1",
+              "e2",
+              "s"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 2,
+            "chart_polynomial_sha256": "d4aff19fbae0d29fc8fada7e52c4a56eed7912ebc244b60330e34b6b3e299f53",
+            "component": "e2",
+            "cone": [
+              "e1",
+              "e2",
+              "s"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 2,
+            "chart_polynomial_sha256": "d4aff19fbae0d29fc8fada7e52c4a56eed7912ebc244b60330e34b6b3e299f53",
+            "component": "s",
+            "cone": [
+              "e1",
+              "e2",
+              "s"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 3,
+            "chart_polynomial_sha256": "7b5f737f876ee3ccb95414e7499033d383ade6611aa0878b4d2fac9732b5ac91",
+            "component": "e1",
+            "cone": [
+              "e1",
+              "e3",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 3,
+            "chart_polynomial_sha256": "7b5f737f876ee3ccb95414e7499033d383ade6611aa0878b4d2fac9732b5ac91",
+            "component": "e3",
+            "cone": [
+              "e1",
+              "e3",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 4,
+            "chart_polynomial_sha256": "9e996d04cf3b35fa374cdc0be818b43b89e9551daa500ed7d4d8335d6965f070",
+            "component": "e1",
+            "cone": [
+              "e1",
+              "s",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 4,
+            "chart_polynomial_sha256": "9e996d04cf3b35fa374cdc0be818b43b89e9551daa500ed7d4d8335d6965f070",
+            "component": "s",
+            "cone": [
+              "e1",
+              "s",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 5,
+            "chart_polynomial_sha256": "035b527fbe57a931f970d87cd1ea239644342c1dc95bc6e9290106302704dab0",
+            "component": "e2",
+            "cone": [
+              "e2",
+              "e3",
+              "e5"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 5,
+            "chart_polynomial_sha256": "035b527fbe57a931f970d87cd1ea239644342c1dc95bc6e9290106302704dab0",
+            "component": "e3",
+            "cone": [
+              "e2",
+              "e3",
+              "e5"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 5,
+            "chart_polynomial_sha256": "035b527fbe57a931f970d87cd1ea239644342c1dc95bc6e9290106302704dab0",
+            "component": "e5",
+            "cone": [
+              "e2",
+              "e3",
+              "e5"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 6,
+            "chart_polynomial_sha256": "80905baa7c96fb571462b346d36390755613bd3a9745119d3221d1a922202a22",
+            "component": "e2",
+            "cone": [
+              "e2",
+              "e4",
+              "e5"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 6,
+            "chart_polynomial_sha256": "80905baa7c96fb571462b346d36390755613bd3a9745119d3221d1a922202a22",
+            "component": "e4",
+            "cone": [
+              "e2",
+              "e4",
+              "e5"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 6,
+            "chart_polynomial_sha256": "80905baa7c96fb571462b346d36390755613bd3a9745119d3221d1a922202a22",
+            "component": "e5",
+            "cone": [
+              "e2",
+              "e4",
+              "e5"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 7,
+            "chart_polynomial_sha256": "0bbf512d7410cb5f6fab8cc251739c7ee814bc7ef76675facf5b7898d38cf5ff",
+            "component": "e2",
+            "cone": [
+              "e2",
+              "e4",
+              "y"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 7,
+            "chart_polynomial_sha256": "0bbf512d7410cb5f6fab8cc251739c7ee814bc7ef76675facf5b7898d38cf5ff",
+            "component": "e4",
+            "cone": [
+              "e2",
+              "e4",
+              "y"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 8,
+            "chart_polynomial_sha256": "92189b87602eef17d0ea5ae30c60155d3d0c5c3743aac16d7409f0620555e839",
+            "component": "e2",
+            "cone": [
+              "e2",
+              "s",
+              "y"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 8,
+            "chart_polynomial_sha256": "92189b87602eef17d0ea5ae30c60155d3d0c5c3743aac16d7409f0620555e839",
+            "component": "s",
+            "cone": [
+              "e2",
+              "s",
+              "y"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 9,
+            "chart_polynomial_sha256": "56c6fdee9bbd69028060d744c8a780f84d0d1455bb49c406f294e2633a0f9e93",
+            "component": "e3",
+            "cone": [
+              "e3",
+              "e5",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 9,
+            "chart_polynomial_sha256": "56c6fdee9bbd69028060d744c8a780f84d0d1455bb49c406f294e2633a0f9e93",
+            "component": "e5",
+            "cone": [
+              "e3",
+              "e5",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 10,
+            "chart_polynomial_sha256": "6d26c247ab755b39c63aa0820749311806fb80bd903f60fe858f9b51818866be",
+            "component": "e4",
+            "cone": [
+              "e4",
+              "e5",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 10,
+            "chart_polynomial_sha256": "6d26c247ab755b39c63aa0820749311806fb80bd903f60fe858f9b51818866be",
+            "component": "e5",
+            "cone": [
+              "e4",
+              "e5",
+              "x"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          },
+          {
+            "chart_index": 11,
+            "chart_polynomial_sha256": "d03e871d21d92588254c09f99a683e1e337a62b4ecbde2bcfd3d6a4359b7b919",
+            "component": "e4",
+            "cone": [
+              "e4",
+              "x",
+              "y"
+            ],
+            "groebner_basis": [
+              "1"
+            ],
+            "n_ideal_generators": 7,
+            "unit_ideal": true
+          }
+        ]
+      },
+      "chern_pushforward_certificate": {
+        "Euler_contributions": {
+          "L*S": -168,
+          "L^2": -480,
+          "S^2": 128
+        },
+        "F4_intersection_numbers": {
+          "L*S": -2,
+          "L^2": 8,
+          "S^2": -4
+        },
+        "after_exceptional_push_terms": {
+          "H*L*S^2": -160,
+          "H*L*c2": -3,
+          "H*L^2*S": 756,
+          "H*L^3": -750,
+          "H^2*L*S": 364,
+          "H^2*L^2": -579,
+          "H^2*S^2": -32,
+          "H^3*L": -195,
+          "H^3*S": 56,
+          "H^4": -24,
+          "L^2*S^2": -192,
+          "L^2*c2": -6,
+          "L^3*S": 504,
+          "L^4": -360
+        },
+        "anticanonical_class": "3H+6L-2E1-E2-E3-E4-E5",
+        "base_class": "-60*L^2+84*L*S-32*S^2",
+        "base_pushforward_terms": {
+          "L*S": 84,
+          "L^2": -60,
+          "S^2": -32
+        },
+        "blowup_chern_factor": "(1+E)*product_i(1+Z_i-E)/(1+Z_i)",
+        "center_classes": [
+          [
+            "H+2L",
+            "H+3L",
+            "S"
+          ],
+          [
+            "H+3L-E1",
+            "E1"
+          ],
+          [
+            "H+2L-E1",
+            "E2"
+          ],
+          [
+            "H+3L-E1-E2",
+            "E3"
+          ],
+          [
+            "E3-E4",
+            "E4"
+          ]
+        ],
+        "conditional_Hodge": {
+          "B5_rank": 5,
+          "Mordell_Weil_rank_assumed": 0,
+          "assumptions": [
+            "smooth projective flat elliptic Calabi-Yau threefold",
+            "zero section and Mordell-Weil rank zero",
+            "only reducible codimension-one fiber is non-split I2* with B5 rank five",
+            "no additional horizontal or vertical divisor classes",
+            "formal Chern number equals the topological Euler characteristic"
+          ],
+          "h11": 8,
+          "h11_base": 2,
+          "h21": 268,
+          "unconditional": false,
+          "zero_section": 1
+        },
+        "exceptional_push_formula": "f_*(E^n)=0 for 1<=n<d; f_*(E^n)=(-1)^(d-1)*product(Z_i)*h_(n-d)(Z_i) for n>=d",
+        "formal_Euler": -520,
+        "initial_total_chern_class": "(1+L+c2)(1+H)(1+H+2L)(1+H+3L)",
+        "n_degree_four_integrand_terms": 220,
+        "post_exceptional_push_term_counts": {
+          "E1": 14,
+          "E2": 24,
+          "E3": 46,
+          "E4": 83,
+          "E5": 138
+        },
+        "projective_bundle_push": {
+          "H^2": "1",
+          "H^3": "-5L",
+          "H^4": "19L^2"
+        }
+      },
+      "claim_boundary": {
+        "Hodge_numbers_unconditional": false,
+        "compact_strict_transform_smooth_unconditionally_certified": false,
+        "explicit_global_coefficient_polynomials_frozen": false,
+        "formal_Euler_and_local_simple_branch_calculations_executable": true,
+        "global_Cox_Jacobian_saturation_run": false
+      },
+      "core_sha256": "f49a2e9280b53acaa0c4624497fc777c8d3c5c51f91967876d63cb9569fc3522",
+      "flatness_certificate": {
+        "derived_total_pullback": "e1*e2*e3*e4*e5**2*s",
+        "fibers_projective_nonempty_and_pure_dimension_one": true,
+        "flat_over_A2_restriction_nonzero_locus": true,
+        "hypersurface_is_effective_Cartier_in_smooth_ambient": true,
+        "miracle_flatness_applies": true,
+        "n_components": 6,
+        "n_nonzero_component_restrictions": 6,
+        "no_ambient_surface_component_contained": true,
+        "special_fiber_components": [
+          "s",
+          "e1",
+          "e2",
+          "e3",
+          "e4",
+          "e5"
+        ],
+        "witnesses": [
+          {
+            "chart_index": 2,
+            "component": "s",
+            "cone": [
+              "e1",
+              "e2",
+              "s"
+            ],
+            "nonzero": true,
+            "restriction": "-e1 + e2"
+          },
+          {
+            "chart_index": 1,
+            "component": "e1",
+            "cone": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "nonzero": true,
+            "restriction": "e2"
+          },
+          {
+            "chart_index": 1,
+            "component": "e2",
+            "cone": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "nonzero": true,
+            "restriction": "-e1*e3*(e3 + 1)"
+          },
+          {
+            "chart_index": 1,
+            "component": "e3",
+            "cone": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "nonzero": true,
+            "restriction": "e2"
+          },
+          {
+            "chart_index": 6,
+            "component": "e4",
+            "cone": [
+              "e2",
+              "e4",
+              "e5"
+            ],
+            "nonzero": true,
+            "restriction": "-(b*e2 + 2)**2/4"
+          },
+          {
+            "chart_index": 5,
+            "component": "e5",
+            "cone": [
+              "e2",
+              "e3",
+              "e5"
+            ],
+            "nonzero": true,
+            "restriction": "-(b**2*e2**2*e3 + 4*b*e2*e3 - 4*e2 + 4*e3)/4"
+          }
+        ]
+      },
+      "schema": "v87_compact_geometry_certificate_v1",
+      "status": "EXECUTABLE_LOCAL_BRANCH_FLATNESS_AND_FORMAL_CHERN_CERTIFICATE__GLOBAL_COMPACT_COX_SMOOTHNESS_STILL_OPEN",
+      "version": "V87"
+    },
+    "flatness": {
+      "A2_restriction_is_a_unit": true,
+      "compact_family_flat": true,
+      "miracle_flatness_applies": true,
+      "no_ambient_surface_component_contained_in_hypersurface": true,
+      "nonzero_restrictions_by_component": {
+        "e1": "e2",
+        "e2": "-e1*e3*(e3 + 1)",
+        "e3": "e2",
+        "e4": "-(b*e2 + 2)**2/4",
+        "e5": "-(b**2*e2**2*e3 + 4*b*e2*e3 - 4*e2 + 4*e3)/4",
+        "s": "-e1 + e2"
+      },
+      "pure_one_dimensional_fibers": true,
+      "total_gauge_divisor_pullback": "s_original=s*e1*e2*e3*e4*e5^2"
+    },
+    "formal_Chern_pushforward": {
+      "Shioda_Tate_Wazir_h11_8_proved_for_a_frozen_member": false,
+      "base_class": "-60*L^2+84*L*S-32*S^2",
+      "base_intersections": {
+        "L2": 8,
+        "LS": -2,
+        "S2": -4
+      },
+      "conditional_Hodge": [
+        8,
+        268
+      ],
+      "conditional_Hodge_additional_assumptions": [
+        "smooth projective flat elliptic Calabi-Yau threefold with zero section",
+        "the only reducible codimension-one fiber is the non-split I2star B5 fiber on S",
+        "Mordell-Weil rank zero",
+        "no additional independent vertical or horizontal divisors"
+      ],
+      "degree4_integrand_coefficients_before_H_push": {
+        "H2L2": -579,
+        "H2LS": 364,
+        "H2S2": -32,
+        "H3L": -195,
+        "H3S": 56,
+        "H4": -24
+      },
+      "equals_topological_Euler_only_if_strict_transform_smooth": true,
+      "formal_Euler": -520,
+      "independent_of_Grassi_Morrison_arithmetic": true,
+      "projective_bundle_pushes": {
+        "H2": "1",
+        "H3": "-5L",
+        "H4": "19L^2"
+      }
+    },
+    "remaining_compact_certificate": {
+      "Hodge_numbers_unconditional": false,
+      "explicit_homogeneous_A1_A3_beta2_beta4_beta6_frozen": false,
+      "full_Cox_Jacobian_saturation_run": false,
+      "required_test": "J=(Fhat,all 12 Cox partials); accept smoothness iff J:B^infinity=(1)",
+      "smooth_projective_crepant_resolution_certified": false,
+      "strict_transform_smooth_certified": false
+    },
+    "simple_branch_transversality": {
+      "F_q_at_critical_point": "1/4",
+      "all_25_local_chart_component_ideals": "unit ideal over QQ(b,c,d,B,C,D)",
+      "chart": "{e4,x,y}",
+      "fiber_at_e4_equals_q_equals_zero": "-(x+b/2)^2",
+      "generic_simple_branch_total_space_smooth": true,
+      "unit_ideal_count_derived_executably": 25,
+      "vertical_critical_point": "x=-b/2"
+    },
+    "status": "PASS_EXACT_GLOBAL_PROJECTIVE_CREPANT_AMBIENT_FLATNESS_AND_FORMAL_EULER__ACTUAL_COMPACT_SMOOTHNESS_OPEN"
+  },
+  "core_sha256": "2cc908183f77848f292ced26a8cd5dd6bf923fb7ef11140d9d20ac35d0c07e9e",
+  "date": "2026-09-01",
+  "diagonal_quotient_bundle_and_inflow": {
+    "B_neutral_branch_relation": {
+      "UV_k2_counterterm_coefficient_determined": false,
+      "fixed_wall_or_massive_KK_eta_contribution_still_possible": true,
+      "omega5_coefficient_required_by_displayed_zero_mode_shadow": 0,
+      "ordinary_zero_mode_SU2_residue": 0,
+      "retaining_k2_without_matching_massive_or_defect_character_would_fail_the_zero_mode_probe": true,
+      "zero_mode_shadow_requires_V86_k2": false
+    },
+    "Spin_c_characteristic_class": {
+      "Pontryagin_square_identity": "P(w2(V))=rho4(p1(V))+2*w4(V)",
+      "determinant_line": "D with t=c1(D)=beta(a), 2t=0, rho2(t)=a^2",
+      "embedding": "G_F -> Spin^c(11), j maps to i",
+      "enumeration": [
+        {
+          "p1_minus_t2_mod4": 0,
+          "p1_mod4": 0,
+          "passes": true,
+          "q1_mod2": 0,
+          "t_squared_mod4": 0,
+          "w4": 0
+        },
+        {
+          "p1_minus_t2_mod4": 2,
+          "p1_mod4": 2,
+          "passes": true,
+          "q1_mod2": 1,
+          "t_squared_mod4": 0,
+          "w4": 1
+        },
+        {
+          "p1_minus_t2_mod4": 0,
+          "p1_mod4": 1,
+          "passes": true,
+          "q1_mod2": 0,
+          "t_squared_mod4": 1,
+          "w4": 0
+        },
+        {
+          "p1_minus_t2_mod4": 2,
+          "p1_mod4": 3,
+          "passes": true,
+          "q1_mod2": 1,
+          "t_squared_mod4": 1,
+          "w4": 1
+        },
+        {
+          "p1_minus_t2_mod4": 0,
+          "p1_mod4": 2,
+          "passes": true,
+          "q1_mod2": 0,
+          "t_squared_mod4": 2,
+          "w4": 0
+        },
+        {
+          "p1_minus_t2_mod4": 2,
+          "p1_mod4": 0,
+          "passes": true,
+          "q1_mod2": 1,
+          "t_squared_mod4": 2,
+          "w4": 1
+        },
+        {
+          "p1_minus_t2_mod4": 0,
+          "p1_mod4": 3,
+          "passes": true,
+          "q1_mod2": 0,
+          "t_squared_mod4": 3,
+          "w4": 0
+        },
+        {
+          "p1_minus_t2_mod4": 2,
+          "p1_mod4": 1,
+          "passes": true,
+          "q1_mod2": 1,
+          "t_squared_mod4": 3,
+          "w4": 1
+        }
+      ],
+      "q1": "(p1(V)-t^2)/2",
+      "rho2_q1": "w4(V)"
+    },
+    "central_extension": {
+      "bundle_data": "oriented rank11 V, a in H1(-;F2), and a chosen trivialization w2(V)=a^2",
+      "component_group": "C2",
+      "extension_class": "w2(V)+a^2",
+      "factor_set_rows": [
+        {
+          "C4_factor_set": 0,
+          "equal": true,
+          "x": 0,
+          "x_times_y": 0,
+          "y": 0
+        },
+        {
+          "C4_factor_set": 0,
+          "equal": true,
+          "x": 0,
+          "x_times_y": 0,
+          "y": 1
+        },
+        {
+          "C4_factor_set": 0,
+          "equal": true,
+          "x": 1,
+          "x_times_y": 0,
+          "y": 0
+        },
+        {
+          "C4_factor_set": 1,
+          "equal": true,
+          "x": 1,
+          "x_times_y": 1,
+          "y": 1
+        }
+      ],
+      "sequence": "1 -> C2 -> G_F -> SO(11) x C2_F -> 1",
+      "universal_C4_valued_H1_class_exists": false
+    },
+    "continuous_parent_boundary": {
+      "Spin_c_U1F_parent_automatically_trivializes_omega5": false,
+      "reason": "a has no canonical H1 antecedent on the connected parent",
+      "relative_Higgs_vortex_or_differential_GS_trivialization_constructed": false
+    },
+    "group": "G_F=(Spin(11) x C4_F)/<(z,j^2)>",
+    "ordinary_smooth_inflow_character": {
+      "V86_product_target_promoted_to_all_ordinary_smooth_GF_backgrounds": true,
+      "class": "omega5=a*w4(V)=a*rho2(q1(V,a))",
+      "full_Omega5_Spin_BG_F_computed": false,
+      "full_fermionic_Dai_Freed_character_computed": false,
+      "nonzero_witness": "S1 x S4 with generator a and unit SU2 instanton",
+      "phase": "(-1)^<a*w4(V),[M]_2>",
+      "proves_nonzero_Z2_quotient_of_ordinary_bordism": true,
+      "weak_SU2_restriction": {
+        "p1_V": "-2*c2",
+        "q1": "-c2",
+        "w4": "c2 mod2"
+      },
+      "witness_GF_constraint": "a^2=w2(V)=0",
+      "witness_phase": -1
+    },
+    "quotient_rows": [
+      {
+        "C4_power": 0,
+        "class_mod4": 0,
+        "spin_center_bit": 0
+      },
+      {
+        "C4_power": 1,
+        "class_mod4": 1,
+        "spin_center_bit": 0
+      },
+      {
+        "C4_power": 2,
+        "class_mod4": 2,
+        "spin_center_bit": 0
+      },
+      {
+        "C4_power": 3,
+        "class_mod4": 3,
+        "spin_center_bit": 0
+      },
+      {
+        "C4_power": 0,
+        "class_mod4": 2,
+        "spin_center_bit": 1
+      },
+      {
+        "C4_power": 1,
+        "class_mod4": 3,
+        "spin_center_bit": 1
+      },
+      {
+        "C4_power": 2,
+        "class_mod4": 0,
+        "spin_center_bit": 1
+      },
+      {
+        "C4_power": 3,
+        "class_mod4": 1,
+        "spin_center_bit": 1
+      }
+    ],
+    "status": "PASS_EXACT_ORDINARY_SMOOTH_GF_BUNDLE_AND_NONZERO_A_W4_CHARACTER__PHYSICAL_STRATIFIED_TRIVIALIZATION_OPEN"
+  },
+  "full_HGamma_target_audit": {
+    "currently_indistinguishable_candidates": [
+      "y*a*w4",
+      "b*a*w4",
+      "another normal Euler class times a*w4",
+      "0"
+    ],
+    "fixed_strata": [
+      {
+        "C4F_lift": "1",
+        "H3_lift": "A3",
+        "Spin11_lift": "qhat",
+        "cover_power": "Atilde^4=krot",
+        "local_algebra": "u(5)",
+        "point": "z00=0",
+        "stabilizer": "A"
+      },
+      {
+        "C4F_lift": "j^(2r+1)",
+        "H3_lift": "-A3",
+        "Spin11_lift": "z11^u*what*qhat",
+        "cover_power": "(Utilde*Atilde)^4=krot",
+        "local_algebra": "conjugate u(5)",
+        "point": "z11=(1+i)/2",
+        "stabilizer": "U*A"
+      },
+      {
+        "C4F_lift": "j^(2r+1)",
+        "H3_lift": "-A3^2",
+        "Spin11_lift": "z11^u*what*qhat^2",
+        "cover_power": "(Utilde*Atilde^2)^2=krot*kspin",
+        "local_algebra": "so(4)+so(7)",
+        "point": "z10=1/2",
+        "stabilizer": "U*A^2"
+      },
+      {
+        "C4F_lift": "j^(2s+1)",
+        "H3_lift": "-A3^2",
+        "Spin11_lift": "z11^v*what*qhat^2",
+        "cover_power": "(Vtilde*Atilde^2)^2=krot*kspin",
+        "local_algebra": "so(4)+so(7)",
+        "point": "z01=i/2",
+        "stabilizer": "V*A^2"
+      }
+    ],
+    "full_fixed_wall_Dai_Freed_character_computed": false,
+    "full_stratified_HGamma_bordism_target_defined": false,
+    "global_extension_form_if_available": "PD(D_sigma)*a*w4(V)",
+    "global_trivialization_constructed": false,
+    "natural_defect_class_after_data_exist": "(i_sigma)_!(a_sigma*w4(V_sigma))",
+    "ordinary_smooth_target_alternatives": {
+      "V80_BC2_sector_may_be_silently_removed": false,
+      "add_vs_shared_map_specified_by_V84_to_V86": false,
+      "factorized_addition": "MSpin-Z8_geom smash (BG_F x BC2)_+",
+      "shared_physical_SO11_bundle": {
+        "F1": "w2(T)+y",
+        "F2": "w2(T)+w2(V)+b",
+        "F3": "w2(V)+a^2",
+        "base": "hofib(F1,F2,F3) over BSO_T x BSO11_V x BC4_geom x BC2_s x BC2_F",
+        "forced_relation": "y+b+a^2=0"
+      },
+      "unique_smooth_degree7_target_selected": false
+    },
+    "required_stratified_data": [
+      "full isotropy group H_sigma and map H_sigma -> G_F/H_Gamma at each stratum",
+      "normal C4 representation and orientation",
+      "weak-SU2 projector/embedding index at each stratum",
+      "localized family representations and intrinsic phases",
+      "incidence maps between strata",
+      "common BV regulator and Pfaffian orientation",
+      "string-charge lattice, characteristic vector, differential cocycle and Wu structure"
+    ],
+    "status": "PASS_EXACT_TARGET_AMBIGUITY_AND_REQUIRED_STRATIFIED_DATA_FORMULATION__NO_UNIQUE_FULL_BORDISM_OR_TRIVIALIZATION"
+  },
+  "gate_ledger": {
+    "G1": "OPEN: the compact crepant ambient, flatness, formal Euler and period-two bisection are exact, but compact smooth saturation, resolved bisection intersections, the full B-neutral space-group lift, stratified quantum action and same-action completion remain absent.",
+    "G2": "OPEN: the rank-one doublet matrix is repaired, but no accepted supersymmetry-breaking sector, derived soft spectrum or complete threshold calculation exists for V87.",
+    "G3": "OPEN: the B-neutral fixed-stratum phase candidate and abstract B0/X/Xbar stabilizer pass algebraic screens, but the full Gammahat lift/kernel, global bisection-Sp3 bundle and localized isotropy representations are not constructed.",
+    "G4": "OPEN: all displayed ordinary C4 anomaly residues vanish and the smooth a*w4 class is exact, but the fixed-wall Dai-Freed character, regulator, Pfaffian orientation and differential GS/WCS trivialization are uncomputed.",
+    "G5": "OPEN: no common gauge-fixed KK determinant, self-dual polarization, defect cap/junction complex or UV regulator exists for the redesigned action.",
+    "G6": "OPEN: no accepted V87 spectrum has been run through two-loop unification, compact KK thresholds and quantitative proton/flavor matching.",
+    "G7": "OPEN: the light Higgs pair is structurally selected, but no accepted same-action family, collider, flavor, axion, dark-matter or cosmological prediction has been derived.",
+    "G8": "OPEN: the F4/bisection and field-theory sectors are not glued into one anomaly-free UV completion with a complete numerical and empirical likelihood."
+  },
+  "input_core_hashes": {
+    "V70_route": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V83_route": "a2133df04b79a28d87dc9248aa5fac52c9392137e21ce1099034a6cba2048456",
+    "V85_route": "7b9e59799cf4e73ba3ec48ed478295a8fc0bda02ede5335ddde841b663d61280",
+    "V86_master": "9fa1d73f2ba1a5f69906bf05ffb5db8db48b05cf466c871b727035f17c7d4aba",
+    "V86_route": "799af690205811d97df663ab53dab639c79262a6aac60a37da4394b961a691ad"
+  },
+  "lineage": {
+    "new_route": "B87",
+    "parent_master": "V86",
+    "supersession_scope": "the qF(B)=2 anomaly branch remains correct and rejected; V87 tests qF(B)=0 algebraically but does not yet construct its full Gammahat lift"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "id": "F88_COMPACT_COX_SATURATION_RESOLVED_BISECTION_AND_STRATIFIED_DAIFREED",
+    "parallel_objective": "select the shared or factorized HGamma target and compute every fixed-wall Dai-Freed/Gysin contribution with one regulator",
+    "primary_objective": "reconstruct the full B-neutral Gammahat lift, then freeze one compact coefficient member and finish Cox saturation and the resolved-bisection intersections"
+  },
+  "open_obligations": [
+    "freeze explicit rational compact A_i coefficients and prove J:B^infinity=(1) on the 32-cone Cox fan",
+    "crepantly resolve the explicit bisection and compute its intersections with every B5 fibral component",
+    "construct the global diagonal bisection-C4/Sp3_H bundle realizing charges (2,0,2)",
+    "recompute the complete Gammahat space-group lift, all four fixed-stratum phases, cover powers and quotient kernel for qF(A,B,C)=(2,0,2)",
+    "choose add-versus-shared HGamma target and specify every fixed-stratum isotropy/projector/normal representation",
+    "compute the full fixed-wall eta/Dai-Freed character with one regulator and Pfaffian orientation",
+    "construct any required differential GS/WCS relative trivialization including Higgs defects",
+    "derive the SUSY-breaking vacuum, soft spectrum, KK thresholds, unification, cosmology and phenomenology from that same action"
+  ],
+  "period_two_bisection_candidate": {
+    "Jacobian_Tate_reconstruction": {
+      "B2": "144*z*L",
+      "B4": "(B2^2-1296*I)/24",
+      "B6": "(-23328*J-B2^3+36*B2*B4)/216",
+      "Tate_orders": [
+        "infinity",
+        1,
+        "infinity",
+        3,
+        5
+      ],
+      "a1_a2_a3_a4_a6": [
+        "0",
+        "B2/4",
+        "0",
+        "B4/2",
+        "B6/4"
+      ],
+      "monodromy_cover_branch_count": 8,
+      "monodromy_cover_genus": 3,
+      "monodromy_polynomial_on_S": "104976*L^2*P_plus*P_minus",
+      "non_split_I2star_B5_for_generic_witness": true
+    },
+    "ambient_and_equation": {
+      "L_class": [
+        3,
+        12
+      ],
+      "coefficient_bundle": "all quartic coefficients in 2*Kbar=4S+12F",
+      "equation": "W^2=s*L*(U^2-V^2)^2+s^2*sum_i p_i U^(4-i)V^i",
+      "fiber": "P112 with coordinates [U:V:W] of weights [1,1,2]",
+      "flat_singular_fibration": true,
+      "p_i_classes": [
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          12
+        ]
+      ]
+    },
+    "binary_quartic_invariants": {
+      "Delta_z8": "6912*L^4*P_plus*P_minus",
+      "I_formula": "12ae-3bd+c^2",
+      "I_z2": "16*L^2",
+      "J_formula": "72ace+9bcd-27ad^2-27b^2e-2c^3",
+      "J_z3": "-128*L^3",
+      "orders_I_J_Delta": [
+        2,
+        3,
+        8
+      ]
+    },
+    "explicit_Cox_witness": {
+      "L": "t^3+s*Lprime, with generic Lprime of class (2,12)",
+      "P_minus_on_S": "2*t^2*(r0^4-2*r1^4)",
+      "P_plus_and_P_minus_each_nonsquare": true,
+      "P_plus_on_S": "2*t^2*(r0^4-r1^4)",
+      "R_i_class": [
+        1,
+        12
+      ],
+      "S": "s=0",
+      "base_coordinates": {
+        "r0": [
+          0,
+          1
+        ],
+        "r1": [
+          0,
+          1
+        ],
+        "s": [
+          1,
+          0
+        ],
+        "t": [
+          1,
+          4
+        ]
+      },
+      "no_common_root": true,
+      "p0": "t^2*(2*r0^4-3*r1^4)+s*R0",
+      "p1": "t^2*r1^4+s*R1",
+      "p2": "s*R2",
+      "p3": "s*R3",
+      "p4": "s*R4",
+      "product_has_eight_simple_roots": true
+    },
+    "geometric_boundaries": {
+      "bare_bisection_alone_assigns_copy_dependent_2_0_2_charges": false,
+      "diagonal_Sp3_copy_dependent_grading_realized_geometrically": false,
+      "global_crepant_resolution_of_bisection_constructed": false,
+      "resolved_bisection_component_intersections_computed": false,
+      "resolved_geometric_proof_j_squared_equals_Spin_center": false,
+      "total_space_singular_along_z_equals_W_equals_zero_U_equals_plusminusV": true
+    },
+    "period_index_proof": {
+      "K_F4_rational_point_exists": false,
+      "global_rational_section_exists": false,
+      "index": 2,
+      "period": 2,
+      "point_over_completed_local_field_exists": false,
+      "properness_turns_global_point_into_local_point": true,
+      "tested_local_field": "completion of K(F4) at the divisor S, with residue field K(S)",
+      "u_equals_zero_divisor_is_irreducible_bisection": true,
+      "valuation_rows": [
+        {
+          "obstruction": "odd valuation",
+          "rhs_valuation": 1,
+          "square_possible": false,
+          "u2_minus_v2_mod_z_zero": false
+        },
+        {
+          "obstruction": "P_plus_or_P_minus nonsquare in residue field",
+          "rhs_valuation": 2,
+          "square_possible": false,
+          "u2_minus_v2_mod_z_zero": true
+        }
+      ],
+      "warning": "the special fiber over K(S) itself has rational points; the obstruction is over the completed local field, not K(S)"
+    },
+    "status": "PASS_EXACT_FLAT_PERIOD_TWO_BISECTION_AND_NON_SPLIT_I2STAR_JACOBIAN__RESOLVED_INTERSECTION_OPEN"
+  },
+  "primary_sources": [
+    {
+      "id": "BhardwajJefferson2018",
+      "role": "Spin11 crepant blowup template",
+      "url": "https://arxiv.org/abs/1809.01650"
+    },
+    {
+      "id": "EsoleJeffersonKang2017",
+      "role": "blowup Chern-class pushforwards and explicit resolution caveat",
+      "url": "https://arxiv.org/abs/1703.00905"
+    },
+    {
+      "id": "GrassiMorrison2000",
+      "role": "independent elliptic threefold Euler formula",
+      "url": "https://arxiv.org/abs/math/0005196"
+    },
+    {
+      "id": "BraunMorrison2014",
+      "role": "genus-one fibrations and Tate-Shafarevich data",
+      "url": "https://arxiv.org/abs/1401.7844"
+    },
+    {
+      "id": "CveticLin2017",
+      "role": "Shioda charge normalization and global gauge quotient",
+      "url": "https://arxiv.org/abs/1706.08521"
+    },
+    {
+      "id": "Duan2018",
+      "role": "Spin-c characteristic classes and Pontryagin-square normalization",
+      "url": "https://arxiv.org/abs/1810.03799"
+    },
+    {
+      "id": "Hsieh2018",
+      "role": "Dai-Freed anomalies of discrete symmetries",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "id": "MonnierMoore2018",
+      "role": "differential Green-Schwarz/Wu-Chern-Simons data",
+      "url": "https://arxiv.org/abs/1808.01334"
+    },
+    {
+      "id": "vonGersdorff2006",
+      "role": "fixed-point projector dependence of six-dimensional orbifold anomalies",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    }
+  ],
+  "question": "Does F87 execute V86's compact-resolution, bisection, stabilizer and full-diagonal-anomaly obligations and produce one complete theory?",
+  "same_action_synthesis": {
+    "accepted_full_parent": false,
+    "exact_gains": [
+      "global smooth projective crepant ambient blowups and compact flatness",
+      "independent formal Euler -520 and conditional Hodge pair (8,268)",
+      "explicit flat period-two bisection with non-split I2star Spin11 Jacobian",
+      "phase-level Sp3 translation candidate for qF(A,B,C)=(2,0,2)",
+      "rank-one doublet mass with light HuA/HdC pair",
+      "zero residues for every displayed ordinary C4 anomaly condition",
+      "integer charge-four GS factorization screen",
+      "abstract B0/X/Xbar residual Z2 stabilizer",
+      "ordinary smooth GF bundle constraint w2(V)=a^2 and nonzero a*w4 character"
+    ],
+    "hard_boundaries": [
+      "no frozen full compact Tate coefficient set and no Cox Jacobian saturation",
+      "no crepant resolution or fibral intersection computation for the bisection",
+      "no complete four-stratum Gammahat lift, cocycle and kernel reconstruction for the B-neutral candidate",
+      "no global geometric realization of the copy-dependent diagonal Sp3 grading",
+      "no selected combined smooth HGamma target",
+      "no fixed-stratum Dai-Freed computation or common regulator/Pfaffian orientation",
+      "no complete Wilsonian action, SUSY breaking, thresholds, cosmology or likelihood"
+    ],
+    "same_action_microscopic_completion": false,
+    "status": "B_NEUTRAL_ALGEBRAIC_CANDIDATE__FULL_SPACE_GROUP_AND_PARENT_OPEN"
+  },
+  "schema": "susy_v87_b_neutral_bisection_diagonal_inflow_resolution_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "8f666f49d412598ef45dae0ce8a953a4dc4fd3c2ef48796ec2796500bf9d0824",
+    "count": 9,
+    "ids": [
+      "BhardwajJefferson2018",
+      "EsoleJeffersonKang2017",
+      "GrassiMorrison2000",
+      "BraunMorrison2014",
+      "CveticLin2017",
+      "Duan2018",
+      "Hsieh2018",
+      "MonnierMoore2018",
+      "vonGersdorff2006"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V87_B_NEUTRAL_BISECTION_DIAGONAL_INFLOW_RESOLUTION_AUDIT__V70_V83_V85_V86_CORES_BOUND__GLOBAL_PROJECTIVE_CREPANT_AMBIENT_AND_FLATNESS_EXACT__FORMAL_EULER_MINUS520__COMPACT_SMOOTH_SATURATION_OPEN__EXPLICIT_FLAT_PERIOD2_BISECTION_WITH_NON_SPLIT_I2STAR_JACOBIAN_EXACT__RESOLVED_FIBRAL_INTERSECTION_OPEN__B_HYPER_QF_ZERO_ALGEBRAIC_SCREEN__FIXED_STRATUM_PHASE_CANDIDATE__FULL_SPACE_GROUP_PROJECTORS_OPEN__RANK1_LIGHT_HIGGS_PAIR_EXACT__ALL_ORDINARY_C4F_ANOMALY_RESIDUES_ZERO__CHARGE4_GS_INTEGER_FACTORIZATION_PASSES__B0_X_XBAR_RESIDUAL_Z2_STABILIZER_EXACT_IN_GROUP_ALGEBRA__SMOOTH_GF_BUNDLE_CONSTRAINT_W2_EQUALS_A2_AND_AW4_CHARACTER_EXACT__UV_COUNTERTERM_COEFFICIENT_OPEN__FULL_STRATIFIED_HGAMMA_DAIFREED_AND_COMMON_REGULATOR_OPEN__NO_ACCEPTED_FULL_PARENT__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "B0_X_Xbar_abstract_residual_Z2_stabilizer_constructed": true,
+    "B_neutral_fixed_stratum_phase_candidate_passes": true,
+    "B_neutral_full_space_group_projectors_restored": false,
+    "B_neutral_ordinary_C4_anomaly_residues_zero": true,
+    "B_neutral_rank1_action_exact": true,
+    "accepted_full_parent_action_exists": false,
+    "charge4_GS_integer_factorization_screen_passes": true,
+    "closed_gates": [],
+    "compact_flatness_proved": true,
+    "compact_strict_transform_smooth_certified": false,
+    "formal_Euler_characteristic": -520,
+    "full_fixed_wall_Dai_Freed_trivialization_constructed": false,
+    "full_stratified_HGamma_target_selected": false,
+    "global_diagonal_bisection_Sp3_bundle_constructed": false,
+    "global_projective_crepant_ambient_constructed": true,
+    "honest_outcome": "V87 constructs the period-two geometry and a B-neutral algebraic candidate with vanishing displayed residues, but does not remove the projector blocker because the complete Gammahat lift is unconstructed.",
+    "ordinary_smooth_GF_bundle_and_aw4_character_constructed": true,
+    "period_two_bisection_and_Spin11_Jacobian_constructed": true,
+    "resolved_bisection_j_squared_center_proved": false,
+    "same_action_microscopic_completion_found": false,
+    "theory_complete": false,
+    "unconditional_Hodge_numbers": false
+  },
+  "vacuum_stabilizer_audit": {
+    "B_neutral_vacuum": {
+      "B0_fixed_by_J_without_gauge_compensator": true,
+      "J_action_on_B0": 1,
+      "J_action_on_X_and_Xbar": -1,
+      "Spin10_element_a_prime": "exp(i*pi*X/2)",
+      "a_prime_action_on_1_plus10_and_1_minus10": -1,
+      "a_prime_action_on_B0_e11": 1,
+      "a_prime_centralizes_SM": true,
+      "a_prime_squared": "z",
+      "abstract_group_and_weight_stabilizer_constructed": true,
+      "all_local_fixed_stratum_isotropy_representations_constructed": false,
+      "faithful_C4_low_energy_selector_survives": false,
+      "h_action_on_families_and_light_HuA_HdC": "trivial",
+      "h_action_on_heavy_HuB_HdSigma": "minus one",
+      "h_fixes_B0_X_Xbar": true,
+      "h_squared": "z*J^2=z*z=1",
+      "outer_automorphism_on_Spin10": false,
+      "residual_generator": "h=a_prime*J",
+      "surviving_nongauge_component": "C2"
+    },
+    "status": "PASS_EXACT_B_NEUTRAL_B0_X_XBAR_GROUP_STABILIZER__FIXED_STRATUM_REALIZATION_OPEN",
+    "superseded_qF_B_equals_2_pure_gauge_theorem": {
+      "consequence": "nontrivial D5 outer automorphism exchanges 16 and 16bar",
+      "reason": "any pure Spin11 odd-class compensator sends e11 to -e11 and restricts orientation-reversingly to the Spin10 plane",
+      "rows": [
+        {
+          "D5_outer_automorphism": true,
+          "combined_gm_j_squared": "1",
+          "combined_order": 2,
+          "g_m_squared": "z",
+          "m": 1,
+          "number_of_flipped_axes": 2,
+          "restriction_to_B0_perpendicular_determinant": -1
+        },
+        {
+          "D5_outer_automorphism": true,
+          "combined_gm_j_squared": "z",
+          "combined_order": 4,
+          "g_m_squared": "1",
+          "m": 2,
+          "number_of_flipped_axes": 4,
+          "restriction_to_B0_perpendicular_determinant": -1
+        },
+        {
+          "D5_outer_automorphism": true,
+          "combined_gm_j_squared": "1",
+          "combined_order": 2,
+          "g_m_squared": "z",
+          "m": 3,
+          "number_of_flipped_axes": 6,
+          "restriction_to_B0_perpendicular_determinant": -1
+        },
+        {
+          "D5_outer_automorphism": true,
+          "combined_gm_j_squared": "z",
+          "combined_order": 4,
+          "g_m_squared": "1",
+          "m": 4,
+          "number_of_flipped_axes": 8,
+          "restriction_to_B0_perpendicular_determinant": -1
+        },
+        {
+          "D5_outer_automorphism": true,
+          "combined_gm_j_squared": "1",
+          "combined_order": 2,
+          "g_m_squared": "z",
+          "m": 5,
+          "number_of_flipped_axes": 10,
+          "restriction_to_B0_perpendicular_determinant": -1
+        }
+      ],
+      "scope_caveat": "the full V85 H3 factor can compensate j on B0, so this is not a no-go for the complete H_Gamma action",
+      "three_16_zero_16bar_complex_linear_action_exists": false
+    }
+  },
+  "version": "V87"
+}

@@ -1,0 +1,570 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V86 master and V87 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "global smooth projective ambient five-blowup sequence",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A3",
+      "requirement": "crepant discrepancies",
+      "status": "PASS_EXACT_ALL_ZERO"
+    },
+    {
+      "id": "A4",
+      "requirement": "compact hypersurface flatness",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A5",
+      "requirement": "independent formal Chern pushforward",
+      "status": "PASS_EXACT_EULER_MINUS520"
+    },
+    {
+      "id": "A6",
+      "requirement": "actual compact strict-transform Cox Jacobian saturation",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A7",
+      "requirement": "unconditional compact Hodge numbers",
+      "status": "OPEN_CONDITIONAL_8_268_REQUIRES_SMOOTHNESS_MW0_AND_NO_EXTRA_DIVISORS"
+    },
+    {
+      "id": "A8",
+      "requirement": "explicit genus-one period and index",
+      "status": "PASS_EXACT_2_2"
+    },
+    {
+      "id": "A9",
+      "requirement": "Jacobian non-split I2-star Spin11 model and eight branch points",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A10",
+      "requirement": "global crepant resolution of the bisection total space",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A11",
+      "requirement": "resolved bisection component intersections and j-squared-center relation",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A12",
+      "requirement": "B-neutral qF(A,B,C) assignment",
+      "status": "PASS_EXACT_2_0_2"
+    },
+    {
+      "id": "A13",
+      "requirement": "B-neutral four-stratum phase candidate",
+      "status": "PASS_EXACT_PHASE_TABLE_ONLY"
+    },
+    {
+      "id": "A13B",
+      "requirement": "full Gammahat lift/kernel restores all V70 charged-hyper projectors",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A14",
+      "requirement": "rank-one doublet matrix and light HuA/HdC pair",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A15",
+      "requirement": "B-neutral ordinary C4 anomaly tensor",
+      "status": "PASS_EXACT_12_16_432_672_64_112_0_0_48"
+    },
+    {
+      "id": "A16",
+      "requirement": "all displayed B-neutral ordinary C4 residues",
+      "status": "PASS_EXACT_ZERO"
+    },
+    {
+      "id": "A17",
+      "requirement": "V86 qF(B)=2 nonzero residue",
+      "status": "SUPERSEDED_BRANCH_CORRECT_NOT_SELECTED"
+    },
+    {
+      "id": "A18",
+      "requirement": "V86 order-two k2 term in the displayed B-neutral zero-mode shadow",
+      "status": "NOT_REQUIRED_BY_ZERO_MODE_SHADOW"
+    },
+    {
+      "id": "A18B",
+      "requirement": "UV k2 counterterm after massive/fixed-wall eta contributions",
+      "status": "OPEN_UNDETERMINED"
+    },
+    {
+      "id": "A19",
+      "requirement": "charge-four GS/Stueckelberg divisibility and factorization screen",
+      "status": "PASS_EXACT_INTEGER_LEVELS"
+    },
+    {
+      "id": "A20",
+      "requirement": "supersymmetric differential GS cocycle and common regulator",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A21",
+      "requirement": "ordinary smooth GF bundle constraint and a*w4 character",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A22",
+      "requirement": "full Omega5 and fermionic Dai-Freed character",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A23",
+      "requirement": "B0/X/Xbar abstract vacuum stabilizer",
+      "status": "PASS_EXACT_RESIDUAL_C2"
+    },
+    {
+      "id": "A24",
+      "requirement": "faithful low-energy C4 selector",
+      "status": "REJECTED_ABSENT_ON_SELECTED_VACUUM"
+    },
+    {
+      "id": "A25",
+      "requirement": "global diagonal bisection-C4/Sp3 bundle",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A26",
+      "requirement": "full stratified HGamma target and fixed-wall isotropy data",
+      "status": "OPEN_UNFORMULATED"
+    },
+    {
+      "id": "A27",
+      "requirement": "fixed-wall eta/Dai-Freed trivialization with one regulator",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A28",
+      "requirement": "all-order operator closure and even B0 driver",
+      "status": "OPEN_UNPROVED"
+    },
+    {
+      "id": "A29",
+      "requirement": "same-action microscopic completion",
+      "status": "REJECTED_NOT_FOUND"
+    },
+    {
+      "id": "A30",
+      "requirement": "soft spectrum, thresholds, cosmology and likelihood",
+      "status": "BLOCKED_BY_ACCEPTED_PARENT"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "ae13dd0c36929ec53184bf6729ad526a7c205ec1b22793ab49eac73c01a849b3",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "f862cb61f635dae249535c812d027e2f75f4fd75f822df2607125ed7141478db"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "branch_correction": "the V86 qF(B)=2 anomaly remains correct for its rejected branch; the qF(B)=0 zero-mode shadow has coefficient zero, but the UV k2 coefficient awaits massive/fixed-wall eta data",
+    "conditional_geometry_tuple": [
+      8,
+      268,
+      -520
+    ],
+    "exact_gains": [
+      "global smooth projective crepant ambient blowups and compact flatness",
+      "independent formal Euler -520 and conditional Hodge pair (8,268)",
+      "explicit flat period-two bisection with non-split I2star Spin11 Jacobian",
+      "phase-level Sp3 translation candidate for qF(A,B,C)=(2,0,2)",
+      "rank-one doublet mass with light HuA/HdC pair",
+      "zero residues for every displayed ordinary C4 anomaly condition",
+      "integer charge-four GS factorization screen",
+      "abstract B0/X/Xbar residual Z2 stabilizer",
+      "ordinary smooth GF bundle constraint w2(V)=a^2 and nonzero a*w4 character"
+    ],
+    "explicit_non_promotions": [
+      "no frozen full compact Tate coefficient set and no Cox Jacobian saturation",
+      "no crepant resolution or fibral intersection computation for the bisection",
+      "no complete four-stratum Gammahat lift, cocycle and kernel reconstruction for the B-neutral candidate",
+      "no global geometric realization of the copy-dependent diagonal Sp3 grading",
+      "no selected combined smooth HGamma target",
+      "no fixed-stratum Dai-Freed computation or common regulator/Pfaffian orientation",
+      "no complete Wilsonian action, SUSY breaking, thresholds, cosmology or likelihood"
+    ],
+    "faithful_low_energy_C4_selector": false,
+    "next_required_action": {
+      "accepted": false,
+      "id": "F88_COMPACT_COX_SATURATION_RESOLVED_BISECTION_AND_STRATIFIED_DAIFREED",
+      "parallel_objective": "select the shared or factorized HGamma target and compute every fixed-wall Dai-Freed/Gysin contribution with one regulator",
+      "primary_objective": "reconstruct the full B-neutral Gammahat lift, then freeze one compact coefficient member and finish Cox saturation and the resolved-bisection intersections"
+    },
+    "research_program_status": "OPEN_WITH_EXACT_V87_ADVANCES",
+    "selected_branch_status": "ALGEBRAIC_CANDIDATE_FULL_SPACE_GROUP_NOT_CONSTRUCTED",
+    "selected_hyper_charges": [
+      2,
+      0,
+      2
+    ],
+    "selected_light_Higgs_pair": [
+      "H_uA",
+      "H_dC"
+    ],
+    "selected_vacuum_nongauge_component": "C2",
+    "strongest_exact_action_result": "the B-neutral charge ledger gives a matching four-stratum phase candidate, the required rank-one mass matrix and zero displayed ordinary C4 residues; the full Gammahat lift remains open",
+    "strongest_exact_geometry_result": "global projective crepant ambient blowups, compact flatness, formal Euler -520 and an explicit period/index-two bisection with non-split I2-star Jacobian",
+    "strongest_exact_topology_result": "ordinary smooth GF bundles obey w2(V)=a^2 and support the nonzero order-two a*w4 character"
+  },
+  "core_sha256": "41866428ddb3274fefcb43c6cacfd45b9641ff2879b988bfb40ca19482adfc2a",
+  "date": "2026-09-01",
+  "fail_closed_logic": {
+    "abstract_Sp3_diagonal_is_not_global_geometric_bundle": true,
+    "accept_if_partial_scaffolds_only": false,
+    "formal_Euler_is_not_unconditional_Hodge_certificate": true,
+    "integer_GS_levels_are_not_differential_cocycle": true,
+    "ordinary_anomaly_residues_are_not_full_fixed_wall_Dai_Freed": true,
+    "partial_scaffolds_are_not_same_action_completion": true,
+    "phase_level_projector_match_is_not_full_Gammahat_lift": true,
+    "residual_C2_is_not_faithful_C4_selector": true,
+    "singular_period_two_bisection_is_not_resolved_center_relation": true,
+    "smooth_projective_ambient_is_not_smooth_hypersurface": true
+  },
+  "gate_ledger": {
+    "G1": "OPEN: the compact crepant ambient, flatness, formal Euler and period-two bisection are exact, but compact smooth saturation, resolved bisection intersections, the full B-neutral space-group lift, stratified quantum action and same-action completion remain absent.",
+    "G2": "OPEN: the rank-one doublet matrix is repaired, but no accepted supersymmetry-breaking sector, derived soft spectrum or complete threshold calculation exists for V87.",
+    "G3": "OPEN: the B-neutral fixed-stratum phase candidate and abstract B0/X/Xbar stabilizer pass algebraic screens, but the full Gammahat lift/kernel, global bisection-Sp3 bundle and localized isotropy representations are not constructed.",
+    "G4": "OPEN: all displayed ordinary C4 anomaly residues vanish and the smooth a*w4 class is exact, but the fixed-wall Dai-Freed character, regulator, Pfaffian orientation and differential GS/WCS trivialization are uncomputed.",
+    "G5": "OPEN: no common gauge-fixed KK determinant, self-dual polarization, defect cap/junction complex or UV regulator exists for the redesigned action.",
+    "G6": "OPEN: no accepted V87 spectrum has been run through two-loop unification, compact KK thresholds and quantitative proton/flavor matching.",
+    "G7": "OPEN: the light Higgs pair is structurally selected, but no accepted same-action family, collider, flavor, axion, dark-matter or cosmological prediction has been derived.",
+    "G8": "OPEN: the F4/bisection and field-theory sectors are not glued into one anomaly-free UV completion with a complete numerical and empirical likelihood."
+  },
+  "input_core_hashes": {
+    "V86_master": "9fa1d73f2ba1a5f69906bf05ffb5db8db48b05cf466c871b727035f17c7d4aba",
+    "V87_route": "2cc908183f77848f292ced26a8cd5dd6bf923fb7ef11140d9d20ac35d0c07e9e"
+  },
+  "lineage": {
+    "new_route": "B87",
+    "parent_master": "V86",
+    "parent_route_count": 14,
+    "parent_route_matrix_sha256": "4060216020ffc1ac1a7e0d6f20087c808e7fb9173b45e688ce9a54a6cbcc2d36",
+    "supersession_scope": "the qF(B)=2 anomaly branch remains correct and rejected; V87 tests qF(B)=0 algebraically but does not yet construct its full Gammahat lift"
+  },
+  "open_obligations": [
+    "freeze explicit rational compact A_i coefficients and prove J:B^infinity=(1) on the 32-cone Cox fan",
+    "crepantly resolve the explicit bisection and compute its intersections with every B5 fibral component",
+    "construct the global diagonal bisection-C4/Sp3_H bundle realizing charges (2,0,2)",
+    "recompute the complete Gammahat space-group lift, all four fixed-stratum phases, cover powers and quotient kernel for qF(A,B,C)=(2,0,2)",
+    "choose add-versus-shared HGamma target and specify every fixed-stratum isotropy/projector/normal representation",
+    "compute the full fixed-wall eta/Dai-Freed character with one regulator and Pfaffian orientation",
+    "construct any required differential GS/WCS relative trivialization including Higgs defects",
+    "derive the SUSY-breaking vacuum, soft spectrum, KK thresholds, unification, cosmology and phenomenology from that same action"
+  ],
+  "primary_sources": [
+    {
+      "id": "BhardwajJefferson2018",
+      "role": "Spin11 crepant blowup template",
+      "url": "https://arxiv.org/abs/1809.01650"
+    },
+    {
+      "id": "EsoleJeffersonKang2017",
+      "role": "blowup Chern-class pushforwards and explicit resolution caveat",
+      "url": "https://arxiv.org/abs/1703.00905"
+    },
+    {
+      "id": "GrassiMorrison2000",
+      "role": "independent elliptic threefold Euler formula",
+      "url": "https://arxiv.org/abs/math/0005196"
+    },
+    {
+      "id": "BraunMorrison2014",
+      "role": "genus-one fibrations and Tate-Shafarevich data",
+      "url": "https://arxiv.org/abs/1401.7844"
+    },
+    {
+      "id": "CveticLin2017",
+      "role": "Shioda charge normalization and global gauge quotient",
+      "url": "https://arxiv.org/abs/1706.08521"
+    },
+    {
+      "id": "Duan2018",
+      "role": "Spin-c characteristic classes and Pontryagin-square normalization",
+      "url": "https://arxiv.org/abs/1810.03799"
+    },
+    {
+      "id": "Hsieh2018",
+      "role": "Dai-Freed anomalies of discrete symmetries",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "id": "MonnierMoore2018",
+      "role": "differential Green-Schwarz/Wu-Chern-Simons data",
+      "url": "https://arxiv.org/abs/1808.01334"
+    },
+    {
+      "id": "vonGersdorff2006",
+      "role": "fixed-point projector dependence of six-dimensional orbifold anomalies",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    }
+  ],
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "torsion-half quantum refinement and explicit h4 projector adjudication",
+      "ordinal": 7,
+      "route_id": "B79",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F79B_CANONICAL_ZERO_INTERNAL_HALF",
+        "F79E_H6_H8_CHANGED_PARENT_PROJECTORS",
+        "F79F_FULL_H78_ETA_WUCS_BRIDGE_CAP_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "H78 category/AHSS and general flat half-spinor parent adjudication",
+      "ordinal": 8,
+      "route_id": "B80",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F80A_CANONICAL_ZERO_HALF_H0",
+        "F80F_COMMON_FULL_PARENT_HGAMMA_ANOMALY_THEORY",
+        "F80G_NEW_GAUGE_DEPENDENT_PROJECTOR_OR_LOCALIZED_SECTOR"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Q4 parent-lift, eta-shadow and relative Bord765 cap adjudication",
+      "ordinal": 9,
+      "route_id": "B81",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F81A_MINIMAL_DIAGONAL_CYCLIC_CENTER",
+        "F81D_NONFLAT_Q1_COMPENSATOR",
+        "F81E_QHAT_DECORATED_Q4_AS_DISTINCT_TEST",
+        "F81I_FULL_PARENT_RELATIVE_ANOMALY_THEORY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "qhat Q4 bordism, optional D15 defect and scoped compensator adjudication",
+      "ordinal": 10,
+      "route_id": "B82",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F82A_QHAT_Q4_REDUCED_CLASS",
+        "F82B_RELATIVE_QHAT_MINUS_BASEPOINT_CLASS",
+        "F82D_ORDINARY_CLOSED7_QHAT_Q4_TEST",
+        "F82E2_GENERAL_NONFLAT_SAME_RANK_COMPENSATOR",
+        "F82G_OPTIONAL_CLOSED7_DEFECT_RESIDUES",
+        "F82H_CANDIDATE_POSITIVE_CHARGE_LIFTS",
+        "F82J_FULL_D15_WORLDSHEET_SECTOR",
+        "F82K_FULL_PARENT_ANOMALY_IDENTITY"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "cyclic bulk parent, Q4 WCS shadow and 4 SO(11) instanton-string adjudication",
+      "ordinal": 11,
+      "route_id": "B83",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F83A_SMOOTH_BULK_CYCLIC_C4_QUOTIENT",
+        "F83A2_FULL_SQUARE_SPACE_GROUP_HGAMMA",
+        "F83A3_UNIQUE_GLOBAL_CENTER_KERNEL",
+        "F83B_Q4_TORSION_LINKING_FORM",
+        "F83B2_EVEN_U_REFERENCE_WCS_SHADOW",
+        "F83B3_PHYSICAL_WCS_REFINEMENT",
+        "F83B4_REGULATED_BARE_ETA_PHASE",
+        "F83B5_BARE_TIMES_WCS_IDENTITY",
+        "F83C_BULK_4SO11_INSTANTON_STRING",
+        "F83C2_4SO11_WORLDSHEET",
+        "F83C3_COMPACT6_INCIDENCE",
+        "F83C4_COMPACT6_HALF_BPS_SOLUTION",
+        "F83C7_FULL_HGAMMA_D15_GLUE",
+        "F83D_DELTA_PRIMARY_DETECTOR",
+        "F83D2_DELTA_H0_HIDDEN_EXTENSION",
+        "F83E_SAME_ACTION_COMPLETION"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "full-Gammahat no-go, C4F spinor grading and F4 heterotic-string redesign",
+      "ordinal": 12,
+      "route_id": "B84",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F84_C4F_SPINOR_GRADING_PARENT_REDESIGN",
+        "F84_F4_so11_LIE_ALGEBRA_HETEROTIC_UV_SCAFFOLD"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact F4 non-split I2star, C4F fixed-stratum and AHSS precursor route",
+      "ordinal": 13,
+      "route_id": "B85",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F85_COMPACT_F4_ORDINARY_JACOBIAN",
+        "F85_C4F_STRATIFIED_CLASSICAL_EXTENSION",
+        "F85_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "Hodge correction, bisection target, C4F anomaly no-go and scoped AHSS closure",
+      "ordinal": 14,
+      "route_id": "B86",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F86_CONTINUOUS_U1F_DIAGONAL_PARENT",
+        "F86_ORDER2_PRODUCT_BACKGROUND_INFLOW",
+        "F86_AHSS_POSTNIKOV_ROUTE"
+      ]
+    },
+    {
+      "accepted": false,
+      "name": "compact ambient/flatness, period-two bisection, B-neutral fixed-phase candidate and smooth GF character",
+      "ordinal": 15,
+      "route_id": "B87",
+      "same_action_microscopic_completion": false,
+      "selected_exact_scaffolds": [
+        "F87A",
+        "F87B",
+        "F87C",
+        "F87D"
+      ]
+    }
+  ],
+  "schema": "susy_v87_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "8f666f49d412598ef45dae0ce8a953a4dc4fd3c2ef48796ec2796500bf9d0824",
+    "count": 9,
+    "ids": [
+      "BhardwajJefferson2018",
+      "EsoleJeffersonKang2017",
+      "GrassiMorrison2000",
+      "BraunMorrison2014",
+      "CveticLin2017",
+      "Duan2018",
+      "Hsieh2018",
+      "MonnierMoore2018",
+      "vonGersdorff2006"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V87_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V86_MASTER_AND_V87_ROUTE_CORES_BOUND__GLOBAL_PROJECTIVE_CREPANT_AMBIENT_AND_COMPACT_FLATNESS_EXACT__FORMAL_EULER_MINUS520__COMPACT_STRICT_TRANSFORM_SMOOTHNESS_OPEN__PERIOD2_BISECTION_AND_NON_SPLIT_I2STAR_JACOBIAN_EXACT__RESOLVED_BISECTION_CENTER_RELATION_OPEN__B_NEUTRAL_FIXED_PHASE_CANDIDATE_AND_RANK1_EXACT__FULL_SPACE_GROUP_PROJECTORS_OPEN__ALL_DISPLAYED_ORDINARY_C4_RESIDUES_ZERO__ZERO_MODE_K2_NOT_REQUIRED__UV_COUNTERTERM_OPEN__SMOOTH_GF_AW4_CHARACTER_EXACT_WITH_ZERO_ZERO_MODE_COEFFICIENT__FULL_STRATIFIED_DAIFREED_OPEN__RESIDUAL_C2_NOT_FAITHFUL_C4__NO_ACCEPTED_EXTENSION__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "B_neutral_fixed_stratum_phase_candidate_passes": true,
+    "B_neutral_full_space_group_projectors_restored": false,
+    "B_neutral_ordinary_C4_anomaly_residues_zero": true,
+    "B_neutral_rank1_action_exact": true,
+    "UV_k2_counterterm_coefficient_determined": false,
+    "accepted_extension_count": 0,
+    "accepted_full_parent_action_exists": false,
+    "bisection_period_index": [
+      2,
+      2
+    ],
+    "charge4_GS_integer_factorization_screen_passes": true,
+    "closed_gates": [],
+    "compact_flatness_proved": true,
+    "compact_strict_transform_smooth_certified": false,
+    "conditional_Hodge_numbers": [
+      8,
+      268
+    ],
+    "differential_GS_common_regulator_constructed": false,
+    "faithful_C4_low_energy_selector_survives": false,
+    "formal_Euler_characteristic": -520,
+    "full_fixed_wall_Dai_Freed_trivialization_constructed": false,
+    "full_stratified_HGamma_target_selected": false,
+    "global_diagonal_bisection_Sp3_bundle_constructed": false,
+    "global_projective_crepant_ambient_constructed": true,
+    "ordinary_smooth_GF_bundle_and_aw4_character_constructed": true,
+    "period_two_bisection_and_Spin11_Jacobian_constructed": true,
+    "residual_nongauge_component": "C2",
+    "resolved_bisection_j_squared_center_proved": false,
+    "same_action_microscopic_completion_found": false,
+    "selected_anomaly_tensor": {
+      "A2": 16,
+      "A3": 12,
+      "FX_squared": 672,
+      "FY6X": 48,
+      "FY6_squared": 432,
+      "F_squared_X": 0,
+      "F_squared_Y6": 0,
+      "TrF": 64,
+      "TrF_cubed": 112
+    },
+    "selected_aw4_coefficient": 0,
+    "selected_charge_pattern": [
+      2,
+      0,
+      2
+    ],
+    "theory_complete": false,
+    "unconditional_Hodge_numbers": false,
+    "zero_mode_shadow_requires_V86_k2": false
+  },
+  "supersession_ledger": {
+    "UV_k2_coefficient_determined": false,
+    "V86_k2_product_inflow_required_by_zero_mode_shadow": false,
+    "V86_nonzero_SU2_residue_applies_to_selected_branch": false,
+    "V86_positive_lift_branch_selected": false,
+    "V86_positive_lift_qF_B_equals_2_tensor_remains_correct": true,
+    "V87_B_neutral_branch_selected_for_continuation": true,
+    "bare_bisection_proves_copy_dependent_grading": false,
+    "retaining_k2_without_matching_massive_or_defect_character_fails_zero_mode_probe": true
+  },
+  "version": "V87"
+}
