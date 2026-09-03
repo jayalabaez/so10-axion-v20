@@ -1,0 +1,219 @@
+{
+  "artifact_hashes": {
+    "generator_sha256": "e4a1bd81cdd5cd7781b005b27c9ac216b4f03d90c5a1c590e570ab78cf176f4b",
+    "test_sha256": "bbd8abc43f21e80feafcfdbd968355bc115d8234e17c35538a997446c495171e",
+    "test_v104_q2_core_reduction_audit.py": "b3080ed623ebdb1782ccc6fe3baeff3ac7421dde21a5d7fcb8174f839190d681",
+    "v104_q2_core_reduction_audit.py": "1d0d4440b7718d250af0a3c2ad18f248fe083c6068d0ee1a9e3c5614aa416e47"
+  },
+  "core_sha256": "b22468dd4bd4ab3c77839ba8fa561deee01a539f23fc64e176c4660a169cc41c",
+  "cross_sector_scope_checks": {
+    "Q1_and_target_systems_untouched": true,
+    "Q2_confined_not_solved_not_excluded": true,
+    "Q2_leading_cores_reduced_exactly": true,
+    "helper_binds_identical_V103_route_and_member": true,
+    "no_gate_promotion": true,
+    "original_rank_torsion_and_cubic_frontier_preserved": true
+  },
+  "gate_ledger": {
+    "G1": "OPEN: no complete same-action microscopic parent or physical target geometry; the neutral independent-normal extension and a restricted parity cancellation ansatz now have exact obstructions.",
+    "G2": "OPEN: actual normal-covariant tensors/representations and a nonlinear QK/F/D supersymmetric vacuum remain missing; restricted component lines and a flat-normal mass patch are not that construction.",
+    "G3": "OPEN: the saved quotient, projectors and cover-lift obstruction are preserved; no admissible new global diagonal structure is supplied.",
+    "G4": "OPEN: the ordinary 6D Spin x P bare character is 9 mod 16, not cancelled by tested even-U degree-4 source refinements; full flavor/normal and relative inflow remain unconstructed.",
+    "G5": "OPEN: the restricted RP7 parity scout has not been promoted to the full physical normal-split Gammahat background category, global anomaly trivialization, gluing or regulator.",
+    "G6": "OPEN: no complete same-action mass/soft spectrum, threshold calculation or numerical unification solution is supplied.",
+    "G7": "OPEN: the reduced 4D parity test passes, but quantum status of the full compactification, Higgs-zero matching, actual odd masses, abundance and proton suppression remain unresolved.",
+    "G8": "OPEN: the original cubic exclusion and the quartic L=M=0 boundary remain excluded; Q2 (t!=0,L=0,M!=0) is now reduced exactly to the common zero locus of the M^2-cleared leading cores, whose h-resultant is a nonzero polynomial (fixed witnesses 28,97,91 mod 101), so Q2 is confined to a proper subvariety but is neither solved nor excluded; Q1, the height-37/148 target tails, general rational sections and the exact rank remain unsolved."
+  },
+  "input_core_hashes": {
+    "v103_master": "6150ab0d71c2a70c95491325cd1bb094827fd48ea165b1a80d838a71c79b9827",
+    "v103_route": "cb5074dae5e38ea34c167d869050abd1926053c6bda229edf919b7d7f2e16e53"
+  },
+  "next_required_action": {
+    "id": "F105_Q2_RESIDUAL_CLOSURE_Q1_AND_TARGET_SYSTEMS_WITH_COVARIANT_ACTION_REPAIR",
+    "parallel": "Construct the covariant action repair required by F104: a globally defined normal/internal tensor or diagonal G-structure carrying normal charge 1 with all old representations and a recomputed vacuum; do not install a neutral constant or a formal inverse eta character by declaration. Continue the height-37/148 target tails with all primitivity and global-tail obligations. Complete nonlinear QK/F/D, Higgs-zero matching, full quantum action, soft spectrum, unification and cosmology on the same data.",
+    "primary": "Impose the remaining Q2 residuals N2,N1,N0 with their cross conditions C42,C32,C4i and the Delta-square condition on the confined subvariety; decide Q2 over C(X) with a certificate, or open the Q1 chart by the same method. No rank or point promotion without a certificate."
+  },
+  "parent_obligation": "F104_COVARIANT_ACTION_PARITY_INFLOW_AND_REMAINING_SECTION_SYSTEMS",
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/pdf/0907.0298",
+      "use": "Schutt-Shioda: intersection-height and minimal-degree framework; Section14.2 warns that coefficient counting is a heuristic, not a no-solution proof. The Q2 leading-coefficient identity, q-elimination and resultant confinement are derived here."
+    },
+    {
+      "url": "https://www.jmilne.org/math/Books/EC2.pdf",
+      "use": "Short Weierstrass coordinates and rational group operations; no square-root extension or rescaling of the fixed Jacobian is used."
+    },
+    {
+      "url": "https://math.berkeley.edu/~bernd/cbms.pdf",
+      "use": "Sturmfels: Sylvester resultant and exact elimination; a fixed nonzero specialized determinant certifies only the named generic elimination."
+    }
+  ],
+  "q2_core_reduction": {
+    "bound_coefficient_payload_sha256": "f2b6dcad4a90364cff7557f379e4ccdb76bd466553a3289659d08a356119f0cf",
+    "bound_reduced_equations_sha256": "3308656f2e58a70ef1f5609687751ff2d4cfd9625c4a9b456a3e60a54e121be2",
+    "chart": "Q2: t!=0, L=0, M!=0, coordinates rational in C(X)",
+    "core_sha256": "0d84b90b9756805d70ba7d04ef20b867c26d776e8e814ad4ca42813b0c8c7937",
+    "discriminant": {
+      "definition": "Delta = A1^2 - 4*A2*A0",
+      "h_degree": 0,
+      "is_independent_of_h": true,
+      "rational_q_requires_Delta_square_in_C_X": true,
+      "square_condition_decouples_from_h": true
+    },
+    "fixed_modular_witnesses": {
+      "definition": "Res_h(R4core, C43core) at the bound payload, fixed (t,p) slices with M!=0",
+      "leading_pair_resultant_is_nonzero_polynomial": true,
+      "modulus": 101,
+      "points": [
+        {
+          "C43core_h_degree": 5,
+          "M_value_mod101": 64,
+          "R4core_h_degree": 4,
+          "h_resultant_mod101": 28,
+          "nonzero": true,
+          "on_Q2_M_nonzero": true,
+          "p": 1,
+          "t": 2
+        },
+        {
+          "C43core_h_degree": 5,
+          "M_value_mod101": 58,
+          "R4core_h_degree": 4,
+          "h_resultant_mod101": 97,
+          "nonzero": true,
+          "on_Q2_M_nonzero": true,
+          "p": 1,
+          "t": 3
+        },
+        {
+          "C43core_h_degree": 5,
+          "M_value_mod101": 80,
+          "R4core_h_degree": 4,
+          "h_resultant_mod101": 91,
+          "nonzero": true,
+          "on_Q2_M_nonzero": true,
+          "p": 3,
+          "t": 2
+        }
+      ]
+    },
+    "input_core_hashes": {
+      "v103_quartic": "762aa46f242bce582137e11a5003edbbca10e85a6c7ebb0c68ad1313647b4d3a",
+      "v103_route": "cb5074dae5e38ea34c167d869050abd1926053c6bda229edf919b7d7f2e16e53"
+    },
+    "l_zero_quadratic": {
+      "A0": "-699840*alpha**2*p*t**5 - 5038848*alpha**2*t**4 - 1296*alpha*epsilon*p*t**9 - 15552*alpha*epsilon*t**8 + 1296*alpha*p**4*t**6 + 155520*alpha*p**3*t**5 + 5318784*alpha*p**2*t**4 + 64945152*alpha*p*t**3 + 248583168*alpha*t**2 - 17496*beta**2*p**2*t**6 - 629856*beta**2*t**4 - 5832*beta*delta*t**8 + 1296*epsilon*p**2*t**8 + 46656*epsilon*p*t**7 + 279936*epsilon*t**6 + 1296*gamma*p**2*t**8 + 46656*gamma*p*t**7 + 279936*gamma*t**6 - 1728*p**5*t**5 - 207360*p**4*t**4 - 8211456*p**3*t**3 - 137355264*p**2*t**2 - 994332672*p*t - 2579890176",
+      "A1": "-3888*alpha*p**2*t**7 - 186624*alpha*p*t**6 - 1679616*alpha*t**5 + 8748*beta**2*t**7 - 1296*epsilon*t**9 - 1296*gamma*t**9 + 6912*p**3*t**6 + 414720*p**2*t**5 + 6718464*p*t**4 + 29859840*t**3",
+      "statement": "N5|(r=r0) = A2 q^2 + A1 q + A0 with r0 = (-108*alpha*t**2 + 432*p*t + 3456)/t**4",
+      "verified_exactly": true
+    },
+    "leading_coefficient_identity": {
+      "A2": "1296*alpha*t**8 - 5184*p*t**7 - 82944*t**6",
+      "A2_nonzero_on_Q2": true,
+      "M": "-alpha*t**2 + 4*p*t + 64",
+      "statement": "A2 = -1296 * t^6 * M, M = -alpha*t^2 + 4*p*t + 64",
+      "verified_exactly": true
+    },
+    "leading_cores": {
+      "C43core_definition": "C43 / (t^3 * M^2), exact in Z[t,p,h,parameters]",
+      "C43core_h_degree": 5,
+      "C43core_t_and_M_powers_removed": [
+        3,
+        2
+      ],
+      "C43core_term_count": 3203,
+      "R4core_definition": "R4 / (t^6 * M^2), exact in Z[t,p,h,parameters]",
+      "R4core_h_degree": 4,
+      "R4core_t_and_M_powers_removed": [
+        6,
+        2
+      ],
+      "R4core_term_count": 6756
+    },
+    "limitations": [
+      "Q2 is reduced to a proper subvariety, not solved and not excluded. The remaining residuals N2,N1,N0 with their cross conditions and the Delta-square condition are not imposed here.",
+      "The modular resultant witnesses certify that the leading pair does not share an h-factor identically; they are not a no-solution proof for Q2 over C(X).",
+      "The ell4=ell3=0 degeneracy is retained, not excluded. No rational-function degree bound in X is imposed.",
+      "The Q1 chart, the height-37 and height-148 target systems, general rational sections and the exact Mordell-Weil rank are untouched. Original rank 0..11, torsion 1, all gates and the coefficient payload are unchanged."
+    ],
+    "linear_in_q_reduction": {
+      "necessary_resultants": {
+        "C_ij": "ell_i*m_j - ell_j*m_i (N_i and N_j share one q root)",
+        "R_i": "A2*m_i^2 - A1*ell_i*m_i + A0*ell_i^2 (N_i shares the q root of N5)"
+      },
+      "spurious_factor_from_A2": "q-reduction multiplies by A2^k = (-1296)^k t^{6k} M^k; the M-power is nonzero on Q2 and is divided out",
+      "statement": "each N_i (i=4..0), after r=r0 and q^2-reduction through the quadratic, is linear in q: N_i -> ell_i*q + m_i"
+    },
+    "preserved_frontier": {
+      "all_cubic_polynomial_x_sections_excluded": true,
+      "all_rational_sections_excluded": false,
+      "closed_gates": [],
+      "doubled_charge_conditional_section_height_S_F": [
+        37,
+        192
+      ],
+      "exact_original_rank_computed": false,
+      "nonzero_original_section_constructed": false,
+      "original_MW_torsion_order": 1,
+      "original_coefficient_member_changed": false,
+      "original_free_rank_lower_bound": 0,
+      "original_free_rank_upper_bound": 11,
+      "same_action_parent_accepted": false,
+      "target_height_or_primitive_generator_constructed": false,
+      "unit_charge_conditional_section_height_S_F": [
+        148,
+        768
+      ]
+    },
+    "primary_sources": [
+      {
+        "url": "https://arxiv.org/pdf/0907.0298",
+        "use": "Schutt-Shioda: intersection-height and minimal-degree framework; Section14.2 warns that coefficient counting is a heuristic, not a no-solution proof. The Q2 leading-coefficient identity, q-elimination and resultant confinement are derived here."
+      },
+      {
+        "url": "https://www.jmilne.org/math/Books/EC2.pdf",
+        "use": "Short Weierstrass coordinates and rational group operations; no square-root extension or rescaling of the fixed Jacobian is used."
+      },
+      {
+        "url": "https://math.berkeley.edu/~bernd/cbms.pdf",
+        "use": "Sturmfels: Sylvester resultant and exact elimination; a fixed nonzero specialized determinant certifies only the named generic elimination."
+      }
+    ],
+    "q2_conclusion": {
+      "Q2_confined_to_proper_subvariety": "Res_h(R4core,C43core)=0 union the ell4=ell3=0 degeneracy",
+      "Q2_excluded": false,
+      "Q2_solved": false,
+      "R4_and_C43_are_both_necessary_on_Q2": true,
+      "degenerate_ell4_ell3_zero_locus_retained": true,
+      "h_resultant_nonzero_so_no_open_two_parameter_family": true,
+      "no_degree_bound_on_rational_functions_of_X_assumed": true
+    },
+    "schema": "v104_q2_core_reduction_v1",
+    "status": "EXACT_Q2_CORE_REDUCTION__LEADING_PAIR_RESULTANT_NONZERO__Q2_CONFINED_TO_PROPER_SUBVARIETY__NOT_SOLVED_NOT_EXCLUDED",
+    "terminal_decision": {
+      "Q1_chart_addressed": false,
+      "actual_nonzero_original_section_constructed": false,
+      "bounded_Q2_core_reduction_completed": true,
+      "closed_gates": [],
+      "original_exact_MW_rank_computed": false,
+      "same_action_microscopic_parent_accepted": false,
+      "target_height_systems_addressed": false,
+      "theory_complete": false
+    }
+  },
+  "schema": "susy_v104_q2_core_reduction_route_v1",
+  "scope": "Separate SUSY/C8 completion branch. Canonical V21 physical evidence and all historical routes are unchanged; exact mathematical audits are not experimental confirmation.",
+  "status": "V104_Q2_CORE_REDUCTION__LEADING_PAIR_RESULTANT_NONZERO__Q2_CONFINED_TO_PROPER_SUBVARIETY__ALL_BRANCH_GATES_OPEN",
+  "terminal_decision": {
+    "Q1_or_target_systems_solved": false,
+    "Q2_excluded": false,
+    "Q2_reduced_to_proper_subvariety": true,
+    "Q2_solved": false,
+    "bounded_F104_geometry_step_completed": true,
+    "closed_gates": [],
+    "covariant_action_repair_constructed": false,
+    "same_action_microscopic_parent_accepted": false,
+    "theory_complete": false
+  },
+  "version": "V104"
+}
