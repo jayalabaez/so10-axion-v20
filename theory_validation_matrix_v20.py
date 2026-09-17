@@ -44,6 +44,7 @@ ARTIFACTS = {
     "falsification": "FALSIFICATION_VERDICT.json",
     "extensive": "EXTENSIVE_CONFIRM_FALSIFY_VERDICT.json",
     "global_flavour": "GLOBAL_FLAVOUR_FIT_V20_VERDICT.json",
+    "general_flavour": "FLAVOUR_GENERAL_YUKAWA_V21_VERDICT.json",
     "open_gaps": "OPEN_GAPS_CLOSURE_V20_VERDICT.json",
     "vacuum": "UV_VACUUM_ALIGNMENT_V20_VERDICT.json",
     "rge": "YUKAWA_RGE_2LOOP_V20_VERDICT.json",
@@ -2040,38 +2041,65 @@ def _rge_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
 
 
 def _flavour_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
-    flavour = reports.get("global_flavour", {})
-    best = flavour.get("best_point", {})
-    viable = bool(best.get("viable_chi2_lt_30") or flavour.get("any_viable"))
-    chi2 = best.get("chi2")
-    common_scale = bool(
-        _dig(best, "rg_threshold_status", "common_scale_RG_inputs_applied")
+    # The v20 proxy (global_flavour) builds M_u = tan(beta) * M_d, so it
+    # predicts V_CKM = 1 and its CKM pulls act on nuisance parameters. It can
+    # never make this gate viable; only the general v21 sector can.
+    legacy = reports.get("global_flavour", {})
+    legacy_chi2 = legacy.get("best_point", {}).get("chi2")
+    general = reports.get("general_flavour", {})
+    flags = general.get("flag", {})
+    predictions = general.get("predictions", {})
+    viable = bool(
+        general
+        and general.get("n_failed") == 0
+        and flags.get("general_yukawa_sector_fits_all_fermion_observables_at_benchmark")
+        and flags.get("ckm_is_a_model_prediction_not_a_nuisance")
     )
-    two_loop_coupled = bool(
-        _dig(best, "rg_threshold_status", "two_loop_thresholds_coupled")
-    )
-    if viable and common_scale and two_loop_coupled:
+    common_scale = bool(flags.get("common_scale_RG_inputs_applied"))
+    two_loop_coupled = bool(flags.get("two_loop_thresholds_coupled"))
+    rhn_thresholds = bool(flags.get("right_handed_neutrino_thresholds_included_in_frozen_witnesses"))
+    if viable and common_scale and two_loop_coupled and rhn_thresholds:
         state = "PASS"
     elif viable:
         state = "CONDITIONAL"
-    elif flavour:
+    elif general:
+        # A general-sector report that finds no viable fit is a real failure.
         state = "FAIL"
     else:
+        # A legacy-only tree carries no valid flavour evidence either way.
         state = "OPEN"
     return _gate(
         "global_quark_lepton_neutrino_fit",
         state,
         (
-            "A viable low-scale proxy witness exists, including CKM and PMNS "
-            "observables, but it is not yet a full common-scale fit coupled to "
-            "the completed threshold/RGE system."
+            "The general minimal 10+126 sector fits up-quark masses, CKM and "
+            "PMNS at the axion benchmark with one-loop running and doublet vev "
+            "sum rules. The v20 proxy is withdrawn: it predicts V_CKM = 1. "
+            "Two-loop threshold coupling and right-handed-neutrino thresholds "
+            "remain open, and the fit is not unique."
         ),
         {
-            "viable_proxy_point": viable,
-            "best_chi2": chi2,
-            "best_chi2_finite": _finite(chi2),
+            "general_v21_witness_viable": viable,
+            "v20_proxy_valid": False,
+            "v20_proxy_predicts_identity_ckm": bool(
+                flags.get("v20_release_ansatz_predicts_identity_ckm")
+            ),
+            "v20_proxy_best_chi2_withdrawn": legacy_chi2,
+            "sum_mnu_window_eV": predictions.get("sum_mnu_window_eV"),
+            "sum_mnu_window_eV_threshold_aware": predictions.get(
+                "sum_mnu_window_eV_threshold_aware"
+            ),
+            "normal_ordering_required": predictions.get("normal_ordering_required"),
+            "seesaw_fine_tuning_required": bool(flags.get("seesaw_fine_tuning_required")),
+            "sum_mnu_prediction_survives_thresholds": bool(
+                flags.get("sum_mnu_prediction_survives_thresholds")
+            ),
             "common_scale_RG_inputs_applied": common_scale,
             "two_loop_thresholds_coupled": two_loop_coupled,
+            "right_handed_neutrino_thresholds_included_in_frozen_witnesses": rhn_thresholds,
+            "right_handed_neutrino_threshold_stability_checked": bool(
+                flags.get("right_handed_neutrino_threshold_stability_checked")
+            ),
         },
         "No acceptable simultaneous quark, charged-lepton, neutrino, CKM and PMNS fit exists.",
         (

@@ -5,7 +5,7 @@
   "decision": "WITHHOLD_APPROVAL",
   "full_theory_validated": false,
   "empirical_discovery": false,
-  "current_tree_unit_tests_discovered": 953,
+  "current_tree_unit_tests_discovered": 979,
   "n_gates": 11,
   "n_failed_gates": 0,
   "failed_gates": [],
@@ -352,13 +352,27 @@
     {
       "name": "global_quark_lepton_neutrino_fit",
       "state": "CONDITIONAL",
-      "summary": "A viable low-scale proxy witness exists, including CKM and PMNS observables, but it is not yet a full common-scale fit coupled to the completed threshold/RGE system.",
+      "summary": "The general minimal 10+126 sector fits up-quark masses, CKM and PMNS at the axion benchmark with one-loop running and doublet vev sum rules. The v20 proxy is withdrawn: it predicts V_CKM = 1. Two-loop threshold coupling and right-handed-neutrino thresholds remain open, and the fit is not unique.",
       "evidence": {
-        "viable_proxy_point": true,
-        "best_chi2": 4.954642447825638,
-        "best_chi2_finite": true,
-        "common_scale_RG_inputs_applied": false,
-        "two_loop_thresholds_coupled": false
+        "general_v21_witness_viable": true,
+        "v20_proxy_valid": false,
+        "v20_proxy_predicts_identity_ckm": true,
+        "v20_proxy_best_chi2_withdrawn": 4.954642447825638,
+        "sum_mnu_window_eV": [
+          0.06597666171012034,
+          0.06900020626107849
+        ],
+        "sum_mnu_window_eV_threshold_aware": [
+          0.06483381159996308,
+          0.07232680234314398
+        ],
+        "normal_ordering_required": true,
+        "seesaw_fine_tuning_required": true,
+        "sum_mnu_prediction_survives_thresholds": true,
+        "common_scale_RG_inputs_applied": true,
+        "two_loop_thresholds_coupled": false,
+        "right_handed_neutrino_thresholds_included_in_frozen_witnesses": false,
+        "right_handed_neutrino_threshold_stability_checked": true
       },
       "kill_condition": "No acceptable simultaneous quark, charged-lepton, neutrino, CKM and PMNS fit exists.",
       "green_condition": "A frozen common-scale fit predicts held-out observables and remains stable under complete two-loop running and threshold uncertainties.",
@@ -427,7 +441,7 @@
         "unit_test_attestation_present": false,
         "unit_tests_passed": false,
         "tests_discovered": null,
-        "current_tree_tests_discovered": 953,
+        "current_tree_tests_discovered": 979,
         "test_count_matches_current_tree": false,
         "attested_commit": null,
         "current_commit": "",

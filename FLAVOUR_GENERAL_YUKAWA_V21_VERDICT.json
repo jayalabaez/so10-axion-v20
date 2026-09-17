@@ -1,0 +1,668 @@
+{
+  "status": "FLAVOUR_GENERAL_YUKAWA_V21_PASS__BENCHMARK_CONSISTENT__NOT_UNIQUE",
+  "n_checks": 19,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "rg_quarks_within_2_percent_of_huang_zhou": true,
+    "rg_leptons_within_2_percent_of_huang_zhou": true,
+    "rg_gauge_within_1_percent_of_huang_zhou": true,
+    "v20_ansatz_predicted_M_u_is_diagonal": true,
+    "v20_ansatz_mass_ratio_identity_exact": true,
+    "v20_mismatch_metric_is_top_dominated": true,
+    "v20_global_ckm_pulls_pass_while_model_ckm_vanishes": 1.0,
+    "general_sector_fits_at_benchmark": true,
+    "general_sector_fits_with_all_yukawas_at_most_one": true,
+    "general_sector_fits_with_experimental_errors_only": true,
+    "benchmark_witnesses_satisfy_sum_rules": true,
+    "high_vR_1e14_violates_sum_rule_at_tan_beta_10": true,
+    "sum_mnu_window_has_both_edges": true,
+    "inverted_ordering_fails_real_data": true,
+    "seesaw_requires_large_cancellation": true,
+    "no_acceptable_fit_without_cancellation": true,
+    "threshold_refits_reproduce_the_sum_mnu_window": true,
+    "threshold_forced_edges_still_cost_chi2": true,
+    "inverted_ordering_still_fails_with_thresholds": true
+  },
+  "rg_validation": {
+    "reference": "Huang & Zhou, PRD 103, 016010 (2021), mu = 1e12 GeV",
+    "relative_deviation": {
+      "u": -0.0071155912290927935,
+      "c": -0.009653043387975511,
+      "t": -0.01593565292582754,
+      "d": -0.005417369265875431,
+      "s": -0.008289034116320614,
+      "b": -0.0021278062884999616,
+      "e": -0.00842736823055183,
+      "mu": -0.008421077775134343,
+      "tau": -0.008680852434545186,
+      "g2": -0.0030042987720872326,
+      "g3": -0.0004196541804370312,
+      "gp": -0.001972369164569583
+    },
+    "max_abs_quark_deviation": 0.01593565292582754,
+    "max_abs_lepton_deviation": 0.008680852434545186,
+    "max_abs_gauge_deviation": 0.0030042987720872326
+  },
+  "v20_structural_audit": {
+    "identity": "H + F = M_d / v_d  =>  M_u = tan(beta) * M_d  (matrix identity)",
+    "max_relative_offdiagonal_of_predicted_M_u": 0.0,
+    "max_relative_violation_of_mass_ratio_identity": 3.0742304524842778e-15,
+    "predicted_V_CKM": "identity",
+    "mismatch_metric_at_tan_beta_20": {
+      "total": 0.5158931680011912,
+      "top_entry_only": 0.5158815848940143
+    },
+    "global_flavour_fit_v20_ckm_pull_chi2_at_nuisance_match": 0.0,
+    "model_ckm_at_same_point": {
+      "V_us": 0.0,
+      "V_cb": 0.0,
+      "V_ub": 0.0
+    }
+  },
+  "witnesses": {
+    "benchmark": [
+      {
+        "label": "Ymax=1",
+        "tan_beta": 3.0,
+        "v_R": 631385500000.0,
+        "config": {
+          "y_max": 1.0
+        },
+        "chi2_fermion": 2.723223526860838e-20,
+        "chi2_nuisance": 2.389631239376484e-60,
+        "penalty": 0.0,
+        "chi2_total": 2.7232235268608385e-20,
+        "sum_mnu_eV": 0.06942540739492083,
+        "y126": 0.641060849486522,
+        "rho": 291.4659252829214,
+        "fine_tuning": 703.8279782218771,
+        "sum_rule_margin": 0.018172246020875128
+      },
+      {
+        "label": "Ymax=1",
+        "tan_beta": 10.0,
+        "v_R": 631385500000.0,
+        "config": {
+          "y_max": 1.0
+        },
+        "chi2_fermion": 8.804622361940343e-20,
+        "chi2_nuisance": 1.5308712504410968e-52,
+        "penalty": 0.0,
+        "chi2_total": 8.804622361940343e-20,
+        "sum_mnu_eV": 0.06882380498387095,
+        "y126": 0.47801330762885413,
+        "rho": 88.7275988029187,
+        "fine_tuning": 433.5486369673003,
+        "sum_rule_margin": 0.06921443463221447
+      },
+      {
+        "label": "Ymax=1",
+        "tan_beta": 25.0,
+        "v_R": 631385500000.0,
+        "config": {
+          "y_max": 1.0
+        },
+        "chi2_fermion": 0.006295389646126179,
+        "chi2_nuisance": 0.002860783776917939,
+        "penalty": 1.5734076024827217e-07,
+        "chi2_total": 0.009156330763804366,
+        "sum_mnu_eV": 0.06916283341924223,
+        "y126": 1.000003966620227,
+        "rho": 31.90752436161577,
+        "fine_tuning": 320.61667224369967,
+        "sum_rule_margin": 0.18058853155527596
+      },
+      {
+        "label": "Ymax=1",
+        "tan_beta": 45.0,
+        "v_R": 631385500000.0,
+        "config": {
+          "y_max": 1.0
+        },
+        "chi2_fermion": 0.0007628503511734228,
+        "chi2_nuisance": 0.004832144622425541,
+        "penalty": 1.704735128954335e-07,
+        "chi2_total": 0.00559516544711186,
+        "sum_mnu_eV": 0.06515812504918769,
+        "y126": 1.00000412884382,
+        "rho": 11.017180435508203,
+        "fine_tuning": 353.1688482158112,
+        "sum_rule_margin": 0.3552782495911431
+      },
+      {
+        "label": "strict-errors",
+        "tan_beta": 25.0,
+        "v_R": 631385500000.0,
+        "config": {
+          "floor": 0.0,
+          "s12_floor": 0.0
+        },
+        "chi2_fermion": 7.850354030613176e-21,
+        "chi2_nuisance": 0.20595187845783006,
+        "penalty": 0.0,
+        "chi2_total": 0.20595187845783008,
+        "sum_mnu_eV": 0.06550258306908571,
+        "y126": 1.2781394602889284,
+        "rho": 23.246937379635916,
+        "fine_tuning": 288.1115674938888,
+        "sum_rule_margin": 0.2771450429609594
+      },
+      {
+        "label": "strict+Ymax=1",
+        "tan_beta": 45.0,
+        "v_R": 631385500000.0,
+        "config": {
+          "y_max": 1.0,
+          "floor": 0.0,
+          "s12_floor": 0.0
+        },
+        "chi2_fermion": 0.0007908158010287078,
+        "chi2_nuisance": 0.005108280530787606,
+        "penalty": 1.8989212783683226e-07,
+        "chi2_total": 0.005899286223944151,
+        "sum_mnu_eV": 0.06515297848456132,
+        "y126": 1.0000043576613893,
+        "rho": 11.003456711495167,
+        "fine_tuning": 353.2850496377708,
+        "sum_rule_margin": 0.3552939431591462
+      },
+      {
+        "label": "v_R=1e13",
+        "tan_beta": 10.0,
+        "v_R": 10000000000000.0,
+        "config": {},
+        "chi2_fermion": 3.463474984585103e-20,
+        "chi2_nuisance": 5.464689575469473e-05,
+        "penalty": 0.0,
+        "chi2_total": 5.464689575469476e-05,
+        "sum_mnu_eV": 0.06900942168859148,
+        "y126": 0.03020883360817765,
+        "rho": 5.534016619721544,
+        "fine_tuning": 700.4490890008849,
+        "sum_rule_margin": 0.087450050131407
+      }
+    ],
+    "high_vR": {
+      "tan_beta": 10.0,
+      "v_R": 100000000000000.0,
+      "chi2_fermion": 0.4069477723857886,
+      "chi2_nuisance": 0.31668823093929876,
+      "penalty": 3.567464074735349,
+      "chi2_total": 4.2911000780604365,
+      "rho": 1.0000000335801107,
+      "sum_rule_margin": -0.018887731665648336
+    },
+    "sum_mnu_window": [
+      {
+        "target_eV": 0.059,
+        "sum_mnu_eV": 0.0608909077072303,
+        "chi2_fermion": 26.66117989640202,
+        "m_bb_eV": 0.000778893245502896,
+        "masses_eV": [
+          0.0023435942364908153,
+          0.008840220053767405,
+          0.04970709341697208
+        ],
+        "restarts_reaching_chi2_below_16": 0
+      },
+      {
+        "target_eV": 0.062,
+        "sum_mnu_eV": 0.06240227670628104,
+        "chi2_fermion": 4.684149582077291,
+        "m_bb_eV": 0.0006770783493580512,
+        "masses_eV": [
+          0.0031094364645977085,
+          0.00916631355859956,
+          0.05012652668308377
+        ],
+        "restarts_reaching_chi2_below_16": 7
+      },
+      {
+        "target_eV": 0.066,
+        "sum_mnu_eV": 0.06597666171012034,
+        "chi2_fermion": 0.011479753177875272,
+        "m_bb_eV": 0.0007919643208101541,
+        "masses_eV": [
+          0.0053682504043280265,
+          0.010186927548446939,
+          0.050421483757345384
+        ],
+        "restarts_reaching_chi2_below_16": 13
+      },
+      {
+        "target_eV": 0.069,
+        "sum_mnu_eV": 0.06900020626107849,
+        "chi2_fermion": 5.114824939681931e-06,
+        "m_bb_eV": 0.0007731219568681005,
+        "masses_eV": [
+          0.00714276433475504,
+          0.011221349188861963,
+          0.05063609273746149
+        ],
+        "restarts_reaching_chi2_below_16": 5
+      },
+      {
+        "target_eV": 0.075,
+        "sum_mnu_eV": 0.07416107134165317,
+        "chi2_fermion": 295.6170251884068,
+        "m_bb_eV": 0.0009871769302572935,
+        "masses_eV": [
+          0.009755648671977056,
+          0.013067068054763355,
+          0.051338354614912755
+        ],
+        "restarts_reaching_chi2_below_16": 0
+      },
+      {
+        "target_eV": 0.09,
+        "sum_mnu_eV": 0.08861614403797533,
+        "chi2_fermion": 641.7169859501626,
+        "m_bb_eV": 0.0013414216092260834,
+        "masses_eV": [
+          0.01658183420109134,
+          0.018729620940174416,
+          0.05330468889670957
+        ],
+        "restarts_reaching_chi2_below_16": 0
+      },
+      {
+        "target_eV": 0.11,
+        "sum_mnu_eV": 0.1061011237382792,
+        "chi2_fermion": 914.2854539072546,
+        "m_bb_eV": 0.0016472431676958046,
+        "masses_eV": [
+          0.023975195748526888,
+          0.025498670713590424,
+          0.056627257276161885
+        ],
+        "restarts_reaching_chi2_below_16": 0
+      }
+    ],
+    "inverted_ordering": [
+      {
+        "tan_beta": 3.0,
+        "v_R": 631385500000.0,
+        "chi2_fermion": 1324.0705473581072,
+        "restarts": 300,
+        "restarts_reaching_chi2_below_16": 0
+      },
+      {
+        "tan_beta": 10.0,
+        "v_R": 631385500000.0,
+        "chi2_fermion": 1295.675959884622,
+        "restarts": 200,
+        "restarts_reaching_chi2_below_16": 0
+      },
+      {
+        "tan_beta": 25.0,
+        "v_R": 631385500000.0,
+        "chi2_fermion": 1316.1656110396186,
+        "restarts": 200,
+        "restarts_reaching_chi2_below_16": 0
+      },
+      {
+        "tan_beta": 45.0,
+        "v_R": 631385500000.0,
+        "chi2_fermion": 1292.2607894013083,
+        "restarts": 300,
+        "restarts_reaching_chi2_below_16": 0
+      }
+    ]
+  },
+  "optimiser_closure": {
+    "normal_ordering": {
+      "description": "fit observables generated by a known random parameter point",
+      "restarts": 160,
+      "best_chi2": 1.0689427478212869e-10,
+      "fraction_chi2_below_1": 0.06875,
+      "fraction_chi2_below_0.01": 0.0625
+    },
+    "inverted_ordering": {
+      "description": "stage A: model produces IO spectra; stage B: recover a model-generated IO dataset",
+      "stage_a_restarts": 200,
+      "stage_a_fraction_io_spectrum_found": 0.925,
+      "restarts": 160,
+      "best_chi2": 0.0014556944374856378,
+      "fraction_chi2_below_1": 0.025
+    }
+  },
+  "threshold_study": {
+    "description": "One-loop right-handed-neutrino thresholds: full matrix running of Y_e, Y_nu, M_R and the Weinberg operator in the type-II 2HDM, integrating out each N_i at its mass.",
+    "validation": {
+      "reduces_to_baseline_when_all_N_integrated_out_at_M_I": 4.4e-07,
+      "null_test_zero_effect_when_type_I_part_forced_to_run_like_kappa": 1.5e-08
+    },
+    "fixed_parameter_shift": {
+      "note": "at the frozen tree-level witnesses the parameters are NOT refitted; the shift is large because the solutions are fine-tuned",
+      "sum_mnu_percent_change": [
+        44.2,
+        231.5,
+        283.8,
+        416.5
+      ],
+      "lam2_dependence_sum_mnu_eV": {
+        "tan_beta_10": {
+          "0.0": 0.1564,
+          "0.5": 0.2282,
+          "1.0": 0.2925
+        }
+      }
+    },
+    "refits": [
+      {
+        "tan_beta": 45.0,
+        "lam2": 1.0,
+        "chi2_fermion": 13000000.0,
+        "sum_mnu_eV": 259272299.57542962,
+        "tuning": 1.0000035336460917
+      },
+      {
+        "tan_beta": 25.0,
+        "lam2": 0.0,
+        "chi2_fermion": 0.048437291969571264,
+        "sum_mnu_eV": 0.0719583587647673,
+        "tuning": 137.2966537364612
+      },
+      {
+        "tan_beta": 3.0,
+        "lam2": 0.0,
+        "chi2_fermion": 1.572885774166213,
+        "sum_mnu_eV": 0.0682441058286466,
+        "tuning": 660.2782277120953
+      },
+      {
+        "tan_beta": 3.0,
+        "lam2": 0.5,
+        "chi2_fermion": 4.308302487580982,
+        "sum_mnu_eV": 0.06850365101925546,
+        "tuning": 385.1521091099144
+      },
+      {
+        "tan_beta": 3.0,
+        "lam2": 1.0,
+        "chi2_fermion": 10.718253925687828,
+        "sum_mnu_eV": 0.06559572285026728,
+        "tuning": 581.296728537552
+      },
+      {
+        "tan_beta": 25.0,
+        "lam2": 1.0,
+        "chi2_fermion": 0.9781799604423271,
+        "sum_mnu_eV": 0.06483381159996308,
+        "tuning": 53.8143291241729
+      },
+      {
+        "tan_beta": 25.0,
+        "lam2": 0.5,
+        "chi2_fermion": 0.1698938931232597,
+        "sum_mnu_eV": 0.06505904326872736,
+        "tuning": 78.61654206270636
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.5,
+        "chi2_fermion": 0.0001290791012590822,
+        "sum_mnu_eV": 0.06868232612623079,
+        "tuning": 74.37916528432197
+      },
+      {
+        "tan_beta": 45.0,
+        "lam2": 0.0,
+        "chi2_fermion": 0.03800825402889238,
+        "sum_mnu_eV": 0.06600961594768207,
+        "tuning": 117.23448731232456
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.0,
+        "chi2_fermion": 9.722677086686792e-05,
+        "sum_mnu_eV": 0.06886580416292563,
+        "tuning": 119.86026263252245
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 1.0,
+        "chi2_fermion": 3.1925200011681913,
+        "sum_mnu_eV": 0.07232680234314398,
+        "tuning": 54.48907639883215
+      },
+      {
+        "tan_beta": 45.0,
+        "lam2": 0.5,
+        "chi2_fermion": 0.8748172664638036,
+        "sum_mnu_eV": 0.06615960101607415,
+        "tuning": 69.29678837620196
+      }
+    ],
+    "forced_edges": [
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.5,
+        "force_eV": 0.082,
+        "chi2_fermion": 149.15469433201864,
+        "sum_mnu_eV": 0.07732789913263152
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.5,
+        "force_eV": 0.061,
+        "chi2_fermion": 25.008774473057837,
+        "sum_mnu_eV": 0.06289607431045255
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.5,
+        "force_eV": 0.058,
+        "chi2_fermion": 52.543946049349266,
+        "sum_mnu_eV": 0.06164298356106492
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.5,
+        "force_eV": 0.076,
+        "chi2_fermion": 28.56855553583557,
+        "sum_mnu_eV": 0.07378121866269231
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.0,
+        "force_eV": 0.058,
+        "chi2_fermion": 53.750072831905754,
+        "sum_mnu_eV": 0.06136032031778504
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.0,
+        "force_eV": 0.061,
+        "chi2_fermion": 28.88976764876518,
+        "sum_mnu_eV": 0.06270989510796131
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.0,
+        "force_eV": 0.076,
+        "chi2_fermion": 31.389162372041945,
+        "sum_mnu_eV": 0.07369784990095256
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.0,
+        "force_eV": 0.082,
+        "chi2_fermion": 144.5323494144077,
+        "sum_mnu_eV": 0.07755955232878341
+      }
+    ],
+    "inverted_ordering_refits": [
+      {
+        "tan_beta": 25.0,
+        "lam2": 0.5,
+        "chi2_fermion": 1314.4495851545066,
+        "tuning": 2.523213878559439
+      },
+      {
+        "tan_beta": 45.0,
+        "lam2": 0.5,
+        "chi2_fermion": 1285.4712984825242,
+        "tuning": 2.6070926790004525
+      },
+      {
+        "tan_beta": 10.0,
+        "lam2": 0.5,
+        "chi2_fermion": 1285.7808325503245,
+        "tuning": 2.523340880163862
+      },
+      {
+        "tan_beta": 3.0,
+        "lam2": 0.5,
+        "chi2_fermion": 1325.1937274614918,
+        "tuning": 2.6022810091021853
+      }
+    ],
+    "natural_search": [
+      {
+        "T0": 3.0,
+        "tan_beta": 3.0,
+        "chi2_fermion": 211.93875079951422,
+        "tuning": 4.47781132871599,
+        "hits_below_16": 0
+      },
+      {
+        "T0": 3.0,
+        "tan_beta": 10.0,
+        "chi2_fermion": 209.07648116968403,
+        "tuning": 4.534241444348068,
+        "hits_below_16": 0
+      },
+      {
+        "T0": 3.0,
+        "tan_beta": 25.0,
+        "chi2_fermion": 209.89324304748212,
+        "tuning": 4.481429833572396,
+        "hits_below_16": 0
+      },
+      {
+        "T0": 3.0,
+        "tan_beta": 45.0,
+        "chi2_fermion": 210.28101991359597,
+        "tuning": 4.480520381574337,
+        "hits_below_16": 0
+      },
+      {
+        "T0": 10.0,
+        "tan_beta": 3.0,
+        "chi2_fermion": 135.41335438701546,
+        "tuning": 14.622448626633355,
+        "hits_below_16": 0
+      },
+      {
+        "T0": 10.0,
+        "tan_beta": 10.0,
+        "chi2_fermion": 138.03461196718743,
+        "tuning": 14.755059280596402,
+        "hits_below_16": 0
+      },
+      {
+        "T0": 10.0,
+        "tan_beta": 25.0,
+        "chi2_fermion": 141.7326882841184,
+        "tuning": 14.374637982415255,
+        "hits_below_16": 0
+      },
+      {
+        "T0": 10.0,
+        "tan_beta": 45.0,
+        "chi2_fermion": 140.40138394870334,
+        "tuning": 14.650592770376418,
+        "hits_below_16": 0
+      }
+    ]
+  },
+  "fine_tuning": {
+    "measure": "sum of |seesaw contributions| / |m_nu| at M_I; 1 means no cancellation",
+    "at_benchmark_witnesses": [
+      703.8279782218771,
+      433.5486369673003,
+      320.61667224369967,
+      353.1688482158112,
+      288.1115674938888,
+      353.2850496377708
+    ],
+    "after_threshold_refit": [
+      137.2966537364612,
+      660.2782277120953,
+      385.1521091099144,
+      581.296728537552,
+      53.8143291241729,
+      78.61654206270636,
+      74.37916528432197,
+      117.23448731232456,
+      119.86026263252245,
+      54.48907639883215,
+      69.29678837620196
+    ],
+    "best_chi2_fermion_when_cancellation_is_capped": {
+      "3.0": 210.28101991359597,
+      "10.0": 140.40138394870334
+    }
+  },
+  "predictions": {
+    "sum_mnu_window_eV": [
+      0.06597666171012034,
+      0.06900020626107849
+    ],
+    "sum_mnu_window_eV_threshold_aware": [
+      0.06483381159996308,
+      0.07232680234314398
+    ],
+    "sum_mnu_excluded_below_eV": 0.06240227670628104,
+    "sum_mnu_excluded_above_eV": 0.07416107134165317,
+    "m_bb_eV_range": [
+      0.0007731219568681005,
+      0.0007919643208101541
+    ],
+    "normal_ordering_required": true,
+    "inverted_ordering_best_chi2_fermion": 1292.2607894013083,
+    "inverted_ordering_tan_beta_strata": [
+      3.0,
+      10.0,
+      25.0,
+      45.0
+    ],
+    "inverted_ordering_closure_success_rate": 0.025,
+    "inverted_ordering_miss_probability_worst_stratum": 0.006322999386970518,
+    "inverted_ordering_miss_probability_all_strata": 1.01068471686212e-11
+  },
+  "flag": {
+    "v20_release_ansatz_predicts_identity_ckm": true,
+    "v20_global_fit_ckm_pulls_are_circular": 1.0,
+    "v20_flavour_witness_valid": false,
+    "general_yukawa_sector_fits_all_fermion_observables_at_benchmark": true,
+    "ckm_is_a_model_prediction_not_a_nuisance": true,
+    "common_scale_RG_inputs_applied": true,
+    "two_loop_thresholds_coupled": false,
+    "right_handed_neutrino_thresholds_included_in_frozen_witnesses": false,
+    "right_handed_neutrino_thresholds_applied_in_stability_study": true,
+    "right_handed_neutrino_threshold_stability_checked": true,
+    "sum_mnu_prediction_survives_thresholds": true,
+    "seesaw_fine_tuning_required": true,
+    "heavy_higgs_thresholds_included": false,
+    "relative_ckm_pmns_cp_sign_tested": false,
+    "unique_fit": false,
+    "global_minimum_proved": false,
+    "whole_model_validated": false
+  },
+  "parameter_count": {
+    "physical_parameters": 14,
+    "nuisance_parameters": 3,
+    "fitted_fermion_observables": 13,
+    "degrees_of_freedom": -1,
+    "error_model": "diagonal; input correlations (Huang & Zhou Tables 7-8) are not used",
+    "note": "negative dof: exact fits are expected; consistency, not confirmation"
+  },
+  "references": {
+    "running_masses": "G.-y. Huang and S. Zhou, Phys. Rev. D 103, 016010 (2021)",
+    "neutrino_oscillations": "NuFIT 6.0, I. Esteban et al., JHEP 12 (2024) 216, arXiv:2410.05380",
+    "ckm": "PDG 2024 Wolfenstein fit"
+  }
+}
