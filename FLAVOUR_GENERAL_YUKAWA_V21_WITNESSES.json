@@ -883,5 +883,54 @@
         "hits_below_16": 0
       }
     ]
+  },
+  "downstream_impact": {
+    "description": "re-running channel_fcnc_rates_v20 with the corrected basis (flavour_v21_generation/downstream_impact.py)",
+    "mu_to_e_a_branching_ratio": {
+      "aligned_limit": {
+        "v20": 5.1158e-38,
+        "v21": 9.0724e-39,
+        "ratio": 0.177
+      },
+      "hierarchical_benchmark": {
+        "v20": 2.835e-32,
+        "v21": 1.5953e-30,
+        "ratio": 56.3
+      },
+      "generation_dependent_counterexample": {
+        "v20": 1.9517e-07,
+        "v21": 4.166e-08,
+        "ratio": 0.213
+      }
+    },
+    "K_to_pi_a_unchanged": true,
+    "K_to_pi_a_note": "M_d is diagonal in both, so the down rotations are trivial",
+    "fcnc_verdict_flips": false,
+    "tan_beta_spread_of_v21_rates": {
+      "aligned_limit": [
+        1.0439e-38,
+        9.0724e-39,
+        2.1988e-38,
+        3.605e-38
+      ],
+      "hierarchical_benchmark": [
+        2.1189e-30,
+        1.5953e-30,
+        2.3738e-30,
+        1.7733e-30
+      ],
+      "generation_dependent_counterexample": [
+        3.8972e-08,
+        4.166e-08,
+        2.5783e-08,
+        1.8811e-08
+      ],
+      "tan_beta": [
+        3.0,
+        10.0,
+        25.0,
+        45.0
+      ]
+    }
   }
 }

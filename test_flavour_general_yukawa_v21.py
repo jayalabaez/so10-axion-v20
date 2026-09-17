@@ -174,6 +174,36 @@ class DownstreamContaminationTests(unittest.TestCase):
         self.assertTrue(report["checks"]["tan_beta_not_determined_by_fermion_data"])
 
 
+class CorrectedDownstreamBasisTests(unittest.TestCase):
+    """A drop-in replacement basis exists, and it restores the Cabibbo angle."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.cmp = general.downstream_basis_comparison()
+
+    def test_v21_basis_has_the_same_keys_as_the_v20_one(self):
+        import physical_cf_matching_v20 as physical
+        v21 = general.flavour_v21_bases(10.0)
+        for key in physical.flavour_mass_bases():
+            if key != "fit_note":
+                self.assertIn(key, v21)
+
+    def test_v20_basis_has_no_cabibbo_angle(self):
+        self.assertLess(self.cmp["v20_nuisance_basis"]["V_cd"], 0.01)
+
+    def test_v21_basis_reproduces_the_cabibbo_angle_at_every_tan_beta(self):
+        measured = self.cmp["measured"]["V_cd"]
+        for mixing in self.cmp["v21_predicted_basis"].values():
+            self.assertAlmostEqual(mixing["V_cd"], measured, delta=0.05 * measured)
+
+    def test_the_correction_changes_downstream_rates(self):
+        report = general.build_report()
+        impact = report["downstream_basis_fix"]["measured_impact"]
+        self.assertGreater(max(d["ratio"] for d in impact["mu_to_e_a_branching_ratio"].values()), 10.0)
+        self.assertFalse(impact["fcnc_verdict_flips"])
+        self.assertFalse(report["flag"]["downstream_modules_rewired"])
+
+
 class ValidationMatrixFlavourGateTests(unittest.TestCase):
     """The matrix must never credit the v20 proxy with a viable flavour fit."""
 

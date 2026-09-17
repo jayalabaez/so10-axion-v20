@@ -1,7 +1,7 @@
 # General minimal SO(10) 10+126 Yukawa sector - v21
 
 **Status:** `FLAVOUR_GENERAL_YUKAWA_V21_PASS__BENCHMARK_CONSISTENT__NOT_UNIQUE`  
-**Checks:** 19/19 passed
+**Checks:** 24/24 passed
 
 ## v20 structural audit
 

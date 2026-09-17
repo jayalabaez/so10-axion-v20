@@ -1,6 +1,6 @@
 {
   "status": "FLAVOUR_GENERAL_YUKAWA_V21_PASS__BENCHMARK_CONSISTENT__NOT_UNIQUE",
-  "n_checks": 19,
+  "n_checks": 24,
   "n_failed": 0,
   "failures": [],
   "checks": {
@@ -22,7 +22,12 @@
     "no_acceptable_fit_without_cancellation": true,
     "threshold_refits_reproduce_the_sum_mnu_window": true,
     "threshold_forced_edges_still_cost_chi2": true,
-    "inverted_ordering_still_fails_with_thresholds": true
+    "inverted_ordering_still_fails_with_thresholds": true,
+    "v20_downstream_mixing_is_a_nuisance_artifact": true,
+    "v20_basis_misses_the_cabibbo_angle": true,
+    "v21_basis_reproduces_the_cabibbo_angle": true,
+    "corrected_basis_changes_downstream_fcnc_rates": true,
+    "tan_beta_not_determined_by_fermion_data": true
   },
   "rg_validation": {
     "reference": "Huang & Zhou, PRD 103, 016010 (2021), mu = 1e12 GeV",
@@ -325,6 +330,122 @@
       "restarts": 160,
       "best_chi2": 0.0014556944374856378,
       "fraction_chi2_below_1": 0.025
+    }
+  },
+  "v20_downstream_contamination": {
+    "consumers": [
+      "push_phenomenology_limits_v20.py",
+      "channel_fcnc_rates_v20.py",
+      "common_scale_so10_yukawa_v20.py",
+      "pati_salam_yukawa_matching_v20.py",
+      "physical_cf_matching_v20.py",
+      "sarah_pyrate_so10_210_betas_v20.py",
+      "two_loop_matrix_flavour_rg_ps_v20.py",
+      "two_loop_so10_210_yukawa_v20.py",
+      "yukawa_rge_2loop_v20.py"
+    ],
+    "downstream_quark_mixing": {
+      "V_us": 0.020540456000652012,
+      "V_cb": 0.00020215806441741874,
+      "V_ub": 0.008552820778098087
+    },
+    "model_predicted_quark_mixing": {
+      "V_us": 0.0,
+      "V_cb": 0.0,
+      "V_ub": 0.0
+    },
+    "measured_quark_mixing": {
+      "V_us": 0.22501,
+      "V_cb": 0.04182,
+      "V_ub": 0.00369
+    },
+    "downstream_tan_beta": 40.573104969427675,
+    "downstream_v_R_GeV": 100000000000000.0,
+    "note": "the downstream basis matches neither the prediction nor the data; every coefficient fixed with it has to be recomputed"
+  },
+  "downstream_basis_fix": {
+    "ordering": "SVD descending; entries are |V_ts|, |V_cd|, |V_td|",
+    "measured": {
+      "V_ts": 0.0413,
+      "V_cd": 0.22452,
+      "V_td": 0.00857
+    },
+    "v20_nuisance_basis": {
+      "V_ts": 0.020540456000652012,
+      "V_cd": 0.00020215806441741874,
+      "V_td": 0.008552820778098087
+    },
+    "v21_predicted_basis": {
+      "3.0": {
+        "V_ts": 0.03961876559656448,
+        "V_cd": 0.22488611145953163,
+        "V_td": 0.008269905857387804
+      },
+      "10.0": {
+        "V_ts": 0.03977087686881677,
+        "V_cd": 0.2248851561609229,
+        "V_td": 0.00830170896138066
+      },
+      "25.0": {
+        "V_ts": 0.038954959685465494,
+        "V_cd": 0.22476144972347598,
+        "V_td": 0.010949029723775983
+      },
+      "45.0": {
+        "V_ts": 0.03846225262617067,
+        "V_cd": 0.22477258970980674,
+        "V_td": 0.010823883653238152
+      }
+    },
+    "note": "the v20 basis carries no Cabibbo angle (|V_cd| = 2e-4 against 0.2245); the v21 prediction reproduces it for every tan(beta)",
+    "measured_impact": {
+      "description": "re-running channel_fcnc_rates_v20 with the corrected basis (flavour_v21_generation/downstream_impact.py)",
+      "mu_to_e_a_branching_ratio": {
+        "aligned_limit": {
+          "v20": 5.1158e-38,
+          "v21": 9.0724e-39,
+          "ratio": 0.177
+        },
+        "hierarchical_benchmark": {
+          "v20": 2.835e-32,
+          "v21": 1.5953e-30,
+          "ratio": 56.3
+        },
+        "generation_dependent_counterexample": {
+          "v20": 1.9517e-07,
+          "v21": 4.166e-08,
+          "ratio": 0.213
+        }
+      },
+      "K_to_pi_a_unchanged": true,
+      "K_to_pi_a_note": "M_d is diagonal in both, so the down rotations are trivial",
+      "fcnc_verdict_flips": false,
+      "tan_beta_spread_of_v21_rates": {
+        "aligned_limit": [
+          1.0439e-38,
+          9.0724e-39,
+          2.1988e-38,
+          3.605e-38
+        ],
+        "hierarchical_benchmark": [
+          2.1189e-30,
+          1.5953e-30,
+          2.3738e-30,
+          1.7733e-30
+        ],
+        "generation_dependent_counterexample": [
+          3.8972e-08,
+          4.166e-08,
+          2.5783e-08,
+          1.8811e-08
+        ],
+        "tan_beta": [
+          3.0,
+          10.0,
+          25.0,
+          45.0
+        ]
+      }
     }
   },
   "threshold_study": {
@@ -637,6 +758,10 @@
     "v20_release_ansatz_predicts_identity_ckm": true,
     "v20_global_fit_ckm_pulls_are_circular": 1.0,
     "v20_flavour_witness_valid": false,
+    "v20_downstream_flavour_basis_contaminated": true,
+    "tan_beta_fixed_by_fermion_data": false,
+    "corrected_downstream_basis_available": true,
+    "downstream_modules_rewired": false,
     "general_yukawa_sector_fits_all_fermion_observables_at_benchmark": true,
     "ckm_is_a_model_prediction_not_a_nuisance": true,
     "common_scale_RG_inputs_applied": true,

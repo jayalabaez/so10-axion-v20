@@ -396,6 +396,65 @@ def v20_downstream_contamination() -> dict[str, Any]:
     }
 
 
+def flavour_v21_bases(tan_beta: float = 10.0) -> dict[str, Any]:
+    """Drop-in replacement for the contaminated v20 downstream flavour basis.
+
+    Same keys as ``physical_cf_matching_v20.flavour_mass_bases`` and
+    ``push_phenomenology_limits_v20.flavour_sector_bases``, but the quark
+    rotations come from the PREDICTED ``M_u`` instead of the nuisance-rotated
+    target. ``H`` and ``F`` are divided by ``v_d`` to match the v20 convention.
+    """
+    witnesses = json.loads(WITNESSES.read_text(encoding="utf-8"))
+    entry = [w for w in witnesses["benchmark_fits"]
+             if w["tan_beta"] == tan_beta and w["label"] == "Ymax=1"][0]
+    st = Stratum(tan_beta, entry["v_R"], **entry.get("config", {}))
+    p = np.asarray(entry["x"])
+    b = st.build(p)
+    _s_nu, u_nu = _takagi(b["mnu"])
+    _s_e, u_e = _takagi(b["me"])
+    u_u, s_u, vh_u = np.linalg.svd(np.asarray(b["mu"], dtype=complex), full_matrices=True)
+    u_d, s_d, vh_d = np.linalg.svd(np.asarray(b["md"], dtype=complex), full_matrices=True)
+    chi2 = st.chi2_parts(p)["chi2_fermion"]
+    return {
+        "tan_beta": float(tan_beta), "v_r_GeV": float(entry["v_R"]), "chi2": float(chi2),
+        "U_e": u_e, "U_nu": u_nu, "U_uL": u_u, "U_uR": vh_u.conj().T,
+        "U_dL": u_d, "U_dR": vh_d.conj().T,
+        "H": np.asarray(b["H"]) / st.vd, "F": np.asarray(b["F"]) / st.vd,
+        "v_u": st.vu, "v_d": st.vd,
+        "m_u": [float(x) for x in s_u], "m_d": [float(x) for x in s_d],
+        "natural_scale_viable": bool(chi2 < 30.0),
+        "fit_note": "v21 general Yukawa witness; quark rotations from the predicted M_u.",
+    }
+
+
+def _mixing_in_svd_order(bases: dict[str, Any]) -> dict[str, float]:
+    """|U_uL^dag U_dL| in the descending-mass ordering these bases use.
+
+    Row/column 0 is the third generation, so the entries are |V_ts|, |V_cd|,
+    |V_td| (measured 0.0413, 0.2245, 0.0086).
+    """
+    v = np.asarray(bases["U_uL"]).conj().T @ np.asarray(bases["U_dL"])
+    return {"V_ts": float(abs(v[0, 1])), "V_cd": float(abs(v[1, 2])), "V_td": float(abs(v[0, 2]))}
+
+
+def downstream_basis_comparison() -> dict[str, Any]:
+    """What the nine consumers get now, versus the corrected basis."""
+    report = flavour.run_fit()
+    best = report["best_overall"]
+    data = flavour.build_matrices(np.asarray(best["params"], dtype=float), best["v_r_GeV"])
+    v20 = {"U_uL": np.linalg.svd(np.asarray(data["M_u_target"], dtype=complex))[0],
+           "U_dL": np.linalg.svd(np.asarray(data["M_d"], dtype=complex))[0]}
+    return {
+        "ordering": "SVD descending; entries are |V_ts|, |V_cd|, |V_td|",
+        "measured": {"V_ts": 0.0413, "V_cd": 0.22452, "V_td": 0.00857},
+        "v20_nuisance_basis": _mixing_in_svd_order(v20),
+        "v21_predicted_basis": {str(tb): _mixing_in_svd_order(flavour_v21_bases(tb))
+                                for tb in (3.0, 10.0, 25.0, 45.0)},
+        "note": ("the v20 basis carries no Cabibbo angle (|V_cd| = 2e-4 against 0.2245); "
+                 "the v21 prediction reproduces it for every tan(beta)"),
+    }
+
+
 def fine_tuning(st: Stratum, p: np.ndarray) -> tuple[float, list[float]]:
     """Cancellation measure: sum of |seesaw contributions| over |m_nu|.
 
@@ -464,6 +523,8 @@ def build_report() -> dict[str, Any]:
     audit = v20_release_ansatz_audit()
     wit = revalidate_witnesses(witnesses)
     contamination = v20_downstream_contamination()
+    basis_fix = downstream_basis_comparison()
+    impact = witnesses.get("downstream_impact", {})
     closure = witnesses.get("optimiser_closure", {})
 
     at_benchmark = [w for w in wit["benchmark"] if abs(w["v_R"] - BENCHMARK_VR) / BENCHMARK_VR < 1e-6]
@@ -522,6 +583,12 @@ def build_report() -> dict[str, Any]:
             max(contamination["model_predicted_quark_mixing"].values()) < 1e-12
             and abs(contamination["downstream_quark_mixing"]["V_us"]
                     - contamination["measured_quark_mixing"]["V_us"]) > 0.05),
+        "v20_basis_misses_the_cabibbo_angle": basis_fix["v20_nuisance_basis"]["V_cd"] < 0.01,
+        "v21_basis_reproduces_the_cabibbo_angle": all(
+            abs(m["V_cd"] - basis_fix["measured"]["V_cd"]) / basis_fix["measured"]["V_cd"] < 0.05
+            for m in basis_fix["v21_predicted_basis"].values()),
+        "corrected_basis_changes_downstream_fcnc_rates": bool(impact) and max(
+            d["ratio"] for d in impact["mu_to_e_a_branching_ratio"].values()) > 10.0,
         "tan_beta_not_determined_by_fermion_data": (
             max(w["tan_beta"] for w in good) / min(w["tan_beta"] for w in good) > 5.0
             if good else False),
@@ -539,6 +606,7 @@ def build_report() -> dict[str, Any]:
         "witnesses": wit,
         "optimiser_closure": closure,
         "v20_downstream_contamination": contamination,
+        "downstream_basis_fix": {**basis_fix, "measured_impact": impact},
         "threshold_study": study,
         "fine_tuning": {
             "measure": "sum of |seesaw contributions| / |m_nu| at M_I; 1 means no cancellation",
@@ -567,6 +635,8 @@ def build_report() -> dict[str, Any]:
             "v20_flavour_witness_valid": False,
             "v20_downstream_flavour_basis_contaminated": True,
             "tan_beta_fixed_by_fermion_data": False,
+            "corrected_downstream_basis_available": True,
+            "downstream_modules_rewired": False,
             "general_yukawa_sector_fits_all_fermion_observables_at_benchmark":
                 checks["general_sector_fits_at_benchmark"],
             "ckm_is_a_model_prediction_not_a_nuisance": True,
