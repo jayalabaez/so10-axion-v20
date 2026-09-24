@@ -3,13 +3,9 @@
     "conditional_benchmark": false,
     "empirical_realization": false,
     "full_approval_blockers": [
-      "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-      "G1_NOT_CLOSED",
-      "G2_NOT_CLOSED",
       "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
       "G3_NOT_CLOSED",
       "G4_NOT_CLOSED",
-      "G5_NOT_CLOSED",
       "G6_NOT_CLOSED",
       "G7_NOT_CLOSED",
       "G8_NOT_CLOSED",
@@ -29,29 +25,25 @@
   },
   "authoritative_gate_classification": {
     "all_g1_g8_closed": false,
-    "authoritative_model_contract_consistent": false,
+    "authoritative_model_contract_consistent": true,
     "empirical_discovery": false,
     "exact_unique_proton_lifetime": false,
     "proton_decay_observed": false,
-    "tool_native_bound_model_evidence_complete": false,
+    "tool_native_bound_model_evidence_complete": true,
     "whole_model_excluded": false,
     "whole_model_validated": false
   },
-  "classification": "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+  "classification": "AUTHORITATIVE_GATES_OPEN",
   "conditional_benchmark_approved": false,
-  "current_tree_unit_tests": 964,
+  "current_tree_unit_tests": 958,
   "decision": "WITHHOLD_APPROVAL",
   "empirical_realization_approved": false,
   "errors": [],
   "failures": [],
   "full_approval_blockers": [
-    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-    "G1_NOT_CLOSED",
-    "G2_NOT_CLOSED",
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
     "G3_NOT_CLOSED",
     "G4_NOT_CLOSED",
-    "G5_NOT_CLOSED",
     "G6_NOT_CLOSED",
     "G7_NOT_CLOSED",
     "G8_NOT_CLOSED",
@@ -110,17 +102,13 @@
   "integrity_pass": true,
   "internal_candidate_approved": false,
   "model_contract_id": "gauged_u1x_phi17_v20",
-  "model_contract_ready": false,
+  "model_contract_ready": true,
   "n_failed": 0,
-  "overall_state": "BLOCKED",
+  "overall_state": "OPEN",
   "scientific_blockers": [
-    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-    "G1_NOT_CLOSED",
-    "G2_NOT_CLOSED",
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
     "G3_NOT_CLOSED",
     "G4_NOT_CLOSED",
-    "G5_NOT_CLOSED",
     "G6_NOT_CLOSED",
     "G7_NOT_CLOSED",
     "G8_NOT_CLOSED",
@@ -144,11 +132,11 @@
     "authoritative": {
       "classification": {
         "all_g1_g8_closed": false,
-        "authoritative_model_contract_consistent": false,
+        "authoritative_model_contract_consistent": true,
         "empirical_discovery": false,
         "exact_unique_proton_lifetime": false,
         "proton_decay_observed": false,
-        "tool_native_bound_model_evidence_complete": false,
+        "tool_native_bound_model_evidence_complete": true,
         "whole_model_excluded": false,
         "whole_model_validated": false
       },
@@ -159,12 +147,12 @@
       "status": "AUTHORITATIVE_FULL_MODEL_GATE_EXECUTED"
     },
     "g1_g8": {
-      "contract_consistent": false,
+      "contract_consistent": true,
       "model_contract_id": "gauged_u1x_phi17_v20",
       "n_checks": 39,
       "n_failed": 0,
-      "overall_state": "BLOCKED",
-      "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED"
+      "overall_state": "OPEN",
+      "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G5_CLOSED__G3_GLOBAL_OPEN"
     },
     "gauged_contract": {
       "implementation_matches_manuscript": true,
@@ -175,41 +163,36 @@
       "status": "GAUGED_U1X_SCALAR_CONTRACT_IDENTIFIED__G2_G3_REAUDIT_OPEN"
     },
     "x_contract": {
-      "contract_consistent": false,
-      "external_validation_schema": null,
-      "external_validation_valid": false,
+      "contract_consistent": true,
+      "external_validation_schema": "so10-exact-x-external-model-validation-v2",
+      "external_validation_valid": true,
       "model_syntax_class": "sarah_native",
       "n_checks": 25,
       "n_failed": 0,
-      "overall_state": "BLOCKED",
-      "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED",
+      "overall_state": "PASS",
+      "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__CONSISTENT",
       "tool_native_sarah_syntax": true
     }
   },
-  "status": "ULTIMATE_GATE_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED",
+  "status": "ULTIMATE_GATE_AUDIT_COMPLETE__APPROVAL_OPEN",
   "validation_matrix_contract_gate": {
     "evidence": {
       "audit_executes": true,
       "audit_present": true,
-      "blockers": [
-        "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
-      ],
-      "conflicts": [
-        "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
-        "external_attestation_lacks_hash_bound_manifest_or_process_log"
-      ],
-      "contract_consistent": false,
+      "blockers": [],
+      "conflicts": [],
+      "contract_consistent": true,
       "desired_contract_executes": true,
       "desired_contract_present": true,
       "implementation_matches_manuscript": true,
       "model_syntax_class": "sarah_native",
-      "tool_native_bound_external_evidence": false
+      "tool_native_bound_external_evidence": true
     },
     "green_condition": "The TeX definition, tool-native gauge sector, exact-X scalar census, and derivative/quotient calculations carry one matching contract ID, and v2 evidence binds the model, manifest, driver, and process log.",
     "kill_condition": "The implemented symmetry contract differs from the theory being claimed.",
     "mandatory_for_full_validation": true,
     "name": "authoritative_model_contract",
-    "state": "BLOCKED",
+    "state": "PASS",
     "summary": "The manuscript gauges U(1)_X. The scalar census and every tool-native executable model must implement that same contract, with manifest/log-bound external evidence, before any G1-G8 result can validate the manuscript."
   },
   "verdict": "WITHHOLD APPROVAL. The audit has no execution failure, but the statically consistent, tool-native gauged-U(1)_X model has no v2 manifest/log-bound external SARAH execution evidence. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.",

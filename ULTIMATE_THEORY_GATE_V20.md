@@ -1,8 +1,8 @@
 # Ultimate theory gate - v20
 
-**Status:** `ULTIMATE_GATE_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED`
-**Overall state:** `BLOCKED`
-**Classification:** `MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED`
+**Status:** `ULTIMATE_GATE_AUDIT_COMPLETE__APPROVAL_OPEN`
+**Overall state:** `OPEN`
+**Classification:** `AUTHORITATIVE_GATES_OPEN`
 **Decision:** `WITHHOLD_APPROVAL`
 
 WITHHOLD APPROVAL. The audit has no execution failure, but the statically consistent, tool-native gauged-U(1)_X model has no v2 manifest/log-bound external SARAH execution evidence. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.
@@ -17,13 +17,9 @@ WITHHOLD APPROVAL. The audit has no execution failure, but the statically consis
 
 ## Scientific blockers
 
-- `AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED`
-- `G1_NOT_CLOSED`
-- `G2_NOT_CLOSED`
 - `G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN`
 - `G3_NOT_CLOSED`
 - `G4_NOT_CLOSED`
-- `G5_NOT_CLOSED`
 - `G6_NOT_CLOSED`
 - `G7_NOT_CLOSED`
 - `G8_NOT_CLOSED`

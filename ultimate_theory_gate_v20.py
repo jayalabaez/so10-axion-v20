@@ -149,8 +149,9 @@ def exit_code(
     require_full_approval: bool = False,
     expect_blocked: bool = False,
     expect_full_block: bool = False,
+    expect_open: bool = False,
 ) -> int:
-    """Return zero for an honest BLOCKED audit, nonzero for strict approval."""
+    """Return zero for an honest BLOCKED/OPEN audit, nonzero for strict approval."""
     if report.get("n_failed", 1) != 0 or not report.get(
         "integrity_pass", False
     ):
@@ -167,6 +168,8 @@ def exit_code(
         return 4
     if expect_full_block and report.get("full_phenomenology_approved", False):
         return 5
+    if expect_open and report.get("overall_state") != "OPEN":
+        return 6
     return 0
 
 
@@ -179,6 +182,11 @@ def main(argv: list[str] | None = None) -> int:
         "--expect-full-block",
         action="store_true",
         help="compatibility mode: fail only if full approval is unexpectedly true",
+    )
+    parser.add_argument(
+        "--expect-open",
+        action="store_true",
+        help="fail unless the honest state is OPEN (contract consistent, gates open)",
     )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args(argv)
@@ -209,6 +217,7 @@ def main(argv: list[str] | None = None) -> int:
         require_full_approval=args.require_full_approval,
         expect_blocked=args.expect_blocked,
         expect_full_block=args.expect_full_block,
+        expect_open=args.expect_open,
     )
 
 

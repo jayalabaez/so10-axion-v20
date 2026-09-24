@@ -2540,6 +2540,14 @@ def main() -> int:
         action="store_true",
         help="fail unless the current scientific state is honestly BLOCKED",
     )
+    parser.add_argument(
+        "--expect-open",
+        action="store_true",
+        help=(
+            "fail unless the current scientific state is honestly OPEN: "
+            "attested contract, open gates, no full validation"
+        ),
+    )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args()
 
@@ -2577,6 +2585,12 @@ def main() -> int:
         )
     if args.expect_blocked:
         ok = ok and report["overall_state"] == "BLOCKED"
+    if args.expect_open:
+        ok = (
+            ok
+            and report["overall_state"] == "OPEN"
+            and not report["full_theory_validated"]
+        )
     return 0 if ok else 1
 
 

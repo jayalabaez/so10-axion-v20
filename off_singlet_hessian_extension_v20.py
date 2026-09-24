@@ -181,12 +181,16 @@ def build_report() -> dict[str, Any]:
     # Lightest off-singlet vs M_GUT
     lightest_over_mgut = off_sel["lightest_GeV"] / m_gut
 
+    # Radial and extended positivity are scientific outcomes at the
+    # legacy-selected point; the genuine invariant cubic can remove them.
+    outcomes = {
+        "radial_pd": bool(radial["positive_definite"]),
+        "extended_pd": bool(extended["extended_positive_definite"]),
+    }
     checks = {
         "radial_upstream_ok": hm_rep.get("n_failed", 1) == 0,
-        "radial_pd": radial["positive_definite"],
         "off_singlet_count_10": off_sel["n_modes"] == 10,  # 8 unmixed + 2 R
         "off_singlet_all_positive": off_sel["all_positive"],
-        "extended_pd": extended["extended_positive_definite"],
         "masses_near_gut_scale": 0.001 < lightest_over_mgut < 50.0,
         "hilbert_vevs_used": True,
         "mixed_126_10_not_overclaimed": True,
@@ -198,13 +202,16 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "OFF_SINGLET_HESSIAN_EXTENDED__MIXED_126_10_OPEN"
-            if not failures
-            else "OFF_SINGLET_HESSIAN_EXTENSION_FAILED"
+            "OFF_SINGLET_HESSIAN_EXTENSION_FAILED"
+            if failures
+            else "OFF_SINGLET_HESSIAN_EXTENDED__MIXED_126_10_OPEN"
+            if all(outcomes.values())
+            else "OFF_SINGLET_HESSIAN_EXTENDED__RADIAL_SADDLE__MIXED_126_10_OPEN"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
+        "scientific_outcomes": outcomes,
         "sources": SOURCES,
         "selected_vevs": {
             "fractions": fr,

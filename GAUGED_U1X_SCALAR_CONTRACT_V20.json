@@ -98,7 +98,7 @@
     "scaffold_gauge_rows": [
       {
         "index": 1,
-        "raw_rhs": "{G10, SO[10], SOGUT, g10, False}",
+        "raw_rhs": "{G10, SO[10], SOGUT, g10, False, 1}",
         "group_symbol": "G10",
         "group_type": "SO[10]",
         "group_name": "SOGUT",
@@ -108,22 +108,32 @@
         "is_u1": false,
         "is_named_X": false,
         "is_u1x": false,
+        "sarah_group_name_length_ok": true,
+        "global_charge_entries": [
+          "1"
+        ],
+        "gauge_multiplet_globals_neutral": true,
         "syntax": "sarah_native",
         "structurally_valid": true,
         "tool_native_structurally_valid": true
       },
       {
         "index": 2,
-        "raw_rhs": "{GX, U[1], X, gX, False}",
+        "raw_rhs": "{GX, U[1], Xcharge, gX, False, 1}",
         "group_symbol": "GX",
         "group_type": "U[1]",
-        "group_name": "X",
+        "group_name": "Xcharge",
         "is_so10": false,
         "is_native_so10": false,
         "is_legacy_so10": false,
         "is_u1": true,
         "is_named_X": true,
         "is_u1x": true,
+        "sarah_group_name_length_ok": true,
+        "global_charge_entries": [
+          "1"
+        ],
+        "gauge_multiplet_globals_neutral": true,
         "syntax": "sarah_native",
         "structurally_valid": true,
         "tool_native_structurally_valid": true

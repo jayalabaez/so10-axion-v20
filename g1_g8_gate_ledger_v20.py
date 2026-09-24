@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Contract-aware, fail-closed G1-G8 ledger for the v20 candidate.
 
-The manuscript's gauged U(1)_X contract is authoritative.  The repository now
+The manuscript's gauged U(1)_X contract is authoritative.  The repository
 contains a statically consistent, tool-native SARAH input for that gauge
-contract, but no current external SARAH execution attestation is available.
-Consequently no whole-theory gate may yet be reported closed.  The former
+contract.  A gate may be reported closed only while a current, hash-bound
+external SARAH execution attestation binds that exact model, driver and
+process log; without one every whole-theory gate is BLOCKED.  The former
 64-direction/91-parameter G1/G2 calculations and
 their 449-dimensional G3 quotient remain valuable, but only as explicitly
 scoped historical Option-C subtheorems.

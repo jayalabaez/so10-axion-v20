@@ -37,15 +37,17 @@ class G1G8GateLedgerTests(unittest.TestCase):
     def setUpClass(cls):
         cls.report = mod.build_report()
 
-    def test_audit_succeeds_while_science_is_blocked(self):
+    def test_audit_succeeds_with_attested_contract_and_g3_open(self):
         self.assertEqual(self.report["n_failed"], 0, self.report["audit_failures"])
         self.assertEqual(
             self.report["status"],
-            "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED",
+            "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
+            "G1_G2_G5_CLOSED__G3_GLOBAL_OPEN",
         )
-        self.assertEqual(self.report["overall_state"], mod.STATUS_BLOCKED)
-        self.assertFalse(self.report["contract_consistent"])
-        self.assertIn(mod.CONTRACT_BLOCKER, self.report["scientific_blockers"])
+        self.assertEqual(self.report["overall_state"], mod.STATUS_OPEN)
+        self.assertTrue(self.report["contract_consistent"])
+        self.assertTrue(self.report["contract_evidence_complete"])
+        self.assertNotIn(mod.CONTRACT_BLOCKER, self.report["scientific_blockers"])
         self.assertIn(
             "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
             self.report["scientific_blockers"],
@@ -141,8 +143,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
         ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
-        self.assertFalse(x_report["contract_consistent"])
-        self.assertEqual(x_report["blocker"], mod.CONTRACT_BLOCKER)
+        self.assertTrue(x_report["contract_consistent"])
+        self.assertIsNone(x_report["blocker"])
         self.assertEqual(g1_report["model_contract_id"], mod.AUTHORITATIVE_CONTRACT_ID)
         self.assertEqual(g1_report["counts"]["hermitian_conjugacy_orbits"], 28)
         self.assertEqual(g1_report["counts"]["total_potential_orbit_multiplicity"], 44)
@@ -629,7 +631,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed"
             ]
         )
-        self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_OPEN)
         self.assertEqual(
             self.report["gates"]["G3"]["constructive_frontier_evidence"],
             frontier,
@@ -656,17 +658,30 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertFalse(scoped["G2"]["G3_closed"])
         for gate_name in ("G1", "G2"):
             gate = self.report["gates"][gate_name]
-            self.assertEqual(gate["status"], mod.STATUS_BLOCKED)
+            self.assertEqual(gate["status"], mod.STATUS_CLOSED)
             self.assertTrue(gate["scoped_calculation_complete"])
 
-    def test_every_authoritative_gate_is_blocked_and_none_is_closed(self):
+    def test_attested_contract_closes_g1_g2_g5_and_leaves_g3_open(self):
         gates = self.report["gates"]
         self.assertEqual(set(gates), {f"G{i}" for i in range(1, 9)})
-        self.assertTrue(all(row["status"] == mod.STATUS_BLOCKED for row in gates.values()))
-        self.assertEqual(self.report["summary"]["closed"], [])
-        self.assertEqual(self.report["summary"]["blocked"], list(gates))
-        self.assertEqual(self.report["summary"]["n_closed"], 0)
-        self.assertEqual(self.report["summary"]["n_blocked"], 8)
+        self.assertEqual(
+            {name: row["status"] for name, row in gates.items()},
+            {
+                "G1": mod.STATUS_CLOSED,
+                "G2": mod.STATUS_CLOSED,
+                "G3": mod.STATUS_OPEN,
+                "G4": mod.STATUS_BLOCKED,
+                "G5": mod.STATUS_CLOSED,
+                "G6": mod.STATUS_BLOCKED,
+                "G7": mod.STATUS_BLOCKED,
+                "G8": mod.STATUS_BLOCKED,
+            },
+        )
+        self.assertEqual(self.report["summary"]["closed"], ["G1", "G2", "G5"])
+        self.assertEqual(self.report["summary"]["open"], ["G3"])
+        self.assertEqual(self.report["summary"]["blocked"], ["G4", "G6", "G7", "G8"])
+        self.assertEqual(self.report["summary"]["n_closed"], 3)
+        self.assertEqual(self.report["summary"]["n_blocked"], 4)
 
     def test_wave_zero_model_contract_precedes_g1(self):
         self.assertTrue(mod._acyclic_dependencies())
@@ -675,7 +690,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         wave0 = self.report["closure_waves"][0]
         self.assertEqual(wave0["wave"], 0)
         self.assertEqual(wave0["id"], "MODEL_CONTRACT")
-        self.assertEqual(wave0["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(wave0["status"], mod.STATUS_CLOSED)
 
     def test_historical_g1_g2_results_are_preserved_but_scoped(self):
         historical = self.report["historical_option_c_subtheorems"]
@@ -708,7 +723,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
     def test_no_whole_model_validation_or_exclusion_claim(self):
         feasibility = self.report["feasibility"]
-        self.assertEqual(feasibility["current_authoritative_closed_gates"], 0)
+        self.assertEqual(feasibility["current_authoritative_closed_gates"], 3)
         self.assertFalse(feasibility["guarantee_model_survives_recertification"])
         self.assertTrue(
             feasibility["gauged_G1_scalar_census_scoped_subtheorem_complete"]
@@ -771,7 +786,12 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
     def test_unbound_boolean_cannot_promote_model_contract(self):
         inputs = self.report["model_contract_reports"]
-        forged = copy.deepcopy(inputs["exact_X"])
+        # Start from the shipped model audited without its SARAH attestation.
+        forged = copy.deepcopy(
+            mod.exact_x.build_report(
+                model_text=mod.exact_x.MODEL.read_text(encoding="utf-8")
+            )
+        )
         forged.update(
             contract_consistent=True,
             blocker=None,

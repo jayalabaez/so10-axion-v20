@@ -29,14 +29,11 @@ For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds exactly on t
 
 ## Release criteria
 
-- `authoritative_external_model_contract_executed`: `False`
-- `G1_promoted_closed`: `False`
-- `G2_promoted_closed`: `False`
+- `authoritative_external_model_contract_executed`: `True`
+- `G1_promoted_closed`: `True`
+- `G2_promoted_closed`: `True`
 
 ## Blockers
 
 - `all_PD_equality_orbits_classified_exactly`
 - `beta_global_gap_and_unique_equality_exact`
-- `authoritative_external_model_contract_executed`
-- `G1_promoted_closed`
-- `G2_promoted_closed`

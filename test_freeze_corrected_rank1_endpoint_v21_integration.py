@@ -181,12 +181,12 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 replicate.write_text(baseline_replicate, encoding="utf-8")
                 classification_needle = (
                     '            "theory_validation_matrix_v20.py",\n'
-                    '            "--expect-blocked",\n'
+                    '            "--expect-open",\n'
                     '            "--no-write",'
                 )
                 classification_replacement = (
                     '            "theory_validation_matrix_v20.py",\n'
-                    '            "--expect-blocked",'
+                    '            "--expect-open",'
                 )
                 self.assertIn(classification_needle, baseline_replicate)
                 replicate.write_text(

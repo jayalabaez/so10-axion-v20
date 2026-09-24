@@ -586,7 +586,7 @@ def main() -> int:
         [
             sys.executable,
             "theory_validation_matrix_v20.py",
-            "--expect-blocked",
+            "--expect-open",
             "--no-write",
         ]
     )
@@ -594,7 +594,7 @@ def main() -> int:
         [
             sys.executable,
             "theory_confirmation_verdict_v20.py",
-            "--expect-blocked",
+            "--expect-open",
             "--no-write",
         ]
     )
@@ -602,7 +602,7 @@ def main() -> int:
         [
             sys.executable,
             "ultimate_theory_gate_v20.py",
-            "--expect-blocked",
+            "--expect-open",
             "--no-write",
         ]
     )
@@ -791,11 +791,10 @@ def main() -> int:
     )
     require(contract["n_failed"] == 0, "authoritative X-contract audit failed")
     require(
-        not contract["contract_consistent"]
+        contract["contract_consistent"] is True
         and contract["static_contract_consistent"] is True
-        and contract["blocker"]
-        == "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-        "exact-X external-execution blocker was misclassified",
+        and contract["blocker"] is None,
+        "exact-X contract is not consistent with bound SARAH evidence",
     )
     root_scaffold = contract["executable_scaffold_contract"]
     root_external = contract["external_model_validation"]
@@ -814,17 +813,18 @@ def main() -> int:
         "native SARAH static contract failed",
     )
     require(
-        root_external["valid"] is False
+        root_external["valid"] is True
+        and root_external["fresh_for_exact_model_bytes"] is True
         and root_external["checks"]["captured_process_log_is_hash_bound"]
-        is False
+        is True
         and contract["repository_external_input_manifest"]["valid"] is True,
         "external model evidence or repository input manifest was misclassified",
     )
     require(
         model_scaffold_audit["n_failed"] == 0
-        and model_scaffold_audit["overall_state"] == "BLOCKED"
+        and model_scaffold_audit["overall_state"] == "PASS"
         and model_scaffold_audit["status"]
-        == "SARAH_NATIVE_STATIC_CONTRACT__EXTERNAL_VALIDATION_BLOCKED"
+        == "SARAH_NATIVE_MODEL_EXTERNALLY_VALIDATED"
         and model_scaffold_audit["flag"]["sarah_model_tool_native"] is True
         and model_scaffold_audit["flag"][
             "sarah_static_contract_consistent"
@@ -832,11 +832,11 @@ def main() -> int:
         is True
         and model_scaffold_audit["flag"]["pyrate_model_tool_native"] is False
         and model_scaffold_audit["flag"]["charge_locks_encoded"] is True
-        and model_scaffold_audit["flag"]["external_validation_v2_valid"] is False
+        and model_scaffold_audit["flag"]["external_validation_v2_valid"] is True
         and model_scaffold_audit["flag"][
             "live_sarah_or_pyrate_executable_run"
         ]
-        is False,
+        is True,
         "native SARAH static/external execution boundary changed",
     )
     require(
@@ -1712,16 +1712,16 @@ def main() -> int:
         "corrected G3 common-kernel evidence changed scope",
     )
     require(
-        matrix["overall_state"] == "BLOCKED"
+        matrix["overall_state"] == "OPEN"
         and not matrix["full_theory_validated"],
-        "external model-execution blocker was promoted past the validation matrix",
+        "validation matrix promoted the open theory past its gates",
     )
     require(
-        ultimate["overall_state"] == "BLOCKED"
+        ultimate["overall_state"] == "OPEN"
         and not ultimate["internal_candidate_approved"]
         and not ultimate["full_phenomenology_approved"]
         and not ultimate["whole_model_excluded"],
-        "ultimate gate promoted or excluded the externally unattested model",
+        "ultimate gate approved or excluded the open model",
     )
 
     suite = unittest.defaultTestLoader.discover(str(ROOT))
@@ -2005,7 +2005,7 @@ def main() -> int:
     write_checksums(core)
     print(
         f"RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
-        f"tests {n_tests}/{n_tests}; clean 14-page PDF; scientific state BLOCKED"
+        f"tests {n_tests}/{n_tests}; clean 14-page PDF; scientific state OPEN"
     )
     return 0
 

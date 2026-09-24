@@ -393,6 +393,7 @@ def exit_code(
     require_internal_approval: bool = False,
     require_full_approval: bool = False,
     expect_blocked: bool = False,
+    expect_open: bool = False,
 ) -> int:
     if verdict.get("n_failed", 1) != 0:
         return 1
@@ -406,6 +407,8 @@ def exit_code(
         return 3
     if expect_blocked and verdict.get("overall_state") != "BLOCKED":
         return 4
+    if expect_open and verdict.get("overall_state") != "OPEN":
+        return 5
     return 0
 
 
@@ -414,6 +417,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--require-internal-approval", action="store_true")
     parser.add_argument("--require-full-approval", action="store_true")
     parser.add_argument("--expect-blocked", action="store_true")
+    parser.add_argument(
+        "--expect-open",
+        action="store_true",
+        help="fail unless the honest state is OPEN (contract consistent, gates open)",
+    )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args(argv)
 
@@ -442,6 +450,7 @@ def main(argv: list[str] | None = None) -> int:
         require_internal_approval=args.require_internal_approval,
         require_full_approval=args.require_full_approval,
         expect_blocked=args.expect_blocked,
+        expect_open=args.expect_open,
     )
 
 

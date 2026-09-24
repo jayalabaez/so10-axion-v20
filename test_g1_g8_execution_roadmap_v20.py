@@ -33,15 +33,19 @@ def bind_tool_native_root_evidence(report):
         external["checks"][name] = True
 
 
-def test_roadmap_audit_succeeds_but_science_is_blocked():
+def test_roadmap_audit_succeeds_with_attested_contract_and_g3_open():
     report = mod.build_report()
     assert report["status"] == (
-        "G1_G8_EXECUTION_ROADMAP_READY__WAVE0_MODEL_CONTRACT_BLOCKED"
+        "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G5_CLOSED__G3_GLOBAL_OPEN"
     )
-    assert report["overall_state"] == "BLOCKED"
+    assert report["overall_state"] == "OPEN"
     assert report["n_failed"] == 0, report["audit_failures"]
-    assert report["contract_consistent"] is False
+    assert report["contract_consistent"] is True
     assert report["scientific_blockers"]
+    assert (
+        "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN"
+        in report["scientific_blockers"]
+    )
 
 
 def test_wave_zero_is_first_on_the_critical_path():
@@ -60,21 +64,28 @@ def test_wave_zero_is_first_on_the_critical_path():
     assert report["dependencies"]["G1"] == ["MODEL_CONTRACT"]
     wave0 = next(task for task in report["tasks"] if task["id"] == "W0-MODEL-CONTRACT")
     assert wave0["wave"] == 0
-    assert (
-        wave0["status"]
-        == "BLOCKED__EXTERNAL_SARAH_EXECUTION_ATTESTATION_MISSING"
-    )
+    assert wave0["status"] == "CLOSED"
     assert wave0["gates"] == []
 
 
-def test_all_gates_are_blocked_and_closed_summary_is_empty():
+def test_attested_contract_closes_g1_g2_g5_and_leaves_g3_open():
     report = mod.build_report()
     gates = report["gates"]
     assert set(gates) == {f"G{i}" for i in range(1, 9)}
-    assert all(row["status"] == "BLOCKED" for row in gates.values())
-    assert report["summary"]["closed"] == []
-    assert report["summary"]["n_closed"] == 0
-    assert report["summary"]["n_blocked"] == 8
+    assert {name: row["status"] for name, row in gates.items()} == {
+        "G1": "CLOSED",
+        "G2": "CLOSED",
+        "G3": "OPEN",
+        "G4": "BLOCKED",
+        "G5": "CLOSED",
+        "G6": "BLOCKED",
+        "G7": "BLOCKED",
+        "G8": "BLOCKED",
+    }
+    assert report["summary"]["closed"] == ["G1", "G2", "G5"]
+    assert report["summary"]["open"] == ["G3"]
+    assert report["summary"]["n_closed"] == 3
+    assert report["summary"]["n_blocked"] == 4
 
 
 def test_every_gate_has_an_actionable_recertification_task():
@@ -85,7 +96,7 @@ def test_every_gate_has_an_actionable_recertification_task():
     assert all(task["acceptance"] for task in report["tasks"])
 
 
-def test_gauged_g1_g2_calculations_are_complete_and_await_promotion_only():
+def test_gauged_g1_g2_calculations_are_complete_and_promoted():
     report = mod.build_report()
     scoped = report["gauged_u1x_scalar_subtheorems"]
     assert scoped["G1"]["invariant_directions"] == 44
@@ -103,9 +114,9 @@ def test_gauged_g1_g2_calculations_are_complete_and_await_promotion_only():
         "W2-G2-GAUGED-PROJECTION",
     ):
         task = next(item for item in report["tasks"] if item["id"] == task_id)
-        assert task["status"].startswith("SCOPED_CALCULATION_COMPLETE")
-    assert report["gates"]["G1"]["status"] == "BLOCKED"
-    assert report["gates"]["G2"]["status"] == "BLOCKED"
+        assert task["status"] == "CLOSED"
+    assert report["gates"]["G1"]["status"] == "CLOSED"
+    assert report["gates"]["G2"]["status"] == "CLOSED"
 
 
 def test_historical_option_c_subtheorems_remain_visible():

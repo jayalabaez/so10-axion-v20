@@ -117,7 +117,7 @@ jobs:
           python final_g3_acceptance_gate_v20.py --write
           python g1_g8_execution_roadmap_v20.py --write
           python authoritative_full_model_gate_v20.py
-          python theory_validation_matrix_v20.py --expect-blocked
+          python theory_validation_matrix_v20.py --expect-open
       - name: Focused tests
         run: |
           python -m unittest -v \
@@ -287,13 +287,14 @@ jobs:
           assert k['overall_state']=='BLOCKED' and k['n_open']==8, k
           assert not e['flags']['whole_model_validated'], e
           assert not e['flags']['whole_model_excluded'], e
-          assert xc['n_failed']==0 and not xc['contract_consistent'], xc
+          assert xc['n_failed']==0 and xc['contract_consistent'], xc
           assert xc['static_contract_consistent'] is True, xc
-          assert xc['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED', xc
+          assert xc['blocker'] is None, xc
           assert xc['executable_scaffold_contract']['model_syntax_class']=='sarah_native', xc
           assert xc['executable_scaffold_contract']['tool_native_sarah_syntax'], xc
-          assert not xc['external_model_validation']['valid'], xc
-          assert not xc['external_model_validation']['checks']['captured_process_log_is_hash_bound'], xc
+          assert xc['external_model_validation']['valid'], xc
+          assert xc['external_model_validation']['fresh_for_exact_model_bytes'], xc
+          assert xc['external_model_validation']['checks']['captured_process_log_is_hash_bound'], xc
           assert xc['repository_external_input_manifest']['valid'], xc
           assert er['certified'] and er['rank']==13 and er['nullity']==38, er
           assert eq['certified'] and eq['live_compiler_binding']['compiler_binding_passes'], eq
@@ -554,9 +555,9 @@ jobs:
           assert ck['flags']['exact_H6_radial_flat_direction_refuted'], ck
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['rank']==448, ck
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['nullity']==0, ck
-          assert gl['summary']['closed']==[] and gl['summary']['n_blocked']==8, gl
+          assert gl['summary']['closed']==['G1','G2','G5'] and gl['summary']['open']==['G3'] and gl['summary']['n_blocked']==4, gl
           assert not fm['classification']['whole_model_validated'], fm
-          assert vm['overall_state']=='BLOCKED' and not vm['full_theory_validated'], vm
+          assert vm['overall_state']=='OPEN' and not vm['full_theory_validated'], vm
           PY
       - uses: actions/upload-artifact@v4
         if: always()

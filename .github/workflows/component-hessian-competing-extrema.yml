@@ -28,11 +28,11 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('COMPONENT_HESSIAN_COMPETING_EXTREMA_V20_VERDICT.json'))
-          assert r['status']=='COMPONENT_HESSIAN_COMPETING_EXTREMA_MAPPED__OFF_SINGLET_OPEN'
+          assert r['status']=='COMPONENT_HESSIAN_MAPPED__SELECTED_HILBERT_SLICE_SADDLE__OFF_SINGLET_OPEN'
           assert r['n_failed']==0
-          assert r['selected']['hilbert_3x3']['positive_definite']
+          assert not r['selected']['hilbert_3x3']['positive_definite']
           assert r['flag']['full_component_hessian_and_competing_extrema_mapped']
-          assert r['flag']['selected_hilbert_slice_locally_stable']
+          assert r['flag']['selected_legacy_vacuum_is_invariant_potential_saddle']
           assert r['flag']['selected_unique_among_catalogue_soft_mpd']
           assert not r['flag']['full_sm_irrep_mass_matrices']
           assert not r['flag']['live_sarah_or_pyrate_executable_run']

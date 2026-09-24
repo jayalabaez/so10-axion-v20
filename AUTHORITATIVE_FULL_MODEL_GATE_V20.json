@@ -18,12 +18,8 @@
   },
   "hard_theory_failures": [],
   "blockers": [
-    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-    "G1_NOT_CLOSED",
-    "G2_NOT_CLOSED",
     "G3_NOT_CLOSED",
     "G4_NOT_CLOSED",
-    "G5_NOT_CLOSED",
     "G6_NOT_CLOSED",
     "G7_NOT_CLOSED",
     "G8_NOT_CLOSED",
@@ -38,36 +34,35 @@
   ],
   "model_contract_id": "gauged_u1x_phi17_v20",
   "model_contract": {
-    "declared_consistent": false,
-    "tool_native_bound_evidence_complete": false,
-    "consistent": false,
-    "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED",
-    "overall_state": "BLOCKED",
-    "conflicts": [
-      "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
-      "external_attestation_lacks_hash_bound_manifest_or_process_log"
-    ]
+    "declared_consistent": true,
+    "tool_native_bound_evidence_complete": true,
+    "consistent": true,
+    "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__CONSISTENT",
+    "overall_state": "PASS",
+    "conflicts": []
   },
   "g1_g8_summary": {
-    "closed": [],
-    "partial": [],
-    "open": [],
-    "blocked": [
+    "closed": [
       "G1",
       "G2",
-      "G3",
+      "G5"
+    ],
+    "partial": [],
+    "open": [
+      "G3"
+    ],
+    "blocked": [
       "G4",
-      "G5",
       "G6",
       "G7",
       "G8"
     ],
-    "n_closed": 0,
+    "n_closed": 3,
     "n_partial": 0,
-    "n_open": 0,
-    "n_blocked": 8
+    "n_open": 1,
+    "n_blocked": 4
   },
-  "g1_g8_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED",
+  "g1_g8_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G5_CLOSED__G3_GLOBAL_OPEN",
   "proton_status": "PROTON_DECAY_FALSIFICATION_GATE_PASS__NO_UNIQUE_MODEL_PREDICTION",
   "proton_classification": {
     "proton_decay_observed": false,
@@ -94,8 +89,8 @@
   },
   "classification": {
     "all_g1_g8_closed": false,
-    "authoritative_model_contract_consistent": false,
-    "tool_native_bound_model_evidence_complete": false,
+    "authoritative_model_contract_consistent": true,
+    "tool_native_bound_model_evidence_complete": true,
     "exact_unique_proton_lifetime": false,
     "proton_decay_observed": false,
     "whole_model_validated": false,
@@ -107,10 +102,10 @@
     "legacy_ultimate_gate_authoritative": false,
     "internal_candidate_approval_is_not_full_model_validation": true,
     "conditional_benchmarks_are_not_discovery": true,
-    "authoritative_model_contract_consistent": false,
-    "tool_native_bound_model_evidence_complete": false,
+    "authoritative_model_contract_consistent": true,
+    "tool_native_bound_model_evidence_complete": true,
     "whole_model_validated": false,
     "whole_model_excluded": false
   },
-  "verdict": "The repository remains BLOCKED at full-model scope. The manuscript's gauged U(1)_X contract is implemented by a statically consistent, tool-native SARAH input and hash-bound validation bundle, but it has no valid v2 manifest/log-bound external execution attestation, so no downstream Option-C calculation is authoritative. The historical ultimate-gate internal-candidate approval is retained only as context; it cannot validate the model. Full approval requires every G1-G8 gate to close and the proton lifetime to be derived from the same physical vacuum and spectrum."
+  "verdict": "The repository remains BLOCKED at full-model scope. The repaired gauged U(1)_X contract promotes G1 and G2, but G3-G8 and the unique proton-lifetime derivation are not closed. Historical Option-C calculations remain context only and cannot validate or exclude the gauged model."
 }

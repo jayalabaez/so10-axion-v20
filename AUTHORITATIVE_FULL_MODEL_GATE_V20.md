@@ -2,13 +2,13 @@
 
 **Overall state:** `BLOCKED`
 
-The repository remains BLOCKED at full-model scope. The manuscript's gauged U(1)_X contract is implemented by a statically consistent, tool-native SARAH input and hash-bound validation bundle, but it has no valid v2 manifest/log-bound external execution attestation, so no downstream Option-C calculation is authoritative. The historical ultimate-gate internal-candidate approval is retained only as context; it cannot validate the model. Full approval requires every G1-G8 gate to close and the proton lifetime to be derived from the same physical vacuum and spectrum.
+The repository remains BLOCKED at full-model scope. The repaired gauged U(1)_X contract promotes G1 and G2, but G3-G8 and the unique proton-lifetime derivation are not closed. Historical Option-C calculations remain context only and cannot validate or exclude the gauged model.
 
 ## Classification
 
 - `all_g1_g8_closed`: False
-- `authoritative_model_contract_consistent`: False
-- `tool_native_bound_model_evidence_complete`: False
+- `authoritative_model_contract_consistent`: True
+- `tool_native_bound_model_evidence_complete`: True
 - `exact_unique_proton_lifetime`: False
 - `proton_decay_observed`: False
 - `whole_model_validated`: False
@@ -17,12 +17,8 @@ The repository remains BLOCKED at full-model scope. The manuscript's gauged U(1)
 
 ## Blockers
 
-- `AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED`
-- `G1_NOT_CLOSED`
-- `G2_NOT_CLOSED`
 - `G3_NOT_CLOSED`
 - `G4_NOT_CLOSED`
-- `G5_NOT_CLOSED`
 - `G6_NOT_CLOSED`
 - `G7_NOT_CLOSED`
 - `G8_NOT_CLOSED`

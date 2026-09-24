@@ -147,13 +147,33 @@ the model.
 
 ## Current root/G3 result (fail-closed)
 
-The TeX manuscript gauges a primitive `U(1)_X`. The model file is now native
-non-supersymmetric SARAH syntax, includes that gauge factor, and passes the
+The TeX manuscript gauges a primitive `U(1)_X`. The model file is native
+non-supersymmetric SARAH syntax (`Z[17]` charges as SARAH phases
+`Exp[2 Pi I q/17]`, a global-charge entry on every gauge row, and a
+three-character `U(1)` name), includes that gauge factor, and passes the
 repository's static catalogue, charge, Lagrangian, filter, and manifest checks.
-No local Mathematica/SARAH installation is available, so the required external
-run and hash-bound process-log attestation are still absent. The repository
-therefore reports the authoritative G1-G8 release chain as **BLOCKED**, not
-closed or falsified.
+A real SARAH 4.15.3 run under Wolfram Engine 15.0 constructs the complete
+19-term model Lagrangian and passes all five external checks (parse,
+initialization, Lagrangian construction, gauge invariance, anomalies);
+`models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json` binds its process log to
+the exact model, driver, and input manifest. The driver replaces six SARAH
+4.15.3 defects for SO(N) models with exact routines built on SARAH's own
+Susyno engine, re-checks every registered term independently, and fails on
+negative controls (a non-invariant `210.10^dag.10` term, a broken anomaly).
+The model contract is therefore CONSISTENT and the ledger promotes G1, G2, and
+G5 to CLOSED. G3 is OPEN and G4 and G6-G8 remain dependency-blocked; the whole
+model is neither validated nor excluded.
+
+To reproduce the attestation (the runner writes it only after a real,
+zero-exit SARAH process emits every PASS marker):
+
+```bash
+python -B run_exact_x_sarah_validation_v20.py --preflight-only
+python -B run_exact_x_sarah_validation_v20.py \
+  --wolframscript /path/to/wolframscript --sarah-root /path/to/SARAH-4.15.3
+python exact_x_symmetry_consistency_gate_v20.py --require-consistent
+```
+
 Exact `X` neutrality reduces the
 renormalizable scalar potential from the historical `64/91` compiler superset
 to `44` directions and `51` real parameters. The scoped G1/G2 calculation covers
@@ -334,8 +354,8 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 ## Correct public claim
 
 > The anomaly-cancellation and several scoped calculations are reproducible,
-> and the repository now has a statically consistent native-SARAH gauged
-> `U(1)_X` contract, but the external SARAH execution attestation is missing.
+> and the repository's native-SARAH gauged `U(1)_X` contract is externally
+> validated by a hash-bound SARAH 4.15.3 run, which closes G1, G2, and G5.
 > Exact-`X` G1/G2, the 449-dimensional gauge quotient
 > including the axion, and its 448-dimensional massive/transverse Hessian space
 > are scoped results. A perturbative 27-of-51 sum-of-squares candidate has an

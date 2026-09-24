@@ -235,19 +235,20 @@ jobs:
           alternative_sos = json.loads(Path('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json').read_text())
           final_g3 = json.loads(Path('FINAL_G3_ACCEPTANCE_GATE_V20.json').read_text())
           assert report['n_failed'] == 0, report['failures']
-          assert report['overall_state'] == 'BLOCKED'
-          assert report['contract_consistent'] is False
+          assert report['overall_state'] == 'OPEN'
+          assert report['contract_consistent'] is True
           assert report['critical_path'][0] == 'MODEL_CONTRACT'
-          assert report['tasks'][0]['status'] == 'BLOCKED__EXTERNAL_SARAH_EXECUTION_ATTESTATION_MISSING'
+          assert report['tasks'][0]['status'] == 'CLOSED'
           x=report['model_contract_reports']['exact_X']
           assert x['static_contract_consistent'] is True
-          assert x['blocker'] == 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED'
+          assert x['blocker'] is None
           assert x['executable_scaffold_contract']['model_syntax_class'] == 'sarah_native'
           assert x['executable_scaffold_contract']['tool_native_sarah_syntax']
-          assert not x['external_model_validation']['valid']
+          assert x['external_model_validation']['valid']
           assert x['repository_external_input_manifest']['valid']
-          assert report['summary']['closed'] == []
-          assert all(row['status'] == 'BLOCKED' for row in report['gates'].values())
+          assert report['summary']['closed'] == ['G1', 'G2', 'G5']
+          assert report['gates']['G3']['status'] == 'OPEN'
+          assert all(report['gates'][g]['status'] == 'BLOCKED' for g in ('G4', 'G6', 'G7', 'G8'))
           assert report['dependencies']['G8'] == ['G3', 'G6', 'G7']
           assert report['historical_option_c_subtheorems']['G1']['invariant_directions'] == 64
           assert report['historical_option_c_subtheorems']['G3']['massive_physical_quotient_dimension'] == 449

@@ -57,7 +57,7 @@ def test_golden_anchors_match_current_package() -> None:
     replicate.check_golden_anchors()
 
 
-def test_current_native_root_contract_is_fail_closed_only_on_external_evidence() -> None:
+def test_current_native_root_contract_is_bound_to_external_sarah_evidence() -> None:
     replicate.check_current_root_contract()
 
 

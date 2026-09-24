@@ -7,6 +7,15 @@
 (* Clebsch contractions of the full 210/126bar/10 scalar potential are  *)
 (* evaluated by the repository tensor backend; a single SARAH Dot       *)
 (* contraction must not be interpreted as that multi-invariant basis.   *)
+(*                                                                      *)
+(* SARAH-native conventions (verified against SARAH 4.15.3 sources and  *)
+(* its bundled Z[N] models):                                            *)
+(*  - with a declared Global symmetry every Gauge row carries the gauge *)
+(*    multiplet's global charge as its sixth entry;                     *)
+(*  - a Z[N] charge q is the phase Exp[2 Pi I q/N] (neutral = 1), since  *)
+(*    CheckChargeConservationGlobal tests Times@@charges === 1;          *)
+(*  - gauge-group names need at least three characters because SARAH   *)
+(*    derives index names with StringTake[name, 3].                     *)
 (* ==================================================================== *)
 
 Model`Name = "SO10Z17AxionV20";
@@ -16,34 +25,35 @@ Model`Date = "2026-08-07";
 
 NameOfStates = {GaugeES};
 
-(* Gauge groups.  The fifth entry follows SARAH's adjoint-index-expansion
-   convention; neither factor needs explicit adjoint components here. *)
-Gauge[[1]] = {G10, SO[10], SOGUT, g10, False};
-Gauge[[2]] = {GX, U[1], X, gX, False};
+(* Gauge groups: {field, group, name, coupling, expand, Z17 phase}.  Both
+   gauge multiplets are Z17 neutral. *)
+Gauge[[1]] = {G10, SO[10], SOGUT, g10, False, 1};
+Gauge[[2]] = {GX, U[1], Xcharge, gX, False, 1};
 
 (* The gauged field Phi17 leaves this exact residual subgroup after its VEV. *)
 Global[[1]] = {Z[17], Z17};
 
-(* Native order: {multiplet, generations, components, SO(10), X, Z17}. *)
-ScalarFields[[1]] = {Phi210,       1, phi210,      210,    0,  0};
-ScalarFields[[2]] = {Delta126bar,  1, delta126bar, -126,  -2, 15};
-ScalarFields[[3]] = {H10,          1, h10,           10,  -2, 15};
-ScalarFields[[4]] = {S,            1, singletS,        1,   4,  4};
-ScalarFields[[5]] = {Phi17,        1, phi17,           1,  17,  0};
+(* Native order: {multiplet, generations, components, SO(10), X, Z17}.
+   The Z17 phase of each field is Exp[2 Pi I (X mod 17)/17]. *)
+ScalarFields[[1]] = {Phi210,       1, phi210,      210,    0, 1};
+ScalarFields[[2]] = {Delta126bar,  1, delta126bar, -126,  -2, Exp[2*Pi*I*15/17]};
+ScalarFields[[3]] = {H10,          1, h10,           10,  -2, Exp[2*Pi*I*15/17]};
+ScalarFields[[4]] = {S,            1, singletS,        1,   4, Exp[2*Pi*I*4/17]};
+ScalarFields[[5]] = {Phi17,        1, phi17,           1,  17, 1};
 
 (* The 210 is a real SO(10) representation. *)
 RealScalars = {phi210};
 
 (* Three light F families, P and R, five s/b spectator pairs, and Q sector. *)
-FermionFields[[1]] = {F,      3, f16,      16,   1,  1};
-FermionFields[[2]] = {P,      1, p16,      16,   1,  1};
-FermionFields[[3]] = {R,      1, r16,      16,   1,  1};
-FermionFields[[4]] = {SpecS,  5, s16,      16,   2,  2};
-FermionFields[[5]] = {SpecB,  5, b16bar,  -16,  -6, 11};
-FermionFields[[6]] = {Q,      1, q16,      16,  14, 14};
-FermionFields[[7]] = {Pbar,   1, pbar16,  -16,  16, 16};
-FermionFields[[8]] = {Qbar,   1, qbar16,  -16,   3,  3};
-FermionFields[[9]] = {Rbar,   1, rbar16,  -16, -18, 16};
+FermionFields[[1]] = {F,      3, f16,      16,   1, Exp[2*Pi*I*1/17]};
+FermionFields[[2]] = {P,      1, p16,      16,   1, Exp[2*Pi*I*1/17]};
+FermionFields[[3]] = {R,      1, r16,      16,   1, Exp[2*Pi*I*1/17]};
+FermionFields[[4]] = {SpecS,  5, s16,      16,   2, Exp[2*Pi*I*2/17]};
+FermionFields[[5]] = {SpecB,  5, b16bar,  -16,  -6, Exp[2*Pi*I*11/17]};
+FermionFields[[6]] = {Q,      1, q16,      16,  14, Exp[2*Pi*I*14/17]};
+FermionFields[[7]] = {Pbar,   1, pbar16,  -16,  16, Exp[2*Pi*I*16/17]};
+FermionFields[[8]] = {Qbar,   1, qbar16,  -16,   3, Exp[2*Pi*I*3/17]};
+FermionFields[[9]] = {Rbar,   1, rbar16,  -16, -18, Exp[2*Pi*I*16/17]};
 
 DEFINITION[GaugeES][LagrangianInput] = {
   {LagHC,   {AddHC -> True}},

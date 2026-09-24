@@ -345,21 +345,22 @@ jobs:
           alternative_sos=json.load(open('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json'))
           final_g3=json.load(open('FINAL_G3_ACCEPTANCE_GATE_V20.json'))
           assert ledger['n_failed']==0, ledger['failures']
-          assert ledger['overall_state']=='BLOCKED'
-          assert ledger['contract_consistent'] is False
-          assert ledger['declared_contract_consistent'] is False
-          assert ledger['contract_evidence_complete'] is False
+          assert ledger['overall_state']=='OPEN'
+          assert ledger['contract_consistent'] is True
+          assert ledger['declared_contract_consistent'] is True
+          assert ledger['contract_evidence_complete'] is True
           x=ledger['model_contract_reports']['exact_X']
           assert x['static_contract_consistent'] is True
-          assert x['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED'
+          assert x['blocker'] is None
           assert x['executable_scaffold_contract']['model_syntax_class']=='sarah_native'
           assert x['executable_scaffold_contract']['tool_native_sarah_syntax']
-          assert not x['external_model_validation']['valid']
+          assert x['external_model_validation']['valid']
           assert x['repository_external_input_manifest']['valid']
-          assert ledger['summary']['closed']==[]
-          assert ledger['summary']['n_closed']==0
-          assert ledger['summary']['blocked']==[f'G{i}' for i in range(1,9)]
-          assert all(row['status']=='BLOCKED' for row in ledger['gates'].values())
+          assert ledger['summary']['closed']==['G1','G2','G5']
+          assert ledger['summary']['n_closed']==3
+          assert ledger['summary']['open']==['G3']
+          assert ledger['summary']['blocked']==['G4','G6','G7','G8']
+          assert {g:row['status'] for g,row in ledger['gates'].items()}=={'G1':'CLOSED','G2':'CLOSED','G3':'OPEN','G4':'BLOCKED','G5':'CLOSED','G6':'BLOCKED','G7':'BLOCKED','G8':'BLOCKED'}
           assert ledger['historical_option_c_subtheorems']['G1']['invariant_directions']==64
           assert ledger['historical_option_c_subtheorems']['G1']['real_potential_parameters']==91
           assert ledger['historical_option_c_subtheorems']['G3']['massive_physical_quotient_dimension']==449
@@ -552,17 +553,17 @@ jobs:
           assert not final_g3['classification']['G3_closed']
           assert full['n_failed']==0, full['failures']
           assert full['overall_state']=='BLOCKED'
-          assert not full['classification']['authoritative_model_contract_consistent']
-          assert not full['classification']['tool_native_bound_model_evidence_complete']
-          assert 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED' in full['blockers']
+          assert full['classification']['authoritative_model_contract_consistent']
+          assert full['classification']['tool_native_bound_model_evidence_complete']
+          assert 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED' not in full['blockers']
           assert full['flag']['authoritative_full_model_gate']
           assert not full['flag']['legacy_ultimate_gate_authoritative']
           assert not full['classification']['whole_model_validated']
           assert not full['classification']['whole_model_excluded']
           assert ref['n_failed']==0, ref['failures']
-          assert ref['overall_state']=='BLOCKED'
+          assert ref['overall_state']=='OPEN'
           assert not ref['flag']['theory_proven']
-          assert ref['flag']['ready_for_honest_submission_as_blocked_program']
+          assert ref['flag']['ready_for_honest_submission_as_open_program']
           PY
       - uses: actions/upload-artifact@v4
         if: always()

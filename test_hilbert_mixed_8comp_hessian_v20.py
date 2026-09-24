@@ -14,15 +14,17 @@ class HilbertMixed8CompHessianTests(unittest.TestCase):
         cls.report = mod.build_report()
 
     def test_status_and_flags(self):
+        # The genuine invariant cubic I3 makes the legacy point a saddle.
         self.assertEqual(
             self.report["status"],
-            "HILBERT_MIXED_8COMP_HESSIAN_PD__OFF_SINGLET_OPEN",
+            "HILBERT_MIXED_8COMP_HESSIAN_NOT_PD__LEGACY_VACUUM_SADDLE__OFF_SINGLET_OPEN",
         )
-        self.assertEqual(self.report["n_failed"], 0)
+        self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
         flags = self.report["flag"]
         self.assertTrue(flags["schematic_well_hessian_replaced_by_hilbert_mixed"])
-        self.assertTrue(flags["operator_based_8comp_hessian_pd"])
-        self.assertTrue(flags["schematic_lifted_well_instability_fixed"])
+        self.assertFalse(flags["operator_based_8comp_hessian_pd"])
+        self.assertFalse(flags["schematic_lifted_well_instability_fixed"])
+        self.assertTrue(flags["selected_legacy_vacuum_is_invariant_potential_saddle"])
         self.assertTrue(flags["lam210_cross_terms_included"])
         self.assertFalse(flags["full_sm_irrep_mass_matrices"])
         self.assertFalse(flags["live_sarah_or_pyrate_executable_run"])
@@ -31,11 +33,12 @@ class HilbertMixed8CompHessianTests(unittest.TestCase):
 
     def test_improvement(self):
         imp = self.report["improvement"]
-        self.assertTrue(imp["operator_pd"])
+        self.assertFalse(imp["operator_pd"])
         self.assertFalse(imp["schematic_pd"])
-        self.assertTrue(imp["fixed_schematic_instability"])
-        self.assertGreater(imp["min_eig_operator"], 0.0)
+        self.assertFalse(imp["fixed_schematic_instability"])
+        self.assertLess(imp["min_eig_operator"], 0.0)
         self.assertLess(imp["min_eig_schematic"], 0.0)
+        self.assertFalse(self.report["scientific_outcomes"]["hilbert_block_pd"])
 
     def test_eff_helper(self):
         ef = mod.eff_210_linear(a=1.0, omega=2.0, p=3.0)

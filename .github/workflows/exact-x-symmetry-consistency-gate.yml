@@ -57,10 +57,10 @@ jobs:
           from pathlib import Path
           report = json.loads(Path('EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json').read_text())
           assert report['n_failed'] == 0, report['failures']
-          assert report['overall_state'] == 'BLOCKED'
-          assert report['contract_consistent'] is False
+          assert report['overall_state'] == 'PASS'
+          assert report['contract_consistent'] is True
           assert report['static_contract_consistent'] is True
-          assert report['blocker'] == 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED'
+          assert report['blocker'] is None
           assert report['authoritative_manuscript_contract']['gauges_primitive_U1X'] is True
           assert report['authoritative_manuscript_contract']['scalar_charge_contract_matches_expected'] is True
           assert report['declared_symmetries']['u1x_gauged'] is True
@@ -74,11 +74,13 @@ jobs:
           assert report['declared_symmetries']['soft_gaugino_absent_in_nonsusy_model'] is True
           assert report['declared_symmetries']['statically_executable_model_contract'] is True
           assert report['declared_symmetries']['lagrangian']['registered_in_GaugeES_LagrangianInput'] is True
-          assert report['external_model_validation']['present'] is False
-          assert report['external_model_validation']['valid'] is False
-          assert report['external_model_validation']['schema'] is None
-          assert report['external_model_validation']['checks']['captured_process_log_is_hash_bound'] is False
-          assert report['flag']['externally_executed_model_contract'] is False
+          assert report['external_model_validation']['present'] is True
+          assert report['external_model_validation']['valid'] is True
+          assert report['external_model_validation']['fresh_for_exact_model_bytes'] is True
+          assert report['external_model_validation']['schema'] == 'so10-exact-x-external-model-validation-v2'
+          assert report['external_model_validation']['tool_version'] == '4.15.3'
+          assert report['external_model_validation']['checks']['captured_process_log_is_hash_bound'] is True
+          assert report['flag']['externally_executed_model_contract'] is True
           assert report['flag']['tool_native_sarah_syntax'] is True
           assert report['flag']['legacy_pseudo_sarah_grammar'] is False
           assert report['repository_external_input_manifest']['valid'] is True
@@ -90,7 +92,7 @@ jobs:
           assert report['dimension17_candidate']['authoritative_U1X_gauge_invariant'] is False
           assert report['dimension17_candidate']['breaks_PQ'] is False
           assert report['flag']['option_C_no_continuous_X_rejected'] is True
-          assert report['flag']['complete_multifield_model'] is False
+          assert report['flag']['complete_multifield_model'] is True
           assert report['flag']['whole_model_validated'] is False
 
           scalar = json.loads(Path('GAUGED_U1X_SCALAR_CONTRACT_V20.json').read_text())

@@ -65,24 +65,22 @@ def check_current_root_contract() -> None:
     scaffold = report["executable_scaffold_contract"]
     external = report["external_model_validation"]
     repository_manifest = report["repository_external_input_manifest"]
-    assert report["n_failed"] == 0 and report["overall_state"] == "BLOCKED"
+    assert report["n_failed"] == 0 and report["overall_state"] == "PASS"
     assert report["static_contract_consistent"] is True
-    assert report["contract_consistent"] is False
-    assert (
-        report["blocker"]
-        == "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
-    )
+    assert report["contract_consistent"] is True
+    assert report["blocker"] is None
     assert scaffold["model_syntax_class"] == "sarah_native"
     assert scaffold["legacy_pseudo_sarah_grammar"] is False
     assert scaffold["tool_native_sarah_syntax"] is True
     assert scaffold["statically_executable_model_contract"] is True
     assert repository_manifest["valid"] is True
-    assert external["valid"] is False
-    assert external["checks"]["external_process_was_executed"] is False
-    assert external["checks"]["captured_process_log_is_hash_bound"] is False
+    assert external["valid"] is True
+    assert external["fresh_for_exact_model_bytes"] is True
+    assert external["checks"]["external_process_was_executed"] is True
+    assert external["checks"]["captured_process_log_is_hash_bound"] is True
     print(
-        "[PASS] root contract is statically native and honestly BLOCKED only on "
-        "missing bound external SARAH evidence",
+        "[PASS] root contract is SARAH-native and consistent with a fresh, "
+        "hash-bound external SARAH execution",
         flush=True,
     )
 
@@ -374,7 +372,7 @@ def main() -> int:
         [
             sys.executable,
             "theory_validation_matrix_v20.py",
-            "--expect-blocked",
+            "--expect-open",
             "--no-write",
         ]
     )
@@ -382,7 +380,7 @@ def main() -> int:
         [
             sys.executable,
             "theory_confirmation_verdict_v20.py",
-            "--expect-blocked",
+            "--expect-open",
             "--no-write",
         ]
     )
@@ -390,7 +388,7 @@ def main() -> int:
         [
             sys.executable,
             "ultimate_theory_gate_v20.py",
-            "--expect-blocked",
+            "--expect-open",
             "--no-write",
         ]
     )

@@ -14,18 +14,20 @@ class ComponentHessianCompetingExtremaTests(unittest.TestCase):
         cls.report = mod.build_report()
 
     def test_status_and_flags(self):
+        # With the genuine invariant cubic the legacy point is a saddle.
         self.assertEqual(
             self.report["status"],
-            "COMPONENT_HESSIAN_COMPETING_EXTREMA_MAPPED__OFF_SINGLET_OPEN",
+            "COMPONENT_HESSIAN_MAPPED__SELECTED_HILBERT_SLICE_SADDLE__OFF_SINGLET_OPEN",
         )
-        self.assertEqual(self.report["n_failed"], 0)
+        self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
         flags = self.report["flag"]
         self.assertTrue(
             flags["full_component_hessian_and_competing_extrema_mapped"]
         )
         self.assertTrue(flags["lifted_8_hessian_at_hilbert_vevs"])
         self.assertTrue(flags["competing_extrema_scanned"])
-        self.assertTrue(flags["selected_hilbert_slice_locally_stable"])
+        self.assertFalse(flags["selected_hilbert_slice_locally_stable"])
+        self.assertTrue(flags["selected_legacy_vacuum_is_invariant_potential_saddle"])
         self.assertTrue(flags["selected_unique_among_catalogue_soft_mpd"])
         self.assertFalse(flags["full_sm_irrep_mass_matrices"])
         self.assertFalse(flags["live_sarah_or_pyrate_executable_run"])
@@ -34,7 +36,7 @@ class ComponentHessianCompetingExtremaTests(unittest.TestCase):
 
     def test_selected_and_ranking(self):
         sel = self.report["selected"]
-        self.assertTrue(sel["hilbert_3x3"]["positive_definite"])
+        self.assertFalse(sel["hilbert_3x3"]["positive_definite"])
         self.assertGreaterEqual(len(self.report["candidates"]), 5)
         self.assertEqual(self.report["ranking"]["n_competing_lower_cost"], 0)
         self.assertTrue(
