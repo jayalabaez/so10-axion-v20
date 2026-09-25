@@ -85,7 +85,9 @@ reads that committed artifact (it cannot import the module, which imports this
 one) and claims uniqueness only when the artifact reports the proved status
 with no failed check.
 
-Open: the Hessian kernel count is float64; electroweak breaking and a realistic
+Open: the Hessian kernel count is float64 here (the exact inertia is certified
+separately by g3_sm_pati_salam_exact_hessian_v20, read from its committed
+artifact, fail-closed); electroweak breaking and a realistic
 Yukawa sector are absent (the H-linear portals O15, O38, O45, O28 vanish); the
 two doublet tunings, the sub-M_I coloured scalars, the RG content and the Higgs
 quartic are open.  G3 is not closed and nothing is excluded.
@@ -136,6 +138,9 @@ OUT_MD = ROOT / "G3_SM_PATI_SALAM_CANDIDATE_V20.md"
 EQUALITY_SET_JSON = ROOT / "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
 EQUALITY_SET_SOURCE = "g3_sm_pati_salam_equality_set_v20"
 EQUALITY_SET_PROVED_STATUS = "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+EXACT_HESSIAN_JSON = ROOT / "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json"
+EXACT_HESSIAN_SOURCE = "g3_sm_pati_salam_exact_hessian_v20"
+EXACT_HESSIAN_CERTIFIED_STATUS = "SM_PATI_SALAM_EXACT_FULL_HESSIAN_RANK_447_NULLITY_39_CERTIFIED__G3_OPEN"
 
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
 R0 = Fraction(1, 5)
@@ -777,6 +782,43 @@ def equality_set_certified(equality_report: Mapping[str, Any]) -> bool:
         and not isinstance(n_failed, bool)
         and n_failed == 0
     )
+
+
+def load_exact_hessian_report(path: Path = EXACT_HESSIAN_JSON) -> dict[str, Any]:
+    """Committed g3_sm_pati_salam_exact_hessian_v20 report, {} if missing or unreadable (fail-closed)."""
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def exact_hessian_certified(hessian_report: Mapping[str, Any]) -> bool:
+    """True only for the certified status with zero failed checks."""
+    n_failed = hessian_report.get("n_failed")
+    return bool(
+        hessian_report.get("status") == EXACT_HESSIAN_CERTIFIED_STATUS
+        and isinstance(n_failed, int)
+        and not isinstance(n_failed, bool)
+        and n_failed == 0
+    )
+
+
+def exact_hessian_scope_items(hessian_report: Mapping[str, Any]) -> tuple[list[str], list[str]]:
+    """(proved_exactly items, open items) for the exact-Hessian certificate, bound to its committed report."""
+    if not exact_hessian_certified(hessian_report):
+        return [], ["exact (non-float) Hessian kernel/rank certificate"]
+    flags = hessian_report.get("flags") if isinstance(hessian_report.get("flags"), Mapping) else {}
+    item = (
+        f"exact 486-field Hessian at r0 = 1/5 ({EXACT_HESSIAN_SOURCE}, read from its committed artifact): inertia "
+        "447/39/0, kernel = 35 symmetry-orbit tangents + 4 tuned light-doublet directions"
+    )
+    if flags.get("eps_family_theorem_claimed") is True:
+        item += (
+            "; for O06 = 2|kappa| r0 + eps with eps > 0 the kernel is exactly the symmetry orbit (451/35) and the "
+            "doublet mass^2 is eps"
+        )
+    return [item], []
 
 
 def equality_set_section(equality_report: Mapping[str, Any]) -> dict[str, Any]:
@@ -2813,10 +2855,14 @@ def build_report(
     heavy: bool = True,
     search: Mapping[str, Any] | None = None,
     equality_report: Mapping[str, Any] | None = None,
+    exact_hessian_report: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     if equality_report is None:
         equality_report = load_equality_set_report()
     equality_proved = equality_set_certified(equality_report)
+    if exact_hessian_report is None:
+        exact_hessian_report = load_exact_hessian_report()
+    hessian_proved_items, hessian_open_items = exact_hessian_scope_items(exact_hessian_report)
     candidate = candidate_section()
     embedding = sm_embedding_section()
     certificate = exact_certificate_section(equality_report)
@@ -3075,7 +3121,8 @@ def build_report(
                 ]
                 if equality_proved
                 else []
-            ),
+            )
+            + hessian_proved_items,
             "float64_only": [
                 "Hessian kernel = 35 symmetry tangents + 4 light-doublet modes; lightest massive eigenvalue r0^2/96",
                 "labelled spectrum, light spectrum and 10_H spectrum",
@@ -3087,8 +3134,8 @@ def build_report(
                 "conditional two-loop SM running of the light-doublet quartic from the anchor M_I",
             ],
             "open": ([] if equality_proved else ["uniqueness of the equality set {V = V0} modulo symmetry (numerical evidence only)"])
+            + hessian_open_items
             + [
-                "exact (non-float) Hessian kernel/rank certificate",
                 "electroweak symmetry breaking: H = 0 here, one doublet is tuned massless at tree level",
                 "doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed",
                 "light 126bar coloured states below M_I: (3,1)_1/3 at ~0.24 M_I (proton-decay mediator quantum numbers, coupled to 16.16 by the 126bar Yukawa that Majorana nu_R masses need), (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), (3,1)_4/3 + (6,1)_1/3 at ~0.25 M_I, (6,1)_2/3 at ~0.32 M_I; their proton-decay and RG/unification consequences are not analysed",

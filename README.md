@@ -261,6 +261,54 @@ the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
   below by `|q|^4/167`, which the exact identity proves; 512 random and 6
   minimized unit directions respect it.
 
+**Exact Hessian and G3 readiness (dry run).**
+- The complete 486-field Hessian at `r0 = 1/5` is exact over Q
+  (`g3_sm_pati_salam_exact_hessian_v20.py`). At the tuned massless-doublet
+  point it is PSD with inertia 447/39/0: the kernel is the 35 symmetry-orbit
+  tangents plus the 4 tuned doublet directions `Re H_6..9`. For a light but
+  massive doublet, `O06 = 2|kappa| r0 + eps` with `eps > 0`, it is exactly
+  451/35/0 with kernel = the symmetry orbit, and the doublet mass^2 is `eps`
+  (units `M_GUT^2`). The tuned Hessian and `Hess N_H` are both PSD, so for
+  `eps > 0` the kernel is the intersection of their kernels. The 4 tuned zero
+  modes lie in the H block, where `Hess N_H` is positive definite, and the
+  orbit tangents vanish there, so the kernel is exactly the orbit for every
+  `eps > 0` (`eps = r0^2/100` and `r0^2/10^6` are certified directly by exact
+  LDL). The added term `eps N_H >= 0` vanishes on the vacuum orbit
+  (`H = 0`), so the whole family has the same global minimum, equality set,
+  symmetry group and quartic part. The doublet is massive, not tachyonic:
+  EWSB is still not realised.
+- The dry-run readiness audit (`g3_sm_pati_salam_gate_readiness_v20.py`) maps
+  every final-gate criterion to this SM target; 7 of the 20 are proof routes
+  specific to the chiral-H candidate. At the tuned point 11 of the other 13
+  hold exactly (2 of them only if the cited classical theorems and the 6
+  hand-argued elementary steps are accepted, decision D6) and the two Hessian
+  criteria fail (the 4 doublet zero modes). For `0 < eps < 599/50` (the
+  perturbative window, `O06 < 12 < 4 pi`) every non-route-specific criterion
+  is met exactly; the two Hessian criteria and the equality-set and
+  global-gap criteria hold for every `eps > 0`. This is subject to choosing an
+  `eps > 0` member as the G3 witness (D2), to accepting the cited classical
+  theorems and hand-argued steps as G3-grade inputs (D6), and to wiring the
+  gate's required statement. No gate status is changed and G3 stays OPEN.
+  Closing it needs an implemented and wired SM track plus the decisions
+  below. Under the current ledger/roadmap wave-3 text, the model-level
+  caveats also remain G3 requirements unless decision D5 routes them
+  elsewhere.
+
+Pending decisions:
+- Track structure: an SM track beside the chiral-H route, a retargeted gate, or
+  a separate SM gate (D1).
+- G3 witness: an `eps > 0` member or the tuned point (which needs a replacement
+  Hessian criterion) (D2).
+- Internal-candidate semantics: what G1-G3 CLOSED approves (D3).
+- Rebinding G5, CLOSED on the historical 27-parameter vector, to this coupling
+  vector (D4).
+- Routing the model-level caveats (sub-`M_I` coloured states, RG-anchor
+  content, the benchmark Higgs quartic, no EWSB/Yukawa) to G4/G6/G7/G8, and
+  the tuned DT-splitting/`M_I` naturalness outside G1-G8, or keeping them in
+  G3 (D5).
+- Accepting the cited classical theorems and the hand-argued elementary steps
+  as G3-grade inputs (D6).
+
 Open items for this candidate:
 - The doublet-triplet splitting and the intermediate scale are tuned coupling
   relations.
