@@ -37,23 +37,23 @@ def _native_sarah_model() -> str:
     return r"""
 NameOfModel = "SO10U1XComplete";
 NameOfStates = {GaugeES};
-Gauge[[1]] = {G10, SO[10], SOGUT, g10, False};
-Gauge[[2]] = {GX, U[1], X, gX, False};
+Gauge[[1]] = {G10, SO[10], SOGUT, g10, False, 1};
+Gauge[[2]] = {GX, U[1], Xcharge, gX, False, 1};
 Global[[1]] = {Z[17], Z17};
-ScalarFields[[1]] = {Phi210, 1, phi210, 210, 0, 0};
-ScalarFields[[2]] = {Delta126bar, 1, delta126bar, -126, -2, 15};
-ScalarFields[[3]] = {H10, 1, h10, 10, -2, 15};
-ScalarFields[[4]] = {S, 1, singletS, 1, 4, 4};
-ScalarFields[[5]] = {Phi17, 1, phi17, 1, 17, 0};
-FermionFields[[1]] = {F, 3, f16, 16, 1, 1};
-FermionFields[[2]] = {P, 1, p16, 16, 1, 1};
-FermionFields[[3]] = {R, 1, r16, 16, 1, 1};
-FermionFields[[4]] = {SpecS, 5, s16, 16, 2, 2};
-FermionFields[[5]] = {SpecB, 5, b16bar, -16, -6, 11};
-FermionFields[[6]] = {Q, 1, q16, 16, 14, 14};
-FermionFields[[7]] = {Pbar, 1, pbar16, -16, 16, 16};
-FermionFields[[8]] = {Qbar, 1, qbar16, -16, 3, 3};
-FermionFields[[9]] = {Rbar, 1, rbar16, -16, -18, 16};
+ScalarFields[[1]] = {Phi210, 1, phi210, 210, 0, 1};
+ScalarFields[[2]] = {Delta126bar, 1, delta126bar, -126, -2, Exp[2*Pi*I*15/17]};
+ScalarFields[[3]] = {H10, 1, h10, 10, -2, Exp[2*Pi*I*15/17]};
+ScalarFields[[4]] = {S, 1, singletS, 1, 4, Exp[2*Pi*I*4/17]};
+ScalarFields[[5]] = {Phi17, 1, phi17, 1, 17, 1};
+FermionFields[[1]] = {F, 3, f16, 16, 1, Exp[2*Pi*I*1/17]};
+FermionFields[[2]] = {P, 1, p16, 16, 1, Exp[2*Pi*I*1/17]};
+FermionFields[[3]] = {R, 1, r16, 16, 1, Exp[2*Pi*I*1/17]};
+FermionFields[[4]] = {SpecS, 5, s16, 16, 2, Exp[2*Pi*I*2/17]};
+FermionFields[[5]] = {SpecB, 5, b16bar, -16, -6, Exp[2*Pi*I*11/17]};
+FermionFields[[6]] = {Q, 1, q16, 16, 14, Exp[2*Pi*I*14/17]};
+FermionFields[[7]] = {Pbar, 1, pbar16, -16, 16, Exp[2*Pi*I*16/17]};
+FermionFields[[8]] = {Qbar, 1, qbar16, -16, 3, Exp[2*Pi*I*3/17]};
+FermionFields[[9]] = {Rbar, 1, rbar16, -16, -18, Exp[2*Pi*I*16/17]};
 DEFINITION[GaugeES][LagrangianInput] = {
   {LagHC, {AddHC -> True}},
   {LagNoHC, {AddHC -> False}}
@@ -128,10 +128,34 @@ def _external_attestation(model_text: str) -> dict[str, Any]:
     }
 
 
-def test_native_static_contract_is_blocked_only_on_real_external_execution():
+def _repository_model_without_attestation() -> dict[str, Any]:
+    """The shipped model audited as an in-memory fixture, with no SARAH run."""
+    return gate.build_report(model_text=gate.MODEL.read_text(encoding="utf-8"))
+
+
+def test_repository_contract_is_consistent_with_committed_sarah_attestation():
     report = gate.build_report()
     assert report["n_failed"] == 0, report["audit_failures"]
     assert report["failures"] == []
+    assert report["status"] == (
+        "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__CONSISTENT"
+    )
+    assert report["overall_state"] == "PASS"
+    assert report["static_contract_consistent"] is True
+    assert report["contract_consistent"] is True
+    assert report["blocker"] is None
+    assert report["scientific_blockers"] == []
+    assert report["repository_external_input_manifest"]["valid"] is True
+    evidence = report["external_model_validation"]
+    assert evidence["valid"] is True, evidence["failures"]
+    assert evidence["fresh_for_exact_model_bytes"] is True
+    assert evidence["tool_name"] == "SARAH"
+    assert evidence["tool_version"] == "4.15.3"
+
+
+def test_native_static_contract_without_attestation_is_blocked_on_execution():
+    report = _repository_model_without_attestation()
+    assert report["n_failed"] == 0, report["audit_failures"]
     assert report["status"] == (
         "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED"
     )
@@ -140,7 +164,27 @@ def test_native_static_contract_is_blocked_only_on_real_external_execution():
     assert report["contract_consistent"] is False
     assert report["blocker"] == gate.EXTERNAL_EXECUTION_BLOCKER
     assert report["scientific_blockers"] == [gate.EXTERNAL_EXECUTION_BLOCKER]
-    assert report["repository_external_input_manifest"]["valid"] is True
+    resolution = report["required_resolution"]
+    assert resolution["selected"] == "external_SARAH_execution"
+    assert resolution["external_SARAH_execution"]["required"] is True
+
+
+def test_committed_attestation_binds_full_lagrangian_and_anomaly_evidence():
+    artifact = json.loads(gate.EXTERNAL_VALIDATION.read_text(encoding="utf-8"))
+    log = artifact["evidence"]["process_log"]["content"]
+    assert "EXACT_X_TOOL SARAH 4.15.3" in log
+    assert "EXACT_X_LAGRANGIAN registered_terms=19 expected_terms=19" in log
+    terms = [line for line in log.splitlines() if line.startswith("EXACT_X_TERM ")]
+    assert len(terms) == 19
+    for line in terms:
+        assert " X_sum=0 " in line, line
+        assert " Z17_phase=1 " in line, line
+        assert " SO10_invariants=0 " not in line, line
+        assert line.endswith("sarah_local=True sarah_global=True"), line
+    for anomaly in ("X^3", "X_gravity^2", "SO10^2_X"):
+        assert f"EXACT_X_ANOMALY {anomaly} = 0" in log
+    assert "WARNING!" not in log
+    assert "EXACT_X_ERROR" not in log
 
 
 def test_manuscript_is_authoritative_and_gauges_u1x():
@@ -193,8 +237,8 @@ def test_native_model_and_explicit_filter_contract_are_compared():
     assert contract["evidence"]["live_catalogue_calls_require_x_true"] is True
     assert contract["phi17_X"] == 17
     resolution = report["required_resolution"]
-    assert resolution["selected"] == "external_SARAH_execution"
-    assert resolution["external_SARAH_execution"]["required"] is True
+    assert resolution["selected"] is None
+    assert resolution["external_SARAH_execution"]["required"] is False
     assert resolution["option_A_gauge_U1X"]["accepted"] is True
     assert resolution["option_C_no_continuous_X"]["accepted"] is False
     assert resolution["option_C_no_continuous_X"]["rejected"] is True
@@ -240,23 +284,78 @@ def test_fail_closed_flags_do_not_validate_or_exclude_the_model():
     flags = gate.build_report()["flag"]
     assert flags["audit_executed_honestly"] is True
     assert flags["authoritative_gauged_U1X_contract"] is True
-    assert flags["contract_consistent"] is False
+    assert flags["contract_consistent"] is True
     assert flags["static_contract_consistent"] is True
+    assert flags["externally_executed_model_contract"] is True
     assert flags["x_selection_rule_consistently_declared"] is True
     assert flags["option_C_no_continuous_X_applied"] is False
     assert flags["option_C_no_continuous_X_rejected"] is True
     assert flags["dim_le4_phase_sensitive_phi17_terms_gauge_forbidden"] is True
     assert flags["dimension17_operator_is_x_invariant"] is False
-    assert flags["complete_multifield_model"] is False
+    # The multifield model contract is complete; the whole theory is not.
+    assert flags["complete_multifield_model"] is True
     assert flags["whole_model_validated"] is False
     assert flags["whole_model_excluded"] is False
+    unattested = _repository_model_without_attestation()["flag"]
+    assert unattested["contract_consistent"] is False
+    assert unattested["complete_multifield_model"] is False
 
 
 def test_exit_policy_distinguishes_honest_audit_from_strict_consistency():
     report = gate.build_report()
     assert gate.exit_code(report) == 0
-    assert gate.exit_code(report, require_consistent=False) == 0
-    assert gate.exit_code(report, require_consistent=True) != 0
+    assert gate.exit_code(report, require_consistent=True) == 0
+    unattested = _repository_model_without_attestation()
+    assert gate.exit_code(unattested) == 0
+    assert gate.exit_code(unattested, require_consistent=False) == 0
+    assert gate.exit_code(unattested, require_consistent=True) != 0
+
+
+def test_sarah_zn_phase_parser():
+    assert gate._zn_phase_charge("1", 17) == 0
+    assert gate._zn_phase_charge("Exp[2*Pi*I*15/17]", 17) == 15
+    assert gate._zn_phase_charge("Exp[2 Pi I 4/17]", 17) == 4
+    assert gate._zn_phase_charge("E^(2*Pi*I*16/17)", 17) == 16
+    assert gate._zn_phase_charge("Exp[2*Pi*I*-2/17]", 17) == 15
+    assert gate._zn_phase_charge("15", 17) is None
+    assert gate._zn_phase_charge("0", 17) is None
+    assert gate._zn_phase_charge("Exp[2*Pi*I*15/5]", 17) is None
+
+
+def test_integer_z17_charges_are_not_tool_native_sarah_syntax():
+    # SARAH multiplies Z[N] charges (Times @@ charges === 1), so integer
+    # residues are rejected even when they equal X mod 17.
+    model_text = _native_sarah_model()
+    for phase, integer in (
+        ("Exp[2*Pi*I*15/17]", "15"),
+        ("Exp[2*Pi*I*4/17]", "4"),
+        ("Exp[2*Pi*I*1/17]", "1"),
+    ):
+        model_text = model_text.replace(phase, integer)
+    parsed = gate.declared_symmetries(model_text)
+    assert parsed["tool_native_sarah_syntax"] is False
+    assert parsed["statically_executable_model_contract"] is False
+
+
+def test_sarah_gauge_rows_need_global_charges_and_three_character_names():
+    base = _native_sarah_model()
+    without_globals = base.replace(
+        "{G10, SO[10], SOGUT, g10, False, 1}", "{G10, SO[10], SOGUT, g10, False}"
+    ).replace("{GX, U[1], Xcharge, gX, False, 1}", "{GX, U[1], Xcharge, gX, False}")
+    short_name = base.replace(
+        "{GX, U[1], Xcharge, gX, False, 1}", "{GX, U[1], X, gX, False, 1}"
+    )
+    charged_gauge = base.replace(
+        "{GX, U[1], Xcharge, gX, False, 1}",
+        "{GX, U[1], Xcharge, gX, False, Exp[2*Pi*I*1/17]}",
+    )
+    for model_text in (without_globals, short_name, charged_gauge):
+        parsed = gate.declared_symmetries(model_text)
+        assert parsed["tool_native_sarah_syntax"] is False
+        assert parsed["statically_executable_model_contract"] is False
+    short = gate.declared_symmetries(short_name)["structured_gauge_rows"][1]
+    assert short["is_u1x"] is True
+    assert short["sarah_group_name_length_ok"] is False
 
 
 def test_fake_commented_second_gauge_row_cannot_unlock_contract():
@@ -530,16 +629,17 @@ def test_duplicate_or_extra_structured_catalogue_rows_are_rejected():
     base = _native_sarah_model()
     duplicate = gate.build_report(
         model_text=base
-        + "\nScalarFields[[6]] = {H10, 1, h10b, 10, -2, 15};\n"
+        + "\nScalarFields[[6]] = {H10, 1, h10b, 10, -2, Exp[2*Pi*I*15/17]};\n"
     )
     extra = gate.build_report(
         model_text=base
-        + "\nGauge[[3]] = {GY, U[1], hypercharge, gY, False};\n"
+        + "\nGauge[[3]] = {GY, U[1], hypercharge, gY, False, 1};\n"
         + "FermionFields[[10]] = {Mystery, 1, mystery, 10, 0, 0, 0};\n"
     )
     zero_multiplicity_extra = gate.build_report(
         model_text=base
-        + "\nFermionFields[[10]] = {Decorative, 0, decorative, 16, 1, 1};\n"
+        + "\nFermionFields[[10]] = "
+        + "{Decorative, 0, decorative, 16, 1, Exp[2*Pi*I*1/17]};\n"
     )
     assert (
         duplicate["executable_scaffold_contract"]["scalar_catalogue_exact"] is False

@@ -164,7 +164,7 @@ def classic_channel_inventory() -> list[dict[str, Any]]:
         {
             "id": "210_cubic_channels",
             "family": "210_cubic",
-            "channel": "cubic_pair",
+            "channel": "unique_cubic",
             "parent_operator": "210_H^3",
             "counts": {"210_H": 3},
             "engineering_dim": 3,
@@ -174,7 +174,11 @@ def classic_channel_inventory() -> list[dict[str, Any]]:
             "feeds_diag_Sigmabar": False,
             "feeds_diag_210_radial": True,
             "cartesian_second_derivative_slot": "OPEN_210_CUBIC",
-            "note": "Two independent cubics on PS singlets (Aulakh–Girdhar)",
+            "note": (
+                "Unique cubic I3=Tr(A_Phi^3): Sym^3(210) has one singlet "
+                "(exact_210_self_invariant_basis_v20); on PS singlets it is "
+                "the MSGUT form a^3+3p w^2+6a w^2"
+            ),
         },
         # --- 210 × 126 ---
         {

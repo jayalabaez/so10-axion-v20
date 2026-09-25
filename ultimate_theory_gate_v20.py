@@ -21,6 +21,28 @@ OUT_JSON = ROOT / "ULTIMATE_THEORY_GATE_V20_VERDICT.json"
 OUT_MD = ROOT / "ULTIMATE_THEORY_GATE_V20.md"
 
 
+def _verdict(contract_ready: bool) -> str:
+    """Verdict text, branched on model-contract readiness."""
+    if contract_ready:
+        # G5 is CLOSED in G1_G8_GATE_LEDGER_V20, so it is not listed as open.
+        lead = (
+            "WITHHOLD APPROVAL. The audit has no execution failure and the "
+            "gauged-U(1)_X model contract is attested by bound external SARAH "
+            "execution evidence, but the G3, G4 and G6-G8 scientific gates "
+            "remain open. "
+        )
+    else:
+        lead = (
+            "WITHHOLD APPROVAL. The audit has no execution failure, but the "
+            "statically consistent, tool-native gauged-U(1)_X model has no v2 "
+            "manifest/log-bound external SARAH execution evidence. "
+        )
+    return lead + (
+        "No internal-candidate, conditional-benchmark, full-phenomenology, "
+        "empirical-realization, or whole-model-exclusion claim is approved."
+    )
+
+
 def evaluate_reports(
     reports: dict[str, dict[str, Any]],
     *,
@@ -89,13 +111,7 @@ def evaluate_reports(
             "Historical Option-C results are preserved as non-authoritative "
             "subtheorems only."
         ],
-        "verdict": (
-            "WITHHOLD APPROVAL. The audit has no execution failure, but the "
-            "statically consistent, tool-native gauged-U(1)_X model has no v2 "
-            "manifest/log-bound external SARAH execution evidence. "
-            "No internal-candidate, conditional-benchmark, full-phenomenology, "
-            "empirical-realization, or whole-model-exclusion claim is approved."
-        ),
+        "verdict": _verdict(result["model_contract_ready"]),
     }
 
 
@@ -149,8 +165,9 @@ def exit_code(
     require_full_approval: bool = False,
     expect_blocked: bool = False,
     expect_full_block: bool = False,
+    expect_open: bool = False,
 ) -> int:
-    """Return zero for an honest BLOCKED audit, nonzero for strict approval."""
+    """Return zero for an honest BLOCKED/OPEN audit, nonzero for strict approval."""
     if report.get("n_failed", 1) != 0 or not report.get(
         "integrity_pass", False
     ):
@@ -167,6 +184,8 @@ def exit_code(
         return 4
     if expect_full_block and report.get("full_phenomenology_approved", False):
         return 5
+    if expect_open and report.get("overall_state") != "OPEN":
+        return 6
     return 0
 
 
@@ -179,6 +198,11 @@ def main(argv: list[str] | None = None) -> int:
         "--expect-full-block",
         action="store_true",
         help="compatibility mode: fail only if full approval is unexpectedly true",
+    )
+    parser.add_argument(
+        "--expect-open",
+        action="store_true",
+        help="fail unless the honest state is OPEN (contract consistent, gates open)",
     )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args(argv)
@@ -209,6 +233,7 @@ def main(argv: list[str] | None = None) -> int:
         require_full_approval=args.require_full_approval,
         expect_blocked=args.expect_blocked,
         expect_full_block=args.expect_full_block,
+        expect_open=args.expect_open,
     )
 
 

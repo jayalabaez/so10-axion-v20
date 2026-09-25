@@ -14,15 +14,17 @@ class OffSingletHessianExtensionTests(unittest.TestCase):
         cls.report = mod.build_report()
 
     def test_status_and_flags(self):
+        # Off-singlet masses stay positive; the radial block of the genuine
+        # invariant potential is a saddle at the legacy point.
         self.assertEqual(
             self.report["status"],
-            "OFF_SINGLET_HESSIAN_EXTENDED__MIXED_126_10_OPEN",
+            "OFF_SINGLET_HESSIAN_EXTENDED__RADIAL_SADDLE__MIXED_126_10_OPEN",
         )
-        self.assertEqual(self.report["n_failed"], 0)
+        self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
         flags = self.report["flag"]
         self.assertTrue(flags["off_singlet_hessian_extension"])
         self.assertTrue(flags["off_singlet_evaluated_at_hilbert_vevs"])
-        self.assertTrue(flags["extended_hessian_positive_definite"])
+        self.assertFalse(flags["extended_hessian_positive_definite"])
         self.assertTrue(flags["aulakh_unmixed_and_R_included"])
         self.assertFalse(flags["full_sm_irrep_mass_matrices"])
         self.assertFalse(flags["mixed_210_126_10_complete"])
@@ -35,9 +37,10 @@ class OffSingletHessianExtensionTests(unittest.TestCase):
         self.assertEqual(off["n_modes"], 10)
         self.assertTrue(off["all_positive"])
         self.assertGreater(off["lightest_GeV"], 0.0)
-        self.assertTrue(
+        self.assertFalse(
             self.report["extended_hessian"]["extended_positive_definite"]
         )
+        self.assertFalse(self.report["scientific_outcomes"]["radial_pd"])
 
     def test_helper(self):
         out = mod.off_singlet_masses_at_vevs(

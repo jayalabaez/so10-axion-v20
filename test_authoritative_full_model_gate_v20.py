@@ -55,10 +55,11 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
 
     def test_no_full_model_claim(self):
         classification = self.report["classification"]
-        self.assertFalse(
+        # The SARAH-attested model contract is consistent; the model is not.
+        self.assertTrue(
             classification["authoritative_model_contract_consistent"]
         )
-        self.assertFalse(
+        self.assertTrue(
             classification["tool_native_bound_model_evidence_complete"]
         )
         self.assertFalse(classification["all_g1_g8_closed"])
@@ -68,17 +69,17 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         self.assertFalse(classification["whole_model_excluded"])
         self.assertFalse(classification["empirical_discovery"])
 
-    def test_root_and_downstream_blockers_present(self):
+    def test_root_resolved_and_downstream_blockers_present(self):
         blockers = set(self.report["blockers"])
-        self.assertIn(
+        self.assertNotIn(
             mod.x_contract_gate.EXTERNAL_EXECUTION_BLOCKER,
             blockers,
         )
-        self.assertIn("G1_NOT_CLOSED", blockers)
-        self.assertIn("G2_NOT_CLOSED", blockers)
-        self.assertIn("G3_NOT_CLOSED", blockers)
-        self.assertIn("G7_NOT_CLOSED", blockers)
-        self.assertIn("G8_NOT_CLOSED", blockers)
+        self.assertNotIn("G1_NOT_CLOSED", blockers)
+        self.assertNotIn("G2_NOT_CLOSED", blockers)
+        self.assertNotIn("G5_NOT_CLOSED", blockers)
+        for gate in ("G3", "G4", "G6", "G7", "G8"):
+            self.assertIn(f"{gate}_NOT_CLOSED", blockers)
         self.assertTrue(any(item.startswith("PROTON_READINESS_") for item in blockers))
 
     def test_repaired_contract_promotes_g1_g2_without_full_model_approval(self):
@@ -121,7 +122,12 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         self.assertFalse(report["classification"]["whole_model_validated"])
 
     def test_unbound_consistency_boolean_is_an_integrity_failure(self):
-        contract = copy.deepcopy(mod.x_contract_gate.build_report())
+        # Audit the shipped model without its attestation, then forge the flag.
+        contract = copy.deepcopy(
+            mod.x_contract_gate.build_report(
+                model_text=mod.x_contract_gate.MODEL.read_text(encoding="utf-8")
+            )
+        )
         contract.update(
             contract_consistent=True,
             blocker=None,

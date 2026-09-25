@@ -5,19 +5,22 @@ Next step after ``residual_lam210_eta_intra_v20``:
 
 1. Use the Hilbert residual-kernel certificate: restriction
    ``Inv_n(210) → ℝ[a,ω,p]_n`` is injective for ``n=2,3,4`` (ker=0), so the
-   complete renormalizable pure-210 potential is spanned by
-   ``(I₂, I₃ₐ, I₃ᵦ, Q₀…Q₃)``.
-2. Project the prior schematic six-monomial quartic onto the rank-4 Hilbert
-   quartic basis (SO(10)-invariant completion); keep cubics ``(λ₁,λ₂)`` as
-   ``(I₃ₐ, I₃ᵦ)``.
+   complete renormalizable pure-210 potential is spanned by the genuine
+   invariants ``(I₂, I₃=Tr A_Φ³, J₀, J₂, J₃, J₄)``.
+2. Project the prior schematic cubic pair ``λ₁ aωp + λ₂ ω(ω²−3a²)`` onto the
+   unique cubic ``I₃`` and the schematic six-monomial quartic onto the rank-4
+   quartic basis (SO(10)-invariant completion); both non-invariant residuals
+   are reported.
 3. Re-select interior ``(a,ω,p)`` by soft-shift cost + ``M_PD`` tie-break on
    the Hilbert-complete potential, and compare to the PS-schematic selection.
-4. Carry residual ``λ₂₁₀=λ₁``, ``η_intra=λ₂`` identification through.
+4. Carry the legacy residual ``λ₂₁₀=λ₁``, ``η_intra=λ₂`` identification
+   through, labelled as belonging to the schematic chain.
 
 Honesty
 -------
 * This closes uniqueness under the **complete pure-210** renormalizable
-  tensor basis (Hilbert H₂=1, H₃=2, H₄=4).
+  tensor basis (exact Hilbert H₂=1, H₃=1, H₄=4).  The earlier two-cubic
+  basis was not SO(10)-invariant and is withdrawn.
 * Mixed-rep ``210⊕126⊕10⊕…`` Hilbert series and unique ``τ_p`` remain OPEN.
 """
 
@@ -26,6 +29,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -73,7 +77,7 @@ def project_schematic_quartic_onto_hilbert(
     n_points: int = 48,
     seed: int = 2104,
 ) -> dict[str, Any]:
-    """Least-squares map of schematic η-monomials onto Hilbert Q0…Q3."""
+    """Least-squares map of schematic η-monomials onto J0, J2, J3, J4."""
     pts = hilbert._sample_ps_points(n_points, seed)
     a_mat = []
     v = []
@@ -89,10 +93,8 @@ def project_schematic_quartic_onto_hilbert(
     rel_residual = float(np.linalg.norm(v_arr - pred) / max(denom, 1e-30))
     return {
         "hilbert_quartic_coeffs": {
-            "Q0_I2sq": float(coeffs[0]),
-            "Q1_gradI3a_sq": float(coeffs[1]),
-            "Q2_gradI3b_sq": float(coeffs[2]),
-            "Q3_grad_cross": float(coeffs[3]),
+            name: float(coeffs[index])
+            for index, name in enumerate(hilbert.exact210.QUARTIC_BASIS_NAMES)
         },
         "coeffs_vector": [float(x) for x in coeffs],
         "lstsq_rank": int(rank),
@@ -108,6 +110,52 @@ def project_schematic_quartic_onto_hilbert(
     }
 
 
+def schematic_cubic(a: float, omega: float, p: float, lam1: float, lam2: float) -> float:
+    return float(lam1 * a * omega * p + lam2 * omega * (omega**2 - 3.0 * a * a))
+
+
+def project_schematic_cubic_onto_hilbert(
+    *,
+    lam1: float,
+    lam2: float,
+    n_points: int = 48,
+    seed: int = 2103,
+) -> dict[str, Any]:
+    """Least-squares map of the schematic cubic pair onto the unique I3."""
+    pts = hilbert._sample_ps_points(n_points, seed)
+    basis = np.asarray(
+        [hilbert.ps_forms_degree3(float(a), float(w), float(p))[0] for a, w, p in pts],
+        dtype=float,
+    )
+    values = np.asarray(
+        [schematic_cubic(float(a), float(w), float(p), lam1, lam2) for a, w, p in pts],
+        dtype=float,
+    )
+    denominator = float(basis @ basis)
+    coefficient = float(basis @ values) / denominator if denominator else 0.0
+    norm = float(np.linalg.norm(values))
+    return {
+        "I3_coefficient": coefficient,
+        "relative_noninvariant_residual": float(
+            np.linalg.norm(values - coefficient * basis) / max(norm, 1e-30)
+        ),
+        "hilbert_H3": hilbert.HILBERT_210[3],
+        "lam1_schematic": float(lam1),
+        "lam2_schematic": float(lam2),
+        "note": (
+            "Neither a*omega*p nor omega*(omega^2-3a^2) is the restriction of "
+            "an SO(10) invariant; the projection keeps the invariant I3 part."
+        ),
+    }
+
+
+@lru_cache(maxsize=64)
+def _projected_cubic_coupling(lam1: float, lam2: float) -> float:
+    return project_schematic_cubic_onto_hilbert(lam1=lam1, lam2=lam2)[
+        "I3_coefficient"
+    ]
+
+
 def hilbert_complete_potential(
     *,
     a: float,
@@ -119,13 +167,18 @@ def hilbert_complete_potential(
     mu2: float = 0.0,
     eps: float = 1e-6,
 ) -> dict[str, Any]:
-    """Pure-210 potential in the complete Hilbert basis through degree 4."""
+    """Pure-210 potential in the complete Hilbert basis through degree 4.
+
+    The schematic cubic couplings ``(lam1, lam2)`` enter only through their
+    projection onto the unique invariant cubic ``I3``.
+    """
     c = np.asarray(quartic_coeffs, dtype=float)
+    lam3 = _projected_cubic_coupling(float(lam1), float(lam2))
     i2 = hilbert.ps_forms_degree2(a, omega, p)[0]
-    i3a, i3b = hilbert.ps_forms_degree3(a, omega, p)
+    i3 = hilbert.ps_forms_degree3(a, omega, p)[0]
     qs = np.asarray(hilbert.ps_forms_degree4(a, omega, p), dtype=float)
     v2 = mu2 * i2
-    v3 = lam1 * i3a + lam2 * i3b
+    v3 = lam3 * i3
     v4 = float(np.dot(c, qs))
     v = v2 + v3 + v4
 
@@ -135,9 +188,9 @@ def hilbert_complete_potential(
 
     def v_at(aa: float, ww: float, pp: float) -> float:
         i2_ = hilbert.ps_forms_degree2(aa, ww, pp)[0]
-        i3a_, i3b_ = hilbert.ps_forms_degree3(aa, ww, pp)
+        i3_ = hilbert.ps_forms_degree3(aa, ww, pp)[0]
         qs_ = np.asarray(hilbert.ps_forms_degree4(aa, ww, pp), dtype=float)
-        return float(mu2 * i2_ + lam1 * i3a_ + lam2 * i3b_ + np.dot(c, qs_))
+        return float(mu2 * i2_ + lam3 * i3_ + np.dot(c, qs_))
 
     g = np.array(
         [
@@ -157,6 +210,7 @@ def hilbert_complete_potential(
         "mu2": mu2,
         "lam1": lam1,
         "lam2": lam2,
+        "lam3_I3": lam3,
         "quartic_coeffs": [float(x) for x in c],
         "V2": float(v2),
         "V3": float(v3),
@@ -167,7 +221,7 @@ def hilbert_complete_potential(
         "soft_shift_norm_over_MGUT2": float(
             np.linalg.norm(dm2) / (max(abs(a), abs(omega), abs(p), 1.0) ** 2)
         ),
-        "basis": "Hilbert {I2, I3a, I3b, Q0..Q3}",
+        "basis": "Hilbert {I2, I3=Tr(A_Phi^3), J0, J2, J3, J4}",
     }
 
 
@@ -286,6 +340,7 @@ def build_report() -> dict[str, Any]:
 
     projection = project_schematic_quartic_onto_hilbert(eta=eta)
     coeffs = np.asarray(projection["coeffs_vector"], dtype=float)
+    cubic_projection = project_schematic_cubic_onto_hilbert(lam1=lam1, lam2=lam2)
 
     sel = minimize_a_omega_p_hilbert(
         m_gut=m_gut, lam1=lam1, lam2=lam2, quartic_coeffs=coeffs
@@ -299,7 +354,7 @@ def build_report() -> dict[str, Any]:
     }
     max_frac_delta = float(max(frac_delta.values()))
 
-    # Residual identification still uses the same cubics
+    # Legacy residual identification from the schematic cubic pair
     res_couplings = residual.uv_residual_couplings_from_ps_potential(
         lam1=lam1, lam2=lam2
     )
@@ -319,6 +374,8 @@ def build_report() -> dict[str, Any]:
         "hilbert_kernel_closed": hilbert_rep.get("n_failed", 1) == 0
         and hilbert_rep["flag"]["pure_210_residual_kernel_deg_le_4"],
         "projection_full_H4": projection["spans_full_H4"],
+        "single_invariant_cubic": hilbert.HILBERT_210[3] == 1,
+        "cubic_projection_nonzero": abs(cubic_projection["I3_coefficient"]) > 0.0,
         "aop_baseline_ok": aop_rep.get("n_failed", 1) == 0,
         "residual_baseline_ok": residual_rep.get("n_failed", 1) == 0,
         "minimize_ok": sel["success"],
@@ -357,6 +414,7 @@ def build_report() -> dict[str, Any]:
             "H": hilbert_rep["hilbert_series"]["coefficients"],
         },
         "quartic_projection": projection,
+        "cubic_projection": cubic_projection,
         "selected_hilbert": sel,
         "prior_schematic_selection": {
             "fractions": prior_fr,
@@ -377,7 +435,13 @@ def build_report() -> dict[str, Any]:
             },
             "soft_shift_norm_over_MGUT2": pot_stack["soft_shift_norm_over_MGUT2"],
         },
-        "uv_residual_couplings": res_couplings,
+        "uv_residual_couplings": {
+            **res_couplings,
+            "scope": (
+                "legacy schematic chain: lam1/lam2 multiply a*omega*p and "
+                "omega*(omega^2-3a^2), which are not SO(10)-invariant"
+            ),
+        },
         "next_exact_calculation": [
             "Close the mixed-rep 210⊕126⊕10⊕S Hilbert series (beyond pure 210)",
             "Execute a live SARAH/PyR@TE dump when tools are available",
@@ -387,6 +451,8 @@ def build_report() -> dict[str, Any]:
             "unique_from_full_pure_210n_tensor_basis": True,
             "hilbert_restriction_kernel_used": True,
             "schematic_quartic_projected_to_H4": True,
+            "schematic_cubic_projected_to_unique_I3": True,
+            "legacy_two_cubic_basis_withdrawn": True,
             "unique_a_omega_p_reselected_on_hilbert_potential": True,
             "residual_lam210_eta_intra_carried": True,
             "mixed_rep_full_hilbert_series": False,
@@ -395,9 +461,11 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            f"Pure-210ⁿ uniqueness promoted via Hilbert H₂=1,H₃=2,H₄=4 "
-            f"(ker=0): schematic quartic projected (rel. non-invariant residual "
-            f"{projection['relative_noninvariant_residual']:.3e}); "
+            f"Pure-210ⁿ uniqueness promoted via exact Hilbert H₂=1,H₃=1,H₄=4 "
+            f"(ker=0): schematic cubic projected onto I₃ (rel. non-invariant "
+            f"residual {cubic_projection['relative_noninvariant_residual']:.3e}), "
+            f"schematic quartic projected onto J₀,J₂,J₃,J₄ (rel. non-invariant "
+            f"residual {projection['relative_noninvariant_residual']:.3e}); "
             f"selected (a,ω,p)/M_GUT="
             f"({new_fr['a_over_MGUT']:.4f},{new_fr['omega_over_MGUT']:.4f},"
             f"{new_fr['p_over_MGUT']:.4f}) "

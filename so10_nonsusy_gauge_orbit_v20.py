@@ -11,7 +11,9 @@ Representations are constructed directly as differential forms on R^10:
 The generator action is implemented as e_a wedge i_b - e_b wedge i_a. No
 Aulakh/MSGUT mass matrices or Clebsch tables enter. The resulting gauge orbit
 has rank 33 and the common stabilizer has dimension 12, with the split
-8 (SU(3)-sized) + 4 (SU(2)xU(1)-sized).
+8 (SU(3)-sized) + 4 (SU(2)xU(1)-sized).  The stabilizer is SM-sized, not the
+SM: its U(1) is T3R, not Y, because this Delta_R has Y=-1
+(g3_sigma_hypercharge_audit_v20).
 """
 from __future__ import annotations
 
@@ -221,7 +223,7 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "EXACT_SO10_GAUGE_ORBIT_33_GOLDSTONES__SM_STABILIZER"
+            "EXACT_SO10_GAUGE_ORBIT_33_GOLDSTONES__SM_SIZED_T3R_STABILIZER"
             if not failures
             else "SO10_GAUGE_ORBIT_CERTIFICATE_FAILED"
         ),

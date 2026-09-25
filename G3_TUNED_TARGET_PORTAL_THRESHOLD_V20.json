@@ -1,0 +1,157 @@
+{
+  "checks": {
+    "compiler_confirms_S_zero_branch_energy": true,
+    "compiler_confirms_valley_identity": true,
+    "compiler_matches_singlet_threshold_formula": true,
+    "doublet_massless_after_O06_retune": true,
+    "every_point_is_stationary": true,
+    "hessian_is_psd_at_every_point": true,
+    "no_gate_closed_or_model_excluded": true,
+    "portal_couples_the_doublet_to_the_S_radial_mode": true,
+    "two_loop_sm_target_is_negative": true
+  },
+  "couplings": {
+    "lambda_H": 1.0,
+    "lambda_S": 1.0,
+    "normalization": "V > lambda_H (H^dag H)^2 + lambda_S |S|^4 + lambda_HS (H^dag H)|S|^2 (census; SARAH writes lambdaS/2 |S|^4)",
+    "portal_parameter": "lambda::O34_B01_Hdag_H_norm"
+  },
+  "failures": [],
+  "flags": {
+    "certified_point_is_sm_vacuum": false,
+    "g3_closed": false,
+    "tree_level_only": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "formula": "lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S); local minimum iff lambda_eff >= 0",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 9,
+  "n_failed": 0,
+  "overall_state": "CONSTRAINT",
+  "scan": [
+    {
+      "coupling_S_block_norm": 0.141421356237,
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 0.5,
+      "lambda_direct": 1.0,
+      "lambda_eff": 0.9375,
+      "lambda_eff_formula": 0.9375,
+      "negative_hessian_eigenvalues": 0,
+      "retuned_O06": -0.02,
+      "zero_modes": 39
+    },
+    {
+      "coupling_S_block_norm": 0.282842712475,
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 1.0,
+      "lambda_direct": 1.0,
+      "lambda_eff": 0.75,
+      "lambda_eff_formula": 0.75,
+      "negative_hessian_eigenvalues": 0,
+      "retuned_O06": -0.04,
+      "zero_modes": 39
+    },
+    {
+      "coupling_S_block_norm": 0.565685424949,
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 2.0,
+      "lambda_direct": 1.0,
+      "lambda_eff": 0.0,
+      "lambda_eff_formula": 0.0,
+      "negative_hessian_eigenvalues": 0,
+      "retuned_O06": -0.08,
+      "zero_modes": 39
+    }
+  ],
+  "scientific_outcomes": {
+    "higgs_mass_tension_resolvable_by_tree_level_portal_at_a_local_minimum": false,
+    "local_minimum_requires_lambda_HS_at_most": 2.0,
+    "sm_matched_lambda_HS": 2.015054887557,
+    "sm_matched_point_has_lower_EW_breaking_PQ_restoring_configuration": true,
+    "sm_matched_point_is_tree_level_local_minimum": false,
+    "stable_control_lambda_HS_1_has_no_lower_S_zero_branch": true
+  },
+  "scope": "Tree level at the r = 1/5 benchmark point with the certified Delta_R, which is not the SM singlet (g3_sigma_hypercharge_audit_v20). The two-loop SM target assumes SM running all the way to M_GUT.",
+  "sm_matching": {
+    "compiler_point": {
+      "coupling_S_block_norm": 0.569943590182,
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 2.015054887557,
+      "lambda_direct": 1.0,
+      "lambda_eff": -0.015111549966,
+      "lambda_eff_formula": -0.015111549966,
+      "negative_hessian_eigenvalues": 0,
+      "retuned_O06": -0.080602195502,
+      "zero_modes": 39
+    },
+    "lambda_HS_required_at_benchmark_lambda_H_lambda_S": 2.015054887557,
+    "lambda_gut_required_two_loop": -0.015111549966,
+    "source": "g3_physical_hierarchy_higgs_stability_v20 (two-loop SM running, Buttazzo et al. inputs)",
+    "valley": {
+      "S_zero_branch": {
+        "H_norm_over_Phi": 0.200751333124,
+        "H_norm_squared": 0.040301097751,
+        "analytic": -2.417848e-05,
+        "delta_V": -2.417848e-05,
+        "lower_than_tuned_point": true
+      },
+      "V0": -1.03305,
+      "lambda_HS": 2.015054887557,
+      "lambda_eff": -0.015111549966,
+      "local_minimum_bound_lambda_HS_max": 2.0,
+      "tuned_point_is_tree_level_local_minimum": false,
+      "valley": [
+        {
+          "S_abs_squared": 0.034962362781,
+          "delta_V": -3.77789e-07,
+          "lambda_eff_y2": -3.77789e-07,
+          "y": 0.005
+        },
+        {
+          "S_abs_squared": 0.029924725562,
+          "delta_V": -1.511155e-06,
+          "lambda_eff_y2": -1.511155e-06,
+          "y": 0.01
+        }
+      ],
+      "valley_identity_max_residual": 0.0
+    }
+  },
+  "stable_control": {
+    "S_zero_branch": {
+      "H_norm_over_Phi": 0.141421356237,
+      "H_norm_squared": 0.02,
+      "analytic": 0.0012,
+      "delta_V": 0.0012,
+      "lower_than_tuned_point": false
+    },
+    "V0": -1.03305,
+    "lambda_HS": 1.0,
+    "lambda_eff": 0.75,
+    "local_minimum_bound_lambda_HS_max": 2.0,
+    "tuned_point_is_tree_level_local_minimum": true,
+    "valley": [
+      {
+        "S_abs_squared": 0.0375,
+        "delta_V": 1.875e-05,
+        "lambda_eff_y2": 1.875e-05,
+        "y": 0.005
+      },
+      {
+        "S_abs_squared": 0.035,
+        "delta_V": 7.5e-05,
+        "lambda_eff_y2": 7.5e-05,
+        "y": 0.01
+      }
+    ],
+    "valley_identity_max_residual": 0.0
+  },
+  "status": "G3_PORTAL_THRESHOLD_EXACT__SM_MATCHED_PORTAL_MAKES_TUNED_POINT_A_SADDLE__G3_OPEN",
+  "units": "Hessian eigenvalues of the canonical 486-real chart, units of the benchmark scale M (|Phi|=1)",
+  "verdict": "The declared H-S portal gives the exact singlet threshold lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S), but the tuned point stays a tree-level local minimum only while lambda_eff >= 0 (lambda_HS <= 2 at the benchmark). Matching the two-loop SM value lambda(M_GUT) = -0.0151 needs lambda_HS = 2.0151; the point is then a PSD but degenerate saddle that descends along the H-S valley to an electroweak-breaking, PQ-restoring configuration with S = 0. A tree-level portal threshold therefore cannot supply the negative matching quartic at a G3-admissible point. G3 stays open; nothing is excluded."
+}

@@ -173,14 +173,14 @@ jobs:
           corrected=central_view(corrected_publication)
           s=r['executable_scaffold_contract']
           e=r['external_model_validation']
-          assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
-          assert r['static_contract_consistent'] is True, r
-          assert r['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED', r
+          assert r['n_failed']==0 and r['overall_state']=='PASS', r
+          assert r['static_contract_consistent'] is True and r['contract_consistent'] is True, r
+          assert r['blocker'] is None, r
           assert s['model_syntax_class']=='sarah_native', s
           assert not s['legacy_pseudo_sarah_grammar'] and s['tool_native_sarah_syntax'], s
           assert s['statically_executable_model_contract'], s
-          assert not e['valid'], e
-          assert not e['checks']['captured_process_log_is_hash_bound'], e
+          assert e['valid'] and e['fresh_for_exact_model_bytes'], e
+          assert e['checks']['captured_process_log_is_hash_bound'], e
           assert r['repository_external_input_manifest']['valid'], r
           assert gate_ledger._rank1_su4_augmented_sos_cubic_map_exact(rank1_su4_cubic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic, rank1_su4_census)
           cubic_map=rank1_su4_cubic['cubic_coordinate_map']
@@ -501,12 +501,12 @@ jobs:
           python -m unittest discover -v
           python -c "import json,os,pathlib,unittest; n=unittest.defaultTestLoader.discover('.').countTestCases(); payload={'passed':True,'tests_discovered':n,'commit_sha':os.getenv('GITHUB_SHA',''),'workflow_run_id':os.getenv('GITHUB_RUN_ID',''),'scope':'CURRENT_WORKFLOW_RUN'}; pathlib.Path('CURRENT_UNIT_TEST_ATTESTATION.json').write_text(json.dumps(payload,indent=2)+'\n',encoding='utf-8')"
       - name: Full scientific validity matrix
-        run: python theory_validation_matrix_v20.py --expect-blocked
+        run: python theory_validation_matrix_v20.py --expect-open
       - name: Final honest verdict + ultimate approval gate
         run: |
-          python theory_confirmation_verdict_v20.py --expect-blocked
-          python ultimate_theory_gate_v20.py --expect-blocked
-          python ultimate_theory_gate_v20.py --expect-blocked --no-write
+          python theory_confirmation_verdict_v20.py --expect-open
+          python ultimate_theory_gate_v20.py --expect-open
+          python ultimate_theory_gate_v20.py --expect-open --no-write
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4

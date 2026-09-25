@@ -1,0 +1,1606 @@
+{
+  "I3_convention": {
+    "I3_at_F": "48/sqrt(10)",
+    "I3_at_F_value": 15.17893277,
+    "I3_at_cayley": "96/sqrt(14)",
+    "I3_at_cayley_value": 25.65707922,
+    "TrA3_at_F": "6/sqrt(10)",
+    "TrA3_at_F_value": 1.897366596,
+    "TrA3_at_cayley": "12/sqrt(14)",
+    "TrA3_at_cayley_value": 3.207134903,
+    "above_F_quadratic_fit_per_unit_I3_squared": 3.95316e-05,
+    "above_F_quadratic_fit_per_unit_TrA3_squared": 0.00253002,
+    "above_F_quadratic_per_unit_I3_squared": "c_up = 4*q_eff/(9*I3(F)^2) (candidate 25/632448)",
+    "above_F_quadratic_per_unit_I3_squared_value": 3.9528942e-05,
+    "above_F_quadratic_per_unit_TrA3_squared": "64*c_up (candidate 25/9882)",
+    "above_F_quadratic_per_unit_TrA3_squared_value": 0.0025298523,
+    "below_F_slope_per_unit_I3": "mu* = 7/(270*sqrt(10))",
+    "below_F_slope_per_unit_I3_value": 0.0081984976,
+    "below_F_slope_per_unit_TrA3": "8*mu* = 28/(135*sqrt(10))",
+    "below_F_slope_per_unit_TrA3_value": 0.065587981,
+    "statement": "I3(Phi) = 8 Tr(A_Phi^3), the all-orderings contraction sum_{a..f} Phi_abcd Phi_cdef Phi_efab; the repository/manuscript Tr(A_Phi^3) is I3/8. Every I3, delta and slope in this report uses I3 unless labelled per_unit_TrA3."
+  },
+  "adversarial_profile": {
+    "analysis": {
+      "fit_b": -0.00125335,
+      "fit_c": 4.20699e-05,
+      "fit_form": "g/delta = a + b*sqrt(delta) + c*delta on the four smallest delta",
+      "fit_linear_slope_a": 0.00819795,
+      "fitted_quadratic_coefficient_on_smallest_delta": 0.209643,
+      "g_at_I3_zero": 0.0545898,
+      "g_nondecreasing_in_delta": true,
+      "growth_at_least_quadratic_near_F": true,
+      "growth_law_near_F": "below F only (t < I3(F), delta = I3(F) - t > 0): linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant",
+      "hessian_slope_mu_star": 0.0081985,
+      "pure_quadratic_coefficient_drift_max_over_min": 8.46303,
+      "pure_quadratic_coefficients_g_over_delta2_small_delta": [
+        0.209643,
+        0.10351,
+        0.0508339,
+        0.0247717
+      ],
+      "relative_difference_fit_vs_hessian": 6.71e-05,
+      "sign_symmetry_relative_difference_t_vs_minus_t": 1e-11,
+      "slope_matches_hessian": true,
+      "small_delta_points": [
+        0.0379473,
+        0.0758947,
+        0.151789,
+        0.303579
+      ]
+    },
+    "analysis_above_F": {
+      "excess_reduction_c_up": 3.95289e-05,
+      "fit_c1": -2.23805e-08,
+      "fit_c2": 1.33135e-06,
+      "fit_form": "g/Delta^2 = c0 + c1*sqrt(Delta) + c2*Delta on the four smallest Delta",
+      "fit_quadratic_coefficient_c0": 3.95316e-05,
+      "g_at_largest_Delta": 0.00493123,
+      "g_nondecreasing_in_Delta": true,
+      "g_over_Delta_small_Delta": [
+        1.50187e-06,
+        3.00744e-06,
+        6.02981e-06,
+        1.21199e-05
+      ],
+      "g_over_Delta_squared_drift_max_over_min": 1.00874,
+      "g_over_Delta_squared_small_Delta": [
+        3.95777e-05,
+        3.96266e-05,
+        3.97248e-05,
+        3.99234e-05
+      ],
+      "growth_law_above_F": "above F only (t > I3(F), Delta = t - I3(F) > 0): quadratic: g/Delta^2 -> c_up > 0, g/Delta -> 0",
+      "largest_Delta_sampled": 9.10736,
+      "quadratic_matches_excess_reduction": true,
+      "relative_difference_fit_vs_excess_reduction": 6.63e-05,
+      "sampled_points": 10,
+      "small_Delta_points": [
+        0.0379473,
+        0.0758947,
+        0.151789,
+        0.303579
+      ]
+    },
+    "min_g_above_F": 5.69918e-08,
+    "min_g_off_F": 0.000301886,
+    "rows": [
+      {
+        "delta": 0.0,
+        "delta_over_I3F": 0.0,
+        "g": 0.0,
+        "note": "attained at F itself (projector zero)",
+        "t": 15.178933
+      },
+      {
+        "I4125_at_minimiser": 0.0003019,
+        "I54_at_minimiser": 1.124e-08,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-05,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "random_1",
+        "delta": 0.037947332,
+        "delta_over_I3F": 0.0025,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.000301886,
+        "g_over_delta": 0.0079554,
+        "g_over_delta_squared": 0.209643,
+        "g_reference_projectors": 0.000301886,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.02872,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 15.140985,
+        "worst_feasible_value": 0.000301886
+      },
+      {
+        "I4125_at_minimiser": 0.0005962,
+        "I54_at_minimiser": 4.412e-08,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-06,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "random_3",
+        "delta": 0.075894664,
+        "delta_over_I3F": 0.005,
+        "fast_minus_reference_abs": 1e-16,
+        "feasible_runs": 6,
+        "g": 0.000596216,
+        "g_over_delta": 0.00785584,
+        "g_over_delta_squared": 0.10351,
+        "g_reference_projectors": 0.000596216,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.04054,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 15.103038,
+        "worst_feasible_value": 0.000596216
+      },
+      {
+        "I4125_at_minimiser": 0.001171,
+        "I54_at_minimiser": 1.719e-07,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-06,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "random_3",
+        "delta": 0.15178933,
+        "delta_over_I3F": 0.01,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.00117121,
+        "g_over_delta": 0.00771604,
+        "g_over_delta_squared": 0.0508339,
+        "g_reference_projectors": 0.00117121,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.05719,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 15.027143,
+        "worst_feasible_value": 0.00117121
+      },
+      {
+        "I4125_at_minimiser": 0.002282,
+        "I54_at_minimiser": 6.639e-07,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-06,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "random_1",
+        "delta": 0.30357866,
+        "delta_over_I3F": 0.02,
+        "fast_minus_reference_abs": 1e-16,
+        "feasible_runs": 6,
+        "g": 0.00228296,
+        "g_over_delta": 0.00752015,
+        "g_over_delta_squared": 0.0247717,
+        "g_reference_projectors": 0.00228296,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.08062,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 14.875354,
+        "worst_feasible_value": 0.00228296
+      },
+      {
+        "I4125_at_minimiser": 0.005412,
+        "I54_at_minimiser": 3.89e-06,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-08,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": 0.75894664,
+        "delta_over_I3F": 0.05,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.00541637,
+        "g_over_delta": 0.00713669,
+        "g_over_delta_squared": 0.00940342,
+        "g_reference_projectors": 0.00541637,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.1268,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 14.419986,
+        "worst_feasible_value": 0.00541637
+      },
+      {
+        "I4125_at_minimiser": 0.01017,
+        "I54_at_minimiser": 1.457e-05,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-06,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "random_1",
+        "delta": 1.5178933,
+        "delta_over_I3F": 0.1,
+        "fast_minus_reference_abs": 1e-16,
+        "feasible_runs": 6,
+        "g": 0.0101864,
+        "g_over_delta": 0.00671089,
+        "g_over_delta_squared": 0.00442118,
+        "g_reference_projectors": 0.0101864,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.1784,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 13.661039,
+        "worst_feasible_value": 0.0101864
+      },
+      {
+        "I4125_at_minimiser": 0.01851,
+        "I54_at_minimiser": 5.369e-05,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-06,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "random_2",
+        "delta": 3.0357866,
+        "delta_over_I3F": 0.2,
+        "fast_minus_reference_abs": 1e-16,
+        "feasible_runs": 6,
+        "g": 0.0185668,
+        "g_over_delta": 0.00611597,
+        "g_over_delta_squared": 0.00201463,
+        "g_reference_projectors": 0.0185668,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.2512,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 12.143146,
+        "worst_feasible_value": 0.0185668
+      },
+      {
+        "I4125_at_minimiser": 0.02567,
+        "I54_at_minimiser": 0.0001143,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-07,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": 4.5536798,
+        "delta_over_I3F": 0.3,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.0257845,
+        "g_over_delta": 0.00566234,
+        "g_over_delta_squared": 0.00124346,
+        "g_reference_projectors": 0.0257845,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.3072,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 10.625253,
+        "worst_feasible_value": 0.0257845
+      },
+      {
+        "I4125_at_minimiser": 0.03186,
+        "I54_at_minimiser": 0.0001948,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-06,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "continuation",
+        "delta": 6.0715731,
+        "delta_over_I3F": 0.4,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.0320588,
+        "g_over_delta": 0.00528015,
+        "g_over_delta_squared": 0.000869652,
+        "g_reference_projectors": 0.0320588,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.3546,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 9.1073597,
+        "worst_feasible_value": 0.0320588
+      },
+      {
+        "I4125_at_minimiser": 0.03722,
+        "I54_at_minimiser": 0.0002941,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-07,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": 7.5894664,
+        "delta_over_I3F": 0.5,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.0375123,
+        "g_over_delta": 0.00494267,
+        "g_over_delta_squared": 0.000651254,
+        "g_reference_projectors": 0.0375123,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.3967,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 7.5894664,
+        "worst_feasible_value": 0.0375123
+      },
+      {
+        "I4125_at_minimiser": 0.04181,
+        "I54_at_minimiser": 0.0004116,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-05,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "continuation",
+        "delta": 9.1073597,
+        "delta_over_I3F": 0.6,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.0422243,
+        "g_over_delta": 0.00463628,
+        "g_over_delta_squared": 0.00050907,
+        "g_reference_projectors": 0.0422243,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.4351,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 6.0715731,
+        "worst_feasible_value": 0.0422243
+      },
+      {
+        "I4125_at_minimiser": 0.0457,
+        "I54_at_minimiser": 0.0005468,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-09,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": 10.625253,
+        "delta_over_I3F": 0.7,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.0462511,
+        "g_over_delta": 0.00435294,
+        "g_over_delta_squared": 0.000409679,
+        "g_reference_projectors": 0.0462511,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.4242,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 4.5536798,
+        "worst_feasible_value": 0.0462511
+      },
+      {
+        "I4125_at_minimiser": 0.04894,
+        "I54_at_minimiser": 0.0006993,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-07,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": 12.143146,
+        "delta_over_I3F": 0.8,
+        "fast_minus_reference_abs": 1e-16,
+        "feasible_runs": 6,
+        "g": 0.0496343,
+        "g_over_delta": 0.00408743,
+        "g_over_delta_squared": 0.000336604,
+        "g_reference_projectors": 0.0496343,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.4078,
+        "runs": 6,
+        "runs_agreeing_with_best": 5,
+        "side": "below_F",
+        "t": 3.0357866,
+        "worst_feasible_value": 0.0572691
+      },
+      {
+        "I4125_at_minimiser": 0.05154,
+        "I54_at_minimiser": 0.0008689,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-08,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": 13.661039,
+        "delta_over_I3F": 0.9,
+        "fast_minus_reference_abs": 1e-16,
+        "feasible_runs": 6,
+        "g": 0.0524056,
+        "g_over_delta": 0.00383614,
+        "g_over_delta_squared": 0.000280809,
+        "g_reference_projectors": 0.0524056,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.392,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 1.5178933,
+        "worst_feasible_value": 0.0524056
+      },
+      {
+        "I4125_at_minimiser": 0.05353,
+        "I54_at_minimiser": 0.001055,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-06,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "continuation",
+        "delta": 15.178933,
+        "delta_over_I3F": 1.0,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.0545898,
+        "g_over_delta": 0.00359642,
+        "g_over_delta_squared": 0.000236935,
+        "g_reference_projectors": 0.0545898,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.3766,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "below_F",
+        "t": 0.0,
+        "worst_feasible_value": 0.0545898
+      },
+      {
+        "I4125_at_minimiser": 0.03722,
+        "I54_at_minimiser": 0.0002941,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-05,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "random_2",
+        "delta": 22.768399,
+        "delta_over_I3F": 1.5,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.0375123,
+        "g_over_delta": 0.00164756,
+        "g_over_delta_squared": 7.23616e-05,
+        "g_reference_projectors": 0.0375123,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.3967,
+        "runs": 6,
+        "runs_agreeing_with_best": 4,
+        "side": "below_F",
+        "t": -7.5894664,
+        "worst_feasible_value": 0.0572395
+      }
+    ],
+    "rows_above_F": [
+      {
+        "I4125_at_minimiser": 3.593e-09,
+        "I54_at_minimiser": 5.34e-08,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 0.001,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -0.037947332,
+        "delta_over_I3F": -0.0025,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 5.69918e-08,
+        "g_over_delta": -1.50187e-06,
+        "g_over_delta_squared": 3.95777e-05,
+        "g_reference_projectors": 5.69918e-08,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.02903,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 15.21688,
+        "worst_feasible_value": 5.69918e-08
+      },
+      {
+        "I4125_at_minimiser": 1.435e-08,
+        "I54_at_minimiser": 2.139e-07,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 0.0001,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -0.075894664,
+        "delta_over_I3F": -0.005,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 2.28249e-07,
+        "g_over_delta": -3.00744e-06,
+        "g_over_delta_squared": 3.96266e-05,
+        "g_reference_projectors": 2.28249e-07,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.04115,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 15.254827,
+        "worst_feasible_value": 2.28249e-07
+      },
+      {
+        "I4125_at_minimiser": 5.721e-08,
+        "I54_at_minimiser": 8.581e-07,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 0.0001,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -0.15178933,
+        "delta_over_I3F": -0.01,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 9.1526e-07,
+        "g_over_delta": -6.02981e-06,
+        "g_over_delta_squared": 3.97248e-05,
+        "g_reference_projectors": 9.1526e-07,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.05841,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 15.330722,
+        "worst_feasible_value": 9.1526e-07
+      },
+      {
+        "I4125_at_minimiser": 2.272e-07,
+        "I54_at_minimiser": 3.452e-06,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-07,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -0.30357866,
+        "delta_over_I3F": -0.02,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 3.67934e-06,
+        "g_over_delta": -1.21199e-05,
+        "g_over_delta_squared": 3.99234e-05,
+        "g_reference_projectors": 3.67934e-06,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.08307,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 15.482511,
+        "worst_feasible_value": 3.67934e-06
+      },
+      {
+        "I4125_at_minimiser": 1.389e-06,
+        "I54_at_minimiser": 2.196e-05,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 0.0001,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -0.75894664,
+        "delta_over_I3F": -0.05,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 2.33486e-05,
+        "g_over_delta": -3.07645e-05,
+        "g_over_delta_squared": 4.05358e-05,
+        "g_reference_projectors": 2.33486e-05,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.133,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 15.937879,
+        "worst_feasible_value": 2.33486e-05
+      },
+      {
+        "I4125_at_minimiser": 5.321e-06,
+        "I54_at_minimiser": 9.056e-05,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-07,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -1.5178933,
+        "delta_over_I3F": -0.1,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 9.58833e-05,
+        "g_over_delta": -6.31687e-05,
+        "g_over_delta_squared": 4.1616e-05,
+        "g_reference_projectors": 9.58833e-05,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.1911,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 16.696826,
+        "worst_feasible_value": 9.58833e-05
+      },
+      {
+        "I4125_at_minimiser": 1.895e-05,
+        "I54_at_minimiser": 0.0003869,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-07,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -3.0357866,
+        "delta_over_I3F": -0.2,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.000405817,
+        "g_over_delta": -0.000133678,
+        "g_over_delta_squared": 4.4034e-05,
+        "g_reference_projectors": 0.000405817,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.278,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 18.214719,
+        "worst_feasible_value": 0.000405817
+      },
+      {
+        "I4125_at_minimiser": 3.57e-05,
+        "I54_at_minimiser": 0.0009363,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-05,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "continuation",
+        "delta": -4.5536798,
+        "delta_over_I3F": -0.3,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.000972001,
+        "g_over_delta": -0.000213454,
+        "g_over_delta_squared": 4.6875e-05,
+        "g_reference_projectors": 0.000972001,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.3494,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 19.732613,
+        "worst_feasible_value": 0.000972001
+      },
+      {
+        "I4125_at_minimiser": 4.848e-05,
+        "I54_at_minimiser": 0.002388,
+        "best_abs_constraint": 0.0,
+        "best_kkt_relative": 1e-07,
+        "best_method": "slsqp",
+        "best_start": "continuation",
+        "delta": -6.8305197,
+        "delta_over_I3F": -0.45,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.00243644,
+        "g_over_delta": -0.000356699,
+        "g_over_delta_squared": 5.22213e-05,
+        "g_reference_projectors": 0.00243644,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.4448,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 22.009453,
+        "worst_feasible_value": 0.00243644
+      },
+      {
+        "I4125_at_minimiser": 2.024e-05,
+        "I54_at_minimiser": 0.004911,
+        "best_abs_constraint": 1e-11,
+        "best_kkt_relative": 1e-05,
+        "best_method": "augmented_lagrangian_lbfgs",
+        "best_start": "continuation",
+        "delta": -9.1073597,
+        "delta_over_I3F": -0.6,
+        "fast_minus_reference_abs": 1e-15,
+        "feasible_runs": 6,
+        "g": 0.00493123,
+        "g_over_delta": -0.000541455,
+        "g_over_delta_squared": 5.94525e-05,
+        "g_reference_projectors": 0.00493123,
+        "minimiser_spectral_distance_to_plus_minus_F": 0.4484,
+        "runs": 6,
+        "runs_agreeing_with_best": 6,
+        "side": "above_F",
+        "t": 24.286292,
+        "worst_feasible_value": 0.00493123
+      }
+    ],
+    "sampling": {
+      "abs_t_covered": 24.2863,
+      "abs_t_feasible": 25.6571,
+      "max_runs_per_t": 6,
+      "min_best_local_minimum_above_F": 5.69918e-08,
+      "min_best_local_minimum_below_F": 0.000301886,
+      "min_best_local_minimum_rounded": 5.69918e-08,
+      "n_above_F": 10,
+      "n_below_F": 16,
+      "n_sampled_t": 26,
+      "nature_of_values": "each g is the best of the sampled constrained local minimisations: an upper bound on the true g(t), not a certified lower bound; positivity is evidence, not proof",
+      "t_max": 24.2863,
+      "t_min": -7.58947
+    }
+  },
+  "checks": {
+    "F_A_spectrum_4_1_minus1_over_sqrt10_with_1_20_24": true,
+    "F_and_minus_F_are_projector_zeros_to_1e-12": true,
+    "F_is_critical_for_I3_and_hessian_kernel_is_orbit_20_plus_excess_10": true,
+    "I3_equals_8_trace_A_cubed_bruteforce": true,
+    "I3_of_plus_minus_F_equals_plus_minus_8x60_over_10_to_3_2": true,
+    "K_eigenvalues_singlet_24_54_14_4125_0": true,
+    "K_values_14_and_0_each_owned_by_a_single_sym2_irrep": true,
+    "alt2_210_multiplicities_times_dimensions_sum_to_21945": true,
+    "analytic_gradients_match_finite_differences": true,
+    "cayley_A_spectrum_3_minus1_0_over_sqrt14_with_7_21_17": true,
+    "cayley_I3_equals_8x168_over_14_to_3_2": true,
+    "character_algorithm_sanity_lambda4_irreducible_and_10x10_is_1_45_54": true,
+    "contraction_formula_matches_casimir_projectors": true,
+    "cubic_maximiser_A_spectrum_equals_cayley_spectrum": true,
+    "cubic_multistart_maximum_equals_cayley_value": true,
+    "cubic_multistart_maximum_exceeds_I3_F": true,
+    "direct_eigenvectors_identity_24_and_traceless_derivation_14": true,
+    "eigenspace_dimensions_1_45_54_confirmed_by_projector_rank": true,
+    "excess_directions_raise_I3_so_F_is_a_saddle_of_I3": true,
+    "excess_space_is_10_dimensional_isotropic_and_raises_I3": true,
+    "fail_closed_flags_do_not_overclaim": true,
+    "generators_are_antisymmetric_signed_partial_permutations_112_nonzeros": true,
+    "generators_close_the_so10_commutation_relations": true,
+    "generators_equal_gl10_derivation_action": true,
+    "lanczos_confirms_distinct_sym2_K_eigenvalues": true,
+    "multistart_endpoints_have_I3_equal_plus_minus_I3F": true,
+    "multistart_every_start_reached_a_zero": true,
+    "multistart_every_zero_on_plus_or_minus_F_orbit": true,
+    "profile_above_F_every_point_feasible_and_confirmed_by_two_runs": true,
+    "profile_above_F_fast_and_reference_objectives_agree_at_minimisers": true,
+    "profile_above_F_g_nondecreasing_in_t": true,
+    "profile_above_F_quadratic_growth_matches_excess_reduction": true,
+    "profile_above_F_sampled_best_local_minima_positive": true,
+    "profile_every_point_feasible_and_confirmed_by_two_runs": true,
+    "profile_fast_and_reference_objectives_agree_at_minimisers": true,
+    "profile_g_nondecreasing_in_delta": true,
+    "profile_growth_at_least_quadratic_near_F": true,
+    "profile_sampled_best_local_minima_positive_below_F": true,
+    "profile_sign_symmetry_if_sampled": true,
+    "profile_small_delta_slope_matches_exact_hessian_pencil": true,
+    "projector_images_are_K_eigenspaces": true,
+    "quadratic_casimir_on_210_equals_24": true,
+    "slice_I4125_gram_equals_repo_formula": true,
+    "slice_I54_gram_equals_repo_formula": true,
+    "slice_normalization_factor_is_exactly_one": true,
+    "slice_zero_locus_points_lie_on_plus_minus_F": true,
+    "spectral_projectors_complete_and_mutually_orthogonal": true,
+    "spectral_projectors_idempotent_on_random_symmetric_input": true,
+    "sym2_210_multiplicities_times_dimensions_sum_to_22155": true,
+    "trace_A3_convention_values_6_over_sqrt10_and_12_over_sqrt14": true,
+    "trace_identities_confirm_sym2_and_alt2_decompositions": true
+  },
+  "claims_vs_reproduced": [
+    {
+      "claim": "150/150 random starts reach f ~ 0 and every zero lies on SO(10).F or SO(10).(-F)",
+      "id": "multistart_all_zeros_on_plus_minus_F",
+      "reproduced": "150/150 starts reach f <= 1e-10 (full run); 150 on +-F by A-spectrum (tol 0.001) and orbit witness (tol 0.001); 0 off-orbit zeros; 0 nonzero local minima",
+      "verdict": "REPRODUCED"
+    },
+    {
+      "claim": "70 on +F, 80 on -F",
+      "id": "multistart_split",
+      "reproduced": "68 on +F, 82 on -F (seed 1500210)",
+      "verdict": "DIFFERENT_SPLIT__SEED_AND_OPTIMIZER_DEPENDENT"
+    },
+    {
+      "claim": "g(t) ~ 1.9e-3 * delta^2 near F (delta = I3(F) - t)",
+      "id": "profile_quadratic_growth_near_F",
+      "reproduced": "The growth law is one-sided. below F only (t < I3(F), delta = I3(F) - t > 0): linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant; g/delta -> 0.00819795 (fit) vs mu* = 0.0081985 (exact Hessian pencil at F); g/delta^2 = [0.209643, 0.10351, 0.0508339, 0.0247717] at delta = [0.0379473, 0.0758947, 0.151789, 0.303579]. above F only (t > I3(F), Delta = t - I3(F) > 0): quadratic: g/Delta^2 -> c_up > 0, g/Delta -> 0; g/(t-I3(F))^2 -> 3.95316e-05 (fit) vs c_up = 3.95289e-05 (exact fourth-order reduction on the 5+5bar excess space). Neither side shows 1.9e-3*delta^2.",
+      "verdict": "NOT_REPRODUCED__LINEAR_BELOW_F_QUADRATIC_ABOVE_F"
+    },
+    {
+      "claim": "g(0) ~ 0.052",
+      "id": "profile_value_at_I3_zero",
+      "reproduced": "g(0) = 0.0545898",
+      "verdict": "APPROXIMATELY_REPRODUCED"
+    },
+    {
+      "claim": "g grows smoothly with no zero off +-F",
+      "id": "profile_positive_no_zero_off_F",
+      "reproduced": "at the 26 sampled t values in [-7.58947, 24.2863] (16 below I3(F), 10 above; with g(-t) = g(t) the grid spans |t| from 0 to 24.2863 of the feasible |t| <= 25.6571) the best constrained local minimum (best of up to 6 local runs, an upper bound on g, not a proof of positivity) is >= 5.69918e-08 (>= 0.000301886 below F, >= 5.69918e-08 above F, smallest at the grid points nearest I3(F)); no zero off +-F was found; best values nondecreasing in |t - I3(F)| on each side: True",
+      "verdict": "REPRODUCED_ON_SAMPLED_RANGE"
+    },
+    {
+      "claim": "I3(F) = 8*60/10^(3/2) ~ 15.18, I3(-F) = -I3(F)",
+      "id": "I3_of_F",
+      "reproduced": "I3(F) = 15.17893277, I3(-F) = -15.17893277",
+      "verdict": "REPRODUCED"
+    },
+    {
+      "claim": "unit Cayley form: I3 = 8*168/14^(3/2) ~ 25.66",
+      "id": "I3_of_cayley",
+      "reproduced": "I3(Cayley) = 25.65707922",
+      "verdict": "REPRODUCED"
+    },
+    {
+      "claim": "F does not maximise I3 on the sphere; the maximum 25.66 is attained by the Cayley form",
+      "id": "cubic_maximum",
+      "reproduced": "max over 60 starts = 25.65707922 (60 starts); maximiser spectral distance to Cayley = 1e-08",
+      "verdict": "REPRODUCED"
+    },
+    {
+      "claim": "3/sqrt14 (x7), -1/sqrt14 (x21), 0 (x17)",
+      "id": "cayley_A_spectrum",
+      "reproduced": "A-spectrum x sqrt14 = [[-1.0, 21], [0.0, 17], [3.0, 7]]",
+      "verdict": "REPRODUCED"
+    },
+    {
+      "claim": "K = 24 on the singlet, 14 on the 54, 0 on the 4125",
+      "id": "K_eigenvalues",
+      "reproduced": "K_1 = 24, K_54 = 14, K_4125 = 0 (C2(210) = 24)",
+      "verdict": "REPRODUCED"
+    },
+    {
+      "claim": "I_54 = (3a^2-3b^2+4c^2)^2/35, I_4125 = 80(a^2-b^2-c^2)^2/21 on a*A+b*B+c*C (repo normalization)",
+      "id": "repo_slice_identities",
+      "reproduced": "Gram-level agreement, factor mine/repo = 1.0 (54), 1.0 (4125); max residual 0.0",
+      "verdict": "REPRODUCED_EXACTLY_FACTOR_ONE"
+    }
+  ],
+  "config": {
+    "cubic_starts": 60,
+    "mode": "full",
+    "multistart_starts": 150,
+    "profile_delta_fractions": [
+      0.0025,
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0,
+      1.5,
+      -0.0025,
+      -0.005,
+      -0.01,
+      -0.02,
+      -0.05,
+      -0.1,
+      -0.2,
+      -0.3,
+      -0.45,
+      -0.6
+    ],
+    "profile_random_starts": 4,
+    "profile_slsqp_cross_check": true
+  },
+  "contraction_identity": {
+    "I54_as_traceless_contraction": "I_54 = ||M - tr(M) I/10||_F^2 / 2016 (tr M = 24 |Phi|^2)",
+    "abs_fast_minus_reference_at_special_forms": {
+      "F": 1e-15,
+      "cayley": 1e-15,
+      "minus_F": 1e-15
+    },
+    "basis": {
+      "J0": "|Phi|^4",
+      "J1": "sum_ab M_ab^2, M_ab = sum_cde Phi_acde Phi_bcde (all orderings)",
+      "J2": "sum_abcd P_abcd^2, P_abcd = sum_ef Phi_abef Phi_cdef",
+      "J3": "sum_abcd P_abcd P_acbd"
+    },
+    "fit_points": 16,
+    "fit_singular_values": [
+      271.414,
+      3.01477,
+      1.4744,
+      0.0332516
+    ],
+    "fitted_coefficients": {
+      "4125": [
+        -0.071428571429,
+        0.006448412698,
+        -0.006944444444,
+        0.003472222222
+      ],
+      "54": [
+        -0.028571428571,
+        0.000496031746,
+        0.0,
+        0.0
+      ]
+    },
+    "identity": {
+      "4125": {
+        "J0": "-1/14",
+        "J1": "13/2016",
+        "J2": "-1/144",
+        "J3": "1/288"
+      },
+      "54": {
+        "J0": "-1/35",
+        "J1": "1/2016",
+        "J2": "0",
+        "J3": "0"
+      }
+    },
+    "max_abs_fitted_minus_rational": 1e-14,
+    "max_relative_gradient_error_vs_4_P_Phi": 1e-14,
+    "max_relative_value_error": 1e-13,
+    "validation_points": 8,
+    "why_four": "Complete contractions of four copies of Phi are 4-regular loopless multigraphs on four vertices; there are exactly four, so O(10)-invariant quartics on Lambda^4 R^10 span at most four functions."
+  },
+  "cubic_maximum": {
+    "I3_F": 15.17893277,
+    "I3_cayley_exact": 25.65707922,
+    "abs_max_minus_cayley": 1e-13,
+    "local_maxima_found": [
+      [
+        25.657079,
+        60
+      ]
+    ],
+    "max_I3": 25.65707922,
+    "maximiser_A_spectrum_times_sqrt14": [
+      [
+        -1.0,
+        21
+      ],
+      [
+        0.0,
+        17
+      ],
+      [
+        3.0,
+        7
+      ]
+    ],
+    "maximiser_I54_I4125": [
+      0.007142857143,
+      0.0
+    ],
+    "maximiser_f": 0.0071428571,
+    "maximiser_spectral_distance_to_cayley": 1e-08,
+    "n_starts": 60,
+    "n_starts_at_max": 60,
+    "seed": 1680014
+  },
+  "failures": [],
+  "g3_closed": false,
+  "gradient_checks": {
+    "directions_per_function": 3,
+    "max_relative_error": {
+      "I3": 1e-11,
+      "fast_f_normalized": 1e-09,
+      "reference_f": 1e-11
+    },
+    "passes": true,
+    "step": 1e-05
+  },
+  "local_second_order_analysis_at_F": {
+    "F_is_critical_point_of_I3_on_sphere": true,
+    "I3_F": 15.17893277,
+    "above_F_law": "one-sided, above F only (t > I3(F)): g(t) = c_up*(t - I3(F))^2 + O(|t - I3(F)|^2.5); the soft (quartic) 5+5bar directions raise I3 at second order",
+    "above_F_quadratic_coefficient_c_up": 3.952894151e-05,
+    "above_F_quadratic_coefficient_formula": "c_up = 4*q_eff/(9*I3(F)^2) (candidate 25/632448 with q_eff = 5/244)",
+    "bisection_bracket_valid": true,
+    "excess_I3_curvature_expected": 45.53679831,
+    "excess_directions": 10,
+    "excess_directions_raise_I3": true,
+    "excess_f_on_random_unit_vectors": [
+      0.06666666667,
+      0.06666666667,
+      0.06666666667,
+      0.06666666667
+    ],
+    "excess_reduced_quartic_closed_form_candidate": "5/244",
+    "excess_reduced_quartic_q_eff": 0.02049180328,
+    "excess_reduced_quartic_relative_difference_to_candidate": 1e-14,
+    "excess_reduced_quartic_relative_spread_over_directions": 1e-14,
+    "excess_riemannian_I3_curvature_on_random_unit_vectors": [
+      45.53679831,
+      45.53679831,
+      45.53679831,
+      45.53679831
+    ],
+    "excess_space_dimension": 10,
+    "grad_I3_radial_component": 45.53679831,
+    "grad_I3_tangential_norm": 0.0,
+    "hessian_f_kernel_dimension": 30,
+    "hessian_f_min_eigenvalue": 0.0,
+    "hessian_f_smallest_positive_eigenvalue": 0.6222222222,
+    "hessian_f_spectrum": [
+      [
+        0.0,
+        30
+      ],
+      [
+        0.622222,
+        75
+      ],
+      [
+        1.0,
+        80
+      ],
+      [
+        1.35556,
+        24
+      ]
+    ],
+    "mu_star": 0.008198497639,
+    "mu_star_closed_form_candidate": "7/(270*sqrt(10)) = (28/45)/(24*sqrt(10))",
+    "mu_star_closed_form_value": 0.008198497637,
+    "mu_star_relative_difference_to_closed_form": 1e-09,
+    "orbit_tangent_in_f_kernel_max_defect": 1e-14,
+    "orbit_tangent_rank": 20,
+    "riemannian_hessian_I3_on_f_kernel": [
+      [
+        0.0,
+        20
+      ],
+      [
+        45.5368,
+        10
+      ]
+    ],
+    "riemannian_hessian_I3_spectrum": [
+      [
+        -75.8947,
+        75
+      ],
+      [
+        -45.5368,
+        80
+      ],
+      [
+        -30.3579,
+        24
+      ],
+      [
+        0.0,
+        20
+      ],
+      [
+        45.5368,
+        10
+      ]
+    ],
+    "small_delta_law": "one-sided, below F only (t < I3(F), delta = I3(F) - t > 0): g(t) = mu_star*delta + O(delta^1.5)",
+    "tangent_dimension": 209
+  },
+  "method": {
+    "cubic_maximum": "L-BFGS-B on -I3(x/|x|) from standard-normal starts",
+    "fast_path": "Inside the optimisers f uses the exact identity I_R = sum_i c_i J_i in the four O(10)-invariant quartic contractions; its coefficients are refitted against the projectors and its values/gradients re-verified on every run.",
+    "independence": "stdlib + numpy + scipy only; no repository module is imported",
+    "local_analysis": "Exact Hessian of f at F (210 projector applications) and Riemannian Hessian of I3 on the sphere; mu* = sup{mu : H_f + mu H_I3 >= 0 on T_F} by bisection gives the sharp small-delta slope of g.",
+    "multistart": "L-BFGS-B on f(x/|x|) with the fast path from standard-normal starts, then up to three polish passes (<=150 L-BFGS-B steps each) with the Casimir projectors themselves; the endpoint is classified by f (projectors), the sorted A-spectrum against A(F) and A(-F), and an explicit orbit witness s*omega_J^2/|omega_J^2| built from the complex structure J recovered from the extreme eigenvector of A(Phi).",
+    "objective": "f(Phi) = ||Pi_54(Phi Phi^T)||_F^2 + ||Pi_4125(Phi Phi^T)||_F^2 on the unit sphere; grad f = 4 P Phi with P = (Pi_54 + Pi_4125)(Phi Phi^T); optimisers minimise f(x/|x|) with the exact homogeneous-function gradient.",
+    "profile": "For each t: an augmented Lagrangian (L-BFGS-B inner solves on f(x/|x|) + lambda*c + rho/2*c^2, c = I3(x/|x|) - t) from a continuation start and random starts, plus an SLSQP cross-check in the full run; g(t) is the best feasible value (|c| <= 1e-9), re-evaluated with the projectors. Below F (t < I3(F)) and above F (t > I3(F), up to the Cayley maximum) are separate continuation chains from F with separate seeds. Each value is an upper bound on g(t) (best local minimum found).",
+    "projectors": "Pi_R = prod_{mu != K_R}(K - mu)/(K_R - mu) over the distinct K eigenvalues on Sym^2; Pi_54 and Pi_4125 share all but one factor (7 sparse K products per evaluation).",
+    "representation_theory": "Sym^2(210) and Lambda^2(210) formal characters from the 210 weights of Lambda^4; irreducible multiplicities by reflecting nu+rho into the D5 chamber with sign det(w) (Racah-Speiser); Weyl dimension formula; C2 = <lambda, lambda+2rho>. Confirmed by a fully reorthogonalised Lanczos run of K on a random symmetric input and by tr(K^k), k=0,1,2, of the sparse operator on Sym^2 and Lambda^2."
+  },
+  "mode": "full",
+  "multistart": {
+    "anomalies": [],
+    "max_abs_I3_minus_signed_I3F": 1e-05,
+    "max_f_reference_after_polish": 1.4e-16,
+    "max_f_reference_before_polish": 1.2e-11,
+    "max_fast_iterations": 107,
+    "max_spectral_distance_before_polish": 0.0035,
+    "max_spectral_distance_to_assigned_orbit": 0.0002,
+    "max_witness_complex_structure_defect": 1e-14,
+    "max_witness_distance": 0.00029,
+    "min_spectral_distance_to_other_orbit": 0.948683,
+    "n_minus_F": 82,
+    "n_nonzero_local_minima": 0,
+    "n_plus_F": 68,
+    "n_reached_zero": 150,
+    "n_starts": 150,
+    "n_zero_off_orbit": 0,
+    "orbit_sequence": "-+-+-++-++--+--+++-+---++-+++-----+-+--++++-++--++---+-++++++-+---+++------++--++---+---+-----++-++-+--++--+--++-+-++--+---------+-+-+-----+-+++++--++",
+    "polish_passes_histogram": {
+      "1": 148,
+      "2": 2
+    },
+    "precision_note": "f and grad f from the Casimir projectors carry ~1e-14 absolute round-off in P = Pi(Phi Phi^T); in the quartic 5+5bar directions this limits the reachable distance to the orbit to ~1e-4..1e-6 in double precision",
+    "seed": 1500210,
+    "start_distribution": "x0 = standard normal in R^210, normalised",
+    "tolerances": {
+      "abs_I3_minus_signed_I3F": 0.0001,
+      "orbit_witness_distance": 0.001,
+      "sorted_A_spectrum_max_abs": 0.001,
+      "zero_f_reference": 1e-10
+    }
+  },
+  "n_checks": 51,
+  "n_failed": 0,
+  "normalization": {
+    "F": "F = (A+B)/sqrt(10) = omega^omega/|omega^omega|, omega = sum_k e_(2k-1)^e_(2k)",
+    "K": "K(W) = sum_{a<b} T_ab W T_ab^T = C2(210) - C2(R)/2 on channel R, C2(210) = 24",
+    "basis": "orthonormal component basis of Lambda^4 R^10: Phi = sum_{i<j<k<l} Phi_ijkl e_ijkl, |Phi|^2 = sum_{i<j<k<l} Phi_ijkl^2",
+    "cayley": "Phi_Cay = (A+C)/sqrt(14) = (omega_4^2/2 + Re Omega_4)/sqrt(14) on R^8 = C^4 (first 8 coordinates)",
+    "channels": "54 = (2,0,0,0,0), 4125 = (2,2,2,0,0) (orthonormal-basis highest weights)",
+    "cubic": "I3(Phi) = sum over all ordered a..f of Phi_abcd Phi_cdef Phi_efab = 8 Tr A(Phi)^3, A_[ab],[cd] = Phi_abcd (a<b, c<d); the repository/manuscript Tr(A_Phi^3) is I3/8 (see I3_convention)",
+    "delta": "delta = I3(F) - t (below F, t < I3(F)); Delta = t - I3(F) = -delta (above F)",
+    "generators": "T_ab = e_a e_b^T - e_b e_a^T on R^10 (a<b), acting on Lambda^4 as derivations",
+    "pair_space": "210 (x) 210 as 210x210 matrices with the Frobenius product (orthonormal product basis); Phi (x) Phi = Phi Phi^T",
+    "quartics": "I_R(Phi) = ||Pi_R(Phi Phi^T)||_F^2",
+    "repo_slice_normalization": "The repository slice identities use the same orthonormal normalization: ||Pi_R(Phi Phi^T)||^2 equals the repo formulas with factor 1."
+  },
+  "numerical_evidence_only": true,
+  "phi_orbit_lemma_proved": false,
+  "reference_forms": {
+    "F": {
+      "A_spectrum_times_sqrt10": [
+        [
+          -1.0,
+          24
+        ],
+        [
+          1.0,
+          20
+        ],
+        [
+          4.0,
+          1
+        ]
+      ],
+      "I3": 15.17893277,
+      "Pi4125_frobenius_norm": 1e-14,
+      "Pi54_frobenius_norm": 1e-13,
+      "norm": 1.0
+    },
+    "I3_F_abs_error": 0.0,
+    "I3_F_exact": "8*60/10^(3/2) = 48/sqrt(10)",
+    "I3_cayley_abs_error": 1e-14,
+    "I3_cayley_exact": "8*168/14^(3/2) = 96/sqrt(14)",
+    "I3_equals_8_trace_A3_bruteforce_max_abs_error": 1e-13,
+    "I3_minus_F_abs_error": 0.0,
+    "cayley": {
+      "A_spectrum_times_sqrt14": [
+        [
+          -1.0,
+          21
+        ],
+        [
+          0.0,
+          17
+        ],
+        [
+          3.0,
+          7
+        ]
+      ],
+      "I3": 25.65707922,
+      "I54": 0.007142857143,
+      "I54_exact_expected": "1/140",
+      "Pi4125_frobenius_norm": 1e-14,
+      "Pi54_frobenius_norm": 0.0845154,
+      "norm": 1.0
+    },
+    "minus_F": {
+      "A_spectrum_times_sqrt10": [
+        [
+          -4.0,
+          1
+        ],
+        [
+          -1.0,
+          20
+        ],
+        [
+          1.0,
+          24
+        ]
+      ],
+      "I3": -15.17893277,
+      "Pi4125_frobenius_norm": 1e-14,
+      "Pi54_frobenius_norm": 1e-13,
+      "norm": 1.0
+    }
+  },
+  "representation_theory": {
+    "K_singlet_54_4125": [
+      "24",
+      "14",
+      "0"
+    ],
+    "alt2_210_decomposition": [
+      {
+        "C2": 16,
+        "K_eigenvalue": "16",
+        "dimension": 45,
+        "highest_weight_orthonormal": [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "irrep": "45",
+        "multiplicity": 1
+      },
+      {
+        "C2": 24,
+        "K_eigenvalue": "12",
+        "dimension": 210,
+        "highest_weight_orthonormal": [
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "irrep": "210",
+        "multiplicity": 1
+      },
+      {
+        "C2": 32,
+        "K_eigenvalue": "8",
+        "dimension": 945,
+        "highest_weight_orthonormal": [
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "irrep": "945",
+        "multiplicity": 2
+      },
+      {
+        "C2": 44,
+        "K_eigenvalue": "2",
+        "dimension": 5940,
+        "highest_weight_orthonormal": [
+          2,
+          2,
+          1,
+          1,
+          0
+        ],
+        "irrep": "5940",
+        "multiplicity": 1
+      },
+      {
+        "C2": 52,
+        "K_eigenvalue": "-2",
+        "dimension": 6930,
+        "highest_weight_orthonormal": [
+          2,
+          2,
+          2,
+          1,
+          -1
+        ],
+        "irrep": "6930bar",
+        "multiplicity": 1
+      },
+      {
+        "C2": 52,
+        "K_eigenvalue": "-2",
+        "dimension": 6930,
+        "highest_weight_orthonormal": [
+          2,
+          2,
+          2,
+          1,
+          1
+        ],
+        "irrep": "6930",
+        "multiplicity": 1
+      }
+    ],
+    "alt2_dimension_sum": 21945,
+    "generators": {
+      "absolute_entries": [
+        1.0
+      ],
+      "casimir_minus_sum_T2_defect_vs_24": 0.0,
+      "max_antisymmetry_defect": 0.0,
+      "max_gl10_derivation_defect": 0.0,
+      "max_so10_commutation_defect": 0.0,
+      "nonzeros_per_generator": [
+        112
+      ],
+      "number_of_generators": 45,
+      "pair_operator_nonzeros": 564480,
+      "pair_operator_shape": [
+        44100,
+        44100
+      ]
+    },
+    "lanczos": {
+      "character_prediction": [
+        24,
+        16,
+        14,
+        12,
+        6,
+        2,
+        0,
+        -4
+      ],
+      "krylov_dimension": 8,
+      "matches_character_prediction": true,
+      "max_abs_ritz_minus_prediction": 1e-13,
+      "ritz_values": [
+        24.0,
+        16.0,
+        14.0,
+        12.0,
+        6.0,
+        2.0,
+        0.0,
+        -4.0
+      ],
+      "terminal_relative_residual": 1e-13
+    },
+    "projector_sanity": {
+      "K_identity_minus_24_identity": 0.0,
+      "K_on_traceless_derivation_relative_defect_vs_14": 1e-14,
+      "completeness_defect": 1e-14,
+      "eigenspace_dimension_by_projector_rank_64_inputs": {
+        "14": 54,
+        "16": 45,
+        "24": 1
+      },
+      "input": "random symmetric 210x210 matrix, unit Frobenius norm",
+      "max_cross_overlap": 1e-16,
+      "max_eigenspace_residual": 1e-12,
+      "max_idempotence_defect": 1e-13,
+      "relative_eigenspace_residual_K_Pi_minus_mu_Pi": {
+        "-4": 1e-14,
+        "0": 1e-13,
+        "12": 1e-12,
+        "14": 1e-12,
+        "16": 1e-12,
+        "2": 1e-13,
+        "24": 1e-13,
+        "6": 1e-13
+      },
+      "relative_idempotence_defect": {
+        "-4": 1e-15,
+        "0": 1e-14,
+        "12": 1e-13,
+        "14": 1e-13,
+        "16": 1e-13,
+        "2": 1e-14,
+        "24": 1e-14,
+        "6": 1e-14
+      },
+      "shared_factor_helper_defect": 1e-14,
+      "traceless_derivation_outside_Pi54_relative": 1e-14
+    },
+    "sym2_210_decomposition": [
+      {
+        "C2": 0,
+        "K_eigenvalue": "24",
+        "dimension": 1,
+        "highest_weight_orthonormal": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "irrep": "1",
+        "multiplicity": 1
+      },
+      {
+        "C2": 16,
+        "K_eigenvalue": "16",
+        "dimension": 45,
+        "highest_weight_orthonormal": [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "irrep": "45",
+        "multiplicity": 1
+      },
+      {
+        "C2": 20,
+        "K_eigenvalue": "14",
+        "dimension": 54,
+        "highest_weight_orthonormal": [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "irrep": "54",
+        "multiplicity": 1
+      },
+      {
+        "C2": 24,
+        "K_eigenvalue": "12",
+        "dimension": 210,
+        "highest_weight_orthonormal": [
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "irrep": "210",
+        "multiplicity": 1
+      },
+      {
+        "C2": 36,
+        "K_eigenvalue": "6",
+        "dimension": 1050,
+        "highest_weight_orthonormal": [
+          2,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "irrep": "1050bar",
+        "multiplicity": 1
+      },
+      {
+        "C2": 36,
+        "K_eigenvalue": "6",
+        "dimension": 1050,
+        "highest_weight_orthonormal": [
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "irrep": "1050",
+        "multiplicity": 1
+      },
+      {
+        "C2": 36,
+        "K_eigenvalue": "6",
+        "dimension": 770,
+        "highest_weight_orthonormal": [
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "irrep": "770",
+        "multiplicity": 1
+      },
+      {
+        "C2": 44,
+        "K_eigenvalue": "2",
+        "dimension": 5940,
+        "highest_weight_orthonormal": [
+          2,
+          2,
+          1,
+          1,
+          0
+        ],
+        "irrep": "5940",
+        "multiplicity": 1
+      },
+      {
+        "C2": 48,
+        "K_eigenvalue": "0",
+        "dimension": 4125,
+        "highest_weight_orthonormal": [
+          2,
+          2,
+          2,
+          0,
+          0
+        ],
+        "irrep": "4125",
+        "multiplicity": 1
+      },
+      {
+        "C2": 56,
+        "K_eigenvalue": "-4",
+        "dimension": 8910,
+        "highest_weight_orthonormal": [
+          2,
+          2,
+          2,
+          2,
+          0
+        ],
+        "irrep": "8910",
+        "multiplicity": 1
+      }
+    ],
+    "sym2_K_eigenvalue_owners": {
+      "-4": [
+        "8910"
+      ],
+      "0": [
+        "4125"
+      ],
+      "12": [
+        "210"
+      ],
+      "14": [
+        "54"
+      ],
+      "16": [
+        "45"
+      ],
+      "2": [
+        "5940"
+      ],
+      "24": [
+        "1"
+      ],
+      "6": [
+        "1050",
+        "1050bar",
+        "770"
+      ]
+    },
+    "sym2_dimension_sum": 22155,
+    "sym2_distinct_K_eigenvalues": [
+      "24",
+      "16",
+      "14",
+      "12",
+      "6",
+      "2",
+      "0",
+      "-4"
+    ],
+    "trace_identities": {
+      "character_traces_K0_K1_K2": {
+        "alt2": [
+          21945.0,
+          2520.0,
+          241920.0
+        ],
+        "sym2": [
+          22155.0,
+          -2520.0,
+          322560.0
+        ]
+      },
+      "consistent": true,
+      "max_abs_defect": 0.0,
+      "measured_traces_K0_K1_K2": {
+        "alt2": [
+          21945.0,
+          2520.0,
+          241920.0
+        ],
+        "sym2": [
+          22155.0,
+          -2520.0,
+          322560.0
+        ]
+      }
+    }
+  },
+  "seeds": {
+    "contraction_fit": 2016,
+    "contraction_validation": 288,
+    "cubic_maximum": 1680014,
+    "excess_directions": 510,
+    "gradient_check": 35,
+    "lanczos": 22155,
+    "multistart": 1500210,
+    "profile": 4125054,
+    "profile_above_F": 4125055,
+    "projector_sanity": 2102
+  },
+  "slice_cross_check": {
+    "4125": {
+      "fitted_factor_mine_over_repo": 1.0,
+      "max_abs_gram_residual_factor_one": 0.0,
+      "max_abs_gram_residual_fitted_factor": 0.0,
+      "repo_formula": "80*(a^2-b^2-c^2)^2/21"
+    },
+    "54": {
+      "fitted_factor_mine_over_repo": 1.0,
+      "max_abs_gram_residual_factor_one": 0.0,
+      "max_abs_gram_residual_fitted_factor": 0.0,
+      "repo_formula": "(3*a^2-3*b^2+4*c^2)^2/35"
+    },
+    "max_abs_point_error": 1e-13,
+    "monomials": [
+      "a2",
+      "a_b",
+      "a_c",
+      "b2",
+      "b_c",
+      "c2"
+    ],
+    "point_evaluations": 5,
+    "slice": "Phi = a*A + b*B + c*C with integer-coefficient A, B, C (|A|^2=6, |B|^2=4, |C|^2=8)",
+    "slice_zero_locus_c0_a2_eq_b2_orbits": {
+      "+(A+B)/sqrt(10)": {
+        "f_reference": 1e-27,
+        "orbit": "+F"
+      },
+      "+(A-B)/sqrt(10)": {
+        "f_reference": 1e-27,
+        "orbit": "+F"
+      },
+      "-(A+B)/sqrt(10)": {
+        "f_reference": 1e-27,
+        "orbit": "-F"
+      },
+      "-(A-B)/sqrt(10)": {
+        "f_reference": 1e-27,
+        "orbit": "-F"
+      }
+    }
+  },
+  "status": "PHI_ORBIT_LEMMA_NUMERICAL_EVIDENCE_SUPPORTS_SIGNED_TWO_ORBIT_STATEMENT__PROOF_OPEN",
+  "verdict": "All 150 multistart runs end on SO(10).F (68) or SO(10).(-F) (82), certified by A-spectrum and an explicit orbit witness; at the 26 sampled t values in [-7.58947, 24.2863] the best constrained local minimum of f (an upper bound on g(t)) is >= 5.69918e-08, so no zero off +-F was found. The growth of g near F is one-sided: below F only (t < I3(F), delta = I3(F) - t > 0): linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant (fitted slope 0.00819795 vs exact 0.0081985); above F only (t > I3(F), Delta = t - I3(F) > 0): quadratic: g/Delta^2 -> c_up > 0, g/Delta -> 0 (fitted 3.95316e-05 vs exact 3.95289e-05). The claimed 1.9e-3*delta^2 law is checked in claims_vs_reproduced; g(0) = 0.0545898. I3 = 8 Tr(A^3) is maximised by the Cayley form (25.65707922), not by F. This is numerical evidence for the signed two-orbit statement only: the lemma is not proved, G3 stays open and the whole model is neither validated nor excluded.",
+  "whole_model_excluded": false,
+  "whole_model_validated": false
+}

@@ -134,3 +134,7 @@ def test_report_is_fail_closed_on_global_g3_claim():
     assert not report["flag"]["full_global_minimum_certified"]
     assert not report["flag"]["G3_closed"]
     assert not report["flag"]["whole_model_excluded"]
+    assert report["overall_state"] == "G3_PROMISING_CANDIDATE_NOT_CLOSED"
+    assert "not an SM vacuum" in report["verdict"]
+    assert "not an SM vacuum" in report["next_required_test"]
+    assert "not a no-go for G3" not in report["verdict"]

@@ -156,6 +156,59 @@ def _execution_errors(
     return errors
 
 
+def _claim_text(contract_ready: bool) -> dict[str, str]:
+    """Public-claim and verdict text, branched on model-contract readiness."""
+    history = (
+        "Historical Option-C calculations are scoped subtheorems and neither "
+        "validate nor exclude the gauged model."
+    )
+    if contract_ready:
+        # Gate lists mirror G1_G8_GATE_LEDGER_V20: G1, G2, G5 CLOSED.
+        return {
+            "correct_public_claim": (
+                "The authoritative gauged-U(1)_X model contract is attested by "
+                "a manifest/log-bound external SARAH 4.15.3 execution, and G1, "
+                "G2 and G5 are closed. G3 remains open (the certified G3 point "
+                "is not a Standard-Model vacuum; an SM-preserving candidate "
+                "must pass the final gate), and G4 and G6-G8 remain open, so "
+                "G1-G8 approval is withheld. " + history
+            ),
+            "incorrect_claim_do_not_use": (
+                "G3 is closed for the manuscript model; the certified "
+                "SU(5)+Delta point is a Standard-Model vacuum; the current "
+                "repository validates the full theory; or the historical "
+                "saddle excludes the gauged-U(1)_X model."
+            ),
+            "verdict": (
+                "WITHHOLD APPROVAL. The audit succeeds and the gauged-U(1)_X "
+                "model contract is attested by bound external SARAH execution "
+                "evidence, but G3 (which needs an SM-preserving candidate), G4 "
+                "and G6-G8 remain open, so no internal, full, empirical, or "
+                "exclusion claim is approved."
+            ),
+        }
+    return {
+        "correct_public_claim": (
+            "The repository has a statically consistent tool-native SARAH input "
+            "for the authoritative gauged-U(1)_X scalar contract, but lacks a "
+            "v2 manifest/log-bound external SARAH execution attestation. G1-G8 "
+            "approval is withheld. " + history
+        ),
+        "incorrect_claim_do_not_use": (
+            "G1, G2, or G3 is closed for the manuscript model; the current "
+            "repository validates the full theory; or the historical saddle "
+            "excludes the gauged-U(1)_X model."
+        ),
+        "verdict": (
+            "WITHHOLD APPROVAL. The audit itself succeeds, but the manuscript's "
+            "gauged U(1)_X model still lacks a real external SARAH execution. "
+            "Bind an actual v2 external run and recertify "
+            "G1-G3 on the 44-direction, 51-real-parameter potential before any "
+            "internal, full, empirical, or exclusion claim."
+        ),
+    }
+
+
 def evaluate_reports(
     reports: dict[str, dict[str, Any]],
     *,
@@ -259,6 +312,7 @@ def evaluate_reports(
 
     current_tests = current_test_count if current_test_count is not None else 0
     historical = ledger.get("historical_option_c_subtheorems", {})
+    claims = _claim_text(contract_ready)
     return {
         "title": "SO(10) x Z17 axion candidate v20 - confirmation verdict",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -313,26 +367,9 @@ def evaluate_reports(
             "EMPIRICAL_REALIZATION": "NOT_ESTABLISHED",
             "WHOLE_MODEL_EXCLUSION": "NOT_ESTABLISHED",
         },
-        "correct_public_claim": (
-            "The repository has a statically consistent tool-native SARAH input "
-            "for the authoritative gauged-U(1)_X scalar contract, but lacks a "
-            "v2 manifest/log-bound external SARAH execution attestation. G1-G8 "
-            "approval is withheld. Historical Option-C "
-            "calculations are scoped subtheorems and neither validate nor exclude "
-            "the gauged model."
-        ),
-        "incorrect_claim_do_not_use": (
-            "G1, G2, or G3 is closed for the manuscript model; the current "
-            "repository validates the full theory; or the historical saddle "
-            "excludes the gauged-U(1)_X model."
-        ),
-        "verdict": (
-            "WITHHOLD APPROVAL. The audit itself succeeds, but the manuscript's "
-            "gauged U(1)_X model still lacks a real external SARAH execution. "
-            "Bind an actual v2 external run and recertify "
-            "G1-G3 on the 44-direction, 51-real-parameter potential before any "
-            "internal, full, empirical, or exclusion claim."
-        ),
+        "correct_public_claim": claims["correct_public_claim"],
+        "incorrect_claim_do_not_use": claims["incorrect_claim_do_not_use"],
+        "verdict": claims["verdict"],
     }
 
 
@@ -393,6 +430,7 @@ def exit_code(
     require_internal_approval: bool = False,
     require_full_approval: bool = False,
     expect_blocked: bool = False,
+    expect_open: bool = False,
 ) -> int:
     if verdict.get("n_failed", 1) != 0:
         return 1
@@ -406,6 +444,8 @@ def exit_code(
         return 3
     if expect_blocked and verdict.get("overall_state") != "BLOCKED":
         return 4
+    if expect_open and verdict.get("overall_state") != "OPEN":
+        return 5
     return 0
 
 
@@ -414,6 +454,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--require-internal-approval", action="store_true")
     parser.add_argument("--require-full-approval", action="store_true")
     parser.add_argument("--expect-blocked", action="store_true")
+    parser.add_argument(
+        "--expect-open",
+        action="store_true",
+        help="fail unless the honest state is OPEN (contract consistent, gates open)",
+    )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args(argv)
 
@@ -442,6 +487,7 @@ def main(argv: list[str] | None = None) -> int:
         require_internal_approval=args.require_internal_approval,
         require_full_approval=args.require_full_approval,
         expect_blocked=args.expect_blocked,
+        expect_open=args.expect_open,
     )
 
 

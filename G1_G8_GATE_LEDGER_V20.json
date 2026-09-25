@@ -45,7 +45,7 @@
     {
       "deliverable": "Execute the shipped hash-bound validation driver with a real SARAH installation and retain its v2 process attestation.",
       "id": "MODEL_CONTRACT",
-      "status": "BLOCKED",
+      "status": "CLOSED",
       "wave": 0
     },
     {
@@ -54,7 +54,7 @@
         "G1"
       ],
       "scoped_calculation_status": "COMPLETE",
-      "status": "BLOCKED",
+      "status": "CLOSED",
       "wave": 1
     },
     {
@@ -63,17 +63,17 @@
         "G2"
       ],
       "scoped_calculation_status": "COMPLETE",
-      "status": "BLOCKED",
+      "status": "CLOSED",
       "wave": 2
     },
     {
-      "deliverable": "Promote the source-bound BFB, exact selected stationarity, and strict-local-minimum certificate after contract repair, while retaining the exact counterexample that rejects globality. To close G3, prove uniform coercivity for arbitrary non-pure-Delta Sigma orientations on the surviving SU(5)+Delta chiral-H branch. Its full 486-real Hessian is now exactly PSD with rank/nullity 448/38 and symmetry kernel exactly 38; the complete maximally-negative pure-Delta sector is already excluded for arbitrary real Phi and nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit complete 45-element Phi210 invariant quadratic basis feed an exact 22366-dimensional augmented census with 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface is explicit: all 1414 real cross variables map through a 478x1414 integer matrix of exact rank 478 and kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic interface is also exact: its 6057x18085 integer map has rank 6057 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, corrected ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open.",
+      "deliverable": "Promote the source-bound BFB, exact selected stationarity, and strict-local-minimum certificate after contract repair, while retaining the exact counterexample that rejects globality. G3 needs an SM-preserving candidate certified through the final gate. The SU(5)+Delta chiral-H point is not an SM vacuum (its Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so its remaining coercivity problem is mathematical only. The Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still needs its equality set classified, its model-level caveats resolved and gate integration. The chiral-H point's full 486-real Hessian is now exactly PSD with rank/nullity 448/38 and symmetry kernel exactly 38; the complete maximally-negative pure-Delta sector is already excluded for arbitrary real Phi and nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit complete 45-element Phi210 invariant quadratic basis feed an exact 22366-dimensional augmented census with 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface is explicit: all 1414 real cross variables map through a 478x1414 integer matrix of exact rank 478 and kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic interface is also exact: its 6057x18085 integer map has rank 6057 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, corrected ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately).",
       "gates": [
         "G3",
         "G4",
         "G5"
       ],
-      "status": "BLOCKED_ON_G2",
+      "status": "G3_OPEN__G4_BLOCKED_ON_G3__G5_CLOSED",
       "wave": 3
     },
     {
@@ -98,9 +98,9 @@
       "wave": 6
     }
   ],
-  "contract_consistent": false,
-  "contract_evidence_complete": false,
-  "declared_contract_consistent": false,
+  "contract_consistent": true,
+  "contract_evidence_complete": true,
+  "declared_contract_consistent": true,
   "dependencies": {
     "G1": [
       "MODEL_CONTRACT"
@@ -137,7 +137,7 @@
   "failures": [],
   "feasibility": {
     "closure_program_defined": true,
-    "current_authoritative_closed_gates": 0,
+    "current_authoritative_closed_gates": 3,
     "gauged_G1_scalar_census_scoped_subtheorem_complete": true,
     "gauged_G2_dense_derivative_scoped_subtheorem_complete": true,
     "gauged_G3_constructive_candidate_available": true,
@@ -149,10 +149,12 @@
   },
   "gates": {
     "G1": {
-      "authoritative_closed_scope": [],
+      "authoritative_closed_scope": [
+        "promoted exact-X scalar census"
+      ],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-      "closed_on_current_authoritative_contract": false,
+      "blocking_root": null,
+      "closed_on_current_authoritative_contract": true,
       "closure_route_defined": true,
       "dependencies": [
         "MODEL_CONTRACT"
@@ -169,17 +171,17 @@
         "scoped_status": "COMPLETE_GAUGED_U1X_SCALAR_CENSUS"
       },
       "scoped_calculation_status": "COMPLETE_GAUGED_U1X_SCALAR_CENSUS",
-      "status": "BLOCKED",
+      "status": "CLOSED",
       "title": "Invariant ring and component Clebsch tensors",
-      "unsatisfied_dependencies": [
-        "MODEL_CONTRACT"
-      ]
+      "unsatisfied_dependencies": []
     },
     "G2": {
-      "authoritative_closed_scope": [],
+      "authoritative_closed_scope": [
+        "promoted exact-X dense derivative and Ward audit"
+      ],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-      "closed_on_current_authoritative_contract": false,
+      "blocking_root": null,
+      "closed_on_current_authoritative_contract": true,
       "closure_route_defined": true,
       "dependencies": [
         "G1"
@@ -209,16 +211,14 @@
         "stationarity_rank_13_exactly_certified": true
       },
       "scoped_calculation_status": "COMPLETE_GAUGED_U1X_DENSE_DERIVATIVE_AUDIT",
-      "status": "BLOCKED",
+      "status": "CLOSED",
       "title": "Fully projected non-SUSY component potential",
-      "unsatisfied_dependencies": [
-        "G1"
-      ]
+      "unsatisfied_dependencies": []
     },
     "G3": {
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "blocking_root": null,
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
       "constructive_frontier_evidence": {
@@ -452,16 +452,14 @@
         "classify every competing stationary symmetry orbit and compare exact potential values",
         "prove global minimality and uniqueness, or exhibit a lower competing extremum"
       ],
-      "status": "BLOCKED",
+      "status": "OPEN",
       "title": "Stationarity and global vacuum",
-      "unsatisfied_dependencies": [
-        "G2"
-      ]
+      "unsatisfied_dependencies": []
     },
     "G4": {
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "blocking_root": "DEPENDENCY_NOT_CLOSED",
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
       "dependencies": [
@@ -476,15 +474,16 @@
       "status": "BLOCKED",
       "title": "Gauge quotient, axion directions, and physical Hessian",
       "unsatisfied_dependencies": [
-        "G2",
         "G3"
       ]
     },
     "G5": {
-      "authoritative_closed_scope": [],
+      "authoritative_closed_scope": [
+        "source-bound complete-potential SOS/BFB certificate"
+      ],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
-      "closed_on_current_authoritative_contract": false,
+      "blocking_root": null,
+      "closed_on_current_authoritative_contract": true,
       "closure_route_defined": true,
       "constructive_frontier_evidence": {
         "G3_closed": false,
@@ -717,17 +716,14 @@
       "open_scope": [
         "promote the completed source-bound SOS/BFB certificate after repairing the executable model contract"
       ],
-      "status": "BLOCKED",
+      "status": "CLOSED",
       "title": "Boundedness from below",
-      "unsatisfied_dependencies": [
-        "G1",
-        "G2"
-      ]
+      "unsatisfied_dependencies": []
     },
     "G6": {
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "blocking_root": "DEPENDENCY_NOT_CLOSED",
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
       "dependencies": [
@@ -743,14 +739,13 @@
       "title": "Physical threshold spectrum",
       "unsatisfied_dependencies": [
         "G3",
-        "G4",
-        "G5"
+        "G4"
       ]
     },
     "G7": {
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "blocking_root": "DEPENDENCY_NOT_CLOSED",
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
       "dependencies": [
@@ -769,7 +764,7 @@
     "G8": {
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "blocking_root": "DEPENDENCY_NOT_CLOSED",
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
       "dependencies": [
@@ -1039,9 +1034,9 @@
       "stationarity_nullity_38_exactly_certified": true,
       "stationarity_rank_13_exactly_certified": true
     },
-    "blocked_only_from_promotion_by_model_contract_mismatch": true,
+    "blocked_only_from_promotion_by_model_contract_mismatch": false,
     "model_contract_id": "gauged_u1x_phi17_v20",
-    "promoted_to_authoritative_G1_G2": false,
+    "promoted_to_authoritative_G1_G2": true,
     "scope": "exact-X-neutral renormalizable scalar potential on the canonical 486-real field chart",
     "whole_model_gate_closure": false
   },
@@ -1329,7 +1324,7 @@
           0
         ]
       },
-      "blocker": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "blocker": null,
       "checks": {
         "all_dim_le4_phase_sensitive_phi17_terms_gauge_forbidden": true,
         "ambiguous_non_u1_gauge_row_named_x_is_rejected": true,
@@ -1357,11 +1352,8 @@
         "scaffold_scalar_contract_was_parsed": true,
         "scaffold_static_executability_was_classified": true
       },
-      "contract_conflicts": [
-        "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
-        "external_attestation_lacks_hash_bound_manifest_or_process_log"
-      ],
-      "contract_consistent": false,
+      "contract_conflicts": [],
+      "contract_consistent": true,
       "declared_dim_le4_phi17_monomials": [
         {
           "SO10xZ17_allowed": true,
@@ -1661,6 +1653,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 1,
             "Z17_charge": 1,
+            "Z17_entry_is_sarah_phase": true,
             "component": "f16",
             "field": "F",
             "final_charge_pair": [
@@ -1683,6 +1676,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 1,
             "Z17_charge": 1,
+            "Z17_entry_is_sarah_phase": true,
             "component": "p16",
             "field": "P",
             "final_charge_pair": [
@@ -1705,6 +1699,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 1,
             "Z17_charge": 1,
+            "Z17_entry_is_sarah_phase": true,
             "component": "r16",
             "field": "R",
             "final_charge_pair": [
@@ -1727,6 +1722,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 2,
             "Z17_charge": 2,
+            "Z17_entry_is_sarah_phase": true,
             "component": "s16",
             "field": "SpecS",
             "final_charge_pair": [
@@ -1749,6 +1745,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -6,
             "Z17_charge": 11,
+            "Z17_entry_is_sarah_phase": true,
             "component": "b16bar",
             "field": "SpecB",
             "final_charge_pair": [
@@ -1771,6 +1768,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 14,
             "Z17_charge": 14,
+            "Z17_entry_is_sarah_phase": true,
             "component": "q16",
             "field": "Q",
             "final_charge_pair": [
@@ -1793,6 +1791,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 16,
             "Z17_charge": 16,
+            "Z17_entry_is_sarah_phase": true,
             "component": "pbar16",
             "field": "Pbar",
             "final_charge_pair": [
@@ -1815,6 +1814,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 3,
             "Z17_charge": 3,
+            "Z17_entry_is_sarah_phase": true,
             "component": "qbar16",
             "field": "Qbar",
             "final_charge_pair": [
@@ -1837,6 +1837,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -18,
             "Z17_charge": 16,
+            "Z17_entry_is_sarah_phase": true,
             "component": "rbar16",
             "field": "Rbar",
             "final_charge_pair": [
@@ -1858,8 +1859,8 @@
         ],
         "gauge_catalogue_exact": true,
         "gauge_rows": [
-          "{G10, SO[10], SOGUT, g10, False}",
-          "{GX, U[1], X, gX, False}"
+          "{G10, SO[10], SOGUT, g10, False, 1}",
+          "{GX, U[1], Xcharge, gX, False, 1}"
         ],
         "global_rows": [
           "Z[17]"
@@ -1928,6 +1929,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 0,
             "Z17_charge": 0,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "Phi210",
             "component": "phi210",
             "field": "Phi210",
@@ -1951,6 +1953,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -2,
             "Z17_charge": 15,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "Delta126bar",
             "component": "delta126bar",
             "field": "Delta126bar",
@@ -1974,6 +1977,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -2,
             "Z17_charge": 15,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "H10",
             "component": "h10",
             "field": "H10",
@@ -1997,6 +2001,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 4,
             "Z17_charge": 4,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "S",
             "component": "singletS",
             "field": "S",
@@ -2020,6 +2025,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 17,
             "Z17_charge": 0,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "Phi17",
             "component": "phi17",
             "field": "Phi17",
@@ -2065,6 +2071,10 @@
         "statically_executable_model_contract": true,
         "structured_gauge_rows": [
           {
+            "gauge_multiplet_globals_neutral": true,
+            "global_charge_entries": [
+              "1"
+            ],
             "group_name": "SOGUT",
             "group_symbol": "G10",
             "group_type": "SO[10]",
@@ -2075,13 +2085,18 @@
             "is_so10": true,
             "is_u1": false,
             "is_u1x": false,
-            "raw_rhs": "{G10, SO[10], SOGUT, g10, False}",
+            "raw_rhs": "{G10, SO[10], SOGUT, g10, False, 1}",
+            "sarah_group_name_length_ok": true,
             "structurally_valid": true,
             "syntax": "sarah_native",
             "tool_native_structurally_valid": true
           },
           {
-            "group_name": "X",
+            "gauge_multiplet_globals_neutral": true,
+            "global_charge_entries": [
+              "1"
+            ],
+            "group_name": "Xcharge",
             "group_symbol": "GX",
             "group_type": "U[1]",
             "index": 2,
@@ -2091,7 +2106,8 @@
             "is_so10": false,
             "is_u1": true,
             "is_u1x": true,
-            "raw_rhs": "{GX, U[1], X, gX, False}",
+            "raw_rhs": "{GX, U[1], Xcharge, gX, False, 1}",
+            "sarah_group_name_length_ok": true,
             "structurally_valid": true,
             "syntax": "sarah_native",
             "tool_native_structurally_valid": true
@@ -2248,6 +2264,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 1,
             "Z17_charge": 1,
+            "Z17_entry_is_sarah_phase": true,
             "component": "f16",
             "field": "F",
             "final_charge_pair": [
@@ -2270,6 +2287,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 1,
             "Z17_charge": 1,
+            "Z17_entry_is_sarah_phase": true,
             "component": "p16",
             "field": "P",
             "final_charge_pair": [
@@ -2292,6 +2310,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 1,
             "Z17_charge": 1,
+            "Z17_entry_is_sarah_phase": true,
             "component": "r16",
             "field": "R",
             "final_charge_pair": [
@@ -2314,6 +2333,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 2,
             "Z17_charge": 2,
+            "Z17_entry_is_sarah_phase": true,
             "component": "s16",
             "field": "SpecS",
             "final_charge_pair": [
@@ -2336,6 +2356,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -6,
             "Z17_charge": 11,
+            "Z17_entry_is_sarah_phase": true,
             "component": "b16bar",
             "field": "SpecB",
             "final_charge_pair": [
@@ -2358,6 +2379,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 14,
             "Z17_charge": 14,
+            "Z17_entry_is_sarah_phase": true,
             "component": "q16",
             "field": "Q",
             "final_charge_pair": [
@@ -2380,6 +2402,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 16,
             "Z17_charge": 16,
+            "Z17_entry_is_sarah_phase": true,
             "component": "pbar16",
             "field": "Pbar",
             "final_charge_pair": [
@@ -2402,6 +2425,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 3,
             "Z17_charge": 3,
+            "Z17_entry_is_sarah_phase": true,
             "component": "qbar16",
             "field": "Qbar",
             "final_charge_pair": [
@@ -2424,6 +2448,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -18,
             "Z17_charge": 16,
+            "Z17_entry_is_sarah_phase": true,
             "component": "rbar16",
             "field": "Rbar",
             "final_charge_pair": [
@@ -2445,8 +2470,8 @@
         ],
         "gauge_catalogue_exact": true,
         "gauge_rows": [
-          "{G10, SO[10], SOGUT, g10, False}",
-          "{GX, U[1], X, gX, False}"
+          "{G10, SO[10], SOGUT, g10, False, 1}",
+          "{GX, U[1], Xcharge, gX, False, 1}"
         ],
         "global_rows": [
           "Z[17]"
@@ -2515,6 +2540,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 0,
             "Z17_charge": 0,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "Phi210",
             "component": "phi210",
             "field": "Phi210",
@@ -2538,6 +2564,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -2,
             "Z17_charge": 15,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "Delta126bar",
             "component": "delta126bar",
             "field": "Delta126bar",
@@ -2561,6 +2588,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": -2,
             "Z17_charge": 15,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "H10",
             "component": "h10",
             "field": "H10",
@@ -2584,6 +2612,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 4,
             "Z17_charge": 4,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "S",
             "component": "singletS",
             "field": "S",
@@ -2607,6 +2636,7 @@
             "PQ_charge_source": "authoritative_accidental_PQ_contract",
             "X_charge": 17,
             "Z17_charge": 0,
+            "Z17_entry_is_sarah_phase": true,
             "canonical_field": "Phi17",
             "component": "phi17",
             "field": "Phi17",
@@ -2652,6 +2682,10 @@
         "statically_executable_model_contract": true,
         "structured_gauge_rows": [
           {
+            "gauge_multiplet_globals_neutral": true,
+            "global_charge_entries": [
+              "1"
+            ],
             "group_name": "SOGUT",
             "group_symbol": "G10",
             "group_type": "SO[10]",
@@ -2662,13 +2696,18 @@
             "is_so10": true,
             "is_u1": false,
             "is_u1x": false,
-            "raw_rhs": "{G10, SO[10], SOGUT, g10, False}",
+            "raw_rhs": "{G10, SO[10], SOGUT, g10, False, 1}",
+            "sarah_group_name_length_ok": true,
             "structurally_valid": true,
             "syntax": "sarah_native",
             "tool_native_structurally_valid": true
           },
           {
-            "group_name": "X",
+            "gauge_multiplet_globals_neutral": true,
+            "global_charge_entries": [
+              "1"
+            ],
+            "group_name": "Xcharge",
             "group_symbol": "GX",
             "group_type": "U[1]",
             "index": 2,
@@ -2678,7 +2717,8 @@
             "is_so10": false,
             "is_u1": true,
             "is_u1x": true,
-            "raw_rhs": "{GX, U[1], X, gX, False}",
+            "raw_rhs": "{GX, U[1], Xcharge, gX, False, 1}",
+            "sarah_group_name_length_ok": true,
             "structurally_valid": true,
             "syntax": "sarah_native",
             "tool_native_structurally_valid": true
@@ -2703,102 +2743,87 @@
         "z17_declared_global": true
       },
       "external_model_validation": {
-        "attested_model_format": null,
-        "attested_model_path": null,
-        "attested_model_sha256": null,
-        "attested_model_size_bytes": null,
+        "attested_model_format": "sarah-mathematica",
+        "attested_model_path": "models/SO10Z17AxionV20.m",
+        "attested_model_sha256": "08373718806a297b9b257d5320d22e03e69f0682ea7488f146a105659182c325",
+        "attested_model_size_bytes": 4129,
         "checks": {
-          "anomaly_check_succeeded": false,
-          "artifact_is_structured_json_object": false,
-          "captured_process_log_has_all_required_pass_markers": false,
-          "captured_process_log_is_hash_bound": false,
-          "external_process_command_matches_tool": false,
-          "external_process_command_recorded": false,
-          "external_process_exit_code_zero": false,
-          "external_process_was_executed": false,
-          "external_tool_version_recorded": false,
-          "gauge_invariance_check_succeeded": false,
+          "anomaly_check_succeeded": true,
+          "artifact_is_structured_json_object": true,
+          "captured_process_log_has_all_required_pass_markers": true,
+          "captured_process_log_is_hash_bound": true,
+          "external_process_command_matches_tool": true,
+          "external_process_command_recorded": true,
+          "external_process_exit_code_zero": true,
+          "external_process_was_executed": true,
+          "external_tool_version_recorded": true,
+          "gauge_invariance_check_succeeded": true,
           "gauge_invariance_check_was_not_disabled": true,
-          "generated_at_is_not_in_future": false,
-          "generated_at_is_timezone_aware": false,
-          "input_manifest_entries_are_structured": false,
-          "input_manifest_has_exact_required_files": false,
+          "generated_at_is_not_in_future": true,
+          "generated_at_is_timezone_aware": true,
+          "input_manifest_entries_are_structured": true,
+          "input_manifest_has_exact_required_files": true,
           "input_manifest_paths_are_unique": true,
-          "input_manifest_schema_is_supported": false,
-          "input_manifest_sha256_matches_entries": false,
-          "lagrangian_construction_succeeded": false,
-          "model_initialization_succeeded": false,
-          "model_parse_succeeded": false,
-          "model_path_is_exact_repository_model": false,
-          "model_sha256_matches_exact_bytes": false,
-          "model_size_matches_exact_bytes": false,
-          "primary_model_is_bound_in_input_manifest": false,
-          "process_log_identifies_attested_tool_version": false,
-          "schema_is_supported": false,
-          "supported_external_tool_identified": false,
-          "tool_native_model_format_matches_path": false,
-          "validation_driver_is_bound_to_command": false,
-          "validation_driver_matches_repository_bytes": false
+          "input_manifest_schema_is_supported": true,
+          "input_manifest_sha256_matches_entries": true,
+          "lagrangian_construction_succeeded": true,
+          "model_initialization_succeeded": true,
+          "model_parse_succeeded": true,
+          "model_path_is_exact_repository_model": true,
+          "model_sha256_matches_exact_bytes": true,
+          "model_size_matches_exact_bytes": true,
+          "primary_model_is_bound_in_input_manifest": true,
+          "process_log_identifies_attested_tool_version": true,
+          "schema_is_supported": true,
+          "supported_external_tool_identified": true,
+          "tool_native_model_format_matches_path": true,
+          "validation_driver_is_bound_to_command": true,
+          "validation_driver_matches_repository_bytes": true
         },
         "expected_model_path": "models/SO10Z17AxionV20.m",
-        "expected_model_sha256": "3c3536c166ba7fca06ffedd0f244f76cc9b6db4840822a727f7a2f8e8bf1d1cd",
-        "expected_model_size_bytes": 3241,
+        "expected_model_sha256": "08373718806a297b9b257d5320d22e03e69f0682ea7488f146a105659182c325",
+        "expected_model_size_bytes": 4129,
         "expected_validation_driver_path": "tools/validate-exact-x-model.wls",
-        "expected_validation_driver_sha256": "a2fc2771c8d80e3ea36d9e40fa2b3ae68f10a4ac0ea3dccbdcf39c99bb13b37b",
-        "expected_validation_driver_size_bytes": 5259,
-        "failures": [
-          "artifact_is_structured_json_object",
-          "schema_is_supported",
-          "model_path_is_exact_repository_model",
-          "model_sha256_matches_exact_bytes",
-          "model_size_matches_exact_bytes",
-          "tool_native_model_format_matches_path",
-          "supported_external_tool_identified",
-          "external_tool_version_recorded",
-          "external_process_was_executed",
-          "external_process_command_recorded",
-          "external_process_command_matches_tool",
-          "external_process_exit_code_zero",
-          "input_manifest_schema_is_supported",
-          "input_manifest_entries_are_structured",
-          "input_manifest_has_exact_required_files",
-          "input_manifest_sha256_matches_entries",
-          "primary_model_is_bound_in_input_manifest",
-          "validation_driver_matches_repository_bytes",
-          "validation_driver_is_bound_to_command",
-          "captured_process_log_is_hash_bound",
-          "process_log_identifies_attested_tool_version",
-          "captured_process_log_has_all_required_pass_markers",
-          "generated_at_is_timezone_aware",
-          "generated_at_is_not_in_future",
-          "model_parse_succeeded",
-          "model_initialization_succeeded",
-          "lagrangian_construction_succeeded",
-          "gauge_invariance_check_succeeded",
-          "anomaly_check_succeeded"
-        ],
-        "fresh_for_exact_model_bytes": false,
-        "generated_at_utc": null,
+        "expected_validation_driver_sha256": "3ce5a91ec7b8ee5f2070353482750ce1f3551615b24ebc3127c884aa91de3218",
+        "expected_validation_driver_size_bytes": 18792,
+        "failures": [],
+        "fresh_for_exact_model_bytes": true,
+        "generated_at_utc": "2026-09-24T20:53:01.163295+00:00",
         "input_manifest": {
-          "files": [],
-          "schema": null,
-          "sha256": null
+          "files": [
+            {
+              "format": "sarah-mathematica",
+              "path": "models/SO10Z17AxionV20.m",
+              "role": "primary_model",
+              "sha256": "08373718806a297b9b257d5320d22e03e69f0682ea7488f146a105659182c325",
+              "size_bytes": 4129
+            },
+            {
+              "format": "wolfram-language",
+              "path": "tools/validate-exact-x-model.wls",
+              "role": "validation_driver",
+              "sha256": "3ce5a91ec7b8ee5f2070353482750ce1f3551615b24ebc3127c884aa91de3218",
+              "size_bytes": 18792
+            }
+          ],
+          "schema": "so10-exact-x-input-manifest-v1",
+          "sha256": "d0a8384bff6c9110272211589b785b443f8257e0282171e3e153f1446e16963e"
         },
         "load_error": null,
         "note": "Freshness is content-addressed: the exact tool-native model, the canonical input manifest, validation driver, and captured process log are hash-bound. Reduced-sector LIVE_BETA_DUMP artifacts and unbound success booleans are not accepted.",
-        "present": false,
+        "present": true,
         "process_log": {
-          "attested_tool_marker": null,
-          "encoding": null,
+          "attested_tool_marker": "EXACT_X_TOOL SARAH 4.15.3",
+          "encoding": "utf-8",
           "required_marker_presence": {
-            "anomaly_check_succeeded": false,
-            "gauge_invariance_check_succeeded": false,
-            "lagrangian_construction_succeeded": false,
-            "model_initialization_succeeded": false,
-            "model_parse_succeeded": false
+            "anomaly_check_succeeded": true,
+            "gauge_invariance_check_succeeded": true,
+            "lagrangian_construction_succeeded": true,
+            "model_initialization_succeeded": true,
+            "model_parse_succeeded": true
           },
-          "sha256": null,
-          "size_bytes": null
+          "sha256": "256708cc85a44f8235fb11387bf38cc8d5e46b9950df8ce131f336f48c8abb94",
+          "size_bytes": 10619
         },
         "required_external_checks": [
           "model_parse_succeeded",
@@ -2807,26 +2832,26 @@
           "gauge_invariance_check_succeeded",
           "anomaly_check_succeeded"
         ],
-        "schema": null,
+        "schema": "so10-exact-x-external-model-validation-v2",
         "source": "models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json",
-        "tool_name": null,
-        "tool_version": null,
-        "valid": false
+        "tool_name": "SARAH",
+        "tool_version": "4.15.3",
+        "valid": true
       },
       "failures": [],
       "flag": {
         "audit_executed_honestly": true,
         "authoritative_gauged_U1X_contract": true,
-        "complete_multifield_model": false,
-        "contract_consistent": false,
+        "complete_multifield_model": true,
+        "contract_consistent": true,
         "dim_le4_phase_sensitive_phi17_terms_gauge_forbidden": true,
         "dimension17_operator_directly_breaks_pq": false,
         "dimension17_operator_is_x_invariant": false,
         "empirical_discovery": false,
-        "external_validation_bound_to_exact_model_sha256": false,
-        "external_validation_input_manifest_bound": false,
-        "external_validation_process_log_hash_bound": false,
-        "externally_executed_model_contract": false,
+        "external_validation_bound_to_exact_model_sha256": true,
+        "external_validation_input_manifest_bound": true,
+        "external_validation_process_log_hash_bound": true,
+        "externally_executed_model_contract": true,
         "fermion_catalogue_complete": true,
         "lagrangian_registered_in_GaugeES_LagrangianInput": true,
         "legacy_pseudo_sarah_grammar": false,
@@ -2846,7 +2871,7 @@
       },
       "n_checks": 25,
       "n_failed": 0,
-      "overall_state": "BLOCKED",
+      "overall_state": "PASS",
       "phase_sensitive_count": 12,
       "phase_sensitive_gauge_forbidden_count": 12,
       "repository_external_input_manifest": {
@@ -2864,19 +2889,19 @@
               "format": "sarah-mathematica",
               "path": "models/SO10Z17AxionV20.m",
               "role": "primary_model",
-              "sha256": "3c3536c166ba7fca06ffedd0f244f76cc9b6db4840822a727f7a2f8e8bf1d1cd",
-              "size_bytes": 3241
+              "sha256": "08373718806a297b9b257d5320d22e03e69f0682ea7488f146a105659182c325",
+              "size_bytes": 4129
             },
             {
               "format": "wolfram-language",
               "path": "tools/validate-exact-x-model.wls",
               "role": "validation_driver",
-              "sha256": "a2fc2771c8d80e3ea36d9e40fa2b3ae68f10a4ac0ea3dccbdcf39c99bb13b37b",
-              "size_bytes": 5259
+              "sha256": "3ce5a91ec7b8ee5f2070353482750ce1f3551615b24ebc3127c884aa91de3218",
+              "size_bytes": 18792
             }
           ],
           "schema": "so10-exact-x-input-manifest-v1",
-          "sha256": "ea71fd43c02ccbf6095690270ee6178bf67c1cda7492b696634c9d4fb83b1ff7"
+          "sha256": "d0a8384bff6c9110272211589b785b443f8257e0282171e3e153f1446e16963e"
         },
         "failures": [],
         "load_error": null,
@@ -2891,14 +2916,14 @@
           "claim_boundary": "Only a real zero-exit SARAH process with all five PASS markers may create the external attestation.",
           "driver": "tools/validate-exact-x-model.wls",
           "input_manifest": "models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json",
-          "required": true
+          "required": false
         },
         "option_A_gauge_U1X": {
           "accepted": true,
           "requirements": [
             "replace the legacy pseudo-SARAH metadata grammar with indexed, tool-native SARAH Gauge/Global/matter syntax",
-            "declare a native SO[10] row and a U[1] gauge row named X",
-            "encode the exact manuscript X charges and residual Z17 charges in native matter rows",
+            "declare a native SO[10] row and a U[1] gauge row named Xcharge (SARAH needs gauge-group names of at least three characters), each carrying its neutral Z17 phase",
+            "encode the exact manuscript X charges and residual Z17 charges, as SARAH phases Exp[2 Pi I q/17], in native matter rows",
             "retain the complete anomaly-cancelling fermion content",
             "add covariant derivatives and the U(1)_X gauge coupling",
             "supply substantive LagHC and LagNoHC definitions",
@@ -2919,11 +2944,9 @@
           "reason": "contradicts the authoritative gauged-U(1)_X manuscript and treats an incomplete executable scaffold as the theory definition",
           "rejected": true
         },
-        "selected": "external_SARAH_execution"
+        "selected": null
       },
-      "scientific_blockers": [
-        "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
-      ],
+      "scientific_blockers": [],
       "signed_filter_contract": {
         "declared_option_C_no_continuous_X": false,
         "encodes_option_C_no_continuous_X": false,
@@ -2942,8 +2965,8 @@
         "source": "nonsusy_z17_pq_potential_filter_v20.py"
       },
       "static_contract_consistent": true,
-      "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED",
-      "verdict": "The authoritative manuscript, native non-supersymmetric SARAH model, exact charge catalogues, residual Z17 assignments, GaugeES Lagrangian registration, scalar filter, and hash-bound input bundle are statically consistent. The sole remaining contract blocker is a real external SARAH execution of the shipped driver; no local Mathematica/SARAH installation was available and no execution attestation is inferred or fabricated. This static result alone does not validate G1-G8."
+      "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__CONSISTENT",
+      "verdict": "The authoritative manuscript, executable gauge scaffold, and scalar filter consistently implement gauged U(1)_X. Every phase-sensitive Phi17 monomial through dimension four, and Phi17^17 itself, remains gauge forbidden. This contract result alone does not validate G1-G8."
     },
     "gauged_G1_character_census": {
       "anchors": {
@@ -17608,7 +17631,7 @@
       "model_contract_id": "gauged_u1x_phi17_v20",
       "n_checks": 18,
       "n_failed": 0,
-      "next_required_test": "The fixed-F off-kernel and exact-Hessian companion certificates remove those two former blockers.  Prove the remaining uniform coercivity inequality when Phi lies outside the signed F equality strata, then classify its global equality set; otherwise exhibit a lower arbitrary-Phi witness.",
+      "next_required_test": "This point is not an SM vacuum (Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so no further certificate at it can close G3.  G3 needs an SM-preserving target certified through the final gate, for example the Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20.  Here the fixed-F off-kernel and exact-Hessian companion certificates remove those two former blockers; uniform coercivity outside the signed F equality strata and its global equality classification remain open as a mathematical problem only.",
       "overall_state": "G3_PROMISING_CANDIDATE_NOT_CLOSED",
       "real_H_obstruction": {
         "O35_45_H_gradient_max_abs": 0.0,
@@ -17679,7 +17702,7 @@
         "x": "1"
       },
       "status": "EXACT_REAL_H_NO_GO__CHIRAL_H_STRICT_LOCAL_CANDIDATE__GLOBAL_GAP_OPEN",
-      "verdict": "The real H=e6 extension is exactly impossible, but this is not a no-go for G3: the chiral neutral H=(e6+i e7)/sqrt(2) gives an exact stationary, BFB, coefficient-safe candidate whose complete live 448-dimensional quotient Hessian is strictly positive, and the companion source-bound certificate upgrades it to exact rank 448, nullity 38 and PSD.  The companion fixed-F off-kernel certificate also extends the exact +F result beyond its mixed kernel; -F has no mixed-zero Sigma branch.  A clean all-vanishing affine-SOS replacement for beta is exactly excluded.  Only uniform arbitrary-Phi coercivity and its equality classification remain before G3 can close."
+      "verdict": "The real H=e6 extension is exactly impossible, and the chiral H=(e6+i e7)/sqrt(2) gives an exact stationary, BFB, coefficient-safe candidate whose complete live 448-dimensional quotient Hessian is strictly positive; the companion source-bound certificate upgrades it to exact rank 448, nullity 38 and PSD.  The companion fixed-F off-kernel certificate also extends the exact +F result beyond its mixed kernel; -F has no mixed-zero Sigma branch.  A clean all-vanishing affine-SOS replacement for beta is exactly excluded.  This point is not an SM vacuum (Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so no further certificate at it can close G3."
     },
     "gauged_G3_SU5_Delta_PD_global_SOS": {
       "SOS_decomposition": {
@@ -17944,13 +17967,14 @@
         "SM_dimension": 12,
         "exact_rational_rank": 33,
         "exact_stabilizer_dimension": 12,
-        "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_Y",
+        "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_T3R (12-dim, SM-sized but not the SM: Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20)",
         "generator_count": 45,
         "group": "SO(10)",
         "integer_tangent_shape": [
           462,
           45
         ],
+        "is_standard_model": false,
         "source_binding_exact": true
       },
       "failures": [],
@@ -17969,6 +17993,8 @@
         "full_448_or_replacement_quotient_Hessian_exact": false,
         "full_486_field_stationarity": false,
         "global_orbit_uniqueness": false,
+        "stabilizer_is_standard_model": false,
+        "stabilizer_note": "dimension-only; the centre is T3R, not Y (g3_sigma_hypercharge_audit_v20)",
         "whole_model_excluded": false
       },
       "status": "EXACT_SU5_DELTA_PD_GLOBAL_SOS_CANDIDATE_CERTIFIED",
@@ -17976,9 +18002,10 @@
         "Phi": "F0/sqrt(10)",
         "Sigma": "r Delta_R",
         "formal_assumption": "r>0",
-        "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_Y"
+        "is_standard_model_vacuum": false,
+        "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_T3R (12-dim; not the Standard Model)"
       },
-      "verdict": "The P-specific Delta no-go is evaded by an exact SU(5)-singlet 210 plus Delta_R configuration.  A 17-parameter, perturbative Phi/Sigma potential is an explicit global sum of squares and the target has the exact 12-dimensional SM stabilizer.  Its exact PD Hessian has rank 429 and only the 33 gauge-orbit zero modes, so the equality set is locally one SO(10) orbit.  Other disconnected global equality orbits are not classified.  The H/S/Phi17 extension and exact full physical Hessian remain to be certified before G3 can close."
+      "verdict": "The P-specific Delta no-go is evaded by an exact SU(5)-singlet 210 plus Delta_R configuration.  A 17-parameter, perturbative Phi/Sigma potential is an explicit global sum of squares and the target has an exact 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1).  Its exact PD Hessian has rank 429 and only the 33 gauge-orbit zero modes, so the equality set is locally one SO(10) orbit.  Other disconnected global equality orbits are not classified.  Its chiral-H extension and exact 448/38 Hessian are certified elsewhere, but this orientation is not an SM vacuum and cannot close G3."
     },
     "gauged_G3_SU5_Delta_Phi_SU3_fixed_slice_theorem": {
       "SU3_fixed_space": {
@@ -18571,7 +18598,7 @@
       "overall_state": "FINAL_G3_TEST_OPEN",
       "small_beta_global_reduction": {
         "beta_equals_1_over_20_covered_by_theorem": false,
-        "conclusion_if_ready": "there exists beta_star>0 such that every 0<beta<beta_star preserves the global lower bound and selects the chiral SM flag",
+        "conclusion_if_ready": "there exists beta_star>0 such that every 0<beta<beta_star preserves the global lower bound and selects the chiral SU(5)+Delta flag orbit (not an SM vacuum; g3_sigma_hypercharge_audit_v20)",
         "exact_equality_reduction": {
           "Sigma_1050bar_zero_condition": "(256/9) times the sum of five squared Pluecker Pfaffians",
           "distant_disconnected_Phi_components_excluded": false,
@@ -194114,6 +194141,7 @@
         "zero_eigenspace_dimension": 66
       },
       "failures": [],
+      "fixed_P_branch_scope": "Sigma along Delta_R only; the SM orientation (P, z1^...^z5) is not covered: with the 2772bar/4125 weights swapped it is the pure-2772bar kernel minimizer, and with O05, kappa_H and O06 retuned it is an exact global minimum of a benchmark potential (g3_sm_pati_salam_candidate_v20)",
       "fixed_P_strict_local_global_no_go": {
         "all_non_O27_B03_B04_differences_zero_before_stationarity": true,
         "current_identity_exact": true,
@@ -194125,7 +194153,7 @@
           "lambda::O27_B03_126bar_self_projectors": "4/3",
           "lambda::O27_B04_126bar_self_projectors": "-4/3"
         },
-        "escape_not_excluded": "For general SM-preserving Phi=(p,a,omega), O14/O44 distinguish the two Sigma orientations; the theorem does not exclude that branch.",
+        "escape_not_excluded": "For general SM-preserving Phi=(p,a,omega), O14/O44 distinguish the two Sigma orientations; the theorem does not exclude that branch. It also does not exclude the fixed-P SM orientation (P, z1^...^z5), the pure-2772bar kernel vector (g3_sm_pati_salam_candidate_v20).",
         "exact_X_parameter_count_evaluated": 51,
         "explicit_multiplicity_two_tangents": {
           "Delta_source_binding_max_abs_residual": 0.0,
@@ -520797,31 +520825,33 @@
   },
   "n_checks": 39,
   "n_failed": 0,
-  "overall_state": "BLOCKED",
+  "overall_state": "OPEN",
   "scientific_blockers": [
-    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
     "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+    "G3_SM_PRESERVING_TARGET_REQUIRED",
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN"
   ],
-  "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED",
+  "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G5_CLOSED__G3_GLOBAL_OPEN",
   "summary": {
     "blocked": [
-      "G1",
-      "G2",
-      "G3",
       "G4",
-      "G5",
       "G6",
       "G7",
       "G8"
     ],
-    "closed": [],
-    "n_blocked": 8,
-    "n_closed": 0,
-    "n_open": 0,
+    "closed": [
+      "G1",
+      "G2",
+      "G5"
+    ],
+    "n_blocked": 4,
+    "n_closed": 3,
+    "n_open": 1,
     "n_partial": 0,
-    "open": [],
+    "open": [
+      "G3"
+    ],
     "partial": []
   },
-  "verdict": "The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The gauged-U(1)_X SARAH input, charge catalogues, Lagrangian registration, and hash-bound validation bundle are now statically consistent; Wave 0 still requires a real external SARAH execution attestation. The gauged G1 scalar census and G2 dense derivative theorem are already recertified as 44 directions, 51 parameters, and 486 fields. Three structural gradient columns vanish exactly; matching exact lower- and upper-rank certificates prove stationarity rank/nullity 13/38. They await contract promotion rather than recalculation. A perturbative 27-of-51 SOS candidate with J0=-21/200 is explicit. Exact source-bound SOS identities prove complete-potential BFB and stationarity. Direct Gaussian-integer/Fraction/Q(sqrt(2)) assembly gives P+Delta rank/nullity 429/33, and the exact extension leaves only 38 symmetry tangents, proving a strict local minimum on all 448 transverse directions. An exact symmetry-inequivalent field configuration is lower by 25*r^4/19008, so this selected global vacuum and candidate are rejected. The fixed-P branch is exactly excluded, and the lower stationary replacement has the wrong gauge symmetry. A new SU(5)+Delta Phi/Sigma branch has an exact global SOS minimum, the correct SM stabilizer, and exact quotient rank/nullity 429/33. Its chiral-H full-field extension is exactly BFB, stationary and symmetry-correct. The source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier real maps, explicit complete 45-element Phi210 invariant quadratic basis, and exact augmented census are certified. The complete cubic interface now has all 1414 real Schur cross variables and an exact-rank-478, 478x1414 map with kernel dimension 936; its abstract zero placeholder is not the physical gap target. The homogeneous quartic interface is now an exact-rank-6057, 6057x18085 map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. The historical 64/91 derivative theorem, 449-dimensional quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved as Option-C subtheorems and neither validate nor exclude the gauged model."
+  "verdict": "The ledger audit succeeds and the repaired gauged-U(1)_X contract promotes the completed G1 scalar census and G2 dense derivative theorem to CLOSED. A perturbative 27-of-51 SOS candidate with J0=-21/200 has a source-bound complete-potential BFB proof, exact stationarity, direct P+Delta rank/nullity 429/33, and a proof of positivity on all 448 transverse Hessian directions. The selected orbit is a strict local minimum, but an exact field witness is lower by 25*r^4/19008 and rejects it as the global vacuum. The fixed-P branch with this Delta_R orientation is excluded exactly, and its lower replacement has the wrong gauge stabilizer. A new SU(5)+Delta branch is an exact global Phi/Sigma minimum with a 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1) and exact quotient rank 429. Its chiral-H full Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the 38 symmetry tangents. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. The exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit complete 45-element Phi210 invariant quadratic basis feed the exact 22366-dimensional augmented census (35 types/824 copies, 22 blocks, 19594 parameters, 6585 rows). The complete cubic Schur interface is explicit, with 1414 real variables and an exact-rank-478, 478x1414 integer map whose kernel has dimension 936. Its reserved zero vector is not a physical G3 target. The exact quartic Schur map has shape 6057x18085, rank 6057, and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately). G5 is CLOSED; G4 and G6-G8 remain dependency-blocked. Historical Option-C evidence remains scoped and closes no gauged-model gate."
 }

@@ -28,19 +28,26 @@ def build_report() -> dict[str, Any]:
     full = full_gate.build_report()
     bran = census.build_report()
 
+    gate_statuses = {name: row["status"] for name, row in led["gates"].items()}
+    closed_gates = [name for name, status in gate_statuses.items() if status == "CLOSED"]
+    ledger_state = led.get("overall_state")
+
     checks = {
         "ledger_green": led.get("n_failed", 1) == 0,
         "full_gate_green": full.get("n_failed", 1) == 0,
         "branching_census_green": bran.get("n_failed", 1) == 0,
-        "overall_blocked": led.get("overall_state") == "BLOCKED"
-        and full.get("overall_state") == "BLOCKED",
-        "authoritative_closed_set_empty": (
-            led.get("summary", {}).get("closed") == []
-            and led.get("summary", {}).get("n_closed") == 0
+        # The whole-model gate stays blocked until every gate closes; the
+        # ledger may be BLOCKED (contract) or OPEN (contract consistent).
+        "full_model_gate_blocked": full.get("overall_state") == "BLOCKED",
+        "ledger_not_pass": ledger_state in {"BLOCKED", "OPEN"},
+        "closed_set_matches_gate_table": (
+            led.get("summary", {}).get("closed") == closed_gates
+            and led.get("summary", {}).get("n_closed") == len(closed_gates)
         ),
-        "all_authoritative_gates_blocked": all(
-            row["status"] == "BLOCKED" for row in led["gates"].values()
+        "closed_gates_require_consistent_contract": (
+            not closed_gates or led.get("contract_consistent") is True
         ),
+        "no_premature_full_closure": len(closed_gates) < len(gate_statuses),
         "historical_option_c_results_scoped": (
             led["historical_option_c_subtheorems"]["G1"]["invariant_directions"]
             == 64
@@ -74,13 +81,27 @@ def build_report() -> dict[str, Any]:
         for name, row in led["gates"].items()
     }
 
+    theory_state = "OPEN" if ledger_state == "OPEN" else "BLOCKED"
+    if led.get("contract_consistent") is True:
+        contract_sentence = (
+            f"{len(closed_gates)}/8 authoritative gates closed "
+            f"({', '.join(closed_gates) or 'none'}) on the SARAH-attested "
+            "gauged-U(1)_X contract; the remaining gates are open or "
+            "dependency-blocked"
+        )
+    else:
+        contract_sentence = (
+            f"{len(closed_gates)}/8 authoritative gates closed because the "
+            "gauged-U(1)_X executable contract is inconsistent"
+        )
+
     return {
         "status": (
-            "PUBLICATION_REFEREE_PACKAGE_READY__THEORY_BLOCKED"
+            f"PUBLICATION_REFEREE_PACKAGE_READY__THEORY_{theory_state}"
             if not failures
             else "PUBLICATION_REFEREE_PACKAGE_FAILED"
         ),
-        "overall_state": "BLOCKED",
+        "overall_state": theory_state,
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -116,10 +137,10 @@ def build_report() -> dict[str, Any]:
             "theory_excluded": False,
             "all_g1_g8_closed": False,
             "ready_for_honest_submission_as_blocked_program": not bool(failures),
+            "ready_for_honest_submission_as_open_program": not bool(failures),
         },
         "verdict": (
-            "Referee package ready: 0/8 authoritative gates closed because the "
-            "gauged-U(1)_X executable contract is inconsistent; theory BLOCKED, "
+            f"Referee package ready: {contract_sentence}; theory {theory_state}, "
             "Issue #106 PS branching census PARTIAL with T' locked and CG/norm OPEN. "
             "This repository defines an executable closure program; it does not "
             "claim the model is proven."

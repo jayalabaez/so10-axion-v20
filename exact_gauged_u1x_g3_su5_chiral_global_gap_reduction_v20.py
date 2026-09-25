@@ -2,8 +2,10 @@
 """Fail-closed global-gap reduction for the SU(5)+Delta+chiral-H candidate.
 
 The full-H candidate in
-``exact_gauged_u1x_g3_su5_delta_hsx_extension_v20`` has all of the local
-properties needed by G3, but its small positive adjoint-current deformation
+``exact_gauged_u1x_g3_su5_delta_hsx_extension_v20`` has exact local
+stationarity, BFB and Hessian certificates but is not an SM vacuum (Delta_R
+has Y=-1), so it cannot close G3.  Its small positive adjoint-current
+deformation
 
     beta I_45(H,Sigma),       beta = 1/20,
 
@@ -33,9 +35,9 @@ deliberately leaves that global equality-orbit classification open.  This
 module therefore does not turn the conditional argument into a G3 claim.
 
 The output is a final acceptance test, not another local candidate.  The exact
-full Hessian/rank certificate is now supplied independently; G3 may be promoted
-only when the missing global equality classification and a uniform finite-field
-gap are also supplied.  No random scan is treated as proof.
+full Hessian/rank certificate is now supplied independently.  Even with the
+global equality classification and a uniform finite-field gap, this point cannot
+close G3, because it is not an SM vacuum.  No random scan is treated as proof.
 """
 from __future__ import annotations
 
@@ -195,7 +197,8 @@ def perturbation_theorem_audit() -> dict[str, Any]:
         "theorem_ready": theorem_ready,
         "conclusion_if_ready": (
             "there exists beta_star>0 such that every 0<beta<beta_star "
-            "preserves the global lower bound and selects the chiral SM flag"
+            "preserves the global lower bound and selects the chiral SU(5)+Delta "
+            "flag orbit (not an SM vacuum; g3_sigma_hypercharge_audit_v20)"
         ),
         "beta_equals_1_over_20_covered_by_theorem": False,
         "upstream_global_status": global_status,
@@ -338,6 +341,9 @@ def build_report() -> dict[str, Any]:
 
 
 def write_report(report: dict[str, Any]) -> None:
+    hessian_certified = report["small_beta_global_reduction"]["hypotheses"][
+        "exact_full_486_Hessian_kernel_equals_the_38_symmetry_tangents"
+    ]
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
         "# SU(5) chiral-H global-gap reduction -- v20\n\n"
@@ -347,7 +353,8 @@ def write_report(report: dict[str, Any]) -> None:
         "- exact Sigma=0 gap: `1/5000`;\n"
         "- lower witness found: `false`;\n"
         "- beta=1/20 finite-field global gap: `OPEN`;\n"
-        "- exact full-Hessian certificate: `OPEN`;\n"
+        "- exact full-Hessian certificate: "
+        f"`{'CERTIFIED' if hessian_certified else 'OPEN'}`;\n"
         "- G3: `OPEN`.\n",
         encoding="utf-8",
     )

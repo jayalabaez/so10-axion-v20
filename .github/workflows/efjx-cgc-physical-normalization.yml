@@ -33,14 +33,18 @@ jobs:
           r=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           assert r['overall_state']=='BLOCKED', r
           assert r['n_failed']==0, r
-          assert r['flags']['exact_EFJX_gamma_response_known']
+          assert r['status']=='EFJX_CGC_ROUTE_INVALIDATED__G_IS_GAUGE_COUPLING', r
+          assert r['flags']['exact_EFJX_gauge_response_known']
+          assert not r['flags']['exact_EFJX_gamma_response_known']
+          assert r['flags']['efjx_cgc_route_invalidated']
+          assert not r['flags']['old_8p8e29_bound_valid']
           assert r['flags']['proxy_cgc_ratio_invalid_as_physical_prediction']
           assert not r['flags']['physical_CGC_normalization_derived']
           assert not r['flags']['physical_EW_branch_revalidated']
           assert not r['flags'].get('CGC_subproblem_closed', False)
           assert not r['flags']['whole_model_excluded']
           assert not r['flags']['whole_model_validated']
-          assert r['required_artifact']['schema_version']=='efjx-cgc-normalization-v2'
+          assert not r['normalization_artifact']['accepted']
           PY
       - name: Upload normalization-gate artifacts
         if: always()

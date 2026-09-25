@@ -45,6 +45,14 @@ EXTERNAL_DRIVER_REPOSITORY_PATH = str(EXTERNAL_DRIVER.relative_to(ROOT)).replace
 )
 EXTERNAL_DRIVER_FORMAT = "wolfram-language"
 
+# SARAH derives index names with StringTake[name, 3]; shorter gauge-group
+# names abort model initialization.
+SARAH_MINIMUM_GROUP_NAME_LENGTH = 3
+# The U(1)_X row may carry the diagnostic legacy name X or the SARAH-native
+# name Xcharge; only the latter satisfies the three-character requirement.
+U1X_GROUP_NAMES = frozenset({"x", "xcharge"})
+Z17_ORDER = 17
+
 STATIC_CONTRACT_BLOCKER = "AUTHORITATIVE_GAUGED_U1X_CONTRACT_MISMATCH"
 EXTERNAL_EXECUTION_BLOCKER = (
     "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
@@ -728,6 +736,22 @@ def _integer(value: str) -> int | None:
     return None if match is None else int(match.group(1))
 
 
+def _zn_phase_charge(value: str, order: int) -> int | None:
+    """Additive Z_N charge of a SARAH ``Z[N]`` phase entry.
+
+    SARAH tests a discrete global by ``Times @@ charges === 1``, so a native
+    ``Z[N]`` entry is the phase ``Exp[2 Pi I q/N]`` (neutral = ``1``); a bare
+    integer would be multiplied, not added.  Returns ``q mod N``.
+    """
+    compact = _symbol(value)
+    if compact == "1":
+        return 0
+    match = re.fullmatch(
+        rf"(?:Exp\[|E\^\()2\*?Pi\*?I\*?([+-]?\d+)/{order}[\])]", compact
+    )
+    return None if match is None else int(match.group(1)) % order
+
+
 def _representation(value: str) -> str | None:
     compact = _symbol(value).lower()
     dynkin_aliases = {
@@ -860,6 +884,9 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
         code, "FermionFields"
     )
 
+    # With declared globals, SARAH reads each gauge multiplet's global charge
+    # from the entries after the five gauge-row fields.
+    expected_gauge_row_length = 5 + len(global_assignments)
     gauge_rows: list[dict[str, Any]] = []
     for assignment in gauge_assignments:
         items = assignment["items"]
@@ -870,9 +897,20 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
         is_u1 = normalized_type == "u[1]"
         is_native_so10 = normalized_type == "so[10]"
         is_legacy_so10 = group_type == "SO" and group_name == "10"
-        is_named_x = (group_name or "").lower() == "x"
+        is_named_x = (group_name or "").lower() in U1X_GROUP_NAMES
+        sarah_group_name_ok = (
+            len(group_name or "") >= SARAH_MINIMUM_GROUP_NAME_LENGTH
+        )
+        global_charge_entries = items[5:]
+        gauge_multiplet_globals_neutral = all(
+            _zn_phase_charge(entry, Z17_ORDER) == 0
+            for entry in global_charge_entries
+        )
         native_row = bool(
-            len(items) >= 5 and (is_native_so10 or is_u1)
+            len(items) == expected_gauge_row_length
+            and (is_native_so10 or is_u1)
+            and sarah_group_name_ok
+            and gauge_multiplet_globals_neutral
         )
         gauge_rows.append(
             {
@@ -887,6 +925,9 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
                 "is_u1": is_u1,
                 "is_named_X": is_named_x,
                 "is_u1x": is_u1 and is_named_x,
+                "sarah_group_name_length_ok": sarah_group_name_ok,
+                "global_charge_entries": global_charge_entries,
+                "gauge_multiplet_globals_neutral": gauge_multiplet_globals_neutral,
                 "syntax": "sarah_native" if native_row else "legacy_or_invalid",
                 "structurally_valid": len(items) >= 3,
                 "tool_native_structurally_valid": native_row,
@@ -978,8 +1019,8 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
                 len(z17_positions) == 1
                 and len(items) > 3 + len(gauge_rows) + z17_positions[0]
             ):
-                z17_charge = _integer(
-                    items[3 + len(gauge_rows) + z17_positions[0]]
+                z17_charge = _zn_phase_charge(
+                    items[3 + len(gauge_rows) + z17_positions[0]], Z17_ORDER
                 )
             if canonical is not None and x_charge is not None:
                 charges = (EXPECTED_SCALAR_CHARGES[canonical][0], x_charge)
@@ -1037,6 +1078,7 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
                 "X_charge": x_charge,
                 "Z17_charge": z17_charge,
                 "residual_Z17_matches_X_mod_17": residual_matches,
+                "Z17_entry_is_sarah_phase": z17_charge is not None,
                 "PQ_charge_source": "authoritative_accidental_PQ_contract"
                 if syntax == "sarah_native"
                 else "legacy_embedded_pair",
@@ -1078,8 +1120,8 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
                 len(z17_positions) == 1
                 and len(items) > 3 + len(gauge_rows) + z17_positions[0]
             ):
-                z17_charge = _integer(
-                    items[3 + len(gauge_rows) + z17_positions[0]]
+                z17_charge = _zn_phase_charge(
+                    items[3 + len(gauge_rows) + z17_positions[0]], Z17_ORDER
                 )
             if representation is not None and x_charge is not None:
                 pq_charge = expected_pq_by_rep_x.get((representation, x_charge))
@@ -1132,6 +1174,7 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
                 "X_charge": x_charge,
                 "Z17_charge": z17_charge,
                 "residual_Z17_matches_X_mod_17": residual_matches,
+                "Z17_entry_is_sarah_phase": z17_charge is not None,
                 "PQ_charge_source": "authoritative_accidental_PQ_contract"
                 if syntax == "sarah_native"
                 else "legacy_embedded_pair",
@@ -1291,6 +1334,7 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
         scalar_rows
         and fermion_rows
         and all(row["syntax"] == "sarah_native" for row in scalar_rows + fermion_rows)
+        and all(row["Z17_entry_is_sarah_phase"] for row in scalar_rows + fermion_rows)
     )
     tool_native_sarah_syntax = bool(
         tool_native_gauge_syntax
@@ -1882,10 +1926,13 @@ def build_report(
                         "replace the legacy pseudo-SARAH metadata grammar with "
                         "indexed, tool-native SARAH Gauge/Global/matter syntax"
                     ),
-                    "declare a native SO[10] row and a U[1] gauge row named X",
+                    "declare a native SO[10] row and a U[1] gauge row named "
+                    "Xcharge (SARAH needs gauge-group names of at least three "
+                    "characters), each carrying its neutral Z17 phase",
                     (
                         "encode the exact manuscript X charges and residual Z17 "
-                        "charges in native matter rows"
+                        "charges, as SARAH phases Exp[2 Pi I q/17], in native "
+                        "matter rows"
                     ),
                     "retain the complete anomaly-cancelling fermion content",
                     "add covariant derivatives and the U(1)_X gauge coupling",

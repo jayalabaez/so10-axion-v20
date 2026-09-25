@@ -100,7 +100,7 @@ Fields and PQ charges: $16_F$ ($+1$, three generations), $10_H$ ($-2$),
 $\overline{126}_H$ ($-2$), $210_H$ (0), $S$ ($+4$) \cite{ERT}; the axion
 is intended to be dominantly $\arg S$. The previously proposed 54-channel
 $\overline{126}_H^2 10_H^2 S^2$ locking term vanishes on the selected
-$\Delta_R^2$ projection, so the complete phase Hessian remains open. At low
+$\overline{126}_H$ direction, so the complete phase Hessian remains open. At low
 energy we impose $\Zs := \mathrm{U(1)}_{\rm PQ}\bmod 17$; Section~\ref{sec:uv}
 realizes it as the remnant of a primitive gauged $U(1)_X$. Spectators: $k$
 identical $16_s\oplus\overline{16}_s$ pairs
@@ -800,9 +800,14 @@ mass dependence for the stated graph, not a coefficient-free prediction.
 It is not an external implementation certificate. The repository model file
 now uses native non-supersymmetric SARAH syntax, includes the manuscript's
 gauged $U(1)_X$, and passes static catalogue, charge, Lagrangian, filter, and
-hash-bound input-manifest checks. A Mathematica/SARAH process-log attestation
-is not available in the present environment, so the authoritative whole-model
-gate remains blocked. This also does not mean
+hash-bound input-manifest checks. A SARAH~4.15.3 run on Wolfram Engine~15.0,
+with six SO($N$) defects of that release replaced by exact routines on its
+bundled Susyno engine, registers all 19 Lagrangian terms as SO(10), $U(1)_X$
+and $\Zs$ invariant with vanishing anomaly sums, and rejects a forbidden
+$210_H 10_H^\dagger 10_H$ term and a shifted $X$ charge. This attestation
+verifies the model contract (fields, charges, Yukawa and mass terms, singlet
+quartics), not the non-singlet quartics of the census below; G3 remains
+open. This also does not mean
 a completed scalar-vacuum proof. The exact-$X$
 renormalizable scalar
 census contains 44 tensor directions and 51 real parameters. Its dense
@@ -818,14 +823,18 @@ tangent certificate proves that the broken SO(10) plus gauged $U(1)_X$ orbit
 has rank 37. Its gauge quotient is therefore 449-dimensional and includes the
 physical axion. The independent global-PQ tangent raises the full symmetry
 orbit rank to 38; quotienting that flat orbit for Hessian positivity leaves a
-448-dimensional massive/transverse space. PQ is not gauge-eaten. The neutral
+448-dimensional massive/transverse space. PQ is not gauge-eaten. These ranks
+hold at the declared $p+\delta$ point ($p=e_{6789}$, $z_k=e_{2k-2}+ie_{2k-1}$),
+whose $\delta=z_1\wedge z_2\wedge z_3\wedge(e_{67}+e_{89})$ is the $Y=-1$ member of
+the $(\overline{10},1,3)$, not the SM singlet; they match SM counts but must be
+recomputed at an SM vacuum. The neutral
 $\Phi_{210}$
 projector $P_{24}$ is exactly symmetric, idempotent, and rank 24. An exact
 normalized stationary witness with coefficients $(10,1,-1/4)$ has vanishing
 dense gradient and $\operatorname{tr}(P_{24}H)=288$. The former normalized-SVD
 stationary constraints reject this witness, so the associated finite-cut,
 common-kernel, block-SDP, and negative-trace-LP results are invalidated. The
-physical $H_6$ radial coordinate is also not an exact flat: writing its
+$H_6$ radial coordinate of that reference point is also not an exact flat: writing its
 canonical real coordinate as $t=\sqrt2 h$, the exact stationary combination
 $c_{O06}=-t^2$, $c_{O36,1}=10$ has vanishing first derivative and curvature
 $2t^2=4h^2>0$. Adding the independent normalized $P_{24}$ witness preserves
@@ -857,14 +866,14 @@ exact stationarity of the selected vacuum, including all 252 real
 $\overline{126}$ coordinates. Thus boundedness below and selected-vacuum
 stationarity are exact statements, not numerical scans.
 
-For the $\Phi_{210}+\Delta_R$ Hessian, direct Gaussian-integer and rational
+For the $\Phi_{210}+\delta$ Hessian, direct Gaussian-integer and rational
 tensor contraction followed by exact $\mathbb Q(\sqrt{2})$ component
 arithmetic gives $\operatorname{rank}K=278$,
 $\operatorname{rank}H_\Phi=186$, and
 $\operatorname{rank}(H_\Phi+K)=429$ with nullity 33. The proof assembles every
 entry from integer/Gaussian-integer tensors and exact projector fractions; the
 float64 live-source comparison is only a regression check. The exact
-$P+\Delta_R$ gauge-orbit matrix has rank 33. After quotienting that kernel, an
+$P+\delta$ gauge-orbit matrix has rank 33. After quotienting that kernel, an
 explicit $26\times24$ integer Jacobian for the nonnegative $H/S/\Phi_{17}$
 constraints has exact rank 19. The five remaining added directions combine
 with the 33 core gauge tangents to give precisely the 38 SO(10), gauged-
@@ -874,35 +883,38 @@ and is positive on all transverse directions.
 Combining exact stationarity, complete-potential BFB, and transverse Hessian
 positivity proves that the selected symmetry orbit is a strict local minimum.
 The final exact global-gap test also gives a decisive negative result for
-globality.  In canonical $overline{126}$ coordinates there is a Gaussian-
+globality.  In canonical $\overline{126}$ coordinates there is a Gaussian-
 integer field direction with normalized projector fractions
 $(I_{54},I_{1050},I_{2772},I_{4125})=(0,0,1/2,1/2)$.  It annihilates both mixed
 squares at $P$ and, after choosing $N_\Sigma=(100/99)r^2$, has energy below the selected orbit by
 $25r^4/19008>0$.  The selected orbit is therefore not the global vacuum and
 the present 27-parameter candidate is rejected for G3.  G3 closure remains
-false, but this does not exclude the theory: the fixed-$P$ branch obeys the
-exact gap--curvature relation $Delta V=-m_perp^2/8$, and its lower replacement
-has the wrong stabilizer. A distinct $p:a:\omega=1:1:1$ SU(5)-singlet branch
-has an explicit global $Phi+\Sigma$ SOS, the SM stabilizer, and exact
-rank/nullity $429/33$.  With the neutral chiral vector
+false, but this does not exclude the theory: the fixed-$P$ branch with
+$\Sigma\propto\delta$ obeys the exact relation $\Delta V=-m_\perp^2/8$, and its
+lower replacement has the wrong stabilizer. A distinct $p:a:\omega=1:1:1$
+SU(5)-singlet branch with $\Sigma\propto\delta$ has an explicit global
+$\Phi+\Sigma$ SOS and exact rank/nullity $429/33$, but its stabilizer
+$SU(3)_c\times SU(2)_L\times U(1)_{T_{3R}}$ is not the Standard Model.  With the chiral vector
 $H=(e_6+i e_7)/\sqrt2$, its 28-parameter full-field extension is exactly
 stationary and BFB, has symmetry ranks $36/37/38$, and has a live positive
 448-dimensional quotient with minimum eigenvalue $0.00484459$.  A separate
 source-bound rational-lattice calculation and exact block LDL certificate now
 prove full Hessian rank/nullity $448/38$, positive semidefiniteness, and that
-the kernel is exactly the 38-dimensional symmetry orbit.  The literal
+the kernel is exactly the 38-dimensional symmetry orbit.  Being non-SM
+($\delta$ breaks hypercharge; $|\langle H\rangle|/|\langle\Phi\rangle|=1$), this
+point cannot pass the final G3 test.  The literal
 single-orbit four-form lemma is false: $F$ and $-F$ obey both projector
 equations but are separated by the cubic invariant
-$\operatorname{Tr}(A_\Phi^3)=\pm60$.  Exact mixed rank $252/252$ excludes the
-coupled $-F$ equality branch.  The fail-closed final G3 test still requires a
-global argument beyond the already certified strata.  An exact
+$\operatorname{Tr}(A_\Phi^3)=\pm60$ for $\pm F_0$, $|F_0|^2=10$.  Exact mixed
+rank $252/252$ excludes the
+coupled $-F$ equality branch.  An exact
 implicit-function and equivariance argument proves that
 both signed orbits are isolated local components of the full projector-zero
 set.  The complete 16-real-dimensional SU(3)-fixed subspace is also classified
 exactly and contains no additional orbit.  At fixed $\Phi=F$, a separate exact
 off-kernel estimate proves the full $\beta=1/20$ gap for arbitrary $H$ and
   $\Sigma$, with equality only on the selected SU(5) flag orbit.  The strongest
-  all-zero-residual route can also be removed exactly.  On the pure-$\Delta_R$,
+  all-zero-residual route can also be removed exactly.  On the pure-$\delta$,
   maximally negative-current stratum the live integral affine system has
   rank/nullity $168/42$ and its integer kernel splits as $35+7$.  Exact square
   completion gives a $\Phi$ radial-plus-$I_{54}$ lower bound $1/141$ and a worst
@@ -914,11 +926,11 @@ off-kernel estimate proves the full $\beta=1/20$ gap for arbitrary $H$ and
 This zero-residual result is strengthened by an exact source-bound certificate
 that retains all shifted $\Phi$--$\Sigma$ and chiral $\Phi$--$H$ residuals and
 covers every real $\Phi$ and all nonnegative radial variables on the same
-maximally negative pure-$\Delta_R$ sector.  A single exact 4125-projector
+maximally negative pure-$\delta$ sector.  A single exact 4125-projector
 covariant, a rational Schur-complement bound, and a three-region radial
 completion prove the sharp restricted gap
 \begin{equation}
- \Delta V_{\mathrm{pure}\text{-}\Delta_R}\geq \frac{1}{5000},
+ \Delta V_{\mathrm{pure}\text{-}\delta}\geq \frac{1}{5000},
 \end{equation}
 with equality at $u=1$, $v=0$ for a signed K\"ahler-square representative.
 The earlier four-real-dimensional SU(3) regression is historical and is
@@ -969,10 +981,15 @@ and the exact primal consists of 22 strictly positive real/Hermitian blocks
 with 824 positive rational LDL pivots. Together with the complete invertible
 carrier census, this proves the arbitrary-real-$\Phi_{210}$ statement at the
 fixed $H=h_-$, $\Sigma=q/4$ endpoint only. Global $\Sigma$, general or full
-$H$, the full Hessian, G3 closure, and whole-model conclusions remain open. The
+$H$, G3 closure, and whole-model conclusions remain open. The
 historical finite-cut and SDP solvers remain non-certifying and are not used in
-the local-minimum proof. Therefore this work neither validates nor excludes
-the complete model.
+the local-minimum proof. Separately,
+$(\Phi,\Sigma)\propto(p,z_1\wedge\cdots\wedge z_5)$ is an exact SOS global SM
+minimum of a retuned benchmark potential (uniqueness open; $M_I$ and
+doublet--triplet splitting tuned; $\overline{126}$ colour states below $M_I$;
+field content does not reproduce the RG anchor fixing $M_I$; benchmark quartic
+$127/64$, i.e.\ $m_h\approx195$~GeV; not yet in the G3 gate). Therefore this work
+neither validates nor excludes the complete model.
 
 The v16--v20 audit also records negative results: the v15 dimension-9
 one-insertion potential and its $\mathbb Z_3$ cure were incorrect, and the

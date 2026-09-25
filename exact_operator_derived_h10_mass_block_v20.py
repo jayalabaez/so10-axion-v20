@@ -252,7 +252,8 @@ def build_report() -> dict[str, Any]:
     loewner = loewner_data(m_h_real, mu_d=1.0)
     phys = physical_matrix_with_mh(1.0, m_h_real)
     full = full_matrix_with_mh(1.0, m_h_real)
-    # Physical quotient already removes the 33 SO(10)->SM Goldstones.
+    # Physical quotient already removes the 33 Goldstones of SO(10) ->
+    # SU(3)_c x SU(2)_L x U(1)_T3R (not the SM; Delta_R has Y=-1).
     above_phys = spectrum_audit(phys, gauge_rank=None)
     above_full = spectrum_audit(full, gauge_rank=33)
 

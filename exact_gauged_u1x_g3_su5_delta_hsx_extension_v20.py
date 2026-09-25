@@ -20,7 +20,7 @@ both H quartics, O35_1 and every O46 channel are included in this statement;
 the remaining exact-X H portals either have zero H source or zero H-H jet at
 ``F+Delta``.
 
-Second, the physical chiral neutral representative
+Second, the chiral representative
 
     H_chi = (e6 + i e7)/sqrt(2)
 
@@ -51,8 +51,9 @@ away from the signed Phi equality strata, or the corresponding global
 equality classification.  Consequently this is a proof-grade real-H
 obstruction and exact stationary candidate.  Its live full-Hessian diagnostic
 is retained for provenance; the companion exact-Hessian certificate supersedes
-it for proof purposes.  The arbitrary-Phi gap still prevents this module from
-closing G3 by itself.
+it for proof purposes.  The arbitrary-Phi gap remains open, but it is a
+mathematical problem only: this point is not an SM vacuum (Delta_R has Y=-1;
+g3_sigma_hypercharge_audit_v20), so no certificate at it can close G3.
 """
 from __future__ import annotations
 
@@ -1325,23 +1326,28 @@ def build_report(*, recompute_heavy: bool = False) -> dict[str, Any]:
                 "whole_model_excluded": False,
             },
             "next_required_test": (
-                "The fixed-F off-kernel and exact-Hessian companion certificates "
-                "remove those two former blockers.  Prove the remaining uniform "
-                "coercivity inequality when Phi lies outside the signed F equality "
-                "strata, then classify its global equality set; otherwise exhibit "
-                "a lower arbitrary-Phi witness."
+                "This point is not an SM vacuum (Delta_R has Y=-1; "
+                "g3_sigma_hypercharge_audit_v20), so no further certificate at it "
+                "can close G3.  G3 needs an SM-preserving target certified through "
+                "the final gate, for example the Pati-Salam-branch candidate of "
+                "g3_sm_pati_salam_candidate_v20.  Here the fixed-F off-kernel and "
+                "exact-Hessian companion certificates remove those two former "
+                "blockers; uniform coercivity outside the signed F equality strata "
+                "and its global equality classification remain open as a "
+                "mathematical problem only."
             ),
             "verdict": (
-                "The real H=e6 extension is exactly impossible, but this is not a "
-                "no-go for G3: the chiral neutral H=(e6+i e7)/sqrt(2) gives an "
+                "The real H=e6 extension is exactly impossible, and the chiral "
+                "H=(e6+i e7)/sqrt(2) gives an "
                 "exact stationary, BFB, coefficient-safe candidate whose complete "
-                "live 448-dimensional quotient Hessian is strictly positive, and the "
+                "live 448-dimensional quotient Hessian is strictly positive; the "
                 "companion source-bound certificate upgrades it to exact rank 448, "
                 "nullity 38 and PSD.  The companion fixed-F off-kernel certificate "
                 "also extends the exact +F result beyond its mixed kernel; -F has no "
                 "mixed-zero Sigma branch.  A clean all-vanishing affine-SOS replacement "
-                "for beta is exactly excluded.  Only uniform arbitrary-Phi coercivity "
-                "and its equality classification remain before G3 can close."
+                "for beta is exactly excluded.  This point is not an SM vacuum "
+                "(Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so no further "
+                "certificate at it can close G3."
             ),
         }
     )

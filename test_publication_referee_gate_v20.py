@@ -9,20 +9,35 @@ class PublicationRefereeTests(unittest.TestCase):
     def setUpClass(cls):
         cls.report = mod.build_report()
 
-    def test_referee_package_ready_and_blocked(self):
+    def test_referee_package_ready_and_open(self):
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
-        self.assertEqual(self.report["overall_state"], "BLOCKED")
+        self.assertEqual(
+            self.report["status"], "PUBLICATION_REFEREE_PACKAGE_READY__THEORY_OPEN"
+        )
+        self.assertEqual(self.report["overall_state"], "OPEN")
+        self.assertTrue(self.report["checks"]["full_model_gate_blocked"])
         self.assertTrue(self.report["flag"]["publication_referee_package"])
         self.assertFalse(self.report["flag"]["theory_proven"])
         self.assertFalse(self.report["flag"]["all_g1_g8_closed"])
 
     def test_gate_counts(self):
         totals = self.report["authoritative_totals"]
-        self.assertEqual(totals["closed"], [])
-        self.assertEqual(totals["n_closed"], 0)
-        self.assertEqual(totals["n_blocked"], 8)
-        self.assertTrue(
-            all(row["status"] == "BLOCKED" for row in self.report["gates"].values())
+        self.assertEqual(totals["closed"], ["G1", "G2", "G5"])
+        self.assertEqual(totals["open"], ["G3"])
+        self.assertEqual(totals["n_closed"], 3)
+        self.assertEqual(totals["n_blocked"], 4)
+        self.assertEqual(
+            {name: row["status"] for name, row in self.report["gates"].items()},
+            {
+                "G1": "CLOSED",
+                "G2": "CLOSED",
+                "G3": "OPEN",
+                "G4": "BLOCKED",
+                "G5": "CLOSED",
+                "G6": "BLOCKED",
+                "G7": "BLOCKED",
+                "G8": "BLOCKED",
+            },
         )
 
     def test_tprime_and_cg_honesty(self):

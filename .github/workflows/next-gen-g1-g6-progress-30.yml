@@ -52,11 +52,12 @@ jobs:
           r=json.load(open('NEXT_GEN_G1_G6_PROGRESS_30_GATE_V20.json'))
           assert r['n_failed']==0, r['failures']
           assert r['model_contract_id']=='gauged_u1x_phi17_v20'
-          assert r['overall_state']=='BLOCKED'
-          assert not r['contract_consistent']
+          assert r['overall_state']=='OPEN'
+          assert r['contract_consistent']
           assert r['n_closed_subproblems']==30
           assert all(r['closed_subproblems'].values())
-          assert all(r['gate_states'][g]=='BLOCKED' for g in ('G1','G2','G6','G7','G8'))
+          assert all(r['gate_states'][g]=='CLOSED' for g in ('G1','G2'))
+          assert all(r['gate_states'][g]=='BLOCKED' for g in ('G6','G7','G8'))
           assert r['flag']['authoritative_next_gen_G1_G6_progress_30_gate']
           assert r['flag']['all_recorded_exact_subproblems_closed']
           assert r['flag']['exact_X_G1_G2_scoped_subtheorems_complete']
@@ -65,7 +66,7 @@ jobs:
           assert r['flag']['exact_portal_norm_square_channel_closed']
           assert r['flag']['exact_quartic_t2bar_t4bar_mixing_inserted']
           assert r['authoritative_triplet_structure']['exact_portal_norm_square']['positive_sector_rank']==1
-          assert not r['flag']['G1_closed']
+          assert r['flag']['G1_closed']
           assert not r['flag']['G6_closed']
           assert not r['flag']['physical_triplet_spectrum_complete']
           assert not r['flag']['exact_unique_proton_lifetime']

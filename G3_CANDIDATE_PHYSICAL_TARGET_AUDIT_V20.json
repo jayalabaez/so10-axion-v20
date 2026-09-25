@@ -1,0 +1,408 @@
+{
+  "certified_candidate": {
+    "H_components": {
+      "labelling": "10_H = (6,1,1)+(1,2,2): components 0..5 colour, 6..9 electroweak",
+      "nonzero": {
+        "6": {
+          "im": 0.0,
+          "re": 0.707106781187
+        },
+        "7": {
+          "im": 0.707106781187,
+          "re": 0.0
+        }
+      }
+    },
+    "H_over_Phi_canonical_real_chart_ratio": 1.414213562373,
+    "H_over_Phi_complex_norm_ratio": 1.0,
+    "H_weight_in_colour_block": 0.0,
+    "H_weight_in_electroweak_doublet_block": 1.0,
+    "N_H": 1.0,
+    "Phi_norm": 1.0,
+    "electroweak_symmetry_broken_at_gut_scale": true,
+    "gradient_max_abs": 0.0,
+    "state": "(F, r Delta_R, H_chi, r, 1) with r=1/5"
+  },
+  "checks": {
+    "F_has_no_54_channel_h_mass": true,
+    "O06_enters_as_identity": true,
+    "all_S_and_Phi17_portals_vanish": true,
+    "candidate_H_lies_in_electroweak_doublet_block": true,
+    "candidate_H_to_Phi_vev_ratio_is_one": true,
+    "candidate_is_exactly_stationary": true,
+    "doublet_triplet_splitting_equals_beta_r_squared": true,
+    "exact_charge_audit_binds_to_the_certified_point": true,
+    "exact_charge_audit_finds_non_sm_stabilizer": true,
+    "gut_point_all_h10_modes_tachyonic": true,
+    "gut_point_doublets_at_minus_2_and_minus_4_over_5": true,
+    "gut_point_h10_mass_is_hermitian_and_sm_block_diagonal": true,
+    "gut_point_is_stationary": true,
+    "gut_point_triplets_at_minus_1_998_and_minus_0_802": true,
+    "no_gate_closed_or_model_excluded": true,
+    "numerical_spectrum_matches_exact_source_spectrum": true,
+    "only_beta_O35_45_splits_five_plets": true,
+    "physical_hierarchy_reference_is_hierarchical": true,
+    "tuned_partner_triplet_at_beta_r_squared": true,
+    "tuning_only_O06_to_zero_leaves_one_massless_doublet": true
+  },
+  "failures": [],
+  "flags": {
+    "axion_singlet_decoupled_in_candidate": true,
+    "certified_candidate_at_physical_hierarchy": false,
+    "certified_candidate_breaks_electroweak_symmetry_at_gut_scale": true,
+    "certified_candidate_breaks_hypercharge_at_gut_scale": true,
+    "certified_candidate_is_physical_vacuum": false,
+    "certified_candidate_is_sm_vacuum": false,
+    "g3_closed": false,
+    "gut_point_h10_fully_tachyonic": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "gut_point_h10": {
+    "O06_block_identity_residual": 0.0,
+    "O46_54_channel_block_max_abs_at_F": 0.0,
+    "beta_O35_45_block": {
+      "colour_triplets": [
+        -0.002,
+        0.002
+      ],
+      "weak_doublets": [
+        0.0
+      ]
+    },
+    "beta_r_squared": "1/500",
+    "doublet_triplet_splitting_per_five_plet": [
+      0.002,
+      0.002
+    ],
+    "gradient_max_abs": 0.0,
+    "h_mass_contributions_by_parameter": {
+      "lambda::O06_B01_Hdag_H_norm": {
+        "colour_triplets": [
+          -2.0
+        ],
+        "weak_doublets": [
+          -2.0
+        ]
+      },
+      "lambda::O35_B02_H_Sigma_hermitian": {
+        "colour_triplets": [
+          -0.002,
+          0.002
+        ],
+        "weak_doublets": [
+          0.0
+        ]
+      },
+      "lambda::O46_B01_Phi2_HdagH_channels": {
+        "colour_triplets": [
+          0.6
+        ],
+        "weak_doublets": [
+          0.6
+        ]
+      },
+      "lambda::O46_B02_Phi2_HdagH_channels": {
+        "colour_triplets": [
+          -0.6,
+          0.6
+        ],
+        "weak_doublets": [
+          -0.6,
+          0.6
+        ]
+      }
+    },
+    "holomorphic_h_mass_residual": 0.0,
+    "spectrum": {
+      "colour_triplets": [
+        {
+          "complex_multiplicity": 3,
+          "mass_squared": -1.998
+        },
+        {
+          "complex_multiplicity": 3,
+          "mass_squared": -0.802
+        }
+      ],
+      "hermiticity_residual": 0.0,
+      "maximum_eigenvalue": -0.8,
+      "triplet_doublet_mixing_residual": 0.0,
+      "weak_doublets": [
+        {
+          "complex_multiplicity": 2,
+          "mass_squared": -2.0
+        },
+        {
+          "complex_multiplicity": 2,
+          "mass_squared": -0.8
+        }
+      ]
+    },
+    "state": "(F, r Delta_R, H=0, r, 1): certified couplings, H removed"
+  },
+  "hierarchy": {
+    "M_GUT_GeV": 9917564798898606.0,
+    "M_I_GeV": 631385523052.8793,
+    "Phi_direction_overlap_certified_F_vs_reference": 0.316227766017,
+    "Sigma_and_S_scale_over_M_GUT": {
+      "certified": 0.2,
+      "physical": 6.3663363e-05
+    },
+    "block_norms": {
+      "H10": {
+        "certified_candidate": 1.414213562373,
+        "physical_hierarchy": 0.0,
+        "ratio": 56997498844244.87
+      },
+      "Phi17": {
+        "certified_candidate": 1.414213562373,
+        "physical_hierarchy": 14.259685628978,
+        "ratio": 0.099175647989
+      },
+      "Phi210": {
+        "certified_candidate": 1.0,
+        "physical_hierarchy": 1.0,
+        "ratio": 1.0
+      },
+      "S": {
+        "certified_candidate": 0.282842712475,
+        "physical_hierarchy": 9.0033591e-05,
+        "ratio": 3141.524294363018
+      },
+      "Sigma126bar": {
+        "certified_candidate": 0.282842712475,
+        "physical_hierarchy": 9.0033591e-05,
+        "ratio": 3141.524294363018
+      }
+    },
+    "certified_PQ_and_B_minus_L_breaking_scale_GeV": 1983512959779721.2,
+    "certified_candidate_at_physical_hierarchy": false,
+    "physical_hierarchy_source": "gauged_u1x_g2_derivative_audit_v20.physical_hierarchy_state",
+    "reference_state_differs_in_orientation": "physical_hierarchy_state has Phi along the Pati-Salam singlet p, not F; with the certified O46/O06 couplings at p the (6,1,1) states sit near M_GUT and two (1,2,2) doublets are light, so it is not a rescaling of the F branch. Both states use the same non-SM Delta_R.",
+    "triplet_partner_mass_GeV": {
+      "F_branch_extrapolated_to_M_I": 141182094955.54987,
+      "certified_hierarchy": 443526981231926.3,
+      "formula": "M_T = sqrt(beta) <Sigma> for the T3R = 0 Delta_R with O06 tuned for a massless doublet; the M_I value extrapolates this F-branch formula to a state that has not been constructed"
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 20,
+  "n_failed": 0,
+  "o06_tuning": {
+    "certified_O06": -2.0,
+    "exact_source_spectrum": {
+      "colour_triplets": [
+        0.002,
+        1.198
+      ],
+      "source": "exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.fixed_pd_equal_norm_h_orientation_certificate",
+      "weak_doublets": [
+        0.0,
+        1.2
+      ]
+    },
+    "massless_doublets": 1,
+    "partner_triplet_mass_over_M": 0.04472135955,
+    "partner_triplet_mass_squared_over_M2": 0.002,
+    "spectrum_without_O06": {
+      "colour_triplets": [
+        {
+          "complex_multiplicity": 3,
+          "mass_squared": 0.002
+        },
+        {
+          "complex_multiplicity": 3,
+          "mass_squared": 1.198
+        }
+      ],
+      "hermiticity_residual": 0.0,
+      "maximum_eigenvalue": 1.2,
+      "triplet_doublet_mixing_residual": 0.0,
+      "weak_doublets": [
+        {
+          "complex_multiplicity": 2,
+          "mass_squared": 0.0
+        },
+        {
+          "complex_multiplicity": 2,
+          "mass_squared": 1.2
+        }
+      ]
+    },
+    "tuned_O06": 0.0,
+    "tuned_spectrum": {
+      "colour_triplets": [
+        {
+          "complex_multiplicity": 3,
+          "mass_squared": 0.002
+        },
+        {
+          "complex_multiplicity": 3,
+          "mass_squared": 1.198
+        }
+      ],
+      "hermiticity_residual": 0.0,
+      "maximum_eigenvalue": 1.2,
+      "triplet_doublet_mixing_residual": 0.0,
+      "weak_doublets": [
+        {
+          "complex_multiplicity": 2,
+          "mass_squared": 0.0
+        },
+        {
+          "complex_multiplicity": 2,
+          "mass_squared": 1.2
+        }
+      ]
+    }
+  },
+  "overall_state": "PHYSICAL_TARGET_MISMATCH_IDENTIFIED",
+  "physical_target": {
+    "coefficient_change": {
+      "lambda::O06_B01_Hdag_H_norm": {
+        "certified": "-2",
+        "tuned": "0"
+      }
+    },
+    "doublet_triplet_splitting": "m^2 = beta r^2 M^2 = M^2/500 for this T3R = 0 Delta_R configuration",
+    "hierarchy_caveat": "The certified point puts Sigma and S at r = 1/5 of M_GUT. The repository's physical_hierarchy_state puts them at M_I ~ 6.3e11 GeV but along Phi = p (overlap with F 1/sqrt(10)) and with the same non-SM Delta_R; the sqrt(beta) M_I ~ 1.4e11 GeV triplet figure is an extrapolation of this F-branch formula, not a constructed state.",
+    "next": "tree-level quartic at the tuned point: g3_tuned_target_effective_higgs_quartic_v20.py",
+    "sm_preserving_requirement": "Sigma along the Y = 0 singlet z1^z2^z3^z4^z5: with p (Pati-Salam branch) the stabilizer is the standard SM; with F it is SU(5), so an F branch needs the flipped direction z1^z2^z3^zbar4^zbar5.",
+    "tuned_r_one_fifth_point": "(F, r Delta_R, H=0, r, 1) with O06 retuned -2 -> 0 (non-SM stabilizer)"
+  },
+  "singlet_portals": {
+    "S_and_Phi17_portals": {
+      "O12_B01_Hdag_Hdag_pair": {
+        "coefficients": {
+          "im::O12_B01_Hdag_Hdag_pair": 0.0,
+          "re::O12_B01_Hdag_Hdag_pair": 0.0
+        },
+        "monomial": "10_H^dag^2 S^dag"
+      },
+      "O25_B01_126bar_norm": {
+        "coefficients": {
+          "lambda::O25_B01_126bar_norm": 0.0
+        },
+        "monomial": "126bar_H 126bar_H^dag Phi17 Phi17^dag"
+      },
+      "O26_B01_126bar_norm": {
+        "coefficients": {
+          "lambda::O26_B01_126bar_norm": 0.0
+        },
+        "monomial": "126bar_H 126bar_H^dag S S^dag"
+      },
+      "O33_B01_Hdag_H_norm": {
+        "coefficients": {
+          "lambda::O33_B01_Hdag_H_norm": 0.0
+        },
+        "monomial": "10_H 10_H^dag Phi17 Phi17^dag"
+      },
+      "O34_B01_Hdag_H_norm": {
+        "coefficients": {
+          "lambda::O34_B01_Hdag_H_norm": 0.0
+        },
+        "monomial": "10_H 10_H^dag S S^dag"
+      },
+      "O38_B01_Phi_Hdag_Sigmadag": {
+        "coefficients": {
+          "im::O38_B01_Phi_Hdag_Sigmadag": 0.0,
+          "re::O38_B01_Phi_Hdag_Sigmadag": 0.0
+        },
+        "monomial": "210_H 10_H^dag 126bar_H^dag S^dag"
+      },
+      "O42_B01_Phi_norm": {
+        "coefficients": {
+          "lambda::O42_B01_Phi_norm": 0.0
+        },
+        "monomial": "210_H^2 Phi17 Phi17^dag"
+      },
+      "O43_B01_Phi_norm": {
+        "coefficients": {
+          "lambda::O43_B01_Phi_norm": 0.0
+        },
+        "monomial": "210_H^2 S S^dag"
+      }
+    },
+    "all_portals_vanish": true,
+    "kappa_H_SARAH_term": "kappaH H10.H10.S = census orbit O12 (10_H^dag^2 S^dag)",
+    "singlet_self_couplings": {
+      "O03_B01_singlet_polynomial": {
+        "coefficients": {
+          "lambda::O03_B01_singlet_polynomial": -0.0625
+        },
+        "monomial": "Phi17 Phi17^dag"
+      },
+      "O04_B01_singlet_polynomial": {
+        "coefficients": {
+          "lambda::O04_B01_singlet_polynomial": -0.08
+        },
+        "monomial": "S S^dag"
+      },
+      "O20_B01_singlet_polynomial": {
+        "coefficients": {
+          "lambda::O20_B01_singlet_polynomial": 0.03125
+        },
+        "monomial": "Phi17^2 Phi17^dag^2"
+      },
+      "O22_B01_singlet_polynomial": {
+        "coefficients": {
+          "lambda::O22_B01_singlet_polynomial": 0.0
+        },
+        "monomial": "S S^dag Phi17 Phi17^dag"
+      },
+      "O23_B01_singlet_polynomial": {
+        "coefficients": {
+          "lambda::O23_B01_singlet_polynomial": 1.0
+        },
+        "monomial": "S^2 S^dag^2"
+      }
+    }
+  },
+  "sm_embedding": {
+    "H_chi_standard_embedding_charges": {
+      "B_minus_L": "0",
+      "Q_em": "1",
+      "T3L": "1/2",
+      "T3R": "1/2",
+      "Y": "1/2",
+      "Y_flipped": "1/2",
+      "cartan_eigenform": true,
+      "plane_charges": {
+        "J01": 0,
+        "J23": 0,
+        "J45": 0,
+        "J67": 1,
+        "J89": 0
+      }
+    },
+    "binding_ok": true,
+    "certified_point_is_sm_vacuum": false,
+    "gut_point_is_sm_vacuum": false,
+    "heavy_pair_centre_spectrum_on_10": {
+      "colour_block_0_5": {
+        "0": 6
+      },
+      "em_normalized": {
+        "0": 6,
+        "1": 4
+      },
+      "exact_rational_q_squared": true,
+      "hypercharge_normalized": {
+        "0": 6,
+        "1/2": 4
+      },
+      "standard_blocks_decoupled": true,
+      "weak_block_6_9": {
+        "1/2": 4
+      }
+    },
+    "heavy_pair_stabilizer": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+    "heavy_pair_stabilizer_dimension": 12,
+    "hypercharge_broken_by_delta_r": true,
+    "source": "g3_sigma_hypercharge_audit_v20.named_vacua (exact integer arithmetic)"
+  },
+  "status": "G3_CERTIFIED_POINT_IS_NOT_AN_SM_VACUUM__DELTA_R_BREAKS_HYPERCHARGE__H_BREAKS_SU2L_AT_GUT_SCALE__G3_OPEN",
+  "units": "Hessian eigenvalues of the canonical 486-real chart, units of the benchmark scale M (|Phi|=1)",
+  "verdict": "The certified G3 point is a strict local minimum (modulo its 38 symmetry directions) of the benchmark potential, with global minimality open, but it is not a Standard-Model vacuum: its Delta_R is the T3R = 0, Y = -1 component of the 126bar triplet, so hypercharge breaks at r M_GUT and the unbroken group is SU(3) x SU(2)_L x U(1)_T3R; its 10_H vev also breaks SU(2)_L with |<H>|/|<Phi>| = 1. At (F, r Delta_R, H=0) every 10_H mode is tachyonic and, for this Delta_R, each five-plet is split only by beta r^2 = 1/500; retuning O06 alone to 0 leaves one massless (1,2,2) doublet. An SM-preserving G3 target needs the Y = 0 singlet of the 126bar (with p: the standard SM; with F: SU(5), so the flipped direction). Nothing is closed or excluded here."
+}

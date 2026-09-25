@@ -332,16 +332,20 @@ def build_report() -> dict[str, Any]:
     improved = bool(op["positive_definite"] and not schematic["positive_definite"])
     pd_fixed = bool(op["positive_definite"])
 
+    # Positivity is a scientific outcome at the legacy-selected point, not
+    # an integrity check: with the genuine invariant cubic I3 it can fail.
+    outcomes = {
+        "operator_hessian_pd": pd_fixed,
+        "hilbert_block_pd": bool(op["hilbert_block_pd"]),
+        "pd_improved_vs_schematic": improved or (
+            pd_fixed and schematic["positive_definite"]
+        ),
+    }
     checks = {
         "promote_ok": promote_rep.get("n_failed", 1) == 0,
         "che_ok": che_rep.get("n_failed", 1) == 0,
         "residual_ok": residual_rep.get("n_failed", 1) == 0,
-        "operator_hessian_pd": pd_fixed,
-        "hilbert_block_pd": op["hilbert_block_pd"],
         "schematic_was_not_pd": not schematic["positive_definite"],
-        "pd_improved_vs_schematic": improved or (
-            pd_fixed and schematic["positive_definite"]
-        ),
         "mixed_lam210_used": abs(res_c["lam210_10"]) > 0.0,
         "off_singlet_not_overclaimed": True,
         "live_sarah_not_claimed": True,
@@ -352,13 +356,16 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "HILBERT_MIXED_8COMP_HESSIAN_PD__OFF_SINGLET_OPEN"
-            if not failures
-            else "HILBERT_MIXED_8COMP_HESSIAN_FAILED"
+            "HILBERT_MIXED_8COMP_HESSIAN_FAILED"
+            if failures
+            else "HILBERT_MIXED_8COMP_HESSIAN_PD__OFF_SINGLET_OPEN"
+            if all(outcomes.values())
+            else "HILBERT_MIXED_8COMP_HESSIAN_NOT_PD__LEGACY_VACUUM_SADDLE__OFF_SINGLET_OPEN"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
+        "scientific_outcomes": outcomes,
         "sources": SOURCES,
         "selected_vevs": {
             "fractions": fr,
@@ -397,6 +404,9 @@ def build_report() -> dict[str, Any]:
             "schematic_well_hessian_replaced_by_hilbert_mixed": True,
             "operator_based_8comp_hessian_pd": pd_fixed,
             "schematic_lifted_well_instability_fixed": improved,
+            "selected_legacy_vacuum_is_invariant_potential_saddle": not bool(
+                op["hilbert_block_pd"]
+            ),
             "hilbert_block_embedded": True,
             "charge_allowed_block_embedded": True,
             "lam210_cross_terms_included": True,

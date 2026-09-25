@@ -4,7 +4,8 @@
 The earlier constructive G3 benchmark fixed ``Phi=P``.  Its desired
 ``P+Delta_R`` vacuum obeys an exact gap--curvature obstruction and cannot be
 both a strict local minimum and the global minimum.  This module constructs a
-different, SM-preserving orbit which evades that P-specific obstruction.
+different orbit (12-dim stabilizer SU(3)xSU(2)_LxU(1)_T3R, not the SM) which
+evades that P-specific obstruction.
 
 Let ``F0`` be the integral four-form
 
@@ -28,7 +29,8 @@ The following polynomial is an exact sum of nonnegative residuals:
 with ``t=1/8`` and ``r>0``.  Every residual vanishes at
 ``Phi=F, Sigma=r Delta_R``.  Hence that configuration is stationary and is a
 global minimum with value ``-1-r^4/8``.  The exact SO(10) orbit rank is 33,
-so its stabilizer has dimension 12, as required for the SM gauge algebra.
+so its stabilizer has dimension 12: SM-sized, but its U(1) is T3R, not
+hypercharge.
 
 The source expansion uses 17 of the authoritative 51 exact-X parameters.  Its
 largest absolute dimensionless coefficient is ``73/8 < 4*pi``.  This module
@@ -324,7 +326,12 @@ def exact_stabilizer_certificate() -> dict[str, Any]:
         "integer_tangent_shape": tangent.shape,
         "exact_rational_rank": rank,
         "exact_stabilizer_dimension": 45 - rank,
-        "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_Y",
+        "expected_unbroken_algebra": (
+            "su(3)_C + su(2)_L + u(1)_T3R (12-dim, SM-sized but not the SM: "
+            "Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20)"
+        ),
+        "is_standard_model": False,
+        # Size reference only; the stabilizer is not the SM algebra.
         "SM_dimension": 8 + 3 + 1,
         "source_binding_exact": True,
     }
@@ -775,6 +782,7 @@ def build_report() -> dict[str, Any]:
         "SO10_orbit_rank_is_33_exactly": (
             stabilizer["exact_rational_rank"] == EXPECTED_SO10_ORBIT_RANK
         ),
+        # Legacy name: an SM-sized dimension check, not an SM identification.
         "SO10_stabilizer_dimension_is_SM_12": (
             stabilizer["exact_stabilizer_dimension"]
             == EXPECTED_SO10_STABILIZER_DIMENSION
@@ -823,7 +831,10 @@ def build_report() -> dict[str, Any]:
             "Phi": "F0/sqrt(10)",
             "Sigma": "r Delta_R",
             "formal_assumption": "r>0",
-            "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_Y",
+            "unbroken_SO10_stabilizer": (
+                "SU(3)_C x SU(2)_L x U(1)_T3R (12-dim; not the Standard Model)"
+            ),
+            "is_standard_model_vacuum": False,
         },
         "exact_Phi_certificate": phi,
         "exact_Sigma_certificate": sigma,
@@ -863,7 +874,13 @@ def build_report() -> dict[str, Any]:
         "scope": {
             "Phi_Sigma_global_minimum_exact": not failures,
             "Phi_Sigma_stationarity_exact": not failures,
+            # Legacy key name: it certifies the dimension only.
             "SO10_to_SM_stabilizer_dimension_exact": not failures,
+            "stabilizer_is_standard_model": False,
+            "stabilizer_note": (
+                "dimension-only; the centre is T3R, not Y "
+                "(g3_sigma_hypercharge_audit_v20)"
+            ),
             "Phi_Sigma_Hessian_rank_429_nullity_33_exact": not failures,
             "Phi_Sigma_quotient_strictly_positive_exact": not failures,
             "Phi_Sigma_equality_set_locally_one_orbit": not failures,
@@ -877,12 +894,15 @@ def build_report() -> dict[str, Any]:
             "The P-specific Delta no-go is evaded by an exact SU(5)-singlet "
             "210 plus Delta_R configuration.  A 17-parameter, perturbative "
             "Phi/Sigma potential is an explicit global sum of squares and "
-            "the target has the exact 12-dimensional SM stabilizer.  Its "
+            "the target has an exact 12-dimensional stabilizer "
+            "(SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has "
+            "Y=-1).  Its "
             "exact PD Hessian has rank 429 and only the 33 gauge-orbit zero "
             "modes, so the equality set is locally one SO(10) orbit.  Other "
-            "disconnected global equality orbits are not classified.  The "
-            "H/S/Phi17 extension and exact full physical Hessian remain to "
-            "be certified before G3 can close."
+            "disconnected global equality orbits are not classified.  Its "
+            "chiral-H extension and exact 448/38 Hessian are certified "
+            "elsewhere, but this orientation is not an SM vacuum and cannot "
+            "close G3."
         ),
     }
 
@@ -900,12 +920,15 @@ def _markdown(report: dict[str, Any]) -> str:
             f"- exact checks: `{report['n_checks'] - report['n_failed']}/{report['n_checks']}`;",
             "- global lower bound: `V_PD >= -1-r^4/8`;",
             "- exact SO(10) orbit rank / stabilizer: `33 / 12`;",
+            "- stabilizer: `SU(3)_C x SU(2)_L x U(1)_T3R` (not the SM; "
+            "Delta_R has Y=-1);",
             "- exact PD Hessian rank / nullity: `429 / 33`;",
             "- PD Hessian on the SO(10) quotient: `strictly positive`;",
             "- global equality-orbit classification: `OPEN`;",
             f"- nonzero exact-X parameters: `{coefficient['nonzero_count']}/51`;",
             f"- maximum coefficient: `{coefficient['maximum_absolute_physical_coefficient']}`;",
-            "- full 486-field Hessian and H/S/Phi17 extension: `OPEN`.",
+            "- full 486-field Hessian and H/S/Phi17 extension: "
+            "`not certified in this module`.",
             "",
         ]
     )

@@ -438,7 +438,6 @@ def build_report() -> dict[str, Any]:
         "promote_ok": promote_rep.get("n_failed", 1) == 0,
         "taup_ok": taup_rep.get("n_failed", 1) == 0,
         "soft_ok": soft.get("n_failed", 1) == 0,
-        "selected_hilbert_3x3_pd": selected_row["hilbert_3x3"]["positive_definite"],
         "selected_wins_soft_mpd_band": selected_wins_band or selected_is_best,
         "no_strictly_better_soft_competitor": n_competing_lower_cost == 0,
         "n_candidates_ge_5": len(rows) >= 5,
@@ -449,12 +448,17 @@ def build_report() -> dict[str, Any]:
         "whole_model_not_declared_dead": True,
     }
     failures = [n for n, ok in checks.items() if not ok]
+    # Scientific outcome, not an integrity check: with the genuine invariant
+    # cubic I3 the selected legacy point need not be a local minimum.
+    selected_slice_pd = bool(selected_row["hilbert_3x3"]["positive_definite"])
 
     return {
         "status": (
-            "COMPONENT_HESSIAN_COMPETING_EXTREMA_MAPPED__OFF_SINGLET_OPEN"
-            if not failures
-            else "COMPONENT_HESSIAN_FAILED"
+            "COMPONENT_HESSIAN_FAILED"
+            if failures
+            else "COMPONENT_HESSIAN_COMPETING_EXTREMA_MAPPED__OFF_SINGLET_OPEN"
+            if selected_slice_pd
+            else "COMPONENT_HESSIAN_MAPPED__SELECTED_HILBERT_SLICE_SADDLE__OFF_SINGLET_OPEN"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
@@ -475,10 +479,16 @@ def build_report() -> dict[str, Any]:
                 "min_dimensionless_eig"
             ],
             "interpretation": (
-                "Hilbert 3×3 soft-restored Hessian is PD at the selected point. "
-                "The schematic 8-component well lift develops negative modes there "
-                "(soft 210 shifts vs O(1) wells) — conditional residual, not a "
-                "claim that the Hilbert vacuum is unstable on its own slice."
+                (
+                    "Hilbert 3×3 soft-restored Hessian is PD at the selected point. "
+                    if selected_slice_pd
+                    else "Hilbert 3×3 soft-restored Hessian of the genuine "
+                    "SO(10)-invariant potential (I2, I3=Tr A^3, J0/J2/J3/J4) is "
+                    "NOT PD at the selected point: the legacy selection is a "
+                    "saddle on its own slice. "
+                )
+                + "The schematic 8-component well lift is reported separately "
+                "(soft 210 shifts vs O(1) wells) as a conditional residual."
             ),
             "catalogue_lifted_pd_count": sum(
                 1 for r in rows if r["lifted_8"]["positive_definite"]
@@ -496,9 +506,8 @@ def build_report() -> dict[str, Any]:
             "lifted_8_hessian_at_hilbert_vevs": True,
             "hilbert_3x3_hessian_included": True,
             "competing_extrema_scanned": True,
-            "selected_hilbert_slice_locally_stable": bool(
-                selected_row["hilbert_3x3"]["positive_definite"]
-            ),
+            "selected_hilbert_slice_locally_stable": selected_slice_pd,
+            "selected_legacy_vacuum_is_invariant_potential_saddle": not selected_slice_pd,
             "selected_lifted_well_pd": bool(
                 selected_row["lifted_8"]["positive_definite"]
             ),

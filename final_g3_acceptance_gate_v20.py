@@ -26,6 +26,7 @@ OUT_JSON = ROOT / "FINAL_G3_ACCEPTANCE_GATE_V20.json"
 OUT_MD = ROOT / "FINAL_G3_ACCEPTANCE_GATE_V20.md"
 
 HSX_JSON = ROOT / "EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.json"
+SIGMA_HYPERCHARGE_JSON = ROOT / "G3_SIGMA_HYPERCHARGE_AUDIT_V20.json"
 EQUALITY_JSON = ROOT / "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json"
 LOCAL_COMPONENT_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.json"
@@ -125,9 +126,15 @@ def build_report(
     rank1_su4_augmented_sos_quartic_map_report: dict[str, Any] | None = None,
     rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
     rank1_su4_corrected_publication: dict[str, Any] | None = None,
+    sigma_hypercharge_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
+    sigma_hypercharge_report = (
+        _load(SIGMA_HYPERCHARGE_JSON)
+        if sigma_hypercharge_report is None
+        else sigma_hypercharge_report
+    )
     equality_report = (
         _load(EQUALITY_JSON) if equality_report is None else equality_report
     )
@@ -344,6 +351,11 @@ def build_report(
     artifact_integrity = {
         "ledger_executes": ledger_report.get("n_failed") == 0,
         "HSX_audit_executes": hsx_report.get("n_failed") == 0,
+        "sigma_hypercharge_audit_executes": (
+            sigma_hypercharge_report.get("n_failed") == 0
+            and isinstance(sigma_hypercharge_report.get("flags"), dict)
+            and "certified_g3_point_is_sm_vacuum" in sigma_hypercharge_report["flags"]
+        ),
         "equality_audit_executes": equality_report.get("n_failed") == 0,
         "Phi_local_component_audit_executes": (
             local_component_report.get("n_failed") == 0
@@ -782,7 +794,16 @@ def build_report(
             hsx_bfb.get("homogeneous_quartic_BFB_certified")
             and hsx_bfb.get("source_binding_exact")
         ),
-        "target_SM_and_full_symmetry_orbits_exact": bool(
+        "target_unbroken_algebra_is_standard_model": bool(
+            _dig(
+                sigma_hypercharge_report,
+                "flags",
+                "certified_g3_point_is_sm_vacuum",
+                default=False,
+            )
+            is True
+        ),
+        "target_symmetry_orbit_ranks_36_37_38_exact": bool(
             hsx_orbit.get("SO10_rank") == 36
             and hsx_orbit.get("SO10_plus_U1X_rank") == 37
             and hsx_orbit.get("SO10_plus_U1X_plus_PQ_rank") == 38
@@ -1200,6 +1221,7 @@ def build_report(
         path.name
         for path, report in (
             (HSX_JSON, hsx_report),
+            (SIGMA_HYPERCHARGE_JSON, sigma_hypercharge_report),
             (EQUALITY_JSON, equality_report),
             (LOCAL_COMPONENT_JSON, local_component_report),
             (SU3_SLICE_JSON, su3_slice_report),
@@ -1534,11 +1556,22 @@ def build_report(
         },
         "upstream_frontier_integrity": frontier.get("integrity_pass"),
         "remaining_open_problem": (
-            "uniform coercivity for arbitrary non-pure-Delta Sigma orientations"
+            "an SM-preserving G3 candidate: the certified SU(5)+Delta point is not "
+            "an SM vacuum; its (F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R "
+            "(its Delta_R is the Y=-1 member of the 126bar triplet, "
+            "g3_sigma_hypercharge_audit_v20) and its chiral H breaks SU(2)_L as well, "
+            "so uniform coercivity for arbitrary non-pure-Delta Sigma orientations "
+            "would not close G3 on it"
         ),
         "verdict": (
             "G3 is verified." if release_g3_verified else
-            "G3 remains open. The chiral-H candidate now has an exact full "
+            "G3 remains open, and the certified chiral-H candidate cannot close it: "
+            "its Delta_R is the T3R=0, Y=-1 member of the 126bar triplet, so its "
+            "(F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R, not the Standard "
+            "Model, and its GUT-scale chiral H vev breaks that further to a "
+            "9-dimensional subgroup (g3_sigma_hypercharge_audit_v20). The "
+            "mathematical results below stay "
+            "valid for that point. The chiral-H candidate has an exact full "
             "Hessian theorem (rank/nullity 448/38, positive on the quotient) "
             "and an exact global gap/equality theorem on the complete Phi=F "
             "stratum for arbitrary H and Sigma. The complete maximally-negative "
@@ -1560,10 +1593,14 @@ def build_report(
             "corrected 6585x19594 standard positive-Gram map, ordered-spectral "
             "target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 "
             "off the homogeneous origin and A(Phi)>3/200 at t=1 for every real "
-            "Phi210. Global Sigma, general/full H, the full Hessian, and G3 "
-            "remain open. PASS still requires uniform coercivity away from the "
-            "fixed Sigma=q/4 endpoint, plus the external authoritative model "
-            "execution."
+            "Phi210. Global Sigma, general/full H, and G3 remain open; that "
+            "fixed-endpoint theorem does not classify the full Hessian, which the "
+            "separate exact 448/38 certificate above closes at the certified point. "
+            "PASS is impossible at this point because "
+            "target_unbroken_algebra_is_standard_model is false. It requires an "
+            "SM-preserving target (for example the Pati-Salam-branch candidate of "
+            "g3_sm_pati_salam_candidate_v20, not yet wired into this gate) and, on "
+            "that target, an exact global gap and equality-set classification."
         ),
     }
 

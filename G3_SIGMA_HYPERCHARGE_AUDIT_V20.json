@@ -1,0 +1,1480 @@
+{
+  "certified_coupling_probe": {
+    "coefficients": "g3_candidate_physical_target_audit_v20.candidate_coefficients() (certified 28-parameter map)",
+    "interpretation": "At the certified couplings and norm r=1/5 the SM-type point (F, r flipped) is not stationary (max |grad| 0.127279, radial Sigma derivative 0.144) and lies 0.072 above the certified GUT point; the SU(5) point (F, r z1..z5) lies 0.072 above it. The certified potential therefore prefers the non-SM direction direct.delta_r(); an SM-type G3 target needs re-derived couplings.",
+    "points": {
+      "F_with_direct_delta_r": {
+        "Sigma_direction": "direct_delta_r",
+        "gradient_block_norms": {
+          "H10": 0.0,
+          "Phi17": 0.0,
+          "Phi210": 0.0,
+          "S": 0.0,
+          "Sigma126bar": 0.0
+        },
+        "gradient_max_abs": 0.0,
+        "h10_mass_matrix_holomorphic_residual": 0.0,
+        "h10_mass_squared_spectrum": [
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": -2.0
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": -1.998
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": -0.802
+          },
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": -0.8
+          }
+        ],
+        "pair_stabilizer": "certified GUT point (not SM)",
+        "potential_minus_certified_gut_point": 0.0,
+        "potential_value": -1.03305,
+        "radial_sigma_derivative": 0.0,
+        "sigma_kinetic_norm": 0.2,
+        "stationary": true
+      },
+      "F_with_flipped_P_minus_i": {
+        "Sigma_direction": "flipped_P_minus_i",
+        "gradient_block_norms": {
+          "H10": 0.0,
+          "Phi17": 0.0,
+          "Phi210": 0.24,
+          "S": 0.0,
+          "Sigma126bar": 0.509116882455
+        },
+        "gradient_max_abs": 0.127279220614,
+        "h10_mass_matrix_holomorphic_residual": 0.0,
+        "h10_mass_squared_spectrum": [
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": -2.002
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": -1.998
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": -0.802
+          },
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": -0.798
+          }
+        ],
+        "pair_stabilizer": "SM-type (flipped)",
+        "potential_minus_certified_gut_point": 0.072,
+        "potential_value": -0.96105,
+        "radial_sigma_derivative": 0.144,
+        "sigma_kinetic_norm": 0.2,
+        "stationary": false
+      },
+      "F_with_sm_singlet_Y0": {
+        "Sigma_direction": "sm_singlet_Y0",
+        "gradient_block_norms": {
+          "H10": 0.0,
+          "Phi17": 0.0,
+          "Phi210": 0.24,
+          "S": 0.0,
+          "Sigma126bar": 0.509116882455
+        },
+        "gradient_max_abs": 0.127279220614,
+        "h10_mass_matrix_holomorphic_residual": 0.0,
+        "h10_mass_squared_spectrum": [
+          {
+            "complex_multiplicity": 5,
+            "mass_squared": -1.998
+          },
+          {
+            "complex_multiplicity": 5,
+            "mass_squared": -0.802
+          }
+        ],
+        "pair_stabilizer": "SU(5)",
+        "potential_minus_certified_gut_point": 0.072,
+        "potential_value": -0.96105,
+        "radial_sigma_derivative": 0.144,
+        "sigma_kinetic_norm": 0.2,
+        "stationary": false
+      }
+    },
+    "probe_checks": {
+      "certified_gut_point_is_stationary": true,
+      "sm_type_flipped_point_is_stationary_at_certified_couplings": false
+    },
+    "recomputed_by_fast_test": false,
+    "states": "(F, r Sigma_hat, H=0, r, 1), r=1/5, Sigma_hat kinetic-normalised",
+    "units": "canonical 486-real chart, units of the benchmark scale M (|Phi|=1)"
+  },
+  "checks": {
+    "F_direct_delta_r_stabilizer_is_12_dim_T3R_not_hypercharge": true,
+    "F_flipped_is_sm_type_flipped_embedding": true,
+    "F_sm_singlet_Y0_leaves_su5": true,
+    "P_minus_i_acts_as_identity_on_all_three_raw_forms": true,
+    "all_three_are_colour_and_su2l_singlets_in_one_su2r_triplet": true,
+    "chart_minus_i_space_has_exactly_one_sm_singlet": true,
+    "direct_delta_r_bound_to_exact_form": true,
+    "direct_delta_r_charges_BL_m2_T3L_0_T3R_0_Y_m1": true,
+    "every_stabilizer_is_reductive_consistent": true,
+    "exact_vector_action_matches_integer_matrices": true,
+    "flipped_charges_BL_m2_T3L_0_T3R_m1_Y_m2": true,
+    "flipped_is_the_SO10_reflection_image_of_the_sm_singlet": true,
+    "historical_candidate_evaluated_at_physical_hierarchy_state": true,
+    "hsigma_delta_r_form_is_plus_i_and_its_conjugate_is_the_Y0_singlet": true,
+    "named_vacua_bound_to_repository_states": true,
+    "no_gate_closed_or_model_excluded": true,
+    "no_named_vacuum_is_an_sm_vacuum": true,
+    "no_pair_with_direct_delta_r_is_sm_type": true,
+    "only_the_Y0_member_is_annihilated_by_the_standard_sm_algebra": true,
+    "p_direct_delta_r_stabilizer_is_12_dim_T3R_not_hypercharge": true,
+    "p_flipped_is_sm_type": true,
+    "p_sm_singlet_Y0_is_the_standard_sm": true,
+    "phi_directions_bound_to_repository_forms": true,
+    "repository_minus_i_classification_binds_all_three_triplet_members": true,
+    "repository_numeric_charges_agree_with_exact": true,
+    "sigma_directions_exactly_in_chart_minus_i_space": true,
+    "sm_singlet_charges_BL_m2_T3L_0_T3R_p1_Y_0": true,
+    "u1x_broken_at_every_named_vacuum": true
+  },
+  "conventions": {
+    "B_minus_L": "-(2/3)(J01+J23+J45)",
+    "Q_em": "T3L + Y",
+    "T3L": "(J67-J89)/2",
+    "T3R": "(J67+J89)/2",
+    "Y": "T3R + (B-L)/2",
+    "Y_flipped": "T3R - (B-L)/2 (the SO(10) image of -Y under diag(1^6,1,-1,1,-1))",
+    "chart_126bar": "-i Hodge eigenspace (*Sigma = -i Sigma), live_g2_canonical_486_field_chart_v20",
+    "em_type_test": "stabilizer dim 9, centre dim 1, derived dim 8, centre spectrum |q| = 1/3 (x6), 1 (x2), 0 (x2) after scaling max |q| to 1",
+    "hermitian_generator": "J_ab = -i L_ab, L_ab e_b = e_a, L_ab e_a = -e_b (direct.generator_action)",
+    "sm_type_test": "stabilizer dim 12, centre dim 1, derived algebra dim 11 (= su(3)+su(2)), centre spectrum on the vector 10 |q| = 1/3 (x6 real) and 1/2 (x4 real) after scaling max |q| to 1/2",
+    "source": "exact_126bar_triplet_clebsch_v20._subgroup_operators",
+    "standard_blocks": "colour components 0..5, weak components 6..9 (standard embedding only)",
+    "z_k": "e_{2k-2} + i e_{2k-1}, zero-based; J_{2k-2,2k-1} z_k = +z_k"
+  },
+  "failures": [],
+  "flags": {
+    "certified_g3_point_is_sm_vacuum": false,
+    "certified_gut_point_is_sm_vacuum": false,
+    "direct_delta_r_is_sm_singlet": false,
+    "g3_closed": false,
+    "historical_27_parameter_candidate_is_sm_vacuum": false,
+    "physical_hierarchy_state_is_sm_vacuum": false,
+    "replacement_stationary_orbit_is_sm_vacuum": false,
+    "sm_singlet_direction_found": true,
+    "sm_type_sigma_for_certified_F_found": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "implications": {
+    "certified_sigma": "direct.delta_r() is the (B-L,T3R,Y)=(-2,0,-1) member of the (10bar,1,3); a vev there leaves SU(3)_c x SU(2)_L x U(1)_T3R and breaks hypercharge",
+    "next": "rebuild the G3 candidate/hierarchy states on an SM-type (Phi, Sigma) pair and re-derive stationarity, the H10 spectrum and couplings there",
+    "repository_convention_note": "exact_hsigma_45_background_hessian_v20.delta_r_form() is the Y=0 singlet of the +i space; the chart uses the -i space, whose Y=0 singlet is its complex conjugate z1^z2^z3^z4^z5, not direct.delta_r()",
+    "sm_directions_in_chart": {
+      "with_F": "z1^z2^z3^zbar4^zbar5 only (flipped-SU(5)-type); z1..z5 leaves SU(5)",
+      "with_p": "z1^z2^z3^z4^z5 (standard SM) or z1^z2^z3^zbar4^zbar5 (SM-conjugate)"
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 28,
+  "n_failed": 0,
+  "named_vacua": {
+    "certified_g3_point": {
+      "H_standard_embedding_charges": {
+        "B_minus_L": "0",
+        "Q_em": "1",
+        "T3L": "1/2",
+        "T3R": "1/2",
+        "Y": "1/2",
+        "Y_flipped": "1/2",
+        "cartan_eigenform": true,
+        "plane_charges": {
+          "J01": 0,
+          "J23": 0,
+          "J45": 0,
+          "J67": 1,
+          "J89": 0
+        }
+      },
+      "binding": {
+        "bound": true,
+        "h_alignment_defect": 0.0,
+        "h_is_zero": false,
+        "phi17_nonzero": true,
+        "phi_alignment_defect": 0.0,
+        "s_nonzero": true,
+        "sigma_alignment_defect": 0.0,
+        "sigma_exactly_in_minus_i_space": true
+      },
+      "description": "(F, r Delta_R, H_chi=(e6+i e7)/sqrt2, r, 1), r=1/5",
+      "electroweak_stage_leaves_su3_x_u1_em": false,
+      "full_state_stabilizer_so10": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R_minus_T3L"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 8,
+            "1": 2
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 8,
+            "1/2": 2
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "0": 2,
+            "1/2": 2
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 8,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "dim 9, centre 1, derived 8; centre ~ T3R_minus_T3L",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 9
+      },
+      "full_state_stabilizer_so10_plus_u1x": {
+        "so10_only_dimension": 9,
+        "stabilizer_dimension": 9,
+        "u1x_admixture_dimension": 0,
+        "u1x_broken": true
+      },
+      "gut_stage_leaves_sm": false,
+      "heavy_pair_stabilizer": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L67": 1,
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 6,
+            "1": 4
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 6,
+            "1/2": 4
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "1/2": 4
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 11,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 12
+      },
+      "is_sm_vacuum": false,
+      "source": "exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.candidate_state()"
+    },
+    "certified_gut_point_H0": {
+      "H_standard_embedding_charges": null,
+      "binding": {
+        "bound": true,
+        "h_alignment_defect": null,
+        "h_is_zero": true,
+        "phi17_nonzero": true,
+        "phi_alignment_defect": 0.0,
+        "s_nonzero": true,
+        "sigma_alignment_defect": 0.0,
+        "sigma_exactly_in_minus_i_space": true
+      },
+      "description": "(F, r Delta_R, 0, r, 1)",
+      "electroweak_stage_leaves_su3_x_u1_em": null,
+      "full_state_stabilizer_so10": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L67": 1,
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 6,
+            "1": 4
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 6,
+            "1/2": 4
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "1/2": 4
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 11,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 12
+      },
+      "full_state_stabilizer_so10_plus_u1x": {
+        "so10_only_dimension": 12,
+        "stabilizer_dimension": 12,
+        "u1x_admixture_dimension": 0,
+        "u1x_broken": true
+      },
+      "gut_stage_leaves_sm": false,
+      "heavy_pair_stabilizer": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L67": 1,
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 6,
+            "1": 4
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 6,
+            "1/2": 4
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "1/2": 4
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 11,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 12
+      },
+      "is_sm_vacuum": false,
+      "source": "certified_g3_point with H removed (g3_candidate_physical_target_audit_v20.gut_point_state)"
+    },
+    "historical_27_parameter_p_branch_candidate": {
+      "H_standard_embedding_charges": {
+        "cartan_eigenform": false,
+        "plane_charges": {
+          "J01": 0,
+          "J23": 0,
+          "J45": 0,
+          "J67": null,
+          "J89": 0
+        }
+      },
+      "binding": {
+        "bound": true,
+        "h_alignment_defect": 0.0,
+        "h_is_zero": false,
+        "phi17_nonzero": true,
+        "phi_alignment_defect": 0.0,
+        "s_nonzero": true,
+        "sigma_alignment_defect": 0.0,
+        "sigma_exactly_in_minus_i_space": true
+      },
+      "description": "same field state as physical_hierarchy_state; 27 nonzero couplings",
+      "electroweak_stage_leaves_su3_x_u1_em": false,
+      "full_state_stabilizer_so10": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R_minus_T3L"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 8,
+            "1": 2
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 8,
+            "1/2": 2
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "0": 2,
+            "1/2": 2
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 8,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "dim 9, centre 1, derived 8; centre ~ T3R_minus_T3L",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 9
+      },
+      "full_state_stabilizer_so10_plus_u1x": {
+        "so10_only_dimension": 9,
+        "stabilizer_dimension": 9,
+        "u1x_admixture_dimension": 0,
+        "u1x_broken": true
+      },
+      "gut_stage_leaves_sm": false,
+      "heavy_pair_stabilizer": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L67": 1,
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 6,
+            "1": 4
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 6,
+            "1/2": 4
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "1/2": 4
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 11,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 12
+      },
+      "historical_binding": {
+        "compiler_rows_use_physical_hierarchy_state": true,
+        "compiler_state_source": "gauged_u1x_g3_sos_candidate_v20._compiler_rows -> gauged_u1x_g2_derivative_audit_v20.physical_hierarchy_state()",
+        "hierarchy_scales_match_state": true,
+        "nonzero_parameter_count": 27
+      },
+      "is_sm_vacuum": false,
+      "source": "gauged_u1x_g3_sos_candidate_v20 (evaluated at physical_hierarchy_state)"
+    },
+    "physical_hierarchy_state": {
+      "H_standard_embedding_charges": {
+        "cartan_eigenform": false,
+        "plane_charges": {
+          "J01": 0,
+          "J23": 0,
+          "J45": 0,
+          "J67": null,
+          "J89": 0
+        }
+      },
+      "binding": {
+        "bound": true,
+        "h_alignment_defect": 0.0,
+        "h_is_zero": false,
+        "phi17_nonzero": true,
+        "phi_alignment_defect": 0.0,
+        "s_nonzero": true,
+        "sigma_alignment_defect": 0.0,
+        "sigma_exactly_in_minus_i_space": true
+      },
+      "description": "(p, (M_I/M_GUT) Delta_R, (174 GeV/M_GUT) e6, M_I/M_GUT, 1e17 GeV/M_GUT)",
+      "electroweak_stage_leaves_su3_x_u1_em": false,
+      "full_state_stabilizer_so10": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R_minus_T3L"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 8,
+            "1": 2
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 8,
+            "1/2": 2
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "0": 2,
+            "1/2": 2
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 8,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "dim 9, centre 1, derived 8; centre ~ T3R_minus_T3L",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 9
+      },
+      "full_state_stabilizer_so10_plus_u1x": {
+        "so10_only_dimension": 9,
+        "stabilizer_dimension": 9,
+        "u1x_admixture_dimension": 0,
+        "u1x_broken": true
+      },
+      "gut_stage_leaves_sm": false,
+      "heavy_pair_stabilizer": {
+        "centre_dimension": 1,
+        "centre_generator_integer_terms": {
+          "L67": 1,
+          "L89": 1
+        },
+        "centre_proportional_to": [
+          "T3R"
+        ],
+        "centre_spectrum_on_vector_10": {
+          "colour_block_0_5": {
+            "0": 6
+          },
+          "em_normalized": {
+            "0": 6,
+            "1": 4
+          },
+          "exact_rational_q_squared": true,
+          "hypercharge_normalized": {
+            "0": 6,
+            "1/2": 4
+          },
+          "standard_blocks_decoupled": true,
+          "weak_block_6_9": {
+            "1/2": 4
+          }
+        },
+        "commutes_with_complex_structure": [
+          "flipped",
+          "standard"
+        ],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 11,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 12
+      },
+      "is_sm_vacuum": false,
+      "source": "gauged_u1x_g2_derivative_audit_v20.physical_hierarchy_state()"
+    },
+    "replacement_stationary_orbit": {
+      "H_standard_embedding_charges": {
+        "cartan_eigenform": false,
+        "plane_charges": {
+          "J01": 0,
+          "J23": 0,
+          "J45": 0,
+          "J67": null,
+          "J89": 0
+        }
+      },
+      "binding": {
+        "bound": true,
+        "h_alignment_defect": 0.0,
+        "h_is_zero": false,
+        "phi17_nonzero": true,
+        "phi_alignment_defect": 0.0,
+        "s_nonzero": true,
+        "sigma_alignment_defect": 0.0,
+        "sigma_exactly_in_minus_i_space": true
+      },
+      "description": "(p, (5/(3 sqrt22)) z, e6, 1, 1) with the Gaussian-integer witness z",
+      "electroweak_stage_leaves_su3_x_u1_em": false,
+      "full_state_stabilizer_so10": {
+        "centre_dimension": 0,
+        "centre_proportional_to": [],
+        "centre_spectrum_on_vector_10": null,
+        "commutes_with_complex_structure": [],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 6,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "dim 6, centre 0, derived 6",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 6
+      },
+      "full_state_stabilizer_so10_plus_u1x": {
+        "so10_only_dimension": 6,
+        "stabilizer_dimension": 6,
+        "u1x_admixture_dimension": 0,
+        "u1x_broken": true
+      },
+      "gut_stage_leaves_sm": false,
+      "heavy_pair_stabilizer": {
+        "centre_dimension": 0,
+        "centre_proportional_to": [],
+        "centre_spectrum_on_vector_10": null,
+        "commutes_with_complex_structure": [],
+        "contains_flipped_sm_algebra": false,
+        "contains_standard_sm_algebra": false,
+        "derived_algebra_dimension": 9,
+        "is_sm_type": false,
+        "is_su3_x_u1_em_type": false,
+        "is_su5_type": false,
+        "label": "dim 9, centre 0, derived 9",
+        "reductive_split_consistent": true,
+        "stabilizer_dimension": 9
+      },
+      "is_sm_vacuum": false,
+      "source": "exact_gauged_u1x_g3_replacement_stationary_orbit_v20 (live representative h=r=x=1)"
+    }
+  },
+  "overall_state": "SM_EMBEDDING_MISMATCH_IDENTIFIED",
+  "pair_stabilizers": {
+    "F|direct_delta_r": {
+      "Phi": "F",
+      "Sigma": "direct_delta_r",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L67": 1,
+        "L89": 1
+      },
+      "centre_proportional_to": [
+        "T3R"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "0": 6
+        },
+        "em_normalized": {
+          "0": 6,
+          "1": 4
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "0": 6,
+          "1/2": 4
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": false,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "F|flipped_P_minus_i": {
+      "Phi": "F",
+      "Sigma": "flipped_P_minus_i",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L01": 2,
+        "L23": 2,
+        "L45": 2,
+        "L67": 3,
+        "L89": 3
+      },
+      "centre_proportional_to": [
+        "Y_flipped"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": true,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)xU(1)_Y': SM-conjugate (flipped hypercharge Y'=T3R-(B-L)/2)",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "F|sm_singlet_Y0": {
+      "Phi": "F",
+      "Sigma": "sm_singlet_Y0",
+      "centre_dimension": 0,
+      "centre_proportional_to": [],
+      "centre_spectrum_on_vector_10": null,
+      "commutes_with_complex_structure": [
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": true,
+      "derived_algebra_dimension": 24,
+      "is_sm_type": false,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": true,
+      "label": "SU(5)",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 24
+    },
+    "a|direct_delta_r": {
+      "Phi": "a",
+      "Sigma": "direct_delta_r",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L67": 1,
+        "L89": 1
+      },
+      "centre_proportional_to": [
+        "T3R"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "0": 6
+        },
+        "em_normalized": {
+          "0": 6,
+          "1": 4
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "0": 6,
+          "1/2": 4
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": false,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "a|flipped_P_minus_i": {
+      "Phi": "a",
+      "Sigma": "flipped_P_minus_i",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L01": 2,
+        "L23": 2,
+        "L45": 2,
+        "L67": 3,
+        "L89": 3
+      },
+      "centre_proportional_to": [
+        "Y_flipped"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": true,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)xU(1)_Y': SM-conjugate (flipped hypercharge Y'=T3R-(B-L)/2)",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "a|sm_singlet_Y0": {
+      "Phi": "a",
+      "Sigma": "sm_singlet_Y0",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L01": 2,
+        "L23": 2,
+        "L45": 2,
+        "L67": -3,
+        "L89": -3
+      },
+      "centre_proportional_to": [
+        "Y_standard"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": true,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)xU(1)_Y: standard SM embedding",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "omega|direct_delta_r": {
+      "Phi": "omega",
+      "Sigma": "direct_delta_r",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L67": 1,
+        "L89": 1
+      },
+      "centre_proportional_to": [
+        "T3R"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "0": 6
+        },
+        "em_normalized": {
+          "0": 6,
+          "1": 4
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "0": 6,
+          "1/2": 4
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": false,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "omega|flipped_P_minus_i": {
+      "Phi": "omega",
+      "Sigma": "flipped_P_minus_i",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L01": 2,
+        "L23": 2,
+        "L45": 2,
+        "L67": 3,
+        "L89": 3
+      },
+      "centre_proportional_to": [
+        "Y_flipped"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": true,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)xU(1)_Y': SM-conjugate (flipped hypercharge Y'=T3R-(B-L)/2)",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "omega|sm_singlet_Y0": {
+      "Phi": "omega",
+      "Sigma": "sm_singlet_Y0",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L01": 2,
+        "L23": 2,
+        "L45": 2,
+        "L67": -3,
+        "L89": -3
+      },
+      "centre_proportional_to": [
+        "Y_standard"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": true,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)xU(1)_Y: standard SM embedding",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "p|direct_delta_r": {
+      "Phi": "p",
+      "Sigma": "direct_delta_r",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L67": 1,
+        "L89": 1
+      },
+      "centre_proportional_to": [
+        "T3R"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "0": 6
+        },
+        "em_normalized": {
+          "0": 6,
+          "1": 4
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "0": 6,
+          "1/2": 4
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": false,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "p|flipped_P_minus_i": {
+      "Phi": "p",
+      "Sigma": "flipped_P_minus_i",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L01": 2,
+        "L23": 2,
+        "L45": 2,
+        "L67": 3,
+        "L89": 3
+      },
+      "centre_proportional_to": [
+        "Y_flipped"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": true,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)xU(1)_Y': SM-conjugate (flipped hypercharge Y'=T3R-(B-L)/2)",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    },
+    "p|sm_singlet_Y0": {
+      "Phi": "p",
+      "Sigma": "sm_singlet_Y0",
+      "centre_dimension": 1,
+      "centre_generator_integer_terms": {
+        "L01": 2,
+        "L23": 2,
+        "L45": 2,
+        "L67": -3,
+        "L89": -3
+      },
+      "centre_proportional_to": [
+        "Y_standard"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "commutes_with_complex_structure": [
+        "flipped",
+        "standard"
+      ],
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": true,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "is_su3_x_u1_em_type": false,
+      "is_su5_type": false,
+      "label": "SU(3)xSU(2)xU(1)_Y: standard SM embedding",
+      "reductive_split_consistent": true,
+      "stabilizer_dimension": 12
+    }
+  },
+  "repository_bindings": {
+    "direct_delta_r_alignment_defect": 0.0,
+    "direct_delta_r_matches_g2_exact_helper": true,
+    "exact_vector_action_matches_integer_matrices": true,
+    "hsigma_delta_r_form": {
+      "conjugate_alignment_defect_with_sm_singlet_Y0": 0.0,
+      "conjugate_minus_i_hodge_residual": 0.0,
+      "direct_alignment_defect_with_conjugate_sm_singlet": 0.0,
+      "numeric_charges_of_conjugate": {
+        "B_minus_L": -2.0,
+        "T3L": 0.0,
+        "T3R": 1.0,
+        "Y": 0.0
+      },
+      "numeric_charges_of_form": {
+        "B_minus_L": 2.0,
+        "T3L": 0.0,
+        "T3R": -1.0,
+        "Y": 0.0
+      },
+      "plus_i_hodge_residual": 0.0
+    },
+    "numeric_charges_repository_helper": {
+      "direct_delta_r": {
+        "B_minus_L": -2.0,
+        "T3L": 0.0,
+        "T3R": 0.0,
+        "Y": -1.0
+      },
+      "flipped_P_minus_i": {
+        "B_minus_L": -2.0,
+        "T3L": 0.0,
+        "T3R": -1.0,
+        "Y": -2.0
+      },
+      "sm_singlet_Y0": {
+        "B_minus_L": -2.0,
+        "T3L": 0.0,
+        "T3R": 1.0,
+        "Y": 0.0
+      }
+    },
+    "phi_alignment_defects": {
+      "F_vs_ext_normalized_f": 0.0,
+      "a_vs_singlet_basis_a": 0.0,
+      "omega_vs_singlet_basis_omega": 0.0,
+      "p_vs_singlet_basis_p": 0.0
+    },
+    "repository_minus_i_sm_singlet_count": 1,
+    "repository_minus_i_su2r_triplet_classification": {
+      "T3R=+0": {
+        "joint_eigen_residual": 0.0,
+        "matches_exact_direction": "direct_delta_r",
+        "quantum": {
+          "BL": -2.0,
+          "C2L": 0.0,
+          "C2R": 2.0,
+          "C3": 0.0,
+          "I3": 0.0,
+          "I8": 0.0,
+          "T3L": 0.0,
+          "T3R": 0.0,
+          "Y": -1.0
+        }
+      },
+      "T3R=+1": {
+        "joint_eigen_residual": 0.0,
+        "matches_exact_direction": "sm_singlet_Y0",
+        "quantum": {
+          "BL": -2.0,
+          "C2L": 0.0,
+          "C2R": 2.0,
+          "C3": 0.0,
+          "I3": 0.0,
+          "I8": 0.0,
+          "T3L": 0.0,
+          "T3R": 1.0,
+          "Y": 0.0
+        }
+      },
+      "T3R=-1": {
+        "joint_eigen_residual": 0.0,
+        "matches_exact_direction": "flipped_P_minus_i",
+        "quantum": {
+          "BL": -2.0,
+          "C2L": 0.0,
+          "C2R": 2.0,
+          "C3": 0.0,
+          "I3": 0.0,
+          "I8": 0.0,
+          "T3L": 0.0,
+          "T3R": -1.0,
+          "Y": -2.0
+        }
+      }
+    }
+  },
+  "sigma_directions": {
+    "direct_delta_r": {
+      "B_minus_L": "-2",
+      "C2_SU2L": "0",
+      "C2_SU2R": "2",
+      "P_minus_i_is_identity_on_raw": true,
+      "Q_em": "-1",
+      "SU2L_singlet": true,
+      "SU3_colour_singlet": true,
+      "T3L": "0",
+      "T3R": "0",
+      "Y": "-1",
+      "Y_flipped": "1",
+      "annihilated_by_flipped_SM_algebra": false,
+      "annihilated_by_standard_SM_algebra": false,
+      "cartan_eigenform": true,
+      "chart_coordinates_exact": true,
+      "exactly_in_chart_minus_i_space": true,
+      "formula": "z1^z2^z3^(e6^e7+e8^e9)",
+      "plane_charges": {
+        "J01": 1,
+        "J23": 1,
+        "J45": 1,
+        "J67": 0,
+        "J89": 0
+      }
+    },
+    "flipped_P_minus_i": {
+      "B_minus_L": "-2",
+      "C2_SU2L": "0",
+      "C2_SU2R": "2",
+      "P_minus_i_is_identity_on_raw": true,
+      "Q_em": "-2",
+      "SU2L_singlet": true,
+      "SU3_colour_singlet": true,
+      "T3L": "0",
+      "T3R": "-1",
+      "Y": "-2",
+      "Y_flipped": "0",
+      "annihilated_by_flipped_SM_algebra": true,
+      "annihilated_by_standard_SM_algebra": false,
+      "cartan_eigenform": true,
+      "chart_coordinates_exact": true,
+      "exactly_in_chart_minus_i_space": true,
+      "formula": "P_{-i}(z1^z2^z3^zbar4^zbar5)",
+      "plane_charges": {
+        "J01": 1,
+        "J23": 1,
+        "J45": 1,
+        "J67": -1,
+        "J89": -1
+      }
+    },
+    "sm_singlet_Y0": {
+      "B_minus_L": "-2",
+      "C2_SU2L": "0",
+      "C2_SU2R": "2",
+      "P_minus_i_is_identity_on_raw": true,
+      "Q_em": "0",
+      "SU2L_singlet": true,
+      "SU3_colour_singlet": true,
+      "T3L": "0",
+      "T3R": "1",
+      "Y": "0",
+      "Y_flipped": "2",
+      "annihilated_by_flipped_SM_algebra": false,
+      "annihilated_by_standard_SM_algebra": true,
+      "cartan_eigenform": true,
+      "chart_coordinates_exact": true,
+      "exactly_in_chart_minus_i_space": true,
+      "formula": "z1^z2^z3^z4^z5",
+      "plane_charges": {
+        "J01": 1,
+        "J23": 1,
+        "J45": 1,
+        "J67": 1,
+        "J89": 1
+      }
+    }
+  },
+  "single_field_stabilizers": {
+    "Phi=F": {
+      "centre_dimension": 1,
+      "derived_algebra_dimension": 24,
+      "is_sm_type": false,
+      "label": "dim 25, centre 1, derived 24",
+      "stabilizer_dimension": 25
+    },
+    "Phi=a": {
+      "centre_dimension": 1,
+      "derived_algebra_dimension": 14,
+      "is_sm_type": false,
+      "label": "dim 15, centre 1, derived 14; centre ~ B_minus_L",
+      "stabilizer_dimension": 15
+    },
+    "Phi=omega": {
+      "centre_dimension": 2,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": false,
+      "label": "dim 13, centre 2, derived 11",
+      "stabilizer_dimension": 13
+    },
+    "Phi=p": {
+      "centre_dimension": 0,
+      "derived_algebra_dimension": 21,
+      "is_sm_type": false,
+      "label": "dim 21, centre 0, derived 21",
+      "stabilizer_dimension": 21
+    },
+    "Sigma=direct_delta_r": {
+      "centre_dimension": 1,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": false,
+      "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+      "stabilizer_dimension": 12
+    },
+    "Sigma=flipped_P_minus_i": {
+      "centre_dimension": 0,
+      "derived_algebra_dimension": 24,
+      "is_sm_type": false,
+      "label": "SU(5)' (flipped complex structure)",
+      "stabilizer_dimension": 24
+    },
+    "Sigma=sm_singlet_Y0": {
+      "centre_dimension": 0,
+      "derived_algebra_dimension": 24,
+      "is_sm_type": false,
+      "label": "SU(5)",
+      "stabilizer_dimension": 24
+    }
+  },
+  "sm_type_pairs": [
+    "F|flipped_P_minus_i",
+    "a|flipped_P_minus_i",
+    "a|sm_singlet_Y0",
+    "omega|flipped_P_minus_i",
+    "omega|sm_singlet_Y0",
+    "p|flipped_P_minus_i",
+    "p|sm_singlet_Y0"
+  ],
+  "standard_flipped_reflection": {
+    "R": "diag(1,1,1,1,1,1,1,-1,1,-1)",
+    "R_fixes_F": false,
+    "R_fixes_a": true,
+    "R_fixes_p": true,
+    "R_maps_Y_standard_to_minus_Y_flipped": true,
+    "R_maps_direct_delta_r_to_minus_itself": true,
+    "R_maps_sm_singlet_Y0_to_flipped": true,
+    "consequence": "(p, flipped) = R(p, z1..z5) is SM-conjugate; (F, flipped) = R(R(F), z1..z5), and since R(F) != F the SU(5) of (F, z1..z5) is not inherited: the pair leaves a flipped-SU(5)-type SM",
+    "determinant": 1
+  },
+  "status": "G3_SIGMA_DIRECTION_IS_Y_MINUS_1_TRIPLET_COMPONENT__NAMED_VACUA_ARE_NOT_SM__G3_OPEN",
+  "verdict": "The repository's 126bar vev direct.delta_r() = z1^z2^z3^(e67+e89) has B-L=-2, T3R=0, Y=-1: it is not an SM singlet. Together with F or p it leaves SU(3)_c x SU(2)_L x U(1)_T3R, whose centre acts trivially on colour, so the certified G3 point, its H=0 GUT point, the physical_hierarchy_state and the historical 27-parameter p-branch candidate are not Standard-Model vacua (the replacement orbit is not either). The chart's -i space does contain the Y=0 singlet z1^z2^z3^z4^z5 (the conjugate of hsigma.delta_r_form()): with p it leaves exactly the standard SM, with F it leaves SU(5). With F the SM-type choice is the flipped direction z1^z2^z3^zbar4^zbar5. G3 remains open; nothing is excluded."
+}

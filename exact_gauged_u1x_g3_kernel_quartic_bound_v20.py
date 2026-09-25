@@ -59,7 +59,7 @@ saturated by the coherent Gaussian form
 
 That vector is exactly in the same mixed kernel and is pure 2772bar.  It
 therefore beats Delta_R (49/48), so the simple weight swap cannot restore
-global minimality.
+the global minimality of Delta_R.
 
 There is a stronger fixed-background consequence.  At equal norm and
 ``Phi=P``, direct evaluation of the complete 51-parameter exact-X basis gives
@@ -74,8 +74,12 @@ so the first quantity is exactly ``-1/8`` of the second.  Therefore Delta_R
 cannot be both a strict local and a global minimum at this fixed P background:
 positive curvature makes the exact z orbit lower, zero curvature is flat, and
 negative curvature is locally unstable.  This is a no-go for the selected
-``P+Delta_R`` orbit, not for a general SM-preserving ``Phi=(p,a,omega)`` where
-the O14/O44 families can distinguish the two 126bar orientations.
+``P+Delta_R`` orbit only.  It does not cover the fixed-P SM orientation
+``(P, z1^...^z5)``, which is the coherent pure-2772bar vector above and, with
+the swapped weights plus O05, kappa_H and O06 retuned, an exact global minimum
+of a benchmark potential (g3_sm_pati_salam_candidate_v20), nor a general
+SM-preserving ``Phi=(p,a,omega)`` where the O14/O44 families can distinguish
+the two 126bar orientations.
 
 All displayed recoupling coefficients and all witness evaluations use
 ``Fraction`` arithmetic.  The live integer G2 tensors bind both witnesses to
@@ -116,6 +120,13 @@ SWAPPED_WEIGHTS = {
     "2772bar": Fraction(1),
     "4125": Fraction(17, 16),
 }
+# Scope of the fixed_P_branch_closed_negative flag: the Delta_R orientation only.
+FIXED_P_BRANCH_SCOPE = (
+    "Sigma along Delta_R only; the SM orientation (P, z1^...^z5) is not "
+    "covered: with the 2772bar/4125 weights swapped it is the pure-2772bar "
+    "kernel minimizer, and with O05, kappa_H and O06 retuned it is an exact "
+    "global minimum of a benchmark potential (g3_sm_pati_salam_candidate_v20)"
+)
 
 # Exact multiplicity-free SO(10)->PS recoupling on Sym^2 K.  Each row lists
 # the fractions of the row inside the four SO(10) self-pair projectors.
@@ -351,7 +362,9 @@ def exact_fixed_P_local_global_no_go() -> dict[str, Any]:
         "selected_P_plus_Delta_R_strict_local_and_global_possible": False,
         "escape_not_excluded": (
             "For general SM-preserving Phi=(p,a,omega), O14/O44 distinguish "
-            "the two Sigma orientations; the theorem does not exclude that branch."
+            "the two Sigma orientations; the theorem does not exclude that branch. "
+            "It also does not exclude the fixed-P SM orientation (P, z1^...^z5), "
+            "the pure-2772bar kernel vector (g3_sm_pati_salam_candidate_v20)."
         ),
         "source_binding": (
             "Exact 51-direction source-value scan at Phi=P plus the exact "
@@ -906,6 +919,7 @@ def build_report() -> dict[str, Any]:
         "exact_kernel": kernel,
         "exact_PS_recoupling_and_SOS": recoupling,
         "fixed_P_strict_local_global_no_go": fixed_p_no_go,
+        "fixed_P_branch_scope": FIXED_P_BRANCH_SCOPE,
         "original_equality_witness": {
             "definition": "Gaussian witness in exact_gauged_u1x_g3_global_counterexample_v20",
             "projector_fractions": equality_projectors[
@@ -1015,6 +1029,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "- `m_perp^2/r^2=(4/3)(lambda_2772-lambda_4125)` (multiplicity two).",
             "- Hence `Delta V/r^4=-(1/8)m_perp^2/r^2` exactly.",
             "- This rules out the selected `Phi=P, Sigma=Delta_R` orbit, not a general `(p,a,omega)` branch.",
+            f"- `fixed_P_branch_closed_negative` scope: {report['fixed_P_branch_scope']}.",
             "",
             "## Scope",
             "",

@@ -235,7 +235,9 @@ def build_report() -> dict[str, Any]:
         if live_executed
         else None
     )
-    if not live_executed:
+    if live_executed:
+        probe["block_reason"] = None
+    else:
         probe["block_reason"] = (
             "No valid v2 attestation binds tool-native input, exact model bytes, "
             "the canonical input manifest, validation driver, and process log."

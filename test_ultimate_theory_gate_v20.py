@@ -9,6 +9,7 @@ import unittest
 from contextlib import redirect_stdout
 from unittest.mock import patch
 
+import exact_x_symmetry_consistency_gate_v20 as x_gate
 import theory_confirmation_verdict_v20 as confirmation
 import ultimate_theory_gate_v20 as gate
 
@@ -24,10 +25,28 @@ class UltimateGateTests(unittest.TestCase):
             current_test_count=321,
         )
 
-    def test_current_state_is_honestly_blocked(self) -> None:
+    def test_current_state_is_honestly_open(self) -> None:
+        # The SARAH-attested contract is consistent; G3 is open, so approval
+        # is still withheld.
         result = self.evaluate()
         self.assertTrue(result["integrity_pass"])
         self.assertEqual(result["n_failed"], 0)
+        self.assertEqual(result["overall_state"], "OPEN")
+        self.assertEqual(result["classification"], "AUTHORITATIVE_GATES_OPEN")
+        self.assertEqual(result["decision"], "WITHHOLD_APPROVAL")
+        self.assertEqual(
+            result["validation_matrix_contract_gate"]["state"], "PASS"
+        )
+        self.assertFalse(result["internal_candidate_approved"])
+        self.assertFalse(result["full_phenomenology_approved"])
+        self.assertFalse(result["whole_model_excluded"])
+
+    def test_unattested_contract_is_honestly_blocked(self) -> None:
+        reports = copy.deepcopy(self.fresh_reports)
+        reports["x_contract"] = x_gate.build_report(
+            model_text=x_gate.MODEL.read_text(encoding="utf-8")
+        )
+        result = self.evaluate(reports)
         self.assertEqual(result["overall_state"], "BLOCKED")
         self.assertEqual(
             result["classification"],
@@ -37,9 +56,55 @@ class UltimateGateTests(unittest.TestCase):
         self.assertEqual(
             result["validation_matrix_contract_gate"]["state"], "BLOCKED"
         )
+        self.assertEqual(result["verdict"], gate._verdict(False))
+
+    def test_verdict_text_branches_on_contract_readiness(self) -> None:
+        ready, blocked = gate._verdict(True), gate._verdict(False)
+        self.assertNotIn("lacks", ready)
+        self.assertNotIn("no v2 manifest", ready)
+        self.assertIn("attested by bound external SARAH execution", ready)
+        self.assertIn(
+            "has no v2 manifest/log-bound external SARAH execution evidence",
+            blocked,
+        )
+        self.assertEqual(self.evaluate()["verdict"], ready)
+
+    def test_confirmation_text_branches_on_contract_readiness(self) -> None:
+        ready = confirmation._claim_text(True)
+        blocked = confirmation._claim_text(False)
+        for text in ready.values():
+            self.assertNotIn("lacks", text)
+            self.assertNotIn("no v2 manifest", text)
+        self.assertIn(
+            "lacks a v2 manifest/log-bound external SARAH execution attestation",
+            blocked["correct_public_claim"],
+        )
+        self.assertIn(
+            "still lacks a real external SARAH execution", blocked["verdict"]
+        )
+        self.assertTrue(
+            blocked["incorrect_claim_do_not_use"].startswith(
+                "G1, G2, or G3 is closed"
+            )
+        )
+        verdict = confirmation.evaluate_reports(
+            copy.deepcopy(self.fresh_reports), current_test_count=321
+        )
+        for key, text in ready.items():
+            self.assertEqual(verdict[key], text)
+        # The ready text names G1, G2 and G5 closed; keep it tied to the ledger.
+        gates = self.fresh_reports["g1_g8"]["gates"]
+        self.assertEqual(
+            sorted(k for k, v in gates.items() if v["status"] == "CLOSED"),
+            ["G1", "G2", "G5"],
+        )
 
     def test_no_approval_or_exclusion_survives_contract_mismatch(self) -> None:
         reports = copy.deepcopy(self.fresh_reports)
+        # Mismatch: the same model without its bound SARAH attestation.
+        reports["x_contract"] = x_gate.build_report(
+            model_text=x_gate.MODEL.read_text(encoding="utf-8")
+        )
         reports["authoritative"]["classification"].update(
             {
                 "whole_model_validated": True,
@@ -97,13 +162,14 @@ class UltimateGateTests(unittest.TestCase):
         ) as fresh:
             report = gate.build_report()
         fresh.assert_called_once_with()
-        self.assertEqual(report["overall_state"], "BLOCKED")
+        self.assertEqual(report["overall_state"], "OPEN")
         self.assertEqual(report["decision"], "WITHHOLD_APPROVAL")
 
-    def test_default_exit_accepts_honest_block_but_strict_modes_fail(self) -> None:
+    def test_default_exit_accepts_honest_state_but_strict_modes_fail(self) -> None:
         report = self.evaluate()
         self.assertEqual(gate.exit_code(report), 0)
-        self.assertEqual(gate.exit_code(report, expect_blocked=True), 0)
+        self.assertEqual(gate.exit_code(report, expect_open=True), 0)
+        self.assertNotEqual(gate.exit_code(report, expect_blocked=True), 0)
         self.assertEqual(gate.exit_code(report, expect_full_block=True), 0)
         self.assertNotEqual(
             gate.exit_code(report, require_internal_approval=True), 0

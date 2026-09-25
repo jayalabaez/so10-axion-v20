@@ -53,6 +53,24 @@ class Promote210nTensorBasisTests(unittest.TestCase):
         out = mod.project_schematic_quartic_onto_hilbert(eta=eta)
         self.assertEqual(len(out["coeffs_vector"]), 4)
         self.assertTrue(out["spans_full_H4"])
+        self.assertEqual(
+            list(out["hilbert_quartic_coeffs"]), ["J0", "J2", "J3", "J4"]
+        )
+
+    def test_schematic_cubic_projects_onto_the_unique_invariant(self):
+        proj = self.report["cubic_projection"]
+        self.assertEqual(proj["hilbert_H3"], 1)
+        self.assertNotEqual(proj["I3_coefficient"], 0.0)
+        # The withdrawn cubic pair is mostly not SO(10)-invariant.
+        self.assertGreater(proj["relative_noninvariant_residual"], 0.5)
+        self.assertTrue(self.report["flag"]["schematic_cubic_projected_to_unique_I3"])
+        self.assertTrue(self.report["flag"]["legacy_two_cubic_basis_withdrawn"])
+        pot = mod.hilbert_complete_potential(
+            a=0.3, omega=1.2, p=-0.7, lam1=0.1, lam2=0.1,
+            quartic_coeffs=[0.0, 0.0, 0.0, 0.0],
+        )
+        expected = proj["I3_coefficient"] * mod.hilbert.ps_forms_degree3(0.3, 1.2, -0.7)[0]
+        self.assertAlmostEqual(pot["V3"], expected, places=12)
 
 
 if __name__ == "__main__":

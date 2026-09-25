@@ -14,6 +14,8 @@ def test_exact_certificate_passes_without_closing_full_g3() -> None:
     assert report["scope"]["Phi_Sigma_global_minimum_exact"] is True
     assert report["scope"]["full_486_field_stationarity"] is False
     assert report["scope"]["G3_closed"] is False
+    assert report["scope"]["stabilizer_is_standard_model"] is False
+    assert report["vacuum"]["is_standard_model_vacuum"] is False
 
 
 def test_exact_su5_phi_and_delta_residuals_vanish() -> None:
@@ -30,7 +32,7 @@ def test_exact_su5_phi_and_delta_residuals_vanish() -> None:
     assert sigma["weighted_quartic_at_Delta"] == Fraction(1)
 
 
-def test_exact_mixed_squares_vanish_and_stabilizer_is_sm() -> None:
+def test_exact_mixed_squares_vanish_and_stabilizer_dimension_is_12() -> None:
     mixed = certificate.exact_mixed_zero_certificate()
     stabilizer = certificate.exact_stabilizer_certificate()
 
@@ -39,6 +41,9 @@ def test_exact_mixed_squares_vanish_and_stabilizer_is_sm() -> None:
     assert stabilizer["exact_rational_rank"] == 33
     assert stabilizer["exact_stabilizer_dimension"] == 12
     assert stabilizer["exact_stabilizer_dimension"] == stabilizer["SM_dimension"]
+    # SM-sized only: Delta_R has Y=-1, so the U(1) factor is T3R.
+    assert stabilizer["is_standard_model"] is False
+    assert "u(1)_Y" not in stabilizer["expected_unbroken_algebra"]
 
 
 def test_exact_t_eighth_pd_hessian_has_only_gauge_zero_modes() -> None:

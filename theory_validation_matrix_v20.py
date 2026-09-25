@@ -1281,13 +1281,17 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "Jacobian leaves only 38 symmetry tangents and proves positivity in "
             "all 448 transverse directions. The selected orbit is therefore a "
             "strict local minimum. An exact symmetry-inequivalent 126bar field "
-            "configuration is lower by 25*r^4/19008, and the fixed-P branch obeys "
-            "the exact gap/curvature identity gap=-m_transverse^2/8; that branch is "
-            "therefore excluded. The lower replacement has the wrong stabilizer. "
+            "configuration is lower by 25*r^4/19008, and the fixed-P branch with "
+            "Sigma along this Delta_R orientation obeys the exact gap/curvature "
+            "identity gap=-m_transverse^2/8; that orientation is therefore "
+            "excluded (the SM orientation (p, z1^z2^z3^z4^z5) is not covered by "
+            "this no-go; see g3_sm_pati_salam_candidate_v20). The lower "
+            "replacement has the wrong stabilizer. "
             "A new SU(5)-singlet Phi+Delta branch is an exact global minimum in the "
-            "Phi/Sigma subsystem, has the SM stabilizer, and has exact Hessian "
+            "Phi/Sigma subsystem, has a 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1), "
+            "and has exact Hessian "
             "rank/nullity 429/33 with a strictly positive local quotient. Its "
-            "chiral-H extension is exactly stationary, symmetry-correct and BFB; "
+            "chiral-H extension is exactly stationary and BFB; "
             "the exact full Hessian has rank/nullity 448/38 and is positive on the "
             "quotient. The maximally negative pure-Delta sector is excluded for "
             "arbitrary real Phi with all residuals retained and sharp gap 1/5000. "
@@ -1307,8 +1311,8 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "target is rejected. The corrected 6585x19594 standard positive-Gram "
             "map, ordered-spectral target, and exact strict 22-block/824-pivot "
             "primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 "
-            "at t=1 for every real Phi210. Global Sigma, general/full H, the full "
-            "Hessian, and G3 remain open. "
+            "at t=1 for every real Phi210. Global Sigma, general/full H, and G3 "
+            "remain open (the exact 448/38 full Hessian is certified separately). "
             "The old no-X 64/91 result remains historical."
         ),
         {
@@ -2360,6 +2364,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
     all_mandatory_pass = not failed and not mandatory_open
 
     core_state = states["mathematical_and_software_core"]
+    vacuum_state = states["full_scalar_potential_vacuum_and_spectrum"]
     if failed:
         classification = "CURRENT_REALIZATION_REJECTED"
         decision = "REJECT"
@@ -2369,9 +2374,16 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
     elif all_mandatory_pass:
         classification = "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
         decision = "VALIDATE_FULL_PHENOMENOLOGY"
-    elif core_state == "PASS":
+    elif core_state == "PASS" and vacuum_state == "PASS":
         classification = "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE"
         decision = "APPROVE_CONDITIONAL_CANDIDATE_ONLY"
+    elif core_state == "PASS":
+        # Mirrors theory_confirmation_verdict_v20: a candidate needs the scalar
+        # vacuum (G1-G3) closed, and the older aligned benchmarks were computed
+        # under the superseded no-X contract, so none is approvable while the
+        # full scalar potential is open.
+        classification = "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN"
+        decision = "WITHHOLD_APPROVAL"
     else:
         classification = "INSUFFICIENT_CURRENT_REPRODUCIBILITY"
         decision = "WITHHOLD_APPROVAL"
@@ -2468,17 +2480,50 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "green_requirements": {
             gate["name"]: gate["green_condition"] for gate in gates
         },
-        "verdict": (
+        "verdict": _verdict(classification, states["authoritative_model_contract"]),
+    }
+
+
+def _verdict(classification: str, contract_state: str = "PASS") -> str:
+    requirements = (
+        "Full validity requires a matching contract, the complete operator "
+        "basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, "
+        "a common-scale flavour fit, UV-selected portal currents, proton decay, "
+        "a fixed cosmology, and real independent 37 GHz data."
+    )
+    history = (
+        "The historical no-X calculations remain reproducible subtheorems, "
+        "not validation. "
+    )
+    if classification == "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED":
+        lead = (
             "The present repository cannot approve a manuscript candidate while "
             "the statically consistent gauged-U(1)_X SARAH model lacks v2 bound "
-            "external execution evidence. The historical "
-            "no-X calculations remain reproducible subtheorems, not validation. "
-            "Full validity requires a matching contract, the complete operator "
-            "basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, "
-            "a common-scale flavour fit, UV-selected portal currents, proton decay, "
-            "a fixed cosmology, and real independent 37 GHz data."
-        ),
-    }
+            "external execution evidence. "
+        )
+    elif classification == "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN":
+        contract = (
+            "The gauged-U(1)_X model contract is attested by bound external SARAH "
+            "execution evidence"
+            if contract_state == "PASS"
+            else "The gauged-U(1)_X model contract is not yet attested by bound "
+            "external execution evidence"
+        )
+        lead = (
+            f"{contract}, and the mathematical and software core passes, "
+            "but no benchmark is approvable while the full scalar potential, "
+            "vacuum and spectrum gate remains open. "
+        )
+    elif classification == "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE":
+        lead = (
+            "The attested model and its scalar vacuum pass; the candidate is "
+            "approvable only as a conditional internal candidate. "
+        )
+    elif classification == "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED":
+        lead = "Every mandatory gate passes; this is not an empirical discovery. "
+    else:
+        lead = "The current tree does not support approval. "
+    return lead + history + requirements
 
 
 def write_markdown(report: dict[str, Any]) -> str:
@@ -2540,6 +2585,14 @@ def main() -> int:
         action="store_true",
         help="fail unless the current scientific state is honestly BLOCKED",
     )
+    parser.add_argument(
+        "--expect-open",
+        action="store_true",
+        help=(
+            "fail unless the current scientific state is honestly OPEN: "
+            "attested contract, open gates, no full validation"
+        ),
+    )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args()
 
@@ -2577,6 +2630,12 @@ def main() -> int:
         )
     if args.expect_blocked:
         ok = ok and report["overall_state"] == "BLOCKED"
+    if args.expect_open:
+        ok = (
+            ok
+            and report["overall_state"] == "OPEN"
+            and not report["full_theory_validated"]
+        )
     return 0 if ok else 1
 
 

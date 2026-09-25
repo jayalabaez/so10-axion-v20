@@ -87,8 +87,8 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
             "authoritative_full_model_gate_v20.py",
-            "theory_validation_matrix_v20.py --expect-blocked",
-            "ultimate_theory_gate_v20.py --expect-blocked --no-write",
+            "theory_validation_matrix_v20.py --expect-open",
+            "ultimate_theory_gate_v20.py --expect-open --no-write",
         )
         for token in required:
             self.assertTrue(
@@ -122,6 +122,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         joined = "\n".join(displays)
         self.assertNotIn("--expect-conditional", joined)
         self.assertNotIn("--expect-full-block", joined)
+        self.assertNotIn("--expect-blocked", joined)
 
         g2_index = next(
             i
@@ -308,12 +309,12 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         matrix_index = next(
             i
             for i, display in enumerate(displays)
-            if "theory_validation_matrix_v20.py --expect-blocked" in display
+            if "theory_validation_matrix_v20.py --expect-open" in display
         )
         ultimate_index = next(
             i
             for i, display in enumerate(displays)
-            if "ultimate_theory_gate_v20.py --expect-blocked --no-write" in display
+            if "ultimate_theory_gate_v20.py --expect-open --no-write" in display
         )
         unittest_index = next(
             i
