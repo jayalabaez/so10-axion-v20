@@ -100,6 +100,28 @@ G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON = (
 G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
 )
+# The SM Pati-Salam equality-set theorem is bound only through its committed
+# JSON.  g3_sm_pati_salam_equality_set_v20 is never imported here: it imports
+# heavy modules (and the candidate), so importing it could create a cycle.
+G3_SM_PATI_SALAM_EQUALITY_SET_JSON = (
+    ROOT / "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+)
+G3_SM_PATI_SALAM_EQUALITY_SET_SOURCE = "g3_sm_pati_salam_equality_set_v20"
+G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS = (
+    "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+)
+G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_CERTIFIED = (
+    "For the Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20), "
+    "its equality set is classified exactly (a single SO(10) x U(1)_X x "
+    "U(1)_PQ orbit, whose uniqueness uses the accidental U(1)_PQ; "
+    "g3_sm_pati_salam_equality_set_v20); it still needs its model-level "
+    "caveats resolved and gate integration."
+)
+G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_FALLBACK = (
+    "The Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still "
+    "needs its equality set classified, its model-level caveats resolved and "
+    "gate integration."
+)
 RANK1_SU4_ORDERED_LABELS = (
     "H1",
     "H2",
@@ -276,6 +298,50 @@ def _load_json_artifact(path: Path) -> dict[str, Any]:
     except (OSError, json.JSONDecodeError):
         return {}
     return value if isinstance(value, dict) else {}
+
+
+def load_sm_pati_salam_equality_set_report(
+    path: Path | None = None,
+) -> dict[str, Any]:
+    """Committed SM Pati-Salam equality-set JSON; any read error gives {}.
+
+    The JSON is read directly (fail-closed) instead of importing
+    g3_sm_pati_salam_equality_set_v20, which imports heavy modules and
+    could create an import cycle.
+    """
+    if path is None:
+        path = G3_SM_PATI_SALAM_EQUALITY_SET_JSON
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def sm_pati_salam_equality_set_certified(report: Any) -> bool:
+    """True only for the proved status with an int (not bool) n_failed == 0."""
+    if not isinstance(report, dict):
+        return False
+    n_failed = report.get("n_failed")
+    return bool(
+        report.get("status") == G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS
+        and isinstance(n_failed, int)
+        and not isinstance(n_failed, bool)
+        and n_failed == 0
+    )
+
+
+def sm_pati_salam_equality_set_binding(report: Any) -> dict[str, Any]:
+    """Small, text-only record of the equality-set claim and its evidence."""
+    fields = report if isinstance(report, dict) else {}
+    return {
+        "source": G3_SM_PATI_SALAM_EQUALITY_SET_SOURCE,
+        "report": G3_SM_PATI_SALAM_EQUALITY_SET_JSON.name,
+        "required_status": G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS,
+        "status": fields.get("status"),
+        "n_failed": fields.get("n_failed"),
+        "certified": sm_pati_salam_equality_set_certified(report),
+    }
 
 
 def _canonical_json_sha256(value: Any) -> str:
@@ -4021,6 +4087,7 @@ def _build_report_from_inputs(
     g3_rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
     g3_rank1_su4_corrected_publication: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
+    g3_sm_pati_salam_equality_set_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
     declared_contract_consistent = bool(x_report["contract_consistent"])
@@ -4125,6 +4192,15 @@ def _build_report_from_inputs(
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
         )
+    if g3_sm_pati_salam_equality_set_report is None:
+        g3_sm_pati_salam_equality_set_report = (
+            load_sm_pati_salam_equality_set_report()
+        )
+    # Text-only binding: it selects the wave-3 Pati-Salam sentence and never
+    # changes a gate, check or state (the candidate is not yet the G3 target).
+    sm_pati_salam_equality_set = sm_pati_salam_equality_set_binding(
+        g3_sm_pati_salam_equality_set_report
+    )
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4733,10 +4809,13 @@ def _build_report_from_inputs(
                 "needs an SM-preserving candidate certified through the final "
                 "gate. The SU(5)+Delta chiral-H point is not an SM vacuum (its "
                 "Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so its "
-                "remaining coercivity problem is mathematical only. The "
-                "Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) "
-                "still needs its equality set classified, its model-level "
-                "caveats resolved and gate integration. The chiral-H point's "
+                "remaining coercivity problem is mathematical only. "
+                + (
+                    G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_CERTIFIED
+                    if sm_pati_salam_equality_set["certified"]
+                    else G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_FALLBACK
+                )
+                + " The chiral-H point's "
                 "full 486-real Hessian is now exactly PSD "
                 "with rank/nullity 448/38 and symmetry kernel exactly 38; the "
                 "complete maximally-negative pure-Delta sector is already "
@@ -4953,6 +5032,7 @@ def _build_report_from_inputs(
             "n_blocked": len(blocked),
         },
         "closure_waves": closure_waves,
+        "g3_sm_pati_salam_equality_set_binding": sm_pati_salam_equality_set,
         "feasibility": {
             "closure_program_defined": True,
             "current_authoritative_closed_gates": len(closed),
@@ -5042,6 +5122,9 @@ def build_report() -> dict[str, Any]:
         ),
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
+        ),
+        g3_sm_pati_salam_equality_set_report=(
+            load_sm_pati_salam_equality_set_report()
         ),
     )
 

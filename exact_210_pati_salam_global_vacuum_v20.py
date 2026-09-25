@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact bounded Pati--Salam vacuum in the complete real-210 self potential.
+"""Exact bounded, unique-orbit Pati--Salam vacuum in the real-210 self potential.
 
 The complete real-210 basis permits a rigorous sum-of-projectors potential.
 Let I_kappa=||P_kappa(Phi tensor Phi)||^2 for the eight distinct pair-Casimir
@@ -27,6 +27,25 @@ Phi=v P saturates the global lower bound.  P is invariant under
 SO(6)xSO(4) ~= SU(4)_C x SU(2)_L x SU(2)_R, so this is an exact first-stage
 Pati--Salam vacuum.
 
+The global minimum orbit is unique:
+
+    {V = -v^4} = SO(10).(v P)   exactly.
+
+Equality in the bound forces I2 = v^2 and I_45 = I_210 = I_5940 = 0.  The
+Pluecker defect is the exact SO(10)-invariant quartic identity
+
+    D = -20 I_45 + 18 I_210 + 8 I_5940,
+
+so D(Phi/v) = 0: Phi/v is a decomposable unit 4-form (Pluecker relations),
+i.e. an oriented 4-plane, and SO(10) acts transitively on oriented 4-planes.
+This is the exact-210 corollary of g3_sm_pati_salam_equality_set_v20 (the
+Pluecker relations and the transitivity are cited there, not machine-checked).
+That module imports this one, so this module does not import it: uniqueness
+is bound, fail-closed, to the committed G3_SM_PATI_SALAM_EQUALITY_SET_V20.json.
+It is recorded only when that report has the proved status, n_failed == 0 and
+certifies the corollary (flag exact_210_uniqueness_of_global_orbit_certified);
+a missing or failed report leaves uniqueness open.
+
 The full 210x210 Cartesian Hessian is calculated analytically from the pair
 Casimir moments.  At v=1/2 its spectrum is
 
@@ -38,7 +57,8 @@ Casimir moments.  At v=1/2 its spectrum is
 
 For general v all nonzero eigenvalues are multiplied by 4 v^2.  Thus the
 210-only physical Hessian is positive after quotienting the 24 Goldstones.
-This does not prove the complete multi-field v20 vacuum or threshold spectrum.
+All of this concerns the 210-only potential.  It does not prove the complete
+multi-field v20 vacuum or threshold spectrum.
 """
 from __future__ import annotations
 
@@ -59,6 +79,20 @@ import exact_phisigma_casimir_projectors_v20 as projectors
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "EXACT_210_PATI_SALAM_GLOBAL_VACUUM_V20.json"
 OUT_MD = ROOT / "EXACT_210_PATI_SALAM_GLOBAL_VACUUM_V20.md"
+MODULE_NAME = Path(__file__).stem
+
+# Uniqueness of the global orbit is proved as a corollary in
+# g3_sm_pati_salam_equality_set_v20, which imports this module.  Importing it
+# here would be circular, so the committed report is read instead.
+EQUALITY_SET_JSON = ROOT / "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+EQUALITY_SET_PROVED_STATUS = (
+    "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+)
+UNIQUENESS_SOURCE = (
+    "g3_sm_pati_salam_equality_set_v20 corollary: "
+    "D = -20 I_45 + 18 I_210 + 8 I_5940 vanishes on the minimum set, "
+    "Pluecker relations, SO(10) transitive on oriented 4-planes"
+)
 
 SPECTRAL_WEIGHTS: dict[str, Fraction] = {
     "1": Fraction(1),
@@ -242,6 +276,59 @@ def generator_stabilizer_audit(vector: np.ndarray) -> dict[str, Any]:
     }
 
 
+def load_equality_set_report() -> dict[str, Any]:
+    """Committed equality-set report; missing or unreadable -> {} (fail closed)."""
+    try:
+        value = json.loads(EQUALITY_SET_JSON.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def global_orbit_uniqueness_binding(
+    report: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Bind uniqueness of the global 210 orbit to the equality-set corollary.
+
+    Certified only when the report has the proved status, n_failed == 0, the
+    flag exact_210_uniqueness_of_global_orbit_certified is True and its
+    corollary_exact_210 section asserts uniqueness for this module.
+    """
+    if report is None:
+        report = load_equality_set_report()
+    if not isinstance(report, dict):
+        report = {}
+    flags = report.get("flags")
+    flags = flags if isinstance(flags, dict) else {}
+    corollary = report.get("corollary_exact_210")
+    corollary = corollary if isinstance(corollary, dict) else {}
+    n_failed = report.get("n_failed")
+    requirements = {
+        "report_present": bool(report),
+        "status_proved": report.get("status") == EQUALITY_SET_PROVED_STATUS,
+        "n_failed_zero": type(n_failed) is int and n_failed == 0,
+        "flag_exact_210_uniqueness_of_global_orbit_certified": flags.get(
+            "exact_210_uniqueness_of_global_orbit_certified"
+        )
+        is True,
+        "corollary_uniqueness_of_global_orbit": corollary.get(
+            "uniqueness_of_global_orbit"
+        )
+        is True,
+        "corollary_refers_to_this_module": corollary.get("module")
+        == MODULE_NAME,
+    }
+    return {
+        "source": UNIQUENESS_SOURCE,
+        "report": EQUALITY_SET_JSON.name,
+        "required_status": EQUALITY_SET_PROVED_STATUS,
+        "status": report.get("status"),
+        "n_failed": n_failed,
+        "requirements": requirements,
+        "certified": all(requirements.values()),
+    }
+
+
 def eigenvalue_clusters(
     eigenvalues: np.ndarray, tolerance: float = 1.0e-9
 ) -> list[dict[str, float | int]]:
@@ -342,6 +429,25 @@ def build_report() -> dict[str, Any]:
     }
     failures = [name for name, ok in checks.items() if not ok]
 
+    # Uniqueness is not one of this module's checks: a missing or failed
+    # equality-set report leaves it open without failing the vacuum claims.
+    uniqueness_binding = global_orbit_uniqueness_binding()
+    unique_orbit = bool(uniqueness_binding["certified"]) and not failures
+    if unique_orbit:
+        uniqueness_verdict = (
+            "Its global-minimum set is exactly the single orbit SO(10).(vP): "
+            "on the minimum set the Pluecker defect "
+            "D = -20 I_45 + 18 I_210 + 8 I_5940 vanishes, so Phi/v is a "
+            "decomposable unit 4-form and SO(10) is transitive on oriented "
+            "4-planes (corollary of g3_sm_pati_salam_equality_set_v20). "
+        )
+    else:
+        uniqueness_verdict = (
+            "Uniqueness of the global 210 orbit is not certified: the "
+            "committed G3_SM_PATI_SALAM_EQUALITY_SET_V20.json is missing or "
+            "does not certify its exact-210 corollary. "
+        )
+
     return {
         "status": (
             "EXACT_210_PATI_SALAM_GLOBAL_VACUUM_AND_HESSIAN"
@@ -375,7 +481,14 @@ def build_report() -> dict[str, Any]:
             },
             "global_minimum_radius": "I2=v^2",
             "global_minimum_value": "-v^4",
-            "uniqueness_of_global_orbit": False,
+            "global_minimum_set": (
+                "exactly SO(10).(v P)"
+                if unique_orbit
+                else "contains SO(10).(v P); uniqueness not certified"
+            ),
+            "uniqueness_of_global_orbit": unique_orbit,
+            "uniqueness_of_global_orbit_source": UNIQUENESS_SOURCE,
+            "uniqueness_binding": uniqueness_binding,
         },
         "symmetry_breaking": stabilizer,
         "full_210_Hessian": {
@@ -403,9 +516,10 @@ def build_report() -> dict[str, Any]:
             "global_Pati_Salam_vacuum_exists": not failures,
             "full_210_Hessian_at_Pati_Salam_vacuum": not failures,
             "210_sector_threshold_multiplets": not failures,
+            "unique_global_210_minimum_orbit": unique_orbit,
         },
         "remaining_blockers": {
-            "uniqueness_among_all_global_210_orbits": True,
+            "uniqueness_among_all_global_210_orbits": not unique_orbit,
             "complete_multi_field_scalar_potential": True,
             "simultaneous_126_and_10_vacuum": True,
             "positive_multi_field_physical_Hessian": True,
@@ -417,6 +531,7 @@ def build_report() -> dict[str, Any]:
             "210_quartic_bounded_below": not failures,
             "global_Pati_Salam_210_vacuum": not failures,
             "physical_210_Hessian_complete_at_benchmark": not failures,
+            "unique_global_210_orbit": unique_orbit,
             "complete_multi_field_potential": False,
             "unique_full_vacuum": False,
             "physical_full_model_Hessian_complete": False,
@@ -428,8 +543,11 @@ def build_report() -> dict[str, Any]:
         },
         "verdict": (
             "A globally bounded real-210 potential has an exact Pati--Salam "
-            "global minimum Phi=vP. The full 210 Hessian contains precisely 24 "
-            "Goldstones and 186 positive modes with an analytic spectrum."
+            "global minimum Phi=vP. "
+            + uniqueness_verdict
+            + "The full 210 Hessian contains precisely 24 Goldstones and 186 "
+            "positive modes with an analytic spectrum. This concerns the "
+            "210-only potential; the complete multi-field vacuum remains open."
         ),
     }
 
@@ -445,6 +563,13 @@ def write_markdown(report: dict[str, Any]) -> str:
             "",
             "- Global bound: `V >= (I2-v^2)^2-v^4`.",
             "- Vacuum: `Phi=vP`, preserving `SO(6)xSO(4)`.",
+            (
+                "- Global-minimum set: exactly `SO(10).(vP)` "
+                f"(source: {report['exact_global_proof']['uniqueness_of_global_orbit_source']})."
+                if report["flag"]["unique_global_210_orbit"]
+                else "- Global-minimum orbit uniqueness: not certified "
+                "(equality-set report missing or not proved)."
+            ),
             "- Goldstones: `24`.",
             "- Positive physical 210 modes: `186`.",
             "- The complete multi-field vacuum remains open.",

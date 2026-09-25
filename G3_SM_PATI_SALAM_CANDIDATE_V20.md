@@ -2,7 +2,7 @@
 
 **Status:** `SM_PATI_SALAM_G3_CANDIDATE__EXACT_GLOBAL_MINIMUM_OF_BENCHMARK_POTENTIAL__SM_UNBROKEN__G3_OPEN`
 
-The 27-parameter member of the declared exact-X potential obtained from the historical p-branch map by swapping the 2772bar/4125 self-projector weights, setting O05 = (1/8)(4 - 2 r0^2) and adding kappa_H = -r0/4 with O06 = 2|kappa| r0 has the vacuum (p, r0 sigma_std, 0, r0, x0), sigma_std = z1^z2^z3^z4^z5, whose unbroken algebra is exactly SU(3)_c x SU(2)_L x U(1)_Y (SO(10) -> Pati-Salam at M_GUT -> SM at r0 M_GUT). An adapted exact SOS identity gives V >= -1 - r0^4/8 - r0^4 - x0^4/32 on the whole field space and the vacuum attains it, so it is an exact global minimum of this benchmark potential, exactly stationary with PSD Hessian, for every r0 > 0 (checked on the live compiler at r0 = 1/5, 1/100, 1/1000 and M_I/M_GUT with x0 = 1: symmetry rank 35, kernel = symmetry tangents plus the 4 modes of one tuned light doublet, lightest massive mode r0^2/96). Physics caveats: one 10_H doublet is light (exactly massless at tree level) only because O46_1 = -(3/5) O46_54 and O06 = 2|kappa| r0 are tuned, while the 10_H colour triplets are at M_GUT for generic O46 couplings (doublet-triplet splitting is tuned, not automatic); the intermediate scale is itself a cancellation of O(1) couplings to ~(M_I/M_GUT)^2; 126bar colour triplets and sextets and a doubly charged singlet lie below M_I; only the breaking route matches the manuscript's Pati-Salam RG anchor, not its field content (no light (15,2,2), 1HDM instead of 2HDM), so the GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the benchmark (m_h ~ 195 GeV under conditional SM running), too large; the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the slightly negative SM value at M_t = 173.34 GeV. Uniqueness of the minimum modulo symmetry, electroweak breaking and a realistic Yukawa sector remain open; G3 is not closed and the model is neither validated nor excluded.
+The 27-parameter member of the declared exact-X potential obtained from the historical p-branch map by swapping the 2772bar/4125 self-projector weights, setting O05 = (1/8)(4 - 2 r0^2) and adding kappa_H = -r0/4 with O06 = 2|kappa| r0 has the vacuum (p, r0 sigma_std, 0, r0, x0), sigma_std = z1^z2^z3^z4^z5, whose unbroken algebra is exactly SU(3)_c x SU(2)_L x U(1)_Y (SO(10) -> Pati-Salam at M_GUT -> SM at r0 M_GUT). An adapted exact SOS identity gives V >= -1 - r0^4/8 - r0^4 - x0^4/32 on the whole field space and the vacuum attains it, so it is an exact global minimum of this benchmark potential, exactly stationary with PSD Hessian, for every r0 > 0 (checked on the live compiler at r0 = 1/5, 1/100, 1/1000 and M_I/M_GUT with x0 = 1: symmetry rank 35, kernel = symmetry tangents plus the 4 modes of one tuned light doublet, lightest massive mode r0^2/96). Physics caveats: one 10_H doublet is light (exactly massless at tree level) only because O46_1 = -(3/5) O46_54 and O06 = 2|kappa| r0 are tuned, while the 10_H colour triplets are at M_GUT for generic O46 couplings (doublet-triplet splitting is tuned, not automatic); the intermediate scale is itself a cancellation of O(1) couplings to ~(M_I/M_GUT)^2; 126bar colour triplets and sextets and a doubly charged singlet lie below M_I; only the breaking route matches the manuscript's Pati-Salam RG anchor, not its field content (no light (15,2,2), 1HDM instead of 2HDM), so the GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the benchmark (m_h ~ 195 GeV under conditional SM running), too large; the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the slightly negative SM value at M_t = 173.34 GeV. The equality set {V = V0} is exactly the orbit of the vacuum under SO(10) x U(1)_X x U(1)_PQ (g3_sm_pati_salam_equality_set_v20), so the minimum is unique modulo symmetry once the accidental U(1)_PQ is included (modulo SO(10) x U(1)_X alone it is a circle of orbits). Electroweak breaking and a realistic Yukawa sector remain open; G3 is not closed and the model is neither validated nor excluded.
 
 ## Candidate
 
@@ -25,15 +25,16 @@ Vacuum `(Phi, Sigma, H, S, Phi17) = (p, r0 sigma_std, 0, r0, x0)`, `sigma_std = 
 - sigma_std projector fractions: `{'1050bar': '0', '2772bar': '1', '4125': '0', '54': '0'}`; (M_p - 2) sigma = 0: `True`; C_p sigma = 0: `True`
 - lower bound V0 = -1 - r0^4/8 - r0^4 - x0^4/32 (= `-20661/20000` at r0 = 1/5, x0 = 1), attained at the vacuum
 - BFB: `True`; global minimum: `True`; exact stationarity: `True`; quartic part >= |q|^4/167
+- equality set, unique modulo symmetry: exact: {V = V0} = G.(p, r0 sigma_std, 0, r0, x0) with G = SO(10) x U(1)_X x U(1)_PQ, for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2 (proved in g3_sm_pati_salam_equality_set_v20).  U(1)_PQ is the contract's accidental global symmetry: modulo SO(10) x U(1)_X alone the equality set is a circle of orbits (the axion direction) (equality-set artifact status `SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN`, n_failed `0`)
 
 ## Compiler (float64)
 
 | r0 | max abs grad | V - V0 | sym. rank | n_neg | n_zero | min massive / r0^2 | abs. dev. from r0^2/96 | all-massive n_zero |
 |---|---|---|---|---|---|---|---|---|
-| 1/5 | 4.92e-14 | -3.11e-15 | 35 | 0 | 4 | 0.01041666667 | 6.16e-14 | 0 |
-| 1/100 | 1.89e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01041666606 | 6.04e-14 | 0 |
-| 1/1000 | 1.77e-15 | -4.44e-16 | 35 | 0 | 4 | 0.01041660493 | 6.17e-14 | 0 |
-| M_I/M_GUT | 1.78e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01040178039 | 6.03e-14 | 0 |
+| 1/5 | 4.92e-14 | -3.11e-15 | 35 | 0 | 4 | 0.01041666667 | 6.12e-14 | 0 |
+| 1/100 | 1.89e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01041666606 | 6.09e-14 | 0 |
+| 1/1000 | 1.77e-15 | -4.44e-16 | 35 | 0 | 4 | 0.01041660529 | 6.14e-14 | 0 |
+| M_I/M_GUT | 1.78e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01040156371 | 6.12e-14 | 0 |
 
 n_zero counts the 4 real modes of the tuned light doublet: the Hessian kernel is the 35 symmetry tangents plus that doublet, and exactly the symmetry tangents only when O06 is raised (last column). All benchmarks use x0 = 1.
 
@@ -43,7 +44,7 @@ The m^2/r0^2 column is a scaling only for the r0-dependent states (m^2 < 5 r0^2 
 
 | m^2 | m^2/r0^2 | real dim | SM content | fields |
 |---|---|---|---|---|
-| 2.7157437e-16 | 6.7893593e-15 | 4 | (1,2)_\|Y\|=1/2: 4 | H10 1.00 |
+| 2.260295e-16 | 5.6507375e-15 | 4 | (1,2)_\|Y\|=1/2: 4 | H10 1.00 |
 | 0.00041666667 | 0.010416667 | 14 | (1,1)_\|Y\|=2: 2, (6,1)_\|Y\|=4/3: 12 | Sigma126bar 1.00 |
 | 0.002358027 | 0.058950676 | 6 | (3,1)_\|Y\|=1/3: 6 | Phi210 0.00, Sigma126bar 1.00 |
 | 0.0025694444 | 0.064236111 | 18 | (3,1)_\|Y\|=4/3: 6, (6,1)_\|Y\|=1/3: 12 | Sigma126bar 1.00 |
@@ -74,7 +75,7 @@ Labelled by SM-isotypic component (exact-integer Casimirs), then diagonalised. G
 
 | SM content | m^2/r0^2 | m/M_I | m [GeV] | fields |
 |---|---|---|---|---|
-| (1,2)_\|Y\|=1/2: 4 | -1.7593e-16 | 0 | 0 | H10 1.00 |
+| (1,2)_\|Y\|=1/2: 4 | -2.58468e-16 | 0 | 0 | H10 1.00 |
 | (1,1)_\|Y\|=2: 2 | 0.0104019 | 0.102 | 6.439e+10 | Sigma126bar 1.00 |
 | (6,1)_\|Y\|=4/3: 12 | 0.0104019 | 0.102 | 6.439e+10 | Sigma126bar 1.00 |
 | (3,1)_\|Y\|=1/3: 6 | 0.059013 | 0.2429 | 1.534e+11 | Sigma126bar 1.00 |
@@ -121,24 +122,25 @@ Labelled by SM-isotypic component (exact-integer Casimirs), then diagonalised. G
 
 ## Numerical global search
 
-- fast SOS evaluator vs compiler: max relative value difference `6.36e-14`
+- fast SOS evaluator vs compiler: max relative value difference `6.4e-14`
 - lowest gap V - V0 found by any method: `-2.89e-15`
 
-| competitor (r0 = 1/5) | compiler gap | exact gap | local min. from it: final gap | on SM orbit |
+| competitor (r0 = 1/5) | compiler gap | exact gap | local min. from it: final gap | orbit classification |
 |---|---|---|---|---|
-| F\|Sigma=0 | 0.253931 | - | 7.84e-14 | True |
-| F\|delta_R | 0.253867 | - | 3.04e-14 | True |
-| F\|flipped | 0.253931 | - | 1.73e-13 | True |
-| F\|sigma_std | 0.253931 | - | 2.94e-13 | True |
-| a\|sigma_std | 0.129232 | - | 4.95e-14 | True |
-| omega\|sigma_std | 0.24601 | - | 1.29e-13 | True |
-| p\|Sigma=0 | 0.0002 | 1/5000 | 3.82e-12 | True |
-| p\|delta_R | 4.08163e-06 | 1/245000 | 4.91e-14 | True |
-| p\|flipped | -2.88658e-15 | 0 | 6.22e-15 | True |
-| p\|historical_global_witness | 6.06061e-06 | - | 3.6e-14 | True |
+| F\|Sigma=0 | 0.253931 | - | 7.84e-14 | on_orbit |
+| F\|delta_R | 0.253867 | - | 4.6e-14 | on_orbit |
+| F\|flipped | 0.253931 | - | 6.73e-14 | on_orbit |
+| F\|sigma_std | 0.253931 | - | 4.75e-14 | on_orbit |
+| a\|sigma_std | 0.129232 | - | 1.14e-12 | on_orbit |
+| omega\|sigma_std | 0.24601 | - | 4.66e-13 | on_orbit |
+| p\|Sigma=0 | 0.0002 | 1/5000 | 3.81e-12 | on_orbit |
+| p\|delta_R | 4.08163e-06 | 1/245000 | 8.04e-14 | on_orbit |
+| p\|flipped | -2.88658e-15 | 0 | 9.33e-15 | on_orbit |
+| p\|historical_global_witness | 6.06061e-06 | - | 6.42e-14 | on_orbit |
 
-- random starts (r0=1/20): 3; lowest final gap `1.75e-13`; all on SM vacuum orbit: `True`
-- random starts (r0=1/5): 10; lowest final gap `1.53e-14`; all on SM vacuum orbit: `True`
+- random starts (r0=1/20): 3; lowest final gap `3.63e-13`; endpoints inconclusive 0, off_orbit 0, on_orbit 3; all converged endpoints on the SM vacuum orbit: `True`; none below V0: `True`
+- random starts (r0=1/5): 10; lowest final gap `2.13e-14`; endpoints inconclusive 0, off_orbit 0, on_orbit 10; all converged endpoints on the SM vacuum orbit: `True`; none below V0: `True`
+- endpoint classification (all 23 endpoints): inconclusive 0, off_orbit 0, on_orbit 23; all converged on the SM vacuum orbit: `True`. a float endpoint at gap g = V - V0 is classified only if g <= min(NUM_FULL_GAP_REACHED, (0.01 r0^2)^2/96) (converged: relative soft-mode displacement eps(g) = sqrt(96 g)/r0^2 <= 0.01); it is on_orbit if every normalised orbit residual is <= NUM_FULL_ORBIT_RESIDUAL + 10 eps(g) and the (Phi, Sigma) stabilizer is 12-dimensional of hypercharge type, off_orbit otherwise (a contradiction); less converged endpoints are inconclusive
 - quartic part on the unit sphere: lowest `0.00599059` >= exact bound 1/167: `True`
 - equality set at Phi = p: ker(M_p - 2) n ker(C_p) has complex dimension `30` (contains sigma_std and delta_R); pure-spinor minima in it all SM-type: `True`
 - V_Phi minimizations all at -1 with a 21-dimensional (Pati-Salam) stabilizer: `True`
@@ -151,7 +153,7 @@ Labelled by SM-isotypic component (exact-integer Casimirs), then diagonalised. G
 - coloured_scalars_only_at_M_GUT: `False`
 - doublet_triplet_splitting_natural: `False`
 - electroweak_symmetry_breaking_realized: `False`
-- equality_set_unique_modulo_symmetry_certified: `False`
+- equality_set_unique_modulo_symmetry_certified: `True`
 - exactly_stationary: `True`
 - g3_closed: `False`
 - global_minimum_certified: `True`
@@ -173,8 +175,9 @@ Flag notes:
 - breaking_route_matches_rg_anchor: chain topology SO(10) -> PS -> SM only; not the anchor's field content
 - coloured_scalars_only_at_M_GUT: False: only the 10_H triplets are at M_GUT; 126bar (10bar,1,3) remnants (6,1)_4/3, (3,1)_1/3, (3,1)_4/3, (6,1)_1/3, (6,1)_2/3 lie below M_I
 - doublet_triplet_splitting_natural: False: the 10_H splitting needs O46_1 = -(3/5) O46_54 (to ~ (m_h/M_GUT)^2) and O06 = 2|kappa| r0 (to ~ (m_h/M_I)^2); no symmetry enforces either
+- equality_set_unique_modulo_symmetry_certified: exact, bound to the committed G3_SM_PATI_SALAM_EQUALITY_SET_V20.json (status SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN, n_failed 0; g3_sm_pati_salam_equality_set_v20 imports this module, so it is read, not imported): {V = V0} = G.(p, r0 sigma_std, 0, r0, x0), G = SO(10) x U(1)_X x U(1)_PQ, for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2. Uniqueness uses the accidental U(1)_PQ: modulo SO(10) x U(1)_X alone the equality set is a circle of orbits (the axion direction). The classical theorems it cites are not machine-checked there, nor are the elementary steps listed in its scope.elementary_not_machine_checked
 - exactly_stationary: follows from global minimality; the exact slice gradient also vanishes identically
-- global_minimum_certified: exact: adapted SOS27 lower bound attained at the vacuum (repository source-bound recouplings plus new exact sigma_std pieces); uniqueness of the minimum modulo symmetry is not certified
+- global_minimum_certified: exact: adapted SOS27 lower bound attained at the vacuum (repository source-bound recouplings plus new exact sigma_std pieces); uniqueness modulo SO(10) x U(1)_X x U(1)_PQ is certified separately (see equality_set_unique_modulo_symmetry_certified)
 - hessian_psd_kernel_is_symmetry: False by its literal meaning: at every benchmark the PSD Hessian's kernel is the 35 symmetry tangents (SO(10)/SM + U(1)_X + PQ) PLUS the 4 real modes of the deliberately tuned light doublet (O06 = 2|kappa| r0); see hessian_psd_kernel_is_symmetry_plus_tuned_light_doublet. Raising O06 by r0^2/100 leaves exactly the 35 symmetry tangents (hessian_kernel_is_symmetry_when_O06_raised). Kernel counts are float64.
 - higgs_mass_compatible: False at the benchmark (a benchmark-only flag): tree-level lambda_eff = 127/64 at kappa = -r0/4 (m_h ~ 195 GeV under conditional SM running). The certified family kappa^2 < 8 r0^2 spans lambda_eff in (0, 2], and lambda_eff -> 0+ gives m_h within a few GeV of the measured value (lambda(M_I) = 0: m_h ~ 126.2 GeV tree, 127.7 GeV Buttazzo-scaled, vs 125.20 GeV). The remaining tension is lambda_eff >= 0 (tree-level global minimality) versus the SM-required lambda(M_I) = -0.0085 at M_t = 173.34 GeV, whose sign is M_t-dependent at about 2 sigma
 - physical_benchmark_uses_canonical_phi17_scale: False: x0 = 1 at every benchmark (canonical x0 ~ 10.08)
@@ -183,7 +186,6 @@ Flag notes:
 
 ## Open
 
-- uniqueness of the equality set {V = V0} modulo symmetry (numerical evidence only)
 - exact (non-float) Hessian kernel/rank certificate
 - electroweak symmetry breaking: H = 0 here, one doublet is tuned massless at tree level
 - doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed

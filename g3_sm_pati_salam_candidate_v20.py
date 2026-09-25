@@ -52,7 +52,10 @@ What is proved here, and how:
 * Numerical global search.  A fast evaluator of the SOS form (value and
   analytic gradient) is validated against the live compiler at random states;
   random-start L-BFGS over the full 486 chart and structured competitors never
-  go below V0.
+  go below V0.  Endpoints are classified on_orbit / inconclusive / off_orbit
+  with orbit tolerances scaled to the soft-mode curvature r0^2/96 (an endpoint
+  at gap g may sit a relative distance sqrt(96 g)/r0^2 off the orbit), so the
+  classification does not depend on run-to-run float noise.
 
 Physics caveats recorded in the report (not hidden behind the SM label):
 * "Colour triplets at M_GUT" holds for the 10_H triplets only.  Six
@@ -74,12 +77,18 @@ Physics caveats recorded in the report (not hidden behind the SM label):
   measured value; global minimality forces lambda_eff >= 0, whereas SM running
   at M_t = 173.34 GeV needs a slightly negative lambda(M_I).
 
-Open: the equality set {V = V0} is characterised but its uniqueness modulo
-symmetry is only numerically supported; the Hessian kernel count is float64;
-electroweak breaking and a realistic Yukawa sector are absent (the H-linear
-portals O15, O38, O45, O28 vanish); the two doublet tunings, the sub-M_I
-coloured scalars, the RG content and the Higgs quartic are open.  G3 is not
-closed and nothing is excluded.
+The equality set {V = V0} is classified exactly in
+g3_sm_pati_salam_equality_set_v20: it is G.(p, r0 sigma_std, 0, r0, x0), unique
+modulo G = SO(10) x U(1)_X x U(1)_PQ (U(1)_PQ is the contract's accidental
+symmetry; modulo SO(10) x U(1)_X alone it is a circle of orbits).  This module
+reads that committed artifact (it cannot import the module, which imports this
+one) and claims uniqueness only when the artifact reports the proved status
+with no failed check.
+
+Open: the Hessian kernel count is float64; electroweak breaking and a realistic
+Yukawa sector are absent (the H-linear portals O15, O38, O45, O28 vanish); the
+two doublet tunings, the sub-M_I coloured scalars, the RG content and the Higgs
+quartic are open.  G3 is not closed and nothing is excluded.
 """
 from __future__ import annotations
 
@@ -122,6 +131,11 @@ import two_loop_thresholds_v20 as rg_anchor
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
 OUT_MD = ROOT / "G3_SM_PATI_SALAM_CANDIDATE_V20.md"
+# Committed artifact of g3_sm_pati_salam_equality_set_v20.  Read from disk, never imported: that module imports
+# this one.
+EQUALITY_SET_JSON = ROOT / "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+EQUALITY_SET_SOURCE = "g3_sm_pati_salam_equality_set_v20"
+EQUALITY_SET_PROVED_STATUS = "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
 
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
 R0 = Fraction(1, 5)
@@ -173,7 +187,27 @@ LIGHT_CUTOFF_OVER_R0_SQUARED = 5.0
 # doublet at every benchmark and ~400x below the lightest massive state r0^2/96 = 4.2e-11 at r0 = M_I/M_GUT.
 # Masses below it are reported as exactly 0 (sqrt would lift ~1e-18 noise to a spurious ~1e-8 r0 M_GUT).
 NUMERICAL_ZERO_EIGENVALUE = 1.0e-13
+# Light-state order: m^2/r0^2 values closer than this are one mass level (the same resolution light_spectrum uses to
+# merge eigenvalues).  (6,1)_4/3 and (1,1)_2 are exactly degenerate at r0^2/96, and float noise in m^2/r0^2 reaches
+# ~1e-5 at r0 = M_I/M_GUT (~6e-14 M_GUT^2 over r0^2 ~ 4e-9), so a level is ordered by its SM labels, never by noise.
+LIGHT_LEVEL_TOLERANCE_OVER_R0_SQUARED = 1.0e-3
 EXPECTED_LIGHT_REAL_DIMENSION = 60
+# Numerical endpoint classification (float64 evidence only).  NUM_FULL_GAP_REACHED and NUM_FULL_ORBIT_RESIDUAL
+# repeat g3_sm_pati_salam_equality_set_v20's values (that module imports this one).  Near the vacuum orbit,
+# V - V0 >= (1/2)(r0^2/96)|d|^2 for an off-orbit chart displacement d (the softest massive modes are the 126bar
+# remnants at r0^2/96; the tuned massless doublet enters only quartically, N_H <~ 0.71 sqrt(gap)), so an endpoint
+# at gap g can sit a relative distance eps(g) = sqrt(96 g)/r0^2 off the orbit (|Sigma|_chart = sqrt(2) r0).  eps
+# grows as r0 shrinks, so orbit residuals are compared with NUM_FULL_ORBIT_RESIDUAL + 10 eps(g) (along the soft
+# modes the largest normalised residual, the stabilizer's kernel singular value / r0, is ~2.7 eps), and an
+# endpoint is classified only when g <= NUM_FULL_GAP_REACHED and eps(g) <= 1e-2 (the float stabilizer count with
+# its 0.1 r0 threshold breaks down near eps ~ 4e-2); otherwise it is inconclusive, never a failure.
+NUM_FULL_GAP_REACHED = 1.0e-11
+NUM_FULL_ORBIT_RESIDUAL = 1.0e-3
+ENDPOINT_GAP_FLOOR = 1.0e-14  # float resolution of V - V0 (|V| ~ 1)
+ENDPOINT_TOLERANCE_PER_SOFT_DISPLACEMENT = 10.0
+ENDPOINT_MAX_SOFT_DISPLACEMENT = 1.0e-2
+BELOW_V0_TOLERANCE = 1.0e-10
+ORBIT_CLASSES = ("on_orbit", "inconclusive", "off_orbit")
 M_H_OBSERVED_GEV = 125.20
 DIGITS = 12
 UNITS = "Hessian eigenvalues of the canonical 486-real chart, units of M_GUT^2 (|Phi| = 1)"
@@ -725,7 +759,56 @@ def _symbolic_identity_check() -> dict[str, Any]:
     }
 
 
-def exact_certificate_section() -> dict[str, Any]:
+def load_equality_set_report(path: Path = EQUALITY_SET_JSON) -> dict[str, Any]:
+    """Committed g3_sm_pati_salam_equality_set_v20 report, {} if missing or unreadable (fail-closed)."""
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def equality_set_certified(equality_report: Mapping[str, Any]) -> bool:
+    """True only for the proved status with zero failed checks (full report or its summary)."""
+    n_failed = equality_report.get("n_failed")
+    return bool(
+        equality_report.get("status") == EQUALITY_SET_PROVED_STATUS
+        and isinstance(n_failed, int)
+        and not isinstance(n_failed, bool)
+        and n_failed == 0
+    )
+
+
+def equality_set_section(equality_report: Mapping[str, Any]) -> dict[str, Any]:
+    """The equality set {V = V0}; uniqueness is claimed only from a proved, fully passing equality-set report."""
+    certified = equality_set_certified(equality_report)
+    return {
+        "conditions": [
+            "V_Phi(Phi) = -1 (|Phi| = 1 and I45 = I210 = I5940 = 0)",
+            "N_Sigma = r0^2 and Sigma (x) Sigma in 2772bar (pure: SO(10) orbit of sigma_std up to phase)",
+            "(M_Phi - 2) Sigma = 0 and C_Phi Sigma = 0",
+            "H = 0, |S| = r0, |Phi17| = x0",
+        ],
+        "unique_modulo_symmetry": (
+            "exact: {V = V0} = G.(p, r0 sigma_std, 0, r0, x0) with G = SO(10) x U(1)_X x U(1)_PQ, for every r0 > 0, "
+            "x0 > 0, kappa^2 < 8 r0^2 (proved in g3_sm_pati_salam_equality_set_v20).  U(1)_PQ is the contract's "
+            "accidental global symmetry: modulo SO(10) x U(1)_X alone the equality set is a circle of orbits (the "
+            "axion direction)"
+            if certified
+            else "open (numerical evidence in numerical_global_search)"
+        ),
+        "unique_modulo_symmetry_certified": certified,
+        "equality_set_certificate": {
+            "source": f"{EQUALITY_SET_SOURCE} (committed {EQUALITY_SET_JSON.name})",
+            "status": equality_report.get("status"),
+            "n_failed": equality_report.get("n_failed"),
+        },
+    }
+
+
+def exact_certificate_section(equality_report: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    if equality_report is None:
+        equality_report = load_equality_set_report()
     phi = sos_source.exact_phi_certificate()
     mixed = sos_source.exact_mixed_certificate()
     self_source = sos_source.exact_delta_self_certificate()
@@ -820,15 +903,7 @@ def exact_certificate_section() -> dict[str, Any]:
                 "included"
             ),
         },
-        "equality_set": {
-            "conditions": [
-                "V_Phi(Phi) = -1 (|Phi| = 1 and I45 = I210 = I5940 = 0)",
-                "N_Sigma = r0^2 and Sigma (x) Sigma in 2772bar (pure: SO(10) orbit of sigma_std up to phase)",
-                "(M_Phi - 2) Sigma = 0 and C_Phi Sigma = 0",
-                "H = 0, |S| = r0, |Phi17| = x0",
-            ],
-            "unique_modulo_symmetry": "open (numerical evidence in numerical_global_search)",
-        },
+        "equality_set": equality_set_section(equality_report),
         "exact_sigma_std": sigma,
         "exact_HS_sector": hs,
         "exact_quartic_bound": quartic,
@@ -1163,6 +1238,38 @@ def compiler_point_audit(r0: Fraction, x0: Fraction = X0, *, spectrum: bool = Fa
     return output
 
 
+def _light_level_value(state: Mapping[str, Any]) -> float:
+    """m^2/r0^2, with the numerically massless tuned doublet floored to exactly 0 (as in mass_over_r0_M_GUT)."""
+    return 0.0 if float(state["mass_squared"]) < NUMERICAL_ZERO_EIGENVALUE else float(state["mass_squared_over_r0_squared"])
+
+
+def _sm_label_key(state: Mapping[str, Any]) -> str:
+    return ", ".join(f"{label}: {count}" for label, count in sorted(state["sm_content_real"].items()))
+
+
+def order_light_states(states: Sequence[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+    """Run-independent order: mass levels ascending, SM label string within a level.
+
+    Values of m^2/r0^2 within LIGHT_LEVEL_TOLERANCE_OVER_R0_SQUARED of a level's lowest value belong to that level
+    (the real level spacings are >= 5e-3, the float noise <~ 1e-5).  The tuned doublet is floored to 0, alone in
+    the lowest level, so it stays states[0].
+    """
+    ranked = sorted(states, key=lambda state: (_light_level_value(state), _sm_label_key(state)))
+    ordered: list[Mapping[str, Any]] = []
+    level: list[Mapping[str, Any]] = []
+    level_start = 0.0
+    for state in ranked:
+        value = _light_level_value(state)
+        if level and value - level_start > LIGHT_LEVEL_TOLERANCE_OVER_R0_SQUARED:
+            ordered += sorted(level, key=lambda row: (_sm_label_key(row), _light_level_value(row)))
+            level = []
+        if not level:
+            level_start = value
+        level.append(state)
+    ordered += sorted(level, key=lambda row: (_sm_label_key(row), _light_level_value(row)))
+    return ordered
+
+
 def light_spectrum(r0: Fraction, hessian: np.ndarray, full: np.ndarray, eigenvalues: np.ndarray) -> dict[str, Any]:
     """Light states (m^2 < 5 r0^2; the decoupled Phi17 radial mode excluded), labelled robustly.
 
@@ -1199,12 +1306,16 @@ def light_spectrum(r0: Fraction, hessian: np.ndarray, full: np.ndarray, eigenval
                     "field_weights": block_weights(modes),
                 }
             )
-    states.sort(key=lambda row: row["mass_squared"])
+    states = order_light_states(states)
     heavy = ~light & (phi17_weight < 0.5)
     lowest_heavy = int(np.argmin(np.where(heavy, eigenvalues, np.inf)))
     return {
         "window": "projected-Hessian eigenvalues below 5 r0^2, Phi17 radial mode (x0^2/8, decoupled) excluded",
         "method": "SM-isotypic split of the light subspace by exact-integer Casimirs, then Hessian eigenvalues per component",
+        "order": (
+            f"mass levels ascending (m^2/r0^2 within {LIGHT_LEVEL_TOLERANCE_OVER_R0_SQUARED:g} of a level's lowest value "
+            "is one level; the tuned doublet floored to 0 first), then SM label string within a level"
+        ),
         "real_dimension": int(np.sum(light)),
         "states": states,
         "lowest_heavy_non_Phi17": {
@@ -2119,25 +2230,83 @@ def numerical_stabilizer(q: np.ndarray, r0: float) -> dict[str, Any]:
     return output
 
 
-def classify_endpoint(fast: SosFormPotential, q: np.ndarray, r0: float, x0: float) -> dict[str, Any]:
+def soft_displacement(gap: float, r0: float) -> float:
+    """eps(g) = sqrt(96 max(g, floor))/r0^2: relative off-orbit Sigma displacement a gap g allows along r0^2/96 modes."""
+    return math.sqrt(max(float(gap), ENDPOINT_GAP_FLOOR) / float(LIGHTEST_MASSIVE_OVER_R0_SQUARED)) / r0**2
+
+
+def endpoint_orbit_test(
+    gap: float, invariants: Mapping[str, float], stabilizer: Mapping[str, Any], r0: float, x0: float
+) -> dict[str, Any]:
+    """Convergence-aware classification of a float minimisation endpoint (see NUM_FULL_GAP_REACHED).
+
+    on_orbit: converged (reached) and every normalised residual within the soft-mode tolerance, with a 12-dim
+    stabilizer of hypercharge type; inconclusive: not converged enough to classify; off_orbit: converged but
+    outside the tolerance, which would contradict the exact equality-set classification.
+    """
+    eps = soft_displacement(gap, r0)
+    # gap <= NUM_FULL_GAP_REACHED and eps(gap) <= ENDPOINT_MAX_SOFT_DISPLACEMENT.
+    reached_threshold = min(
+        NUM_FULL_GAP_REACHED, (ENDPOINT_MAX_SOFT_DISPLACEMENT * r0**2) ** 2 * float(LIGHTEST_MASSIVE_OVER_R0_SQUARED)
+    )
+    reached = bool(gap <= reached_threshold)
+    tolerance = NUM_FULL_ORBIT_RESIDUAL + ENDPOINT_TOLERANCE_PER_SOFT_DISPLACEMENT * eps
+    residuals = {
+        "Phi_norm_squared_minus_1": abs(invariants["Phi_norm_squared"] - 1.0),
+        "V_Phi_plus_1": abs(invariants["V_Phi_plus_1"]),
+        "N_Sigma_minus_r0_squared_over_r0_squared": abs(invariants["N_Sigma"] - r0**2) / r0**2,
+        "sqrt_Sigma_purity_defect": math.sqrt(max(invariants["Sigma_purity_defect"], 0.0)),
+        "A_shift_norm_over_r0": invariants["A_shift_norm"] / r0,
+        "C_norm_over_r0": invariants["C_norm"] / r0,
+        "abs_S_minus_r0_over_r0": abs(invariants["S_abs"] - r0) / r0,
+        "abs_Phi17_minus_x0_over_x0": abs(invariants["Phi17_abs"] - x0) / x0,
+        "N_H_over_r0_squared": invariants["N_H"] / r0**2,
+        "kernel_singular_value_over_r0": stabilizer["largest_kernel_singular_value"] / r0,
+    }
+    within = all(value <= tolerance for value in residuals.values())
+    sm_stabilizer = bool(
+        stabilizer["stabilizer_dimension"] == EXPECTED_STABILIZER_DIMENSION and stabilizer["hypercharge_type_centre"]
+    )
+    if not reached:
+        classification = "inconclusive"
+    elif within and sm_stabilizer:
+        classification = "on_orbit"
+    else:
+        classification = "off_orbit"
+    return {
+        "gap": gap,
+        "reached_threshold": reached_threshold,
+        "reached": reached,
+        "soft_relative_displacement": eps,
+        "tolerance": tolerance,
+        "normalized_residuals": residuals,
+        "max_residual_over_tolerance": max(residuals.values()) / tolerance,
+        "residuals_within_tolerance": within,
+        "stabilizer_sm_type": sm_stabilizer,
+        "classification": classification,
+    }
+
+
+def classify_endpoint(fast: SosFormPotential, q: np.ndarray, r0: float, x0: float, *, gap: float) -> dict[str, Any]:
     invariants = fast.invariants(q)
     stabilizer = numerical_stabilizer(q, r0)
-    # Tolerances reflect float64 minimisation endpoints (soft Sigma modes have curvature r0^2/96).
-    on_orbit = bool(
-        abs(invariants["Phi_norm_squared"] - 1.0) < 1.0e-5
-        and abs(invariants["V_Phi_plus_1"]) < 1.0e-8
-        and abs(invariants["N_Sigma"] - r0**2) < 1.0e-2 * r0**2
-        and invariants["Sigma_purity_defect"] < 1.0e-4
-        and invariants["A_shift_norm"] < 1.0e-3 * r0
-        and invariants["C_norm"] < 1.0e-3 * r0
-        and abs(invariants["S_abs"] - r0) < 1.0e-3 * r0
-        and abs(invariants["Phi17_abs"] - x0) < 1.0e-4 * x0
-        and invariants["N_H"] < 1.0e-3
-        and stabilizer["largest_kernel_singular_value"] < 1.0e-2 * r0
-        and stabilizer["stabilizer_dimension"] == EXPECTED_STABILIZER_DIMENSION
-        and stabilizer["hypercharge_type_centre"]
-    )
-    return {"invariants": invariants, "heavy_pair_stabilizer": stabilizer, "on_sm_vacuum_orbit": on_orbit}
+    test = endpoint_orbit_test(gap, invariants, stabilizer, r0, x0)
+    classification = test.pop("classification")
+    return {
+        "invariants": invariants,
+        "heavy_pair_stabilizer": stabilizer,
+        "orbit_test": test,
+        "orbit_classification": classification,
+    }
+
+
+def classification_summary(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    """Counts per class; the flag excludes inconclusive endpoints but needs at least one converged endpoint."""
+    counts = {name: sum(1 for row in rows if row["orbit_classification"] == name) for name in ORBIT_CLASSES}
+    return {
+        "endpoint_classification_counts": counts,
+        "all_converged_endpoints_on_sm_vacuum_orbit": bool(counts["off_orbit"] == 0 and counts["on_orbit"] > 0),
+    }
 
 
 def _ray_optimum(fast: SosFormPotential, phi_unit: np.ndarray, sigma_unit: np.ndarray | None, r0: float, x0: float) -> tuple[np.ndarray, dict[str, float]]:
@@ -2239,7 +2408,7 @@ def structured_competitors(fast: SosFormPotential, coefficients: Mapping[str, fl
                 "final_gap": end_value - v0,
                 "final_gradient_max_abs": float(np.max(np.abs(end_gradient))),
                 "iterations": int(result.nit),
-                **classify_endpoint(fast, end, r, x),
+                **classify_endpoint(fast, end, r, x, gap=end_value - v0),
             },
         }
         if name in exact_gaps:
@@ -2507,7 +2676,7 @@ def numerical_global_search(*, seed: int = 20260924) -> dict[str, Any]:
                     "final_compiler_gap": compiler_value(end, coefficients) - v0,
                     "final_gradient_max_abs": float(np.max(np.abs(end_gradient))),
                     "iterations": int(result.nit),
-                    **classify_endpoint(fast, end, float(r0), float(X0)),
+                    **classify_endpoint(fast, end, float(r0), float(X0), gap=end_value - v0),
                 }
             )
         runs[label] = {
@@ -2515,12 +2684,37 @@ def numerical_global_search(*, seed: int = 20260924) -> dict[str, Any]:
             "starts": rows,
             "lowest_final_gap": min(row["final_gap"] for row in rows),
             "lowest_final_compiler_gap": min(row["final_compiler_gap"] for row in rows),
-            "all_endpoints_on_sm_vacuum_orbit": all(row["on_sm_vacuum_orbit"] for row in rows),
+            **classification_summary(rows),
+            "no_endpoint_below_V0": all(
+                row["final_gap"] > -BELOW_V0_TOLERANCE and row["final_compiler_gap"] > -BELOW_V0_TOLERANCE for row in rows
+            ),
         }
     output["random_start_local_minimization"] = runs
     fast = fast_potential(R0, X0)
     coefficients = float_coefficients(candidate_coefficients(R0, X0))
     output["structured_competitors_r0_1_5"] = structured_competitors(fast, coefficients, R0, X0, rng)
+    competitor_endpoints = [
+        row["local_minimization_from_perturbed_optimum"] for row in output["structured_competitors_r0_1_5"].values()
+    ]
+    endpoints = [row for run in runs.values() for row in run["starts"]] + competitor_endpoints
+    output["endpoint_classification"] = {
+        "method": (
+            f"a float endpoint at gap g = V - V0 is classified only if g <= min(NUM_FULL_GAP_REACHED, "
+            f"({ENDPOINT_MAX_SOFT_DISPLACEMENT:g} r0^2)^2/96) (converged: relative soft-mode displacement eps(g) = "
+            f"sqrt(96 g)/r0^2 <= {ENDPOINT_MAX_SOFT_DISPLACEMENT:g}); it is on_orbit if every normalised orbit "
+            f"residual is <= NUM_FULL_ORBIT_RESIDUAL + {ENDPOINT_TOLERANCE_PER_SOFT_DISPLACEMENT:g} eps(g) and the "
+            "(Phi, Sigma) stabilizer is 12-dimensional of hypercharge type, off_orbit otherwise (a contradiction); "
+            "less converged endpoints are inconclusive"
+        ),
+        "NUM_FULL_GAP_REACHED": NUM_FULL_GAP_REACHED,
+        "NUM_FULL_ORBIT_RESIDUAL": NUM_FULL_ORBIT_RESIDUAL,
+        "tolerance_per_soft_displacement": ENDPOINT_TOLERANCE_PER_SOFT_DISPLACEMENT,
+        "max_soft_displacement": ENDPOINT_MAX_SOFT_DISPLACEMENT,
+        "scope": "random-start endpoints (r0 = 1/5, 1/20) and structured-competitor local minimisations (r0 = 1/5)",
+        **classification_summary(endpoints),
+        "no_endpoint_below_V0": all(run["no_endpoint_below_V0"] for run in runs.values())
+        and all(row["final_gap"] > -BELOW_V0_TOLERANCE for row in competitor_endpoints),
+    }
     output["equality_set_evidence"] = equality_set_evidence(rng)
     output["quartic_directions"] = quartic_scan(
         fast_potential(R0, X0, quartic_only=True), coefficients, rng, n_random=512, n_minimize=6, n_compiler=3
@@ -2543,7 +2737,7 @@ def numerical_global_search(*, seed: int = 20260924) -> dict[str, Any]:
     for run in runs.values():
         gaps += [row["final_gap"] for row in run["starts"]] + [row["final_compiler_gap"] for row in run["starts"]]
     output["lowest_gap_found_any_method"] = float(min(gaps))
-    output["nothing_found_below_V0"] = bool(min(gaps) > -1.0e-10)
+    output["nothing_found_below_V0"] = bool(min(gaps) > -BELOW_V0_TOLERANCE)
     output["seconds"] = time.time() - started
     return output
 
@@ -2565,8 +2759,12 @@ def report_flags(
     rg: Mapping[str, Any],
     hierarchy: Mapping[str, Any],
     quartic: Mapping[str, Any],
+    equality_set: Mapping[str, Any],
 ) -> dict[str, bool]:
-    """Report flags; every positive claim is gated by ``ok`` (fail-closed)."""
+    """Report flags; every positive claim is gated by ``ok`` (fail-closed).
+
+    ``equality_set`` is the committed equality-set report (or its status/n_failed summary); {} means absent.
+    """
     return {
         "candidate_is_sm_vacuum": bool(ok and embedding["candidate_is_sm_vacuum"]),
         "target_unbroken_algebra_is_standard_model": bool(ok and embedding["target_unbroken_algebra_is_standard_model"]),
@@ -2593,7 +2791,7 @@ def report_flags(
         "hessian_kernel_count_is_float64": True,
         "bfb_certified": bool(ok and certificate["bfb_certified"]),
         "global_minimum_certified": bool(ok and certificate["global_minimum_certified"]),
-        "equality_set_unique_modulo_symmetry_certified": False,
+        "equality_set_unique_modulo_symmetry_certified": bool(ok and equality_set_certified(equality_set)),
         "doublet_triplet_splitting_natural": bool(ok and splitting["natural"]),
         "coloured_scalars_only_at_M_GUT": bool(ok and not coloured_light),
         "breaking_route_matches_rg_anchor": bool(
@@ -2610,10 +2808,18 @@ def report_flags(
     }
 
 
-def build_report(*, heavy: bool = True, search: Mapping[str, Any] | None = None) -> dict[str, Any]:
+def build_report(
+    *,
+    heavy: bool = True,
+    search: Mapping[str, Any] | None = None,
+    equality_report: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    if equality_report is None:
+        equality_report = load_equality_set_report()
+    equality_proved = equality_set_certified(equality_report)
     candidate = candidate_section()
     embedding = sm_embedding_section()
-    certificate = exact_certificate_section()
+    certificate = exact_certificate_section(equality_report)
     exact_slice = exact_slice_section()
     compiler = compiler_section(heavy=heavy)
     physical_states = (
@@ -2763,7 +2969,9 @@ def build_report(*, heavy: bool = True, search: Mapping[str, Any] | None = None)
         rg=rg,
         hierarchy=hierarchy,
         quartic=quartic,
+        equality_set=equality_report,
     )
+    equality_summary = certificate["equality_set"]["equality_set_certificate"]
     report = {
         "model_contract_id": MODEL_CONTRACT_ID,
         "status": (
@@ -2791,7 +2999,30 @@ def build_report(*, heavy: bool = True, search: Mapping[str, Any] | None = None)
             ),
             "global_minimum_certified": (
                 "exact: adapted SOS27 lower bound attained at the vacuum (repository source-bound recouplings plus "
-                "new exact sigma_std pieces); uniqueness of the minimum modulo symmetry is not certified"
+                "new exact sigma_std pieces); "
+                + (
+                    "uniqueness modulo SO(10) x U(1)_X x U(1)_PQ is certified separately (see "
+                    "equality_set_unique_modulo_symmetry_certified)"
+                    if equality_proved
+                    else "uniqueness of the minimum modulo symmetry is not certified"
+                )
+            ),
+            "equality_set_unique_modulo_symmetry_certified": (
+                (
+                    f"exact, bound to the committed {EQUALITY_SET_JSON.name} (status {equality_summary['status']}, "
+                    f"n_failed {equality_summary['n_failed']}; {EQUALITY_SET_SOURCE} imports this module, so it is "
+                    "read, not imported): {V = V0} = G.(p, r0 sigma_std, 0, r0, x0), G = SO(10) x U(1)_X x U(1)_PQ, "
+                    "for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2. Uniqueness uses the accidental U(1)_PQ: modulo "
+                    "SO(10) x U(1)_X alone the equality set is a circle of orbits (the axion direction). The classical "
+                    "theorems it cites are not machine-checked there, nor are the elementary steps listed in its "
+                    "scope.elementary_not_machine_checked"
+                )
+                if equality_proved
+                else (
+                    f"False: the committed {EQUALITY_SET_JSON.name} is missing or does not report "
+                    f"{EQUALITY_SET_PROVED_STATUS} with n_failed = 0 (status {equality_summary['status']}, n_failed "
+                    f"{equality_summary['n_failed']}); only numerical evidence (numerical_global_search)"
+                )
             ),
             "exactly_stationary": "follows from global minimality; the exact slice gradient also vanishes identically",
             "doublet_triplet_splitting_natural": (
@@ -2835,7 +3066,16 @@ def build_report(*, heavy: bool = True, search: Mapping[str, Any] | None = None)
                 "hence exact stationarity and exact Hessian PSD for every r0 > 0 with kappa^2 < 8 r0^2 (lambda_eff > 0)",
                 "strict positivity of the quartic part: V4(q) >= |q|^4/167",
                 "tree-level light-doublet quartic lambda_eff = 2 - kappa^2/(4 r0^2) = 127/64 (from the exact identity; compiler cross-check at r0 = 1/5)",
-            ],
+            ]
+            + (
+                [
+                    "equality set {V = V0} = G.(p, r0 sigma_std, 0, r0, x0), unique modulo G = SO(10) x U(1)_X x U(1)_PQ "
+                    "(g3_sm_pati_salam_equality_set_v20, read from its committed artifact; U(1)_PQ is accidental, and "
+                    "modulo SO(10) x U(1)_X alone the equality set is a circle of orbits)"
+                ]
+                if equality_proved
+                else []
+            ),
             "float64_only": [
                 "Hessian kernel = 35 symmetry tangents + 4 light-doublet modes; lightest massive eigenvalue r0^2/96",
                 "labelled spectrum, light spectrum and 10_H spectrum",
@@ -2846,8 +3086,8 @@ def build_report(*, heavy: bool = True, search: Mapping[str, Any] | None = None)
                 "one-loop re-solve of the anchor chain with the candidate's content (tree-level thresholds, chart-unit identification)",
                 "conditional two-loop SM running of the light-doublet quartic from the anchor M_I",
             ],
-            "open": [
-                "uniqueness of the equality set {V = V0} modulo symmetry (numerical evidence only)",
+            "open": ([] if equality_proved else ["uniqueness of the equality set {V = V0} modulo symmetry (numerical evidence only)"])
+            + [
                 "exact (non-float) Hessian kernel/rank certificate",
                 "electroweak symmetry breaking: H = 0 here, one doublet is tuned massless at tree level",
                 "doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed",
@@ -2870,6 +3110,17 @@ def _verdict(report: Mapping[str, Any]) -> str:
     if report["n_failed"]:
         return "The SM Pati-Salam candidate audit failed: " + ", ".join(report["failures"])
     m_h = report["light_doublet_quartic"]["conditional_sm_running"]["predictions"]["lambda_eff_127_over_64"]["m_h_tree_GeV"]
+    if report["exact_certificate"]["equality_set"]["unique_modulo_symmetry_certified"]:
+        uniqueness = (
+            "The equality set {V = V0} is exactly the orbit of the vacuum under SO(10) x U(1)_X x U(1)_PQ "
+            "(g3_sm_pati_salam_equality_set_v20), so the minimum is unique modulo symmetry once the accidental "
+            "U(1)_PQ is included (modulo SO(10) x U(1)_X alone it is a circle of orbits). Electroweak breaking and a "
+            "realistic Yukawa sector remain open"
+        )
+    else:
+        uniqueness = (
+            "Uniqueness of the minimum modulo symmetry, electroweak breaking and a realistic Yukawa sector remain open"
+        )
     return (
         "The 27-parameter member of the declared exact-X potential obtained from the historical p-branch map by "
         "swapping the 2772bar/4125 self-projector weights, setting O05 = (1/8)(4 - 2 r0^2) and adding kappa_H = -r0/4 "
@@ -2888,9 +3139,8 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the "
         f"benchmark (m_h ~ {m_h:.0f} GeV under conditional SM running), too large; the certified family kappa^2 < "
         "8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the "
-        "slightly negative SM value at M_t = 173.34 GeV. Uniqueness of the minimum modulo symmetry, electroweak "
-        "breaking and a realistic Yukawa sector remain open; G3 is not closed and the model is neither validated nor "
-        "excluded."
+        f"slightly negative SM value at M_t = 173.34 GeV. {uniqueness}; G3 is not closed and the model is neither "
+        "validated nor excluded."
     )
 
 
@@ -2936,6 +3186,9 @@ def _markdown(report: Mapping[str, Any]) -> str:
         f"- sigma_std projector fractions: `{certificate['exact_sigma_std']['projector_fractions']}`; (M_p - 2) sigma = 0: `{certificate['checks']['M_p_sigma_std_equals_2_sigma_std']}`; C_p sigma = 0: `{certificate['checks']['C_p_sigma_std_vanishes']}`",
         f"- lower bound V0 = {certificate['lower_bound']['V0']} (= `{certificate['lower_bound']['V0_at_default']}` at r0 = 1/5, x0 = 1), attained at the vacuum",
         f"- BFB: `{certificate['bfb_certified']}`; global minimum: `{certificate['global_minimum_certified']}`; exact stationarity: `{certificate['exactly_stationary']}`; quartic part >= |q|^4/167",
+        f"- equality set, unique modulo symmetry: {certificate['equality_set']['unique_modulo_symmetry']} "
+        f"(equality-set artifact status `{certificate['equality_set']['equality_set_certificate']['status']}`, "
+        f"n_failed `{certificate['equality_set']['equality_set_certificate']['n_failed']}`)",
         "",
         "## Compiler (float64)",
         "",
@@ -3059,21 +3312,30 @@ def _markdown(report: Mapping[str, Any]) -> str:
             f"- fast SOS evaluator vs compiler: max relative value difference `{_fmt(numerical['fast_evaluator_validation']['max_relative_value_difference'], 3)}`",
             f"- lowest gap V - V0 found by any method: `{_fmt(numerical['lowest_gap_found_any_method'], 3)}`",
             "",
-            "| competitor (r0 = 1/5) | compiler gap | exact gap | local min. from it: final gap | on SM orbit |",
+            "| competitor (r0 = 1/5) | compiler gap | exact gap | local min. from it: final gap | orbit classification |",
             "|---|---|---|---|---|",
         ]
         for name, row in numerical["structured_competitors_r0_1_5"].items():
             end = row["local_minimization_from_perturbed_optimum"]
             lines.append(
                 f"| {_cell(name)} | {_fmt(row['compiler_gap'], 6)} | {row['exact_gap'] if row['exact_gap'] is not None else '-'} | "
-                f"{_fmt(end['final_gap'], 3)} | {end['on_sm_vacuum_orbit']} |"
+                f"{_fmt(end['final_gap'], 3)} | {end['orbit_classification']} |"
             )
         lines.append("")
         for label, run in numerical["random_start_local_minimization"].items():
+            counts = ", ".join(f"{name} {count}" for name, count in run["endpoint_classification_counts"].items())
             lines.append(
                 f"- random starts ({label}): {len(run['starts'])}; lowest final gap `{_fmt(run['lowest_final_gap'], 3)}`; "
-                f"all on SM vacuum orbit: `{run['all_endpoints_on_sm_vacuum_orbit']}`"
+                f"endpoints {counts}; all converged endpoints on the SM vacuum orbit: "
+                f"`{run['all_converged_endpoints_on_sm_vacuum_orbit']}`; none below V0: `{run['no_endpoint_below_V0']}`"
             )
+        classification = numerical["endpoint_classification"]
+        counts = ", ".join(f"{name} {count}" for name, count in classification["endpoint_classification_counts"].items())
+        lines.append(
+            f"- endpoint classification (all {sum(classification['endpoint_classification_counts'].values())} "
+            f"endpoints): {counts}; all converged on the SM vacuum orbit: "
+            f"`{classification['all_converged_endpoints_on_sm_vacuum_orbit']}`. {classification['method']}"
+        )
         quartic = numerical["quartic_directions"]
         lines.append(
             f"- quartic part on the unit sphere: lowest `{_fmt(quartic['lowest_V4_found'], 6)}` >= exact bound 1/167: `{quartic['lowest_at_or_above_exact_bound']}`"

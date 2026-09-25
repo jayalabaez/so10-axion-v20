@@ -78,6 +78,22 @@ RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON = (
 RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
 )
+# Optional, text-only input: the SM Pati-Salam candidate's equality-set report.
+# It only selects the verdict's Pati-Salam sentence.  It must never affect
+# overall_state, artifact_integrity or missing_artifacts, because this gate
+# does not yet use that candidate as its target.  The JSON is read directly
+# (via the ledger helper), never by importing g3_sm_pati_salam_equality_set_v20.
+PATI_SALAM_EQUALITY_SET_JSON = ROOT / "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+PATI_SALAM_EQUALITY_SET_CERTIFIED_SENTENCE = (
+    "The Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20 is "
+    "SM-preserving, and its global-minimum set is exactly one SO(10) x "
+    "U(1)_X x U(1)_PQ orbit (g3_sm_pati_salam_equality_set_v20; uniqueness "
+    "uses the accidental U(1)_PQ), but it is not yet wired in."
+)
+PATI_SALAM_EQUALITY_SET_FALLBACK_SENTENCE = (
+    "The Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20 still "
+    "needs its equality set classified and is not yet wired in."
+)
 
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
 FINAL_THEOREM = (
@@ -127,8 +143,21 @@ def build_report(
     rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
     rank1_su4_corrected_publication: dict[str, Any] | None = None,
     sigma_hypercharge_report: dict[str, Any] | None = None,
+    pati_salam_equality_set_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
+    # Text-only (see PATI_SALAM_EQUALITY_SET_JSON): excluded from
+    # overall_state, artifact_integrity and missing_artifacts.
+    pati_salam_equality_set_report = (
+        ledger.load_sm_pati_salam_equality_set_report(
+            PATI_SALAM_EQUALITY_SET_JSON
+        )
+        if pati_salam_equality_set_report is None
+        else pati_salam_equality_set_report
+    )
+    pati_salam_equality_set = ledger.sm_pati_salam_equality_set_binding(
+        pati_salam_equality_set_report
+    )
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
     sigma_hypercharge_report = (
         _load(SIGMA_HYPERCHARGE_JSON)
@@ -1598,10 +1627,16 @@ def build_report(
             "separate exact 448/38 certificate above closes at the certified point. "
             "PASS is impossible at this point because "
             "target_unbroken_algebra_is_standard_model is false. It requires an "
-            "SM-preserving target (for example the Pati-Salam-branch candidate of "
-            "g3_sm_pati_salam_candidate_v20, not yet wired into this gate) and, on "
-            "that target, an exact global gap and equality-set classification."
+            "SM-preserving target wired into this gate and, on that target, the "
+            "gate's global-gap and equality-set criteria. "
+            + (
+                PATI_SALAM_EQUALITY_SET_CERTIFIED_SENTENCE
+                if pati_salam_equality_set["certified"]
+                else PATI_SALAM_EQUALITY_SET_FALLBACK_SENTENCE
+            )
         ),
+        # Informational only; not an integrity check or a gate input.
+        "pati_salam_candidate_equality_set": pati_salam_equality_set,
     }
 
 
