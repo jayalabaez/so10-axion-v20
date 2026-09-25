@@ -15,6 +15,15 @@ report has ``n_failed=0``, ``overall_state=BLOCKED``, and no closed gates.  The
 exact-X 44-direction/51-parameter scalar calculus is nevertheless a completed,
 contract-scoped subtheorem: blocking the whole-model gate must not erase that
 evidence.
+
+G3 is decided only through the SM Pati-Salam track (the pure module
+g3_sm_target_track_v20, which final_g3_acceptance_gate_v20 also evaluates):
+on an attested contract G3 is CLOSED exactly when that track closes, and G5 is
+CLOSED exactly when the track's source-bound BFB binding on the Pati-Salam
+coupling vector is certified.  Any missing or failed SM input reopens G3 (and
+G5) fail-closed.  The SU(5)+Delta chiral-H evidence is an integrity-checked
+diagnostic that can never close G3, and the model-level caveats of the closing
+track are routed to G4/G6/G7/G8 (decision D5).
 """
 from __future__ import annotations
 
@@ -23,7 +32,7 @@ import hashlib
 import json
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 import exact_x_symmetry_consistency_gate_v20 as exact_x
 import g1_exact_declared_symmetry_character_census_v20 as gauged_g1
@@ -34,6 +43,7 @@ import live_g2_derivative_coverage_ledger_v20 as historical_g2
 import g3_full_hessian_classification_v20 as historical_g3_hessian
 import g3_stationary_stability_search_v20 as historical_g3_search
 import corrected_rank1_endpoint_v21 as corrected_rank1
+import g3_sm_target_track_v20 as sm_track
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_GATE_LEDGER_V20.json"
@@ -110,17 +120,59 @@ G3_SM_PATI_SALAM_EQUALITY_SET_SOURCE = "g3_sm_pati_salam_equality_set_v20"
 G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS = (
     "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
 )
-G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_CERTIFIED = (
-    "For the Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20), "
-    "its equality set is classified exactly (a single SO(10) x U(1)_X x "
-    "U(1)_PQ orbit, whose uniqueness uses the accidental U(1)_PQ; "
-    "g3_sm_pati_salam_equality_set_v20); it still needs its model-level "
-    "caveats resolved and gate integration."
+# Wave-3 text about the SU(5)+Delta chiral-H point.  That point is a
+# diagnostic only: it is not an SM vacuum and can never close G3.
+CHIRAL_WAVE3_TAIL = (
+    "The SU(5)+Delta chiral-H point is not an SM vacuum (its "
+    "Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), and is kept only as "
+    "an integrity-checked diagnostic track that can never close G3. The "
+    "chiral-H point's full 486-real Hessian is now exactly PSD "
+    "with rank/nullity 448/38 and symmetry kernel exactly 38; the "
+    "complete maximally-negative pure-Delta sector is already "
+    "excluded for arbitrary real Phi and nonzero residuals with "
+    "sharp gap 1/5000. The prior four-real-dimensional SU(3) "
+    "regression is historical and subsumed. At fixed H=h_- and "
+    "Sigma=q/4, the corrected v21 exact theorem covers every real "
+    "Phi210. Its exact SU(4) "
+    "stabilizer, aligned rank-210 carrier real maps, and explicit "
+    "complete 45-element Phi210 invariant quadratic basis feed an "
+    "exact 22366-dimensional augmented census with 35 isotypic "
+    "types/824 copies, 22 real/Hermitian blocks, 19594 Schur "
+    "parameters, and 6585 invariant rows. The complete cubic "
+    "interface is explicit: all 1414 real cross variables map "
+    "through a 478x1414 integer matrix of exact rank 478 and kernel "
+    "dimension 936. Its zero placeholder is not a physical target. "
+    "The homogeneous quartic interface is also exact: its "
+    "6057x18085 integer map has rank 6057 and kernel dimension "
+    "12028. The legacy v20 assembled physical target is rejected. "
+    "The corrected 6585x19594 standard positive-Gram map, corrected "
+    "ordered-spectral target, and exact strict 22-block/824-pivot "
+    "primal prove p(t,Phi)>0 off the homogeneous origin, hence "
+    "A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma and "
+    "general/full H remain open for that non-SM point (the exact 448/38 "
+    "full Hessian is certified separately)."
 )
-G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_FALLBACK = (
-    "The Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still "
-    "needs its equality set classified, its model-level caveats resolved and "
-    "gate integration."
+G3_DIAGNOSTIC_TRACKS = {
+    "chiral_H_SU5_Delta": (
+        "integrity-checked diagnostic (constructive_frontier_evidence); "
+        "can never close G3"
+    ),
+}
+G3_CONSTRUCTIVE_FRONTIER_EVIDENCE_ROLE = (
+    "historical SOS and chiral_H_SU5_Delta diagnostic evidence: its "
+    "G3_closed=false and remaining_exact_step are that evidence's "
+    "self-claims, not the ledger's G3 status (decision D1)"
+)
+G5_CONSTRUCTIVE_FRONTIER_EVIDENCE_ROLE = (
+    "historical 27-parameter SOS vector: its BFB certificate remains valid "
+    "for that vector but no longer carries G5 (decision D4)"
+)
+G3_DIAGNOSTIC_OPEN_PROBLEMS = (
+    "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+)
+G3_DIAGNOSTIC_OPEN_PROBLEMS_NOTE = (
+    "chiral_H_SU5_Delta diagnostic track: closing it would not close G3 "
+    "(not an SM vacuum)"
 )
 RANK1_SU4_ORDERED_LABELS = (
     "H1",
@@ -3931,19 +3983,21 @@ def _gauged_u1x_scalar_subtheorems(
     }
 
 
-def _expected_gate_statuses(contract_consistent: bool) -> dict[str, str]:
-    """Return the next scientifically honest frontier for the contract state."""
+def _expected_gate_statuses(contract_consistent: bool, *, g3_closed: bool, g5_closed: bool) -> dict[str, str]:
+    """Return the next scientifically honest frontier for the contract state.
+
+    G3 closes only through the SM Pati-Salam track and G5 only on its bound
+    coupling vector.  The DAG then fixes the rest: G4 depends on {G2, G3};
+    G6 on {G3, G4, G5}; G7 on {G6}; G8 on {G3, G6, G7}.
+    """
     if not contract_consistent:
         return {f"G{i}": STATUS_BLOCKED for i in range(1, 9)}
     return {
-        "G1": STATUS_CLOSED,
-        "G2": STATUS_CLOSED,
-        "G3": STATUS_OPEN,
-        "G4": STATUS_BLOCKED,
-        "G5": STATUS_CLOSED,
-        "G6": STATUS_BLOCKED,
-        "G7": STATUS_BLOCKED,
-        "G8": STATUS_BLOCKED,
+        "G1": STATUS_CLOSED, "G2": STATUS_CLOSED,
+        "G3": STATUS_CLOSED if g3_closed else STATUS_OPEN,
+        "G4": STATUS_OPEN if g3_closed else STATUS_BLOCKED,
+        "G5": STATUS_CLOSED if g5_closed else STATUS_OPEN,
+        "G6": STATUS_BLOCKED, "G7": STATUS_BLOCKED, "G8": STATUS_BLOCKED,
     }
 
 
@@ -3952,6 +4006,9 @@ def _build_gates(
     contract_consistent: bool,
     contract_blocker: str = CONTRACT_BLOCKER,
     scoped: dict[str, Any] | None = None,
+    g3_closed: bool,
+    g5_closed: bool,
+    track: Mapping[str, Any],
 ) -> dict[str, dict[str, Any]]:
     specifications = {
         "G1": (
@@ -3976,14 +4033,14 @@ def _build_gates(
         "G4": (
             "Gauge quotient, axion directions, and physical Hessian",
             [
-                "carry the exact rank-37 gauge quotient (449, axion included) and rank-38 massive/transverse quotient (448) to an accepted G3 witness, recomputing if its stabilizer changes",
-                "classify all remaining Hessian zero and negative modes at that witness",
+                "carry the exact gauge quotient to the accepted G3 witness (the SM Pati-Salam eps member) and recompute its ranks there: SO(10)xU(1)_X rank 34 (gauge quotient 452, axion included) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451), replacing the rank-37/38 (449/448) values of the superseded p+delta point",
+                "classify all remaining Hessian zero and negative modes at that witness, including the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes)",
             ],
         ),
         "G5": (
             "Boundedness from below",
             [
-                "promote the completed source-bound SOS/BFB certificate after repairing the executable model contract"
+                "keep the source-bound BFB certificate bound to the coupling vector of the accepted G3 witness (the SM Pati-Salam 27-parameter vector, V4 >= |q|^4/167; the eps N_H term is quadratic)"
             ],
         ),
         "G6": (
@@ -3999,10 +4056,33 @@ def _build_gates(
             ["await authoritative G3/G6/G7 before any unique lifetime claim"],
         ),
     }
-    statuses = _expected_gate_statuses(contract_consistent)
+    statuses = _expected_gate_statuses(
+        contract_consistent, g3_closed=g3_closed, g5_closed=g5_closed
+    )
+    closed_scopes = {
+        "G1": ["promoted exact-X scalar census"],
+        "G2": ["promoted exact-X dense derivative and Ward audit"],
+        "G3": [sm_track.G3_LEDGER_CLOSED_SCOPE],
+        "G5": [sm_track.G5_LEDGER_CLOSED_SCOPE],
+    }
+    downstream_caveats = [
+        caveat
+        for caveat in track.get("downstream_caveats", [])
+        if isinstance(caveat, Mapping)
+    ]
+    g5_binding = track.get("g5_bfb_binding", {})
     gates: dict[str, dict[str, Any]] = {}
-    for name, (title, open_scope) in specifications.items():
+    for name, (title, specification) in specifications.items():
         status = statuses[name]
+        open_scope = list(specification)
+        if name in {"G4", "G6", "G7", "G8"}:
+            # Decision D5: the closing track's model-level caveats are routed
+            # to the downstream gate that owns them (G3 keeps disclosures).
+            open_scope.extend(
+                f"routed from G3 by decision D5 ({caveat['id']}): {caveat['text']}"
+                for caveat in downstream_caveats
+                if caveat.get("gate") == name
+            )
         unsatisfied = [
             dependency
             for dependency in DEPENDENCIES[name]
@@ -4031,15 +4111,7 @@ def _build_gates(
             "title": title,
             "dependencies": list(DEPENDENCIES[name]),
             "authoritative_closed_scope": (
-                [
-                    "promoted exact-X scalar census"
-                    if name == "G1"
-                    else (
-                        "promoted exact-X dense derivative and Ward audit"
-                        if name == "G2"
-                        else "source-bound complete-potential SOS/BFB certificate"
-                    )
-                ]
+                list(closed_scopes.get(name, []))
                 if status == STATUS_CLOSED
                 else []
             ),
@@ -4050,6 +4122,24 @@ def _build_gates(
             gates[name]["scoped_calculation_status"] = scoped[name]["scoped_status"]
             gates[name]["scoped_calculation_complete"] = True
             gates[name]["scoped_calculation_evidence"] = scoped[name]
+        if name == "G3":
+            g3_row_closed = status == STATUS_CLOSED
+            gates[name]["closing_track"] = (
+                sm_track.TRACK_NAME if g3_row_closed else None
+            )
+            gates[name]["closure_scope"] = (
+                sm_track.CLOSURE_SCOPE if g3_row_closed else None
+            )
+            gates[name]["disclosures"] = list(track.get("disclosures", []))
+            gates[name]["diagnostic_tracks"] = dict(G3_DIAGNOSTIC_TRACKS)
+            gates[name]["constructive_frontier_evidence_role"] = (
+                G3_CONSTRUCTIVE_FRONTIER_EVIDENCE_ROLE
+            )
+        if name == "G5":
+            gates[name]["bfb_coupling_vector"] = g5_binding
+            gates[name]["constructive_frontier_evidence_role"] = (
+                G5_CONSTRUCTIVE_FRONTIER_EVIDENCE_ROLE
+            )
     return gates
 
 
@@ -4088,8 +4178,13 @@ def _build_report_from_inputs(
     g3_rank1_su4_corrected_publication: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
     g3_sm_pati_salam_equality_set_report: dict[str, Any] | None = None,
+    g3_sm_track_inputs: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Build a ledger from fresh reports, including repaired-contract states."""
+    """Build a ledger from fresh reports, including repaired-contract states.
+
+    ``g3_sm_track_inputs`` are the SM Pati-Salam track inputs (keys of
+    ``g3_sm_target_track_v20.INPUT_FILES``); None loads the committed JSONs.
+    """
     declared_contract_consistent = bool(x_report["contract_consistent"])
     contract_evidence_complete = _root_contract_evidence_complete(x_report)
     contract_consistent = bool(
@@ -4196,11 +4291,14 @@ def _build_report_from_inputs(
         g3_sm_pati_salam_equality_set_report = (
             load_sm_pati_salam_equality_set_report()
         )
-    # Text-only binding: it selects the wave-3 Pati-Salam sentence and never
-    # changes a gate, check or state (the candidate is not yet the G3 target).
+    # Informational binding only: G3 is decided through the SM Pati-Salam
+    # track (g3_sm_target_track_v20) below; this record never changes a gate,
+    # check or state.
     sm_pati_salam_equality_set = sm_pati_salam_equality_set_binding(
         g3_sm_pati_salam_equality_set_report
     )
+    if g3_sm_track_inputs is None:
+        g3_sm_track_inputs = sm_track.load_inputs()
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4231,10 +4329,28 @@ def _build_report_from_inputs(
         g3_rank1_su4_corrected_publication,
         g3_alternative_global_sos_report,
     )
+    # G3 and G5 are decided by the SM Pati-Salam track (decisions D1, D4).
+    # The chiral-H frontier above is an integrity-checked diagnostic only.
+    prereq = {
+        "authoritative_external_model_contract_executed": contract_consistent,
+        "G1_promoted_closed": contract_consistent,
+        "G2_promoted_closed": contract_consistent,
+        "G1_G2_exact_scoped_calculations_complete": (
+            scoped["G1"]["scoped_status"].startswith("COMPLETE")
+            and scoped["G2"]["scoped_status"].startswith("COMPLETE")
+        ),
+    }
+    track = sm_track.evaluate_sm_track(g3_sm_track_inputs, prerequisites=prereq)
+    g3_closed = bool(contract_consistent and track["closed"])
+    g5_binding = track["g5_bfb_binding"]
+    g5_closed = bool(contract_consistent and g5_binding["certified"] is True)
     gates = _build_gates(
         contract_consistent=contract_consistent,
         contract_blocker=contract_blocker,
         scoped=scoped,
+        g3_closed=g3_closed,
+        g5_closed=g5_closed,
+        track=track,
     )
     gates["G3"]["constructive_frontier_evidence"] = g3_frontier
     gates["G5"]["constructive_frontier_evidence"] = g3_frontier
@@ -4247,7 +4363,9 @@ def _build_report_from_inputs(
 
     gauged_counts = g1_report["counts"]
     historical_ids = set(historical["source_contract_ids"].values())
-    expected_statuses = _expected_gate_statuses(contract_consistent)
+    expected_statuses = _expected_gate_statuses(
+        contract_consistent, g3_closed=g3_closed, g5_closed=g5_closed
+    )
     contract_state_classified = (
         contract_consistent
         and x_report.get("blocker") is None
@@ -4713,6 +4831,8 @@ def _build_report_from_inputs(
             is True
             and g3_frontier["constructive_candidate_rejected_for_G3"] is True
             and g3_frontier["global_uniqueness_certified"] is False
+            # The historical 27-parameter SOS candidate's own flag, not the
+            # ledger's G3 status (G3 closes only through the SM track).
             and g3_frontier["G3_closed"] is False
             and g3_frontier["whole_model_validated"] is False
             and g3_frontier["whole_model_excluded"] is False
@@ -4729,11 +4849,38 @@ def _build_report_from_inputs(
             all(dependency_closed(parent) for parent in DEPENDENCIES[name])
             for name in open_gates
         ),
-        "only_certified_G5_closes_among_G3_G8": (
-            statuses["G5"]
-            == (STATUS_CLOSED if contract_consistent else STATUS_BLOCKED)
+        "only_sm_track_G3_and_bound_G5_close_among_G3_G8": (
+            statuses["G3"]
+            == (
+                STATUS_CLOSED
+                if g3_closed
+                else (STATUS_OPEN if contract_consistent else STATUS_BLOCKED)
+            )
+            and statuses["G5"]
+            == (
+                STATUS_CLOSED
+                if g5_closed
+                else (STATUS_OPEN if contract_consistent else STATUS_BLOCKED)
+            )
             and not any(
-                statuses[f"G{i}"] == STATUS_CLOSED for i in (3, 4, 6, 7, 8)
+                statuses[f"G{i}"] == STATUS_CLOSED for i in (4, 6, 7, 8)
+            )
+        ),
+        "g3_sm_track_is_the_only_closure_route": (
+            (statuses["G3"] == STATUS_CLOSED) == g3_closed
+            and gates["G3"]["closing_track"]
+            == (sm_track.TRACK_NAME if g3_closed else None)
+        ),
+        "chiral_H_diagnostic_track_cannot_close_G3": (
+            g3_frontier["G3_closed"] is False
+            and g3_frontier["SU5_Delta_chiral_final_acceptance_test_passes"]
+            is False
+        ),
+        "g5_closed_only_on_the_bound_pati_salam_vector": (
+            statuses["G5"] != STATUS_CLOSED
+            or (
+                g5_binding["certified"] is True
+                and bool(g5_binding["coefficients"])
             )
         ),
         "whole_model_neither_validated_nor_excluded": (
@@ -4748,10 +4895,16 @@ def _build_report_from_inputs(
         status = "G1_G8_LEDGER_AUDIT_EXECUTION_FAILED"
         overall_state = "EXECUTION_FAIL"
     elif contract_consistent:
-        status = (
-            "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
-            "G1_G2_G5_CLOSED__G3_GLOBAL_OPEN"
-        )
+        if g3_closed:
+            status = (
+                "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
+                "G1_G2_G3_G5_CLOSED__G4_OPEN"
+            )
+        else:
+            status = (
+                "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
+                "G3_SM_TRACK_NOT_CERTIFIED__G3_OPEN"
+            )
         overall_state = STATUS_OPEN
     else:
         status = (
@@ -4760,14 +4913,53 @@ def _build_report_from_inputs(
         )
         overall_state = STATUS_BLOCKED
 
-    scientific_blockers = [
-        "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
-        "G3_SM_PRESERVING_TARGET_REQUIRED",
-        "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
-    ]
+    scientific_blockers = (
+        list(sm_track.DOWNSTREAM_BLOCKERS)
+        if g3_closed
+        else list(sm_track.FAIL_CLOSED_BLOCKERS)
+    )
     if not contract_consistent:
         scientific_blockers[0:0] = list(
             x_report.get("scientific_blockers") or [contract_blocker]
+        )
+
+    def _waiting_on(dependencies: tuple[str, ...]) -> str:
+        waiting = [name for name in dependencies if statuses[name] != STATUS_CLOSED]
+        return "BLOCKED_ON_" + "_".join(waiting) if waiting else STATUS_OPEN
+
+    if not contract_consistent:
+        wave3_status = "BLOCKED_ON_G2"
+    elif (statuses["G3"], statuses["G4"], statuses["G5"]) == (
+        STATUS_CLOSED, STATUS_OPEN, STATUS_CLOSED
+    ):
+        wave3_status = "G3_CLOSED_ON_SM_PATI_SALAM_TRACK__G4_OPEN__G5_CLOSED"
+    else:
+        wave3_status = (
+            f"G3_{statuses['G3']}__G4_{statuses['G4']}__G5_{statuses['G5']}"
+        )
+    if g3_closed:
+        wave3_deliverable = (
+            "G3 is CLOSED on the SM Pati-Salam track (g3_sm_target_track_v20 "
+            "through final_g3_acceptance_gate_v20). "
+            + sm_track.CLOSURE_SCOPE
+            + " "
+            + sm_track.WITNESS_SENTENCE
+            + " "
+            + sm_track.CAVEAT_ROUTING_SENTENCE
+            + " G4 is OPEN: recompute the ranks 34/35 (quotients 452/451) at "
+            "the witness and classify its zero modes. G5 is CLOSED on the same "
+            "Pati-Salam coupling vector. "
+            + CHIRAL_WAVE3_TAIL
+        )
+    else:
+        wave3_deliverable = (
+            "G3 is OPEN: the SM Pati-Salam track (g3_sm_target_track_v20), its "
+            "only closure route, is not certified (blockers: "
+            + ", ".join(track["blockers"])
+            + "). "
+            + sm_track.CAVEAT_ROUTING_SENTENCE
+            + " "
+            + CHIRAL_WAVE3_TAIL
         )
 
     closure_waves = [
@@ -4797,61 +4989,46 @@ def _build_report_from_inputs(
         {
             "wave": 3,
             "gates": ["G3", "G4", "G5"],
-            "status": (
-                "G3_OPEN__G4_BLOCKED_ON_G3__G5_CLOSED"
-                if contract_consistent
-                else "BLOCKED_ON_G2"
-            ),
-            "deliverable": (
-                "Promote the source-bound BFB, exact selected stationarity, and "
-                "strict-local-minimum certificate after contract repair, while "
-                "retaining the exact counterexample that rejects globality. G3 "
-                "needs an SM-preserving candidate certified through the final "
-                "gate. The SU(5)+Delta chiral-H point is not an SM vacuum (its "
-                "Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so its "
-                "remaining coercivity problem is mathematical only. "
-                + (
-                    G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_CERTIFIED
-                    if sm_pati_salam_equality_set["certified"]
-                    else G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_FALLBACK
-                )
-                + " The chiral-H point's "
-                "full 486-real Hessian is now exactly PSD "
-                "with rank/nullity 448/38 and symmetry kernel exactly 38; the "
-                "complete maximally-negative pure-Delta sector is already "
-                "excluded for arbitrary real Phi and nonzero residuals with "
-                "sharp gap 1/5000. The prior four-real-dimensional SU(3) "
-                "regression is historical and subsumed. At fixed H=h_- and "
-                "Sigma=q/4, the corrected v21 exact theorem covers every real "
-                "Phi210. Its exact SU(4) "
-                "stabilizer, aligned rank-210 carrier real maps, and explicit "
-                "complete 45-element Phi210 invariant quadratic basis feed an "
-                "exact 22366-dimensional augmented census with 35 isotypic "
-                "types/824 copies, 22 real/Hermitian blocks, 19594 Schur "
-                "parameters, and 6585 invariant rows. The complete cubic "
-                "interface is explicit: all 1414 real cross variables map "
-                "through a 478x1414 integer matrix of exact rank 478 and kernel "
-                "dimension 936. Its zero placeholder is not a physical target. "
-                "The homogeneous quartic interface is also exact: its "
-                "6057x18085 integer map has rank 6057 and kernel dimension "
-                "12028. The legacy v20 assembled physical target is rejected. "
-                "The corrected 6585x19594 standard positive-Gram map, corrected "
-                "ordered-spectral target, and exact strict 22-block/824-pivot "
-                "primal prove p(t,Phi)>0 off the homogeneous origin, hence "
-                "A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-                "general/full H, and G3 remain open (the exact 448/38 full "
-                "Hessian is certified separately)."
-            ),
+            "status": wave3_status,
+            "deliverable": wave3_deliverable,
         },
-        {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
+        {"wave": 4, "gates": ["G6"], "status": _waiting_on(("G3", "G4", "G5"))},
         {"wave": 5, "gates": ["G7"], "status": "BLOCKED_ON_G6"},
-        {"wave": 6, "gates": ["G8"], "status": "BLOCKED_ON_G3_G6_G7"},
+        {"wave": 6, "gates": ["G8"], "status": _waiting_on(("G3", "G6", "G7"))},
     ]
+
+    if g3_closed:
+        verdict_g3 = (
+            "G3 is CLOSED on the SM Pati-Salam track, its only closure route "
+            "(g3_sm_target_track_v20 through final_g3_acceptance_gate_v20): "
+            + sm_track.CLOSURE_SCOPE
+            + " "
+            + sm_track.WITNESS_SENTENCE
+            + " G5 is CLOSED on the same Pati-Salam coupling vector (V4 >= "
+            "|q|^4/167; the eps N_H term is quadratic). G4 is OPEN; G6-G8 "
+            "remain dependency-blocked. "
+            + sm_track.CAVEAT_ROUTING_SENTENCE
+            + " "
+        )
+    else:
+        verdict_g3 = (
+            "G3 is OPEN: the SM Pati-Salam track, its only closure route, is "
+            "not certified (blockers: "
+            + ", ".join(track["blockers"])
+            + "). G5 is "
+            + statuses["G5"]
+            + "; G4 and G6-G8 remain dependency-blocked. "
+            + sm_track.CAVEAT_ROUTING_SENTENCE
+            + " "
+        )
 
     verdict = (
         "The ledger audit succeeds and the repaired gauged-U(1)_X contract "
         "promotes the completed G1 scalar census and G2 dense derivative theorem "
-        "to CLOSED. A perturbative 27-of-51 SOS candidate with J0=-21/200 has a "
+        "to CLOSED. "
+        + verdict_g3
+        + "Diagnostics that cannot close G3: "
+        "A perturbative 27-of-51 SOS candidate with J0=-21/200 has a "
         "source-bound complete-potential BFB proof, exact stationarity, direct "
         "P+Delta rank/nullity 429/33, and a proof of positivity on all 448 "
         "transverse Hessian directions. The selected orbit is a strict local "
@@ -4878,11 +5055,10 @@ def _build_report_from_inputs(
         "assembled physical target is rejected. The corrected 6585x19594 "
         "standard positive-Gram map, ordered-spectral target, and exact strict "
         "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, "
-        "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-        "general/full H, and G3 remain open (the exact 448/38 full "
-        "Hessian is certified separately). "
-        "G5 is CLOSED; G4 and G6-G8 remain "
-        "dependency-blocked. Historical "
+        "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma and "
+        "general/full H remain open for that non-SM point (the exact 448/38 "
+        "full Hessian is certified separately). "
+        "Historical "
         "Option-C evidence remains scoped and closes no gauged-model gate."
         if contract_consistent
         else "The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The "
@@ -4941,6 +5117,9 @@ def _build_report_from_inputs(
         "contract_evidence_complete": contract_evidence_complete,
         "contract_consistent": contract_consistent,
         "scientific_blockers": scientific_blockers,
+        "diagnostic_open_problems": list(G3_DIAGNOSTIC_OPEN_PROBLEMS),
+        "diagnostic_open_problems_note": G3_DIAGNOSTIC_OPEN_PROBLEMS_NOTE,
+        "g3_sm_target_track": track,
         "n_checks": len(checks),
         "n_failed": len(audit_failures),
         "failures": audit_failures,
@@ -5046,6 +5225,7 @@ def _build_report_from_inputs(
                 "direct_exact_PD_source_binding"
             ]
             is True,
+            "gauged_G3_sm_pati_salam_track_closed": g3_closed,
             "guarantee_model_survives_recertification": False,
             "whole_model_validated": False,
             "whole_model_excluded": False,
@@ -5126,6 +5306,7 @@ def build_report() -> dict[str, Any]:
         g3_sm_pati_salam_equality_set_report=(
             load_sm_pati_salam_equality_set_report()
         ),
+        g3_sm_track_inputs=sm_track.load_inputs(),
     )
 
 
@@ -5156,6 +5337,44 @@ def write_markdown(report: dict[str, Any]) -> str:
             )
         )
         for name, row in report["gates"].items()
+    )
+    track = report.get("g3_sm_target_track") or {}
+    g3_row = report.get("gates", {}).get("G3", {})
+    lines.extend(
+        [
+            "",
+            "## G3: SM Pati-Salam track (the only closure route)",
+            "",
+            f"**Track closed:** `{track.get('closed')}`",
+            f"**Closing track:** `{g3_row.get('closing_track')}`",
+            "",
+        ]
+    )
+    if g3_row.get("closure_scope"):
+        lines.extend([f"Closure scope: {g3_row['closure_scope']}", ""])
+    else:
+        lines.extend(
+            [
+                "Track blockers: "
+                + (", ".join(track.get("blockers") or []) or "none"),
+                "",
+            ]
+        )
+    lines.extend(["### Downstream caveats (decision D5)", ""])
+    lines.extend(
+        f"- `{caveat.get('id')}` -> `{caveat.get('gate')}`"
+        for caveat in track.get("downstream_caveats", [])
+        if isinstance(caveat, dict)
+    )
+    lines.extend(
+        [
+            "",
+            "### Diagnostic open problems (cannot close G3)",
+            "",
+        ]
+    )
+    lines.extend(
+        f"- `{item}`" for item in report.get("diagnostic_open_problems", [])
     )
     return "\n".join(lines) + "\n"
 

@@ -84,6 +84,12 @@ on:
       - "g3_sm_pati_salam_equality_set_v20.py"
       - "test_g3_sm_pati_salam_equality_set_v20.py"
       - "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+      - "g3_sm_target_track_v20.py"
+      - "test_g3_sm_target_track_v20.py"
+      - "g3_sm_pati_salam_candidate_v20.py"
+      - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
+      - "g3_sm_pati_salam_exact_hessian_v20.py"
+      - "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json"
       - "gauged_u1x_g3_sos_candidate_v20.py"
       - "test_gauged_u1x_g3_sos_candidate_v20.py"
       - "exact_gauged_u1x_physical_quotient_v20.py"
@@ -169,6 +175,12 @@ on:
       - "g3_sm_pati_salam_equality_set_v20.py"
       - "test_g3_sm_pati_salam_equality_set_v20.py"
       - "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+      - "g3_sm_target_track_v20.py"
+      - "test_g3_sm_target_track_v20.py"
+      - "g3_sm_pati_salam_candidate_v20.py"
+      - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
+      - "g3_sm_pati_salam_exact_hessian_v20.py"
+      - "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json"
       - "gauged_u1x_g3_sos_candidate_v20.py"
       - "test_gauged_u1x_g3_sos_candidate_v20.py"
       - "exact_gauged_u1x_physical_quotient_v20.py"
@@ -239,6 +251,8 @@ jobs:
             corrected_rank1_endpoint_v21.py \
             test_corrected_rank1_endpoint_v21.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
+            g3_sm_target_track_v20.py \
+            test_g3_sm_target_track_v20.py \
             final_g3_acceptance_gate_v20.py \
             gauged_u1x_g3_sos_candidate_v20.py \
             gauged_u1x_g3_corrected_common_kernel_v20.py \
@@ -358,6 +372,7 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
+            test_g3_sm_target_track_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
             test_gauged_u1x_g3_corrected_common_kernel_v20.py \
             test_gauged_u1x_g3_stability_v20.py
@@ -750,8 +765,9 @@ jobs:
           assert alternative_sos["flags"]["G3_closed"] is False
 
           assert final_g3["n_failed"] == 0, final_g3["failures"]
-          assert final_g3["overall_state"] == "OPEN"
-          assert final_g3["classification"]["G3_closed"] is False
+          assert final_g3["overall_state"] == "PASS"
+          assert final_g3["classification"]["G3_closed"] is True
+          assert final_g3["closing_track"] == "sm_pati_salam"
           assert final_g3["classification"]["theory_still_viable"] is True
 
           coefficients = candidate["coefficient_vector"]

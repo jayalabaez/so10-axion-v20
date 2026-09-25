@@ -22,17 +22,17 @@ class PublicationRefereeTests(unittest.TestCase):
 
     def test_gate_counts(self):
         totals = self.report["authoritative_totals"]
-        self.assertEqual(totals["closed"], ["G1", "G2", "G5"])
-        self.assertEqual(totals["open"], ["G3"])
-        self.assertEqual(totals["n_closed"], 3)
-        self.assertEqual(totals["n_blocked"], 4)
+        self.assertEqual(totals["closed"], ["G1", "G2", "G3", "G5"])
+        self.assertEqual(totals["open"], ["G4"])
+        self.assertEqual(totals["n_closed"], 4)
+        self.assertEqual(totals["n_blocked"], 3)
         self.assertEqual(
             {name: row["status"] for name, row in self.report["gates"].items()},
             {
                 "G1": "CLOSED",
                 "G2": "CLOSED",
-                "G3": "OPEN",
-                "G4": "BLOCKED",
+                "G3": "CLOSED",
+                "G4": "OPEN",
                 "G5": "CLOSED",
                 "G6": "BLOCKED",
                 "G7": "BLOCKED",

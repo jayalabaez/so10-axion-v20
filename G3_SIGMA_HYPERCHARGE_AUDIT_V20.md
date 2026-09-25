@@ -2,7 +2,7 @@
 
 **Status:** `G3_SIGMA_DIRECTION_IS_Y_MINUS_1_TRIPLET_COMPONENT__NAMED_VACUA_ARE_NOT_SM__G3_OPEN`
 
-The repository's 126bar vev direct.delta_r() = z1^z2^z3^(e67+e89) has B-L=-2, T3R=0, Y=-1: it is not an SM singlet. Together with F or p it leaves SU(3)_c x SU(2)_L x U(1)_T3R, whose centre acts trivially on colour, so the certified G3 point, its H=0 GUT point, the physical_hierarchy_state and the historical 27-parameter p-branch candidate are not Standard-Model vacua (the replacement orbit is not either). The chart's -i space does contain the Y=0 singlet z1^z2^z3^z4^z5 (the conjugate of hsigma.delta_r_form()): with p it leaves exactly the standard SM, with F it leaves SU(5). With F the SM-type choice is the flipped direction z1^z2^z3^zbar4^zbar5. G3 remains open; nothing is excluded.
+The repository's 126bar vev direct.delta_r() = z1^z2^z3^(e67+e89) has B-L=-2, T3R=0, Y=-1: it is not an SM singlet. Together with F or p it leaves SU(3)_c x SU(2)_L x U(1)_T3R, whose centre acts trivially on colour, so the certified chiral-H (SU(5)+Delta) point, its H=0 GUT point, the physical_hierarchy_state and the historical 27-parameter p-branch candidate are not Standard-Model vacua (the replacement orbit is not either). The chart's -i space does contain the Y=0 singlet z1^z2^z3^z4^z5 (the conjugate of hsigma.delta_r_form()): with p it leaves exactly the standard SM, with F it leaves SU(5). With F the SM-type choice is the flipped direction z1^z2^z3^zbar4^zbar5. This audit does not close G3 by itself (final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track); nothing is excluded.
 
 ## Sigma directions (repository convention, exact)
 
@@ -63,4 +63,4 @@ At the certified couplings and norm r=1/5 the SM-type point (F, r flipped) is no
 - `whole_model_validated`: `False`
 - `whole_model_excluded`: `False`
 
-G3: `OPEN`; whole model: neither validated nor excluded.
+This audit does not close G3 by itself (final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track); whole model: neither validated nor excluded.

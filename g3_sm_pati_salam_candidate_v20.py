@@ -90,7 +90,10 @@ separately by g3_sm_pati_salam_exact_hessian_v20, read from its committed
 artifact, fail-closed); electroweak breaking and a realistic
 Yukawa sector are absent (the H-linear portals O15, O38, O45, O28 vanish); the
 two doublet tunings, the sub-M_I coloured scalars, the RG content and the Higgs
-quartic are open.  G3 is not closed and nothing is excluded.
+quartic are open (routed downstream to G4/G6/G7/G8 under decision D5).  This
+report does not close G3 by itself: G3 is decided only by
+final_g3_acceptance_gate_v20 through its sm_pati_salam track
+(g3_sm_target_track_v20), which reads this report.  Nothing is excluded.
 """
 from __future__ import annotations
 
@@ -3186,7 +3189,8 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the "
         f"benchmark (m_h ~ {m_h:.0f} GeV under conditional SM running), too large; the certified family kappa^2 < "
         "8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the "
-        f"slightly negative SM value at M_t = 173.34 GeV. {uniqueness}; G3 is not closed and the model is neither "
+        f"slightly negative SM value at M_t = 173.34 GeV. {uniqueness}; this report does not close G3 by itself "
+        "(final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track) and the model is neither "
         "validated nor excluded."
     )
 

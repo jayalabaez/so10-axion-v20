@@ -61,12 +61,13 @@ class SmPatiSalamEqualitySetTest(unittest.TestCase):
             for name in (
                 "unique_modulo_SO10_x_U1X_alone",
                 "kappa_squared_equal_8_r0_squared_claimed",
-                "candidate_wired_into_g3_gate",
+                "report_closes_g3_by_itself",
                 "g3_closed",
                 "whole_model_validated",
                 "whole_model_excluded",
             ):
                 self.assertFalse(report["flags"][name], name)
+            self.assertNotIn("candidate_wired_into_g3_gate", report["flags"])
 
     def test_theorem_claimed_only_when_no_check_fails(self) -> None:
         for report in (self.committed, self.fresh):

@@ -161,11 +161,26 @@ def build_report() -> dict[str, Any]:
         overall_state = "EXECUTION_FAIL"
         full_model_validated = False
 
+    gates_closed = [
+        gate
+        for gate, row in ledger.get("gates", {}).items()
+        if row.get("status") == gate_ledger.STATUS_CLOSED
+    ]
     verdict = (
-        "The repository remains BLOCKED at full-model scope. The repaired gauged "
-        "U(1)_X contract promotes G1 and G2, but G3-G8 and the unique proton-lifetime "
-        "derivation are not closed. Historical Option-C calculations remain context "
-        "only and cannot validate or exclude the gauged model."
+        "The repository remains BLOCKED at full-model scope. On the attested "
+        "gauged U(1)_X contract the ledger closes "
+        + ", ".join(gates_closed)
+        + (
+            " (G3 on the SM Pati-Salam benchmark family only; see "
+            "FINAL_G3_ACCEPTANCE_GATE_V20)"
+            if "G3" in gates_closed
+            else ""
+        )
+        + ", but "
+        + ", ".join(gates_not_closed)
+        + " and the unique proton-lifetime derivation are not closed. "
+        "Historical Option-C calculations remain context only and cannot "
+        "validate or exclude the gauged model."
         if contract_consistent
         else "The repository remains BLOCKED at full-model scope. The manuscript's "
         "gauged U(1)_X contract is implemented by a statically consistent, "
@@ -212,6 +227,9 @@ def build_report() -> dict[str, Any]:
             "whole_model_validated": full_model_validated,
             "whole_model_excluded": whole_model_excluded,
             "empirical_discovery": full_model_validated and proton_observed,
+            "g3_closing_track": ledger.get("gates", {})
+            .get("G3", {})
+            .get("closing_track"),
         },
         "flag": {
             "authoritative_full_model_gate": True,

@@ -252,10 +252,14 @@ Scope.
     end to end.
   * kappa^2 = 8 r0^2 is outside the stated domain.  The equality set is the
     same there (see the H/S remark), but that case is not claimed.
-  * G3 stays open.  The candidate is not wired into the G3 gate, and its
-    model-level caveats are untouched: tuned doublet-triplet splitting,
-    coloured remnants below M_I, RG-anchor content, the Higgs quartic, and no
-    electroweak breaking or realistic Yukawas.
+  * This report does not close G3 by itself: G3 is decided only by
+    final_g3_acceptance_gate_v20 through its sm_pati_salam track
+    (g3_sm_target_track_v20), which reads this report (flags g3_closed and
+    report_closes_g3_by_itself stay False).  The candidate's model-level
+    caveats are untouched and are routed downstream (G4, G6-G8; decision D5):
+    tuned doublet-triplet splitting, coloured remnants below M_I, RG-anchor
+    content, the Higgs quartic, and no electroweak breaking or realistic
+    Yukawas.
 
 Runtime: about one minute; most of it is the candidate's exact sigma_std
 certificate (lru_cached), the census and the float corroboration.
@@ -2865,7 +2869,9 @@ def build_report(
         "uniqueness_is_modulo_G_including_accidental_U1_PQ": bool(p3["charges"]["without_PQ"]["uniqueness_needs_PQ"]),
         "unique_modulo_SO10_x_U1X_alone": False,
         "kappa_squared_equal_8_r0_squared_claimed": False,
-        "candidate_wired_into_g3_gate": False,
+        # Per-report self-claims (always False): G3 is decided only by final_g3_acceptance_gate_v20 through its
+        # sm_pati_salam track (g3_sm_target_track_v20), which reads this report and requires both to stay False.
+        "report_closes_g3_by_itself": False,
         "g3_closed": False,
         "whole_model_validated": False,
         "whole_model_excluded": False,
@@ -2934,7 +2940,8 @@ def build_report(
                 "(rank 34 < 35), labelled by the phase of Phi17^4 conj(S)^17 (the axion direction)",
                 "kappa^2 = 8 r0^2 (the H/S equality set is unchanged there, but the domain is kappa^2 < 8 r0^2)",
                 "potentials outside the candidate's 27-parameter family",
-                "G3 closure: the candidate is not wired into the G3 gate",
+                "G3 closure by this report alone: G3 is decided only by final_g3_acceptance_gate_v20 through its "
+                "sm_pati_salam track (g3_sm_target_track_v20)",
                 "the candidate's model-level caveats: tuned doublet-triplet splitting and O05 cancellation, sub-M_I coloured remnants, RG-anchor content, Higgs quartic, no electroweak breaking, no realistic Yukawa sector",
             ],
         },
@@ -2962,8 +2969,9 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "Pluecker interior and wedge tensors, invariant-theory identities for the 210, the Sym^2(126bar) channel "
         "structure, equivariance, the omega^2 and Wirtinger-Pfaffian identities, u(5) line stabiliser, charges, "
         "symbolic H/S square completion) with cited classical theorems (" + ", ".join(cited_theorem_short_names())
-        + ") and " + ELEMENTARY_SUMMARY + ".  G3 stays "
-        "open: the candidate is not wired into the gate and its physics caveats are unchanged."
+        + ") and " + ELEMENTARY_SUMMARY + ".  This report does not close G3 by itself "
+        "(final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track); the candidate's physics caveats "
+        "are unchanged and are routed downstream (G4, G6-G8)."
     )
 
 

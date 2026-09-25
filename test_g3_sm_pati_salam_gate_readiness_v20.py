@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 import g3_sm_pati_salam_gate_readiness_v20 as readiness
+import g3_sm_target_track_v20 as sm_track
 
 CI_REGENERATED_INPUTS = ("final_gate", "ledger")  # rewritten by current-main-full-reaudit.yml before the tests
 QUOTIENT = "full_448_quotient_strictly_positive_exact"
@@ -41,9 +42,25 @@ EXPECTED_EXACT = {
     "G1_promoted_closed",
     "G2_promoted_closed",
 }
-ALLOWED_IMPORTS = {"__future__", "argparse", "hashlib", "json", "re", "fractions", "pathlib", "typing"}
+ALLOWED_IMPORTS = {"__future__", "argparse", "hashlib", "json", "re", "fractions", "pathlib", "typing",
+                   "g3_sm_target_track_v20"}
 EPS_BOOLEAN = "would_close_G3_mathematically_on_eps_member_if_SM_track_added"
 S9 = "required_statement == theorem (wiring; S9)"
+ADOPTED = "ADOPTED_UNDER_D5__CURRENT_REPO_DEFINITION"
+ALL_PREREQUISITES = {name: True for name in sm_track.PREREQUISITE_KEYS}
+# Readiness caveat ids -> g3_sm_target_track_v20 downstream-caveat ids (the adopted D5 routing must agree).
+TRACK_CAVEAT_IDS = {
+    "coloured_126bar_remnants_below_M_I": "sub_M_I_coloured_126bar_states",
+    "no_electroweak_symmetry_breaking": "positivity_without_EWSB",
+    "phi17_not_at_canonical_scale": "phi17_benchmark_scale",
+    "rg_anchor_field_content_not_reproduced": "rg_anchor_field_content",
+    "higgs_quartic_too_large_at_benchmark": "higgs_quartic_matching",
+    "tan_beta_one_light_doublet": "tan_beta_one_light_doublet",
+    "no_realistic_yukawa_sector": "realistic_yukawa_sector",
+    "proton_decay_mediators_below_M_I": "proton_decay_mediators",
+    "symmetry_ranks_differ_from_G4_spec": "zero_modes_and_ranks_at_witness",
+    "doublet_triplet_splitting_tuned": "naturalness_of_tunings",
+}
 
 
 def _by_name(report: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -52,6 +69,11 @@ def _by_name(report: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 def _eps_by_name(report: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {c["final_gate_criterion"]: c for c in report["eps_member"]["criteria"]["science"] + report["criteria"]["release"]}
+
+
+def _chiral_gate(final_gate: dict[str, Any]) -> dict[str, Any]:
+    """The final gate's chiral-H criteria (the diagnostic track after integration); same object, not a copy."""
+    return readiness._final_gate_criteria_view(final_gate)
 
 
 def _sha(path: Path) -> str | None:
@@ -132,13 +154,36 @@ class GateReadinessTest(unittest.TestCase):
             self.assertTrue(all(report["integrity_checks"].values()))
             self.assertEqual(report["missing_artifacts"], [])
             baseline = report["baseline_state"]
-            self.assertEqual(baseline["final_gate_overall_state"], "OPEN")
-            self.assertIs(baseline["final_gate_G3_closed"], False)
-            self.assertEqual(baseline["ledger_gate_statuses"]["G3"], "OPEN")
+            self.assertEqual(baseline["final_gate_overall_state"], "PASS")
+            self.assertIs(baseline["final_gate_G3_closed"], True)
+            self.assertEqual(baseline["final_gate_closing_track"], "sm_pati_salam")
+            self.assertEqual(baseline["ledger_gate_statuses"]["G3"], "CLOSED")
             self.assertEqual(baseline["this_module_writes_only"], [readiness.OUT_JSON.name, readiness.OUT_MD.name])
+            self.assertTrue(report["verdict"].startswith(
+                "DRY RUN ONLY -- this is not a G3 closure. This module changes no gate status, gate report, ledger "
+                "entry, workflow or checksum; it is the pre-integration map of the final gate's chiral-H criteria "
+                "onto the SM Pati-Salam target. G3 is decided only by final_g3_acceptance_gate_v20 through its "
+                "sm_pati_salam track (g3_sm_target_track_v20): the final G3 gate is currently PASS and the ledger's "
+                "G3 is CLOSED."
+            ))
+
+    def test_criteria_view_reads_the_chiral_track_or_falls_back(self) -> None:
+        gate = self.reports["final_gate"]
+        self.assertIs(_chiral_gate(gate), gate["tracks"]["chiral_H_SU5_Delta"])
+        self.assertIs(gate["tracks"]["chiral_H_SU5_Delta"]["can_close_G3"], False)
+        self.assertEqual(_chiral_gate(gate)["decisive_theorem"], readiness.FINAL_THEOREM)
+        # The top-level criteria are the SM track's, not the chiral-H criteria this dry run maps.
+        self.assertEqual(gate["decisive_theorem"], sm_track.SM_FINAL_THEOREM)
+        self.assertNotEqual(set(gate["science_criteria"]), set(readiness.SCIENCE_SPECS))
+        # A pre-integration report (criteria at top level) and malformed tracks fall back to the report itself.
+        flat = {"science_criteria": {"x": True}}
+        self.assertIs(readiness._final_gate_criteria_view(flat), flat)
+        malformed = {"tracks": {"chiral_H_SU5_Delta": ["not", "a", "mapping"]}}
+        self.assertIs(readiness._final_gate_criteria_view(malformed), malformed)
+        self.assertEqual(readiness._final_gate_criteria_view(None), {})
 
     def test_every_final_gate_criterion_is_classified(self) -> None:
-        gate = self.reports["final_gate"]
+        gate = _chiral_gate(self.reports["final_gate"])
         names = set(gate["science_criteria"]) | set(gate["release_criteria"])
         records = _by_name(self.fresh)
         self.assertEqual(set(records), names)
@@ -223,10 +268,12 @@ class GateReadinessTest(unittest.TestCase):
         self.assertIs(flags["on_O06_raised_member"], True)
         self.assertIs(flags[EPS_BOOLEAN], True)
         self.assertIs(self.fresh[EPS_BOOLEAN], True)
-        # D2: taking an eps > 0 member as the G3 witness is itself a pending decision (as S11 is for the tuned point).
+        # D2: taking an eps > 0 member as the G3 witness is the adopted decision (the booleans still name it).
         self.assertEqual(flags[EPS_BOOLEAN + "_decisions_presumed"], ["D2", "D6"])
         self.assertEqual(flags[EPS_BOOLEAN + "_wiring_conjuncts_not_evaluated"], [S9])
-        self.assertIn("second option of D2", flags[EPS_BOOLEAN + "_note"])
+        self.assertIn("second option of D2, which was adopted", flags[EPS_BOOLEAN + "_note"])
+        self.assertIn("must agree with g3_sm_target_track_v20's closed verdict", flags[EPS_BOOLEAN + "_note"])
+        self.assertIn("S11 was not adopted", flags["with_planner_S11_replacement_criterion_note"])
         self.assertIn("electroweak symmetry is not broken", flags[EPS_BOOLEAN + "_note"])
         alternatives = _by_name(self.fresh)[QUOTIENT]["alternative_analogues"]
         s12 = alternatives["S12_O06_raised_member_rank_451_nullity_35_exact"]
@@ -243,7 +290,7 @@ class GateReadinessTest(unittest.TestCase):
             eps = report["eps_member"]
             self.assertEqual(eps["member"], "SM track witness family: O06 = 2|kappa| r0 + eps, eps > 0")
             records = _eps_by_name(report)
-            gate = self.reports["final_gate"]
+            gate = _chiral_gate(self.reports["final_gate"])
             self.assertEqual(set(records), set(gate["science_criteria"]) | set(gate["release_criteria"]))
             for name, record in records.items():
                 self.assertTrue(record["evidence_exact"], name)
@@ -298,7 +345,7 @@ class GateReadinessTest(unittest.TestCase):
             self.assertIn("inside the perturbative window 0 < eps < 599/50 (O06_eps = 2|kappa| r0 + eps < 12 < 4 pi; "
                           "couplings_perturbative is certified only there, while L1 and L2 hold for every eps > 0)",
                           verdict)
-            self.assertIn("This module changed no gate status, gate report, ledger entry, workflow or checksum", verdict)
+            self.assertIn("This module changes no gate status, gate report, ledger entry, workflow or checksum", verdict)
             # The tuned-doublet kernel is a G3 item (D2), consistent with caveat_gate_assignment.
             self.assertIn("the tuned-doublet Hessian kernel (resolved by D2", verdict)
             self.assertNotIn("and the tuned-doublet kernel, the coloured remnants", verdict)
@@ -307,7 +354,8 @@ class GateReadinessTest(unittest.TestCase):
                 self.assertNotIn("not yet in CI workflows", row["detail"], row["item"])
             self.assertIn("The tuned eps = 0 limit is not a strict minimum", verdict)
             self.assertIn("light for eps << r0^2, but electroweak symmetry is not broken", verdict)
-            self.assertIn("Under the planner's proposed routing (decision D5, pending", verdict)
+            self.assertIn("Under the adopted caveat routing (decision D5, adopted", verdict)
+            self.assertNotIn("pending", verdict)
             self.assertTrue(any(row["item"].startswith("eps-family extension") and row["state"] == "DONE"
                                 for row in report["integration_gaps"]))
             self.assertIs(report["integrity_checks"]["sm_exact_hessian_eps_family_executes"], True)
@@ -329,6 +377,11 @@ class GateReadinessTest(unittest.TestCase):
         self.assertIs(theorem["sm_final_theorem_is_final_theorem_with_V_beta_replaced_by_V_PS"], True)
         self.assertIs(theorem["exact_textual_agreement"], False)
         self.assertIs(theorem["equality_module_emits_required_statement"], False)
+        # The SM-track statement for the eps witness is emitted by the certifying exact Hessian report (S9).
+        self.assertEqual(theorem["sm_eps_final_theorem"], sm_track.SM_FINAL_THEOREM)
+        self.assertIs(theorem["sm_eps_final_theorem_equals_track_theorem"], True)
+        self.assertIs(theorem["exact_hessian_emits_sm_eps_required_statement"], True)
+        self.assertIs(theorem["final_gate_top_level_decisive_theorem_is_sm_eps_theorem"], True)
         self.assertIs(theorem["semantic_agreement"], True)
         self.assertTrue(all(theorem["semantic_components"].values()))
         self.assertEqual(theorem["gate_symmetry_group_normalised"], "SO(10)xU(1)_XxPQ")
@@ -360,26 +413,52 @@ class GateReadinessTest(unittest.TestCase):
             "phi17_not_at_canonical_scale": "G6",
             "G5_certified_on_a_different_coupling_vector": "G5",
             "symmetry_ranks_differ_from_G4_spec": "G4",
+            "tan_beta_one_light_doublet": "G8",
         }
         for cid, gate in downstream.items():
             self.assertEqual(caveats[cid]["assigned_gate"], gate, cid)
 
-    def test_caveat_routing_is_marked_as_the_pending_proposal_D5(self) -> None:
-        status = "PROPOSED_UNDER_D5__NOT_CURRENT_REPO_DEFINITION"
+    def test_caveat_routing_agrees_with_the_sm_track(self) -> None:
+        # Independent cross-check: the readiness routing and g3_sm_target_track_v20's D5 routing must agree.
+        track = sm_track.evaluate_sm_track(sm_track.load_inputs(), prerequisites=ALL_PREREQUISITES)
+        track_caveats = {row["id"]: row for row in track["downstream_caveats"]}
+        caveats = {row["id"]: row for row in self.fresh["physics_caveats"]}
+        self.assertEqual(set(TRACK_CAVEAT_IDS.values()), set(track_caveats))
+        for cid, track_id in TRACK_CAVEAT_IDS.items():
+            self.assertEqual(caveats[cid]["assigned_gate"], track_caveats[track_id]["gate"], cid)
+            self.assertEqual(caveats[cid]["also_affects"], track_caveats[track_id]["also_affects"], cid)
+        # Every model-level caveat leaves G3; the G3-assigned rows are disclosures (or the D2-resolved kernel).
+        for row in self.fresh["physics_caveats"]:
+            if row["model_level_caveat"]:
+                self.assertNotEqual(row["assigned_gate"], "G3", row["id"])
+
+    def test_caveat_routing_is_marked_as_the_adopted_D5(self) -> None:
         for report in (self.committed, self.fresh):
-            self.assertEqual(report["caveat_routing_status"], status)
-            self.assertEqual(report["caveat_gate_assignment_status"], status)
-            self.assertEqual(report["wave3_clause_reading"]["status"], status)
-            self.assertIn("Under the planner's proposed routing (decision D5, pending", report["verdict"])
-            self.assertIn("otherwise these caveats remain G3-wave requirements", report["verdict"])
+            self.assertEqual(report["caveat_routing_status"], ADOPTED)
+            self.assertEqual(report["caveat_gate_assignment_status"], ADOPTED)
+            self.assertEqual(report["wave3_clause_reading"]["status"], ADOPTED)
+            self.assertIn("Under the adopted caveat routing (decision D5, adopted", report["verdict"])
+            self.assertNotIn("otherwise these caveats remain G3-wave requirements", report["verdict"])
             self.assertNotIn("routed by the gates' definitions", report["verdict"])
+            self.assertIn(sm_track.CAVEAT_ROUTING_SENTENCE, report["wave3_clause_reading"]["clause"])
+            self.assertTrue(report["wave3_clause_reading"]["current_repo_reading"].startswith("decision D5 (adopted)"))
             for row in report["physics_caveats"]:
-                self.assertEqual(row["assignment_status"], status, row["id"])
+                self.assertEqual(row["assignment_status"], ADOPTED, row["id"])
                 if row["model_level_caveat"]:
-                    self.assertTrue(row["under_current_repo_text"].startswith("G3-wave requirement"), row["id"])
-        # The wave-3 clause quoted is the ledger's current text.
+                    self.assertTrue(
+                        row["under_current_repo_text"].startswith(
+                            f"routed out of G3 by decision D5 (adopted) to {row['assigned_gate']}:"
+                        ),
+                        row["id"],
+                    )
+        self.assertEqual(readiness.CAVEAT_ROUTING_STATUS, ADOPTED)
+        self.assertEqual(readiness.WAVE3_CLAUSE, sm_track.CAVEAT_ROUTING_SENTENCE)
+        # The wave-3 clause is the ledger's current text and the roadmap's W3-G3 deliverable.
         ledger_wave3 = self.reports["ledger"]["closure_waves"][3]["deliverable"]
         self.assertIn(readiness.WAVE3_CLAUSE, ledger_wave3)
+        roadmap = json.loads((readiness.ROOT / "G1_G8_EXECUTION_ROADMAP_V20.json").read_text(encoding="utf-8"))
+        w3_g3 = next(task for task in roadmap["tasks"] if task["id"] == "W3-G3-FULL-STATIONARITY")
+        self.assertIn(readiness.WAVE3_CLAUSE, w3_g3["deliverable"])
         self.assertIn("sm_model_level_caveats_disclosed", self.fresh["integrity_checks"])
         self.assertNotIn("sm_model_level_caveats_disclosed_not_required", self.fresh["integrity_checks"])
 
@@ -389,29 +468,105 @@ class GateReadinessTest(unittest.TestCase):
         self.assertTrue(caveats["no_realistic_yukawa_sector"]["basis"].startswith("roadmap W6-G8 acceptance"))
         self.assertIn("full_448_quotient_strictly_positive_exact (exact_PSD, strict_quotient_positive",
                       caveats["tuned_light_doublet_hessian_zero_modes"]["basis"])
-        self.assertTrue(caveats["benchmark_family_only"]["basis"].startswith("proposed closure-scope wording"))
-        self.assertIn("not in repo", caveats["doublet_triplet_splitting_tuned"]["effect_on_G3"])
+        basis = caveats["benchmark_family_only"]["basis"]
+        prefix = "closure scope (g3_sm_target_track_v20.CLOSURE_SCOPE, adopted): '"
+        self.assertTrue(basis.startswith(prefix) and basis.endswith("'"))
+        self.assertIn(basis[len(prefix):-1], sm_track.CLOSURE_SCOPE)
+        self.assertIn("'tuned DT/M_I relations'", caveats["doublet_triplet_splitting_tuned"]["effect_on_G3"])
+        self.assertIn("tuned DT/M_I relations", sm_track.CLOSURE_SCOPE)
+        # The G4 spec quoted is the ledger's current G4 text.
+        g4_quote = caveats["symmetry_ranks_differ_from_G4_spec"]["basis"].split("'")[1]
+        self.assertTrue(any(g4_quote in item for item in self.reports["ledger"]["gates"]["G4"]["open_scope"]))
+        self.assertIn("the axion/PQ direction", " ".join(self.reports["ledger"]["gates"]["G4"]["open_scope"]))
         text = json.dumps(self.fresh)
         for fabricated in ("final gate: 'exact full Hessian rank/nullity certificate'", "closure scope: 'exact SM",
-                           "ledger G6: 'all eigenmasses", "ledger G8: 'one authoritative vacuum"):
+                           "ledger G6: 'all eigenmasses", "ledger G8: 'one authoritative vacuum", "not in repo",
+                           "decision D5, pending", "pending decision D6", "which is pending"):
             self.assertNotIn(fabricated, text)
 
-    def test_g5_coupling_vector_mismatch_is_detected(self) -> None:
+    def test_g5_coupling_vector_rebind_is_resolved(self) -> None:
         g5 = self.fresh["proposed_additional_criteria"]["G5_BFB_evidence_covers_closing_coupling_vector"]
-        self.assertIs(g5["value"], False)
+        self.assertIs(g5["value"], True)
+        comparison = g5["comparison"]
+        self.assertIs(comparison["evaluated"], True)
+        self.assertIs(comparison["binding_certified"], True)
+        self.assertIs(comparison["binding_covers_eps_witness_family"], True)
+        self.assertIs(comparison["binding_coefficients_equal_PS_vector"], True)
+        self.assertIs(comparison["covers_closing_coupling_vector"], True)
+        self.assertEqual(comparison["binding_source"], "g3_sm_pati_salam_candidate_v20")
+        # The historical SOS vector still differs from the PS vector; it no longer carries G5 (decision D4).
+        historical = comparison["historical_vector_comparison"]
+        self.assertIs(historical["covers_closing_coupling_vector"], False)
         self.assertEqual(
-            set(g5["comparison"]["constant_entries_that_differ"]),
+            set(historical["constant_entries_that_differ"]),
             {"lambda::O27_B03_126bar_self_projectors", "lambda::O27_B04_126bar_self_projectors"},
         )
+        gap = next(row for row in self.fresh["integration_gaps"] if row["item"].startswith("G5 rebind"))
+        self.assertEqual(gap["state"], "DONE")
+
+    def test_g5_binding_mismatch_is_detected(self) -> None:
+        def mutate(value: dict[str, Any]) -> None:
+            g5 = dict(value["gates"]["G5"])
+            binding = copy.deepcopy(g5["bfb_coupling_vector"])
+            binding["coefficients"]["lambda::O06_B01_Hdag_H_norm"] = "1/25"
+            g5["bfb_coupling_vector"] = binding
+            value["gates"] = {**value["gates"], "G5": g5}
+
+        report = self._build("ledger", mutate=mutate)
+        g5 = report["proposed_additional_criteria"]["G5_BFB_evidence_covers_closing_coupling_vector"]
+        self.assertIs(g5["value"], False)
+        self.assertIs(g5["comparison"]["binding_coefficients_equal_PS_vector"], False)
+        gap = next(row for row in report["integration_gaps"] if row["item"].startswith("G5 rebind"))
+        self.assertEqual(gap["state"], "OPEN")
+        # Not part of the readiness booleans (proposed additional criteria are recorded only).
+        self.assertEqual(report["readiness_booleans"], self.fresh["readiness_booleans"])
+
+    def test_integration_gaps_record_the_adopted_decisions(self) -> None:
+        gaps = {row["item"]: row for row in self.fresh["integration_gaps"]}
+        for key in ("D2", "D5", "D6"):
+            row = next(row for item, row in gaps.items() if item.startswith(f"decision {key} "))
+            self.assertEqual(row["state"], "DECIDED", key)
+            self.assertEqual(row["detail"], sm_track.DECISIONS[key], key)
+        self.assertEqual(next(row for item, row in gaps.items() if "(S9)" in item)["state"], "DONE")
+        self.assertEqual(next(row for item, row in gaps.items() if item.startswith("self-claim flag"))["state"], "DONE")
+        self.assertEqual(next(row for item, row in gaps.items() if item.startswith("pure SM-track module"))["state"],
+                         "DONE")
+        self.assertNotIn("OPEN", [row["state"] for row in self.fresh["integration_gaps"]])
+        for row in self.fresh["integration_gaps"]:
+            self.assertNotIn("not yet in validate_release_v20 core lists or SHA256SUMS", row["detail"], row["item"])
 
     def test_planner_analysis_summarised(self) -> None:
         analysis = self.fresh["planner_option_analysis"]
         self.assertEqual(analysis["recommendation"], "i_prime_hybrid")
         self.assertEqual(set(analysis["decisions_needed"]), {"D1", "D2", "D3", "D4", "D5", "D6"})
+        self.assertEqual(analysis["decisions_adopted"], sm_track.DECISIONS)
+        self.assertEqual(analysis["decisions_adopted"]["D5"], sm_track.CAVEAT_ROUTING_SENTENCE)
         self.assertEqual(
             set(analysis["options"]),
             {"i_either_track_closes", "ii_retarget_entirely", "iii_separate_SM_gate", "i_prime_hybrid"},
         )
+
+    def test_eps_member_boolean_agrees_with_the_sm_track(self) -> None:
+        self.assertEqual(readiness.SM_EPS_FINAL_THEOREM, sm_track.SM_FINAL_THEOREM)
+        track = sm_track.evaluate_sm_track(sm_track.load_inputs(), prerequisites=ALL_PREREQUISITES)
+        self.assertIs(self.fresh[EPS_BOOLEAN], True)
+        self.assertIs(self.fresh[EPS_BOOLEAN] is True, track["closed"])
+        self.assertIs(self.committed[EPS_BOOLEAN] is True, track["closed"])
+        # Forged SM inputs: both evaluations fail closed together.
+        forgeries: dict[str, Callable[[dict[str, Any]], None]] = {
+            "exact_hessian": lambda v: v["eps_family"]["checks"].__setitem__(
+                "L2_dim_ker_H0_cap_ker_hess_N_H_equals_35", False),
+            "equality_set": lambda v: v["scope"]["cited_not_machine_checked"].append("an extra classical theorem"),
+            "candidate": lambda v: v.__setitem__("n_failed", False),
+        }
+        for key, mutate in forgeries.items():
+            forged = copy.deepcopy(self.reports[key])
+            mutate(forged)
+            report = self._build(key, replace=forged)
+            inputs = {**sm_track.load_inputs(), key: forged}
+            closed = sm_track.evaluate_sm_track(inputs, prerequisites=ALL_PREREQUISITES)["closed"]
+            self.assertIs(closed, False, key)
+            self.assertIs(report[EPS_BOOLEAN], False, key)
 
     # ------------------------------------------------------------------
     # Fail-closed behaviour.
@@ -627,7 +782,7 @@ class GateReadinessTest(unittest.TestCase):
 
     def test_unknown_final_gate_criterion_fails_closed(self) -> None:
         def mutate(value: dict[str, Any]) -> None:
-            value["science_criteria"]["new_unmapped_criterion"] = True
+            _chiral_gate(value)["science_criteria"]["new_unmapped_criterion"] = True
 
         report = self._build("final_gate", mutate=mutate)
         record = _by_name(report)["new_unmapped_criterion"]
@@ -638,11 +793,34 @@ class GateReadinessTest(unittest.TestCase):
 
     def test_drifted_final_theorem_fails_closed(self) -> None:
         def mutate(value: dict[str, Any]) -> None:
-            value["decisive_theorem"] = value["decisive_theorem"].replace("exactly", "only")
+            chiral = _chiral_gate(value)
+            chiral["decisive_theorem"] = chiral["decisive_theorem"].replace("exactly", "only")
 
         report = self._build("final_gate", mutate=mutate)
         self.assertIs(report["integrity_checks"]["final_gate_report_executes"], False)
         self.assertFailClosed(report)
+
+    def test_final_gate_top_level_failure_fails_closed(self) -> None:
+        # Status, n_failed, failures and the contract id are read from the top level of the gate report.
+        def mutate(value: dict[str, Any]) -> None:
+            value["n_failed"] = 1
+            value["failures"] = ["sm_candidate_report_executes"]
+
+        report = self._build("final_gate", mutate=mutate)
+        self.assertIs(report["integrity_checks"]["final_gate_report_executes"], False)
+        self.assertFailClosed(report)
+
+    def test_pre_integration_flat_final_gate_is_still_read(self) -> None:
+        # A gate report with the chiral-H criteria at top level (the pre-integration layout) is mapped the same way.
+        gate = self.reports["final_gate"]
+        chiral = gate["tracks"]["chiral_H_SU5_Delta"]
+        flat = {key: value for key, value in gate.items() if key != "tracks"}
+        flat.update(science_criteria=chiral["science_criteria"], release_criteria=chiral["release_criteria"],
+                    decisive_theorem=chiral["decisive_theorem"])
+        report = self._build("final_gate", replace=flat)
+        self.assertEqual(report["n_failed"], 0, report["failures"])
+        self.assertEqual(report["criterion_table"], self.fresh["criterion_table"])
+        self.assertEqual(report["readiness_booleans"], self.fresh["readiness_booleans"])
 
     def test_new_cited_theorem_fails_closed(self) -> None:
         def mutate(value: dict[str, Any]) -> None:

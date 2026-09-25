@@ -52,8 +52,8 @@ the model.
   leaving a 449-dimensional gauge quotient that includes the physical axion.
   Adding the independent global-PQ orbit gives rank 38 and the
   448-dimensional massive/transverse space used for Hessian positivity
-  (computed at the declared `p+delta_r` reference point; the counts coincide
-  with an SM vacuum but must be recomputed at one)
+  (computed at the declared `p+delta_r` reference point; at the Pati-Salam G3
+  witness the ranks are 34 and 35, quotients 452 and 451, a G4 item)
 - A constructive exact-`X` G3 vector uses 27 of 51 real parameters, has
   `max|c|=73/8 < 4pi`, and has `J0=-21/200`. It therefore lies outside the
   former `J0=+1` search slice and proves that normalization was not without
@@ -71,7 +71,7 @@ the model.
 - The final exact global-gap test nevertheless rejects that selected orbit as
   the global vacuum. A second 126bar field configuration has projector
   fractions `(0,0,1/2,1/2)`, annihilates both mixed squares, and is lower by
-  exactly `25*r^4/19008 > 0`. The 27-parameter candidate cannot close G3;
+  exactly `25*r^4/19008 > 0`. This 27-of-51 SOS candidate cannot close G3;
   moreover, on the fixed-`P` branch with `Sigma` along `delta_r` the exact relation
   `gap=-m_transverse^2/8` excludes every attempted weight swap. The lower
   stationary replacement has gauge-orbit rank 40 rather than the required 37
@@ -146,8 +146,9 @@ the model.
   `512` nonzeros, and SHA-256
   `14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf`.
   All `6585` rational equalities hold, and an exact strict primal has `22`
-  positive blocks and `824` positive LDL pivots. Global Sigma, general/full
-  `H`, G3, and whole-model conclusions remain open
+  positive blocks and `824` positive LDL pivots. Global Sigma and general/full
+  `H` remain open for this non-SM point; G3 closes only on the SM Pati-Salam
+  track (below), and whole-model conclusions remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
 
@@ -166,9 +167,11 @@ the exact model, driver, and input manifest. The driver replaces six SARAH
 4.15.3 defects for SO(N) models with exact routines built on SARAH's own
 Susyno engine, re-checks every registered term independently, and fails on
 negative controls (a non-invariant `210.10^dag.10` term, a broken anomaly).
-The model contract is therefore CONSISTENT and the ledger promotes G1, G2, and
-G5 to CLOSED. G3 is OPEN and G4 and G6-G8 remain dependency-blocked; the whole
-model is neither validated nor excluded.
+The model contract is therefore CONSISTENT and the ledger promotes G1, G2 and
+G5 (on the Pati-Salam coupling vector) to CLOSED. G3 is CLOSED on the SM
+Pati-Salam benchmark family only (scope below); G4 is OPEN and G6-G8 remain
+dependency-blocked; no internal candidate is approved and the whole model is
+neither validated nor excluded.
 
 To reproduce the attestation (the runner writes it only after a real,
 zero-exit SARAH process emits every PASS marker):
@@ -201,7 +204,7 @@ projectors; it uses `I3 = 8 Tr(A_Phi^3)`, so the manuscript's `Tr(A_Phi^3)` is
   against `6/sqrt 10` at `F`.
 This is evidence, not a proof.
 
-**The certified G3 point is not a Standard-Model vacuum**
+**The certified chiral-H (SU(5)+Delta) point is not a Standard-Model vacuum**
 (`g3_sigma_hypercharge_audit_v20.py`, exact integer arithmetic;
 `g3_candidate_physical_target_audit_v20.py`). The repository's `Delta_R`
 (`direct_phi_h_sigmabar_tensor_v20.delta_r()` = `z1^z2^z3^(e67+e89)`) is the
@@ -213,10 +216,12 @@ breaks at `r M_GUT`. The certified point, its `H = 0` GUT point,
 therefore not SM vacua; the certified `10_H` vev also breaks `SU(2)_L` at the
 GUT scale (`|<H>|/|<Phi>| = 1`). The mathematical certificates (stationarity,
 BFB, the 448/38 Hessian, the gaps) remain valid statements about that point;
-its SM interpretation does not, and `final_g3_acceptance_gate_v20` now blocks on
-`target_unbroken_algebra_is_standard_model`. An SM-preserving G3 target needs
-the `Y = 0` singlet: with `p` it leaves the standard SM, with `F` it leaves
-SU(5), so an `F` branch needs the flipped direction `z1^z2^z3^zbar4^zbar5`.
+its SM interpretation does not; in `final_g3_acceptance_gate_v20` it is the
+integrity-checked diagnostic track `chiral_H_SU5_Delta`, which fails
+`target_unbroken_algebra_is_standard_model` and can never close G3. An
+SM-preserving G3 target needs the `Y = 0` singlet: with `p` it leaves the
+standard SM, with `F` it leaves SU(5), so an `F` branch needs the flipped
+direction `z1^z2^z3^zbar4^zbar5`.
 
 **An SM-preserving candidate now exists on the Pati-Salam branch**
 (`g3_sm_pati_salam_candidate_v20.py`). The vacuum is
@@ -261,7 +266,7 @@ the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
   below by `|q|^4/167`, which the exact identity proves; 512 random and 6
   minimized unit directions respect it.
 
-**Exact Hessian and G3 readiness (dry run).**
+**G3 closure on the SM Pati-Salam track.**
 - The complete 486-field Hessian at `r0 = 1/5` is exact over Q
   (`g3_sm_pati_salam_exact_hessian_v20.py`). At the tuned massless-doublet
   point it is PSD with inertia 447/39/0: the kernel is the 35 symmetry-orbit
@@ -277,37 +282,61 @@ the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
   (`H = 0`), so the whole family has the same global minimum, equality set,
   symmetry group and quartic part. The doublet is massive, not tachyonic:
   EWSB is still not realised.
-- The dry-run readiness audit (`g3_sm_pati_salam_gate_readiness_v20.py`) maps
-  every final-gate criterion to this SM target; 7 of the 20 are proof routes
-  specific to the chiral-H candidate. At the tuned point 11 of the other 13
-  hold exactly (2 of them only if the cited classical theorems and the 6
-  hand-argued elementary steps are accepted, decision D6) and the two Hessian
-  criteria fail (the 4 doublet zero modes). For `0 < eps < 599/50` (the
-  perturbative window, `O06 < 12 < 4 pi`) every non-route-specific criterion
-  is met exactly; the two Hessian criteria and the equality-set and
-  global-gap criteria hold for every `eps > 0`. This is subject to choosing an
-  `eps > 0` member as the G3 witness (D2), to accepting the cited classical
-  theorems and hand-argued steps as G3-grade inputs (D6), and to wiring the
-  gate's required statement. No gate status is changed and G3 stays OPEN.
-  Closing it needs an implemented and wired SM track plus the decisions
-  below. Under the current ledger/roadmap wave-3 text, the model-level
-  caveats also remain G3 requirements unless decision D5 routes them
-  elsewhere.
+- `final_g3_acceptance_gate_v20` has two tracks. The SM Pati-Salam track
+  (`g3_sm_target_track_v20`: 10 artifact-integrity checks and 13 exact science
+  criteria over the candidate, equality-set, exact-Hessian and hypercharge
+  reports, plus release criteria that bind the ledger's G3 and G5) is the only
+  closure route. The SU(5)+Delta chiral-H track (`chiral_H_SU5_Delta`) is an
+  integrity-checked diagnostic that can never close G3. The gate PASSES on the
+  SM track and the ledger closes G3, with exactly this scope:
 
-Pending decisions:
-- Track structure: an SM track beside the chiral-H route, a retargeted gate, or
-  a separate SM gate (D1).
-- G3 witness: an `eps > 0` member or the tuned point (which needs a replacement
-  Hessian criterion) (D2).
-- Internal-candidate semantics: what G1-G3 CLOSED approves (D3).
-- Rebinding G5, CLOSED on the historical 27-parameter vector, to this coupling
-  vector (D4).
-- Routing the model-level caveats (sub-`M_I` coloured states, RG-anchor
-  content, the benchmark Higgs quartic, no EWSB/Yukawa) to G4/G6/G7/G8, and
-  the tuned DT-splitting/`M_I` naturalness outside G1-G8, or keeping them in
-  G3 (D5).
-- Accepting the cited classical theorems and the hand-argued elementary steps
-  as G3-grade inputs (D6).
+  > G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.
+
+- The witness is the light-but-massive doublet member
+  `V_PS,eps = V_PS + eps N_H` (`O06 = 2|kappa| r0 + eps`, `0 < eps < 599/50`)
+  at `r0 = 1/5`, `x0 = 1`, `kappa = -r0/4`. Its exact Hessian at
+  `q0 = (p, 0, r0 sigma_std, r0, x0)` (order `Phi, H, Sigma, S, Phi17`) is PSD
+  with rank 451, nullity 35 and kernel exactly the symmetry-orbit tangent
+  space. The tuned `eps = 0` point (447/39) is not the witness. The decisive
+  theorem, emitted by the exact-Hessian report and matched string for string
+  by the gate, is
+  `For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ orbit of q0.`
+- Proof inputs: the six cited classical theorems and six hand-argued
+  elementary steps listed above are accepted as G3-grade inputs and
+  disclosed. The track pins both lists with an exact allowlist, so any added,
+  removed or reworded input fails the track and reopens G3.
+- G5 is rebound to this coupling vector: the candidate's exact BFB
+  certificate `V4 >= |q|^4/167` on the Pati-Salam 27-parameter vector. The
+  `eps N_H` term is quadratic, so the quartic part and the certificate cover
+  the whole witness family. The historical 27-parameter SOS vector keeps its
+  certificate but no longer carries G5.
+- Caveat routing: G3 keeps only disclosures. Sub-`M_I` coloured states and
+  positivity (no EWSB) go to G6; the RG-anchor content and the Higgs quartic
+  go to G7; Yukawas and proton-decay mediators go to G8; the zero-mode
+  classification and the recomputed ranks (34 gauge -> quotient 452,
+  35 -> 451) go to G4; the naturalness of the tunings (DT splitting, `O05`,
+  `M_I`) lies outside G1-G8.
+- Internal candidate: even with G1-G3 CLOSED, the internal-candidate tier
+  stays WITHHELD until the closing track's downstream caveats are resolved or
+  G4 closes.
+- The dry-run readiness audit (`g3_sm_pati_salam_gate_readiness_v20.py`) is
+  kept as an independent cross-check. It maps the chiral-H track's 20
+  criteria onto this target (7 are specific to the chiral-H proof route) and
+  finds all 13 others met exactly on the `eps > 0` member
+  (`0 < eps < 599/50`, `O06 < 12 < 4 pi`); its verdict must agree with the
+  track's.
+
+Decisions adopted (D1-D6):
+- D1: the SM Pati-Salam track is the only route to closing G3; the chiral-H
+  track stays an integrity-checked diagnostic.
+- D2: the G3 witness is the `eps > 0` member, not the tuned `eps = 0` point.
+- D3: an internal candidate also needs the downstream caveats resolved, or G4
+  CLOSED.
+- D4: G5 is bound to the Pati-Salam coupling vector.
+- D5: model-level caveats are routed to G4/G6/G7/G8; naturalness lies outside
+  G1-G8.
+- D6: the cited classical theorems and hand-argued steps are accepted as
+  G3-grade inputs, pinned by an allowlist and disclosed.
 
 Open items for this candidate:
 - The doublet-triplet splitting and the intermediate scale are tuned coupling
@@ -321,7 +350,8 @@ Open items for this candidate:
 - 126bar colour triplets and sextets lie below `M_I`.
 - The spectrum is not the 2HDM + (15,2,2) content assumed by the RG anchor.
 - Yukawas, electroweak breaking and radiative stability are not addressed.
-- The candidate is not yet wired into the G3 gate.
+- These items are routed to G4/G6/G7/G8 or lie outside G1-G8; none is a G3
+  condition.
 
 At the `r = 1/5` tuned point of the certified non-SM `(F, r Delta_R, H = 0)`
 branch (`O06` retuned from -2 to 0; not the Pati-Salam candidate above) the
@@ -357,7 +387,8 @@ all 486 real fields, but this does not repair the scaffold or close the full mod
 The existing stationary point, historical 449-dimensional quotient,
 46-negative-mode saddle, and 80-iteration stability search all belong to the
 historical no-`X`
-theory. For the manuscript theory, exact integer tangents certify the combined
+theory. At the declared p+delta_r reference point of the manuscript theory,
+exact integer tangents certify the combined
 SO(10)+`U(1)_X` gauge rank as 37, so the gauge-physical field space has
 dimension `486 - 37 = 449` and includes the axion. The independent global-PQ
 orbit raises the symmetry rank to 38; removing that flat orbit for the Hessian
@@ -404,7 +435,7 @@ strict local minimum and that the potential is BFB. The final global-gap test
 then finds an exact, symmetry-inequivalent field configuration with
 `W=33/32` instead of `25/24`; after exact radial minimization it lies below the
 selected orbit by `25*r^4/19008`. Thus the selected vacuum is provably not
-global and the current 27-parameter candidate is rejected for G3.
+global and the historical 27-of-51 SOS candidate is rejected for G3.
 The exact fixed-`P` gap/curvature identity excludes the `(P, delta_r)`
 orientation (it does not cover the SM orientation `(P, z1^z2^z3^z4^z5)`: there,
 with the 2772bar/4125 self-projector weights swapped, it is the pure-2772bar
@@ -438,11 +469,10 @@ Phi/Sigma global SOS certificate and a chiral-H full-field
   rejected. The corrected `6585 x 19594` standard positive-Gram map,
   ordered-spectral target, `6585` exact equalities, and strict `22`-block,
   `824`-pivot primal establish the arbitrary-real-`Phi210` result only at the
-  fixed endpoint. Arbitrary non-pure-`Delta_R` Sigma coercivity, general/full
-  `H`, and G3 remain open. Closing these would not close G3,
-  because the candidate is not an SM vacuum; G3 needs an SM-preserving
-  candidate certified through the final gate. Therefore `G3_closed` remains
-  false. Run
+  fixed endpoint. Arbitrary non-pure-`Delta_R` Sigma coercivity and
+  general/full `H` remain open for that point. Closing these would not close
+  G3, because that candidate is not an SM vacuum; G3 closes only through the
+  final gate's SM Pati-Salam track. Run
   `python final_g3_acceptance_gate_v20.py --write` for the
 fail-closed final test. The
 historical finite-cut and SDP outputs remain non-certifying and are not used in
@@ -539,15 +569,17 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 
 > The anomaly-cancellation and several scoped calculations are reproducible,
 > and the repository's native-SARAH gauged `U(1)_X` contract is externally
-> validated by a hash-bound SARAH 4.15.3 run, which closes G1, G2, and G5.
+> validated by a hash-bound SARAH 4.15.3 run, which closes G1, G2 and G5 (G5
+> on the SM Pati-Salam coupling vector).
 > Exact-`X` G1/G2, the 449-dimensional gauge quotient
 > including the axion, and its 448-dimensional massive/transverse Hessian space
+> (at the superseded p+delta_r point; 452/451 at the G3 witness)
 > are scoped results. A perturbative 27-of-51 sum-of-squares candidate has an
 > exact complete-potential BFB and stationarity certificate. Direct exact-source
 > arithmetic proves `P+Delta_R` rank/nullity 429/33, full Hessian rank 448, and
 > a strict local minimum modulo the 38 symmetry tangents. An exact lower-energy
 > 126bar field configuration now disproves globality of that selected orbit,
-> so the 27-parameter candidate and the fixed-`(P, delta_r)` orientation are
+> so that 27-of-51 candidate and the fixed-`(P, delta_r)` orientation are
 > rejected for G3. A different SU(5)+Delta branch is an exact Phi/Sigma global
 > minimum, but its stabilizer `SU(3)_c x SU(2)_L x U(1)_T3R` is not the Standard
 > Model (its `Delta_R` has `Y = -1`). Its chiral-H extension is exact-BFB and stationary, and is
@@ -574,24 +606,29 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > The legacy v20 assembled target is rejected. The corrected `6585 x 19594`
 > standard positive-Gram map, ordered-spectral RHS, all 6585 exact equalities,
 > and a strict 22-block/824-pivot primal prove the arbitrary-real-`Phi210`
-> statement only at fixed `H=h_-`, `Sigma=q/4`. Global Sigma, general/full `H`,
-> and G3 remain open. The certified chiral-H point is not a
+> statement only at fixed `H=h_-`, `Sigma=q/4`. Global Sigma and general/full
+> `H` remain open for that point. The certified chiral-H point is not a
 > Standard-Model vacuum (hypercharge breaks with its `Delta_R`, and its `10_H`
-> vev breaks `SU(2)_L` at the GUT scale), so G3 needs an SM-preserving
-> candidate certified through the final gate; Higgs-mass statements made at
-> that point are not predictions. A retuned Pati-Salam-branch potential has an
-> exact SOS global SM-preserving minimum at `(p, r0 z1^...^z5)` whose minimum
-> set is exactly one `SO(10) x U(1)_X x U(1)_PQ` orbit (given cited classical
-> theorems; uniqueness uses the accidental `U(1)_PQ`, and modulo
-> `SO(10) x U(1)_X` alone the minimum set is a circle of orbits, the axion
-> direction); as a corollary the 210-only Pati-Salam potential has a unique
-> global orbit `SO(10).(v p)`. The candidate is not yet
-> wired into the gate, its doublet-triplet splitting
-> and intermediate scale are tuned, it has coloured 126bar states below `M_I`,
-> its field content does not reproduce the RG anchor that fixes `M_I`, and its
-> light-doublet quartic is `127/64` at the benchmark (m_h ~ 195 GeV).
-> Consequently G3 remains open and the complete theory is neither validated
-> nor discarded.
+> vev breaks `SU(2)_L` at the GUT scale), so it cannot close G3; Higgs-mass
+> statements made at that point are not predictions.
+>
+> G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.
+>
+> This benchmark is a retuned vector distinct from the rejected 27-of-51 SOS
+> candidate above (2772bar/4125 self-projector weights swapped; `O05`,
+> `kappa_H` and `O06` retuned).
+> The vacuum is `(Phi, H, Sigma, S, Phi17) = (p, 0, r0 z1^...^z5, r0, x0)`;
+> modulo `SO(10) x U(1)_X` alone its minimum set is a circle of orbits (the
+> axion direction). At the benchmark `r0 = 1/5`, `x0 = 1`, `kappa = -r0/4`
+> and for every `eps > 0` the exact full Hessian there has
+> rank/nullity 451/35 with kernel exactly the symmetry orbit. The equality-set
+> proof uses six cited classical theorems and six hand-argued elementary steps
+> (not machine-checked; accepted as G3-grade inputs and pinned). As a
+> corollary the 210-only Pati-Salam potential has a unique global orbit
+> `SO(10).(v p)`. Routed downstream and not solved: coloured 126bar states
+> below `M_I`, no electroweak symmetry breaking, a field content that does not
+> reproduce the RG anchor fixing `M_I`, the benchmark light-doublet quartic
+> `127/64` (m_h ~ 195 GeV), and no realistic Yukawa sector.
 
 Anything stronger is incorrect.
 

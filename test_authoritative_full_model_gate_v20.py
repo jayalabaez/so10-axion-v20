@@ -77,10 +77,32 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         )
         self.assertNotIn("G1_NOT_CLOSED", blockers)
         self.assertNotIn("G2_NOT_CLOSED", blockers)
+        # G3 closes on the SM Pati-Salam track and G5 on the same coupling vector.
+        self.assertNotIn("G3_NOT_CLOSED", blockers)
         self.assertNotIn("G5_NOT_CLOSED", blockers)
-        for gate in ("G3", "G4", "G6", "G7", "G8"):
+        for gate in ("G4", "G6", "G7", "G8"):
             self.assertIn(f"{gate}_NOT_CLOSED", blockers)
         self.assertTrue(any(item.startswith("PROTON_READINESS_") for item in blockers))
+
+    def test_verdict_scopes_the_g3_closure(self):
+        verdict = self.report["verdict"]
+        self.assertTrue(
+            verdict.startswith(
+                "The repository remains BLOCKED at full-model scope. On the "
+                "attested gauged U(1)_X contract the ledger closes G1, G2, G3, G5 "
+            ),
+            verdict,
+        )
+        self.assertIn("G3 on the SM Pati-Salam benchmark family only", verdict)
+        self.assertIn(
+            ", but G4, G6, G7, G8 and the unique proton-lifetime derivation "
+            "are not closed.",
+            verdict,
+        )
+        self.assertEqual(
+            self.report["classification"]["g3_closing_track"], "sm_pati_salam"
+        )
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
 
     def test_repaired_contract_promotes_g1_g2_without_full_model_approval(self):
         current_ledger = mod.gate_ledger.build_report()
@@ -117,8 +139,10 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         )
         self.assertNotIn("G1_NOT_CLOSED", report["blockers"])
         self.assertNotIn("G2_NOT_CLOSED", report["blockers"])
-        self.assertIn("G3_NOT_CLOSED", report["blockers"])
+        self.assertNotIn("G3_NOT_CLOSED", report["blockers"])
+        self.assertIn("G4_NOT_CLOSED", report["blockers"])
         self.assertIn("G8_NOT_CLOSED", report["blockers"])
+        self.assertIn("G3 on the SM Pati-Salam benchmark family only", report["verdict"])
         self.assertFalse(report["classification"]["whole_model_validated"])
 
     def test_unbound_consistency_boolean_is_an_integrity_failure(self):

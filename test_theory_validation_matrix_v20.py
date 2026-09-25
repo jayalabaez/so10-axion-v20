@@ -9,6 +9,15 @@ from pathlib import Path
 
 import theory_validation_matrix_v20 as matrix
 
+# The final G3 gate's SM-track science criteria that the vacuum gate reads.
+SM_WITNESS_VACUUM_CRITERIA = (
+    "sm_eps_witness_quotient_strictly_positive_kernel_is_orbit_exact",
+    "sm_eps_witness_full_Hessian_rank_451_nullity_35_exact",
+    "sm_full_homogeneous_quartic_BFB_exact",
+    "sm_eps_witness_global_gap_exact",
+    "sm_eps_witness_equality_set_single_G_orbit_exact",
+)
+
 
 def test_overall_state_never_promotes_open_or_conditional_gates_to_pass():
     assert matrix._overall_state(True, [{"state": "PASS"}]) == "PASS"
@@ -88,15 +97,22 @@ def minimal_tree(
             "implementation_matches_manuscript": contract_consistent,
         },
     )
+    ledger_gates = {
+        "G1": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
+        "G2": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
+    }
+    if vacuum_minimized:
+        # A hypothetical fully minimized vacuum also needs the downstream
+        # authoritative gates (G3 through the SM track, G4, G5, G6) closed,
+        # with G5 bound to the SM witness's coupling vector.
+        for gate_id in ("G3", "G4", "G5", "G6"):
+            ledger_gates[gate_id] = {"status": "CLOSED"}
+        ledger_gates["G3"]["closing_track"] = "sm_pati_salam"
+        ledger_gates["G5"]["bfb_coupling_vector"] = {"certified": True}
     write_json(
         root,
         "G1_G8_GATE_LEDGER_V20.json",
-        {
-            "gates": {
-                "G1": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
-                "G2": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
-            }
-        },
+        {"gates": ledger_gates},
     )
     write_json(
         root,
@@ -172,7 +188,9 @@ def minimal_tree(
                 "exact_lower_energy_field_witness_certified": True,
                 "constructive_candidate_rejected_for_G3": True,
                 "complete_potential_BFB": True,
-                "global_competing_extrema_exhausted": vacuum_minimized,
+                # The superseded SOS candidate is rejected for G3; its flag is
+                # a diagnostic and never promotes the vacuum gate.
+                "global_competing_extrema_exhausted": False,
                 "G3_closed": False,
                 "model_wide_no_go_certified": False,
                 "whole_model_excluded": False,
@@ -748,10 +766,23 @@ def minimal_tree(
             },
         },
     )
-    write_json(
-        root,
-        "FINAL_G3_ACCEPTANCE_GATE_V20.json",
-        {
+    if vacuum_minimized:
+        final_g3_fixture = {
+            "status": "FINAL_G3_ACCEPTANCE_TEST_EXECUTED",
+            "overall_state": "PASS",
+            "closing_track": "sm_pati_salam",
+            "n_failed": 0,
+            "science_criteria": {name: True for name in SM_WITNESS_VACUUM_CRITERIA},
+            "classification": {
+                "mathematical_G3_closed": True,
+                "release_G3_verified": True,
+                "whole_model_excluded": False,
+                "theory_still_viable": True,
+                "G3_closed": True,
+            },
+        }
+    else:
+        final_g3_fixture = {
             "status": "FINAL_G3_ACCEPTANCE_TEST_EXECUTED",
             "overall_state": "OPEN",
             "n_failed": 0,
@@ -762,8 +793,8 @@ def minimal_tree(
                 "theory_still_viable": True,
                 "G3_closed": False,
             },
-        },
-    )
+        }
+    write_json(root, "FINAL_G3_ACCEPTANCE_GATE_V20.json", final_g3_fixture)
     write_json(
         root,
         "so10_axion_v20_verdict.json",
@@ -1201,8 +1232,28 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertIn("strict 22-block/824-pivot primal", vacuum["summary"])
             self.assertIn("every real Phi210", vacuum["summary"])
             self.assertIn(
-                "Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)",
+                "For that non-SM point global Sigma and general/full H remain open (the exact 448/38 full Hessian is certified separately)",
                 vacuum["summary"],
+            )
+            self.assertIn(
+                "G3 itself is decided by the final gate's SM Pati-Salam track; "
+                "this vacuum gate also needs G4 (zero-mode classification, ranks "
+                "34/35 at the SM witness) and G6 (positive physical spectrum) and "
+                "stays OPEN until they close.",
+                vacuum["summary"],
+            )
+            self.assertIn(
+                "At the superseded p+delta_r point the gauged SO(10)xU(1)_X orbit "
+                "has exact rank 37",
+                vacuum["summary"],
+            )
+            self.assertIn("quotients 452/451, a G4 item", vacuum["summary"])
+            self.assertIn(
+                "superseded 27-of-51 SOS candidate's flags are diagnostics only",
+                vacuum["summary"],
+            )
+            self.assertNotIn(
+                "Global Sigma, general/full H, and G3 remain open", vacuum["summary"]
             )
             self.assertNotIn("infrastructure only", vacuum["summary"])
 
@@ -1768,10 +1819,18 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 ]
             )
             self.assertFalse(
-                vacuum["evidence"]["gauged_G3_final_acceptance_test_passes"]
+                vacuum["evidence"][
+                    "gauged_G3_chiral_SU5_gap_final_acceptance_test_passes"
+                ]
+            )
+            self.assertNotIn(
+                "gauged_G3_final_acceptance_test_passes", vacuum["evidence"]
             )
             self.assertTrue(
-                vacuum["evidence"]["final_G3_acceptance_gate_honestly_open"]
+                vacuum["evidence"]["final_G3_acceptance_gate_state_consistent"]
+            )
+            self.assertNotIn(
+                "final_G3_acceptance_gate_honestly_open", vacuum["evidence"]
             )
             self.assertEqual(
                 vacuum["evidence"][
@@ -1838,6 +1897,259 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertEqual(
                 states["full_scalar_potential_vacuum_and_spectrum"], "PASS"
             )
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(evidence["final_G3_acceptance_gate_state_consistent"])
+            self.assertEqual(evidence["final_G3_acceptance_gate_overall_state"], "PASS")
+            self.assertEqual(evidence["final_G3_closing_track"], "sm_pati_salam")
+            self.assertTrue(evidence["authoritative_G3_closed"])
+            self.assertTrue(evidence["authoritative_G4_closed"])
+            self.assertTrue(evidence["authoritative_G6_closed"])
+            self.assertTrue(evidence["vacuum_gate_requires_G4_and_G6_closed"])
+            self.assertTrue(evidence["downstream_vacuum_gates_closed"])
+            # The PASS is carried by the SM witness, not the superseded SOS flags.
+            self.assertTrue(evidence["vacuum_evidence_bound_to_G3_closing_track"])
+            self.assertTrue(evidence["final_G3_sm_track_passes"])
+            self.assertTrue(evidence["sm_witness_strict_quotient_positive"])
+            self.assertTrue(evidence["sm_witness_BFB_with_G5_on_same_vector"])
+            self.assertTrue(evidence["sm_witness_global_minimum_unique_modulo_G"])
+            self.assertFalse(
+                evidence[
+                    "historical_SOS_candidate_global_extrema_exhausted_diagnostic"
+                ]
+            )
+
+    def test_vacuum_gate_needs_each_sm_witness_criterion(self):
+        for name in SM_WITNESS_VACUUM_CRITERIA:
+            with self.subTest(criterion=name), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                minimal_tree(
+                    root,
+                    contract_consistent=True,
+                    vacuum_minimized=True,
+                    exact_stationarity_rank=True,
+                )
+                path = root / "FINAL_G3_ACCEPTANCE_GATE_V20.json"
+                final_g3 = json.loads(path.read_text(encoding="utf-8"))
+                final_g3["science_criteria"][name] = False
+                path.write_text(json.dumps(final_g3), encoding="utf-8")
+                report = matrix.build_report(root)
+                vacuum = next(
+                    gate
+                    for gate in report["gates"]
+                    if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+                )
+                self.assertTrue(
+                    vacuum["evidence"]["final_G3_acceptance_gate_state_consistent"]
+                )
+                self.assertEqual(vacuum["state"], "OPEN")
+
+    def test_vacuum_gate_needs_g5_bound_to_the_witness_vector(self):
+        for mutate in (
+            lambda gates: gates["G5"]["bfb_coupling_vector"].__setitem__("certified", False),
+            lambda gates: gates["G5"].pop("bfb_coupling_vector"),
+            lambda gates: gates["G5"].__setitem__("status", "OPEN"),
+        ):
+            with tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                minimal_tree(
+                    root,
+                    contract_consistent=True,
+                    vacuum_minimized=True,
+                    exact_stationarity_rank=True,
+                )
+                path = root / "G1_G8_GATE_LEDGER_V20.json"
+                ledger = json.loads(path.read_text(encoding="utf-8"))
+                mutate(ledger["gates"])
+                path.write_text(json.dumps(ledger), encoding="utf-8")
+                report = matrix.build_report(root)
+                vacuum = next(
+                    gate
+                    for gate in report["gates"]
+                    if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+                )
+                self.assertFalse(
+                    vacuum["evidence"]["sm_witness_BFB_with_G5_on_same_vector"]
+                )
+                self.assertEqual(vacuum["state"], "OPEN")
+
+    def test_superseded_sos_flags_cannot_promote_vacuum_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            # Final G3 gate OPEN (no SM-track closure) but every historical
+            # SOS flag and every downstream ledger gate forged to pass.
+            minimal_tree(root, contract_consistent=True, exact_stationarity_rank=True)
+            path = root / "GAUGED_U1X_G3_STABILITY_V20.json"
+            stability = json.loads(path.read_text(encoding="utf-8"))
+            stability["flags"]["global_competing_extrema_exhausted"] = True
+            path.write_text(json.dumps(stability), encoding="utf-8")
+            path = root / "G1_G8_GATE_LEDGER_V20.json"
+            ledger = json.loads(path.read_text(encoding="utf-8"))
+            for gate_id in ("G4", "G5", "G6"):
+                ledger["gates"][gate_id] = {"status": "CLOSED"}
+            path.write_text(json.dumps(ledger), encoding="utf-8")
+            report = matrix.build_report(root)
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(evidence["final_G3_acceptance_gate_state_consistent"])
+            self.assertTrue(evidence["downstream_vacuum_gates_closed"])
+            self.assertTrue(
+                evidence[
+                    "historical_SOS_candidate_global_extrema_exhausted_diagnostic"
+                ]
+            )
+            self.assertFalse(evidence["final_G3_sm_track_passes"])
+            self.assertFalse(evidence["gauged_global_comparison_complete"])
+            self.assertEqual(vacuum["state"], "OPEN")
+
+    def test_passing_final_g3_gate_without_ledger_g3_closed_is_inconsistent(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(
+                root,
+                contract_consistent=True,
+                vacuum_minimized=True,
+                exact_stationarity_rank=True,
+            )
+            path = root / "G1_G8_GATE_LEDGER_V20.json"
+            ledger = json.loads(path.read_text(encoding="utf-8"))
+            ledger["gates"]["G3"]["status"] = "OPEN"
+            path.write_text(json.dumps(ledger), encoding="utf-8")
+            report = matrix.build_report(root)
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"]["final_G3_acceptance_gate_state_consistent"]
+            )
+            self.assertFalse(
+                vacuum["evidence"]["gauged_G3_contract_and_coverage_bound"]
+            )
+            self.assertFalse(vacuum["evidence"]["authoritative_G3_closed"])
+            self.assertEqual(vacuum["state"], "OPEN")
+
+    def test_open_final_g3_gate_with_ledger_g3_closed_is_inconsistent(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root, contract_consistent=True)
+            path = root / "G1_G8_GATE_LEDGER_V20.json"
+            ledger = json.loads(path.read_text(encoding="utf-8"))
+            ledger["gates"]["G3"] = {"status": "CLOSED"}
+            path.write_text(json.dumps(ledger), encoding="utf-8")
+            report = matrix.build_report(root)
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"]["final_G3_acceptance_gate_state_consistent"]
+            )
+            self.assertEqual(vacuum["state"], "OPEN")
+
+    def test_passing_final_g3_gate_on_a_non_sm_track_is_inconsistent(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(
+                root,
+                contract_consistent=True,
+                vacuum_minimized=True,
+                exact_stationarity_rank=True,
+            )
+            path = root / "FINAL_G3_ACCEPTANCE_GATE_V20.json"
+            final_g3 = json.loads(path.read_text(encoding="utf-8"))
+            final_g3["closing_track"] = "chiral_H_SU5_Delta"
+            path.write_text(json.dumps(final_g3), encoding="utf-8")
+            report = matrix.build_report(root)
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"]["final_G3_acceptance_gate_state_consistent"]
+            )
+            self.assertEqual(vacuum["state"], "OPEN")
+
+    def test_vacuum_gate_stays_open_until_g4_and_g6_close(self):
+        for gate_id, status in (("G4", "OPEN"), ("G6", "BLOCKED")):
+            with self.subTest(gate=gate_id), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                minimal_tree(
+                    root,
+                    contract_consistent=True,
+                    vacuum_minimized=True,
+                    exact_stationarity_rank=True,
+                )
+                path = root / "G1_G8_GATE_LEDGER_V20.json"
+                ledger = json.loads(path.read_text(encoding="utf-8"))
+                ledger["gates"][gate_id]["status"] = status
+                path.write_text(json.dumps(ledger), encoding="utf-8")
+                report = matrix.build_report(root)
+                vacuum = next(
+                    gate
+                    for gate in report["gates"]
+                    if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+                )
+                evidence = vacuum["evidence"]
+                # G3 itself is consistently closed; only the downstream guard fails.
+                self.assertTrue(evidence["final_G3_acceptance_gate_state_consistent"])
+                self.assertTrue(evidence["gauged_G3_contract_and_coverage_bound"])
+                self.assertTrue(evidence["authoritative_G3_closed"])
+                self.assertFalse(evidence["downstream_vacuum_gates_closed"])
+                self.assertTrue(evidence["vacuum_gate_requires_G4_and_G6_closed"])
+                self.assertEqual(vacuum["state"], "OPEN")
+
+    def test_committed_repository_vacuum_gate_is_open_and_g3_state_consistent(self):
+        report = matrix.build_report(matrix.ROOT)
+        vacuum = next(
+            gate
+            for gate in report["gates"]
+            if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+        )
+        evidence = vacuum["evidence"]
+        self.assertEqual(vacuum["state"], "OPEN")
+        self.assertTrue(evidence["final_G3_acceptance_gate_state_consistent"])
+        self.assertTrue(evidence["vacuum_gate_requires_G4_and_G6_closed"])
+        self.assertFalse(evidence["downstream_vacuum_gates_closed"])
+        self.assertFalse(evidence["authoritative_G4_closed"])
+        self.assertFalse(evidence["authoritative_G6_closed"])
+        self.assertEqual(
+            evidence["authoritative_G3_closed"],
+            evidence["final_G3_acceptance_gate_overall_state"] == "PASS",
+        )
+        if evidence["authoritative_G3_closed"]:
+            self.assertEqual(evidence["final_G3_closing_track"], "sm_pati_salam")
+
+    def test_committed_matrix_verdict_records_open_vacuum_and_consistent_g3(self):
+        committed = json.loads(
+            (matrix.ROOT / "THEORY_VALIDATION_MATRIX_V20_VERDICT.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        vacuum = next(
+            gate
+            for gate in committed["gates"]
+            if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+        )
+        self.assertEqual(vacuum["state"], "OPEN")
+        self.assertIs(
+            vacuum["evidence"]["final_G3_acceptance_gate_state_consistent"], True
+        )
+        self.assertIs(vacuum["evidence"]["downstream_vacuum_gates_closed"], False)
+        self.assertNotIn(
+            "final_G3_acceptance_gate_honestly_open", vacuum["evidence"]
+        )
 
     def test_numerical_rank_diagnostic_cannot_promote_vacuum_gate(self):
         with tempfile.TemporaryDirectory() as tmp:

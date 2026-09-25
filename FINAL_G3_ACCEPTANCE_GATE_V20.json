@@ -23,21 +23,41 @@
     "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed": true,
     "rank1_SU4_stabilizer_infrastructure_executes_fail_closed": true,
     "sigma_hypercharge_audit_executes": true,
+    "sm_candidate_report_executes": true,
+    "sm_equality_set_report_executes": true,
+    "sm_exact_hessian_eps_family_executes": true,
+    "sm_exact_hessian_report_executes": true,
+    "sm_float_evidence_not_promoted": true,
+    "sm_model_level_caveats_disclosed": true,
+    "sm_reports_cross_bound": true,
+    "sm_reports_do_not_overclaim": true,
+    "sm_sigma_hypercharge_audit_executes": true,
+    "sm_unchecked_proof_inputs_pinned": true,
     "upstream_G3_not_overclaimed": true
   },
-  "blockers": [
-    "target_unbroken_algebra_is_standard_model",
-    "all_PD_equality_orbits_classified_exactly",
-    "beta_global_gap_and_unique_equality_exact"
-  ],
+  "blockers": [],
   "classification": {
-    "G3_closed": false,
+    "G3_closed": true,
     "candidate_exactly_rejected": false,
-    "mathematical_G3_closed": false,
-    "release_G3_verified": false,
+    "closing_track": "sm_pati_salam",
+    "internal_candidate_approved_by_this_gate": false,
+    "mathematical_G3_closed": true,
+    "release_G3_verified": true,
     "theory_still_viable": true,
-    "whole_model_excluded": false
+    "whole_model_excluded": false,
+    "whole_model_validated": false
   },
+  "closing_track": "sm_pati_salam",
+  "closure_route": {
+    "closing_tracks": [
+      "sm_pati_salam"
+    ],
+    "diagnostic_tracks": [
+      "chiral_H_SU5_Delta"
+    ],
+    "rule": "G3 closes only if the sm_pati_salam track closes (every SM-track integrity, science and release criterion True) and every artifact-integrity check of both tracks passes; the chiral_H_SU5_Delta track is integrity-checked but can never close G3 (decision D1)"
+  },
+  "closure_scope": "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.",
   "corrected_rank1_fixed_endpoint_subtheorem": {
     "A_greater_than_3_over_200_at_t1": true,
     "G3_closed": false,
@@ -70,7 +90,7 @@
     "target_nonzero_count": 512,
     "target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf"
   },
-  "decisive_theorem": "For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ orbit of q0.",
+  "decisive_theorem": "For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ orbit of q0.",
   "diagnostic_only": {
     "Phi_local_component_state": "LOCAL_COMPONENT_THEOREM_CLOSED",
     "SU3_slice_generic_components_excluded": false,
@@ -155,46 +175,631 @@
       551
     ]
   },
+  "disclosures": [
+    "Uniqueness is modulo SO(10) x U(1)_X x U(1)_PQ, where U(1)_PQ is an accidental symmetry of the benchmark; modulo SO(10) x U(1)_X alone the minimum set is a circle of orbits (the axion direction).",
+    "The witness is the eps > 0 member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps); the tuned eps = 0 point (rank 447, nullity 39) is not the witness.",
+    "The exact Hessian is certified at r0 = 1/5, x0 = 1, kappa = -r0/4 only; the global-minimum and equality-set theorem holds for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2.",
+    "V_PS is the adapted SOS form: it equals the compiler potential exactly coefficient by coefficient and per source-bound operator, and only in float64 end to end.",
+    "The equality-set proof rests on 6 cited classical theorems and 6 hand-argued elementary steps, accepted as G3-grade inputs under decision D6 and pinned by an allowlist.",
+    "The doublet-triplet splitting, the O05 cancellation and M_I/M_GUT are tuned relations.",
+    "Potentials outside the 27-parameter benchmark family and its O06 + eps members are not covered."
+  ],
+  "downstream_caveats": [
+    {
+      "also_affects": [
+        "G8"
+      ],
+      "blocker": "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.coloured_scalars_only_at_M_GUT",
+        "value": false
+      },
+      "gate": "G6",
+      "id": "sub_M_I_coloured_126bar_states",
+      "resolved": false,
+      "text": "Light 126bar coloured states lie below M_I at the benchmark ((3,1)_1/3 near 0.24 M_I, (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), and further (3,1)_4/3, (6,1)_1/3 and (6,1)_2/3 states), so the complete physical spectrum and its thresholds are a G6 task."
+    },
+    {
+      "also_affects": [
+        "G4"
+      ],
+      "blocker": "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.electroweak_symmetry_breaking_realized",
+        "value": false
+      },
+      "gate": "G6",
+      "id": "positivity_without_EWSB",
+      "resolved": false,
+      "text": "The witness has H = 0 and a light but massive doublet (mass^2 eps M_GUT^2), so electroweak symmetry is not broken and a positive physical spectrum with electroweak breaking is a G6 task."
+    },
+    {
+      "also_affects": [
+        "G7"
+      ],
+      "blocker": "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.physical_benchmark_uses_canonical_phi17_scale",
+        "value": false
+      },
+      "gate": "G6",
+      "id": "phi17_benchmark_scale",
+      "resolved": false,
+      "text": "The benchmark uses x0 = 1 instead of the canonical Phi17 scale, so its GeV values are illustrative and the physical Phi17 threshold is a G6 task."
+    },
+    {
+      "also_affects": [],
+      "blocker": "G7_RG_ANCHOR_CONTENT_AND_HIGGS_QUARTIC_MATCHING",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.rg_anchor_field_content_reproduced",
+        "value": false
+      },
+      "gate": "G7",
+      "id": "rg_anchor_field_content",
+      "resolved": false,
+      "text": "The RG anchor assumes a light (15,2,2) above M_I and a 2HDM below, while the witness has the (15,2,2) near 0.7 M_GUT and one light doublet, so re-solving the RG chain with the witness's field content is a G7 task."
+    },
+    {
+      "also_affects": [
+        "G6"
+      ],
+      "blocker": "G7_RG_ANCHOR_CONTENT_AND_HIGGS_QUARTIC_MATCHING",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.higgs_mass_compatible",
+        "value": false
+      },
+      "gate": "G7",
+      "id": "higgs_quartic_matching",
+      "resolved": false,
+      "text": "The benchmark's tree-level light-doublet quartic 127/64 at M_I is too large for the measured Higgs mass and tree-level global minimality forbids the slightly negative SM value, so Higgs-quartic matching is a G7 task."
+    },
+    {
+      "also_affects": [
+        "G7"
+      ],
+      "blocker": "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "checks.light_doublet_is_equal_5_5bar_mixture",
+        "value": true
+      },
+      "gate": "G8",
+      "id": "tan_beta_one_light_doublet",
+      "resolved": false,
+      "text": "The light doublet is an equal 5/5bar mixture (a tan beta = 1 structure), so with 10_H-only Yukawas m_t = m_b at matching and the flavour structure is a G8 task."
+    },
+    {
+      "also_affects": [
+        "theory_validation_matrix flavour gate"
+      ],
+      "blocker": "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.realistic_yukawa_sector",
+        "value": false
+      },
+      "gate": "G8",
+      "id": "realistic_yukawa_sector",
+      "resolved": false,
+      "text": "The H-linear portals O15, O38, O45 and O28 vanish at the benchmark, so the witness has no realistic Yukawa sector; building one is a G8 (and flavour-gate) task."
+    },
+    {
+      "also_affects": [
+        "G6"
+      ],
+      "blocker": "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS",
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.coloured_scalars_only_at_M_GUT",
+        "value": false
+      },
+      "gate": "G8",
+      "id": "proton_decay_mediators",
+      "resolved": false,
+      "text": "The sub-M_I (3,1)_1/3 state has proton-decay mediator quantum numbers and couples to 16.16 through the 126bar Yukawa that Majorana neutrino masses need, so its proton-decay consequences are a G8 task."
+    },
+    {
+      "also_affects": [],
+      "blocker": "G4_SM_WITNESS_ZERO_MODES_AND_RANKS_34_35_UNCLASSIFIED",
+      "evidence": {
+        "artifact": null,
+        "key": null,
+        "value": null
+      },
+      "gate": "G4",
+      "id": "zero_modes_and_ranks_at_witness",
+      "resolved": false,
+      "text": "Zero-mode classification at the witness belongs to G4: the recomputed ranks 34/35 (SO(10) x U(1)_X rank 34, gauge quotient 452 with the axion included; SO(10) x U(1)_X x U(1)_PQ rank 35, massive/transverse quotient 451, i.e. quotients 452/451), the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes); it is resolved only when G4 is CLOSED."
+    },
+    {
+      "also_affects": [
+        "G3 closure_scope disclosure"
+      ],
+      "blocker": null,
+      "evidence": {
+        "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "key": "flags.doublet_triplet_splitting_natural",
+        "value": false
+      },
+      "gate": "OUTSIDE_G1_G8",
+      "id": "naturalness_of_tunings",
+      "resolved": false,
+      "text": "The doublet-triplet splitting (O46_1 = -(3/5) O46_54 and O06 = 2|kappa| r0 + eps), the O05 cancellation and the M_I/M_GUT hierarchy are tuned relations whose radiative stability lies outside G1-G8 and is disclosed in the G3 closure scope."
+    }
+  ],
   "failures": [],
   "missing_artifacts": [],
   "model_contract_id": "gauged_u1x_phi17_v20",
   "n_failed": 0,
-  "n_integrity_checks": 24,
-  "overall_state": "OPEN",
-  "pati_salam_candidate_equality_set": {
-    "certified": true,
-    "n_failed": 0,
-    "report": "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json",
-    "required_status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN",
-    "source": "g3_sm_pati_salam_equality_set_v20",
-    "status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
-  },
+  "n_integrity_checks": 34,
+  "overall_state": "PASS",
   "release_criteria": {
     "G1_promoted_closed": true,
     "G2_promoted_closed": true,
-    "authoritative_external_model_contract_executed": true
+    "G5_BFB_evidence_covers_closing_coupling_vector": true,
+    "authoritative_external_model_contract_executed": true,
+    "ledger_G3_status_matches_gate_closure": true
   },
-  "remaining_open_problem": "an SM-preserving G3 candidate: the certified SU(5)+Delta point is not an SM vacuum; its (F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R (its Delta_R is the Y=-1 member of the 126bar triplet, g3_sigma_hypercharge_audit_v20) and its chiral H breaks SU(2)_L as well, so uniform coercivity for arbitrary non-pure-Delta Sigma orientations would not close G3 on it",
+  "remaining_open_problem": "none inside G3 on the closing track; downstream: G4 (zero-mode classification and ranks 34/35 -> quotients 452/451 at the witness), G6 (sub-M_I coloured states, positive spectrum, no EWSB), G7 (RG-anchor content, Higgs quartic), G8 (Yukawas, proton-decay mediators); the naturalness of the DT/O05/M_I tunings lies outside G1-G8",
   "science_criteria": {
     "G1_G2_exact_scoped_calculations_complete": true,
-    "all_PD_equality_orbits_classified_exactly": false,
-    "beta_global_gap_and_unique_equality_exact": false,
-    "complete_SU3_fixed_Phi_slice_classified_exactly": true,
-    "couplings_perturbative": true,
-    "full_448_quotient_strictly_positive_exact": true,
-    "full_Hessian_rank_448_nullity_38_exact": true,
-    "full_candidate_exactly_stationary": true,
-    "full_fixed_F_offkernel_gap_and_equality_exact": true,
-    "full_homogeneous_quartic_BFB_exact": true,
-    "max_negative_all_zero_residual_route_excluded_exactly": true,
-    "max_negative_pure_Delta_full_residual_gap_excluded_exactly": true,
-    "rank1_SU3_four_dimensional_slice_gap_certified_without_closing_G3": true,
-    "rank1_SU4_representation_infrastructure_ready_without_closing_G3": true,
-    "signed_Phi_orbits_locally_isolated_exactly": true,
-    "target_symmetry_orbit_ranks_36_37_38_exact": true,
-    "target_unbroken_algebra_is_standard_model": false
+    "sm_decisive_theorem_string_bound": true,
+    "sm_eps_witness_couplings_perturbative_exact": true,
+    "sm_eps_witness_equality_set_single_G_orbit_exact": true,
+    "sm_eps_witness_exactly_stationary": true,
+    "sm_eps_witness_full_Hessian_rank_451_nullity_35_exact": true,
+    "sm_eps_witness_global_gap_exact": true,
+    "sm_eps_witness_light_doublet_mass_squared_equals_eps_exact": true,
+    "sm_eps_witness_quotient_strictly_positive_kernel_is_orbit_exact": true,
+    "sm_full_homogeneous_quartic_BFB_exact": true,
+    "sm_raised_O06_control_rank_451_nullity_35_exact": true,
+    "sm_symmetry_orbit_ranks_33_34_35_exact": true,
+    "sm_target_unbroken_algebra_is_standard_model_exact": true
   },
   "status": "FINAL_G3_ACCEPTANCE_TEST_EXECUTED",
+  "tracks": {
+    "chiral_H_SU5_Delta": {
+      "artifact_integrity": {
+        "HSX_audit_executes": true,
+        "Phi_SU3_fixed_slice_audit_executes": true,
+        "Phi_local_component_audit_executes": true,
+        "all_current_artifacts_use_authoritative_contract": true,
+        "alternative_global_SOS_audit_executes_fail_closed": true,
+        "equality_audit_executes": true,
+        "fixed_F_full_offkernel_audit_executes": true,
+        "global_gap_audit_executes": true,
+        "ledger_executes": true,
+        "max_negative_all_zero_residual_audit_executes_fail_closed": true,
+        "max_negative_full_residual_pure_Delta_audit_executes_fail_closed": true,
+        "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed": true,
+        "numerical_Hessian_not_promoted_to_proof": true,
+        "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed": true,
+        "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed": true,
+        "rank1_SU4_aligned_carrier_infrastructure_executes_fail_closed": true,
+        "rank1_SU4_augmented_SOS_census_executes_fail_closed": true,
+        "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed": true,
+        "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed": true,
+        "rank1_SU4_corrected_fixed_endpoint_theorem_executes_fail_closed": true,
+        "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed": true,
+        "rank1_SU4_stabilizer_infrastructure_executes_fail_closed": true,
+        "sigma_hypercharge_audit_executes": true,
+        "upstream_G3_not_overclaimed": true
+      },
+      "blockers": [
+        "target_unbroken_algebra_is_standard_model",
+        "all_PD_equality_orbits_classified_exactly",
+        "beta_global_gap_and_unique_equality_exact"
+      ],
+      "can_close_G3": false,
+      "candidate_exactly_rejected": false,
+      "decisive_theorem": "For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ orbit of q0.",
+      "known_issues": [
+        "beta_global_gap_and_unique_equality_exact compares the gap report's final_acceptance_test.required_statement (\"... equality holds only on ...\") with FINAL_THEOREM (\"... equality holds exactly on ...\"), so that conjunct cannot pass as committed; it is recorded, not changed, because the chiral_H_SU5_Delta track can never close G3."
+      ],
+      "mathematical_criteria_all_true": false,
+      "release_criteria": {
+        "G1_promoted_closed": true,
+        "G2_promoted_closed": true,
+        "authoritative_external_model_contract_executed": true
+      },
+      "role": "DIAGNOSTIC",
+      "science_criteria": {
+        "G1_G2_exact_scoped_calculations_complete": true,
+        "all_PD_equality_orbits_classified_exactly": false,
+        "beta_global_gap_and_unique_equality_exact": false,
+        "complete_SU3_fixed_Phi_slice_classified_exactly": true,
+        "couplings_perturbative": true,
+        "full_448_quotient_strictly_positive_exact": true,
+        "full_Hessian_rank_448_nullity_38_exact": true,
+        "full_candidate_exactly_stationary": true,
+        "full_fixed_F_offkernel_gap_and_equality_exact": true,
+        "full_homogeneous_quartic_BFB_exact": true,
+        "max_negative_all_zero_residual_route_excluded_exactly": true,
+        "max_negative_pure_Delta_full_residual_gap_excluded_exactly": true,
+        "rank1_SU3_four_dimensional_slice_gap_certified_without_closing_G3": true,
+        "rank1_SU4_representation_infrastructure_ready_without_closing_G3": true,
+        "signed_Phi_orbits_locally_isolated_exactly": true,
+        "target_symmetry_orbit_ranks_36_37_38_exact": true,
+        "target_unbroken_algebra_is_standard_model": false
+      },
+      "summary": "The mathematical results below stay valid for that point. The chiral-H candidate has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma and general/full H remain open for that point; that fixed-endpoint theorem does not classify the full Hessian, which the separate exact 448/38 certificate above closes at the certified point.",
+      "track": "chiral_H_SU5_Delta",
+      "why_not_a_closure_route": "its Delta_R is the T3R=0, Y=-1 member of the 126bar triplet, so its (F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R, not the Standard Model (g3_sigma_hypercharge_audit_v20)"
+    },
+    "sm_pati_salam": {
+      "artifact_integrity": {
+        "sm_candidate_report_executes": true,
+        "sm_equality_set_report_executes": true,
+        "sm_exact_hessian_eps_family_executes": true,
+        "sm_exact_hessian_report_executes": true,
+        "sm_float_evidence_not_promoted": true,
+        "sm_model_level_caveats_disclosed": true,
+        "sm_reports_cross_bound": true,
+        "sm_reports_do_not_overclaim": true,
+        "sm_sigma_hypercharge_audit_executes": true,
+        "sm_unchecked_proof_inputs_pinned": true
+      },
+      "blockers": [],
+      "closed": true,
+      "closure_scope": "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.",
+      "decisions": {
+        "D1": "The final G3 gate has an SM (Pati-Salam) track that is the only route to closing G3; the non-SM SU(5)+Delta chiral-H track stays an integrity-checked diagnostic that can never close G3.",
+        "D2": "The G3 witness is the light-but-massive doublet member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps, eps > 0 inside the perturbative window 0 < eps < 599/50) at r0 = 1/5, x0 = 1, kappa = -r0/4, whose Hessian kernel is exactly the symmetry orbit (451/35); the tuned eps = 0 point is not the witness.",
+        "D3": "The internal-candidate tier stays WITHHELD even when G1-G3 are CLOSED: theory_confirmation_verdict_v20 also requires the closing track's downstream caveats to be resolved, or G4 CLOSED.",
+        "D4": "G5 (BFB) is rebound to the Pati-Salam coupling vector, whose exact certificate V4 >= |q|^4/167 also covers the witness family because the eps N_H term is quadratic and leaves the quartic part unchanged.",
+        "D5": "Model-level caveats are routed downstream and G3 keeps only disclosures: sub-M_I coloured states and positivity (no EWSB) go to G6; RG-anchor content and the Higgs quartic go to G7; Yukawas and proton-decay mediators go to G8; zero-mode classification and the recomputed ranks (34 gauge -> 452, 35 -> 451) go to G4; the naturalness of the tunings (DT splitting, O05, M_I) lies outside G1-G8.",
+        "D6": "The cited classical theorems (Pluecker, Kostant-Lichtenstein, Iwasawa, Wirtinger, U(n) transitivity, highest-weight/Weyl dimension) and the 6 hand-argued elementary steps of the equality-set proof are accepted as G3-grade inputs, pinned verbatim by an allowlist and disclosed."
+      },
+      "decisive_theorem": "For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ orbit of q0.",
+      "decisive_theorem_emitted_by": "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json:eps_family.final_acceptance_test.required_statement",
+      "disclosures": [
+        "Uniqueness is modulo SO(10) x U(1)_X x U(1)_PQ, where U(1)_PQ is an accidental symmetry of the benchmark; modulo SO(10) x U(1)_X alone the minimum set is a circle of orbits (the axion direction).",
+        "The witness is the eps > 0 member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps); the tuned eps = 0 point (rank 447, nullity 39) is not the witness.",
+        "The exact Hessian is certified at r0 = 1/5, x0 = 1, kappa = -r0/4 only; the global-minimum and equality-set theorem holds for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2.",
+        "V_PS is the adapted SOS form: it equals the compiler potential exactly coefficient by coefficient and per source-bound operator, and only in float64 end to end.",
+        "The equality-set proof rests on 6 cited classical theorems and 6 hand-argued elementary steps, accepted as G3-grade inputs under decision D6 and pinned by an allowlist.",
+        "The doublet-triplet splitting, the O05 cancellation and M_I/M_GUT are tuned relations.",
+        "Potentials outside the 27-parameter benchmark family and its O06 + eps members are not covered."
+      ],
+      "downstream_blockers": [
+        "GAUGED_U1X_G4_G6_G7_G8_CLOSURE_REQUIRED",
+        "G4_SM_WITNESS_ZERO_MODES_AND_RANKS_34_35_UNCLASSIFIED",
+        "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
+        "G7_RG_ANCHOR_CONTENT_AND_HIGGS_QUARTIC_MATCHING",
+        "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS"
+      ],
+      "downstream_caveats": [
+        {
+          "also_affects": [
+            "G8"
+          ],
+          "blocker": "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.coloured_scalars_only_at_M_GUT",
+            "value": false
+          },
+          "gate": "G6",
+          "id": "sub_M_I_coloured_126bar_states",
+          "resolved": false,
+          "text": "Light 126bar coloured states lie below M_I at the benchmark ((3,1)_1/3 near 0.24 M_I, (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), and further (3,1)_4/3, (6,1)_1/3 and (6,1)_2/3 states), so the complete physical spectrum and its thresholds are a G6 task."
+        },
+        {
+          "also_affects": [
+            "G4"
+          ],
+          "blocker": "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.electroweak_symmetry_breaking_realized",
+            "value": false
+          },
+          "gate": "G6",
+          "id": "positivity_without_EWSB",
+          "resolved": false,
+          "text": "The witness has H = 0 and a light but massive doublet (mass^2 eps M_GUT^2), so electroweak symmetry is not broken and a positive physical spectrum with electroweak breaking is a G6 task."
+        },
+        {
+          "also_affects": [
+            "G7"
+          ],
+          "blocker": "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.physical_benchmark_uses_canonical_phi17_scale",
+            "value": false
+          },
+          "gate": "G6",
+          "id": "phi17_benchmark_scale",
+          "resolved": false,
+          "text": "The benchmark uses x0 = 1 instead of the canonical Phi17 scale, so its GeV values are illustrative and the physical Phi17 threshold is a G6 task."
+        },
+        {
+          "also_affects": [],
+          "blocker": "G7_RG_ANCHOR_CONTENT_AND_HIGGS_QUARTIC_MATCHING",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.rg_anchor_field_content_reproduced",
+            "value": false
+          },
+          "gate": "G7",
+          "id": "rg_anchor_field_content",
+          "resolved": false,
+          "text": "The RG anchor assumes a light (15,2,2) above M_I and a 2HDM below, while the witness has the (15,2,2) near 0.7 M_GUT and one light doublet, so re-solving the RG chain with the witness's field content is a G7 task."
+        },
+        {
+          "also_affects": [
+            "G6"
+          ],
+          "blocker": "G7_RG_ANCHOR_CONTENT_AND_HIGGS_QUARTIC_MATCHING",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.higgs_mass_compatible",
+            "value": false
+          },
+          "gate": "G7",
+          "id": "higgs_quartic_matching",
+          "resolved": false,
+          "text": "The benchmark's tree-level light-doublet quartic 127/64 at M_I is too large for the measured Higgs mass and tree-level global minimality forbids the slightly negative SM value, so Higgs-quartic matching is a G7 task."
+        },
+        {
+          "also_affects": [
+            "G7"
+          ],
+          "blocker": "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "checks.light_doublet_is_equal_5_5bar_mixture",
+            "value": true
+          },
+          "gate": "G8",
+          "id": "tan_beta_one_light_doublet",
+          "resolved": false,
+          "text": "The light doublet is an equal 5/5bar mixture (a tan beta = 1 structure), so with 10_H-only Yukawas m_t = m_b at matching and the flavour structure is a G8 task."
+        },
+        {
+          "also_affects": [
+            "theory_validation_matrix flavour gate"
+          ],
+          "blocker": "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.realistic_yukawa_sector",
+            "value": false
+          },
+          "gate": "G8",
+          "id": "realistic_yukawa_sector",
+          "resolved": false,
+          "text": "The H-linear portals O15, O38, O45 and O28 vanish at the benchmark, so the witness has no realistic Yukawa sector; building one is a G8 (and flavour-gate) task."
+        },
+        {
+          "also_affects": [
+            "G6"
+          ],
+          "blocker": "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS",
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.coloured_scalars_only_at_M_GUT",
+            "value": false
+          },
+          "gate": "G8",
+          "id": "proton_decay_mediators",
+          "resolved": false,
+          "text": "The sub-M_I (3,1)_1/3 state has proton-decay mediator quantum numbers and couples to 16.16 through the 126bar Yukawa that Majorana neutrino masses need, so its proton-decay consequences are a G8 task."
+        },
+        {
+          "also_affects": [],
+          "blocker": "G4_SM_WITNESS_ZERO_MODES_AND_RANKS_34_35_UNCLASSIFIED",
+          "evidence": {
+            "artifact": null,
+            "key": null,
+            "value": null
+          },
+          "gate": "G4",
+          "id": "zero_modes_and_ranks_at_witness",
+          "resolved": false,
+          "text": "Zero-mode classification at the witness belongs to G4: the recomputed ranks 34/35 (SO(10) x U(1)_X rank 34, gauge quotient 452 with the axion included; SO(10) x U(1)_X x U(1)_PQ rank 35, massive/transverse quotient 451, i.e. quotients 452/451), the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes); it is resolved only when G4 is CLOSED."
+        },
+        {
+          "also_affects": [
+            "G3 closure_scope disclosure"
+          ],
+          "blocker": null,
+          "evidence": {
+            "artifact": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "key": "flags.doublet_triplet_splitting_natural",
+            "value": false
+          },
+          "gate": "OUTSIDE_G1_G8",
+          "id": "naturalness_of_tunings",
+          "resolved": false,
+          "text": "The doublet-triplet splitting (O46_1 = -(3/5) O46_54 and O06 = 2|kappa| r0 + eps), the O05 cancellation and the M_I/M_GUT hierarchy are tuned relations whose radiative stability lies outside G1-G8 and is disclosed in the G3 closure scope."
+        }
+      ],
+      "downstream_caveats_resolved": false,
+      "downstream_caveats_scope_open": [
+        "electroweak symmetry breaking: H = 0 here, one doublet is tuned massless at tree level",
+        "doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed",
+        "light 126bar coloured states below M_I: (3,1)_1/3 at ~0.24 M_I (proton-decay mediator quantum numbers, coupled to 16.16 by the 126bar Yukawa that Majorana nu_R masses need), (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), (3,1)_4/3 + (6,1)_1/3 at ~0.25 M_I, (6,1)_2/3 at ~0.32 M_I; their proton-decay and RG/unification consequences are not analysed",
+        "RG consistency: the anchor's M_I, M_GUT assume a light (15,2,2) above M_I and a 2HDM below; this candidate has the (15,2,2) at ~0.7 M_GUT and a 1HDM, and re-solving the one-loop chain with its content moves M_I and M_GUT (rg_anchor_consistency)",
+        "Higgs mass: the benchmark's tree-level lambda_eff = 127/64 at M_I is too large (m_h ~ 195 GeV under conditional SM running); the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass (m_h ~ 126 GeV at lambda(M_I) = 0), but tree-level global minimality forbids the slightly negative SM value lambda(M_I) = -0.0085 at M_t = 173.34 GeV (sign M_t-dependent at ~2 sigma)",
+        "intermediate scale: O05 = (1/8)(4 - 2 r0^2) cancels the Phi-induced O14/O44 (10bar,1,3) mass to precision ~ (M_I/M_GUT)^2 ~ 4e-9 at the anchor; its radiative stability is not addressed",
+        "light doublet is an equal 5/5bar mixture (tan beta = 1 structure): with 10_H-only Yukawas m_t = m_b at matching",
+        "realistic Yukawa sector: the H-linear portals O15, O38, O45, O28 vanish",
+        "radiative stability of the M_I/M_GUT hierarchy"
+      ],
+      "g5_bfb_binding": {
+        "certified": true,
+        "certified_on_coupling_vector": true,
+        "coefficients": {
+          "lambda::O03_B01_singlet_polynomial": "-1/16",
+          "lambda::O04_B01_singlet_polynomial": "-2/25",
+          "lambda::O05_B01_126bar_norm": "49/100",
+          "lambda::O06_B01_Hdag_H_norm": "1/50",
+          "lambda::O07_B01_Phi_norm": "-2",
+          "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-1/2",
+          "lambda::O20_B01_singlet_polynomial": "1/32",
+          "lambda::O23_B01_singlet_polynomial": "1",
+          "lambda::O27_B01_126bar_self_projectors": "1/4",
+          "lambda::O27_B02_126bar_self_projectors": "1/4",
+          "lambda::O27_B03_126bar_self_projectors": "1/8",
+          "lambda::O27_B04_126bar_self_projectors": "17/128",
+          "lambda::O36_B01_H_self_quartics": "2",
+          "lambda::O36_B02_H_self_quartics": "2",
+          "lambda::O44_B01_Phi2_Sigma_projectors": "41/8",
+          "lambda::O44_B02_Phi2_Sigma_projectors": "73/8",
+          "lambda::O44_B03_Phi2_Sigma_projectors": "29/8",
+          "lambda::O44_B04_Phi2_Sigma_projectors": "-7/8",
+          "lambda::O44_B05_Phi2_Sigma_projectors": "-11/8",
+          "lambda::O44_B06_Phi2_Sigma_projectors": "13/8",
+          "lambda::O46_B01_Phi2_HdagH_channels": "3/5",
+          "lambda::O46_B03_Phi2_HdagH_channels": "-1",
+          "lambda::O48_B01_Phi_self_quartics": "-21/200",
+          "lambda::O48_B02_Phi_self_quartics": "2467/28800",
+          "lambda::O48_B03_Phi_self_quartics": "-77/3200",
+          "lambda::O48_B04_Phi_self_quartics": "119/115200",
+          "re::O12_B01_Hdag_Hdag_pair": "-1/20"
+        },
+        "coupling_vector": "SM Pati-Salam 27-parameter benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, O06 = 2|kappa| r0)",
+        "covers_eps_witness_family": true,
+        "decision": "D4",
+        "key": "candidate.exact_nonzero_coefficients",
+        "quartic_bound": "V4(q) >= |q|^4/167",
+        "quartic_bound_constant": "1/167",
+        "report": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+        "source": "g3_sm_pati_salam_candidate_v20",
+        "superseded_vector": "historical 27-parameter SOS vector (GAUGED_U1X_G3_SOS_CANDIDATE_V20.json coefficient_vector): its BFB certificate stays valid for that vector and is retained as constructive_frontier_evidence, but it no longer carries G5"
+      },
+      "inputs": {
+        "candidate": {
+          "file": "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+          "loaded": true
+        },
+        "equality_set": {
+          "file": "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json",
+          "loaded": true
+        },
+        "exact_hessian": {
+          "file": "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json",
+          "loaded": true
+        },
+        "sigma_hypercharge": {
+          "file": "G3_SIGMA_HYPERCHARGE_AUDIT_V20.json",
+          "loaded": true
+        }
+      },
+      "mathematically_closed": true,
+      "missing_inputs": [],
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "prerequisites_evaluated": true,
+      "release_prerequisites": {
+        "G1_promoted_closed": true,
+        "G2_promoted_closed": true,
+        "authoritative_external_model_contract_executed": true
+      },
+      "role": "ONLY_CLOSURE_ROUTE",
+      "science_criteria": {
+        "G1_G2_exact_scoped_calculations_complete": true,
+        "sm_decisive_theorem_string_bound": true,
+        "sm_eps_witness_couplings_perturbative_exact": true,
+        "sm_eps_witness_equality_set_single_G_orbit_exact": true,
+        "sm_eps_witness_exactly_stationary": true,
+        "sm_eps_witness_full_Hessian_rank_451_nullity_35_exact": true,
+        "sm_eps_witness_global_gap_exact": true,
+        "sm_eps_witness_light_doublet_mass_squared_equals_eps_exact": true,
+        "sm_eps_witness_quotient_strictly_positive_kernel_is_orbit_exact": true,
+        "sm_full_homogeneous_quartic_BFB_exact": true,
+        "sm_raised_O06_control_rank_451_nullity_35_exact": true,
+        "sm_symmetry_orbit_ranks_33_34_35_exact": true,
+        "sm_target_unbroken_algebra_is_standard_model_exact": true
+      },
+      "self_claim_note": "Input-report statuses ending in __G3_OPEN and flags g3_closed / G3_closed / report_closes_g3_by_itself = false are per-report self-claims that no single report closes G3; G3 is decided only by final_g3_acceptance_gate_v20 through this track, which requires those self-claims to stay false.",
+      "track": "sm_pati_salam",
+      "unchecked_proof_inputs": {
+        "accepted_under": "D6",
+        "allowlist_matches": true,
+        "cited_theorems": [
+          "Pluecker relations: xi != 0 is decomposable iff (iota_alpha xi) ^ xi = 0 for all alpha",
+          "Kostant's quadrics, set-theoretic form: {v in V(lambda) : v (x) v in V(2 lambda)} = G_C.v_lambda u {0}",
+          "Iwasawa decomposition G_C = K A N of the complex group SO(10,C) with K = SO(10)",
+          "Wirtinger inequality <xi, omega^p/p!> <= 1 for unit simple 2p-vectors, equality iff xi is a complex p-plane with its complex orientation",
+          "U(n) is transitive on Gr_C(k, n) and preserves complex orientations",
+          "a highest-weight vector of a finite-dimensional so(10,C)-module generates an irreducible submodule; Weyl dimension formula"
+        ],
+        "elementary_steps": [
+          "Cauchy-Schwarz |H.H| <= N_H (|sum_i H_i^2| <= sum_i |H_i|^2), used in P3 to reduce V_HS + r0^4 to the symbolically certified form",
+          "the sign argument of HS_bracket_algebra.argument (cases |S| <= r0 and |S| > r0), which turns the exact sympy square-completion identities into V_HS + r0^4 >= 0 with equality iff H = 0 and |S| = r0 (P3)",
+          "the Gram-Schmidt orbit step: a unit decomposable 4-vector equals u1^u2^u3^u4 with orthonormal u_i, and completing to a positively oriented orthonormal basis gives g in SO(10) with (Lambda^4 g) e6789 = Phi (P1)",
+          "integrating the exact Lie-algebra identities over the connected groups: over SO(10), the invariance of D (from the checked intertwining identities, D' = 2 tr(T^T X5 T) - 2 tr(T^T T X3) = 0; P1) and the equivariance of M_Phi and C_Phi (P2(v)); over U(5), the u(5) line stabilisation of sigma_std (P2(viii))",
+          "N sigma_std = sigma_std and A sigma_std in R_{>0} sigma_std for the Iwasawa factors N and A, from the checked weight (1,1,1,1,1) and positive-root data (P2(iv))",
+          "the corollary's reduction: V_v = (|Phi|^2 - v^2)^2 - v^4 + I_45 + I_210 + I_5940 (from the checked Q = J0 + I_45 + I_210 + I_5940) and the rescaling Phi -> Phi/v"
+        ]
+      },
+      "witness": {
+        "benchmark": {
+          "O06_base": "1/50",
+          "kappa": "-1/20",
+          "r0": "1/5",
+          "x0": "1"
+        },
+        "certified_members": {
+          "raised_O06": "1/2500",
+          "tiny_eps": "1/25000000"
+        },
+        "decision": "D2",
+        "definition": "O06 = 2|kappa| r0 + eps, the other 26 couplings of the 27-parameter benchmark unchanged",
+        "doublet_mass_squared": "eps (units M_GUT^2): light but massive for 0 < eps << r0^2; no electroweak symmetry breaking",
+        "eps_window": {
+          "lower_exclusive": "0",
+          "meaning": "O06_eps = 2|kappa| r0 + eps < 12 < 4 pi",
+          "upper_exclusive": "599/50"
+        },
+        "hessian_for_every_eps_positive": "PSD, rank 451, nullity 35, kernel = the 35-dimensional orbit tangent space",
+        "id": "sm_pati_salam_eps_member",
+        "p": "e6789",
+        "potential": "V_PS,eps = V_PS + eps N_H",
+        "sentence": "The G3 witness is the light-but-massive doublet member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps, 0 < eps < 599/50) at r0 = 1/5, x0 = 1, kappa = -r0/4: its exact Hessian at q0 = (p, 0, r0 sigma_std, r0, x0) is PSD with rank 451 and nullity 35 and kernel exactly the symmetry-orbit tangent space; the tuned eps = 0 point (447/39) is not the witness.",
+        "sigma_std": "z1^z2^z3^z4^z5",
+        "symmetry_group": "SO(10) x U(1)_X x U(1)_PQ (U(1)_PQ accidental)",
+        "tuned_limit_not_the_witness": "eps = 0: rank 447, nullity 39, kernel = 35 orbit tangents + 4 tuned light-doublet directions",
+        "vacuum": "(Phi, H, Sigma, S, Phi17) = (p, 0, r0 sigma_std, r0, x0)"
+      }
+    }
+  },
   "upstream_frontier_integrity": true,
-  "verdict": "G3 remains open, and the certified chiral-H candidate cannot close it: its Delta_R is the T3R=0, Y=-1 member of the 126bar triplet, so its (F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R, not the Standard Model, and its GUT-scale chiral H vev breaks that further to a 9-dimensional subgroup (g3_sigma_hypercharge_audit_v20). The mathematical results below stay valid for that point. The chiral-H candidate has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, and G3 remain open; that fixed-endpoint theorem does not classify the full Hessian, which the separate exact 448/38 certificate above closes at the certified point. PASS is impossible at this point because target_unbroken_algebra_is_standard_model is false. It requires an SM-preserving target wired into this gate and, on that target, the gate's global-gap and equality-set criteria. The Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20 is SM-preserving, and its global-minimum set is exactly one SO(10) x U(1)_X x U(1)_PQ orbit (g3_sm_pati_salam_equality_set_v20; uniqueness uses the accidental U(1)_PQ), but it is not yet wired in."
+  "verdict": "G3 is verified on the SM Pati-Salam track, the only closure route of this gate. G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded. Decisive theorem: For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ orbit of q0. The G3 witness is the light-but-massive doublet member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps, 0 < eps < 599/50) at r0 = 1/5, x0 = 1, kappa = -r0/4: its exact Hessian at q0 = (p, 0, r0 sigma_std, r0, x0) is PSD with rank 451 and nullity 35 and kernel exactly the symmetry-orbit tangent space; the tuned eps = 0 point (447/39) is not the witness. Proof inputs: 6 cited classical theorems and 6 hand-argued elementary steps, accepted as G3-grade inputs under decision D6 and pinned by an allowlist. Model-level caveats are routed downstream and G3 keeps only disclosures: sub-M_I coloured states and positivity (no EWSB) go to G6; RG-anchor content and the Higgs quartic go to G7; Yukawas and proton-decay mediators go to G8; zero-mode classification and the recomputed ranks (34 gauge -> 452, 35 -> 451) go to G4; the naturalness of the tunings (DT splitting, O05, M_I) lies outside G1-G8. The SU(5)+Delta chiral-H track is an integrity-checked diagnostic that can never close G3: its Delta_R is the T3R=0, Y=-1 member of the 126bar triplet, so it is not a Standard-Model vacuum (g3_sigma_hypercharge_audit_v20); its exact results (the 448/38 Hessian, the fixed-F gap, the pure-Delta gap 1/5000, the corrected fixed-endpoint theorem) remain valid statements about that point.",
+  "witness": {
+    "benchmark": {
+      "O06_base": "1/50",
+      "kappa": "-1/20",
+      "r0": "1/5",
+      "x0": "1"
+    },
+    "certified_members": {
+      "raised_O06": "1/2500",
+      "tiny_eps": "1/25000000"
+    },
+    "decision": "D2",
+    "definition": "O06 = 2|kappa| r0 + eps, the other 26 couplings of the 27-parameter benchmark unchanged",
+    "doublet_mass_squared": "eps (units M_GUT^2): light but massive for 0 < eps << r0^2; no electroweak symmetry breaking",
+    "eps_window": {
+      "lower_exclusive": "0",
+      "meaning": "O06_eps = 2|kappa| r0 + eps < 12 < 4 pi",
+      "upper_exclusive": "599/50"
+    },
+    "hessian_for_every_eps_positive": "PSD, rank 451, nullity 35, kernel = the 35-dimensional orbit tangent space",
+    "id": "sm_pati_salam_eps_member",
+    "p": "e6789",
+    "potential": "V_PS,eps = V_PS + eps N_H",
+    "sentence": "The G3 witness is the light-but-massive doublet member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps, 0 < eps < 599/50) at r0 = 1/5, x0 = 1, kappa = -r0/4: its exact Hessian at q0 = (p, 0, r0 sigma_std, r0, x0) is PSD with rank 451 and nullity 35 and kernel exactly the symmetry-orbit tangent space; the tuned eps = 0 point (447/39) is not the witness.",
+    "sigma_std": "z1^z2^z3^z4^z5",
+    "symmetry_group": "SO(10) x U(1)_X x U(1)_PQ (U(1)_PQ accidental)",
+    "tuned_limit_not_the_witness": "eps = 0: rank 447, nullity 39, kernel = 35 orbit tangents + 4 tuned light-doublet directions",
+    "vacuum": "(Phi, H, Sigma, S, Phi17) = (p, 0, r0 sigma_std, r0, x0)"
+  }
 }

@@ -22,6 +22,7 @@ from typing import Any
 import authoritative_full_model_gate_v20 as authoritative_gate
 import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
 import g1_g8_gate_ledger_v20 as gate_ledger
+import g3_sm_target_track_v20 as sm_track
 import gauged_u1x_scalar_contract_v20 as gauged_contract
 import theory_validation_matrix_v20 as validation_matrix
 
@@ -156,12 +157,44 @@ def _execution_errors(
     return errors
 
 
-def _claim_text(contract_ready: bool) -> dict[str, str]:
-    """Public-claim and verdict text, branched on model-contract readiness."""
+def _claim_text(contract_ready: bool, g3_closed: bool = False) -> dict[str, str]:
+    """Public-claim and verdict text, branched on model-contract readiness.
+
+    ``g3_closed`` is the ledger's G3 status (CLOSED only through the final
+    gate's SM Pati-Salam track); it changes the text only on a ready contract.
+    """
     history = (
         "Historical Option-C calculations are scoped subtheorems and neither "
         "validate nor exclude the gauged model."
     )
+    if contract_ready and g3_closed:
+        # Gate lists mirror G1_G8_GATE_LEDGER_V20: G1, G2, G3 (SM Pati-Salam
+        # track, scoped) and G5 CLOSED; G4 OPEN; G6-G8 BLOCKED.  Decision D3
+        # keeps the internal-candidate tier withheld.
+        return {
+            "correct_public_claim": (
+                "The authoritative gauged-U(1)_X model contract is attested by "
+                "a manifest/log-bound external SARAH 4.15.3 execution, and G1, "
+                "G2, G3 and G5 are closed. " + sm_track.CLOSURE_SCOPE
+                + " G1-G8 approval is withheld. " + history
+            ),
+            "incorrect_claim_do_not_use": (
+                "G3 is closed for a physically realistic or natural vacuum (the "
+                "doublet-triplet splitting, O05 and M_I are tuned); the tuned "
+                "eps = 0 point is the G3 witness; an internal candidate is "
+                "approved; the certified SU(5)+Delta point is a Standard-Model "
+                "vacuum; the current repository validates the full theory; or "
+                "the historical saddle excludes the gauged-U(1)_X model."
+            ),
+            "verdict": (
+                "WITHHOLD APPROVAL. The audit succeeds and the gauged-U(1)_X "
+                "model contract is attested by bound external SARAH execution "
+                "evidence. G1, G2, G3 (SM Pati-Salam benchmark family, scoped) "
+                "and G5 are closed, but G4 and G6-G8 remain open or blocked and "
+                "the closing track's downstream caveats are unresolved, so no "
+                "internal, full, empirical, or exclusion claim is approved."
+            ),
+        }
     if contract_ready:
         # Gate lists mirror G1_G8_GATE_LEDGER_V20: G1, G2, G5 CLOSED.
         return {
@@ -253,7 +286,32 @@ def evaluate_reports(
         errors.append("authoritative classification is not a JSON object")
         authoritative_classification = {}
 
-    internal_candidate = bool(contract_ready and first_three_closed and not errors)
+    # Decision D3: G1-G3 CLOSED alone does not approve an internal candidate.
+    # The closing G3 track's downstream caveats must also be resolved, or G4
+    # (which classifies the witness's zero modes) must be CLOSED.
+    g3_track = ledger.get("g3_sm_target_track", {}) if isinstance(ledger, dict) else {}
+    g3_row = gates.get("G3") if isinstance(gates, dict) else None
+    g4_row = gates.get("G4") if isinstance(gates, dict) else None
+    g3_closed = isinstance(g3_row, dict) and g3_row.get("status") == gate_ledger.STATUS_CLOSED
+    track_caveats_resolved = bool(
+        isinstance(g3_track, dict)
+        and g3_track.get("closed") is True
+        and g3_track.get("downstream_caveats_resolved") is True
+    )
+    g4_closed = isinstance(g4_row, dict) and g4_row.get("status") == gate_ledger.STATUS_CLOSED
+    caveats_cleared = bool(track_caveats_resolved or g4_closed)
+    internal_candidate = bool(
+        contract_ready and first_three_closed and caveats_cleared and not errors
+    )
+    internal_candidate_gate = {
+        "G1_G2_G3_closed": first_three_closed,
+        "G3_closed": g3_closed,
+        "closing_track": g3_row.get("closing_track") if isinstance(g3_row, dict) else None,
+        "closing_track_downstream_caveats_resolved": track_caveats_resolved,
+        "G4_closed": g4_closed,
+        "caveats_cleared": caveats_cleared,
+        "rule": sm_track.D3_RULE,
+    }
     # Old aligned benchmarks were calculated under the superseded no-X
     # contract.  They remain evidence, but not an approvable current benchmark.
     conditional_benchmark = False
@@ -312,7 +370,7 @@ def evaluate_reports(
 
     current_tests = current_test_count if current_test_count is not None else 0
     historical = ledger.get("historical_option_c_subtheorems", {})
-    claims = _claim_text(contract_ready)
+    claims = _claim_text(contract_ready, g3_closed=g3_closed)
     return {
         "title": "SO(10) x Z17 axion candidate v20 - confirmation verdict",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -339,6 +397,7 @@ def evaluate_reports(
             "full_approval_blockers": scientific_blockers,
         },
         "internal_candidate_approved": internal_candidate,
+        "internal_candidate_gate": internal_candidate_gate,
         "conditional_benchmark_approved": conditional_benchmark,
         "full_phenomenology_approved": full_phenomenology,
         "empirical_realization_approved": empirical_realization,
@@ -361,7 +420,7 @@ def evaluate_reports(
             "software_pass_implies_scientific_approval": False,
         },
         "tiers": {
-            "INTERNAL_CANDIDATE": "WITHHELD",
+            "INTERNAL_CANDIDATE": "APPROVED" if internal_candidate else "WITHHELD",
             "CONDITIONAL_BENCHMARK": "WITHHELD",
             "FULL_PHENOMENOLOGY": "WITHHELD",
             "EMPIRICAL_REALIZATION": "NOT_ESTABLISHED",
@@ -397,6 +456,8 @@ def write_markdown(verdict: dict[str, Any]) -> str:
         "## Approval levels",
         "",
         f"- Internal candidate: **{approval['internal_candidate']}**",
+        "- Internal-candidate gate (D3): caveats_cleared = "
+        + str(verdict.get("internal_candidate_gate", {}).get("caveats_cleared")),
         f"- Conditional benchmark: **{approval['conditional_benchmark']}**",
         f"- Full phenomenology: **{approval['full_phenomenology']}**",
         f"- Empirical realization: **{approval['empirical_realization']}**",

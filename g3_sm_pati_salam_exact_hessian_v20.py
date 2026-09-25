@@ -45,6 +45,17 @@ the canonical chart (live_g2_canonical_486_field_chart_v20).  Then
       eps = r0^2/100 and eps = r0^2/10^6.  L1 reads the equality-set
       theorem from its committed report (proved status required, fail closed).
 
+The eps family emits the decisive statement of the G3 witness (decision D2)
+as eps_family.final_acceptance_test.required_statement:
+
+    For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds
+    exactly on the SO(10)xU(1)_XxPQ orbit of q0,
+
+with currently_passes = theorem_claimed of the eps family and the
+perturbative window 0 < eps < 12 - 2|kappa| r0 = 599/50.  The final G3 gate
+(final_g3_acceptance_gate_v20) reads it through its sm_pati_salam track
+(g3_sm_target_track_v20); this report does not close G3 by itself.
+
 Congruence (Sylvester's law of inertia).  The chart packs every complex
 coordinate c as c = (x + i y)/sqrt(2).  With u_Phi = q_Phi and
 u_c = q_c/sqrt(2) = (Re c, Im c) for c in H, Sigma, S, Phi17, i.e. q = D u with
@@ -106,11 +117,14 @@ compiler rows (about 50 s); the exact part takes about 15 s.
 Scope.  A local statement at one benchmark point (r0 = 1/5, x0 = 1), plus the
 eps family through that point.  It does not re-prove the candidate's global
 minimality or the equality set (L1 extends the latter to V_eps in one exact
-step), does not wire the candidate into the G3 gate, does not change the
-physics caveats of the candidate (tuned doublet-triplet splitting, sub-M_I
-coloured remnants, RG content, Higgs quartic; on the eps member the doublet is
-light but massive, m_D^2 = eps M_GUT^2 > 0, so electroweak symmetry is still
-not broken), and G3 stays open.
+step), and does not change the physics caveats of the candidate (tuned
+doublet-triplet splitting, sub-M_I coloured remnants, RG content, Higgs
+quartic; on the eps member the doublet is light but massive,
+m_D^2 = eps M_GUT^2 > 0, so electroweak symmetry is still not broken); those
+caveats are routed downstream (G4, G6-G8) by decision D5.  It does not close
+G3 by itself: G3 is decided only by final_g3_acceptance_gate_v20 through its
+sm_pati_salam track, and the flags G3_closed / report_closes_g3_by_itself stay
+False.
 """
 from __future__ import annotations
 
@@ -1568,6 +1582,15 @@ EPS_THEOREM = (
     "0 < eps < r0^2/96.  L1 rests on the equality-set theorem (committed report, proved status required); L2 and the "
     "doublet statement are exact over Q; exact inertia 451/35/0 is re-certified at eps = r0^2/100 and r0^2/10^6."
 )
+# The decisive G3 statement for the eps witness (decision D2), emitted here as
+# eps_family.final_acceptance_test.required_statement and read by g3_sm_target_track_v20
+# (its SM_FINAL_THEOREM) for final_g3_acceptance_gate_v20.
+SM_EPS_FINAL_THEOREM = (
+    "For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds "
+    "exactly on the SO(10)xU(1)_XxPQ orbit of q0."
+)
+PERTURBATIVE_BOUND = Fraction(12)  # < 4 pi (pi > 3): exact rational comparisons only
+EPS_PERTURBATIVE_UPPER = PERTURBATIVE_BOUND - 2 * abs(KAPPA) * R0  # 599/50: O06_eps = 2|kappa| r0 + eps < 12
 EQUALITY_H_CONDITION = "H = 0 and |S| = r0"
 EQUALITY_THEOREM_FRAGMENTS = (
     "satisfies V >= V0",
@@ -2013,7 +2036,8 @@ def eps_family_section(
                 "report": f"{equality.OUT_JSON.name} (committed; read, not rebuilt)",
                 "required_status": equality.STATUS_PROVED,
                 "premises": premises,
-                "D6": "the equality-set theorem cites classical theorems and hand-argued steps (decision D6 pending)",
+                "D6": "the equality-set theorem cites classical theorems and hand-argued steps (decision D6: accepted "
+                "as G3-grade inputs, pinned by g3_sm_target_track_v20)",
             },
             "O06_operator": structure,
             "N_H_symbolic": symbolic,
@@ -2101,6 +2125,29 @@ def eps_family_section(
             "L2 and the doublet statement are exact at r0 = 1/5, x0 = 1, kappa = -r0/4 for every eps (> 0 resp. >= 0)",
             "no electroweak symmetry breaking and none of the candidate's model-level caveats is changed",
         ],
+        "final_acceptance_test": {
+            "required_statement": SM_EPS_FINAL_THEOREM,
+            "currently_passes": claimed,
+            "witness": "V_PS,eps = V_PS + eps N_H: O06 = 2|kappa| r0 + eps with 0 < eps < 12 - 2|kappa| r0 (O06_eps < 12 < "
+            "4 pi), the other 26 benchmark couplings unchanged, at r0 = 1/5, x0 = 1, kappa = -r0/4",
+            "eps_window": {
+                "lower_exclusive": "0",
+                "upper_exclusive": str(EPS_PERTURBATIVE_UPPER),
+                "meaning": "O06_eps = 2|kappa| r0 + eps < 12 < 4 pi (pi > 3)",
+            },
+            "q0": "(Phi, H, Sigma, S, Phi17) = (p, 0, r0 sigma_std, r0, x0)",
+            "symmetry_group": "SO(10) x U(1)_X x U(1)_PQ",
+            "evidence": [
+                "L1 with the committed equality-set theorem (proved status required): V_eps >= V0 and "
+                "{V_eps = V0} = G.q0 for every eps >= 0",
+                "L2: for every eps > 0 the Hessian at q0 is PSD with rank 451, nullity 35 and kernel exactly the "
+                "orbit tangent space",
+            ],
+            "proof_inputs": "the equality-set theorem's 6 cited classical theorems and 6 hand-argued elementary steps "
+            "(decision D6: accepted as G3-grade inputs, pinned by g3_sm_target_track_v20)",
+            "closes_g3_by_itself": False,
+            "consumer": "final_g3_acceptance_gate_v20 (sm_pati_salam track via g3_sm_target_track_v20)",
+        },
     }
 
 
@@ -2238,7 +2285,9 @@ def build_report(
         "eps_family_theorem_claimed": eps_family["theorem_claimed"],
         **eps_family["flags"],
         "other_r0_x0_kappa_certified": False,
-        "candidate_wired_into_g3_gate": False,
+        # Per-report self-claims (always False): G3 is decided only by final_g3_acceptance_gate_v20 through its
+        # sm_pati_salam track (g3_sm_target_track_v20), which reads this report and requires both to stay False.
+        "report_closes_g3_by_itself": False,
         "G3_closed": False,
     }
     report = {
@@ -2332,8 +2381,9 @@ def build_report(
                 "does not",
                 "electroweak symmetry breaking on the eps family: H = 0 and the tree-level doublet mass^2 is eps >= 0",
                 "other r0, x0 or kappa: the unit functions accept them, but only the benchmark is certified and bound",
-                "G3 closure: the candidate is not wired into the G3 gate; its global minimality and the equality set "
-                "are the candidate's and the equality module's results, not re-proved here",
+                "G3 closure by this report alone: G3 is decided only by final_g3_acceptance_gate_v20 through its "
+                "sm_pati_salam track (g3_sm_target_track_v20), which reads this report; the global minimality and the "
+                "equality set are the candidate's and the equality module's results, not re-proved here",
                 "the candidate's physics caveats (tuned doublet-triplet splitting and O06, sub-M_I coloured remnants, "
                 "RG content, Higgs quartic, no electroweak breaking or Yukawa sector)",
             ],
@@ -2364,7 +2414,8 @@ def _verdict(report: Mapping[str, Any]) -> str:
     if report["n_failed"]:
         return (
             "The exact Hessian theorem is NOT claimed: " + ", ".join(report["failures"]) + ".  The kernel count of the "
-            "SM Pati-Salam benchmark stays float64 evidence; G3 stays open."
+            "SM Pati-Salam benchmark stays float64 evidence, and the eps-family statement read by the final G3 gate "
+            "is not certified (fail closed)."
         )
     cert = report["exact_certificate"]
     raised = report["exact_certificate_raised_O06"]
@@ -2382,8 +2433,10 @@ def _verdict(report: Mapping[str, Any]) -> str:
         + _eps_verdict(report["eps_family"])
         + "  The entries are derived from integer source tensors in the "
         "radical-free coordinates u = D^-1 q (Sylvester's law of inertia), and the exact matrix agrees with the live "
-        "compiler Hessian to within 1e-12 and rounds from it on the exact lattice (float64 binding).  G3 stays open: "
-        "the candidate is not wired into the gate and its physics caveats are unchanged."
+        "compiler Hessian to within 1e-12 and rounds from it on the exact lattice (float64 binding).  This report "
+        "does not close G3 by itself: G3 is decided by final_g3_acceptance_gate_v20 through its sm_pati_salam "
+        "track, whose witness is an eps > 0 member; the candidate's physics caveats are unchanged and routed "
+        "downstream (G4, G6-G8)."
     )
 
 
@@ -2470,6 +2523,13 @@ def _markdown(report: Mapping[str, Any]) -> str:
         f"**Theorem claimed:** `{eps['theorem_claimed']}` ({eps['n_checks'] - eps['n_failed']}/{eps['n_checks']} checks)",
         "",
         eps["theorem"],
+        "",
+        f"**Required statement (final G3 gate, SM Pati-Salam track):** {eps['final_acceptance_test']['required_statement']}",
+        "",
+        f"**Currently passes:** `{eps['final_acceptance_test']['currently_passes']}` (eps window "
+        f"`{eps['final_acceptance_test']['eps_window']['lower_exclusive']} < eps < "
+        f"{eps['final_acceptance_test']['eps_window']['upper_exclusive']}`; closes G3 by itself: "
+        f"`{eps['final_acceptance_test']['closes_g3_by_itself']}`)",
         "",
         f"- L1: {eps['L1_equality_set']['statement']}",
         f"- L1 relies on `{eps['L1_equality_set']['relies_on']['report']}` with status "
