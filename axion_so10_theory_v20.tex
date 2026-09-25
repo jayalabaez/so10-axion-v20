@@ -800,9 +800,13 @@ mass dependence for the stated graph, not a coefficient-free prediction.
 It is not an external implementation certificate. The repository model file
 now uses native non-supersymmetric SARAH syntax, includes the manuscript's
 gauged $U(1)_X$, and passes static catalogue, charge, Lagrangian, filter, and
-hash-bound input-manifest checks. A Mathematica/SARAH process-log attestation
-is not available in the present environment, so the authoritative whole-model
-gate remains blocked. This also does not mean
+hash-bound input-manifest checks. A SARAH~4.15.3 run on Wolfram Engine~15.0,
+with six SO($N$) defects of that release replaced by exact routines on its
+bundled Susyno engine, registers all 19 Lagrangian terms as SO(10), $U(1)_X$
+and $\Zs$ invariant with vanishing anomaly sums, and rejects a forbidden
+$210_H 10_H^\dagger 10_H$ term and a shifted $X$ charge. This hash-bound
+attestation makes the model contract consistent; the global scalar-potential
+gate G3 remains open. This also does not mean
 a completed scalar-vacuum proof. The exact-$X$
 renormalizable scalar
 census contains 44 tensor directions and 51 real parameters. Its dense
@@ -874,23 +878,33 @@ and is positive on all transverse directions.
 Combining exact stationarity, complete-potential BFB, and transverse Hessian
 positivity proves that the selected symmetry orbit is a strict local minimum.
 The final exact global-gap test also gives a decisive negative result for
-globality.  In canonical $overline{126}$ coordinates there is a Gaussian-
+globality.  In canonical $\overline{126}$ coordinates there is a Gaussian-
 integer field direction with normalized projector fractions
 $(I_{54},I_{1050},I_{2772},I_{4125})=(0,0,1/2,1/2)$.  It annihilates both mixed
 squares at $P$ and, after choosing $N_\Sigma=(100/99)r^2$, has energy below the selected orbit by
 $25r^4/19008>0$.  The selected orbit is therefore not the global vacuum and
 the present 27-parameter candidate is rejected for G3.  G3 closure remains
 false, but this does not exclude the theory: the fixed-$P$ branch obeys the
-exact gap--curvature relation $Delta V=-m_perp^2/8$, and its lower replacement
+exact gap--curvature relation $\Delta V=-m_\perp^2/8$, and its lower replacement
 has the wrong stabilizer. A distinct $p:a:\omega=1:1:1$ SU(5)-singlet branch
-has an explicit global $Phi+\Sigma$ SOS, the SM stabilizer, and exact
+has an explicit global $\Phi+\Sigma$ SOS, the SM stabilizer, and exact
 rank/nullity $429/33$.  With the neutral chiral vector
 $H=(e_6+i e_7)/\sqrt2$, its 28-parameter full-field extension is exactly
 stationary and BFB, has symmetry ranks $36/37/38$, and has a live positive
 448-dimensional quotient with minimum eigenvalue $0.00484459$.  A separate
 source-bound rational-lattice calculation and exact block LDL certificate now
 prove full Hessian rank/nullity $448/38$, positive semidefiniteness, and that
-the kernel is exactly the 38-dimensional symmetry orbit.  The literal
+the kernel is exactly the 38-dimensional symmetry orbit.  This point is not the
+physical vacuum: $H$ lies in an electroweak doublet with
+$|\langle H\rangle|/|\langle\Phi\rangle|=1$, and $\Sigma$ and $S$ sit at
+$M_{\rm GUT}/5$ rather than at $M_I$.  Retuning only the $10_H$ mass
+term leaves one massless doublet with no tree-level coupling to heavy modes, so
+$\lambda_{\rm eff}=1$ and one-loop running gives $m_h\simeq173\GeV$; any
+nonnegative matching quartic gives $m_h\gtrsim134\GeV$, so the physical G3
+target needs a negative GUT-scale threshold.  The declared portal
+$\lambda_{HS}|H|^2|S|^2$, zero in the benchmark, supplies it at tree level,
+$\lambda_{\rm eff}=\lambda_H-\lambda_{HS}^2/(4\lambda_S)$, and
+$\lambda_{HS}\simeq2.03$ reproduces the one-loop Standard Model value.  The literal
 single-orbit four-form lemma is false: $F$ and $-F$ obey both projector
 equations but are separated by the cubic invariant
 $\operatorname{Tr}(A_\Phi^3)=\pm60$.  Exact mixed rank $252/252$ excludes the

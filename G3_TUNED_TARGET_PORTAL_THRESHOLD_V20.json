@@ -1,0 +1,255 @@
+{
+  "bfb": "lambda_HS > 0 adds the nonnegative quartic |H|^2 |S|^2, so every BFB certificate of the tuned potential survives unchanged.",
+  "checks": {
+    "doublet_stays_massless_after_O06_retune": true,
+    "every_portal_point_is_psd": true,
+    "every_portal_point_is_stationary": true,
+    "exact_compiler_matches_singlet_threshold_formula": true,
+    "no_gate_closed_or_model_excluded": true,
+    "portal_couples_the_doublet_to_the_S_radial_mode": true,
+    "quartic_is_su2_x_u1_invariant": true,
+    "solution_reproduces_sm_lambda_at_mt": true
+  },
+  "couplings": {
+    "lambda_H": 1.0,
+    "lambda_S": 1.0,
+    "portal_parameter": "lambda::O34_B01_Hdag_H_norm"
+  },
+  "failures": [],
+  "flags": {
+    "g3_closed": false,
+    "higgs_mass_tension_resolvable_by_declared_hs_portal": true,
+    "requires_nonzero_axion_portal": true,
+    "tree_level_matching_only": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "formula": "lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S)",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 8,
+  "n_failed": 0,
+  "overall_state": "CONSTRUCTIVE_TREE_LEVEL_RESOLUTION",
+  "scan": [
+    {
+      "directions": {
+        "mixed_u0_u2": {
+          "coupling_S_block_norm": 0.141421356237,
+          "coupling_vector_norm": 0.141421356237,
+          "heavy_exchange_shift": 0.0625,
+          "lambda_direct": 1.0,
+          "lambda_eff": 0.9375
+        },
+        "u0": {
+          "coupling_S_block_norm": 0.141421356237,
+          "coupling_vector_norm": 0.141421356237,
+          "heavy_exchange_shift": 0.0625,
+          "lambda_direct": 1.0,
+          "lambda_eff": 0.9375
+        }
+      },
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 0.5,
+      "lambda_eff": 0.9375,
+      "lambda_eff_formula": 0.9375,
+      "lambda_eff_spread": 0.0,
+      "light_h_spectrum": {
+        "colour_triplets": [
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 0.002
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 1.198
+          }
+        ],
+        "hermiticity_residual": 0.0,
+        "maximum_eigenvalue": 1.2,
+        "triplet_doublet_mixing_residual": 0.0,
+        "weak_doublets": [
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 0.0
+          },
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 1.2
+          }
+        ]
+      },
+      "negative_eigenvalues_below_minus_1e_minus_9": 0,
+      "retuned_O06": -0.02,
+      "zero_modes": 39
+    },
+    {
+      "directions": {
+        "mixed_u0_u2": {
+          "coupling_S_block_norm": 0.282842712475,
+          "coupling_vector_norm": 0.282842712475,
+          "heavy_exchange_shift": 0.25,
+          "lambda_direct": 1.0,
+          "lambda_eff": 0.75
+        },
+        "u0": {
+          "coupling_S_block_norm": 0.282842712475,
+          "coupling_vector_norm": 0.282842712475,
+          "heavy_exchange_shift": 0.25,
+          "lambda_direct": 1.0,
+          "lambda_eff": 0.75
+        }
+      },
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 1.0,
+      "lambda_eff": 0.75,
+      "lambda_eff_formula": 0.75,
+      "lambda_eff_spread": 0.0,
+      "light_h_spectrum": {
+        "colour_triplets": [
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 0.002
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 1.198
+          }
+        ],
+        "hermiticity_residual": 0.0,
+        "maximum_eigenvalue": 1.2,
+        "triplet_doublet_mixing_residual": 0.0,
+        "weak_doublets": [
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 0.0
+          },
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 1.2
+          }
+        ]
+      },
+      "negative_eigenvalues_below_minus_1e_minus_9": 0,
+      "retuned_O06": -0.04,
+      "zero_modes": 39
+    },
+    {
+      "directions": {
+        "mixed_u0_u2": {
+          "coupling_S_block_norm": 0.565685424949,
+          "coupling_vector_norm": 0.565685424949,
+          "heavy_exchange_shift": 1.0,
+          "lambda_direct": 1.0,
+          "lambda_eff": 0.0
+        },
+        "u0": {
+          "coupling_S_block_norm": 0.565685424949,
+          "coupling_vector_norm": 0.565685424949,
+          "heavy_exchange_shift": 1.0,
+          "lambda_direct": 1.0,
+          "lambda_eff": 0.0
+        }
+      },
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 2.0,
+      "lambda_eff": 0.0,
+      "lambda_eff_formula": 0.0,
+      "lambda_eff_spread": 0.0,
+      "light_h_spectrum": {
+        "colour_triplets": [
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 0.002
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 1.198
+          }
+        ],
+        "hermiticity_residual": 0.0,
+        "maximum_eigenvalue": 1.2,
+        "triplet_doublet_mixing_residual": 0.0,
+        "weak_doublets": [
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 0.0
+          },
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 1.2
+          }
+        ]
+      },
+      "negative_eigenvalues_below_minus_1e_minus_9": 0,
+      "retuned_O06": -0.08,
+      "zero_modes": 39
+    }
+  ],
+  "scope": "Tree-level matching at M_GUT with the certified hierarchy r = 1/5. At the physical hierarchy S sits at M_I and the same threshold would act there, which needs two-stage running.",
+  "sm_matching": {
+    "M_GUT_GeV": 1e+16,
+    "lambda_HS_required_at_BFB_floor_lambda_H": 0.392623025229,
+    "lambda_HS_required_at_certified_lambda_H": 2.033261626043,
+    "lambda_gut_required_one_loop": -0.033538209985,
+    "portal_perturbative": true,
+    "solution": {
+      "directions": {
+        "mixed_u0_u2": {
+          "coupling_S_block_norm": 0.575093233481,
+          "coupling_vector_norm": 0.575093233481,
+          "heavy_exchange_shift": 1.033538209985,
+          "lambda_direct": 1.0,
+          "lambda_eff": -0.033538209985
+        },
+        "u0": {
+          "coupling_S_block_norm": 0.575093233481,
+          "coupling_vector_norm": 0.575093233481,
+          "heavy_exchange_shift": 1.033538209985,
+          "lambda_direct": 1.0,
+          "lambda_eff": -0.033538209985
+        }
+      },
+      "formula_residual": 0.0,
+      "gradient_max_abs": 0.0,
+      "lambda_HS": 2.033261626043,
+      "lambda_eff": -0.033538209985,
+      "lambda_eff_formula": -0.033538209985,
+      "lambda_eff_spread": 0.0,
+      "light_h_spectrum": {
+        "colour_triplets": [
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 0.002
+          },
+          {
+            "complex_multiplicity": 3,
+            "mass_squared": 1.198
+          }
+        ],
+        "hermiticity_residual": 0.0,
+        "maximum_eigenvalue": 1.2,
+        "triplet_doublet_mixing_residual": 0.0,
+        "weak_doublets": [
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 0.0
+          },
+          {
+            "complex_multiplicity": 2,
+            "mass_squared": 1.2
+          }
+        ]
+      },
+      "negative_eigenvalues_below_minus_1e_minus_9": 0,
+      "retuned_O06": -0.081330465042,
+      "zero_modes": 39
+    },
+    "solution_lambda_at_mt": 0.12604,
+    "solution_m_h_tree_GeV": 123.621076762306
+  },
+  "status": "G3_TUNED_TARGET_HS_PORTAL_THRESHOLD_CAN_MATCH_SM_HIGGS_QUARTIC__G3_OPEN",
+  "units": "Hessian eigenvalues of the canonical 486-real chart, units of the benchmark scale M (|Phi|=1)",
+  "verdict": "Switching on the declared H-S portal O34 couples the light doublet to the S radial mode. The exact compiler reproduces the singlet threshold lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S) to machine precision. With the certified lambda_H = lambda_S = 1, lambda_HS = 2.0333 gives the one-loop SM value lambda(M_GUT) = -0.0335; that is perturbative and keeps the potential bounded below. The Higgs-mass tension is therefore not structural: it asks for exactly the axion-Higgs portal the benchmark switched off. G3 stays open."
+}

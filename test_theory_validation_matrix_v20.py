@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 import theory_validation_matrix_v20 as matrix
@@ -1347,7 +1348,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                         ]
                     )
 
-    def test_conditional_candidate_is_not_full_validation(self):
+    def test_open_scalar_vacuum_withholds_candidate_approval(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             minimal_tree(root)
@@ -1355,8 +1356,10 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertEqual(report["status"], "PASS")
             self.assertEqual(
                 report["classification"],
-                "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE",
+                "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN",
             )
+            self.assertEqual(report["decision"], "WITHHOLD_APPROVAL")
+            self.assertIn("scalar potential", report["verdict"])
             self.assertFalse(report["full_theory_validated"])
             states = {gate["name"]: gate["state"] for gate in report["gates"]}
             self.assertEqual(states["proton_decay"], "OPEN")
@@ -1365,6 +1368,27 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 "OPEN",
             )
             self.assertEqual(states["UV_portal_selection_and_FCNC"], "CONDITIONAL")
+
+    def test_conditional_candidate_needs_passing_scalar_vacuum(self):
+        original = matrix._vacuum_gate
+
+        def passing_vacuum(reports):
+            gate = dict(original(reports))
+            gate["state"] = "PASS"
+            return gate
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            with mock.patch.object(matrix, "_vacuum_gate", passing_vacuum):
+                report = matrix.build_report(root)
+            self.assertEqual(report["status"], "PASS")
+            self.assertEqual(
+                report["classification"],
+                "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE",
+            )
+            self.assertEqual(report["decision"], "APPROVE_CONDITIONAL_CANDIDATE_ONLY")
+            self.assertFalse(report["full_theory_validated"])
 
     def test_core_failure_rejects_current_realization(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -1415,6 +1439,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             report["classification"],
             {
                 "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+                "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN",
                 "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE",
                 "INSUFFICIENT_CURRENT_REPRODUCIBILITY",
             },

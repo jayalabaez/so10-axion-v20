@@ -174,6 +174,46 @@ python -B run_exact_x_sarah_validation_v20.py \
 python exact_x_symmetry_consistency_gate_v20.py --require-consistent
 ```
 
+An independent numerical Weyl-integration census
+(`g1_independent_torus_quadrature_census_v20.py`, numpy only, exact torus grid)
+reproduces every G1 count: 34/28/51/44/51 for the gauged contract, the Option-C
+74/48/91/64/91 superset, all anchors, and both sector cross-checks.
+
+Independent numerical evidence for the signed Phi-orbit lemma
+(`g3_phi_orbit_lemma_numerical_evidence_v20.py`, its own generators and Casimir
+projectors) supports the lemma:
+- In 150/150 random starts, `||P54(Phi Phi)||^2 + ||P4125(Phi Phi)||^2` falls to
+  zero only on the `+F` or `-F` orbit (68/82).
+- The minimum at fixed cubic invariant grows linearly away from `F`, with the
+  exact slope `7/(270 sqrt 10)`, and reaches 0.0546 at `I3 = 0`.
+- The cubic is maximized by the Cayley form: `96/sqrt 14` against
+  `48/sqrt 10` at `F`.
+This is evidence, not a proof.
+
+The certified SU(5)+Delta chiral-H G3 point is not the physical vacuum
+(`g3_candidate_physical_target_audit_v20.py`). Its `10_H` vev lies in an
+electroweak doublet with `|<H>|/|<Phi>| = 1`. At `(F, r Delta_R, H=0)` all ten
+`10_H` modes are tachyonic, and doublet-triplet splitting is only
+`beta r^2 = 1/500`. Retuning only `O06` from -2 to 0 gives one massless doublet
+and a colour-triplet partner at `M_T = M/sqrt(500)`. The axion singlet has no
+portal to the GUT fields in the benchmark. At that tuned target
+(`g3_tuned_target_effective_higgs_quartic_v20.py`) the Hessian is PSD with 39
+zero modes: 33 Goldstones, the `U(1)_X` and PQ phases, and the doublet. The
+doublet has no tree-level coupling to heavy modes, so `lambda_eff = 1`, and
+one-loop SM running gives `m_h ~ 173 GeV`. Any nonnegative matching quartic
+gives `m_h >= 133.6 GeV` at one loop, so the physical target needs a negative
+GUT-scale threshold of about -0.03 (one loop). The declared H-S portal
+`O34 = lambda_HS |H|^2 |S|^2`, zero in the benchmark, supplies exactly that
+threshold (`g3_tuned_target_portal_threshold_v20.py`). The exact compiler
+reproduces `lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S)` to machine precision.
+`lambda_HS = 2.03` reaches the one-loop SM value; at the BFB floor
+`lambda_H = 1/200` it takes only 0.39. Either way the potential stays bounded
+below and the tuned point stays a PSD minimum. The certified vevs are also not
+at the repository's physical hierarchy: Sigma and S sit at `M_GUT/5` instead of
+`M_I ~ 6.3e11 GeV`, and at `M_I` the tuned triplet partner would sit at
+`sqrt(beta) M_I ~ 1.4e11 GeV` (a G8 input). This constrains the coupling
+point; it does not exclude the model.
+
 Exact `X` neutrality reduces the
 renormalizable scalar potential from the historical `64/91` compiler superset
 to `44` directions and `51` real parameters. The scoped G1/G2 calculation covers
@@ -390,7 +430,11 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > standard positive-Gram map, ordered-spectral RHS, all 6585 exact equalities,
 > and a strict 22-block/824-pivot primal prove the arbitrary-real-`Phi210`
 > statement only at fixed `H=h_-`, `Sigma=q/4`. Global Sigma, general/full `H`,
-> the full Hessian, and G3 remain open.
+> the full Hessian, and G3 remain open. The certified chiral-H point breaks
+> electroweak symmetry at the GUT scale, so it is not the physical vacuum; at
+> the tuned physical target the certified couplings give `m_h ~ 173 GeV` at
+> one loop, and 125 GeV needs a negative GUT-scale threshold, which the
+> declared H-S portal supplies at tree level.
 > Consequently G3 remains open and the complete theory is neither validated
 > nor discarded.
 

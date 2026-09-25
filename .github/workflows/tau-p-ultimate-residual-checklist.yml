@@ -40,25 +40,21 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20_VERDICT.json'))
-          assert r['status']=='TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_FOLDED__EXACT_UNIQUE_OPEN'
+          assert r['status']=='TAU_P_CHECKLIST_CORRECTED__EFJX_CLOSURES_REOPENED', r['status']
           assert r['n_failed']==0
-          assert r['flag']['ultimate_residual_checklist_folded']
-          assert r['flag']['all_post_hessian_residuals_closed']
-          assert r['flag']['live_sarah_or_pyrate_executable_run']
-          assert r['flag']['full_quartic_soft_live_dump']
-          assert r['flag']['cal_G_portal_decision_resolved']
-          assert r['flag']['selected_lambda_lock_raised_to_cal_G_lift']
-          assert r['flag']['lam4_potential_raise_proved_spoiling']
-          assert not r['flag']['extra_new_portal_required']
-          assert r['certificate']['residual_now_closed']['selected_lambda_lock_raised_to_cal_G_lift']
-          assert r['certificate']['residual_now_closed']['lam4_potential_raise_to_efjx_tol_proved_spoiling']
-          assert r['certificate']['residual_still_open']['selected_lam4_below_gut_null_tol_threshold']
-          assert r['certificate']['residual_still_open']['lam4_cgc_and_dim6_lock_not_in_live_dump']
-          assert r['certificate']['residual_still_open']['physical_efjx_cgc_for_210_10_126_S_undetermined']
-          assert r['certificate']['c_cgc_needed_abs_approx'] > 1.0
-          assert 'selected_lambda_lock_below_cal_G_lift_threshold' not in r['certificate']['residual_still_open']
+          assert r['flag']['EFJX_false_closures_reopened']
+          assert r['flag']['scalar_alpha_proven_nonunique_from_flavour']
+          assert not r['flag']['ultimate_residual_checklist_folded']
+          assert not r['flag']['all_post_hessian_residuals_closed']
+          assert r['certificate']['residual_now_closed']['efjx_gauge_gamma_source_collision_identified']
+          assert r['certificate']['residual_now_closed']['old_efjx_cgc_bound_withdrawn']
+          assert r['certificate']['residual_still_open']['direct_scalar_mass_squared_block']
+          assert r['certificate']['residual_still_open']['full_nonsusy_component_hessian']
+          assert r['certificate']['c_cgc_needed_abs_approx'] is None
+          assert r['lifetime']['conditional_only']
           assert not r['flag']['exact_unique_proton_lifetime']
           assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['whole_model_validated']
           assert r['lifetime']['selected_tau_e_years']>0
           PY
       - name: Upload ultimate checklist verdicts

@@ -2,9 +2,9 @@
 
 **Status:** `PASS`
 
-**Classification:** `INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE`
+**Classification:** `INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN`
 
-**Decision:** `APPROVE_CONDITIONAL_CANDIDATE_ONLY`
+**Decision:** `WITHHOLD_APPROVAL`
 
 - Full theory validated: **False**
 - Empirical discovery: **False**
@@ -66,4 +66,4 @@
 
 ## Verdict
 
-The present repository cannot approve a manuscript candidate while the statically consistent gauged-U(1)_X SARAH model lacks v2 bound external execution evidence. The historical no-X calculations remain reproducible subtheorems, not validation. Full validity requires a matching contract, the complete operator basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, a common-scale flavour fit, UV-selected portal currents, proton decay, a fixed cosmology, and real independent 37 GHz data.
+The gauged-U(1)_X model contract is attested by bound external SARAH execution evidence and the mathematical and software core passes, but no benchmark is approvable while the full scalar potential, vacuum and spectrum gate remains open. The historical no-X calculations remain reproducible subtheorems, not validation. Full validity requires a matching contract, the complete operator basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, a common-scale flavour fit, UV-selected portal currents, proton decay, a fixed cosmology, and real independent 37 GHz data.

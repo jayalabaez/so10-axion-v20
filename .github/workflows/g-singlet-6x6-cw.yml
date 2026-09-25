@@ -28,17 +28,20 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
-          assert r['status']=='G_SINGLET_6x6_IN_CW__SARAH_AND_UV_CP_OPEN'
+          assert r['status']=='CAL_G_SOURCE_CORRECTED__SCALAR_CW_WITHDRAWN', r['status']
           assert r['n_failed']==0
           assert r['spectrum']['n_modes']==6
-          assert r['flag']['g_singlet_6x6_complete']
+          assert r['spectrum']['n_modes_in_cw']==0
+          assert r['flag']['scalar_CW_contribution_withdrawn']
+          assert r['g_singlet_cw']['n_entries']==0
           assert r['flag']['cal_G_eq102_transcribed']
-          assert r['flag']['chiral_5x5_null_verified']
-          assert r['flag']['one_loop_stability_conditional']
+          assert r['flag']['chiral_5x5_null_verified_as_susy_diagnostic']
+          assert r['flag']['direct_nonsusy_singlet_hessian_required']
+          assert not r['flag']['g_singlet_6x6_complete']
           assert not r['flag']['soft_gaugino_overlap_subtracted']
-          assert not r['flag']['sarah_validated_210_betas']
           assert not r['flag']['exact_unique_proton_lifetime']
           assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['whole_model_validated']
           PY
       - name: Upload G-singlet CW verdicts
         if: always()

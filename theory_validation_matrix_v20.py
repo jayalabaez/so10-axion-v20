@@ -2360,6 +2360,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
     all_mandatory_pass = not failed and not mandatory_open
 
     core_state = states["mathematical_and_software_core"]
+    vacuum_state = states["full_scalar_potential_vacuum_and_spectrum"]
     if failed:
         classification = "CURRENT_REALIZATION_REJECTED"
         decision = "REJECT"
@@ -2369,9 +2370,16 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
     elif all_mandatory_pass:
         classification = "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
         decision = "VALIDATE_FULL_PHENOMENOLOGY"
-    elif core_state == "PASS":
+    elif core_state == "PASS" and vacuum_state == "PASS":
         classification = "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE"
         decision = "APPROVE_CONDITIONAL_CANDIDATE_ONLY"
+    elif core_state == "PASS":
+        # Mirrors theory_confirmation_verdict_v20: a candidate needs the scalar
+        # vacuum (G1-G3) closed, and the older aligned benchmarks were computed
+        # under the superseded no-X contract, so none is approvable while the
+        # full scalar potential is open.
+        classification = "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN"
+        decision = "WITHHOLD_APPROVAL"
     else:
         classification = "INSUFFICIENT_CURRENT_REPRODUCIBILITY"
         decision = "WITHHOLD_APPROVAL"
@@ -2468,17 +2476,44 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "green_requirements": {
             gate["name"]: gate["green_condition"] for gate in gates
         },
-        "verdict": (
+        "verdict": _verdict(classification),
+    }
+
+
+def _verdict(classification: str) -> str:
+    requirements = (
+        "Full validity requires a matching contract, the complete operator "
+        "basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, "
+        "a common-scale flavour fit, UV-selected portal currents, proton decay, "
+        "a fixed cosmology, and real independent 37 GHz data."
+    )
+    history = (
+        "The historical no-X calculations remain reproducible subtheorems, "
+        "not validation. "
+    )
+    if classification == "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED":
+        lead = (
             "The present repository cannot approve a manuscript candidate while "
             "the statically consistent gauged-U(1)_X SARAH model lacks v2 bound "
-            "external execution evidence. The historical "
-            "no-X calculations remain reproducible subtheorems, not validation. "
-            "Full validity requires a matching contract, the complete operator "
-            "basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, "
-            "a common-scale flavour fit, UV-selected portal currents, proton decay, "
-            "a fixed cosmology, and real independent 37 GHz data."
-        ),
-    }
+            "external execution evidence. "
+        )
+    elif classification == "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN":
+        lead = (
+            "The gauged-U(1)_X model contract is attested by bound external SARAH "
+            "execution evidence and the mathematical and software core passes, "
+            "but no benchmark is approvable while the full scalar potential, "
+            "vacuum and spectrum gate remains open. "
+        )
+    elif classification == "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE":
+        lead = (
+            "The attested model and its scalar vacuum pass; the candidate is "
+            "approvable only as a conditional internal candidate. "
+        )
+    elif classification == "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED":
+        lead = "Every mandatory gate passes; this is not an empirical discovery. "
+    else:
+        lead = "The current tree does not support approval. "
+    return lead + history + requirements
 
 
 def write_markdown(report: dict[str, Any]) -> str:

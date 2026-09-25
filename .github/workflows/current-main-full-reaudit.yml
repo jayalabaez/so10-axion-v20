@@ -177,7 +177,12 @@ jobs:
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
             test_gauged_u1x_g3_stability_v20.py \
-            test_gauged_u1x_g3_corrected_common_kernel_v20.py
+            test_gauged_u1x_g3_corrected_common_kernel_v20.py \
+            test_g1_independent_torus_quadrature_census_v20.py \
+            test_g3_phi_orbit_lemma_numerical_evidence_v20.py \
+            test_g3_candidate_physical_target_audit_v20.py \
+            test_g3_tuned_target_effective_higgs_quartic_v20.py \
+            test_g3_tuned_target_portal_threshold_v20.py
           python -B -m pytest -q -p no:cacheprovider test_replicate_v20.py
           python -B corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check
       - name: Assert honest correction

@@ -28,16 +28,18 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('MIXED_210_126_10_CW_V20_VERDICT.json'))
-          assert r['status']=='MIXED_210_126_10_MASSES_IN_CW__G_SINGLET_AND_FERMION_OPEN'
+          assert r['status']=='AULAKH_EFJX_SOURCE_CORRECTED__SCALAR_CW_WITHDRAWN', r['status']
           assert r['n_failed']==0
-          assert r['spectra']['n_blocks']==6
-          assert r['flag']['mixed_210_126_10_in_cw']
-          assert r['flag']['E_F_J_X_included']
-          assert r['flag']['one_loop_stability_conditional']
-          assert not r['flag']['g_singlet_6x6_complete']
-          assert not r['flag']['fermion_tower_complete']
+          assert r['spectra']['n_blocks']==4
+          assert r['flag']['scalar_CW_contribution_withdrawn']
+          assert r['flag']['incorrect_gamma_alias_removed']
+          assert r['flag']['E_F_J_X_gauge_gaugino_diagnostic_only']
+          assert r['flag']['direct_nonsusy_hessian_required']
+          assert not r['flag']['mixed_210_126_10_in_cw']
+          assert not r['flag']['E_F_J_X_included']
           assert not r['flag']['exact_unique_proton_lifetime']
           assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['whole_model_validated']
           PY
       - name: Upload mixed CW verdicts
         if: always()
