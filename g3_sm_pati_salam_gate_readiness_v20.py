@@ -2,23 +2,26 @@
 """Dry-run readiness audit: the SM Pati-Salam target against the final G3 gate (v20).
 
 This module changes NO gate status and writes nothing except its own report.
-It asks one question: if the final G3 acceptance gate
-(final_g3_acceptance_gate_v20) were given an SM track whose target is the
-Pati-Salam vacuum of g3_sm_pati_salam_candidate_v20,
+G3 is decided only by final_g3_acceptance_gate_v20 through its sm_pati_salam
+track (g3_sm_target_track_v20); this module is kept as an independent
+pre-integration cross-check of that track.  It maps the final gate's chiral-H
+criteria (the diagnostic track tracks.chiral_H_SU5_Delta, or the top-level
+criteria of a pre-integration gate report) onto the Pati-Salam vacuum of
+g3_sm_pati_salam_candidate_v20,
 
     q0 = (Phi, H, Sigma, S, Phi17) = (p, 0, r0 sigma_std, r0, x0),
     p = e6789,  sigma_std = z1^z2^z3^z4^z5,  r0 = 1/5, x0 = 1, kappa = -r0/4,
 
-which of the gate's criteria would that target already satisfy, and on what
-kind of evidence?
+and asks which of those criteria that target satisfies, and on what kind of
+evidence.
 
-For EVERY science criterion and release criterion of the committed final gate
-report it records the Pati-Salam analogue (statement, evidence keys, exact or
-float64), its value, and one classification:
+For EVERY science criterion and release criterion of the chiral-H track of the
+committed final gate report it records the Pati-Salam analogue (statement,
+evidence keys, exact or float64), its value, and one classification:
 
   SATISFIED_EXACT                 exact (non-float) evidence holds (the grade
                                   and conditional_on_decisions name any
-                                  pending decision, e.g. D6, it presumes);
+                                  adopted decision, e.g. D6, it presumes);
   SATISFIED_FLOAT_ONLY            exact evidence is unavailable (a required
                                   artifact is missing or not executing) and
                                   only float64 evidence holds;
@@ -30,17 +33,18 @@ float64), its value, and one classification:
 The analogue of each criterion is its literal one: the chiral-H 448/38 is
 (486 - orbit rank)/(orbit rank), so the PS analogue is 451/35 with kernel = the
 35-dimensional orbit; the tuned benchmark's certified 447/39 fails both Hessian
-criteria, and the planner's S11 (a gate-contract change, decision D2) would
-replace them.  would_close_G3_mathematically_if_SM_track_added is True only if
-every non-route-specific criterion (science and release) is SATISFIED_EXACT
-and every readiness integrity check passes; the wiring conjunct
-required_statement == theorem (S9) is not evaluated, and SATISFIED_EXACT for
-the equality-set and global-gap criteria presumes decision D6.  The decisive
-theorem is compared with the equality module's theorem textually and
-semantically.  The candidate's physics caveats are tabulated with the
-retargeting planner's PROPOSED routing (decision D5, pending): the current
-ledger/roadmap wave-3 G3 deliverable still says the PS candidate needs its
-model-level caveats resolved.  The planner's option analysis is summarised.
+criteria (the planner's S11 would have replaced them by a gate-contract
+change; the adopted decision D2 takes the eps > 0 member instead).
+would_close_G3_mathematically_if_SM_track_added is True only if every
+non-route-specific criterion (science and release) is SATISFIED_EXACT and every
+readiness integrity check passes; the wiring conjunct required_statement ==
+theorem (S9) is not evaluated here (the track evaluates it), and
+SATISFIED_EXACT for the equality-set and global-gap criteria presumes decision
+D6 (adopted).  The decisive theorem is compared with the equality module's
+theorem textually and semantically.  The candidate's physics caveats are
+tabulated with the ADOPTED routing (decision D5): the ledger/roadmap wave-3 G3
+deliverable carries the caveat-routing sentence of g3_sm_target_track_v20.
+The planner's option analysis and the adopted decisions D1-D6 are recorded.
 
 Every criterion is evaluated a second time (section eps_member) on the SM track
 witness family O06 = 2|kappa| r0 + eps, eps > 0, i.e. V_eps = V + eps N_H with
@@ -53,15 +57,17 @@ the equality-set and global-gap criteria hold via L1 plus the equality report
 (still presuming D6), and every other criterion as for the benchmark (same
 vacuum, same G, same contract; O06 = 1/50 + eps stays perturbative for
 eps < 12 - 1/50).  would_close_G3_mathematically_on_eps_member_if_SM_track_added
-records the result inside that perturbative window (D2 presumed: an eps > 0
-member as the G3 witness; D6 presumed for the equality-set and global-gap
-criteria; the wiring conjunct S9 not evaluated).  The
+records the result inside that perturbative window (D2 adopted: an eps > 0
+member is the G3 witness; D6 adopted for the equality-set and global-gap
+criteria; the wiring conjunct S9 not evaluated here).  It must agree with
+g3_sm_target_track_v20's closed verdict.  The
 doublet has mass^2 eps M_GUT^2: light for eps << r0^2, but electroweak
 symmetry is not broken; the tuned eps = 0 limit is not a strict minimum.
 
-Inputs (read only, fail closed; nothing heavy is imported):
+Inputs (read only, fail closed; nothing heavy is imported; the only repository
+module imported is the pure g3_sm_target_track_v20, for its shared texts):
 
-  FINAL_G3_ACCEPTANCE_GATE_V20.json        the gate's criteria and theorem
+  FINAL_G3_ACCEPTANCE_GATE_V20.json        the gate's chiral-H criteria and theorem
   G3_SM_PATI_SALAM_CANDIDATE_V20.json      SOS global minimum, SM stabilizer
   G3_SM_PATI_SALAM_EQUALITY_SET_V20.json   {V = V0} = G.q0 exactly
   G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json  exact 486 x 486 inertia 447/39/0;
@@ -81,6 +87,8 @@ import re
 from fractions import Fraction
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
+
+import g3_sm_target_track_v20 as sm_track
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G3_SM_PATI_SALAM_GATE_READINESS_V20.json"
@@ -161,11 +169,10 @@ ARTIFACT_EXECUTES: dict[str, str] = {
     "ledger": "ledger_executes",
 }
 
-# The caveat allocation below is the retargeting planner's proposal (decision D5, pending), not the repository's
-# current definition: the ledger/roadmap wave-3 G3 deliverable says the PS candidate "still needs its model-level
-# caveats resolved and gate integration".
-CAVEAT_ROUTING_STATUS = "PROPOSED_UNDER_D5__NOT_CURRENT_REPO_DEFINITION"
-WAVE3_CLAUSE = "it still needs its model-level caveats resolved and gate integration"
+# The caveat allocation below is the adopted routing (decision D5), which is the repository's current definition:
+# the ledger/roadmap wave-3 G3 deliverable carries g3_sm_target_track_v20's caveat-routing sentence.
+CAVEAT_ROUTING_STATUS = "ADOPTED_UNDER_D5__CURRENT_REPO_DEFINITION"
+WAVE3_CLAUSE = sm_track.CAVEAT_ROUTING_SENTENCE
 
 # Unverified proof inputs of the equality-set theorem, pinned verbatim: a new or
 # reworded cited theorem or elementary step fails the readiness check.
@@ -196,9 +203,9 @@ PINNED_ELEMENTARY_NOT_MACHINE_CHECKED = (
 )
 
 # The candidate's model-level flags: they must be present as bools and are
-# forwarded to the caveat table.  This dry run does not require them to be True;
-# whether G3 requires them is the pending decision D5 (the current wave-3 G3
-# deliverable says the model-level caveats still need to be resolved).
+# forwarded to the caveat table.  This dry run does not require them to be True:
+# decision D5 (adopted) routes the model-level caveats downstream (G4/G6/G7/G8,
+# or outside G1-G8), and G3 keeps only disclosures.
 MODEL_LEVEL_FLAGS = (
     "doublet_triplet_splitting_natural",
     "coloured_scalars_only_at_M_GUT",
@@ -341,6 +348,18 @@ def _all_true(value: Any, count: int | None = None) -> bool:
 
 def _float_below(limit: float) -> Callable[[Any], bool]:
     return lambda value: isinstance(value, (int, float)) and not isinstance(value, bool) and abs(value) < limit
+
+
+def _final_gate_criteria_view(fg: Any) -> Mapping[str, Any]:
+    """The final gate's chiral-H criteria: tracks.chiral_H_SU5_Delta when present, else the report itself.
+
+    After integration the final gate's top-level criteria are the SM Pati-Salam track's; the chiral-H criteria
+    this dry run maps live in its diagnostic track.  A pre-integration report has them at top level.
+    """
+    if not isinstance(fg, Mapping):
+        return {}
+    track = _dig(fg, "tracks", "chiral_H_SU5_Delta")
+    return track if isinstance(track, Mapping) else fg
 
 
 class _Evidence:
@@ -536,6 +555,16 @@ def _executes(
     return True
 
 
+def _renamed_self_claim_flag(report: Any) -> bool:
+    """flags.report_closes_g3_by_itself is False and the retired candidate_wired_into_g3_gate flag is absent."""
+    flags = _dig(report, "flags")
+    return bool(
+        isinstance(flags, Mapping)
+        and flags.get("report_closes_g3_by_itself") is False
+        and "candidate_wired_into_g3_gate" not in flags
+    )
+
+
 def _integrity_checks(reports: Mapping[str, Mapping[str, Any]], derived: Mapping[str, Any]) -> dict[str, bool]:
     fg = reports.get("final_gate") or {}
     cand = reports.get("candidate") or {}
@@ -544,8 +573,11 @@ def _integrity_checks(reports: Mapping[str, Mapping[str, Any]], derived: Mapping
     sigma = reports.get("sigma_hypercharge") or {}
     ledger = reports.get("ledger") or {}
 
-    science = fg.get("science_criteria")
-    release = fg.get("release_criteria")
+    # The chiral-H criteria and theorem (the diagnostic track after integration); status, n_failed, failures and
+    # the contract id are read from the top level of the gate report.
+    view = _final_gate_criteria_view(fg)
+    science = view.get("science_criteria")
+    release = view.get("release_criteria")
     checks: dict[str, bool] = {}
 
     checks["final_gate_report_executes"] = bool(
@@ -554,7 +586,7 @@ def _integrity_checks(reports: Mapping[str, Mapping[str, Any]], derived: Mapping
         and fg.get("failures") == []
         and fg.get("status") == FINAL_GATE_STATUS
         and fg.get("model_contract_id") == MODEL_CONTRACT_ID
-        and fg.get("decisive_theorem") == FINAL_THEOREM
+        and view.get("decisive_theorem") == FINAL_THEOREM
         and isinstance(science, Mapping)
         and bool(science)
         and isinstance(release, Mapping)
@@ -643,22 +675,23 @@ def _integrity_checks(reports: Mapping[str, Mapping[str, Any]], derived: Mapping
         and _dig(hess, "symmetry_tangents", "matches_equality_module_ranks") is True
         and _dig(cand, "sm_embedding", "sigma_std_formula") == SIGMA_STD_FORMULA
     )
+    # Per-report self-claims (g3_sm_target_track_v20.SELF_CLAIM_NOTE): no single report closes G3.
     checks["sm_reports_do_not_overclaim"] = bool(
         _dig(cand, "flags", "g3_closed") is False
         and _dig(cand, "flags", "whole_model_validated") is False
         and _dig(cand, "flags", "whole_model_excluded") is False
         and _dig(eq, "flags", "g3_closed") is False
-        and _dig(eq, "flags", "candidate_wired_into_g3_gate") is False
+        and _renamed_self_claim_flag(eq)
         and _dig(eq, "flags", "whole_model_validated") is False
         and _dig(eq, "flags", "whole_model_excluded") is False
         and _dig(hess, "flags", "G3_closed") is False
-        and _dig(hess, "flags", "candidate_wired_into_g3_gate") is False
+        and _renamed_self_claim_flag(hess)
         and hess.get("G3_closed") is False
         and _dig(sigma, "flags", "g3_closed") is False
     )
     scope_open = _dig(cand, "scope", "open")
-    # Disclosure only: the flags are present as bools and scope.open is non-empty.  Whether they are required for G3
-    # is the pending decision D5 (see caveat_routing_status), not something this check decides.
+    # Disclosure only: the flags are present as bools and scope.open is non-empty.  They are not G3 requirements:
+    # decision D5 (adopted) routes them downstream (see caveat_routing_status).
     checks["sm_model_level_caveats_disclosed"] = bool(
         all(isinstance(_dig(cand, "flags", name), bool) for name in MODEL_LEVEL_FLAGS)
         and isinstance(scope_open, list)
@@ -700,7 +733,9 @@ def decisive_theorem_comparison(
     fg = reports.get("final_gate") or {}
     eq = reports.get("equality_set") or {}
     cand = reports.get("candidate") or {}
-    gate_theorem = fg.get("decisive_theorem")
+    hess = reports.get("exact_hessian") or {}
+    # The chiral-H track's theorem (FINAL_THEOREM); the gate's top-level decisive theorem is the SM track's.
+    gate_theorem = _final_gate_criteria_view(fg).get("decisive_theorem")
     eq_theorem = eq.get("theorem") if isinstance(eq.get("theorem"), str) else ""
 
     gate_match = re.search(r"exactly on the (\S+) orbit of q0", gate_theorem or "")
@@ -736,10 +771,13 @@ def decisive_theorem_comparison(
         ),
     }
     required_statement = _dig(eq, "final_acceptance_test", "required_statement")
+    hessian_statement = _dig(hess, "eps_family", "final_acceptance_test", "required_statement")
     return {
         "final_theorem_pinned": FINAL_THEOREM,
         "final_theorem_in_gate_report": gate_theorem,
         "gate_report_theorem_equals_pinned": gate_theorem == FINAL_THEOREM,
+        "final_gate_top_level_decisive_theorem": fg.get("decisive_theorem"),
+        "final_gate_top_level_decisive_theorem_is_sm_eps_theorem": fg.get("decisive_theorem") == SM_EPS_FINAL_THEOREM,
         "sm_final_theorem": SM_FINAL_THEOREM,
         "sm_final_theorem_is_final_theorem_with_V_beta_replaced_by_V_PS": SM_FINAL_THEOREM
         == FINAL_THEOREM.replace("V_beta", "V_PS"),
@@ -754,12 +792,17 @@ def decisive_theorem_comparison(
         "equality_module_symmetry_group_normalised": eq_group,
         "exact_textual_agreement": bool(eq_theorem) and eq_theorem == FINAL_THEOREM,
         "equality_module_emits_required_statement": required_statement == SM_FINAL_THEOREM,
+        "sm_eps_final_theorem": SM_EPS_FINAL_THEOREM,
+        "sm_eps_final_theorem_equals_track_theorem": SM_EPS_FINAL_THEOREM == sm_track.SM_FINAL_THEOREM,
+        "exact_hessian_emits_sm_eps_required_statement": hessian_statement == SM_EPS_FINAL_THEOREM,
         "semantic_components": components,
         "semantic_agreement": all(components.values()),
         "differences": [
             "the equality module's theorem is a longer sentence, not the gate's one-line statement: exact textual "
-            "agreement is False, and the module emits no final_acceptance_test.required_statement (planner item "
-            "S9, a wiring step, not a mathematical gap)",
+            "agreement is False, and the equality module emits no final_acceptance_test.required_statement; the "
+            "SM-track required statement (planner item S9, a wiring step, not a mathematical gap) is emitted for "
+            "the eps witness by the exact Hessian report's eps_family.final_acceptance_test, which "
+            "g3_sm_target_track_v20 reads",
             "the equality module is stronger: it holds for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2, not only at "
             "the benchmark r0 = 1/5, x0 = 1, kappa = -1/20",
             "the equality module's V is the candidate's adapted SOS form, equal to the compiler potential exactly "
@@ -1239,15 +1282,17 @@ def _c_equality_set(ev: _Evidence, d: Mapping[str, Any], ctx: Mapping[str, Any])
         "U(1)_PQ, for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2 (the benchmark lies inside); there are no other "
         "equality orbits.",
         "why_exact": "Exact proof (P0-P3; 45 checks) that rests on 6 cited classical theorems and 6 hand-argued "
-        "elementary steps that are not machine-checked (pinned verbatim here); counting it as exact presumes "
-        "decision D6 (accept cited classical theorems as G3-grade inputs), which is pending.  Uniqueness uses the "
-        "accidental U(1)_PQ, which the gate's theorem already quotients by.",
+        "elementary steps that are not machine-checked (pinned verbatim here and in g3_sm_target_track_v20); "
+        "counting it as exact presumes decision D6 (cited classical theorems and hand-argued steps accepted as "
+        "G3-grade inputs), which is adopted.  Uniqueness uses the accidental U(1)_PQ, which the gate's theorem "
+        "already quotients by.",
         "exact_grade": "exact (cited classical theorems + 6 hand-argued steps; D6)",
         "conditional_on_decisions": ["D6"],
         "notes": [
             "outside the Pati-Salam program (the candidate, the equality set and the exact_210 corollary bound to "
             "it) no repository artifact, in particular none of the chiral-H evidence the final gate reads, relies on "
-            "cited or non-machine-checked theorems, so there is no precedent for accepting them at G3 grade",
+            "cited or non-machine-checked theorems; decision D6 (adopted) accepts them at G3 grade, pinned by an "
+            "allowlist and disclosed",
         ],
     }
 
@@ -1281,16 +1326,18 @@ def _c_global_gap(ev: _Evidence, d: Mapping[str, Any], ctx: Mapping[str, Any]) -
         "uses the hand-argued Cauchy-Schwarz step |H.H| <= N_H and the sign case analysis (|S| <= r0, |S| > r0) that "
         "turns the exact sympy square-completion identities into the inequality (not machine-checked); the equality "
         "module proves {V_PS = V0} = G.q0 with 6 cited classical theorems and 6 hand-argued steps.  Counting it as "
-        "exact presumes decision D6 (pending).",
+        "exact presumes decision D6 (adopted).",
         "exact_grade": "exact (cited classical theorems + 6 hand-argued steps; D6)",
         "conditional_on_decisions": ["D6"],
         "literal_conjuncts_not_evaluated": ["required_statement == theorem (wiring; S9)"],
         "notes": [
-            "the gate's criterion has the conjunct gap_acceptance.required_statement == FINAL_THEOREM; it is not "
+            "the chiral-H criterion has the conjunct gap_acceptance.required_statement == FINAL_THEOREM; it is not "
             "evaluated here (the equality module emits no final_acceptance_test block: "
             f"required_statement emitted = {ctx['theorem']['equality_module_emits_required_statement']!r}); the "
-            "decisive-theorem semantic agreement stands in for it, and the wiring step (planner S9) is listed under "
-            "integration_gaps",
+            "decisive-theorem semantic agreement stands in for it.  The SM track's wiring step (planner S9) is the "
+            "exact Hessian report's eps_family.final_acceptance_test.required_statement (emitted = "
+            f"{ctx['theorem']['exact_hessian_emits_sm_eps_required_statement']!r}), evaluated by "
+            "g3_sm_target_track_v20 and listed under integration_gaps",
             "V_PS is the candidate's adapted SOS form: equal to the compiler potential exactly per coefficient and "
             "per source-bound operator, and in float64 end to end",
         ],
@@ -1593,7 +1640,7 @@ EPS_SCIENCE_SPECS: dict[str, Callable[..., dict[str, Any]]] = {
         "H = 0, and H = 0 on {V = V0}); one orbit of G = SO(10) x U(1)_X x U(1)_PQ, no other equality orbits.",
         "Exact given the equality-set theorem for V (P0-P3; 6 cited classical theorems and 6 hand-argued steps, "
         "pinned verbatim here), plus one exact step (L1) recorded by the exact Hessian report; counting it as exact "
-        "presumes decision D6 (pending), as for the benchmark.",
+        "presumes decision D6 (adopted), as for the benchmark.",
         extra=_eps_equality_extra,
     ),
     "beta_global_gap_and_unique_equality_exact": _eps_wrap(
@@ -1611,7 +1658,8 @@ def _evaluate(name: str, kind: str, ctx: Mapping[str, Any],
               specs: Mapping[str, Callable[..., dict[str, Any]]] | None = None) -> dict[str, Any]:
     if specs is None:
         specs = SCIENCE_SPECS if kind == "science" else RELEASE_SPECS
-    gate_values = _dig(ctx["reports"].get("final_gate") or {}, f"{kind}_criteria", default={})
+    gate_values = _dig(_final_gate_criteria_view(ctx["reports"].get("final_gate") or {}), f"{kind}_criteria",
+                       default={})
     chiral_value = gate_values.get(name) if isinstance(gate_values, Mapping) else None
     record: dict[str, Any] = {
         "final_gate_criterion": name,
@@ -1708,6 +1756,41 @@ def _evaluate(name: str, kind: str, ctx: Mapping[str, Any],
 
 
 def _g5_vector_comparison(reports: Mapping[str, Mapping[str, Any]]) -> dict[str, Any]:
+    """G5's BFB binding (decision D4: ledger gates.G5.bfb_coupling_vector) against the PS coupling vector.
+
+    covers_closing_coupling_vector is True only if the ledger's G5 binding is certified and its coefficients equal
+    the candidate's exact_nonzero_coefficients.  The comparison with the historical 27-parameter SOS vector, which
+    no longer carries G5, is kept under historical_vector_comparison.
+    """
+    binding = _dig(reports.get("ledger") or {}, "gates", "G5", "bfb_coupling_vector")
+    ps = _dig(reports.get("candidate") or {}, "candidate", "exact_nonzero_coefficients")
+    bound = _dig(binding, "coefficients")
+    certified = _dig(binding, "certified") is True
+    same_vector = bool(isinstance(ps, Mapping) and ps and isinstance(bound, Mapping) and dict(bound) == dict(ps))
+    covers = bool(certified and same_vector)
+    if not isinstance(binding, Mapping):
+        why = "the ledger's G5 row has no bfb_coupling_vector binding (fail closed)"
+    elif not certified:
+        why = "the ledger's G5 binding is not certified"
+    elif not same_vector:
+        why = "the ledger's G5 binding coefficients differ from the PS coupling vector"
+    else:
+        why = "G5 is bound to the PS coupling vector with a certified exact BFB bound (decision D4)"
+    return {
+        "evaluated": isinstance(binding, Mapping),
+        "G5_vector_source": "ledger gates.G5.bfb_coupling_vector (g3_sm_target_track_v20 g5_bfb_binding; decision D4)",
+        "binding_source": _dig(binding, "source"),
+        "binding_certified": certified,
+        "binding_covers_eps_witness_family": _dig(binding, "covers_eps_witness_family") is True,
+        "binding_coefficients_equal_PS_vector": same_vector,
+        "covers_closing_coupling_vector": covers,
+        "why": why,
+        "historical_vector_comparison": _historical_g5_vector_comparison(reports),
+    }
+
+
+def _historical_g5_vector_comparison(reports: Mapping[str, Mapping[str, Any]]) -> dict[str, Any]:
+    """The historical 27-parameter SOS vector (the pre-D4 G5 evidence) against the PS vector."""
     g5 = _dig(reports.get("ledger") or {}, "model_contract_reports", "gauged_G3_SOS_candidate", "coefficient_vector",
               "symbolic_nonzero")
     ps = _dig(reports.get("candidate") or {}, "candidate", "exact_nonzero_coefficients")
@@ -1753,9 +1836,11 @@ def _proposed_criteria(reports: Mapping[str, Mapping[str, Any]], science: Sequen
     ledger_g3 = _dig(reports.get("ledger") or {}, "gates", "G3", "status")
     gate_closed = _dig(fg, "classification", "G3_closed")
     return {
-        "note": "The retargeting planner's proposed SM-track criteria that the current gate does not contain; "
-        "recorded for readiness only, not part of the booleans below.  (Planner item S9, the required_statement "
-        "string binding, is not listed here: it is a conjunct of the existing criterion "
+        "note": "The retargeting planner's proposed SM-track criteria that the chiral-H criteria map does not "
+        "contain; recorded for readiness only, not part of the booleans below.  The adopted SM track "
+        "(g3_sm_target_track_v20) uses S12 as a control and the final gate carries the last two as release "
+        "criteria; S11 was not adopted (decision D2 takes the eps > 0 member as the witness).  (Planner item S9, "
+        "the required_statement string binding, is not listed here: it is a conjunct of the chiral-H criterion "
         "beta_global_gap_and_unique_equality_exact, recorded there under literal_conjuncts_not_evaluated and under "
         "integration_gaps.)",
         "S11_sm_Hessian_kernel_is_35_symmetry_plus_4_light_doublet_exact": {
@@ -1776,8 +1861,8 @@ def _proposed_criteria(reports: Mapping[str, Mapping[str, Any]], science: Sequen
             "statement": "G5's closed BFB evidence is on the same coupling vector as the G3 witness",
             "value": g5.get("covers_closing_coupling_vector") is True,
             "comparison": g5,
-            "resolution": "rebind G5 to the PS vector, which has its own exact BFB certificate V4 >= |q|^4/167 "
-            "(decision D4)",
+            "resolution": "decision D4 (adopted): G5 is rebound to the PS vector, which has its own exact BFB "
+            "certificate V4 >= |q|^4/167 covering the eps witness family (eps N_H is quadratic)",
         },
     }
 
@@ -1789,7 +1874,8 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "The minimum is unique modulo G = SO(10) x U(1)_X x U(1)_PQ; modulo SO(10) x U(1)_X alone {V = V0} is a "
         "circle of orbits (the axion direction, Phi17^4 conj(S)^17).",
         "G3", ("G4",),
-        "final gate FINAL_THEOREM already quotients by PQ; ledger G4: 'axion directions'",
+        "the final gate's decisive theorems (both tracks) already quotient by PQ; g3_sm_target_track_v20 "
+        "disclosure 1; ledger G4: 'the axion/PQ direction'",
         "disclosure in the closure scope; no blocker (same G as FINAL_THEOREM)",
         "equality_set", ("flags", "unique_modulo_SO10_x_U1X_alone"),
     ),
@@ -1802,7 +1888,8 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "full_448_quotient_strictly_positive_exact (exact_PSD, strict_quotient_positive, kernel_equals_38_symmetry_"
         "tangents); ledger G4: 'classify all remaining Hessian zero and negative modes'",
         "fails both Hessian criteria under the literal contract (451/35, kernel = orbit) at the tuned benchmark; "
-        "decision D2 (S11, or the eps > 0 member O06 = 2|kappa| r0 + eps, on which both hold exactly)",
+        "resolved by decision D2 (adopted): the G3 witness is the eps > 0 member O06 = 2|kappa| r0 + eps, on which "
+        "both hold exactly; the eps -> 0 tuned doublet is a G4 classification item",
         "exact_hessian", ("flags", "kernel_equals_35_symmetry_tangents_plus_4_light_doublet"),
     ),
     (
@@ -1810,8 +1897,8 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "The exact Hessian is certified at r0 = 1/5, x0 = 1, kappa = -r0/4 only (with the O06 + eps family through "
         "that point); the global theorem holds for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2.",
         "G3", (),
-        "proposed closure-scope disclosure (planner; not in repo)",
-        "proposed disclosure in the closure scope (the G3 witness is the r0 = 1/5 benchmark)",
+        "g3_sm_target_track_v20 disclosure 3 (adopted closure-scope disclosure)",
+        "disclosure in the closure scope (the G3 witness is the eps member at the r0 = 1/5 benchmark)",
         "exact_hessian", ("flags", "other_r0_x0_kappa_certified"),
     ),
     (
@@ -1829,10 +1916,11 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "The equality-set proof cites 6 classical theorems (Pluecker, Kostant-Lichtenstein, Iwasawa, Wirtinger, "
         "U(n) transitivity, highest weight/Weyl) and 6 elementary steps that are not machine-checked.",
         "G3", (),
-        "no repository text admits cited or non-machine-checked inputs at G3 grade; pending decision D6 (accept "
-        "cited classical theorems as G3-grade inputs)",
-        "the equality-set and global-gap criteria count as exact only under D6; proposed: pinned allowlist here, "
-        "disclosure in README and manuscript",
+        "decision D6 (adopted): cited classical theorems and hand-argued steps are accepted as G3-grade inputs, "
+        "pinned by an allowlist (g3_sm_target_track_v20) and disclosed; outside the Pati-Salam program no "
+        "repository artifact relies on such inputs",
+        "the equality-set and global-gap criteria count as exact under D6 (adopted); pinned allowlist here and in "
+        "g3_sm_target_track_v20; disclosure in README and manuscript",
         "equality_set", ("scope", "cited_not_machine_checked"),
     ),
     (
@@ -1841,28 +1929,29 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "O06 + eps members (the O06-raised member among them), which the exact Hessian report's eps_family L1 "
         "covers given that theorem.",
         "G3", (),
-        "proposed closure-scope wording (planner; not in repo): 'exact SM-preserving global vacuum of the declared "
-        "27-parameter exact-X benchmark'",
-        "proposed disclosure in the closure scope",
+        "closure scope (g3_sm_target_track_v20.CLOSURE_SCOPE, adopted): 'the exact SM-preserving global vacuum of "
+        "the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0'",
+        "disclosure in the closure scope (g3_sm_target_track_v20 disclosure 7)",
         "equality_set", ("scope", "not_proved_or_out_of_scope"),
     ),
     (
         "symmetry_ranks_differ_from_G4_spec",
-        "The ledger's G4 spec pins the old point's rank-37/38 (449/448) quotients; at the PS vacuum the ranks are "
-        "34 (gauge + X; 452 including the axion) and 35 (451).",
+        "The superseded p+delta point's rank-37/38 (449/448) quotients do not transfer: at the PS vacuum the ranks "
+        "are 34 (gauge + X; 452 including the axion) and 35 (451), which the ledger's G4 spec now names.",
         "G4", (),
-        "ledger G4: 'carry the exact rank-37 gauge quotient ... to an accepted G3 witness, recomputing if its "
-        "stabilizer changes'",
-        "none (G4 respecification)",
+        "ledger G4: 'carry the exact gauge quotient to the accepted G3 witness (the SM Pati-Salam eps member) and "
+        "recompute its ranks there'",
+        "none (routed to G4 by decision D5)",
         "ledger", ("gates", "G4", "open_scope"),
     ),
     (
         "G5_certified_on_a_different_coupling_vector",
-        "G5 is CLOSED on the historical 27-parameter SOS vector, which differs from the PS vector (O27_B03/B04 "
-        "swapped; O05, O06 and re::O12 differ at h = 0); G3, G5 and G6 must refer to one vector.",
+        "G5 was CLOSED on the historical 27-parameter SOS vector, which differs from the PS vector (O27_B03/B04 "
+        "swapped; O05, O06 and re::O12 differ at h = 0); decision D4 rebinds G5 to the PS vector so that G3, G5 and "
+        "G6 refer to one vector.",
         "G5", (),
-        "ledger G5 closed scope: 'source-bound complete-potential SOS/BFB certificate' (decision D4)",
-        "none (G5 rebind)",
+        "ledger G5 closed scope (g3_sm_target_track_v20.G5_LEDGER_CLOSED_SCOPE; decision D4, adopted)",
+        "none (G5 rebound under D4)",
         "ledger", ("gates", "G5", "authoritative_closed_scope"),
     ),
     (
@@ -1913,8 +2002,9 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
     (
         "tan_beta_one_light_doublet",
         "The light doublet is an equal 5/5bar mixture (tan beta = 1): with 10_H-only Yukawas m_t = m_b at matching.",
-        "G7", ("G8",),
-        "ledger G7/G8 definitions",
+        "G8", ("G7",),
+        "decision D5 (adopted): Yukawas go to G8 (g3_sm_target_track_v20 routes tan_beta_one_light_doublet to G8, "
+        "also affecting G7)",
         "none",
         "candidate", ("checks", "light_doublet_is_equal_5_5bar_mixture"),
     ),
@@ -1944,7 +2034,8 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "G1-G8 ledger definition names naturalness (the separate irreducible_gap_closure_contract_v20, with its own "
         "G-numbering, requires 'radiative stability or symmetry protection demonstrated' for its G4 hierarchy "
         "mechanism)",
-        "proposed: disclosure in the closure scope (planner wording 'tuned DT/M_I relations'; not in repo)",
+        "disclosure in the closure scope ('tuned DT/M_I relations', g3_sm_target_track_v20.CLOSURE_SCOPE; decision "
+        "D5, adopted)",
         "candidate", ("flags", "doublet_triplet_splitting_natural"),
     ),
     (
@@ -1953,7 +2044,7 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "stability is not addressed.",
         "OUTSIDE_G1_G8", (),
         "manuscript remaining tasks (axion_so10_theory_v20.tex): 'a radiatively stable v_Phi/v_S hierarchy'",
-        "none under the proposed routing",
+        "none under the adopted routing (decision D5)",
         "candidate", ("candidate", "exact_nonzero_coefficients", "lambda::O05_B01_126bar_norm"),
     ),
     (
@@ -1961,15 +2052,15 @@ CAVEAT_SPECS: tuple[tuple[str, str, str, tuple[str, ...], str, str, str, tuple[s
         "Radiative stability of the M_I/M_GUT hierarchy is not addressed.",
         "OUTSIDE_G1_G8", (),
         "manuscript remaining tasks (axion_so10_theory_v20.tex)",
-        "none under the proposed routing",
+        "none under the adopted routing (decision D5)",
         "candidate", ("scope", "open"),
     ),
 )
 
 # Caveats that are model-level in the sense of the wave-3 clause (the equality set's scope lists tuned DT
 # splitting and the O05 cancellation, sub-M_I coloured remnants, RG-anchor content, the Higgs quartic, no EWSB and
-# no Yukawa sector; the rest are the candidate's other model-level flags and their consequences).  Under the
-# current ledger/roadmap text they remain G3-wave requirements; routing them elsewhere is the proposal D5.
+# no Yukawa sector; the rest are the candidate's other model-level flags and their consequences).  Decision D5
+# (adopted) routes them out of G3: to G4/G6/G7/G8, or outside G1-G8 for the naturalness of the tunings.
 MODEL_LEVEL_CAVEAT_IDS = frozenset(
     {
         "coloured_126bar_remnants_below_M_I",
@@ -2006,7 +2097,8 @@ def _caveats(reports: Mapping[str, Mapping[str, Any]]) -> list[dict[str, Any]]:
                 "effect_on_G3": effect,
                 "model_level_caveat": model_level,
                 "under_current_repo_text": (
-                    f"G3-wave requirement: the ledger/roadmap wave-3 deliverable says the PS candidate '{WAVE3_CLAUSE}'"
+                    f"routed out of G3 by decision D5 (adopted) to {gate}: the ledger/roadmap wave-3 deliverable "
+                    "carries the caveat-routing sentence of g3_sm_target_track_v20"
                     if model_level
                     else "not a model-level caveat of the wave-3 clause"
                 ),
@@ -2023,12 +2115,13 @@ PLANNER_OPTION_ANALYSIS: dict[str, Any] = {
     "SM-preserving point of the declared potential, certified through the final gate on the full 486-real chart; "
     "the gate's own contract adds an exact full-Hessian rank/nullity certificate. No text requires a particular "
     "candidate, a physical hierarchy, a Higgs mass, natural DT splitting or RG consistency.",
-    "repo_text_in_tension_with_that_reading": "the ledger/roadmap wave-3 G3 deliverable (G1_G8_GATE_LEDGER_V20 "
-    "closure_waves[3], g1_g8_execution_roadmap_v20 task W3-G3-FULL-STATIONARITY) says the PS candidate 'still "
+    "repo_text_in_tension_with_that_reading": "the former ledger/roadmap wave-3 G3 deliverable (G1_G8_GATE_LEDGER_V20 "
+    "closure_waves[3], g1_g8_execution_roadmap_v20 task W3-G3-FULL-STATIONARITY) said the PS candidate 'still "
     "needs its model-level "
     "caveats resolved and gate integration'; the equality set lists those caveats (tuned DT splitting and the O05 "
     "cancellation, sub-M_I coloured remnants, RG-anchor content, Higgs quartic, no EWSB, no Yukawa sector); "
-    "routing them out of G3 is decision D5, pending",
+    "routing them out of G3 is decision D5, adopted: the wave-3 deliverable now carries the caveat-routing "
+    "sentence of g3_sm_target_track_v20",
     "options": {
         "i_either_track_closes": {
             "summary": "add an SM track; G3 closes if either track passes",
@@ -2092,32 +2185,38 @@ PLANNER_OPTION_ANALYSIS: dict[str, Any] = {
     ],
     "side_findings_re_verified_by_this_module": False,
 }
+# The user's decisions D1-D6, as adopted (decisions_needed above is kept as the historical record).
+PLANNER_OPTION_ANALYSIS["decisions_adopted"] = dict(sm_track.DECISIONS)
 
 
 def _integration_gaps(reports: Mapping[str, Mapping[str, Any]], integrity: Mapping[str, bool],
                       theorem: Mapping[str, Any], g5: Mapping[str, Any]) -> list[dict[str, Any]]:
     cand = reports.get("candidate") or {}
     eq = reports.get("equality_set") or {}
+    hess = reports.get("exact_hessian") or {}
+    fg = reports.get("final_gate") or {}
     scope_open = _dig(cand, "scope", "open", default=[])
     stale = isinstance(scope_open, list) and any(
         isinstance(item, str) and item.startswith("exact (non-float) Hessian kernel/rank certificate")
         for item in scope_open
     )
+    flag_renamed = _renamed_self_claim_flag(eq) and _renamed_self_claim_flag(hess)
+    closing_track = fg.get("closing_track")
     return [
         {
             "item": "exact full-Hessian certificate for the PS target (planner step 1)",
             "state": "DONE" if integrity.get("sm_exact_hessian_report_executes") else "OPEN",
             "detail": "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20 (447/39 exact; raised control 451/35); its tests run in "
-            "current-main-full-reaudit.yml (pr-direct-tensor-gate) and rebuild the report in memory against the "
-            "committed artifact, but the artifact is not regenerated (--write) in the CI chain and is not yet in "
-            "validate_release_v20 core lists or SHA256SUMS",
+            "CI and rebuild the report in memory against the committed artifact, which is not regenerated (--write) "
+            "in the CI chain; g3_sm_target_track_v20 reads it as an SM-track input",
         },
         {
-            "item": "equality module emits final_acceptance_test.required_statement == SM_FINAL_THEOREM (S9)",
-            "state": "DONE" if theorem.get("equality_module_emits_required_statement") else "OPEN",
-            "detail": "wiring for the decisive-theorem string binding: a conjunct of the gate's existing criterion "
-            "beta_global_gap_and_unique_equality_exact (gap_acceptance.required_statement == FINAL_THEOREM), not "
-            "evaluated by this dry run",
+            "item": "exact Hessian report emits eps_family.final_acceptance_test.required_statement == "
+            "SM_EPS_FINAL_THEOREM (S9)",
+            "state": "DONE" if theorem.get("exact_hessian_emits_sm_eps_required_statement") else "OPEN",
+            "detail": "wiring for the SM track's decisive-theorem string binding (g3_sm_target_track_v20 criterion "
+            "sm_decisive_theorem_string_bound); the certifying artifact of the eps witness emits it, the equality "
+            "module does not; not evaluated as a criterion by this dry run",
         },
         {
             "item": "candidate scope.open still lists the exact Hessian certificate as open",
@@ -2125,49 +2224,46 @@ def _integration_gaps(reports: Mapping[str, Mapping[str, Any]], integrity: Mappi
             "detail": "refresh g3_sm_pati_salam_candidate_v20 scope once the exact Hessian is wired in",
         },
         {
-            "item": "equality-set flag candidate_wired_into_g3_gate",
-            "state": "OPEN" if _dig(eq, "flags", "candidate_wired_into_g3_gate") is False else "CHECK",
-            "detail": "retire or rename during integration (planner step 2)",
+            "item": "self-claim flag candidate_wired_into_g3_gate renamed report_closes_g3_by_itself (equality set and "
+            "exact Hessian)",
+            "state": "DONE" if flag_renamed else "OPEN",
+            "detail": "flags.report_closes_g3_by_itself is False and candidate_wired_into_g3_gate is absent in both "
+            "reports (a per-report self-claim; g3_sm_target_track_v20.SELF_CLAIM_NOTE)",
         },
         {
             "item": "eps-family extension of the equality set and the Hessian to O06 = 2|kappa| r0 + eps (L1, L2)",
             "state": "DONE" if integrity.get("sm_exact_hessian_eps_family_executes") else "OPEN",
             "detail": "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20 eps_family: {V_eps = V0} = G.q0 for every eps >= 0 (given the "
-            "equality-set theorem) and kernel = orbit, 451/35, for every eps > 0; its tests run in "
-            "current-main-full-reaudit.yml (pr-direct-tensor-gate) and rebuild the report in memory against the "
-            "committed artifact, but the artifact is not regenerated (--write) in the CI chain and is not yet in "
-            "validate_release_v20 core lists or SHA256SUMS",
+            "equality-set theorem) and kernel = orbit, 451/35, for every eps > 0; its tests run in CI and rebuild the "
+            "report in memory against the committed artifact, which is not regenerated (--write) in the CI chain",
         },
         {
             "item": "decision D2 on full_Hessian_rank_448_nullity_38_exact and full_448_quotient_strictly_positive_exact "
             "for the tuned benchmark",
-            "state": "OPEN",
-            "detail": "adopt S11 (rank 447 / nullity 39, kernel = orbit (+) tuned doublet) in place of both, or take the "
-            "eps > 0 member (O06 = 2|kappa| r0 + eps) as the SM-track witness: it meets both literal criteria "
-            "exactly (eps_member), with no gate-contract change",
+            "state": "DECIDED",
+            "detail": sm_track.DECISIONS["D2"],
         },
         {
             "item": "decision D6 on cited classical theorems and hand-argued steps as G3-grade inputs",
-            "state": "OPEN",
-            "detail": "all_PD_equality_orbits_classified_exactly and beta_global_gap_and_unique_equality_exact count "
-            "as SATISFIED_EXACT here only under D6",
+            "state": "DECIDED",
+            "detail": sm_track.DECISIONS["D6"],
         },
         {
             "item": "decision D5 on the wave-3 clause (model-level caveats)",
-            "state": "OPEN",
-            "detail": "the current ledger/roadmap wave-3 G3 deliverable says the PS candidate 'still needs its "
-            "model-level caveats resolved'; the caveat routing in this report is the planner's proposal",
+            "state": "DECIDED",
+            "detail": sm_track.DECISIONS["D5"],
         },
         {
             "item": "G5 rebind to the PS coupling vector (D4)",
-            "state": "OPEN" if not g5.get("covers_closing_coupling_vector") else "DONE",
-            "detail": "the G5-certified vector differs from the PS vector",
+            "state": "DONE" if g5.get("covers_closing_coupling_vector") is True else "OPEN",
+            "detail": "ledger gates.G5.bfb_coupling_vector: " + str(g5.get("why")),
         },
         {
             "item": "pure SM-track module g3_sm_target_track_v20.py, final-gate tracks layout, ledger/roadmap/matrix/"
             "confirmation/ultimate/validate_release updates, workflows, tests, README/manuscript, refreeze",
-            "state": "OPEN",
-            "detail": "planner steps 3-11; none is performed by this dry run",
+            "state": "DONE" if closing_track == sm_track.TRACK_NAME else "OPEN",
+            "detail": "planner steps 3-11 (none is performed by this dry run); final gate closing_track = "
+            f"{closing_track!r}",
         },
     ]
 
@@ -2200,8 +2296,9 @@ def build_report(
     ctx = {"reports": loaded, "integrity": integrity, "derived": derived, "theorem": theorem}
 
     fg = loaded.get("final_gate") or {}
-    gate_science = fg.get("science_criteria") if isinstance(fg.get("science_criteria"), Mapping) else {}
-    gate_release = fg.get("release_criteria") if isinstance(fg.get("release_criteria"), Mapping) else {}
+    view = _final_gate_criteria_view(fg)
+    gate_science = view.get("science_criteria") if isinstance(view.get("science_criteria"), Mapping) else {}
+    gate_release = view.get("release_criteria") if isinstance(view.get("release_criteria"), Mapping) else {}
     science_names = list(SCIENCE_SPECS) + [n for n in gate_science if n not in SCIENCE_SPECS]
     release_names = list(RELEASE_SPECS) + [n for n in gate_release if n not in RELEASE_SPECS]
     science = [_evaluate(name, "science", ctx) for name in science_names]
@@ -2237,7 +2334,7 @@ def build_report(
         for c in eps_non_route
         if c["classification"] == SATISFIED_EXACT and c.get("conditional_on_decisions")
     }
-    # Taking an eps > 0 member as the G3 witness is itself the second option of the pending decision D2.
+    # Taking an eps > 0 member as the G3 witness is itself the second option of decision D2 (adopted).
     eps_presumed = sorted({"D2", *{decision for decisions in eps_conditional.values() for decision in decisions}})
     eps_literal_not_evaluated = {
         c["final_gate_criterion"]: list(c["literal_conjuncts_not_evaluated"])
@@ -2277,6 +2374,7 @@ def build_report(
         "final_gate_overall_state": fg.get("overall_state"),
         "final_gate_G3_closed": _dig(fg, "classification", "G3_closed"),
         "final_gate_mathematical_G3_closed": _dig(fg, "classification", "mathematical_G3_closed"),
+        "final_gate_closing_track": fg.get("closing_track"),
         "ledger_status": ledger.get("status"),
         "ledger_gate_statuses": {
             gate: _dig(ledger, "gates", gate, "status") for gate in ("G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8")
@@ -2347,7 +2445,8 @@ def build_report(
             "with_planner_S11_replacement_criterion_note": "replaces the literal analogues of BOTH Hessian criteria "
             "(full_Hessian_rank_448_nullity_38_exact and full_448_quotient_strictly_positive_exact) by S11 (rank "
             "447 / nullity 39, kernel = orbit tangents (+) exactly identified tuned doublet, quartic lift 127/64 > 0); "
-            "would be True subject to decisions D2 (adopting S11 changes the gate contract) and D6",
+            "would be True subject to decisions D2 (adopting S11 would change the gate contract) and D6; S11 was not "
+            "adopted: decision D2 takes the eps > 0 member as the G3 witness instead",
             "on_O06_raised_member": on_raised,
             "on_O06_raised_member_note": "the raised member (O06 + r0^2/100) lies outside the candidate's 27-parameter "
             "family, so the global-minimum and equality-set artifacts alone do not cover it; it is the eps = r0^2/100 "
@@ -2361,10 +2460,11 @@ def build_report(
             "would_close_G3_mathematically_on_eps_member_if_SM_track_added_note": f"{EPS_MEMBER}: True only if every "
             "readiness integrity check passes and every non-route-specific criterion (science and release) is "
             "SATISFIED_EXACT on V_eps = V + eps N_H for every eps > 0 in the perturbative window; SATISFIED_EXACT for "
-            "the equality-set and global-gap criteria presumes decision D6, and the wiring conjunct required_statement "
-            "== theorem (S9) is not evaluated.  Choosing this member as the G3 witness is the second option of D2 "
-            "(presumed here; it needs no gate-contract change).  The doublet has mass^2 eps M_GUT^2 (light for "
-            "eps << r0^2) but "
+            "the equality-set and global-gap criteria presumes decision D6 (adopted), and the wiring conjunct "
+            "required_statement == theorem (S9) is not evaluated here (g3_sm_target_track_v20 evaluates it).  "
+            "Choosing this member as the G3 witness is the second option of D2, which was adopted (it needs no "
+            "gate-contract change).  This boolean must agree with g3_sm_target_track_v20's closed verdict.  The "
+            "doublet has mass^2 eps M_GUT^2 (light for eps << r0^2) but "
             "electroweak symmetry is not broken; the tuned eps = 0 limit is not a strict minimum.",
         },
         "eps_member": {
@@ -2409,7 +2509,8 @@ def build_report(
             "eps -> 0+ is the tuned massless limit; H = 0, so electroweak symmetry is not broken on any member",
             "planner_D2_link": "D2's second option ('the O06-raised member ... needs the equality-set theorem extended "
             "to O06 >= 2|kappa| r0'): that extension is L1 of the exact Hessian report's eps_family, and the whole "
-            "eps > 0 family (not only eps = r0^2/100) meets the literal Hessian criteria",
+            "eps > 0 family (not only eps = r0^2/100) meets the literal Hessian criteria; decision D2 (adopted) makes "
+            "the eps > 0 member the G3 witness",
         },
         "decisive_theorem": theorem,
         "proposed_additional_criteria": _proposed_criteria(loaded, science, g5),
@@ -2418,16 +2519,18 @@ def build_report(
         "caveat_gate_assignment": by_gate,
         "caveat_gate_assignment_status": CAVEAT_ROUTING_STATUS,
         "wave3_clause_reading": {
-            "clause": f"ledger wave 3 (closure_waves[3].deliverable) and roadmap W3-G3-FULL-STATIONARITY: '{WAVE3_CLAUSE}'",
+            "clause": "ledger wave 3 (closure_waves[3].deliverable) and roadmap W3-G3-FULL-STATIONARITY carry the "
+            f"caveat-routing sentence of g3_sm_target_track_v20: '{WAVE3_CLAUSE}'",
             "status": CAVEAT_ROUTING_STATUS,
-            "current_repo_reading": "the model-level caveats (the equality set's scope lists tuned DT splitting and "
-            "the O05 cancellation, sub-M_I coloured remnants, RG-anchor content, Higgs quartic, no EWSB and no "
-            "Yukawa sector) still need to be resolved in the G3 wave",
-            "reading_used": "planner D5 (recommended, pending): model-level caveats would be routed to "
-            "G4/G5/G6/G7/G8 or outside G1-G8; only the G3-assigned caveats would bear on G3, as disclosures or "
-            "through the Hessian criteria",
-            "if_kept_as_G3_requirements": "G3 would stay open indefinitely (DT naturalness, Higgs mass and EWSB "
-            "would become G3 conditions)",
+            "current_repo_reading": "decision D5 (adopted): the model-level caveats (the equality set's scope lists "
+            "tuned DT splitting and the O05 cancellation, sub-M_I coloured remnants, RG-anchor content, Higgs "
+            "quartic, no EWSB and no Yukawa sector) are routed downstream to G4/G6/G7/G8, or outside G1-G8 for the "
+            "naturalness of the tunings; G3 keeps only disclosures",
+            "reading_used": "the adopted D5 routing: only the G3-assigned caveats bear on G3, as disclosures or "
+            "through the Hessian criteria (the tuned-doublet kernel is resolved by the D2 eps > 0 witness); G5's "
+            "coupling vector is rebound under D4",
+            "if_kept_as_G3_requirements": "the alternative D5 rejected: G3 would stay open indefinitely (DT "
+            "naturalness, Higgs mass and EWSB would become G3 conditions)",
         },
         "planner_option_analysis": PLANNER_OPTION_ANALYSIS,
         "integration_gaps": _integration_gaps(loaded, integrity, theorem, g5),
@@ -2441,10 +2544,12 @@ def _verdict(report: Mapping[str, Any]) -> str:
     boolean = report["would_close_G3_mathematically_if_SM_track_added"]
     flags = report["readiness_booleans"]
     parts = [
-        "DRY RUN ONLY -- this is not a G3 closure. This module changed no gate status, gate report, ledger entry, "
-        f"workflow or checksum: the final G3 gate stays {baseline['final_gate_overall_state']!s} and the ledger's G3 stays "
-        f"{baseline['ledger_gate_statuses'].get('G3')!s}.",
-        f"Of the final gate's {report['n_criteria']} criteria, {report['n_route_specific']} are proof routes "
+        "DRY RUN ONLY -- this is not a G3 closure. This module changes no gate status, gate report, ledger entry, "
+        "workflow or checksum; it is the pre-integration map of the final gate's chiral-H criteria onto the SM "
+        "Pati-Salam target. G3 is decided only by final_g3_acceptance_gate_v20 through its sm_pati_salam track "
+        f"(g3_sm_target_track_v20): the final G3 gate is currently {baseline['final_gate_overall_state']!s} and the "
+        f"ledger's G3 is {baseline['ledger_gate_statuses'].get('G3')!s}.",
+        f"Of the final gate's {report['n_criteria']} chiral-H criteria, {report['n_route_specific']} are proof routes "
         f"specific to the chiral-H candidate; of the other {report['n_non_route_specific']}, the Pati-Salam target "
         f"satisfies {report['n_non_route_specific_satisfied_exact']} exactly"
         + (
@@ -2466,8 +2571,8 @@ def _verdict(report: Mapping[str, Any]) -> str:
         parts.append(
             "would_close_G3_mathematically_if_SM_track_added is True: every non-route-specific criterion is "
             "SATISFIED_EXACT under its mathematical analogue (presuming decision(s) "
-            f"{', '.join(flags['decisions_presumed']) or 'none'}; wiring conjunct S9 excluded). Closing G3 still "
-            "needs the integration steps and decisions listed below."
+            f"{', '.join(flags['decisions_presumed']) or 'none'}; wiring conjunct S9 excluded). G3 itself is "
+            "decided by the final gate's sm_pati_salam track."
         )
     else:
         blocking = ", ".join(report["blocking_criteria"]) or "integrity checks"
@@ -2486,8 +2591,8 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "With the planner's replacement criterion S11 in place of both Hessian criteria (rank 447 / nullity 39, "
         "kernel = orbit tangents plus the exactly identified tuned doublet, lifted at quartic order by lambda_eff = "
         f"127/64 > 0) the result would be {flags['with_planner_S11_replacement_criterion']}, subject to decisions "
-        f"{' and '.join(flags['with_planner_S11_replacement_criterion_decisions_presumed'])} (adopting S11 changes "
-        "the gate contract)."
+        f"{' and '.join(flags['with_planner_S11_replacement_criterion_decisions_presumed'])} (adopting S11 would "
+        "change the gate contract; the adopted D2 takes the eps > 0 member as the G3 witness instead)."
     )
     eps = report["eps_member"]
     eps_key = "would_close_G3_mathematically_on_eps_member_if_SM_track_added"
@@ -2517,17 +2622,18 @@ def _verdict(report: Mapping[str, Any]) -> str:
     parts.append(
         f"Decisive theorem: semantic agreement {theorem['semantic_agreement']} (same 486-real chart, same G = SO(10) "
         f"x U(1)_X x U(1)_PQ, V and q0 replaced by the SM benchmark), exact textual agreement "
-        f"{theorem['exact_textual_agreement']} (the equality module emits no required_statement yet); the gate's "
-        "conjunct required_statement == theorem (wiring, S9) is not evaluated here."
+        f"{theorem['exact_textual_agreement']} (the equality module emits no required_statement; the SM-track "
+        "statement for the eps witness is emitted by the exact Hessian report: "
+        f"{theorem['exact_hessian_emits_sm_eps_required_statement']}); the conjunct required_statement == theorem "
+        "(wiring, S9) is not evaluated here."
     )
     parts.append(
-        "Under the planner's proposed routing (decision D5, pending; the ledger/roadmap wave-3 G3 deliverable "
-        "currently says the PS candidate still needs its model-level caveats resolved), G3 would carry the "
-        "disclosures (accidental U(1)_PQ, benchmark-only Hessian, float64 end-to-end binding, cited theorems, family "
-        "scope) and the tuned-doublet Hessian kernel (resolved by D2: S11 at the tuned point, or an eps > 0 "
-        "witness), while the coloured remnants, EWSB, RG content, Higgs quartic, Yukawas and G5's coupling vector "
-        "would belong to G4-G8 (the doublet zero modes also as G4/G6 classification items), and DT/O05/hierarchy "
-        "naturalness would lie outside G1-G8; otherwise these caveats remain G3-wave requirements."
+        "Under the adopted caveat routing (decision D5, adopted; the ledger/roadmap wave-3 G3 deliverable carries "
+        "the caveat-routing sentence), G3 carries the disclosures (accidental U(1)_PQ, benchmark-only Hessian, "
+        "float64 end-to-end binding, cited theorems, family scope) and the tuned-doublet Hessian kernel (resolved by "
+        "D2: the eps > 0 witness), while the coloured remnants, EWSB, RG content, Higgs quartic, Yukawas and the "
+        "recomputed ranks belong to G4-G8 (the doublet zero modes also as G4/G6 classification items), G5's "
+        "coupling vector is rebound under D4, and DT/O05/hierarchy naturalness lies outside G1-G8."
     )
     return " ".join(parts)
 
@@ -2551,7 +2657,7 @@ def _markdown(report: Mapping[str, Any]) -> str:
         "",
         f"**Status:** `{report['status']}`",
         "",
-        f"**Gate status changed:** `{report['gate_status_changed']}` -- **G3 closed:** `{report['G3_closed']}`",
+        f"**Gate status changed:** `{report['gate_status_changed']}` -- **This dry run closes G3:** `{report['G3_closed']}`",
         "",
         report["verdict"],
         "",
@@ -2626,8 +2732,11 @@ def _markdown(report: Mapping[str, Any]) -> str:
     lines += [
         "## Decisive theorem",
         "",
-        f"- Final gate: {theorem['final_theorem_pinned']}",
+        f"- Final gate (chiral-H track): {theorem['final_theorem_pinned']}",
         f"- SM counterpart: {theorem['sm_final_theorem']}",
+        f"- SM track (eps witness): {theorem['sm_eps_final_theorem']} (emitted by the exact Hessian report: "
+        f"`{theorem['exact_hessian_emits_sm_eps_required_statement']}`; final gate top-level decisive theorem equals "
+        f"it: `{theorem['final_gate_top_level_decisive_theorem_is_sm_eps_theorem']}`)",
         f"- Equality module: {theorem['equality_module_theorem']}",
         f"- Exact textual agreement: `{theorem['exact_textual_agreement']}`; required_statement emitted: "
         f"`{theorem['equality_module_emits_required_statement']}`; semantic agreement: `{theorem['semantic_agreement']}`",
@@ -2650,7 +2759,7 @@ def _markdown(report: Mapping[str, Any]) -> str:
         for name, alt in record.get("alternative_analogues", {}).items():
             lines.append(f"- `{name}`: value `{alt['value']}`. {alt['statement']}")
         lines.append("")
-    lines += ["## Criteria satisfied exactly only under pending decisions", ""]
+    lines += ["## Criteria satisfied exactly only under adopted decisions", ""]
     for criterion, decisions in report["satisfied_exact_conditional_on_decisions"].items():
         record = next(c for c in report["criteria"]["science"] + report["criteria"]["release"]
                       if c["final_gate_criterion"] == criterion)
@@ -2664,13 +2773,13 @@ def _markdown(report: Mapping[str, Any]) -> str:
     wave3 = report["wave3_clause_reading"]
     lines += [
         "",
-        "## Physics caveats by gate (proposed routing, decision D5 pending)",
+        "## Physics caveats by gate (adopted routing, decision D5)",
         "",
         f"Routing status: `{report['caveat_routing_status']}`. Current repository text: {wave3['clause']}; "
-        f"{wave3['current_repo_reading']}. The gate column below is the planner's proposal; under the current "
-        "text every model-level caveat remains a G3-wave requirement.",
+        f"{wave3['current_repo_reading']}. The gate column below is the adopted routing; no model-level caveat is "
+        "a G3 condition.",
         "",
-        "| caveat | proposed gate | also | model-level | effect on G3 (proposed) | basis | evidence | value |",
+        "| caveat | gate | also | model-level | effect on G3 | basis | evidence | value |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for row in report["physics_caveats"]:
@@ -2692,7 +2801,9 @@ def _markdown(report: Mapping[str, Any]) -> str:
     ]
     for name, option in analysis["options"].items():
         lines.append(f"- **{name}**{' (recommended)' if option.get('recommended') else ''}: {option['summary']}")
-    lines += ["", "Decisions needed:", ""]
+    lines += ["", "Decisions adopted:", ""]
+    lines += [f"- **{k}**: {v}" for k, v in analysis["decisions_adopted"].items()]
+    lines += ["", "Decisions needed (historical record of the planner's questions):", ""]
     lines += [f"- **{k}**: {v}" for k, v in analysis["decisions_needed"].items()]
 
     lines += ["", "## Integration gaps", "", "| item | state | detail |", "|---|---|---|"]
@@ -2727,8 +2838,8 @@ def main(argv: list[str] | None = None) -> int:
                     "caveat_routing_status")
     }
     summary["caveat_routing_note"] = (
-        "caveat allocation is the planner's proposal (decision D5, pending); the ledger/roadmap wave-3 G3 "
-        "deliverable currently says the PS candidate still needs its model-level caveats resolved"
+        "caveat allocation is the adopted routing (decision D5); the ledger/roadmap wave-3 G3 deliverable carries "
+        "the caveat-routing sentence of g3_sm_target_track_v20"
     )
     summary["criterion_table"] = [
         {k: row[k] for k in ("criterion", "classification", "pati_salam_value")} for row in report["criterion_table"]

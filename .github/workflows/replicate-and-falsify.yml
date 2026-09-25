@@ -472,8 +472,8 @@ jobs:
           assert ag['flags']['all_vanishing_affine_SOS_completion_excluded']
           assert not ag['flags']['nonvanishing_residual_gradient_cancellation_excluded']
           assert not ag['flags']['G3_closed']
-          assert fg['n_failed']==0 and fg['overall_state']=='OPEN'
-          assert not fg['classification']['G3_closed'] and fg['classification']['theory_still_viable']
+          assert fg['n_failed']==0 and fg['overall_state']=='PASS' and fg['closing_track']=='sm_pati_salam'
+          assert fg['classification']['G3_closed'] and fg['classification']['theory_still_viable']
           assert candidate['flags']['complete_potential_BFB_exactly_certified']
           assert candidate['flags']['selected_vacuum_stationarity_exactly_compiler_certified']
           assert candidate['flags']['P_plus_Delta_source_binding_exactly_certified']

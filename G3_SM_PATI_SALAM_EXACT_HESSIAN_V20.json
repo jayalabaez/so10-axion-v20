@@ -208,7 +208,7 @@
       },
       "float64_diagnostic": "the live compiler's O06 row at q0 (value, gradient, Hessian) equals (0, 0, P_H) bit for bit; not part of the proof path",
       "relies_on": {
-        "D6": "the equality-set theorem cites classical theorems and hand-argued steps (decision D6 pending)",
+        "D6": "the equality-set theorem cites classical theorems and hand-argued steps (decision D6: accepted as G3-grade inputs, pinned by g3_sm_target_track_v20)",
         "premises": {
           "O06_row_is_H_Hbar_and_X_PQ_neutral": true,
           "equality_conditions_include_H_equal_0": true,
@@ -344,6 +344,25 @@
       "statement": "At q0 the H block of Hess V decouples and is diagonal in the chart with curvatures 0 (Re H_6..9, the tuned doublet), r0^2 (Im H_6..9), 1 (Re H_0..5) and 1 + r0^2 (Im H_0..5); Hess_q N_H = P_H adds eps to each.  So Re H_6..9 are exact eigenvectors of Hess_q V_eps(q0) with eigenvalue eps for every eps >= 0 (the doublet mass^2 in units of M_GUT^2); the rest of the spectrum is eps-independent with nullity 35 and no eigenvalue in (0, r0^2/96), so for 0 < eps < r0^2/96 eps is the smallest nonzero eigenvalue with multiplicity exactly 4."
     },
     "failures": [],
+    "final_acceptance_test": {
+      "closes_g3_by_itself": false,
+      "consumer": "final_g3_acceptance_gate_v20 (sm_pati_salam track via g3_sm_target_track_v20)",
+      "currently_passes": true,
+      "eps_window": {
+        "lower_exclusive": "0",
+        "meaning": "O06_eps = 2|kappa| r0 + eps < 12 < 4 pi (pi > 3)",
+        "upper_exclusive": "599/50"
+      },
+      "evidence": [
+        "L1 with the committed equality-set theorem (proved status required): V_eps >= V0 and {V_eps = V0} = G.q0 for every eps >= 0",
+        "L2: for every eps > 0 the Hessian at q0 is PSD with rank 451, nullity 35 and kernel exactly the orbit tangent space"
+      ],
+      "proof_inputs": "the equality-set theorem's 6 cited classical theorems and 6 hand-argued elementary steps (decision D6: accepted as G3-grade inputs, pinned by g3_sm_target_track_v20)",
+      "q0": "(Phi, H, Sigma, S, Phi17) = (p, 0, r0 sigma_std, r0, x0)",
+      "required_statement": "For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ orbit of q0.",
+      "symmetry_group": "SO(10) x U(1)_X x U(1)_PQ",
+      "witness": "V_PS,eps = V_PS + eps N_H: O06 = 2|kappa| r0 + eps with 0 < eps < 12 - 2|kappa| r0 (O06_eps < 12 < 4 pi), the other 26 benchmark couplings unchanged, at r0 = 1/5, x0 = 1, kappa = -r0/4"
+    },
     "flags": {
       "doublet_mass_squared_equals_eps": true,
       "eps_family_equality_set_unchanged": true,
@@ -678,7 +697,6 @@
   "flags": {
     "G3_closed": false,
     "all_zero_modes_are_symmetry_tangents": false,
-    "candidate_wired_into_g3_gate": false,
     "doublet_mass_squared_equals_eps": true,
     "eps_family_equality_set_unchanged": true,
     "eps_family_kernel_equals_symmetry_orbit": true,
@@ -696,6 +714,7 @@
     "raised_O06_kernel_equals_35_symmetry_tangents": true,
     "raised_O06_strict_quotient_positive": true,
     "raised_O06_strictly_positive_on_symmetry_quotient": true,
+    "report_closes_g3_by_itself": false,
     "smallest_nonzero_eigenvalue_r0_squared_over_96_exact": true,
     "source_binding_exact": true,
     "strict_quotient_positive": false,
@@ -777,7 +796,7 @@
   "n_checks": 52,
   "n_failed": 0,
   "overall_state": "EXACT_LOCAL_HESSIAN_KERNEL_ORBIT_PLUS_TUNED_DOUBLET_CERTIFIED",
-  "runtime_seconds": 50.1307759285,
+  "runtime_seconds": 59.0285320282,
   "scope": {
     "exact_premises_reused": [
       "A-square and C-square recouplings (exact_gauged_u1x_g3_a_square_recoupling_v20, exact_gauged_u1x_g3_sos_bfb_stationarity_v20.exact_mixed_certificate)",
@@ -793,7 +812,7 @@
       "strict positivity on the symmetry quotient at the tuned benchmark (the repository's strict_quotient_positive / kernel = symmetry tangents, as in the chiral-H 448/38 certificate): it is exactly FALSE here (kernel 35 + 4); the eps > 0 members (O06 = 2|kappa| r0 + eps, the raised variant eps = r0^2/100 among them) have kernel = orbit and strict quotient positivity, the tuned eps = 0 limit does not",
       "electroweak symmetry breaking on the eps family: H = 0 and the tree-level doublet mass^2 is eps >= 0",
       "other r0, x0 or kappa: the unit functions accept them, but only the benchmark is certified and bound",
-      "G3 closure: the candidate is not wired into the G3 gate; its global minimality and the equality set are the candidate's and the equality module's results, not re-proved here",
+      "G3 closure by this report alone: G3 is decided only by final_g3_acceptance_gate_v20 through its sm_pati_salam track (g3_sm_target_track_v20), which reads this report; the global minimality and the equality set are the candidate's and the equality module's results, not re-proved here",
       "the candidate's physics caveats (tuned doublet-triplet splitting and O06, sub-M_I coloured remnants, RG content, Higgs quartic, no electroweak breaking or Yukawa sector)"
     ],
     "proved_exactly": [
@@ -1139,5 +1158,5 @@
       "sigma_std_raw_norm_squared": 16
     }
   },
-  "verdict": "Exact over Q: at the SM Pati-Salam benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, O06 = 2|kappa| r0) the gradient vanishes and the complete 486 x 486 Hessian is PSD with rank 447 and nullity 39; its kernel is exactly the 35 SO(10) x U(1)_X x U(1)_PQ orbit tangents plus the 4 real light-doublet directions, it is positive definite on a 447-dimensional coordinate complement of the kernel, and its smallest nonzero eigenvalue is exactly r0^2/96.  It is therefore NOT strictly positive on the 451-dimensional symmetry quotient (4 exact non-symmetry zero modes; flags.strict_quotient_positive = False in the repository's sense).  With O06 raised by r0^2/100 the rank is 451, the nullity 35 and the kernel is exactly the symmetry orbit (strictly positive on the symmetry quotient).  For the whole family O06 = 2|kappa| r0 + eps (V_eps = V + eps N_H): {V_eps = V0} = G.q0 for every eps >= 0 (L1, given the equality-set theorem), and for every eps > 0 the Hessian at q0 is PSD with kernel exactly the 35 orbit tangents, i.e. rank 451, nullity 35 and strictly positive on the symmetry quotient (L2; inertia 451/35/0 re-certified at eps = r0^2/100 and r0^2/10^6); the doublet Re H_6..9 has mass^2 exactly eps, light but massive for eps << r0^2, so electroweak symmetry is still not broken, and the tuned eps = 0 limit is not a strict minimum on the symmetry quotient.  The entries are derived from integer source tensors in the radical-free coordinates u = D^-1 q (Sylvester's law of inertia), and the exact matrix agrees with the live compiler Hessian to within 1e-12 and rounds from it on the exact lattice (float64 binding).  G3 stays open: the candidate is not wired into the gate and its physics caveats are unchanged."
+  "verdict": "Exact over Q: at the SM Pati-Salam benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, O06 = 2|kappa| r0) the gradient vanishes and the complete 486 x 486 Hessian is PSD with rank 447 and nullity 39; its kernel is exactly the 35 SO(10) x U(1)_X x U(1)_PQ orbit tangents plus the 4 real light-doublet directions, it is positive definite on a 447-dimensional coordinate complement of the kernel, and its smallest nonzero eigenvalue is exactly r0^2/96.  It is therefore NOT strictly positive on the 451-dimensional symmetry quotient (4 exact non-symmetry zero modes; flags.strict_quotient_positive = False in the repository's sense).  With O06 raised by r0^2/100 the rank is 451, the nullity 35 and the kernel is exactly the symmetry orbit (strictly positive on the symmetry quotient).  For the whole family O06 = 2|kappa| r0 + eps (V_eps = V + eps N_H): {V_eps = V0} = G.q0 for every eps >= 0 (L1, given the equality-set theorem), and for every eps > 0 the Hessian at q0 is PSD with kernel exactly the 35 orbit tangents, i.e. rank 451, nullity 35 and strictly positive on the symmetry quotient (L2; inertia 451/35/0 re-certified at eps = r0^2/100 and r0^2/10^6); the doublet Re H_6..9 has mass^2 exactly eps, light but massive for eps << r0^2, so electroweak symmetry is still not broken, and the tuned eps = 0 limit is not a strict minimum on the symmetry quotient.  The entries are derived from integer source tensors in the radical-free coordinates u = D^-1 q (Sylvester's law of inertia), and the exact matrix agrees with the live compiler Hessian to within 1e-12 and rounds from it on the exact lattice (float64 binding).  This report does not close G3 by itself: G3 is decided by final_g3_acceptance_gate_v20 through its sm_pati_salam track, whose witness is an eps > 0 member; the candidate's physics caveats are unchanged and routed downstream (G4, G6-G8)."
 }

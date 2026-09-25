@@ -413,7 +413,9 @@
       ],
       "status": "PARTIAL",
       "title": "Stationarity and global vacuum",
-      "unsatisfied_dependencies": []
+      "unsatisfied_dependencies": [
+        "G2"
+      ]
     },
     "G4": {
       "authoritative_for_manuscript": false,
@@ -425,12 +427,13 @@
       "historical_option_c_evidence_retained": true,
       "model_contract_id": "historical_option_c_no_x_v20",
       "open_scope": [
-        "carry the exact rank-37 gauge quotient (449, axion included) and rank-38 massive/transverse quotient (448) to an accepted G3 witness, recomputing if its stabilizer changes",
-        "classify all remaining Hessian zero and negative modes at that witness"
+        "carry the exact gauge quotient to the accepted G3 witness (the SM Pati-Salam eps member) and recompute its ranks there: SO(10)xU(1)_X rank 34 (gauge quotient 452, axion included) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451), replacing the rank-37/38 (449/448) values of the superseded p+delta point",
+        "classify all remaining Hessian zero and negative modes at that witness, including the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes)"
       ],
       "status": "PARTIAL",
       "title": "Gauge quotient, axion directions, and physical Hessian",
       "unsatisfied_dependencies": [
+        "G2",
         "G3"
       ]
     },
@@ -667,11 +670,13 @@
       "historical_option_c_evidence_retained": false,
       "model_contract_id": "historical_option_c_no_x_v20",
       "open_scope": [
-        "promote the completed source-bound SOS/BFB certificate after repairing the executable model contract"
+        "keep the source-bound BFB certificate bound to the coupling vector of the accepted G3 witness (the SM Pati-Salam 27-parameter vector, V4 >= |q|^4/167; the eps N_H term is quadratic)"
       ],
       "status": "PARTIAL",
       "title": "Boundedness from below",
-      "unsatisfied_dependencies": []
+      "unsatisfied_dependencies": [
+        "G2"
+      ]
     },
     "G6": {
       "authoritative_for_manuscript": false,
@@ -690,7 +695,8 @@
       "title": "Physical threshold spectrum",
       "unsatisfied_dependencies": [
         "G3",
-        "G4"
+        "G4",
+        "G5"
       ]
     },
     "G7": {
@@ -737,7 +743,7 @@
   "n_failed": 0,
   "next_exact_target": "Use gauged_u1x_scalar_contract_v20.py and the 44/51 derivative audit for the manuscript-authoritative theory.",
   "overall_state": "HISTORICAL",
-  "source_template_ledger_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G5_CLOSED__G3_GLOBAL_OPEN",
+  "source_template_ledger_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G3_G5_CLOSED__G4_OPEN",
   "status": "HISTORICAL_OPTION_C_G1_CLOSED__G2_VALUE_AND_CHART_PARTIAL__NONAUTHORITATIVE",
   "summary": {
     "blocked": [],

@@ -74,6 +74,12 @@ on:
       - "g3_sm_pati_salam_equality_set_v20.py"
       - "test_g3_sm_pati_salam_equality_set_v20.py"
       - "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+      - "g3_sm_target_track_v20.py"
+      - "test_g3_sm_target_track_v20.py"
+      - "g3_sm_pati_salam_candidate_v20.py"
+      - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
+      - "g3_sm_pati_salam_exact_hessian_v20.py"
+      - "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json"
       - "authoritative_full_model_gate_v20.py"
       - "test_authoritative_full_model_gate_v20.py"
       - "publication_referee_gate_v20.py"
@@ -155,6 +161,12 @@ on:
       - "g3_sm_pati_salam_equality_set_v20.py"
       - "test_g3_sm_pati_salam_equality_set_v20.py"
       - "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
+      - "g3_sm_target_track_v20.py"
+      - "test_g3_sm_target_track_v20.py"
+      - "g3_sm_pati_salam_candidate_v20.py"
+      - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
+      - "g3_sm_pati_salam_exact_hessian_v20.py"
+      - "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json"
       - "authoritative_full_model_gate_v20.py"
       - "test_authoritative_full_model_gate_v20.py"
       - "publication_referee_gate_v20.py"
@@ -230,6 +242,8 @@ jobs:
             corrected_rank1_endpoint_v21.py \
             test_corrected_rank1_endpoint_v21.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
+            g3_sm_target_track_v20.py \
+            test_g3_sm_target_track_v20.py \
             final_g3_acceptance_gate_v20.py \
             authoritative_full_model_gate_v20.py \
             test_authoritative_full_model_gate_v20.py \
@@ -274,6 +288,7 @@ jobs:
         run: |
           python -m unittest -v \
             test_g1_g8_gate_ledger_v20.py \
+            test_g3_sm_target_track_v20.py \
             test_authoritative_full_model_gate_v20.py \
             test_publication_referee_gate_v20.py \
             test_nonsusy_sm_triplet_branching_census_v20.py \
@@ -368,11 +383,13 @@ jobs:
           assert x['executable_scaffold_contract']['tool_native_sarah_syntax']
           assert x['external_model_validation']['valid']
           assert x['repository_external_input_manifest']['valid']
-          assert ledger['summary']['closed']==['G1','G2','G5']
-          assert ledger['summary']['n_closed']==3
-          assert ledger['summary']['open']==['G3']
-          assert ledger['summary']['blocked']==['G4','G6','G7','G8']
-          assert {g:row['status'] for g,row in ledger['gates'].items()}=={'G1':'CLOSED','G2':'CLOSED','G3':'OPEN','G4':'BLOCKED','G5':'CLOSED','G6':'BLOCKED','G7':'BLOCKED','G8':'BLOCKED'}
+          assert ledger['summary']['closed']==['G1','G2','G3','G5']
+          assert ledger['summary']['n_closed']==4
+          assert ledger['summary']['open']==['G4']
+          assert ledger['summary']['blocked']==['G6','G7','G8']
+          assert {g:row['status'] for g,row in ledger['gates'].items()}=={'G1':'CLOSED','G2':'CLOSED','G3':'CLOSED','G4':'OPEN','G5':'CLOSED','G6':'BLOCKED','G7':'BLOCKED','G8':'BLOCKED'}
+          assert ledger['gates']['G3']['closing_track']=='sm_pati_salam'
+          assert ledger['g3_sm_target_track']['closed'] is True and ledger['g3_sm_target_track']['downstream_caveats_resolved'] is False
           assert ledger['historical_option_c_subtheorems']['G1']['invariant_directions']==64
           assert ledger['historical_option_c_subtheorems']['G1']['real_potential_parameters']==91
           assert ledger['historical_option_c_subtheorems']['G3']['massive_physical_quotient_dimension']==449
@@ -561,8 +578,9 @@ jobs:
           assert alternative_sos['flags']['all_vanishing_affine_SOS_completion_excluded']
           assert not alternative_sos['flags']['nonvanishing_residual_gradient_cancellation_excluded']
           assert not alternative_sos['flags']['G3_closed']
-          assert final_g3['n_failed']==0 and final_g3['overall_state']=='OPEN'
-          assert not final_g3['classification']['G3_closed']
+          assert final_g3['n_failed']==0 and final_g3['overall_state']=='PASS'
+          assert final_g3['classification']['G3_closed'] and final_g3['closing_track']=='sm_pati_salam'
+          assert final_g3['tracks']['chiral_H_SU5_Delta']['can_close_G3'] is False
           assert full['n_failed']==0, full['failures']
           assert full['overall_state']=='BLOCKED'
           assert full['classification']['authoritative_model_contract_consistent']

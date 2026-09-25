@@ -1151,15 +1151,33 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and alternative_sos_flags.get("G3_closed") is False
         and alternative_sos_flags.get("whole_model_excluded") is False
     )
-    final_g3_honestly_open = bool(
+    # The final G3 gate may be OPEN (no closure) or PASS (closed on its SM
+    # Pati-Salam track, the only closure route); either way it must agree
+    # with the authoritative ledger's G3 status.
+    ledger_g3_status = _dig(authoritative_gates, "G3", "status")
+    final_g3_state = final_g3.get("overall_state")
+    final_g3_state_consistent = bool(
         final_g3.get("n_failed") == 0
         and final_g3.get("status") == "FINAL_G3_ACCEPTANCE_TEST_EXECUTED"
-        and final_g3.get("overall_state") == "OPEN"
-        and final_g3_classification.get("mathematical_G3_closed") is False
-        and final_g3_classification.get("release_G3_verified") is False
         and final_g3_classification.get("whole_model_excluded") is False
         and final_g3_classification.get("theory_still_viable") is True
-        and final_g3_classification.get("G3_closed") is False
+        and (
+            (
+                final_g3_state == "OPEN"
+                and final_g3_classification.get("mathematical_G3_closed") is False
+                and final_g3_classification.get("release_G3_verified") is False
+                and final_g3_classification.get("G3_closed") is False
+                and ledger_g3_status != "CLOSED"
+            )
+            or (
+                final_g3_state == "PASS"
+                and final_g3.get("closing_track") == "sm_pati_salam"
+                and final_g3_classification.get("mathematical_G3_closed") is True
+                and final_g3_classification.get("release_G3_verified") is True
+                and final_g3_classification.get("G3_closed") is True
+                and ledger_g3_status == "CLOSED"
+            )
+        )
     )
     g3_frontier_honestly_fail_closed = bool(
         a_square_exactly_scoped
@@ -1190,7 +1208,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
         and rank1_su4_corrected_exact
         and alternative_global_sos_honestly_open
-        and final_g3_honestly_open
+        and final_g3_state_consistent
     )
     gauged_g3_contract_bound = bool(
         gauged.get("model_contract_id") == MODEL_CONTRACT_ID
@@ -1233,20 +1251,67 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and gauged_flags.get("whole_model_excluded", False)
         and gauged_flags.get("proof_grade_model_wide_no_go", False)
     )
+    # The vacuum evidence is bound to the G3 closing track (decisions D1, D4):
+    # only a consistent PASS of the final G3 gate on its SM Pati-Salam track
+    # supplies the strict-quotient, BFB and global-minimum evidence, read from
+    # that witness (with G5 bound to the same coupling vector).  The superseded
+    # 27-parameter SOS candidate's flags (rejected for G3) are diagnostics only.
+    final_g3_science = final_g3.get("science_criteria")
+    if not isinstance(final_g3_science, dict):
+        final_g3_science = {}
+    final_g3_sm_track_passes = bool(
+        final_g3_state_consistent
+        and final_g3_state == "PASS"
+        and final_g3.get("closing_track") == "sm_pati_salam"
+    )
+    sm_witness_strict_quotient = bool(
+        final_g3_sm_track_passes
+        and final_g3_science.get(
+            "sm_eps_witness_quotient_strictly_positive_kernel_is_orbit_exact"
+        )
+        is True
+        and final_g3_science.get(
+            "sm_eps_witness_full_Hessian_rank_451_nullity_35_exact"
+        )
+        is True
+    )
+    sm_witness_bfb = bool(
+        final_g3_sm_track_passes
+        and final_g3_science.get("sm_full_homogeneous_quartic_BFB_exact") is True
+        and _dig(authoritative_gates, "G5", "status") == "CLOSED"
+        and _dig(authoritative_gates, "G5", "bfb_coupling_vector", "certified")
+        is True
+    )
+    sm_witness_global_minimum = bool(
+        final_g3_sm_track_passes
+        and final_g3_science.get("sm_eps_witness_global_gap_exact") is True
+        and final_g3_science.get(
+            "sm_eps_witness_equality_set_single_G_orbit_exact"
+        )
+        is True
+    )
     stable_quotient = bool(
         gauged_g3_contract_bound
         and exact_stationarity_rank
-        and gauged_flags.get("G3_fixed_vacuum_strict_minimum_certified", False)
+        and sm_witness_strict_quotient
     )
     bfb = bool(
         gauged_g3_contract_bound
         and exact_stationarity_rank
-        and gauged_flags.get("complete_potential_BFB", False)
+        and sm_witness_bfb
     )
     global_minimum = bool(
         gauged_g3_contract_bound
         and exact_stationarity_rank
-        and gauged_flags.get("global_competing_extrema_exhausted", False)
+        and sm_witness_global_minimum
+    )
+    # G3 closure alone never passes this gate: the full vacuum-and-spectrum
+    # gate also needs G4 (zero-mode classification) and G6 (positive spectrum).
+    g3_authoritative_closed = ledger_g3_status == "CLOSED"
+    g4_authoritative_closed = _dig(authoritative_gates, "G4", "status") == "CLOSED"
+    g6_authoritative_closed = _dig(authoritative_gates, "G6", "status") == "CLOSED"
+    downstream_vacuum_gates_closed = bool(
+        g4_authoritative_closed and g6_authoritative_closed
     )
     if contract_state == "BLOCKED" or (ledger and not (g1_closed and g2_closed)):
         state = "BLOCKED"
@@ -1259,7 +1324,12 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         state = "OPEN"
     elif model_wide_no_go:
         state = "FAIL"
-    elif stable_quotient and bfb and global_minimum:
+    elif (
+        stable_quotient
+        and bfb
+        and global_minimum
+        and downstream_vacuum_gates_closed
+    ):
         state = "PASS"
     else:
         state = "OPEN"
@@ -1270,10 +1340,12 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "The gauged 44-direction/51-parameter derivatives on 486 real fields "
             "are recertified. Three structural gradient columns vanish exactly, "
             "and exact lower- and upper-rank certificates prove stationarity "
-            "rank/nullity 13/38. The gauged SO(10)xU(1)_X orbit has exact rank "
-            "37, so its gauge quotient is 449-dimensional and includes the axion; "
-            "removing the independent global-PQ direction gives the exactly "
-            "448-dimensional massive/transverse Hessian space. A sparse "
+            "rank/nullity 13/38. At the superseded p+delta_r point the gauged "
+            "SO(10)xU(1)_X orbit has exact rank 37, so its gauge quotient is "
+            "449-dimensional and includes the axion; removing the independent "
+            "global-PQ direction gives the exactly 448-dimensional "
+            "massive/transverse Hessian space (at the SM Pati-Salam G3 witness "
+            "the ranks are 34/35, quotients 452/451, a G4 item). A sparse "
             "27-of-51 candidate with J0=-21/200 has a complete source-bound "
             "sum-of-squares decomposition: the potential is exactly BFB and "
             "the selected vacuum is exactly stationary. Direct tensor assembly "
@@ -1311,8 +1383,15 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "target is rejected. The corrected 6585x19594 standard positive-Gram "
             "map, ordered-spectral target, and exact strict 22-block/824-pivot "
             "primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 "
-            "at t=1 for every real Phi210. Global Sigma, general/full H, and G3 "
-            "remain open (the exact 448/38 full Hessian is certified separately). "
+            "at t=1 for every real Phi210. For that non-SM point global Sigma "
+            "and general/full H remain open (the exact 448/38 full Hessian is "
+            "certified separately). G3 itself is decided by the final gate's SM "
+            "Pati-Salam track; this vacuum gate also needs G4 (zero-mode "
+            "classification, ranks 34/35 at the SM witness) and G6 (positive "
+            "physical spectrum) and stays OPEN until they close. Its "
+            "strict-quotient, BFB and global-minimum evidence is read from that "
+            "track's SM witness (with G5 on the same coupling vector); the "
+            "superseded 27-of-51 SOS candidate's flags are diagnostics only. "
             "The old no-X 64/91 result remains historical."
         ),
         {
@@ -1946,10 +2025,19 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "gauged_G3_SU5_beta_1_over_20_global_certified": (
                 su5_gap_flags.get("beta_1_over_20_global_minimum_certified")
             ),
-            "gauged_G3_final_acceptance_test_passes": su5_gap_acceptance.get(
-                "currently_passes"
+            "gauged_G3_chiral_SU5_gap_final_acceptance_test_passes": (
+                su5_gap_acceptance.get("currently_passes")
             ),
-            "final_G3_acceptance_gate_honestly_open": final_g3_honestly_open,
+            "final_G3_acceptance_gate_state_consistent": (
+                final_g3_state_consistent
+            ),
+            "final_G3_acceptance_gate_overall_state": final_g3_state,
+            "final_G3_closing_track": final_g3.get("closing_track"),
+            "authoritative_G3_closed": g3_authoritative_closed,
+            "authoritative_G4_closed": g4_authoritative_closed,
+            "authoritative_G6_closed": g6_authoritative_closed,
+            "vacuum_gate_requires_G4_and_G6_closed": True,
+            "downstream_vacuum_gates_closed": downstream_vacuum_gates_closed,
             "gauged_G3_contract_and_coverage_bound": gauged_g3_contract_bound,
             "gauged_G3_direction_parameter_field_quotient_counts": [
                 gauged_coverage.get("invariant_directions"),
@@ -1977,9 +2065,26 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
                 exact_stationarity_rank
             ),
             "gauged_model_wide_no_go_certified": model_wide_no_go,
+            "vacuum_evidence_bound_to_G3_closing_track": True,
+            "final_G3_sm_track_passes": final_g3_sm_track_passes,
+            "sm_witness_strict_quotient_positive": sm_witness_strict_quotient,
+            "sm_witness_BFB_with_G5_on_same_vector": sm_witness_bfb,
+            "sm_witness_global_minimum_unique_modulo_G": (
+                sm_witness_global_minimum
+            ),
             "gauged_strict_local_physical_minimum": stable_quotient,
             "gauged_complete_BFB": bfb,
             "gauged_global_comparison_complete": global_minimum,
+            "historical_SOS_candidate_strict_local_minimum_diagnostic": (
+                gauged_flags.get("G3_fixed_vacuum_strict_minimum_certified")
+                is True
+            ),
+            "historical_SOS_candidate_complete_BFB_diagnostic": (
+                gauged_flags.get("complete_potential_BFB") is True
+            ),
+            "historical_SOS_candidate_global_extrema_exhausted_diagnostic": (
+                gauged_flags.get("global_competing_extrema_exhausted") is True
+            ),
             "historical_option_c_stationarity_authoritative": reports.get(
                 "g3_stationarity", {}
             ).get("authoritative_for_manuscript", False),

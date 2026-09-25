@@ -1,25 +1,45 @@
 #!/usr/bin/env python3
 """Fail-closed final acceptance test for the gauged-U(1)_X G3 vacuum gate.
 
-The test deliberately separates a promising numerical local minimum from a
-proof of G3.  PASS requires one source-bound statement on the full 486-real
-field chart::
+The gate has two tracks (decision D1).
 
-    V_beta(q) - V_beta(q0) >= 0  for every q,
+* ``sm_pati_salam`` is the ONLY closure route.  It is evaluated by the pure
+  module ``g3_sm_target_track_v20`` from four committed reports (the SM
+  Pati-Salam candidate, its equality set, its exact Hessian and the
+  sigma-hypercharge audit).  PASS requires one source-bound statement on the
+  full 486-real field chart::
 
-with equality exactly on the SO(10) x U(1)_X x PQ orbit of q0, together with
-an exact full Hessian rank/nullity 448/38 certificate.  Repository model
-execution and G1/G2 promotion are independent release prerequisites.
+      V_PS,eps(q) - V_PS,eps(q0) >= 0  for every q,
+
+  with equality exactly on the SO(10) x U(1)_X x PQ orbit of q0, for the
+  light-but-massive doublet member V_PS,eps = V_PS + eps N_H (eps > 0,
+  decision D2), whose exact Hessian at q0 has rank/nullity 451/35 with kernel
+  exactly the symmetry orbit.  Every SM-track integrity, science and release
+  criterion must hold, the ledger's G3 status must agree with this gate, and
+  the ledger's G5 BFB certificate must be bound to the same Pati-Salam
+  coupling vector (decision D4).
+* ``chiral_H_SU5_Delta`` (the certified SU(5)+Delta chiral-H point) is an
+  integrity-checked DIAGNOSTIC.  Its artifact-integrity checks still fail the
+  gate closed on drift, but it can never close G3: its Delta_R has Y=-1, so it
+  is not a Standard-Model vacuum (g3_sigma_hypercharge_audit_v20).  Its
+  historical decisive theorem (``FINAL_THEOREM``, with the exact 448/38
+  Hessian certificate) is kept inside that track.
+
+Model-level caveats are routed downstream (decision D5); this gate never
+approves an internal candidate (decision D3).  Repository model execution and
+G1/G2 promotion are independent release prerequisites.
 """
 from __future__ import annotations
 
 import argparse
 import json
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
 import g1_g8_gate_ledger_v20 as ledger
 import corrected_rank1_endpoint_v21 as corrected_rank1
+import g3_sm_target_track_v20 as sm_track
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "FINAL_G3_ACCEPTANCE_GATE_V20.json"
@@ -78,27 +98,87 @@ RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON = (
 RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
 )
-# Optional, text-only input: the SM Pati-Salam candidate's equality-set report.
-# It only selects the verdict's Pati-Salam sentence.  It must never affect
-# overall_state, artifact_integrity or missing_artifacts, because this gate
-# does not yet use that candidate as its target.  The JSON is read directly
-# (via the ledger helper), never by importing g3_sm_pati_salam_equality_set_v20.
-PATI_SALAM_EQUALITY_SET_JSON = ROOT / "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json"
-PATI_SALAM_EQUALITY_SET_CERTIFIED_SENTENCE = (
-    "The Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20 is "
-    "SM-preserving, and its global-minimum set is exactly one SO(10) x "
-    "U(1)_X x U(1)_PQ orbit (g3_sm_pati_salam_equality_set_v20; uniqueness "
-    "uses the accidental U(1)_PQ), but it is not yet wired in."
-)
-PATI_SALAM_EQUALITY_SET_FALLBACK_SENTENCE = (
-    "The Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20 still "
-    "needs its equality set classified and is not yet wired in."
-)
-
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
+# The chiral-H track's historical decisive theorem.  That track is a
+# diagnostic (decision D1); this constant is kept unchanged for it.
 FINAL_THEOREM = (
     "For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds "
     "exactly on the SO(10)xU(1)_XxPQ orbit of q0."
+)
+CHIRAL_H_FINAL_THEOREM = FINAL_THEOREM
+# The closing (SM Pati-Salam) track's decisive theorem for the eps > 0
+# witness; emitted by G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json.
+SM_FINAL_THEOREM = sm_track.SM_FINAL_THEOREM
+DECISIVE_THEOREM = SM_FINAL_THEOREM
+
+CLOSING_TRACK = sm_track.TRACK_NAME
+DIAGNOSTIC_TRACK = sm_track.DIAGNOSTIC_TRACK_NAME
+CLOSURE_ROUTE_RULE = (
+    "G3 closes only if the sm_pati_salam track closes (every SM-track "
+    "integrity, science and release criterion True) and every "
+    "artifact-integrity check of both tracks passes; the chiral_H_SU5_Delta "
+    "track is integrity-checked but can never close G3 (decision D1)"
+)
+CHIRAL_WHY_NOT_A_CLOSURE_ROUTE = (
+    "its Delta_R is the T3R=0, Y=-1 member of the 126bar triplet, so its "
+    "(F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R, not the Standard "
+    "Model (g3_sigma_hypercharge_audit_v20)"
+)
+CHIRAL_KNOWN_ISSUES = (
+    "beta_global_gap_and_unique_equality_exact compares the gap report's "
+    "final_acceptance_test.required_statement (\"... equality holds only on "
+    "...\") with FINAL_THEOREM (\"... equality holds exactly on ...\"), so "
+    "that conjunct cannot pass as committed; it is recorded, not changed, "
+    "because the chiral_H_SU5_Delta track can never close G3.",
+)
+CHIRAL_TRACK_SUMMARY = (
+    "The mathematical results below stay "
+    "valid for that point. The chiral-H candidate has an exact full "
+    "Hessian theorem (rank/nullity 448/38, positive on the quotient) "
+    "and an exact global gap/equality theorem on the complete Phi=F "
+    "stratum for arbitrary H and Sigma. The complete maximally-negative "
+    "pure-Delta sector is now also excluded for arbitrary real Phi and "
+    "all nonzero residuals, with sharp gap 1/5000; no exact lower witness "
+    "is known. The prior four-real-dimensional SU(3) regression is "
+    "historical and subsumed. At fixed H=h_- and Sigma=q/4, the "
+    "corrected v21 exact theorem covers every real Phi210. At that fixed "
+    "endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real "
+    "maps and complete 45-element Phi210 quadratic basis feed an exact "
+    "22366-dimensional augmented census with 35 types/824 copies, 22 "
+    "real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant "
+    "rows. The complete cubic interface has all 1414 real cross "
+    "variables and an exact-rank-478, 478x1414 integer map with kernel "
+    "dimension 936. Its zero placeholder is nonphysical and certifies "
+    "no physical zero RHS. The homogeneous quartic interface is an "
+    "exact-rank-6057, 6057x18085 integer map with kernel dimension "
+    "12028. The legacy v20 assembled physical target is rejected. The "
+    "corrected 6585x19594 standard positive-Gram map, ordered-spectral "
+    "target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 "
+    "off the homogeneous origin and A(Phi)>3/200 at t=1 for every real "
+    "Phi210. Global Sigma and general/full H remain open for that point; "
+    "that fixed-endpoint theorem does not classify the full Hessian, which "
+    "the separate exact 448/38 certificate above closes at the certified "
+    "point."
+)
+CLOSED_VERDICT_CHIRAL_TAIL = (
+    "The SU(5)+Delta chiral-H track is an integrity-checked diagnostic that "
+    "can never close G3: its Delta_R is the T3R=0, Y=-1 member of the 126bar "
+    "triplet, so it is not a Standard-Model vacuum "
+    "(g3_sigma_hypercharge_audit_v20); its exact results (the 448/38 "
+    "Hessian, the fixed-F gap, the pure-Delta gap 1/5000, the corrected "
+    "fixed-endpoint theorem) remain valid statements about that point."
+)
+OPEN_VERDICT_CHIRAL_TAIL = (
+    "The SU(5)+Delta chiral-H track is an integrity-checked diagnostic that "
+    "can never close G3 (not a Standard-Model vacuum: its Delta_R has Y=-1; "
+    "g3_sigma_hypercharge_audit_v20)."
+)
+CLOSED_REMAINING_OPEN_PROBLEM = (
+    "none inside G3 on the closing track; downstream: G4 (zero-mode "
+    "classification and ranks 34/35 -> quotients 452/451 at the witness), G6 "
+    "(sub-M_I coloured states, positive spectrum, no EWSB), G7 (RG-anchor "
+    "content, Higgs quartic), G8 (Yukawas, proton-decay mediators); the "
+    "naturalness of the DT/O05/M_I tunings lies outside G1-G8"
 )
 
 
@@ -143,21 +223,9 @@ def build_report(
     rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
     rank1_su4_corrected_publication: dict[str, Any] | None = None,
     sigma_hypercharge_report: dict[str, Any] | None = None,
-    pati_salam_equality_set_report: dict[str, Any] | None = None,
+    sm_track_inputs: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
-    # Text-only (see PATI_SALAM_EQUALITY_SET_JSON): excluded from
-    # overall_state, artifact_integrity and missing_artifacts.
-    pati_salam_equality_set_report = (
-        ledger.load_sm_pati_salam_equality_set_report(
-            PATI_SALAM_EQUALITY_SET_JSON
-        )
-        if pati_salam_equality_set_report is None
-        else pati_salam_equality_set_report
-    )
-    pati_salam_equality_set = ledger.sm_pati_salam_equality_set_binding(
-        pati_salam_equality_set_report
-    )
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
     sigma_hypercharge_report = (
         _load(SIGMA_HYPERCHARGE_JSON)
@@ -251,6 +319,19 @@ def build_report(
         if rank1_su4_corrected_publication is None
         else rank1_su4_corrected_publication
     )
+    # SM Pati-Salam track inputs (the only closure route).  With no explicit
+    # inputs the four committed JSONs are read, and the sigma-hypercharge
+    # audit is shared with the chiral track (one sigma source for both).
+    if sm_track_inputs is None:
+        sm_inputs = sm_track.load_inputs()
+        sm_inputs["sigma_hypercharge"] = sigma_hypercharge_report
+    else:
+        sm_inputs = {
+            key: (dict(value) if isinstance(value, Mapping) else {})
+            for key, value in (
+                (key, sm_track_inputs.get(key)) for key in sm_track.INPUT_FILES
+            )
+        }
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -377,9 +458,25 @@ def build_report(
     )
     rank1_su4_quartic_target = rank1_su4_physical_target.get("quartic", {})
 
-    artifact_integrity = {
-        "ledger_executes": ledger_report.get("n_failed") == 0,
-        "HSX_audit_executes": hsx_report.get("n_failed") == 0,
+    # ------------------------------------------------------------------
+    # Diagnostic track chiral_H_SU5_Delta (decision D1): its integrity
+    # checks gate the report, its science and release criteria never close G3.
+    # ------------------------------------------------------------------
+    chiral_integrity = {
+        # The ledger carries release criteria of the only closure route
+        # (G3 closing_track, G5 bfb_coupling_vector), so its health check
+        # uses the same strict int-not-bool rule as every SM input.
+        "ledger_executes": (
+            type(ledger_report.get("n_failed")) is int
+            and ledger_report.get("n_failed") == 0
+            and ledger_report.get("failures") == []
+        ),
+        # The non-SM diagnostic reports may not claim whole-model exclusion
+        # (the ledger audit rejects that claim too).
+        "HSX_audit_executes": (
+            hsx_report.get("n_failed") == 0
+            and hsx_flags.get("whole_model_excluded") is False
+        ),
         "sigma_hypercharge_audit_executes": (
             sigma_hypercharge_report.get("n_failed") == 0
             and isinstance(sigma_hypercharge_report.get("flags"), dict)
@@ -422,7 +519,10 @@ def build_report(
                 )
             )
         ),
-        "global_gap_audit_executes": gap_report.get("n_failed") == 0,
+        "global_gap_audit_executes": (
+            gap_report.get("n_failed") == 0
+            and gap_flags.get("whole_model_excluded") is False
+        ),
         "fixed_F_full_offkernel_audit_executes": bool(
             fixed_f_offkernel_report.get("n_failed") == 0
             and fixed_f_offkernel_report.get("status")
@@ -792,7 +892,7 @@ def build_report(
         ),
     }
 
-    science_criteria = {
+    chiral_science = {
         "G1_G2_exact_scoped_calculations_complete": bool(
             str(_dig(
                 ledger_report,
@@ -1213,40 +1313,99 @@ def build_report(
             and gap_acceptance.get("required_statement") == FINAL_THEOREM
         ),
     }
-    mathematical_g3_closed = bool(
-        all(artifact_integrity.values()) and all(science_criteria.values())
-    )
-
-    release_criteria = {
+    chiral_release = {
         "authoritative_external_model_contract_executed": bool(
             ledger_report.get("contract_consistent")
         ),
         "G1_promoted_closed": _dig(gates, "G1", "status") == ledger.STATUS_CLOSED,
         "G2_promoted_closed": _dig(gates, "G2", "status") == ledger.STATUS_CLOSED,
     }
-    release_g3_verified = bool(
-        mathematical_g3_closed and all(release_criteria.values())
+    chiral_mathematical_criteria_all_true = bool(
+        all(chiral_integrity.values()) and all(chiral_science.values())
+    )
+    chiral_blockers = [
+        name for name, passed in chiral_science.items() if not passed
+    ]
+    chiral_blockers.extend(
+        name for name, passed in chiral_release.items() if not passed
+    )
+    exact_lower_witness = gap_flags.get("lower_witness_found") is True
+
+    # ------------------------------------------------------------------
+    # Closing track sm_pati_salam (g3_sm_target_track_v20): the only route.
+    # ------------------------------------------------------------------
+    prerequisites = {
+        "authoritative_external_model_contract_executed": bool(
+            ledger_report.get("contract_consistent")
+        ),
+        "G1_promoted_closed": _dig(gates, "G1", "status") == ledger.STATUS_CLOSED,
+        "G2_promoted_closed": _dig(gates, "G2", "status") == ledger.STATUS_CLOSED,
+        "G1_G2_exact_scoped_calculations_complete": chiral_science[
+            "G1_G2_exact_scoped_calculations_complete"
+        ],
+    }
+    sm = sm_track.evaluate_sm_track(sm_inputs, prerequisites=prerequisites)
+    sm_release = sm["release_prerequisites"]
+    g5_binding = sm["g5_bfb_binding"]
+
+    # No key collision: every SM-track integrity name starts with "sm_".
+    artifact_integrity = {**chiral_integrity, **sm["artifact_integrity"]}
+    science_criteria = dict(sm["science_criteria"])
+    mathematical_g3_closed = bool(
+        all(artifact_integrity.values()) and all(science_criteria.values())
     )
 
-    exact_lower_witness = gap_flags.get("lower_witness_found") is True
+    release_criteria = {
+        "authoritative_external_model_contract_executed": (
+            sm_release.get("authoritative_external_model_contract_executed")
+            is True
+        ),
+        "G1_promoted_closed": sm_release.get("G1_promoted_closed") is True,
+        "G2_promoted_closed": sm_release.get("G2_promoted_closed") is True,
+        "G5_BFB_evidence_covers_closing_coupling_vector": bool(
+            _dig(gates, "G5", "status") == ledger.STATUS_CLOSED
+            and _dig(gates, "G5", "bfb_coupling_vector", "certified") is True
+            and g5_binding.get("certified") is True
+            and _dig(gates, "G5", "bfb_coupling_vector", "coefficients")
+            == g5_binding.get("coefficients")
+            and bool(g5_binding.get("coefficients"))
+        ),
+    }
+    pre_verified = bool(
+        mathematical_g3_closed and all(release_criteria.values())
+    )
+    release_criteria["ledger_G3_status_matches_gate_closure"] = bool(
+        (_dig(gates, "G3", "status") == ledger.STATUS_CLOSED) == pre_verified
+        and (_dig(gates, "G3", "closing_track") == sm_track.TRACK_NAME)
+        == pre_verified
+    )
+    release_g3_verified = bool(
+        pre_verified and release_criteria["ledger_G3_status_matches_gate_closure"]
+    )
+
     whole_model_excluded = bool(
         hsx_flags.get("whole_model_excluded") is True
         or gap_flags.get("whole_model_excluded") is True
     )
+    # CANDIDATE_FAIL is gone: the closing SM witness has no rejection route,
+    # and the chiral lower witness is reported under its diagnostic track.
     if not all(artifact_integrity.values()):
         overall_state = "EXECUTION_FAIL"
     elif whole_model_excluded:
         overall_state = "THEORY_FAIL"
     elif release_g3_verified:
         overall_state = "PASS"
-    elif exact_lower_witness:
-        overall_state = "CANDIDATE_FAIL"
     else:
         overall_state = "OPEN"
+    # G3 counts as closed only when the report as a whole passes, so an
+    # EXECUTION_FAIL or THEORY_FAIL report can never also claim closure.
+    g3_closed = overall_state == "PASS"
+    closing_track = sm_track.TRACK_NAME if g3_closed else None
 
     blockers = [name for name, passed in science_criteria.items() if not passed]
     blockers.extend(name for name, passed in release_criteria.items() if not passed)
-    missing_artifacts = [
+    failures = [name for name, value in artifact_integrity.items() if not value]
+    chiral_missing_artifacts = [
         path.name
         for path, report in (
             (HSX_JSON, hsx_report),
@@ -1300,21 +1459,87 @@ def build_report(
         )
         if not report
     ]
+    missing_artifacts = list(
+        dict.fromkeys(
+            chiral_missing_artifacts + sm_track.missing_inputs(sm_inputs)
+        )
+    )
+
+    # Root-cause integrity failures first, then the science/release blockers.
+    open_reasons = ", ".join(failures + blockers) or overall_state
+    if g3_closed:
+        verdict = (
+            "G3 is verified on the SM Pati-Salam track, the only closure route "
+            "of this gate. "
+            + sm_track.CLOSURE_SCOPE
+            + " Decisive theorem: "
+            + SM_FINAL_THEOREM
+            + " "
+            + sm_track.WITNESS_SENTENCE
+            + " Proof inputs: 6 cited classical theorems and 6 hand-argued "
+            "elementary steps, accepted as G3-grade inputs under decision D6 "
+            "and pinned by an allowlist. "
+            + sm_track.CAVEAT_ROUTING_SENTENCE
+            + " "
+            + CLOSED_VERDICT_CHIRAL_TAIL
+        )
+        remaining_open_problem = CLOSED_REMAINING_OPEN_PROBLEM
+    else:
+        verdict = (
+            "G3 remains open: the SM Pati-Salam track, the only closure route "
+            "of this gate, is not certified (blockers: "
+            + open_reasons
+            + "). "
+            + OPEN_VERDICT_CHIRAL_TAIL
+        )
+        remaining_open_problem = (
+            "the SM Pati-Salam track is not certified: " + open_reasons
+        )
+
+    chiral_track = {
+        "track": DIAGNOSTIC_TRACK,
+        "role": "DIAGNOSTIC",
+        "can_close_G3": False,
+        "artifact_integrity": chiral_integrity,
+        "science_criteria": chiral_science,
+        "release_criteria": chiral_release,
+        "decisive_theorem": FINAL_THEOREM,
+        "mathematical_criteria_all_true": chiral_mathematical_criteria_all_true,
+        "blockers": chiral_blockers,
+        "candidate_exactly_rejected": exact_lower_witness,
+        "why_not_a_closure_route": CHIRAL_WHY_NOT_A_CLOSURE_ROUTE,
+        "known_issues": list(CHIRAL_KNOWN_ISSUES),
+        "summary": CHIRAL_TRACK_SUMMARY,
+    }
 
     return {
         "status": "FINAL_G3_ACCEPTANCE_TEST_EXECUTED",
         "overall_state": overall_state,
         "model_contract_id": MODEL_CONTRACT_ID,
         "n_integrity_checks": len(artifact_integrity),
-        "n_failed": sum(not value for value in artifact_integrity.values()),
-        "failures": [name for name, value in artifact_integrity.items() if not value],
+        "n_failed": len(failures),
+        "failures": failures,
         "missing_artifacts": missing_artifacts,
         "artifact_integrity": artifact_integrity,
         "corrected_rank1_fixed_endpoint_subtheorem": rank1_su4_corrected_view,
-        "decisive_theorem": FINAL_THEOREM,
+        "decisive_theorem": DECISIVE_THEOREM,
         "science_criteria": science_criteria,
         "release_criteria": release_criteria,
         "blockers": blockers,
+        "closing_track": closing_track,
+        "closure_route": {
+            "closing_tracks": [CLOSING_TRACK],
+            "diagnostic_tracks": [DIAGNOSTIC_TRACK],
+            "rule": CLOSURE_ROUTE_RULE,
+        },
+        "closure_scope": sm_track.CLOSURE_SCOPE,
+        "witness": sm["witness"],
+        "downstream_caveats": sm["downstream_caveats"],
+        "disclosures": sm["disclosures"],
+        "tracks": {
+            CLOSING_TRACK: sm,
+            DIAGNOSTIC_TRACK: chiral_track,
+        },
         "diagnostic_only": {
             "live_full_gradient_max_abs_residual": hsx_hessian.get(
                 "full_gradient_max_abs_residual"
@@ -1578,73 +1803,43 @@ def build_report(
         "classification": {
             "mathematical_G3_closed": mathematical_g3_closed,
             "release_G3_verified": release_g3_verified,
-            "candidate_exactly_rejected": exact_lower_witness,
+            "G3_closed": g3_closed,
+            # The closing SM witness has no rejection route; the chiral
+            # lower witness is reported under tracks.chiral_H_SU5_Delta.
+            "candidate_exactly_rejected": False,
             "whole_model_excluded": whole_model_excluded,
             "theory_still_viable": not whole_model_excluded,
-            "G3_closed": release_g3_verified,
+            "closing_track": closing_track,
+            "whole_model_validated": False,
+            "internal_candidate_approved_by_this_gate": False,
         },
         "upstream_frontier_integrity": frontier.get("integrity_pass"),
-        "remaining_open_problem": (
-            "an SM-preserving G3 candidate: the certified SU(5)+Delta point is not "
-            "an SM vacuum; its (F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R "
-            "(its Delta_R is the Y=-1 member of the 126bar triplet, "
-            "g3_sigma_hypercharge_audit_v20) and its chiral H breaks SU(2)_L as well, "
-            "so uniform coercivity for arbitrary non-pure-Delta Sigma orientations "
-            "would not close G3 on it"
-        ),
-        "verdict": (
-            "G3 is verified." if release_g3_verified else
-            "G3 remains open, and the certified chiral-H candidate cannot close it: "
-            "its Delta_R is the T3R=0, Y=-1 member of the 126bar triplet, so its "
-            "(F, Delta_R) pair leaves SU(3)_c x SU(2)_L x U(1)_T3R, not the Standard "
-            "Model, and its GUT-scale chiral H vev breaks that further to a "
-            "9-dimensional subgroup (g3_sigma_hypercharge_audit_v20). The "
-            "mathematical results below stay "
-            "valid for that point. The chiral-H candidate has an exact full "
-            "Hessian theorem (rank/nullity 448/38, positive on the quotient) "
-            "and an exact global gap/equality theorem on the complete Phi=F "
-            "stratum for arbitrary H and Sigma. The complete maximally-negative "
-            "pure-Delta sector is now also excluded for arbitrary real Phi and "
-            "all nonzero residuals, with sharp gap 1/5000; no exact lower witness "
-            "is known. The prior four-real-dimensional SU(3) regression is "
-            "historical and subsumed. At fixed H=h_- and Sigma=q/4, the "
-            "corrected v21 exact theorem covers every real Phi210. At that fixed "
-            "endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real "
-            "maps and complete 45-element Phi210 quadratic basis feed an exact "
-            "22366-dimensional augmented census with 35 types/824 copies, 22 "
-            "real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant "
-            "rows. The complete cubic interface has all 1414 real cross "
-            "variables and an exact-rank-478, 478x1414 integer map with kernel "
-            "dimension 936. Its zero placeholder is nonphysical and certifies "
-            "no physical zero RHS. The homogeneous quartic interface is an "
-            "exact-rank-6057, 6057x18085 integer map with kernel dimension "
-            "12028. The legacy v20 assembled physical target is rejected. The "
-            "corrected 6585x19594 standard positive-Gram map, ordered-spectral "
-            "target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 "
-            "off the homogeneous origin and A(Phi)>3/200 at t=1 for every real "
-            "Phi210. Global Sigma, general/full H, and G3 remain open; that "
-            "fixed-endpoint theorem does not classify the full Hessian, which the "
-            "separate exact 448/38 certificate above closes at the certified point. "
-            "PASS is impossible at this point because "
-            "target_unbroken_algebra_is_standard_model is false. It requires an "
-            "SM-preserving target wired into this gate and, on that target, the "
-            "gate's global-gap and equality-set criteria. "
-            + (
-                PATI_SALAM_EQUALITY_SET_CERTIFIED_SENTENCE
-                if pati_salam_equality_set["certified"]
-                else PATI_SALAM_EQUALITY_SET_FALLBACK_SENTENCE
-            )
-        ),
-        # Informational only; not an integrity check or a gate input.
-        "pati_salam_candidate_equality_set": pati_salam_equality_set,
+        "remaining_open_problem": remaining_open_problem,
+        "verdict": verdict,
     }
 
 
 def write_markdown(report: dict[str, Any]) -> str:
+    tracks = report.get("tracks", {})
+    diagnostic = tracks.get(DIAGNOSTIC_TRACK, {})
+    witness = report.get("witness", {})
     lines = [
         "# Final G3 acceptance gate — v20",
         "",
-        f"**State:** `{report['overall_state']}`",
+        "## State",
+        "",
+        f"**State:** `{report['overall_state']}` "
+        f"(`G3_closed`: `{report['classification']['G3_closed']}`, "
+        f"`n_failed`: `{report['n_failed']}`)",
+        "",
+        "## Closing track",
+        "",
+        f"- closing track: `{report['closing_track']}`",
+        f"- closure routes: `{report['closure_route']['closing_tracks']}`; "
+        f"diagnostic tracks: `{report['closure_route']['diagnostic_tracks']}`",
+        f"- rule: {report['closure_route']['rule']}",
+        "",
+        "## Verdict",
         "",
         report["verdict"],
         "",
@@ -1652,7 +1847,19 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         report["decisive_theorem"],
         "",
-        "## Science criteria",
+        "## Closure scope",
+        "",
+        report["closure_scope"],
+        "",
+        "## Witness",
+        "",
+        str(witness.get("sentence", "")),
+        "",
+        f"- potential: `{witness.get('potential')}`",
+        f"- vacuum: `{witness.get('vacuum')}`",
+        f"- eps window: `{witness.get('eps_window')}`",
+        "",
+        "## SM-track science criteria",
         "",
     ]
     lines.extend(
@@ -1666,6 +1873,33 @@ def write_markdown(report: dict[str, Any]) -> str:
     )
     lines.extend(["", "## Blockers", ""])
     lines.extend(f"- `{item}`" for item in report["blockers"])
+    if not report["blockers"]:
+        lines.append("- none")
+    lines.extend(["", "## Downstream caveats (decision D5)", ""])
+    lines.extend(
+        f"- `{caveat.get('id')}` -> `{caveat.get('gate')}` "
+        f"(resolved: `{caveat.get('resolved')}`)"
+        for caveat in report.get("downstream_caveats", [])
+        if isinstance(caveat, Mapping)
+    )
+    lines.extend(["", "## Diagnostic track", ""])
+    lines.append(
+        f"- `{diagnostic.get('track')}` (role `{diagnostic.get('role')}`): "
+        f"`can_close_G3` = `{diagnostic.get('can_close_G3')}`"
+    )
+    failed = [
+        name
+        for name, value in {
+            **diagnostic.get("science_criteria", {}),
+            **diagnostic.get("release_criteria", {}),
+        }.items()
+        if not value
+    ]
+    lines.append(
+        "- failed criteria: "
+        + (", ".join(f"`{name}`" for name in failed) if failed else "none")
+    )
+    lines.append(f"- why not a closure route: {diagnostic.get('why_not_a_closure_route')}")
     lines.append("")
     return "\n".join(lines)
 

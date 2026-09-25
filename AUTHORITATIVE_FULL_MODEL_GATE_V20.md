@@ -2,7 +2,7 @@
 
 **Overall state:** `BLOCKED`
 
-The repository remains BLOCKED at full-model scope. The repaired gauged U(1)_X contract promotes G1 and G2, but G3-G8 and the unique proton-lifetime derivation are not closed. Historical Option-C calculations remain context only and cannot validate or exclude the gauged model.
+The repository remains BLOCKED at full-model scope. On the attested gauged U(1)_X contract the ledger closes G1, G2, G3, G5 (G3 on the SM Pati-Salam benchmark family only; see FINAL_G3_ACCEPTANCE_GATE_V20), but G4, G6, G7, G8 and the unique proton-lifetime derivation are not closed. Historical Option-C calculations remain context only and cannot validate or exclude the gauged model.
 
 ## Classification
 
@@ -14,10 +14,10 @@ The repository remains BLOCKED at full-model scope. The repaired gauged U(1)_X c
 - `whole_model_validated`: False
 - `whole_model_excluded`: False
 - `empirical_discovery`: False
+- `g3_closing_track`: sm_pati_salam
 
 ## Blockers
 
-- `G3_NOT_CLOSED`
 - `G4_NOT_CLOSED`
 - `G6_NOT_CLOSED`
 - `G7_NOT_CLOSED`

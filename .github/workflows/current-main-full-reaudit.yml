@@ -188,7 +188,8 @@ jobs:
             test_g3_sm_pati_salam_candidate_v20.py \
             test_g3_sm_pati_salam_equality_set_v20.py \
             test_g3_sm_pati_salam_exact_hessian_v20.py \
-            test_g3_sm_pati_salam_gate_readiness_v20.py
+            test_g3_sm_pati_salam_gate_readiness_v20.py \
+            test_g3_sm_target_track_v20.py
           python -B -m pytest -q -p no:cacheprovider test_replicate_v20.py
           python -B corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check
       - name: Assert honest correction
@@ -507,8 +508,8 @@ jobs:
           assert altsos['flags']['all_vanishing_affine_SOS_completion_excluded'], altsos
           assert not altsos['flags']['nonvanishing_residual_gradient_cancellation_excluded'], altsos
           assert not altsos['flags']['G3_closed'], altsos
-          assert fg['n_failed']==0 and fg['overall_state']=='OPEN', fg
-          assert not fg['classification']['G3_closed'] and fg['classification']['theory_still_viable'], fg
+          assert fg['n_failed']==0 and fg['overall_state']=='PASS' and fg['closing_track']=='sm_pati_salam', fg
+          assert fg['classification']['G3_closed'] and fg['classification']['theory_still_viable'], fg
           assert sc['n_failed']==0 and sc['coefficient_vector']['nonzero_count']==27, sc
           assert sc['coefficient_vector']['maximum_absolute_coefficient']==73/8, sc
           assert sc['coefficient_vector']['symbolic_nonzero']['lambda::O48_B01_Phi_self_quartics']=='-21/200', sc
@@ -566,7 +567,7 @@ jobs:
           assert ck['flags']['exact_H6_radial_flat_direction_refuted'], ck
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['rank']==448, ck
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['nullity']==0, ck
-          assert gl['summary']['closed']==['G1','G2','G5'] and gl['summary']['open']==['G3'] and gl['summary']['n_blocked']==4, gl
+          assert gl['summary']['closed']==['G1','G2','G3','G5'] and gl['summary']['open']==['G4'] and gl['summary']['n_blocked']==3, gl
           assert not fm['classification']['whole_model_validated'], fm
           assert vm['overall_state']=='OPEN' and not vm['full_theory_validated'], vm
           PY

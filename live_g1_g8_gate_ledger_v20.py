@@ -32,6 +32,24 @@ OUT_JSON = ROOT / "LIVE_G1_G8_GATE_LEDGER_V20.json"
 OUT_MD = ROOT / "LIVE_G1_G8_GATE_LEDGER_V20.md"
 MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
 AUTHORITATIVE_FOR_MANUSCRIPT = False
+# Row keys that describe only the authoritative gauged-U(1)_X ledger (its
+# contract binding and its SM Pati-Salam G3/G5 track); a historical row
+# never carries them.
+AUTHORITATIVE_ONLY_ROW_KEYS = (
+    "authoritative_model_contract_id",
+    "authoritative_closed_scope",
+    "closed_on_current_authoritative_contract",
+    "blocking_root",
+    "closing_track",
+    "closure_scope",
+    "disclosures",
+    "diagnostic_tracks",
+    "bfb_coupling_vector",
+    "constructive_frontier_evidence_role",
+)
+# Open-scope items that the authoritative ledger routes from its SM-track G3
+# closure (decision D5); they are not items of the historical contract.
+AUTHORITATIVE_ROUTED_SCOPE_PREFIX = "routed from G3 by decision D5"
 
 
 def build_report() -> dict[str, Any]:
@@ -54,10 +72,13 @@ def build_report() -> dict[str, Any]:
         row["status"] = historical_statuses[name]
         row["model_contract_id"] = MODEL_CONTRACT_ID
         row["authoritative_for_manuscript"] = False
-        row.pop("authoritative_model_contract_id", None)
-        row.pop("authoritative_closed_scope", None)
-        row.pop("closed_on_current_authoritative_contract", None)
-        row.pop("blocking_root", None)
+        for key in AUTHORITATIVE_ONLY_ROW_KEYS:
+            row.pop(key, None)
+        row["open_scope"] = [
+            item
+            for item in row.get("open_scope", [])
+            if not str(item).startswith(AUTHORITATIVE_ROUTED_SCOPE_PREFIX)
+        ]
 
     gates["G1"] = {
         "title": "Invariant ring and component Clebsch tensors",
@@ -113,6 +134,14 @@ def build_report() -> dict[str, Any]:
             "live_g2_canonical_486_field_chart_v20.py"
         ),
     }
+    # Dependencies are judged against this historical ledger's own statuses,
+    # not the authoritative template's.
+    for name in ("G3", "G4", "G5", "G6", "G7", "G8"):
+        gates[name]["unsatisfied_dependencies"] = [
+            dependency
+            for dependency in gates[name].get("dependencies", [])
+            if gates.get(dependency, {}).get("status") != historical.STATUS_CLOSED
+        ]
 
     statuses = {name: row["status"] for name, row in gates.items()}
     closed = [name for name, status in statuses.items() if status == historical.STATUS_CLOSED]

@@ -21,9 +21,20 @@ OUT_JSON = ROOT / "ULTIMATE_THEORY_GATE_V20_VERDICT.json"
 OUT_MD = ROOT / "ULTIMATE_THEORY_GATE_V20.md"
 
 
-def _verdict(contract_ready: bool) -> str:
-    """Verdict text, branched on model-contract readiness."""
-    if contract_ready:
+def _verdict(contract_ready: bool, g3_closed: bool = False) -> str:
+    """Verdict text, branched on model-contract readiness and ledger G3."""
+    if contract_ready and g3_closed:
+        # G1, G2, G3 (SM Pati-Salam track, scoped) and G5 are CLOSED in
+        # G1_G8_GATE_LEDGER_V20; decision D3 keeps the internal candidate
+        # withheld while the closing track's downstream caveats are open.
+        lead = (
+            "WITHHOLD APPROVAL. The audit has no execution failure and the "
+            "gauged-U(1)_X model contract is attested by bound external SARAH "
+            "execution evidence; G3 is closed on the SM Pati-Salam benchmark "
+            "family (scoped), but the G4 and G6-G8 scientific gates remain "
+            "open and the closing track's downstream caveats are unresolved. "
+        )
+    elif contract_ready:
         # G5 is CLOSED in G1_G8_GATE_LEDGER_V20, so it is not listed as open.
         lead = (
             "WITHHOLD APPROVAL. The audit has no execution failure and the "
@@ -82,6 +93,7 @@ def evaluate_reports(
         "internal_candidate_approved": result[
             "internal_candidate_approved"
         ],
+        "internal_candidate_gate": result["internal_candidate_gate"],
         "conditional_benchmark_approved": result[
             "conditional_benchmark_approved"
         ],
@@ -111,7 +123,10 @@ def evaluate_reports(
             "Historical Option-C results are preserved as non-authoritative "
             "subtheorems only."
         ],
-        "verdict": _verdict(result["model_contract_ready"]),
+        "verdict": _verdict(
+            result["model_contract_ready"],
+            g3_closed=result["internal_candidate_gate"]["G3_closed"],
+        ),
     }
 
 

@@ -29,10 +29,10 @@ built from it are Standard-Model vacua.  They are not.
   max |q| = 1/2).  (F, Delta) and (p, Delta) fail: their centre is T3R, blind
   to colour.  (F, z1..z5) leaves SU(5); (F, z1z2z3zbar4zbar5) leaves a
   flipped-SU(5)-type SM; (p, z1..z5) leaves the standard SM algebra.
-* Named vacua.  The certified G3 point, its GUT point H=0, the repository's
-  physical_hierarchy_state (which is also the evaluation state of the
-  historical 27-parameter p-branch candidate) and the replacement stationary
-  orbit are all audited; none is an SM vacuum.
+* Named vacua.  The certified chiral-H (SU(5)+Delta) point, its GUT point
+  H=0, the repository's physical_hierarchy_state (which is also the
+  evaluation state of the historical 27-parameter p-branch candidate) and the
+  replacement stationary orbit are all audited; none is an SM vacuum.
 
 The command-line run (unless ``--skip-potential-probe``) also records a
 compiler probe: the declared 51-parameter exact-X potential at the certified
@@ -1518,13 +1518,15 @@ def build_report(*, include_potential_probe: bool = False) -> dict[str, Any]:
         "verdict": (
             "The repository's 126bar vev direct.delta_r() = z1^z2^z3^(e67+e89) has B-L=-2, T3R=0, "
             "Y=-1: it is not an SM singlet. Together with F or p it leaves SU(3)_c x SU(2)_L x "
-            "U(1)_T3R, whose centre acts trivially on colour, so the certified G3 point, its H=0 GUT "
-            "point, the physical_hierarchy_state and the historical 27-parameter p-branch candidate "
-            "are not Standard-Model vacua (the replacement orbit is not either). The chart's -i space "
+            "U(1)_T3R, whose centre acts trivially on colour, so the certified chiral-H "
+            "(SU(5)+Delta) point, its H=0 GUT point, the physical_hierarchy_state and the "
+            "historical 27-parameter p-branch candidate are not Standard-Model vacua (the "
+            "replacement orbit is not either). The chart's -i space "
             "does contain the Y=0 singlet z1^z2^z3^z4^z5 (the conjugate of hsigma.delta_r_form()): "
             "with p it leaves exactly the standard SM, with F it leaves SU(5). With F the SM-type "
-            "choice is the flipped direction z1^z2^z3^zbar4^zbar5. G3 remains open; nothing is "
-            "excluded."
+            "choice is the flipped direction z1^z2^z3^zbar4^zbar5. This audit does not close G3 by "
+            "itself (final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track); "
+            "nothing is excluded."
         ),
     }
     if include_potential_probe:
@@ -1631,7 +1633,8 @@ def _markdown(report: dict[str, Any]) -> str:
         "",
         *[f"- `{name}`: `{value}`" for name, value in flags.items()],
         "",
-        "G3: `OPEN`; whole model: neither validated nor excluded.",
+        "This audit does not close G3 by itself (final_g3_acceptance_gate_v20 decides it through "
+        "its sm_pati_salam track); whole model: neither validated nor excluded.",
         "",
     ]
     return "\n".join(lines)

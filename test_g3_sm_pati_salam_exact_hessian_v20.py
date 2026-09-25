@@ -24,6 +24,7 @@ import numpy as np
 import g3_candidate_physical_target_audit_v20 as target
 import g3_sm_pati_salam_candidate_v20 as candidate
 import g3_sm_pati_salam_exact_hessian_v20 as hessian
+import g3_sm_target_track_v20 as sm_track
 
 TIMING_KEYS = {"seconds", "runtime_seconds"}
 EPS_FLAGS = (
@@ -95,10 +96,11 @@ class SmPatiSalamExactHessianTest(unittest.TestCase):
                 "strictly_positive_on_symmetry_quotient",
                 "all_zero_modes_are_symmetry_tangents",
                 "other_r0_x0_kappa_certified",
-                "candidate_wired_into_g3_gate",
+                "report_closes_g3_by_itself",
                 "G3_closed",
             ):
                 self.assertIs(report["flags"][name], False, name)
+            self.assertNotIn("candidate_wired_into_g3_gate", report["flags"])
             self.assertIs(report["G3_closed"], False)
 
     def test_status_strings(self) -> None:
@@ -125,11 +127,13 @@ class SmPatiSalamExactHessianTest(unittest.TestCase):
         self.assertIn("451/35/0", text)
         self.assertIn("## eps family: O06 = 2|kappa| r0 + eps", text)
         self.assertIn("`1/1000000`", text)
+        self.assertIn(hessian.SM_EPS_FINAL_THEOREM, text)
+        self.assertIn("**Currently passes:** `True`", text)
 
     def test_scope_and_verdict_state_the_float64_binding_and_open_g3(self) -> None:
         for report in (self.committed, self.fresh):
             self.assertIn("float64 binding", report["verdict"])
-            self.assertIn("G3 stays open", report["verdict"])
+            self.assertIn("does not close G3 by itself", report["verdict"])
             self.assertIn("float64 end to end", report["theorem"])
             self.assertTrue(any("compiler = exact operators" in row for row in report["scope"]["float64_evidence_only"]))
             self.assertTrue(any("G3 closure" in row for row in report["scope"]["not_proved_or_out_of_scope"]))
@@ -241,6 +245,22 @@ class SmPatiSalamExactHessianTest(unittest.TestCase):
                 self.assertIs(report["flags"][name], eps["flags"][name], name)
             self.assertIn("not broken", eps["physical_reading"])
             self.assertIn("447/39", eps["physical_reading"])
+
+    def test_eps_family_emits_the_sm_track_required_statement(self) -> None:
+        # The certifying artifact emits the decisive statement that the final G3 gate's SM track reads.
+        self.assertEqual(hessian.SM_EPS_FINAL_THEOREM, sm_track.SM_FINAL_THEOREM)
+        self.assertEqual(hessian.EPS_PERTURBATIVE_UPPER, Fraction(599, 50))
+        for report in (self.committed, self.fresh):
+            test = report["eps_family"]["final_acceptance_test"]
+            self.assertEqual(test["required_statement"], hessian.SM_EPS_FINAL_THEOREM)
+            self.assertEqual(test["required_statement"], sm_track.SM_FINAL_THEOREM)
+            self.assertIs(test["currently_passes"], True)
+            self.assertEqual(test["eps_window"]["lower_exclusive"], "0")
+            self.assertEqual(test["eps_window"]["upper_exclusive"], "599/50")
+            self.assertEqual(test["eps_window"]["upper_exclusive"], sm_track.EPS_WINDOW_UPPER)
+            self.assertIs(test["closes_g3_by_itself"], False)
+            self.assertIn("g3_sm_target_track_v20", test["consumer"])
+            self.assertIn("D6", test["proof_inputs"])
 
     def test_eps_family_L1_premises(self) -> None:
         l1 = self.fresh["eps_family"]["L1_equality_set"]
@@ -370,6 +390,11 @@ class SmPatiSalamExactHessianTest(unittest.TestCase):
         self.assertIs(report["flags"]["eps_family_theorem_claimed"], False)
         self.assertIs(report["flags"]["eps_family_kernel_equals_symmetry_orbit"], True)
         self.assertIn("The eps-family extension is NOT claimed", report["verdict"])
+        # The required statement is still emitted, but it does not pass.
+        test = eps["final_acceptance_test"]
+        self.assertIs(test["currently_passes"], False)
+        self.assertEqual(test["required_statement"], hessian.SM_EPS_FINAL_THEOREM)
+        self.assertIs(test["closes_g3_by_itself"], False)
         for mutate in (
             lambda value: value.update(status=hessian.equality.STATUS_NOT_PROVED),
             lambda value: value["equality_conditions"].update(conditions=["|Phi17| = x0"]),

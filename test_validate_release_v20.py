@@ -149,6 +149,24 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py",
             "corrected_rank1_publication_v21/heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py",
             "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+            "g3_sm_target_track_v20.py",
+            "test_g3_sm_target_track_v20.py",
+            "g3_sm_pati_salam_candidate_v20.py",
+            "test_g3_sm_pati_salam_candidate_v20.py",
+            "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+            "G3_SM_PATI_SALAM_CANDIDATE_V20.md",
+            "g3_sm_pati_salam_equality_set_v20.py",
+            "test_g3_sm_pati_salam_equality_set_v20.py",
+            "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json",
+            "G3_SM_PATI_SALAM_EQUALITY_SET_V20.md",
+            "g3_sm_pati_salam_exact_hessian_v20.py",
+            "test_g3_sm_pati_salam_exact_hessian_v20.py",
+            "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json",
+            "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.md",
+            "g3_sm_pati_salam_gate_readiness_v20.py",
+            "test_g3_sm_pati_salam_gate_readiness_v20.py",
+            "G3_SM_PATI_SALAM_GATE_READINESS_V20.json",
+            "G3_SM_PATI_SALAM_GATE_READINESS_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -202,6 +220,42 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             'rank1_checks["G3_closed"] is False',
         ):
             self.assertIn(required, predicate)
+
+    def test_final_g3_release_predicate_requires_sm_track_and_ledger_agreement(self):
+        source = Path(release.__file__).read_text(encoding="utf-8")
+        self.assertIn("import g3_sm_target_track_v20 as sm_track", source)
+        self.assertIn(
+            'ledger_report = json.loads((ROOT / "G1_G8_GATE_LEDGER_V20.json").read_text())',
+            source,
+        )
+        end = source.index(
+            '"final G3 acceptance gate and ledger disagree on the SM-track G3 closure"'
+        )
+        start = source.rindex("require(", 0, end)
+        predicate = source[start:end]
+        for required in (
+            'final_g3["n_failed"] == 0',
+            'final_g3["overall_state"] == "PASS"',
+            'final_g3["closing_track"] == "sm_pati_salam"',
+            'final_g3["decisive_theorem"] == sm_track.SM_FINAL_THEOREM',
+            'final_g3["classification"]["mathematical_G3_closed"] is True',
+            'final_g3["classification"]["release_G3_verified"] is True',
+            'final_g3["classification"]["G3_closed"] is True',
+            'final_g3["classification"]["theory_still_viable"] is True',
+            'final_g3["classification"]["whole_model_excluded"] is False',
+            'all(value is True for value in final_g3["release_criteria"].values())',
+            'final_g3["tracks"]["chiral_H_SU5_Delta"]["can_close_G3"] is False',
+            'ledger_report["gates"]["G3"]["status"] == "CLOSED"',
+            'ledger_report["gates"]["G3"]["closing_track"] == "sm_pati_salam"',
+            'ledger_report["gates"]["G4"]["status"] == "OPEN"',
+            'ledger_report["gates"]["G5"]["status"] == "CLOSED"',
+            'ledger_report["gates"][g]["status"] == "BLOCKED" for g in ("G6", "G7", "G8")',
+        ):
+            self.assertIn(required, predicate)
+        self.assertNotIn('final_g3["overall_state"] == "OPEN"', source)
+        # Decision D3 keeps the internal-candidate tier withheld, so this pin
+        # stays in force even with G1-G3 CLOSED.
+        self.assertIn('and not ultimate["internal_candidate_approved"]', source)
 
     def test_rank1_su4_release_predicates_are_exact_and_fail_closed(self):
         stabilizer = json.loads(

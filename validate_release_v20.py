@@ -13,6 +13,7 @@ import sys
 import unittest
 
 import g1_g8_gate_ledger_v20 as gate_ledger
+import g3_sm_target_track_v20 as sm_track
 import corrected_rank1_endpoint_v21 as corrected_rank1
 
 
@@ -125,6 +126,26 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_theory_validation_matrix_v20.py",
     "test_ultimate_theory_gate_v20.py",
     "test_validate_release_v20.py",
+    # SM Pati-Salam G3 track: the pure track module and the four evidence
+    # bundles it binds (candidate, equality set, exact Hessian, readiness).
+    "g3_sm_target_track_v20.py",
+    "test_g3_sm_target_track_v20.py",
+    "g3_sm_pati_salam_candidate_v20.py",
+    "test_g3_sm_pati_salam_candidate_v20.py",
+    "G3_SM_PATI_SALAM_CANDIDATE_V20.json",
+    "G3_SM_PATI_SALAM_CANDIDATE_V20.md",
+    "g3_sm_pati_salam_equality_set_v20.py",
+    "test_g3_sm_pati_salam_equality_set_v20.py",
+    "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json",
+    "G3_SM_PATI_SALAM_EQUALITY_SET_V20.md",
+    "g3_sm_pati_salam_exact_hessian_v20.py",
+    "test_g3_sm_pati_salam_exact_hessian_v20.py",
+    "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json",
+    "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.md",
+    "g3_sm_pati_salam_gate_readiness_v20.py",
+    "test_g3_sm_pati_salam_gate_readiness_v20.py",
+    "G3_SM_PATI_SALAM_GATE_READINESS_V20.json",
+    "G3_SM_PATI_SALAM_GATE_READINESS_V20.md",
 )
 
 
@@ -774,6 +795,7 @@ def main() -> int:
         ).read_text()
     )
     final_g3 = json.loads((ROOT / "FINAL_G3_ACCEPTANCE_GATE_V20.json").read_text())
+    ledger_report = json.loads((ROOT / "G1_G8_GATE_LEDGER_V20.json").read_text())
     g3_candidate = json.loads(
         (ROOT / "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json").read_text()
     )
@@ -1548,13 +1570,26 @@ def main() -> int:
         and alternative_flags["whole_model_excluded"] is False,
         "alternative global-SOS audit failed or overclaimed its no-go scope",
     )
+    # G3 closes only through the final gate's SM Pati-Salam track, and the
+    # ledger must agree: G3/G5 CLOSED, G4 OPEN, G6-G8 BLOCKED.
     require(
         final_g3["n_failed"] == 0
-        and final_g3["overall_state"] == "OPEN"
-        and final_g3["classification"]["mathematical_G3_closed"] is False
-        and final_g3["classification"]["release_G3_verified"] is False
-        and final_g3["classification"]["theory_still_viable"] is True,
-        "final G3 acceptance gate failed or promoted incomplete evidence",
+        and final_g3["overall_state"] == "PASS"
+        and final_g3["closing_track"] == "sm_pati_salam"
+        and final_g3["decisive_theorem"] == sm_track.SM_FINAL_THEOREM
+        and final_g3["classification"]["mathematical_G3_closed"] is True
+        and final_g3["classification"]["release_G3_verified"] is True
+        and final_g3["classification"]["G3_closed"] is True
+        and final_g3["classification"]["theory_still_viable"] is True
+        and final_g3["classification"]["whole_model_excluded"] is False
+        and all(value is True for value in final_g3["release_criteria"].values())
+        and final_g3["tracks"]["chiral_H_SU5_Delta"]["can_close_G3"] is False
+        and ledger_report["gates"]["G3"]["status"] == "CLOSED"
+        and ledger_report["gates"]["G3"]["closing_track"] == "sm_pati_salam"
+        and ledger_report["gates"]["G4"]["status"] == "OPEN"
+        and ledger_report["gates"]["G5"]["status"] == "CLOSED"
+        and all(ledger_report["gates"][g]["status"] == "BLOCKED" for g in ("G6", "G7", "G8")),
+        "final G3 acceptance gate and ledger disagree on the SM-track G3 closure",
     )
     candidate_coefficients = g3_candidate["coefficient_vector"]
     require(

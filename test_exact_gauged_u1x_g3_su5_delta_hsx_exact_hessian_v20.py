@@ -54,19 +54,22 @@ def test_report_exposes_final_gate_aliases_without_closing_global_g3():
     assert report["G3_closed"] is False
 
 
-def test_final_g3_gate_accepts_real_exact_hessian_but_remains_open_globally():
+def test_final_g3_gate_accepts_real_exact_hessian_in_the_diagnostic_track():
     exact = certificate.build_report()
     report = final_gate.build_report(exact_hessian_report=exact)
+    chiral = report["tracks"]["chiral_H_SU5_Delta"]
     assert report["n_failed"] == 0, report["failures"]
-    assert report["science_criteria"][
+    assert chiral["science_criteria"][
         "full_Hessian_rank_448_nullity_38_exact"
     ] is True
-    assert report["science_criteria"][
+    assert chiral["science_criteria"][
         "full_448_quotient_strictly_positive_exact"
     ] is True
-    assert report["science_criteria"][
+    assert chiral["science_criteria"][
         "beta_global_gap_and_unique_equality_exact"
     ] is False
-    assert report["classification"]["mathematical_G3_closed"] is False
-    assert report["classification"]["G3_closed"] is False
-    assert report["overall_state"] == "OPEN"
+    assert chiral["can_close_G3"] is False
+    assert chiral["decisive_theorem"] == final_gate.FINAL_THEOREM
+    # G3 is decided by the SM Pati-Salam track, not by this chiral certificate.
+    assert report["closing_track"] == "sm_pati_salam"
+    assert report["overall_state"] == "PASS"

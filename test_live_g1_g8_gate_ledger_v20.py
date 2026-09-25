@@ -46,6 +46,23 @@ def test_downstream_gates_remain_fail_closed():
         assert report["gates"][gate]["status"] != "CLOSED"
     assert not report["flags"]["all_g1_g8_closed"]
     assert not report["flags"]["whole_model_validated"]
+    # No historical row carries the authoritative ledger's SM-track keys or
+    # its D5-routed caveats, and dependencies follow the historical statuses.
+    for gate, row in report["gates"].items():
+        assert "closing_track" not in row and "closure_scope" not in row, gate
+        for key in ledger.AUTHORITATIVE_ONLY_ROW_KEYS:
+            assert key not in row, (gate, key)
+        assert not any(
+            str(item).startswith("routed from G3 by decision D5")
+            for item in row["open_scope"]
+        ), gate
+    statuses = {gate: row["status"] for gate, row in report["gates"].items()}
+    for gate in ("G3", "G4", "G5", "G6", "G7", "G8"):
+        row = report["gates"][gate]
+        assert row["unsatisfied_dependencies"] == [
+            dependency for dependency in row["dependencies"] if statuses[dependency] != "CLOSED"
+        ], gate
+    assert report["gates"]["G4"]["unsatisfied_dependencies"] == ["G2", "G3"]
 
 
 def test_wave_two_is_only_the_historical_derivative_frontier():
