@@ -17,6 +17,74 @@ OUT_MD = ROOT / "G1_G8_EXECUTION_ROADMAP_V20.md"
 
 DEPENDENCIES = ledger.DEPENDENCIES
 
+# The Pati-Salam clause of the W3-G3 deliverable is bound, fail-closed, to the
+# committed G3_SM_PATI_SALAM_EQUALITY_SET_V20.json.  The JSON is read directly
+# through the ledger helper; g3_sm_pati_salam_equality_set_v20 is never
+# imported (it imports heavy modules and could create a cycle).
+W3_G3_TASK_ID = "W3-G3-FULL-STATIONARITY"
+PATI_SALAM_EQUALITY_SET_CERTIFIED_CLAUSE = (
+    "for the Pati-Salam-branch candidate "
+    "(g3_sm_pati_salam_candidate_v20), its equality set is classified "
+    "exactly (a single SO(10) x U(1)_X x U(1)_PQ orbit, whose uniqueness "
+    "uses the accidental U(1)_PQ; g3_sm_pati_salam_equality_set_v20); it "
+    "still needs its model-level caveats resolved and gate integration. "
+)
+PATI_SALAM_EQUALITY_SET_FALLBACK_CLAUSE = (
+    "the Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still "
+    "needs its equality set classified, its model-level caveats resolved and "
+    "gate integration. "
+)
+_W3_G3_DELIVERABLE_HEAD = (
+    "construct an SM-preserving G3 candidate and certify it through the "
+    "final gate; "
+)
+_W3_G3_DELIVERABLE_TAIL = (
+    "The SU(5)+Delta chiral-H candidate is not an SM vacuum (its Delta_R "
+    "has Y=-1; g3_sigma_hypercharge_audit_v20), so uniform coercivity for "
+    "its arbitrary non-pure-Delta Sigma orientations is a mathematical "
+    "problem only and cannot close G3. Its exact 448/38 Hessian and "
+    "complete pure-Delta maximal-negative sector are complete. The "
+    "prior four-real-dimensional SU(3) regression is "
+    "historical and subsumed. At fixed H=h_- and Sigma=q/4, the "
+    "corrected v21 exact theorem covers every real Phi210; its exact "
+    "SU(4) stabilizer, aligned 25-carrier "
+    "rank-210 real-form maps, and complete 45-element invariant "
+    "quadratic basis from a 5952x551 rank-506 constraint system are "
+    "ready. The exact augmented census has dimension 22366, 35 "
+    "complex isotypic types spanning 824 copies, 22 real/Hermitian "
+    "blocks, 19594 real Schur parameters, and 6585 invariant target "
+    "rows with an abstract surjective multiplication map. The complete "
+    "cubic interface is now explicit: 540 required Sym2(Phi210) carrier "
+    "copies generate all 1414 real Schur cross variables, and their "
+    "478x1414 integer coefficient map has exact rank 478 and kernel "
+    "dimension 936. Its reserved zero vector is only an abstract "
+    "interface placeholder, not the physical G3 target. The exact "
+    "homogeneous quartic map has shape 6057x18085, rank 6057, and "
+    "kernel dimension 12028. The legacy v20 assembled physical target "
+    "is rejected. The corrected 6585x19594 standard positive-Gram map, "
+    "ordered-spectral target, and exact strict 22-block/824-pivot primal "
+    "prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at "
+    "t=1 for every real Phi210. Global Sigma, general/full H, and G3 "
+    "remain open (the exact 448/38 full Hessian is certified separately)"
+)
+
+
+def w3_g3_deliverable(pati_salam_equality_set_certified: bool) -> str:
+    """W3-G3 deliverable; the equality-set claim appears only when certified."""
+    return (
+        _W3_G3_DELIVERABLE_HEAD
+        + (
+            PATI_SALAM_EQUALITY_SET_CERTIFIED_CLAUSE
+            if pati_salam_equality_set_certified is True
+            else PATI_SALAM_EQUALITY_SET_FALLBACK_CLAUSE
+        )
+        + _W3_G3_DELIVERABLE_TAIL
+    )
+
+
+# The static table is fail-closed: its W3-G3 deliverable carries the fallback
+# clause, and _tasks_for_gate_report substitutes the certified clause only
+# when the committed equality-set JSON certifies it.
 TASKS: list[dict[str, Any]] = [
     {
         "id": "W0-MODEL-CONTRACT",
@@ -59,44 +127,12 @@ TASKS: list[dict[str, Any]] = [
         ),
     },
     {
-        "id": "W3-G3-FULL-STATIONARITY",
+        "id": W3_G3_TASK_ID,
         "wave": 3,
         "gates": ["G3"],
         "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU4_FIXED_ENDPOINT_ARBITRARY_PHI_EXACT__GLOBAL_SIGMA_GENERAL_H_FULL_HESSIAN_AND_G3_OPEN__BLOCKED_ON_G2_PROMOTION",
         "issue": 178,
-        "deliverable": (
-            "construct an SM-preserving G3 candidate and certify it through the "
-            "final gate; the Pati-Salam-branch candidate "
-            "(g3_sm_pati_salam_candidate_v20) still needs its equality set "
-            "classified, its model-level caveats resolved and gate integration. "
-            "The SU(5)+Delta chiral-H candidate is not an SM vacuum (its Delta_R "
-            "has Y=-1; g3_sigma_hypercharge_audit_v20), so uniform coercivity for "
-            "its arbitrary non-pure-Delta Sigma orientations is a mathematical "
-            "problem only and cannot close G3. Its exact 448/38 Hessian and "
-            "complete pure-Delta maximal-negative sector are complete. The "
-            "prior four-real-dimensional SU(3) regression is "
-            "historical and subsumed. At fixed H=h_- and Sigma=q/4, the "
-            "corrected v21 exact theorem covers every real Phi210; its exact "
-            "SU(4) stabilizer, aligned 25-carrier "
-            "rank-210 real-form maps, and complete 45-element invariant "
-            "quadratic basis from a 5952x551 rank-506 constraint system are "
-            "ready. The exact augmented census has dimension 22366, 35 "
-            "complex isotypic types spanning 824 copies, 22 real/Hermitian "
-            "blocks, 19594 real Schur parameters, and 6585 invariant target "
-            "rows with an abstract surjective multiplication map. The complete "
-            "cubic interface is now explicit: 540 required Sym2(Phi210) carrier "
-            "copies generate all 1414 real Schur cross variables, and their "
-            "478x1414 integer coefficient map has exact rank 478 and kernel "
-            "dimension 936. Its reserved zero vector is only an abstract "
-            "interface placeholder, not the physical G3 target. The exact "
-            "homogeneous quartic map has shape 6057x18085, rank 6057, and "
-            "kernel dimension 12028. The legacy v20 assembled physical target "
-            "is rejected. The corrected 6585x19594 standard positive-Gram map, "
-            "ordered-spectral target, and exact strict 22-block/824-pivot primal "
-            "prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at "
-            "t=1 for every real Phi210. Global Sigma, general/full H, and G3 "
-            "remain open (the exact 448/38 full Hessian is certified separately)"
-        ),
+        "deliverable": w3_g3_deliverable(False),
         "acceptance": (
             "an SM-preserving full 486-field candidate is globally minimal with "
             "all equality orbits classified, or an exact lower witness rejects it"
@@ -189,28 +225,63 @@ def acyclic() -> bool:
     return ledger._acyclic_dependencies()
 
 
-def _tasks_for_gate_report(gate_report: dict[str, Any]) -> list[dict[str, Any]]:
-    """Promote task states when the authoritative contract is repaired."""
+def _tasks_for_gate_report(
+    gate_report: dict[str, Any],
+    pati_salam_equality_set_report: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """Promote task states when the authoritative contract is repaired.
+
+    The W3-G3 deliverable states the Pati-Salam equality-set classification
+    only when the committed equality-set report certifies it (None loads it).
+    """
+    if pati_salam_equality_set_report is None:
+        pati_salam_equality_set_report = (
+            ledger.load_sm_pati_salam_equality_set_report()
+        )
+    w3_g3 = w3_g3_deliverable(
+        ledger.sm_pati_salam_equality_set_certified(
+            pati_salam_equality_set_report
+        )
+    )
+    tasks = [
+        {**task, "deliverable": w3_g3} if task["id"] == W3_G3_TASK_ID
+        else dict(task)
+        for task in TASKS
+    ]
     if not gate_report["contract_consistent"]:
-        return [dict(task) for task in TASKS]
+        return tasks
     promoted_statuses = {
         "W0-MODEL-CONTRACT": ledger.STATUS_CLOSED,
         "W1-G1-GAUGED-RECERTIFICATION": ledger.STATUS_CLOSED,
         "W2-G2-GAUGED-PROJECTION": ledger.STATUS_CLOSED,
-        "W3-G3-FULL-STATIONARITY": ledger.STATUS_OPEN,
+        W3_G3_TASK_ID: ledger.STATUS_OPEN,
         "W3-G4-FULL-GAUGE-QUOTIENT": "BLOCKED_ON_G3",
         "W3-G5-FULL-BFB": ledger.STATUS_CLOSED,
     }
     return [
         {**task, "status": promoted_statuses.get(task["id"], task["status"])}
-        for task in TASKS
+        for task in tasks
     ]
 
 
-def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
-    """Build the roadmap from a current or hypothetically repaired ledger."""
+def _build_report_from_ledger(
+    gate_report: dict[str, Any],
+    *,
+    pati_salam_equality_set_report: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Build the roadmap from a current or hypothetically repaired ledger.
+
+    pati_salam_equality_set_report is the committed
+    G3_SM_PATI_SALAM_EQUALITY_SET_V20.json (None loads it; {} or a failed
+    report selects the fallback W3-G3 text).  It is text-only and never
+    changes a task status, check or state.
+    """
+    if pati_salam_equality_set_report is None:
+        pati_salam_equality_set_report = (
+            ledger.load_sm_pati_salam_equality_set_report()
+        )
     gates = gate_report["gates"]
-    tasks = _tasks_for_gate_report(gate_report)
+    tasks = _tasks_for_gate_report(gate_report, pati_salam_equality_set_report)
     task_ids = [task["id"] for task in tasks]
     gates_with_tasks = {gate for task in tasks for gate in task["gates"]}
     historical = gate_report["historical_option_c_subtheorems"]
@@ -716,6 +787,11 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "dependencies": DEPENDENCIES,
         "gates": gates,
         "tasks": tasks,
+        "g3_sm_pati_salam_equality_set_binding": (
+            ledger.sm_pati_salam_equality_set_binding(
+                pati_salam_equality_set_report
+            )
+        ),
         "recent_milestones": MILESTONES,
         "model_contract_reports": gate_report["model_contract_reports"],
         "historical_option_c_subtheorems": historical,

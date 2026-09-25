@@ -9,8 +9,10 @@ are checked as committed evidence.
 from __future__ import annotations
 
 import json
+import tempfile
 import unittest
 from fractions import Fraction
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -65,6 +67,7 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
             "rg": report["rg_anchor_consistency"],
             "hierarchy": report["hierarchy"],
             "quartic": report["light_doublet_quartic"],
+            "equality_set": report["exact_certificate"]["equality_set"]["equality_set_certificate"],
         }
 
     def test_status_and_fail_closed_flags(self) -> None:
@@ -85,13 +88,14 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
             "hessian_kernel_count_is_float64",
             "bfb_certified",
             "global_minimum_certified",
+            # Bound to the committed G3_SM_PATI_SALAM_EQUALITY_SET_V20.json (modulo SO(10) x U(1)_X x U(1)_PQ).
+            "equality_set_unique_modulo_symmetry_certified",
             "breaking_route_matches_rg_anchor",
         ):
             self.assertTrue(flags[name], name)
         for name in (
             # Literal: the kernel is symmetry + the tuned doublet, not symmetry alone.
             "hessian_psd_kernel_is_symmetry",
-            "equality_set_unique_modulo_symmetry_certified",
             "doublet_triplet_splitting_natural",
             "coloured_scalars_only_at_M_GUT",
             "rg_anchor_field_content_reproduced",
@@ -115,6 +119,67 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
             {name for name, value in failed.items() if value},
             {"hessian_kernel_count_is_float64"},  # a descriptive limitation, not a claim
         )
+
+    def test_equality_set_uniqueness_is_bound_to_the_committed_equality_report(self) -> None:
+        loaded = candidate.load_equality_set_report()
+        self.assertEqual(loaded["status"], candidate.EQUALITY_SET_PROVED_STATUS)
+        self.assertEqual(loaded["n_failed"], 0)
+        self.assertTrue(candidate.equality_set_certified(loaded))
+        section = self.committed["exact_certificate"]["equality_set"]
+        self.assertTrue(section["unique_modulo_symmetry_certified"])
+        self.assertEqual(
+            section["equality_set_certificate"],
+            {
+                "source": "g3_sm_pati_salam_equality_set_v20 (committed G3_SM_PATI_SALAM_EQUALITY_SET_V20.json)",
+                "status": loaded["status"],
+                "n_failed": 0,
+            },
+        )
+        for text in ("SO(10) x U(1)_X x U(1)_PQ", "g3_sm_pati_salam_equality_set_v20", "accidental", "circle of orbits"):
+            self.assertIn(text, section["unique_modulo_symmetry"])
+        self.assertNotIn("uniqueness of the equality set", " ".join(self.committed["scope"]["open"]))
+        self.assertIn("SO(10) x U(1)_X x U(1)_PQ", self.committed["verdict"])
+        # The flag note names both unchecked parts of the equality-set proof.
+        note = self.committed["flag_notes"]["equality_set_unique_modulo_symmetry_certified"]
+        self.assertIn("classical theorems it cites are not machine-checked", note)
+        self.assertIn("scope.elementary_not_machine_checked", note)
+        self.assertIn("elementary_not_machine_checked", loaded["scope"])
+
+    def test_equality_set_flag_is_false_when_the_equality_report_is_absent_or_failed(self) -> None:
+        inputs = self._flag_inputs()
+        proved = dict(inputs["equality_set"])
+        self.assertTrue(candidate.report_flags(True, **inputs)["equality_set_unique_modulo_symmetry_certified"])
+        for equality_report in (
+            {},
+            {**proved, "n_failed": 1},
+            {**proved, "n_failed": None},
+            {**proved, "n_failed": False},
+            {**proved, "status": "G3_SM_PATI_SALAM_EQUALITY_SET_AUDIT_FAILED"},
+            {"n_failed": 0},
+        ):
+            self.assertFalse(candidate.equality_set_certified(equality_report), equality_report)
+            flags = candidate.report_flags(True, **{**inputs, "equality_set": equality_report})
+            self.assertFalse(flags["equality_set_unique_modulo_symmetry_certified"], equality_report)
+            section = candidate.equality_set_section(equality_report)
+            self.assertFalse(section["unique_modulo_symmetry_certified"])
+            self.assertEqual(section["unique_modulo_symmetry"], "open (numerical evidence in numerical_global_search)")
+            self.assertEqual(section["conditions"], self.committed["exact_certificate"]["equality_set"]["conditions"])
+        missing = candidate.load_equality_set_report(candidate.ROOT / "NO_SUCH_EQUALITY_SET_REPORT.json")
+        self.assertEqual(missing, {})
+        self.assertFalse(candidate.equality_set_certified(missing))
+
+    def test_equality_set_loader_is_fail_closed_on_unreadable_files(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            for name, content in (
+                ("not_utf8.json", b"\xff"),
+                ("not_json.json", b"{not json"),
+                ("not_a_dict.json", b"[1, 2]"),
+            ):
+                path = Path(directory) / name
+                path.write_bytes(content)
+                loaded = candidate.load_equality_set_report(path)
+                self.assertEqual(loaded, {}, name)
+                self.assertFalse(candidate.equality_set_certified(loaded), name)
 
     def test_coefficient_map_is_the_historical_map_with_the_stated_changes(self) -> None:
         exact = candidate.candidate_coefficients()
@@ -302,6 +367,87 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
         self.assertIn("ILLUSTRATIVE", self.committed["hierarchy"]["status"])
         self.assertFalse(self.committed["hierarchy"]["benchmark_uses_canonical_phi17_scale"])
 
+    def test_light_state_order_ignores_float_noise_within_a_mass_level(self) -> None:
+        def state(value_over_r2: float, content: dict[str, int], r2: float = 4.0e-9) -> dict[str, Any]:
+            return {
+                "mass_squared": value_over_r2 * r2,
+                "mass_squared_over_r0_squared": value_over_r2,
+                "sm_content_real": content,
+            }
+
+        doublet = state(-1.1e-16, {"(1,2)_|Y|=1/2": 4})
+        sextet = {"(6,1)_|Y|=4/3": 12}
+        singlet = {"(1,1)_|Y|=2": 2}
+        expected_labels = [{"(1,2)_|Y|=1/2": 4}, singlet, sextet, {"(3,1)_|Y|=1/3": 6}, {"(1,1)_|Y|=0": 1}]
+        # Degenerate noise of either sign (up to ~1e-5 in m^2/r0^2 at the physical r0) and any input order.
+        for noise in (-8.4e-10, 8.4e-10, -1.0e-5, 1.0e-5):
+            rows = [
+                state(0.5, {"(1,1)_|Y|=0": 1}),
+                state(1 / 96 + noise, singlet),
+                state(0.059, {"(3,1)_|Y|=1/3": 6}),
+                state(1 / 96, sextet),
+                doublet,
+            ]
+            for ordering in (rows, rows[::-1]):
+                ordered = candidate.order_light_states(ordering)
+                self.assertEqual([row["sm_content_real"] for row in ordered], expected_labels, noise)
+                self.assertIs(ordered[0], doublet)
+
+    def test_endpoint_classification_is_convergence_aware(self) -> None:
+        exact = {
+            "Phi_norm_squared": 1.0,
+            "V_Phi_plus_1": 0.0,
+            "N_Sigma": 0.0025,
+            "Sigma_purity_defect": 0.0,
+            "A_shift_norm": 0.0,
+            "C_norm": 0.0,
+            "S_abs": 0.05,
+            "Phi17_abs": 1.0,
+            "N_H": 0.0,
+        }
+        sm_stabilizer = {"largest_kernel_singular_value": 0.0, "stabilizer_dimension": 12, "hypercharge_type_centre": True}
+        test = candidate.endpoint_orbit_test(0.0, exact, sm_stabilizer, 0.05, 1.0)
+        self.assertEqual(test["classification"], "on_orbit")
+        # The run-dependent r0 = 1/20 endpoint of a fresh rebuild: gap 1.58e-12, purity defect 2.4e-5, kernel
+        # singular value 6.2e-4 = 0.0124 r0 (above the old fixed 1e-2 r0 cut), consistent with its soft-mode
+        # displacement eps = sqrt(96 gap)/r0^2 ~ 4.9e-3.
+        fresh = {**exact, "Sigma_purity_defect": 2.4e-5, "N_H": 5.0e-7, "N_Sigma": 0.0025 * (1 + 1.0e-4)}
+        noisy_stabilizer = {**sm_stabilizer, "largest_kernel_singular_value": 6.2e-4}
+        test = candidate.endpoint_orbit_test(1.58e-12, fresh, noisy_stabilizer, 0.05, 1.0)
+        self.assertEqual(test["classification"], "on_orbit")
+        self.assertAlmostEqual(test["soft_relative_displacement"], (96 * 1.58e-12) ** 0.5 / 0.05**2, places=12)
+        # Not converged enough: inconclusive, never a failure, whatever the residuals.
+        for r0, gap in ((0.2, 2.0e-11), (0.05, 7.0e-12)):
+            test = candidate.endpoint_orbit_test(gap, {**exact, "N_Sigma": r0**2, "S_abs": r0}, sm_stabilizer, r0, 1.0)
+            self.assertFalse(test["reached"])
+            self.assertEqual(test["classification"], "inconclusive")
+        # Converged but far outside the soft-mode tolerance, or with a non-SM stabilizer: off_orbit.
+        for invariants, stabilizer in (
+            ({**exact, "Sigma_purity_defect": 0.3}, sm_stabilizer),
+            ({**exact, "A_shift_norm": 0.01}, sm_stabilizer),
+            (exact, {**sm_stabilizer, "stabilizer_dimension": 15}),
+            (exact, {**sm_stabilizer, "hypercharge_type_centre": False}),
+        ):
+            self.assertEqual(candidate.endpoint_orbit_test(1.0e-13, invariants, stabilizer, 0.05, 1.0)["classification"], "off_orbit")
+        self.assertEqual(
+            candidate.classification_summary(
+                [{"orbit_classification": name} for name in ("on_orbit", "inconclusive", "on_orbit")]
+            ),
+            {
+                "endpoint_classification_counts": {"on_orbit": 2, "inconclusive": 1, "off_orbit": 0},
+                "all_converged_endpoints_on_sm_vacuum_orbit": True,
+            },
+        )
+        for rows in ([{"orbit_classification": "inconclusive"}], [{"orbit_classification": "off_orbit"}]):
+            self.assertFalse(candidate.classification_summary(rows)["all_converged_endpoints_on_sm_vacuum_orbit"])
+        # The exact vacuum through the full endpoint pipeline.
+        fast = candidate.fast_potential()
+        vacuum = chart.pack(candidate.candidate_state())
+        gap = fast.value(vacuum) - float(candidate.lower_bound_v0())
+        endpoint = candidate.classify_endpoint(fast, vacuum, 0.2, 1.0, gap=gap)
+        self.assertEqual(endpoint["orbit_classification"], "on_orbit")
+        self.assertTrue(endpoint["orbit_test"]["stabilizer_sm_type"])
+
     def test_rg_anchor_field_content_is_not_reproduced(self) -> None:
         rg = self.fresh["rg_anchor_consistency"]
         self.assertTrue(rg["anchor_betas_reproduced_from_field_content"])
@@ -358,10 +504,18 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
             self.assertTrue(row["kernel_is_symmetry_plus_light_doublet"], label)
             self.assertEqual(row["light_spectrum"]["real_dimension"], 60, label)
             # The tuned doublet's float-noise eigenvalue is floored to an exact zero mass, not sqrt-amplified.
-            doublet = row["light_spectrum"]["states"][0]
+            states = row["light_spectrum"]["states"]
+            doublet = states[0]
             self.assertEqual(doublet["sm_content_real"], {"(1,2)_|Y|=1/2": 4}, label)
             self.assertLess(abs(doublet["mass_squared"]), candidate.NUMERICAL_ZERO_EIGENVALUE, label)
             self.assertEqual(doublet["mass_over_r0_M_GUT"], 0.0, label)
+            # Run-independent order: the exactly degenerate r0^2/96 level is ordered by SM label, not float noise.
+            self.assertEqual(candidate.order_light_states(states), states, label)
+            self.assertEqual(
+                [state["sm_content_real"] for state in states[1:3]],
+                [{"(1,1)_|Y|=2": 2}, {"(6,1)_|Y|=4/3": 12}],
+                label,
+            )
             self.assertLess(row["Phi17_block"]["coupling_to_other_fields_max_abs"], 1.0e-12, label)
             self.assertLess(row["Phi17_block"]["radial_deviation_from_exact"], 1.0e-12, label)
         self.assertAlmostEqual(
@@ -376,6 +530,26 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
         for run in search["random_start_local_minimization"].values():
             self.assertGreater(run["lowest_final_gap"], -1.0e-10)
         competitors = search["structured_competitors_r0_1_5"]
+        # Convergence-aware endpoint classification: no converged endpoint off the SM vacuum orbit, and every
+        # recorded class follows from the recorded gap, invariants and stabilizer.
+        runs = search["random_start_local_minimization"]
+        endpoints = [(float(Fraction(label.split("=", 1)[1])), row) for label, run in runs.items() for row in run["starts"]]
+        endpoints += [(0.2, row["local_minimization_from_perturbed_optimum"]) for row in competitors.values()]
+        for r0, row in endpoints:
+            test = candidate.endpoint_orbit_test(row["final_gap"], row["invariants"], row["heavy_pair_stabilizer"], r0, 1.0)
+            self.assertEqual(test["classification"], row["orbit_classification"])
+            self.assertIn(row["orbit_classification"], candidate.ORBIT_CLASSES)
+        for label, run in runs.items():
+            counts = run["endpoint_classification_counts"]
+            self.assertEqual(sum(counts.values()), len(run["starts"]), label)
+            self.assertEqual(counts["off_orbit"], 0, label)
+            self.assertTrue(run["all_converged_endpoints_on_sm_vacuum_orbit"], label)
+            self.assertTrue(run["no_endpoint_below_V0"], label)
+        classification = search["endpoint_classification"]
+        self.assertEqual(sum(classification["endpoint_classification_counts"].values()), len(endpoints))
+        self.assertEqual(classification["endpoint_classification_counts"]["off_orbit"], 0)
+        self.assertTrue(classification["all_converged_endpoints_on_sm_vacuum_orbit"])
+        self.assertTrue(classification["no_endpoint_below_V0"])
         self.assertAlmostEqual(competitors["p|delta_R"]["compiler_gap"], 0.2**4 / 392, delta=1.0e-12)
         self.assertAlmostEqual(competitors["p|Sigma=0"]["compiler_gap"], 0.2**4 / 8, delta=1.0e-12)
         self.assertAlmostEqual(competitors["p|flipped"]["compiler_gap"], 0.0, delta=1.0e-12)

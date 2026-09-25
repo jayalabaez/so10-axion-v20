@@ -5,12 +5,16 @@ on:
     paths:
       - 'exact_210_pati_salam_global_vacuum_v20.py'
       - 'test_exact_210_pati_salam_global_vacuum_v20.py'
+      - 'g3_sm_pati_salam_equality_set_v20.py'
+      - 'G3_SM_PATI_SALAM_EQUALITY_SET_V20.json'
       - '.github/workflows/exact-210-pati-salam-global-vacuum.yml'
   push:
     branches: [main]
     paths:
       - 'exact_210_pati_salam_global_vacuum_v20.py'
       - 'test_exact_210_pati_salam_global_vacuum_v20.py'
+      - 'g3_sm_pati_salam_equality_set_v20.py'
+      - 'G3_SM_PATI_SALAM_EQUALITY_SET_V20.json'
       - '.github/workflows/exact-210-pati-salam-global-vacuum.yml'
   workflow_dispatch:
 

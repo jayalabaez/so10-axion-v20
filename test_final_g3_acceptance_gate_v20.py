@@ -251,6 +251,95 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert "no coordinate Schur matrix" not in report["verdict"]
 
 
+PS_CERTIFIED_FRAGMENT = "exactly one SO(10) x U(1)_X x U(1)_PQ orbit"
+PS_FALLBACK_FRAGMENT = (
+    "The Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20 still "
+    "needs its equality set classified"
+)
+
+
+def test_pati_salam_sentence_is_bound_to_committed_equality_set_json():
+    committed = mod.ledger.load_sm_pati_salam_equality_set_report(
+        mod.PATI_SALAM_EQUALITY_SET_JSON
+    )
+    assert committed.get("status") == (
+        "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+    )
+    assert type(committed.get("n_failed")) is int and committed["n_failed"] == 0
+    report = mod.build_report()
+    assert mod.PATI_SALAM_EQUALITY_SET_CERTIFIED_SENTENCE in report["verdict"]
+    assert PS_CERTIFIED_FRAGMENT in report["verdict"]
+    assert "uniqueness uses the accidental U(1)_PQ" in report["verdict"]
+    assert "g3_sm_pati_salam_equality_set_v20" in report["verdict"]
+    assert "still needs its equality set classified" not in report["verdict"]
+    assert report["verdict"].endswith("but it is not yet wired in.")
+    assert report["pati_salam_candidate_equality_set"]["certified"] is True
+    assert report["pati_salam_candidate_equality_set"]["n_failed"] == 0
+
+
+def test_pati_salam_sentence_falls_back_and_never_changes_the_gate():
+    ledger_report, hsx, equality, gap = _current_inputs()
+    kwargs = dict(
+        ledger_report=ledger_report,
+        hsx_report=hsx,
+        equality_report=equality,
+        gap_report=gap,
+    )
+    baseline = mod.build_report(**kwargs)
+    committed = mod.ledger.load_sm_pati_salam_equality_set_report(
+        mod.PATI_SALAM_EQUALITY_SET_JSON
+    )
+    rejected = (
+        {},
+        {**committed, "n_failed": 1},
+        {**committed, "n_failed": False},
+        {
+            **committed,
+            "status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUENESS_MODULO_SYMMETRY__OPEN",
+        },
+    )
+    for forged in rejected:
+        report = mod.build_report(**kwargs, pati_salam_equality_set_report=forged)
+        assert mod.PATI_SALAM_EQUALITY_SET_FALLBACK_SENTENCE in report["verdict"]
+        assert PS_FALLBACK_FRAGMENT in report["verdict"]
+        assert PS_CERTIFIED_FRAGMENT not in report["verdict"]
+        assert "U(1)_PQ orbit" not in report["verdict"]
+        assert "uniqueness uses the accidental U(1)_PQ" not in report["verdict"]
+        assert "PASS is impossible at this point" in report["verdict"]
+        assert report["pati_salam_candidate_equality_set"]["certified"] is False
+        # Text-only: the gate does not yet target the candidate.
+        assert report["overall_state"] == baseline["overall_state"] == "OPEN"
+        assert report["n_failed"] == baseline["n_failed"] == 0
+        assert report["artifact_integrity"] == baseline["artifact_integrity"]
+        assert report["missing_artifacts"] == baseline["missing_artifacts"]
+        assert "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json" not in report["missing_artifacts"]
+        assert report["science_criteria"] == baseline["science_criteria"]
+        assert report["release_criteria"] == baseline["release_criteria"]
+        assert report["blockers"] == baseline["blockers"]
+        assert report["classification"] == baseline["classification"]
+
+
+def test_missing_or_unreadable_equality_set_json_falls_back(monkeypatch, tmp_path):
+    ledger_report, hsx, equality, gap = _current_inputs()
+    corrupt = tmp_path / "corrupt.json"
+    corrupt.write_bytes(b"\xff\xfe{not json")
+    for path in (tmp_path / "missing.json", corrupt):
+        monkeypatch.setattr(mod, "PATI_SALAM_EQUALITY_SET_JSON", path)
+        report = mod.build_report(
+            ledger_report=ledger_report,
+            hsx_report=hsx,
+            equality_report=equality,
+            gap_report=gap,
+        )
+        assert PS_FALLBACK_FRAGMENT in report["verdict"]
+        assert PS_CERTIFIED_FRAGMENT not in report["verdict"]
+        assert report["pati_salam_candidate_equality_set"]["status"] is None
+        assert report["pati_salam_candidate_equality_set"]["certified"] is False
+        assert report["overall_state"] == "OPEN"
+        assert report["n_failed"] == 0, report["failures"]
+        assert "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json" not in report["missing_artifacts"]
+
+
 def test_rank1_slice_rejects_wrong_fixed_H_orientation():
     forged = copy.deepcopy(mod._load(mod.MAX_NEGATIVE_RANK1_SU3_SLICE_JSON))
     forged["scope"]["H_fixed_to_h_minus"] = False

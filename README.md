@@ -228,13 +228,36 @@ the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
   at `M_GUT`, then SM at `r0 M_GUT`.
 - An adapted exact SOS identity gives `V >= V0` everywhere with equality at the
   vacuum, for every `r0`. So it is an exact global minimum of this benchmark
-  potential; uniqueness of the equality set is open.
+  potential.
+- The global minimum set is exactly one orbit
+  (`g3_sm_pati_salam_equality_set_v20.py`): for every `r0 > 0`, `x0 > 0` and
+  `kappa^2 < 8 r0^2`, `{V = V0} = G.(p, r0 sigma_SM, 0, r0, x0)` with
+  `G = SO(10) x U(1)_X x U(1)_PQ`. Here `V` is the adapted SOS form, which
+  equals the compiler potential exactly, coefficient by coefficient and for
+  each source-bound operator (and in float64 end to end). The proof is exact
+  integer/rational arithmetic plus two further inputs, neither machine-checked.
+  Cited classical theorems: the Pluecker relations, Kostant-Lichtenstein,
+  Iwasawa, the Wirtinger equality case (an elementary Pfaffian proof is also
+  recorded), `U(n)` transitivity, and highest-weight generation / the Weyl
+  dimension formula. Elementary steps argued in the text: Cauchy-Schwarz
+  `|H.H| <= N_H` and the H/S sign argument, the Gram-Schmidt orbit step,
+  integrating the exact Lie-algebra identities over connected `SO(10)` and
+  `U(5)`, the Iwasawa `N`/`A` action on `sigma_std`, and the corollary's
+  rescaling `Phi -> Phi/v`. Uniqueness uses the
+  accidental `U(1)_PQ` (all 27 operators are PQ-neutral); modulo
+  `SO(10) x U(1)_X` alone the equality set is a circle of orbits, the axion
+  direction.
+- Corollary: the 210-only potential `-2 v^2 |Phi|^2 + Q(Phi)` of
+  `exact_210_pati_salam_global_vacuum_v20` has global-minimum set exactly
+  `SO(10).(v p)`, so its global orbit is unique. The key step is the exact
+  identity `D = -20 I_45 + 18 I_210 + 8 I_5940` for the Pluecker defect.
 - On the compiler, at `r0` = 1/5, 1e-2, 1e-3 and `M_I/M_GUT`: it is stationary,
   the symmetry rank is 35, and the Hessian kernel is the symmetry orbit plus the
   tuned doublet (float64).
-- A float64 search found nothing below `V0`: 10 structured competitors at
-  `r0 = 1/5` and 13 random-start local minimizations (10 at `r0 = 1/5`, 3 at
-  `r0 = 1/20`) all end on the SM vacuum orbit. The quartic part is bounded
+- A float64 search ran local minimizations from 10 structured competitors at
+  `r0 = 1/5` and from 13 random starts (10 at `r0 = 1/5`, 3 at `r0 = 1/20`):
+  none goes below `V0`, and every converged endpoint lies on the SM vacuum
+  orbit (float64 evidence). The quartic part is bounded
   below by `|q|^4/167`, which the exact identity proves; 512 random and 6
   minimized unit directions respect it.
 
@@ -509,8 +532,13 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > vev breaks `SU(2)_L` at the GUT scale), so G3 needs an SM-preserving
 > candidate certified through the final gate; Higgs-mass statements made at
 > that point are not predictions. A retuned Pati-Salam-branch potential has an
-> exact SOS global SM-preserving minimum at `(p, r0 z1^...^z5)`; it is not yet
-> wired into the gate, its uniqueness is open, its doublet-triplet splitting
+> exact SOS global SM-preserving minimum at `(p, r0 z1^...^z5)` whose minimum
+> set is exactly one `SO(10) x U(1)_X x U(1)_PQ` orbit (given cited classical
+> theorems; uniqueness uses the accidental `U(1)_PQ`, and modulo
+> `SO(10) x U(1)_X` alone the minimum set is a circle of orbits, the axion
+> direction); as a corollary the 210-only Pati-Salam potential has a unique
+> global orbit `SO(10).(v p)`. The candidate is not yet
+> wired into the gate, its doublet-triplet splitting
 > and intermediate scale are tuned, it has coloured 126bar states below `M_I`,
 > its field content does not reproduce the RG anchor that fixes `M_I`, and its
 > light-doublet quartic is `127/64` at the benchmark (m_h ~ 195 GeV).

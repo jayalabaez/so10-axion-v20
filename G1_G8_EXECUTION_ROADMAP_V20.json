@@ -62,6 +62,14 @@
     "MODEL_CONTRACT": []
   },
   "failures": [],
+  "g3_sm_pati_salam_equality_set_binding": {
+    "certified": true,
+    "n_failed": 0,
+    "report": "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json",
+    "required_status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN",
+    "source": "g3_sm_pati_salam_equality_set_v20",
+    "status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+  },
   "gates": {
     "G1": {
       "authoritative_closed_scope": [
@@ -520819,7 +520827,7 @@
     },
     {
       "acceptance": "an SM-preserving full 486-field candidate is globally minimal with all equality orbits classified, or an exact lower witness rejects it",
-      "deliverable": "construct an SM-preserving G3 candidate and certify it through the final gate; the Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still needs its equality set classified, its model-level caveats resolved and gate integration. The SU(5)+Delta chiral-H candidate is not an SM vacuum (its Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so uniform coercivity for its arbitrary non-pure-Delta Sigma orientations is a mathematical problem only and cannot close G3. Its exact 448/38 Hessian and complete pure-Delta maximal-negative sector are complete. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210; its exact SU(4) stabilizer, aligned 25-carrier rank-210 real-form maps, and complete 45-element invariant quadratic basis from a 5952x551 rank-506 constraint system are ready. The exact augmented census has dimension 22366, 35 complex isotypic types spanning 824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant target rows with an abstract surjective multiplication map. The complete cubic interface is now explicit: 540 required Sym2(Phi210) carrier copies generate all 1414 real Schur cross variables, and their 478x1414 integer coefficient map has exact rank 478 and kernel dimension 936. Its reserved zero vector is only an abstract interface placeholder, not the physical G3 target. The exact homogeneous quartic map has shape 6057x18085, rank 6057, and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)",
+      "deliverable": "construct an SM-preserving G3 candidate and certify it through the final gate; for the Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20), its equality set is classified exactly (a single SO(10) x U(1)_X x U(1)_PQ orbit, whose uniqueness uses the accidental U(1)_PQ; g3_sm_pati_salam_equality_set_v20); it still needs its model-level caveats resolved and gate integration. The SU(5)+Delta chiral-H candidate is not an SM vacuum (its Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so uniform coercivity for its arbitrary non-pure-Delta Sigma orientations is a mathematical problem only and cannot close G3. Its exact 448/38 Hessian and complete pure-Delta maximal-negative sector are complete. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210; its exact SU(4) stabilizer, aligned 25-carrier rank-210 real-form maps, and complete 45-element invariant quadratic basis from a 5952x551 rank-506 constraint system are ready. The exact augmented census has dimension 22366, 35 complex isotypic types spanning 824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant target rows with an abstract surjective multiplication map. The complete cubic interface is now explicit: 540 required Sym2(Phi210) carrier copies generate all 1414 real Schur cross variables, and their 478x1414 integer coefficient map has exact rank 478 and kernel dimension 936. Its reserved zero vector is only an abstract interface placeholder, not the physical G3 target. The exact homogeneous quartic map has shape 6057x18085, rank 6057, and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)",
       "gates": [
         "G3"
       ],

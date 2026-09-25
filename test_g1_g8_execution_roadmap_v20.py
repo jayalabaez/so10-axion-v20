@@ -364,6 +364,83 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "coordinate Schur matrix" not in report["verdict"]
 
 
+PS_CERTIFIED_FRAGMENT = (
+    "its equality set is classified exactly (a single SO(10) x U(1)_X x "
+    "U(1)_PQ orbit"
+)
+PS_FALLBACK_FRAGMENT = (
+    "the Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still "
+    "needs its equality set classified"
+)
+
+
+def _w3_g3_task(report):
+    return next(task for task in report["tasks"] if task["id"] == mod.W3_G3_TASK_ID)
+
+
+def test_w3_g3_pati_salam_clause_is_bound_to_committed_equality_set_json():
+    committed = mod.ledger.load_sm_pati_salam_equality_set_report()
+    assert committed.get("status") == (
+        "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+    )
+    assert type(committed.get("n_failed")) is int and committed["n_failed"] == 0
+    assert mod.ledger.sm_pati_salam_equality_set_certified(committed) is True
+    report = mod.build_report()
+    deliverable = _w3_g3_task(report)["deliverable"]
+    assert mod.W3_G3_TASK_ID == "W3-G3-FULL-STATIONARITY"
+    assert deliverable == mod.w3_g3_deliverable(True)
+    assert mod.PATI_SALAM_EQUALITY_SET_CERTIFIED_CLAUSE in deliverable
+    assert PS_CERTIFIED_FRAGMENT in deliverable
+    assert "uniqueness uses the accidental U(1)_PQ" in deliverable
+    assert "g3_sm_pati_salam_equality_set_v20" in deliverable
+    assert "still needs its equality set classified" not in deliverable
+    assert report["g3_sm_pati_salam_equality_set_binding"]["certified"] is True
+    assert report["g3_sm_pati_salam_equality_set_binding"]["n_failed"] == 0
+    # The static task table itself never carries the unbound claim.
+    static = next(task for task in mod.TASKS if task["id"] == mod.W3_G3_TASK_ID)
+    assert PS_FALLBACK_FRAGMENT in static["deliverable"]
+    assert PS_CERTIFIED_FRAGMENT not in static["deliverable"]
+
+
+def test_w3_g3_pati_salam_clause_falls_back_fail_closed_and_is_text_only():
+    ledger_report = mod.ledger.build_report()
+    baseline = mod._build_report_from_ledger(ledger_report)
+    committed = mod.ledger.load_sm_pati_salam_equality_set_report()
+    rejected = (
+        {},
+        {**committed, "n_failed": True},
+        {**committed, "n_failed": 1},
+        {
+            **committed,
+            "status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUENESS_MODULO_SYMMETRY__OPEN",
+        },
+    )
+    for forged in rejected:
+        report = mod._build_report_from_ledger(
+            ledger_report, pati_salam_equality_set_report=forged
+        )
+        deliverable = _w3_g3_task(report)["deliverable"]
+        assert deliverable == mod.w3_g3_deliverable(False)
+        assert deliverable.startswith("construct an SM-preserving G3 candidate")
+        assert PS_FALLBACK_FRAGMENT in deliverable
+        assert PS_CERTIFIED_FRAGMENT not in deliverable
+        assert "U(1)_PQ orbit" not in deliverable
+        assert "uniqueness uses the accidental U(1)_PQ" not in deliverable
+        assert "SU(5)+Delta" in deliverable
+        assert "Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)" in deliverable
+        assert report["g3_sm_pati_salam_equality_set_binding"]["certified"] is False
+        # Text-only: statuses, checks and states are unchanged.
+        assert report["status"] == baseline["status"]
+        assert report["overall_state"] == baseline["overall_state"]
+        assert report["n_failed"] == 0, report["audit_failures"]
+        assert report["checks"] == baseline["checks"]
+        assert [task["status"] for task in report["tasks"]] == [
+            task["status"] for task in baseline["tasks"]
+        ]
+        tasks = mod._tasks_for_gate_report(ledger_report, forged)
+        assert _w3_g3_task({"tasks": tasks})["deliverable"] == deliverable
+
+
 def test_no_validation_exclusion_or_discovery_claim():
     report = mod.build_report()
     assert "No whole-model validation, exclusion, or discovery claim" in report[

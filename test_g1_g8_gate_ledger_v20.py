@@ -3,9 +3,20 @@
 from __future__ import annotations
 
 import copy
+import tempfile
 import unittest
+from pathlib import Path
 
 import g1_g8_gate_ledger_v20 as mod
+
+PS_CERTIFIED_FRAGMENT = (
+    "its equality set is classified exactly (a single SO(10) x U(1)_X x "
+    "U(1)_PQ orbit"
+)
+PS_FALLBACK_FRAGMENT = (
+    "The Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still "
+    "needs its equality set classified"
+)
 
 
 def _bind_tool_native_root_evidence(report):
@@ -695,6 +706,106 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(wave0["wave"], 0)
         self.assertEqual(wave0["id"], "MODEL_CONTRACT")
         self.assertEqual(wave0["status"], mod.STATUS_CLOSED)
+
+    def test_wave3_pati_salam_sentence_is_bound_to_committed_equality_set(self):
+        committed = mod.load_sm_pati_salam_equality_set_report()
+        self.assertEqual(
+            committed.get("status"),
+            mod.G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS,
+        )
+        self.assertIs(type(committed.get("n_failed")), int)
+        self.assertEqual(committed["n_failed"], 0)
+        self.assertTrue(mod.sm_pati_salam_equality_set_certified(committed))
+        wave3 = self.report["closure_waves"][3]
+        self.assertEqual(wave3["wave"], 3)
+        deliverable = wave3["deliverable"]
+        self.assertIn(mod.G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_CERTIFIED, deliverable)
+        self.assertIn(PS_CERTIFIED_FRAGMENT, deliverable)
+        self.assertIn("uniqueness uses the accidental U(1)_PQ", deliverable)
+        self.assertIn("g3_sm_pati_salam_equality_set_v20", deliverable)
+        self.assertNotIn("still needs its equality set classified", deliverable)
+        self.assertIn("remaining coercivity problem is mathematical only. For the", deliverable)
+        self.assertIn("gate integration. The chiral-H point's full 486-real Hessian", deliverable)
+        binding = self.report["g3_sm_pati_salam_equality_set_binding"]
+        self.assertEqual(
+            binding,
+            {
+                "source": "g3_sm_pati_salam_equality_set_v20",
+                "report": "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json",
+                "required_status": mod.G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS,
+                "status": mod.G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS,
+                "n_failed": 0,
+                "certified": True,
+            },
+        )
+
+    def test_pati_salam_equality_set_certification_is_fail_closed(self):
+        committed = mod.load_sm_pati_salam_equality_set_report()
+        rejected = (
+            {},
+            None,
+            [],
+            {**committed, "n_failed": 1},
+            {**committed, "n_failed": False},
+            {**committed, "n_failed": "0"},
+            {**committed, "n_failed": 0.0},
+            {key: value for key, value in committed.items() if key != "n_failed"},
+            {
+                **committed,
+                "status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUENESS_MODULO_SYMMETRY__OPEN",
+            },
+            {"status": "G3_SM_PATI_SALAM_EQUALITY_SET_AUDIT_FAILED", "n_failed": 0},
+        )
+        for forged in rejected:
+            self.assertFalse(mod.sm_pati_salam_equality_set_certified(forged))
+            self.assertFalse(
+                mod.sm_pati_salam_equality_set_binding(forged)["certified"]
+            )
+        self.assertEqual(
+            mod.load_sm_pati_salam_equality_set_report(
+                mod.ROOT / "NO_SUCH_PATI_SALAM_EQUALITY_SET_REPORT.json"
+            ),
+            {},
+        )
+        with tempfile.TemporaryDirectory() as scratch:
+            for name, payload in (
+                ("corrupt.json", b"{not json"),
+                ("undecodable.json", b"\xff\xfe\xfa"),
+                ("listed.json", b"[1, 2]"),
+            ):
+                path = Path(scratch) / name
+                path.write_bytes(payload)
+                self.assertEqual(mod.load_sm_pati_salam_equality_set_report(path), {})
+
+    def test_wave3_pati_salam_sentence_falls_back_and_is_text_only(self):
+        inputs = self.report["model_contract_reports"]
+        committed = mod.load_sm_pati_salam_equality_set_report()
+        for forged in ({}, {**committed, "n_failed": True}):
+            report = mod._build_report_from_inputs(
+                x_report=inputs["exact_X"],
+                g1_report=inputs["gauged_G1_character_census"],
+                g2_report=inputs["gauged_G2_derivative_audit"],
+                filter_report=inputs["gauged_scalar_filter"],
+                g3_sm_pati_salam_equality_set_report=forged,
+            )
+            deliverable = report["closure_waves"][3]["deliverable"]
+            self.assertIn(mod.G3_SM_PATI_SALAM_EQUALITY_SET_WAVE3_FALLBACK, deliverable)
+            self.assertIn(PS_FALLBACK_FRAGMENT, deliverable)
+            self.assertNotIn(PS_CERTIFIED_FRAGMENT, deliverable)
+            self.assertNotIn("U(1)_PQ orbit", deliverable)
+            self.assertNotIn("uniqueness uses the accidental U(1)_PQ", deliverable)
+            self.assertFalse(
+                report["g3_sm_pati_salam_equality_set_binding"]["certified"]
+            )
+            # Text-only: gates, checks and states are unchanged.
+            self.assertEqual(report["status"], self.report["status"])
+            self.assertEqual(report["overall_state"], self.report["overall_state"])
+            self.assertEqual(report["n_failed"], 0, report["audit_failures"])
+            self.assertEqual(report["checks"], self.report["checks"])
+            self.assertEqual(
+                {name: row["status"] for name, row in report["gates"].items()},
+                {name: row["status"] for name, row in self.report["gates"].items()},
+            )
 
     def test_historical_g1_g2_results_are_preserved_but_scoped(self):
         historical = self.report["historical_option_c_subtheorems"]

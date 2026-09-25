@@ -1,0 +1,2003 @@
+{
+  "P1_phi": {
+    "Q_in_J_basis": [
+      "-21/200",
+      "2467/28800",
+      "-77/3200",
+      "119/115200"
+    ],
+    "channel_norms_in_J_basis": {
+      "1": [
+        "1/210",
+        "0",
+        "0",
+        "0"
+      ],
+      "210": [
+        "-19/100",
+        "293/14400",
+        "-3/1600",
+        "1/57600"
+      ],
+      "4125": [
+        "457/280",
+        "-3739/40320",
+        "41/1920",
+        "-143/161280"
+      ],
+      "45": [
+        "-117/1400",
+        "51/22400",
+        "-29/22400",
+        "1/12800"
+      ],
+      "54": [
+        "27/140",
+        "-33/2240",
+        "1/320",
+        "-1/8960"
+      ],
+      "5940": [
+        "-291/350",
+        "353/5600",
+        "-117/5600",
+        "3/3200"
+      ],
+      "770_plus_1050_plus_1050bar": [
+        "107/300",
+        "-163/14400",
+        "19/4800",
+        "-11/57600"
+      ],
+      "8910": [
+        "-57/700",
+        "53/1600",
+        "-7/1600",
+        "1/6400"
+      ]
+    },
+    "channel_norms_sum": [
+      "1",
+      "0",
+      "0",
+      "0"
+    ],
+    "chart_210_action": {
+      "chart_210_generators_equal_natural_Lambda4_action": true,
+      "chart_basis_is_lexicographic_sorted_4_sets": true,
+      "generators_compared": 45,
+      "mismatched_generators": [],
+      "natural_action": "L_ab e_b = e_a, L_ab e_a = -e_b, extended to Lambda^4 as a derivation on sorted e_I with permutation signs",
+      "self210_moment_generators_equal_chart_generators": true,
+      "used_by": [
+        "P1: D (invariant under the natural SO(10) action, P1_pluecker_tensors_intertwine_natural_actions) is invariant under the chart action, so D lies in span(J0, J2, J3, J4)",
+        "P1: orbit step g e6789 = Phi (the chart action of g is Lambda^4 g)",
+        "P2 (v)-(vii): p' = g^-1 p is a unit simple 4-vector; the Wirtinger-Pfaffian identity is in the sorted e_I basis"
+      ]
+    },
+    "crossing_identities_M5_M6_M7_in_J_basis": {
+      "M5": [
+        "47808/5",
+        "-2964/5",
+        "-544/5",
+        "123/5"
+      ],
+      "M6": [
+        "408960",
+        "-12360",
+        "-3624",
+        "514"
+      ],
+      "M7": [
+        "65147904/5",
+        "-1082112/5",
+        "-420592/5",
+        "48864/5"
+      ]
+    },
+    "crossing_validation_failures": [],
+    "equality_system": {
+      "J_at_p": [
+        "1",
+        "24",
+        "192",
+        "3552"
+      ],
+      "J_in_channel_basis": {
+        "J0": [
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "J2": [
+          "24",
+          "360",
+          "108",
+          "-32"
+        ],
+        "J3": [
+          "192",
+          "4640",
+          "720",
+          "-400"
+        ],
+        "J4": [
+          "3552",
+          "79200",
+          "8784",
+          "-5696"
+        ]
+      },
+      "columns": [
+        "J0",
+        "J2",
+        "J3",
+        "J4"
+      ],
+      "determinant": "-1/258048000",
+      "determinant_matches_recorded": true,
+      "matrix": [
+        [
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-117/1400",
+          "51/22400",
+          "-29/22400",
+          "1/12800"
+        ],
+        [
+          "-19/100",
+          "293/14400",
+          "-3/1600",
+          "1/57600"
+        ],
+        [
+          "-291/350",
+          "353/5600",
+          "-117/5600",
+          "3/3200"
+        ]
+      ],
+      "other_channels_in_channel_basis": {
+        "1": [
+          "1/210",
+          "0",
+          "0",
+          "0"
+        ],
+        "4125": [
+          "5/14",
+          "-95/21",
+          "-17/7",
+          "-11/21"
+        ],
+        "54": [
+          "3/70",
+          "5/14",
+          "-9/28",
+          "-1/7"
+        ],
+        "770_plus_1050_plus_1050bar": [
+          "1/6",
+          "-5/6",
+          "-1/20",
+          "-2/15"
+        ],
+        "8910": [
+          "3/7",
+          "4",
+          "9/5",
+          "-1/5"
+        ]
+      },
+      "rows": [
+        "J0",
+        "I_45",
+        "I_210",
+        "I_5940"
+      ],
+      "solution_for_J0=1_I45=I210=I5940=0": [
+        "1",
+        "24",
+        "192",
+        "3552"
+      ],
+      "square_4x4": true
+    },
+    "fit_determinant_J0_J2_J3_J4": "-310727853917798400",
+    "fit_points": [
+      "random_sparse_0",
+      "random_sparse_1",
+      "random_sparse_2",
+      "random_sparse_3"
+    ],
+    "fit_points_declared_in_advance": true,
+    "int64_overflow_bound_max": 97765224873984,
+    "moments_M0_to_M7_at_p": [
+      1,
+      0,
+      24,
+      192,
+      3552,
+      61824,
+      1242240,
+      26397696
+    ],
+    "named_forms": {
+      "(e0+e4)^(e1+e5)^e2^e3 (decomposable)": {
+        "D_exact": 0,
+        "D_from_coefficients": "0",
+        "I45_I210_I5940": [
+          "0",
+          "0",
+          "0"
+        ],
+        "J0_J2_J3_J4": [
+          "16",
+          "384",
+          "3072",
+          "56832"
+        ],
+        "norm_squared": 4
+      },
+      "(e01+e23+e45)^(e67+e89)": {
+        "D_exact": 84,
+        "D_from_coefficients": "84",
+        "I45_I210_I5940": [
+          "24/35",
+          "14/15",
+          "354/35"
+        ],
+        "J0_J2_J3_J4": [
+          "36",
+          "888",
+          "6720",
+          "132768"
+        ],
+        "norm_squared": 6
+      },
+      "e0123 + e0145 + e2345": {
+        "D_exact": 12,
+        "D_from_coefficients": "12",
+        "I45_I210_I5940": [
+          "0",
+          "2/15",
+          "6/5"
+        ],
+        "J0_J2_J3_J4": [
+          "9",
+          "192",
+          "1344",
+          "26304"
+        ],
+        "norm_squared": 3
+      },
+      "e0123 + e4567": {
+        "D_exact": 8,
+        "D_from_coefficients": "8",
+        "I45_I210_I5940": [
+          "2/35",
+          "0",
+          "8/7"
+        ],
+        "J0_J2_J3_J4": [
+          "4",
+          "80",
+          "576",
+          "12224"
+        ],
+        "norm_squared": 2
+      },
+      "e01^(e23+e45)": {
+        "D_exact": 4,
+        "D_from_coefficients": "4",
+        "I45_I210_I5940": [
+          "0",
+          "2/45",
+          "2/5"
+        ],
+        "J0_J2_J3_J4": [
+          "4",
+          "88",
+          "640",
+          "12320"
+        ],
+        "norm_squared": 2
+      },
+      "p = e6789": {
+        "D_exact": 0,
+        "D_from_coefficients": "0",
+        "I45_I210_I5940": [
+          "0",
+          "0",
+          "0"
+        ],
+        "J0_J2_J3_J4": [
+          "1",
+          "24",
+          "192",
+          "3552"
+        ],
+        "norm_squared": 1
+      }
+    },
+    "orbit_step": "a unit decomposable 4-vector equals u1^u2^u3^u4 with u_i orthonormal (Gram-Schmidt, sign absorbed in u1); completing to a positively oriented orthonormal basis gives g in SO(10) with (Lambda^4 g) e6789 = Phi, and Lambda^4 g is the chart action of g (P1_chart_210_action_is_natural_on_Lambda4)",
+    "pluecker_defect": {
+      "SO10_invariance_certificate": {
+        "D_is_SO10_invariant_under_the_natural_Lambda4_action": true,
+        "antisymmetric_lambda1_lambda3_lambda4_lambda5": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "arithmetic": "exact int64 arrays with all entries in {-1, 0, 1} (each entry of the identities is a sum of at most 252 unit terms)",
+        "entries_in_minus1_0_1": true,
+        "generators_checked": 45,
+        "identities_checked_for_all_45_generators": [
+          "iota(X3 alpha, Phi) + iota(alpha, X4 Phi) = X1 iota(alpha, Phi)",
+          "(X1 v) ^ Phi + v ^ (X4 Phi) = X5 (v ^ Phi)",
+          "X3^T = -X3 and X5^T = -X5"
+        ],
+        "invariance_argument": "T_Phi(alpha) = (iota_alpha Phi) ^ Phi and D(Phi) = ||T_Phi||_HS^2 = tr(T_Phi^T T_Phi) in the orthonormal sorted bases.  Along Phi' = X4 Phi the two identities give T' = X5 T - T X3 (the X1 terms cancel), so D' = 2 tr(T^T X5 T) - 2 tr(T^T T X3) = 0 by the antisymmetry of X5 and X3.  So D is constant on every curve exp(t X4) Phi, i.e. invariant under the connected group SO(10) acting on Lambda^4 (integration over the connected group is the elementary step), which is the chart action",
+        "iota_intertwining_failures": [],
+        "lambda1_action_is_the_vector_representation": true,
+        "lambda4_action_is_natural_lambda4_generators": true,
+        "natural_actions": "Lambda^k (k = 1, 3, 4, 5) with the lexicographically sorted basis e_I: L_ab acts as a derivation, L(e_I) = sum_j e_i1 ^ .. ^ (L_ab e_ij) ^ .. ^ e_ik re-sorted with the permutation sign; Lambda^1 is the vector representation, Lambda^4 is natural_lambda4_generators (= the chart action by P1_chart_210_action_is_natural_on_Lambda4)",
+        "shapes_ok": true,
+        "tensor_nonzeros_iota_wedge": [
+          840,
+          1260
+        ],
+        "tensors": "iota[alpha, m, I]: (iota_alpha Phi)_m = sum_I iota[alpha, m, I] Phi_I (Lambda^3 x Lambda^4 -> Lambda^1); wedge[F, m, I]: (v ^ Phi)_F = sum_{m, I} wedge[F, m, I] v_m Phi_I (Lambda^1 x Lambda^4 -> Lambda^5); the same integer tables define D in pluecker_defect_exact",
+        "wedge_intertwining_failures": []
+      },
+      "channel_basis_matches_recorded": true,
+      "coefficient_source": "exact solve at the 4 declared fit points (D in span(J) by the tensor intertwining certificate, the chart identification and the invariant count)",
+      "coefficients_J0_J2_J3_J4": [
+        "-42/5",
+        "33/40",
+        "-7/40",
+        "1/160"
+      ],
+      "coefficients_match_recorded": true,
+      "definition": "D = sum_{i<j<k} ||(iota_{e_i e_j e_k} Phi) ^ Phi||^2 (sorted chart components, <p,p> = 1)",
+      "float_cross_check_vs_direct_form_algebra": {
+        "(e01+e23+e45)^(e67+e89)": 0.0,
+        "e0123 + e4567": 0.0,
+        "random_sparse_0": 0.0
+      },
+      "in_channel_basis_J0_I45_I210_I5940": [
+        "0",
+        "-20",
+        "18",
+        "8"
+      ],
+      "pluecker_lemma": "For xi != 0 in Lambda^k: U = span{iota_alpha xi} is the smallest subspace with xi in Lambda^k U (dim U >= k), W = {v : v ^ xi = 0} lies in U and has dim W <= k.  If every (iota_alpha xi) ^ xi = 0 then U lies in W, so dim U = k and xi is decomposable (Griffiths-Harris pp. 209-211).",
+      "validation_failures": [],
+      "validation_points": 20,
+      "value_on_equality_set": "0",
+      "why_it_is_a_quartic_invariant": "D(Phi) = ||T_Phi||_HS^2 for T_Phi: Lambda^3 -> Lambda^5, alpha -> (iota_alpha Phi) ^ Phi.  The integer interior and wedge tensors intertwine the natural actions of all 45 generators and the Lambda^3, Lambda^5 actions are antisymmetric (P1_pluecker_tensors_intertwine_natural_actions, exact), so D is invariant under connected SO(10) acting naturally on Lambda^4 (SO10_invariance_certificate.invariance_argument); the chart 210 action equals the natural action (P1_chart_210_action_is_natural_on_Lambda4), so D is invariant under the chart action too and lies in the 4-dimensional span of J0, J2, J3, J4; the 4-point exact solve then determines it and the remaining points are a consistency check"
+    },
+    "racah_speiser_dim_Sym4_210_SO10_invariants": 4,
+    "sample_points": [
+      "random_sparse_0",
+      "random_sparse_1",
+      "random_sparse_2",
+      "random_sparse_3",
+      "random_sparse_4",
+      "random_sparse_5",
+      "random_dense_0",
+      "random_dense_1",
+      "random_dense_2",
+      "random_dense_3",
+      "repository_sample_0",
+      "repository_sample_1",
+      "repository_sample_2",
+      "repository_sample_3",
+      "repository_sample_4",
+      "repository_sample_5",
+      "repository_sample_6",
+      "repository_sample_7",
+      "p = e6789",
+      "(e0+e4)^(e1+e5)^e2^e3 (decomposable)",
+      "e0123 + e4567",
+      "e01^(e23+e45)",
+      "(e01+e23+e45)^(e67+e89)",
+      "e0123 + e0145 + e2345"
+    ],
+    "stabilizer_of_p": {
+      "broken_tangent_rank": 24,
+      "dimension": 21,
+      "equals_so6_plus_so4": true,
+      "unbroken_generators": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L05",
+        "L12",
+        "L13",
+        "L14",
+        "L15",
+        "L23",
+        "L24",
+        "L25",
+        "L34",
+        "L35",
+        "L45",
+        "L67",
+        "L68",
+        "L69",
+        "L78",
+        "L79",
+        "L89"
+      ]
+    },
+    "statement": "On {V = V0}: |Phi| = 1 and I45 = I210 = I5940 = 0 force every SO(10)-invariant quartic to its value at p; the Pluecker defect D is such a quartic with D(p) = 0, so Phi is decomposable and Phi in SO(10).p"
+  },
+  "P2_sigma": {
+    "M_p_spectrum": {
+      "M_p^3_equals_4_M_p": true,
+      "multiplicities_+2_-2_0": [
+        "30",
+        "30",
+        "66"
+      ],
+      "note": "Hermitian M_p with M_p^3 = 4 M_p has spectrum in {2, -2, 0}; Eig_2 is the (10bar,1,3) of the candidate",
+      "trace_M_p": 0,
+      "trace_M_p^2": 240
+    },
+    "W_prime_minus_N2": {
+      "1050bar": "1",
+      "2772bar": "0",
+      "4125": "1/16",
+      "54": "1"
+    },
+    "chain": [
+      "Sigma (x) Sigma in V(2 lambda), Sigma != 0 (N = r0^2)  =>  Sigma in G_C.sigma_std  [Kostant/Lichtenstein]",
+      "G_C = K A N, N sigma_std = sigma_std, A sigma_std in R_{>0} sigma_std  =>  Sigma = r0 g sigma_std, g in SO(10)  [Iwasawa]",
+      "(M_p - 2) g sigma_std = 0  =>  (M_{p'} - 2) sigma_std = 0, p' = g^-1 p  [exact equivariance]",
+      "<sigma, M_{p'} sigma> = 2|sigma|^2 <p', omega^2/2>  =>  <p', omega^2/2> = 1  [exact identity]",
+      "Wirtinger equality  =>  p' is a J0-complex 2-plane with complex orientation  [Federer 1.8.2]",
+      "U(5) transitive on those planes, <p, omega^2/2> = 1  =>  p' = u p, u in U(5)",
+      "u^-1 sigma_std = e^{i theta} sigma_std (u(5) stabilises the line, exact)  =>  Sigma = r0 (g u exp(theta L01)) sigma_std, g u exp(theta L01) in Stab(p)"
+    ],
+    "coefficient_map_self_weights": {
+      "1050bar": "2",
+      "2772bar": "1",
+      "4125": "17/16",
+      "54": "2"
+    },
+    "equality_forces": [
+      "I_54 = 0",
+      "I_1050bar = 0",
+      "I_4125 = 0"
+    ],
+    "equivariance": {
+      "M_Phi_hermitian_for_all_210_basis_forms": true,
+      "group_level": "SO(10) is connected, so M_{g Phi} = rho(g) M_Phi rho(g)^-1 and C_{g Phi} rho(g) = g C_Phi",
+      "identity_C": "L_A C_{e_l} - C_{e_l} T_A = C_{G_A e_l} (all 45 A, 210 l)",
+      "identity_M": "[T_A, M_{e_l}] = sum_m G_A[m,l] M_{e_m} (all 45 A, 210 l, 126x126 entries)",
+      "max_abs_integer_residual_C": 0,
+      "max_abs_integer_residual_M": 0
+    },
+    "flipped_competitor": {
+      "flipped_formula": "P_{-i}(z1^z2^z3^zbar4^zbar5)",
+      "h": "diag(1,1,1,1,1,1,1,-1,1,-1) in SO(6)xSO(4) (det +1 on both blocks)",
+      "h_fixes_p": true,
+      "h_sigma_std_equals_flipped_form": true
+    },
+    "highest_weight": {
+      "all_20_positive_root_vectors_annihilate_sigma_std": true,
+      "cartan": "H_k = -i L_{2k-2,2k-1} (k = 1..5); z_k = e_{2k-2} + i e_{2k-1} has H_k-weight +1",
+      "casimir_2lambda": "60",
+      "casimir_lambda": "25",
+      "chart_complex_dimension": 126,
+      "negative_root_vectors_acting_nontrivially": [
+        "-e1-e2",
+        "-e1-e3",
+        "-e1-e4",
+        "-e1-e5",
+        "-e2-e3",
+        "-e2-e4",
+        "-e2-e5",
+        "-e3-e4",
+        "-e3-e5",
+        "-e4-e5"
+      ],
+      "positive_system": "e_i - e_j (z_i ^ zbar_j), e_i + e_j (z_i ^ z_j), i < j; u ^ v = sum_{a<b} (u_a v_b - u_b v_a) L_ab",
+      "root_vectors_have_their_roots_on_the_10": true,
+      "sigma_std_weight_is_(1,1,1,1,1)": true,
+      "sym2_components": {
+        "1050bar": {
+          "casimir": "36",
+          "highest_weight": [
+            2,
+            1,
+            1,
+            1,
+            1
+          ],
+          "kappa=(2*25-C2)/2": "7",
+          "weyl_dimension": "1050"
+        },
+        "2772bar": {
+          "casimir": "60",
+          "highest_weight": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "kappa=(2*25-C2)/2": "-5",
+          "weyl_dimension": "2772"
+        },
+        "4125": {
+          "casimir": "48",
+          "highest_weight": [
+            2,
+            2,
+            2,
+            0,
+            0
+          ],
+          "kappa=(2*25-C2)/2": "1",
+          "weyl_dimension": "4125"
+        },
+        "54": {
+          "casimir": "20",
+          "highest_weight": [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          "kappa=(2*25-C2)/2": "15",
+          "weyl_dimension": "54"
+        }
+      },
+      "weyl_dimension_2lambda": "2772",
+      "weyl_dimension_lambda": "126"
+    },
+    "kahler_identity_and_wirtinger": {
+      "J0_equals_sum_of_cartan_generators": true,
+      "M_p_sigma_equals_2_sigma": true,
+      "Omega_support_omega^2/2": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          4,
+          5
+        ],
+        [
+          0,
+          1,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          8,
+          9
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          2,
+          3,
+          6,
+          7
+        ],
+        [
+          2,
+          3,
+          8,
+          9
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          4,
+          5,
+          8,
+          9
+        ],
+        [
+          6,
+          7,
+          8,
+          9
+        ]
+      ],
+      "constant_2_norm2": "32",
+      "omega": "e01 + e23 + e45 + e67 + e89 (J0 = L01 + L23 + L45 + L67 + L89, J0[2k,2k+1] = +1)",
+      "omega_wedge_omega_even": true,
+      "p_dot_Omega": 1,
+      "p_norm_squared": 1,
+      "pfaffian_examples": {
+        "e0123": 1,
+        "e0124": 0,
+        "e0246 (totally real)": 0,
+        "e1023 (reversed orientation)": -1,
+        "e6789 = p": 1
+      },
+      "raw_sigma_norm_squared": 16,
+      "sigma_M_Phi_sigma_equals_2_norm2_times_Omega_on_all_210_basis_forms": true,
+      "sigma_M_Phi_sigma_imaginary_part_zero": true,
+      "wirtinger_equality_case": "for orthonormal U, A = U^T J0 U is antisymmetric with ||A|| <= 1; A ~ diag(a1 J, a2 J), |a_i| <= 1, Pf A = a1 a2 <= 1 with equality iff a1 = a2 = +-1 iff A^2 = -1 iff J0 U = U A (plane J0-invariant), and Pf = +1 selects the complex orientation (Federer 1.8.2; Harvey-Lawson 1982)",
+      "wirtinger_identity": "<u1^u2^u3^u4, omega^2/2> = Pf(U^T J0 U) for every real 10x4 U (alternating 4-linear forms equal on basis tuples)",
+      "wirtinger_pfaffian_identity_on_all_210_basis_tuples": true
+    },
+    "self_weights_54_1050bar_2772bar_4125": {
+      "1050bar": "2",
+      "2772bar": "1",
+      "4125": "17/16",
+      "54": "2"
+    },
+    "sigma_std_certificate_from_candidate": {
+      "C_p_sigma_max_abs": 0,
+      "M_p_sigma_minus_2_sigma_max_abs": 0,
+      "projector_fractions": {
+        "1050bar": "0",
+        "2772bar": "1",
+        "4125": "0",
+        "54": "0"
+      }
+    },
+    "statement": "At Phi = p (by SO(10)-invariance): W' = N^2 forces Sigma (x) Sigma in 2772bar = V(2 lambda); Kostant-Lichtenstein + Iwasawa give Sigma = r0 g sigma_std (g in SO(10)); (M_p - 2) Sigma = 0 gives <g^-1 p, omega^2/2> = 1, the Wirtinger equality case, so g^-1 p = u p (u in U(5)); u preserves the line of sigma_std and the phase is exp(theta L01) in Stab(p): Sigma in Stab(p).(r0 sigma_std)",
+    "sym2_126bar": {
+      "K_sigma_sigma_equals_kappa_2772bar_sigma_sigma": true,
+      "cartan_channel_kappa": "-5",
+      "channel_dimensions_from_traces": {
+        "1050bar": "1050",
+        "2772bar": "2772",
+        "4125": "4125",
+        "54": "54"
+      },
+      "channel_dimensions_match_recorded": true,
+      "commutes_with_diagonal_so10_action": true,
+      "commutes_with_swap": true,
+      "hermitian": true,
+      "imaginary_part_vanishes": true,
+      "kappa_nodes": {
+        "1050bar": "7",
+        "2772bar": "-5",
+        "4125": "1",
+        "54": "15"
+      },
+      "matches_repository_sigma_pair_casimir_on_sigma_sigma": true,
+      "minimal_polynomial": {
+        "int64_safe": true,
+        "maximum_intermediate_integer_entry": 576,
+        "product_final_nnz": 0,
+        "sym2_basis_columns": 8001,
+        "vanishes_on_sym2": true
+      },
+      "nnz_real": 220500,
+      "operator": "K = sum_A T_A (x) T_A on C^126 (x) C^126 (exact int64 sparse, Gaussian parts)",
+      "sym2_traces_tr_K^j_j=0..3": [
+        "8001",
+        "-1575",
+        "137025",
+        "200025"
+      ]
+    },
+    "unitary_line_stabiliser": {
+      "J0": "L01 + L23 + L45 + L67 + L89",
+      "J0_sigma_equals_5i_sigma": true,
+      "L01_annihilates_p": true,
+      "L01_sigma_equals_i_sigma": true,
+      "centraliser_of_J0_dimension": 25,
+      "every_centraliser_element_maps_sigma_std_into_i_Q_sigma_std": true,
+      "line_stabiliser_dimension": 25,
+      "line_stabiliser_equals_u5": true,
+      "phases_i_times": [
+        "0",
+        "1"
+      ],
+      "u5_is_connected": "U(5) = {g in SO(10) : g J0 = J0 g} is connected and generated by exp(u(5))"
+    }
+  },
+  "P3_H_S_Phi17_phases": {
+    "HS_bracket_algebra": {
+      "H_S_reduced_form": "2 N_H^2 + 2|k| r0 N_H - 2|k| N_H |S| + (|S|^2 - r0^2)^2  (after Cauchy-Schwarz |H.H| <= N_H)",
+      "all_identities_exact": true,
+      "argument": "t = |S| - r0.  t <= 0: every term of 2 N_H^2 + 2|k| N_H (-t) + t^2 (|S| + r0)^2 is >= 0 and the sum is 0 iff N_H = 0 and t = 0 (|S| + r0 >= r0 > 0).  t > 0: the sum equals 2 (N_H - |k| t/2)^2 + t^2 [(|S| + r0)^2 - k^2/2] with (|S| + r0)^2 > 4 r0^2 > k^2/2, so it is > 0.  Hence V_HS + r0^4 = 0 iff H = 0 and |S| = r0 (Cauchy-Schwarz makes V_HS >= the reduced form).",
+      "boundary_remark_bracket_at_k2_eq_8r0^2": "-(r0 - s)*(3*r0 + s)",
+      "bracket_identity_residual": "0",
+      "completed_square_residual": "0",
+      "nonpositive_t_form_residual": "0"
+    },
+    "HS_points": [
+      {
+        "condition_holds_strictly": true,
+        "kappa": "-1/20",
+        "kappa_squared_over_8_r0_squared": "1/128",
+        "margin_4r0^2_minus_kappa^2/2": "127/800",
+        "r0": "1/5",
+        "square_completion_identity_exact": true
+      },
+      {
+        "condition_holds_strictly": true,
+        "kappa": "-1/400",
+        "kappa_squared_over_8_r0_squared": "1/128",
+        "margin_4r0^2_minus_kappa^2/2": "127/320000",
+        "r0": "1/100",
+        "square_completion_identity_exact": true
+      },
+      {
+        "condition_holds_strictly": true,
+        "kappa": "-1/4000",
+        "kappa_squared_over_8_r0_squared": "1/128",
+        "margin_4r0^2_minus_kappa^2/2": "127/32000000",
+        "r0": "1/1000",
+        "square_completion_identity_exact": true
+      },
+      {
+        "condition_holds_strictly": true,
+        "kappa": "-25772069/1619271617590",
+        "kappa_squared_over_8_r0_squared": "1/128",
+        "margin_4r0^2_minus_kappa^2/2": "84353341648676647/5244081143065070394816200",
+        "r0": "51544138/809635808795",
+        "square_completion_identity_exact": true
+      },
+      {
+        "condition_holds_strictly": true,
+        "kappa": "-1/15",
+        "kappa_squared_over_8_r0_squared": "1/72",
+        "margin_4r0^2_minus_kappa^2/2": "71/450",
+        "r0": "1/5",
+        "square_completion_identity_exact": true
+      },
+      {
+        "condition_holds_strictly": true,
+        "kappa": "1/25",
+        "kappa_squared_over_8_r0_squared": "1/200",
+        "margin_4r0^2_minus_kappa^2/2": "199/1250",
+        "r0": "1/5",
+        "square_completion_identity_exact": true
+      },
+      {
+        "condition_holds_strictly": true,
+        "kappa": "-2/5",
+        "kappa_squared_over_8_r0_squared": "1/2",
+        "margin_4r0^2_minus_kappa^2/2": "2/25",
+        "r0": "1/5",
+        "square_completion_identity_exact": true
+      },
+      {
+        "condition_holds_strictly": true,
+        "kappa": "0",
+        "kappa_squared_over_8_r0_squared": "0",
+        "margin_4r0^2_minus_kappa^2/2": "4/25",
+        "r0": "1/5",
+        "square_completion_identity_exact": true
+      }
+    ],
+    "HS_proof_for_all_r0_kappa": "Cauchy-Schwarz |H.H| <= N_H (elementary, not machine-checked) reduces V_HS + r0^4 to the reduced form; the square-completion identities are exact sympy identities in symbolic (N_H, |S|, |kappa|, r0); the sign argument in HS_bracket_algebra.argument (elementary, argued in the text) finishes the proof for every kappa^2 < 8 r0^2.  HS_points are rational sample points of the domain condition only.",
+    "Phi17": "(1/32)(|Phi17|^2 - x0^2)^2 = 0 iff |Phi17| = x0 (x0 > 0)",
+    "charges": {
+      "PQ_charges": {
+        "H10": -2,
+        "Phi17": 0,
+        "S": 4,
+        "Sigma126bar": -2
+      },
+      "PQ_status": "U(1)_PQ is declared in the contract as an accidental global symmetry (gauge SO(10) x U(1)_X, accidental_global PQ; census neutrality includes PQ); all 27 benchmark operators are PQ-neutral.  The uniqueness statement is modulo G = SO(10) x U(1)_X x U(1)_PQ and uses PQ.",
+      "S_Phi17_charge_matrix_rows_X_PQ": [
+        [
+          4,
+          17
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "X_charges": {
+        "H10": -2,
+        "Phi17": 17,
+        "S": 4,
+        "Sigma126bar": -2
+      },
+      "action": "U(1) with charges q acts on each complex field by psi -> exp(i q angle) psi; SO(10) acts on Phi, Sigma, H",
+      "census_charges_consistent": true,
+      "determinant": -68,
+      "determinant_matches_recorded": true,
+      "explicit_element_exact": true,
+      "explicit_element_to_(p, r0 sigma_std, 0, r0 e^{ia}, x0 e^{ib})": {
+        "L01_angle": "a/2",
+        "PQ_angle": "a/4 - b/17",
+        "X_angle": "b/17"
+      },
+      "sources": "exact_gauged_u1x_physical_quotient_v20.U1X_CHARGES / PQ_CHARGES; cross-checked with the census charge table",
+      "without_PQ": {
+        "PQ_charge": -68,
+        "SO10_invariant": true,
+        "X_charge": 0,
+        "X_invariant_phase_monomial": "Phi17^4 conj(S)^17",
+        "consequence": "the monomial is SO(10) x U(1)_X-invariant and has nonzero PQ charge; on {V = V0} it equals x0^4 r0^17 e^(i phase) with every phase attained (P3 explicit element), so modulo SO(10) x U(1)_X alone {V = V0} is a circle of orbits (tangent rank 34 < 35), the axion direction; uniqueness modulo symmetry needs U(1)_PQ",
+        "uniqueness_needs_PQ": true
+      }
+    },
+    "domain": "kappa^2 < 8 r0^2  <=>  4 r0^2 - kappa^2/2 > 0  <=>  lambda_eff = 2 - kappa^2/(4 r0^2) > 0",
+    "operators": {
+      "H_free_operators_balanced": true,
+      "all_X_and_PQ_neutral": true,
+      "compiler_dressing": "each direction value = SO(10) base invariant x S^nS conj(S)^nSb Phi17^nX conj(Phi17)^nXb",
+      "count": 27,
+      "count_at_kappa_0": 25,
+      "operators": [
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-x0**2/16",
+          "counts": {
+            "X": 1,
+            "Xb": 1
+          },
+          "parameter": "lambda::O03_B01_singlet_polynomial"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-2*r0**2",
+          "counts": {
+            "S": 1,
+            "Sb": 1
+          },
+          "parameter": "lambda::O04_B01_singlet_polynomial"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "1/2 - r0**2/4",
+          "counts": {
+            "D": 1,
+            "Db": 1
+          },
+          "parameter": "lambda::O05_B01_126bar_norm"
+        },
+        {
+          "H_free": false,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-2*kappa*r0",
+          "counts": {
+            "H": 1,
+            "Hb": 1
+          },
+          "parameter": "lambda::O06_B01_Hdag_H_norm"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-2",
+          "counts": {
+            "P": 2
+          },
+          "parameter": "lambda::O07_B01_Phi_norm"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-1/2",
+          "counts": {
+            "D": 1,
+            "Db": 1,
+            "P": 1
+          },
+          "parameter": "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "1/32",
+          "counts": {
+            "X": 2,
+            "Xb": 2
+          },
+          "parameter": "lambda::O20_B01_singlet_polynomial"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "1",
+          "counts": {
+            "S": 2,
+            "Sb": 2
+          },
+          "parameter": "lambda::O23_B01_singlet_polynomial"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "1/4",
+          "counts": {
+            "D": 2,
+            "Db": 2
+          },
+          "parameter": "lambda::O27_B01_126bar_self_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "1/4",
+          "counts": {
+            "D": 2,
+            "Db": 2
+          },
+          "parameter": "lambda::O27_B02_126bar_self_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "1/8",
+          "counts": {
+            "D": 2,
+            "Db": 2
+          },
+          "parameter": "lambda::O27_B03_126bar_self_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "17/128",
+          "counts": {
+            "D": 2,
+            "Db": 2
+          },
+          "parameter": "lambda::O27_B04_126bar_self_projectors"
+        },
+        {
+          "H_free": false,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "2",
+          "counts": {
+            "H": 2,
+            "Hb": 2
+          },
+          "parameter": "lambda::O36_B01_H_self_quartics"
+        },
+        {
+          "H_free": false,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "2",
+          "counts": {
+            "H": 2,
+            "Hb": 2
+          },
+          "parameter": "lambda::O36_B02_H_self_quartics"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "41/8",
+          "counts": {
+            "D": 1,
+            "Db": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O44_B01_Phi2_Sigma_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "73/8",
+          "counts": {
+            "D": 1,
+            "Db": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O44_B02_Phi2_Sigma_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "29/8",
+          "counts": {
+            "D": 1,
+            "Db": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O44_B03_Phi2_Sigma_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-7/8",
+          "counts": {
+            "D": 1,
+            "Db": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O44_B04_Phi2_Sigma_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-11/8",
+          "counts": {
+            "D": 1,
+            "Db": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O44_B05_Phi2_Sigma_projectors"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "13/8",
+          "counts": {
+            "D": 1,
+            "Db": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O44_B06_Phi2_Sigma_projectors"
+        },
+        {
+          "H_free": false,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "3/5",
+          "counts": {
+            "H": 1,
+            "Hb": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O46_B01_Phi2_HdagH_channels"
+        },
+        {
+          "H_free": false,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-1",
+          "counts": {
+            "H": 1,
+            "Hb": 1,
+            "P": 2
+          },
+          "parameter": "lambda::O46_B03_Phi2_HdagH_channels"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-21/200",
+          "counts": {
+            "P": 4
+          },
+          "parameter": "lambda::O48_B01_Phi_self_quartics"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "2467/28800",
+          "counts": {
+            "P": 4
+          },
+          "parameter": "lambda::O48_B02_Phi_self_quartics"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "-77/3200",
+          "counts": {
+            "P": 4
+          },
+          "parameter": "lambda::O48_B03_Phi_self_quartics"
+        },
+        {
+          "H_free": true,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": true,
+          "coefficient": "119/115200",
+          "counts": {
+            "P": 4
+          },
+          "parameter": "lambda::O48_B04_Phi_self_quartics"
+        },
+        {
+          "H_free": false,
+          "PQ_charge": 0,
+          "X_charge": 0,
+          "balanced_in_S_Phi17_Sigma": false,
+          "coefficient": "kappa",
+          "counts": {
+            "Hb": 2,
+            "Sb": 1
+          },
+          "parameter": "re::O12_B01_Hdag_Hdag_pair"
+        }
+      ],
+      "phase_dependent_at_H0": [],
+      "vanishing_at_kappa_0": [
+        "lambda::O06_B01_Hdag_H_norm",
+        "re::O12_B01_Hdag_Hdag_pair"
+      ]
+    },
+    "statement": "V_HS + r0^4 = 0 iff H = 0 and |S| = r0 (kappa^2 < 8 r0^2); |Phi17| = x0; U(1)_X x U(1)_PQ reach every (S, Phi17) phase pair (det -68) and the Sigma phase they induce is undone by exp(theta L01) in Stab(p)",
+    "tangent_rank": {
+      "kernel_dimension": 12,
+      "kernel_has_no_X_or_PQ_component": true,
+      "matrix": "486 x 47 integer tangents at (p, sigma_std raw, 0, 1, 1): 45 so(10) generators, X, PQ",
+      "nonzero_rows": 202,
+      "rank_so10": 33,
+      "rank_so10_plus_X": 34,
+      "rank_so10_plus_X_plus_PQ": 35,
+      "scaling": "the chart tangent is D M with invertible diagonal D = (1, sqrt2 r0/4, sqrt2 r0, sqrt2 x0) on (Phi, Sigma, S, Phi17): ranks hold for all r0, x0 > 0"
+    }
+  },
+  "checks": {
+    "NUM_float64_corroboration_finds_no_contradiction": true,
+    "P0_candidate_exact_certificate_passes": true,
+    "P0_coefficient_map_equals_SOS_expansion_for_kappa_negative_positive_zero": true,
+    "P0_eight_terms_expand_to_the_candidate_operator_map_with_constant_minus_V0": true,
+    "P0_generators_are_so10_representations": true,
+    "P0_pair_casimirs_commute_with_so10": true,
+    "P0_self_weights_at_least_one": true,
+    "P0_sym2_126bar_projectors_orthogonal_and_complete": true,
+    "P0_sym2_210_projectors_orthogonal_and_complete": true,
+    "P1_J0_J2_J3_J4_independent_at_declared_fit_points": true,
+    "P1_Q_equals_J0_plus_I45_I210_I5940": true,
+    "P1_channel_norms_in_J_basis_exact_and_match_repository": true,
+    "P1_channel_norms_sum_to_J0": true,
+    "P1_chart_210_action_is_natural_on_Lambda4": true,
+    "P1_crossing_identities_exact_validated_and_match_repository": true,
+    "P1_equality_set_J_vector_equals_J_at_p": true,
+    "P1_equality_system_square_4x4_and_nonsingular": true,
+    "P1_moments_int64_overflow_bound_holds": true,
+    "P1_p_has_unit_norm_and_zero_extra_channels": true,
+    "P1_pluecker_defect_detects_decomposability": true,
+    "P1_pluecker_defect_exact_J_combination_validated": true,
+    "P1_pluecker_defect_vanishes_on_equality_set": true,
+    "P1_pluecker_tensors_intertwine_natural_actions": true,
+    "P1_stabilizer_of_p_is_so6_plus_so4": true,
+    "P1_sym4_210_has_exactly_4_invariants": true,
+    "P2_2772bar_channel_equals_V_2lambda": true,
+    "P2_M_and_C_exactly_equivariant_and_M_hermitian": true,
+    "P2_chart_126bar_is_irreducible_V_lambda": true,
+    "P2_coefficient_map_uses_these_self_weights": true,
+    "P2_flipped_competitor_is_on_the_orbit": true,
+    "P2_phase_generator_L01_in_stab_p": true,
+    "P2_self_weights_force_sigma_purity": true,
+    "P2_sigma_M_sigma_is_2_norm2_omega2_over_2": true,
+    "P2_sigma_std_pure_2772bar_and_vacuum_squares_vanish": true,
+    "P2_u5_stabilises_the_line_of_sigma_std": true,
+    "P2_wirtinger_pfaffian_identity": true,
+    "P3_HS_domain_holds_strictly_at_sample_points": true,
+    "P3_HS_square_completion_identities_exact_symbolic": true,
+    "P3_S_Phi17_charge_matrix_nonsingular": true,
+    "P3_V_phase_independent_at_H0": true,
+    "P3_all_27_operators_X_and_PQ_neutral": true,
+    "P3_charges_consistent_across_sources": true,
+    "P3_explicit_group_element_reaches_all_phases": true,
+    "P3_operator_count_27_and_25_at_kappa_0": true,
+    "P3_orbit_tangent_rank_35_kernel_12_pure_so10": true
+  },
+  "cited_theorems": [
+    {
+      "reference": "P. Griffiths, J. Harris, Principles of Algebraic Geometry (Wiley, 1978), pp. 209-211",
+      "result": "Pluecker relations: xi != 0 is decomposable iff (iota_alpha xi) ^ xi = 0 for all alpha",
+      "short_name": "Pluecker relations",
+      "used_in": "P1"
+    },
+    {
+      "reference": "W. Lichtenstein, Proc. Amer. Math. Soc. 84 (1982) 605-608",
+      "result": "Kostant's quadrics, set-theoretic form: {v in V(lambda) : v (x) v in V(2 lambda)} = G_C.v_lambda u {0}",
+      "short_name": "Kostant/Lichtenstein quadrics",
+      "used_in": "P2(iv)"
+    },
+    {
+      "reference": "K. Iwasawa, Ann. of Math. 50 (1949) 507-558; A. W. Knapp, Lie Groups Beyond an Introduction, 2nd ed. (2002), Thm. 6.46",
+      "result": "Iwasawa decomposition G_C = K A N of the complex group SO(10,C) with K = SO(10)",
+      "short_name": "Iwasawa",
+      "used_in": "P2(iv)"
+    },
+    {
+      "reference": "H. Federer, Geometric Measure Theory (1969), 1.8.2; R. Harvey, H. B. Lawson, Acta Math. 148 (1982) 47-157",
+      "result": "Wirtinger inequality <xi, omega^p/p!> <= 1 for unit simple 2p-vectors, equality iff xi is a complex p-plane with its complex orientation",
+      "short_name": "Wirtinger equality case",
+      "used_in": "P2(vii) (an elementary Pfaffian proof is also recorded)"
+    },
+    {
+      "reference": "standard (extend a unitary basis of the k-plane)",
+      "result": "U(n) is transitive on Gr_C(k, n) and preserves complex orientations",
+      "short_name": "U(5) transitivity",
+      "used_in": "P2(vii)"
+    },
+    {
+      "reference": "J. E. Humphreys, Introduction to Lie Algebras and Representation Theory, sections 20-21 and 24.3",
+      "result": "a highest-weight vector of a finite-dimensional so(10,C)-module generates an irreducible submodule; Weyl dimension formula",
+      "short_name": "highest-weight generation and Weyl dimension formula (Humphreys)",
+      "used_in": "P2(i)-(ii)"
+    },
+    {
+      "reference": "classical (the (2,2)-part; Harvey-Lawson 1982)",
+      "result": "U(5)-invariant 4-forms on R^10 = C^5 are spanned by omega^2",
+      "short_name": "U(5)-invariant 4-forms",
+      "used_in": "NOT used: P2(vi) is verified directly on every basis 4-form"
+    }
+  ],
+  "corollary_exact_210": {
+    "argument": "V_v >= (|Phi|^2 - v^2)^2 - v^4 with equality iff |Phi| = v and I_45 = I_210 = I_5940 = 0; by homogeneity Phi/v satisfies the P1 conditions, so Phi in SO(10).(v p)",
+    "depends_on": [
+      "P0_sym2_210_projectors_orthogonal_and_complete",
+      "P0_pair_casimirs_commute_with_so10",
+      "P0_generators_are_so10_representations",
+      "all P1 checks"
+    ],
+    "module": "exact_210_pati_salam_global_vacuum_v20",
+    "potential": "V_v(Phi) = -2 v^2 |Phi|^2 + Q(Phi), Q = J0 + I_45 + I_210 + I_5940 (beta = 2 on 45, 210, 5940)",
+    "recorded_in_that_module": "exact_210_pati_salam_global_vacuum_v20 binds its uniqueness_of_global_orbit, remaining_blockers.uniqueness_among_all_global_210_orbits and flag.unique_global_210_orbit to this report's committed JSON (status, n_failed, this corollary); it does not import this module",
+    "uniqueness_of_global_orbit": true
+  },
+  "equality_conditions": {
+    "conditions": [
+      "|Phi| = 1 and I_45 = I_210 = I_5940 = 0",
+      "(M_Phi - 2) Sigma = 0",
+      "C_Phi Sigma = 0",
+      "I_54 = I_1050bar = I_4125 = 0, i.e. Sigma (x) Sigma in 2772bar = V(2 lambda)",
+      "N_Sigma = r0^2",
+      "H = 0 and |S| = r0",
+      "H wedge Phi = 0 (implied by H = 0)",
+      "|Phi17| = x0"
+    ],
+    "derivation": "each of the eight SOS terms is >= 0 (P0) and vanishes exactly on the listed condition",
+    "matches_candidate_recorded_list": "the candidate's four recorded items are exactly these conditions; its '(pure: SO(10) orbit of sigma_std up to phase)' is P2 (Kostant/Lichtenstein + Iwasawa), and 'up to phase' is redundant (L01 sigma_std = i sigma_std)"
+  },
+  "failures": [],
+  "flags": {
+    "candidate_wired_into_g3_gate": false,
+    "equality_set_unique_modulo_symmetry_certified": true,
+    "exact_210_uniqueness_of_global_orbit_certified": true,
+    "g3_closed": false,
+    "global_minimum_certified_by_candidate": true,
+    "kappa_squared_equal_8_r0_squared_claimed": false,
+    "theorem_claimed": true,
+    "unique_modulo_SO10_x_U1X_alone": false,
+    "uniqueness_is_modulo_G_including_accidental_U1_PQ": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 45,
+  "n_failed": 0,
+  "numerical_corroboration": {
+    "V_Phi_minimisations": {
+      "consistent": true,
+      "lowest_V_Phi_plus_1": -3.10862446895e-15,
+      "method": "L-BFGS-B on V_Phi = -2|Phi|^2 + Q(Phi) (float64 sparse pair Casimir)",
+      "n_reached_minus_1": 12,
+      "runs": [
+        {
+          "Phi_norm_squared": 1.00000000599,
+          "V_Phi_plus_1": 3.99680288865e-15,
+          "decomposability_residual": 6.26817561874e-08,
+          "gradient_max_abs": 2.31723839561e-08,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 2.25488820322e-14,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_0"
+        },
+        {
+          "Phi_norm_squared": 1.00000000099,
+          "V_Phi_plus_1": -2.22044604925e-15,
+          "decomposability_residual": 7.95962746593e-09,
+          "gradient_max_abs": 1.63430824429e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 2.70203313394e-16,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_1"
+        },
+        {
+          "Phi_norm_squared": 1.00000000606,
+          "V_Phi_plus_1": -8.881784197e-16,
+          "decomposability_residual": 5.36891605218e-08,
+          "gradient_max_abs": 1.09032987083e-08,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 1.16229908183e-14,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_2"
+        },
+        {
+          "Phi_norm_squared": 1.00000001107,
+          "V_Phi_plus_1": -2.22044604925e-15,
+          "decomposability_residual": 1.13784567997e-08,
+          "gradient_max_abs": 1.5150242838e-08,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 5.67047845887e-16,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_3"
+        },
+        {
+          "Phi_norm_squared": 1.00000000065,
+          "V_Phi_plus_1": -8.881784197e-16,
+          "decomposability_residual": 3.28627744148e-08,
+          "gradient_max_abs": 7.19510728775e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 4.36797127512e-15,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_4"
+        },
+        {
+          "Phi_norm_squared": 1.00000000377,
+          "V_Phi_plus_1": -1.7763568394e-15,
+          "decomposability_residual": 6.0283434769e-09,
+          "gradient_max_abs": 4.93293361714e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 1.99263051468e-16,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_5"
+        },
+        {
+          "Phi_norm_squared": 1.0000000006,
+          "V_Phi_plus_1": 0.0,
+          "decomposability_residual": 5.08209979779e-09,
+          "gradient_max_abs": 1.10624531757e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 1.0627748243e-16,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_6"
+        },
+        {
+          "Phi_norm_squared": 1.00000000225,
+          "V_Phi_plus_1": -2.6645352591e-15,
+          "decomposability_residual": 6.48512364039e-10,
+          "gradient_max_abs": 2.05946060206e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 2.95758351299e-18,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_7"
+        },
+        {
+          "Phi_norm_squared": 0.999999996599,
+          "V_Phi_plus_1": -1.33226762955e-15,
+          "decomposability_residual": 9.17123861147e-09,
+          "gradient_max_abs": 4.01947097828e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 3.42522133417e-16,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_8"
+        },
+        {
+          "Phi_norm_squared": 1.00000000895,
+          "V_Phi_plus_1": -2.6645352591e-15,
+          "decomposability_residual": 5.39806876671e-09,
+          "gradient_max_abs": 8.37004554555e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 2.1449303686e-16,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "generic_9"
+        },
+        {
+          "Phi_norm_squared": 1.00000000015,
+          "V_Phi_plus_1": -1.33226762955e-15,
+          "decomposability_residual": 4.03116328183e-10,
+          "gradient_max_abs": 5.7160853828e-10,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 1.03361780796e-18,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "near_e0123 + e4567"
+        },
+        {
+          "Phi_norm_squared": 1.00000000065,
+          "V_Phi_plus_1": -3.10862446895e-15,
+          "decomposability_residual": 4.22820108541e-09,
+          "gradient_max_abs": 1.92764915141e-09,
+          "iota_rank": 4,
+          "on_SO10_orbit_of_p": true,
+          "pluecker_defect": 7.58792659893e-17,
+          "reached_minus_1": true,
+          "stabilizer_dimension": 21,
+          "start": "near_(e01+e23+e45)^(e67+e89)"
+        }
+      ]
+    },
+    "consistent": true,
+    "full_chart_minimisations": {
+      "consistent": true,
+      "method": "L-BFGS-B on the candidate's fast SOS evaluator (validated against the compiler there), r0 = 1/5, x0 = 1, generic starts",
+      "runs": [
+        {
+          "J_orthogonality_defect": 3.90049851738e-15,
+          "N_H": 1.31633854344e-07,
+          "N_Sigma_minus_r0_squared": 1.12921834924e-07,
+          "Phi_norm_squared_minus_1": -8.34217761536e-09,
+          "abs_Phi17_minus_x0": 2.79585896656e-08,
+          "abs_S_minus_r0": 1.11812134496e-07,
+          "annihilator_gap_singular_value_ratio": 0.999999999821,
+          "annihilator_null_singular_value_ratio": 2.09245750978e-05,
+          "decomposability_residual_of_phi": 1.33613540708e-08,
+          "det_h": 1.0,
+          "final_gap_V_minus_V0": 9.10382880193e-14,
+          "h_orthogonality_defect": 6.82691664195e-16,
+          "h_p_minus_phi": 1.33613540782e-08,
+          "isotropy_defect": 1.55008716649e-15,
+          "on_vacuum_orbit": true,
+          "overlap_defect_1_minus_abs_<t,h sigma>": 3.07436187619e-10,
+          "pfaffian_of_J_on_plane": 1.0,
+          "plane_J_invariance_defect": 6.75667353055e-08,
+          "reached_V0": true,
+          "start": 0
+        },
+        {
+          "J_orthogonality_defect": 5.47961185538e-15,
+          "N_H": 1.46569208058e-07,
+          "N_Sigma_minus_r0_squared": -9.56688538389e-08,
+          "Phi_norm_squared_minus_1": -6.6420798861e-09,
+          "abs_Phi17_minus_x0": -1.5636720252e-08,
+          "abs_S_minus_r0": 4.13188693815e-08,
+          "annihilator_gap_singular_value_ratio": 0.999999998509,
+          "annihilator_null_singular_value_ratio": 6.15922552994e-05,
+          "decomposability_residual_of_phi": 7.8216647963e-09,
+          "det_h": 1.0,
+          "final_gap_V_minus_V0": 1.44328993201e-13,
+          "h_orthogonality_defect": 8.57430752478e-16,
+          "h_p_minus_phi": 7.82166480113e-09,
+          "isotropy_defect": 1.35290474162e-15,
+          "on_vacuum_orbit": true,
+          "overlap_defect_1_minus_abs_<t,h sigma>": 2.59403631908e-09,
+          "pfaffian_of_J_on_plane": 1.0,
+          "plane_J_invariance_defect": 6.05158843015e-08,
+          "reached_V0": true,
+          "start": 1
+        }
+      ]
+    },
+    "label": "float64 evidence only; the theorem rests on the exact certificates",
+    "pure_elements_of_eig_2_at_p": {
+      "consistent": true,
+      "control_fails_orbit_test": true,
+      "control_random_element_of_eig_2": {
+        "J_orthogonality_defect": 2.77301463612e-15,
+        "annihilator_gap_singular_value_ratio": 0.825314243909,
+        "annihilator_null_singular_value_ratio": 0.744181089041,
+        "decomposability_residual_of_phi": 0.0,
+        "det_h": 1.0,
+        "h_orthogonality_defect": 5.33430704014e-16,
+        "h_p_minus_phi": 2.22044604925e-16,
+        "isotropy_defect": 3.57496019972e-15,
+        "overlap_defect_1_minus_abs_<t,h sigma>": 0.400535857715,
+        "pfaffian_of_J_on_plane": 1.0,
+        "plane_J_invariance_defect": 0.0
+      },
+      "eig_2_complex_dimension": 30,
+      "method": "minimise I54 + I1050bar + I4125 over |Sigma| = 1 in Eig_2(M_p) = ker(M_p - 2) (float from the exact M_p), then build h from the complex structure J_t of the isotropic annihilator of t (proof steps P2 (v)-(viii))",
+      "runs": [
+        {
+          "J_orthogonality_defect": 3.11297633477e-15,
+          "annihilator_gap_singular_value_ratio": 1.0,
+          "annihilator_null_singular_value_ratio": 4.99697174693e-11,
+          "decomposability_residual_of_phi": 0.0,
+          "det_h": 1.0,
+          "final_impurity": 4.61086843775e-21,
+          "h_orthogonality_defect": 4.52618032507e-16,
+          "h_p_minus_phi": 0.0,
+          "isotropy_defect": 6.76874613086e-16,
+          "on_Stab_p_orbit_of_sigma_std": true,
+          "overlap_defect_1_minus_abs_<t,h sigma>": 0.0,
+          "pfaffian_of_J_on_plane": 1.0,
+          "plane_J_invariance_defect": 0.0,
+          "pure": true,
+          "start_impurity": 0.601985146007
+        },
+        {
+          "J_orthogonality_defect": 3.17844260166e-15,
+          "annihilator_gap_singular_value_ratio": 1.0,
+          "annihilator_null_singular_value_ratio": 6.12972988696e-11,
+          "decomposability_residual_of_phi": 0.0,
+          "det_h": 1.0,
+          "final_impurity": 6.76509950397e-21,
+          "h_orthogonality_defect": 4.12756437606e-16,
+          "h_p_minus_phi": 2.22044604925e-16,
+          "isotropy_defect": 7.59231372885e-16,
+          "on_Stab_p_orbit_of_sigma_std": true,
+          "overlap_defect_1_minus_abs_<t,h sigma>": 0.0,
+          "pfaffian_of_J_on_plane": 1.0,
+          "plane_J_invariance_defect": 0.0,
+          "pure": true,
+          "start_impurity": 0.608174580437
+        },
+        {
+          "J_orthogonality_defect": 2.55489347879e-15,
+          "annihilator_gap_singular_value_ratio": 1.0,
+          "annihilator_null_singular_value_ratio": 2.58242387498e-11,
+          "decomposability_residual_of_phi": 0.0,
+          "det_h": 1.0,
+          "final_impurity": 1.21066146326e-21,
+          "h_orthogonality_defect": 4.43598662636e-16,
+          "h_p_minus_phi": 2.22044604925e-16,
+          "isotropy_defect": 1.14559487303e-15,
+          "on_Stab_p_orbit_of_sigma_std": true,
+          "overlap_defect_1_minus_abs_<t,h sigma>": 0.0,
+          "pfaffian_of_J_on_plane": 1.0,
+          "plane_J_invariance_defect": 0.0,
+          "pure": true,
+          "start_impurity": 0.578158202248
+        },
+        {
+          "J_orthogonality_defect": 2.03019093564e-15,
+          "annihilator_gap_singular_value_ratio": 1.0,
+          "annihilator_null_singular_value_ratio": 5.49889866919e-11,
+          "decomposability_residual_of_phi": 0.0,
+          "det_h": 1.0,
+          "final_impurity": 5.68535969386e-21,
+          "h_orthogonality_defect": 6.83117968124e-16,
+          "h_p_minus_phi": 0.0,
+          "isotropy_defect": 4.88976754953e-16,
+          "on_Stab_p_orbit_of_sigma_std": true,
+          "overlap_defect_1_minus_abs_<t,h sigma>": 1.11022302463e-16,
+          "pfaffian_of_J_on_plane": 1.0,
+          "plane_J_invariance_defect": 0.0,
+          "pure": true,
+          "start_impurity": 0.566798964481
+        }
+      ]
+    },
+    "seconds": 27.9030525684,
+    "seed": 20260925,
+    "wirtinger_sampling": {
+      "consistent": true,
+      "local_maximisations": [
+        {
+          "J0_invariance_defect": 3.34126601944e-07,
+          "maximum": 1.0
+        },
+        {
+          "J0_invariance_defect": 2.39859868739e-07,
+          "maximum": 1.0
+        },
+        {
+          "J0_invariance_defect": 3.55351512982e-07,
+          "maximum": 1.0
+        },
+        {
+          "J0_invariance_defect": 1.59369331609e-07,
+          "maximum": 1.0
+        },
+        {
+          "J0_invariance_defect": 1.90537063917e-07,
+          "maximum": 1.0
+        },
+        {
+          "J0_invariance_defect": 1.59115973403e-07,
+          "maximum": 1.0
+        },
+        {
+          "J0_invariance_defect": 4.51846107343e-07,
+          "maximum": 1.0
+        },
+        {
+          "J0_invariance_defect": 3.75848210849e-07,
+          "maximum": 1.0
+        }
+      ],
+      "maxima_reach_1_on_J0_invariant_planes": true,
+      "random_max_<xi,omega^2/2>": 0.840735942853,
+      "random_min_<xi,omega^2/2>": -0.719337593806,
+      "random_unit_simple_4_vectors": 4000
+    }
+  },
+  "parameters": {
+    "chart_210_generators_override": false,
+    "hs_points": [
+      [
+        "1/5",
+        "-1/20"
+      ],
+      [
+        "1/100",
+        "-1/400"
+      ],
+      [
+        "1/1000",
+        "-1/4000"
+      ],
+      [
+        "51544138/809635808795",
+        "-25772069/1619271617590"
+      ],
+      [
+        "1/5",
+        "-1/15"
+      ],
+      [
+        "1/5",
+        "1/25"
+      ],
+      [
+        "1/5",
+        "-2/5"
+      ],
+      [
+        "1/5",
+        "0"
+      ]
+    ],
+    "numerical": true,
+    "pluecker_action_generators_override": null,
+    "pluecker_defect_coefficients_override": null,
+    "self_weights_54_1050bar_2772bar_4125": {
+      "1050bar": "2",
+      "2772bar": "1",
+      "4125": "17/16",
+      "54": "2"
+    }
+  },
+  "runtime_seconds": 59.9803161621,
+  "scope": {
+    "cited_not_machine_checked": [
+      "Pluecker relations: xi != 0 is decomposable iff (iota_alpha xi) ^ xi = 0 for all alpha",
+      "Kostant's quadrics, set-theoretic form: {v in V(lambda) : v (x) v in V(2 lambda)} = G_C.v_lambda u {0}",
+      "Iwasawa decomposition G_C = K A N of the complex group SO(10,C) with K = SO(10)",
+      "Wirtinger inequality <xi, omega^p/p!> <= 1 for unit simple 2p-vectors, equality iff xi is a complex p-plane with its complex orientation",
+      "U(n) is transitive on Gr_C(k, n) and preserves complex orientations",
+      "a highest-weight vector of a finite-dimensional so(10,C)-module generates an irreducible submodule; Weyl dimension formula"
+    ],
+    "elementary_not_machine_checked": [
+      "Cauchy-Schwarz |H.H| <= N_H (|sum_i H_i^2| <= sum_i |H_i|^2), used in P3 to reduce V_HS + r0^4 to the symbolically certified form",
+      "the sign argument of HS_bracket_algebra.argument (cases |S| <= r0 and |S| > r0), which turns the exact sympy square-completion identities into V_HS + r0^4 >= 0 with equality iff H = 0 and |S| = r0 (P3)",
+      "the Gram-Schmidt orbit step: a unit decomposable 4-vector equals u1^u2^u3^u4 with orthonormal u_i, and completing to a positively oriented orthonormal basis gives g in SO(10) with (Lambda^4 g) e6789 = Phi (P1)",
+      "integrating the exact Lie-algebra identities over the connected groups: over SO(10), the invariance of D (from the checked intertwining identities, D' = 2 tr(T^T X5 T) - 2 tr(T^T T X3) = 0; P1) and the equivariance of M_Phi and C_Phi (P2(v)); over U(5), the u(5) line stabilisation of sigma_std (P2(viii))",
+      "N sigma_std = sigma_std and A sigma_std in R_{>0} sigma_std for the Iwasawa factors N and A, from the checked weight (1,1,1,1,1) and positive-root data (P2(iv))",
+      "the corollary's reduction: V_v = (|Phi|^2 - v^2)^2 - v^4 + I_45 + I_210 + I_5940 (from the checked Q = J0 + I_45 + I_210 + I_5940) and the rescaling Phi -> Phi/v"
+    ],
+    "float64_evidence_only": [
+      "numerical_corroboration (V_Phi minimisations, pure elements of Eig_2(M_p), Wirtinger sampling, full-chart minimisations)",
+      "end-to-end compiler = SOS form (the candidate's fast-evaluator validation)"
+    ],
+    "not_proved_or_out_of_scope": [
+      "uniqueness modulo SO(10) x U(1)_X alone: false.  Uniqueness uses U(1)_PQ, an accidental symmetry of this benchmark (all 27 operators PQ-neutral); modulo SO(10) x U(1)_X alone {V = V0} is a circle of orbits (rank 34 < 35), labelled by the phase of Phi17^4 conj(S)^17 (the axion direction)",
+      "kappa^2 = 8 r0^2 (the H/S equality set is unchanged there, but the domain is kappa^2 < 8 r0^2)",
+      "potentials outside the candidate's 27-parameter family",
+      "G3 closure: the candidate is not wired into the G3 gate",
+      "the candidate's model-level caveats: tuned doublet-triplet splitting and O05 cancellation, sub-M_I coloured remnants, RG-anchor content, Higgs quartic, no electroweak breaking, no realistic Yukawa sector"
+    ],
+    "proved_exactly": [
+      "{V = V0} = G.vacuum, G = SO(10) x U(1)_X x U(1)_PQ, for every r0 > 0, x0 > 0, kappa^2 < 8 r0^2 (V is the candidate's adapted SOS form, which equals the compiler potential exactly coefficient by coefficient and for each source-bound operator, and in float64 end to end; cited classical theorems as listed; elementary steps argued in the text (not machine-checked): Cauchy-Schwarz |H.H| <= N_H and the H/S sign argument, the Gram-Schmidt orbit step, integration of the Lie-algebra identities over connected SO(10) and U(5), the Iwasawa N and A action on sigma_std, and the corollary's rescaling (scope.elementary_not_machine_checked))",
+      "the chart 210 action is the natural Lambda^4 action (exact, all 45 generators)",
+      "the integer interior (Lambda^3 x Lambda^4 -> Lambda^1) and wedge (Lambda^1 x Lambda^4 -> Lambda^5) tensors intertwine the natural actions of all 45 generators, and the Lambda^3, Lambda^5 actions are antisymmetric (exact), so the Pluecker defect is SO(10)-invariant",
+      "the eight SOS terms expand to the candidate's coefficient map operator by operator, constant -V0 (sympy, kappa < 0, > 0, = 0)",
+      "the Lagrange projectors on Sym^2(210) and Sym^2(126bar) are orthogonal and complete (minimal polynomials)",
+      "every SO(10)-invariant quartic of the 210 is constant on {|Phi| = 1, I45 = I210 = I5940 = 0}; the Pluecker defect is -20 I45 + 18 I210 + 8 I5940",
+      "2772bar = V(2 lambda) (exact traces and Weyl dimensions); sigma_std is its highest-weight generator",
+      "<sigma, M_Phi sigma> = 2|sigma|^2 <Phi, omega^2/2> and the Wirtinger-Pfaffian identity (all basis 4-forms)",
+      "u(5) = line stabiliser of sigma_std; L01 in Stab(p) rotates its phase",
+      "charge matrix det -68, X/PQ neutrality of all 27 operators, tangent rank 35 with 12-dim pure-so(10) kernel",
+      "corollary: exact_210 Pati-Salam global orbit is unique"
+    ]
+  },
+  "sos_decomposition": {
+    "bracket_algebra_H_S": {
+      "H_S_reduced_form": "2 N_H^2 + 2|k| r0 N_H - 2|k| N_H |S| + (|S|^2 - r0^2)^2  (after Cauchy-Schwarz |H.H| <= N_H)",
+      "all_identities_exact": true,
+      "argument": "t = |S| - r0.  t <= 0: every term of 2 N_H^2 + 2|k| N_H (-t) + t^2 (|S| + r0)^2 is >= 0 and the sum is 0 iff N_H = 0 and t = 0 (|S| + r0 >= r0 > 0).  t > 0: the sum equals 2 (N_H - |k| t/2)^2 + t^2 [(|S| + r0)^2 - k^2/2] with (|S| + r0)^2 > 4 r0^2 > k^2/2, so it is > 0.  Hence V_HS + r0^4 = 0 iff H = 0 and |S| = r0 (Cauchy-Schwarz makes V_HS >= the reduced form).",
+      "boundary_remark_bracket_at_k2_eq_8r0^2": "-(r0 - s)*(3*r0 + s)",
+      "bracket_identity_residual": "0",
+      "completed_square_residual": "0",
+      "nonpositive_t_form_residual": "0"
+    },
+    "candidate_adapted_identity": "V = [-2|Phi|^2 + Q(Phi)] + (1/8)[||(M_Phi - 2)Sigma||^2 + ||C_Phi Sigma||^2 + W'(Sigma) - 2 r0^2 N_Sigma] + [2 N_H^2 + 2|k| r0 N_H + 2k Re(conj(H.H) conj(S)) + (|S|^2 - r0^2)^2 - r0^4] + ||H wedge Phi||^2 + (1/32)(|Phi17|^2 - x0^2)^2 - x0^4/32,  W' = 2 I54 + 2 I1050bar + I2772bar + (17/16) I4125",
+    "candidate_exact_certificate_checks": {
+      "A_square_recoupling_exact": true,
+      "C_p_sigma_std_vanishes": true,
+      "C_square_recoupling_exact": true,
+      "HS_sector_bounded_at_every_benchmark": true,
+      "H_self_quartic_basis_is_I1_I54": true,
+      "M_p_sigma_std_equals_2_sigma_std": true,
+      "Phi_H_term_is_exact_wedge_square": true,
+      "coefficient_map_equals_adapted_SOS_expansion_at_all_rational_points": true,
+      "coefficient_map_equals_adapted_SOS_expansion_symbolically": true,
+      "cubic_operator_exactly_hermitian": true,
+      "exact_210_global_bound_and_P_saturation": true,
+      "quartic_part_strictly_positive": true,
+      "self_projectors_complete_and_generators_antihermitian": true,
+      "sigma_std_exactly_in_minus_i_space": true,
+      "sigma_std_is_pure_2772bar": true,
+      "swapped_self_weights_all_at_least_one": true
+    },
+    "candidate_recorded_equality_conditions": [
+      "V_Phi(Phi) = -1 (|Phi| = 1 and I45 = I210 = I5940 = 0)",
+      "N_Sigma = r0^2 and Sigma (x) Sigma in 2772bar (pure: SO(10) orbit of sigma_std up to phase)",
+      "(M_Phi - 2) Sigma = 0 and C_Phi Sigma = 0",
+      "H = 0, |S| = r0, |Phi17| = x0"
+    ],
+    "candidate_unbound_unique_modulo_symmetry": "open (numerical evidence in numerical_global_search)",
+    "candidate_unbound_unique_modulo_symmetry_note": "the candidate's text before binding to this report (built with equality_report={}); the candidate records uniqueness as exact only by reading this module's committed report",
+    "eight_term_operator_expansion": {
+      "W_prime_minus_N2_coefficients": {
+        "1050bar": "1",
+        "2772bar": "0",
+        "4125": "1/16",
+        "54": "1"
+      },
+      "by_kappa_sign": {
+        "negative": {
+          "constant": "9*r0**4/8 + x0**4/32 + 1",
+          "constant_plus_V0": "0",
+          "kappa_sign": "negative",
+          "matches_operator_by_operator_and_constant_is_minus_V0": true,
+          "mismatched_operators": {},
+          "nonlinear_monomials": [],
+          "operators_compared": 27,
+          "terms_in_operators": {
+            "T1 (|Phi|^2 - 1)^2 + I45 + I210 + I5940": "-21*J0/200 + 2467*J2/28800 - 77*J3/3200 + 119*J4/115200 - 2*|Phi|^2 + 1",
+            "T2 (1/8)||(M_Phi - 2) Sigma||^2": "-<Sigma,M_Phi Sigma>/2 + N_Sigma/2 + 5*X1_Phi2_Sigma + 9*X2_Phi2_Sigma + 7*X3_Phi2_Sigma/2 - X4_Phi2_Sigma - 3*X5_Phi2_Sigma/2 + 3*X6_Phi2_Sigma/2",
+            "T3 (1/8)||C_Phi Sigma||^2": "X1_Phi2_Sigma/8 + X2_Phi2_Sigma/8 + X3_Phi2_Sigma/8 + X4_Phi2_Sigma/8 + X5_Phi2_Sigma/8 + X6_Phi2_Sigma/8",
+            "T4 (1/8)(W' - N^2)": "I1050bar_Sigma/8 + I4125_Sigma/128 + I54_Sigma/8",
+            "T5 (1/8)(N_Sigma - r0^2)^2": "I1050bar_Sigma/8 + I2772bar_Sigma/8 + I4125_Sigma/8 + I54_Sigma/8 - N_Sigma*r0**2/4 + r0**4/8",
+            "T6 V_HS + r0^4": "2Re(conj(H.H)conj(S))*kappa + 2*I1_H + 2*I54_H - 2*N_H*kappa*r0 + r0**4 - 2*r0**2*|S|^2 + |S|^4",
+            "T7 ||H wedge Phi||^2": "3*I1_PhiH/5 - I54_PhiH",
+            "T8 (1/32)(|Phi17|^2 - x0^2)^2": "x0**4/32 - x0**2*|Phi17|^2/16 + |Phi17|^4/32"
+          },
+          "unmapped_candidate_operators": []
+        },
+        "positive": {
+          "constant": "9*r0**4/8 + x0**4/32 + 1",
+          "constant_plus_V0": "0",
+          "kappa_sign": "positive",
+          "matches_operator_by_operator_and_constant_is_minus_V0": true,
+          "mismatched_operators": {},
+          "nonlinear_monomials": [],
+          "operators_compared": 27,
+          "terms_in_operators": {
+            "T1 (|Phi|^2 - 1)^2 + I45 + I210 + I5940": "-21*J0/200 + 2467*J2/28800 - 77*J3/3200 + 119*J4/115200 - 2*|Phi|^2 + 1",
+            "T2 (1/8)||(M_Phi - 2) Sigma||^2": "-<Sigma,M_Phi Sigma>/2 + N_Sigma/2 + 5*X1_Phi2_Sigma + 9*X2_Phi2_Sigma + 7*X3_Phi2_Sigma/2 - X4_Phi2_Sigma - 3*X5_Phi2_Sigma/2 + 3*X6_Phi2_Sigma/2",
+            "T3 (1/8)||C_Phi Sigma||^2": "X1_Phi2_Sigma/8 + X2_Phi2_Sigma/8 + X3_Phi2_Sigma/8 + X4_Phi2_Sigma/8 + X5_Phi2_Sigma/8 + X6_Phi2_Sigma/8",
+            "T4 (1/8)(W' - N^2)": "I1050bar_Sigma/8 + I4125_Sigma/128 + I54_Sigma/8",
+            "T5 (1/8)(N_Sigma - r0^2)^2": "I1050bar_Sigma/8 + I2772bar_Sigma/8 + I4125_Sigma/8 + I54_Sigma/8 - N_Sigma*r0**2/4 + r0**4/8",
+            "T6 V_HS + r0^4": "2Re(conj(H.H)conj(S))*kappa + 2*I1_H + 2*I54_H + 2*N_H*kappa*r0 + r0**4 - 2*r0**2*|S|^2 + |S|^4",
+            "T7 ||H wedge Phi||^2": "3*I1_PhiH/5 - I54_PhiH",
+            "T8 (1/32)(|Phi17|^2 - x0^2)^2": "x0**4/32 - x0**2*|Phi17|^2/16 + |Phi17|^4/32"
+          },
+          "unmapped_candidate_operators": []
+        },
+        "zero": {
+          "constant": "9*r0**4/8 + x0**4/32 + 1",
+          "constant_plus_V0": "0",
+          "kappa_sign": "zero",
+          "matches_operator_by_operator_and_constant_is_minus_V0": true,
+          "mismatched_operators": {},
+          "nonlinear_monomials": [],
+          "operators_compared": 25,
+          "terms_in_operators": {
+            "T1 (|Phi|^2 - 1)^2 + I45 + I210 + I5940": "-21*J0/200 + 2467*J2/28800 - 77*J3/3200 + 119*J4/115200 - 2*|Phi|^2 + 1",
+            "T2 (1/8)||(M_Phi - 2) Sigma||^2": "-<Sigma,M_Phi Sigma>/2 + N_Sigma/2 + 5*X1_Phi2_Sigma + 9*X2_Phi2_Sigma + 7*X3_Phi2_Sigma/2 - X4_Phi2_Sigma - 3*X5_Phi2_Sigma/2 + 3*X6_Phi2_Sigma/2",
+            "T3 (1/8)||C_Phi Sigma||^2": "X1_Phi2_Sigma/8 + X2_Phi2_Sigma/8 + X3_Phi2_Sigma/8 + X4_Phi2_Sigma/8 + X5_Phi2_Sigma/8 + X6_Phi2_Sigma/8",
+            "T4 (1/8)(W' - N^2)": "I1050bar_Sigma/8 + I4125_Sigma/128 + I54_Sigma/8",
+            "T5 (1/8)(N_Sigma - r0^2)^2": "I1050bar_Sigma/8 + I2772bar_Sigma/8 + I4125_Sigma/8 + I54_Sigma/8 - N_Sigma*r0**2/4 + r0**4/8",
+            "T6 V_HS + r0^4": "2*I1_H + 2*I54_H + r0**4 - 2*r0**2*|S|^2 + |S|^4",
+            "T7 ||H wedge Phi||^2": "3*I1_PhiH/5 - I54_PhiH",
+            "T8 (1/32)(|Phi17|^2 - x0^2)^2": "x0**4/32 - x0**2*|Phi17|^2/16 + |Phi17|^4/32"
+          },
+          "unmapped_candidate_operators": []
+        }
+      },
+      "operator_dictionary": {
+        "lambda::O03_B01_singlet_polynomial": "|Phi17|^2",
+        "lambda::O04_B01_singlet_polynomial": "|S|^2",
+        "lambda::O05_B01_126bar_norm": "N_Sigma",
+        "lambda::O06_B01_Hdag_H_norm": "N_H",
+        "lambda::O07_B01_Phi_norm": "|Phi|^2",
+        "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "<Sigma,M_Phi Sigma>",
+        "lambda::O20_B01_singlet_polynomial": "|Phi17|^4",
+        "lambda::O23_B01_singlet_polynomial": "|S|^4",
+        "lambda::O27_B01_126bar_self_projectors": "I54_Sigma",
+        "lambda::O27_B02_126bar_self_projectors": "I1050bar_Sigma",
+        "lambda::O27_B03_126bar_self_projectors": "I2772bar_Sigma",
+        "lambda::O27_B04_126bar_self_projectors": "I4125_Sigma",
+        "lambda::O36_B01_H_self_quartics": "I1_H",
+        "lambda::O36_B02_H_self_quartics": "I54_H",
+        "lambda::O44_B01_Phi2_Sigma_projectors": "X1_Phi2_Sigma",
+        "lambda::O44_B02_Phi2_Sigma_projectors": "X2_Phi2_Sigma",
+        "lambda::O44_B03_Phi2_Sigma_projectors": "X3_Phi2_Sigma",
+        "lambda::O44_B04_Phi2_Sigma_projectors": "X4_Phi2_Sigma",
+        "lambda::O44_B05_Phi2_Sigma_projectors": "X5_Phi2_Sigma",
+        "lambda::O44_B06_Phi2_Sigma_projectors": "X6_Phi2_Sigma",
+        "lambda::O46_B01_Phi2_HdagH_channels": "I1_PhiH",
+        "lambda::O46_B03_Phi2_HdagH_channels": "I54_PhiH",
+        "lambda::O48_B01_Phi_self_quartics": "J0",
+        "lambda::O48_B02_Phi_self_quartics": "J2",
+        "lambda::O48_B03_Phi_self_quartics": "J3",
+        "lambda::O48_B04_Phi_self_quartics": "J4",
+        "re::O12_B01_Hdag_Hdag_pair": "2Re(conj(H.H)conj(S))"
+      },
+      "passes": true,
+      "what_it_checks": "operator-level bookkeeping: the eight SOS terms, written in the candidate's operator dictionary with this module's self weights, reproduce candidate.expanded_sos_coefficient_map operator by operator (27 operators, 25 at kappa = 0), and their constant is -V0.  The link to the compiler's source-bound operators is the candidate's exact certificate (P0_candidate_exact_certificate_passes)."
+    },
+    "generators": {
+      "bracket_pairs": 990,
+      "phi_210_is_so10_representation_all_brackets": true,
+      "phi_casimir_minus_sum_T2_equals_24": true,
+      "phi_generators_antisymmetric": true,
+      "sigma_126bar_is_so10_representation_all_brackets": true,
+      "sigma_casimir_minus_sum_T2_equals_25": true,
+      "sigma_generators_antihermitian": true,
+      "vector_10_structure_constants_consistent": true
+    },
+    "phi_sym2": {
+      "commutes_with_diagonal_so10_action": true,
+      "commutes_with_swap": true,
+      "conclusion": "K is symmetric on Sym^2(210) with spectrum inside the 8 nodes, so the Lagrange polynomials are the orthogonal spectral projectors: I_kappa = ||P_kappa(Phi Phi^T)||^2 >= 0 and sum_kappa I_kappa = |Phi|^4",
+      "matches_repository_pair_casimir_at_integer_pair": true,
+      "minimal_polynomial": {
+        "int64_safe": true,
+        "maximum_intermediate_integer_entry": 1216512,
+        "product_final_nnz": 0,
+        "sym2_basis_columns": 22155,
+        "vanishes_on_sym2": true
+      },
+      "nnz": 564480,
+      "nodes": [
+        -4,
+        0,
+        2,
+        6,
+        12,
+        14,
+        16,
+        24
+      ],
+      "nodes_are_integers": true,
+      "operator": "K = sum_A G_A (x) G_A on R^210 (x) R^210 (exact int64 sparse)",
+      "spectral_bound_on_sym2": 24,
+      "symmetric": true
+    },
+    "self_weights_54_1050bar_2772bar_4125": {
+      "1050bar": "2",
+      "2772bar": "1",
+      "4125": "17/16",
+      "54": "2"
+    },
+    "sigma_sym2": {
+      "K_sigma_sigma_equals_kappa_2772bar_sigma_sigma": true,
+      "cartan_channel_kappa": "-5",
+      "channel_dimensions_from_traces": {
+        "1050bar": "1050",
+        "2772bar": "2772",
+        "4125": "4125",
+        "54": "54"
+      },
+      "channel_dimensions_match_recorded": true,
+      "commutes_with_diagonal_so10_action": true,
+      "commutes_with_swap": true,
+      "hermitian": true,
+      "imaginary_part_vanishes": true,
+      "kappa_nodes": {
+        "1050bar": "7",
+        "2772bar": "-5",
+        "4125": "1",
+        "54": "15"
+      },
+      "matches_repository_sigma_pair_casimir_on_sigma_sigma": true,
+      "minimal_polynomial": {
+        "int64_safe": true,
+        "maximum_intermediate_integer_entry": 576,
+        "product_final_nnz": 0,
+        "sym2_basis_columns": 8001,
+        "vanishes_on_sym2": true
+      },
+      "nnz_real": 220500,
+      "operator": "K = sum_A T_A (x) T_A on C^126 (x) C^126 (exact int64 sparse, Gaussian parts)",
+      "sym2_traces_tr_K^j_j=0..3": [
+        "8001",
+        "-1575",
+        "137025",
+        "200025"
+      ]
+    },
+    "statement": "V - V0 is the sum of eight terms, each >= 0: (|Phi|^2-1)^2 + I45 + I210 + I5940; (1/8)||(M_Phi-2)Sigma||^2; (1/8)||C_Phi Sigma||^2; (1/8)(W' - N^2) = (1/8) sum_q (w_q - 1) I_q; (1/8)(N_Sigma - r0^2)^2; V_HS + r0^4; ||H wedge Phi||^2; (1/32)(|Phi17|^2 - x0^2)^2",
+    "symbolic_coefficient_identity": {
+      "negative": {
+        "all_residuals_zero": true,
+        "parameters_compared": 27
+      },
+      "positive": {
+        "all_residuals_zero": true,
+        "parameters_compared": 27
+      },
+      "zero": {
+        "all_residuals_zero": true,
+        "parameters_compared": 25
+      }
+    }
+  },
+  "source_candidate": "g3_sm_pati_salam_candidate_v20 (27-parameter benchmark, adapted SOS27 identity)",
+  "status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN",
+  "theorem": "For every r0 > 0, x0 > 0 and real kappa with kappa^2 < 8 r0^2, the SM Pati-Salam benchmark potential V of g3_sm_pati_salam_candidate_v20 on the canonical 486-real chart (the 27-parameter family, 25 nonzero parameters at kappa = 0; V is the candidate's adapted SOS form, which equals the compiler potential exactly coefficient by coefficient and for each source-bound operator, and in float64 end to end) satisfies V >= V0 = -1 - r0^4/8 - r0^4 - x0^4/32 and {V = V0} = G.(p, r0 sigma_std, 0, r0, x0) = {(Phi, Sigma, 0, S, Phi17) : (Phi, Sigma) in SO(10).(p, r0 sigma_std), |S| = r0, |Phi17| = x0}, G = SO(10) x U(1)_X x U(1)_PQ, p = e6789, sigma_std = z1^z2^z3^z4^z5.  The global minimum is unique modulo G; the orbit has tangent dimension 35 at the vacuum.  Here U(1)_PQ is the contract's accidental global symmetry (all 27 operators are PQ-neutral); modulo SO(10) x U(1)_X alone {V = V0} is a circle of orbits (tangent rank 34 < 35; Phi17^4 conj(S)^17 has PQ charge -68), the axion direction.  Classical theorems are cited as listed in cited_theorems.  Corollary: the 210-only potential -2 v^2 |Phi|^2 + Q(Phi) has global-minimum set exactly SO(10).(v p).",
+  "theorem_claimed": true,
+  "verdict": "Exact: for every r0 > 0, x0 > 0 and kappa^2 < 8 r0^2 the equality set {V = V0} of the SM Pati-Salam benchmark potential (27 parameters, 25 nonzero at kappa = 0; V is the candidate's adapted SOS form, which equals the compiler potential exactly coefficient by coefficient and for each source-bound operator, and in float64 end to end) is the single orbit G.(p, r0 sigma_std, 0, r0, x0), G = SO(10) x U(1)_X x U(1)_PQ, so its global minimum is unique modulo G, and the 210-only Pati-Salam vacuum orbit of exact_210 is unique.  Caveat: U(1)_PQ is the contract's accidental global symmetry (all 27 operators are PQ-neutral); modulo SO(10) x U(1)_X alone {V = V0} is a circle of orbits (tangent rank 34 < 35; Phi17^4 conj(S)^17 has PQ charge -68), the axion direction, so the flag must not be read as uniqueness modulo the gauge group SO(10) x U(1)_X.  The proof combines exact integer/rational certificates (projector completeness, chart 210 action = natural Lambda^4 action, SO(10)-equivariance of the Pluecker interior and wedge tensors, invariant-theory identities for the 210, the Sym^2(126bar) channel structure, equivariance, the omega^2 and Wirtinger-Pfaffian identities, u(5) line stabiliser, charges, symbolic H/S square completion) with cited classical theorems (Pluecker relations, Kostant/Lichtenstein quadrics, Iwasawa, Wirtinger equality case, U(5) transitivity, highest-weight generation and Weyl dimension formula (Humphreys)) and elementary steps argued in the text (not machine-checked): Cauchy-Schwarz |H.H| <= N_H and the H/S sign argument, the Gram-Schmidt orbit step, integration of the Lie-algebra identities over connected SO(10) and U(5), the Iwasawa N and A action on sigma_std, and the corollary's rescaling (scope.elementary_not_machine_checked).  G3 stays open: the candidate is not wired into the gate and its physics caveats are unchanged."
+}
