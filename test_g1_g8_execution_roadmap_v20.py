@@ -46,6 +46,7 @@ def test_roadmap_audit_succeeds_with_attested_contract_and_g3_open():
         "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN"
         in report["scientific_blockers"]
     )
+    assert "G3_SM_PRESERVING_TARGET_REQUIRED" in report["scientific_blockers"]
 
 
 def test_wave_zero_is_first_on_the_critical_path():
@@ -326,6 +327,9 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
         task for task in report["tasks"] if task["id"] == "W3-G3-FULL-STATIONARITY"
     )
     assert "SU(5)+Delta" in g3_task["deliverable"]
+    assert g3_task["deliverable"].startswith("construct an SM-preserving G3 candidate")
+    assert "not an SM vacuum" in g3_task["deliverable"]
+    assert "prove a uniform coercive global gap" not in g3_task["deliverable"]
     assert "four-real-dimensional SU(3) regression is historical" in g3_task["deliverable"]
     assert "corrected v21 exact theorem covers every real Phi210" in g3_task["deliverable"]
     assert "exact SU(4) stabilizer" in g3_task["deliverable"]
@@ -343,7 +347,7 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "legacy v20 assembled physical target is rejected" in g3_task["deliverable"]
     assert "corrected 6585x19594 standard positive-Gram map" in g3_task["deliverable"]
     assert "strict 22-block/824-pivot primal" in g3_task["deliverable"]
-    assert "Global Sigma, general/full H, the full Hessian, and G3 remain open" in g3_task["deliverable"]
+    assert "Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)" in g3_task["deliverable"]
     assert "486-field" in g3_task["acceptance"]
     assert "478x1414 integer map" in report["verdict"]
     assert "kernel dimension 936" in report["verdict"]
@@ -354,7 +358,7 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "corrected 6585x19594 standard positive-Gram map" in report["verdict"]
     assert "strict 22-block/824-pivot primal" in report["verdict"]
     assert "every real Phi210" in report["verdict"]
-    assert "Global Sigma, general/full H, the full Hessian, and G3 remain open" in report["verdict"]
+    assert "Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)" in report["verdict"]
     assert "only a four-real-dimensional Phi sub-slice" not in report["verdict"]
     assert "arbitrary-Phi bound remain open" not in report["verdict"]
     assert "coordinate Schur matrix" not in report["verdict"]

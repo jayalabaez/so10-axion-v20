@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for the effective Higgs quartic at the tuned G3 target."""
+"""Tests for the tree-level effective Higgs quartic at the tuned r = 1/5 G3 point."""
 from __future__ import annotations
 
 import json
@@ -24,7 +24,10 @@ class TunedTargetQuarticTest(unittest.TestCase):
         self.assertFalse(flags["g3_closed"])
         self.assertFalse(flags["whole_model_validated"])
         self.assertFalse(flags["whole_model_excluded"])
-        self.assertTrue(flags["tree_level_matching_only"])
+        self.assertTrue(flags["tree_level_only"])
+        outcomes = self.report["scientific_outcomes"]
+        self.assertFalse(outcomes["certified_point_is_sm_vacuum"])
+        self.assertTrue(outcomes["conclusions_conditional_on_sm_vacuum_and_sm_running"])
 
     def test_zero_modes_are_goldstones_plus_the_massless_doublet(self) -> None:
         hessian = self.report["tuned_point_hessian"]
@@ -44,29 +47,29 @@ class TunedTargetQuarticTest(unittest.TestCase):
         for row in result["directions"].values():
             self.assertEqual(sorted(row["lambda_direct_by_parameter"]), ["lambda::O36_B02_H_self_quartics"])
 
-    def test_one_loop_higgs_mass_and_required_matching(self) -> None:
+    def test_conditional_two_loop_statement(self) -> None:
         running = self.report["sm_running"]
-        self.assertAlmostEqual(running["reference_m_h_certified_GeV"], 173.42, delta=0.05)
-        self.assertAlmostEqual(running["reference_m_h_bfb_floor_GeV"], 134.78, delta=0.05)
-        self.assertAlmostEqual(running["reference_m_h_lambda_zero_GeV"], 133.59, delta=0.05)
-        self.assertAlmostEqual(running["reference_lambda_gut_required"], -0.0335, delta=5.0e-4)
+        predictions = running["predictions"]
+        self.assertAlmostEqual(running["lambda_gut_required_for_sm_two_loop"], -0.015112, delta=2.0e-6)
+        self.assertAlmostEqual(predictions["certified_lambda_eff"]["m_h_tree_GeV"], 173.0, delta=0.5)
+        self.assertAlmostEqual(predictions["zero"]["m_h_tree_GeV"], 128.25, delta=0.2)
         outcomes = self.report["scientific_outcomes"]
-        self.assertTrue(outcomes["certified_coupling_point_excluded_by_higgs_mass"])
-        self.assertTrue(outcomes["sharper_BFB_bound_alone_cannot_reach_observed_m_h"])
-        self.assertTrue(outcomes["negative_gut_matching_required"])
+        self.assertTrue(outcomes["tree_level_local_minimum_requires_lambda_eff_nonnegative"])
+        self.assertTrue(outcomes["sm_matching_would_require_negative_lambda_eff_two_loop"])
+        self.assertIn("Only for an SM vacuum", running["applicability"])
 
     def test_required_matching_round_trips_to_sm_lambda(self) -> None:
-        required = quartic.lambda_gut_for_sm(quartic.M_GUT_REFERENCE_GEV)
+        required = self.report["sm_running"]["lambda_gut_required_for_sm_two_loop"]
         self.assertAlmostEqual(
-            quartic.lambda_at_top(required, quartic.M_GUT_REFERENCE_GEV),
-            quartic.LAMBDA_SM_AT_MT,
-            places=10,
+            quartic.lambda_at_top(required),
+            quartic.stability.BUTTAZZO_INPUTS["lam"],
+            places=8,
         )
 
     def test_beta_tradeoff_floor_and_triplet_mass(self) -> None:
         rows = self.report["beta_tradeoff"]["rows"]
-        self.assertTrue(self.report["beta_tradeoff"]["lambda_H_floor_is_2_beta_squared"])
-        masses = [row["m_h_tree_GeV_at_floor"] for row in rows]
+        self.assertTrue(self.report["beta_tradeoff"]["lambda_H_boundary_is_2_beta_squared"])
+        masses = [row["m_h_tree_GeV_at_boundary_two_loop"] for row in rows]
         self.assertEqual(masses, sorted(masses, reverse=True))
         self.assertAlmostEqual(rows[0]["partner_triplet_mass_over_M"], math.sqrt(1 / 20) / 5, places=12)
 
@@ -74,7 +77,7 @@ class TunedTargetQuarticTest(unittest.TestCase):
         committed = json.loads(quartic.OUT_JSON.read_text(encoding="utf-8"))
         fresh = json.loads(json.dumps(target._jsonable(self.report), sort_keys=True))
         for key in ("status", "checks", "scientific_outcomes", "flags", "effective_quartic", "beta_tradeoff"):
-            self.assertEqual(committed[key], fresh[key], key)
+            self.assertEqual(target.report_mismatches(committed[key], fresh[key], key), [])
         for key in ("zero_modes", "gauge_orbit_rank", "symmetry_orbit_rank_gauge_plus_X_plus_PQ"):
             self.assertEqual(committed["tuned_point_hessian"][key], fresh["tuned_point_hessian"][key], key)
 

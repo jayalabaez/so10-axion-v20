@@ -1,41 +1,50 @@
 #!/usr/bin/env python3
 """Physical-target audit of the certified SU(5)+Delta chiral-H G3 candidate.
 
-The G3 route certifies an exactly stationary point with a strict
-physical-quotient minimum at
+The G3 route certifies an exactly stationary point that is a strict local
+minimum modulo its 38 symmetry directions:
 
     (Phi, Sigma, H, S, Phi17) = (F, r Delta_R, H_chi, r, 1),  r = 1/5,
     H_chi = (e6 + i e7)/sqrt(2).
 
 This module asks whether that point can be the physical vacuum.  It cannot.
 Every number below comes from the repository's live 51-parameter exact-X
-derivative compiler on the canonical 486-real field chart; mass-squared
-values are Hessian eigenvalues in units of the benchmark scale M (|Phi|=1).
+derivative compiler on the canonical 486-real field chart (mass-squared values
+are Hessian eigenvalues in units of the benchmark scale M, |Phi| = 1), plus the
+exact integer charge audit g3_sigma_hypercharge_audit_v20.
 
-* The 10_H splits as (6,1,1)+(1,2,2) with components 0..5 and 6..9.  H_chi
-  lies entirely in the (1,2,2) electroweak-doublet block and
-  |<H>|/|<Phi>| = 1, so electroweak symmetry is broken at the GUT scale.
+* It is not a Standard-Model vacuum.  The certified Delta_R =
+  z1^z2^z3^(e67+e89) is the T3R = 0, B-L = -2, Y = -1 component of the
+  126bar triplet, so (F, r Delta_R) leaves SU(3)_c x SU(2)_L x U(1)_T3R
+  unbroken; hypercharge breaks at r M_GUT.  (A vev along H_chi alone would be
+  SU(2)_L x U(1)_Y-equivalent to a neutral one; the failure is the Sigma
+  direction.)
+* H_chi lies entirely in the (1,2,2) block (components 6..9) of the 10_H with
+  |<H>|/|<Phi>| = 1, so SU(2)_L also breaks at the GUT scale.
 * At the GUT point (F, r Delta_R, H=0, r, 1) the 10_H mass matrix is purely
-  Hermitian and SM block diagonal, and all ten complex modes are tachyonic:
-  doublets at -2 and -4/5, colour triplets at -1.998 and -0.802.
-* Inside each SU(5) five-plet the doublet-triplet splitting is exactly
-  beta r^2 = 1/500.  Phi=F is an SU(5) singlet with no 54 component, so the
-  54 channel gives no H mass, and only beta O35_45 splits a five-plet.
-* O06 enters as the identity.  Tuning only O06 from -2 to 0 leaves exactly
-  one massless doublet, with its colour-triplet partner at m_T^2 = beta r^2
-  M^2, i.e. M_T ~ 0.045 M, which G8 must accommodate.
-* Every S and Phi17 portal coefficient vanishes.  This includes kappa_H, the
-  SARAH ``kappaH H10.H10.S`` term, census orbit O12.  The axion singlet S
-  therefore decouples from the GUT fields in the benchmark.
-* The certified vevs are not at the repository's physical hierarchy.  Sigma
-  and S sit at r = 1/5 of M_GUT, so PQ and B-L break near 2e15 GeV instead of
-  M_I ~ 6.3e11 GeV.  At the physical hierarchy the tuned triplet partner would
-  sit at sqrt(beta) M_I ~ 1.4e11 GeV.
+  Hermitian and block diagonal between components 0..5 and 6..9, and all ten
+  complex modes are tachyonic: -2 and -4/5 on the (1,2,2) block,
+  -1.998 and -0.802 on the (6,1,1) block.
+* With this Delta_R the beta O35_45 term acts only through B-L, so it leaves
+  the (1,2,2) block untouched and splits each F five-plet by exactly
+  beta r^2 = 1/500; F has no 54 component, so the 54 channel gives no H mass.
+  These are properties of this non-SM configuration: for a hypercharge-neutral
+  Sigma the moment map also has a T3R part.
+* O06 enters as the identity.  Tuning only O06 from -2 to 0 leaves exactly one
+  massless (1,2,2) doublet, with its (6,1,1) partner at m^2 = beta r^2 M^2.
+* Every S and Phi17 portal coefficient vanishes (kappa_H, the SARAH
+  ``kappaH H10.H10.S`` term, is census orbit O12), so S has no tree-level
+  scalar portal to the GUT fields; it still couples through U(1)_X and its
+  fermion Yukawas.
+* The certified vevs are not at the repository's physical hierarchy, and the
+  reference state is not a rescaling of this one: physical_hierarchy_state()
+  puts Phi along the Pati-Salam singlet p (overlap with F is 1/sqrt(10)), and
+  it uses the same non-SM Delta_R.
 
-The physical G3 target is the tuned point (F, r Delta_R, H ~ v_EW).  Its
-effective Higgs quartic is audited in
-``g3_tuned_target_effective_higgs_quartic_v20``.  This module closes no gate
-and excludes nothing.
+An SM-preserving target needs the Y = 0 singlet z1^z2^z3^z4^z5 of the
+126bar: with p it leaves the standard SM, with F it leaves SU(5) (with F the
+SM-type choice is the flipped direction).  This module closes no gate and
+excludes nothing.
 """
 from __future__ import annotations
 
@@ -51,6 +60,7 @@ from typing import Any
 import numpy as np
 
 import exact_gauged_u1x_g3_su5_delta_hsx_extension_v20 as candidate_source
+import g3_sigma_hypercharge_audit_v20 as hypercharge_audit
 import gauged_u1x_g2_derivative_audit_v20 as g2_audit
 import live_g2_arbitrary_component_potential_values_v20 as potential
 import live_g2_canonical_486_field_chart_v20 as chart
@@ -95,6 +105,56 @@ def _jsonable(value: Any) -> Any:
     if isinstance(value, float):
         return round(value, DIGITS) + 0.0
     return value
+
+
+def report_mismatches(
+    committed: Any,
+    fresh: Any,
+    path: str = "",
+    *,
+    rel_tol: float = 1.0e-9,
+    abs_tol: float = 1.0e-12,
+) -> list[str]:
+    """Paths where two JSON report trees differ beyond float round-off.
+
+    Floats come from LAPACK and ODE solvers whose last digits differ between
+    platforms; every other leaf (strings, booleans, integers) must match exactly.
+    """
+    if isinstance(committed, dict) and isinstance(fresh, dict):
+        if set(committed) != set(fresh):
+            return [f"{path}: keys differ {sorted(set(committed) ^ set(fresh))}"]
+        return [
+            mismatch
+            for key in sorted(committed)
+            for mismatch in report_mismatches(
+                committed[key], fresh[key], f"{path}.{key}", rel_tol=rel_tol, abs_tol=abs_tol
+            )
+        ]
+    if isinstance(committed, list) and isinstance(fresh, list):
+        if len(committed) != len(fresh):
+            return [f"{path}: length {len(committed)} != {len(fresh)}"]
+        return [
+            mismatch
+            for index, (left, right) in enumerate(zip(committed, fresh))
+            for mismatch in report_mismatches(
+                left, right, f"{path}[{index}]", rel_tol=rel_tol, abs_tol=abs_tol
+            )
+        ]
+    numeric = (int, float)
+    if (
+        (isinstance(committed, float) or isinstance(fresh, float))
+        and isinstance(committed, numeric)
+        and isinstance(fresh, numeric)
+        and not isinstance(committed, bool)
+        and not isinstance(fresh, bool)
+    ):
+        if math.isnan(committed) and math.isnan(fresh):
+            return []
+        if math.isclose(committed, fresh, rel_tol=rel_tol, abs_tol=abs_tol):
+            return []
+    elif committed == fresh:
+        return []
+    return [f"{path}: {committed!r} != {fresh!r}"]
 
 
 def involves_fields(fields: tuple[str, ...]) -> DirectionFilter:
@@ -412,10 +472,18 @@ def hierarchy_audit() -> dict[str, Any]:
         "Phi_direction_overlap_certified_F_vs_reference": abs(float(phi_c @ phi_p)),
         "Sigma_and_S_scale_over_M_GUT": {"certified": float(R), "physical": m_i / m_gut},
         "certified_PQ_and_B_minus_L_breaking_scale_GeV": float(R) * m_gut,
+        "reference_state_differs_in_orientation": (
+            "physical_hierarchy_state has Phi along the Pati-Salam singlet p, not F; with the certified O46/O06 "
+            "couplings at p the (6,1,1) states sit near M_GUT and two (1,2,2) doublets are light, so it is not a "
+            "rescaling of the F branch. Both states use the same non-SM Delta_R."
+        ),
         "triplet_partner_mass_GeV": {
             "certified_hierarchy": math.sqrt(beta) * float(R) * m_gut,
-            "physical_hierarchy": math.sqrt(beta) * m_i,
-            "formula": "M_T = sqrt(beta) <Sigma> when O06 is tuned for a massless doublet",
+            "F_branch_extrapolated_to_M_I": math.sqrt(beta) * m_i,
+            "formula": (
+                "M_T = sqrt(beta) <Sigma> for the T3R = 0 Delta_R with O06 tuned for a massless doublet; the M_I "
+                "value extrapolates this F-branch formula to a state that has not been constructed"
+            ),
         },
         "certified_candidate_at_physical_hierarchy": bool(
             all(0.5 < row["ratio"] < 2.0 for row in norms.values())
@@ -423,7 +491,26 @@ def hierarchy_audit() -> dict[str, Any]:
     }
 
 
+def sm_embedding_audit() -> dict[str, Any]:
+    """Bind the exact integer charge audit to the certified point."""
+    vacua = hypercharge_audit.named_vacua()
+    certified = vacua["certified_g3_point"]
+    gut = vacua["certified_gut_point_H0"]
+    return {
+        "source": "g3_sigma_hypercharge_audit_v20.named_vacua (exact integer arithmetic)",
+        "binding_ok": bool(certified["binding"]["bound"]),
+        "heavy_pair_stabilizer": certified["heavy_pair_stabilizer"]["label"],
+        "heavy_pair_stabilizer_dimension": certified["heavy_pair_stabilizer"]["stabilizer_dimension"],
+        "heavy_pair_centre_spectrum_on_10": certified["heavy_pair_stabilizer"]["centre_spectrum_on_vector_10"],
+        "H_chi_standard_embedding_charges": certified["H_standard_embedding_charges"],
+        "certified_point_is_sm_vacuum": bool(certified["is_sm_vacuum"]),
+        "gut_point_is_sm_vacuum": bool(gut["is_sm_vacuum"]),
+        "hypercharge_broken_by_delta_r": not bool(certified["heavy_pair_stabilizer"]["contains_standard_sm_algebra"]),
+    }
+
+
 def build_report() -> dict[str, Any]:
+    embedding = sm_embedding_audit()
     candidate = candidate_vacuum_audit()
     gut = gut_point_h10_audit()
     tuning = o06_tuning_audit()
@@ -482,6 +569,12 @@ def build_report() -> dict[str, Any]:
         "physical_hierarchy_reference_is_hierarchical": (
             hierarchy["Sigma_and_S_scale_over_M_GUT"]["physical"] < 1.0e-3
         ),
+        "exact_charge_audit_binds_to_the_certified_point": embedding["binding_ok"],
+        "exact_charge_audit_finds_non_sm_stabilizer": (
+            not embedding["certified_point_is_sm_vacuum"]
+            and embedding["heavy_pair_stabilizer_dimension"] == 12
+            and embedding["hypercharge_broken_by_delta_r"]
+        ),
         "no_gate_closed_or_model_excluded": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
@@ -489,7 +582,7 @@ def build_report() -> dict[str, Any]:
     return {
         "model_contract_id": MODEL_CONTRACT_ID,
         "status": (
-            "G3_CERTIFIED_CANDIDATE_BREAKS_ELECTROWEAK_SYMMETRY_AT_GUT_SCALE__TUNED_PHYSICAL_TARGET_OPEN"
+            "G3_CERTIFIED_POINT_IS_NOT_AN_SM_VACUUM__DELTA_R_BREAKS_HYPERCHARGE__H_BREAKS_SU2L_AT_GUT_SCALE__G3_OPEN"
             if ok
             else "G3_CANDIDATE_PHYSICAL_TARGET_AUDIT_FAILED"
         ),
@@ -499,24 +592,32 @@ def build_report() -> dict[str, Any]:
         "failures": failures,
         "checks": checks,
         "units": UNITS,
+        "sm_embedding": embedding,
         "certified_candidate": candidate,
         "gut_point_h10": gut,
         "o06_tuning": tuning,
         "singlet_portals": portals,
         "hierarchy": hierarchy,
         "physical_target": {
-            "state": "(Phi, Sigma, H, S, Phi17) = (F, r Delta_R, H ~ v_EW along the massless doublet, r, 1)",
+            "tuned_r_one_fifth_point": "(F, r Delta_R, H=0, r, 1) with O06 retuned -2 -> 0 (non-SM stabilizer)",
+            "sm_preserving_requirement": (
+                "Sigma along the Y = 0 singlet z1^z2^z3^z4^z5: with p (Pati-Salam branch) the stabilizer is the "
+                "standard SM; with F it is SU(5), so an F branch needs the flipped direction z1^z2^z3^zbar4^zbar5."
+            ),
             "hierarchy_caveat": (
-                "The certified point puts Sigma and S at r = 1/5 of M_GUT, so PQ and B-L break "
-                "near 2e15 GeV; the repository's physical hierarchy puts them at M_I ~ 6.3e11 GeV. "
-                "There the tuned triplet partner sits at sqrt(beta) M_I ~ 1.4e11 GeV, a G8 input."
+                "The certified point puts Sigma and S at r = 1/5 of M_GUT. The repository's physical_hierarchy_state "
+                "puts them at M_I ~ 6.3e11 GeV but along Phi = p (overlap with F 1/sqrt(10)) and with the same non-SM "
+                "Delta_R; the sqrt(beta) M_I ~ 1.4e11 GeV triplet figure is an extrapolation of this F-branch formula, "
+                "not a constructed state."
             ),
             "coefficient_change": {O06_ID: {"certified": "-2", "tuned": "0"}},
-            "doublet_triplet_splitting": "m_T^2 = beta r^2 M^2 = M^2/500",
-            "next": "effective Higgs quartic at the tuned point: g3_tuned_target_effective_higgs_quartic_v20.py",
+            "doublet_triplet_splitting": "m^2 = beta r^2 M^2 = M^2/500 for this T3R = 0 Delta_R configuration",
+            "next": "tree-level quartic at the tuned point: g3_tuned_target_effective_higgs_quartic_v20.py",
         },
         "flags": {
             "certified_candidate_is_physical_vacuum": False,
+            "certified_candidate_is_sm_vacuum": embedding["certified_point_is_sm_vacuum"],
+            "certified_candidate_breaks_hypercharge_at_gut_scale": ok and embedding["hypercharge_broken_by_delta_r"],
             "certified_candidate_breaks_electroweak_symmetry_at_gut_scale": ok
             and candidate["electroweak_symmetry_broken_at_gut_scale"],
             "gut_point_h10_fully_tachyonic": checks["gut_point_all_h10_modes_tachyonic"],
@@ -529,15 +630,14 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            "The certified G3 point is a mathematically valid strict minimum of the "
-            "benchmark potential but not a physical vacuum: its 10_H vev lies in an "
-            "electroweak doublet with |<H>|/|<Phi>| = 1. At (F, r Delta_R, H=0) every "
-            "10_H mode is tachyonic and each five-plet is split only by beta r^2 = 1/500. "
-            "Retuning O06 alone to 0 gives one massless doublet with a triplet partner "
-            "at M_T = M/sqrt(500). The axion singlet has no portal to the GUT fields in "
-            "the benchmark, and Sigma and S sit at M_GUT/5 rather than at the "
-            "intermediate scale M_I. G3 should be aimed at the tuned point at the "
-            "physical hierarchy; nothing is closed or excluded here."
+            "The certified G3 point is a strict local minimum (modulo its 38 symmetry directions) of the "
+            "benchmark potential, with global minimality open, but it is not a Standard-Model vacuum: its "
+            "Delta_R is the T3R = 0, Y = -1 component of the 126bar triplet, so hypercharge breaks at r M_GUT "
+            "and the unbroken group is SU(3) x SU(2)_L x U(1)_T3R; its 10_H vev also breaks SU(2)_L with "
+            "|<H>|/|<Phi>| = 1. At (F, r Delta_R, H=0) every 10_H mode is tachyonic and, for this Delta_R, each "
+            "five-plet is split only by beta r^2 = 1/500; retuning O06 alone to 0 leaves one massless (1,2,2) "
+            "doublet. An SM-preserving G3 target needs the Y = 0 singlet of the 126bar (with p: the standard SM; "
+            "with F: SU(5), so the flipped direction). Nothing is closed or excluded here."
         ),
     }
 
@@ -557,14 +657,15 @@ def _markdown(report: dict[str, Any]) -> str:
             "",
             report["verdict"],
             "",
+            f"- unbroken group of (F, r Delta_R): {report['sm_embedding']['heavy_pair_stabilizer']}; SM vacuum: `{report['sm_embedding']['certified_point_is_sm_vacuum']}`;",
             f"- |<H>|/|<Phi>| at the certified point: `{report['certified_candidate']['H_over_Phi_complex_norm_ratio']:.12g}` (H in the (1,2,2) block);",
-            f"- GUT-point doublets: `{[_clean(g['mass_squared']) for g in gut['weak_doublets']]}`;",
-            f"- GUT-point colour triplets: `{[_clean(g['mass_squared']) for g in gut['colour_triplets']]}`;",
+            f"- GUT-point (1,2,2) block: `{[_clean(g['mass_squared']) for g in gut['weak_doublets']]}`;",
+            f"- GUT-point (6,1,1) block: `{[_clean(g['mass_squared']) for g in gut['colour_triplets']]}`;",
             f"- tuned O06: `{_clean(tuning['tuned_O06'])}`; partner triplet m^2/M^2: `{_clean(tuning['partner_triplet_mass_squared_over_M2'])}`;",
             f"- S/Phi17 portals all zero: `{report['singlet_portals']['all_portals_vanish']}`;",
             f"- Sigma, S scale / M_GUT: certified `{report['hierarchy']['Sigma_and_S_scale_over_M_GUT']['certified']:.3g}`, "
             f"physical `{report['hierarchy']['Sigma_and_S_scale_over_M_GUT']['physical']:.3g}`; "
-            f"triplet partner at the physical hierarchy `{report['hierarchy']['triplet_partner_mass_GeV']['physical_hierarchy']:.3g}` GeV;",
+            f"F-branch triplet formula extrapolated to M_I `{report['hierarchy']['triplet_partner_mass_GeV']['F_branch_extrapolated_to_M_I']:.3g}` GeV (not a constructed state);",
             "- G3: `OPEN`; whole model: neither validated nor excluded.",
             "",
         ]

@@ -1,0 +1,2164 @@
+{
+  "certified_gut_couplings": {
+    "parameters": {
+      "lambda_H": "lambda::O36_B02_H_self_quartics",
+      "lambda_HS": "lambda::O34_B01_Hdag_H_norm",
+      "lambda_S": "lambda::O23_B01_singlet_polynomial"
+    },
+    "values": {
+      "lambda_H": 1.0,
+      "lambda_HS": 0.0,
+      "lambda_S": 1.0
+    }
+  },
+  "checks": {
+    "anchor_scales_match_repository_unification_anchor": true,
+    "benchmark_compatible_portal_solution_converged": true,
+    "benchmark_tree_lambda_eff_at_M_I_equals_lambda_SM_M_I": true,
+    "critical_top_mass_puts_instability_scale_at_M_I": true,
+    "every_window_found_and_interior_points_valid": true,
+    "fast_betas_match_exact_coefficient_tables": true,
+    "instability_scale_is_zero_of_lambda": true,
+    "no_gate_closed_or_model_excluded": true,
+    "one_loop_gauge_running_matches_analytic_solution": true,
+    "one_loop_portal_requirement_reproduces_superseded_5f25846_2_033": true,
+    "one_loop_reproduces_superseded_5f25846_minus_0_0335": true,
+    "portal_anomalous_dimension_is_half_sm_linear_lambda_terms": true,
+    "portal_betas_match_elias_miro_and_smash_after_convention_map": true,
+    "portal_betas_match_general_scalar_tensor_formula": true,
+    "pure_qcd_limit_matches_b0_to_b3": true,
+    "sm_round_trip_mt_to_mpl_and_back": true,
+    "three_loop_correction_smaller_than_two_loop_correction": true,
+    "three_loop_reproduces_buttazzo_planck_values": true,
+    "three_loop_top_slope_matches_published": true,
+    "threshold_matching_round_trip_on_grid": true,
+    "tree_level_vacuum_criterion_matches_numeric_minimum": true,
+    "two_loop_coefficients_two_transcriptions_agree_exactly": true,
+    "two_loop_minus_one_loop_is_positive_and_smaller_than_one_loop": true,
+    "two_stage_round_trip_recovers_mt_inputs": true,
+    "zero_portal_two_stage_equals_sm_running": true
+  },
+  "failures": [],
+  "flags": {
+    "conclusions_conditional_on_sm_singlet_eft": true,
+    "decay_rate_is_estimate": true,
+    "g3_closed": false,
+    "one_loop_portal_running": true,
+    "repository_vacuum_realizing_this_eft_exists": false,
+    "tree_level_matching_only": true,
+    "two_loop_sm_running": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "gut_single_stage_matching": {
+    "decay_estimate_window_Lambda_I_to_M_GUT_2L": {
+      "action_exceeds_literature_threshold": true,
+      "bounce_action_at_lambda_min": 1741.644313653629,
+      "critical_action_at_lambda_min": 532.514454980232,
+      "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
+      "is_estimate": true,
+      "lambda_min_in_window": -0.015111549966,
+      "lifetime_exceeds_age_of_universe": true,
+      "literature_action_threshold": 400.0,
+      "max_log10_decay_probability_in_past_light_cone": -525.118425526315,
+      "mu_at_lambda_min_GeV": 9917564798898620.0,
+      "negative_lambda_window": true,
+      "window_GeV": [
+        4764672963.254632,
+        9917564798898606.0
+      ]
+    },
+    "lambda_HS_required_at_lambda_H_eq_lambda_S_eq_1": {
+      "1L": 2.033258702519,
+      "1L_mu0_173.10": 2.033259122231,
+      "2L": 2.015054887557,
+      "3L+4QCD": 2.014341685423
+    },
+    "lambda_HS_required_at_lambda_H_eq_lambda_S_eq_1_at_1e16_GeV": {
+      "1L_mu0_173.10": 2.033261626043,
+      "2L": 2.015056650698
+    },
+    "lambda_eff_required_at_1e16_GeV": {
+      "1L_mu0_173.10": -0.033538209985,
+      "2L": -0.01511332638
+    },
+    "lambda_eff_required_at_M_GUT": {
+      "1L": -0.033535237842,
+      "1L_mu0_173.10": -0.033535664534,
+      "2L": -0.015111549966,
+      "3L+4QCD": -0.014393106408
+    },
+    "lambda_eff_zero_prediction": {
+      "M_h_scaled_to_buttazzo_GeV": 129.817343725946,
+      "lambda_at_mt": 0.135616372519,
+      "m_h_tree_GeV": 128.231400829595
+    },
+    "single_stage_point_copositive_at_lambda_H_eq_lambda_S_eq_1": {
+      "1L": true,
+      "1L_mu0_173.10": true,
+      "2L": true,
+      "3L+4QCD": true
+    },
+    "statement": "At the tuned GUT point the light doublet is exactly massless, so V = lambda_eff |h|^4 along it; a tree-level local minimum needs lambda_eff(M_GUT) > 0. SM running to M_GUT with m_h = 125.15 GeV requires lambda_eff(M_GUT) < 0 at every loop order.",
+    "tuned_point_is_tree_level_local_minimum": {
+      "1L": false,
+      "1L_mu0_173.10": false,
+      "2L": false,
+      "3L+4QCD": false
+    }
+  },
+  "headline": {
+    "Lambda_I_2L_GeV": 4764672963.254632,
+    "Lambda_I_3L_GeV": 6189835908.210099,
+    "Mt_max_absolute_stability_2L_GeV": 171.960731011549,
+    "Mt_max_absolute_stability_3L_GeV": 172.065851831422,
+    "Mt_max_absolute_stability_3L_PDG2024_Mh_alpha_s_GeV": 171.945716172848,
+    "Mt_max_absolute_stability_3L_PDG2024_landau_veff_estimate_GeV": 172.36268860264,
+    "bounce_action_window_Lambda_I_to_M_I": 3082.03790127123,
+    "lambda_SM_M_GUT_1L": -0.033535237842,
+    "lambda_SM_M_GUT_2L": -0.015111549966,
+    "lambda_SM_M_I_1L": -0.024828067805,
+    "lambda_SM_M_I_2L": -0.008539461847,
+    "lambda_SM_M_Pl_2L": -0.015078711314,
+    "lambda_SM_M_Pl_3L": -0.014361270053,
+    "lambda_S_max_radial_mode_below_Lambda_I": 1.423695e-05,
+    "lambda_min_2L": -0.015453710765,
+    "measured_Mt_above_bound_sigma_landau_veff_estimate": 0.662290556056,
+    "measured_Mt_above_bound_sigma_msbar": 1.994377966129,
+    "required_O34_with_O36_eq_O23_eq_1": 2.071948850539,
+    "tree_level_lambda_eff_M_GUT_O36_eq_O23_eq_1": -0.073243009813,
+    "tree_level_lambda_eff_M_GUT_window_middles": [
+      -0.012286835633,
+      -0.016272886989,
+      -0.017286652119,
+      -0.015935604654,
+      0.000341524307
+    ],
+    "tree_level_lambda_eff_M_I": -0.008539461847
+  },
+  "metastability_threshold_at_M_I_2L": {
+    "action_exceeds_literature_threshold": true,
+    "bounce_action_at_lambda_min": 3082.03790127123,
+    "critical_action_at_lambda_min": 493.866849709787,
+    "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
+    "is_estimate": true,
+    "lambda_min_in_window": -0.008539461847,
+    "lifetime_exceeds_age_of_universe": true,
+    "literature_action_threshold": 400.0,
+    "max_log10_decay_probability_in_past_light_cone": -1124.028405914871,
+    "mu_at_lambda_min_GeV": 631385523052.8802,
+    "negative_lambda_window": true,
+    "window_GeV": [
+      4764672963.254632,
+      631385523052.8793
+    ]
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 25,
+  "n_failed": 0,
+  "overall_state": "PHYSICAL_TARGET_CONSTRAINT",
+  "portal": {
+    "benchmark_O36_O23_kept_solve_O34": {
+      "classification": {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "lifetime_exceeds_age_estimate": true,
+        "perturbative_to_M_GUT": true,
+        "sm_segment_stable": false
+      },
+      "converged": true,
+      "delta_M_I": 0.400259849079,
+      "gut_values": {
+        "lambda_H": 1.0,
+        "lambda_HS": 2.071948850539,
+        "lambda_S": 1.0
+      },
+      "lambda_HS_M_I": 0.761581841206,
+      "lambda_H_M_I": 0.391720387232,
+      "lambda_S_M_I": 0.362268974886,
+      "max_residual": 0.0,
+      "radial_mode_mass_over_M_I": 1.203775684894,
+      "required_O34_at_M_GUT": 2.071948850539,
+      "stage": {
+        "at_end": {
+          "g2": 0.52469060269,
+          "g3": 0.528725921893,
+          "gY": 0.44625338644,
+          "lambda_H": 1.0,
+          "lambda_HS": 2.071948850539,
+          "lambda_S": 1.0,
+          "yt": 0.424231571101
+        },
+        "copositive_to_end": true,
+        "lambda_HS_at_match": 0.761581841206,
+        "lambda_H_at_match": 0.391720387232,
+        "lambda_S_at_match": 0.362268974886,
+        "largest_quartic_at_stop": "lambda_HS",
+        "max_abs_quartic": 2.071948850539,
+        "min_copositivity_margin": 0.362268974886,
+        "min_lambda_H": 0.391720387232,
+        "min_lambda_S": 0.362268974886,
+        "mu_at_min_lambda_H_GeV": 631385523052.8802,
+        "mu_match_GeV": 631385523052.8793,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_end": true,
+        "perturbativity_margin": 1.80253460891,
+        "reached_end": true
+      },
+      "tree_level_lambda_eff_at_M_I": -0.008539461847,
+      "tree_level_lambda_eff_at_gut_values": -0.073243009813,
+      "tree_level_local_minimum_at_M_I": false,
+      "tree_level_local_minimum_at_gut_values": false
+    },
+    "beta_functions": {
+      "16pi2_beta_lambda_H": "SM 1L+2L (lambda -> lambda_H) + lambda_HS^2",
+      "16pi2_beta_lambda_HS": "lambda_HS (12 lambda_H + 8 lambda_S + 4 lambda_HS + 6 yt^2 - 9/2 g2^2 - 3/2 gY^2)",
+      "16pi2_beta_lambda_S": "20 lambda_S^2 + 2 lambda_HS^2",
+      "literature_map": "Elias-Miro et al. 1203.0237 eq. (RG) and SMASH 1610.01639 App. A write 2 lambda_Hsigma (H^dag H)|S|^2: lambda_HS = 2 lambda_Hsigma, delta = lambda_Hsigma^2/lambda_sigma = lambda_HS^2/(4 lambda_S)",
+      "normalization": "V > lambda_H (H^dag H)^2 + lambda_S |S|^4 + lambda_HS (H^dag H)|S|^2, S complex",
+      "two_loop_portal_terms": "omitted in the baseline; singlet-only SMASH pieces used for a sensitivity estimate"
+    },
+    "certified_benchmark_110": {
+      "M_h_scaled_to_buttazzo_GeV": 175.127795402447,
+      "lambda_H_M_GUT": 0.999999999999,
+      "lambda_H_M_I": 0.432310218776,
+      "lambda_at_mt": 0.24680664464,
+      "m_h_tree_GeV": 172.988307140706,
+      "reproduces_observed_higgs_mass": false
+    },
+    "classification_grid": [
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 0.342484287847,
+          "lambda_HS": -0.118365317512,
+          "lambda_S": 0.011584425549
+        },
+        "lambda_HS_M_I": -0.1,
+        "lambda_H_M_I": 0.241460538153,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.342484287847,
+        "min_copositivity_margin": -0.001722731387,
+        "min_lambda_H_to_M_GUT": 0.241460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": 0.040131177414,
+        "tree_level_local_minimum_at_gut_values": true
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.015111549966,
+          "lambda_HS": 0.0,
+          "lambda_S": 0.010123885388
+        },
+        "lambda_HS_M_I": 0.0,
+        "lambda_H_M_I": -0.008539461847,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.015111549966,
+        "min_copositivity_margin": -0.015111549966,
+        "min_lambda_H_to_M_GUT": -0.015111549966,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015111549966,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.048770723978,
+          "lambda_HS": 0.051781298756,
+          "lambda_S": 0.010445838545
+        },
+        "lambda_HS_M_I": 0.05,
+        "lambda_H_M_I": 0.053960538153,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.053960538153,
+        "min_copositivity_margin": 0.01,
+        "min_lambda_H_to_M_GUT": 0.048770723978,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015400833179,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.342538507983,
+          "lambda_HS": 0.124912140103,
+          "lambda_S": 0.011667565549
+        },
+        "lambda_HS_M_I": 0.1,
+        "lambda_H_M_I": 0.241460538153,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.342538507983,
+        "min_copositivity_margin": 0.01,
+        "min_lambda_H_to_M_GUT": 0.241460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": 0.008213350778,
+        "tree_level_local_minimum_at_gut_values": true
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 11.999824664869,
+          "lambda_HS": 6.29332402819,
+          "lambda_S": 0.277941594503
+        },
+        "lambda_HS_M_I": 0.2,
+        "lambda_H_M_I": 0.991460538153,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 11.999824664869,
+        "min_copositivity_margin": 0.01,
+        "min_lambda_H_to_M_GUT": 0.991460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -23.624500829294,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 12.335189143777,
+          "lambda_HS": 12.566370614359,
+          "lambda_S": 0.910407544808
+        },
+        "lambda_HS_M_I": 0.4,
+        "lambda_H_M_I": 3.991460538153,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.566370614359,
+        "min_copositivity_margin": 0.01,
+        "min_lambda_H_to_M_GUT": 3.991460538153,
+        "mu_stop_GeV": 55877276633232.45,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 15.991460538153,
+          "lambda_HS": 0.8,
+          "lambda_S": 0.01
+        },
+        "lambda_HS_M_I": 0.8,
+        "lambda_H_M_I": 15.991460538153,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 15.991460538153,
+        "min_copositivity_margin": 0.01,
+        "min_lambda_H_to_M_GUT": 15.991460538153,
+        "mu_stop_GeV": 631385523052.8793,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 63.991460538153,
+          "lambda_HS": 1.6,
+          "lambda_S": 0.01
+        },
+        "lambda_HS_M_I": 1.6,
+        "lambda_H_M_I": 63.991460538153,
+        "lambda_S_M_I": 0.01,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 63.991460538153,
+        "min_copositivity_margin": 0.01,
+        "min_lambda_H_to_M_GUT": 63.991460538153,
+        "mu_stop_GeV": 631385523052.8793,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 0.035529125736,
+          "lambda_HS": -0.100902630724,
+          "lambda_S": 0.054580505441
+        },
+        "lambda_HS_M_I": -0.1,
+        "lambda_H_M_I": 0.041460538153,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.100902630724,
+        "min_copositivity_margin": -0.012858207857,
+        "min_lambda_H_to_M_GUT": 0.035529125736,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.011105386004,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.015111549966,
+          "lambda_HS": 0.0,
+          "lambda_S": 0.053258612486
+        },
+        "lambda_HS_M_I": 0.0,
+        "lambda_H_M_I": -0.008539461847,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.053258612486,
+        "min_copositivity_margin": -0.015111549966,
+        "min_lambda_H_to_M_GUT": -0.015111549966,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015111549966,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.003137415888,
+          "lambda_HS": 0.050890599031,
+          "lambda_S": 0.053591830552
+        },
+        "lambda_HS_M_I": 0.05,
+        "lambda_H_M_I": 0.003960538153,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.053591830552,
+        "min_copositivity_margin": -0.003137415888,
+        "min_lambda_H_to_M_GUT": -0.003137415888,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015218795844,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.035561642062,
+          "lambda_HS": 0.106064526528,
+          "lambda_S": 0.054647063798
+        },
+        "lambda_HS_M_I": 0.1,
+        "lambda_H_M_I": 0.041460538153,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.106064526528,
+        "min_copositivity_margin": 0.035561642062,
+        "min_lambda_H_to_M_GUT": 0.035561642062,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015903537427,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.247195313253,
+          "lambda_HS": 0.249312811286,
+          "lambda_S": 0.059761590339
+        },
+        "lambda_HS_M_I": 0.2,
+        "lambda_H_M_I": 0.191460538153,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.249312811286,
+        "min_copositivity_margin": 0.05,
+        "min_lambda_H_to_M_GUT": 0.191460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.012824866593,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 8.960105974042,
+          "lambda_HS": 3.235846047467,
+          "lambda_S": 0.199147071332
+        },
+        "lambda_HS_M_I": 0.4,
+        "lambda_H_M_I": 0.791460538153,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 8.960105974042,
+        "min_copositivity_margin": 0.05,
+        "min_lambda_H_to_M_GUT": 0.791460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -4.184324889123,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 12.120249482508,
+          "lambda_HS": 12.566370614359,
+          "lambda_S": 1.008967663079
+        },
+        "lambda_HS_M_I": 0.8,
+        "lambda_H_M_I": 3.191460538153,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.566370614359,
+        "min_copositivity_margin": 0.05,
+        "min_lambda_H_to_M_GUT": 3.191460538153,
+        "mu_stop_GeV": 37829064827316.04,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 12.791460538153,
+          "lambda_HS": 1.6,
+          "lambda_S": 0.05
+        },
+        "lambda_HS_M_I": 1.6,
+        "lambda_H_M_I": 12.791460538153,
+        "lambda_S_M_I": 0.05,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.791460538153,
+        "min_copositivity_margin": 0.05,
+        "min_lambda_H_to_M_GUT": 12.791460538153,
+        "mu_stop_GeV": 631385523052.8793,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 0.009589003557,
+          "lambda_HS": -0.101723126359,
+          "lambda_S": 0.115373186364
+        },
+        "lambda_HS_M_I": -0.1,
+        "lambda_H_M_I": 0.016460538153,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.115373186364,
+        "min_copositivity_margin": -0.03520053187,
+        "min_lambda_H_to_M_GUT": 0.009589003557,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.012833005322,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.015111549966,
+          "lambda_HS": 0.0,
+          "lambda_S": 0.113943156844
+        },
+        "lambda_HS_M_I": 0.0,
+        "lambda_H_M_I": -0.008539461847,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.113943156844,
+        "min_copositivity_margin": -0.015111549966,
+        "min_lambda_H_to_M_GUT": -0.015111549966,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015111549966,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.009099342185,
+          "lambda_HS": 0.052053488195,
+          "lambda_S": 0.114308569918
+        },
+        "lambda_HS_M_I": 0.05,
+        "lambda_H_M_I": -0.002289461847,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.114308569918,
+        "min_copositivity_margin": -0.009099342185,
+        "min_lambda_H_to_M_GUT": -0.009099342185,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015025331888,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.009621121335,
+          "lambda_HS": 0.106947017247,
+          "lambda_S": 0.115443886561
+        },
+        "lambda_HS_M_I": 0.1,
+        "lambda_H_M_I": 0.016460538153,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.115443886561,
+        "min_copositivity_margin": 0.009621121335,
+        "min_lambda_H_to_M_GUT": 0.009621121335,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.01514776171,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.096311252225,
+          "lambda_HS": 0.233597413662,
+          "lambda_S": 0.120488472852
+        },
+        "lambda_HS_M_I": 0.2,
+        "lambda_H_M_I": 0.091460538153,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.233597413662,
+        "min_copositivity_margin": 0.091460538153,
+        "min_lambda_H_to_M_GUT": 0.091460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.016910681745,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.839986573358,
+          "lambda_HS": 0.714116207574,
+          "lambda_S": 0.153075026894
+        },
+        "lambda_HS_M_I": 0.4,
+        "lambda_H_M_I": 0.391460538153,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.839986573358,
+        "min_copositivity_margin": 0.1,
+        "min_lambda_H_to_M_GUT": 0.391460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": 0.007123812743,
+        "tree_level_local_minimum_at_gut_values": true
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 11.652354323816,
+          "lambda_HS": 12.566370614359,
+          "lambda_S": 1.198954805861
+        },
+        "lambda_HS_M_I": 0.8,
+        "lambda_H_M_I": 1.591460538153,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.566370614359,
+        "min_copositivity_margin": 0.1,
+        "min_lambda_H_to_M_GUT": 1.591460538153,
+        "mu_stop_GeV": 257441650559484.97,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 12.07743286736,
+          "lambda_HS": 12.566370614359,
+          "lambda_S": 1.040877578351
+        },
+        "lambda_HS_M_I": 1.6,
+        "lambda_H_M_I": 6.391460538153,
+        "lambda_S_M_I": 0.1,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.566370614359,
+        "min_copositivity_margin": 0.1,
+        "min_lambda_H_to_M_GUT": 6.391460538153,
+        "mu_stop_GeV": 6667106004532.242,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.002650688402,
+          "lambda_HS": -0.106981350355,
+          "lambda_S": 0.266577439667
+        },
+        "lambda_HS_M_I": -0.1,
+        "lambda_H_M_I": 0.003960538153,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.266577439667,
+        "min_copositivity_margin": -0.106981350355,
+        "min_lambda_H_to_M_GUT": -0.002650688402,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.013383976015,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.015111549966,
+          "lambda_HS": 0.0,
+          "lambda_S": 0.264809055657
+        },
+        "lambda_HS_M_I": 0.0,
+        "lambda_H_M_I": -0.008539461847,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.264809055657,
+        "min_copositivity_margin": -0.015111549966,
+        "min_lambda_H_to_M_GUT": -0.015111549966,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015111549966,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.01203307328,
+          "lambda_HS": 0.055172255705,
+          "lambda_S": 0.265263719714
+        },
+        "lambda_HS_M_I": 0.05,
+        "lambda_H_M_I": -0.005414461847,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.265263719714,
+        "min_copositivity_margin": -0.01203307328,
+        "min_lambda_H_to_M_GUT": -0.01203307328,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.014901895487,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.00261629285,
+          "lambda_HS": 0.112610623465,
+          "lambda_S": 0.266663120363
+        },
+        "lambda_HS_M_I": 0.1,
+        "lambda_H_M_I": 0.003960538153,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.266663120363,
+        "min_copositivity_margin": -0.00261629285,
+        "min_lambda_H_to_M_GUT": -0.00261629285,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.014505031439,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.037904981182,
+          "lambda_HS": 0.238527660682,
+          "lambda_S": 0.272645931425
+        },
+        "lambda_HS_M_I": 0.2,
+        "lambda_H_M_I": 0.041460538153,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.272645931425,
+        "min_copositivity_margin": 0.03789622394,
+        "min_lambda_H_to_M_GUT": 0.037896223115,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.014264736346,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.262167420885,
+          "lambda_HS": 0.585525757172,
+          "lambda_S": 0.302994955381
+        },
+        "lambda_HS_M_I": 0.4,
+        "lambda_H_M_I": 0.191460538153,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 0.585525757172,
+        "min_copositivity_margin": 0.191460538153,
+        "min_lambda_H_to_M_GUT": 0.191460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.020708916017,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 10.049440062155,
+          "lambda_HS": 12.566370614359,
+          "lambda_S": 1.818022199023
+        },
+        "lambda_HS_M_I": 0.8,
+        "lambda_H_M_I": 0.791460538153,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.566370614359,
+        "min_copositivity_margin": 0.2,
+        "min_lambda_H_to_M_GUT": 0.791460538153,
+        "mu_stop_GeV": 9620007344590674.0,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 11.325274611163,
+          "lambda_HS": 12.566370614359,
+          "lambda_S": 1.326094908395
+        },
+        "lambda_HS_M_I": 1.6,
+        "lambda_H_M_I": 3.191460538153,
+        "lambda_S_M_I": 0.2,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.566370614359,
+        "min_copositivity_margin": 0.2,
+        "min_lambda_H_to_M_GUT": 3.191460538153,
+        "mu_stop_GeV": 15928059156920.156,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.009641786878,
+          "lambda_HS": -0.138522178676,
+          "lambda_S": 1.293243160592
+        },
+        "lambda_HS_M_I": -0.1,
+        "lambda_H_M_I": -0.003539461847,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 1.293243160592,
+        "min_copositivity_margin": -0.138522178676,
+        "min_lambda_H_to_M_GUT": -0.009641786878,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.013351142274,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.015111549966,
+          "lambda_HS": 0.0,
+          "lambda_S": 1.288151998264
+        },
+        "lambda_HS_M_I": 0.0,
+        "lambda_H_M_I": -0.008539461847,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 1.288151998264,
+        "min_copositivity_margin": -0.015111549966,
+        "min_lambda_H_to_M_GUT": -0.015111549966,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.015111549966,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.013742913784,
+          "lambda_HS": 0.072023471446,
+          "lambda_S": 1.28946199546
+        },
+        "lambda_HS_M_I": 0.05,
+        "lambda_H_M_I": -0.007289461847,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 1.28946199546,
+        "min_copositivity_margin": -0.013742913784,
+        "min_lambda_H_to_M_GUT": -0.013742913784,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.014748639517,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "QUARTIC_NOT_COPOSITIVE_ABOVE_THRESHOLD",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": -0.009591890487,
+          "lambda_HS": 0.14667148344,
+          "lambda_S": 1.293470036141
+        },
+        "lambda_HS_M_I": 0.1,
+        "lambda_H_M_I": -0.003539461847,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 1.293470036141,
+        "min_copositivity_margin": -0.009591890487,
+        "min_lambda_H_to_M_GUT": -0.009591890487,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.013749799726,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.007610368948,
+          "lambda_HS": 0.306622310885,
+          "lambda_S": 1.31024757116
+        },
+        "lambda_HS_M_I": 0.2,
+        "lambda_H_M_I": 0.011460538153,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 1.31024757116,
+        "min_copositivity_margin": 0.007423573377,
+        "min_lambda_H_to_M_GUT": 0.007423573369,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.010328462537,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.086564996908,
+          "lambda_HS": 0.696223931809,
+          "lambda_S": 1.387311182488
+        },
+        "lambda_HS_M_I": 0.4,
+        "lambda_H_M_I": 0.071460538153,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 1.387311182488,
+        "min_copositivity_margin": 0.071460538153,
+        "min_lambda_H_to_M_GUT": 0.071460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.000785225837,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "copositive_above_threshold": true,
+        "gut_values": {
+          "lambda_H": 0.703148819967,
+          "lambda_HS": 2.359576820001,
+          "lambda_S": 1.941083293393
+        },
+        "lambda_HS_M_I": 0.8,
+        "lambda_H_M_I": 0.311460538153,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 2.359576820001,
+        "min_copositivity_margin": 0.311460538153,
+        "min_lambda_H_to_M_GUT": 0.311460538153,
+        "mu_stop_GeV": 9917564798898620.0,
+        "perturbative_to_M_GUT": true,
+        "reached_M_GUT": true,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": -0.013925350476,
+        "tree_level_local_minimum_at_gut_values": false
+      },
+      {
+        "class": "NONPERTURBATIVE_BELOW_M_GUT",
+        "copositive_above_threshold": false,
+        "gut_values": {
+          "lambda_H": 7.992775105148,
+          "lambda_HS": 12.566370614359,
+          "lambda_S": 2.810797525934
+        },
+        "lambda_HS_M_I": 1.6,
+        "lambda_H_M_I": 1.271460538153,
+        "lambda_S_M_I": 0.5,
+        "lifetime_exceeds_age_estimate": true,
+        "max_abs_quartic": 12.566370614359,
+        "min_copositivity_margin": 0.5,
+        "min_lambda_H_to_M_GUT": 1.271460538153,
+        "mu_stop_GeV": 142837181509597.6,
+        "perturbative_to_M_GUT": false,
+        "reached_M_GUT": false,
+        "sm_segment_stable": false,
+        "threshold_round_trip_residual": 0.0,
+        "tree_level_lambda_eff_at_gut_values": null,
+        "tree_level_local_minimum_at_gut_values": null
+      }
+    ],
+    "gut_coefficient_requirements": {
+      "O36_eq_O23_eq_1_needs_O34": 2.071948850539,
+      "certified_benchmark_110": "lambda_HS = 0 is RG-invariant, so S decouples and lambda_H(M_GUT) = 1 predicts m_h(tree) = 173.0 GeV: excluded by the Higgs mass",
+      "comparison": "Every window point needs O34 != 0. O36 = 1 needs a large portal: O34 ~ 2.07 at O23 = 1, close to the upper (perturbativity) edge and above 2 sqrt(O36 O23) = 2, so that point is a tree-level saddle. The window middles have O36 ~ 0.1.",
+      "lambda_S_M_I_scan": [
+        {
+          "O23_lambda_S_M_GUT_range": [
+            0.010202281911,
+            0.924709059548
+          ],
+          "O34_lambda_HS_M_GUT_range": [
+            0.025023628175,
+            12.566148129093
+          ],
+          "O36_lambda_H_M_GUT_range": [
+            3.0923e-08,
+            12.311573043797
+          ],
+          "geometric_middle": {
+            "lambda_H": 0.134999574932,
+            "lambda_HS": 0.079926677522,
+            "lambda_S": 0.010843284447
+          },
+          "lambda_S_M_I": 0.01
+        },
+        {
+          "O23_lambda_S_M_GUT_range": [
+            0.053678776985,
+            1.079032724191
+          ],
+          "O34_lambda_HS_M_GUT_range": [
+            0.057257525046,
+            12.566123980823
+          ],
+          "O36_lambda_H_M_GUT_range": [
+            3.0922e-08,
+            11.968428342541
+          ],
+          "geometric_middle": {
+            "lambda_H": 0.12327618707,
+            "lambda_HS": 0.17820539745,
+            "lambda_S": 0.056892465777
+          },
+          "lambda_S_M_I": 0.05
+        },
+        {
+          "O23_lambda_S_M_GUT_range": [
+            0.114861755165,
+            1.29156246384
+          ],
+          "O34_lambda_HS_M_GUT_range": [
+            0.083132665674,
+            12.566119589061
+          ],
+          "O36_lambda_H_M_GUT_range": [
+            3.0923e-08,
+            11.42562941418
+          ],
+          "geometric_middle": {
+            "lambda_H": 0.118427715203,
+            "lambda_HS": 0.257048712769,
+            "lambda_S": 0.121715265009
+          },
+          "lambda_S_M_I": 0.1
+        },
+        {
+          "O23_lambda_S_M_GUT_range": [
+            0.267052254915,
+            1.820464118031
+          ],
+          "O34_lambda_HS_M_GUT_range": [
+            0.12416277588,
+            12.566130217944
+          ],
+          "O36_lambda_H_M_GUT_range": [
+            3.0929e-08,
+            10.043215878601
+          ],
+          "geometric_middle": {
+            "lambda_H": 0.11318224923,
+            "lambda_HS": 0.382555786593,
+            "lambda_S": 0.283363077708
+          },
+          "lambda_S_M_I": 0.2
+        },
+        {
+          "O23_lambda_S_M_GUT_range": [
+            1.302818987062,
+            5.82421386433
+          ],
+          "O34_lambda_HS_M_GUT_range": [
+            0.247406914311,
+            12.566210931878
+          ],
+          "O36_lambda_H_M_GUT_range": [
+            1.2368807e-05,
+            4.879428305227
+          ],
+          "geometric_middle": {
+            "lambda_H": 0.101222489992,
+            "lambda_HS": 0.752017575239,
+            "lambda_S": 1.401479529932
+          },
+          "lambda_S_M_I": 0.5
+        }
+      ],
+      "nonzero_O34_required": "with O34 = 0 the Higgs mass forces lambda_H(M_GUT) = lambda_SM(M_GUT) < 0, which is not copositive"
+    },
+    "matching": {
+      "M_I_over_instability_scale": 132.513926542735,
+      "formula": "lambda_H(M_I) = lambda_SM(M_I) + lambda_HS^2/(4 lambda_S)",
+      "instability_scale_2L_GeV": 4764672963.254632,
+      "scale_GeV": 631385523052.8793,
+      "sm_couplings_at_M_I_2L": {
+        "g2": 0.554772434168,
+        "g3": 0.606887804221,
+        "gY": 0.412973014649,
+        "lam": -0.008539461847,
+        "yt": 0.496434869561
+      },
+      "tree_level_lambda_eff_at_M_I_every_solution": -0.008539461847,
+      "tree_level_lambda_eff_note": "the matching makes lambda_H - lambda_HS^2/(4 lambda_S) at M_I equal lambda_SM(M_I) for every (lambda_S, lambda_HS), so the M_I-matched tuned point is a tree-level saddle whenever lambda_SM(M_I) < 0"
+    },
+    "negative_portal_always_fails_at_M_I": true,
+    "radial_mode_threshold": {
+      "lambda_S_max_for_m_rho_below_Lambda_I_2L": 1.423695e-05,
+      "radial_mode_mass": "m_rho = sqrt(2 lambda_S) w = 2 sqrt(lambda_S) M_I for |<S>| = M_I (S = (x+iy)/sqrt(2))",
+      "scan": [
+        {
+          "decay_estimate_if_threshold_above_Lambda_I": {
+            "lifetime_exceeds_age_of_universe": true,
+            "negative_lambda_window": false
+          },
+          "lambda_S": 1e-06,
+          "lambda_SM_at_radial_mode_mass": 0.003265810609,
+          "radial_mode_below_instability_scale": true,
+          "radial_mode_mass_GeV": 1262771046.1057587,
+          "window": {
+            "delta_max": 0.90932913455,
+            "delta_min": 0.015736142265,
+            "gut_values_at_geometric_middle": {
+              "lambda_H": 0.138540771154,
+              "lambda_HS": 0.000791438581,
+              "lambda_S": 1.111153e-06
+            },
+            "gut_values_at_lower_edge": {
+              "lambda_H": 3.139e-08,
+              "lambda_HS": 0.000247820641,
+              "lambda_S": 1.012676e-06
+            },
+            "gut_values_just_below_upper_edge": {
+              "lambda_H": 12.381769601142,
+              "lambda_HS": 12.566111658521,
+              "lambda_S": 0.882493724371
+            },
+            "interior_points_copositive_and_perturbative": true,
+            "lambda_HS_max": 0.001907175015,
+            "lambda_HS_min": 0.000250887563,
+            "lambda_H_at_match_min": 0.019001952875,
+            "lambda_S": 1e-06,
+            "middle_classification": "ABSOLUTELY_STABLE_TO_M_GUT",
+            "mu_match_GeV": 1262771046.1057587,
+            "tree_level_lambda_eff_at_gut_values": {
+              "lower": -0.015161546865,
+              "middle": -0.002388252228,
+              "upper": -32.351455648406
+            },
+            "tree_level_lambda_eff_at_match": 0.003265810609,
+            "tree_level_local_minimum_at_gut_values": {
+              "lower": false,
+              "middle": false,
+              "upper": false
+            },
+            "upper_edge_binding_coupling": "lambda_HS",
+            "window_exists": true
+          }
+        },
+        {
+          "decay_estimate_if_threshold_above_Lambda_I": {
+            "lifetime_exceeds_age_of_universe": true,
+            "negative_lambda_window": false
+          },
+          "lambda_S": 1e-05,
+          "lambda_SM_at_radial_mode_mass": 0.000407234849,
+          "radial_mode_below_instability_scale": true,
+          "radial_mode_mass_GeV": 3993232669.0076947,
+          "window": {
+            "delta_max": 0.903439400308,
+            "delta_min": 0.015826715669,
+            "gut_values_at_geometric_middle": {
+              "lambda_H": 0.1335819963,
+              "lambda_HS": 0.00246416239,
+              "lambda_S": 1.1013264e-05
+            },
+            "gut_values_at_lower_edge": {
+              "lambda_H": 3.0939e-08,
+              "lambda_HS": 0.000784217493,
+              "lambda_S": 1.0117865e-05
+            },
+            "gut_values_just_below_upper_edge": {
+              "lambda_H": 12.381032819134,
+              "lambda_HS": 12.566108327222,
+              "lambda_S": 0.883401525378
+            },
+            "interior_points_copositive_and_perturbative": true,
+            "lambda_HS_max": 0.006011453735,
+            "lambda_HS_min": 0.000795656098,
+            "lambda_H_at_match_min": 0.016233950518,
+            "lambda_S": 1e-05,
+            "middle_classification": "ABSOLUTELY_STABLE_TO_M_GUT",
+            "mu_match_GeV": 3993232669.0076947,
+            "tree_level_lambda_eff_at_gut_values": {
+              "lower": -0.01519579045,
+              "middle": -0.004253989165,
+              "upper": -32.306199983595
+            },
+            "tree_level_lambda_eff_at_match": 0.000407234849,
+            "tree_level_local_minimum_at_gut_values": {
+              "lower": false,
+              "middle": false,
+              "upper": false
+            },
+            "upper_edge_binding_coupling": "lambda_HS",
+            "window_exists": true
+          }
+        },
+        {
+          "decay_estimate_if_threshold_above_Lambda_I": {
+            "action_exceeds_literature_threshold": true,
+            "bounce_action_at_lambda_min": 12484.268937465757,
+            "critical_action_at_lambda_min": 478.218757688074,
+            "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
+            "is_estimate": true,
+            "lambda_min_in_window": -0.002108168704,
+            "lifetime_exceeds_age_of_universe": true,
+            "literature_action_threshold": 400.0,
+            "max_log10_decay_probability_in_past_light_cone": -5214.161342530992,
+            "mu_at_lambda_min_GeV": 12627710461.0576,
+            "negative_lambda_window": true,
+            "window_GeV": [
+              4764672963.254632,
+              12627710461.057585
+            ]
+          },
+          "lambda_S": 0.0001,
+          "lambda_SM_at_radial_mode_mass": -0.002108168704,
+          "radial_mode_below_instability_scale": false,
+          "radial_mode_mass_GeV": 12627710461.057585,
+          "window": {
+            "delta_max": 0.896719011208,
+            "delta_min": 0.015886388067,
+            "gut_values_at_geometric_middle": {
+              "lambda_H": 0.129014356638,
+              "lambda_HS": 0.007685155298,
+              "lambda_S": 0.000109206735
+            },
+            "gut_values_at_lower_edge": {
+              "lambda_H": 3.1009e-08,
+              "lambda_HS": 0.002482003979,
+              "lambda_S": 0.000101102786
+            },
+            "gut_values_just_below_upper_edge": {
+              "lambda_H": 12.379833926778,
+              "lambda_HS": 12.566104270659,
+              "lambda_S": 0.884647872038
+            },
+            "interior_points_copositive_and_perturbative": true,
+            "lambda_HS_max": 0.018939049725,
+            "lambda_HS_min": 0.002520824315,
+            "lambda_H_at_match_min": 0.013778219363,
+            "lambda_S": 0.0001,
+            "middle_classification": "METASTABLE_LONG_LIVED_ESTIMATE",
+            "mu_match_GeV": 12627710461.057585,
+            "tree_level_lambda_eff_at_gut_values": {
+              "lower": -0.015232842437,
+              "middle": -0.006191617423,
+              "upper": -32.244411926358
+            },
+            "tree_level_lambda_eff_at_match": -0.002108168704,
+            "tree_level_local_minimum_at_gut_values": {
+              "lower": false,
+              "middle": false,
+              "upper": false
+            },
+            "upper_edge_binding_coupling": "lambda_HS",
+            "window_exists": true
+          }
+        },
+        {
+          "decay_estimate_if_threshold_above_Lambda_I": {
+            "action_exceeds_literature_threshold": true,
+            "bounce_action_at_lambda_min": 4211.879634830195,
+            "critical_action_at_lambda_min": 487.42909806005,
+            "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
+            "is_estimate": true,
+            "lambda_min_in_window": -0.006248741026,
+            "lifetime_exceeds_age_of_universe": true,
+            "literature_action_threshold": 400.0,
+            "max_log10_decay_probability_in_past_light_cone": -1617.508316240878,
+            "mu_at_lambda_min_GeV": 126277104610.5757,
+            "negative_lambda_window": true,
+            "window_GeV": [
+              4764672963.254632,
+              126277104610.57587
+            ]
+          },
+          "lambda_S": 0.01,
+          "lambda_SM_at_radial_mode_mass": -0.006248741026,
+          "radial_mode_below_instability_scale": false,
+          "radial_mode_mass_GeV": 126277104610.57587,
+          "window": {
+            "delta_max": 0.874239936928,
+            "delta_min": 0.015881250019,
+            "gut_values_at_geometric_middle": {
+              "lambda_H": 0.12040917288,
+              "lambda_HS": 0.076187713772,
+              "lambda_S": 0.010905549091
+            },
+            "gut_values_at_lower_edge": {
+              "lambda_H": 3.1044e-08,
+              "lambda_HS": 0.025079648797,
+              "lambda_S": 0.010236892056
+            },
+            "gut_values_just_below_upper_edge": {
+              "lambda_H": 12.308768987168,
+              "lambda_HS": 12.566097066605,
+              "lambda_S": 0.926653236473
+            },
+            "interior_points_copositive_and_perturbative": true,
+            "lambda_HS_max": 0.187001597526,
+            "lambda_HS_min": 0.025204166338,
+            "lambda_H_at_match_min": 0.009632508994,
+            "lambda_S": 0.01,
+            "middle_classification": "METASTABLE_LONG_LIVED_ESTIMATE",
+            "mu_match_GeV": 126277104610.57587,
+            "tree_level_lambda_eff_at_gut_values": {
+              "lower": -0.015360802605,
+              "middle": -0.01265537255,
+              "upper": -30.292602613368
+            },
+            "tree_level_lambda_eff_at_match": -0.006248741026,
+            "tree_level_local_minimum_at_gut_values": {
+              "lower": false,
+              "middle": false,
+              "upper": false
+            },
+            "upper_edge_binding_coupling": "lambda_HS",
+            "window_exists": true
+          }
+        }
+      ]
+    },
+    "stability_conditions": {
+      "above_threshold": "lambda_H > 0, lambda_S > 0, lambda_HS > -2 sqrt(lambda_H lambda_S) up to M_GUT",
+      "below_threshold": "lambda_SM(mu) > 0 for M_t < mu < mu_match",
+      "perturbativity": "|lambda_H|, |lambda_S|, |lambda_HS| < 4 pi up to M_GUT",
+      "reference": "Elias-Miro et al. 1203.0237 sec. 2 (mechanism needs M_S < Lambda_I); SMASH 1610.01639 sec. 6",
+      "tree_level_global_minimum_at_threshold": "with <S> != 0 and lambda_HS > 0, V = lambda_H x^2 + lambda_HS x y + lambda_S y^2 (x = |H|^2, y = |S|^2 - w >= -w) has its global minimum at the EW/S vacuum iff 4 lambda_H lambda_S >= lambda_HS^2, i.e. lambda_SM(mu_match) >= 0; otherwise S = 0, |H|^2 = lambda_HS w/(2 lambda_H) has V = w^2 lambda_S lambda_SM/lambda_H < 0",
+      "tree_level_local_minimum_at_tuned_point": "lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S) >= 0 with lambda_S > 0 (g3_tuned_target_portal_threshold_v20). Copositivity is weaker: the single-stage point (1, 1, 2.015) is copositive with lambda_eff < 0. The copositivity and perturbativity conditions above are RG-improved statements"
+    },
+    "two_loop_portal_sensitivity": [
+      {
+        "lambda_HS_min_one_loop_portal": 0.025188017188,
+        "lambda_HS_min_with_partial_two_loop_portal": 0.025188045509,
+        "lambda_S": 0.01,
+        "relative_shift": 1.124397e-06
+      },
+      {
+        "lambda_HS_min_one_loop_portal": 0.056037681029,
+        "lambda_HS_min_with_partial_two_loop_portal": 0.056038279337,
+        "lambda_S": 0.05,
+        "relative_shift": 1.0676884e-05
+      },
+      {
+        "lambda_HS_min_one_loop_portal": 0.078726094853,
+        "lambda_HS_min_with_partial_two_loop_portal": 0.0787284162,
+        "lambda_S": 0.1,
+        "relative_shift": 2.9486371e-05
+      },
+      {
+        "lambda_HS_min_one_loop_portal": 0.109754054352,
+        "lambda_HS_min_with_partial_two_loop_portal": 0.109763360618,
+        "lambda_S": 0.2,
+        "relative_shift": 8.4792e-05
+      },
+      {
+        "lambda_HS_min_one_loop_portal": 0.164169808629,
+        "lambda_HS_min_with_partial_two_loop_portal": 0.164231213299,
+        "lambda_S": 0.5,
+        "relative_shift": 0.000374031439
+      }
+    ],
+    "windows_lambda_H_positive_to_M_GUT": [
+      {
+        "delta_max": 1.086418361465,
+        "delta_min": 0.015860905246,
+        "gut_values_at_geometric_middle": {
+          "lambda_H": 0.134999574932,
+          "lambda_HS": 0.079926677522,
+          "lambda_S": 0.010843284447
+        },
+        "gut_values_at_lower_edge": {
+          "lambda_H": 3.0923e-08,
+          "lambda_HS": 0.025023628175,
+          "lambda_S": 0.010202281911
+        },
+        "gut_values_just_below_upper_edge": {
+          "lambda_H": 12.311573043797,
+          "lambda_HS": 12.566148129093,
+          "lambda_S": 0.924709059548
+        },
+        "interior_points_copositive_and_perturbative": true,
+        "lambda_HS_max": 0.208462789146,
+        "lambda_HS_min": 0.025188017188,
+        "lambda_H_at_match_min": 0.007321443399,
+        "lambda_S": 0.01,
+        "middle_classification": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "mu_match_GeV": 631385523052.8793,
+        "tree_level_lambda_eff_at_gut_values": {
+          "lower": -0.015344133561,
+          "middle": -0.012286835633,
+          "upper": -30.379713791741
+        },
+        "tree_level_lambda_eff_at_match": -0.008539461847,
+        "tree_level_local_minimum_at_gut_values": {
+          "lower": false,
+          "middle": false,
+          "upper": false
+        },
+        "upper_edge_binding_coupling": "lambda_HS",
+        "window_exists": true
+      },
+      {
+        "delta_max": 0.941817301091,
+        "delta_min": 0.015701108476,
+        "gut_values_at_geometric_middle": {
+          "lambda_H": 0.12327618707,
+          "lambda_HS": 0.17820539745,
+          "lambda_S": 0.056892465777
+        },
+        "gut_values_at_lower_edge": {
+          "lambda_H": 3.0922e-08,
+          "lambda_HS": 0.057257525046,
+          "lambda_S": 0.053678776985
+        },
+        "gut_values_just_below_upper_edge": {
+          "lambda_H": 11.968428342541,
+          "lambda_HS": 12.566123980823,
+          "lambda_S": 1.079032724191
+        },
+        "interior_points_copositive_and_perturbative": true,
+        "lambda_HS_max": 0.434008594636,
+        "lambda_HS_min": 0.056037681029,
+        "lambda_H_at_match_min": 0.007161646629,
+        "lambda_S": 0.05,
+        "middle_classification": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "mu_match_GeV": 631385523052.8793,
+        "tree_level_lambda_eff_at_gut_values": {
+          "lower": -0.015268685871,
+          "middle": -0.016272886989,
+          "upper": -24.616994036504
+        },
+        "tree_level_lambda_eff_at_match": -0.008539461847,
+        "tree_level_local_minimum_at_gut_values": {
+          "lower": false,
+          "middle": false,
+          "upper": false
+        },
+        "upper_edge_binding_coupling": "lambda_HS",
+        "window_exists": true
+      },
+      {
+        "delta_max": 0.876634058663,
+        "delta_min": 0.015494495027,
+        "gut_values_at_geometric_middle": {
+          "lambda_H": 0.118427715203,
+          "lambda_HS": 0.257048712769,
+          "lambda_S": 0.121715265009
+        },
+        "gut_values_at_lower_edge": {
+          "lambda_H": 3.0923e-08,
+          "lambda_HS": 0.083132665674,
+          "lambda_S": 0.114861755165
+        },
+        "gut_values_just_below_upper_edge": {
+          "lambda_H": 11.42562941418,
+          "lambda_HS": 12.566119589061,
+          "lambda_S": 1.29156246384
+        },
+        "interior_points_copositive_and_perturbative": true,
+        "lambda_HS_max": 0.592160133296,
+        "lambda_HS_min": 0.078726094853,
+        "lambda_H_at_match_min": 0.00695503318,
+        "lambda_S": 0.1,
+        "middle_classification": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "mu_match_GeV": 631385523052.8793,
+        "tree_level_lambda_eff_at_gut_values": {
+          "lower": -0.015042051823,
+          "middle": -0.017286652119,
+          "upper": -19.139551509602
+        },
+        "tree_level_lambda_eff_at_match": -0.008539461847,
+        "tree_level_local_minimum_at_gut_values": {
+          "lower": false,
+          "middle": false,
+          "upper": false
+        },
+        "upper_edge_binding_coupling": "lambda_HS",
+        "window_exists": true
+      },
+      {
+        "delta_max": 0.797016410138,
+        "delta_min": 0.015057440558,
+        "gut_values_at_geometric_middle": {
+          "lambda_H": 0.11318224923,
+          "lambda_HS": 0.382555786593,
+          "lambda_S": 0.283363077708
+        },
+        "gut_values_at_lower_edge": {
+          "lambda_H": 3.0929e-08,
+          "lambda_HS": 0.12416277588,
+          "lambda_S": 0.267052254915
+        },
+        "gut_values_just_below_upper_edge": {
+          "lambda_H": 10.043215878601,
+          "lambda_HS": 12.566130217944,
+          "lambda_S": 1.820464118031
+        },
+        "interior_points_copositive_and_perturbative": true,
+        "lambda_HS_max": 0.798506811562,
+        "lambda_HS_min": 0.109754054352,
+        "lambda_H_at_match_min": 0.006517978711,
+        "lambda_S": 0.2,
+        "middle_classification": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "mu_match_GeV": 631385523052.8793,
+        "tree_level_lambda_eff_at_gut_values": {
+          "lower": -0.014431971264,
+          "middle": -0.015935604654,
+          "upper": -11.641862543207
+        },
+        "tree_level_lambda_eff_at_match": -0.008539461847,
+        "tree_level_local_minimum_at_gut_values": {
+          "lower": false,
+          "middle": false,
+          "upper": false
+        },
+        "upper_edge_binding_coupling": "lambda_HS",
+        "window_exists": true
+      },
+      {
+        "delta_max": 0.598586459253,
+        "delta_min": 0.013475863033,
+        "gut_values_at_geometric_middle": {
+          "lambda_H": 0.101222489992,
+          "lambda_HS": 0.752017575239,
+          "lambda_S": 1.401479529932
+        },
+        "gut_values_at_lower_edge": {
+          "lambda_H": 1.2368807e-05,
+          "lambda_HS": 0.247406914311,
+          "lambda_S": 1.302818987062
+        },
+        "gut_values_just_below_upper_edge": {
+          "lambda_H": 4.879428305227,
+          "lambda_HS": 12.566210931878,
+          "lambda_S": 5.82421386433
+        },
+        "interior_points_copositive_and_perturbative": true,
+        "lambda_HS_max": 1.094153973856,
+        "lambda_HS_min": 0.164169808629,
+        "lambda_H_at_match_min": 0.004936401186,
+        "lambda_S": 0.5,
+        "middle_classification": "METASTABLE_LONG_LIVED_ESTIMATE",
+        "mu_match_GeV": 631385523052.8793,
+        "tree_level_lambda_eff_at_gut_values": {
+          "lower": -0.011733349872,
+          "middle": 0.000341524307,
+          "upper": -1.898724972745
+        },
+        "tree_level_lambda_eff_at_match": -0.008539461847,
+        "tree_level_local_minimum_at_gut_values": {
+          "lower": false,
+          "middle": true,
+          "upper": false
+        },
+        "upper_edge_binding_coupling": "lambda_HS",
+        "window_exists": true
+      }
+    ]
+  },
+  "scales_GeV": {
+    "M_GUT": 9917564798898606.0,
+    "M_I": 631385523052.8793,
+    "M_Pl": 1.2209e+19,
+    "anchor": {
+      "M_GUT_GeV": 9917564798898606.0,
+      "M_I_GeV": 631385523052.8793,
+      "available": true,
+      "matches": true,
+      "source": "scalar_vacuum_proton_decay_v20._unification_anchor()"
+    },
+    "colour_triplet_partner_sqrt_beta_M_I": 141182094955.54987
+  },
+  "scientific_outcomes": {
+    "M_I_matched_tuned_point_is_tree_level_saddle_at_M_I_for_every_solution": true,
+    "absolute_stability_excluded_beyond_2_sigma_under_both_definitions": false,
+    "absolute_stability_possible_at_central_inputs": false,
+    "absolute_stability_possible_at_central_inputs_if_radial_mode_below_Lambda_I": true,
+    "absolute_stability_top_mass_bound_below_measured_top_mass": true,
+    "benchmark_O36_O23_kept_O34_solution_exists_and_perturbative": true,
+    "benchmark_O36_O23_kept_is_tree_level_saddle": true,
+    "certified_benchmark_110_reproduces_higgs_mass": false,
+    "conclusion_independent_of_instability_scale_definition_at_buttazzo_central": true,
+    "ew_vacuum_lifetime_exceeds_age_of_universe_estimate": true,
+    "gut_single_stage_matching_requires_negative_lambda_eff_two_loop": true,
+    "lambda_H_positive_window_exists_above_M_I_for_every_scanned_lambda_S": true,
+    "n_metastable_grid_rows": 14,
+    "n_metastable_grid_rows_with_tree_lambda_eff_at_gut_nonnegative": 2,
+    "n_radial_windows": 4,
+    "n_radial_windows_with_tree_lambda_eff_at_gut_negative_at_every_point": 4,
+    "n_window_middles": 5,
+    "n_window_middles_with_tree_lambda_eff_at_gut_negative": 4,
+    "negative_portal_cannot_help_when_lambda_SM_M_I_negative": true,
+    "requires_metastability_at_central_inputs": true,
+    "requires_metastability_at_pdg2024_central_inputs_both_definitions": true,
+    "sm_instability_scale_below_M_I_at_central_inputs": true,
+    "tuned_gut_point_not_tree_level_local_minimum_in_single_stage_matching": true
+  },
+  "scope": [
+    "Only the complex singlet S is kept between M_I and M_GUT. Other states near M_I are omitted: any colour-triplet partner (the F-branch formula extrapolated to M_I gives sqrt(beta) M_I ~ 1.4e11 GeV, but no such state has been constructed) and light Sigma_126bar components.",
+    "The axion-sector vector-like fermion Yukawas (y S Q Qbar), which drive lambda_S through -6 y^4 and 12 y^2 lambda_S, are omitted, as are right-handed-neutrino Yukawas.",
+    "Threshold matching is tree level at mu = M_I (or at m_rho in the radial-mode scan). One-loop threshold corrections and the log of m_rho/M_I are omitted.",
+    "Portal running is one loop; the singlet-only two-loop pieces from SMASH App. A enter only as a sensitivity estimate. SM running below M_I is two loop (three loop + four-loop QCD as a cross-check).",
+    "Stability is judged on the RG-improved tree potential, with lambda evaluated at mu ~ field value. The MSbar zero Lambda_I is not the Landau-gauge effective-potential zero, which is ~6.5x higher (Buttazzo et al.). Both sit below M_I at the Buttazzo and PDG 2024 central inputs. The top-mass bound moves by ~0.4 GeV between the two definitions, and it is quoted for both.",
+    "The vacuum-decay numbers use the tree-level Fubini bounce, with no quantum, gravitational or thermal corrections. They are estimates.",
+    "Tree-level local minimality at the tuned point (lambda_eff >= 0) is evaluated on the (H, S) block only, at M_I and at the running GUT values; it is a necessary condition, not a 486-field Hessian test.",
+    "Identifying the GUT-scale light-field quartics with the tree-level coefficients O36_B02, O23 and O34 assumes no heavy-exchange shifts at M_GUT for S and HS; only the H shift was shown to vanish.",
+    "This is not an exact lower witness of the 486-field tree potential; the G3 gate stays open.",
+    "EFT mismatch: the repository's M_I/M_GUT anchor (two_loop_thresholds_v20 chain) runs a 2HDM below M_I and Pati-Salam above it, while this module runs the one-doublet SM below M_I and SM + singlet above. In a 2HDM the stability conditions differ (lambda3, lambda4 raise beta_lambda1,2), so the no-absolute-stability conclusions hold only if the low-energy EFT is exactly the SM.",
+    "No current repository vacuum realizes this EFT: the certified Delta_R (direct.delta_r) is the T3R = 0, Y = -1 component of the 126bar triplet, not the SM singlet (g3_sigma_hypercharge_audit_v20).",
+    "Above M_N ~ f M_I, SO(10) Dirac neutrino Yukawas y_nu ~ y_t add -2 y_nu^4 to beta_lambda_H; the dynamical Delta_R and its portals give further thresholds (a matrix over the S and Delta_R radial modes) and make lambda_HS = 0 non-RG-invariant at one loop.",
+    "For lambda_S << lambda_HS the relevant scale is the valley end h_c ~ sqrt2 (lambda_S/delta)^(1/4) M_I rather than m_rho; the radial-mode scan treats the threshold at m_rho and is optimistic there.",
+    "The Fubini bounce at 1/R ~ M_I has a central field above the threshold; the action is used as a conservative lower bound (V >= lambda_SM(M_I) |H|^4 at tree level). Inflationary and thermal Higgs fluctuations are not addressed.",
+    "With PDG 2024 inputs, the effective-potential criterion and matching at m_rho, absolute stability is allowed for small lambda_S; the 'metastable at central inputs' status refers to the Buttazzo 2013 central values and the MSbar criterion."
+  ],
+  "sm_running": {
+    "inputs": {
+      "M_W_GeV": 80.384,
+      "M_h_GeV": 125.15,
+      "M_t_GeV": 173.34,
+      "alpha_s_MZ": 0.1184,
+      "attribution_note": "These central values belong to M_t = 173.34 GeV, not 173.10 GeV (v2 of the paper). The superseded one-loop portal module of commit 5f25846 started them at 173.10; the shift in lambda(M_I) is 2e-6.",
+      "couplings_at_mu0": {
+        "g2": 0.64779,
+        "g3": 1.1666,
+        "gY": 0.3583,
+        "lam": 0.12604,
+        "yt": 0.9369
+      },
+      "linear_dependences": {
+        "g2": "0.64779 + 0.00004 (M_t - 173.34) + 0.00011 (M_W - 80.384)/0.014",
+        "g3": "1.1666 + 0.00314 (alpha_s - 0.1184)/0.0007 - 0.00046 (M_t - 173.34)",
+        "gY": "0.35830 + 0.00011 (M_t - 173.34) - 0.00020 (M_W - 80.384)/0.014",
+        "lambda": "0.12604 + 0.00206 (M_h - 125.15) - 0.00004 (M_t - 173.34)",
+        "theory_errors": {
+          "lam": 0.0003,
+          "yt": 0.0005
+        },
+        "yt": "0.93690 + 0.00556 (M_t - 173.34) - 0.00042 (alpha_s - 0.1184)/0.0007"
+      },
+      "mu0_GeV": 173.34,
+      "source": "Buttazzo et al. arXiv:1307.3536 v3/v4 (JHEP 1312 (2013) 089), NNLO MSbar at mu = M_t"
+    },
+    "instability_scale_definition": "first zero of the MSbar lambda(mu) (Buttazzo's Lambda_lambda ~ 2 Lambda_V); the Landau-gauge effective-potential zero Lambda_I ~ 13 Lambda_V is ~6.5x higher",
+    "runs": {
+      "1L": {
+        "couplings_at_M_GUT": {
+          "g2": 0.523171599636,
+          "g3": 0.531253300292,
+          "gY": 0.445087623727,
+          "lam": -0.033535237842,
+          "yt": 0.446154180506
+        },
+        "couplings_at_M_I": {
+          "g2": 0.553338236633,
+          "g3": 0.610093867679,
+          "gY": 0.412250389072,
+          "lam": -0.024828067805,
+          "yt": 0.518469919407
+        },
+        "four_loop_qcd": false,
+        "instability_scale_GeV": 91615144.88986781,
+        "lambda_at": {
+          "1e10": -0.016009085537,
+          "1e11": -0.021408378273,
+          "1e13": -0.028709418498,
+          "1e15": -0.032564676846,
+          "1e16": -0.033537784378,
+          "1e4": 0.064958660065,
+          "1e6": 0.024534516766,
+          "1e8": -0.000373983932,
+          "M_GUT": -0.033535237842,
+          "M_I": -0.024828067805,
+          "M_Pl": -0.033701353858
+        },
+        "lambda_min": -0.034083019023,
+        "log10_instability_scale": 7.961967272777,
+        "loops": 1,
+        "mu0_GeV": 173.34,
+        "mu_at_lambda_min_GeV": 4.1198949731707226e+17
+      },
+      "1L_superseded_5f25846_mu0_173.10": {
+        "couplings_at_M_GUT": {
+          "g2": 0.523167621099,
+          "g3": 0.531244091869,
+          "gY": 0.445092910254,
+          "lam": -0.033535664534,
+          "yt": 0.446145339388
+        },
+        "couplings_at_M_I": {
+          "g2": 0.553333529436,
+          "g3": 0.610079921133,
+          "gY": 0.412254589718,
+          "lam": -0.024830370325,
+          "yt": 0.518457647687
+        },
+        "four_loop_qcd": false,
+        "instability_scale_GeV": 91488298.0295185,
+        "lambda_at": {
+          "1e10": -0.016012755866,
+          "1e11": -0.021411231489,
+          "1e13": -0.028711034225,
+          "1e15": -0.032565431654,
+          "1e16": -0.033538209985,
+          "1e4": 0.064943017661,
+          "1e6": 0.024525132736,
+          "1e8": -0.000379874418,
+          "M_GUT": -0.033535664534,
+          "M_I": -0.024830370325,
+          "M_Pl": -0.033701053622
+        },
+        "lambda_min": -0.034083019023,
+        "log10_instability_scale": 7.961365548425,
+        "loops": 1,
+        "mu0_GeV": 173.1,
+        "mu_at_lambda_min_GeV": 4.1141907225341555e+17
+      },
+      "2L": {
+        "couplings_at_M_GUT": {
+          "g2": 0.524690604299,
+          "g3": 0.528725924088,
+          "gY": 0.44625338831,
+          "lam": -0.015111549966,
+          "yt": 0.42409345525
+        },
+        "couplings_at_M_I": {
+          "g2": 0.554772434168,
+          "g3": 0.606887804221,
+          "gY": 0.412973014649,
+          "lam": -0.008539461847,
+          "yt": 0.496434869561
+        },
+        "four_loop_qcd": false,
+        "instability_scale_GeV": 4764672963.254632,
+        "lambda_at": {
+          "1e10": -0.001624336614,
+          "1e11": -0.00587804624,
+          "1e13": -0.011521261302,
+          "1e15": -0.014413859057,
+          "1e16": -0.01511332638,
+          "1e4": 0.067614264863,
+          "1e6": 0.031861737352,
+          "1e8": 0.010987779793,
+          "M_GUT": -0.015111549966,
+          "M_I": -0.008539461847,
+          "M_Pl": -0.015078711314
+        },
+        "lambda_min": -0.015453710765,
+        "log10_instability_scale": 9.678033096973,
+        "loops": 2,
+        "mu0_GeV": 173.34,
+        "mu_at_lambda_min_GeV": 2.7511354158078797e+17
+      },
+      "3L+4QCD": {
+        "couplings_at_M_GUT": {
+          "g2": 0.524756847049,
+          "g3": 0.528731300136,
+          "gY": 0.446278323093,
+          "lam": -0.014393106408,
+          "yt": 0.423385360093
+        },
+        "couplings_at_M_I": {
+          "g2": 0.554839593144,
+          "g3": 0.606894098075,
+          "gY": 0.412991422044,
+          "lam": -0.007881206655,
+          "yt": 0.495716599674
+        },
+        "four_loop_qcd": true,
+        "instability_scale_GeV": 6189835908.210099,
+        "lambda_at": {
+          "1e10": -0.001026737746,
+          "1e11": -0.005243516895,
+          "1e13": -0.010835892168,
+          "1e15": -0.013701801844,
+          "1e16": -0.014394866795,
+          "1e4": 0.067772995908,
+          "1e6": 0.032210610428,
+          "1e8": 0.011483106796,
+          "M_GUT": -0.014393106408,
+          "M_I": -0.007881206655,
+          "M_Pl": -0.014361270053
+        },
+        "lambda_min": -0.014732359588,
+        "log10_instability_scale": 9.791679136079,
+        "loops": 3,
+        "mu0_GeV": 173.34,
+        "mu_at_lambda_min_GeV": 2.7561494312193286e+17
+      }
+    },
+    "scheme": "MSbar, top Yukawa only, no thresholds above M_t; mu0 = M_t",
+    "three_loop_planck_couplings": {
+      "g1": 0.61537140547,
+      "g2": 0.505456733251,
+      "g3": 0.487310827556,
+      "lambda": -0.014361270053,
+      "published": {
+        "dlambda_M_Pl_dMt_per_GeV": -0.0066,
+        "g1_M_Pl": 0.6154,
+        "g2_M_Pl": 0.5055,
+        "g3_M_Pl": 0.4873,
+        "lambda_M_Pl": -0.0143,
+        "yt_M_Pl": 0.3825
+      },
+      "yt": 0.382446765215
+    },
+    "top_mass_sensitivity": {
+      "2L": {
+        "+0": {
+          "Mt_GeV": 173.34,
+          "instability_scale_GeV": 4764672963.254632,
+          "lambda_M_GUT": -0.015111549966,
+          "lambda_M_I": -0.008539461847,
+          "lambda_M_Pl": -0.015078711314,
+          "lambda_min": -0.015453710765,
+          "log10_instability_scale": 9.678033096973,
+          "mu_at_lambda_min_GeV": 2.7511354158078797e+17
+        },
+        "+1": {
+          "Mt_GeV": 174.34,
+          "instability_scale_GeV": 566246052.8316537,
+          "lambda_M_GUT": -0.021784845119,
+          "lambda_M_I": -0.014909177939,
+          "lambda_M_Pl": -0.021601723413,
+          "lambda_min": -0.022087011189,
+          "log10_instability_scale": 8.753005187667,
+          "mu_at_lambda_min_GeV": 1.9638664245751203e+17
+        },
+        "-1": {
+          "Mt_GeV": 172.34,
+          "instability_scale_GeV": 112338384331.10306,
+          "lambda_M_GUT": -0.008542055322,
+          "lambda_M_I": -0.002319937761,
+          "lambda_M_Pl": -0.008611485885,
+          "lambda_min": -0.008907728757,
+          "log10_instability_scale": 11.050528173491,
+          "mu_at_lambda_min_GeV": 3.603957048690147e+17
+        },
+        "dlambda_M_Pl_dMt_per_GeV": -0.006495118764,
+        "dlog10_instability_scale_dMt_per_GeV": -1.148761492912
+      },
+      "3L+4QCD": {
+        "+0": {
+          "Mt_GeV": 173.34,
+          "instability_scale_GeV": 6189835908.210099,
+          "lambda_M_GUT": -0.014393106408,
+          "lambda_M_I": -0.007881206655,
+          "lambda_M_Pl": -0.014361270053,
+          "lambda_min": -0.014732359588,
+          "log10_instability_scale": 9.791679136079,
+          "mu_at_lambda_min_GeV": 2.7561494312193286e+17
+        },
+        "+1": {
+          "Mt_GeV": 174.34,
+          "instability_scale_GeV": 679773099.6775403,
+          "lambda_M_GUT": -0.021056021968,
+          "lambda_M_I": -0.014237005538,
+          "lambda_M_Pl": -0.020878377822,
+          "lambda_min": -0.021357067257,
+          "log10_instability_scale": 8.832363974468,
+          "mu_at_lambda_min_GeV": 1.981167934117522e+17
+        },
+        "-1": {
+          "Mt_GeV": 172.34,
+          "instability_scale_GeV": 173242819274.56317,
+          "lambda_M_GUT": -0.00783382379,
+          "lambda_M_I": -0.001675354596,
+          "lambda_M_Pl": -0.007899743769,
+          "lambda_min": -0.008194462641,
+          "log10_instability_scale": 11.238655242625,
+          "mu_at_lambda_min_GeV": 3.57635944219439e+17
+        },
+        "dlambda_M_Pl_dMt_per_GeV": -0.006489317026,
+        "dlog10_instability_scale_dMt_per_GeV": -1.203145634079
+      }
+    }
+  },
+  "status": "G3_SM_SINGLET_EFT_HIGGS_STABILITY__TUNED_POINT_TREE_SADDLE_FOR_GUT_OR_M_I_MATCHING__EW_VACUUM_METASTABLE_AT_BUTTAZZO_CENTRAL_INPUTS__G3_OPEN",
+  "top_mass_bound": {
+    "Mt_max_absolute_stability_threshold_at_M_I_GeV": {
+      "2L": 171.960731011549,
+      "3L+4QCD": 172.065851831422
+    },
+    "Mt_max_for_lambda_SM_M_GUT_nonnegative_GeV": {
+      "2L": 171.015369748553,
+      "3L+4QCD": 171.124368280043
+    },
+    "Mt_max_landau_veff_zero_definition_estimate_GeV": {
+      "2L": 172.376527133056,
+      "2L_PDG2024_Mh_alpha_s": 172.259545005572,
+      "3L+4QCD": 172.480480131061,
+      "3L+4QCD_PDG2024_Mh_alpha_s": 172.36268860264
+    },
+    "Mt_max_with_PDG2024_Mh_and_alpha_s_GeV": {
+      "2L": 171.841407799532,
+      "3L+4QCD": 171.945716172848
+    },
+    "definition": "largest M_t with lambda_SM(mu) > 0 for all mu < M_I, i.e. Lambda_I >= M_I",
+    "instability_scale_at_bound_GeV": 631385523484.4094,
+    "landau_veff_definition_note": "Same bound with the Landau-gauge effective-potential zero, estimated as 6.5 x the MSbar zero (Buttazzo et al.: Lambda_lambda ~ 2 Lambda_V, Lambda_I ~ 13 Lambda_V), i.e. lambda_SM(M_I/6.5) = 0. The spread between the two definitions is a theory systematic of the RG-improved criterion.",
+    "measured_minus_bound_in_sigma_2L_PDG_like": 2.327608321257,
+    "measured_minus_bound_in_sigma_3L_PDG_like": 1.994377966129,
+    "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate": 0.662290556056,
+    "measured_top_mass": {
+      "Mt_GeV": 172.57,
+      "error_GeV": 0.29,
+      "source": "PDG 2024 average of direct measurements (MC-mass interpretation ambiguity ~0.5 GeV not included)"
+    },
+    "pdg2024_central": {
+      "inputs": {
+        "Mh_GeV": 125.2,
+        "Mt_GeV": 172.57,
+        "alpha_s": 0.118,
+        "couplings_at_mt": {
+          "g2": 0.6477592,
+          "g3": 1.165159914286,
+          "gY": 0.3582153,
+          "lam": 0.1261738,
+          "yt": 0.9328588
+        }
+      },
+      "runs": {
+        "2L": {
+          "decay_estimate": {
+            "action_exceeds_literature_threshold": true,
+            "bounce_action_at_lambda_min": 5866.697754825191,
+            "critical_action_at_lambda_min": 493.866849709787,
+            "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
+            "is_estimate": true,
+            "lambda_min_in_window": -0.004486160046,
+            "lifetime_exceeds_age_of_universe": true,
+            "literature_action_threshold": 400.0,
+            "max_log10_decay_probability_in_past_light_cone": -2333.390814290874,
+            "mu_at_lambda_min_GeV": 631385523052.8802,
+            "negative_lambda_window": true,
+            "window_GeV": [
+              31700452308.34721,
+              631385523052.8793
+            ]
+          },
+          "instability_below_M_I_landau_veff_estimate": true,
+          "instability_below_M_I_msbar": true,
+          "lambda_M_GUT": -0.010917116974,
+          "lambda_M_I": -0.004486160046,
+          "landau_veff_zero_estimate_GeV": 206052940004.25687,
+          "msbar_instability_scale_GeV": 31700452308.34721
+        },
+        "3L+4QCD": {
+          "decay_estimate": {
+            "action_exceeds_literature_threshold": true,
+            "bounce_action_at_lambda_min": 6853.29040291024,
+            "critical_action_at_lambda_min": 493.866849709787,
+            "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
+            "is_estimate": true,
+            "lambda_min_in_window": -0.003840337053,
+            "lifetime_exceeds_age_of_universe": true,
+            "literature_action_threshold": 400.0,
+            "max_log10_decay_probability_in_past_light_cone": -2761.862557240527,
+            "mu_at_lambda_min_GeV": 631385523052.8802,
+            "negative_lambda_window": true,
+            "window_GeV": [
+              44993533828.32863,
+              631385523052.8793
+            ]
+          },
+          "instability_below_M_I_landau_veff_estimate": true,
+          "instability_below_M_I_msbar": true,
+          "lambda_M_GUT": -0.010208633985,
+          "lambda_M_I": -0.003840337053,
+          "landau_veff_zero_estimate_GeV": 292457969884.1361,
+          "msbar_instability_scale_GeV": 44993533828.32863
+        }
+      }
+    },
+    "theory_error_GeV_from_matching": {
+      "combined": 0.117824707992,
+      "per_input": {
+        "lam": 0.079586679395,
+        "yt": 0.086882807715
+      }
+    }
+  },
+  "verdict": "Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam anchor chain, and not realized by any current repository vacuum, whose Delta_R is not the SM singlet): two-loop SM running from the Buttazzo et al. inputs puts the MSbar instability scale at 4.76e+09 GeV, a factor 133 below M_I, with lambda_SM(M_I) = -0.00854 and lambda_SM(M_GUT) = -0.01511 (one loop: -0.0335). With the H-S portal threshold at M_I, positive-portal windows keep lambda_H > 0 up to M_GUT for every scanned lambda_S. Copositivity is not the tree-level local-minimum condition (the single-stage point is copositive too). At the tuned point of the tree potential the condition is lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S) >= 0 (g3_tuned_target_portal_threshold_v20). With the S threshold at M_I, lambda_eff(M_I) = lambda_SM(M_I) = -0.0085 < 0, so the M_I threshold does not remove the tree-level saddle; at the GUT coefficients lambda_eff is -0.073 for the O36 = O23 = 1 benchmark and negative at 4 of 5 window middles. Metastability is the RG-improved statement. In the RG-improved potential the EW vacuum is still not the global minimum at central inputs, because the SM segment [Lambda_I, M_I] has lambda_SM < 0; the bounce estimate S ~ 3082 far exceeds the ~500 needed, so it is metastable and long-lived (estimate). At tree level with the S vev the EW/S point is a local (and then global) minimum iff lambda_SM(threshold) >= 0, so at central inputs it is the tree-level saddle stated above. Absolute stability with the threshold at M_I needs M_t < 171.96 GeV (2L) / 172.07 GeV (3L) with the MSbar criterion. With PDG 2024 M_h and alpha_s this becomes 171.95 GeV, 2.0 sigma below the measured 172.57 +- 0.29 GeV; with the Landau-gauge effective-potential zero it is ~172.36 GeV (0.7 sigma). The alternative is a radial mode below Lambda_I, i.e. lambda_S <~ 1.4e-05, far from the certified O23 = 1 (RG-improved: lambda_eff(m_rho) > 0 there, but lambda_eff at the GUT coefficients is negative at every scanned window point). Keeping O36 = O23 = 1 needs O34 = lambda_HS(M_GUT) = 2.072 (RG-improved metastable; a tree-level saddle, since O34 > 2 at O36 = O23 = 1). Single-stage GUT matching needs lambda_eff(M_GUT) = -0.0151 at two loops (negative at every loop order), so that tuned point is not a tree-level local minimum either. The RG-improved M_I-threshold conclusions are marginal: they depend on M_t (1-2 sigma), on the MSbar versus effective-potential instability criterion, and on the omitted states listed in the scope. This is an RG-improved EFT statement, not an exact lower witness of the 486-field tree potential: G3 stays open and the model is neither validated nor excluded."
+}

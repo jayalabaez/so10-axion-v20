@@ -21,6 +21,28 @@ OUT_JSON = ROOT / "ULTIMATE_THEORY_GATE_V20_VERDICT.json"
 OUT_MD = ROOT / "ULTIMATE_THEORY_GATE_V20.md"
 
 
+def _verdict(contract_ready: bool) -> str:
+    """Verdict text, branched on model-contract readiness."""
+    if contract_ready:
+        # G5 is CLOSED in G1_G8_GATE_LEDGER_V20, so it is not listed as open.
+        lead = (
+            "WITHHOLD APPROVAL. The audit has no execution failure and the "
+            "gauged-U(1)_X model contract is attested by bound external SARAH "
+            "execution evidence, but the G3, G4 and G6-G8 scientific gates "
+            "remain open. "
+        )
+    else:
+        lead = (
+            "WITHHOLD APPROVAL. The audit has no execution failure, but the "
+            "statically consistent, tool-native gauged-U(1)_X model has no v2 "
+            "manifest/log-bound external SARAH execution evidence. "
+        )
+    return lead + (
+        "No internal-candidate, conditional-benchmark, full-phenomenology, "
+        "empirical-realization, or whole-model-exclusion claim is approved."
+    )
+
+
 def evaluate_reports(
     reports: dict[str, dict[str, Any]],
     *,
@@ -89,13 +111,7 @@ def evaluate_reports(
             "Historical Option-C results are preserved as non-authoritative "
             "subtheorems only."
         ],
-        "verdict": (
-            "WITHHOLD APPROVAL. The audit has no execution failure, but the "
-            "statically consistent, tool-native gauged-U(1)_X model has no v2 "
-            "manifest/log-bound external SARAH execution evidence. "
-            "No internal-candidate, conditional-benchmark, full-phenomenology, "
-            "empirical-realization, or whole-model-exclusion claim is approved."
-        ),
+        "verdict": _verdict(result["model_contract_ready"]),
     }
 
 

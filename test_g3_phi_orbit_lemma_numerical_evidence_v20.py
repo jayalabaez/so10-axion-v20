@@ -121,6 +121,19 @@ class QuickOptimizerTest(unittest.TestCase):
         self.assertGreater(row["g"], 1.0e-3)
         self.assertLess(abs(row["t"] - 0.5 * I3_F), 1.0e-6)
 
+    def test_profile_point_above_F_grows_quadratically(self) -> None:
+        local = evidence.local_second_order_analysis()
+        self.assertTrue(local["small_delta_law"].startswith("one-sided, below F only"))
+        self.assertTrue(local["above_F_law"].startswith("one-sided, above F only"))
+        self.assertAlmostEqual(local["excess_reduced_quartic_q_eff"], 5.0 / 244.0, places=9)
+        profile = evidence.run_profile((-0.01,), 1, evidence.SEEDS["profile_above_F"], False)
+        row = profile["rows"][1]
+        self.assertEqual(row["side"], "above_F")
+        self.assertEqual(row["runs_agreeing_with_best"], 2)
+        self.assertGreater(row["t"], I3_F)
+        ratio = row["g"] / row["delta"] ** 2
+        self.assertLess(abs(ratio - local["above_F_quadratic_coefficient_c_up"]), 0.02 * ratio)
+
     def test_quick_report_passes_every_check(self) -> None:
         report = evidence.build_report(quick=True)
         self.assertEqual(report["mode"], "quick")
@@ -169,10 +182,29 @@ class CommittedReportTest(unittest.TestCase):
         self.assertGreater(self.report["adversarial_profile"]["min_g_off_F"], 0.0)
         verdicts = {row["id"]: row["verdict"] for row in self.report["claims_vs_reproduced"]}
         self.assertEqual(
-            verdicts["profile_quadratic_growth_near_F"], "NOT_REPRODUCED__GROWTH_IS_LINEAR_IN_DELTA"
+            verdicts["profile_quadratic_growth_near_F"], "NOT_REPRODUCED__LINEAR_BELOW_F_QUADRATIC_ABOVE_F"
         )
+        self.assertEqual(verdicts["profile_positive_no_zero_off_F"], "REPRODUCED_ON_SAMPLED_RANGE")
+        profile = self.report["adversarial_profile"]
+        self.assertTrue(profile["analysis"]["growth_law_near_F"].startswith("below F only"))
+        self.assertTrue(profile["analysis_above_F"]["growth_law_above_F"].startswith("above F only"))
+        self.assertTrue(profile["analysis_above_F"]["quadratic_matches_excess_reduction"])
+        self.assertGreaterEqual(profile["sampling"]["n_above_F"], 7)
+        self.assertLess(min(r["t"] for r in profile["rows_above_F"]), I3_CAYLEY)
+        self.assertGreater(profile["min_g_above_F"], 0.0)
         self.assertEqual(verdicts["cubic_maximum"], "REPRODUCED")
         self.assertEqual(verdicts["repo_slice_identities"], "REPRODUCED_EXACTLY_FACTOR_ONE")
+
+    def test_I3_convention_is_stated(self) -> None:
+        convention = self.report["I3_convention"]
+        self.assertIn("I3(Phi) = 8 Tr(A_Phi^3)", convention["statement"])
+        self.assertIn("Tr(A_Phi^3) is I3/8", convention["statement"])
+        self.assertAlmostEqual(convention["TrA3_at_F_value"], 6.0 / 10.0**0.5, places=8)
+        self.assertAlmostEqual(convention["TrA3_at_cayley_value"], 12.0 / 14.0**0.5, places=8)
+        self.assertAlmostEqual(convention["below_F_slope_per_unit_TrA3_value"], 28.0 / (135.0 * 10.0**0.5), places=7)
+        markdown = evidence.OUT_MD.read_text(encoding="utf-8")
+        self.assertIn("## Convention", markdown)
+        self.assertIn("28/(135*sqrt(10))", markdown)
 
     def test_committed_json_is_canonical(self) -> None:
         self.assertEqual(self.text, json.dumps(self.report, indent=2, sort_keys=True) + "\n")

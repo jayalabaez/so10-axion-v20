@@ -19,8 +19,12 @@ as a homogeneous linear system in the potential coefficients.  It also audits
 the gauge Ward identities and distinguishes the two relevant gauge-orbit
 ranks:
 
-* 33 broken generators at the pre-electroweak SO(10)->SM vacuum;
-* 36 broken generators after the physical H10 electroweak VEV is inserted.
+* 33 broken generators at the pre-electroweak (p, Delta_R) point, whose
+  12-dimensional stabilizer is SU(3)_c x SU(2)_L x U(1)_T3R, not the SM,
+  because direct.delta_r() has Y=-1 (g3_sigma_hypercharge_audit_v20);
+* 36 broken generators after the physical H10 electroweak VEV is inserted;
+  the residual 9-dimensional stabilizer's U(1) is not U(1)_em (see
+  g3_sigma_hypercharge_audit_v20).
 
 The physical electroweak rank is evaluated after column normalization because
 the three EW tangent vectors are suppressed by h_EW/M_GUT ~ 1e-14 and are
@@ -168,7 +172,7 @@ def physical_candidate(*, electroweak: bool) -> potential.FieldState:
     h = np.zeros(chart.H_COMPLEX_DIM, dtype=complex)
     if electroweak:
         # Indices 6..9 span the SO(4)=(SU2L x SU2R) vector sector.  A VEV in
-        # index 6 has the expected SM-electroweak rank increment of three.
+        # index 6 has a rank increment of three.
         h[6] = 174.0 / m_gut
     return potential.FieldState(
         phi=phi,
@@ -489,7 +493,8 @@ def gauge_orbit_audit() -> dict[str, Any]:
     # Gauge tangents are linear in the field configuration.  The exact stage
     # increment is therefore O(q_pre+q_EW)-O(q_pre), which isolates the H10
     # contribution.  Only generators in the right kernel of the pre-EW orbit
-    # (the 12-dimensional SM algebra) can add genuinely new orbit directions;
+    # (the 12-dimensional SU(3) x SU(2)_L x U(1)_T3R stabilizer, not the SM)
+    # can add genuinely new orbit directions;
     # generators already broken before EW breaking must not be counted twice.
     ew_increment = ew_orbit - pre_orbit
     _u_pre, _s_pre, vh_pre = np.linalg.svd(pre_orbit, full_matrices=True)
@@ -502,6 +507,7 @@ def gauge_orbit_audit() -> dict[str, Any]:
     ew_raw_singular = np.linalg.svd(ew_orbit, compute_uv=False)
     total_rank = pre_rank + increment_rank
 
+    # Legacy key names bound to the artifact, test and workflow; the point is not an SM vacuum.
     return {
         "pre_EW_SO10_to_SM": {
             "matrix_shape": list(pre_orbit.shape),

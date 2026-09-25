@@ -12,8 +12,9 @@ Within the historical contract, this was the second G3 layer after the 486x91
 stationarity-feasibility calculation.
 It reuses every exact G2 derivative adapter at the same physical hierarchy
 candidate, assembles the stationary witness's dense 486x486 Hessian, removes
-the 36 stage-resolved SO(10)->U(1)_EM gauge tangents, removes the independent
-global-PQ tangent, and classifies the remaining 449 real directions.
+the 36 stage-resolved SO(10) gauge tangents (residual SU(3)_c x U(1)_(T3R-T3L),
+not U(1)_em), removes the independent global-PQ tangent, and classifies the
+remaining 449 real directions.
 
 The quotient inertia is evaluated after a diagonal congruence equilibration.
 Congruence preserves inertia while avoiding a false loss of the electroweak

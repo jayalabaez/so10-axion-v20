@@ -1,0 +1,3822 @@
+{
+  "candidate": {
+    "H_linear_portals_zero": true,
+    "all_parameters_in_exact_X_contract": true,
+    "benchmarks": {
+      "1/100": {
+        "O04": "-1/5000",
+        "O05": "19999/40000",
+        "O06": "1/20000",
+        "V0": "-825000009/800000000",
+        "V0_float": -1.03125001125,
+        "kappa": "-1/400",
+        "nonzero_count": 27,
+        "r0": "1/100"
+      },
+      "1/1000": {
+        "O04": "-1/500000",
+        "O05": "1999999/4000000",
+        "O06": "1/2000000",
+        "V0": "-8250000000009/8000000000000",
+        "V0_float": -1.03125,
+        "kappa": "-1/4000",
+        "nonzero_count": 27,
+        "r0": "1/1000"
+      },
+      "1/5": {
+        "O04": "-2/25",
+        "O05": "49/100",
+        "O06": "1/50",
+        "V0": "-20661/20000",
+        "V0_float": -1.03305,
+        "kappa": "-1/20",
+        "nonzero_count": 27,
+        "r0": "1/5"
+      },
+      "M_I/M_GUT": {
+        "O04": "-5313596324326088/655510142883133799352025",
+        "O05": "655510141554734718270503/1311020285766267598704050",
+        "O06": "1328399081081522/655510142883133799352025",
+        "V0": "-14179887064947994398250485669115827576991979274321/13750193517525327654925316449057368073915891220000",
+        "V0_float": -1.03125,
+        "kappa": "-25772069/1619271617590",
+        "nonzero_count": 27,
+        "r0": "51544138/809635808795"
+      }
+    },
+    "changes_from_historical_h0": [
+      {
+        "candidate": "49/100",
+        "historical_h0": "47/96",
+        "parameter": "lambda::O05_B01_126bar_norm"
+      },
+      {
+        "candidate": "1/50",
+        "historical_h0": "0",
+        "parameter": "lambda::O06_B01_Hdag_H_norm"
+      },
+      {
+        "candidate": "1/8",
+        "historical_h0": "17/128",
+        "parameter": "lambda::O27_B03_126bar_self_projectors"
+      },
+      {
+        "candidate": "17/128",
+        "historical_h0": "1/8",
+        "parameter": "lambda::O27_B04_126bar_self_projectors"
+      },
+      {
+        "candidate": "-1/20",
+        "historical_h0": "0",
+        "parameter": "re::O12_B01_Hdag_Hdag_pair"
+      }
+    ],
+    "defaults": {
+      "O06": "2|kappa| r0",
+      "kappa": "-r0/4",
+      "r0": "1/5",
+      "x0": "1"
+    },
+    "derivation": "gauged_u1x_g3_sos_candidate_v20.symbolic_nonzero_coefficients() evaluated exactly at h=0 (O06 and re::O12 vanish there), then O27_B03 (2772bar) 17/128 -> 1/8, O27_B04 (4125) 1/8 -> 17/128, O05 -> (1/8)(4 - 2 r0^2), O06 -> 2|kappa| r0, re::O12 -> kappa",
+    "exact_X_parameter_count": 51,
+    "exact_nonzero_coefficients": {
+      "lambda::O03_B01_singlet_polynomial": "-1/16",
+      "lambda::O04_B01_singlet_polynomial": "-2/25",
+      "lambda::O05_B01_126bar_norm": "49/100",
+      "lambda::O06_B01_Hdag_H_norm": "1/50",
+      "lambda::O07_B01_Phi_norm": "-2",
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-1/2",
+      "lambda::O20_B01_singlet_polynomial": "1/32",
+      "lambda::O23_B01_singlet_polynomial": "1",
+      "lambda::O27_B01_126bar_self_projectors": "1/4",
+      "lambda::O27_B02_126bar_self_projectors": "1/4",
+      "lambda::O27_B03_126bar_self_projectors": "1/8",
+      "lambda::O27_B04_126bar_self_projectors": "17/128",
+      "lambda::O36_B01_H_self_quartics": "2",
+      "lambda::O36_B02_H_self_quartics": "2",
+      "lambda::O44_B01_Phi2_Sigma_projectors": "41/8",
+      "lambda::O44_B02_Phi2_Sigma_projectors": "73/8",
+      "lambda::O44_B03_Phi2_Sigma_projectors": "29/8",
+      "lambda::O44_B04_Phi2_Sigma_projectors": "-7/8",
+      "lambda::O44_B05_Phi2_Sigma_projectors": "-11/8",
+      "lambda::O44_B06_Phi2_Sigma_projectors": "13/8",
+      "lambda::O46_B01_Phi2_HdagH_channels": "3/5",
+      "lambda::O46_B03_Phi2_HdagH_channels": "-1",
+      "lambda::O48_B01_Phi_self_quartics": "-21/200",
+      "lambda::O48_B02_Phi_self_quartics": "2467/28800",
+      "lambda::O48_B03_Phi_self_quartics": "-77/3200",
+      "lambda::O48_B04_Phi_self_quartics": "119/115200",
+      "re::O12_B01_Hdag_Hdag_pair": "-1/20"
+    },
+    "float_map_inside_4pi_box": true,
+    "historical_h0_nonzero_count": 25,
+    "historical_parse_matches_exact_sos_laurent_map": true,
+    "historical_parse_matches_float_evaluation": true,
+    "maximum_absolute_coefficient": "73/8",
+    "nonzero_count": 27
+  },
+  "checks": {
+    "H_linear_portals_are_zero": true,
+    "Phi17_block_decoupled_with_radial_x0_squared_over_8": true,
+    "U1X_broken_in_full_state": true,
+    "coefficient_map_derived_from_historical_map": true,
+    "coefficient_map_has_27_nonzero_entries_in_contract": true,
+    "compiler_gradient_vanishes_at_every_benchmark": true,
+    "compiler_value_equals_V0_at_every_benchmark": true,
+    "exact_SOS_lower_bound_attained": true,
+    "exact_slice_gradient_vanishes": true,
+    "exact_slice_matches_compiler": true,
+    "exact_state_binding": true,
+    "fast_sos_evaluator_matches_compiler": true,
+    "goldstone_content_is_so10_over_sm_plus_two_phases": true,
+    "h10_spectrum_matches_exact_expectation": true,
+    "hessian_annihilates_symmetry_tangents": true,
+    "hessian_psd_with_kernel_symmetry_plus_light_doublet": true,
+    "light_doublet_is_equal_5_5bar_mixture": true,
+    "light_doublet_quartic_compiler_matches_exact_127_64": true,
+    "light_spectrum_has_60_real_states_with_same_sm_content_at_every_benchmark": true,
+    "light_spectrum_mass_ratios_stable_across_benchmarks": true,
+    "lightest_massive_mode_is_r0_squared_over_96": true,
+    "numerical_search_finds_nothing_below_V0": true,
+    "old_delta_r_orientation_is_not_sm": true,
+    "phi_p_alone_leaves_pati_salam": true,
+    "random_quartic_directions_respect_exact_bound": true,
+    "rg_anchor_betas_reproduced_from_field_content": true,
+    "rg_anchor_reproduced_by_local_one_loop_chain": true,
+    "sm_generators_annihilate_the_vacuum": true,
+    "symmetry_rank_35_at_every_benchmark": true,
+    "tuned_wedge_combination_gives_triplets_M_GUT_and_doublets_no_phi_mass": true,
+    "unbroken_algebra_is_exactly_standard_model": true
+  },
+  "compiler": {
+    "1/100": {
+      "O06": "1/20000",
+      "Phi17_block": {
+        "block_eigenvalues": [
+          0.0,
+          0.125
+        ],
+        "coupling_to_other_fields_max_abs": 0.0,
+        "exact_radial_mass_squared_x0_squared_over_8": "1/8",
+        "radial_deviation_from_exact": 4.16333634234e-17,
+        "radial_mass_squared": 0.125,
+        "scaling": "r0-independent: GUT scale for x0 >= 1, never an r0^2-scaled intermediate state"
+      },
+      "V0_float": -1.03125001125,
+      "V_compiler": -1.03125001125,
+      "V_minus_V0": -8.881784197e-16,
+      "all_massive_variant": {
+        "O06_offset": "1/1000000",
+        "min_eigenvalue": 9.99999998295e-07,
+        "min_eigenvalue_over_r0_squared": 0.00999999998295,
+        "n_negative": 0,
+        "n_zero": 0
+      },
+      "gradient_block_max_abs": {
+        "H10": 0.0,
+        "Phi17": 0.0,
+        "Phi210": 1.89232581427e-15,
+        "S": 0.0,
+        "Sigma126bar": 2.11094162983e-16
+      },
+      "gradient_max_abs": 1.89232581427e-15,
+      "hessian_symmetry_residual": 5.15749493672e-14,
+      "kappa": "-1/400",
+      "kernel_is_symmetry_plus_light_doublet": true,
+      "light_spectrum": {
+        "lowest_heavy_non_Phi17": {
+          "field_weights": {
+            "Phi210": 0.000149837664207,
+            "Sigma126bar": 0.999850162336
+          },
+          "mass_squared": 0.49985840329
+        },
+        "method": "SM-isotypic split of the light subspace by exact-integer Casimirs, then Hessian eigenvalues per component",
+        "real_dimension": 60,
+        "states": [
+          {
+            "eigenvalue_spread": 6.53363201401e-20,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.0,
+            "mass_squared": -7.66088477555e-21,
+            "mass_squared_over_r0_squared": -7.66088477555e-17,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 1.21398456066e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.102062069685,
+            "mass_squared": 1.04166660685e-06,
+            "mass_squared_over_r0_squared": 0.0104166660685,
+            "real_multiplicity": 2,
+            "sm_content_real": {
+              "(1,1)_|Y|=2": 2
+            }
+          },
+          {
+            "eigenvalue_spread": 2.51847035658e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.102062069685,
+            "mass_squared": 1.04166660685e-06,
+            "mass_squared_over_r0_squared": 0.0104166660685,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=4/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 3.95276395166e-17,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.242955938654,
+            "mass_squared": 5.9027588127e-06,
+            "mass_squared_over_r0_squared": 0.059027588127,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 1.20990186186e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253448437581,
+            "mass_squared": 6.42361105125e-06,
+            "mass_squared_over_r0_squared": 0.0642361105125,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=4/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 1.18239023173e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253448437584,
+            "mass_squared": 6.42361105137e-06,
+            "mass_squared_over_r0_squared": 0.0642361105137,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=1/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 2.20531804081e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.324128868216,
+            "mass_squared": 1.05059523211e-05,
+            "mass_squared_over_r0_squared": 0.105059523211,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=2/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.707106780763,
+            "mass_squared": 4.99999999401e-05,
+            "mass_squared_over_r0_squared": 0.499999999401,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "eigenvalue_spread": 4.4723339615e-19,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 1.0,
+            "mass_squared": 0.0001,
+            "mass_squared_over_r0_squared": 1.0,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "S": 1.0
+            },
+            "mass_over_r0_M_GUT": 2.0,
+            "mass_squared": 0.0004,
+            "mass_squared_over_r0_squared": 4.0,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          }
+        ],
+        "window": "projected-Hessian eigenvalues below 5 r0^2, Phi17 radial mode (x0^2/8, decoupled) excluded"
+      },
+      "projected_hessian": {
+        "dimension": 451,
+        "expected_min_massive_over_r0_squared": "1/96",
+        "max_abs_zero_mode_eigenvalue": 5.29632904918e-16,
+        "max_eigenvalue": 8.0001000138,
+        "min_eigenvalue": -5.29632904918e-16,
+        "min_massive_absolute_deviation": 6.0386868752e-14,
+        "min_massive_eigenvalue": 1.04166660628e-06,
+        "min_massive_over_r0_squared": 0.0104166660628,
+        "n_negative": 0,
+        "n_zero": 4,
+        "zero_modes_weight_in_light_doublet_real_directions": 1.0,
+        "zero_tolerance": 1.04166666667e-09
+      },
+      "r0": "1/100",
+      "r0_float": 0.01,
+      "seconds": 36.5413031578,
+      "state": "(p, r0 sigma_std, 0, r0, x0)",
+      "symmetry_ranks": {
+        "so10_orbit_rank": 33,
+        "so10_plus_u1x_plus_pq_rank": 35,
+        "so10_plus_u1x_rank": 34
+      }
+    },
+    "1/1000": {
+      "O06": "1/2000000",
+      "Phi17_block": {
+        "block_eigenvalues": [
+          0.0,
+          0.125
+        ],
+        "coupling_to_other_fields_max_abs": 0.0,
+        "exact_radial_mass_squared_x0_squared_over_8": "1/8",
+        "radial_deviation_from_exact": 4.16333634234e-17,
+        "radial_mass_squared": 0.125,
+        "scaling": "r0-independent: GUT scale for x0 >= 1, never an r0^2-scaled intermediate state"
+      },
+      "V0_float": -1.03125,
+      "V_compiler": -1.03125,
+      "V_minus_V0": -4.4408920985e-16,
+      "all_massive_variant": {
+        "O06_offset": "1/100000000",
+        "min_eigenvalue": 9.99999999693e-09,
+        "min_eigenvalue_over_r0_squared": 0.00999999999693,
+        "n_negative": 0,
+        "n_zero": 0
+      },
+      "gradient_block_max_abs": {
+        "H10": 0.0,
+        "Phi17": 0.0,
+        "Phi210": 1.77199652555e-15,
+        "S": 0.0,
+        "Sigma126bar": 2.11148373092e-17
+      },
+      "gradient_max_abs": 1.77199652555e-15,
+      "hessian_symmetry_residual": 1.46495160572e-12,
+      "kappa": "-1/4000",
+      "kernel_is_symmetry_plus_light_doublet": true,
+      "light_spectrum": {
+        "lowest_heavy_non_Phi17": {
+          "field_weights": {
+            "Phi210": 1.49998375016e-06,
+            "Sigma126bar": 0.999998500016
+          },
+          "mass_squared": 0.49999858334
+        },
+        "method": "SM-isotypic split of the light subspace by exact-integer Casimirs, then Hessian eigenvalues per component",
+        "real_dimension": 60,
+        "states": [
+          {
+            "eigenvalue_spread": 1.23320336874e-21,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.0,
+            "mass_squared": 3.55417052553e-23,
+            "mass_squared_over_r0_squared": 3.55417052553e-17,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 1.60224285773e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.102061779454,
+            "mass_squared": 1.04166068252e-08,
+            "mass_squared_over_r0_squared": 0.0104166068252,
+            "real_multiplicity": 2,
+            "sm_content_real": {
+              "(1,1)_|Y|=2": 2
+            }
+          },
+          {
+            "eigenvalue_spread": 2.57522684146e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.102061779665,
+            "mass_squared": 1.04166068684e-08,
+            "mass_squared_over_r0_squared": 0.0104166068684,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=4/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 2.98092268486e-17,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.242956202361,
+            "mass_squared": 5.90277162659e-08,
+            "mass_squared_over_r0_squared": 0.0590277162659,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 1.60928557272e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253448320916,
+            "mass_squared": 6.4236051375e-08,
+            "mass_squared_over_r0_squared": 0.064236051375,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=4/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 1.81132026835e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253448321008,
+            "mass_squared": 6.4236051422e-08,
+            "mass_squared_over_r0_squared": 0.064236051422,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=1/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 2.40756674461e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.324128776896,
+            "mass_squared": 1.05059464012e-07,
+            "mass_squared_over_r0_squared": 0.105059464012,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=2/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.707106738813,
+            "mass_squared": 4.99999940075e-07,
+            "mass_squared_over_r0_squared": 0.499999940075,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "eigenvalue_spread": 3.1763735522e-21,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 1.0,
+            "mass_squared": 1e-06,
+            "mass_squared_over_r0_squared": 1.0,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "S": 1.0
+            },
+            "mass_over_r0_M_GUT": 2.0,
+            "mass_squared": 4e-06,
+            "mass_squared_over_r0_squared": 4.0,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          }
+        ],
+        "window": "projected-Hessian eigenvalues below 5 r0^2, Phi17 radial mode (x0^2/8, decoupled) excluded"
+      },
+      "projected_hessian": {
+        "dimension": 451,
+        "expected_min_massive_over_r0_squared": "1/96",
+        "max_abs_zero_mode_eigenvalue": 4.35524327108e-16,
+        "max_eigenvalue": 8.000001,
+        "min_eigenvalue": -3.1182552367e-16,
+        "min_massive_absolute_deviation": 6.17390483246e-14,
+        "min_massive_eigenvalue": 1.04166049276e-08,
+        "min_massive_over_r0_squared": 0.0104166049276,
+        "n_negative": 0,
+        "n_zero": 4,
+        "zero_modes_weight_in_light_doublet_real_directions": 1.0,
+        "zero_tolerance": 1.04166666667e-11
+      },
+      "r0": "1/1000",
+      "r0_float": 0.001,
+      "seconds": 35.5403373241,
+      "state": "(p, r0 sigma_std, 0, r0, x0)",
+      "symmetry_ranks": {
+        "so10_orbit_rank": 33,
+        "so10_plus_u1x_plus_pq_rank": 35,
+        "so10_plus_u1x_rank": 34
+      }
+    },
+    "1/5": {
+      "O06": "1/50",
+      "Phi17_block": {
+        "block_eigenvalues": [
+          0.0,
+          0.125
+        ],
+        "coupling_to_other_fields_max_abs": 0.0,
+        "exact_radial_mass_squared_x0_squared_over_8": "1/8",
+        "radial_deviation_from_exact": 4.16333634234e-17,
+        "radial_mass_squared": 0.125,
+        "scaling": "r0-independent: GUT scale for x0 >= 1, never an r0^2-scaled intermediate state"
+      },
+      "V0_float": -1.03305,
+      "V_compiler": -1.03305,
+      "V_minus_V0": -3.10862446895e-15,
+      "all_massive_variant": {
+        "O06_offset": "1/2500",
+        "min_eigenvalue": 0.0004,
+        "min_eigenvalue_over_r0_squared": 0.00999999999999,
+        "n_negative": 0,
+        "n_zero": 0
+      },
+      "gradient_block_max_abs": {
+        "H10": 0.0,
+        "Phi17": 0.0,
+        "Phi210": 4.92106355665e-14,
+        "S": 3.46944695195e-18,
+        "Sigma126bar": 4.22752111096e-15
+      },
+      "gradient_max_abs": 4.92106355665e-14,
+      "h10": {
+        "H_block_decoupled_from_other_fields": 0.0,
+        "doublet_triplet_splitting": {
+          "colour_triplet_mass_squared_min": 1.0,
+          "doublet_composition": {
+            "heavy_doublet_weight_in_span_z4_z5": 0.5,
+            "interpretation": "span{z4, z5} and its conjugate are the doublet parts of the 5 and 5bar of the SU(5) fixed by sigma_std; weight 1/2 means the light doublet is an equal mixture of the 5 and 5bar doublets (tan beta = 1 structure: with 10_H-only Yukawas, m_t = m_b at the matching scale)",
+            "light_doublet_weight_in_span_z4_z5": 0.5
+          },
+          "doublet_phi_induced_mass_squared": {
+            "formula": "(O46_1 + (3/5) O46_54) |Phi|^2",
+            "value_at_candidate": "0"
+          },
+          "heavy_doublet_mass_squared": 0.04,
+          "light_doublet_mass_squared": -3.46944695195e-18,
+          "mechanism": "At the tuned ratio O46_1 : O46_54 = 3/5 : -1 the Phi-H quartics combine into ||H wedge Phi||^2 = H^dag diag(1_6, 0_4) H, which gives the 10_H colour triplets M_GUT^2 and the doublets no Phi-induced mass; the remaining doublet mass O06 - 2|kappa| r0 is tuned to zero. Neither relation is enforced by a symmetry: adding eps > 0 to O46_1 adds eps |Phi|^2 N_H >= 0, keeps V >= V0 with the same global minimum, and gives the doublets eps M_GUT^2. Doublet-triplet splitting is therefore tuned, not automatic.",
+          "natural": false,
+          "per_unit_max_deviation_from_exact": 0.0,
+          "phi_induced_mass_per_unit_coefficient_compiler": {
+            "lambda::O46_B01_Phi2_HdagH_channels": {
+              "colour": 1.0,
+              "colour_spread": 0.0,
+              "weak": 1.0,
+              "weak_spread": 0.0
+            },
+            "lambda::O46_B03_Phi2_HdagH_channels": {
+              "colour": -0.4,
+              "colour_spread": 0.0,
+              "weak": 0.6,
+              "weak_spread": 0.0
+            }
+          },
+          "phi_induced_mass_per_unit_coefficient_exact": {
+            "lambda::O46_B01_Phi2_HdagH_channels": {
+              "colour": "1",
+              "weak": "1"
+            },
+            "lambda::O46_B03_Phi2_HdagH_channels": {
+              "colour": "-2/5",
+              "weak": "3/5"
+            }
+          },
+          "scope": "10_H only; the 126bar has light coloured states below M_I (light_spectrum)",
+          "triplet_phi_induced_mass_squared": {
+            "formula": "(O46_1 - (2/5) O46_54) |Phi|^2",
+            "value_at_candidate": "1"
+          },
+          "tuned_relations": [
+            "O46_1 = -(3/5) O46_54 (doublet Phi-induced mass zero; precision ~ (m_h/M_GUT)^2)",
+            "O06 = 2|kappa| r0 (doublet B-term cancelled; precision ~ (m_h/M_I)^2)",
+            "O05 = (1/8)(4 - 2 r0^2) against the Phi-induced O14/O44 masses on the (10bar,1,3) (1/2 - 1 + 1/2 - r0^2/4 at |Phi| = 1): the intermediate scale itself is a cancellation of O(1) couplings to precision ~ (M_I/M_GUT)^2 ~ 4e-9"
+          ]
+        },
+        "exact_expectation": {
+          "4|kappa|r0": "1/25",
+          "colour_triplets": "1 (x) and 1 + 4|kappa| r0 (y): from ||H wedge p||^2 = |H_colour|^2 plus the kappa B-term",
+          "weak_doublets": "0 (x, tuned light doublet) and 4|kappa| r0 (y)"
+        },
+        "h_mass_contributions_by_parameter": {
+          "lambda::O06_B01_Hdag_H_norm": {
+            "colour_real_eigenvalues": [
+              {
+                "mass_squared": 0.02,
+                "real_multiplicity": 12
+              }
+            ],
+            "weak_real_eigenvalues": [
+              {
+                "mass_squared": 0.02,
+                "real_multiplicity": 8
+              }
+            ]
+          },
+          "lambda::O46_B01_Phi2_HdagH_channels": {
+            "colour_real_eigenvalues": [
+              {
+                "mass_squared": 0.6,
+                "real_multiplicity": 12
+              }
+            ],
+            "weak_real_eigenvalues": [
+              {
+                "mass_squared": 0.6,
+                "real_multiplicity": 8
+              }
+            ]
+          },
+          "lambda::O46_B03_Phi2_HdagH_channels": {
+            "colour_real_eigenvalues": [
+              {
+                "mass_squared": 0.4,
+                "real_multiplicity": 12
+              }
+            ],
+            "weak_real_eigenvalues": [
+              {
+                "mass_squared": -0.6,
+                "real_multiplicity": 8
+              }
+            ]
+          },
+          "re::O12_B01_Hdag_Hdag_pair": {
+            "colour_real_eigenvalues": [
+              {
+                "mass_squared": -0.02,
+                "real_multiplicity": 6
+              },
+              {
+                "mass_squared": 0.02,
+                "real_multiplicity": 6
+              }
+            ],
+            "weak_real_eigenvalues": [
+              {
+                "mass_squared": -0.02,
+                "real_multiplicity": 4
+              },
+              {
+                "mass_squared": 0.02,
+                "real_multiplicity": 4
+              }
+            ]
+          }
+        },
+        "hermitian_part": {
+          "colour_triplets": [
+            {
+              "complex_multiplicity": 6,
+              "mass_squared": 1.02
+            }
+          ],
+          "hermiticity_residual": 0.0,
+          "maximum_eigenvalue": 1.02,
+          "triplet_doublet_mixing_residual": 0.0,
+          "weak_doublets": [
+            {
+              "complex_multiplicity": 4,
+              "mass_squared": 0.02
+            }
+          ]
+        },
+        "holomorphic_part_B": {
+          "colour_triplets": [
+            {
+              "complex_multiplicity": 6,
+              "mass_squared": -0.02
+            }
+          ],
+          "hermiticity_residual": 0.0,
+          "maximum_eigenvalue": -0.02,
+          "triplet_doublet_mixing_residual": 0.0,
+          "weak_doublets": [
+            {
+              "complex_multiplicity": 4,
+              "mass_squared": -0.02
+            }
+          ]
+        },
+        "max_deviation_from_exact_expectation": 6.93889390391e-18,
+        "real_block_eigenvalues": {
+          "colour_x": [
+            {
+              "mass_squared": 1.0,
+              "real_multiplicity": 6
+            }
+          ],
+          "colour_y": [
+            {
+              "mass_squared": 1.04,
+              "real_multiplicity": 6
+            }
+          ],
+          "weak_x": [
+            {
+              "mass_squared": -3.46944695195e-18,
+              "real_multiplicity": 4
+            }
+          ],
+          "weak_y": [
+            {
+              "mass_squared": 0.04,
+              "real_multiplicity": 4
+            }
+          ]
+        },
+        "units": "Hessian eigenvalues of the canonical 486-real chart, units of M_GUT^2 (|Phi| = 1)",
+        "wedge_combination_(3/5)O46_1-O46_54": {
+          "hermitian_matrix_minus_diag_1x6_0x4": 0.0,
+          "holomorphic_residual": 0.0
+        }
+      },
+      "hessian_symmetry_residual": 3.44133752365e-14,
+      "kappa": "-1/20",
+      "kernel_is_symmetry_plus_light_doublet": true,
+      "labelled_spectrum": {
+        "clusters": [
+          {
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_squared": 2.71574371366e-16,
+            "mass_squared_over_r0_squared": 6.78935928415e-15,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.000416666666607,
+            "mass_squared_over_r0_squared": 0.0104166666652,
+            "real_multiplicity": 14,
+            "sm_content_real": {
+              "(1,1)_|Y|=2": 2,
+              "(6,1)_|Y|=4/3": 12
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 5.4777296213e-08,
+              "Sigma126bar": 0.999999945223
+            },
+            "mass_squared": 0.00235802702669,
+            "mass_squared_over_r0_squared": 0.0589506756673,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.00256944444438,
+            "mass_squared_over_r0_squared": 0.0642361111096,
+            "real_multiplicity": 18,
+            "sm_content_real": {
+              "(3,1)_|Y|=4/3": 6,
+              "(6,1)_|Y|=1/3": 12
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.00420238095232,
+            "mass_squared_over_r0_squared": 0.105059523808,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=2/3": 12
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.0199999999999,
+            "mass_squared_over_r0_squared": 0.499999999999,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_squared": 0.04,
+            "mass_squared_over_r0_squared": 1.0,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "field_weights": {
+              "Phi17": 1.0
+            },
+            "mass_squared": 0.125,
+            "mass_squared_over_r0_squared": 3.125,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "field_weights": {
+              "S": 1.0
+            },
+            "mass_squared": 0.16,
+            "mass_squared_over_r0_squared": 4.0,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 0.0414713527362,
+              "Sigma126bar": 0.958528647264
+            },
+            "mass_squared": 0.452382982654,
+            "mass_squared_over_r0_squared": 11.3095745663,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 0.107142857143,
+              "Sigma126bar": 0.892857142857
+            },
+            "mass_squared": 0.5,
+            "mass_squared_over_r0_squared": 12.5,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(3,2)_|Y|=1/6": 12
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.500416666667,
+            "mass_squared_over_r0_squared": 12.5104166667,
+            "real_multiplicity": 44,
+            "sm_content_real": {
+              "(3,2)_|Y|=7/6": 12,
+              "(8,2)_|Y|=1/2": 32
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.502569444444,
+            "mass_squared_over_r0_squared": 12.5642361111,
+            "real_multiplicity": 48,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4,
+              "(3,2)_|Y|=7/6": 12,
+              "(8,2)_|Y|=1/2": 32
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.504202380952,
+            "mass_squared_over_r0_squared": 12.6050595238,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(3,2)_|Y|=1/6": 12
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 0.0601331225334,
+              "Sigma126bar": 0.939866877467
+            },
+            "mass_squared": 0.599563262402,
+            "mass_squared_over_r0_squared": 14.98908156,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 0.627569444445,
+            "mass_squared_over_r0_squared": 15.6892361111,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 0.888888888889,
+            "mass_squared_over_r0_squared": 22.2222222222,
+            "real_multiplicity": 75,
+            "sm_content_real": {
+              "(1,3)_|Y|=0": 3,
+              "(3,1)_|Y|=5/3": 6,
+              "(3,3)_|Y|=2/3": 18,
+              "(8,1)_|Y|=0": 8,
+              "(8,1)_|Y|=1": 16,
+              "(8,3)_|Y|=0": 24
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 0.966716869178,
+            "mass_squared_over_r0_squared": 24.1679217294,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=2/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_squared": 1.0,
+            "mass_squared_over_r0_squared": 25.0,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 1.00888888889,
+            "mass_squared_over_r0_squared": 25.2222222222,
+            "real_multiplicity": 2,
+            "sm_content_real": {
+              "(1,1)_|Y|=1": 2
+            }
+          },
+          {
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_squared": 1.04,
+            "mass_squared_over_r0_squared": 26.0,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 0.939866822689,
+              "Sigma126bar": 0.0601331773107
+            },
+            "mass_squared": 1.04571759946,
+            "mass_squared_over_r0_squared": 26.1429399865,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 1.10734174026,
+            "mass_squared_over_r0_squared": 27.6835435065,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 1.5,
+            "mass_squared_over_r0_squared": 37.5,
+            "real_multiplicity": 64,
+            "sm_content_real": {
+              "(1,2)_|Y|=3/2": 4,
+              "(3,2)_|Y|=5/6": 12,
+              "(6,2)_|Y|=1/6": 24,
+              "(6,2)_|Y|=5/6": 24
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 0.966931216931,
+              "Sigma126bar": 0.0330687830688
+            },
+            "mass_squared": 1.62,
+            "mass_squared_over_r0_squared": 40.5,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(3,2)_|Y|=1/6": 12
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 0.958528647264,
+              "Sigma126bar": 0.0414713527362
+            },
+            "mass_squared": 1.68095035068,
+            "mass_squared_over_r0_squared": 42.023758767,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 2.00041666667,
+            "mass_squared_over_r0_squared": 50.0104166667,
+            "real_multiplicity": 36,
+            "sm_content_real": {
+              "(6,3)_|Y|=1/3": 36
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 2.00256944444,
+            "mass_squared_over_r0_squared": 50.0642361111,
+            "real_multiplicity": 18,
+            "sm_content_real": {
+              "(3,3)_|Y|=1/3": 18
+            }
+          },
+          {
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_squared": 2.00420238095,
+            "mass_squared_over_r0_squared": 50.1050595238,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(1,3)_|Y|=1": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 2.4,
+            "mass_squared_over_r0_squared": 60.0,
+            "real_multiplicity": 8,
+            "sm_content_real": {
+              "(8,1)_|Y|=0": 8
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 2.44217201971,
+            "mass_squared_over_r0_squared": 61.0543004928,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=2/3": 6
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 2.53922724866,
+            "mass_squared_over_r0_squared": 63.4806812166,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "field_weights": {
+              "Phi210": 1.0
+            },
+            "mass_squared": 8.04231989997,
+            "mass_squared_over_r0_squared": 201.057997499,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          }
+        ],
+        "labels": "(SU(3)_c, SU(2)_L)_|Y| from exact integer generators; multiplicities in real dimensions",
+        "n_clusters": 33,
+        "symmetry_tangents": {
+          "real_dimension": 35,
+          "sm_content_real": {
+            "(1,1)_|Y|=0": 3,
+            "(1,1)_|Y|=1": 2,
+            "(3,1)_|Y|=2/3": 6,
+            "(3,2)_|Y|=1/6": 12,
+            "(3,2)_|Y|=5/6": 12
+          }
+        },
+        "units": "Hessian eigenvalues of the canonical 486-real chart, units of M_GUT^2 (|Phi| = 1)"
+      },
+      "light_doublet_quartic": {
+        "H_rows": [
+          "im::O12_B01_Hdag_Hdag_pair",
+          "lambda::O06_B01_Hdag_H_norm",
+          "lambda::O36_B01_H_self_quartics",
+          "lambda::O36_B02_H_self_quartics",
+          "lambda::O46_B01_Phi2_HdagH_channels",
+          "lambda::O46_B03_Phi2_HdagH_channels",
+          "re::O12_B01_Hdag_Hdag_pair"
+        ],
+        "directions": {
+          "Re_h6": {
+            "coupling_on_Re_S": -0.0707106781187,
+            "coupling_outside_Re_S_max_abs": 0.0,
+            "coupling_symmetry_tangent_projection_norm": 0.0,
+            "coupling_vector_norm": 0.0707106781187,
+            "coupling_zero_mode_projection_norm": 4.58597898953e-52,
+            "heavy_exchange_shift": 0.015625,
+            "lambda_direct": 2.0,
+            "lambda_eff": 1.984375
+          },
+          "Re_h6789_equal_weights": {
+            "coupling_on_Re_S": -0.0707106781187,
+            "coupling_outside_Re_S_max_abs": 0.0,
+            "coupling_symmetry_tangent_projection_norm": 0.0,
+            "coupling_vector_norm": 0.0707106781187,
+            "coupling_zero_mode_projection_norm": 4.58597898953e-52,
+            "heavy_exchange_shift": 0.015625,
+            "lambda_direct": 2.0,
+            "lambda_eff": 1.984375
+          }
+        },
+        "lambda_direct": 2.0,
+        "lambda_eff": 1.984375,
+        "normalization": "V = lambda (h^dag h)^2, canonically normalised h; lambda = Q/6 along a unit chart direction"
+      },
+      "light_spectrum": {
+        "lowest_heavy_non_Phi17": {
+          "field_weights": {
+            "Phi210": 0.0414713527362,
+            "Sigma126bar": 0.958528647264
+          },
+          "mass_squared": 0.452382982654
+        },
+        "method": "SM-isotypic split of the light subspace by exact-integer Casimirs, then Hessian eigenvalues per component",
+        "real_dimension": 60,
+        "states": [
+          {
+            "eigenvalue_spread": 1.31313888063e-17,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.0,
+            "mass_squared": -5.31498946896e-18,
+            "mass_squared_over_r0_squared": -1.32874736724e-16,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 1.8561541193e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.102062072609,
+            "mass_squared": 0.000416666666607,
+            "mass_squared_over_r0_squared": 0.0104166666652,
+            "real_multiplicity": 2,
+            "sm_content_real": {
+              "(1,1)_|Y|=2": 2
+            }
+          },
+          {
+            "eigenvalue_spread": 2.3288662665e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.102062072609,
+            "mass_squared": 0.000416666666607,
+            "mass_squared_over_r0_squared": 0.0104166666652,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=4/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 7.93635990259e-17,
+            "field_weights": {
+              "Phi210": 5.4777296213e-08,
+              "Sigma126bar": 0.999999945223
+            },
+            "mass_over_r0_M_GUT": 0.242797602268,
+            "mass_squared": 0.00235802702669,
+            "mass_squared_over_r0_squared": 0.0589506756673,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 8.19656842399e-17,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253448438759,
+            "mass_squared": 0.00256944444438,
+            "mass_squared_over_r0_squared": 0.0642361111096,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=1/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 1.03216046821e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253448438759,
+            "mass_squared": 0.00256944444438,
+            "mass_squared_over_r0_squared": 0.0642361111096,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=4/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 2.27248775353e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.324128869137,
+            "mass_squared": 0.00420238095232,
+            "mass_squared_over_r0_squared": 0.105059523808,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=2/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.707106781185,
+            "mass_squared": 0.0199999999999,
+            "mass_squared_over_r0_squared": 0.499999999999,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "eigenvalue_spread": 8.32667268469e-17,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 1.0,
+            "mass_squared": 0.04,
+            "mass_squared_over_r0_squared": 1.0,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "S": 1.0
+            },
+            "mass_over_r0_M_GUT": 2.0,
+            "mass_squared": 0.16,
+            "mass_squared_over_r0_squared": 4.0,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          }
+        ],
+        "window": "projected-Hessian eigenvalues below 5 r0^2, Phi17 radial mode (x0^2/8, decoupled) excluded"
+      },
+      "projected_hessian": {
+        "dimension": 451,
+        "expected_min_massive_over_r0_squared": "1/96",
+        "max_abs_zero_mode_eigenvalue": 4.30699489515e-16,
+        "max_eigenvalue": 8.04231989997,
+        "min_eigenvalue": 1.26743431963e-16,
+        "min_massive_absolute_deviation": 6.16381945484e-14,
+        "min_massive_eigenvalue": 0.000416666666605,
+        "min_massive_over_r0_squared": 0.0104166666651,
+        "n_negative": 0,
+        "n_zero": 4,
+        "zero_modes_weight_in_light_doublet_real_directions": 1.0,
+        "zero_tolerance": 4.16666666667e-07
+      },
+      "r0": "1/5",
+      "r0_float": 0.2,
+      "seconds": 52.7873327732,
+      "sm_generators_annihilate_vacuum": 2.77555756156e-17,
+      "state": "(p, r0 sigma_std, 0, r0, x0)",
+      "symmetry_ranks": {
+        "so10_orbit_rank": 33,
+        "so10_plus_u1x_plus_pq_rank": 35,
+        "so10_plus_u1x_rank": 34
+      }
+    },
+    "M_I/M_GUT": {
+      "O06": "1328399081081522/655510142883133799352025",
+      "Phi17_block": {
+        "block_eigenvalues": [
+          0.0,
+          0.125
+        ],
+        "coupling_to_other_fields_max_abs": 0.0,
+        "exact_radial_mass_squared_x0_squared_over_8": "1/8",
+        "radial_deviation_from_exact": 4.16333634234e-17,
+        "radial_mass_squared": 0.125,
+        "scaling": "r0-independent: GUT scale for x0 >= 1, never an r0^2-scaled intermediate state"
+      },
+      "V0_float": -1.03125,
+      "V_compiler": -1.03125,
+      "V_minus_V0": -8.881784197e-16,
+      "all_massive_variant": {
+        "O06_offset": "664199540540761/16387753572078344983800625",
+        "min_eigenvalue": 4.05290987156e-11,
+        "min_eigenvalue_over_r0_squared": 0.00999971908605,
+        "n_negative": 0,
+        "n_zero": 0
+      },
+      "gradient_block_max_abs": {
+        "H10": 0.0,
+        "Phi17": 0.0,
+        "Phi210": 1.77635920472e-15,
+        "S": 0.0,
+        "Sigma126bar": 1.34424128729e-18
+      },
+      "gradient_max_abs": 1.77635920472e-15,
+      "hessian_symmetry_residual": 5.95039622743e-12,
+      "kappa": "-25772069/1619271617590",
+      "kernel_is_symmetry_plus_light_doublet": true,
+      "light_spectrum": {
+        "lowest_heavy_non_Phi17": {
+          "field_weights": {
+            "Phi210": 6.07953532303e-09,
+            "Sigma126bar": 0.99999999392
+          },
+          "mass_squared": 0.499999994258
+        },
+        "method": "SM-isotypic split of the light subspace by exact-integer Casimirs, then Hessian eigenvalues per component",
+        "real_dimension": 60,
+        "states": [
+          {
+            "eigenvalue_spread": 2.15571394116e-24,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.0,
+            "mass_squared": -7.13048216786e-25,
+            "mass_squared_over_r0_squared": -1.75929938949e-16,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 1.49007103635e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.101989714985,
+            "mass_squared": 4.21591554571e-11,
+            "mass_squared_over_r0_squared": 0.0104019019627,
+            "real_multiplicity": 2,
+            "sm_content_real": {
+              "(1,1)_|Y|=2": 2
+            }
+          },
+          {
+            "eigenvalue_spread": 2.5082363895e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.101989736436,
+            "mass_squared": 4.21591731914e-11,
+            "mass_squared_over_r0_squared": 0.0104019063383,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=4/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 5.40150180768e-17,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.242925942598,
+            "mass_squared": 2.39181144249e-10,
+            "mass_squared_over_r0_squared": 0.0590130135869,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=1/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 1.00880613462e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253419301977,
+            "mass_squared": 2.60290625375e-10,
+            "mass_squared_over_r0_squared": 0.0642213426147,
+            "real_multiplicity": 6,
+            "sm_content_real": {
+              "(3,1)_|Y|=4/3": 6
+            }
+          },
+          {
+            "eigenvalue_spread": 9.45445139876e-17,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.253419326068,
+            "mass_squared": 2.60290674863e-10,
+            "mass_squared_over_r0_squared": 0.0642213548249,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=1/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 2.10632401452e-16,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.324106100044,
+            "mass_squared": 4.25748921198e-10,
+            "mass_squared_over_r0_squared": 0.105044764085,
+            "real_multiplicity": 12,
+            "sm_content_real": {
+              "(6,1)_|Y|=2/3": 12
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "Sigma126bar": 1.0
+            },
+            "mass_over_r0_M_GUT": 0.707096355216,
+            "mass_squared": 2.02645210376e-09,
+            "mass_squared_over_r0_squared": 0.499985255559,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          },
+          {
+            "eigenvalue_spread": 8.27180612553e-24,
+            "field_weights": {
+              "H10": 1.0
+            },
+            "mass_over_r0_M_GUT": 1.0,
+            "mass_squared": 4.05302372665e-09,
+            "mass_squared_over_r0_squared": 1.0,
+            "real_multiplicity": 4,
+            "sm_content_real": {
+              "(1,2)_|Y|=1/2": 4
+            }
+          },
+          {
+            "eigenvalue_spread": 0.0,
+            "field_weights": {
+              "S": 1.0
+            },
+            "mass_over_r0_M_GUT": 2.0,
+            "mass_squared": 1.62120949066e-08,
+            "mass_squared_over_r0_squared": 4.0,
+            "real_multiplicity": 1,
+            "sm_content_real": {
+              "(1,1)_|Y|=0": 1
+            }
+          }
+        ],
+        "window": "projected-Hessian eigenvalues below 5 r0^2, Phi17 radial mode (x0^2/8, decoupled) excluded"
+      },
+      "projected_hessian": {
+        "dimension": 451,
+        "expected_min_massive_over_r0_squared": "1/96",
+        "max_abs_zero_mode_eigenvalue": 4.13465098772e-16,
+        "max_eigenvalue": 8.00000000405,
+        "min_eigenvalue": -3.30943175482e-16,
+        "min_massive_absolute_deviation": 6.03344195007e-14,
+        "min_massive_eigenvalue": 4.21586627331e-11,
+        "min_massive_over_r0_squared": 0.0104017803932,
+        "n_negative": 0,
+        "n_zero": 4,
+        "zero_modes_weight_in_light_doublet_real_directions": 0.99999999974,
+        "zero_tolerance": 4.22189971526e-14
+      },
+      "r0": "51544138/809635808795",
+      "r0_float": 6.36633625145e-05,
+      "seconds": 35.9799325466,
+      "state": "(p, r0 sigma_std, 0, r0, x0)",
+      "symmetry_ranks": {
+        "so10_orbit_rank": 33,
+        "so10_plus_u1x_plus_pq_rank": 35,
+        "so10_plus_u1x_rank": 34
+      }
+    }
+  },
+  "exact_certificate": {
+    "V_at_vacuum_equals_V0": true,
+    "adapted_identity": "V = [-2|Phi|^2 + Q(Phi)] + (1/8)[||(M_Phi - 2)Sigma||^2 + ||C_Phi Sigma||^2 + W'(Sigma) - 2 r0^2 N_Sigma] + [2 N_H^2 + 2|k| r0 N_H + 2k Re(conj(H.H) conj(S)) + (|S|^2 - r0^2)^2 - r0^4] + ||H wedge Phi||^2 + (1/32)(|Phi17|^2 - x0^2)^2 - x0^4/32,  W' = 2 I54 + 2 I1050bar + I2772bar + (17/16) I4125",
+    "bfb_certified": true,
+    "checks": {
+      "A_square_recoupling_exact": true,
+      "C_p_sigma_std_vanishes": true,
+      "C_square_recoupling_exact": true,
+      "HS_sector_bounded_at_every_benchmark": true,
+      "H_self_quartic_basis_is_I1_I54": true,
+      "M_p_sigma_std_equals_2_sigma_std": true,
+      "Phi_H_term_is_exact_wedge_square": true,
+      "coefficient_map_equals_adapted_SOS_expansion_at_all_rational_points": true,
+      "coefficient_map_equals_adapted_SOS_expansion_symbolically": true,
+      "cubic_operator_exactly_hermitian": true,
+      "exact_210_global_bound_and_P_saturation": true,
+      "quartic_part_strictly_positive": true,
+      "self_projectors_complete_and_generators_antihermitian": true,
+      "sigma_std_exactly_in_minus_i_space": true,
+      "sigma_std_is_pure_2772bar": true,
+      "swapped_self_weights_all_at_least_one": true
+    },
+    "conclusions": {
+      "global_minimum": "V >= V0 everywhere and V(p, r0 sigma_std, 0, r0, x0) = V0",
+      "hessian": "second-order necessary condition at a global minimiser: Hessian PSD exactly",
+      "stationarity": "a global minimiser of a smooth function is a critical point: grad V = 0 exactly",
+      "validity": "every r0 > 0, x0 > 0, kappa^2 < 8 r0^2 (lambda_eff > 0); the light-doublet tuning O06 = 2|kappa| r0 included"
+    },
+    "difference_from_historical_SOS27": "self weights (2,2,17/16,1) -> (2,2,1,17/16); radial coefficient 25/12 -> 2; H/S sector at h = 0 with kappa_H instead of the (h, alpha = h^2/r) alignment squares",
+    "equality_set": {
+      "conditions": [
+        "V_Phi(Phi) = -1 (|Phi| = 1 and I45 = I210 = I5940 = 0)",
+        "N_Sigma = r0^2 and Sigma (x) Sigma in 2772bar (pure: SO(10) orbit of sigma_std up to phase)",
+        "(M_Phi - 2) Sigma = 0 and C_Phi Sigma = 0",
+        "H = 0, |S| = r0, |Phi17| = x0"
+      ],
+      "unique_modulo_symmetry": "open (numerical evidence in numerical_global_search)"
+    },
+    "exact_HS_sector": {
+      "1/100": {
+        "H_self_identity": "O36: 2 I_1 + 2 I_54 = 2 N_H^2 (Sym^2(10) = 1 + 54, exact_h10_self_quartic_family_v20)",
+        "I1_plus_I54_minus_NH2_float_residual_at_random_H": 2.84217094304e-14,
+        "O12_convention": "re::O12 multiplies 2 Re[(Hdag.Hdag) Sdag] (census orbit O12 = SARAH kappaH H10.H10.S)",
+        "cauchy_schwarz": "|2k Re(conj(H.H) conj(S))| <= 2|k| |H.H| |S| <= 2|k| N_H |S|",
+        "condition": "k^2 < 8 r0^2 (equivalently lambda_eff = 2 - k^2/(4 r0^2) > 0)",
+        "condition_holds_strictly": true,
+        "equality_set": "H = 0 and |S| = r0 (strict inequality elsewhere)",
+        "kappa": "-1/400",
+        "lower_bound": "-1/100000000",
+        "margin_4r0_squared_minus_kappa_squared_over_2": "127/320000",
+        "sector": "V_HS = 2 N_H^2 + 2|k| r0 N_H + 2 k Re(conj(H.H) conj(S)) + |S|^4 - 2 r0^2 |S|^2",
+        "square_completion": "Let t = |S| - r0. Then V_HS + r0^4 >= 2 N_H^2 + 2|k| N_H (r0 - |S|) + t^2 (|S| + r0)^2. For t <= 0 every term is >= 0, and the sum is > 0 unless t = 0 and N_H = 0. For t > 0, completing the square in N_H gives >= 2 (N_H - |k| t/2)^2 + t^2 [(|S| + r0)^2 - k^2/2], and (|S| + r0)^2 > 4 r0^2. So V_HS >= -r0^4, with equality only at H = 0, |S| = r0, whenever k^2 < 8 r0^2, i.e. lambda_eff = 2 - k^2/(4 r0^2) > 0. The Cauchy-Schwarz step is tight (H real up to phase, S phase aligned), so k^2 <= 8 r0^2 is also necessary.",
+        "square_completion_identity": "2 N_H^2 + 2|k| N_H (r0 - |S|) + (|S|^2 - r0^2)^2 = 2 (N_H - |k| t/2)^2 + t^2 [4 r0^2 - k^2/2 + t (t + 4 r0)]",
+        "square_completion_identity_exact": true,
+        "square_completion_identity_residual_sympy": "0"
+      },
+      "1/1000": {
+        "H_self_identity": "O36: 2 I_1 + 2 I_54 = 2 N_H^2 (Sym^2(10) = 1 + 54, exact_h10_self_quartic_family_v20)",
+        "I1_plus_I54_minus_NH2_float_residual_at_random_H": 2.84217094304e-14,
+        "O12_convention": "re::O12 multiplies 2 Re[(Hdag.Hdag) Sdag] (census orbit O12 = SARAH kappaH H10.H10.S)",
+        "cauchy_schwarz": "|2k Re(conj(H.H) conj(S))| <= 2|k| |H.H| |S| <= 2|k| N_H |S|",
+        "condition": "k^2 < 8 r0^2 (equivalently lambda_eff = 2 - k^2/(4 r0^2) > 0)",
+        "condition_holds_strictly": true,
+        "equality_set": "H = 0 and |S| = r0 (strict inequality elsewhere)",
+        "kappa": "-1/4000",
+        "lower_bound": "-1/1000000000000",
+        "margin_4r0_squared_minus_kappa_squared_over_2": "127/32000000",
+        "sector": "V_HS = 2 N_H^2 + 2|k| r0 N_H + 2 k Re(conj(H.H) conj(S)) + |S|^4 - 2 r0^2 |S|^2",
+        "square_completion": "Let t = |S| - r0. Then V_HS + r0^4 >= 2 N_H^2 + 2|k| N_H (r0 - |S|) + t^2 (|S| + r0)^2. For t <= 0 every term is >= 0, and the sum is > 0 unless t = 0 and N_H = 0. For t > 0, completing the square in N_H gives >= 2 (N_H - |k| t/2)^2 + t^2 [(|S| + r0)^2 - k^2/2], and (|S| + r0)^2 > 4 r0^2. So V_HS >= -r0^4, with equality only at H = 0, |S| = r0, whenever k^2 < 8 r0^2, i.e. lambda_eff = 2 - k^2/(4 r0^2) > 0. The Cauchy-Schwarz step is tight (H real up to phase, S phase aligned), so k^2 <= 8 r0^2 is also necessary.",
+        "square_completion_identity": "2 N_H^2 + 2|k| N_H (r0 - |S|) + (|S|^2 - r0^2)^2 = 2 (N_H - |k| t/2)^2 + t^2 [4 r0^2 - k^2/2 + t (t + 4 r0)]",
+        "square_completion_identity_exact": true,
+        "square_completion_identity_residual_sympy": "0"
+      },
+      "1/5": {
+        "H_self_identity": "O36: 2 I_1 + 2 I_54 = 2 N_H^2 (Sym^2(10) = 1 + 54, exact_h10_self_quartic_family_v20)",
+        "I1_plus_I54_minus_NH2_float_residual_at_random_H": 2.84217094304e-14,
+        "O12_convention": "re::O12 multiplies 2 Re[(Hdag.Hdag) Sdag] (census orbit O12 = SARAH kappaH H10.H10.S)",
+        "cauchy_schwarz": "|2k Re(conj(H.H) conj(S))| <= 2|k| |H.H| |S| <= 2|k| N_H |S|",
+        "condition": "k^2 < 8 r0^2 (equivalently lambda_eff = 2 - k^2/(4 r0^2) > 0)",
+        "condition_holds_strictly": true,
+        "equality_set": "H = 0 and |S| = r0 (strict inequality elsewhere)",
+        "kappa": "-1/20",
+        "lower_bound": "-1/625",
+        "margin_4r0_squared_minus_kappa_squared_over_2": "127/800",
+        "sector": "V_HS = 2 N_H^2 + 2|k| r0 N_H + 2 k Re(conj(H.H) conj(S)) + |S|^4 - 2 r0^2 |S|^2",
+        "square_completion": "Let t = |S| - r0. Then V_HS + r0^4 >= 2 N_H^2 + 2|k| N_H (r0 - |S|) + t^2 (|S| + r0)^2. For t <= 0 every term is >= 0, and the sum is > 0 unless t = 0 and N_H = 0. For t > 0, completing the square in N_H gives >= 2 (N_H - |k| t/2)^2 + t^2 [(|S| + r0)^2 - k^2/2], and (|S| + r0)^2 > 4 r0^2. So V_HS >= -r0^4, with equality only at H = 0, |S| = r0, whenever k^2 < 8 r0^2, i.e. lambda_eff = 2 - k^2/(4 r0^2) > 0. The Cauchy-Schwarz step is tight (H real up to phase, S phase aligned), so k^2 <= 8 r0^2 is also necessary.",
+        "square_completion_identity": "2 N_H^2 + 2|k| N_H (r0 - |S|) + (|S|^2 - r0^2)^2 = 2 (N_H - |k| t/2)^2 + t^2 [4 r0^2 - k^2/2 + t (t + 4 r0)]",
+        "square_completion_identity_exact": true,
+        "square_completion_identity_residual_sympy": "0"
+      },
+      "M_I/M_GUT": {
+        "H_self_identity": "O36: 2 I_1 + 2 I_54 = 2 N_H^2 (Sym^2(10) = 1 + 54, exact_h10_self_quartic_family_v20)",
+        "I1_plus_I54_minus_NH2_float_residual_at_random_H": 2.84217094304e-14,
+        "O12_convention": "re::O12 multiplies 2 Re[(Hdag.Hdag) Sdag] (census orbit O12 = SARAH kappaH H10.H10.S)",
+        "cauchy_schwarz": "|2k Re(conj(H.H) conj(S))| <= 2|k| |H.H| |S| <= 2|k| N_H |S|",
+        "condition": "k^2 < 8 r0^2 (equivalently lambda_eff = 2 - k^2/(4 r0^2) > 0)",
+        "condition_holds_strictly": true,
+        "equality_set": "H = 0 and |S| = r0 (strict inequality elsewhere)",
+        "kappa": "-25772069/1619271617590",
+        "lower_bound": "-7058576474472928243076839345936/429693547422666489216416139033042752309871600625",
+        "margin_4r0_squared_minus_kappa_squared_over_2": "84353341648676647/5244081143065070394816200",
+        "sector": "V_HS = 2 N_H^2 + 2|k| r0 N_H + 2 k Re(conj(H.H) conj(S)) + |S|^4 - 2 r0^2 |S|^2",
+        "square_completion": "Let t = |S| - r0. Then V_HS + r0^4 >= 2 N_H^2 + 2|k| N_H (r0 - |S|) + t^2 (|S| + r0)^2. For t <= 0 every term is >= 0, and the sum is > 0 unless t = 0 and N_H = 0. For t > 0, completing the square in N_H gives >= 2 (N_H - |k| t/2)^2 + t^2 [(|S| + r0)^2 - k^2/2], and (|S| + r0)^2 > 4 r0^2. So V_HS >= -r0^4, with equality only at H = 0, |S| = r0, whenever k^2 < 8 r0^2, i.e. lambda_eff = 2 - k^2/(4 r0^2) > 0. The Cauchy-Schwarz step is tight (H real up to phase, S phase aligned), so k^2 <= 8 r0^2 is also necessary.",
+        "square_completion_identity": "2 N_H^2 + 2|k| N_H (r0 - |S|) + (|S|^2 - r0^2)^2 = 2 (N_H - |k| t/2)^2 + t^2 [4 r0^2 - k^2/2 + t (t + 4 r0)]",
+        "square_completion_identity_exact": true,
+        "square_completion_identity_residual_sympy": "0"
+      }
+    },
+    "exact_quartic_bound": {
+      "bound": "V4(q) >= |q|^4 / sum(beta^2/alpha) (Cauchy-Schwarz)",
+      "chart_norm": "|q|^2 = |Phi|^2 + 2 N_H + 2 N_Sigma + 2|S|^2 + 2|Phi17|^2",
+      "chart_norm_weights_beta": {
+        "N_H": "2",
+        "N_Sigma": "2",
+        "|Phi17|^2": "2",
+        "|Phi|^2": "1",
+        "|S|^2": "2"
+      },
+      "coefficients_alpha": {
+        "N_H": "2",
+        "N_Sigma": "1/8",
+        "|Phi17|^2": "1/32",
+        "|Phi|^2": "1",
+        "|S|^2": "1"
+      },
+      "constant": "1/167",
+      "matches_recorded_constant": true,
+      "quartic_part": "V4 = Q(Phi) + (1/8)(||M_Phi Sigma||^2 + ||C_Phi Sigma||^2 + W'(Sigma)) + 2 N_H^2 + ||H wedge Phi||^2 + |S|^4 + |Phi17|^4/32  (the kappa term is cubic, O06/O05/O04/O03/O07 quadratic)",
+      "termwise_lower_bounds": "Q >= |Phi|^4, W' >= N_Sigma^2, all other terms >= 0"
+    },
+    "exact_sigma_std": {
+      "C_p_sigma_max_abs": 0,
+      "M_p_sigma_minus_2_sigma_max_abs": 0,
+      "delta_r_projector_fractions": {
+        "1050bar": "0",
+        "2772bar": "2/3",
+        "4125": "1/3",
+        "54": "0"
+      },
+      "exactly_in_chart_minus_i_space": true,
+      "interpretation": "sigma_std (x) sigma_std lies entirely in 2772bar (the highest-weight channel: sigma_std is the SO(10) highest-weight vector of 126bar), so W'(Sigma) = N^2 exactly with the swapped weights; p acts on it with M_p = 2 and C_p = 0 exactly.",
+      "maximum_integer_projection_entry": 1440,
+      "projector_fractions": {
+        "1050bar": "0",
+        "2772bar": "1",
+        "4125": "0",
+        "54": "0"
+      },
+      "projector_fractions_sum": "1",
+      "raw_form": "z1^z2^z3^z4^z5 (exact Gaussian-integer chart coordinates, 16 entries)",
+      "raw_nonzero_coordinates": 16,
+      "raw_norm_squared": 16,
+      "weighted_self_quartic_over_N2": {
+        "delta_r_historical": "25/24",
+        "delta_r_swapped": "49/48",
+        "sigma_std_historical": "17/16",
+        "sigma_std_swapped": "1"
+      }
+    },
+    "exactly_stationary": true,
+    "global_minimum_certified": true,
+    "hessian_psd_exact": true,
+    "lower_bound": {
+      "H_S": "V_HS >= -r0^4 (exact_hs_certificate)",
+      "Phi": "V_Phi >= (I2 - 1)^2 - 1 >= -1",
+      "Phi17": "(1/32)(|Phi17|^2 - x0^2)^2 - x0^4/32 >= -x0^4/32",
+      "Sigma": "(1/8)(W' - 2 r0^2 N) >= (1/8)(N^2 - 2 r0^2 N) >= -(1/8) r0^4",
+      "V0": "-1 - r0^4/8 - r0^4 - x0^4/32",
+      "V0_at_default": "-20661/20000"
+    },
+    "rational_point_identity": {
+      "r0=1/100,x0=1,kappa=-1/3*r0": true,
+      "r0=1/100,x0=1,kappa=-1/4*r0": true,
+      "r0=1/100,x0=1,kappa=1/5*r0": true,
+      "r0=1/100,x0=7/3,kappa=-1/3*r0": true,
+      "r0=1/100,x0=7/3,kappa=-1/4*r0": true,
+      "r0=1/100,x0=7/3,kappa=1/5*r0": true,
+      "r0=1/1000,x0=1,kappa=-1/3*r0": true,
+      "r0=1/1000,x0=1,kappa=-1/4*r0": true,
+      "r0=1/1000,x0=1,kappa=1/5*r0": true,
+      "r0=1/1000,x0=7/3,kappa=-1/3*r0": true,
+      "r0=1/1000,x0=7/3,kappa=-1/4*r0": true,
+      "r0=1/1000,x0=7/3,kappa=1/5*r0": true,
+      "r0=1/5,x0=1,kappa=-1/3*r0": true,
+      "r0=1/5,x0=1,kappa=-1/4*r0": true,
+      "r0=1/5,x0=1,kappa=1/5*r0": true,
+      "r0=1/5,x0=7/3,kappa=-1/3*r0": true,
+      "r0=1/5,x0=7/3,kappa=-1/4*r0": true,
+      "r0=1/5,x0=7/3,kappa=1/5*r0": true,
+      "r0=M_I/M_GUT,x0=1,kappa=-1/3*r0": true,
+      "r0=M_I/M_GUT,x0=1,kappa=-1/4*r0": true,
+      "r0=M_I/M_GUT,x0=1,kappa=1/5*r0": true,
+      "r0=M_I/M_GUT,x0=7/3,kappa=-1/3*r0": true,
+      "r0=M_I/M_GUT,x0=7/3,kappa=-1/4*r0": true,
+      "r0=M_I/M_GUT,x0=7/3,kappa=1/5*r0": true
+    },
+    "reused_source_certificates": {
+      "A_and_C_squares": "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.exact_mixed_certificate",
+      "exact_210": "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.exact_phi_certificate",
+      "self_projector_completeness": "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.exact_delta_self_certificate",
+      "wedge_square": "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.exact_wedge_certificate"
+    },
+    "symbolic_identity": {
+      "O05_symbolic": "1/2 - r0**2/4",
+      "O06_symbolic": "-2*kappa*r0",
+      "all_residuals_zero": true,
+      "parameters_compared": 27,
+      "variables": "r0 > 0, x0 > 0, kappa < 0 (sympy)"
+    },
+    "vacuum_square_values": {
+      "(M_p - 2) Sigma": 0,
+      "C_p Sigma": 0,
+      "H": 0,
+      "N_Sigma - r0^2": 0,
+      "V_Phi(p) + 1": "0 (exact_210: |p| = 1, extra channels vanish)",
+      "W'(Sigma) - N_Sigma^2": "0",
+      "|Phi17| - x0": 0,
+      "|S| - r0": 0
+    },
+    "why_the_swap": "With the historical weights W/N^2 is 17/16 at sigma_std and 25/24 at delta_R, so the p-branch prefers the non-SM delta_R; with the swapped weights it is 1 at sigma_std (the bound W' >= N^2 is attained) and 49/48 at delta_R."
+  },
+  "exact_slice": {
+    "derivation": "Q(c p) = c^4, (c M_p - 2) r sigma = 2(c - 1) r sigma, C_p sigma = 0, W'(r sigma) = r^4",
+    "equals_V0": true,
+    "gradient_at_vacuum": [
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "gradient_vanishes_exactly": true,
+    "polynomial": "c**4 + c**2*r**2/2 - 2*c**2 - c*r**2 + r**4/8 + 49*r**2/100 + s**4 - 2*s**2/25 + x**4/32 - x**2/16",
+    "r0": "1/5",
+    "slice": "(Phi, Sigma, H, S, Phi17) = (c p, r sigma_std, 0, s, x), all real",
+    "slice_hessian_at_vacuum": [
+      [
+        "201/25",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1/25",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "8/25",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1/4"
+      ]
+    ],
+    "slice_hessian_eigenvalues": [
+      "1/25",
+      "1/4",
+      "8/25",
+      "201/25"
+    ],
+    "value_at_vacuum": "-20661/20000",
+    "x0": "1"
+  },
+  "failures": [],
+  "flag_notes": {
+    "breaking_route_matches_rg_anchor": "chain topology SO(10) -> PS -> SM only; not the anchor's field content",
+    "coloured_scalars_only_at_M_GUT": "False: only the 10_H triplets are at M_GUT; 126bar (10bar,1,3) remnants (6,1)_4/3, (3,1)_1/3, (3,1)_4/3, (6,1)_1/3, (6,1)_2/3 lie below M_I",
+    "doublet_triplet_splitting_natural": "False: the 10_H splitting needs O46_1 = -(3/5) O46_54 (to ~ (m_h/M_GUT)^2) and O06 = 2|kappa| r0 (to ~ (m_h/M_I)^2); no symmetry enforces either",
+    "exactly_stationary": "follows from global minimality; the exact slice gradient also vanishes identically",
+    "global_minimum_certified": "exact: adapted SOS27 lower bound attained at the vacuum (repository source-bound recouplings plus new exact sigma_std pieces); uniqueness of the minimum modulo symmetry is not certified",
+    "hessian_psd_kernel_is_symmetry": "False by its literal meaning: at every benchmark the PSD Hessian's kernel is the 35 symmetry tangents (SO(10)/SM + U(1)_X + PQ) PLUS the 4 real modes of the deliberately tuned light doublet (O06 = 2|kappa| r0); see hessian_psd_kernel_is_symmetry_plus_tuned_light_doublet. Raising O06 by r0^2/100 leaves exactly the 35 symmetry tangents (hessian_kernel_is_symmetry_when_O06_raised). Kernel counts are float64.",
+    "higgs_mass_compatible": "False at the benchmark (a benchmark-only flag): tree-level lambda_eff = 127/64 at kappa = -r0/4 (m_h ~ 195 GeV under conditional SM running). The certified family kappa^2 < 8 r0^2 spans lambda_eff in (0, 2], and lambda_eff -> 0+ gives m_h within a few GeV of the measured value (lambda(M_I) = 0: m_h ~ 126.2 GeV tree, 127.7 GeV Buttazzo-scaled, vs 125.20 GeV). The remaining tension is lambda_eff >= 0 (tree-level global minimality) versus the SM-required lambda(M_I) = -0.0085 at M_t = 173.34 GeV, whose sign is M_t-dependent at about 2 sigma",
+    "physical_benchmark_uses_canonical_phi17_scale": "False: x0 = 1 at every benchmark (canonical x0 ~ 10.08)",
+    "rg_anchor_field_content_reproduced": "False: anchor betas assume a light (15,2,2) above M_I and a 2HDM below; the candidate has neither and has sub-M_I coloured scalars (rg_anchor_consistency)",
+    "target_unbroken_algebra_is_standard_model": "exact integer stabilizer of (p, sigma_std); gated by the audit passing (fail-closed), like every other positive flag"
+  },
+  "flags": {
+    "bfb_certified": true,
+    "breaking_route_matches_rg_anchor": true,
+    "candidate_is_sm_vacuum": true,
+    "coloured_scalars_only_at_M_GUT": false,
+    "doublet_triplet_splitting_natural": false,
+    "electroweak_symmetry_breaking_realized": false,
+    "equality_set_unique_modulo_symmetry_certified": false,
+    "exactly_stationary": true,
+    "g3_closed": false,
+    "global_minimum_certified": true,
+    "hessian_kernel_count_is_float64": true,
+    "hessian_kernel_is_symmetry_when_O06_raised": true,
+    "hessian_psd_exact": true,
+    "hessian_psd_kernel_is_symmetry": false,
+    "hessian_psd_kernel_is_symmetry_plus_tuned_light_doublet": true,
+    "higgs_mass_compatible": false,
+    "physical_benchmark_uses_canonical_phi17_scale": false,
+    "realistic_yukawa_sector": false,
+    "rg_anchor_field_content_reproduced": false,
+    "target_unbroken_algebra_is_standard_model": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "hierarchy": {
+    "anchor": {
+      "M_GUT_GeV": 9917564798900000.0,
+      "M_I_GeV": 631385523053.0,
+      "ratio_float": 6.36633625145e-05,
+      "source": "gauged_u1x_g2_derivative_audit_v20._physical_hierarchy_metadata(physical_hierarchy_state())"
+    },
+    "benchmark_uses_canonical_phi17_scale": false,
+    "benchmark_x0": "1",
+    "breaking_route": "SO(10) -> Pati-Salam at M_GUT (Phi = p) -> SM at M_I (Sigma = r0 sigma_std): the anchor's route (chain topology only; the anchor's field content is not reproduced)",
+    "canonical_Phi17_scale_GeV": 1e+17,
+    "canonical_x0": 10.0831204058,
+    "coloured_states_below_M_I": [
+      {
+        "field_weights": {
+          "Sigma126bar": 1.0
+        },
+        "mass_GeV": 64394843085.7,
+        "mass_over_M_I": 0.101989736436,
+        "mass_squared_over_r0_squared": 0.0104019063383,
+        "sm_content_real": {
+          "(6,1)_|Y|=4/3": 12
+        }
+      },
+      {
+        "field_weights": {
+          "Sigma126bar": 1.0
+        },
+        "mass_GeV": 153379923330.0,
+        "mass_over_M_I": 0.242925942598,
+        "mass_squared_over_r0_squared": 0.0590130135869,
+        "sm_content_real": {
+          "(3,1)_|Y|=1/3": 6
+        }
+      },
+      {
+        "field_weights": {
+          "Sigma126bar": 1.0
+        },
+        "mass_GeV": 160005278530.0,
+        "mass_over_M_I": 0.253419301977,
+        "mass_squared_over_r0_squared": 0.0642213426147,
+        "sm_content_real": {
+          "(3,1)_|Y|=4/3": 6
+        }
+      },
+      {
+        "field_weights": {
+          "Sigma126bar": 1.0
+        },
+        "mass_GeV": 160005293741.0,
+        "mass_over_M_I": 0.253419326068,
+        "mass_squared_over_r0_squared": 0.0642213548249,
+        "sm_content_real": {
+          "(6,1)_|Y|=1/3": 12
+        }
+      },
+      {
+        "field_weights": {
+          "Sigma126bar": 1.0
+        },
+        "mass_GeV": 204635899501.0,
+        "mass_over_M_I": 0.324106100044,
+        "mass_squared_over_r0_squared": 0.105044764085,
+        "sm_content_real": {
+          "(6,1)_|Y|=2/3": 12
+        }
+      }
+    ],
+    "doublet_tuning_precision": {
+      "O06_(m_h/M_I)^2": 3.93205349904e-20,
+      "O46_ratio_(m_h/M_GUT)^2": 1.59367061261e-28,
+      "m_h_GeV": 125.2
+    },
+    "phi17_note": "Every compiler benchmark, including 'M_I/M_GUT', keeps x0 = 1 (Phi17 at M_GUT), not the canonical physical_hierarchy_state value Phi17 = 1e17 GeV (x0 ~ 10.08). The exact identity contains Phi17 only in (1/32)(|Phi17|^2 - x0^2)^2 and the compiler Phi17 block is decoupled (Phi17_block), so x0 changes only the Phi17 radial mass x0^2/8 M_GUT^2 and V0; the exact certificate holds for every x0 > 0.",
+    "r0_physical": "51544138/809635808795",
+    "r0_physical_float": 6.36633625145e-05,
+    "status": "ILLUSTRATIVE: M_GUT and M_I are the anchor's (gauged_u1x_g2_derivative_audit_v20), and this candidate's field content does not reproduce the anchor (rg_anchor_consistency); the GeV numbers are not predictions",
+    "tree_masses_GeV_at_physical_r0": {
+      "H10_colour_triplets": [
+        9917564798900000.0,
+        9917564819000000.0
+      ],
+      "H10_heavy_doublet_partner": 631385523053.0,
+      "H10_light_doublet": 0.0,
+      "Phi17_radial_at_benchmark_x0_1": 3506388661080000.0,
+      "Phi17_radial_at_canonical_x0": 3.53553390593e+16,
+      "S_radial": 1262771046110.0,
+      "Sigma_126bar_15_2_2": 7012777322160000.0,
+      "formulae": "H10: M_T = M_GUT (x), M_GUT sqrt(1 + r0^2) (y); M_D' = r0 M_GUT = M_I. S radial 2 r0 M_GUT. Phi17 radial x0 M_GUT/sqrt(8), r0-independent. Lightest massive state M_I/sqrt(96). Sigma (15,2,2) ~ M_GUT/sqrt(2) (m^2 -> 1/2 as r0 -> 0).",
+      "light_states_at_physical_r0": [
+        {
+          "field_weights": {
+            "H10": 1.0
+          },
+          "mass_GeV": 0.0,
+          "mass_over_M_I": 0.0,
+          "mass_squared_over_r0_squared": -1.75929938949e-16,
+          "sm_content_real": {
+            "(1,2)_|Y|=1/2": 4
+          }
+        },
+        {
+          "field_weights": {
+            "Sigma126bar": 1.0
+          },
+          "mass_GeV": 64394829541.8,
+          "mass_over_M_I": 0.101989714985,
+          "mass_squared_over_r0_squared": 0.0104019019627,
+          "sm_content_real": {
+            "(1,1)_|Y|=2": 2
+          }
+        },
+        {
+          "field_weights": {
+            "Sigma126bar": 1.0
+          },
+          "mass_GeV": 64394843085.7,
+          "mass_over_M_I": 0.101989736436,
+          "mass_squared_over_r0_squared": 0.0104019063383,
+          "sm_content_real": {
+            "(6,1)_|Y|=4/3": 12
+          }
+        },
+        {
+          "field_weights": {
+            "Sigma126bar": 1.0
+          },
+          "mass_GeV": 153379923330.0,
+          "mass_over_M_I": 0.242925942598,
+          "mass_squared_over_r0_squared": 0.0590130135869,
+          "sm_content_real": {
+            "(3,1)_|Y|=1/3": 6
+          }
+        },
+        {
+          "field_weights": {
+            "Sigma126bar": 1.0
+          },
+          "mass_GeV": 160005278530.0,
+          "mass_over_M_I": 0.253419301977,
+          "mass_squared_over_r0_squared": 0.0642213426147,
+          "sm_content_real": {
+            "(3,1)_|Y|=4/3": 6
+          }
+        },
+        {
+          "field_weights": {
+            "Sigma126bar": 1.0
+          },
+          "mass_GeV": 160005293741.0,
+          "mass_over_M_I": 0.253419326068,
+          "mass_squared_over_r0_squared": 0.0642213548249,
+          "sm_content_real": {
+            "(6,1)_|Y|=1/3": 12
+          }
+        },
+        {
+          "field_weights": {
+            "Sigma126bar": 1.0
+          },
+          "mass_GeV": 204635899501.0,
+          "mass_over_M_I": 0.324106100044,
+          "mass_squared_over_r0_squared": 0.105044764085,
+          "sm_content_real": {
+            "(6,1)_|Y|=2/3": 12
+          }
+        },
+        {
+          "field_weights": {
+            "Sigma126bar": 1.0
+          },
+          "mass_GeV": 446450402087.0,
+          "mass_over_M_I": 0.707096355216,
+          "mass_squared_over_r0_squared": 0.499985255559,
+          "sm_content_real": {
+            "(1,1)_|Y|=0": 1
+          }
+        },
+        {
+          "field_weights": {
+            "H10": 1.0
+          },
+          "mass_GeV": 631385523053.0,
+          "mass_over_M_I": 1.0,
+          "mass_squared_over_r0_squared": 1.0,
+          "sm_content_real": {
+            "(1,2)_|Y|=1/2": 4
+          }
+        },
+        {
+          "field_weights": {
+            "S": 1.0
+          },
+          "mass_GeV": 1262771046110.0,
+          "mass_over_M_I": 2.0,
+          "mass_squared_over_r0_squared": 4.0,
+          "sm_content_real": {
+            "(1,1)_|Y|=0": 1
+          }
+        }
+      ],
+      "lightest_massive_non_H_state": 64440515102.5
+    },
+    "unit_identification": "chart unit |Phi| = 1 identified with the RG M_GUT and r0 = |Sigma|/|Phi| with M_I/M_GUT (a vev ratio), without gauge-coupling or group-theory factors"
+  },
+  "light_doublet_quartic": {
+    "conclusion": "lambda_eff = 127/64 gives m_h ~ 195 GeV under conditional SM running, while the measured Higgs mass needs lambda(M_I) = -0.0085 < 0 at M_t = 173.34 GeV, which global minimality forbids at tree level for this family (the sign of the required lambda(M_I) is M_t-dependent at ~2 sigma; lambda(M_I) = 0 gives m_h ~ 126 GeV at tree level, within a few GeV of the measured value).",
+    "conditional_sm_running": {
+      "applicability": "Conditional: assumes pure SM running below M_I and the anchor's M_I. The candidate has sub-M_I coloured scalars, a tan beta = 1 light doublet, and a field content that does not reproduce the anchor's M_I.",
+      "lambda_M_I_required_for_sm_two_loop": -0.00853946184721,
+      "matching_scale_GeV": 631385523053.0,
+      "predictions": {
+        "lambda_eff_127_over_64": {
+          "M_h_scaled_to_buttazzo_GeV": 197.40344806,
+          "lambda_M_I": 1.984375,
+          "lambda_at_mt": 0.313585631524,
+          "m_h_tree_GeV": 194.991824257
+        },
+        "lambda_zero": {
+          "M_h_scaled_to_buttazzo_GeV": 127.740128921,
+          "lambda_M_I": 0.0,
+          "lambda_at_mt": 0.131311084103,
+          "m_h_tree_GeV": 126.179562789
+        }
+      },
+      "scheme": "two-loop SM RGEs of g3_physical_hierarchy_higgs_stability_v20 (Buttazzo et al. 2013 inputs at M_t = 173.34 GeV), tree-level matching lambda(M_I) = lambda_eff at the anchor M_I"
+    },
+    "derivation": [
+      "direct: 2 N_H^2 (O36_B01 = O36_B02 = 2, Sym^2(10) = 1 + 54) with h^dag h = N_H on the doublet gives 2; ||H wedge Phi||^2 vanishes on doublets (P = diag(1_6, 0_4)); the map has no H-Sigma or H-Phi17 terms",
+      "exchange: the only |h|^2-heavy trilinear is 2 kappa Re(conj(H.H) conj(S)) = sqrt(2) kappa |h|^2 sigma_S (sigma_S = Re S chart coordinate) with m_S^2 = 4 r0^2, giving -kappa^2/(4 r0^2)",
+      "lambda_eff = 2 - kappa^2/(4 r0^2) = 127/64 at kappa = -r0/4, independent of r0"
+    ],
+    "exact_by_benchmark": {
+      "1/100": {
+        "S_exchange_shift": "1/64",
+        "lambda_direct": "2",
+        "lambda_eff": "127/64"
+      },
+      "1/1000": {
+        "S_exchange_shift": "1/64",
+        "lambda_direct": "2",
+        "lambda_eff": "127/64"
+      },
+      "1/5": {
+        "S_exchange_shift": "1/64",
+        "lambda_direct": "2",
+        "lambda_eff": "127/64"
+      },
+      "M_I/M_GUT": {
+        "S_exchange_shift": "1/64",
+        "lambda_direct": "2",
+        "lambda_eff": "127/64"
+      }
+    },
+    "global_minimality_forces_lambda_eff_nonnegative": "V >= V0 with the doublet exactly massless implies V_eff(h) = V0 + lambda_eff (h^dag h)^2 + ... >= V0, so lambda_eff >= 0 at tree level for every member of this family",
+    "higgs_mass_compatible": false,
+    "lambda_eff": "127/64",
+    "normalization": "V = lambda (h^dag h)^2, canonically normalised h (g3_tuned_target_effective_higgs_quartic_v20)"
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 31,
+  "n_failed": 0,
+  "numerical_global_search": {
+    "equality_set_evidence": {
+      "V_Phi_minimizations": [
+        {
+          "Phi_norm": 0.999999999695,
+          "final_V_Phi_plus_1": -2.22044604925e-15,
+          "stabilizer_dimension": 21
+        },
+        {
+          "Phi_norm": 0.99999999887,
+          "final_V_Phi_plus_1": -3.10862446895e-15,
+          "stabilizer_dimension": 21
+        },
+        {
+          "Phi_norm": 0.999999998393,
+          "final_V_Phi_plus_1": -2.6645352591e-15,
+          "stabilizer_dimension": 21
+        },
+        {
+          "Phi_norm": 0.999999999989,
+          "final_V_Phi_plus_1": -2.22044604925e-15,
+          "stabilizer_dimension": 21
+        },
+        {
+          "Phi_norm": 0.999999999727,
+          "final_V_Phi_plus_1": -8.881784197e-16,
+          "stabilizer_dimension": 21
+        },
+        {
+          "Phi_norm": 0.99999999989,
+          "final_V_Phi_plus_1": -1.33226762955e-15,
+          "stabilizer_dimension": 21
+        }
+      ],
+      "all_V_Phi_minima_at_minus_1_with_pati_salam_stabilizer": true,
+      "all_pure_minima_sm_type": true,
+      "interpretation": "At Phi = p the equality conditions (M_p - 2)Sigma = 0, C_p Sigma = 0 cut the 126bar down to this subspace; the (10,3,1) also contains pure spinors but has M_p = -2 (L<->R parity plus conjugation). Evidence only: the V_Phi equality set and the pure spinors of the subspace are sampled, not classified.",
+      "pure_spinor_minimizations_in_subspace": [
+        {
+          "final_impurity": 1.0290353614e-17,
+          "gap_at_r0_one_fifth": -8.881784197e-16,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 9.70581838135e-10,
+            "smallest_orbit_singular_value": 0.282842712226,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "start_impurity": 0.595201673614
+        },
+        {
+          "final_impurity": 6.98392012942e-20,
+          "gap_at_r0_one_fifth": -8.881784197e-16,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 7.13782594933e-11,
+            "smallest_orbit_singular_value": 0.282842712396,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "start_impurity": 0.572094046313
+        },
+        {
+          "final_impurity": 8.28538669004e-18,
+          "gap_at_r0_one_fifth": -8.881784197e-16,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 9.45812632951e-10,
+            "smallest_orbit_singular_value": 0.282842712309,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "start_impurity": 0.573432199244
+        },
+        {
+          "final_impurity": 1.98875505226e-18,
+          "gap_at_r0_one_fifth": -8.881784197e-16,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 3.55581368345e-10,
+            "smallest_orbit_singular_value": 0.282842712093,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "start_impurity": 0.607185661322
+        }
+      ],
+      "sigma_subspace_at_p": {
+        "M_p_eigenvalues": [
+          {
+            "complex_multiplicity": 30,
+            "eigenvalue": -2.0
+          },
+          {
+            "complex_multiplicity": 66,
+            "eigenvalue": 0.0
+          },
+          {
+            "complex_multiplicity": 30,
+            "eigenvalue": 2.0
+          }
+        ],
+        "complex_dimension": 30,
+        "definition": "ker(M_p - 2) intersect ker(C_p) in the 126bar (float SVD of exact integer matrices)",
+        "delta_r_residual_outside_subspace": 5.08407356764e-16,
+        "largest_null_singular_value": 3.91548494414e-16,
+        "sigma_std_residual_outside_subspace": 2.37375291026e-16,
+        "smallest_nonnull_singular_value": 2.0
+      }
+    },
+    "exact_slice_vs_compiler": [
+      {
+        "compiler_minus_exact": -2.88657986403e-15,
+        "exact": "-21758572581640600343656843699723147554100198392572939367774667784847/21062458333711437339583605536734086463779019080109822250862195507200",
+        "point_c_r_s_x": [
+          1.0,
+          0.2,
+          0.2,
+          1.0
+        ]
+      },
+      {
+        "compiler_minus_exact": -6.32827124036e-15,
+        "exact": "-2601277367514958757995299605452959277435186996148257149908156415999/2632807291713929667447950692091760807972377385013727781357774438400",
+        "point_c_r_s_x": [
+          0.9,
+          0.25,
+          0.3,
+          1.2
+        ]
+      },
+      {
+        "compiler_minus_exact": 5.55111512313e-16,
+        "exact": "-331685275101787574645577051947744282254172155079568630560658261760983/336999333339382997433337688587745383420464305281757156013795128115200",
+        "point_c_r_s_x": [
+          1.1,
+          0.1,
+          0.25,
+          0.8
+        ]
+      }
+    ],
+    "fast_evaluator_validation": {
+      "compiler_gradient_check": {
+        "gradient_max_abs": 86.2395842881,
+        "gradient_max_abs_difference": 1.28466126625e-11,
+        "value_relative_difference": 4.38731162233e-14
+      },
+      "evaluator": "SosFormPotential: adapted SOS form with integer M, C tensors, sparse Casimirs, analytic gradient",
+      "max_relative_value_difference": 6.35821617014e-14,
+      "random_states": [
+        {
+          "compiler_value": 643.384861974,
+          "directional_derivative_analytic_minus_central_difference": -1.07040207808e-08,
+          "fast_value": 643.384861974,
+          "relative_difference": 3.33965152109e-14
+        },
+        {
+          "compiler_value": 595.414121639,
+          "directional_derivative_analytic_minus_central_difference": 1.65706630639e-08,
+          "fast_value": 595.414121639,
+          "relative_difference": 6.35821617014e-14
+        },
+        {
+          "compiler_value": 601.020857434,
+          "directional_derivative_analytic_minus_central_difference": 3.62493857153e-09,
+          "fast_value": 601.020857434,
+          "relative_difference": 5.03155563737e-14
+        }
+      ],
+      "vacuum_compiler_minus_V0": -2.88657986403e-15,
+      "vacuum_fast_gradient_max_abs": 1.7763568394e-15,
+      "vacuum_fast_minus_V0": -8.881784197e-16
+    },
+    "lowest_gap_found_any_method": -2.88657986403e-15,
+    "note": "numerical evidence; the exact proof is exact_certificate",
+    "nothing_found_below_V0": true,
+    "quartic_directions": {
+      "compiler_directions": [
+        {
+          "compiler_quartic_coefficient": 0.22321618121,
+          "fast_quartic_value": 0.22321618121,
+          "fit_check_residual_at_t4": 3.17612602885e-12
+        },
+        {
+          "compiler_quartic_coefficient": 0.235959787846,
+          "fast_quartic_value": 0.235959787846,
+          "fit_check_residual_at_t4": 6.06092953603e-12
+        },
+        {
+          "compiler_quartic_coefficient": 0.263751538741,
+          "fast_quartic_value": 0.263751538741,
+          "fit_check_residual_at_t4": -2.62190269495e-12
+        }
+      ],
+      "exact_lower_bound_on_unit_sphere": "1/167",
+      "lowest_V4_found": 0.00599058872446,
+      "lowest_at_or_above_exact_bound": true,
+      "random_max_V4": 0.423109032765,
+      "random_min_V4": 0.186285368872,
+      "random_unit_directions": 512,
+      "sphere_minima_V4": [
+        0.00599058872446,
+        0.00599081374196,
+        0.00599058872446,
+        0.00599058872446,
+        0.00599081374196,
+        0.00599058872446
+      ],
+      "sphere_minimizations": 6
+    },
+    "random_start_local_minimization": {
+      "r0=1/20": {
+        "V0": "-1320009/1280000",
+        "all_endpoints_on_sm_vacuum_orbit": true,
+        "lowest_final_compiler_gap": 1.75415237891e-13,
+        "lowest_final_gap": 1.74971148681e-13,
+        "starts": [
+          {
+            "final_compiler_gap": 1.75415237891e-13,
+            "final_gap": 1.74971148681e-13,
+            "final_gradient_max_abs": 7.40323759908e-09,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 0.000116399861081,
+              "smallest_orbit_singular_value": 0.0706579566506,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.005
+            },
+            "invariants": {
+              "A_shift_norm": 2.6982496612e-08,
+              "C_norm": 2.07847440299e-09,
+              "N_H": 1.70173687577e-07,
+              "N_Sigma": 0.0024999745061,
+              "Phi17_abs": 0.999999956243,
+              "Phi_norm_squared": 1.00000000387,
+              "S_abs": 0.0500006899,
+              "Sigma_2772bar_fraction": 0.999998781208,
+              "Sigma_purity_defect": 1.21879236969e-06,
+              "V_Phi_plus_1": -1.99840144433e-15
+            },
+            "iterations": 740,
+            "kind": "generic",
+            "on_sm_vacuum_orbit": true,
+            "start": 0,
+            "start_gap": 1.98714789281
+          },
+          {
+            "final_compiler_gap": 5.97077942643e-13,
+            "final_gap": 5.97522031853e-13,
+            "final_gradient_max_abs": 3.69881091035e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 0.000258457169525,
+              "smallest_orbit_singular_value": 0.0705950839784,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.005
+            },
+            "invariants": {
+              "A_shift_norm": 3.44524355369e-08,
+              "C_norm": 4.58797276211e-09,
+              "N_H": 3.472392766e-07,
+              "N_Sigma": 0.00250002652962,
+              "Phi17_abs": 1.0000000483,
+              "Phi_norm_squared": 1.00000000933,
+              "S_abs": 0.0500008006115,
+              "Sigma_2772bar_fraction": 0.999994929904,
+              "Sigma_purity_defect": 5.07009632322e-06,
+              "V_Phi_plus_1": -1.33226762955e-15
+            },
+            "iterations": 713,
+            "kind": "phi_near_p",
+            "on_sm_vacuum_orbit": true,
+            "start": 1,
+            "start_gap": 0.170987971623
+          },
+          {
+            "final_compiler_gap": 1.19815268818e-12,
+            "final_gap": 1.19948495581e-12,
+            "final_gradient_max_abs": 2.28116123094e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 0.000224006281092,
+              "smallest_orbit_singular_value": 0.0706160434078,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.005
+            },
+            "invariants": {
+              "A_shift_norm": 5.2974061236e-08,
+              "C_norm": 4.19380598948e-09,
+              "N_H": 6.86844712265e-07,
+              "N_Sigma": 0.00249998853818,
+              "Phi17_abs": 1.00000003931,
+              "Phi_norm_squared": 0.999999999562,
+              "S_abs": 0.0500005288917,
+              "Sigma_2772bar_fraction": 0.99999653636,
+              "Sigma_purity_defect": 3.46364036463e-06,
+              "V_Phi_plus_1": 1.7763568394e-15
+            },
+            "iterations": 612,
+            "kind": "sigma_dominated",
+            "on_sm_vacuum_orbit": true,
+            "start": 2,
+            "start_gap": 1.02009156281
+          }
+        ]
+      },
+      "r0=1/5": {
+        "V0": "-20661/20000",
+        "all_endpoints_on_sm_vacuum_orbit": true,
+        "lowest_final_compiler_gap": 8.43769498715e-15,
+        "lowest_final_gap": 1.53210777398e-14,
+        "starts": [
+          {
+            "final_compiler_gap": 8.34887714518e-14,
+            "final_gap": 8.57092175011e-14,
+            "final_gradient_max_abs": 2.35672915989e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 2.88988807754e-05,
+              "smallest_orbit_singular_value": 0.282830436254,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 6.05158754102e-08,
+              "C_norm": 5.56012541973e-09,
+              "N_H": 1.31192226016e-07,
+              "N_Sigma": 0.0400000877963,
+              "Phi17_abs": 0.999999980297,
+              "Phi_norm_squared": 0.999999988737,
+              "S_abs": 0.200000021999,
+              "Sigma_2772bar_fraction": 0.9999999966,
+              "Sigma_purity_defect": 3.40030925639e-09,
+              "V_Phi_plus_1": -6.66133814775e-16
+            },
+            "iterations": 658,
+            "kind": "generic",
+            "on_sm_vacuum_orbit": true,
+            "start": 0,
+            "start_gap": 0.759354940422
+          },
+          {
+            "final_compiler_gap": 8.43769498715e-15,
+            "final_gap": 1.53210777398e-14,
+            "final_gradient_max_abs": 1.53889502225e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 6.09361939642e-06,
+              "smallest_orbit_singular_value": 0.282839527831,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 5.6067759146e-08,
+              "C_norm": 4.38745318903e-09,
+              "N_H": 1.16697765184e-09,
+              "N_Sigma": 0.0399999618983,
+              "Phi17_abs": 1.00000003927,
+              "Phi_norm_squared": 0.99999999955,
+              "S_abs": 0.200000013236,
+              "Sigma_2772bar_fraction": 0.999999999653,
+              "Sigma_purity_defect": 3.46790707262e-10,
+              "V_Phi_plus_1": -8.881784197e-16
+            },
+            "iterations": 479,
+            "kind": "generic",
+            "on_sm_vacuum_orbit": true,
+            "start": 1,
+            "start_gap": 1.03013634534
+          },
+          {
+            "final_compiler_gap": 7.03881397612e-14,
+            "final_gap": 7.63833440942e-14,
+            "final_gradient_max_abs": 1.01340218916e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 2.44349981607e-05,
+              "smallest_orbit_singular_value": 0.282832311017,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 5.2412850241e-08,
+              "C_norm": 9.25794765231e-09,
+              "N_H": 9.31981363345e-08,
+              "N_Sigma": 0.0399999109668,
+              "Phi17_abs": 1.00000001901,
+              "Phi_norm_squared": 1.0000000039,
+              "S_abs": 0.200000080508,
+              "Sigma_2772bar_fraction": 0.999999997107,
+              "Sigma_purity_defect": 2.89260260189e-09,
+              "V_Phi_plus_1": 2.22044604925e-16
+            },
+            "iterations": 366,
+            "kind": "generic",
+            "on_sm_vacuum_orbit": true,
+            "start": 2,
+            "start_gap": 0.56970413902
+          },
+          {
+            "final_compiler_gap": 6.32827124036e-14,
+            "final_gap": 6.77236045021e-14,
+            "final_gradient_max_abs": 1.02085332768e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 2.65535234913e-05,
+              "smallest_orbit_singular_value": 0.282832383323,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 4.00764957915e-08,
+              "C_norm": 2.2342369207e-09,
+              "N_H": 5.92185126524e-08,
+              "N_Sigma": 0.0400000781678,
+              "Phi17_abs": 0.999999943189,
+              "Phi_norm_squared": 0.999999997732,
+              "S_abs": 0.199999987104,
+              "Sigma_2772bar_fraction": 0.999999996296,
+              "Sigma_purity_defect": 3.70401964656e-09,
+              "V_Phi_plus_1": -1.33226762955e-15
+            },
+            "iterations": 558,
+            "kind": "phi_near_p",
+            "on_sm_vacuum_orbit": true,
+            "start": 3,
+            "start_gap": 0.202471642183
+          },
+          {
+            "final_compiler_gap": 6.63913368726e-14,
+            "final_gap": 6.59472476627e-14,
+            "final_gradient_max_abs": 1.53306773846e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 1.17592308909e-05,
+              "smallest_orbit_singular_value": 0.282837762021,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 6.50936103823e-08,
+              "C_norm": 1.42391398687e-08,
+              "N_H": 1.44091338627e-07,
+              "N_Sigma": 0.0400000364491,
+              "Phi17_abs": 0.99999997055,
+              "Phi_norm_squared": 1.00000000136,
+              "S_abs": 0.199999969366,
+              "Sigma_2772bar_fraction": 0.999999999079,
+              "Sigma_purity_defect": 9.21049236879e-10,
+              "V_Phi_plus_1": -2.88657986403e-15
+            },
+            "iterations": 434,
+            "kind": "phi_near_p",
+            "on_sm_vacuum_orbit": true,
+            "start": 4,
+            "start_gap": 0.298425425734
+          },
+          {
+            "final_compiler_gap": 6.72795152923e-14,
+            "final_gap": 7.30526750203e-14,
+            "final_gradient_max_abs": 2.37228483329e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 2.26382220397e-05,
+              "smallest_orbit_singular_value": 0.282834501121,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 4.06620088927e-08,
+              "C_norm": 9.80762333856e-09,
+              "N_H": 9.15690654419e-08,
+              "N_Sigma": 0.0400000569752,
+              "Phi17_abs": 1.00000003058,
+              "Phi_norm_squared": 1.000000006,
+              "S_abs": 0.200000037153,
+              "Sigma_2772bar_fraction": 0.999999997294,
+              "Sigma_purity_defect": 2.70559108451e-09,
+              "V_Phi_plus_1": 2.22044604925e-16
+            },
+            "iterations": 528,
+            "kind": "phi_near_p",
+            "on_sm_vacuum_orbit": true,
+            "start": 5,
+            "start_gap": 0.206505335372
+          },
+          {
+            "final_compiler_gap": 3.2640556924e-14,
+            "final_gap": 4.04121180964e-14,
+            "final_gradient_max_abs": 9.95353568803e-09,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 1.87404193281e-05,
+              "smallest_orbit_singular_value": 0.28283444378,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 1.98074110357e-08,
+              "C_norm": 1.38818595577e-09,
+              "N_H": 9.57748000648e-08,
+              "N_Sigma": 0.0399999484713,
+              "Phi17_abs": 1.00000004974,
+              "Phi_norm_squared": 0.999999993595,
+              "S_abs": 0.200000017435,
+              "Sigma_2772bar_fraction": 0.999999998468,
+              "Sigma_purity_defect": 1.53196422215e-09,
+              "V_Phi_plus_1": -1.7763568394e-15
+            },
+            "iterations": 604,
+            "kind": "large_field",
+            "on_sm_vacuum_orbit": true,
+            "start": 6,
+            "start_gap": 8.95361792862
+          },
+          {
+            "final_compiler_gap": 1.27453603227e-13,
+            "final_gap": 1.3256062914e-13,
+            "final_gradient_max_abs": 8.28299718309e-09,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 3.25710419205e-05,
+              "smallest_orbit_singular_value": 0.282827564378,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 2.85006395371e-08,
+              "C_norm": 6.47478988131e-09,
+              "N_H": 1.59843885242e-07,
+              "N_Sigma": 0.0399998399571,
+              "Phi17_abs": 0.999999999498,
+              "Phi_norm_squared": 1.00000000506,
+              "S_abs": 0.200000090862,
+              "Sigma_2772bar_fraction": 0.999999995008,
+              "Sigma_purity_defect": 4.99187091663e-09,
+              "V_Phi_plus_1": -2.22044604925e-15
+            },
+            "iterations": 520,
+            "kind": "large_field",
+            "on_sm_vacuum_orbit": true,
+            "start": 7,
+            "start_gap": 5.20299903457
+          },
+          {
+            "final_compiler_gap": 2.50910403565e-14,
+            "final_gap": 2.86437540353e-14,
+            "final_gradient_max_abs": 9.90211972366e-09,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 1.02920832727e-05,
+              "smallest_orbit_singular_value": 0.282838644175,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 2.8237592612e-08,
+              "C_norm": 2.18565979789e-09,
+              "N_H": 7.40414977971e-08,
+              "N_Sigma": 0.040000064878,
+              "Phi17_abs": 0.999999943973,
+              "Phi_norm_squared": 0.99999999534,
+              "S_abs": 0.199999992242,
+              "Sigma_2772bar_fraction": 0.99999999941,
+              "Sigma_purity_defect": 5.89608917245e-10,
+              "V_Phi_plus_1": -4.4408920985e-16
+            },
+            "iterations": 449,
+            "kind": "sigma_dominated",
+            "on_sm_vacuum_orbit": true,
+            "start": 8,
+            "start_gap": 1.02844070077
+          },
+          {
+            "final_compiler_gap": 2.18269846641e-13,
+            "final_gap": 2.15827355987e-13,
+            "final_gradient_max_abs": 1.14802385833e-08,
+            "heavy_pair_stabilizer": {
+              "centre_abs_charges_on_10_normalized": [
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.333,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ],
+              "centre_dimension": 1,
+              "hypercharge_type_centre": true,
+              "largest_kernel_singular_value": 1.26285288325e-05,
+              "smallest_orbit_singular_value": 0.282836791156,
+              "stabilizer_dimension": 12,
+              "threshold_0.1_r0": 0.02
+            },
+            "invariants": {
+              "A_shift_norm": 7.49753232296e-08,
+              "C_norm": 7.02211091108e-09,
+              "N_H": 3.00608166364e-07,
+              "N_Sigma": 0.0399999258814,
+              "Phi17_abs": 1.00000006688,
+              "Phi_norm_squared": 1.00000000235,
+              "S_abs": 0.200000105587,
+              "Sigma_2772bar_fraction": 0.999999999045,
+              "Sigma_purity_defect": 9.55210688325e-10,
+              "V_Phi_plus_1": -3.77475828373e-15
+            },
+            "iterations": 522,
+            "kind": "sigma_dominated",
+            "on_sm_vacuum_orbit": true,
+            "start": 9,
+            "start_gap": 1.10260312156
+          }
+        ]
+      }
+    },
+    "seconds": 531.391968489,
+    "seed": 20260924,
+    "structured_competitors_r0_1_5": {
+      "F|Sigma=0": {
+        "compiler_gap": 0.253931343284,
+        "exact_gap": null,
+        "fast_gap": 0.253931343284,
+        "fast_minus_compiler": -4.4408920985e-16,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 7.83817455385e-14,
+          "final_gradient_max_abs": 8.19596394059e-09,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 8.18820430892e-06,
+            "smallest_orbit_singular_value": 0.2828394023,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 4.30321109626e-08,
+            "C_norm": 8.82701382159e-09,
+            "N_H": 1.76545532721e-07,
+            "N_Sigma": 0.0400000893835,
+            "Phi17_abs": 1.00000001937,
+            "Phi_norm_squared": 1.00000000132,
+            "S_abs": 0.200000018949,
+            "Sigma_2772bar_fraction": 0.999999999619,
+            "Sigma_purity_defect": 3.80701026259e-10,
+            "V_Phi_plus_1": -6.66133814775e-16
+          },
+          "iterations": 411,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 0.863868425581,
+          "Sigma_norm": 0.0
+        }
+      },
+      "F|delta_R": {
+        "compiler_gap": 0.253867218888,
+        "exact_gap": null,
+        "fast_gap": 0.253867218888,
+        "fast_minus_compiler": -1.84297022088e-14,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 3.04201108747e-14,
+          "final_gradient_max_abs": 8.89226288376e-09,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 1.06784848286e-05,
+            "smallest_orbit_singular_value": 0.282838379269,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 4.04172278037e-08,
+            "C_norm": 3.77838369762e-09,
+            "N_H": 1.00212890424e-07,
+            "N_Sigma": 0.0400000316418,
+            "Phi17_abs": 1.00000000145,
+            "Phi_norm_squared": 1.00000000237,
+            "S_abs": 0.200000015191,
+            "Sigma_2772bar_fraction": 0.999999999449,
+            "Sigma_purity_defect": 5.51450884956e-10,
+            "V_Phi_plus_1": -6.66133814775e-16
+          },
+          "iterations": 461,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 0.863539980993,
+          "Sigma_norm": 0.149974516011
+        }
+      },
+      "F|flipped": {
+        "compiler_gap": 0.253931343284,
+        "exact_gap": null,
+        "fast_gap": 0.253931343284,
+        "fast_minus_compiler": -1.33226762955e-15,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 1.73416836446e-13,
+          "final_gradient_max_abs": 1.37409468883e-08,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 4.09702993547e-05,
+            "smallest_orbit_singular_value": 0.282824590871,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 6.3231940815e-08,
+            "C_norm": 6.76140132853e-09,
+            "N_H": 1.74521868914e-07,
+            "N_Sigma": 0.0400001104785,
+            "Phi17_abs": 1.00000005765,
+            "Phi_norm_squared": 1.00000000081,
+            "S_abs": 0.200000098255,
+            "Sigma_2772bar_fraction": 0.999999993545,
+            "Sigma_purity_defect": 6.45450692893e-09,
+            "V_Phi_plus_1": -1.7763568394e-15
+          },
+          "iterations": 641,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 0.863868423947,
+          "Sigma_norm": 0.0
+        }
+      },
+      "F|sigma_std": {
+        "compiler_gap": 0.253931343284,
+        "exact_gap": null,
+        "fast_gap": 0.253931343284,
+        "fast_minus_compiler": 6.66133814775e-16,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 2.94431146131e-13,
+          "final_gradient_max_abs": 1.02802879098e-08,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 2.43528643236e-05,
+            "smallest_orbit_singular_value": 0.282830749228,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 4.88196467394e-08,
+            "C_norm": 3.84344881529e-09,
+            "N_H": 3.29456579593e-07,
+            "N_Sigma": 0.0400000475878,
+            "Phi17_abs": 1.00000005785,
+            "Phi_norm_squared": 0.999999994363,
+            "S_abs": 0.200000148389,
+            "Sigma_2772bar_fraction": 0.999999996565,
+            "Sigma_purity_defect": 3.43530281999e-09,
+            "V_Phi_plus_1": -1.99840144433e-15
+          },
+          "iterations": 472,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 0.863868425514,
+          "Sigma_norm": 0.0
+        }
+      },
+      "a|sigma_std": {
+        "compiler_gap": 0.129232258065,
+        "exact_gap": null,
+        "fast_gap": 0.129232258065,
+        "fast_minus_compiler": -6.66133814775e-16,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 4.95159468983e-14,
+          "final_gradient_max_abs": 1.27651409891e-08,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 1.81877586495e-05,
+            "smallest_orbit_singular_value": 0.282835673735,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 2.92115409391e-08,
+            "C_norm": 3.20475813362e-09,
+            "N_H": 1.0559993359e-07,
+            "N_Sigma": 0.0400000587481,
+            "Phi17_abs": 0.99999999562,
+            "Phi_norm_squared": 0.999999998135,
+            "S_abs": 0.200000022362,
+            "Sigma_2772bar_fraction": 0.999999998467,
+            "Sigma_purity_defect": 1.53307988526e-09,
+            "V_Phi_plus_1": -3.5527136788e-15
+          },
+          "iterations": 643,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": -0.933256534074,
+          "Sigma_norm": 0.0
+        }
+      },
+      "omega|sigma_std": {
+        "compiler_gap": 0.246010055866,
+        "exact_gap": null,
+        "fast_gap": 0.246010055866,
+        "fast_minus_compiler": -4.4408920985e-16,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 1.29452004671e-13,
+          "final_gradient_max_abs": 1.02843362328e-07,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 3.83215640698e-05,
+            "smallest_orbit_singular_value": 0.28282686876,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 1.64364663325e-07,
+            "C_norm": 8.5556544442e-09,
+            "N_H": 8.01236532358e-13,
+            "N_Sigma": 0.0400000198434,
+            "Phi17_abs": 0.999999887458,
+            "Phi_norm_squared": 0.999999987277,
+            "S_abs": 0.199999734339,
+            "Sigma_2772bar_fraction": 0.999999992265,
+            "Sigma_purity_defect": 7.73492481176e-09,
+            "V_Phi_plus_1": -6.2172489379e-15
+          },
+          "iterations": 417,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 0.868441095591,
+          "Sigma_norm": 0.0
+        }
+      },
+      "p|Sigma=0": {
+        "compiler_gap": 0.0002,
+        "compiler_minus_exact_gap": -4.66125619006e-16,
+        "exact_gap": "1/5000",
+        "exact_gap_float": 0.0002,
+        "fast_gap": 0.000199999999999,
+        "fast_minus_compiler": -4.4408920985e-16,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 3.81827902629e-12,
+          "final_gradient_max_abs": 1.5462551143e-08,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 1.87934546644e-05,
+            "smallest_orbit_singular_value": 0.28283387233,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 6.52082124277e-08,
+            "C_norm": 7.99561173195e-09,
+            "N_H": 1.38169839308e-06,
+            "N_Sigma": 0.0399999072222,
+            "Phi17_abs": 1.00000005264,
+            "Phi_norm_squared": 0.999999999666,
+            "S_abs": 0.200000363444,
+            "Sigma_2772bar_fraction": 0.999999998632,
+            "Sigma_purity_defect": 1.36784705784e-09,
+            "V_Phi_plus_1": -8.881784197e-16
+          },
+          "iterations": 346,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 1.0,
+          "Sigma_norm": 0.0
+        }
+      },
+      "p|delta_R": {
+        "compiler_gap": 4.08163266097e-06,
+        "compiler_minus_exact_gap": 7.90705764482e-15,
+        "exact_gap": "1/245000",
+        "exact_gap_float": 4.08163265306e-06,
+        "fast_gap": 4.08163264964e-06,
+        "fast_minus_compiler": -1.13242748512e-14,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 4.90718576884e-14,
+          "final_gradient_max_abs": 5.68661268973e-09,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 1.93770268781e-05,
+            "smallest_orbit_singular_value": 0.28283521238,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 3.81131549832e-08,
+            "C_norm": 7.76955235859e-09,
+            "N_H": 9.41798555364e-08,
+            "N_Sigma": 0.0399999718781,
+            "Phi17_abs": 0.999999997079,
+            "Phi_norm_squared": 1.00000000143,
+            "S_abs": 0.200000054563,
+            "Sigma_2772bar_fraction": 0.999999998189,
+            "Sigma_purity_defect": 1.81061687865e-09,
+            "V_Phi_plus_1": -1.7763568394e-15
+          },
+          "iterations": 469,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 1.00000000002,
+          "Sigma_norm": 0.197948663544
+        }
+      },
+      "p|flipped": {
+        "compiler_gap": -2.88657986403e-15,
+        "compiler_minus_exact_gap": -2.88657986403e-15,
+        "exact_gap": "0",
+        "exact_gap_float": 0.0,
+        "fast_gap": -8.881784197e-16,
+        "fast_minus_compiler": 1.99840144433e-15,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 6.2172489379e-15,
+          "final_gradient_max_abs": 2.02947307051e-08,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 1.04656816131e-05,
+            "smallest_orbit_singular_value": 0.282837914508,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 2.49019106308e-08,
+            "C_norm": 3.75739782561e-09,
+            "N_H": 3.09765578105e-08,
+            "N_Sigma": 0.0399999129752,
+            "Phi17_abs": 0.999999999797,
+            "Phi_norm_squared": 1.00000000508,
+            "S_abs": 0.200000000632,
+            "Sigma_2772bar_fraction": 0.999999999567,
+            "Sigma_purity_defect": 4.32639479797e-10,
+            "V_Phi_plus_1": -2.22044604925e-15
+          },
+          "iterations": 170,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 1.0,
+          "Sigma_norm": 0.2
+        }
+      },
+      "p|historical_global_witness": {
+        "compiler_gap": 6.06060607766e-06,
+        "exact_gap": null,
+        "fast_gap": 6.06060605701e-06,
+        "fast_minus_compiler": -2.0650148258e-14,
+        "local_minimization_from_perturbed_optimum": {
+          "final_gap": 3.59712259979e-14,
+          "final_gradient_max_abs": 1.53581895333e-08,
+          "heavy_pair_stabilizer": {
+            "centre_abs_charges_on_10_normalized": [
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.333,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "centre_dimension": 1,
+            "hypercharge_type_centre": true,
+            "largest_kernel_singular_value": 1.12880245218e-05,
+            "smallest_orbit_singular_value": 0.282838025109,
+            "stabilizer_dimension": 12,
+            "threshold_0.1_r0": 0.02
+          },
+          "invariants": {
+            "A_shift_norm": 2.53173039441e-08,
+            "C_norm": 6.75251685813e-09,
+            "N_H": 7.66116823083e-08,
+            "N_Sigma": 0.0399999847843,
+            "Phi17_abs": 0.999999985414,
+            "Phi_norm_squared": 0.999999996212,
+            "S_abs": 0.200000059867,
+            "Sigma_2772bar_fraction": 0.999999999119,
+            "Sigma_purity_defect": 8.80520323321e-10,
+            "V_Phi_plus_1": 0.0
+          },
+          "iterations": 362,
+          "on_sm_vacuum_orbit": true
+        },
+        "restricted_optimum": {
+          "Phi_scale": 1.0,
+          "Sigma_norm": 0.196946385566
+        }
+      }
+    }
+  },
+  "overall_state": "CANDIDATE_CERTIFIED_G3_OPEN",
+  "rg_anchor_consistency": {
+    "anchor_betas_from_field_content": {
+      "B_LOW": [
+        "21/5",
+        "-3",
+        "-7"
+      ],
+      "B_PS": [
+        "-7/3",
+        "2",
+        "26/3"
+      ]
+    },
+    "anchor_betas_repository": {
+      "B_LOW": [
+        4.2,
+        -3.0,
+        -7.0
+      ],
+      "B_PS": [
+        -2.33333333333,
+        2.0,
+        8.66666666667
+      ]
+    },
+    "anchor_betas_reproduced_from_field_content": true,
+    "anchor_field_content": {
+      "M_I_to_M_GUT": "PS gauge + 3 families + complex (1,2,2) + complex (10bar,1,3) + complex (15,2,2)",
+      "below_M_I": "SM gauge + 3 families + 2 Higgs doublets (2HDM)"
+    },
+    "anchor_reproduced_by_local_chain": true,
+    "anchor_source": "two_loop_thresholds_v20 one-loop chain (manuscript 'Benchmark and inputs'; so10_axion_v17_engine S3)",
+    "beta_differences_candidate_minus_anchor": {
+      "B_LOW": [
+        "-1/10",
+        "-1/6",
+        "0"
+      ],
+      "B_PS": [
+        "-16/3",
+        "-5",
+        "-5"
+      ]
+    },
+    "breaking_route_matches_anchor": "SO(10) -> PS (Phi = p, no D parity) -> SM (Y = 0 member of (10bar,1,3)): yes",
+    "candidate_betas": {
+      "B_LOW_1HDM": [
+        "41/10",
+        "-19/6",
+        "-7"
+      ],
+      "B_PS": [
+        "-23/3",
+        "-3",
+        "11/3"
+      ]
+    },
+    "candidate_field_content": {
+      "M_I_to_M_GUT": "PS gauge + 3 families + complex (1,2,2) (10_H doublets) + complex (10bar,1,3); the 126bar (15,2,2) sits at m^2 = 0.45-0.50 M_GUT^2 at r0 = 1/5 and 0.5 M_GUT^2 as r0 -> 0 (~0.7 M_GUT), forced by (1/8)||(M_Phi - 2)Sigma||^2 with M_p = 0 on it",
+      "below_M_I": "SM gauge + 3 families + ONE light doublet (1HDM; the partner is at exactly M_I) + six gauge-charged complex (10bar,1,3) remnants between 0.10 M_I and 0.33 M_I (sub_M_I_thresholds) and the neutral Sigma radial mode at M_I/sqrt(2)"
+    },
+    "caveats": "Indicative: one loop, tree-level threshold masses at their physical-benchmark ratios m/M_I (r0-independent at leading order), no matching corrections or two-loop shifts, and the chart unit |Phi| = 1 identified with M_GUT and r0 with M_I/M_GUT without gauge-coupling factors.",
+    "conclusion": "Only the breaking route matches the anchor. Its beta coefficients assume a light (15,2,2) above M_I and a 2HDM below M_I; this candidate provides neither and adds sub-M_I coloured scalars, so the anchor's M_I and M_GUT (and r0 = M_I/M_GUT) are borrowed, not reproduced.",
+    "field_content_reproduced": false,
+    "one_loop_solutions": {
+      "anchor_content_local_chain": {
+        "M_GUT_GeV": 9917564798900000.0,
+        "M_I_GeV": 631385523053.0,
+        "M_I_over_M_GUT": 6.36633625145e-05,
+        "alpha_inv_GUT": 37.3130452344,
+        "matching_residual": 9.23705556488e-13,
+        "solved": true
+      },
+      "anchor_repository_two_loop_thresholds_v20": {
+        "M_GUT_GeV": 9917564798900000.0,
+        "M_I_GeV": 631385523053.0,
+        "alpha_inv_GUT": 37.3130452344
+      },
+      "candidate_PS_content_with_1HDM_below_M_I": {
+        "M_GUT_GeV": 1.10008154832e+16,
+        "M_I_GeV": 579132705716.0,
+        "M_I_over_M_GUT": 5.26445249991e-05,
+        "alpha_inv_GUT": 45.6499746389,
+        "matching_residual": -5.75539615966e-13,
+        "solved": true
+      },
+      "candidate_PS_content_with_2HDM_below_M_I": {
+        "M_GUT_GeV": 5352642165990000.0,
+        "M_I_GeV": 1055582017010.0,
+        "M_I_over_M_GUT": 0.000197207656382,
+        "alpha_inv_GUT": 44.7072812788,
+        "matching_residual": -7.38964445191e-13,
+        "solved": true
+      },
+      "candidate_content_with_1HDM_and_sub_M_I_remnants": {
+        "M_GUT_GeV": 1.99438692594e+16,
+        "M_I_GeV": 77745923964.0,
+        "M_I_over_M_GUT": 3.89823674397e-06,
+        "alpha_inv_GUT": 45.8807773554,
+        "matching_residual": -6.53699316899e-13,
+        "solved": true
+      }
+    },
+    "sub_M_I_thresholds": [
+      {
+        "complex_multiplets": "1",
+        "delta_b_Y_L_c": [
+          "4/5",
+          "0",
+          "0"
+        ],
+        "label": "(1,1)_|Y|=2",
+        "mass_over_M_I": 0.101989714985,
+        "real_multiplicity": 2
+      },
+      {
+        "complex_multiplets": "1",
+        "delta_b_Y_L_c": [
+          "32/15",
+          "0",
+          "5/6"
+        ],
+        "label": "(6,1)_|Y|=4/3",
+        "mass_over_M_I": 0.101989736436,
+        "real_multiplicity": 12
+      },
+      {
+        "complex_multiplets": "1",
+        "delta_b_Y_L_c": [
+          "1/15",
+          "0",
+          "1/6"
+        ],
+        "label": "(3,1)_|Y|=1/3",
+        "mass_over_M_I": 0.242925942598,
+        "real_multiplicity": 6
+      },
+      {
+        "complex_multiplets": "1",
+        "delta_b_Y_L_c": [
+          "16/15",
+          "0",
+          "1/6"
+        ],
+        "label": "(3,1)_|Y|=4/3",
+        "mass_over_M_I": 0.253419301977,
+        "real_multiplicity": 6
+      },
+      {
+        "complex_multiplets": "1",
+        "delta_b_Y_L_c": [
+          "2/15",
+          "0",
+          "5/6"
+        ],
+        "label": "(6,1)_|Y|=1/3",
+        "mass_over_M_I": 0.253419326068,
+        "real_multiplicity": 12
+      },
+      {
+        "complex_multiplets": "1",
+        "delta_b_Y_L_c": [
+          "8/15",
+          "0",
+          "5/6"
+        ],
+        "label": "(6,1)_|Y|=2/3",
+        "mass_over_M_I": 0.324106100044,
+        "real_multiplicity": 12
+      }
+    ]
+  },
+  "scope": {
+    "float64_only": [
+      "Hessian kernel = 35 symmetry tangents + 4 light-doublet modes; lightest massive eigenvalue r0^2/96",
+      "labelled spectrum, light spectrum and 10_H spectrum",
+      "numerical global search (fast SOS evaluator validated against the live compiler)"
+    ],
+    "illustrative_only": [
+      "GeV masses at r0 = M_I/M_GUT (anchor scales; the candidate's content does not reproduce the anchor)",
+      "one-loop re-solve of the anchor chain with the candidate's content (tree-level thresholds, chart-unit identification)",
+      "conditional two-loop SM running of the light-doublet quartic from the anchor M_I"
+    ],
+    "open": [
+      "uniqueness of the equality set {V = V0} modulo symmetry (numerical evidence only)",
+      "exact (non-float) Hessian kernel/rank certificate",
+      "electroweak symmetry breaking: H = 0 here, one doublet is tuned massless at tree level",
+      "doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed",
+      "light 126bar coloured states below M_I: (3,1)_1/3 at ~0.24 M_I (proton-decay mediator quantum numbers, coupled to 16.16 by the 126bar Yukawa that Majorana nu_R masses need), (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), (3,1)_4/3 + (6,1)_1/3 at ~0.25 M_I, (6,1)_2/3 at ~0.32 M_I; their proton-decay and RG/unification consequences are not analysed",
+      "RG consistency: the anchor's M_I, M_GUT assume a light (15,2,2) above M_I and a 2HDM below; this candidate has the (15,2,2) at ~0.7 M_GUT and a 1HDM, and re-solving the one-loop chain with its content moves M_I and M_GUT (rg_anchor_consistency)",
+      "Higgs mass: the benchmark's tree-level lambda_eff = 127/64 at M_I is too large (m_h ~ 195 GeV under conditional SM running); the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass (m_h ~ 126 GeV at lambda(M_I) = 0), but tree-level global minimality forbids the slightly negative SM value lambda(M_I) = -0.0085 at M_t = 173.34 GeV (sign M_t-dependent at ~2 sigma)",
+      "intermediate scale: O05 = (1/8)(4 - 2 r0^2) cancels the Phi-induced O14/O44 (10bar,1,3) mass to precision ~ (M_I/M_GUT)^2 ~ 4e-9 at the anchor; its radiative stability is not addressed",
+      "light doublet is an equal 5/5bar mixture (tan beta = 1 structure): with 10_H-only Yukawas m_t = m_b at matching",
+      "realistic Yukawa sector: the H-linear portals O15, O38, O45, O28 vanish",
+      "radiative stability of the M_I/M_GUT hierarchy"
+    ],
+    "proved_exactly": [
+      "unbroken algebra of (p, sigma_std) is the standard SM (integer arithmetic)",
+      "V >= V0 on the full 486-real chart and V(vacuum) = V0 (adapted SOS27; repository source-bound identities plus new exact sigma_std pieces)",
+      "hence exact stationarity and exact Hessian PSD for every r0 > 0 with kappa^2 < 8 r0^2 (lambda_eff > 0)",
+      "strict positivity of the quartic part: V4(q) >= |q|^4/167",
+      "tree-level light-doublet quartic lambda_eff = 2 - kappa^2/(4 r0^2) = 127/64 (from the exact identity; compiler cross-check at r0 = 1/5)"
+    ]
+  },
+  "sm_embedding": {
+    "binding": {
+      "bound": true,
+      "h_alignment_defect": null,
+      "h_is_zero": true,
+      "phi17_nonzero": true,
+      "phi_alignment_defect": 0.0,
+      "s_nonzero": true,
+      "sigma_alignment_defect": 0.0,
+      "sigma_exactly_in_minus_i_space": true
+    },
+    "breaking_chain": [
+      {
+        "exact_stabilizer_dimension": 21,
+        "scale": "M_GUT",
+        "stage": "SO(10) -> SU(4)_C x SU(2)_L x SU(2)_R",
+        "vev": "Phi = p (Pati-Salam singlet e6789)"
+      },
+      {
+        "exact_stabilizer_dimension": 12,
+        "scale": "r0 M_GUT = M_I",
+        "stage": "Pati-Salam -> SU(3)_c x SU(2)_L x U(1)_Y",
+        "vev": "Sigma = r0 sigma_std (Y = 0 member of (10bar,1,3))"
+      }
+    ],
+    "candidate_is_sm_vacuum": true,
+    "full_state_stabilizer_so10_plus_u1x": {
+      "so10_only_dimension": 12,
+      "stabilizer_dimension": 12,
+      "u1x_admixture_dimension": 0,
+      "u1x_broken": true
+    },
+    "heavy_pair_stabilizer": {
+      "centre_dimension": 1,
+      "centre_proportional_to": [
+        "Y_standard"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "1/3": 6
+        },
+        "em_normalized": {
+          "1": 4,
+          "2/3": 6
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "1/2": 4,
+          "1/3": 6
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": true,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": true,
+      "label": "SU(3)xSU(2)xU(1)_Y: standard SM embedding",
+      "stabilizer_dimension": 12
+    },
+    "old_orientation_p_delta_r": {
+      "centre_dimension": 1,
+      "centre_proportional_to": [
+        "T3R"
+      ],
+      "centre_spectrum_on_vector_10": {
+        "colour_block_0_5": {
+          "0": 6
+        },
+        "em_normalized": {
+          "0": 6,
+          "1": 4
+        },
+        "exact_rational_q_squared": true,
+        "hypercharge_normalized": {
+          "0": 6,
+          "1/2": 4
+        },
+        "standard_blocks_decoupled": true,
+        "weak_block_6_9": {
+          "1/2": 4
+        }
+      },
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": false,
+      "derived_algebra_dimension": 11,
+      "is_sm_type": false,
+      "label": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+      "stabilizer_dimension": 12
+    },
+    "phi_p_alone": {
+      "centre_dimension": 0,
+      "centre_proportional_to": [],
+      "centre_spectrum_on_vector_10": null,
+      "contains_flipped_sm_algebra": true,
+      "contains_standard_sm_algebra": true,
+      "derived_algebra_dimension": 21,
+      "is_sm_type": false,
+      "label": "dim 21, centre 0, derived 21",
+      "stabilizer_dimension": 21
+    },
+    "reflection_R_maps_sigma_std_to_flipped_and_fixes_p": true,
+    "sigma_std_alone": {
+      "centre_dimension": 0,
+      "centre_proportional_to": [],
+      "centre_spectrum_on_vector_10": null,
+      "contains_flipped_sm_algebra": false,
+      "contains_standard_sm_algebra": true,
+      "derived_algebra_dimension": 24,
+      "is_sm_type": false,
+      "label": "SU(5)",
+      "stabilizer_dimension": 24
+    },
+    "sigma_std_equals_minus_conj_hsigma_delta_r_form": {
+      "alignment_defect": 2.22044604925e-16,
+      "overlap": {
+        "im": -3.23122852057e-16,
+        "re": 1.0
+      }
+    },
+    "sigma_std_exact_charges": {
+      "B_minus_L": "-2",
+      "C2_SU2L": "0",
+      "C2_SU2R": "2",
+      "Q_em": "0",
+      "SU3_colour_singlet": true,
+      "T3L": "0",
+      "T3R": "1",
+      "Y": "0",
+      "annihilated_by_standard_SM_algebra": true
+    },
+    "sigma_std_formula": "z1^z2^z3^z4^z5",
+    "source": "g3_sigma_hypercharge_audit_v20 (exact Gaussian-integer forms, integer so(10) matrices)",
+    "target_unbroken_algebra_is_standard_model": true
+  },
+  "status": "SM_PATI_SALAM_G3_CANDIDATE__EXACT_GLOBAL_MINIMUM_OF_BENCHMARK_POTENTIAL__SM_UNBROKEN__G3_OPEN",
+  "units": "Hessian eigenvalues of the canonical 486-real chart, units of M_GUT^2 (|Phi| = 1)",
+  "verdict": "The 27-parameter member of the declared exact-X potential obtained from the historical p-branch map by swapping the 2772bar/4125 self-projector weights, setting O05 = (1/8)(4 - 2 r0^2) and adding kappa_H = -r0/4 with O06 = 2|kappa| r0 has the vacuum (p, r0 sigma_std, 0, r0, x0), sigma_std = z1^z2^z3^z4^z5, whose unbroken algebra is exactly SU(3)_c x SU(2)_L x U(1)_Y (SO(10) -> Pati-Salam at M_GUT -> SM at r0 M_GUT). An adapted exact SOS identity gives V >= -1 - r0^4/8 - r0^4 - x0^4/32 on the whole field space and the vacuum attains it, so it is an exact global minimum of this benchmark potential, exactly stationary with PSD Hessian, for every r0 > 0 (checked on the live compiler at r0 = 1/5, 1/100, 1/1000 and M_I/M_GUT with x0 = 1: symmetry rank 35, kernel = symmetry tangents plus the 4 modes of one tuned light doublet, lightest massive mode r0^2/96). Physics caveats: one 10_H doublet is light (exactly massless at tree level) only because O46_1 = -(3/5) O46_54 and O06 = 2|kappa| r0 are tuned, while the 10_H colour triplets are at M_GUT for generic O46 couplings (doublet-triplet splitting is tuned, not automatic); the intermediate scale is itself a cancellation of O(1) couplings to ~(M_I/M_GUT)^2; 126bar colour triplets and sextets and a doubly charged singlet lie below M_I; only the breaking route matches the manuscript's Pati-Salam RG anchor, not its field content (no light (15,2,2), 1HDM instead of 2HDM), so the GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the benchmark (m_h ~ 195 GeV under conditional SM running), too large; the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the slightly negative SM value at M_t = 173.34 GeV. Uniqueness of the minimum modulo symmetry, electroweak breaking and a realistic Yukawa sector remain open; G3 is not closed and the model is neither validated nor excluded."
+}

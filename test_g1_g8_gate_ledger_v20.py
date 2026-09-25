@@ -52,6 +52,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
             "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
             self.report["scientific_blockers"],
         )
+        self.assertIn(
+            "G3_SM_PRESERVING_TARGET_REQUIRED",
+            self.report["scientific_blockers"],
+        )
 
     def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
         forged = copy.deepcopy(
@@ -1509,7 +1513,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertIn("strict 22-block/824-pivot primal", verdict)
         self.assertIn("every real Phi210", verdict)
         self.assertIn(
-            "Global Sigma, general/full H, the full Hessian, and G3 remain open",
+            "Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)",
             verdict,
         )
         self.assertNotIn("only a four-real-dimensional Phi sub-slice", verdict)

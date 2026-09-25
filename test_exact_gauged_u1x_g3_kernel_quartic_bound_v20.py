@@ -64,6 +64,11 @@ def test_weight_swap_fails_to_rescue_Delta_R() -> None:
     assert report["flags"]["simple_2772_4125_weight_swap_rescues_Delta_R"] is False
     assert report["flags"]["G3_closed"] is False
     assert report["flags"]["fixed_P_branch_closed_negative"] is True
+    assert report["fixed_P_branch_scope"].startswith("Sigma along Delta_R only")
+    assert "(P, z1^...^z5) is not covered" in report["fixed_P_branch_scope"]
+    assert "(P, z1^...^z5)" in report["fixed_P_strict_local_global_no_go"][
+        "escape_not_excluded"
+    ]
     assert swap["sharp_kernel_minimum"] == 1
     assert swap["Delta_R_swapped_weighted_quartic"] == Fraction(49, 48)
     assert swap["coherent_beats_Delta_R_by"] == Fraction(1, 48)

@@ -19,11 +19,13 @@ class PhysicalTargetAuditTest(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
         self.assertEqual(
             self.report["status"],
-            "G3_CERTIFIED_CANDIDATE_BREAKS_ELECTROWEAK_SYMMETRY_AT_GUT_SCALE__TUNED_PHYSICAL_TARGET_OPEN",
+            "G3_CERTIFIED_POINT_IS_NOT_AN_SM_VACUUM__DELTA_R_BREAKS_HYPERCHARGE__H_BREAKS_SU2L_AT_GUT_SCALE__G3_OPEN",
         )
         flags = self.report["flags"]
         self.assertFalse(flags["certified_candidate_is_physical_vacuum"])
         self.assertTrue(flags["certified_candidate_breaks_electroweak_symmetry_at_gut_scale"])
+        self.assertFalse(flags["certified_candidate_is_sm_vacuum"])
+        self.assertTrue(flags["certified_candidate_breaks_hypercharge_at_gut_scale"])
         self.assertFalse(flags["g3_closed"])
         self.assertFalse(flags["whole_model_validated"])
         self.assertFalse(flags["whole_model_excluded"])
@@ -74,14 +76,23 @@ class PhysicalTargetAuditTest(unittest.TestCase):
         self.assertEqual(scales["certified"], 0.2)
         self.assertLess(scales["physical"], 1.0e-4)
         self.assertGreater(hierarchy["block_norms"]["Sigma126bar"]["ratio"], 1.0e3)
-        partner = hierarchy["triplet_partner_mass_GeV"]["physical_hierarchy"]
+        partner = hierarchy["triplet_partner_mass_GeV"]["F_branch_extrapolated_to_M_I"]
         self.assertAlmostEqual(partner, (1 / 20) ** 0.5 * hierarchy["M_I_GeV"], delta=1.0)
+
+    def test_sm_embedding_is_bound_to_the_exact_charge_audit(self) -> None:
+        embedding = self.report["sm_embedding"]
+        self.assertTrue(embedding["binding_ok"])
+        self.assertFalse(embedding["certified_point_is_sm_vacuum"])
+        self.assertFalse(embedding["gut_point_is_sm_vacuum"])
+        self.assertEqual(embedding["heavy_pair_stabilizer_dimension"], 12)
+        self.assertEqual(embedding["heavy_pair_centre_spectrum_on_10"]["colour_block_0_5"], {"0": 6})
+        self.assertEqual(str(embedding["H_chi_standard_embedding_charges"]["Q_em"]), "1")
 
     def test_committed_artifact_matches_fresh_report(self) -> None:
         committed = json.loads(audit.OUT_JSON.read_text(encoding="utf-8"))
         fresh = json.loads(json.dumps(audit._jsonable(self.report), sort_keys=True))
-        for key in ("status", "checks", "flags", "gut_point_h10", "o06_tuning", "singlet_portals", "hierarchy"):
-            self.assertEqual(committed[key], fresh[key], key)
+        for key in ("status", "checks", "flags", "gut_point_h10", "o06_tuning", "singlet_portals", "hierarchy", "sm_embedding"):
+            self.assertEqual(audit.report_mismatches(committed[key], fresh[key], key), [])
 
 
 class MassMatrixHelpersTest(unittest.TestCase):

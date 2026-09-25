@@ -1201,7 +1201,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertIn("strict 22-block/824-pivot primal", vacuum["summary"])
             self.assertIn("every real Phi210", vacuum["summary"])
             self.assertIn(
-                "Global Sigma, general/full H, the full Hessian, and G3 remain open",
+                "Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)",
                 vacuum["summary"],
             )
             self.assertNotIn("infrastructure only", vacuum["summary"])
@@ -1360,6 +1360,13 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             )
             self.assertEqual(report["decision"], "WITHHOLD_APPROVAL")
             self.assertIn("scalar potential", report["verdict"])
+            contract = next(
+                gate for gate in report["gates"] if gate["name"] == "authoritative_model_contract"
+            )
+            if contract["state"] != "PASS":
+                self.assertIn("not yet attested", report["verdict"])
+            else:
+                self.assertIn("is attested", report["verdict"])
             self.assertFalse(report["full_theory_validated"])
             states = {gate["name"]: gate["state"] for gate in report["gates"]}
             self.assertEqual(states["proton_decay"], "OPEN")
@@ -1368,6 +1375,16 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 "OPEN",
             )
             self.assertEqual(states["UV_portal_selection_and_FCNC"], "CONDITIONAL")
+
+    def test_verdict_claims_attestation_only_for_a_passing_contract(self):
+        self.assertIn(
+            "not yet attested",
+            matrix._verdict("INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN", "OPEN"),
+        )
+        self.assertIn(
+            "is attested",
+            matrix._verdict("INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN", "PASS"),
+        )
 
     def test_conditional_candidate_needs_passing_scalar_vacuum(self):
         original = matrix._vacuum_gate

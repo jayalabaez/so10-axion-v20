@@ -27,10 +27,15 @@ Evidence collected (none of it is a proof):
 1. multistart minimisation of f = ||Pi_54(PhiPhi)||^2 + ||Pi_4125(PhiPhi)||^2
    on the unit sphere, with every endpoint classified by its A-spectrum and by
    an explicit orbit witness (the complex structure rebuilt from A(Phi));
-2. the adversarial profile g(t) = min{f : |Phi| = 1, I3(Phi) = t}, together
-   with an exact second-order analysis of f and I3 at F that fixes the
-   small-delta law;
+2. the adversarial profile g(t) = min{f : |Phi| = 1, I3(Phi) = t} on both
+   sides of I3(F), sampled as best-of-N constrained local minima (upper bounds
+   on g, not proofs of positivity).  The growth near F is one-sided: linear
+   below F (exact Hessian pencil) and quadratic above F (exact fourth-order
+   reduction on the 5+5bar excess space, whose directions raise I3);
 3. multistart maximisation of I3, showing that F does not maximise it.
+
+Convention: I3 = 8 Tr(A_Phi^3) (all-orderings contraction); the repository and
+manuscript Tr(A_Phi^3) is I3/8 (6/sqrt10 at F, 12/sqrt14 at the Cayley form).
 
 The optimisers use an exact contraction formula for I_54 and I_4125 in the
 four O(10)-invariant quartics J0..J3; that identity is re-verified against
@@ -94,6 +99,8 @@ SEEDS = {
     "gradient_check": 35,
     "multistart": 1500210,
     "profile": 4125054,
+    "profile_above_F": 4125055,
+    "excess_directions": 510,
     "cubic_maximum": 1680014,
 }
 FULL_CONFIG = {
@@ -102,6 +109,9 @@ FULL_CONFIG = {
     "profile_delta_fractions": (
         0.0025, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5,
         0.6, 0.7, 0.8, 0.9, 1.0, 1.5,
+        # t > I3(F) (above F), run as a separate continuation chain from F; the
+        # feasible side ends at 1 - I3(Cayley)/I3(F) = 1 - 96/(sqrt14*I3(F)) ~ -0.690.
+        -0.0025, -0.005, -0.01, -0.02, -0.05, -0.1, -0.2, -0.3, -0.45, -0.6,
     ),
     "profile_random_starts": 4,
     "profile_slsqp_cross_check": True,
@@ -110,7 +120,7 @@ FULL_CONFIG = {
 QUICK_CONFIG = {
     "mode": "quick",
     "multistart_starts": 5,
-    "profile_delta_fractions": (0.0025, 0.005, 0.01, 0.02, 0.5, 1.0),
+    "profile_delta_fractions": (0.0025, 0.005, 0.01, 0.02, 0.5, 1.0, -0.0025, -0.005, -0.01, -0.02, -0.3),
     "profile_random_starts": 1,
     "profile_slsqp_cross_check": False,
     "cubic_starts": 8,
@@ -1111,6 +1121,37 @@ def local_second_order_analysis() -> dict[str, Any]:
     mu_star = 0.5 * (low + high)
     closed_form = 7.0 / (270.0 * math.sqrt(10.0))
     positive_f = w_f[np.abs(w_f) >= 1.0e-9]
+
+    # Fourth-order reduction on the ten excess directions E (kernel of H_f minus
+    # the orbit tangent).  For Phi = F + eps v + eps^2 w (v in E, |v| = 1) the
+    # residual R = (Pi_54, Pi_4125)(Phi Phi^T) is eps^2 (Pi(v v^T) + J w) + O(eps^3)
+    # with J^T J = H_f / 2 and J^T Pi(v v^T) = 2 Pi(v v^T) F, so the reduced quartic
+    # is q_eff = f(v) - b^T (H_f/2)^+ b, b = 2 Pi(v v^T) F, while
+    # I3 = I3(F) + (3 I3(F)/2) eps^2 + O(eps^3).  Above F this gives
+    # g = c_up (t - I3(F))^2 + O(|t - I3(F)|^2.5) with c_up = 4 q_eff / (9 I3(F)^2).
+    orbit_basis = np.linalg.svd(orbit_tangent, full_matrices=False)[0][:, :orbit_rank]
+    ambient_kernel = tangent @ kernel
+    excess = ambient_kernel - orbit_basis @ (orbit_basis.T @ ambient_kernel)
+    excess_left, excess_singular, _ = np.linalg.svd(excess, full_matrices=False)
+    excess_dimension = int(np.sum(excess_singular > 1.0e-6))
+    excess_basis = excess_left[:, :excess_dimension]
+    gauss_newton = 0.5 * hessian_f
+    gn_values, gn_vectors = np.linalg.eigh(gauss_newton)
+    keep = gn_values > 1.0e-9
+    pseudo_inverse = (gn_vectors[:, keep] / gn_values[keep]) @ gn_vectors[:, keep].T
+    rng = np.random.default_rng(SEEDS["excess_directions"])
+    f_on_excess, q_values, curvature = [], [], []
+    for _ in range(4):
+        direction = _unit(excess_basis @ rng.standard_normal(excess_dimension))
+        p54, p4125 = project_54_and_4125(np.outer(direction, direction))
+        f_value = float(np.sum(p54 * p54) + np.sum(p4125 * p4125))
+        pull_back = 2.0 * (p54 + p4125) @ f_form
+        f_on_excess.append(f_value)
+        q_values.append(f_value - float(pull_back @ pseudo_inverse @ pull_back))
+        curvature.append(float(direction @ (hessian_i3 - radial * np.eye(N210)) @ direction))
+    q_eff = float(np.mean(q_values))
+    q_spread = (max(q_values) - min(q_values)) / q_eff
+    c_up = 4.0 * q_eff / (9.0 * i3_f**2)
     return {
         "I3_F": _sig(i3_f, 10),
         "grad_I3_radial_component": _sig(radial, 10),
@@ -1136,8 +1177,26 @@ def local_second_order_analysis() -> dict[str, Any]:
         "mu_star_closed_form_candidate": "7/(270*sqrt(10)) = (28/45)/(24*sqrt(10))",
         "mu_star_closed_form_value": _sig(closed_form, 10),
         "mu_star_relative_difference_to_closed_form": _bound((mu_star - closed_form) / closed_form),
-        "small_delta_law": "g(t) = mu_star*delta + O(delta^1.5), delta = I3(F) - t",
+        "small_delta_law": (
+            "one-sided, below F only (t < I3(F), delta = I3(F) - t > 0): "
+            "g(t) = mu_star*delta + O(delta^1.5)"
+        ),
+        "excess_space_dimension": excess_dimension,
+        "excess_f_on_random_unit_vectors": [_sig(v, 10) for v in f_on_excess],
+        "excess_riemannian_I3_curvature_on_random_unit_vectors": [_sig(v, 10) for v in curvature],
+        "excess_reduced_quartic_q_eff": _sig(q_eff, 10),
+        "excess_reduced_quartic_relative_spread_over_directions": _bound(q_spread),
+        "excess_reduced_quartic_closed_form_candidate": "5/244",
+        "excess_reduced_quartic_relative_difference_to_candidate": _bound((q_eff - 5.0 / 244.0) / (5.0 / 244.0)),
+        "above_F_quadratic_coefficient_c_up": _sig(c_up, 10),
+        "above_F_quadratic_coefficient_formula": "c_up = 4*q_eff/(9*I3(F)^2) (candidate 25/632448 with q_eff = 5/244)",
+        "above_F_law": (
+            "one-sided, above F only (t > I3(F)): g(t) = c_up*(t - I3(F))^2 + O(|t - I3(F)|^2.5); "
+            "the soft (quartic) 5+5bar directions raise I3 at second order"
+        ),
         "_mu_star_float": mu_star,
+        "_c_up_float": c_up,
+        "_q_spread_float": q_spread,
     }
 
 
@@ -1456,6 +1515,7 @@ def run_profile(fractions: tuple[float, ...], n_random: int, seed: int, slsqp: b
         minimum_off_f = min(minimum_off_f, best["value"])
         rows.append(
             {
+                "side": "below_F" if delta > 0.0 else "above_F",
                 "delta_over_I3F": fraction,
                 "t": _sig(target, 8),
                 "delta": _sig(delta, 8),
@@ -1507,12 +1567,13 @@ def analyse_profile(profile: dict[str, Any], mu_star: float) -> dict[str, Any]:
     g_zero = profile["best_values"].get(1.0)
     drift = float(ratios[:4].max() / ratios[:4].min())
     slope_ok = bool(abs(intercept - mu_star) / mu_star <= SLOPE_REL_TOL)
+    side = "below F only (t < I3(F), delta = I3(F) - t > 0): "
     if slope_ok and intercept > 0.0 and drift > 1.5:
-        law = "linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant"
+        law = side + "linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant"
     elif drift <= 1.2:
-        law = "quadratic in delta: g/delta^2 approximately constant"
+        law = side + "quadratic in delta: g/delta^2 approximately constant"
     else:
-        law = "undetermined from the sampled delta"
+        law = side + "undetermined from the sampled delta"
     return {
         "small_delta_points": [_sig(d, 6) for d in deltas[small]],
         "pure_quadratic_coefficients_g_over_delta2_small_delta": [_sig(r, 6) for r in ratios[:4]],
@@ -1532,6 +1593,48 @@ def analyse_profile(profile: dict[str, Any], mu_star: float) -> dict[str, Any]:
             _bound(symmetric) if symmetric is not None else None
         ),
         "fitted_quadratic_coefficient_on_smallest_delta": _sig(float(ratios[0]), 6),
+    }
+
+
+def analyse_profile_above(profile: dict[str, Any], c_up: float) -> dict[str, Any]:
+    """Growth of g for t > I3(F), in the one-sided variable Delta = t - I3(F) > 0."""
+    rows = [r for r in profile["rows"] if r.get("side") == "above_F"]
+    rows.sort(key=lambda r: -r["delta"])
+    above = np.array([-r["delta"] for r in rows])
+    values = np.array([profile["best_values"][r["delta_over_I3F"]] for r in rows])
+    if len(rows) < 4:
+        return {"sampled_points": len(rows), "growth_law_above_F": "not sampled (fewer than four points)",
+                "quadratic_matches_excess_reduction": False, "g_nondecreasing_in_Delta": False}
+    ratios = values / above**2
+    design = np.column_stack([np.ones(4), np.sqrt(above[:4]), above[:4]])
+    intercept, root_coefficient, linear_coefficient = np.linalg.lstsq(design, ratios[:4], rcond=None)[0]
+    drift = float(ratios[:4].max() / ratios[:4].min())
+    match = bool(intercept > 0.0 and abs(intercept - c_up) / c_up <= SLOPE_REL_TOL and drift <= 1.2)
+    side = "above F only (t > I3(F), Delta = t - I3(F) > 0): "
+    if match:
+        law = side + "quadratic: g/Delta^2 -> c_up > 0, g/Delta -> 0"
+    elif drift > 1.5:
+        law = side + "not quadratic on the sampled Delta"
+    else:
+        law = side + "undetermined from the sampled Delta"
+    return {
+        "sampled_points": len(rows),
+        "small_Delta_points": [_sig(d, 6) for d in above[:4]],
+        "g_over_Delta_squared_small_Delta": [_sig(r, 6) for r in ratios[:4]],
+        "g_over_Delta_small_Delta": [_sig(v / d, 6) for v, d in zip(values[:4], above[:4])],
+        "g_over_Delta_squared_drift_max_over_min": _sig(drift, 6),
+        "fit_form": "g/Delta^2 = c0 + c1*sqrt(Delta) + c2*Delta on the four smallest Delta",
+        "fit_quadratic_coefficient_c0": _sig(float(intercept), 6),
+        "fit_c1": _sig(float(root_coefficient), 6),
+        "fit_c2": _sig(float(linear_coefficient), 6),
+        "excess_reduction_c_up": _sig(c_up, 6),
+        "relative_difference_fit_vs_excess_reduction": _sig(abs(intercept - c_up) / c_up, 3),
+        "quadratic_matches_excess_reduction": match,
+        "g_nondecreasing_in_Delta": bool(np.all(np.diff(values) > 0.0)),
+        "growth_law_above_F": law,
+        "largest_Delta_sampled": _sig(float(above[-1]), 6),
+        "g_at_largest_Delta": _sig(float(values[-1]), 6),
+        "_c0": float(intercept),
     }
 
 
@@ -1598,14 +1701,36 @@ def _claims_table(
     slice_check: dict[str, Any],
     forms: dict[str, Any],
     config: dict[str, Any],
+    above_analysis: dict[str, Any],
+    sampling: dict[str, Any],
 ) -> list[dict[str, Any]]:
     n = multistart["n_starts"]
     zeros_ok = multistart["n_reached_zero"] == n and multistart["n_zero_off_orbit"] == 0
+    claimed = CLAIMS["profile_quadratic_coefficient"]
     drift = profile_analysis["pure_quadratic_coefficient_drift_max_over_min"]
     quadratic_ok = drift <= 1.2 and abs(
-        profile_analysis["fitted_quadratic_coefficient_on_smallest_delta"] - CLAIMS["profile_quadratic_coefficient"]
-    ) <= 0.2 * CLAIMS["profile_quadratic_coefficient"]
+        profile_analysis["fitted_quadratic_coefficient_on_smallest_delta"] - claimed
+    ) <= 0.2 * claimed
+    above_c0 = above_analysis.get("_c0")
+    above_quadratic = bool(above_analysis.get("quadratic_matches_excess_reduction"))
+    above_matches_claim = above_c0 is not None and above_quadratic and abs(above_c0 - claimed) <= 0.2 * claimed
+    below_linear = profile_analysis["growth_law_near_F"].split(": ", 1)[-1].startswith("linear")
+    if quadratic_ok:
+        growth_verdict = "REPRODUCED_BELOW_F"
+    elif above_matches_claim:
+        growth_verdict = "REPRODUCED_ONLY_ABOVE_F"
+    elif below_linear and above_quadratic:
+        growth_verdict = "NOT_REPRODUCED__LINEAR_BELOW_F_QUADRATIC_ABOVE_F"
+    elif below_linear:
+        growth_verdict = "NOT_REPRODUCED__LINEAR_BELOW_F"
+    else:
+        growth_verdict = "NOT_REPRODUCED"
     g_zero = profile_analysis["g_at_I3_zero"]
+    positive_ok = (
+        sampling["min_best_local_minimum"] > ZERO_TOL
+        and profile_analysis["g_nondecreasing_in_delta"]
+        and above_analysis.get("g_nondecreasing_in_Delta", False)
+    )
     rows = [
         {
             "id": "multistart_all_zeros_on_plus_minus_F",
@@ -1635,21 +1760,18 @@ def _claims_table(
             "id": "profile_quadratic_growth_near_F",
             "claim": "g(t) ~ 1.9e-3 * delta^2 near F (delta = I3(F) - t)",
             "reproduced": (
-                f"growth law near F: {profile_analysis['growth_law_near_F']}; g/delta -> "
+                "The growth law is one-sided. "
+                f"{profile_analysis['growth_law_near_F']}; g/delta -> "
                 f"{profile_analysis['fit_linear_slope_a']} (fit) vs mu* = {profile_analysis['hessian_slope_mu_star']} "
                 f"(exact Hessian pencil at F); g/delta^2 = "
                 f"{profile_analysis['pure_quadratic_coefficients_g_over_delta2_small_delta']} "
-                f"at delta = {profile_analysis['small_delta_points']}"
+                f"at delta = {profile_analysis['small_delta_points']}. "
+                f"{above_analysis.get('growth_law_above_F')}; g/(t-I3(F))^2 -> "
+                f"{above_analysis.get('fit_quadratic_coefficient_c0')} (fit) vs c_up = "
+                f"{above_analysis.get('excess_reduction_c_up')} (exact fourth-order reduction on the 5+5bar "
+                f"excess space). Neither side shows 1.9e-3*delta^2."
             ),
-            "verdict": (
-                "REPRODUCED"
-                if quadratic_ok
-                else (
-                    "NOT_REPRODUCED__GROWTH_IS_LINEAR_IN_DELTA"
-                    if profile_analysis["growth_law_near_F"].startswith("linear")
-                    else "NOT_REPRODUCED"
-                )
-            ),
+            "verdict": growth_verdict,
         },
         {
             "id": "profile_value_at_I3_zero",
@@ -1664,14 +1786,18 @@ def _claims_table(
             "id": "profile_positive_no_zero_off_F",
             "claim": "g grows smoothly with no zero off +-F",
             "reproduced": (
-                f"min g over delta > 0 grid = {_sig(profile['min_g_off_F'], 6)}; nondecreasing in delta: "
-                f"{profile_analysis['g_nondecreasing_in_delta']}"
+                f"at the {sampling['n_sampled_t']} sampled t values in [{sampling['t_min']}, {sampling['t_max']}] "
+                f"({sampling['n_below_F']} below I3(F), {sampling['n_above_F']} above; with g(-t) = g(t) the grid "
+                f"spans |t| from 0 to {sampling['abs_t_covered']} of the feasible |t| <= {sampling['abs_t_feasible']}) "
+                f"the best constrained local minimum (best of up to {sampling['max_runs_per_t']} local runs, an upper "
+                f"bound on g, not a proof of positivity) is >= {sampling['min_best_local_minimum_rounded']} "
+                f"(>= {sampling['min_best_local_minimum_below_F']} below F, >= "
+                f"{sampling['min_best_local_minimum_above_F']} above F, smallest at the grid points nearest "
+                f"I3(F)); no zero off "
+                f"+-F was found; best values nondecreasing in |t - I3(F)| on each side: "
+                f"{profile_analysis['g_nondecreasing_in_delta'] and above_analysis.get('g_nondecreasing_in_Delta', False)}"
             ),
-            "verdict": (
-                "REPRODUCED"
-                if profile["min_g_off_F"] > ZERO_TOL and profile_analysis["g_nondecreasing_in_delta"]
-                else "NOT_REPRODUCED"
-            ),
+            "verdict": "REPRODUCED_ON_SAMPLED_RANGE" if positive_ok else "NOT_REPRODUCED",
         },
         {
             "id": "I3_of_F",
@@ -1774,7 +1900,9 @@ def _method() -> dict[str, str]:
             "For each t: an augmented Lagrangian (L-BFGS-B inner solves on f(x/|x|) + "
             "lambda*c + rho/2*c^2, c = I3(x/|x|) - t) from a continuation start and random starts"
             ", plus an SLSQP cross-check in the full run; g(t) is the best feasible value "
-            "(|c| <= 1e-9), re-evaluated with the projectors."
+            "(|c| <= 1e-9), re-evaluated with the projectors. Below F (t < I3(F)) and above F "
+            "(t > I3(F), up to the Cayley maximum) are separate continuation chains from F with "
+            "separate seeds. Each value is an upper bound on g(t) (best local minimum found)."
         ),
         "local_analysis": (
             "Exact Hessian of f at F (210 projector applications) and Riemannian Hessian of I3 on "
@@ -1801,11 +1929,12 @@ def _normalization() -> dict[str, str]:
         "quartics": "I_R(Phi) = ||Pi_R(Phi Phi^T)||_F^2",
         "cubic": (
             "I3(Phi) = sum over all ordered a..f of Phi_abcd Phi_cdef Phi_efab = 8 Tr A(Phi)^3, "
-            "A_[ab],[cd] = Phi_abcd (a<b, c<d); the repository's Tr(A^3) is I3/8"
+            "A_[ab],[cd] = Phi_abcd (a<b, c<d); the repository/manuscript Tr(A_Phi^3) is I3/8 "
+            "(see I3_convention)"
         ),
         "F": "F = (A+B)/sqrt(10) = omega^omega/|omega^omega|, omega = sum_k e_(2k-1)^e_(2k)",
         "cayley": "Phi_Cay = (A+C)/sqrt(14) = (omega_4^2/2 + Re Omega_4)/sqrt(14) on R^8 = C^4 (first 8 coordinates)",
-        "delta": "delta = I3(F) - t",
+        "delta": "delta = I3(F) - t (below F, t < I3(F)); Delta = t - I3(F) = -delta (above F)",
         "repo_slice_normalization": (
             "The repository slice identities use the same orthonormal normalization: "
             "||Pi_R(Phi Phi^T)||^2 equals the repo formulas with factor 1."
@@ -1827,19 +1956,59 @@ def build_report(quick: bool = False) -> dict[str, Any]:
     slice_check = slice_cross_check()
     local = local_second_order_analysis()
     multistart = run_multistart(config["multistart_starts"], SEEDS["multistart"])
+    below_fractions = tuple(f for f in config["profile_delta_fractions"] if f > 0.0)
+    above_fractions = tuple(
+        sorted((f for f in config["profile_delta_fractions"] if f < 0.0), key=abs)
+    )
     profile = run_profile(
-        config["profile_delta_fractions"],
+        below_fractions,
         config["profile_random_starts"],
         SEEDS["profile"],
         config["profile_slsqp_cross_check"],
     )
     profile_analysis = analyse_profile(profile, local["_mu_star_float"])
+    profile_above = run_profile(
+        above_fractions,
+        config["profile_random_starts"],
+        SEEDS["profile_above_F"],
+        config["profile_slsqp_cross_check"],
+    )
+    above_analysis = analyse_profile_above(profile_above, local["_c_up_float"])
+    sampled_rows = [r for r in profile["rows"][1:] + profile_above["rows"][1:] if "g" in r]
+    sampled_t = [r["t"] for r in sampled_rows]
+    min_best = min(
+        list(profile["best_values"].values()) + list(profile_above["best_values"].values()),
+        default=math.inf,
+    )
+    runs_per_t = 1 + config["profile_random_starts"] + (1 if config["profile_slsqp_cross_check"] else 0)
+    sampling = {
+        "n_sampled_t": len(sampled_rows),
+        "n_below_F": sum(1 for r in sampled_rows if r["side"] == "below_F"),
+        "n_above_F": sum(1 for r in sampled_rows if r["side"] == "above_F"),
+        "t_min": _sig(min(sampled_t), 6) if sampled_t else None,
+        "t_max": _sig(max(sampled_t), 6) if sampled_t else None,
+        "abs_t_covered": _sig(max(abs(t) for t in sampled_t), 6) if sampled_t else None,
+        "abs_t_feasible": _sig(I3_CAYLEY_EXACT, 6),
+        "max_runs_per_t": runs_per_t,
+        "min_best_local_minimum": min_best,
+        "min_best_local_minimum_rounded": _sig(min_best, 6),
+        "min_best_local_minimum_below_F": _sig(profile["min_g_off_F"], 6),
+        "min_best_local_minimum_above_F": _sig(profile_above["min_g_off_F"], 6),
+        "nature_of_values": (
+            "each g is the best of the sampled constrained local minimisations: an upper bound "
+            "on the true g(t), not a certified lower bound; positivity is evidence, not proof"
+        ),
+    }
     cubic = run_cubic_maximum(config["cubic_starts"], SEEDS["cubic_maximum"])
 
     k54 = _channel_eigenvalue("54")
     k4125 = _channel_eigenvalue("4125")
     owners = representation["sym2_K_eigenvalue_owners"]
-    counterexample = multistart["n_zero_off_orbit"] > 0 or profile["min_g_off_F"] <= ZERO_TOL
+    counterexample = (
+        multistart["n_zero_off_orbit"] > 0
+        or profile["min_g_off_F"] <= ZERO_TOL
+        or profile_above["min_g_off_F"] <= ZERO_TOL
+    )
     flags = {
         "phi_orbit_lemma_proved": False,
         "numerical_evidence_only": True,
@@ -1943,7 +2112,7 @@ def build_report(quick: bool = False) -> dict[str, Any]:
         "multistart_endpoints_have_I3_equal_plus_minus_I3F": (
             multistart["max_abs_I3_minus_signed_I3F"] <= I3_ENDPOINT_TOL
         ),
-        "profile_strictly_positive_off_F": profile["min_g_off_F"] > 1.0e-6,
+        "profile_sampled_best_local_minima_positive_below_F": profile["min_g_off_F"] > 1.0e-6,
         "profile_every_point_feasible_and_confirmed_by_two_runs": all(
             row.get("feasible_runs", 0) > 0 and row.get("runs_agreeing_with_best", 0) >= 2
             for row in profile["rows"][1:]
@@ -1959,6 +2128,27 @@ def build_report(quick: bool = False) -> dict[str, Any]:
         "profile_sign_symmetry_if_sampled": (
             profile_analysis["sign_symmetry_relative_difference_t_vs_minus_t"] is None
             or profile_analysis["sign_symmetry_relative_difference_t_vs_minus_t"] < 1.0e-6
+        ),
+        "profile_above_F_sampled_best_local_minima_positive": profile_above["min_g_off_F"] > ZERO_TOL,
+        "profile_above_F_every_point_feasible_and_confirmed_by_two_runs": len(profile_above["rows"]) > 2 and all(
+            row.get("feasible_runs", 0) > 0 and row.get("runs_agreeing_with_best", 0) >= 2
+            for row in profile_above["rows"][1:]
+        ),
+        "profile_above_F_fast_and_reference_objectives_agree_at_minimisers": all(
+            row.get("fast_minus_reference_abs", 1.0) < 1.0e-10 for row in profile_above["rows"][1:]
+        ),
+        "profile_above_F_g_nondecreasing_in_t": above_analysis["g_nondecreasing_in_Delta"],
+        "profile_above_F_quadratic_growth_matches_excess_reduction": (
+            above_analysis["quadratic_matches_excess_reduction"]
+        ),
+        "excess_space_is_10_dimensional_isotropic_and_raises_I3": (
+            local["excess_space_dimension"] == 10
+            and local["_q_spread_float"] < 1.0e-8
+            and all(abs(v - 3.0 * I3_F_EXACT) < 1.0e-8 for v in local["excess_riemannian_I3_curvature_on_random_unit_vectors"])
+        ),
+        "trace_A3_convention_values_6_over_sqrt10_and_12_over_sqrt14": (
+            abs(forms["F"]["I3"] / 8.0 - 6.0 / math.sqrt(10.0)) < 1.0e-9
+            and abs(forms["cayley"]["I3"] / 8.0 - 12.0 / math.sqrt(14.0)) < 1.0e-9
         ),
         "cubic_multistart_maximum_exceeds_I3_F": cubic["_best_value"] > I3_F_EXACT + 1.0,
         "cubic_multistart_maximum_equals_cayley_value": abs(cubic["_best_value"] - I3_CAYLEY_EXACT) < 1.0e-8,
@@ -1979,7 +2169,10 @@ def build_report(quick: bool = False) -> dict[str, Any]:
         status = STATUS_FAILED
     else:
         status = STATUS_SUPPORTS
-    claims = _claims_table(multistart, profile_analysis, profile, cubic, representation, slice_check, forms, config)
+    claims = _claims_table(
+        multistart, profile_analysis, profile, cubic, representation, slice_check, forms, config,
+        above_analysis, sampling,
+    )
     public_local = {k: v for k, v in local.items() if not k.startswith("_")}
     public_cubic = {k: v for k, v in cubic.items() if not k.startswith("_")}
     report = {
@@ -1993,6 +2186,7 @@ def build_report(quick: bool = False) -> dict[str, Any]:
         "claims_vs_reproduced": claims,
         "method": _method(),
         "normalization": _normalization(),
+        "I3_convention": _convention(local, above_analysis),
         "config": {
             key: (list(value) if isinstance(value, tuple) else value) for key, value in config.items()
         },
@@ -2020,15 +2214,55 @@ def build_report(quick: bool = False) -> dict[str, Any]:
             "rows": profile["rows"],
             "min_g_off_F": _sig(profile["min_g_off_F"], 6),
             "analysis": profile_analysis,
+            "rows_above_F": profile_above["rows"][1:],
+            "min_g_above_F": _sig(profile_above["min_g_off_F"], 6),
+            "analysis_above_F": {k: v for k, v in above_analysis.items() if not k.startswith("_")},
+            "sampling": {k: v for k, v in sampling.items() if k != "min_best_local_minimum"},
         },
         "cubic_maximum": public_cubic,
-        "verdict": _verdict_text(status, multistart, profile_analysis, cubic),
+        "verdict": _verdict_text(status, multistart, profile_analysis, cubic, above_analysis, sampling),
     }
     return _jsonable(report)
 
 
+def _convention(local: dict[str, Any], above_analysis: dict[str, Any]) -> dict[str, Any]:
+    mu_star = local["_mu_star_float"]
+    c_up = local["_c_up_float"]
+    c0 = above_analysis.get("_c0")
+    return {
+        "statement": (
+            "I3(Phi) = 8 Tr(A_Phi^3), the all-orderings contraction sum_{a..f} Phi_abcd Phi_cdef Phi_efab; "
+            "the repository/manuscript Tr(A_Phi^3) is I3/8. Every I3, delta and slope in this report "
+            "uses I3 unless labelled per_unit_TrA3."
+        ),
+        "TrA3_at_F": "6/sqrt(10)",
+        "TrA3_at_F_value": _sig(6.0 / math.sqrt(10.0), 10),
+        "TrA3_at_cayley": "12/sqrt(14)",
+        "TrA3_at_cayley_value": _sig(12.0 / math.sqrt(14.0), 10),
+        "I3_at_F": "48/sqrt(10)",
+        "I3_at_F_value": _sig(I3_F_EXACT, 10),
+        "I3_at_cayley": "96/sqrt(14)",
+        "I3_at_cayley_value": _sig(I3_CAYLEY_EXACT, 10),
+        "below_F_slope_per_unit_I3": "mu* = 7/(270*sqrt(10))",
+        "below_F_slope_per_unit_I3_value": _sig(mu_star, 8),
+        "below_F_slope_per_unit_TrA3": "8*mu* = 28/(135*sqrt(10))",
+        "below_F_slope_per_unit_TrA3_value": _sig(8.0 * mu_star, 8),
+        "above_F_quadratic_per_unit_I3_squared": "c_up = 4*q_eff/(9*I3(F)^2) (candidate 25/632448)",
+        "above_F_quadratic_per_unit_I3_squared_value": _sig(c_up, 8),
+        "above_F_quadratic_per_unit_TrA3_squared": "64*c_up (candidate 25/9882)",
+        "above_F_quadratic_per_unit_TrA3_squared_value": _sig(64.0 * c_up, 8),
+        "above_F_quadratic_fit_per_unit_I3_squared": _sig(c0, 6) if c0 is not None else None,
+        "above_F_quadratic_fit_per_unit_TrA3_squared": _sig(64.0 * c0, 6) if c0 is not None else None,
+    }
+
+
 def _verdict_text(
-    status: str, multistart: dict[str, Any], profile_analysis: dict[str, Any], cubic: dict[str, Any]
+    status: str,
+    multistart: dict[str, Any],
+    profile_analysis: dict[str, Any],
+    cubic: dict[str, Any],
+    above_analysis: dict[str, Any],
+    sampling: dict[str, Any],
 ) -> str:
     if status == STATUS_COUNTEREXAMPLE:
         return (
@@ -2040,11 +2274,14 @@ def _verdict_text(
     return (
         f"All {multistart['n_starts']} multistart runs end on SO(10).F ({multistart['n_plus_F']}) or "
         f"SO(10).(-F) ({multistart['n_minus_F']}), certified by A-spectrum and an explicit orbit witness; "
-        f"the constrained profile g(t) is strictly positive for I3(F) > t >= 0; near F its growth law is "
-        f"'{profile_analysis['growth_law_near_F']}' (fitted slope {profile_analysis['fit_linear_slope_a']} vs "
-        f"exact {profile_analysis['hessian_slope_mu_star']}; the claimed 1.9e-3*delta^2 law is checked in "
-        f"claims_vs_reproduced); g(0) = {profile_analysis['g_at_I3_zero']}. "
-        f"I3 is maximised by the Cayley form ({cubic['max_I3']}), not by F. This is numerical evidence for "
+        f"at the {sampling['n_sampled_t']} sampled t values in [{sampling['t_min']}, {sampling['t_max']}] the best "
+        f"constrained local minimum of f (an upper bound on g(t)) is >= {sampling['min_best_local_minimum_rounded']}, "
+        f"so no zero off +-F was found. The growth of g near F is one-sided: "
+        f"{profile_analysis['growth_law_near_F']} (fitted slope {profile_analysis['fit_linear_slope_a']} vs exact "
+        f"{profile_analysis['hessian_slope_mu_star']}); {above_analysis.get('growth_law_above_F')} (fitted "
+        f"{above_analysis.get('fit_quadratic_coefficient_c0')} vs exact {above_analysis.get('excess_reduction_c_up')}). "
+        f"The claimed 1.9e-3*delta^2 law is checked in claims_vs_reproduced; g(0) = {profile_analysis['g_at_I3_zero']}. "
+        f"I3 = 8 Tr(A^3) is maximised by the Cayley form ({cubic['max_I3']}), not by F. This is numerical evidence for "
         "the signed two-orbit statement only: the lemma is not proved, G3 stays open and the whole model is "
         "neither validated nor excluded."
     )
@@ -2057,6 +2294,9 @@ def _markdown(report: dict[str, Any]) -> str:
     analysis = profile["analysis"]
     cubic = report["cubic_maximum"]
     local = report["local_second_order_analysis_at_F"]
+    above = profile["analysis_above_F"]
+    sampling = profile["sampling"]
+    convention = report["I3_convention"]
     lines = [
         "# G3 Phi-orbit lemma: independent numerical evidence -- v20",
         "",
@@ -2078,6 +2318,16 @@ def _markdown(report: dict[str, Any]) -> str:
         ),
         "",
         "Independent of the repository projector code (stdlib + numpy + scipy only).",
+        "",
+        "## Convention",
+        "",
+        f"{convention['statement']} In Tr(A^3) units: Tr A^3 = {convention['TrA3_at_F']} = "
+        f"{convention['TrA3_at_F_value']} at F and {convention['TrA3_at_cayley']} = {convention['TrA3_at_cayley_value']} "
+        f"at the Cayley form; the below-F slope is {convention['below_F_slope_per_unit_TrA3']} = "
+        f"{convention['below_F_slope_per_unit_TrA3_value']} per unit Tr A^3 ({convention['below_F_slope_per_unit_I3']} = "
+        f"{convention['below_F_slope_per_unit_I3_value']} per unit I3); the above-F quadratic coefficient is "
+        f"{convention['above_F_quadratic_per_unit_TrA3_squared_value']} per (unit Tr A^3)^2 "
+        f"({convention['above_F_quadratic_per_unit_I3_squared_value']} per (unit I3)^2).",
         "",
         "## Sym^2(210) and the pair Casimir K",
         "",
@@ -2115,6 +2365,13 @@ def _markdown(report: dict[str, Any]) -> str:
         "",
         "## Adversarial profile g(t) = min{f : |Phi|=1, I3=t}",
         "",
+        f"Each g is the best of up to {sampling['max_runs_per_t']} constrained local minimisations, i.e. an upper "
+        f"bound on g(t), not a proof of positivity. At the {sampling['n_sampled_t']} sampled t values in "
+        f"[{sampling['t_min']}, {sampling['t_max']}] ({sampling['n_below_F']} below I3(F), {sampling['n_above_F']} above) "
+        f"the best local minimum is >= {sampling['min_best_local_minimum_rounded']}; no zero off +-F was found.",
+        "",
+        "Below F (t < I3(F), delta = I3(F) - t > 0):",
+        "",
         "| delta/I3(F) | t | g | g/delta | g/delta^2 | runs agreeing |",
         "|---|---|---|---|---|---|",
     ]
@@ -2131,12 +2388,34 @@ def _markdown(report: dict[str, Any]) -> str:
         )
     lines += [
         "",
-        f"Small-delta law: g/delta -> {analysis['fit_linear_slope_a']} (fit) vs mu* = {analysis['hessian_slope_mu_star']} "
+        f"Small-delta law, one-sided (below F only): g/delta -> {analysis['fit_linear_slope_a']} (fit) vs mu* = "
+        f"{analysis['hessian_slope_mu_star']} "
         f"(exact Hessian pencil, closed form {local['mu_star_closed_form_candidate']}); g/delta^2 drifts by a factor "
         f"{analysis['pure_quadratic_coefficient_drift_max_over_min']} over the four smallest delta; growth law: "
         f"{analysis['growth_law_near_F']}. Excess (5+5bar) kernel directions of the f-Hessian raising I3: "
         f"{local['excess_directions_raise_I3']} (curvature +{local['excess_I3_curvature_expected']} on "
         f"{local['excess_directions']} directions), i.e. F is a saddle of I3 on the sphere.",
+        "",
+        "Above F (t > I3(F), Delta = t - I3(F) > 0; feasible up to Delta = I3(Cayley) - I3(F)):",
+        "",
+        "| delta/I3(F) | t | Delta | g | g/Delta^2 | runs agreeing |",
+        "|---|---|---|---|---|---|",
+    ]
+    for row in profile["rows_above_F"]:
+        if "g" not in row:
+            lines.append(f"| {row['delta_over_I3F']} | {row['t']} | - | no feasible run | - | 0 |")
+            continue
+        lines.append(
+            f"| {row['delta_over_I3F']} | {row['t']} | {_sig(-row['delta'], 8)} | {row['g']} | "
+            f"{row['g_over_delta_squared']} | {row['runs_agreeing_with_best']}/{row['feasible_runs']} |"
+        )
+    lines += [
+        "",
+        f"Small-Delta law, one-sided (above F only): g/Delta^2 -> {above.get('fit_quadratic_coefficient_c0')} (fit) vs "
+        f"c_up = {above.get('excess_reduction_c_up')} (exact fourth-order reduction on the 5+5bar excess space, "
+        f"q_eff = {local['excess_reduced_quartic_q_eff']}, candidate {local['excess_reduced_quartic_closed_form_candidate']}); "
+        f"g/Delta^2 drifts by {above.get('g_over_Delta_squared_drift_max_over_min')} over the four smallest Delta; "
+        f"growth law: {above.get('growth_law_above_F')}.",
         "",
         "## Cubic maximum",
         "",

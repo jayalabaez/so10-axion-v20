@@ -5,6 +5,7 @@
     "full_approval_blockers": [
       "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
       "G3_NOT_CLOSED",
+      "G3_SM_PRESERVING_TARGET_REQUIRED",
       "G4_NOT_CLOSED",
       "G6_NOT_CLOSED",
       "G7_NOT_CLOSED",
@@ -35,7 +36,7 @@
   },
   "classification": "AUTHORITATIVE_GATES_OPEN",
   "conditional_benchmark_approved": false,
-  "current_tree_unit_tests": 958,
+  "current_tree_unit_tests": 1073,
   "decision": "WITHHOLD_APPROVAL",
   "empirical_realization_approved": false,
   "errors": [],
@@ -43,6 +44,7 @@
   "full_approval_blockers": [
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
     "G3_NOT_CLOSED",
+    "G3_SM_PRESERVING_TARGET_REQUIRED",
     "G4_NOT_CLOSED",
     "G6_NOT_CLOSED",
     "G7_NOT_CLOSED",
@@ -108,6 +110,7 @@
   "scientific_blockers": [
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
     "G3_NOT_CLOSED",
+    "G3_SM_PRESERVING_TARGET_REQUIRED",
     "G4_NOT_CLOSED",
     "G6_NOT_CLOSED",
     "G7_NOT_CLOSED",
@@ -195,7 +198,7 @@
     "state": "PASS",
     "summary": "The manuscript gauges U(1)_X. The scalar census and every tool-native executable model must implement that same contract, with manifest/log-bound external evidence, before any G1-G8 result can validate the manuscript."
   },
-  "verdict": "WITHHOLD APPROVAL. The audit has no execution failure, but the statically consistent, tool-native gauged-U(1)_X model has no v2 manifest/log-bound external SARAH execution evidence. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.",
+  "verdict": "WITHHOLD APPROVAL. The audit has no execution failure and the gauged-U(1)_X model contract is attested by bound external SARAH execution evidence, but the G3, G4 and G6-G8 scientific gates remain open. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.",
   "warnings": [
     "Historical Option-C results are preserved as non-authoritative subtheorems only."
   ],

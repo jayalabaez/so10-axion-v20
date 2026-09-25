@@ -26,6 +26,7 @@ The counterexample quartic value 33/32 is the sharp minimum on the entire 60-rea
 - `m_perp^2/r^2=(4/3)(lambda_2772-lambda_4125)` (multiplicity two).
 - Hence `Delta V/r^4=-(1/8)m_perp^2/r^2` exactly.
 - This rules out the selected `Phi=P, Sigma=Delta_R` orbit, not a general `(p,a,omega)` branch.
+- `fixed_P_branch_closed_negative` scope: Sigma along Delta_R only; the SM orientation (P, z1^...^z5) is not covered: with the 2772bar/4125 weights swapped it is the pure-2772bar kernel minimizer, and with O05, kappa_H and O06 retuned it is an exact global minimum of a benchmark potential (g3_sm_pati_salam_candidate_v20).
 
 ## Scope
 

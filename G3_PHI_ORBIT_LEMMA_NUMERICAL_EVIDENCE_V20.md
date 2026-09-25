@@ -1,13 +1,17 @@
 # G3 Phi-orbit lemma: independent numerical evidence -- v20
 
 **Status:** `PHI_ORBIT_LEMMA_NUMERICAL_EVIDENCE_SUPPORTS_SIGNED_TWO_ORBIT_STATEMENT__PROOF_OPEN`  
-**Mode:** `full`; checks: 44/44 passed
+**Mode:** `full`; checks: 51/51 passed
 
-All 150 multistart runs end on SO(10).F (68) or SO(10).(-F) (82), certified by A-spectrum and an explicit orbit witness; the constrained profile g(t) is strictly positive for I3(F) > t >= 0; near F its growth law is 'linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant' (fitted slope 0.00819795 vs exact 0.0081985; the claimed 1.9e-3*delta^2 law is checked in claims_vs_reproduced); g(0) = 0.0545898. I3 is maximised by the Cayley form (25.65707922), not by F. This is numerical evidence for the signed two-orbit statement only: the lemma is not proved, G3 stays open and the whole model is neither validated nor excluded.
+All 150 multistart runs end on SO(10).F (68) or SO(10).(-F) (82), certified by A-spectrum and an explicit orbit witness; at the 26 sampled t values in [-7.58947, 24.2863] the best constrained local minimum of f (an upper bound on g(t)) is >= 5.69918e-08, so no zero off +-F was found. The growth of g near F is one-sided: below F only (t < I3(F), delta = I3(F) - t > 0): linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant (fitted slope 0.00819795 vs exact 0.0081985); above F only (t > I3(F), Delta = t - I3(F) > 0): quadratic: g/Delta^2 -> c_up > 0, g/Delta -> 0 (fitted 3.95316e-05 vs exact 3.95289e-05). The claimed 1.9e-3*delta^2 law is checked in claims_vs_reproduced; g(0) = 0.0545898. I3 = 8 Tr(A^3) is maximised by the Cayley form (25.65707922), not by F. This is numerical evidence for the signed two-orbit statement only: the lemma is not proved, G3 stays open and the whole model is neither validated nor excluded.
 
 Flags: `phi_orbit_lemma_proved=False`, `numerical_evidence_only=True`, `g3_closed=False`, `whole_model_validated=False`, `whole_model_excluded=False`
 
 Independent of the repository projector code (stdlib + numpy + scipy only).
+
+## Convention
+
+I3(Phi) = 8 Tr(A_Phi^3), the all-orderings contraction sum_{a..f} Phi_abcd Phi_cdef Phi_efab; the repository/manuscript Tr(A_Phi^3) is I3/8. Every I3, delta and slope in this report uses I3 unless labelled per_unit_TrA3. In Tr(A^3) units: Tr A^3 = 6/sqrt(10) = 1.897366596 at F and 12/sqrt(14) = 3.207134903 at the Cayley form; the below-F slope is 8*mu* = 28/(135*sqrt(10)) = 0.065587981 per unit Tr A^3 (mu* = 7/(270*sqrt(10)) = 0.0081984976 per unit I3); the above-F quadratic coefficient is 0.0025298523 per (unit Tr A^3)^2 (3.9528942e-05 per (unit I3)^2).
 
 ## Sym^2(210) and the pair Casimir K
 
@@ -38,6 +42,10 @@ Dimension sum 22155; distinct K eigenvalues ['24', '16', '14', '12', '6', '2', '
 
 ## Adversarial profile g(t) = min{f : |Phi|=1, I3=t}
 
+Each g is the best of up to 6 constrained local minimisations, i.e. an upper bound on g(t), not a proof of positivity. At the 26 sampled t values in [-7.58947, 24.2863] (16 below I3(F), 10 above) the best local minimum is >= 5.69918e-08; no zero off +-F was found.
+
+Below F (t < I3(F), delta = I3(F) - t > 0):
+
 | delta/I3(F) | t | g | g/delta | g/delta^2 | runs agreeing |
 |---|---|---|---|---|---|
 | 0 | 15.178933 | 0 | - | - | (F) |
@@ -58,7 +66,24 @@ Dimension sum 22155; distinct K eigenvalues ['24', '16', '14', '12', '6', '2', '
 | 1.0 | 0.0 | 0.0545898 | 0.00359642 | 0.000236935 | 6/6 |
 | 1.5 | -7.5894664 | 0.0375123 | 0.00164756 | 7.23616e-05 | 4/6 |
 
-Small-delta law: g/delta -> 0.00819795 (fit) vs mu* = 0.0081985 (exact Hessian pencil, closed form 7/(270*sqrt(10)) = (28/45)/(24*sqrt(10))); g/delta^2 drifts by a factor 8.46303 over the four smallest delta; growth law: linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant. Excess (5+5bar) kernel directions of the f-Hessian raising I3: True (curvature +45.53679831 on 10 directions), i.e. F is a saddle of I3 on the sphere.
+Small-delta law, one-sided (below F only): g/delta -> 0.00819795 (fit) vs mu* = 0.0081985 (exact Hessian pencil, closed form 7/(270*sqrt(10)) = (28/45)/(24*sqrt(10))); g/delta^2 drifts by a factor 8.46303 over the four smallest delta; growth law: below F only (t < I3(F), delta = I3(F) - t > 0): linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant. Excess (5+5bar) kernel directions of the f-Hessian raising I3: True (curvature +45.53679831 on 10 directions), i.e. F is a saddle of I3 on the sphere.
+
+Above F (t > I3(F), Delta = t - I3(F) > 0; feasible up to Delta = I3(Cayley) - I3(F)):
+
+| delta/I3(F) | t | Delta | g | g/Delta^2 | runs agreeing |
+|---|---|---|---|---|---|
+| -0.0025 | 15.21688 | 0.037947332 | 5.69918e-08 | 3.95777e-05 | 6/6 |
+| -0.005 | 15.254827 | 0.075894664 | 2.28249e-07 | 3.96266e-05 | 6/6 |
+| -0.01 | 15.330722 | 0.15178933 | 9.1526e-07 | 3.97248e-05 | 6/6 |
+| -0.02 | 15.482511 | 0.30357866 | 3.67934e-06 | 3.99234e-05 | 6/6 |
+| -0.05 | 15.937879 | 0.75894664 | 2.33486e-05 | 4.05358e-05 | 6/6 |
+| -0.1 | 16.696826 | 1.5178933 | 9.58833e-05 | 4.1616e-05 | 6/6 |
+| -0.2 | 18.214719 | 3.0357866 | 0.000405817 | 4.4034e-05 | 6/6 |
+| -0.3 | 19.732613 | 4.5536798 | 0.000972001 | 4.6875e-05 | 6/6 |
+| -0.45 | 22.009453 | 6.8305197 | 0.00243644 | 5.22213e-05 | 6/6 |
+| -0.6 | 24.286292 | 9.1073597 | 0.00493123 | 5.94525e-05 | 6/6 |
+
+Small-Delta law, one-sided (above F only): g/Delta^2 -> 3.95316e-05 (fit) vs c_up = 3.95289e-05 (exact fourth-order reduction on the 5+5bar excess space, q_eff = 0.02049180328, candidate 5/244); g/Delta^2 drifts by 1.00874 over the four smallest Delta; growth law: above F only (t > I3(F), Delta = t - I3(F) > 0): quadratic: g/Delta^2 -> c_up > 0, g/Delta -> 0.
 
 ## Cubic maximum
 
@@ -70,9 +95,9 @@ max I3 = 25.65707922 over 60 starts (60 at the max) vs I3(F) = 15.17893277; maxi
 |---|---|---|
 | 150/150 random starts reach f ~ 0 and every zero lies on SO(10).F or SO(10).(-F) | 150/150 starts reach f <= 1e-10 (full run); 150 on +-F by A-spectrum (tol 0.001) and orbit witness (tol 0.001); 0 off-orbit zeros; 0 nonzero local minima | `REPRODUCED` |
 | 70 on +F, 80 on -F | 68 on +F, 82 on -F (seed 1500210) | `DIFFERENT_SPLIT__SEED_AND_OPTIMIZER_DEPENDENT` |
-| g(t) ~ 1.9e-3 * delta^2 near F (delta = I3(F) - t) | growth law near F: linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant; g/delta -> 0.00819795 (fit) vs mu* = 0.0081985 (exact Hessian pencil at F); g/delta^2 = [0.209643, 0.10351, 0.0508339, 0.0247717] at delta = [0.0379473, 0.0758947, 0.151789, 0.303579] | `NOT_REPRODUCED__GROWTH_IS_LINEAR_IN_DELTA` |
+| g(t) ~ 1.9e-3 * delta^2 near F (delta = I3(F) - t) | The growth law is one-sided. below F only (t < I3(F), delta = I3(F) - t > 0): linear in delta: g/delta -> mu_star > 0, g/delta^2 not constant; g/delta -> 0.00819795 (fit) vs mu* = 0.0081985 (exact Hessian pencil at F); g/delta^2 = [0.209643, 0.10351, 0.0508339, 0.0247717] at delta = [0.0379473, 0.0758947, 0.151789, 0.303579]. above F only (t > I3(F), Delta = t - I3(F) > 0): quadratic: g/Delta^2 -> c_up > 0, g/Delta -> 0; g/(t-I3(F))^2 -> 3.95316e-05 (fit) vs c_up = 3.95289e-05 (exact fourth-order reduction on the 5+5bar excess space). Neither side shows 1.9e-3*delta^2. | `NOT_REPRODUCED__LINEAR_BELOW_F_QUADRATIC_ABOVE_F` |
 | g(0) ~ 0.052 | g(0) = 0.0545898 | `APPROXIMATELY_REPRODUCED` |
-| g grows smoothly with no zero off +-F | min g over delta > 0 grid = 0.000301886; nondecreasing in delta: True | `REPRODUCED` |
+| g grows smoothly with no zero off +-F | at the 26 sampled t values in [-7.58947, 24.2863] (16 below I3(F), 10 above; with g(-t) = g(t) the grid spans |t| from 0 to 24.2863 of the feasible |t| <= 25.6571) the best constrained local minimum (best of up to 6 local runs, an upper bound on g, not a proof of positivity) is >= 5.69918e-08 (>= 0.000301886 below F, >= 5.69918e-08 above F, smallest at the grid points nearest I3(F)); no zero off +-F was found; best values nondecreasing in |t - I3(F)| on each side: True | `REPRODUCED_ON_SAMPLED_RANGE` |
 | I3(F) = 8*60/10^(3/2) ~ 15.18, I3(-F) = -I3(F) | I3(F) = 15.17893277, I3(-F) = -15.17893277 | `REPRODUCED` |
 | unit Cayley form: I3 = 8*168/14^(3/2) ~ 25.66 | I3(Cayley) = 25.65707922 | `REPRODUCED` |
 | F does not maximise I3 on the sphere; the maximum 25.66 is attained by the Cayley form | max over 60 starts = 25.65707922 (60 starts); maximiser spectral distance to Cayley = 1e-08 | `REPRODUCED` |

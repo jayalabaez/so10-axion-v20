@@ -17546,7 +17546,7 @@
       "model_contract_id": "gauged_u1x_phi17_v20",
       "n_checks": 18,
       "n_failed": 0,
-      "next_required_test": "The fixed-F off-kernel and exact-Hessian companion certificates remove those two former blockers.  Prove the remaining uniform coercivity inequality when Phi lies outside the signed F equality strata, then classify its global equality set; otherwise exhibit a lower arbitrary-Phi witness.",
+      "next_required_test": "This point is not an SM vacuum (Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so no further certificate at it can close G3.  G3 needs an SM-preserving target certified through the final gate, for example the Pati-Salam-branch candidate of g3_sm_pati_salam_candidate_v20.  Here the fixed-F off-kernel and exact-Hessian companion certificates remove those two former blockers; uniform coercivity outside the signed F equality strata and its global equality classification remain open as a mathematical problem only.",
       "overall_state": "G3_PROMISING_CANDIDATE_NOT_CLOSED",
       "real_H_obstruction": {
         "O35_45_H_gradient_max_abs": 0.0,
@@ -17617,7 +17617,7 @@
         "x": "1"
       },
       "status": "EXACT_REAL_H_NO_GO__CHIRAL_H_STRICT_LOCAL_CANDIDATE__GLOBAL_GAP_OPEN",
-      "verdict": "The real H=e6 extension is exactly impossible, but this is not a no-go for G3: the chiral neutral H=(e6+i e7)/sqrt(2) gives an exact stationary, BFB, coefficient-safe candidate whose complete live 448-dimensional quotient Hessian is strictly positive, and the companion source-bound certificate upgrades it to exact rank 448, nullity 38 and PSD.  The companion fixed-F off-kernel certificate also extends the exact +F result beyond its mixed kernel; -F has no mixed-zero Sigma branch.  A clean all-vanishing affine-SOS replacement for beta is exactly excluded.  Only uniform arbitrary-Phi coercivity and its equality classification remain before G3 can close."
+      "verdict": "The real H=e6 extension is exactly impossible, and the chiral H=(e6+i e7)/sqrt(2) gives an exact stationary, BFB, coefficient-safe candidate whose complete live 448-dimensional quotient Hessian is strictly positive; the companion source-bound certificate upgrades it to exact rank 448, nullity 38 and PSD.  The companion fixed-F off-kernel certificate also extends the exact +F result beyond its mixed kernel; -F has no mixed-zero Sigma branch.  A clean all-vanishing affine-SOS replacement for beta is exactly excluded.  This point is not an SM vacuum (Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so no further certificate at it can close G3."
     },
     "gauged_G3_SU5_Delta_PD_global_SOS": {
       "SOS_decomposition": {
@@ -17882,13 +17882,14 @@
         "SM_dimension": 12,
         "exact_rational_rank": 33,
         "exact_stabilizer_dimension": 12,
-        "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_Y",
+        "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_T3R (12-dim, SM-sized but not the SM: Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20)",
         "generator_count": 45,
         "group": "SO(10)",
         "integer_tangent_shape": [
           462,
           45
         ],
+        "is_standard_model": false,
         "source_binding_exact": true
       },
       "failures": [],
@@ -17907,6 +17908,8 @@
         "full_448_or_replacement_quotient_Hessian_exact": false,
         "full_486_field_stationarity": false,
         "global_orbit_uniqueness": false,
+        "stabilizer_is_standard_model": false,
+        "stabilizer_note": "dimension-only; the centre is T3R, not Y (g3_sigma_hypercharge_audit_v20)",
         "whole_model_excluded": false
       },
       "status": "EXACT_SU5_DELTA_PD_GLOBAL_SOS_CANDIDATE_CERTIFIED",
@@ -17914,9 +17917,10 @@
         "Phi": "F0/sqrt(10)",
         "Sigma": "r Delta_R",
         "formal_assumption": "r>0",
-        "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_Y"
+        "is_standard_model_vacuum": false,
+        "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_T3R (12-dim; not the Standard Model)"
       },
-      "verdict": "The P-specific Delta no-go is evaded by an exact SU(5)-singlet 210 plus Delta_R configuration.  A 17-parameter, perturbative Phi/Sigma potential is an explicit global sum of squares and the target has the exact 12-dimensional SM stabilizer.  Its exact PD Hessian has rank 429 and only the 33 gauge-orbit zero modes, so the equality set is locally one SO(10) orbit.  Other disconnected global equality orbits are not classified.  The H/S/Phi17 extension and exact full physical Hessian remain to be certified before G3 can close."
+      "verdict": "The P-specific Delta no-go is evaded by an exact SU(5)-singlet 210 plus Delta_R configuration.  A 17-parameter, perturbative Phi/Sigma potential is an explicit global sum of squares and the target has an exact 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1).  Its exact PD Hessian has rank 429 and only the 33 gauge-orbit zero modes, so the equality set is locally one SO(10) orbit.  Other disconnected global equality orbits are not classified.  Its chiral-H extension and exact 448/38 Hessian are certified elsewhere, but this orientation is not an SM vacuum and cannot close G3."
     },
     "gauged_G3_SU5_Delta_Phi_SU3_fixed_slice_theorem": {
       "SU3_fixed_space": {
@@ -18509,7 +18513,7 @@
       "overall_state": "FINAL_G3_TEST_OPEN",
       "small_beta_global_reduction": {
         "beta_equals_1_over_20_covered_by_theorem": false,
-        "conclusion_if_ready": "there exists beta_star>0 such that every 0<beta<beta_star preserves the global lower bound and selects the chiral SM flag",
+        "conclusion_if_ready": "there exists beta_star>0 such that every 0<beta<beta_star preserves the global lower bound and selects the chiral SU(5)+Delta flag orbit (not an SM vacuum; g3_sigma_hypercharge_audit_v20)",
         "exact_equality_reduction": {
           "Sigma_1050bar_zero_condition": "(256/9) times the sum of five squared Pluecker Pfaffians",
           "distant_disconnected_Phi_components_excluded": false,
@@ -194052,6 +194056,7 @@
         "zero_eigenspace_dimension": 66
       },
       "failures": [],
+      "fixed_P_branch_scope": "Sigma along Delta_R only; the SM orientation (P, z1^...^z5) is not covered: with the 2772bar/4125 weights swapped it is the pure-2772bar kernel minimizer, and with O05, kappa_H and O06 retuned it is an exact global minimum of a benchmark potential (g3_sm_pati_salam_candidate_v20)",
       "fixed_P_strict_local_global_no_go": {
         "all_non_O27_B03_B04_differences_zero_before_stationarity": true,
         "current_identity_exact": true,
@@ -194063,7 +194068,7 @@
           "lambda::O27_B03_126bar_self_projectors": "4/3",
           "lambda::O27_B04_126bar_self_projectors": "-4/3"
         },
-        "escape_not_excluded": "For general SM-preserving Phi=(p,a,omega), O14/O44 distinguish the two Sigma orientations; the theorem does not exclude that branch.",
+        "escape_not_excluded": "For general SM-preserving Phi=(p,a,omega), O14/O44 distinguish the two Sigma orientations; the theorem does not exclude that branch. It also does not exclude the fixed-P SM orientation (P, z1^...^z5), the pure-2772bar kernel vector (g3_sm_pati_salam_candidate_v20).",
         "exact_X_parameter_count_evaluated": 51,
         "explicit_multiplicity_two_tangents": {
           "Delta_source_binding_max_abs_residual": 0.0,
@@ -520754,6 +520759,7 @@
   ],
   "scientific_blockers": [
     "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+    "G3_SM_PRESERVING_TARGET_REQUIRED",
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN"
   ],
   "status": "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G5_CLOSED__G3_GLOBAL_OPEN",
@@ -520812,8 +520818,8 @@
       "wave": 2
     },
     {
-      "acceptance": "the full 486-field candidate is globally minimal with all equality orbits classified, or an exact lower witness rejects it",
-      "deliverable": "prove a uniform coercive global gap for arbitrary non-pure-Delta Sigma orientations of the SU(5)+Delta chiral-H candidate; its exact 448/38 Hessian and complete pure-Delta maximal-negative sector are complete. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210; its exact SU(4) stabilizer, aligned 25-carrier rank-210 real-form maps, and complete 45-element invariant quadratic basis from a 5952x551 rank-506 constraint system are ready. The exact augmented census has dimension 22366, 35 complex isotypic types spanning 824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant target rows with an abstract surjective multiplication map. The complete cubic interface is now explicit: 540 required Sym2(Phi210) carrier copies generate all 1414 real Schur cross variables, and their 478x1414 integer coefficient map has exact rank 478 and kernel dimension 936. Its reserved zero vector is only an abstract interface placeholder, not the physical G3 target. The exact homogeneous quartic map has shape 6057x18085, rank 6057, and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open",
+      "acceptance": "an SM-preserving full 486-field candidate is globally minimal with all equality orbits classified, or an exact lower witness rejects it",
+      "deliverable": "construct an SM-preserving G3 candidate and certify it through the final gate; the Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) still needs its equality set classified, its model-level caveats resolved and gate integration. The SU(5)+Delta chiral-H candidate is not an SM vacuum (its Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so uniform coercivity for its arbitrary non-pure-Delta Sigma orientations is a mathematical problem only and cannot close G3. Its exact 448/38 Hessian and complete pure-Delta maximal-negative sector are complete. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210; its exact SU(4) stabilizer, aligned 25-carrier rank-210 real-form maps, and complete 45-element invariant quadratic basis from a 5952x551 rank-506 constraint system are ready. The exact augmented census has dimension 22366, 35 complex isotypic types spanning 824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant target rows with an abstract surjective multiplication map. The complete cubic interface is now explicit: 540 required Sym2(Phi210) carrier copies generate all 1414 real Schur cross variables, and their 478x1414 integer coefficient map has exact rank 478 and kernel dimension 936. Its reserved zero vector is only an abstract interface placeholder, not the physical G3 target. The exact homogeneous quartic map has shape 6057x18085, rank 6057, and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately)",
       "gates": [
         "G3"
       ],
@@ -520878,5 +520884,5 @@
       "wave": 6
     }
   ],
-  "verdict": "Wave 0 and the gauged scalar G1/G2 recertification are CLOSED. G3 has a 27-of-51 perturbative SOS candidate with J0=-21/200. Source-bound identities prove exact stationarity and complete BFB; direct exact P+Delta rank/nullity 429/33 plus the extension certificate prove a strict local minimum on all 448 transverse directions. An exact second stationary orbit is lower by 25*r^4/19008, so the selected global vacuum is rejected. The fixed-P branch is exactly excluded and its lower replacement has the wrong gauge symmetry. The surviving SU(5)+Delta Phi/Sigma orbit is an exact global SOS minimum with SM stabilizer and rank/nullity 429/33. Its chiral-H full Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the symmetry orbit. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier maps, and explicit 45-element Phi210 invariant quadratic basis now feed an exact augmented census: dimension 22366, 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic map is exact-rank-6057 with shape 6057x18085 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. G5 is CLOSED. G4 and G6-G8 remain dependency-blocked; the historical 64/91 saddle/search remains scoped to option C."
+  "verdict": "Wave 0 and the gauged scalar G1/G2 recertification are CLOSED. G3 has a 27-of-51 perturbative SOS candidate with J0=-21/200. Source-bound identities prove exact stationarity and complete BFB; direct exact P+Delta rank/nullity 429/33 plus the extension certificate prove a strict local minimum on all 448 transverse directions. An exact second stationary orbit is lower by 25*r^4/19008, so the selected global vacuum is rejected. The fixed-P branch with this Delta_R orientation is exactly excluded and its lower replacement has the wrong gauge symmetry. The SU(5)+Delta Phi/Sigma orbit is an exact global SOS minimum with a 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1) and rank/nullity 429/33. Its chiral-H full Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the symmetry orbit. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier maps, and explicit 45-element Phi210 invariant quadratic basis now feed an exact augmented census: dimension 22366, 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic map is exact-rank-6057 with shape 6057x18085 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, and G3 remain open (the exact 448/38 full Hessian is certified separately). G5 is CLOSED. G4 and G6-G8 remain dependency-blocked; the historical 64/91 saddle/search remains scoped to option C."
 }

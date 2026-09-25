@@ -243,7 +243,15 @@ def singlet_basis() -> dict[str, Form]:
 
 
 def delta_r() -> Form:
-    """Canonical -i-Hodge Delta_R direction in 126bar."""
+    """The (10bar,1,3) member z1^z2^z3^(e67+e89) of the -i Hodge 126bar.
+
+    It has B-L = -2, T3L = T3R = 0 and hence Y = -1: it is NOT the SM-singlet
+    Delta_R.  Paired with p, F or a generic (p, a, omega) it leaves
+    SU(3)_c x SU(2)_L x U(1)_T3R unbroken, whose U(1) acts trivially on colour
+    (g3_sigma_hypercharge_audit_v20).  The Y = 0 singlet of the chart's -i
+    space is normalize_126(z1^z2^z3^z4^z5).  This vector is kept unchanged
+    because many exact, hash-bound certificates are defined at it.
+    """
     z1 = add_forms(one_form(0), scale_form(one_form(1), 1j))
     z2 = add_forms(one_form(2), scale_form(one_form(3), 1j))
     z3 = add_forms(one_form(4), scale_form(one_form(5), 1j))

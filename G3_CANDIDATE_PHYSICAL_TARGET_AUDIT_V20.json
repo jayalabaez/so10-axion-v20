@@ -31,6 +31,8 @@
     "candidate_H_to_Phi_vev_ratio_is_one": true,
     "candidate_is_exactly_stationary": true,
     "doublet_triplet_splitting_equals_beta_r_squared": true,
+    "exact_charge_audit_binds_to_the_certified_point": true,
+    "exact_charge_audit_finds_non_sm_stabilizer": true,
     "gut_point_all_h10_modes_tachyonic": true,
     "gut_point_doublets_at_minus_2_and_minus_4_over_5": true,
     "gut_point_h10_mass_is_hermitian_and_sm_block_diagonal": true,
@@ -48,7 +50,9 @@
     "axion_singlet_decoupled_in_candidate": true,
     "certified_candidate_at_physical_hierarchy": false,
     "certified_candidate_breaks_electroweak_symmetry_at_gut_scale": true,
+    "certified_candidate_breaks_hypercharge_at_gut_scale": true,
     "certified_candidate_is_physical_vacuum": false,
+    "certified_candidate_is_sm_vacuum": false,
     "g3_closed": false,
     "gut_point_h10_fully_tachyonic": true,
     "whole_model_excluded": false,
@@ -175,14 +179,15 @@
     "certified_PQ_and_B_minus_L_breaking_scale_GeV": 1983512959779721.2,
     "certified_candidate_at_physical_hierarchy": false,
     "physical_hierarchy_source": "gauged_u1x_g2_derivative_audit_v20.physical_hierarchy_state",
+    "reference_state_differs_in_orientation": "physical_hierarchy_state has Phi along the Pati-Salam singlet p, not F; with the certified O46/O06 couplings at p the (6,1,1) states sit near M_GUT and two (1,2,2) doublets are light, so it is not a rescaling of the F branch. Both states use the same non-SM Delta_R.",
     "triplet_partner_mass_GeV": {
+      "F_branch_extrapolated_to_M_I": 141182094955.54987,
       "certified_hierarchy": 443526981231926.3,
-      "formula": "M_T = sqrt(beta) <Sigma> when O06 is tuned for a massless doublet",
-      "physical_hierarchy": 141182094955.54987
+      "formula": "M_T = sqrt(beta) <Sigma> for the T3R = 0 Delta_R with O06 tuned for a massless doublet; the M_I value extrapolates this F-branch formula to a state that has not been constructed"
     }
   },
   "model_contract_id": "gauged_u1x_phi17_v20",
-  "n_checks": 18,
+  "n_checks": 20,
   "n_failed": 0,
   "o06_tuning": {
     "certified_O06": -2.0,
@@ -260,10 +265,11 @@
         "tuned": "0"
       }
     },
-    "doublet_triplet_splitting": "m_T^2 = beta r^2 M^2 = M^2/500",
-    "hierarchy_caveat": "The certified point puts Sigma and S at r = 1/5 of M_GUT, so PQ and B-L break near 2e15 GeV; the repository's physical hierarchy puts them at M_I ~ 6.3e11 GeV. There the tuned triplet partner sits at sqrt(beta) M_I ~ 1.4e11 GeV, a G8 input.",
-    "next": "effective Higgs quartic at the tuned point: g3_tuned_target_effective_higgs_quartic_v20.py",
-    "state": "(Phi, Sigma, H, S, Phi17) = (F, r Delta_R, H ~ v_EW along the massless doublet, r, 1)"
+    "doublet_triplet_splitting": "m^2 = beta r^2 M^2 = M^2/500 for this T3R = 0 Delta_R configuration",
+    "hierarchy_caveat": "The certified point puts Sigma and S at r = 1/5 of M_GUT. The repository's physical_hierarchy_state puts them at M_I ~ 6.3e11 GeV but along Phi = p (overlap with F 1/sqrt(10)) and with the same non-SM Delta_R; the sqrt(beta) M_I ~ 1.4e11 GeV triplet figure is an extrapolation of this F-branch formula, not a constructed state.",
+    "next": "tree-level quartic at the tuned point: g3_tuned_target_effective_higgs_quartic_v20.py",
+    "sm_preserving_requirement": "Sigma along the Y = 0 singlet z1^z2^z3^z4^z5: with p (Pati-Salam branch) the stabilizer is the standard SM; with F it is SU(5), so an F branch needs the flipped direction z1^z2^z3^zbar4^zbar5.",
+    "tuned_r_one_fifth_point": "(F, r Delta_R, H=0, r, 1) with O06 retuned -2 -> 0 (non-SM stabilizer)"
   },
   "singlet_portals": {
     "S_and_Phi17_portals": {
@@ -353,7 +359,50 @@
       }
     }
   },
-  "status": "G3_CERTIFIED_CANDIDATE_BREAKS_ELECTROWEAK_SYMMETRY_AT_GUT_SCALE__TUNED_PHYSICAL_TARGET_OPEN",
+  "sm_embedding": {
+    "H_chi_standard_embedding_charges": {
+      "B_minus_L": "0",
+      "Q_em": "1",
+      "T3L": "1/2",
+      "T3R": "1/2",
+      "Y": "1/2",
+      "Y_flipped": "1/2",
+      "cartan_eigenform": true,
+      "plane_charges": {
+        "J01": 0,
+        "J23": 0,
+        "J45": 0,
+        "J67": 1,
+        "J89": 0
+      }
+    },
+    "binding_ok": true,
+    "certified_point_is_sm_vacuum": false,
+    "gut_point_is_sm_vacuum": false,
+    "heavy_pair_centre_spectrum_on_10": {
+      "colour_block_0_5": {
+        "0": 6
+      },
+      "em_normalized": {
+        "0": 6,
+        "1": 4
+      },
+      "exact_rational_q_squared": true,
+      "hypercharge_normalized": {
+        "0": 6,
+        "1/2": 4
+      },
+      "standard_blocks_decoupled": true,
+      "weak_block_6_9": {
+        "1/2": 4
+      }
+    },
+    "heavy_pair_stabilizer": "SU(3)xSU(2)_LxU(1)_T3R (dim 12, centre 1, derived 11): centre blind to colour, not hypercharge",
+    "heavy_pair_stabilizer_dimension": 12,
+    "hypercharge_broken_by_delta_r": true,
+    "source": "g3_sigma_hypercharge_audit_v20.named_vacua (exact integer arithmetic)"
+  },
+  "status": "G3_CERTIFIED_POINT_IS_NOT_AN_SM_VACUUM__DELTA_R_BREAKS_HYPERCHARGE__H_BREAKS_SU2L_AT_GUT_SCALE__G3_OPEN",
   "units": "Hessian eigenvalues of the canonical 486-real chart, units of the benchmark scale M (|Phi|=1)",
-  "verdict": "The certified G3 point is a mathematically valid strict minimum of the benchmark potential but not a physical vacuum: its 10_H vev lies in an electroweak doublet with |<H>|/|<Phi>| = 1. At (F, r Delta_R, H=0) every 10_H mode is tachyonic and each five-plet is split only by beta r^2 = 1/500. Retuning O06 alone to 0 gives one massless doublet with a triplet partner at M_T = M/sqrt(500). The axion singlet has no portal to the GUT fields in the benchmark, and Sigma and S sit at M_GUT/5 rather than at the intermediate scale M_I. G3 should be aimed at the tuned point at the physical hierarchy; nothing is closed or excluded here."
+  "verdict": "The certified G3 point is a strict local minimum (modulo its 38 symmetry directions) of the benchmark potential, with global minimality open, but it is not a Standard-Model vacuum: its Delta_R is the T3R = 0, Y = -1 component of the 126bar triplet, so hypercharge breaks at r M_GUT and the unbroken group is SU(3) x SU(2)_L x U(1)_T3R; its 10_H vev also breaks SU(2)_L with |<H>|/|<Phi>| = 1. At (F, r Delta_R, H=0) every 10_H mode is tachyonic and, for this Delta_R, each five-plet is split only by beta r^2 = 1/500; retuning O06 alone to 0 leaves one massless (1,2,2) doublet. An SM-preserving G3 target needs the Y = 0 singlet of the 126bar (with p: the standard SM; with F: SU(5), so the flipped direction). Nothing is closed or excluded here."
 }

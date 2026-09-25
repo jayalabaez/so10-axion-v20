@@ -7,5 +7,5 @@ The chiral-H candidate has survived the exact Sigma=0 and fixed-PD orientation t
 - exact Sigma=0 gap: `1/5000`;
 - lower witness found: `false`;
 - beta=1/20 finite-field global gap: `OPEN`;
-- exact full-Hessian certificate: `OPEN`;
+- exact full-Hessian certificate: `CERTIFIED`;
 - G3: `OPEN`.

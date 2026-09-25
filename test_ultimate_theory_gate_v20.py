@@ -56,6 +56,48 @@ class UltimateGateTests(unittest.TestCase):
         self.assertEqual(
             result["validation_matrix_contract_gate"]["state"], "BLOCKED"
         )
+        self.assertEqual(result["verdict"], gate._verdict(False))
+
+    def test_verdict_text_branches_on_contract_readiness(self) -> None:
+        ready, blocked = gate._verdict(True), gate._verdict(False)
+        self.assertNotIn("lacks", ready)
+        self.assertNotIn("no v2 manifest", ready)
+        self.assertIn("attested by bound external SARAH execution", ready)
+        self.assertIn(
+            "has no v2 manifest/log-bound external SARAH execution evidence",
+            blocked,
+        )
+        self.assertEqual(self.evaluate()["verdict"], ready)
+
+    def test_confirmation_text_branches_on_contract_readiness(self) -> None:
+        ready = confirmation._claim_text(True)
+        blocked = confirmation._claim_text(False)
+        for text in ready.values():
+            self.assertNotIn("lacks", text)
+            self.assertNotIn("no v2 manifest", text)
+        self.assertIn(
+            "lacks a v2 manifest/log-bound external SARAH execution attestation",
+            blocked["correct_public_claim"],
+        )
+        self.assertIn(
+            "still lacks a real external SARAH execution", blocked["verdict"]
+        )
+        self.assertTrue(
+            blocked["incorrect_claim_do_not_use"].startswith(
+                "G1, G2, or G3 is closed"
+            )
+        )
+        verdict = confirmation.evaluate_reports(
+            copy.deepcopy(self.fresh_reports), current_test_count=321
+        )
+        for key, text in ready.items():
+            self.assertEqual(verdict[key], text)
+        # The ready text names G1, G2 and G5 closed; keep it tied to the ledger.
+        gates = self.fresh_reports["g1_g8"]["gates"]
+        self.assertEqual(
+            sorted(k for k, v in gates.items() if v["status"] == "CLOSED"),
+            ["G1", "G2", "G5"],
+        )
 
     def test_no_approval_or_exclusion_survives_contract_mismatch(self) -> None:
         reports = copy.deepcopy(self.fresh_reports)

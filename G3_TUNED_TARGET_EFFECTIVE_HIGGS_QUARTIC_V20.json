@@ -1,47 +1,48 @@
 {
   "beta_tradeoff": {
-    "BFB_certificate": "lambda_H N_H^2 + t N_Sigma^2 - beta N_H N_Sigma >= 0 needs beta^2 < 4 t lambda_H, t = 1/8",
-    "lambda_H_floor_is_2_beta_squared": true,
+    "BFB_certificate": "lambda_H N_H^2 + t N_Sigma^2 - beta N_H N_Sigma >= 0 needs beta^2 < 4 t lambda_H (strict), t = 1/8; lambda_H = beta^2/(4t) is the boundary where the sufficient certificate stops proving BFB",
+    "lambda_H_boundary_is_2_beta_squared": true,
     "rows": [
       {
         "beta": 0.05,
-        "lambda_H_BFB_floor": 0.005,
-        "m_h_tree_GeV_at_floor": 134.783461903774,
+        "lambda_H_BFB_boundary": 0.005,
+        "m_h_tree_GeV_at_boundary_two_loop": 129.611668787049,
         "partner_triplet_mass_over_M": 0.04472135955
       },
       {
         "beta": 0.025,
-        "lambda_H_BFB_floor": 0.00125,
-        "m_h_tree_GeV_at_floor": 133.895805174586,
+        "lambda_H_BFB_boundary": 0.00125,
+        "m_h_tree_GeV_at_boundary_two_loop": 128.595886505828,
         "partner_triplet_mass_over_M": 0.031622776602
       },
       {
         "beta": 0.0125,
-        "lambda_H_BFB_floor": 0.0003125,
-        "m_h_tree_GeV_at_floor": 133.668435903737,
+        "lambda_H_BFB_boundary": 0.0003125,
+        "m_h_tree_GeV_at_boundary_two_loop": 128.335344335827,
         "partner_triplet_mass_over_M": 0.022360679775
       },
       {
         "beta": 0.00625,
-        "lambda_H_BFB_floor": 7.8125e-05,
-        "m_h_tree_GeV_at_floor": 133.611243566398,
+        "lambda_H_BFB_boundary": 7.8125e-05,
+        "m_h_tree_GeV_at_boundary_two_loop": 128.269784682911,
         "partner_triplet_mass_over_M": 0.015811388301
       }
-    ]
+    ],
+    "triplet_partner_note": "sqrt(beta) r M is a property of the T3R = 0 Delta_R configuration, not of an SM vacuum"
   },
   "checks": {
-    "gauge_orbit_rank_is_33_SO10_over_SM": true,
+    "gauge_orbit_rank_is_33": true,
     "hessian_annihilates_orbit_and_light_doublet": true,
     "lambda_eff_equals_lambda_direct": true,
     "light_doublet_has_no_heavy_mode_coupling": true,
     "light_h_spectrum_is_massless_doublet_and_beta_r2_triplet": true,
     "no_gate_closed_or_model_excluded": true,
     "quartic_is_su2_x_u1_invariant_on_the_doublet": true,
-    "sm_running_reproduces_negative_sm_lambda_at_gut_scale": true,
     "symmetry_orbit_rank_is_35": true,
     "tuned_O06_is_zero": true,
     "tuned_hessian_is_positive_semidefinite": true,
     "tuned_point_is_stationary": true,
+    "two_loop_sm_target_is_negative": true,
     "zero_modes_are_goldstones_plus_massless_doublet": true
   },
   "effective_quartic": {
@@ -116,117 +117,54 @@
   },
   "failures": [],
   "flags": {
+    "benchmark_hierarchy_r_one_fifth": true,
     "g3_closed": false,
-    "one_loop_running_only": true,
-    "tree_level_matching_only": true,
+    "tree_level_only": true,
     "whole_model_excluded": false,
     "whole_model_validated": false
   },
   "model_contract_id": "gauged_u1x_phi17_v20",
   "n_checks": 13,
   "n_failed": 0,
-  "overall_state": "PHYSICAL_TARGET_CONSTRAINT",
+  "overall_state": "TREE_LEVEL_STRUCTURE_AUDITED",
   "scientific_outcomes": {
-    "certified_coupling_point_excluded_by_higgs_mass": true,
-    "certified_couplings_predict_m_h_GeV": 173.420507366297,
+    "certified_point_is_sm_vacuum": false,
+    "conclusions_conditional_on_sm_vacuum_and_sm_running": true,
+    "if_sm_vacuum_certified_couplings_m_h_two_loop_GeV": 173.013271577598,
+    "if_sm_vacuum_lambda_eff_zero_m_h_two_loop_GeV": 128.247893491548,
     "lambda_eff_at_certified_couplings": 1.0,
-    "negative_gut_matching_required": true,
-    "nonnegative_tree_matching_gives_m_h_above_observed": true,
-    "portal_feedback_absent_in_benchmark": true,
-    "sharper_BFB_bound_alone_cannot_reach_observed_m_h": true
+    "light_doublet_projection_of_heavy_couplings_vanishes": true,
+    "sm_matching_would_require_negative_lambda_eff_two_loop": true,
+    "tree_level_local_minimum_requires_lambda_eff_nonnegative": true
   },
-  "scope": "The tuned point keeps the certified hierarchy r = 1/5 for Sigma and S. The tree-level decoupling (c = 0) does not depend on r, but at the physical hierarchy (Sigma, S at M_I) intermediate-scale states would modify the running between M_I and M_GUT; the m_h values assume SM running all the way from M_GUT.",
+  "scope": "The r = 1/5 benchmark point with the certified Delta_R, which is not the SM singlet of the 126bar (g3_sigma_hypercharge_audit_v20). The two-loop running statement is conditional on an SM vacuum with pure SM running below M_GUT; the manuscript's RG anchor uses a 2HDM and a Pati-Salam stage.",
   "sm_running": {
-    "caveat": "One loop only. The literature NNLO analysis puts the SM lambda near M_GUT at about -0.01 rather than -0.03 (not recomputed here); the required matching contribution stays negative, which is what the conclusions below use.",
-    "inputs": {
-      "couplings_at_mt": {
-        "g2": 0.64779,
-        "g3": 1.1666,
-        "gY": 0.3583,
-        "yt": 0.9369
+    "M_GUT_GeV": 9917564798898606.0,
+    "applicability": "Only for an SM vacuum with pure SM running below M_GUT. Neither holds for the r = 1/5 benchmark: its stabilizer is SU(3) x SU(2)_L x U(1)_T3R, and its spectrum below M_GUT has non-SM scalars (m^2 ~ 2e-4 to 5e-3 M^2) with O(1) couplings to |h|^2, whose one-loop logs shift lambda by O(0.1).",
+    "lambda_gut_required_for_sm_two_loop": -0.015111549966,
+    "predictions": {
+      "certified_lambda_eff": {
+        "M_h_scaled_to_buttazzo_GeV": 175.153068595004,
+        "lambda_at_mt": 0.246877884524,
+        "lambda_gut": 1.0,
+        "m_h_tree_GeV": 173.013271577598
       },
-      "lambda_SM_at_mt": 0.12604,
-      "mu_top_GeV": 173.1,
-      "source": "Buttazzo et al. 2013 (arXiv:1307.3536) central MSbar values",
-      "v_GeV": 246.22
-    },
-    "reference_M_GUT_GeV": 1e+16,
-    "reference_lambda_gut_required": -0.033538209985,
-    "reference_m_h_bfb_floor_GeV": 134.783461903774,
-    "reference_m_h_certified_GeV": 173.420507366297,
-    "reference_m_h_lambda_zero_GeV": 133.592148130468,
-    "scheme": "one-loop SM RGEs, tree-level matching lambda(M_GUT)=lambda_eff, m_h=sqrt(2 lambda(M_t)) v",
-    "sm_calibration_m_h_tree_GeV": 123.621076762306,
-    "table": [
-      {
-        "M_GUT_GeV": 2000000000000000.0,
-        "SM_lambda_at_M_GUT": -0.032916450809,
-        "lambda_gut_required_for_SM": -0.032916450809,
-        "predictions": {
-          "certified_lambda_eff": {
-            "lambda_at_mt": 0.25274566301,
-            "lambda_gut": 1.0,
-            "m_h_tree_GeV": 175.057281860504
-          },
-          "sufficient_BFB_floor_2beta2": {
-            "lambda_at_mt": 0.149244121793,
-            "lambda_gut": 0.005,
-            "m_h_tree_GeV": 134.520025881588
-          },
-          "zero": {
-            "lambda_at_mt": 0.146596267041,
-            "lambda_gut": 0.0,
-            "m_h_tree_GeV": 133.321373916333
-          }
-        }
+      "sufficient_BFB_floor_2beta2_boundary": {
+        "M_h_scaled_to_buttazzo_GeV": 131.214682589185,
+        "lambda_at_mt": 0.138551603071,
+        "lambda_gut": 0.005,
+        "m_h_tree_GeV": 129.61166878705
       },
-      {
-        "M_GUT_GeV": 1e+16,
-        "SM_lambda_at_M_GUT": -0.033538209985,
-        "lambda_gut_required_for_SM": -0.033538209985,
-        "predictions": {
-          "certified_lambda_eff": {
-            "lambda_at_mt": 0.248041446497,
-            "lambda_gut": 1.0,
-            "m_h_tree_GeV": 173.420507366297
-          },
-          "sufficient_BFB_floor_2beta2": {
-            "lambda_at_mt": 0.149829235792,
-            "lambda_gut": 0.005,
-            "m_h_tree_GeV": 134.783461903774
-          },
-          "zero": {
-            "lambda_at_mt": 0.147192342485,
-            "lambda_gut": 0.0,
-            "m_h_tree_GeV": 133.592148130468
-          }
-        }
-      },
-      {
-        "M_GUT_GeV": 2e+16,
-        "SM_lambda_at_M_GUT": -0.033728771298,
-        "lambda_gut_required_for_SM": -0.033728771298,
-        "predictions": {
-          "certified_lambda_eff": {
-            "lambda_at_mt": 0.246157294731,
-            "lambda_gut": 1.0,
-            "m_h_tree_GeV": 172.760590572713
-          },
-          "sufficient_BFB_floor_2beta2": {
-            "lambda_at_mt": 0.150047734915,
-            "lambda_gut": 0.005,
-            "m_h_tree_GeV": 134.881704877143
-          },
-          "zero": {
-            "lambda_at_mt": 0.14741384992,
-            "lambda_gut": 0.0,
-            "m_h_tree_GeV": 133.692630699786
-          }
-        }
+      "zero": {
+        "M_h_scaled_to_buttazzo_GeV": 129.834040366174,
+        "lambda_at_mt": 0.135651259743,
+        "lambda_gut": 0.0,
+        "m_h_tree_GeV": 128.247893491548
       }
-    ]
+    },
+    "scheme": "two-loop SM RGEs from g3_physical_hierarchy_higgs_stability_v20 (Buttazzo et al. 2013 inputs at M_t = 173.34 GeV), tree-level matching lambda(M_GUT) = lambda_eff"
   },
-  "status": "G3_TUNED_TARGET_LAMBDA_EFF_EQUALS_DIRECT_H_QUARTIC__CERTIFIED_COUPLINGS_EXCLUDED_BY_HIGGS_MASS__G3_OPEN",
+  "status": "G3_TUNED_POINT_LAMBDA_EFF_EQUALS_DIRECT_H_QUARTIC__LOCAL_MINIMALITY_NEEDS_LAMBDA_EFF_NONNEGATIVE__G3_OPEN",
   "tuned_point_hessian": {
     "gauge_orbit_rank": 33,
     "gradient_max_abs": 0.0,
@@ -300,5 +238,5 @@
     "zero_modes_outside_orbit_plus_light_doublet": 0.0
   },
   "units": "Hessian eigenvalues of the canonical 486-real chart, units of the benchmark scale M (|Phi|=1)",
-  "verdict": "At the tuned physical target the light doublet has no tree-level coupling to any heavy mode, so lambda_eff equals the direct H quartic, 1 for the certified couplings; one-loop running then gives m_h ~ 173 GeV, which excludes this coupling point. Because bounded-below along the pure-H ray needs lambda_direct >= 0, every coupling point of this family without portal feedback has m_h >= 133.6 GeV at one loop; the sufficient BFB floor 2 beta^2 costs only another ~1.2 GeV. Reaching 125 GeV needs a negative GUT-scale matching contribution of about -0.03 (one loop), from heavy exchange through portals that vanish in the benchmark or from loop thresholds. G3 stays open; the model is not excluded."
+  "verdict": "At the r = 1/5 tuned point the light doublet has no tree-level coupling to heavy modes, so lambda_eff equals the direct H quartic, 1. The Hessian is PSD with 39 zero modes (33 broken SO(10) generators, U(1)_X, PQ and the doublet); the unbroken group is SU(3) x SU(2)_L x U(1)_T3R, not the SM, because the certified Delta_R carries hypercharge. Since the doublet is exactly flat, local minimality at tree level requires lambda_eff >= 0. If this were an SM vacuum with pure SM running below M_GUT, two-loop running would need lambda(M_GUT) = -0.0151 for the measured Higgs mass, which that condition forbids, and lambda_eff = 1 would give m_h ~ 173 GeV; neither premise holds for this benchmark. G3 stays open; nothing is excluded."
 }

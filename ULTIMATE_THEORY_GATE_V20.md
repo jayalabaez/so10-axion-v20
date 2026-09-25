@@ -5,7 +5,7 @@
 **Classification:** `AUTHORITATIVE_GATES_OPEN`
 **Decision:** `WITHHOLD_APPROVAL`
 
-WITHHOLD APPROVAL. The audit has no execution failure, but the statically consistent, tool-native gauged-U(1)_X model has no v2 manifest/log-bound external SARAH execution evidence. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.
+WITHHOLD APPROVAL. The audit has no execution failure and the gauged-U(1)_X model contract is attested by bound external SARAH execution evidence, but the G3, G4 and G6-G8 scientific gates remain open. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.
 
 ## Approval levels
 
@@ -19,6 +19,7 @@ WITHHOLD APPROVAL. The audit has no execution failure, but the statically consis
 
 - `G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN`
 - `G3_NOT_CLOSED`
+- `G3_SM_PRESERVING_TARGET_REQUIRED`
 - `G4_NOT_CLOSED`
 - `G6_NOT_CLOSED`
 - `G7_NOT_CLOSED`

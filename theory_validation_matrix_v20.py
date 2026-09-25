@@ -1281,13 +1281,17 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "Jacobian leaves only 38 symmetry tangents and proves positivity in "
             "all 448 transverse directions. The selected orbit is therefore a "
             "strict local minimum. An exact symmetry-inequivalent 126bar field "
-            "configuration is lower by 25*r^4/19008, and the fixed-P branch obeys "
-            "the exact gap/curvature identity gap=-m_transverse^2/8; that branch is "
-            "therefore excluded. The lower replacement has the wrong stabilizer. "
+            "configuration is lower by 25*r^4/19008, and the fixed-P branch with "
+            "Sigma along this Delta_R orientation obeys the exact gap/curvature "
+            "identity gap=-m_transverse^2/8; that orientation is therefore "
+            "excluded (the SM orientation (p, z1^z2^z3^z4^z5) is not covered by "
+            "this no-go; see g3_sm_pati_salam_candidate_v20). The lower "
+            "replacement has the wrong stabilizer. "
             "A new SU(5)-singlet Phi+Delta branch is an exact global minimum in the "
-            "Phi/Sigma subsystem, has the SM stabilizer, and has exact Hessian "
+            "Phi/Sigma subsystem, has a 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1), "
+            "and has exact Hessian "
             "rank/nullity 429/33 with a strictly positive local quotient. Its "
-            "chiral-H extension is exactly stationary, symmetry-correct and BFB; "
+            "chiral-H extension is exactly stationary and BFB; "
             "the exact full Hessian has rank/nullity 448/38 and is positive on the "
             "quotient. The maximally negative pure-Delta sector is excluded for "
             "arbitrary real Phi with all residuals retained and sharp gap 1/5000. "
@@ -1307,8 +1311,8 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "target is rejected. The corrected 6585x19594 standard positive-Gram "
             "map, ordered-spectral target, and exact strict 22-block/824-pivot "
             "primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 "
-            "at t=1 for every real Phi210. Global Sigma, general/full H, the full "
-            "Hessian, and G3 remain open. "
+            "at t=1 for every real Phi210. Global Sigma, general/full H, and G3 "
+            "remain open (the exact 448/38 full Hessian is certified separately). "
             "The old no-X 64/91 result remains historical."
         ),
         {
@@ -2476,11 +2480,11 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "green_requirements": {
             gate["name"]: gate["green_condition"] for gate in gates
         },
-        "verdict": _verdict(classification),
+        "verdict": _verdict(classification, states["authoritative_model_contract"]),
     }
 
 
-def _verdict(classification: str) -> str:
+def _verdict(classification: str, contract_state: str = "PASS") -> str:
     requirements = (
         "Full validity requires a matching contract, the complete operator "
         "basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, "
@@ -2498,9 +2502,15 @@ def _verdict(classification: str) -> str:
             "external execution evidence. "
         )
     elif classification == "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN":
-        lead = (
+        contract = (
             "The gauged-U(1)_X model contract is attested by bound external SARAH "
-            "execution evidence and the mathematical and software core passes, "
+            "execution evidence"
+            if contract_state == "PASS"
+            else "The gauged-U(1)_X model contract is not yet attested by bound "
+            "external execution evidence"
+        )
+        lead = (
+            f"{contract}, and the mathematical and software core passes, "
             "but no benchmark is approvable while the full scalar potential, "
             "vacuum and spectrum gate remains open. "
         )

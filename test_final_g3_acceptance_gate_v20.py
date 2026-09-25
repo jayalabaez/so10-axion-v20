@@ -221,9 +221,11 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["diagnostic_only"][
         "arbitrary_non_pure_Delta_Sigma_orientations_open"
     ] is True
-    assert report["remaining_open_problem"] == (
-        "uniform coercivity for arbitrary non-pure-Delta Sigma orientations"
+    assert report["remaining_open_problem"].startswith("an SM-preserving G3 candidate")
+    assert "uniform coercivity for arbitrary non-pure-Delta Sigma orientations" in (
+        report["remaining_open_problem"]
     )
+    assert "not the Standard Model" in report["verdict"]
     assert report["science_criteria"][
         "beta_global_gap_and_unique_equality_exact"
     ] is False
@@ -236,8 +238,14 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert "corrected 6585x19594 standard positive-Gram map" in report["verdict"]
     assert "strict 22-block/824-pivot primal" in report["verdict"]
     assert "every real Phi210" in report["verdict"]
-    assert "Global Sigma, general/full H, the full Hessian, and G3 remain open" in report["verdict"]
+    assert "Global Sigma, general/full H, and G3 remain open" in report["verdict"]
+    assert "the full Hessian, and G3 remain open" not in report["verdict"]
+    assert "exact 448/38 certificate" in report["verdict"]
+    assert "not an SM vacuum" in report["remaining_open_problem"]
+    assert "9-dimensional subgroup" in report["verdict"]
     assert "G3 remains open" in report["verdict"]
+    assert "PASS is impossible at this point" in report["verdict"]
+    assert "PASS still requires uniform coercivity" not in report["verdict"]
     assert "only a four-real-dimensional Phi sub-slice" not in report["verdict"]
     assert "arbitrary-Phi bound remain open" not in report["verdict"]
     assert "no coordinate Schur matrix" not in report["verdict"]
@@ -313,12 +321,15 @@ def test_all_explicit_proof_contracts_are_sufficient_for_pass():
             "kernel_equals_38_symmetry_tangents": True,
         },
     }
+    sm_sigma = copy.deepcopy(mod._load(mod.SIGMA_HYPERCHARGE_JSON))
+    sm_sigma["flags"]["certified_g3_point_is_sm_vacuum"] = True
     report = mod.build_report(
         ledger_report=ledger_report,
         hsx_report=hsx,
         equality_report=equality,
         gap_report=gap,
         exact_hessian_report=exact_hessian,
+        sigma_hypercharge_report=sm_sigma,
     )
     assert report["n_failed"] == 0, report["failures"]
     assert report["overall_state"] == "PASS"
@@ -327,6 +338,55 @@ def test_all_explicit_proof_contracts_are_sufficient_for_pass():
     assert report["classification"]["mathematical_G3_closed"] is True
     assert report["classification"]["release_G3_verified"] is True
     assert report["classification"]["G3_closed"] is True
+
+
+def test_rank_counts_alone_cannot_certify_a_standard_model_target():
+    """The certified point's orbit ranks are exact but its stabilizer is not the SM."""
+    report = mod.build_report()
+    assert report["science_criteria"]["target_symmetry_orbit_ranks_36_37_38_exact"] is True
+    assert report["science_criteria"]["target_unbroken_algebra_is_standard_model"] is False
+    assert "target_unbroken_algebra_is_standard_model" in report["blockers"]
+    assert report["artifact_integrity"]["sigma_hypercharge_audit_executes"] is True
+    assert "SM-preserving" in report["remaining_open_problem"]
+
+
+def test_proof_contracts_on_a_non_sm_target_do_not_pass():
+    ledger_report, hsx, equality, gap = map(copy.deepcopy, _current_inputs())
+    ledger_report["contract_consistent"] = True
+    ledger_report["gates"]["G1"]["status"] = mod.ledger.STATUS_CLOSED
+    ledger_report["gates"]["G2"]["status"] = mod.ledger.STATUS_CLOSED
+    equality["scope"]["all_arbitrary_Phi_global_equalities_classified"] = True
+    equality["scope"]["global_equality_orbit_classification_complete"] = True
+    equality["remaining_global_lemma"]["proved"] = True
+    equality["remaining_global_lemma"]["source_bound_certificate_available"] = True
+    gap["flags"]["beta_1_over_20_global_minimum_certified"] = True
+    gap["flags"]["global_equality_orbits_classified"] = True
+    gap["final_acceptance_test"]["currently_passes"] = True
+    gap["final_acceptance_test"]["required_statement"] = mod.FINAL_THEOREM
+    report = mod.build_report(
+        ledger_report=ledger_report,
+        hsx_report=hsx,
+        equality_report=equality,
+        gap_report=gap,
+    )
+    assert report["overall_state"] != "PASS"
+    assert report["classification"]["G3_closed"] is False
+    assert "target_unbroken_algebra_is_standard_model" in report["blockers"]
+
+
+def test_missing_sigma_hypercharge_audit_is_reported_and_fail_closed():
+    ledger_report, hsx, equality, gap = _current_inputs()
+    report = mod.build_report(
+        ledger_report=ledger_report,
+        hsx_report=hsx,
+        equality_report=equality,
+        gap_report=gap,
+        sigma_hypercharge_report={},
+    )
+    assert "G3_SIGMA_HYPERCHARGE_AUDIT_V20.json" in report["missing_artifacts"]
+    assert report["artifact_integrity"]["sigma_hypercharge_audit_executes"] is False
+    assert report["overall_state"] == "EXECUTION_FAIL"
+    assert report["classification"]["G3_closed"] is False
 
 
 def test_exact_lower_witness_rejects_candidate_not_whole_theory():

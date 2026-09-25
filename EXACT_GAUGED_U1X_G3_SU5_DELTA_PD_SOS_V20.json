@@ -261,13 +261,14 @@
     "SM_dimension": 12,
     "exact_rational_rank": 33,
     "exact_stabilizer_dimension": 12,
-    "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_Y",
+    "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_T3R (12-dim, SM-sized but not the SM: Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20)",
     "generator_count": 45,
     "group": "SO(10)",
     "integer_tangent_shape": [
       462,
       45
     ],
+    "is_standard_model": false,
     "source_binding_exact": true
   },
   "failures": [],
@@ -286,6 +287,8 @@
     "full_448_or_replacement_quotient_Hessian_exact": false,
     "full_486_field_stationarity": false,
     "global_orbit_uniqueness": false,
+    "stabilizer_is_standard_model": false,
+    "stabilizer_note": "dimension-only; the centre is T3R, not Y (g3_sigma_hypercharge_audit_v20)",
     "whole_model_excluded": false
   },
   "status": "EXACT_SU5_DELTA_PD_GLOBAL_SOS_CANDIDATE_CERTIFIED",
@@ -293,7 +296,8 @@
     "Phi": "F0/sqrt(10)",
     "Sigma": "r Delta_R",
     "formal_assumption": "r>0",
-    "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_Y"
+    "is_standard_model_vacuum": false,
+    "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_T3R (12-dim; not the Standard Model)"
   },
-  "verdict": "The P-specific Delta no-go is evaded by an exact SU(5)-singlet 210 plus Delta_R configuration.  A 17-parameter, perturbative Phi/Sigma potential is an explicit global sum of squares and the target has the exact 12-dimensional SM stabilizer.  Its exact PD Hessian has rank 429 and only the 33 gauge-orbit zero modes, so the equality set is locally one SO(10) orbit.  Other disconnected global equality orbits are not classified.  The H/S/Phi17 extension and exact full physical Hessian remain to be certified before G3 can close."
+  "verdict": "The P-specific Delta no-go is evaded by an exact SU(5)-singlet 210 plus Delta_R configuration.  A 17-parameter, perturbative Phi/Sigma potential is an explicit global sum of squares and the target has an exact 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1).  Its exact PD Hessian has rank 429 and only the 33 gauge-orbit zero modes, so the equality set is locally one SO(10) orbit.  Other disconnected global equality orbits are not classified.  Its chiral-H extension and exact 448/38 Hessian are certified elsewhere, but this orientation is not an SM vacuum and cannot close G3."
 }

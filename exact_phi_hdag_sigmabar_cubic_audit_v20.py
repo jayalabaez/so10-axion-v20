@@ -14,10 +14,11 @@ contains one 210, and the repository's direct equivariant tensor map supplies
 the unique contraction.  The operator is now registered in the authoritative
 operator catalogue.
 
-On the SM-preserving p + Delta_R background its H tadpole vanishes, but it
-adds nonzero H--126bar and H--210 mixed Hessian blocks.  Therefore catalogue
-completion does not complete the potential or vacuum: the full component
-Hessian must be re-solved with an explicit mu_D coefficient.
+On the p + Delta_R background (stabilizer SU(3)_c x SU(2)_L x U(1)_T3R, not
+the SM: Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20) its H tadpole
+vanishes, but it adds nonzero H--126bar and H--210 mixed Hessian blocks.
+Therefore catalogue completion does not complete the potential or vacuum: the
+full component Hessian must be re-solved with an explicit mu_D coefficient.
 """
 from __future__ import annotations
 
@@ -269,7 +270,9 @@ def background_impact() -> dict[str, Any]:
             "frobenius_norm": float(np.linalg.norm(h_phi)),
         },
         "interpretation": (
-            "The SM-preserving p+Delta_R background has no H tadpole from this "
+            "The p + Delta_R background (stabilizer SU(3)_c x SU(2)_L x "
+            "U(1)_T3R, not the SM: Delta_R has Y=-1; "
+            "g3_sigma_hypercharge_audit_v20) has no H tadpole from this "
             "cubic, but its second derivatives generate nonzero H--Sigmabar and "
             "H--Phi mixing blocks. The complete Hessian must include mu_D."
         ),
@@ -360,7 +363,9 @@ def build_report() -> dict[str, Any]:
         "verdict": (
             "The allowed unique Phi H^dag Sigmabar cubic is now registered in "
             "the authoritative operator catalogue. It creates no H tadpole on "
-            "the SM-preserving p+Delta_R background, but it adds nonzero mixed "
+            "the p + Delta_R background (stabilizer SU(3)_c x SU(2)_L x "
+            "U(1)_T3R, not the SM: Delta_R has Y=-1; "
+            "g3_sigma_hypercharge_audit_v20), but it adds nonzero mixed "
             "Hessian blocks. The next required gate is the complete mu_D-dependent "
             "vacuum and Hessian re-solve."
         ),

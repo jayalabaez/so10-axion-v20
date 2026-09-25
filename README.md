@@ -45,12 +45,15 @@ the model.
   rank 24. The exact stationary witness `(10,1,-1/4)` has `P24` Hessian trace
   `+288`, providing a regression check against false stationary families
 - A second exact stationary witness has `c[O06]=-2h^2` and
-  `c[O36_B01]=10`; its physical `H[6].x` radial curvature is `4h^2 > 0`.
+  `c[O36_B01]=10`; its `H[6].x` radial curvature at the declared `p+delta_r`
+  reference point (not an SM vacuum, see below) is `4h^2 > 0`.
   Thus this hierarchy-suppressed curvature is not an exact flat direction
 - Exact Gaussian-integer tangents certify SO(10)+`U(1)_X` gauge rank 37,
   leaving a 449-dimensional gauge quotient that includes the physical axion.
   Adding the independent global-PQ orbit gives rank 38 and the
   448-dimensional massive/transverse space used for Hessian positivity
+  (computed at the declared `p+delta_r` reference point; the counts coincide
+  with an SM vacuum but must be recomputed at one)
 - A constructive exact-`X` G3 vector uses 27 of 51 real parameters, has
   `max|c|=73/8 < 4pi`, and has `J0=-21/200`. It therefore lies outside the
   former `J0=+1` search slice and proves that normalization was not without
@@ -69,25 +72,28 @@ the model.
   the global vacuum. A second 126bar field configuration has projector
   fractions `(0,0,1/2,1/2)`, annihilates both mixed squares, and is lower by
   exactly `25*r^4/19008 > 0`. The 27-parameter candidate cannot close G3;
-  moreover, on the fixed-`P` branch the exact relation
+  moreover, on the fixed-`P` branch with `Sigma` along `delta_r` the exact relation
   `gap=-m_transverse^2/8` excludes every attempted weight swap. The lower
   stationary replacement has gauge-orbit rank 40 rather than the required 37
 - A different `p:a:omega=1:1:1` SU(5)-singlet branch evades that no-go. Its
-  `Phi+Sigma` potential is an explicit global sum of squares, has the exact SM
-  stabilizer, and has exact Hessian rank/nullity `429/33` with a strictly
+  `Phi+Sigma` potential is an explicit global sum of squares, has an exact
+  12-dimensional stabilizer `SU(3)_c x SU(2)_L x U(1)_T3R` (not the SM: see
+  below), and has exact Hessian rank/nullity `429/33` with a strictly
   positive quotient. The fixed-`F` Sigma equality locus is exactly one
   Pluecker/`U(5)` orbit. The literal claim that every Phi-projector zero is
   the `+F` orbit is false: `-F` is a second SO(10) orbit, separated exactly by
-  `Tr(A_Phi^3)=+/-60`. The coupled `-F` branch is nevertheless excluded by an
-  exact `252/252` mixed rank. The corrected signed classification
-  `SO(10).F union SO(10).(-F)` is proved on the complete `SU(4)`-invariant
-  slice. An exact implicit-function/equivariance certificate further proves
-  that both signed orbits are isolated local components of the full zero set;
+  the sign of `Tr(A_Phi^3)` (`+/-60` on the integer representatives `+/-F0`,
+  `|F0|^2=10`; `+/-6/sqrt 10` at unit norm). The coupled `-F` branch is
+  nevertheless excluded by an exact `252/252` mixed rank. The corrected
+  signed classification `SO(10).F union SO(10).(-F)` is proved on the
+  complete `SU(4)`-invariant slice. An exact implicit-function/equivariance
+  certificate further proves that both signed orbits are isolated local
+  components of the full zero set;
   the complete 16-real-dimensional `SU(3)`-fixed subspace is also classified
   and contains only the signed Kahler-square orbits. Excluding generic distant
   components remains open
 - For the full field content, real `H=e6` is exactly obstructed, while the
-  neutral chiral vector `H=(e6+i e7)/sqrt(2)` gives a 28-of-51, coefficient-safe,
+  chiral vector `H=(e6+i e7)/sqrt(2)` gives a 28-of-51, coefficient-safe,
   exactly stationary and exactly BFB candidate. Its exact symmetry ranks are
   `36/37/38`. A source-bound rational lattice and blockwise exact LDL prove
   full Hessian rank/nullity `448/38`, zero negative pivots, and a kernel equal
@@ -141,7 +147,7 @@ the model.
   `14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf`.
   All `6585` rational equalities hold, and an exact strict primal has `22`
   positive blocks and `824` positive LDL pivots. Global Sigma, general/full
-  `H`, the full Hessian, G3, and whole-model conclusions remain open
+  `H`, G3, and whole-model conclusions remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
 
@@ -181,38 +187,96 @@ reproduces every G1 count: 34/28/51/44/51 for the gauged contract, the Option-C
 
 Independent numerical evidence for the signed Phi-orbit lemma
 (`g3_phi_orbit_lemma_numerical_evidence_v20.py`, its own generators and Casimir
-projectors) supports the lemma:
+projectors; it uses `I3 = 8 Tr(A_Phi^3)`, so the manuscript's `Tr(A_Phi^3)` is
+`I3/8`) supports the lemma:
 - In 150/150 random starts, `||P54(Phi Phi)||^2 + ||P4125(Phi Phi)||^2` falls to
   zero only on the `+F` or `-F` orbit (68/82).
-- The minimum at fixed cubic invariant grows linearly away from `F`, with the
-  exact slope `7/(270 sqrt 10)`, and reaches 0.0546 at `I3 = 0`.
-- The cubic is maximized by the Cayley form: `96/sqrt 14` against
-  `48/sqrt 10` at `F`.
+- At fixed cubic invariant the best constrained local minimum grows linearly
+  below `F` (`t < I3(F)`, slope `7/(270 sqrt 10)` per unit I3, from the exact
+  Hessian pencil) and quadratically above it (coefficient `3.95e-5`, matched by
+  an exact fourth-order reduction on the ten excess directions). At the 26
+  sampled values of `t` (`|t|` up to 24.3 of the feasible 25.66) no zero off
+  `+-F` was found; these are local-optimizer upper bounds, not a positivity proof.
+- At unit norm the cubic is maximized by the Cayley form: `Tr A^3 = 12/sqrt 14`
+  against `6/sqrt 10` at `F`.
 This is evidence, not a proof.
 
-The certified SU(5)+Delta chiral-H G3 point is not the physical vacuum
-(`g3_candidate_physical_target_audit_v20.py`). Its `10_H` vev lies in an
-electroweak doublet with `|<H>|/|<Phi>| = 1`. At `(F, r Delta_R, H=0)` all ten
-`10_H` modes are tachyonic, and doublet-triplet splitting is only
-`beta r^2 = 1/500`. Retuning only `O06` from -2 to 0 gives one massless doublet
-and a colour-triplet partner at `M_T = M/sqrt(500)`. The axion singlet has no
-portal to the GUT fields in the benchmark. At that tuned target
-(`g3_tuned_target_effective_higgs_quartic_v20.py`) the Hessian is PSD with 39
-zero modes: 33 Goldstones, the `U(1)_X` and PQ phases, and the doublet. The
-doublet has no tree-level coupling to heavy modes, so `lambda_eff = 1`, and
-one-loop SM running gives `m_h ~ 173 GeV`. Any nonnegative matching quartic
-gives `m_h >= 133.6 GeV` at one loop, so the physical target needs a negative
-GUT-scale threshold of about -0.03 (one loop). The declared H-S portal
-`O34 = lambda_HS |H|^2 |S|^2`, zero in the benchmark, supplies exactly that
-threshold (`g3_tuned_target_portal_threshold_v20.py`). The exact compiler
-reproduces `lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S)` to machine precision.
-`lambda_HS = 2.03` reaches the one-loop SM value; at the BFB floor
-`lambda_H = 1/200` it takes only 0.39. Either way the potential stays bounded
-below and the tuned point stays a PSD minimum. The certified vevs are also not
-at the repository's physical hierarchy: Sigma and S sit at `M_GUT/5` instead of
-`M_I ~ 6.3e11 GeV`, and at `M_I` the tuned triplet partner would sit at
-`sqrt(beta) M_I ~ 1.4e11 GeV` (a G8 input). This constrains the coupling
-point; it does not exclude the model.
+**The certified G3 point is not a Standard-Model vacuum**
+(`g3_sigma_hypercharge_audit_v20.py`, exact integer arithmetic;
+`g3_candidate_physical_target_audit_v20.py`). The repository's `Delta_R`
+(`direct_phi_h_sigmabar_tensor_v20.delta_r()` = `z1^z2^z3^(e67+e89)`) is the
+`T3R = 0`, `B-L = -2`, `Y = -1` member of the 126bar triplet, not the SM singlet
+`z1^z2^z3^z4^z5`. With it, `(F, r Delta_R)` and equally `(p, Delta_R)` leave
+`SU(3)_c x SU(2)_L x U(1)_T3R` unbroken, a U(1) blind to colour, so hypercharge
+breaks at `r M_GUT`. The certified point, its `H = 0` GUT point,
+`physical_hierarchy_state()` and the historical 27-parameter candidate are
+therefore not SM vacua; the certified `10_H` vev also breaks `SU(2)_L` at the
+GUT scale (`|<H>|/|<Phi>| = 1`). The mathematical certificates (stationarity,
+BFB, the 448/38 Hessian, the gaps) remain valid statements about that point;
+its SM interpretation does not, and `final_g3_acceptance_gate_v20` now blocks on
+`target_unbroken_algebra_is_standard_model`. An SM-preserving G3 target needs
+the `Y = 0` singlet: with `p` it leaves the standard SM, with `F` it leaves
+SU(5), so an `F` branch needs the flipped direction `z1^z2^z3^zbar4^zbar5`.
+
+**An SM-preserving candidate now exists on the Pati-Salam branch**
+(`g3_sm_pati_salam_candidate_v20.py`). The vacuum is
+`(Phi, Sigma, H, S, Phi17) = (p, r0 sigma_SM, 0, r0, x0)` with
+`sigma_SM = z1^z2^z3^z4^z5`. It uses the historical 27-parameter p-branch map with
+the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
+`kappa_H = -r0/4` with `O06 = 2|kappa| r0` to tune one doublet massless.
+- The unbroken algebra is exactly the SM, in exact integers: SO(10) -> Pati-Salam
+  at `M_GUT`, then SM at `r0 M_GUT`.
+- An adapted exact SOS identity gives `V >= V0` everywhere with equality at the
+  vacuum, for every `r0`. So it is an exact global minimum of this benchmark
+  potential; uniqueness of the equality set is open.
+- On the compiler, at `r0` = 1/5, 1e-2, 1e-3 and `M_I/M_GUT`: it is stationary,
+  the symmetry rank is 35, and the Hessian kernel is the symmetry orbit plus the
+  tuned doublet (float64).
+- A float64 search found nothing below `V0`: 10 structured competitors at
+  `r0 = 1/5` and 13 random-start local minimizations (10 at `r0 = 1/5`, 3 at
+  `r0 = 1/20`) all end on the SM vacuum orbit. The quartic part is bounded
+  below by `|q|^4/167`, which the exact identity proves; 512 random and 6
+  minimized unit directions respect it.
+
+Open items for this candidate:
+- The doublet-triplet splitting and the intermediate scale are tuned coupling
+  relations.
+- The light doublet's tree-level quartic is `127/64` at the benchmark
+  `kappa = -r0/4` (m_h ~ 195 GeV). The same SOS certificate covers
+  `kappa^2 < 8 r0^2`, i.e. `lambda_eff` in `(0, 2]`; `lambda_eff -> 0+` comes
+  within a few GeV of 125 GeV, but tree-level global minimality forbids the
+  slightly negative `lambda(M_I) = -0.0085` that SM running prefers at
+  `M_t = 173.34` GeV.
+- 126bar colour triplets and sextets lie below `M_I`.
+- The spectrum is not the 2HDM + (15,2,2) content assumed by the RG anchor.
+- Yukawas, electroweak breaking and radiative stability are not addressed.
+- The candidate is not yet wired into the G3 gate.
+
+At the `r = 1/5` tuned point of the certified non-SM `(F, r Delta_R, H = 0)`
+branch (`O06` retuned from -2 to 0; not the Pati-Salam candidate above) the
+light doublet has no tree-level coupling to heavy modes, so `lambda_eff` equals
+the direct H quartic (1); since the doublet is exactly flat, tree-level local
+minimality requires `lambda_eff >= 0`
+(`g3_tuned_target_effective_higgs_quartic_v20.py`).
+The declared H-S portal gives the exact threshold
+`lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S)`, but at the two-loop
+SM-matching value (`lambda_HS = 2.015 > 2 sqrt(lambda_H lambda_S)`) the tuned
+point becomes a degenerate saddle with a lower electroweak-breaking,
+PQ-restoring configuration (`g3_tuned_target_portal_threshold_v20.py`), so
+tree-level portal exchange cannot supply a negative matching quartic at a
+locally minimal point. `g3_physical_hierarchy_higgs_stability_v20.py` (two-loop
+SM RGEs; two independent transcriptions of the one/two-loop coefficient tables
+agree exactly, and the three-loop + four-loop-QCD terms reproduce the published
+Buttazzo et al. Planck-scale values) quantifies the SM-EFT side:
+`lambda_SM(M_GUT) = -0.0151` and a `lambda = 0` scale of
+`4.8e9 GeV`, so single-stage matching at `M_GUT` has no tree-level local
+minimum. Moving the S threshold to `M_I` does not change that at tree level:
+`lambda_eff(M_I) = lambda_SM(M_I) < 0`, and at the GUT coefficients
+`lambda_eff` is `-0.073` for the `O36 = O23 = 1` benchmark and negative at most
+window points. In RG-improved terms the EW vacuum is metastable and long-lived
+at the 2013 central inputs, and marginal at PDG 2024 inputs. These running
+statements assume an SM + singlet EFT, which neither the repository's 2HDM +
+Pati-Salam anchor nor any current repository vacuum realizes.
 
 Exact `X` neutrality reduces the
 renormalizable scalar potential from the historical `64/91` compiler superset
@@ -270,9 +334,15 @@ then finds an exact, symmetry-inequivalent field configuration with
 `W=33/32` instead of `25/24`; after exact radial minimization it lies below the
 selected orbit by `25*r^4/19008`. Thus the selected vacuum is provably not
 global and the current 27-parameter candidate is rejected for G3.
-The exact fixed-`P` gap/curvature identity excludes that whole branch, and the
-lower replacement has the wrong gauge symmetry. The surviving SU(5)+Delta
-branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
+The exact fixed-`P` gap/curvature identity excludes the `(P, delta_r)`
+orientation (it does not cover the SM orientation `(P, z1^z2^z3^z4^z5)`: there,
+with the 2772bar/4125 self-projector weights swapped, it is the pure-2772bar
+kernel minimizer (`EXACT_GAUGED_U1X_G3_KERNEL_QUARTIC_BOUND_V20.json`,
+`swapped_weight_rescue_audit`), and with `O05`, `kappa_H` and `O06` retuned it
+is an exact global minimum of a benchmark potential,
+`g3_sm_pati_salam_candidate_v20.py`, above), and the lower replacement has the
+wrong gauge symmetry. The SU(5)+Delta branch (not an SM vacuum) has an exact
+Phi/Sigma global SOS certificate and a chiral-H full-field
   extension. The entire fixed-`F` stratum is exact. In addition, the maximally
   negative-current pure-`Delta_R` sector is excluded for arbitrary real `Phi`,
   including all nonzero shifted Phi-Sigma and chiral Phi-H residuals. The exact
@@ -298,7 +368,10 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   ordered-spectral target, `6585` exact equalities, and strict `22`-block,
   `824`-pivot primal establish the arbitrary-real-`Phi210` result only at the
   fixed endpoint. Arbitrary non-pure-`Delta_R` Sigma coercivity, general/full
-  `H`, the full Hessian, and G3 remain open. Therefore `G3_closed` remains false. Run
+  `H`, and G3 remain open. Closing these would not close G3,
+  because the candidate is not an SM vacuum; G3 needs an SM-preserving
+  candidate certified through the final gate. Therefore `G3_closed` remains
+  false. Run
   `python final_g3_acceptance_gate_v20.py --write` for the
 fail-closed final test. The
 historical finite-cut and SDP outputs remain non-certifying and are not used in
@@ -403,9 +476,10 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > arithmetic proves `P+Delta_R` rank/nullity 429/33, full Hessian rank 448, and
 > a strict local minimum modulo the 38 symmetry tangents. An exact lower-energy
 > 126bar field configuration now disproves globality of that selected orbit,
-> so the 27-parameter candidate and its full fixed-`P` branch are rejected for
-> G3. A different SU(5)+Delta branch is an exact Phi/Sigma global minimum with
-> the SM stabilizer. Its chiral-H extension is exact-BFB and stationary, and is
+> so the 27-parameter candidate and the fixed-`(P, delta_r)` orientation are
+> rejected for G3. A different SU(5)+Delta branch is an exact Phi/Sigma global
+> minimum, but its stabilizer `SU(3)_c x SU(2)_L x U(1)_T3R` is not the Standard
+> Model (its `Delta_R` has `Y = -1`). Its chiral-H extension is exact-BFB and stationary, and is
 > now an exact strict local minimum: the full Hessian has rank/nullity 448/38
 > and is positive on the symmetry quotient. The old one-orbit Phi lemma is
 > exactly refuted by `-F`. Both signed orbits are
@@ -430,11 +504,16 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > standard positive-Gram map, ordered-spectral RHS, all 6585 exact equalities,
 > and a strict 22-block/824-pivot primal prove the arbitrary-real-`Phi210`
 > statement only at fixed `H=h_-`, `Sigma=q/4`. Global Sigma, general/full `H`,
-> the full Hessian, and G3 remain open. The certified chiral-H point breaks
-> electroweak symmetry at the GUT scale, so it is not the physical vacuum; at
-> the tuned physical target the certified couplings give `m_h ~ 173 GeV` at
-> one loop, and 125 GeV needs a negative GUT-scale threshold, which the
-> declared H-S portal supplies at tree level.
+> and G3 remain open. The certified chiral-H point is not a
+> Standard-Model vacuum (hypercharge breaks with its `Delta_R`, and its `10_H`
+> vev breaks `SU(2)_L` at the GUT scale), so G3 needs an SM-preserving
+> candidate certified through the final gate; Higgs-mass statements made at
+> that point are not predictions. A retuned Pati-Salam-branch potential has an
+> exact SOS global SM-preserving minimum at `(p, r0 z1^...^z5)`; it is not yet
+> wired into the gate, its uniqueness is open, its doublet-triplet splitting
+> and intermediate scale are tuned, it has coloured 126bar states below `M_I`,
+> its field content does not reproduce the RG anchor that fixes `M_I`, and its
+> light-doublet quartic is `127/64` at the benchmark (m_h ~ 195 GeV).
 > Consequently G3 remains open and the complete theory is neither validated
 > nor discarded.
 

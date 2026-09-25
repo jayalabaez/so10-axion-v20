@@ -4686,6 +4686,7 @@ def _build_report_from_inputs(
 
     scientific_blockers = [
         "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+        "G3_SM_PRESERVING_TARGET_REQUIRED",
         "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
     ]
     if not contract_consistent:
@@ -4728,10 +4729,15 @@ def _build_report_from_inputs(
             "deliverable": (
                 "Promote the source-bound BFB, exact selected stationarity, and "
                 "strict-local-minimum certificate after contract repair, while "
-                "retaining the exact counterexample that rejects globality. To "
-                "close G3, prove uniform coercivity for arbitrary non-pure-Delta "
-                "Sigma orientations on the surviving SU(5)+Delta chiral-H "
-                "branch. Its full 486-real Hessian is now exactly PSD "
+                "retaining the exact counterexample that rejects globality. G3 "
+                "needs an SM-preserving candidate certified through the final "
+                "gate. The SU(5)+Delta chiral-H point is not an SM vacuum (its "
+                "Delta_R has Y=-1; g3_sigma_hypercharge_audit_v20), so its "
+                "remaining coercivity problem is mathematical only. The "
+                "Pati-Salam-branch candidate (g3_sm_pati_salam_candidate_v20) "
+                "still needs its equality set classified, its model-level "
+                "caveats resolved and gate integration. The chiral-H point's "
+                "full 486-real Hessian is now exactly PSD "
                 "with rank/nullity 448/38 and symmetry kernel exactly 38; the "
                 "complete maximally-negative pure-Delta sector is already "
                 "excluded for arbitrary real Phi and nonzero residuals with "
@@ -4754,7 +4760,8 @@ def _build_report_from_inputs(
                 "ordered-spectral target, and exact strict 22-block/824-pivot "
                 "primal prove p(t,Phi)>0 off the homogeneous origin, hence "
                 "A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-                "general/full H, the full Hessian, and G3 remain open."
+                "general/full H, and G3 remain open (the exact 448/38 full "
+                "Hessian is certified separately)."
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
@@ -4770,10 +4777,11 @@ def _build_report_from_inputs(
         "P+Delta rank/nullity 429/33, and a proof of positivity on all 448 "
         "transverse Hessian directions. The selected orbit is a strict local "
         "minimum, but an exact field witness is lower by 25*r^4/19008 and "
-        "rejects it as the global vacuum. The fixed-P branch is now excluded "
-        "exactly, and its lower replacement has the wrong gauge stabilizer. A "
-        "new SU(5)+Delta branch is an exact global Phi/Sigma minimum with the "
-        "correct SM stabilizer and exact quotient rank 429. Its chiral-H full "
+        "rejects it as the global vacuum. The fixed-P branch with this Delta_R "
+        "orientation is excluded exactly, and its lower replacement has the wrong "
+        "gauge stabilizer. A new SU(5)+Delta branch is an exact global Phi/Sigma "
+        "minimum with a 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1) and exact quotient "
+        "rank 429. Its chiral-H full "
         "Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the "
         "38 symmetry tangents. The complete maximally-negative pure-Delta sector "
         "is excluded for arbitrary real Phi and all nonzero residuals, with sharp "
@@ -4792,7 +4800,8 @@ def _build_report_from_inputs(
         "standard positive-Gram map, ordered-spectral target, and exact strict "
         "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, "
         "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-        "general/full H, the full Hessian, and G3 remain open. "
+        "general/full H, and G3 remain open (the exact 448/38 full "
+        "Hessian is certified separately). "
         "G5 is CLOSED; G4 and G6-G8 remain "
         "dependency-blocked. Historical "
         "Option-C evidence remains scoped and closes no gauged-model gate."
@@ -4813,11 +4822,12 @@ def _build_report_from_inputs(
         "a strict local minimum on all 448 transverse directions. An exact "
         "symmetry-inequivalent field configuration is lower by 25*r^4/19008, "
         "so this selected global vacuum and candidate are rejected. The fixed-P "
-        "branch is exactly excluded, and the lower stationary replacement has "
-        "the wrong gauge symmetry. A new SU(5)+Delta Phi/Sigma branch has an "
-        "exact global SOS minimum, the correct SM stabilizer, and exact quotient "
-        "rank/nullity 429/33. Its chiral-H full-field extension is exactly BFB, "
-        "stationary and symmetry-correct. The source-bound 486-real Hessian is "
+        "branch with this Delta_R orientation is exactly excluded, and the lower "
+        "stationary replacement has the wrong gauge symmetry. A new SU(5)+Delta "
+        "Phi/Sigma branch has an exact global SOS minimum, a 12-dimensional "
+        "stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1), and exact quotient rank/nullity 429/33. Its "
+        "chiral-H full-field extension is exactly BFB and stationary with the "
+        "expected symmetry ranks. The source-bound 486-real Hessian is "
         "exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 "
         "symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the "
         "complete maximally-negative pure-Delta sector is excluded for arbitrary "
@@ -4836,7 +4846,8 @@ def _build_report_from_inputs(
         "positive-Gram map, ordered-spectral target, and exact strict "
         "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, "
         "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-        "general/full H, the full Hessian, and G3 remain open. The "
+        "general/full H, and G3 remain open (the exact 448/38 full "
+        "Hessian is certified separately). The "
         "historical 64/91 "
         "derivative theorem, 449-dimensional "
         "quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved "
