@@ -145,6 +145,20 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
         self.assertIn("scope.elementary_not_machine_checked", note)
         self.assertIn("elementary_not_machine_checked", loaded["scope"])
 
+    def test_exact_hessian_open_item_is_bound_to_the_committed_hessian_report(self) -> None:
+        loaded = candidate.load_exact_hessian_report()
+        self.assertTrue(candidate.exact_hessian_certified(loaded))
+        proved, still_open = candidate.exact_hessian_scope_items(loaded)
+        self.assertEqual(still_open, [])
+        self.assertIn("447/39/0", proved[0])
+        self.assertIn(proved[0], self.committed["scope"]["proved_exactly"])
+        self.assertNotIn("exact (non-float) Hessian kernel/rank certificate", self.committed["scope"]["open"])
+        # Fail closed: a missing or failed report keeps the item open and claims nothing.
+        for report in ({}, {**loaded, "n_failed": 1}, {**loaded, "n_failed": False}, {**loaded, "status": "X"}):
+            self.assertEqual(
+                candidate.exact_hessian_scope_items(report), ([], ["exact (non-float) Hessian kernel/rank certificate"])
+            )
+
     def test_equality_set_flag_is_false_when_the_equality_report_is_absent_or_failed(self) -> None:
         inputs = self._flag_inputs()
         proved = dict(inputs["equality_set"])

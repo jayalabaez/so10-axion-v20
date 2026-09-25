@@ -31,10 +31,10 @@ Vacuum `(Phi, Sigma, H, S, Phi17) = (p, r0 sigma_std, 0, r0, x0)`, `sigma_std = 
 
 | r0 | max abs grad | V - V0 | sym. rank | n_neg | n_zero | min massive / r0^2 | abs. dev. from r0^2/96 | all-massive n_zero |
 |---|---|---|---|---|---|---|---|---|
-| 1/5 | 4.92e-14 | -3.11e-15 | 35 | 0 | 4 | 0.01041666667 | 6.12e-14 | 0 |
-| 1/100 | 1.89e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01041666606 | 6.09e-14 | 0 |
-| 1/1000 | 1.77e-15 | -4.44e-16 | 35 | 0 | 4 | 0.01041660529 | 6.14e-14 | 0 |
-| M_I/M_GUT | 1.78e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01040156371 | 6.12e-14 | 0 |
+| 1/5 | 4.92e-14 | -3.11e-15 | 35 | 0 | 4 | 0.01041666667 | 6.16e-14 | 0 |
+| 1/100 | 1.89e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01041666606 | 6.06e-14 | 0 |
+| 1/1000 | 1.77e-15 | -4.44e-16 | 35 | 0 | 4 | 0.01041660463 | 6.2e-14 | 0 |
+| M_I/M_GUT | 1.78e-15 | -8.88e-16 | 35 | 0 | 4 | 0.01040169056 | 6.07e-14 | 0 |
 
 n_zero counts the 4 real modes of the tuned light doublet: the Hessian kernel is the 35 symmetry tangents plus that doublet, and exactly the symmetry tangents only when O06 is raised (last column). All benchmarks use x0 = 1.
 
@@ -44,7 +44,7 @@ The m^2/r0^2 column is a scaling only for the r0-dependent states (m^2 < 5 r0^2 
 
 | m^2 | m^2/r0^2 | real dim | SM content | fields |
 |---|---|---|---|---|
-| 2.260295e-16 | 5.6507375e-15 | 4 | (1,2)_\|Y\|=1/2: 4 | H10 1.00 |
+| 3.3380315e-16 | 8.3450787e-15 | 4 | (1,2)_\|Y\|=1/2: 4 | H10 1.00 |
 | 0.00041666667 | 0.010416667 | 14 | (1,1)_\|Y\|=2: 2, (6,1)_\|Y\|=4/3: 12 | Sigma126bar 1.00 |
 | 0.002358027 | 0.058950676 | 6 | (3,1)_\|Y\|=1/3: 6 | Phi210 0.00, Sigma126bar 1.00 |
 | 0.0025694444 | 0.064236111 | 18 | (3,1)_\|Y\|=4/3: 6, (6,1)_\|Y\|=1/3: 12 | Sigma126bar 1.00 |
@@ -75,7 +75,7 @@ Labelled by SM-isotypic component (exact-integer Casimirs), then diagonalised. G
 
 | SM content | m^2/r0^2 | m/M_I | m [GeV] | fields |
 |---|---|---|---|---|
-| (1,2)_\|Y\|=1/2: 4 | -2.58468e-16 | 0 | 0 | H10 1.00 |
+| (1,2)_\|Y\|=1/2: 4 | -1.12215e-16 | 0 | 0 | H10 1.00 |
 | (1,1)_\|Y\|=2: 2 | 0.0104019 | 0.102 | 6.439e+10 | Sigma126bar 1.00 |
 | (6,1)_\|Y\|=4/3: 12 | 0.0104019 | 0.102 | 6.439e+10 | Sigma126bar 1.00 |
 | (3,1)_\|Y\|=1/3: 6 | 0.059013 | 0.2429 | 1.534e+11 | Sigma126bar 1.00 |
@@ -122,24 +122,24 @@ Labelled by SM-isotypic component (exact-integer Casimirs), then diagonalised. G
 
 ## Numerical global search
 
-- fast SOS evaluator vs compiler: max relative value difference `6.4e-14`
+- fast SOS evaluator vs compiler: max relative value difference `6.36e-14`
 - lowest gap V - V0 found by any method: `-2.89e-15`
 
 | competitor (r0 = 1/5) | compiler gap | exact gap | local min. from it: final gap | orbit classification |
 |---|---|---|---|---|
-| F\|Sigma=0 | 0.253931 | - | 7.84e-14 | on_orbit |
-| F\|delta_R | 0.253867 | - | 4.6e-14 | on_orbit |
-| F\|flipped | 0.253931 | - | 6.73e-14 | on_orbit |
-| F\|sigma_std | 0.253931 | - | 4.75e-14 | on_orbit |
-| a\|sigma_std | 0.129232 | - | 1.14e-12 | on_orbit |
-| omega\|sigma_std | 0.24601 | - | 4.66e-13 | on_orbit |
-| p\|Sigma=0 | 0.0002 | 1/5000 | 3.81e-12 | on_orbit |
-| p\|delta_R | 4.08163e-06 | 1/245000 | 8.04e-14 | on_orbit |
-| p\|flipped | -2.88658e-15 | 0 | 9.33e-15 | on_orbit |
-| p\|historical_global_witness | 6.06061e-06 | - | 6.42e-14 | on_orbit |
+| F\|Sigma=0 | 0.253931 | - | 4.67e-13 | on_orbit |
+| F\|delta_R | 0.253867 | - | 8.57e-14 | on_orbit |
+| F\|flipped | 0.253931 | - | 5.31e-14 | on_orbit |
+| F\|sigma_std | 0.253931 | - | 2.57e-13 | on_orbit |
+| a\|sigma_std | 0.129232 | - | 1.36e-13 | on_orbit |
+| omega\|sigma_std | 0.24601 | - | 6.32e-13 | on_orbit |
+| p\|Sigma=0 | 0.0002 | 1/5000 | 3.87e-12 | on_orbit |
+| p\|delta_R | 4.08163e-06 | 1/245000 | 4.31e-14 | on_orbit |
+| p\|flipped | -2.88658e-15 | 0 | 2.69e-14 | on_orbit |
+| p\|historical_global_witness | 6.06061e-06 | - | 5.22e-14 | on_orbit |
 
-- random starts (r0=1/20): 3; lowest final gap `3.63e-13`; endpoints inconclusive 0, off_orbit 0, on_orbit 3; all converged endpoints on the SM vacuum orbit: `True`; none below V0: `True`
-- random starts (r0=1/5): 10; lowest final gap `2.13e-14`; endpoints inconclusive 0, off_orbit 0, on_orbit 10; all converged endpoints on the SM vacuum orbit: `True`; none below V0: `True`
+- random starts (r0=1/20): 3; lowest final gap `1.66e-13`; endpoints inconclusive 0, off_orbit 0, on_orbit 3; all converged endpoints on the SM vacuum orbit: `True`; none below V0: `True`
+- random starts (r0=1/5): 10; lowest final gap `3.13e-14`; endpoints inconclusive 0, off_orbit 0, on_orbit 10; all converged endpoints on the SM vacuum orbit: `True`; none below V0: `True`
 - endpoint classification (all 23 endpoints): inconclusive 0, off_orbit 0, on_orbit 23; all converged on the SM vacuum orbit: `True`. a float endpoint at gap g = V - V0 is classified only if g <= min(NUM_FULL_GAP_REACHED, (0.01 r0^2)^2/96) (converged: relative soft-mode displacement eps(g) = sqrt(96 g)/r0^2 <= 0.01); it is on_orbit if every normalised orbit residual is <= NUM_FULL_ORBIT_RESIDUAL + 10 eps(g) and the (Phi, Sigma) stabilizer is 12-dimensional of hypercharge type, off_orbit otherwise (a contradiction); less converged endpoints are inconclusive
 - quartic part on the unit sphere: lowest `0.00599059` >= exact bound 1/167: `True`
 - equality set at Phi = p: ker(M_p - 2) n ker(C_p) has complex dimension `30` (contains sigma_std and delta_R); pure-spinor minima in it all SM-type: `True`
@@ -186,7 +186,6 @@ Flag notes:
 
 ## Open
 
-- exact (non-float) Hessian kernel/rank certificate
 - electroweak symmetry breaking: H = 0 here, one doublet is tuned massless at tree level
 - doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed
 - light 126bar coloured states below M_I: (3,1)_1/3 at ~0.24 M_I (proton-decay mediator quantum numbers, coupled to 16.16 by the 126bar Yukawa that Majorana nu_R masses need), (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), (3,1)_4/3 + (6,1)_1/3 at ~0.25 M_I, (6,1)_2/3 at ~0.32 M_I; their proton-decay and RG/unification consequences are not analysed

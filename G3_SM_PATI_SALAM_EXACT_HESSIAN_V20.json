@@ -1,0 +1,1143 @@
+{
+  "G3_closed": false,
+  "benchmark": {
+    "O06": "1/50",
+    "O06_raise": "1/2500",
+    "O06_raised": "51/2500",
+    "exact_coefficients": {
+      "lambda::O03_B01_singlet_polynomial": "-1/16",
+      "lambda::O04_B01_singlet_polynomial": "-2/25",
+      "lambda::O05_B01_126bar_norm": "49/100",
+      "lambda::O06_B01_Hdag_H_norm": "1/50",
+      "lambda::O07_B01_Phi_norm": "-2",
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-1/2",
+      "lambda::O20_B01_singlet_polynomial": "1/32",
+      "lambda::O23_B01_singlet_polynomial": "1",
+      "lambda::O27_B01_126bar_self_projectors": "1/4",
+      "lambda::O27_B02_126bar_self_projectors": "1/4",
+      "lambda::O27_B03_126bar_self_projectors": "1/8",
+      "lambda::O27_B04_126bar_self_projectors": "17/128",
+      "lambda::O36_B01_H_self_quartics": "2",
+      "lambda::O36_B02_H_self_quartics": "2",
+      "lambda::O44_B01_Phi2_Sigma_projectors": "41/8",
+      "lambda::O44_B02_Phi2_Sigma_projectors": "73/8",
+      "lambda::O44_B03_Phi2_Sigma_projectors": "29/8",
+      "lambda::O44_B04_Phi2_Sigma_projectors": "-7/8",
+      "lambda::O44_B05_Phi2_Sigma_projectors": "-11/8",
+      "lambda::O44_B06_Phi2_Sigma_projectors": "13/8",
+      "lambda::O46_B01_Phi2_HdagH_channels": "3/5",
+      "lambda::O46_B03_Phi2_HdagH_channels": "-1",
+      "lambda::O48_B01_Phi_self_quartics": "-21/200",
+      "lambda::O48_B02_Phi_self_quartics": "2467/28800",
+      "lambda::O48_B03_Phi_self_quartics": "-77/3200",
+      "lambda::O48_B04_Phi_self_quartics": "119/115200",
+      "re::O12_B01_Hdag_Hdag_pair": "-1/20"
+    },
+    "kappa": "-1/20",
+    "r0": "1/5",
+    "vacuum": "(Phi, H, Sigma, S, Phi17) = (p, 0, r0 sigma_std, r0, x0)",
+    "x0": "1"
+  },
+  "candidate_float64_claims": {
+    "all_claims_present_and_consistent": true,
+    "claims": {
+      "O06_is_2_abs_kappa_r0": true,
+      "candidate_report_passes": true,
+      "kappa_is_minus_r0_over_4": true,
+      "kernel_is_symmetry_plus_light_doublet": true,
+      "lightest_massive_is_r0_squared_over_96": true,
+      "projected_kernel_is_4_doublet_modes": true,
+      "raised_variant_has_no_zero_or_negative_mode": true,
+      "raised_variant_offset_is_r0_squared_over_100": true,
+      "symmetry_ranks_33_34_35": true
+    },
+    "decided_exactly_here": "symmetry rank 35, kernel = symmetry + 4 doublet modes, lightest massive r0^2/96, and the O06 + r0^2/100 variant with kernel = symmetry only",
+    "source": "G3_SM_PATI_SALAM_CANDIDATE_V20.json compiler['1/5'] (float64 claims of g3_sm_pati_salam_candidate_v20)"
+  },
+  "checks": {
+    "candidate_recorded_float64_claims_present_and_consistent": true,
+    "coefficients_O06_equals_2_abs_kappa_r0": true,
+    "coefficients_O12_equals_kappa": true,
+    "coefficients_O44_coefficients_equal_one_eighth_A_plus_C": true,
+    "coefficients_O46_coefficients_equal_wedge_weights": true,
+    "coefficients_O48_coefficients_equal_exact_210_J_couplings": true,
+    "coefficients_benchmark_has_27_parameters": true,
+    "every_benchmark_parameter_in_exactly_one_unit": true,
+    "every_unit_matches_its_compiler_rows": true,
+    "exact_PSD": true,
+    "exact_gradient_vanishes": true,
+    "exact_hessian_annihilates_35_symmetry_tangents": true,
+    "exact_hessian_annihilates_4_doublet_directions": true,
+    "exact_hessian_symmetric": true,
+    "exact_nullity_39": true,
+    "exact_rank_447": true,
+    "kernel_equals_symmetry_tangents_plus_light_doublet": true,
+    "live_compiler_hessian_matches_exact_to_1e_minus_12": true,
+    "live_compiler_hessian_rounds_to_exact_lattice": true,
+    "live_numerical_inertia_0_39_447": true,
+    "live_symmetry_matrix_inside_exact_tangent_span": true,
+    "raised_O06_exact_PSD": true,
+    "raised_O06_exact_gradient_vanishes": true,
+    "raised_O06_exact_hessian_symmetric": true,
+    "raised_O06_exact_rank_451_nullity_35": true,
+    "raised_O06_kernel_equals_symmetry_tangents": true,
+    "raised_O06_smallest_nonzero_eigenvalue_is_the_lift_exact": true,
+    "raised_O06_strictly_positive_on_kernel_complement": true,
+    "raised_live_compiler_hessian_matches_exact_to_1e_minus_12": true,
+    "raised_live_compiler_hessian_rounds_to_exact_lattice": true,
+    "smallest_nonzero_eigenvalue_is_r0_squared_over_96_exact": true,
+    "strictly_positive_on_kernel_complement": true,
+    "tangent_matrix_matches_equality_module_ranks_33_34_35": true,
+    "tangent_plus_doublet_rank_39_exact": true,
+    "tangent_rank_35_exact": true,
+    "upstream_A_square_recoupling_exact": true,
+    "upstream_C_p_sigma_std_vanishes": true,
+    "upstream_C_square_recoupling_exact": true,
+    "upstream_J_at_p_equals_equality_module_values": true,
+    "upstream_M_p_sigma_std_equals_2_sigma_std": true,
+    "upstream_O48_order_is_J0_J2_J3_J4": true,
+    "upstream_Q_H_integer_equals_diag_1x6_0x4": true,
+    "upstream_cubic_operator_exactly_hermitian": true,
+    "upstream_phi_generators_equal_projector_source": true,
+    "upstream_phi_pair_casimir_symmetric": true,
+    "upstream_phi_quartic_background_and_response_symmetric": true,
+    "upstream_sigma_generators_exact_and_antihermitian": true,
+    "upstream_sigma_gram_matrices_hermitian": true,
+    "upstream_sigma_pair_casimir_self_adjoint": true,
+    "upstream_sigma_std_pair_is_pure_2772bar": true,
+    "upstream_sigma_std_raw_norm_squared_16": true,
+    "upstream_wedge_identity_exact": true
+  },
+  "coefficient_identities": {
+    "O06_equals_2_abs_kappa_r0": true,
+    "O12_equals_kappa": true,
+    "O44_coefficients_equal_one_eighth_A_plus_C": true,
+    "O46_coefficients_equal_wedge_weights": true,
+    "O48_coefficients_equal_exact_210_J_couplings": true,
+    "benchmark_has_27_parameters": true
+  },
+  "coefficient_overrides": {},
+  "congruence": {
+    "D": "diag(1^210, sqrt(2)^276)",
+    "D_squared_entries_equal_one": 210,
+    "D_squared_entries_equal_two": 276,
+    "D_squared_exact": {
+      "H10": 2,
+      "Phi17": 2,
+      "Phi210": 1,
+      "S": 2,
+      "Sigma126bar": 2
+    },
+    "change_of_coordinates": "q = D u, u_Phi = q_Phi, u_c = q_c/sqrt(2) = (Re c, Im c) for c in H10, Sigma126bar, S, Phi17",
+    "chart_convention": "every complex coordinate c = (x + i y)/sqrt(2), interleaved (x, y)",
+    "hessian_transformation": "H_u = D Hess_q D (chain rule for the linear change q = D u)",
+    "radicals_removed": "in the chart only the Phi-Sigma block carries sqrt(2) (Hess_q[Phi, Sigma] in Q/sqrt(2)); every H_u entry is rational",
+    "sylvester": "D is real diagonal and invertible, so Hess_q and H_u have the same rank, nullity and signature, ker Hess_q = D ker H_u, and Hess_q - lambda I = D^-1 (H_u - lambda D^2) D^-1"
+  },
+  "eps_family": {
+    "L1_equality_set": {
+      "G_invariance": {
+        "H10_charges": {
+          "PQ": -2,
+          "X": -2
+        },
+        "H_block_actions_antisymmetric": true,
+        "action": "so(10): H -> L H with real L (u-block kron(L, I_2)); U(1) with charge q: H -> i q H (u-block q kron(I, J))",
+        "consequence": "d/ds |exp(s A) u_H|^2 = u_H^T (A + A^T) u_H = 0 for every generator A, so N_H is invariant under the connected group G",
+        "generators_checked": 47
+      },
+      "N_H_symbolic": {
+        "N_H_in_chart": "sum_i (x_i^2 + y_i^2)/2",
+        "N_H_in_chart_exact": true,
+        "N_H_in_u": "sum_i (a_i^2 + b_i^2), u_H = (a_i, b_i) = (Re H_i, Im H_i)",
+        "N_H_in_u_is_sum_of_squares": true,
+        "chart_convention": "H_i=(x_i+i y_i)/sqrt(2), interleaved x_i,y_i",
+        "hessian_q_is_identity_on_H": true,
+        "hessian_u_is_2_identity_on_H": true,
+        "homogeneous_of_degree_2": true,
+        "value_and_gradient_vanish_at_H_0": true
+      },
+      "O06_operator": {
+        "base_basis": [
+          "Hdag_i H_i"
+        ],
+        "base_family": "Hdag_H_norm",
+        "base_key_P_H_Hb_D_Db": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "base_normalization": "unit delta_ij contraction",
+        "direction": "O06_B01_Hdag_H_norm",
+        "field_counts": {
+          "H": 1,
+          "Hb": 1
+        },
+        "is_unit_Hdag_i_H_i": true,
+        "no_singlet_dressing": true,
+        "operator_dictionary_is_N_H": true,
+        "operator_dictionary_symbol": "N_H",
+        "self_conjugate_real_parameter": true,
+        "singlet_dressing_counts": {
+          "S": 0,
+          "Sb": 0,
+          "X": 0,
+          "Xb": 0
+        },
+        "statement": "lambda::O06 multiplies the census direction with field counts (H, Hbar) = (1, 1) and no S/Phi17 dressing, whose G1 base family is Hdag_H_norm = Hdag_i H_i (unit delta_ij contraction), a real (self-conjugate) parameter: O06 = N_H = H^dag H in the chart H_i = (x_i + i y_i)/sqrt(2)"
+      },
+      "coefficient_shift": {
+        "only_O06_shifted_by_eps_symbolic": true,
+        "parameters_compared": 27,
+        "same_27_parameters": true,
+        "statement": "candidate_coefficients(r0, x0, kappa, o06_offset=eps) - candidate_coefficients(r0, x0, kappa) = {O06: eps} for symbolic r0, x0 > 0, kappa < 0, eps >= 0",
+        "symbolic_difference": {
+          "lambda::O06_B01_Hdag_H_norm": "eps"
+        },
+        "variants_differ_from_benchmark_only_in_O06_by_their_offset": {
+          "raised_O06": true,
+          "tiny_eps": true
+        }
+      },
+      "domain": {
+        "8_r0_squared": "8/25",
+        "kappa_squared": "1/400",
+        "kappa_squared_below_8_r0_squared": true
+      },
+      "float64_diagnostic": "the live compiler's O06 row at q0 (value, gradient, Hessian) equals (0, 0, P_H) bit for bit; not part of the proof path",
+      "relies_on": {
+        "D6": "the equality-set theorem cites classical theorems and hand-argued steps (decision D6 pending)",
+        "premises": {
+          "O06_row_is_H_Hbar_and_X_PQ_neutral": true,
+          "equality_conditions_include_H_equal_0": true,
+          "equality_set_unique_modulo_symmetry_certified": true,
+          "no_failed_checks": true,
+          "operator_dictionary_maps_O06_to_N_H": true,
+          "same_model_contract": true,
+          "status_is_proved": true,
+          "theorem_claimed": true,
+          "theorem_states_V_ge_V0_and_equality_set_G_orbit": true
+        },
+        "report": "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json (committed; read, not rebuilt)",
+        "required_status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+      },
+      "statement": "V_eps = V + eps N_H with N_H = |u_H|^2 >= 0 (equality iff H = 0).  Hence V_eps >= V >= V0, and V_eps(q) = V0 iff V(q) = V0 and eps N_H(q) = 0.  On {V = V0} = G.q0 we have H = 0, so {V_eps = V0} = {V = V0} = G.q0 for every eps >= 0.  N_H is G-invariant (so V_eps is), quadratic (so the quartic part and the bound V4 >= |q|^4/167 are unchanged), and grad V_eps(q0) = grad V(q0) + eps grad N_H(q0) = 0."
+    },
+    "L2_hessian": {
+      "B_equals_2_P_H": true,
+      "chart_form": "Hess_q N_H = D^-1 (2 P_H) D^-1 = P_H",
+      "dim_ker_H0_cap_ker_B": 35,
+      "for_every_eps_positive": {
+        "PSD": true,
+        "kernel": "span(T35), the SO(10) x U(1)_X x U(1)_PQ orbit tangent space",
+        "nullity": 35,
+        "rank": 451,
+        "strictly_positive_on_symmetry_quotient_dimension": 451
+      },
+      "linearity_in_eps_exact": {
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "ranks": {
+        "B_times_(T35_plus_D4)": 4,
+        "D4": 4,
+        "T35": 35,
+        "T35_plus_D4": 39
+      },
+      "statement": "Hess_u V_eps(q0) = H_u + eps B with B = Hess_u N_H = 2 P_H.  For symmetric PSD A, B and eps > 0, x^T (A + eps B) x = x^T A x + eps x^T B x and x^T M x = 0 iff M x = 0 for PSD M, so A + eps B is PSD and ker(A + eps B) = ker A cap ker B.  ker H_u = span(T35) + span(D4) with D4 inside the H block and T35 zero there, so B T35 = 0, B D4 = 2 D4 and ker H_u cap ker B = span(T35): for every eps > 0 the Hessian is PSD with rank 451, nullity 35, kernel exactly the G-orbit tangent space, strictly positive on the 451-dimensional symmetry quotient."
+    },
+    "checks": {
+      "L1_N_H_homogeneous_quadratic_so_quartic_part_unchanged": true,
+      "L1_N_H_invariant_under_G": true,
+      "L1_N_H_is_sum_of_squares_of_u_H": true,
+      "L1_O06_compiler_direction_is_unit_Hdag_i_H_i_without_dressing": true,
+      "L1_O06_unit_hessian_is_hess_u_N_H_equal_2_P_H": true,
+      "L1_V_eps_differs_from_V_only_in_O06_by_eps": true,
+      "L1_benchmark_inside_equality_domain_kappa_squared_below_8_r0_squared": true,
+      "L1_chart_convention_H_equals_x_plus_i_y_over_sqrt2": true,
+      "L1_equality_report_proved_status_and_premises": true,
+      "L1_grad_V_eps_vanishes_at_q0_for_every_eps": true,
+      "L1_operator_dictionary_maps_O06_to_N_H": true,
+      "L2_D4_inside_H_block": true,
+      "L2_H0_PSD_exact": true,
+      "L2_H0_kernel_is_span_T35_plus_D4": true,
+      "L2_T35_vanishes_on_H_block": true,
+      "L2_consistency_raised_eps_r0sq_over_100_inertia_451_35_0_kernel_T35": true,
+      "L2_consistency_tiny_eps_r0sq_over_10e6_inertia_451_35_0_kernel_T35": true,
+      "L2_dim_ker_H0_cap_ker_hess_N_H_equals_35": true,
+      "L2_hess_N_H_annihilates_T35_and_doubles_D4": true,
+      "L2_hess_u_N_H_is_2_P_H_hence_PSD_with_kernel_H_equal_0": true,
+      "L2_raised_minus_benchmark_equals_eps_hess_N_H_exact": true,
+      "L2_rank_T35_35_rank_D4_4_rank_T35_plus_D4_39": true,
+      "L2_tiny_minus_benchmark_equals_eps_hess_N_H_exact": true,
+      "diagnostic_float64_compiler_O06_row_at_q0_is_chart_P_H_bitwise": true,
+      "doublet_H_block_curvatures_are_0_r0sq_1_and_1_plus_r0sq_as_stated": true,
+      "doublet_H_block_decouples_from_the_rest_at_q0": true,
+      "doublet_H_block_diagonal_Re_H6_9_curvature_0_others_positive": true,
+      "doublet_Re_H6_9_exact_eigenvectors_with_eigenvalue_eps_at_raised_and_tiny": true,
+      "doublet_eps_is_smallest_nonzero_eigenvalue_multiplicity_4_at_raised_and_tiny": true,
+      "doublet_rest_block_has_no_eigenvalue_in_open_interval_0_to_r0sq_over_96": true
+    },
+    "consistency_certificates": {
+      "raised_O06": {
+        "O06": "51/2500",
+        "denominator": 10080000,
+        "eps": "1/2500",
+        "eps_over_r0_squared": "1/100",
+        "exact_nullity": 35,
+        "exact_rank": 451,
+        "inertia_positive_zero_negative": "451/35/0",
+        "kernel_equals_symmetry_tangents": true,
+        "smallest_nonzero_eigenvalue": "1/2500",
+        "smallest_nonzero_eigenvalue_multiplicity": 4,
+        "strictly_positive_on_symmetry_quotient": true
+      },
+      "tiny_eps": {
+        "O06": "500001/25000000",
+        "denominator": 6300000000,
+        "eps": "1/25000000",
+        "eps_over_r0_squared": "1/1000000",
+        "exact_nullity": 35,
+        "exact_rank": 451,
+        "inertia_positive_zero_negative": "451/35/0",
+        "kernel_equals_symmetry_tangents": true,
+        "smallest_nonzero_eigenvalue": "1/25000000",
+        "smallest_nonzero_eigenvalue_multiplicity": 4,
+        "strictly_positive_on_symmetry_quotient": true
+      }
+    },
+    "doublet": {
+      "H_block_chart_curvatures": {
+        "0": 4,
+        "1": 6,
+        "1/25": 4,
+        "26/25": 6
+      },
+      "H_block_chart_curvatures_over_r0_squared": {
+        "0": 4,
+        "1": 4,
+        "25": 6,
+        "26": 6
+      },
+      "doublet_chart_indices": [
+        222,
+        224,
+        226,
+        228
+      ],
+      "eps_range_for_lightest_multiplicity_4": "0 < eps < r0^2/96 = 1/2400",
+      "exact_eigenvector_checks": {
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "rest_block_from_benchmark_certificate": {
+        "eigenvalue_r0_squared_over_96_multiplicity": 14,
+        "eigenvalues_below_r0_squared_over_96": 35,
+        "nullity": 35
+      },
+      "smallest_nonzero_eigenvalue_checks": {
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "statement": "At q0 the H block of Hess V decouples and is diagonal in the chart with curvatures 0 (Re H_6..9, the tuned doublet), r0^2 (Im H_6..9), 1 (Re H_0..5) and 1 + r0^2 (Im H_0..5); Hess_q N_H = P_H adds eps to each.  So Re H_6..9 are exact eigenvectors of Hess_q V_eps(q0) with eigenvalue eps for every eps >= 0 (the doublet mass^2 in units of M_GUT^2); the rest of the spectrum is eps-independent with nullity 35 and no eigenvalue in (0, r0^2/96), so for 0 < eps < r0^2/96 eps is the smallest nonzero eigenvalue with multiplicity exactly 4."
+    },
+    "failures": [],
+    "flags": {
+      "doublet_mass_squared_equals_eps": true,
+      "eps_family_equality_set_unchanged": true,
+      "eps_family_kernel_equals_symmetry_orbit": true,
+      "eps_family_strictly_positive_on_symmetry_quotient_for_all_eps_positive": true
+    },
+    "member": "V_eps = V + eps N_H: O06 = 2|kappa| r0 + eps, the other 26 benchmark couplings unchanged, eps >= 0",
+    "n_checks": 30,
+    "n_failed": 0,
+    "physical_reading": "eps = (m_D/M_GUT)^2: the SM doublet Re H_6..9 is light but massive for 0 < eps << r0^2, and eps -> 0+ is the tuned massless limit, which is PSD but not strictly positive on the symmetry quotient (447/39).  Electroweak symmetry is not broken on any member (H = 0 and the tree-level doublet mass^2 eps >= 0).",
+    "scope": [
+      "L1 extends the equality-set theorem from the 27-parameter family to O06 = 2|kappa| r0 + eps, eps >= 0; it rests on that theorem (cited classical theorems and hand-argued steps, decision D6)",
+      "L2 and the doublet statement are exact at r0 = 1/5, x0 = 1, kappa = -r0/4 for every eps (> 0 resp. >= 0)",
+      "no electroweak symmetry breaking and none of the candidate's model-level caveats is changed"
+    ],
+    "theorem": "For every eps >= 0 let V_eps = V + eps N_H (O06 = 2|kappa| r0 + eps, the other 26 couplings of the benchmark r0 = 1/5, x0 = 1, kappa = -r0/4 unchanged; N_H = H^dag H is the compiler operator O06).  (L1) N_H = |u_H|^2 >= 0 with equality iff H = 0, and H = 0 on {V = V0}, so V_eps >= V >= V0 and {V_eps = V0} = {V = V0} = G.q0, G = SO(10) x U(1)_X x U(1)_PQ; V_eps is G-invariant, has the same quartic part (BFB unchanged) and grad V_eps(q0) = 0.  (L2) Hess_u V_eps(q0) = H_u + eps Hess_u N_H with Hess_u N_H = 2 P_H (Hess_q N_H = P_H in the chart); both terms are PSD, so for every eps > 0 the Hessian is PSD with kernel ker H_u cap ker P_H = the 35-dimensional G-orbit tangent space (rank 451, nullity 35), strictly positive on the 451-dimensional symmetry quotient.  The H block decouples at q0 and Re H_6..9 are exact eigenvectors of Hess_q V_eps(q0) with eigenvalue eps (the doublet mass^2 in units of M_GUT^2), the smallest nonzero eigenvalue with multiplicity exactly 4 for 0 < eps < r0^2/96.  L1 rests on the equality-set theorem (committed report, proved status required); L2 and the doublet statement are exact over Q; exact inertia 451/35/0 is re-certified at eps = r0^2/100 and r0^2/10^6.",
+    "theorem_claimed": true
+  },
+  "exact_certificate": {
+    "O06": "1/50",
+    "O06_offset": "0",
+    "coefficient_overrides": {},
+    "coverage": {
+      "coefficients_proportional_to_unit_weights": true,
+      "every_nonzero_parameter_covered": true,
+      "no_parameter_in_two_units": true,
+      "uncovered_nonzero_parameters": [],
+      "unit_coefficients": {
+        "O03 |Phi17|^2": "-1/16",
+        "O04 |S|^2": "-2/25",
+        "O05 N_Sigma": "49/100",
+        "O06 N_H": "1/50",
+        "O07 |Phi|^2": "-2",
+        "O14 Sigma^dag M_Phi Sigma": "-1/2",
+        "O20 |Phi17|^4": "1/32",
+        "O23 |S|^4": "1",
+        "O27 I_1050bar": "1/4",
+        "O27 I_2772bar": "1/8",
+        "O27 I_4125": "17/128",
+        "O27 I_54": "1/4",
+        "O36 I_1(H) (quartic in H)": "2",
+        "O36 I_54(H) (quartic in H)": "2",
+        "O44 ||M_Phi Sigma||^2 + ||C_Phi Sigma||^2": "1/8",
+        "O46 (3/5) I_1 - I_54 = H^dag(|Phi|^2 - C(Phi))H": "1",
+        "O48 J0": "-21/200",
+        "O48 J2": "2467/28800",
+        "O48 J3": "-77/3200",
+        "O48 J4": "119/115200",
+        "re::O12 2 Re[conj(H.H) conj(S)]": "-1/20"
+      },
+      "unit_names_unique": true,
+      "units_parameters_not_in_benchmark": []
+    },
+    "denominator": 2016000,
+    "denominator_factorization": {
+      "2": 8,
+      "3": 2,
+      "5": 3,
+      "7": 1
+    },
+    "doublet_directions_in_kernel_exact": true,
+    "exact_PSD": true,
+    "exact_nullity": 39,
+    "exact_rank": 447,
+    "exactly_symmetric": true,
+    "expected_nullity": 39,
+    "expected_rank": 447,
+    "gradient_denominator": 1,
+    "gradient_exactly_zero": true,
+    "inertia": {
+      "component_sizes": [
+        16,
+        16,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        10,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "components": 65,
+      "maximum_intermediate_bits": 94,
+      "negative": 0,
+      "positive": 447,
+      "two_by_two_pivots": 0,
+      "zero": 39
+    },
+    "kernel_equals_expected_span": true,
+    "kernel_spanning_rank_exact": 39,
+    "kernel_spanning_set": "35 symmetry tangents + 4 real light-doublet directions",
+    "maximum_abs_numerator": 16208640,
+    "nonzero_entries": 5358,
+    "positive_pivot_complement": {
+      "dimension": 447,
+      "is_complement_of_kernel": true,
+      "kernel_rank_on_non_pivot_rows": 39,
+      "principal_submatrix_positive_definite": true,
+      "principal_submatrix_positive_pivots": 447
+    },
+    "rank_and_nullity_as_expected": true,
+    "spectral_gap": {
+      "lambda": "1/2400",
+      "lambda_is_smallest_nonzero_eigenvalue": true,
+      "lambda_over_r0_squared": "1/96",
+      "multiplicity": 14,
+      "negative": 39,
+      "positive": 433,
+      "statement": "inertia of H_u - lambda D^2 = inertia of Hess_q - lambda I (Sylvester)",
+      "zero": 14
+    },
+    "strictly_positive_on_kernel_complement": true,
+    "strictly_positive_on_symmetry_quotient": false,
+    "symmetry_orbit_dimension": 35,
+    "symmetry_tangents_in_kernel_exact": true,
+    "variant": "benchmark",
+    "zero_modes_beyond_symmetry_orbit": 4
+  },
+  "exact_certificate_raised_O06": {
+    "O06": "51/2500",
+    "O06_offset": "1/2500",
+    "coefficient_overrides": {},
+    "coverage": {
+      "coefficients_proportional_to_unit_weights": true,
+      "every_nonzero_parameter_covered": true,
+      "no_parameter_in_two_units": true,
+      "uncovered_nonzero_parameters": [],
+      "unit_coefficients": {
+        "O03 |Phi17|^2": "-1/16",
+        "O04 |S|^2": "-2/25",
+        "O05 N_Sigma": "49/100",
+        "O06 N_H": "51/2500",
+        "O07 |Phi|^2": "-2",
+        "O14 Sigma^dag M_Phi Sigma": "-1/2",
+        "O20 |Phi17|^4": "1/32",
+        "O23 |S|^4": "1",
+        "O27 I_1050bar": "1/4",
+        "O27 I_2772bar": "1/8",
+        "O27 I_4125": "17/128",
+        "O27 I_54": "1/4",
+        "O36 I_1(H) (quartic in H)": "2",
+        "O36 I_54(H) (quartic in H)": "2",
+        "O44 ||M_Phi Sigma||^2 + ||C_Phi Sigma||^2": "1/8",
+        "O46 (3/5) I_1 - I_54 = H^dag(|Phi|^2 - C(Phi))H": "1",
+        "O48 J0": "-21/200",
+        "O48 J2": "2467/28800",
+        "O48 J3": "-77/3200",
+        "O48 J4": "119/115200",
+        "re::O12 2 Re[conj(H.H) conj(S)]": "-1/20"
+      },
+      "unit_names_unique": true,
+      "units_parameters_not_in_benchmark": []
+    },
+    "denominator": 10080000,
+    "denominator_factorization": {
+      "2": 8,
+      "3": 2,
+      "5": 4,
+      "7": 1
+    },
+    "doublet_directions_in_kernel_exact": false,
+    "exact_PSD": true,
+    "exact_nullity": 35,
+    "exact_rank": 451,
+    "exactly_symmetric": true,
+    "expected_nullity": 35,
+    "expected_rank": 451,
+    "gradient_denominator": 1,
+    "gradient_exactly_zero": true,
+    "inertia": {
+      "component_sizes": [
+        16,
+        16,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        10,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "components": 65,
+      "maximum_intermediate_bits": 94,
+      "negative": 0,
+      "positive": 451,
+      "two_by_two_pivots": 0,
+      "zero": 35
+    },
+    "kernel_equals_expected_span": true,
+    "kernel_spanning_rank_exact": 35,
+    "kernel_spanning_set": "35 symmetry tangents",
+    "maximum_abs_numerator": 81043200,
+    "nonzero_entries": 5362,
+    "positive_pivot_complement": {
+      "dimension": 451,
+      "is_complement_of_kernel": true,
+      "kernel_rank_on_non_pivot_rows": 35,
+      "principal_submatrix_positive_definite": true,
+      "principal_submatrix_positive_pivots": 451
+    },
+    "rank_and_nullity_as_expected": true,
+    "spectral_gap": {
+      "lambda": "1/2500",
+      "lambda_is_smallest_nonzero_eigenvalue": true,
+      "lambda_over_r0_squared": "1/100",
+      "multiplicity": 4,
+      "negative": 35,
+      "positive": 447,
+      "statement": "inertia of H_u - lambda D^2 = inertia of Hess_q - lambda I (Sylvester)",
+      "zero": 4
+    },
+    "strictly_positive_on_kernel_complement": true,
+    "strictly_positive_on_symmetry_quotient": true,
+    "symmetry_orbit_dimension": 35,
+    "symmetry_tangents_in_kernel_exact": true,
+    "variant": "O06 raised by r0^2/100 (candidate all-massive variant)",
+    "zero_modes_beyond_symmetry_orbit": 0
+  },
+  "failures": [],
+  "flags": {
+    "G3_closed": false,
+    "all_zero_modes_are_symmetry_tangents": false,
+    "candidate_wired_into_g3_gate": false,
+    "doublet_mass_squared_equals_eps": true,
+    "eps_family_equality_set_unchanged": true,
+    "eps_family_kernel_equals_symmetry_orbit": true,
+    "eps_family_strictly_positive_on_symmetry_quotient_for_all_eps_positive": true,
+    "eps_family_theorem_claimed": true,
+    "exact_PSD": true,
+    "exact_gradient_zero": true,
+    "exact_nullity_39": true,
+    "exact_rank_447": true,
+    "kernel_equals_35_symmetry_tangents_plus_4_light_doublet": true,
+    "other_r0_x0_kappa_certified": false,
+    "positive_definite_on_complement_of_39_dim_kernel": true,
+    "proof_grade": true,
+    "raised_O06_exact_rank_451_nullity_35": true,
+    "raised_O06_kernel_equals_35_symmetry_tangents": true,
+    "raised_O06_strict_quotient_positive": true,
+    "raised_O06_strictly_positive_on_symmetry_quotient": true,
+    "smallest_nonzero_eigenvalue_r0_squared_over_96_exact": true,
+    "source_binding_exact": true,
+    "strict_quotient_positive": false,
+    "strictly_positive_on_symmetry_quotient": false,
+    "theorem_claimed": true
+  },
+  "float_tangent_binding": {
+    "consistent": true,
+    "exact_tangent_float_rank": 35,
+    "live_ranks": {
+      "so10_orbit_rank": 33,
+      "so10_plus_u1x_plus_pq_rank": 35,
+      "so10_plus_u1x_rank": 34
+    },
+    "live_symmetry_matrix_residual_outside_exact_span": 1.06581410364e-14
+  },
+  "light_doublet_directions": {
+    "chart_indices": [
+      222,
+      224,
+      226,
+      228
+    ],
+    "meaning": "Re H_6 .. Re H_9 (the tuned electroweak doublet; kappa = -r0/4, O06 = 2|kappa| r0)"
+  },
+  "live_binding": {
+    "V0": -1.03305,
+    "V_compiler": -1.03305,
+    "V_minus_V0": -3.10862446895e-15,
+    "lattice": {
+      "denominator": 2016000,
+      "half_lattice_margin": 0.499999655411,
+      "maximum_scaled_residual": 3.44589352608e-07,
+      "passes": true,
+      "rounded_live_equals_exact_numerator": true,
+      "scaled_live_entries_below_2_to_52": true
+    },
+    "live_gradient_max_abs": 4.92106355665e-14,
+    "max_abs_exact_minus_live_chart_hessian": 8.7374552038e-14,
+    "max_abs_exact_minus_live_gradient": 4.92106355665e-14,
+    "max_abs_live_chart_hessian": 8.04,
+    "numerical_inertia": {
+      "maximum": 8.04231989997,
+      "negative_below_minus_1e_minus_10": 0,
+      "positive_above_1e_minus_10": 447,
+      "smallest_positive": 0.000416666666605,
+      "zero_at_1e_minus_10": 39
+    },
+    "tolerance": 1e-12,
+    "within_tolerance": true
+  },
+  "live_binding_raised_O06": {
+    "V0": -1.03305,
+    "V_compiler": -1.03305,
+    "V_minus_V0": -3.10862446895e-15,
+    "lattice": {
+      "denominator": 10080000,
+      "half_lattice_margin": 0.499998277053,
+      "maximum_scaled_residual": 1.72294676304e-06,
+      "passes": true,
+      "rounded_live_equals_exact_numerator": true,
+      "scaled_live_entries_below_2_to_52": true
+    },
+    "live_gradient_max_abs": 4.92106355665e-14,
+    "max_abs_exact_minus_live_chart_hessian": 8.7374552038e-14,
+    "max_abs_exact_minus_live_gradient": 4.92106355665e-14,
+    "max_abs_live_chart_hessian": 8.04,
+    "numerical_inertia": {
+      "maximum": 8.04231989997,
+      "negative_below_minus_1e_minus_10": 0,
+      "positive_above_1e_minus_10": 451,
+      "smallest_positive": 0.000399999999997,
+      "zero_at_1e_minus_10": 35
+    },
+    "tolerance": 1e-12,
+    "within_tolerance": true
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 52,
+  "n_failed": 0,
+  "overall_state": "EXACT_LOCAL_HESSIAN_KERNEL_ORBIT_PLUS_TUNED_DOUBLET_CERTIFIED",
+  "runtime_seconds": 50.1307759285,
+  "scope": {
+    "exact_premises_reused": [
+      "A-square and C-square recouplings (exact_gauged_u1x_g3_a_square_recoupling_v20, exact_gauged_u1x_g3_sos_bfb_stationarity_v20.exact_mixed_certificate)",
+      "||H wedge Phi||^2 = (3/5) I_1 - I_54 (exact_gauged_u1x_g3_sos_bfb_stationarity_v20.exact_wedge_certificate)",
+      "the compiler operators O07, O48, O14, O05, O27, O06, O12, O36, O04, O23, O03, O20 are the stated polynomials in the stated normalisation (the source modules' definitions)",
+      "the symmetry tangent matrix and its ranks 33/34/35 (g3_sm_pati_salam_equality_set_v20)",
+      "eps_family L1 only: the equality-set theorem V >= V0, {V = V0} = G.q0 with H = 0 there (committed G3_SM_PATI_SALAM_EQUALITY_SET_V20.json, proved status required; cited classical theorems and hand-argued steps, decision D6)"
+    ],
+    "float64_evidence_only": [
+      "compiler = exact operators end to end: every binding unit, the assembled Hessian (<= 1e-12 in M_GUT^2) and the exact-lattice rounding are float64 comparisons with the live compiler"
+    ],
+    "not_proved_or_out_of_scope": [
+      "strict positivity on the symmetry quotient at the tuned benchmark (the repository's strict_quotient_positive / kernel = symmetry tangents, as in the chiral-H 448/38 certificate): it is exactly FALSE here (kernel 35 + 4); the eps > 0 members (O06 = 2|kappa| r0 + eps, the raised variant eps = r0^2/100 among them) have kernel = orbit and strict quotient positivity, the tuned eps = 0 limit does not",
+      "electroweak symmetry breaking on the eps family: H = 0 and the tree-level doublet mass^2 is eps >= 0",
+      "other r0, x0 or kappa: the unit functions accept them, but only the benchmark is certified and bound",
+      "G3 closure: the candidate is not wired into the G3 gate; its global minimality and the equality set are the candidate's and the equality module's results, not re-proved here",
+      "the candidate's physics caveats (tuned doublet-triplet splitting and O06, sub-M_I coloured remnants, RG content, Higgs quartic, no electroweak breaking or Yukawa sector)"
+    ],
+    "proved_exactly": [
+      "grad V(q0) = 0 and the complete 486 x 486 Hessian at the benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, O06 = 2|kappa| r0): PSD, rank 447, nullity 39, kernel = 35 G-orbit tangents (+) 4 real light-doublet directions, positive definite on the 447-dimensional pivot complement, smallest nonzero eigenvalue r0^2/96 (multiplicity 14); hence NOT strictly positive on the 451-dimensional symmetry quotient (4 exact zero directions Re H_6..9 that are not symmetry directions)",
+      "the O06 + r0^2/100 variant: PSD, rank 451, nullity 35, kernel = the 35 G-orbit tangents, positive definite on the pivot complement, smallest nonzero eigenvalue r0^2/100 (the lifted doublet)",
+      "the eps family O06 = 2|kappa| r0 + eps (eps_family): L2, for every eps > 0 the Hessian at q0 is PSD with kernel exactly the 35 G-orbit tangents (rank 451, strictly positive on the 451-dimensional symmetry quotient; inertia 451/35/0 re-certified at eps = r0^2/100 and r0^2/10^6), and Re H_6..9 have mass^2 exactly eps (the lightest level, multiplicity 4, for 0 < eps < r0^2/96); L1, {V_eps = V0} = G.q0 for every eps >= 0, given the equality-set theorem",
+      "all entries derived from integer / Gaussian-integer source tensors with Fraction scalars in the radical-free coordinates u (q = D u); Sylvester's law carries rank, nullity, signature and the eigenvalue counts to the chart"
+    ]
+  },
+  "source_candidate": "g3_sm_pati_salam_candidate_v20 (27-parameter benchmark); tangents from g3_sm_pati_salam_equality_set_v20",
+  "status": "SM_PATI_SALAM_EXACT_FULL_HESSIAN_RANK_447_NULLITY_39_CERTIFIED__G3_OPEN",
+  "symmetry_tangents": {
+    "H_rows_of_tangent_vanish": true,
+    "common_denominator": 20,
+    "equality_module_ranks": {
+      "kernel_dimension": 12,
+      "rank_so10": 33,
+      "rank_so10_plus_X": 34,
+      "rank_so10_plus_X_plus_PQ": 35
+    },
+    "exact_ranks": {
+      "scaled_T_u": 35,
+      "so10": 33,
+      "so10_plus_X": 34,
+      "so10_plus_X_plus_PQ": 35
+    },
+    "matches_equality_module_ranks": true,
+    "row_scale": "diag(1 on Phi, r0/4 on Sigma, r0 on S, x0 on Phi17) at r0 = 1/5, x0 = 1",
+    "spanning_rank_exact": 39
+  },
+  "theorem": "Exact over Q at the SM Pati-Salam benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, O06 = 2|kappa| r0) of g3_sm_pati_salam_candidate_v20: grad V(q0) = 0; the complete 486 x 486 Hessian at q0 = (p, 0, r0 sigma_std, r0, x0) is positive semidefinite with rank 447 and nullity 39; its kernel is the 35-dimensional tangent space of the SO(10) x U(1)_X x U(1)_PQ orbit plus the 4 real light-doublet directions Re H_6..9; it is positive definite on a 447-dimensional coordinate complement of the kernel; its smallest nonzero eigenvalue is r0^2/96.  With O06 raised by r0^2/100: rank 451, nullity 35, kernel = the orbit tangent space, smallest nonzero eigenvalue r0^2/100.  Entries are derived from integer source tensors in the radical-free coordinates q = D u, D = diag(1^210, sqrt(2)^276) (Sylvester); the compiler = exact-operator identity is exact per operator and float64 end to end (bound to <= 1e-12).",
+  "theorem_claimed": true,
+  "unit_binding": {
+    "all_units_bound": true,
+    "relative_tolerance": 1e-11,
+    "unit_count": 21,
+    "units": {
+      "O03 |Phi17|^2": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O03_B01_singlet_polynomial": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 1.0,
+        "source": "exact"
+      },
+      "O04 |S|^2": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O04_B01_singlet_polynomial": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 1.0,
+        "source": "exact"
+      },
+      "O05 N_Sigma": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 1.38777878078e-17,
+        "max_abs_exact_minus_live_hessian": 2.22044604925e-16,
+        "parameters": {
+          "lambda::O05_B01_126bar_norm": "1"
+        },
+        "relative_hessian_difference": 2.22044604925e-16,
+        "scale": 1.0,
+        "source": "exact"
+      },
+      "O06 N_H": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 2.22044604925e-16,
+        "parameters": {
+          "lambda::O06_B01_Hdag_H_norm": "1"
+        },
+        "relative_hessian_difference": 2.22044604925e-16,
+        "scale": 1.0,
+        "source": "exact"
+      },
+      "O07 |Phi|^2": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O07_B01_Phi_norm": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 2.0,
+        "source": "exact"
+      },
+      "O14 Sigma^dag M_Phi Sigma": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 2.77555756156e-17,
+        "max_abs_exact_minus_live_hessian": 4.4408920985e-16,
+        "parameters": {
+          "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "1"
+        },
+        "relative_hessian_difference": 2.22044604925e-16,
+        "scale": 2.0,
+        "source": "a_square_source.integer_cubic_operators (Hermitian Gaussian-integer M)"
+      },
+      "O20 |Phi17|^4": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 8.881784197e-16,
+        "parameters": {
+          "lambda::O20_B01_singlet_polynomial": "1"
+        },
+        "relative_hessian_difference": 1.48029736617e-16,
+        "scale": 6.0,
+        "source": "exact"
+      },
+      "O23 |S|^4": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 3.46944695195e-18,
+        "max_abs_exact_minus_live_hessian": 2.77555756156e-17,
+        "parameters": {
+          "lambda::O23_B01_singlet_polynomial": "1"
+        },
+        "relative_hessian_difference": 2.77555756156e-17,
+        "scale": 1.0,
+        "source": "exact"
+      },
+      "O27 I_1050bar": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 1.38777878078e-17,
+        "parameters": {
+          "lambda::O27_B02_126bar_self_projectors": "1"
+        },
+        "relative_hessian_difference": 1.38777878078e-17,
+        "scale": 1.0,
+        "source": "sos_source.integer_sigma_generators pair Casimir, sigma_source._poly Lagrange projectors"
+      },
+      "O27 I_2772bar": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 4.33680868994e-18,
+        "max_abs_exact_minus_live_hessian": 2.42861286637e-17,
+        "parameters": {
+          "lambda::O27_B03_126bar_self_projectors": "1"
+        },
+        "relative_hessian_difference": 2.42861286637e-17,
+        "scale": 1.0,
+        "source": "sos_source.integer_sigma_generators pair Casimir, sigma_source._poly Lagrange projectors"
+      },
+      "O27 I_4125": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 3.31771525576e-34,
+        "max_abs_exact_minus_live_hessian": 6.24500451352e-17,
+        "parameters": {
+          "lambda::O27_B04_126bar_self_projectors": "1"
+        },
+        "relative_hessian_difference": 6.24500451352e-17,
+        "scale": 1.0,
+        "source": "sos_source.integer_sigma_generators pair Casimir, sigma_source._poly Lagrange projectors"
+      },
+      "O27 I_54": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 5.64237288395e-37,
+        "max_abs_exact_minus_live_hessian": 2.38524477947e-18,
+        "parameters": {
+          "lambda::O27_B01_126bar_self_projectors": "1"
+        },
+        "relative_hessian_difference": 2.38524477947e-18,
+        "scale": 1.0,
+        "source": "sos_source.integer_sigma_generators pair Casimir, sigma_source._poly Lagrange projectors"
+      },
+      "O36 I_1(H) (quartic in H)": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O36_B01_H_self_quartics": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 1.0,
+        "source": "exact (homogeneous quartic in H vanishes to third order at H = 0)"
+      },
+      "O36 I_54(H) (quartic in H)": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O36_B02_H_self_quartics": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 1.0,
+        "source": "exact (homogeneous quartic in H vanishes to third order at H = 0)"
+      },
+      "O44 ||M_Phi Sigma||^2 + ||C_Phi Sigma||^2": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 3.79418718666e-13,
+        "max_abs_exact_minus_live_hessian": 6.9477756881e-13,
+        "parameters": {
+          "lambda::O44_B01_Phi2_Sigma_projectors": "41",
+          "lambda::O44_B02_Phi2_Sigma_projectors": "73",
+          "lambda::O44_B03_Phi2_Sigma_projectors": "29",
+          "lambda::O44_B04_Phi2_Sigma_projectors": "-7",
+          "lambda::O44_B05_Phi2_Sigma_projectors": "-11",
+          "lambda::O44_B06_Phi2_Sigma_projectors": "13"
+        },
+        "relative_hessian_difference": 1.73694392203e-13,
+        "scale": 4.0,
+        "source": "a_square_source.integer_cubic_operators (M) and integer_contraction_tensor (C); weights = A-square (40,72,28,-8,-12,12) + C-square (1,...,1)"
+      },
+      "O46 (3/5) I_1 - I_54 = H^dag(|Phi|^2 - C(Phi))H": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 2.22044604925e-16,
+        "parameters": {
+          "lambda::O46_B01_Phi2_HdagH_channels": "3/5",
+          "lambda::O46_B03_Phi2_HdagH_channels": "-1"
+        },
+        "relative_hessian_difference": 2.22044604925e-16,
+        "scale": 1.0,
+        "source": "sos_source.exact_wedge_certificate identity; integer interior products of p"
+      },
+      "O48 J0": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O48_B01_Phi_self_quartics": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 12.0,
+        "source": "integer pair Casimir sum_A G_A (x) G_A on R^210 (x) R^210 (a_square_source.integer_generators)"
+      },
+      "O48 J2": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O48_B02_Phi_self_quartics": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 288.0,
+        "source": "integer pair Casimir sum_A G_A (x) G_A on R^210 (x) R^210 (a_square_source.integer_generators)"
+      },
+      "O48 J3": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O48_B03_Phi_self_quartics": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 2304.0,
+        "source": "integer pair Casimir sum_A G_A (x) G_A on R^210 (x) R^210 (a_square_source.integer_generators)"
+      },
+      "O48 J4": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 0.0,
+        "parameters": {
+          "lambda::O48_B04_Phi_self_quartics": "1"
+        },
+        "relative_hessian_difference": 0.0,
+        "scale": 42624.0,
+        "source": "integer pair Casimir sum_A G_A (x) G_A on R^210 (x) R^210 (a_square_source.integer_generators)"
+      },
+      "re::O12 2 Re[conj(H.H) conj(S)]": {
+        "bound": true,
+        "max_abs_exact_minus_live_gradient": 0.0,
+        "max_abs_exact_minus_live_hessian": 5.55111512313e-17,
+        "parameters": {
+          "re::O12_B01_Hdag_Hdag_pair": "1"
+        },
+        "relative_hessian_difference": 5.55111512313e-17,
+        "scale": 1.0,
+        "source": "exact (S = r0 real at q0; the H-S and S-S second derivatives vanish at H = 0)"
+      }
+    }
+  },
+  "upstream_identities": {
+    "checks": {
+      "A_square_recoupling_exact": true,
+      "C_p_sigma_std_vanishes": true,
+      "C_square_recoupling_exact": true,
+      "J_at_p_equals_equality_module_values": true,
+      "M_p_sigma_std_equals_2_sigma_std": true,
+      "O48_order_is_J0_J2_J3_J4": true,
+      "Q_H_integer_equals_diag_1x6_0x4": true,
+      "cubic_operator_exactly_hermitian": true,
+      "phi_generators_equal_projector_source": true,
+      "phi_pair_casimir_symmetric": true,
+      "phi_quartic_background_and_response_symmetric": true,
+      "sigma_generators_exact_and_antihermitian": true,
+      "sigma_gram_matrices_hermitian": true,
+      "sigma_pair_casimir_self_adjoint": true,
+      "sigma_std_pair_is_pure_2772bar": true,
+      "sigma_std_raw_norm_squared_16": true,
+      "wedge_identity_exact": true
+    },
+    "identities": {
+      "A_square": "||M(Phi)Sigma||^2 = 40 I1 + 72 I45 + 28 I210 - 8 I770 - 12 I5940 + 12 I8910",
+      "C_square": "||C_Phi Sigma||^2 = I1 + I45 + I210 + I770 + I5940 + I8910",
+      "wedge": "Hdag(|Phi|^2 I - C(Phi))H = ||H wedge Phi||^2 = (3/5) I_1 - I_54"
+    },
+    "phi_pair_casimir": {
+      "pair_casimir_nonzero_entries": 564480,
+      "pair_casimir_row_abs_bound": 24,
+      "values_at_p": [
+        1,
+        24,
+        192,
+        3552
+      ]
+    },
+    "sigma_pair_casimir": {
+      "pair_casimir_nonzero_entries": 220500,
+      "pair_casimir_row_abs_bound": 25,
+      "projector_value_on_sigma_std_pair": {
+        "1050bar": "0",
+        "2772bar": "1",
+        "4125": "0",
+        "54": "0"
+      },
+      "sigma_std_pair_eigenvalue": "-5"
+    },
+    "source_tensors": {
+      "C_Gaussian_nonzero_entries": 1260,
+      "C_shape": [
+        10,
+        210,
+        126
+      ],
+      "M_Gaussian_nonzero_entries": 12600,
+      "M_exactly_hermitian": true,
+      "M_shape": [
+        210,
+        126,
+        126
+      ],
+      "p": "e6789, unit integer chart vector at index 209",
+      "phi_generator_nonzero_entries": 5040,
+      "phi_generators_equal_projector_source_exactly": true,
+      "sigma_generators_equal_float_source_exactly": true,
+      "sigma_generators_exactly_antihermitian": true,
+      "sigma_std_raw_nonzero_coordinates": 16,
+      "sigma_std_raw_norm_squared": 16
+    }
+  },
+  "verdict": "Exact over Q: at the SM Pati-Salam benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, O06 = 2|kappa| r0) the gradient vanishes and the complete 486 x 486 Hessian is PSD with rank 447 and nullity 39; its kernel is exactly the 35 SO(10) x U(1)_X x U(1)_PQ orbit tangents plus the 4 real light-doublet directions, it is positive definite on a 447-dimensional coordinate complement of the kernel, and its smallest nonzero eigenvalue is exactly r0^2/96.  It is therefore NOT strictly positive on the 451-dimensional symmetry quotient (4 exact non-symmetry zero modes; flags.strict_quotient_positive = False in the repository's sense).  With O06 raised by r0^2/100 the rank is 451, the nullity 35 and the kernel is exactly the symmetry orbit (strictly positive on the symmetry quotient).  For the whole family O06 = 2|kappa| r0 + eps (V_eps = V + eps N_H): {V_eps = V0} = G.q0 for every eps >= 0 (L1, given the equality-set theorem), and for every eps > 0 the Hessian at q0 is PSD with kernel exactly the 35 orbit tangents, i.e. rank 451, nullity 35 and strictly positive on the symmetry quotient (L2; inertia 451/35/0 re-certified at eps = r0^2/100 and r0^2/10^6); the doublet Re H_6..9 has mass^2 exactly eps, light but massive for eps << r0^2, so electroweak symmetry is still not broken, and the tuned eps = 0 limit is not a strict minimum on the symmetry quotient.  The entries are derived from integer source tensors in the radical-free coordinates u = D^-1 q (Sylvester's law of inertia), and the exact matrix agrees with the live compiler Hessian to within 1e-12 and rounds from it on the exact lattice (float64 binding).  G3 stays open: the candidate is not wired into the gate and its physics caveats are unchanged."
+}
