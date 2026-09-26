@@ -1411,6 +1411,13 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             )
             self.assertEqual(report["decision"], "WITHHOLD_APPROVAL")
             self.assertIn("scalar potential", report["verdict"])
+            self.assertIn("no conditional benchmark is approvable", report["verdict"])
+            self.assertIn(
+                "The decision-D3 internal-candidate tier of "
+                "theory_confirmation_verdict_v20 is separate from, and weaker "
+                "than, a conditional benchmark.",
+                report["verdict"],
+            )
             contract = next(
                 gate for gate in report["gates"] if gate["name"] == "authoritative_model_contract"
             )
@@ -1436,6 +1443,14 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             "is attested",
             matrix._verdict("INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN", "PASS"),
         )
+        for contract_state in ("OPEN", "PASS"):
+            self.assertIn(
+                "no conditional benchmark is approvable",
+                matrix._verdict(
+                    "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN",
+                    contract_state,
+                ),
+            )
 
     def test_conditional_candidate_needs_passing_scalar_vacuum(self):
         original = matrix._vacuum_gate
@@ -2082,7 +2097,9 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertEqual(vacuum["state"], "OPEN")
 
     def test_vacuum_gate_stays_open_until_g4_and_g6_close(self):
-        for gate_id, status in (("G4", "OPEN"), ("G6", "BLOCKED")):
+        # With G4 CLOSED at the G3 witness the ledger's G6 is OPEN (not
+        # BLOCKED); either gate short of CLOSED keeps this vacuum gate OPEN.
+        for gate_id, status in (("G4", "OPEN"), ("G6", "OPEN")):
             with self.subTest(gate=gate_id), tempfile.TemporaryDirectory() as tmp:
                 root = Path(tmp)
                 minimal_tree(
@@ -2122,8 +2139,10 @@ class TheoryValidationMatrixTests(unittest.TestCase):
         self.assertTrue(evidence["final_G3_acceptance_gate_state_consistent"])
         self.assertTrue(evidence["vacuum_gate_requires_G4_and_G6_closed"])
         self.assertFalse(evidence["downstream_vacuum_gates_closed"])
-        self.assertFalse(evidence["authoritative_G4_closed"])
-        self.assertFalse(evidence["authoritative_G6_closed"])
+        # G4 is CLOSED at the G3 witness (tree level); G6 is OPEN, so the
+        # vacuum-and-spectrum gate stays OPEN.
+        self.assertIs(evidence["authoritative_G4_closed"], True)
+        self.assertIs(evidence["authoritative_G6_closed"], False)
         self.assertEqual(
             evidence["authoritative_G3_closed"],
             evidence["final_G3_acceptance_gate_overall_state"] == "PASS",
@@ -2147,6 +2166,8 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             vacuum["evidence"]["final_G3_acceptance_gate_state_consistent"], True
         )
         self.assertIs(vacuum["evidence"]["downstream_vacuum_gates_closed"], False)
+        self.assertIs(vacuum["evidence"]["authoritative_G4_closed"], True)
+        self.assertIs(vacuum["evidence"]["authoritative_G6_closed"], False)
         self.assertNotIn(
             "final_G3_acceptance_gate_honestly_open", vacuum["evidence"]
         )

@@ -5,8 +5,9 @@ setUpClass builds one fresh report (about fifteen seconds: the exact tangent mat
 certificates) and compares it with the committed artifact through target.report_mismatches: exact leaves must
 match exactly, the float64 binding sections only within a loose tolerance.  The mutation tests reuse the
 lru_cached exact inputs, change one input each (a committed report, the integer tangent matrix, the PQ charges,
-the doublet directions) and require the certificate to fail closed.  The ledger and roadmap texts of G4 are pinned
-against the committed artifacts, and G4 must still be OPEN there: this certificate does not wire G4.
+the doublet directions) and require the certificate to fail closed, and the pure closure predicate
+(g4_sm_closure_binding_v20) to reject it.  The ledger and roadmap texts of G4 are pinned against the committed
+artifacts, where G4 is CLOSED on this certificate through the binding; the certificate never closes G4 by itself.
 """
 from __future__ import annotations
 
@@ -23,19 +24,20 @@ import numpy as np
 
 import g3_candidate_physical_target_audit_v20 as target
 import g3_sm_pati_salam_exact_hessian_v20 as hessian
+import g4_sm_closure_binding_v20 as g4_binding
 import g4_sm_pati_salam_physical_quotient_v20 as g4
 import live_g2_canonical_486_field_chart_v20 as chart
 
 TIMING_KEYS = {"runtime_seconds"}
 LEDGER_JSON = g4.ROOT / "G1_G8_GATE_LEDGER_V20.json"
 ROADMAP_JSON = g4.ROOT / "G1_G8_EXECUTION_ROADMAP_V20.json"
-NEVER_TRUE_FLAGS = (
-    "G4_closed",
-    "G4_wired_into_gate_ledger",
-    "report_closes_g4_by_itself",
-    "gate_status_changed",
-    "internal_candidate_approved",
+NEVER_TRUE_FLAGS = ("report_closes_g4_by_itself",)
+ALWAYS_TRUE_STATIC_FLAGS = (
+    "wired_into_gate_ledger_as_G4_evidence",
+    "tree_level_only",
+    "axion_massless_only_for_renormalizable_PQ_neutral_potential",
 )
+REMOVED_FLAGS = ("G4_closed", "G4_wired_into_gate_ledger", "gate_status_changed", "internal_candidate_approved")
 
 
 def _strip_timing(value: Any) -> Any:
@@ -73,7 +75,16 @@ class G4SmPatiSalamPhysicalQuotientTest(unittest.TestCase):
         self.assertFalse(report["flags"]["certificate_passes"])
         self.assertFalse(g4.report_passes(report))
         for name in NEVER_TRUE_FLAGS:
-            self.assertFalse(report["flags"][name], name)
+            self.assertIs(report["flags"][name], False, name)
+        for name in ALWAYS_TRUE_STATIC_FLAGS:
+            self.assertIs(report["flags"][name], True, name)
+        for name in REMOVED_FLAGS:
+            self.assertNotIn(name, report["flags"])
+        self.assertNotIn("G4_closed", report)
+        self.assertTrue(report["verdict"].endswith("G4 is not closed on this report."))
+        binding = g4_binding.evaluate_g4_binding(report)
+        self.assertIs(binding["certified"], False)
+        self.assertIn("g4_report_executes", binding["blockers"])
         for name in expected_failures:
             self.assertIn(name, report["failures"])
 
@@ -81,16 +92,18 @@ class G4SmPatiSalamPhysicalQuotientTest(unittest.TestCase):
     # Status, checks and the committed artifact.
     # ------------------------------------------------------------------
 
-    def test_all_checks_pass_and_certificate_is_claimed_but_not_wired(self) -> None:
+    def test_all_checks_pass_and_certificate_is_claimed_and_wired_as_g4_evidence(self) -> None:
         for report in (self.committed, self.fresh):
             self.assertEqual(report["n_failed"], 0, report["failures"])
             self.assertEqual(report["failures"], [])
             self.assertEqual(report["n_checks"], len(report["checks"]))
             self.assertEqual(report["n_checks"], 69)
+            self.assertEqual(report["n_checks"], g4_binding.REQUIRED_N_CHECKS)
             self.assertTrue(all(report["checks"].values()))
             self.assertEqual(report["status"], g4.STATUS_CERTIFIED)
-            self.assertEqual(report["status"], "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__G4_NOT_WIRED")
+            self.assertEqual(report["status"], "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__WIRED_AS_G4_EVIDENCE")
             self.assertEqual(report["overall_state"], g4.OVERALL_STATE_CERTIFIED)
+            self.assertEqual(report["overall_state"], "EXACT_G4_PHYSICAL_QUOTIENT_AT_G3_WITNESS__TREE_LEVEL")
             self.assertEqual(report["model_contract_id"], g4.MODEL_CONTRACT_ID)
             self.assertTrue(report["theorem_claimed"])
             self.assertEqual(report["theorem"], g4.THEOREM)
@@ -98,17 +111,45 @@ class G4SmPatiSalamPhysicalQuotientTest(unittest.TestCase):
             self.assertTrue(report["flags"]["compiler_binding_float64_only"])
             for name in NEVER_TRUE_FLAGS:
                 self.assertIs(report["flags"][name], False, name)
-            self.assertIs(report["G4_closed"], False)
+            for name in ALWAYS_TRUE_STATIC_FLAGS:
+                self.assertIs(report["flags"][name], True, name)
+            for name in REMOVED_FLAGS:
+                self.assertNotIn(name, report["flags"])
+            self.assertNotIn("G4_closed", report)
+            self.assertEqual(report["G4_status_decided_by"], g4.G4_STATUS_DECIDED_BY)
             self.assertTrue(g4.report_passes(report))
             final = report["final_acceptance_test"]
             self.assertEqual(final["gate"], "G4")
             self.assertEqual(final["required_statement"], g4.G4_REQUIRED_STATEMENT)
             self.assertIs(final["currently_passes"], True)
             self.assertEqual(final["status"], g4.STATUS_CERTIFIED)
-            self.assertIs(final["wired_into_gate_ledger"], False)
+            self.assertIs(final["wired_into_gate_ledger"], True)
             self.assertIs(final["closes_g4_by_itself"], False)
-            self.assertIn("decision D3", final["wiring_decision"])
-            self.assertIn("G4 OPEN", final["wiring_decision"])
+            self.assertNotIn("wiring_decision", final)
+            self.assertEqual(final["wiring"], g4.G4_WIRING)
+            self.assertIn("decision D3", final["wiring"])
+            # Decision D-E: a CLOSED G4 approves nothing; the tier waits for G7.
+            self.assertIn("decision D-E (2026-09-26) holds until G7 is CLOSED", final["wiring"])
+            self.assertNotIn("approves the internal-candidate tier", final["wiring"])
+            self.assertTrue(report["verdict"].endswith(
+                "The axion is massless only for the renormalizable PQ-neutral benchmark potential."
+            ))
+
+    def test_constants_come_from_the_pure_binding(self) -> None:
+        self.assertEqual(g4.STATUS_CERTIFIED, g4_binding.REQUIRED_STATUS)
+        self.assertEqual(g4.STATUS_INCOMPLETE, g4_binding.INCOMPLETE_STATUS)
+        self.assertEqual(g4.STATUS_INCOMPLETE, "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_NOT_CERTIFIED__G4_NOT_CLOSED")
+        self.assertEqual(g4.OVERALL_STATE_CERTIFIED, g4_binding.REQUIRED_OVERALL_STATE)
+        self.assertEqual(g4.OVERALL_STATE_OPEN, "G4_PHYSICAL_QUOTIENT_OPEN")
+        self.assertEqual(g4.G4_REQUIRED_STATEMENT, g4_binding.G4_REQUIRED_STATEMENT)
+        self.assertEqual(g4.W3_G4_ACCEPTANCE, g4_binding.W3_G4_ACCEPTANCE)
+
+    def test_fresh_and_committed_reports_satisfy_the_closure_binding(self) -> None:
+        for report in (self.committed, self.fresh):
+            binding = g4_binding.evaluate_g4_binding(report, g4_open_scope=g4.G4_OPEN_SCOPE)
+            self.assertIs(binding["certified"], True, binding["blockers"])
+            self.assertEqual(binding["blockers"], [])
+            self.assertEqual(binding["status"], g4.STATUS_CERTIFIED)
 
     def test_committed_artifact_matches_fresh_report(self) -> None:
         committed = _strip_timing(self.committed)
@@ -131,7 +172,8 @@ class G4SmPatiSalamPhysicalQuotientTest(unittest.TestCase):
         for fragment in (
             self.committed["status"],
             g4.G4_REQUIRED_STATEMENT,
-            "**Currently passes:** `True`; wired into the gate ledger: `False`; closes G4 by itself: `False`.",
+            "**Currently passes:** `True`; wired into the gate ledger: `True`; closes G4 by itself: `False`.",
+            "## Final acceptance test (G4, wired as closure evidence)",
             "inertia on W `451/1/0`",
             "inertia on W `447/5/0`",
             "|a|^2 = `9248/7241`",
@@ -140,7 +182,7 @@ class G4SmPatiSalamPhysicalQuotientTest(unittest.TestCase):
             "Sigma_phase `0`",
             "(1,2)_{1/2}",
             "lambda_eff = `127/64`",
-            "Wiring: left to the user",
+            "Wiring: wired: g1_g8_gate_ledger_v20 closes G4 on this certificate through g4_sm_closure_binding_v20",
             "live compiler binding (float64, max residual): `0.0`",
             "axion-angle period modulo SO(10) x U(1)_X: `2 pi/68`",
             "v_a^2 = `2/7241` M_GUT^2",
@@ -148,23 +190,29 @@ class G4SmPatiSalamPhysicalQuotientTest(unittest.TestCase):
         ):
             self.assertIn(fragment, text)
         self.assertNotIn("primitive_integer_vector", text)
+        self.assertNotIn("not wired", text)
 
-    def test_ledger_and_roadmap_texts_are_pinned_and_G4_stays_open(self) -> None:
+    def test_ledger_and_roadmap_texts_are_pinned_and_G4_is_closed_on_this_certificate(self) -> None:
         ledger = json.loads(LEDGER_JSON.read_text(encoding="utf-8"))
         gate = ledger["gates"]["G4"]
-        self.assertEqual(gate["status"], "OPEN")
+        self.assertEqual(gate["status"], "CLOSED")
         self.assertEqual(gate["title"], "Gauge quotient, axion directions, and physical Hessian")
         self.assertEqual(gate["open_scope"], list(g4.G4_OPEN_SCOPE))
-        self.assertEqual(gate["authoritative_closed_scope"], [])
+        self.assertEqual(gate["authoritative_closed_scope"], [g4_binding.G4_LEDGER_CLOSED_SCOPE])
+        self.assertIs(gate["closure_evidence"]["certified"], True)
+        self.assertEqual(gate["closure_evidence"]["status"], g4.STATUS_CERTIFIED)
+        self.assertIs(g4_binding.ledger_g4_closed(ledger), True)
         roadmap = json.loads(ROADMAP_JSON.read_text(encoding="utf-8"))
         tasks = {task["id"]: task for task in roadmap["tasks"]}
         task = tasks["W3-G4-FULL-GAUGE-QUOTIENT"]
-        self.assertEqual(task["status"], "OPEN")
+        self.assertEqual(task["status"], "CLOSED")
         self.assertEqual(task["acceptance"], g4.W3_G4_ACCEPTANCE)
         coverage = self.committed["g4_open_scope_coverage"]
         self.assertEqual([row["item"] for row in coverage], list(g4.G4_OPEN_SCOPE))
         self.assertTrue(all(row["content_certified"] for row in coverage))
-        self.assertIs(coverage[2]["resolved"], False)
+        self.assertIs(coverage[2]["resolved_by_this_report"], False)
+        self.assertNotIn("resolved", coverage[2])
+        self.assertEqual(coverage[2]["resolution"], g4.G4_COVERAGE_RESOLUTION)
         acceptance = self.committed["roadmap_W3_G4_acceptance"]
         self.assertEqual(acceptance["text"], g4.W3_G4_ACCEPTANCE)
         self.assertTrue(acceptance["ranks_compiler_bound"])
@@ -452,10 +500,25 @@ class G4SmPatiSalamPhysicalQuotientTest(unittest.TestCase):
         for report in (self.committed, self.fresh):
             scope = report["scope"]
             not_covered = " ".join(scope["not_covered"])
-            for fragment in ("physical hierarchy point", "loop corrections", "G6 positivity/EWSB", "decision D3", "PQ-violating"):
+            for fragment in (
+                "physical hierarchy point",
+                "loop corrections",
+                "G6 positivity/EWSB",
+                "PQ-violating",
+                "QCD anomaly",
+                "G6-G8: the complete physical spectrum beyond tree level",
+            ):
                 self.assertIn(fragment, not_covered)
+            self.assertEqual(
+                scope["not_covered"][-1],
+                "G6-G8: the complete physical spectrum beyond tree level, electroweak symmetry breaking, RG matching, "
+                "Yukawas and proton decay (this certificate supports only G4)",
+            )
+            self.assertNotIn("wiring G4", not_covered)
             self.assertIn("float64", " ".join(scope["float64_evidence_only"]))
-            self.assertIn("G4 is NOT wired", report["verdict"])
+            self.assertIn("This certificate is the G4 closure evidence", report["verdict"])
+            self.assertIn("it does not close G4 by itself", report["verdict"])
+            self.assertNotIn("NOT wired", report["verdict"])
 
     # ------------------------------------------------------------------
     # Fail-closed mutations.

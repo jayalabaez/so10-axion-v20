@@ -6,6 +6,10 @@ import copy
 
 import g1_g8_execution_roadmap_v20 as mod
 import g3_sm_target_track_v20 as sm_track
+import g4_sm_closure_binding_v20 as g4_closure
+
+CLOSED_G4_ROADMAP_STATUS = "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G4_G5_CLOSED__G6_OPEN"
+G4_OPEN_ROADMAP_STATUS = "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G5_CLOSED__G4_OPEN"
 
 
 def bind_tool_native_root_evidence(report):
@@ -34,18 +38,20 @@ def bind_tool_native_root_evidence(report):
         external["checks"][name] = True
 
 
-def test_roadmap_audit_succeeds_with_attested_contract_and_g3_closed_on_sm_track():
+def test_roadmap_audit_succeeds_with_attested_contract_g3_and_g4_closed():
     report = mod.build_report()
-    assert report["status"] == (
-        "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G5_CLOSED__G4_OPEN"
-    )
+    assert report["status"] == CLOSED_G4_ROADMAP_STATUS
     assert report["overall_state"] == "OPEN"
     assert report["n_failed"] == 0, report["audit_failures"]
     assert report["contract_consistent"] is True
-    assert report["scientific_blockers"] == list(sm_track.DOWNSTREAM_BLOCKERS)
+    assert report["scientific_blockers"] == list(
+        g4_closure.DOWNSTREAM_BLOCKERS_AFTER_G4
+    )
     assert "G3_SM_PRESERVING_TARGET_REQUIRED" not in report["scientific_blockers"]
     assert report["checks"]["w3_g3_closed_only_through_sm_track"] is True
+    assert report["checks"]["w3_g4_closed_only_on_the_certified_binding"] is True
     assert report["gates"]["G3"]["closing_track"] == sm_track.TRACK_NAME
+    assert report["gates"]["G4"]["closure_evidence"]["certified"] is True
     assert report["g3_sm_target_track"]["closed"] is True
     assert report["g3_sm_target_track"]["downstream_caveats_resolved"] is False
     verdict = report["verdict"]
@@ -53,9 +59,17 @@ def test_roadmap_audit_succeeds_with_attested_contract_and_g3_closed_on_sm_track
         "Wave 0 and the gauged scalar G1/G2 recertification are CLOSED. G3 is "
         "CLOSED on the SM Pati-Salam track (g3_sm_target_track_v20 through "
         "final_g3_acceptance_gate_v20): " + sm_track.CLOSURE_SCOPE
+        + " G5 is CLOSED on the same coupling vector. "
+        + g4_closure.G4_CLOSED_SENTENCE
+        + " W4-G6 is OPEN (tree-level evidence only); G7-G8 remain "
+        "dependency-blocked. " + sm_track.CAVEAT_ROUTING_SENTENCE
+        + " Diagnostics that cannot close G3: "
     )
-    assert sm_track.CAVEAT_ROUTING_SENTENCE in verdict
-    assert "W3-G4 is OPEN: recompute the ranks 34/35 (quotients 452/451)" in verdict
+    assert g4_closure.G4_CLOSED_SENTENCE in verdict
+    assert "W4-G6 is OPEN (tree-level evidence only)" in verdict
+    assert "massless only for the renormalizable PQ-neutral benchmark potential" in verdict
+    assert "W3-G4 is OPEN" not in verdict
+    assert "G6-G8 remain dependency-blocked" not in verdict
     assert "Diagnostics that cannot close G3: the historical 27-of-51" in verdict
     assert verdict.endswith(
         "The historical 64/91 saddle/search remains scoped to option C."
@@ -82,7 +96,7 @@ def test_wave_zero_is_first_on_the_critical_path():
     assert wave0["gates"] == []
 
 
-def test_attested_contract_closes_g1_g2_g3_g5_and_opens_g4():
+def test_attested_contract_closes_g1_to_g5_and_opens_g6():
     report = mod.build_report()
     gates = report["gates"]
     assert set(gates) == {f"G{i}" for i in range(1, 9)}
@@ -90,26 +104,30 @@ def test_attested_contract_closes_g1_g2_g3_g5_and_opens_g4():
         "G1": "CLOSED",
         "G2": "CLOSED",
         "G3": "CLOSED",
-        "G4": "OPEN",
+        "G4": "CLOSED",
         "G5": "CLOSED",
-        "G6": "BLOCKED",
+        "G6": "OPEN",
         "G7": "BLOCKED",
         "G8": "BLOCKED",
     }
-    assert report["summary"]["closed"] == ["G1", "G2", "G3", "G5"]
-    assert report["summary"]["open"] == ["G4"]
-    assert report["summary"]["blocked"] == ["G6", "G7", "G8"]
-    assert report["summary"]["n_closed"] == 4
-    assert report["summary"]["n_blocked"] == 3
+    assert report["summary"]["closed"] == ["G1", "G2", "G3", "G4", "G5"]
+    assert report["summary"]["open"] == ["G6"]
+    assert report["summary"]["blocked"] == ["G7", "G8"]
+    assert report["summary"]["n_closed"] == 5
+    assert report["summary"]["n_blocked"] == 2
     task_statuses = {task["id"]: task["status"] for task in report["tasks"]}
     assert task_statuses["W3-G3-FULL-STATIONARITY"] == "CLOSED"
-    assert task_statuses["W3-G4-FULL-GAUGE-QUOTIENT"] == "OPEN"
+    assert task_statuses["W3-G4-FULL-GAUGE-QUOTIENT"] == "CLOSED"
     assert task_statuses["W3-G5-FULL-BFB"] == "CLOSED"
-    # Late waves name only the gates they still wait on (G3 and G5 are CLOSED).
-    assert task_statuses["W4-G6-SPECTRUM"] == "BLOCKED_ON_G4"
+    # Late waves name only the gates they still wait on (G3, G4 and G5 are
+    # CLOSED; G6 is OPEN, never CLOSED on its tree-level evidence).
+    assert task_statuses["W4-G6-SPECTRUM"] == "OPEN"
     assert task_statuses["W5-G7-TWO-LOOP"] == "BLOCKED_ON_G6_AND_EXTERNAL_VALIDATION"
     assert task_statuses["W6-G8-PROTON"] == "BLOCKED_ON_G6_G7"
     assert report["checks"]["late_wave_tasks_match_ledger_closure_waves"] is True
+    # The G6/G8 certificates are cited as evidence only.
+    assert gates["G6"]["tree_level_evidence"]["closes_gate"] is False
+    assert gates["G8"]["flavour_evidence"]["closes_gate"] is False
 
 
 def test_late_wave_task_statuses_follow_the_gate_frontier():
@@ -131,13 +149,13 @@ def test_late_wave_task_statuses_follow_the_gate_frontier():
     waves = {wave["wave"]: wave["status"] for wave in ledger_report["closure_waves"]}
     report = mod._build_report_from_ledger(ledger_report)
     statuses = _task_statuses(report)
-    assert statuses["W4-G6-SPECTRUM"] == waves[4] == "BLOCKED_ON_G4"
+    assert statuses["W4-G6-SPECTRUM"] == waves[4] == "OPEN"
     assert statuses["W6-G8-PROTON"] == waves[6] == "BLOCKED_ON_G6_G7"
     # A ledger whose closure waves disagree with its gate frontier is an audit failure.
     drifted = copy.deepcopy(ledger_report)
     for wave in drifted["closure_waves"]:
         if wave["wave"] == 4:
-            wave["status"] = "OPEN"
+            wave["status"] = "BLOCKED_ON_G4"
     report = mod._build_report_from_ledger(drifted)
     assert report["overall_state"] == "EXECUTION_FAIL"
     assert report["audit_failures"] == ["late_wave_tasks_match_ledger_closure_waves"]
@@ -489,11 +507,34 @@ def test_w3_g3_deliverable_records_the_sm_track_closure_and_caveat_routing():
 
 def test_w3_g4_and_g5_tasks_are_rebound_to_the_sm_witness():
     tasks = {task["id"]: task for task in mod.TASKS}
+    assert mod.W3_G4_TASK_ID == "W3-G4-FULL-GAUGE-QUOTIENT"
     g4 = tasks["W3-G4-FULL-GAUGE-QUOTIENT"]
     assert g4["status"] == "RANKS_34_35_AT_SM_WITNESS_PENDING__BLOCKED_ON_G3"
     assert "rank 34 (gauge" in g4["deliverable"] and "quotient 452" in g4["deliverable"]
     assert "rank 35" in g4["deliverable"] and "quotient 451" in g4["deliverable"]
     assert "eps -> 0 tuned" in g4["deliverable"]
+    # The static table is fail-closed (no "done" clause); the acceptance is the
+    # text the G4 certificate binds verbatim.
+    assert g4["deliverable"] == mod.w3_g4_deliverable(False)
+    assert "; done: " not in g4["deliverable"]
+    assert g4["acceptance"] == g4_closure.W3_G4_ACCEPTANCE
+    assert g4["acceptance"] == (
+        "exact gauge/global-symmetry ranks remain compiler-bound and the "
+        "completed G3 Hessian has no unexplained zero or negative modes"
+    )
+    # Only a literal True adds the "done" clause.
+    assert mod.w3_g4_deliverable(1) == mod.w3_g4_deliverable(False)
+    assert mod.w3_g4_deliverable("True") == mod.w3_g4_deliverable(False)
+    assert mod.w3_g4_deliverable(True) == (
+        mod.w3_g4_deliverable(False) + "; done: " + g4_closure.G4_CLOSED_SENTENCE
+    )
+    # The committed state: the ledger's G4 evidence is certified, so the
+    # promoted task carries the "done" clause.
+    report = mod.build_report()
+    promoted = next(task for task in report["tasks"] if task["id"] == mod.W3_G4_TASK_ID)
+    assert promoted["status"] == "CLOSED"
+    assert promoted["deliverable"] == mod.w3_g4_deliverable(True)
+    assert promoted["acceptance"] == g4_closure.W3_G4_ACCEPTANCE
     g5 = tasks["W3-G5-FULL-BFB"]
     assert g5["status"] == (
         "SCOPED_BFB_CERTIFICATE_ON_PATI_SALAM_VECTOR__BLOCKED_ON_MODEL_CONTRACT_PROMOTION"
@@ -529,6 +570,9 @@ def test_w3_g3_fails_closed_when_the_sm_track_is_not_certified():
     assert report["gates"]["G3"]["status"] == "OPEN"
     assert report["gates"]["G4"]["status"] == "BLOCKED"
     assert report["gates"]["G5"]["status"] == "OPEN"
+    # A certified G4 binding never closes W3-G4 without a closed G3.
+    w3_g4 = next(task for task in report["tasks"] if task["id"] == mod.W3_G4_TASK_ID)
+    assert w3_g4["deliverable"] == mod.w3_g4_deliverable(False)
     deliverable = _w3_g3_task(report)["deliverable"]
     assert deliverable == mod.w3_g3_deliverable(False)
     assert SM_TRACK_DONE_FRAGMENT not in deliverable
@@ -626,18 +670,115 @@ def test_repaired_contract_advances_the_roadmap_without_audit_failure():
 
     assert report["n_failed"] == 0, report["audit_failures"]
     assert report["overall_state"] == mod.ledger.STATUS_OPEN
-    assert report["status"] == (
-        "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G5_CLOSED__G4_OPEN"
-    )
-    assert report["summary"]["closed"] == ["G1", "G2", "G3", "G5"]
-    assert report["summary"]["open"] == ["G4"]
+    assert report["status"] == CLOSED_G4_ROADMAP_STATUS
+    assert report["summary"]["closed"] == ["G1", "G2", "G3", "G4", "G5"]
+    assert report["summary"]["open"] == ["G6"]
     task_statuses = {task["id"]: task["status"] for task in report["tasks"]}
     assert task_statuses["W0-MODEL-CONTRACT"] == mod.ledger.STATUS_CLOSED
     assert task_statuses["W1-G1-GAUGED-RECERTIFICATION"] == mod.ledger.STATUS_CLOSED
     assert task_statuses["W2-G2-GAUGED-PROJECTION"] == mod.ledger.STATUS_CLOSED
     assert task_statuses["W3-G3-FULL-STATIONARITY"] == mod.ledger.STATUS_CLOSED
     assert task_statuses["W3-G5-FULL-BFB"] == mod.ledger.STATUS_CLOSED
-    assert task_statuses["W3-G4-FULL-GAUGE-QUOTIENT"] == mod.ledger.STATUS_OPEN
-    assert report["gates"]["G4"]["status"] == mod.ledger.STATUS_OPEN
-    assert report["gates"]["G6"]["status"] == mod.ledger.STATUS_BLOCKED
+    assert task_statuses["W3-G4-FULL-GAUGE-QUOTIENT"] == mod.ledger.STATUS_CLOSED
+    assert task_statuses["W4-G6-SPECTRUM"] == mod.ledger.STATUS_OPEN
+    assert report["gates"]["G4"]["status"] == mod.ledger.STATUS_CLOSED
+    assert report["gates"]["G6"]["status"] == mod.ledger.STATUS_OPEN
     assert report["gates"]["G8"]["status"] == mod.ledger.STATUS_BLOCKED
+
+
+def _ledger_with_g4_report(g4_report):
+    """A fresh ledger on the committed contract with the given G4 report."""
+    inputs = mod.ledger.build_report()["model_contract_reports"]
+    return mod.ledger._build_report_from_inputs(
+        x_report=inputs["exact_X"],
+        g1_report=inputs["gauged_G1_character_census"],
+        g2_report=inputs["gauged_G2_derivative_audit"],
+        filter_report=inputs["gauged_scalar_filter"],
+        g4_report=g4_report,
+    )
+
+
+def test_uncertified_g4_report_keeps_w3_g4_open_without_audit_failure():
+    # The ledger itself reopens G4 on a missing G4 report (fail closed); the
+    # roadmap follows it consistently: the G3-closed/G4-open branch.
+    open_ledger = _ledger_with_g4_report({})
+    assert open_ledger["n_failed"] == 0, open_ledger["failures"]
+    assert open_ledger["gates"]["G4"]["status"] == "OPEN"
+    assert open_ledger["gates"]["G4"]["closure_evidence"]["certified"] is False
+
+    report = mod._build_report_from_ledger(open_ledger)
+
+    assert report["n_failed"] == 0, report["audit_failures"]
+    assert report["status"] == G4_OPEN_ROADMAP_STATUS
+    assert report["overall_state"] == "OPEN"
+    statuses = _task_statuses(report)
+    assert statuses["W3-G3-FULL-STATIONARITY"] == "CLOSED"
+    assert statuses["W3-G4-FULL-GAUGE-QUOTIENT"] == "OPEN"
+    assert statuses["W3-G5-FULL-BFB"] == "CLOSED"
+    assert statuses["W4-G6-SPECTRUM"] == "BLOCKED_ON_G4"
+    assert statuses["W6-G8-PROTON"] == "BLOCKED_ON_G6_G7"
+    w3_g4 = next(task for task in report["tasks"] if task["id"] == mod.W3_G4_TASK_ID)
+    assert w3_g4["deliverable"] == mod.w3_g4_deliverable(False)
+    assert report["checks"]["w3_g4_closed_only_on_the_certified_binding"] is True
+    assert "W3-G4 is OPEN: recompute the ranks 34/35 (quotients 452/451)" in report["verdict"]
+    assert g4_closure.G4_CLOSED_SENTENCE not in report["verdict"]
+
+
+def test_ledger_g4_closure_without_certified_evidence_is_an_audit_failure():
+    ledger_report = mod.ledger.build_report()
+    gates = ledger_report["gates"]
+    without_evidence = {
+        key: value for key, value in gates["G4"].items() if key != "closure_evidence"
+    }
+    uncertified_evidence = {
+        **gates["G4"],
+        "closure_evidence": {**gates["G4"]["closure_evidence"], "certified": False},
+    }
+    string_certified = {
+        **gates["G4"],
+        "closure_evidence": {**gates["G4"]["closure_evidence"], "certified": "true"},
+    }
+    for forged_row in (without_evidence, uncertified_evidence, string_certified):
+        forged = dict(ledger_report)
+        forged["gates"] = {**gates, "G4": forged_row}
+        report = mod._build_report_from_ledger(forged)
+        assert report["overall_state"] == "EXECUTION_FAIL"
+        assert report["status"] == "G1_G8_EXECUTION_ROADMAP_AUDIT_FAILED"
+        # The ledger's CLOSED G4 no longer matches the frontier implied by its
+        # evidence, and its closure waves still follow the forged CLOSED G4.
+        assert "gate_frontier_matches_contract_state" in report["audit_failures"]
+        assert "late_wave_tasks_match_ledger_closure_waves" in report["audit_failures"]
+        statuses = _task_statuses(report)
+        assert statuses["W3-G4-FULL-GAUGE-QUOTIENT"] == "OPEN"
+        assert statuses["W4-G6-SPECTRUM"] == "BLOCKED_ON_G4"
+        w3_g4 = next(task for task in report["tasks"] if task["id"] == mod.W3_G4_TASK_ID)
+        assert w3_g4["deliverable"] == mod.w3_g4_deliverable(False)
+        assert g4_closure.G4_CLOSED_SENTENCE not in report["verdict"]
+
+
+def test_ledger_g4_status_forged_open_on_certified_evidence_is_an_audit_failure():
+    ledger_report = mod.ledger.build_report()
+    gates = ledger_report["gates"]
+    forged = dict(ledger_report)
+    forged["gates"] = {**gates, "G4": {**gates["G4"], "status": "OPEN"}}
+    report = mod._build_report_from_ledger(forged)
+    assert report["overall_state"] == "EXECUTION_FAIL"
+    assert "gate_frontier_matches_contract_state" in report["audit_failures"]
+    # W3-G4 follows the certified evidence, so it cannot be CLOSED on a gate
+    # the ledger reports as not CLOSED.
+    assert "w3_g4_closed_only_on_the_certified_binding" in report["audit_failures"]
+    assert _task_statuses(report)["W3-G4-FULL-GAUGE-QUOTIENT"] == "CLOSED"
+
+
+def test_unattested_contract_never_carries_the_g4_done_clause():
+    # On a blocked contract every gate is BLOCKED, so the G4 closure sentence
+    # would be false even with certified G4 evidence in the ledger row.
+    ledger_report = mod.ledger.build_report()
+    assert ledger_report["gates"]["G4"]["closure_evidence"]["certified"] is True
+    forged = dict(ledger_report)
+    forged["contract_consistent"] = False
+    report = mod._build_report_from_ledger(forged)
+    w3_g4 = next(task for task in report["tasks"] if task["id"] == mod.W3_G4_TASK_ID)
+    assert w3_g4["status"] == "RANKS_34_35_AT_SM_WITNESS_PENDING__BLOCKED_ON_G3"
+    assert w3_g4["deliverable"] == mod.w3_g4_deliverable(False)
+    assert report["overall_state"] == "EXECUTION_FAIL"

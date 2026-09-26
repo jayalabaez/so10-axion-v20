@@ -4,6 +4,7 @@ import unittest
 from unittest import mock
 
 import authoritative_full_model_gate_v20 as mod
+import g4_sm_closure_binding_v20 as g4_closure
 
 
 def bind_tool_native_root_evidence(report):
@@ -52,6 +53,32 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
                 "internal_candidate_approval_is_not_full_model_validation"
             ]
         )
+        self.assertEqual(
+            self.report["legacy_ultimate_gate"]["reason"],
+            "The ultimate gate's tiers are confirmation tiers: its "
+            "internal-candidate tier (decisions D3 and D-E) is never "
+            "full-model validation, which needs every G1-G8 gate CLOSED "
+            "and a unique proton lifetime from the same vacuum.",
+        )
+
+    def test_internal_candidate_tier_is_recorded_but_not_promoted(self):
+        # G4 CLOSED meets decision D3, but decision D-E holds the internal
+        # candidate until G7 is CLOSED, so the committed ultimate gate does
+        # not approve it; no approval would ever be full-model validation.
+        legacy = self.report["legacy_ultimate_gate"]
+        self.assertTrue(legacy["available"])
+        self.assertIs(legacy["internal_candidate_approved"], False)
+        self.assertIs(legacy["full_phenomenology_approved"], False)
+        self.assertIs(
+            self.report["checks"]["internal_candidate_not_promoted_to_full_validation"],
+            True,
+        )
+        self.assertFalse(self.report["classification"]["whole_model_validated"])
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
+        self.assertIn(
+            "The internal-candidate tier (decisions D3 and D-E) is not full-model validation.",
+            self.report["verdict"],
+        )
 
     def test_no_full_model_claim(self):
         classification = self.report["classification"]
@@ -77,30 +104,43 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         )
         self.assertNotIn("G1_NOT_CLOSED", blockers)
         self.assertNotIn("G2_NOT_CLOSED", blockers)
-        # G3 closes on the SM Pati-Salam track and G5 on the same coupling vector.
+        # G3 closes on the SM Pati-Salam track, G4 at its witness benchmark
+        # (tree level) and G5 on the same coupling vector.
         self.assertNotIn("G3_NOT_CLOSED", blockers)
+        self.assertNotIn("G4_NOT_CLOSED", blockers)
         self.assertNotIn("G5_NOT_CLOSED", blockers)
-        for gate in ("G4", "G6", "G7", "G8"):
+        for gate in ("G6", "G7", "G8"):
             self.assertIn(f"{gate}_NOT_CLOSED", blockers)
         self.assertTrue(any(item.startswith("PROTON_READINESS_") for item in blockers))
 
-    def test_verdict_scopes_the_g3_closure(self):
+    def test_verdict_scopes_the_g3_and_g4_closures(self):
         verdict = self.report["verdict"]
         self.assertTrue(
             verdict.startswith(
                 "The repository remains BLOCKED at full-model scope. On the "
-                "attested gauged U(1)_X contract the ledger closes G1, G2, G3, G5 "
+                "attested gauged U(1)_X contract the ledger closes G1, G2, G3, "
+                "G4, G5 "
             ),
             verdict,
         )
-        self.assertIn("G3 on the SM Pati-Salam benchmark family only", verdict)
         self.assertIn(
-            ", but G4, G6, G7, G8 and the unique proton-lifetime derivation "
+            " (G3 on the SM Pati-Salam benchmark family only; see "
+            "FINAL_G3_ACCEPTANCE_GATE_V20; G4 at the G3 witness benchmark, tree "
+            "level; see G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20), but ",
+            verdict,
+        )
+        self.assertIn("G4 at the G3 witness benchmark, tree level", verdict)
+        self.assertIn(
+            ", but G6, G7, G8 and the unique proton-lifetime derivation "
             "are not closed.",
             verdict,
         )
         self.assertEqual(
             self.report["classification"]["g3_closing_track"], "sm_pati_salam"
+        )
+        self.assertEqual(
+            self.report["classification"]["g4_closure_scope"],
+            g4_closure.G4_LEDGER_CLOSED_SCOPE,
         )
         self.assertEqual(self.report["overall_state"], "BLOCKED")
 
@@ -140,9 +180,11 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         self.assertNotIn("G1_NOT_CLOSED", report["blockers"])
         self.assertNotIn("G2_NOT_CLOSED", report["blockers"])
         self.assertNotIn("G3_NOT_CLOSED", report["blockers"])
-        self.assertIn("G4_NOT_CLOSED", report["blockers"])
+        self.assertNotIn("G4_NOT_CLOSED", report["blockers"])
+        self.assertIn("G6_NOT_CLOSED", report["blockers"])
         self.assertIn("G8_NOT_CLOSED", report["blockers"])
         self.assertIn("G3 on the SM Pati-Salam benchmark family only", report["verdict"])
+        self.assertIn("G4 at the G3 witness benchmark, tree level", report["verdict"])
         self.assertFalse(report["classification"]["whole_model_validated"])
 
     def test_unbound_consistency_boolean_is_an_integrity_failure(self):

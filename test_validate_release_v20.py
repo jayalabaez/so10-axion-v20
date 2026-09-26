@@ -167,6 +167,20 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_g3_sm_pati_salam_gate_readiness_v20.py",
             "G3_SM_PATI_SALAM_GATE_READINESS_V20.json",
             "G3_SM_PATI_SALAM_GATE_READINESS_V20.md",
+            "g4_sm_closure_binding_v20.py",
+            "test_g4_sm_closure_binding_v20.py",
+            "g4_sm_pati_salam_physical_quotient_v20.py",
+            "test_g4_sm_pati_salam_physical_quotient_v20.py",
+            "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json",
+            "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.md",
+            "g6_sm_pati_salam_tree_spectrum_v20.py",
+            "test_g6_sm_pati_salam_tree_spectrum_v20.py",
+            "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json",
+            "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.md",
+            "g8_sm_pati_salam_flavour_nogo_v20.py",
+            "test_g8_sm_pati_salam_flavour_nogo_v20.py",
+            "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",
+            "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -247,15 +261,86 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             'final_g3["tracks"]["chiral_H_SU5_Delta"]["can_close_G3"] is False',
             'ledger_report["gates"]["G3"]["status"] == "CLOSED"',
             'ledger_report["gates"]["G3"]["closing_track"] == "sm_pati_salam"',
-            'ledger_report["gates"]["G4"]["status"] == "OPEN"',
+            'ledger_report["gates"]["G4"]["status"] == "CLOSED"',
+            'ledger_report["gates"]["G4"]["closure_evidence"]["certified"] is True',
+            'ledger_report["gates"]["G4"]["closure_evidence"]["status"] == g4_closure.REQUIRED_STATUS',
             'ledger_report["gates"]["G5"]["status"] == "CLOSED"',
-            'ledger_report["gates"][g]["status"] == "BLOCKED" for g in ("G6", "G7", "G8")',
+            'ledger_report["gates"]["G6"]["status"] == "OPEN"',
+            'ledger_report["gates"][g]["status"] == "BLOCKED" for g in ("G7", "G8")',
         ):
             self.assertIn(required, predicate)
+        for stale in (
+            'ledger_report["gates"]["G4"]["status"] == "OPEN"',
+            'ledger_report["gates"][g]["status"] == "BLOCKED" for g in ("G6", "G7", "G8")',
+        ):
+            self.assertNotIn(stale, predicate)
+        self.assertIn("import g4_sm_closure_binding_v20 as g4_closure", source)
         self.assertNotIn('final_g3["overall_state"] == "OPEN"', source)
-        # Decision D3 keeps the internal-candidate tier withheld, so this pin
-        # stays in force even with G1-G3 CLOSED.
+        # G4 CLOSED meets decision D3, but decision D-E holds the internal
+        # candidate until G7 is CLOSED; the release pins the hold and forbids
+        # every approval or exclusion.
+        end = source.index(
+            '"ultimate gate approved the internal candidate before G7 (decision D-E) '
+            'or approved or excluded the open model"'
+        )
+        start = source.rindex("require(", 0, end)
+        ultimate_predicate = source[start:end]
+        for required in (
+            'ultimate["overall_state"] == "OPEN"',
+            'and not ultimate["internal_candidate_approved"]',
+            'and ultimate["internal_candidate_gate"]["G4_closed"] is True',
+            'and ultimate["internal_candidate_gate"]["G7_closed"] is False',
+            'and ultimate["internal_candidate_gate"]["approval_held_pending_G7"] is True',
+            'and not ultimate["conditional_benchmark_approved"]',
+            'and not ultimate["full_phenomenology_approved"]',
+            'and not ultimate["whole_model_excluded"]',
+        ):
+            self.assertIn(required, ultimate_predicate)
         self.assertIn('and not ultimate["internal_candidate_approved"]', source)
+        self.assertNotIn('and ultimate["internal_candidate_approved"] is True', source)
+
+    def test_confirmation_and_ultimate_runs_never_require_the_internal_approval(self):
+        # Decision D-E holds the internal candidate until G7 is CLOSED.
+        source = Path(release.__file__).read_text(encoding="utf-8")
+        tree = ast.parse(source, filename="validate_release_v20.py")
+        found = {}
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.List, ast.Tuple)):
+                continue
+            literals = [
+                item.value
+                for item in node.elts
+                if isinstance(item, ast.Constant) and isinstance(item.value, str)
+            ]
+            for script in (
+                "theory_validation_matrix_v20.py",
+                "theory_confirmation_verdict_v20.py",
+                "ultimate_theory_gate_v20.py",
+            ):
+                if script in literals:
+                    found.setdefault(script, []).append(literals)
+        for script in (
+            "theory_confirmation_verdict_v20.py",
+            "ultimate_theory_gate_v20.py",
+        ):
+            with self.subTest(script=script):
+                self.assertTrue(found.get(script))
+                for literals in found[script]:
+                    self.assertIn("--expect-open", literals)
+                    self.assertIn("--no-write", literals)
+                    self.assertNotIn("--require-internal-approval", literals)
+        # The validation matrix keeps its plain OPEN expectation.
+        self.assertTrue(found.get("theory_validation_matrix_v20.py"))
+        for literals in found["theory_validation_matrix_v20.py"]:
+            self.assertIn("--expect-open", literals)
+            self.assertIn("--no-write", literals)
+            self.assertNotIn("--require-internal-approval", literals)
+        self.assertIn(
+            "G4 CLOSED; internal candidate held pending G7 (decision D-E)",
+            source,
+        )
+        self.assertNotIn("--require-internal-approval", source)
+        self.assertNotIn("internal candidate approved", source)
 
     def test_rank1_su4_release_predicates_are_exact_and_fail_closed(self):
         stabilizer = json.loads(

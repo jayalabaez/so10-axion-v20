@@ -85,12 +85,13 @@ CAVEAT_GATES = [
     ("zero_modes_and_ranks_at_witness", "G4"),
     ("naturalness_of_tunings", "OUTSIDE_G1_G8"),
 ]
-# The user's CLAIM SCOPE, pinned verbatim.
+# The user's CLAIM SCOPE, pinned verbatim (status-neutral: the downstream G4/G6-G8/D3 states are stated by each
+# consumer from the live ledger).
 USER_CLAIM_SCOPE = (
     "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared "
     "exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo "
-    "SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed "
-    "downstream; internal candidate withheld; whole model neither validated nor excluded."
+    "SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither "
+    "validated nor excluded."
 )
 SM_FINAL_THEOREM_TEXT = (
     "For every 486-real field q, V_PS,eps(q)-V_PS,eps(q0)>=0; equality holds exactly on the SO(10)xU(1)_XxPQ "
@@ -128,6 +129,8 @@ class SmTargetTrackTest(unittest.TestCase):
 
     def test_pinned_strings(self) -> None:
         self.assertEqual(sm_track.CLOSURE_SCOPE, USER_CLAIM_SCOPE)
+        self.assertNotIn("G4 OPEN", sm_track.CLOSURE_SCOPE)
+        self.assertNotIn("internal candidate withheld", sm_track.CLOSURE_SCOPE)
         self.assertEqual(sm_track.SM_FINAL_THEOREM, SM_FINAL_THEOREM_TEXT)
         self.assertEqual(sm_track.DECISIONS["D5"], sm_track.CAVEAT_ROUTING_SENTENCE)
         self.assertEqual(list(sm_track.DECISIONS), ["D1", "D2", "D3", "D4", "D5", "D6"])

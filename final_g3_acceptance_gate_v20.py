@@ -173,12 +173,14 @@ OPEN_VERDICT_CHIRAL_TAIL = (
     "can never close G3 (not a Standard-Model vacuum: its Delta_R has Y=-1; "
     "g3_sigma_hypercharge_audit_v20)."
 )
+# Status-neutral: the downstream gates' live states are the G1-G8 ledger's.
 CLOSED_REMAINING_OPEN_PROBLEM = (
-    "none inside G3 on the closing track; downstream: G4 (zero-mode "
-    "classification and ranks 34/35 -> quotients 452/451 at the witness), G6 "
-    "(sub-M_I coloured states, positive spectrum, no EWSB), G7 (RG-anchor "
-    "content, Higgs quartic), G8 (Yukawas, proton-decay mediators); the "
-    "naturalness of the DT/O05/M_I tunings lies outside G1-G8"
+    "none inside G3 on the closing track; its model-level caveats were routed "
+    "downstream by decision D5 (G4: zero-mode classification and ranks 34/35 "
+    "-> quotients 452/451 at the witness; G6: sub-M_I coloured states, "
+    "positive spectrum, no EWSB; G7: RG-anchor content, Higgs quartic; G8: "
+    "Yukawas, proton-decay mediators) and their status is the G1-G8 ledger's; "
+    "the naturalness of the DT/O05/M_I tunings lies outside G1-G8"
 )
 
 

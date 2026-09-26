@@ -13,7 +13,8 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
 
     def test_gate_executes(self) -> None:
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
-        # The SARAH-attested contract closes G1/G2; G6-G8 stay blocked.
+        # The SARAH-attested contract closes G1/G2; with G3, G4 and G5 CLOSED
+        # the ledger's G6 is OPEN (never CLOSED here) and G7-G8 stay blocked.
         self.assertEqual(self.report["overall_state"], "OPEN")
         self.assertTrue(self.report["contract_consistent"])
         self.assertEqual(self.report["n_closed_subproblems"], 26)
@@ -23,7 +24,9 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
         states = self.report["gate_states"]
         self.assertEqual(states["G1"], "CLOSED")
         self.assertEqual(states["G2"], "CLOSED")
-        for name in ("G6", "G7", "G8"):
+        # G6 is OPEN (its dependencies G3, G4 and G5 are CLOSED), not CLOSED.
+        self.assertEqual(states["G6"], "OPEN")
+        for name in ("G7", "G8"):
             self.assertEqual(states[name], "BLOCKED")
 
         scoped = self.report["scoped_subtheorems"]

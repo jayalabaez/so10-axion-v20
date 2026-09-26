@@ -135,8 +135,8 @@ DECISIVE_THEOREM_EMITTED_BY = (
 CLOSURE_SCOPE = (
     "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared "
     "exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo "
-    "SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed "
-    "downstream; internal candidate withheld; whole model neither validated nor excluded."
+    "SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither "
+    "validated nor excluded."
 )
 WITNESS_SENTENCE = (
     "The G3 witness is the light-but-massive doublet member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps, "
