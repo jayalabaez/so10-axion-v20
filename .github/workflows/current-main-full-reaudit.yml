@@ -189,7 +189,10 @@ jobs:
             test_g3_sm_pati_salam_equality_set_v20.py \
             test_g3_sm_pati_salam_exact_hessian_v20.py \
             test_g3_sm_pati_salam_gate_readiness_v20.py \
-            test_g3_sm_target_track_v20.py
+            test_g3_sm_target_track_v20.py \
+            test_g4_sm_pati_salam_physical_quotient_v20.py \
+            test_g6_sm_pati_salam_tree_spectrum_v20.py \
+            test_g8_sm_pati_salam_flavour_nogo_v20.py
           python -B -m pytest -q -p no:cacheprovider test_replicate_v20.py
           python -B corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check
       - name: Assert honest correction
