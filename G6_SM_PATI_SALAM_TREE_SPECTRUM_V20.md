@@ -6,7 +6,7 @@
 
 Exact over Q(r0, x0, eps) for the G3 witness family V_PS,eps (kappa = -r0/4, O06 = 2|kappa| r0 + eps) at q0 = (p, 0, r0 sigma_std, r0, x0): grad V(q0) = 0 identically; det(H_u - lambda D^2) factors into 28 irreducible factors (24 linear with closed-form levels, two cubics and two quadratics over Q[r0]); every root other than lambda = 0 (multiplicity 35) is strictly positive for all r0, x0, eps > 0, so the tree-level Hessian spectrum at q0 has exactly 35 zero modes (34 eaten Goldstones + the axion) and 451 positive levels, with SM labels from exact integer Casimirs; it is the vacuum (threshold) spectrum wherever G3 certifies q0 as the global minimum (0 < eps < 12 - 2|kappa| r0); re-certified point-exactly at the benchmark (r0 = 1/5, x0 = 1) and at the physical member (r0 = 51544138/809635808795, x0 = 10^17 GeV/M_GUT), eps = r0^2/100.  Tree level only.
 
-Exact tree-level Hessian spectrum at q0 of the G3 witness family V_PS,eps, parametric in (r0, x0, eps) (the vacuum/threshold spectrum wherever G3 certifies q0 as the global minimum, 0 < eps < 12 - 2|kappa| r0): the gradient vanishes identically and the pencil factors into 28 irreducible factors over Q(r0, x0, eps) on 65 support components; for every r0, x0, eps > 0 there are 35 zero modes (34 eaten Goldstones + the axion) and 451 strictly positive levels, 0 negative (sign-alternation certificate, Sturm on 0 < r0 <= 1/5), with exact SM labels and mixings; both the benchmark and the physical member (canonical Phi17 scale) are re-certified point-exactly.  The 10_H triplets decouple exactly (issue #106 sub-ledger); |G(Delta, 6_Sigma)| = 28*sqrt(2)*(32 + 117*r0^2)/(1360 + 4316*r0^2 + 117*r0^4) M_GUT^-2, not exactly r0-independent (limit 56*sqrt(2)/85 as r0 -> 0, variation 1.70% on (0, 1/5]); the axion norm is F_PQ^2 = 32 r0^2 578 x0^2/(32 r0^2 + 578 x0^2) and, the axion angle having period 2 pi/68 modulo the gauge group, the periodicity scale is v_a = F_PQ/68 (physical member, illustrative: F_PQ = 3.572e+12 GeV, v_a = 5.252e+10 GeV; f_a = v_a/N_DW is not computed).  Tree level only: one-loop positivity is NOT certified (R1 open), electroweak symmetry is not broken (H = 0, eps > 0), sub-M_I coloured 126bar states remain, and G6 is not wired (no gate change; G6 stays BLOCKED).
+Exact tree-level Hessian spectrum at q0 of the G3 witness family V_PS,eps, parametric in (r0, x0, eps) (the vacuum/threshold spectrum wherever G3 certifies q0 as the global minimum, 0 < eps < 12 - 2|kappa| r0): the gradient vanishes identically and the pencil factors into 28 irreducible factors over Q(r0, x0, eps) on 65 support components; for every r0, x0, eps > 0 there are 35 zero modes (34 eaten Goldstones + the axion) and 451 strictly positive levels, 0 negative (sign-alternation certificate, Sturm on 0 < r0 <= 1/5), with exact SM labels and mixings; both the benchmark and the physical member (canonical Phi17 scale) are re-certified point-exactly.  The 10_H triplets decouple exactly (issue #106 sub-ledger); |G(Delta, 6_Sigma)| = 28*sqrt(2)*(32 + 117*r0^2)/(1360 + 4316*r0^2 + 117*r0^4) M_GUT^-2, not exactly r0-independent (limit 56*sqrt(2)/85 as r0 -> 0, variation 1.70% on (0, 1/5]); the axion norm is F_PQ^2 = 32 r0^2 578 x0^2/(32 r0^2 + 578 x0^2) and, the axion angle having period 2 pi/68 modulo the gauge group, the periodicity scale is v_a = F_PQ/68 (physical member, illustrative: F_PQ = 3.572e+12 GeV, v_a = 5.252e+10 GeV; f_a = v_a/N_DW is not computed).  Tree level only: one-loop positivity is NOT certified (R1 open), electroweak symmetry is not broken (H = 0, eps > 0), sub-M_I coloured 126bar states remain, and this report does not close G6 (the ledger cites it as tree-level evidence only).
 
 Checks: 81/81 passed.
 
@@ -238,7 +238,7 @@ Pati-Salam fragment weights of the Phi/Sigma (3,1)_1/3 levels (floats of exact v
 - GeV values: illustrative (anchor M_GUT, which this field content does not reproduce)
 - the axion decay constant f_a = v_a/N_DW (needs the fermion PQ charges / the QCD anomaly); F_PQ is 68 times the periodicity scale v_a and is not f_a
 - the vacuum property of q0 outside the G3 witness window (for eps >= 12 - 2|kappa| r0 the parametric statements are about the Hessian at the stationary point only)
-- G6 wiring: no ledger, gate, workflow or README change; G6 stays BLOCKED
+- G6 closure: the ledger cites this report as tree-level evidence only; it does not close G6 (OPEN once G3, G4 and G5 are CLOSED)
 
 **proved_exactly**
 
@@ -334,4 +334,4 @@ Pati-Salam fragment weights of the Phi/Sigma (3,1)_1/3 levels (floats of exact v
 | `zero_factor_is_lambda_with_multiplicity_35` | `True` |
 | `zero_modes_are_broken_generators_plus_X_PQ` | `True` |
 
-Runtime: 37 s.
+Runtime: 85 s.

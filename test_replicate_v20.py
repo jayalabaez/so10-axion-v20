@@ -233,3 +233,44 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
     legacy_source = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
     assert f'"{legacy_source}"' not in source
     assert legacy_rejection_test in source
+
+
+def test_confirmation_and_ultimate_runs_stay_open_without_internal_approval() -> None:
+    # G4 CLOSED meets decision D3, but decision D-E holds the internal
+    # candidate until G7 is CLOSED: the confirmation and ultimate runs stay
+    # OPEN, never write and never require the internal approval.
+    source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    found: dict[str, list[set[str]]] = {}
+    for node in ast.walk(tree):
+        if not isinstance(node, (ast.List, ast.Tuple)):
+            continue
+        literals = {
+            item.value
+            for item in node.elts
+            if isinstance(item, ast.Constant) and isinstance(item.value, str)
+        }
+        for script in (
+            "theory_validation_matrix_v20.py",
+            "theory_confirmation_verdict_v20.py",
+            "ultimate_theory_gate_v20.py",
+        ):
+            if script in literals:
+                found.setdefault(script, []).append(literals)
+    for script in ("theory_confirmation_verdict_v20.py", "ultimate_theory_gate_v20.py"):
+        assert found.get(script), script
+        for literals in found[script]:
+            assert {"--expect-open", "--no-write"} <= literals, script
+            assert "--require-internal-approval" not in literals, script
+    assert found.get("theory_validation_matrix_v20.py")
+    for literals in found["theory_validation_matrix_v20.py"]:
+        assert {"--expect-open", "--no-write"} <= literals
+        assert "--require-internal-approval" not in literals
+    assert "test_g4_sm_closure_binding_v20.py" in source
+    assert (
+        "=== REPLICATION PASS (SCIENTIFIC STATE: OPEN; G4 CLOSED; INTERNAL CANDIDATE "
+        "HELD PENDING G7 (DECISION D-E)) ===" in source
+    )
+    assert "SCIENTIFIC STATE: BLOCKED" not in source
+    assert "--require-internal-approval" not in source
+    assert "INTERNAL CANDIDATE APPROVED" not in source

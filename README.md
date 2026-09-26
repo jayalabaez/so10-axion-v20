@@ -169,9 +169,15 @@ Susyno engine, re-checks every registered term independently, and fails on
 negative controls (a non-invariant `210.10^dag.10` term, a broken anomaly).
 The model contract is therefore CONSISTENT and the ledger promotes G1, G2 and
 G5 (on the Pati-Salam coupling vector) to CLOSED. G3 is CLOSED on the SM
-Pati-Salam benchmark family only (scope below); G4 is OPEN and G6-G8 remain
-dependency-blocked; no internal candidate is approved and the whole model is
-neither validated nor excluded.
+Pati-Salam benchmark family only, and G4 is CLOSED at that G3 witness
+benchmark at tree level (scopes below). G6 is OPEN (tree-level evidence only)
+and G7-G8 remain dependency-blocked. G4 CLOSED meets decision D3, but no
+internal candidate is approved: decision D-E holds that tier until G7 is
+CLOSED, because the declared benchmark (5 x (16 + 16bar) spectators at
+`M_s ~ M_I`, `v_S = M_I`) has no perturbative two-loop unification according
+to three independent codes. The witness branch is also excluded by flavour
+data at renormalizable tree level (Route C). The whole model is neither
+validated nor excluded.
 
 To reproduce the attestation (the runner writes it only after a real,
 zero-exit SARAH process emits every PASS marker):
@@ -290,7 +296,7 @@ the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
   integrity-checked diagnostic that can never close G3. The gate PASSES on the
   SM track and the ledger closes G3, with exactly this scope:
 
-  > G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.
+  > G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither validated nor excluded.
 
 - The witness is the light-but-massive doublet member
   `V_PS,eps = V_PS + eps N_H` (`O06 = 2|kappa| r0 + eps`, `0 < eps < 599/50`)
@@ -316,9 +322,12 @@ the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
   classification and the recomputed ranks (34 gauge -> quotient 452,
   35 -> 451) go to G4; the naturalness of the tunings (DT splitting, `O05`,
   `M_I`) lies outside G1-G8.
-- Internal candidate: even with G1-G3 CLOSED, the internal-candidate tier
-  stays WITHHELD until the closing track's downstream caveats are resolved or
-  G4 closes.
+- Internal candidate: decision D3 withholds the internal-candidate tier until
+  the closing track's downstream caveats are resolved or G4 closes. G4 is now
+  CLOSED (below), which meets D3, but decision D-E (below) holds the tier
+  until G7 is CLOSED, so `theory_confirmation_verdict_v20` keeps it WITHHELD
+  (tier 1 of `ULTIMATE_THEORY_GATE_V20_SCOPE.md`: internal consistency, not
+  phenomenology). G6 is OPEN and G7-G8 are blocked.
 - The dry-run readiness audit (`g3_sm_pati_salam_gate_readiness_v20.py`) is
   kept as an independent cross-check. It maps the chiral-H track's 20
   criteria onto this target (7 are specific to the chiral-H proof route) and
@@ -326,17 +335,55 @@ the 2772bar/4125 self-projector weights swapped, `O05 = (4 - 2 r0^2)/8`, and
   (`0 < eps < 599/50`, `O06 < 12 < 4 pi`); its verdict must agree with the
   track's.
 
-Decisions adopted (D1-D6):
+Decisions adopted (D1-D6, D-E):
 - D1: the SM Pati-Salam track is the only route to closing G3; the chiral-H
   track stays an integrity-checked diagnostic.
 - D2: the G3 witness is the `eps > 0` member, not the tuned `eps = 0` point.
 - D3: an internal candidate also needs the downstream caveats resolved, or G4
-  CLOSED.
+  CLOSED. G4 is now CLOSED, which meets D3; D-E adds a further condition.
 - D4: G5 is bound to the Pati-Salam coupling vector.
 - D5: model-level caveats are routed to G4/G6/G7/G8; naturalness lies outside
   G1-G8.
 - D6: the cited classical theorems and hand-argued steps are accepted as
   G3-grade inputs, pinned by an allowlist and disclosed.
+- D-E (2026-09-26): closing G4 does not approve the internal candidate; the
+  tier is held until G7 resolves (implemented conservatively as G7
+  CLOSED). For the declared benchmark (the
+  anomaly-mandated 5 x (16 + 16bar) spectators at `M_s ~ M_I`, `v_S = M_I`)
+  three independent two-loop RG codes find no perturbative gauge
+  unification, a G7 no-go for that benchmark (research runs, not yet a
+  committed certificate). Decoupling `v_S` from `v_R` is being researched.
+
+**G4 closure at the G3 witness.**
+- `g4_sm_pati_salam_physical_quotient_v20.py` certifies, exactly over Q at the
+  witness (`r0 = 1/5`, `x0 = 1`, `kappa = -r0/4`, every `0 < eps < 599/50`):
+  orbit ranks 33 (SO(10)), 34 (SO(10) x U(1)_X) and 35 (with PQ), from nonzero
+  integer minors 1, 4, -68 and 12 integer null vectors spanning the SM algebra.
+  The gauge quotient is 452-dimensional (axion included) and the
+  massive/transverse quotient 451. PQ is global and not eaten.
+- On the gauge quotient the Hessian is PSD with inertia 451/1/0. Its only zero
+  mode is the physical axion (S phase 7225/7241, Phi17 phase 16/7241; angle
+  period `2 pi/68` modulo the gauge group, `v_a^2 = 2/7241 M_GUT^2`). The 35
+  zero modes of the full Hessian are 34 eaten Goldstones (33 + U(1)_X) and the
+  axion; no mode is negative.
+- As `eps -> 0` the only extra zero modes are the 4 real modes of one SM
+  doublet `(1,2)_{1/2}` of mass^2 `eps`, lifted at quartic order by
+  `lambda_eff = 127/64`. The vector-boson Gram matrix has rank 34.
+- The pure binding `g4_sm_closure_binding_v20.py` feeds this certificate to
+  the ledger fail-closed: G4 closes only if the model contract is attested,
+  G3 is CLOSED and all 16 evidence criteria hold.
+- Scope: tree level, at the benchmark `r0 = 1/5`, `x0 = 1` only; the compiler
+  binding is float64. The axion is massless only for the renormalizable
+  PQ-neutral benchmark potential: the QCD anomaly and PQ-violating operators
+  such as `Phi17^4 conj(S)^17 / M_Pl^17` give it a mass, and
+  `f_a = v_a/N_DW` is not computed.
+- G6 is now OPEN, not closed. The exact tree spectrum
+  (`g6_sm_pati_salam_tree_spectrum_v20.py`: 35 zero / 451 positive / 0
+  negative for all `r0, x0, eps > 0`) is evidence only; one-loop positivity of
+  the light 126bar remnants, EWSB and the uncertainty budget stay open. G8
+  cites the Route C flavour no-go (`g8_sm_pati_salam_flavour_nogo_v20.py`):
+  this witness branch cannot reproduce flavour, and routes A (a new
+  in-contract G3 branch) and B (a contract extension) need a decision.
 
 Open items for this candidate:
 - The doublet-triplet splitting and the intermediate scale are tuned coupling
@@ -348,10 +395,14 @@ Open items for this candidate:
   slightly negative `lambda(M_I) = -0.0085` that SM running prefers at
   `M_t = 173.34` GeV.
 - 126bar colour triplets and sextets lie below `M_I`.
-- The spectrum is not the 2HDM + (15,2,2) content assumed by the RG anchor.
-- Yukawas, electroweak breaking and radiative stability are not addressed.
-- These items are routed to G4/G6/G7/G8 or lie outside G1-G8; none is a G3
-  condition.
+- The spectrum is not the 2HDM + (15,2,2) content assumed by the RG anchor,
+  and the declared benchmark has no perturbative two-loop unification (D-E
+  above; a G7 no-go for that benchmark, not a committed certificate).
+- On this witness branch the renormalizable Yukawas give CKM = 1 and
+  m_t = m_b, which data exclude (G8 Route C); electroweak breaking and
+  radiative stability are not addressed.
+- These items are routed to G6/G7/G8 or lie outside G1-G8; none is a G3 or
+  G4 condition.
 
 At the `r = 1/5` tuned point of the certified non-SM `(F, r Delta_R, H = 0)`
 branch (`O06` retuned from -2 to 0; not the Pati-Salam candidate above) the
@@ -612,7 +663,9 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > vev breaks `SU(2)_L` at the GUT scale), so it cannot close G3; Higgs-mass
 > statements made at that point are not predictions.
 >
-> G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.
+> G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither validated nor excluded.
+>
+> G4 closed at the G3 witness benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, every 0 < eps < 599/50), tree level: gauge quotient 452 and massive/transverse quotient 451; on the gauge quotient the Hessian is 451/1/0 with the physical axion as its only zero mode, massless only for the renormalizable PQ-neutral benchmark potential. No internal candidate is approved: G4 CLOSED meets decision D3, but decision D-E holds the tier until G7 is CLOSED, since the declared benchmark (5 x (16 + 16bar) spectators at M_s ~ M_I, v_S = M_I) has no perturbative two-loop unification according to three independent codes. G6 is OPEN and G7-G8 are blocked: sub-M_I coloured 126bar states and positivity beyond tree level, no electroweak symmetry breaking, the RG-anchor field content, the Higgs quartic (127/64 at tree level), Yukawas and proton decay; on this witness branch the renormalizable Yukawas give CKM = 1 and m_t = m_b, which data exclude (Route C), so realistic flavour needs route A or B. The whole model is neither validated nor excluded.
 >
 > This benchmark is a retuned vector distinct from the rejected 27-of-51 SOS
 > candidate above (2772bar/4125 self-projector weights swapped; `O05`,

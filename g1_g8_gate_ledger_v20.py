@@ -24,6 +24,16 @@ coupling vector is certified.  Any missing or failed SM input reopens G3 (and
 G5) fail-closed.  The SU(5)+Delta chiral-H evidence is an integrity-checked
 diagnostic that can never close G3, and the model-level caveats of the closing
 track are routed to G4/G6/G7/G8 (decision D5).
+
+G4 is decided only through the pure predicate g4_sm_closure_binding_v20
+applied to the committed exact certificate G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20
+(g4_sm_pati_salam_physical_quotient_v20): on an attested contract with G3
+CLOSED, G4 is CLOSED exactly when every binding criterion holds at the G3
+witness (tree level, benchmark r0 = 1/5, x0 = 1); a missing, forged or
+mismatched certificate reopens G4 fail-closed.  G6 then opens (its
+dependencies G3, G4 and G5 are CLOSED) but never closes here: the exact G6
+tree spectrum and the G8 Route C flavour no-go are cited as evidence only and
+never change a status.  G7 and G8 stay BLOCKED.
 """
 from __future__ import annotations
 
@@ -44,6 +54,7 @@ import g3_full_hessian_classification_v20 as historical_g3_hessian
 import g3_stationary_stability_search_v20 as historical_g3_search
 import corrected_rank1_endpoint_v21 as corrected_rank1
 import g3_sm_target_track_v20 as sm_track
+import g4_sm_closure_binding_v20 as g4_closure
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_GATE_LEDGER_V20.json"
@@ -119,6 +130,63 @@ G3_SM_PATI_SALAM_EQUALITY_SET_JSON = (
 G3_SM_PATI_SALAM_EQUALITY_SET_SOURCE = "g3_sm_pati_salam_equality_set_v20"
 G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS = (
     "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+)
+# G4 is decided by the pure predicate g4_sm_closure_binding_v20 on the
+# committed G4 certificate.  The G6/G8 certificate modules are heavy and never
+# imported: their committed JSONs are read fail-closed and cited as evidence
+# only (they never change a gate status).
+G4_PHYSICAL_QUOTIENT_JSON = ROOT / g4_closure.G4_REPORT_FILE
+G6_TREE_SPECTRUM_JSON = ROOT / "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json"
+G8_FLAVOUR_NOGO_JSON = ROOT / "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json"
+G6_TREE_SPECTRUM_STATUS = "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED"
+G8_FLAVOUR_NOGO_STATUS = "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN"
+G6_TREE_SPECTRUM_SOURCE = "g6_sm_pati_salam_tree_spectrum_v20"
+G8_FLAVOUR_NOGO_SOURCE = "g8_sm_pati_salam_flavour_nogo_v20"
+G6_TREE_SPECTRUM_N_CHECKS = 81
+G8_FLAVOUR_NOGO_N_CHECKS = 103
+G6_EVIDENCE_ROLE = (
+    "evidence only: cited in the G6 open scope, never changes the G6 status"
+)
+G8_EVIDENCE_ROLE = (
+    "evidence only: cited in the G8 open scope, never changes the G8 status"
+)
+G6_EVIDENCE_STILL_OPEN = (
+    "one-loop positivity of the light 126bar remnant multiplets (R1)",
+    "electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified)",
+    "the uncertainty budget of the threshold spectrum",
+)
+G6_EVIDENCE_RECORDED_ITEM = (
+    "tree-level evidence (does not close G6): g6_sm_pati_salam_tree_spectrum_v20 "
+    "(G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json) certifies exactly, for all r0, x0, "
+    "eps > 0, the tree-level Hessian spectrum at the G3 witness vacuum: 35 zero "
+    "modes (34 eaten Goldstones + the axion), 451 positive and 0 negative, with "
+    "exact SM labels; still open: one-loop positivity of the light 126bar remnant "
+    "multiplets (R1), electroweak symmetry breaking (H = 0 at the witness; the "
+    "eps < 0 member is not certified) and the uncertainty budget"
+)
+G6_EVIDENCE_UNAVAILABLE_ITEM = (
+    "tree-level evidence unavailable: G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json is "
+    "missing or not certified (fail closed; the G6 status does not depend on it)"
+)
+G8_EVIDENCE_RECORDED_ITEM = (
+    "flavour evidence (does not close G8): g8_sm_pati_salam_flavour_nogo_v20 "
+    "(G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json) records Route C: on the witness "
+    "branch (renormalizable benchmark, H-linear portals zero) the light doublet "
+    "is pure 10_H, so CKM = 1, m_t = m_b, m_d = m_e and m_s = m_mu, which data "
+    "exclude, and no H-linear portal repair survives at q0; the G3-G5 "
+    "certificates and the SO(10) contract are not falsified; route A (a new "
+    "in-contract G3 branch with a down-type (15,2,2) admixture, needing new "
+    "G3/G4/G5 certificates) and route B (a contract extension: a 120_H or a "
+    "second 10_H) need a user decision"
+)
+G8_EVIDENCE_UNAVAILABLE_ITEM = (
+    "flavour evidence unavailable: G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json is "
+    "missing or not recorded (fail closed; the G8 status does not depend on it)"
+)
+G4_OPEN_WAVE3_TEXT = (
+    " G4 is OPEN: recompute the ranks 34/35 (quotients 452/451) at the witness"
+    " and classify its zero modes (the G4 closure binding is not certified;"
+    " blockers: "
 )
 # Wave-3 text about the SU(5)+Delta chiral-H point.  That point is a
 # diagnostic only: it is not an SM vacuum and can never close G3.
@@ -393,6 +461,108 @@ def sm_pati_salam_equality_set_binding(report: Any) -> dict[str, Any]:
         "status": fields.get("status"),
         "n_failed": fields.get("n_failed"),
         "certified": sm_pati_salam_equality_set_certified(report),
+    }
+
+
+def _evidence_safe(predicate: Any) -> bool:
+    try:
+        return bool(predicate()) is True
+    except Exception:  # noqa: BLE001 - any malformed evidence fails closed
+        return False
+
+
+def _evidence_int_eq(value: Any, expected: int) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and value == expected
+
+
+def _evidence_flag(report: Mapping[str, Any], name: str) -> Any:
+    flags = report.get("flags")
+    return flags.get(name) if isinstance(flags, Mapping) else None
+
+
+def _evidence_header(report: Any) -> dict[str, Any]:
+    fields = report if isinstance(report, dict) else {}
+    status = fields.get("status")
+    n_failed = fields.get("n_failed")
+    return {
+        "status": status if isinstance(status, str) else None,
+        "n_failed": (
+            n_failed
+            if isinstance(n_failed, int) and not isinstance(n_failed, bool)
+            else None
+        ),
+    }
+
+
+def g6_tree_evidence(report: Any) -> dict[str, Any]:
+    """Evidence-only record of the exact G6 tree spectrum (never a G6 status)."""
+    fields = report if isinstance(report, dict) else {}
+
+    def _recorded() -> bool:
+        return bool(
+            fields.get("status") == G6_TREE_SPECTRUM_STATUS
+            and _evidence_int_eq(fields.get("n_failed"), 0)
+            and fields.get("failures") == []
+            and _evidence_int_eq(fields.get("n_checks"), G6_TREE_SPECTRUM_N_CHECKS)
+            and _evidence_flag(fields, "report_closes_g6_by_itself") is False
+            and _evidence_flag(fields, "G6_closed") is False
+            and _evidence_flag(fields, "tree_level_proof_grade") is True
+            and _evidence_flag(
+                fields, "tree_zero_modes_35_positive_451_negative_0"
+            )
+            is True
+        )
+
+    header = _evidence_header(report)
+    return {
+        "source": G6_TREE_SPECTRUM_SOURCE,
+        "report": G6_TREE_SPECTRUM_JSON.name,
+        "required_status": G6_TREE_SPECTRUM_STATUS,
+        "status": header["status"],
+        "n_failed": header["n_failed"],
+        "recorded": _evidence_safe(_recorded),
+        "closes_gate": False,
+        "role": G6_EVIDENCE_ROLE,
+        "still_open": list(G6_EVIDENCE_STILL_OPEN),
+    }
+
+
+def g8_flavour_evidence(report: Any) -> dict[str, Any]:
+    """Evidence-only record of the G8 Route C flavour no-go (never a G8 status)."""
+    fields = report if isinstance(report, dict) else {}
+
+    def _recorded() -> bool:
+        return bool(
+            fields.get("status") == G8_FLAVOUR_NOGO_STATUS
+            and _evidence_int_eq(fields.get("n_failed"), 0)
+            and fields.get("failures") == []
+            and _evidence_int_eq(fields.get("n_checks"), G8_FLAVOUR_NOGO_N_CHECKS)
+            and _evidence_flag(fields, "G8_closed") is False
+            and _evidence_flag(fields, "route_C_recorded") is True
+            and _evidence_flag(
+                fields,
+                "witness_branch_flavour_excluded_at_renormalizable_tree_level",
+            )
+            is True
+            and _evidence_flag(
+                fields, "falsifies_G3_G5_scalar_vacuum_certificates"
+            )
+            is False
+        )
+
+    header = _evidence_header(report)
+    recorded = _evidence_safe(_recorded)
+    return {
+        "source": G8_FLAVOUR_NOGO_SOURCE,
+        "report": G8_FLAVOUR_NOGO_JSON.name,
+        "required_status": G8_FLAVOUR_NOGO_STATUS,
+        "status": header["status"],
+        "n_failed": header["n_failed"],
+        "recorded": recorded,
+        "closes_gate": False,
+        "role": G8_EVIDENCE_ROLE,
+        "route_recorded": "C" if recorded else None,
+        "routes_needing_user_decision": ["A", "B"],
     }
 
 
@@ -3983,22 +4153,111 @@ def _gauged_u1x_scalar_subtheorems(
     }
 
 
-def _expected_gate_statuses(contract_consistent: bool, *, g3_closed: bool, g5_closed: bool) -> dict[str, str]:
+def _expected_gate_statuses(
+    contract_consistent: bool, *, g3_closed: bool, g5_closed: bool, g4_closed: bool
+) -> dict[str, str]:
     """Return the next scientifically honest frontier for the contract state.
 
     G3 closes only through the SM Pati-Salam track and G5 only on its bound
-    coupling vector.  The DAG then fixes the rest: G4 depends on {G2, G3};
-    G6 on {G3, G4, G5}; G7 on {G6}; G8 on {G3, G6, G7}.
+    coupling vector.  G4 closes only on the certified witness binding (and
+    only with G3 CLOSED); G6 opens once G3, G4 and G5 are CLOSED; G7 and G8
+    stay BLOCKED (DAG: G7 <- G6, G8 <- G3, G6, G7).
     """
     if not contract_consistent:
         return {f"G{i}": STATUS_BLOCKED for i in range(1, 9)}
+    g4_status = (STATUS_CLOSED if g4_closed else STATUS_OPEN) if g3_closed else STATUS_BLOCKED
+    g6_ready = bool(g3_closed and g4_status == STATUS_CLOSED and g5_closed)
     return {
         "G1": STATUS_CLOSED, "G2": STATUS_CLOSED,
         "G3": STATUS_CLOSED if g3_closed else STATUS_OPEN,
-        "G4": STATUS_OPEN if g3_closed else STATUS_BLOCKED,
+        "G4": g4_status,
         "G5": STATUS_CLOSED if g5_closed else STATUS_OPEN,
-        "G6": STATUS_BLOCKED, "G7": STATUS_BLOCKED, "G8": STATUS_BLOCKED,
+        "G6": STATUS_OPEN if g6_ready else STATUS_BLOCKED,
+        "G7": STATUS_BLOCKED, "G8": STATUS_BLOCKED,
     }
+
+
+GATE_SPECIFICATIONS: dict[str, tuple[str, tuple[str, ...]]] = {
+    "G1": (
+        "Invariant ring and component Clebsch tensors",
+        (
+            "bind the recertified 44-direction/51-parameter scalar census to the repaired executable gauge scaffold",
+        ),
+    ),
+    "G2": (
+        "Fully projected non-SUSY component potential",
+        (
+            "promote the completed 44/51/486 dense derivative and Ward-identity audit after the executable contract is repaired",
+        ),
+    ),
+    "G3": (
+        "Stationarity and global vacuum",
+        (
+            "classify every competing stationary symmetry orbit and compare exact potential values",
+            "prove global minimality and uniqueness, or exhibit a lower competing extremum",
+        ),
+    ),
+    "G4": (
+        "Gauge quotient, axion directions, and physical Hessian",
+        (
+            "carry the exact gauge quotient to the accepted G3 witness (the SM Pati-Salam eps member) and recompute its ranks there: SO(10)xU(1)_X rank 34 (gauge quotient 452, axion included) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451), replacing the rank-37/38 (449/448) values of the superseded p+delta point",
+            "classify all remaining Hessian zero and negative modes at that witness, including the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes)",
+        ),
+    ),
+    "G5": (
+        "Boundedness from below",
+        (
+            "keep the source-bound BFB certificate bound to the coupling vector of the accepted G3 witness (the SM Pati-Salam 27-parameter vector, V4 >= |q|^4/167; the eps N_H term is quadratic)",
+        ),
+    ),
+    "G6": (
+        "Physical threshold spectrum",
+        (
+            "with G3, G4 and G5 CLOSED, emit the complete positive physical spectrum with SM provenance (eigenmasses, irreps, mixings and uncertainties) beyond tree level",
+        ),
+    ),
+    "G7": (
+        "Validated two-loop RGE and threshold matching",
+        ("await G6 and independently validate the full beta system",),
+    ),
+    "G8": (
+        "Proton-decay prediction and falsification",
+        ("await authoritative G3/G6/G7 before any unique lifetime claim",),
+    ),
+}
+
+
+def _gate_open_scope(
+    name: str,
+    track: Mapping[str, Any],
+    *,
+    evidence: Mapping[str, Any] | None = None,
+) -> list[str]:
+    """The open scope of a gate: its specification, the D5-routed caveats and,
+    for G6 and G8 only, the evidence item (recorded or unavailable; the item
+    never changes a status)."""
+    open_scope = list(GATE_SPECIFICATIONS[name][1])
+    if name in {"G4", "G6", "G7", "G8"}:
+        # Decision D5: the closing track's model-level caveats are routed
+        # to the downstream gate that owns them (G3 keeps disclosures).
+        downstream_caveats = track.get("downstream_caveats", [])
+        if not isinstance(downstream_caveats, (list, tuple)):
+            downstream_caveats = []
+        open_scope.extend(
+            f"routed from G3 by decision D5 ({caveat['id']}): {caveat['text']}"
+            for caveat in downstream_caveats
+            if isinstance(caveat, Mapping) and caveat.get("gate") == name
+        )
+    recorded = isinstance(evidence, Mapping) and evidence.get("recorded") is True
+    if name == "G6":
+        open_scope.append(
+            G6_EVIDENCE_RECORDED_ITEM if recorded else G6_EVIDENCE_UNAVAILABLE_ITEM
+        )
+    elif name == "G8":
+        open_scope.append(
+            G8_EVIDENCE_RECORDED_ITEM if recorded else G8_EVIDENCE_UNAVAILABLE_ITEM
+        )
+    return open_scope
 
 
 def _build_gates(
@@ -4008,81 +4267,33 @@ def _build_gates(
     scoped: dict[str, Any] | None = None,
     g3_closed: bool,
     g5_closed: bool,
+    g4_closed: bool,
     track: Mapping[str, Any],
+    g4_binding: Mapping[str, Any],
+    g6_evidence: Mapping[str, Any],
+    g8_evidence: Mapping[str, Any],
 ) -> dict[str, dict[str, Any]]:
-    specifications = {
-        "G1": (
-            "Invariant ring and component Clebsch tensors",
-            [
-                "bind the recertified 44-direction/51-parameter scalar census to the repaired executable gauge scaffold",
-            ],
-        ),
-        "G2": (
-            "Fully projected non-SUSY component potential",
-            [
-                "promote the completed 44/51/486 dense derivative and Ward-identity audit after the executable contract is repaired",
-            ],
-        ),
-        "G3": (
-            "Stationarity and global vacuum",
-            [
-                "classify every competing stationary symmetry orbit and compare exact potential values",
-                "prove global minimality and uniqueness, or exhibit a lower competing extremum",
-            ],
-        ),
-        "G4": (
-            "Gauge quotient, axion directions, and physical Hessian",
-            [
-                "carry the exact gauge quotient to the accepted G3 witness (the SM Pati-Salam eps member) and recompute its ranks there: SO(10)xU(1)_X rank 34 (gauge quotient 452, axion included) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451), replacing the rank-37/38 (449/448) values of the superseded p+delta point",
-                "classify all remaining Hessian zero and negative modes at that witness, including the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes)",
-            ],
-        ),
-        "G5": (
-            "Boundedness from below",
-            [
-                "keep the source-bound BFB certificate bound to the coupling vector of the accepted G3 witness (the SM Pati-Salam 27-parameter vector, V4 >= |q|^4/167; the eps N_H term is quadratic)"
-            ],
-        ),
-        "G6": (
-            "Physical threshold spectrum",
-            ["await authoritative G3/G4/G5 and emit the complete positive spectrum"],
-        ),
-        "G7": (
-            "Validated two-loop RGE and threshold matching",
-            ["await G6 and independently validate the full beta system"],
-        ),
-        "G8": (
-            "Proton-decay prediction and falsification",
-            ["await authoritative G3/G6/G7 before any unique lifetime claim"],
-        ),
-    }
     statuses = _expected_gate_statuses(
-        contract_consistent, g3_closed=g3_closed, g5_closed=g5_closed
+        contract_consistent,
+        g3_closed=g3_closed,
+        g5_closed=g5_closed,
+        g4_closed=g4_closed,
     )
     closed_scopes = {
         "G1": ["promoted exact-X scalar census"],
         "G2": ["promoted exact-X dense derivative and Ward audit"],
         "G3": [sm_track.G3_LEDGER_CLOSED_SCOPE],
+        "G4": [g4_closure.G4_LEDGER_CLOSED_SCOPE],
         "G5": [sm_track.G5_LEDGER_CLOSED_SCOPE],
     }
-    downstream_caveats = [
-        caveat
-        for caveat in track.get("downstream_caveats", [])
-        if isinstance(caveat, Mapping)
-    ]
+    evidence_by_gate = {"G6": g6_evidence, "G8": g8_evidence}
     g5_binding = track.get("g5_bfb_binding", {})
     gates: dict[str, dict[str, Any]] = {}
-    for name, (title, specification) in specifications.items():
+    for name, (title, _specification) in GATE_SPECIFICATIONS.items():
         status = statuses[name]
-        open_scope = list(specification)
-        if name in {"G4", "G6", "G7", "G8"}:
-            # Decision D5: the closing track's model-level caveats are routed
-            # to the downstream gate that owns them (G3 keeps disclosures).
-            open_scope.extend(
-                f"routed from G3 by decision D5 ({caveat['id']}): {caveat['text']}"
-                for caveat in downstream_caveats
-                if caveat.get("gate") == name
-            )
+        open_scope = _gate_open_scope(
+            name, track, evidence=evidence_by_gate.get(name)
+        )
         unsatisfied = [
             dependency
             for dependency in DEPENDENCIES[name]
@@ -4135,11 +4346,25 @@ def _build_gates(
             gates[name]["constructive_frontier_evidence_role"] = (
                 G3_CONSTRUCTIVE_FRONTIER_EVIDENCE_ROLE
             )
+        if name == "G4":
+            g4_row_closed = status == STATUS_CLOSED
+            gates[name]["closure_evidence"] = dict(g4_binding)
+            gates[name]["closure_scope"] = (
+                g4_closure.G4_LEDGER_CLOSED_SCOPE if g4_row_closed else None
+            )
+            gates[name]["routed_caveats_resolved_by_closure"] = (
+                [g4_closure.ROUTED_G4_CAVEAT_ID] if g4_row_closed else []
+            )
+            gates[name]["decision"] = g4_closure.G4_CLOSURE_DECISION
         if name == "G5":
             gates[name]["bfb_coupling_vector"] = g5_binding
             gates[name]["constructive_frontier_evidence_role"] = (
                 G5_CONSTRUCTIVE_FRONTIER_EVIDENCE_ROLE
             )
+        if name == "G6":
+            gates[name]["tree_level_evidence"] = dict(g6_evidence)
+        if name == "G8":
+            gates[name]["flavour_evidence"] = dict(g8_evidence)
     return gates
 
 
@@ -4179,11 +4404,17 @@ def _build_report_from_inputs(
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
     g3_sm_pati_salam_equality_set_report: dict[str, Any] | None = None,
     g3_sm_track_inputs: dict[str, dict[str, Any]] | None = None,
+    g4_report: dict[str, Any] | None = None,
+    g6_report: dict[str, Any] | None = None,
+    g8_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states.
 
     ``g3_sm_track_inputs`` are the SM Pati-Salam track inputs (keys of
     ``g3_sm_target_track_v20.INPUT_FILES``); None loads the committed JSONs.
+    ``g4_report`` is the G4 certificate evaluated by g4_sm_closure_binding_v20;
+    ``g6_report``/``g8_report`` are the evidence-only G6 tree-spectrum and G8
+    flavour no-go certificates.  None loads each committed JSON (fail closed).
     """
     declared_contract_consistent = bool(x_report["contract_consistent"])
     contract_evidence_complete = _root_contract_evidence_complete(x_report)
@@ -4299,6 +4530,12 @@ def _build_report_from_inputs(
     )
     if g3_sm_track_inputs is None:
         g3_sm_track_inputs = sm_track.load_inputs()
+    if g4_report is None:
+        g4_report = g4_closure.load_g4_report(G4_PHYSICAL_QUOTIENT_JSON)
+    if g6_report is None:
+        g6_report = _load_json_artifact(G6_TREE_SPECTRUM_JSON)
+    if g8_report is None:
+        g8_report = _load_json_artifact(G8_FLAVOUR_NOGO_JSON)
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4344,13 +4581,31 @@ def _build_report_from_inputs(
     g3_closed = bool(contract_consistent and track["closed"])
     g5_binding = track["g5_bfb_binding"]
     g5_closed = bool(contract_consistent and g5_binding["certified"] is True)
+    # G4 is decided by the pure binding on the committed G4 certificate, bound
+    # to the G3 track's own witness and to the ledger's G4 open scope (user
+    # instruction of 2026-09-25).  A CLOSED G4 approves nothing here; decision
+    # D-E holds the internal-candidate tier until G7 is CLOSED.
+    g4_binding = g4_closure.evaluate_g4_binding(
+        g4_report,
+        g3_witness=track.get("witness"),
+        g4_open_scope=_gate_open_scope("G4", track),
+    )
+    g4_closed = bool(
+        contract_consistent and g3_closed and g4_binding["certified"] is True
+    )
+    g6_evidence = g6_tree_evidence(g6_report)
+    g8_evidence = g8_flavour_evidence(g8_report)
     gates = _build_gates(
         contract_consistent=contract_consistent,
         contract_blocker=contract_blocker,
         scoped=scoped,
         g3_closed=g3_closed,
         g5_closed=g5_closed,
+        g4_closed=g4_closed,
         track=track,
+        g4_binding=g4_binding,
+        g6_evidence=g6_evidence,
+        g8_evidence=g8_evidence,
     )
     gates["G3"]["constructive_frontier_evidence"] = g3_frontier
     gates["G5"]["constructive_frontier_evidence"] = g3_frontier
@@ -4364,7 +4619,10 @@ def _build_report_from_inputs(
     gauged_counts = g1_report["counts"]
     historical_ids = set(historical["source_contract_ids"].values())
     expected_statuses = _expected_gate_statuses(
-        contract_consistent, g3_closed=g3_closed, g5_closed=g5_closed
+        contract_consistent,
+        g3_closed=g3_closed,
+        g5_closed=g5_closed,
+        g4_closed=g4_closed,
     )
     contract_state_classified = (
         contract_consistent
@@ -4849,12 +5107,18 @@ def _build_report_from_inputs(
             all(dependency_closed(parent) for parent in DEPENDENCIES[name])
             for name in open_gates
         ),
-        "only_sm_track_G3_and_bound_G5_close_among_G3_G8": (
+        "only_sm_track_G3_certified_G4_and_bound_G5_close_among_G3_G8": (
             statuses["G3"]
             == (
                 STATUS_CLOSED
                 if g3_closed
                 else (STATUS_OPEN if contract_consistent else STATUS_BLOCKED)
+            )
+            and statuses["G4"]
+            == (
+                STATUS_CLOSED
+                if g4_closed
+                else (STATUS_OPEN if g3_closed else STATUS_BLOCKED)
             )
             and statuses["G5"]
             == (
@@ -4863,8 +5127,22 @@ def _build_report_from_inputs(
                 else (STATUS_OPEN if contract_consistent else STATUS_BLOCKED)
             )
             and not any(
-                statuses[f"G{i}"] == STATUS_CLOSED for i in (4, 6, 7, 8)
+                statuses[f"G{i}"] == STATUS_CLOSED for i in (6, 7, 8)
             )
+        ),
+        "g4_closed_only_on_the_certified_witness_binding": (
+            statuses["G4"] != STATUS_CLOSED
+            or (
+                g4_binding["certified"] is True
+                and statuses["G3"] == STATUS_CLOSED
+                and contract_consistent
+            )
+        ),
+        "g6_g8_certificates_are_evidence_only": (
+            gates["G6"]["tree_level_evidence"]["closes_gate"] is False
+            and gates["G8"]["flavour_evidence"]["closes_gate"] is False
+            and statuses["G6"] != STATUS_CLOSED
+            and statuses["G8"] != STATUS_CLOSED
         ),
         "g3_sm_track_is_the_only_closure_route": (
             (statuses["G3"] == STATUS_CLOSED) == g3_closed
@@ -4895,7 +5173,12 @@ def _build_report_from_inputs(
         status = "G1_G8_LEDGER_AUDIT_EXECUTION_FAILED"
         overall_state = "EXECUTION_FAIL"
     elif contract_consistent:
-        if g3_closed:
+        if g3_closed and g4_closed:
+            status = (
+                "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
+                "G1_G2_G3_G4_G5_CLOSED__G6_OPEN"
+            )
+        elif g3_closed:
             status = (
                 "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
                 "G1_G2_G3_G5_CLOSED__G4_OPEN"
@@ -4913,11 +5196,12 @@ def _build_report_from_inputs(
         )
         overall_state = STATUS_BLOCKED
 
-    scientific_blockers = (
-        list(sm_track.DOWNSTREAM_BLOCKERS)
-        if g3_closed
-        else list(sm_track.FAIL_CLOSED_BLOCKERS)
-    )
+    if g3_closed and g4_closed:
+        scientific_blockers = list(g4_closure.DOWNSTREAM_BLOCKERS_AFTER_G4)
+    elif g3_closed:
+        scientific_blockers = list(sm_track.DOWNSTREAM_BLOCKERS)
+    else:
+        scientific_blockers = list(sm_track.FAIL_CLOSED_BLOCKERS)
     if not contract_consistent:
         scientific_blockers[0:0] = list(
             x_report.get("scientific_blockers") or [contract_blocker]
@@ -4929,6 +5213,12 @@ def _build_report_from_inputs(
 
     if not contract_consistent:
         wave3_status = "BLOCKED_ON_G2"
+    elif (statuses["G3"], statuses["G4"], statuses["G5"]) == (
+        STATUS_CLOSED, STATUS_CLOSED, STATUS_CLOSED
+    ):
+        wave3_status = (
+            "G3_CLOSED_ON_SM_PATI_SALAM_TRACK__G4_CLOSED_AT_G3_WITNESS__G5_CLOSED"
+        )
     elif (statuses["G3"], statuses["G4"], statuses["G5"]) == (
         STATUS_CLOSED, STATUS_OPEN, STATUS_CLOSED
     ):
@@ -4946,9 +5236,12 @@ def _build_report_from_inputs(
             + sm_track.WITNESS_SENTENCE
             + " "
             + sm_track.CAVEAT_ROUTING_SENTENCE
-            + " G4 is OPEN: recompute the ranks 34/35 (quotients 452/451) at "
-            "the witness and classify its zero modes. G5 is CLOSED on the same "
-            "Pati-Salam coupling vector. "
+            + (
+                " " + g4_closure.G4_CLOSED_SENTENCE
+                if g4_closed
+                else G4_OPEN_WAVE3_TEXT + ", ".join(g4_binding["blockers"]) + ")."
+            )
+            + " G5 is CLOSED on the same Pati-Salam coupling vector. "
             + CHIRAL_WAVE3_TAIL
         )
     else:
@@ -4997,7 +5290,25 @@ def _build_report_from_inputs(
         {"wave": 6, "gates": ["G8"], "status": _waiting_on(("G3", "G6", "G7"))},
     ]
 
-    if g3_closed:
+    if g3_closed and g4_closed:
+        verdict_g3 = (
+            "G3 is CLOSED on the SM Pati-Salam track, its only closure route "
+            "(g3_sm_target_track_v20 through final_g3_acceptance_gate_v20): "
+            + sm_track.CLOSURE_SCOPE
+            + " "
+            + sm_track.WITNESS_SENTENCE
+            + " G5 is CLOSED on the same Pati-Salam coupling vector (V4 >= "
+            "|q|^4/167; the eps N_H term is quadratic). "
+            + g4_closure.G4_CLOSED_SENTENCE
+            + " G6 is OPEN (tree-level evidence only: "
+            "g6_sm_pati_salam_tree_spectrum_v20; one-loop positivity of the "
+            "light 126bar remnants, electroweak symmetry breaking and the "
+            "uncertainty budget are open); G7 and G8 remain "
+            "dependency-blocked. "
+            + sm_track.CAVEAT_ROUTING_SENTENCE
+            + " "
+        )
+    elif g3_closed:
         verdict_g3 = (
             "G3 is CLOSED on the SM Pati-Salam track, its only closure route "
             "(g3_sm_target_track_v20 through final_g3_acceptance_gate_v20): "
@@ -5226,6 +5537,7 @@ def _build_report_from_inputs(
             ]
             is True,
             "gauged_G3_sm_pati_salam_track_closed": g3_closed,
+            "gauged_G4_sm_witness_quotient_closed": g4_closed,
             "guarantee_model_survives_recertification": False,
             "whole_model_validated": False,
             "whole_model_excluded": False,
@@ -5307,6 +5619,9 @@ def build_report() -> dict[str, Any]:
             load_sm_pati_salam_equality_set_report()
         ),
         g3_sm_track_inputs=sm_track.load_inputs(),
+        g4_report=g4_closure.load_g4_report(G4_PHYSICAL_QUOTIENT_JSON),
+        g6_report=_load_json_artifact(G6_TREE_SPECTRUM_JSON),
+        g8_report=_load_json_artifact(G8_FLAVOUR_NOGO_JSON),
     )
 
 
@@ -5375,6 +5690,43 @@ def write_markdown(report: dict[str, Any]) -> str:
     )
     lines.extend(
         f"- `{item}`" for item in report.get("diagnostic_open_problems", [])
+    )
+    gates = report.get("gates", {})
+    g4_row = gates.get("G4", {})
+    evidence = g4_row.get("closure_evidence") or {}
+    lines.extend(
+        [
+            "",
+            "## G4: gauge quotient and physical Hessian at the G3 witness",
+            "",
+            f"**G4 status:** `{g4_row.get('status')}`",
+            f"**Closure evidence certified:** `{evidence.get('certified')}` "
+            f"(`{evidence.get('source')}` through `g4_sm_closure_binding_v20`; "
+            f"report status `{evidence.get('status')}`)",
+            "**Binding blockers:** "
+            + (", ".join(f"`{name}`" for name in evidence.get("blockers") or []) or "none"),
+            "",
+        ]
+    )
+    if g4_row.get("closure_scope"):
+        lines.extend([f"Closure scope: {g4_row['closure_scope']}", ""])
+    lines.extend(["### G4 scope limits", ""])
+    lines.extend(f"- {item}" for item in evidence.get("scope_limits") or [])
+    g6_evidence = gates.get("G6", {}).get("tree_level_evidence") or {}
+    g8_evidence = gates.get("G8", {}).get("flavour_evidence") or {}
+    lines.extend(
+        [
+            "",
+            "### Evidence cited by G6 and G8 (never changes a status)",
+            "",
+            f"- G6 (`{gates.get('G6', {}).get('status')}`): tree-level spectrum "
+            f"`{g6_evidence.get('source')}` recorded `{g6_evidence.get('recorded')}`, "
+            f"closes gate `{g6_evidence.get('closes_gate')}`",
+            f"- G8 (`{gates.get('G8', {}).get('status')}`): flavour no-go "
+            f"`{g8_evidence.get('source')}` recorded `{g8_evidence.get('recorded')}`, "
+            f"route `{g8_evidence.get('route_recorded')}`, closes gate "
+            f"`{g8_evidence.get('closes_gate')}`",
+        ]
     )
     return "\n".join(lines) + "\n"
 

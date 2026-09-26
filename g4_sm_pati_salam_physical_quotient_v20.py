@@ -58,8 +58,10 @@ exact-operator identity of the Hessian is float64 end to end (inherited).  Not c
 point, loop corrections (including the axion's anomaly mass and the v_a -> f_a = v_a/N_DW conversion), PQ-violating
 non-renormalizable operators (e.g. the dimension-21 Phi17^4 conj(S)^17, which lift the axion explicitly: its zero
 mode is exact for the renormalizable PQ-neutral benchmark potential only), and the G6 positivity/EWSB caveats
-(H = 0, no electroweak breaking).  This report does not wire G4: the ledger keeps G4 OPEN,
-and under decision D3 closing G4 would approve the internal candidate, which is the user's decision.
+(H = 0, no electroweak breaking).  This report is the G4 closure evidence: g1_g8_gate_ledger_v20 closes G4 on it,
+through the pure predicate g4_sm_closure_binding_v20, when the model contract is attested and G3 is CLOSED; the
+report never closes G4 by itself.  A CLOSED G4 meets decision D3's G4 condition but approves nothing: the user's
+decision D-E (2026-09-26) holds the internal-candidate tier until G7 is CLOSED.
 """
 from __future__ import annotations
 
@@ -82,6 +84,7 @@ import g3_sigma_hypercharge_audit_v20 as sigma_audit
 import g3_sm_pati_salam_candidate_v20 as candidate
 import g3_sm_pati_salam_equality_set_v20 as equality
 import g3_sm_pati_salam_exact_hessian_v20 as hessian
+import g4_sm_closure_binding_v20 as g4_binding
 import live_g2_canonical_486_field_chart_v20 as chart
 
 ROOT = Path(__file__).resolve().parent
@@ -90,10 +93,23 @@ OUT_MD = ROOT / "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.md"
 CONTRACT_JSON = ROOT / "GAUGED_U1X_SCALAR_CONTRACT_V20.json"
 
 MODEL_CONTRACT_ID = candidate.MODEL_CONTRACT_ID
-STATUS_CERTIFIED = "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__G4_NOT_WIRED"
-STATUS_INCOMPLETE = "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_NOT_CERTIFIED__G4_OPEN"
-OVERALL_STATE_CERTIFIED = "EXACT_G4_PHYSICAL_QUOTIENT_AT_G3_WITNESS__GATE_NOT_WIRED"
+STATUS_CERTIFIED = g4_binding.REQUIRED_STATUS
+STATUS_INCOMPLETE = g4_binding.INCOMPLETE_STATUS
+OVERALL_STATE_CERTIFIED = g4_binding.REQUIRED_OVERALL_STATE
 OVERALL_STATE_OPEN = "G4_PHYSICAL_QUOTIENT_OPEN"
+G4_STATUS_DECIDED_BY = (
+    "g1_g8_gate_ledger_v20 through g4_sm_closure_binding_v20: G4 is CLOSED iff the model contract is attested, G3 "
+    "is CLOSED and this certificate passes every binding criterion"
+)
+G4_WIRING = (
+    "wired: g1_g8_gate_ledger_v20 closes G4 on this certificate through g4_sm_closure_binding_v20 when the model "
+    "contract is attested and G3 is CLOSED; a CLOSED G4 meets decision D3's G4 condition but does not approve the "
+    "internal-candidate tier, which decision D-E (2026-09-26) holds until G7 is CLOSED (theory_confirmation_verdict_v20)"
+)
+G4_COVERAGE_RESOLUTION = (
+    "resolved when the ledger closes G4 on this certificate (g4_sm_closure_binding_v20); this report does not "
+    "close G4 by itself"
+)
 
 R0 = hessian.R0
 X0 = hessian.X0
@@ -173,18 +189,8 @@ G4_OPEN_SCOPE = (
     "included; SO(10) x U(1)_X x U(1)_PQ rank 35, massive/transverse quotient 451, i.e. quotients 452/451), the "
     "axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes); it is resolved only when G4 is CLOSED.",
 )
-W3_G4_ACCEPTANCE = (
-    "exact gauge/global-symmetry ranks remain compiler-bound and the completed G3 Hessian has no unexplained zero "
-    "or negative modes"
-)
-G4_REQUIRED_STATEMENT = (
-    "At the G3 witness q0 of V_PS,eps (0 < eps < 599/50; r0 = 1/5, x0 = 1, kappa = -r0/4) the SO(10)xU(1)_X orbit "
-    "has rank 34 and the SO(10)xU(1)_XxPQ orbit rank 35 (gauge quotient 452, massive/transverse quotient 451); the "
-    "Hessian has no negative mode and exactly 35 zero modes, 34 eaten Goldstones (33 SO(10)/SM + 1 U(1)_X) and 1 "
-    "physical axion; restricted to the 452-dimensional gauge quotient (canonical chart metric) it is PSD with the "
-    "axion as its only zero mode and 451 strictly positive modes; as eps -> 0 the only extra zero modes are the 4 "
-    "real modes of one SM doublet (1,2)_{1/2}, of mass^2 eps and lifted at quartic order by lambda_eff = 127/64 > 0."
-)
+W3_G4_ACCEPTANCE = g4_binding.W3_G4_ACCEPTANCE
+G4_REQUIRED_STATEMENT = g4_binding.G4_REQUIRED_STATEMENT
 THEOREM = (
     "Exact over Q at the G3 witness (V_PS,eps, 0 < eps < 599/50, r0 = 1/5, x0 = 1, kappa = -r0/4, q0 = (p, 0, "
     "r0 sigma_std, r0, x0)): the orbit tangent ranks are SO(10) 33, SO(10)xU(1)_X 34 and SO(10)xU(1)_XxPQ 35 "
@@ -1590,9 +1596,8 @@ def g4_scope_coverage(ok_sections: Mapping[str, bool]) -> list[dict[str, Any]]:
             "item": G4_OPEN_SCOPE[2],
             "certified_by": ["gauge_quotient", "axion", "light_doublet", "zero_mode_classification"],
             "content_certified": ok_sections["gauge_quotient"] and ok_sections["modes"],
-            "resolved": False,
-            "resolution": "the caveat is resolved only when G4 is CLOSED; this report does not wire G4 (under decision "
-            "D3 a CLOSED G4 approves the internal candidate, so wiring G4 is the user's decision)",
+            "resolved_by_this_report": False,
+            "resolution": G4_COVERAGE_RESOLUTION,
         },
     ]
 
@@ -1680,11 +1685,10 @@ def build_report(
         "tuned_limit_doublet_is_SM_doublet_lifted_at_quartic_order": ok,
         "vector_boson_gram_by_SM_sector_exact": ok,
         "compiler_binding_float64_only": True,
-        "G4_closed": False,
-        "G4_wired_into_gate_ledger": False,
         "report_closes_g4_by_itself": False,
-        "gate_status_changed": False,
-        "internal_candidate_approved": False,
+        "wired_into_gate_ledger_as_G4_evidence": True,
+        "tree_level_only": True,
+        "axion_massless_only_for_renormalizable_PQ_neutral_potential": True,
     }
     report = {
         "model_contract_id": MODEL_CONTRACT_ID,
@@ -1739,10 +1743,9 @@ def build_report(
                 "eps = r0^2/100, r0^2/10^6) gives inertia 451/1/0 on the 452-dimensional gauge quotient",
                 "light_doublet: exact SM label (1,2)_{1/2}, mass^2 eps, quartic lift 127/64 at eps = 0",
             ],
-            "wired_into_gate_ledger": False,
+            "wired_into_gate_ledger": True,
             "closes_g4_by_itself": False,
-            "wiring_decision": "left to the user: under decision D3 a CLOSED G4 approves the internal candidate, so "
-            "this report does not wire G4 and the ledger keeps G4 OPEN",
+            "wiring": G4_WIRING,
         },
         "scope": {
             "proved_exactly": [
@@ -1782,11 +1785,11 @@ def build_report(
                 "the G6 positivity/EWSB caveats: H = 0 on the witness, no electroweak breaking, sub-M_I coloured "
                 "126bar states; the complete positive spectrum with SM provenance is a G6 task",
                 "gauge coupling values: the vector-boson matrix is given up to g and g_X",
-                "wiring G4 into the gate ledger (under decision D3 a CLOSED G4 approves the internal candidate, so "
-                "wiring is the user's decision)",
+                "G6-G8: the complete physical spectrum beyond tree level, electroweak symmetry breaking, RG matching, "
+                "Yukawas and proton decay (this certificate supports only G4)",
             ],
         },
-        "G4_closed": False,
+        "G4_status_decided_by": G4_STATUS_DECIDED_BY,
         "runtime_seconds": 0.0,
         "verdict": "",
     }
@@ -1799,7 +1802,7 @@ def _verdict(report: Mapping[str, Any]) -> str:
     if report["n_failed"]:
         return (
             "FAIL-CLOSED: the G4 physical-quotient certificate is NOT claimed (failed: " + ", ".join(report["failures"])
-            + ").  G4 stays OPEN."
+            + ").  G4 is not closed on this report."
         )
     axion = report["axion"]
     return (
@@ -1814,8 +1817,9 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "multiplicity 4 for eps < r0^2/96); the 35 zero modes of the full Hessian are 34 eaten Goldstones (33 + 1) "
         "and the axion, and no mode is negative.  At eps = 0 the 4 extra zero modes are one SM doublet (1,2)_{1/2}, "
         "lifted at quartic order by lambda_eff = 127/64.  The vector-boson Gram matrix has rank 34.  Compiler "
-        "binding is float64.  G4 is NOT wired: the ledger keeps G4 OPEN (under decision D3 a CLOSED G4 approves the "
-        "internal candidate, so wiring G4 is the user's decision)."
+        "binding is float64.  This certificate is the G4 closure evidence: the ledger closes G4 on it (at this "
+        "benchmark witness, tree level) when the model contract is attested and G3 is CLOSED, and it does not close "
+        "G4 by itself.  The axion is massless only for the renormalizable PQ-neutral benchmark potential."
     )
 
 
@@ -1945,14 +1949,14 @@ def _markdown(report: Mapping[str, Any]) -> str:
     final = report["final_acceptance_test"]
     lines += [
         "",
-        "## Final acceptance test (G4, not wired)",
+        "## Final acceptance test (G4, wired as closure evidence)",
         "",
         f"**Required statement:** {final['required_statement']}",
         "",
         f"**Currently passes:** `{final['currently_passes']}`; wired into the gate ledger: "
         f"`{final['wired_into_gate_ledger']}`; closes G4 by itself: `{final['closes_g4_by_itself']}`.",
         "",
-        "Wiring: " + final["wiring_decision"] + ".",
+        "Wiring: " + final["wiring"] + ".",
         "",
         "## G4 open-scope coverage",
         "",

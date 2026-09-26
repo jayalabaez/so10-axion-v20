@@ -4445,7 +4445,7 @@
       }
     }
   },
-  "runtime_seconds": 36.7482087612,
+  "runtime_seconds": 85.1549658775,
   "scope": {
     "exact_premises_reused": [
       "the committed binding units and their source tensors (g3_sm_pati_salam_exact_hessian_v20), whose compiler binding is float64 end to end (that module's scope); the degree <= 3 structure of their scalars is read off binding_units' code (rho = r0/4 and the singlet vevs, powers <= 3)",
@@ -4458,7 +4458,7 @@
       "GeV values: illustrative (anchor M_GUT, which this field content does not reproduce)",
       "the axion decay constant f_a = v_a/N_DW (needs the fermion PQ charges / the QCD anomaly); F_PQ is 68 times the periodicity scale v_a and is not f_a",
       "the vacuum property of q0 outside the G3 witness window (for eps >= 12 - 2|kappa| r0 the parametric statements are about the Hessian at the stationary point only)",
-      "G6 wiring: no ledger, gate, workflow or README change; G6 stays BLOCKED"
+      "G6 closure: the ledger cites this report as tree-level evidence only; it does not close G6 (OPEN once G3, G4 and G5 are CLOSED)"
     ],
     "proved_exactly": [
       "tree-level Hessian spectrum at the stationary point q0 of V_PS,eps for all r0, x0, eps > 0 (kappa = -r0/4): 28 irreducible factors over Q(r0, x0, eps), 35 zero modes (34 eaten Goldstones + the axion, G4) and 451 strictly positive levels, SM labels from exact integer Casimirs; it is the vacuum (threshold) spectrum wherever G3 certifies q0 as the global minimum (0 < eps < 12 - 2|kappa| r0)",
@@ -5708,7 +5708,7 @@
       }
     ]
   },
-  "verdict": "Exact tree-level Hessian spectrum at q0 of the G3 witness family V_PS,eps, parametric in (r0, x0, eps) (the vacuum/threshold spectrum wherever G3 certifies q0 as the global minimum, 0 < eps < 12 - 2|kappa| r0): the gradient vanishes identically and the pencil factors into 28 irreducible factors over Q(r0, x0, eps) on 65 support components; for every r0, x0, eps > 0 there are 35 zero modes (34 eaten Goldstones + the axion) and 451 strictly positive levels, 0 negative (sign-alternation certificate, Sturm on 0 < r0 <= 1/5), with exact SM labels and mixings; both the benchmark and the physical member (canonical Phi17 scale) are re-certified point-exactly.  The 10_H triplets decouple exactly (issue #106 sub-ledger); |G(Delta, 6_Sigma)| = 28*sqrt(2)*(32 + 117*r0^2)/(1360 + 4316*r0^2 + 117*r0^4) M_GUT^-2, not exactly r0-independent (limit 56*sqrt(2)/85 as r0 -> 0, variation 1.70% on (0, 1/5]); the axion norm is F_PQ^2 = 32 r0^2 578 x0^2/(32 r0^2 + 578 x0^2) and, the axion angle having period 2 pi/68 modulo the gauge group, the periodicity scale is v_a = F_PQ/68 (physical member, illustrative: F_PQ = 3.572e+12 GeV, v_a = 5.252e+10 GeV; f_a = v_a/N_DW is not computed).  Tree level only: one-loop positivity is NOT certified (R1 open), electroweak symmetry is not broken (H = 0, eps > 0), sub-M_I coloured 126bar states remain, and G6 is not wired (no gate change; G6 stays BLOCKED).",
+  "verdict": "Exact tree-level Hessian spectrum at q0 of the G3 witness family V_PS,eps, parametric in (r0, x0, eps) (the vacuum/threshold spectrum wherever G3 certifies q0 as the global minimum, 0 < eps < 12 - 2|kappa| r0): the gradient vanishes identically and the pencil factors into 28 irreducible factors over Q(r0, x0, eps) on 65 support components; for every r0, x0, eps > 0 there are 35 zero modes (34 eaten Goldstones + the axion) and 451 strictly positive levels, 0 negative (sign-alternation certificate, Sturm on 0 < r0 <= 1/5), with exact SM labels and mixings; both the benchmark and the physical member (canonical Phi17 scale) are re-certified point-exactly.  The 10_H triplets decouple exactly (issue #106 sub-ledger); |G(Delta, 6_Sigma)| = 28*sqrt(2)*(32 + 117*r0^2)/(1360 + 4316*r0^2 + 117*r0^4) M_GUT^-2, not exactly r0-independent (limit 56*sqrt(2)/85 as r0 -> 0, variation 1.70% on (0, 1/5]); the axion norm is F_PQ^2 = 32 r0^2 578 x0^2/(32 r0^2 + 578 x0^2) and, the axion angle having period 2 pi/68 modulo the gauge group, the periodicity scale is v_a = F_PQ/68 (physical member, illustrative: F_PQ = 3.572e+12 GeV, v_a = 5.252e+10 GeV; f_a = v_a/N_DW is not computed).  Tree level only: one-loop positivity is NOT certified (R1 open), electroweak symmetry is not broken (H = 0, eps > 0), sub-M_I coloured 126bar states remain, and this report does not close G6 (the ledger cites it as tree-level evidence only).",
   "witness": {
     "G3_witness_window_at_benchmark": "0 < eps < 599/50",
     "family": "V_PS,eps = V_PS + eps N_H, kappa = -r0/4, O06 = 2|kappa| r0 + eps (g3_sm_target_track_v20, decision D2)",

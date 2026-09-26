@@ -14,6 +14,7 @@ import unittest
 
 import g1_g8_gate_ledger_v20 as gate_ledger
 import g3_sm_target_track_v20 as sm_track
+import g4_sm_closure_binding_v20 as g4_closure
 import corrected_rank1_endpoint_v21 as corrected_rank1
 
 
@@ -146,6 +147,21 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_g3_sm_pati_salam_gate_readiness_v20.py",
     "G3_SM_PATI_SALAM_GATE_READINESS_V20.json",
     "G3_SM_PATI_SALAM_GATE_READINESS_V20.md",
+    # G4 closure (wired through the pure binding) and the G6/G8 evidence certificates the ledger cites.
+    "g4_sm_closure_binding_v20.py",
+    "test_g4_sm_closure_binding_v20.py",
+    "g4_sm_pati_salam_physical_quotient_v20.py",
+    "test_g4_sm_pati_salam_physical_quotient_v20.py",
+    "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json",
+    "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.md",
+    "g6_sm_pati_salam_tree_spectrum_v20.py",
+    "test_g6_sm_pati_salam_tree_spectrum_v20.py",
+    "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json",
+    "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.md",
+    "g8_sm_pati_salam_flavour_nogo_v20.py",
+    "test_g8_sm_pati_salam_flavour_nogo_v20.py",
+    "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",
+    "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.md",
 )
 
 
@@ -1571,7 +1587,7 @@ def main() -> int:
         "alternative global-SOS audit failed or overclaimed its no-go scope",
     )
     # G3 closes only through the final gate's SM Pati-Salam track, and the
-    # ledger must agree: G3/G5 CLOSED, G4 OPEN, G6-G8 BLOCKED.
+    # ledger must agree: G3/G4/G5 CLOSED (G4 on its certified witness binding), G6 OPEN, G7-G8 BLOCKED.
     require(
         final_g3["n_failed"] == 0
         and final_g3["overall_state"] == "PASS"
@@ -1586,9 +1602,12 @@ def main() -> int:
         and final_g3["tracks"]["chiral_H_SU5_Delta"]["can_close_G3"] is False
         and ledger_report["gates"]["G3"]["status"] == "CLOSED"
         and ledger_report["gates"]["G3"]["closing_track"] == "sm_pati_salam"
-        and ledger_report["gates"]["G4"]["status"] == "OPEN"
+        and ledger_report["gates"]["G4"]["status"] == "CLOSED"
+        and ledger_report["gates"]["G4"]["closure_evidence"]["certified"] is True
+        and ledger_report["gates"]["G4"]["closure_evidence"]["status"] == g4_closure.REQUIRED_STATUS
         and ledger_report["gates"]["G5"]["status"] == "CLOSED"
-        and all(ledger_report["gates"][g]["status"] == "BLOCKED" for g in ("G6", "G7", "G8")),
+        and ledger_report["gates"]["G6"]["status"] == "OPEN"
+        and all(ledger_report["gates"][g]["status"] == "BLOCKED" for g in ("G7", "G8")),
         "final G3 acceptance gate and ledger disagree on the SM-track G3 closure",
     )
     candidate_coefficients = g3_candidate["coefficient_vector"]
@@ -1751,12 +1770,18 @@ def main() -> int:
         and not matrix["full_theory_validated"],
         "validation matrix promoted the open theory past its gates",
     )
+    # Decision D-E: G4 CLOSED meets decision D3, but the internal candidate is
+    # held (not approved) until G7 is CLOSED.
     require(
         ultimate["overall_state"] == "OPEN"
         and not ultimate["internal_candidate_approved"]
+        and ultimate["internal_candidate_gate"]["G4_closed"] is True
+        and ultimate["internal_candidate_gate"]["G7_closed"] is False
+        and ultimate["internal_candidate_gate"]["approval_held_pending_G7"] is True
+        and not ultimate["conditional_benchmark_approved"]
         and not ultimate["full_phenomenology_approved"]
         and not ultimate["whole_model_excluded"],
-        "ultimate gate approved or excluded the open model",
+        "ultimate gate approved the internal candidate before G7 (decision D-E) or approved or excluded the open model",
     )
 
     suite = unittest.defaultTestLoader.discover(str(ROOT))
@@ -2045,7 +2070,8 @@ def main() -> int:
     write_checksums(core)
     print(
         f"RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
-        f"tests {n_tests}/{n_tests}; clean 14-page PDF; scientific state OPEN"
+        f"tests {n_tests}/{n_tests}; clean 14-page PDF; scientific state OPEN; "
+        f"G4 CLOSED; internal candidate held pending G7 (decision D-E)"
     )
     return 0
 

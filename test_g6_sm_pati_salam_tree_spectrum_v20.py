@@ -10,8 +10,8 @@ while an available but disagreeing G4 file must fail.  Independent checks re-der
 exact-Hessian module's own LDL^T inertia routine and re-parse the committed closed forms with sympy.  The mutation
 tests change one input each (a coefficient of the symbolic map, a pinned expectation, a binding-unit scalar at one
 grid point, a portal id, the G4 report (disagreeing, empty, unreadable, missing) or the candidate report) and require
-the report to fail closed (a genuinely missing G4 report only skips the cross-check); G6 must stay BLOCKED in the
-committed gate ledger.
+the report to fail closed (a genuinely missing G4 report only skips the cross-check).  In the committed gate ledger
+G6 is OPEN (G3, G4 and G5 are CLOSED), never CLOSED: the ledger cites this report as tree-level evidence only.
 """
 from __future__ import annotations
 
@@ -202,9 +202,11 @@ class G6SmPatiSalamTreeSpectrumTest(unittest.TestCase):
             "f_a = v_a/N_DW is not computed",
             "0 < eps < 12 - 2|kappa| r0",
             "R1 (one-loop Coleman-Weinberg risk, not certified here)",
-            "G6 wiring: no ledger, gate, workflow or README change; G6 stays BLOCKED",
+            "G6 closure: the ledger cites this report as tree-level evidence only; it does not close G6 (OPEN once "
+            "G3, G4 and G5 are CLOSED)",
         ):
             self.assertIn(fragment, text)
+        self.assertNotIn("G6 stays BLOCKED", text)
 
     # ------------------------------------------------------------------
     # The certificate numbers.
@@ -455,9 +457,29 @@ class G6SmPatiSalamTreeSpectrumTest(unittest.TestCase):
         self.assertIn("NOT certified", disclosures["R1_one_loop"])
         self.assertIn("eps < 0", disclosures["EWSB"])
 
-    def test_g6_stays_blocked_in_the_committed_ledger(self) -> None:
+    def test_g6_is_open_not_closed_in_the_committed_ledger(self) -> None:
         ledger = json.loads(LEDGER_JSON.read_text(encoding="utf-8"))
-        self.assertEqual(ledger["gates"]["G6"]["status"], "BLOCKED")
+        row = ledger["gates"]["G6"]
+        self.assertEqual(row["status"], "OPEN")
+        self.assertEqual(row["authoritative_closed_scope"], [])
+        evidence = row["tree_level_evidence"]
+        self.assertIs(evidence["recorded"], True)
+        self.assertIs(evidence["closes_gate"], False)
+        self.assertEqual(evidence["required_status"], g6.STATUS_CERTIFIED)
+
+    def test_verdict_never_closes_g6(self) -> None:
+        for report in (self.committed, self.fresh):
+            verdict = report["verdict"]
+            self.assertTrue(
+                verdict.endswith(
+                    "and this report does not close G6 (the ledger cites it as tree-level evidence only)."
+                ),
+                verdict,
+            )
+            self.assertNotIn("G6 stays BLOCKED", verdict)
+            self.assertIs(report["G6_closed"], False)
+            self.assertIs(report["flags"]["report_closes_g6_by_itself"], False)
+        self.assertEqual(g6.STATUS_INCOMPLETE, "G6_SM_PATI_SALAM_TREE_SPECTRUM_NOT_CERTIFIED__G6_NOT_CLOSED")
 
     # ------------------------------------------------------------------
     # Helpers.
