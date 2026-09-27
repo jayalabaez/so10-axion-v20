@@ -80,6 +80,7 @@ on:
       - "test_g4_sm_closure_binding_v20.py"
       - "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json"
       - "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json"
+      - "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json"
       - "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json"
       - "g3_sm_pati_salam_candidate_v20.py"
       - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
@@ -172,6 +173,7 @@ on:
       - "test_g4_sm_closure_binding_v20.py"
       - "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json"
       - "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json"
+      - "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json"
       - "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json"
       - "g3_sm_pati_salam_candidate_v20.py"
       - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
@@ -405,6 +407,7 @@ jobs:
           assert ledger['g3_sm_target_track']['closed'] is True and ledger['g3_sm_target_track']['downstream_caveats_resolved'] is False
           assert ledger['gates']['G4']['closure_evidence']['certified'] is True and ledger['gates']['G4']['authoritative_closed_scope']
           assert ledger['gates']['G6']['tree_level_evidence']['recorded'] is True and ledger['gates']['G6']['tree_level_evidence']['closes_gate'] is False
+          assert ledger['gates']['G6']['remnant_rg_evidence']['recorded'] is True and ledger['gates']['G6']['remnant_rg_evidence']['closes_gate'] is False
           assert ledger['gates']['G8']['flavour_evidence']['recorded'] is True and ledger['gates']['G8']['flavour_evidence']['closes_gate'] is False
           assert ledger['historical_option_c_subtheorems']['G1']['invariant_directions']==64
           assert ledger['historical_option_c_subtheorems']['G1']['real_potential_parameters']==91

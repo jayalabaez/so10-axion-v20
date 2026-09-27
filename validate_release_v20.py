@@ -147,7 +147,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_g3_sm_pati_salam_gate_readiness_v20.py",
     "G3_SM_PATI_SALAM_GATE_READINESS_V20.json",
     "G3_SM_PATI_SALAM_GATE_READINESS_V20.md",
-    # G4 closure (wired through the pure binding) and the G6/G8 evidence certificates the ledger cites.
+    # G4 closure (wired through the pure binding) and the G6/G8 evidence certificates the ledger cites (G6 tree
+    # spectrum and remnant RG no-go, G8 Route C).
     "g4_sm_closure_binding_v20.py",
     "test_g4_sm_closure_binding_v20.py",
     "g4_sm_pati_salam_physical_quotient_v20.py",
@@ -158,6 +159,10 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_g6_sm_pati_salam_tree_spectrum_v20.py",
     "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json",
     "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.md",
+    "g6_sm_pati_salam_remnant_rg_nogo_v20.py",
+    "test_g6_sm_pati_salam_remnant_rg_nogo_v20.py",
+    "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json",
+    "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.md",
     "g8_sm_pati_salam_flavour_nogo_v20.py",
     "test_g8_sm_pati_salam_flavour_nogo_v20.py",
     "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",

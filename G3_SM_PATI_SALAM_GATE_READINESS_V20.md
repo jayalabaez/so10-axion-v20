@@ -234,4 +234,4 @@ Decisions needed (historical record of the planner's questions):
 | `G3_SM_PATI_SALAM_EQUALITY_SET_V20.json` | `True` | `None` | `f41ec4d3dabce943c779754cfcb2325a2eb0c0b7ee6f2676015d2e55e0d1fa44` |
 | `G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json` | `True` | `None` | `dff9a7c611043c3d7a925db0af4fe19c2e499b29080576a4cc21a2ed01de3ec0` |
 | `G3_SIGMA_HYPERCHARGE_AUDIT_V20.json` | `True` | `None` | `93b52b5f96c5544c845da0c65cb581eee2ba47ddc61458277a169e2d103498ec` |
-| `G1_G8_GATE_LEDGER_V20.json` | `True` | `None` | `bc43dab8f076517c0690540169f395f7c58cd8cdcab879c61bc235f1f6a0776b` |
+| `G1_G8_GATE_LEDGER_V20.json` | `True` | `None` | `1504ef7e450c7aa4a5d1ded7a42532a220a1422425475d404c4d2cc42ad6d0ab` |

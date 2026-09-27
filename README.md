@@ -170,8 +170,9 @@ negative controls (a non-invariant `210.10^dag.10` term, a broken anomaly).
 The model contract is therefore CONSISTENT and the ledger promotes G1, G2 and
 G5 (on the Pati-Salam coupling vector) to CLOSED. G3 is CLOSED on the SM
 Pati-Salam benchmark family only, and G4 is CLOSED at that G3 witness
-benchmark at tree level (scopes below). G6 is OPEN (tree-level evidence only)
-and G7-G8 remain dependency-blocked. G4 CLOSED meets decision D3, but no
+benchmark at tree level (scopes below). G6 is OPEN (tree-level evidence at
+`mu = M_GUT`; the remnant RG no-go on the SOS witness family is cited) and
+G7-G8 remain dependency-blocked. G4 CLOSED meets decision D3, but no
 internal candidate is approved: decision D-E holds that tier until G7 is
 CLOSED, because the declared benchmark (5 x (16 + 16bar) spectators at
 `M_s ~ M_I`, `v_S = M_I`) has no perturbative two-loop unification according
@@ -384,6 +385,21 @@ Decisions adopted (D1-D6, D-E):
   cites the Route C flavour no-go (`g8_sm_pati_salam_flavour_nogo_v20.py`):
   this witness branch cannot reproduce flavour, and routes A (a new
   in-contract G3 branch) and B (a contract extension) need a decision.
+- The G6 tree certificate is scoped to tree level at `mu = M_GUT`.
+  `g6_sm_pati_salam_remnant_rg_nogo_v20.py` records that G6 is not closable on
+  the SOS-certified witness family at one loop with tree-level matching: exact
+  tree-level matching at `M_GUT` gives `lambda4 - lambda5 = (w_4125 - w_2772)/8`
+  (only raised by 210 exchange), which is `>= 0` for every SOS-safe 126bar
+  weight vector, while the sampled one-loop-positive remnant region needs
+  `lambda4 - lambda5 < 0` at `M_GUT` (about -0.42 at `rho = 1e3`), and the
+  certified witness runs tachyonic (`lambda5 = 0` at 4.7e16 GeV at
+  `rho = 1e3`). Only this tree-matching statement is robust: the one-loop
+  `M_GUT` threshold, computed at the witness only and assumed weight
+  independent (not verified), shifts `lambda4 - lambda5` by -0.57 and leaves a
+  margin of 0.042 at `rho = 1e3` that closes at 1.2-1.7 times that threshold.
+  The region statistics are research-recorded. G6 is not shown impossible in
+  the contract (an anti-SOS G3 witness might exist), and G3 and G4 are
+  unchanged.
 
 Open items for this candidate:
 - The doublet-triplet splitting and the intermediate scale are tuned coupling
