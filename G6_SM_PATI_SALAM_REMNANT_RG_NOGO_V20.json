@@ -1,0 +1,3715 @@
+{
+  "G6_status": "OPEN",
+  "chart_binding": {
+    "c_qk": {
+      "1050bar": [
+        "1/2",
+        "0",
+        "4/9",
+        "0",
+        "0"
+      ],
+      "2772bar": [
+        "1/10",
+        "0",
+        "1/9",
+        "0",
+        "1"
+      ],
+      "4125": [
+        "1/7",
+        "1",
+        "4/9",
+        "1",
+        "0"
+      ],
+      "54": [
+        "9/35",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "c_qk_check_point_residuals": {
+      "1050bar": [
+        "0",
+        "0"
+      ],
+      "2772bar": [
+        "0",
+        "0"
+      ],
+      "4125": [
+        "0",
+        "0"
+      ],
+      "54": [
+        "0",
+        "0"
+      ]
+    },
+    "c_qk_column_sums": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "chart": "repository 126bar chart (sos_source.integer_sigma_generators, 45 Gaussian-integer anti-Hermitian 126 x 126)",
+    "checks": {
+      "c_qk_columns_sum_to_one": true,
+      "c_qk_exact": true,
+      "completeness_at_points": true,
+      "krylov_basis_spans_delta_R_exactly": true,
+      "ps_pair_minimal_polynomials_at_points": true,
+      "ps_pair_operators_calibrated_on_sigma_std": true,
+      "sigma_std_pure_35_5_and_pure_2772bar": true,
+      "witness_portal_squares_annihilate_delta_R": true,
+      "witness_weights_bound_to_committed_candidate": true
+    },
+    "generators": {
+      "chart_dimension": 126,
+      "so10": 45,
+      "so6": 15,
+      "su2R_J": 3
+    },
+    "kind": "EXACT",
+    "krylov_basis": {
+      "max_entry": 4,
+      "prime": 998244353,
+      "rank_argument": "rank over Q >= rank mod p = 60 = number of realified columns",
+      "rank_mod_p": 60,
+      "realified_shape": [
+        60,
+        252
+      ],
+      "size": 30
+    },
+    "pair_operator_eigenvalues": {
+      "K4_by_C4": {
+        "12": -3,
+        "6": 3,
+        "8": 1
+      },
+      "KR_by_CR": {
+        "0": 8,
+        "2": 4,
+        "6": -4
+      }
+    },
+    "points": {
+      "lcg_seed": "1000 + j",
+      "max_coordinate": 14,
+      "n_check": 2,
+      "n_points": 7,
+      "n_solve": 5
+    },
+    "sigma_std": {
+      "I_q": {
+        "1050bar": "0",
+        "2772bar": "256",
+        "4125": "0",
+        "54": "0"
+      },
+      "V_k": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "256"
+      ],
+      "raw_norm_squared": 16
+    },
+    "su2R_combinations": {
+      "J_L": "(t67 - t89, t68 + t79, t69 - t78) (annihilates sigma_std)",
+      "J_R": "(t67 + t89, t68 - t79, t69 + t78) (acts on sigma_std)"
+    },
+    "weights": {
+      "historical": {
+        "1050bar": "2",
+        "2772bar": "17/16",
+        "4125": "1",
+        "54": "2"
+      },
+      "self_channels": [
+        "54",
+        "1050bar",
+        "2772bar",
+        "4125"
+      ],
+      "sigma_scale": "1/8",
+      "swapped_witness": {
+        "1050bar": "2",
+        "2772bar": "1",
+        "4125": "17/16",
+        "54": "2"
+      }
+    },
+    "witness_portal": {
+      "consequence": "(M_p - 2) and C_p vanish on Delta_R: the witness portal squares have no phi Delta Delta^dag trilinear, beta_c(witness) = 0 exactly",
+      "max_abs_residual_on_krylov_basis": 0,
+      "operators": "M_p, C_p from sos_source.phi_source.pati_salam_direction(), a_square_source.integer_cubic_operators() and integer_contraction_tensor()",
+      "p_integral": true
+    }
+  },
+  "checks": {
+    "chart.c_qk_columns_sum_to_one": true,
+    "chart.c_qk_exact": true,
+    "chart.completeness_at_points": true,
+    "chart.krylov_basis_spans_delta_R_exactly": true,
+    "chart.ps_pair_minimal_polynomials_at_points": true,
+    "chart.ps_pair_operators_calibrated_on_sigma_std": true,
+    "chart.sigma_std_pure_35_5_and_pure_2772bar": true,
+    "chart.witness_portal_squares_annihilate_delta_R": true,
+    "chart.witness_weights_bound_to_committed_candidate": true,
+    "group_theory.beta_gauge_tensor_exact": true,
+    "group_theory.beta_route_reproduces_sm_higgs": true,
+    "group_theory.beta_scalar_tensor_exact": true,
+    "group_theory.beta_scalar_tensor_o60_point_136": true,
+    "group_theory.delta_R_casimirs_9_2_and_2": true,
+    "group_theory.exchange_channels_of_210_never_lower_gap": true,
+    "group_theory.fierz_vectors_exact": true,
+    "group_theory.integer_generators_close_su4_su2R": true,
+    "group_theory.quartic_basis_completeness": true,
+    "group_theory.real_dimension_bookkeeping_60": true,
+    "group_theory.remnant_rows_sum_to_zero_radial_row_4": true,
+    "group_theory.sm_state_labels_exact": true,
+    "group_theory.sym2_irrep_dimensions": true,
+    "group_theory.sym2_minimal_polynomials": true,
+    "group_theory.tree_mass_matrix_exact": true,
+    "group_theory.vacuum_is_sm_singlet_with_9_broken_generators": true,
+    "group_theory.witness_betas_exact": true,
+    "matching.gap_identity_exact": true,
+    "matching.historical_unswapped_weights_violate_gap": true,
+    "matching.lambda2_equals_lambda4_without_exchange": true,
+    "matching.sos_family_forces_gap_nonnegative": true,
+    "matching.tree_map_symbolic": true,
+    "matching.tree_vacuum_requires_positive_gap": true,
+    "matching.witness_couplings_exact": true,
+    "matching.witness_tree_levels_exact": true,
+    "matching.witness_tree_levels_match_committed_g6_certificate": true,
+    "one_loop.cw_masses_match_independent_record": true,
+    "one_loop.cw_masses_positive_at_region_points": true,
+    "one_loop.fj_pole_masses_match_research_record": true,
+    "one_loop.fj_pole_masses_positive_all_xi": true,
+    "one_loop.fj_pole_masses_xi_independent": true,
+    "one_loop.vev_fixed_landau_masses_positive_and_dv_controlled": true,
+    "research_record.consistent_with_recomputation": true,
+    "research_record.entries_labelled_with_provenance": true,
+    "research_record.unverified_items_not_claimed": true,
+    "running.bfb_only_matching_exact_at_region_points": true,
+    "running.discretisation_accuracy_within_budget": true,
+    "running.gauge_profiles_reproduce_recorded_inputs": true,
+    "running.region_points_run_up": true,
+    "running.region_points_tree_positive_at_v_R": true,
+    "running.region_points_violate_sos_gap_at_M_GUT": true,
+    "running.sos_safe_grid_has_no_perturbative_tree_vacuum_at_v_R": true,
+    "running.threshold_matching_min_slack_pinned": true,
+    "running.threshold_scale_to_reach_sos_family": true,
+    "running.tree_matching_min_slack_is_half_gap": true,
+    "running.witness_betas_float_match_research": true,
+    "running.witness_flow_nonperturbative_before_v_R": true,
+    "running.witness_lambda5_zero_crossing": true,
+    "scope.g6_open_and_evidence_only": true
+  },
+  "conventions": {
+    "betas": "Landau gauge, MS-bar, effective-potential route, t = ln(mu/GeV); sum_k beta_k V_k = k'[(1/2) Tr M_S^4 + (3/2) Tr M_V^4] - 3 k' C2D phi.dV4",
+    "delta_R": "complex D in V = 4bar (x) 4bar (x) 3 symmetric in the two 4bar slots; kinetic |dD|^2; real coordinates D = (x_re + i x_im)/sqrt2",
+    "gl4": "integer basis E_ij, rho(E_ij) = -E_ji on 4bar; B-L(4bar) = diag(-1/3, -1/3, -1/3, +1); T3R = i L_3; Y = T3R + (B-L)/2",
+    "matching": "lambda(w, beta) = (1/8) sum_q w_q c_q - sum_c beta_c f_c at mu = M_GUT (w_q/8 = O27_B0q, SIGMA_SCALE = 1/8)",
+    "normalisation": "Tr_fund(T_a T_b) = delta_ab/2; 2 C4 X = sum_ij R(E_ij) R(E_ji) X - 4 X on pairs; CR X = -sum_m R(L_m)^2 X",
+    "potential": "V = -mu^2 |D|^2 + sum_k lambda_k V_k(D); D0 = v S_33 v_{-1}; mu^2 = 2 lambda5 v^2; levels m^2/v^2 = G6 levels in units r0^2 M_GUT^2 (v = r0)",
+    "quartic_basis": "k = (20',1), (35,1), (45,3), (20',5), (35,5) with (C4, CR) = (6,0), (12,0), (8,2), (6,6), (12,6); V_k(D) = <X, P_k X>, X = D (x) D, sum_k V_k = |D|^4",
+    "states": "S_ab (x) v_t with v_{+1} = (1, i, 0), v_{-1} = (1, -i, 0), v_0 = e_3; order (6,1)_4/3, (1,1)_2, (3,1)_1/3, (6,1)_1/3, (3,1)_4/3, (6,1)_2/3, (1,1)_0 radial"
+  },
+  "disclosures": {
+    "pole_scheme_dependence": {
+      "fj_vs_vf_vev_shift": {
+        "no_spec": {
+          "dv_feyn": 0.195206877515,
+          "dv_landau": 0.184622255099
+        },
+        "rho1e3": {
+          "dv_feyn": 0.187099843804,
+          "dv_landau": 0.176420674913
+        },
+        "rho1e4": {
+          "dv_feyn": 0.186693170571,
+          "dv_landau": 0.176069749114
+        }
+      },
+      "meaning": "median relative pole-mass change 0.49 at Q = sqrt2 v_R and 0.74 at Q = 2 v_R; Q = v_R/sqrt2 removes every region point (research-recorded)",
+      "overall_factor_fj_over_vf": "about 1.36 (1 + 2 dv/v)",
+      "scale_variation_rho1e3": {
+        "Q_2_vR": {
+          "median_rel_dpole_region": 0.735233399327,
+          "region_at_Q": 1363,
+          "region_at_vR": 1906
+        },
+        "Q_sqrt2_vR": {
+          "median_rel_dpole_region": 0.492497630128,
+          "region_at_Q": 1728,
+          "region_at_vR": 1906
+        },
+        "Q_vR_over_sqrt2": {
+          "median_rel_dpole_region": 10.9223565378,
+          "region_at_Q": 0,
+          "region_at_vR": 1906
+        }
+      }
+    },
+    "region_sampling": {
+      "box_extension": {
+        "no_spec": {
+          "N": 1500000,
+          "ext_box_hi": [
+            2.0,
+            1.6,
+            0.6,
+            0.7,
+            0.12
+          ],
+          "ext_box_lo": [
+            -2.0,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "n_tree_pos_path_unitary": 1359,
+          "share_inside_prod_box": 0.975338559265
+        },
+        "rho1e3": {
+          "N": 1500000,
+          "ext_box_hi": [
+            2.0,
+            1.6,
+            0.6,
+            0.7,
+            0.12
+          ],
+          "ext_box_lo": [
+            -2.0,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "n_tree_pos_path_unitary": 605,
+          "share_inside_prod_box": 0.996634265384
+        }
+      },
+      "meaning": "the one-loop region is a sampled, box-bounded set: 1.5M uniform lambda(v_R) points per profile in [-0.8, 0.8] x [-0.1, 0.8] x [-0.1, 0.35] x [-0.1, 0.45] x [0, 0.08] after a tree prefilter (remnant levels > -0.1 v_R^2); its maximum lambda4 - lambda5 < 0 at M_GUT and '0 of 400 reachable' are sample statistics, not a proof over all couplings; an extended box puts 99.7% (rho = 1e3) and 97.5% (no spectators) of the UV volume inside the production box, and the gap sign of the rest was not recorded",
+      "scan_boxes": {
+        "no_spec": {
+          "N_box": 1500000,
+          "box_hi": [
+            0.8,
+            0.8,
+            0.35,
+            0.45,
+            0.08
+          ],
+          "box_lo": [
+            -0.8,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "matching_slack_d_th": 0.02,
+          "n_prefilter": 978576,
+          "prefilter_min_remnant_level": -0.1
+        },
+        "rho1e3": {
+          "N_box": 1500000,
+          "box_hi": [
+            0.8,
+            0.8,
+            0.35,
+            0.45,
+            0.08
+          ],
+          "box_lo": [
+            -0.8,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "matching_slack_d_th": 0.02,
+          "n_prefilter": 978514,
+          "prefilter_min_remnant_level": -0.1
+        },
+        "rho1e4": {
+          "N_box": 1500000,
+          "box_hi": [
+            0.8,
+            0.8,
+            0.35,
+            0.45,
+            0.08
+          ],
+          "box_lo": [
+            -0.8,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "matching_slack_d_th": 0.02,
+          "n_prefilter": 979077,
+          "prefilter_min_remnant_level": -0.1
+        }
+      }
+    },
+    "scale_statement_rho_specific": {
+      "meaning": "no point positive at all three scale choices holds at rho = 1e3 only",
+      "n_core_all_scales": {
+        "no_spec": 240,
+        "rho1e3": 0,
+        "rho1e4": 87
+      }
+    },
+    "sigma_not_global_min_in_region": {
+      "meaning": "at rho = 1e3 sigma is the global minimum of the tree quartic at v_R in 43 of 60 region points (not in 17)",
+      "sphere_min": {
+        "no_spec": {
+          "n": 60,
+          "n_quartic_negative_somewhere": 12,
+          "sigma_global_min": 39
+        },
+        "rho1e3": {
+          "n": 60,
+          "n_quartic_negative_somewhere": 11,
+          "sigma_global_min": 43
+        },
+        "rho1e4": {
+          "n": 60,
+          "n_quartic_negative_somewhere": 11,
+          "sigma_global_min": 42
+        }
+      }
+    },
+    "threshold_fragility": {
+      "M_GUT_over_M_X": {
+        "no_spec": 2.8018205631,
+        "rho1e3": 1.94559196793,
+        "rho1e4": 2.26786291763
+      },
+      "alpha_inv_at_M_GUT": {
+        "no_spec": [
+          47.5297870327,
+          46.2161999028,
+          46.4318100314
+        ],
+        "rho1e3": [
+          20.9887054598,
+          20.1500321686,
+          20.3041323647
+        ],
+        "rho1e4": [
+          28.9748346226,
+          27.9538312509,
+          28.1302113892
+        ]
+      },
+      "meaning": "the only computed one-loop M_GUT threshold (at the witness; alpha^-1 = 23.78, gX = g) shifts lambda4 - lambda5 by -0.571, 73 times the witness tree gap 1/128 and larger than the rho = 1e3 region gap -0.416: it removes the lambda4 >= lambda5 obstruction (the rho = 1e3 target gap becomes +0.155) and leaves a sup-norm LP margin of 0.042 in other components, which closes at 1.20 (slack <= 0.03) to 1.73 (exact reach) times that threshold. The thresholds were computed at alpha^-1 = 23.78 and 40, while 4 pi/g^2 at the matching scale M_GUT (1.9 to 2.8 times M_X) is 20.2-21.0 (rho1e3), 28.0-29.0 (rho1e4), 46.2-47.5 (no_spec); with the alpha^-1 = 23.78 threshold the rho = 1e4 margin is 0.0201 and the no-spectator margin 0.0038 (gX = g), below the research slack 0.03, and at rho = 1e3 the threshold was taken at a weaker coupling than at M_GUT: only the tree-level version of the disjointness is robust",
+      "rho1e3_scale_for_exact_reach": 1.7327579787,
+      "rho1e3_scale_for_slack_le_0.03": 1.20365262654,
+      "target_gap_after_threshold": {
+        "no_spec": {
+          "alphainv23.78": {
+            "gX0.0": 0.0269673462675,
+            "gX1.0": 0.325876808449
+          },
+          "alphainv40.0": {
+            "gX0.0": 0.0308781069162,
+            "gX1.0": 0.124821051493
+          }
+        },
+        "rho1e3": {
+          "alphainv23.78": {
+            "gX0.0": -0.144298280817,
+            "gX1.0": 0.154611181365
+          },
+          "alphainv40.0": {
+            "gX0.0": -0.140387520168,
+            "gX1.0": -0.0464445755908
+          }
+        },
+        "rho1e4": {
+          "alphainv23.78": {
+            "gX0.0": -0.0403326666542,
+            "gX1.0": 0.258576795528
+          },
+          "alphainv40.0": {
+            "gX0.0": -0.0364219060054,
+            "gX1.0": 0.0575210385718
+          }
+        }
+      },
+      "threshold_alpha_inv": {
+        "alphainv23.78": 23.78,
+        "alphainv40.0": 40.0
+      },
+      "threshold_gap_shift": {
+        "alphainv23.78_gX0.0": {
+          "dlam4_minus_dlam5": -0.27178920969,
+          "in_units_of_witness_tree_gap_1_128": -34.7890188404
+        },
+        "alphainv23.78_gX1.0": {
+          "dlam4_minus_dlam5": -0.570698671872,
+          "in_units_of_witness_tree_gap_1_128": -73.0494299997
+        },
+        "alphainv40.0_gX0.0": {
+          "dlam4_minus_dlam5": -0.275699970339,
+          "in_units_of_witness_tree_gap_1_128": -35.2895962034
+        },
+        "alphainv40.0_gX1.0": {
+          "dlam4_minus_dlam5": -0.369642914916,
+          "in_units_of_witness_tree_gap_1_128": -47.3142931093
+        }
+      },
+      "threshold_pairing_used": {
+        "no_spec": "alphainv40.0",
+        "rho1e3": "alphainv23.78",
+        "rho1e4": "alphainv40.0"
+      },
+      "tree_level_min_slack": {
+        "no_spec": 0.122410931711,
+        "rho1e3": 0.208043745254,
+        "rho1e4": 0.156060938172
+      },
+      "with_recorded_threshold_min_slack": {
+        "no_spec": {
+          "gX0.0": 0.0536385475047,
+          "gX1.0": 0.0379814128347
+        },
+        "rho1e3": {
+          "gX0.0": 0.0913653633785,
+          "gX1.0": 0.0415469986672
+        },
+        "rho1e4": {
+          "gX0.0": 0.0699538241242,
+          "gX1.0": 0.0542966894542
+        }
+      },
+      "with_threshold_min_slack_all_pairings": {
+        "no_spec": {
+          "alphainv23.78": {
+            "gX0.0": 0.053638544917,
+            "gX1.0": 0.00382018020568
+          },
+          "alphainv40.0": {
+            "gX0.0": 0.0536385475047,
+            "gX1.0": 0.0379814128347
+          }
+        },
+        "rho1e3": {
+          "alphainv23.78": {
+            "gX0.0": 0.0913653633785,
+            "gX1.0": 0.0415469986672
+          },
+          "alphainv40.0": {
+            "gX0.0": 0.0913653659662,
+            "gX1.0": 0.0757082312962
+          }
+        },
+        "rho1e4": {
+          "alphainv23.78": {
+            "gX0.0": 0.0699538215365,
+            "gX1.0": 0.0201354568252
+          },
+          "alphainv40.0": {
+            "gX0.0": 0.0699538241242,
+            "gX1.0": 0.0542966894542
+          }
+        }
+      }
+    },
+    "xi_spread_actual": {
+      "meaning": "the FJ pole masses at the three best points are xi independent over xi in {0, 0.5, 1, 3, 10} to at most 1.85e-13 in the research record (rho = 1e3; 1.6e-14 and 7.7e-14 at rho = 1e4 and without spectators) and to <= 1e-12 when recomputed here (one_loop_masses.fj_pole_masses_over_v_R_squared)",
+      "values": {
+        "recomputed": {
+          "no_spec": 2.1593837829e-14,
+          "rho1e3": 5.09037256791e-14,
+          "rho1e4": 1.74305014866e-14
+        },
+        "research_record": {
+          "no_spec": 7.73547892408e-14,
+          "rho1e3": 1.85157444932e-13,
+          "rho1e4": 1.57651669497e-14
+        }
+      }
+    }
+  },
+  "failures": [],
+  "flags": {
+    "G6_closed": false,
+    "G6_gate_wired": false,
+    "anti_sos_g3_witness_excluded": false,
+    "best_region_points_one_loop_pole_positive_recomputed": true,
+    "best_region_points_outside_sos_image_at_tree_matching": true,
+    "changes_g3_g4_closure": false,
+    "disjointness_robust_to_one_loop_threshold": false,
+    "evidence_only": true,
+    "g6_impossible_in_contract_claimed": false,
+    "landau_cw_curvature_masses_positive_at_best_points": true,
+    "not_closable_on_sos_witness_family": true,
+    "one_loop_beta_coefficients_exact_rational": true,
+    "one_loop_gut_threshold_w_independence_verified": false,
+    "pole_mass_scale_variation_recomputed_in_module": false,
+    "pole_masses_recomputed_in_module": true,
+    "region_scan_exhaustive_beyond_sampled_box": false,
+    "region_volume_and_tuning_recomputed_in_module": false,
+    "report_closes_g6_by_itself": false,
+    "sos_family_tree_matching_forces_lam4_ge_lam5_exact": true,
+    "tree_certificate_valid_below_M_GUT": false,
+    "tree_matching_map_exact": true,
+    "two_loop_quartic_running_included": false,
+    "witness_210_exchange_vanishes_exact": true,
+    "witness_radiatively_unstable_at_physical_hierarchy": true,
+    "witness_tree_levels_reproduce_g6_exact": true
+  },
+  "gate": "G6",
+  "group_theory": {
+    "beta_formula": "16 pi^2 d lambda_k/dt = sum_{i<=j} Q[(i,j)][k] lambda_i lambda_j - 12 C2D lambda_k + G[k].(g4^4, gR^4, g4^2 gR^2), C2D = (9/2) g4^2 + 2 gR^2",
+    "beta_gauge_tensor": {
+      "G": {
+        "g4^2gR^2": [
+          "36",
+          "-36",
+          "6",
+          "-18",
+          "18"
+        ],
+        "g4^4": [
+          "9/2",
+          "45/2",
+          "-3/2",
+          "9/2",
+          "45/2"
+        ],
+        "gR^4": [
+          "18",
+          "18",
+          "3",
+          "9",
+          "9"
+        ]
+      },
+      "check_point_residuals": {
+        "g4^2gR^2": [
+          "0",
+          "0"
+        ],
+        "g4^4": [
+          "0",
+          "0"
+        ],
+        "gR^4": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "beta_scalar_tensor": {
+      "Q": {
+        "0,0": [
+          "124/27",
+          "32/27",
+          "-32/81",
+          "16/27",
+          "32/27"
+        ],
+        "0,1": [
+          "112/27",
+          "32/27",
+          "-224/81",
+          "112/27",
+          "32/27"
+        ],
+        "0,2": [
+          "-16/3",
+          "-32/3",
+          "16/3",
+          "8/3",
+          "16/3"
+        ],
+        "0,3": [
+          "160/27",
+          "320/27",
+          "160/81",
+          "16/27",
+          "32/27"
+        ],
+        "0,4": [
+          "560/27",
+          "160/27",
+          "560/81",
+          "56/27",
+          "16/27"
+        ],
+        "1,1": [
+          "28/27",
+          "200/27",
+          "-140/81",
+          "28/27",
+          "92/27"
+        ],
+        "1,2": [
+          "-56/3",
+          "-40/3",
+          "28/3",
+          "28/3",
+          "20/3"
+        ],
+        "1,3": [
+          "560/27",
+          "160/27",
+          "560/81",
+          "56/27",
+          "16/27"
+        ],
+        "1,4": [
+          "280/27",
+          "920/27",
+          "700/81",
+          "28/27",
+          "92/27"
+        ],
+        "2,2": [
+          "18",
+          "18",
+          "4",
+          "18",
+          "18"
+        ],
+        "2,3": [
+          "40/3",
+          "80/3",
+          "80/3",
+          "16/3",
+          "32/3"
+        ],
+        "2,4": [
+          "140/3",
+          "100/3",
+          "140/3",
+          "56/3",
+          "40/3"
+        ],
+        "3,3": [
+          "40/27",
+          "80/27",
+          "160/81",
+          "292/27",
+          "368/27"
+        ],
+        "3,4": [
+          "280/27",
+          "80/27",
+          "1120/81",
+          "1288/27",
+          "368/27"
+        ],
+        "4,4": [
+          "70/27",
+          "230/27",
+          "700/81",
+          "322/27",
+          "1166/27"
+        ]
+      },
+      "check_point_residuals": {
+        "0,0": [
+          "0",
+          "0"
+        ],
+        "0,1": [
+          "0",
+          "0"
+        ],
+        "0,2": [
+          "0",
+          "0"
+        ],
+        "0,3": [
+          "0",
+          "0"
+        ],
+        "0,4": [
+          "0",
+          "0"
+        ],
+        "1,1": [
+          "0",
+          "0"
+        ],
+        "1,2": [
+          "0",
+          "0"
+        ],
+        "1,3": [
+          "0",
+          "0"
+        ],
+        "1,4": [
+          "0",
+          "0"
+        ],
+        "2,2": [
+          "0",
+          "0"
+        ],
+        "2,3": [
+          "0",
+          "0"
+        ],
+        "2,4": [
+          "0",
+          "0"
+        ],
+        "3,3": [
+          "0",
+          "0"
+        ],
+        "3,4": [
+          "0",
+          "0"
+        ],
+        "4,4": [
+          "0",
+          "0"
+        ]
+      },
+      "o60_point_sums": [
+        "136",
+        "136",
+        "136",
+        "136",
+        "136"
+      ]
+    },
+    "casimirs": {
+      "C2D_coefficients": {
+        "g4^2": "9/2",
+        "gR^2": "2"
+      },
+      "C4_std_on_Delta_R": "9/2",
+      "C_su2R_on_Delta_R": "2",
+      "gl_route_2C4_equals_9_and_CR_equals_2": true
+    },
+    "checks": {
+      "beta_gauge_tensor_exact": true,
+      "beta_route_reproduces_sm_higgs": true,
+      "beta_scalar_tensor_exact": true,
+      "beta_scalar_tensor_o60_point_136": true,
+      "delta_R_casimirs_9_2_and_2": true,
+      "exchange_channels_of_210_never_lower_gap": true,
+      "fierz_vectors_exact": true,
+      "integer_generators_close_su4_su2R": true,
+      "quartic_basis_completeness": true,
+      "real_dimension_bookkeeping_60": true,
+      "remnant_rows_sum_to_zero_radial_row_4": true,
+      "sm_state_labels_exact": true,
+      "sym2_irrep_dimensions": true,
+      "sym2_minimal_polynomials": true,
+      "tree_mass_matrix_exact": true,
+      "vacuum_is_sm_singlet_with_9_broken_generators": true,
+      "witness_betas_exact": true
+    },
+    "exchange_channels_210": {
+      "channels_coupling_to_delta_dagger_delta": [
+        "(1,1,1)",
+        "(15,1,1)",
+        "(15,1,3)"
+      ],
+      "delta_dagger_delta_channels": [
+        "(1,1,1)",
+        "(1,1,3)",
+        "(1,1,5)",
+        "(15,1,1)",
+        "(15,1,3)",
+        "(15,1,5)",
+        "(84,1,1)",
+        "(84,1,3)",
+        "(84,1,5)"
+      ],
+      "dimension_210": 210,
+      "ps_content_210": [
+        "(1,1,1)",
+        "(15,1,1)",
+        "(6,2,2)",
+        "(15,3,1)",
+        "(15,1,3)",
+        "(10,2,2)",
+        "(10bar,2,2)"
+      ],
+      "tree_exchange_shift_of_lam4_minus_lam5": "-beta_c (f_c4 - f_c5) = +3 beta_c for (15,1,1), (15,1,3); 0 for (1,1,1)"
+    },
+    "fierz_vectors": {
+      "check_point_residuals": {
+        "(1,1,1)": [
+          "0",
+          "0"
+        ],
+        "(1,1,3)": [
+          "0",
+          "0"
+        ],
+        "(15,1,1)": [
+          "0",
+          "0"
+        ],
+        "(15,1,3)": [
+          "0",
+          "0"
+        ]
+      },
+      "f": {
+        "(1,1,1)": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "(1,1,3)": [
+          "-2",
+          "-2",
+          "-1",
+          "1",
+          "1"
+        ],
+        "(15,1,1)": [
+          "-3/2",
+          "3/2",
+          "-1/2",
+          "-3/2",
+          "3/2"
+        ],
+        "(15,1,3)": [
+          "3",
+          "-3",
+          "1/2",
+          "-3/2",
+          "3/2"
+        ]
+      },
+      "gap_shift_f4_minus_f5": {
+        "(1,1,1)": "0",
+        "(1,1,3)": "0",
+        "(15,1,1)": "-3",
+        "(15,1,3)": "-3"
+      }
+    },
+    "kind": "EXACT",
+    "model": {
+      "generators": "gl(4): rho(E_ij) = -E_ji per 4bar slot; su(2)_R: Cartesian (L_m)_ab = -eps_mab, T_m = i L_m",
+      "points": {
+        "coefficients": "{-2..2} + i {-2..2}",
+        "lcg_seed": 20260926,
+        "n_check": 2,
+        "n_points": 7,
+        "n_solve": 5
+      },
+      "space": "V = 4bar (x) 4bar (x) 3 (48 complex); Delta_R = symmetric part in the two 4bar slots (30 complex = 60 real)"
+    },
+    "real_dimension_bookkeeping": {
+      "classes_C3_Y_real_dimension": {
+        "C3=0,Y=0": 2,
+        "C3=0,Y=1": 2,
+        "C3=0,Y=2": 2,
+        "C3=10/3,Y=-1/3": 12,
+        "C3=10/3,Y=-4/3": 12,
+        "C3=10/3,Y=2/3": 12,
+        "C3=4/3,Y=-2/3": 6,
+        "C3=4/3,Y=1/3": 6,
+        "C3=4/3,Y=4/3": 6
+      },
+      "goldstone_real_dimension": 9,
+      "state_real_dimensions": [
+        12,
+        2,
+        6,
+        12,
+        6,
+        12,
+        1
+      ],
+      "witness_level_groups": {
+        "1/2": 1,
+        "1/96": 14,
+        "17/288": 6,
+        "353/3360": 12,
+        "37/576": 18
+      }
+    },
+    "sm_higgs_beta_identity": {
+      "beta_16pi2": "9*g**4/8 + 3*g**2*gY**2/4 - 9*g**2*lambda + 3*gY**4/8 - 3*gY**2*lambda + 24*lambda**2",
+      "casimirs": {
+        "g": "3/4",
+        "gY": "1/4"
+      },
+      "gauge_coefficients": {
+        "gY^2gY^2": "3/8",
+        "g^2gY^2": "3/4",
+        "g^2g^2": "9/8"
+      },
+      "identity_exact": true,
+      "scalar_coefficient": "24",
+      "target_16pi2": "9*g**4/8 + 3*g**2*gY**2/4 - 9*g**2*lambda + 3*gY**4/8 - 3*gY**2*lambda + 24*lambda**2"
+    },
+    "states": [
+      {
+        "C3": "10/3",
+        "S": [
+          0,
+          0
+        ],
+        "T3R": -1,
+        "Y": "-4/3",
+        "g6_label": "(6,1)_|Y|=4/3",
+        "real_dimension": 12,
+        "state": "(6,1)_4/3"
+      },
+      {
+        "C3": "0",
+        "S": [
+          3,
+          3
+        ],
+        "T3R": 1,
+        "Y": "2",
+        "g6_label": "(1,1)_|Y|=2",
+        "real_dimension": 2,
+        "state": "(1,1)_2"
+      },
+      {
+        "C3": "4/3",
+        "S": [
+          0,
+          3
+        ],
+        "T3R": 0,
+        "Y": "1/3",
+        "g6_label": "(3,1)_|Y|=1/3",
+        "real_dimension": 6,
+        "state": "(3,1)_1/3"
+      },
+      {
+        "C3": "10/3",
+        "S": [
+          0,
+          0
+        ],
+        "T3R": 0,
+        "Y": "-1/3",
+        "g6_label": "(6,1)_|Y|=1/3",
+        "real_dimension": 12,
+        "state": "(6,1)_1/3"
+      },
+      {
+        "C3": "4/3",
+        "S": [
+          0,
+          3
+        ],
+        "T3R": 1,
+        "Y": "4/3",
+        "g6_label": "(3,1)_|Y|=4/3",
+        "real_dimension": 6,
+        "state": "(3,1)_4/3"
+      },
+      {
+        "C3": "10/3",
+        "S": [
+          0,
+          0
+        ],
+        "T3R": 1,
+        "Y": "2/3",
+        "g6_label": "(6,1)_|Y|=2/3",
+        "real_dimension": 12,
+        "state": "(6,1)_2/3"
+      },
+      {
+        "C3": "0",
+        "S": [
+          3,
+          3
+        ],
+        "T3R": -1,
+        "Y": "0",
+        "g6_label": "(1,1)_|Y|=0",
+        "real_dimension": 1,
+        "state": "(1,1)_0 radial"
+      }
+    ],
+    "sym2": {
+      "basis": [
+        "(20',1)",
+        "(35,1)",
+        "(45,3)",
+        "(20',5)",
+        "(35,5)"
+      ],
+      "casimirs": {
+        "(20',1)": [
+          6,
+          0
+        ],
+        "(20',5)": [
+          6,
+          6
+        ],
+        "(35,1)": [
+          12,
+          0
+        ],
+        "(35,5)": [
+          12,
+          6
+        ],
+        "(45,3)": [
+          8,
+          2
+        ]
+      },
+      "dimensions": [
+        "20",
+        "35",
+        "135",
+        "100",
+        "175"
+      ],
+      "grams_symmetric": true,
+      "minimal_polynomial_2C4": "(2C4 - 12)(2C4 - 16)(2C4 - 24) = 0",
+      "minimal_polynomial_CR": "CR (CR - 2)(CR - 6) = 0",
+      "n_basis_pairs": 465,
+      "projectors_sum_to_identity": true
+    },
+    "tree_mass_matrix": {
+      "A": [
+        [
+          "0",
+          "0",
+          "0",
+          "4/3",
+          "-4/3"
+        ],
+        [
+          "0",
+          "4/3",
+          "0",
+          "0",
+          "-4/3"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "2/3",
+          "-5/3"
+        ],
+        [
+          "0",
+          "2/3",
+          "1",
+          "0",
+          "-5/3"
+        ],
+        [
+          "4/9",
+          "2/9",
+          "1",
+          "2/9",
+          "-17/9"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "4"
+        ]
+      ],
+      "formula": "A_sk = ([<X1, P_k X1> + 2 Re<X0, P_k X2>]/|E|^2 - 2 delta_{k,(35,5)} |D0|^2)/|D0|^2, mu^2 = 2 lambda5 v^2",
+      "row_sums": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "4"
+      ],
+      "rows": [
+        "(6,1)_4/3",
+        "(1,1)_2",
+        "(3,1)_1/3",
+        "(6,1)_1/3",
+        "(3,1)_4/3",
+        "(6,1)_2/3",
+        "(1,1)_0 radial"
+      ]
+    },
+    "vacuum": {
+      "D0": "S_33 (x) v_{-1} (the (1,1)_0 direction)",
+      "D0_norm_squared": 2,
+      "V_at_D0": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "4"
+      ],
+      "broken_generator_rank": 9,
+      "su3_and_Y_annihilate_D0": true
+    },
+    "witness_betas": {
+      "beta_16pi2": [
+        "540798191/211680000",
+        "111806803/338688000",
+        "-10773671491/10160640000",
+        "-1491898817/1693440000",
+        "3310549871/677376000"
+      ],
+      "beta_float": [
+        0.0161784039658,
+        0.00209049287604,
+        -0.00671464314528,
+        -0.00557891606778,
+        0.0309492836546
+      ],
+      "g4_squared": "9/25",
+      "gR_squared": "1/4",
+      "lambda": [
+        "989/4480",
+        "17/128",
+        "53/288",
+        "17/128",
+        "1/8"
+      ]
+    }
+  },
+  "matching": {
+    "checks": {
+      "gap_identity_exact": true,
+      "historical_unswapped_weights_violate_gap": true,
+      "lambda2_equals_lambda4_without_exchange": true,
+      "sos_family_forces_gap_nonnegative": true,
+      "tree_map_symbolic": true,
+      "tree_vacuum_requires_positive_gap": true,
+      "witness_couplings_exact": true,
+      "witness_tree_levels_exact": true,
+      "witness_tree_levels_match_committed_g6_certificate": true
+    },
+    "g6_cross_check": {
+      "expected_pairs": [
+        [
+          "(1,1)_|Y|=0",
+          "1/2",
+          1
+        ],
+        [
+          "(1,1)_|Y|=0",
+          "4",
+          1
+        ],
+        [
+          "(1,1)_|Y|=2",
+          "1/96",
+          2
+        ],
+        [
+          "(3,1)_|Y|=1/3",
+          "17/288",
+          6
+        ],
+        [
+          "(3,1)_|Y|=4/3",
+          "37/576",
+          6
+        ],
+        [
+          "(6,1)_|Y|=1/3",
+          "37/576",
+          12
+        ],
+        [
+          "(6,1)_|Y|=2/3",
+          "353/3360",
+          12
+        ],
+        [
+          "(6,1)_|Y|=4/3",
+          "1/96",
+          12
+        ]
+      ],
+      "extra_level": "(1,1)_|Y|=0 at 4 r0^2 is the S radial mode, not a Delta_R state",
+      "pairs_from_certificate": [
+        [
+          "(1,1)_|Y|=0",
+          "1/2",
+          1
+        ],
+        [
+          "(1,1)_|Y|=0",
+          "4",
+          1
+        ],
+        [
+          "(1,1)_|Y|=2",
+          "1/96",
+          2
+        ],
+        [
+          "(3,1)_|Y|=1/3",
+          "17/288",
+          6
+        ],
+        [
+          "(3,1)_|Y|=4/3",
+          "37/576",
+          6
+        ],
+        [
+          "(6,1)_|Y|=1/3",
+          "37/576",
+          12
+        ],
+        [
+          "(6,1)_|Y|=2/3",
+          "353/3360",
+          12
+        ],
+        [
+          "(6,1)_|Y|=4/3",
+          "1/96",
+          12
+        ]
+      ],
+      "report": "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json",
+      "required_status": "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED"
+    },
+    "historical_weights": {
+      "lam4_minus_lam5": "-1/128",
+      "lambda": [
+        "395/1792",
+        "1/8",
+        "209/1152",
+        "1/8",
+        "17/128"
+      ],
+      "weights": {
+        "1050bar": "2",
+        "2772bar": "17/16",
+        "4125": "1",
+        "54": "2"
+      }
+    },
+    "kind": "EXACT",
+    "sos_cone": {
+      "W_SOS": "w in Q^4_{>0}: w_54 >= w_2772, w_1050bar >= w_2772, w_4125 >= w_2772",
+      "farkas_certificate": {
+        "beta_multipliers": {
+          "(1,1,1)": "0",
+          "(15,1,1)": "3",
+          "(15,1,3)": "3"
+        },
+        "binding_row": [
+          "4125"
+        ],
+        "cone_row_multipliers_w_q_minus_w_2772": {
+          "1050bar": "0",
+          "4125": "1/8",
+          "54": "0"
+        },
+        "constant": "0",
+        "exact": true,
+        "nonnegative": true,
+        "w_2772_multiplier": "0"
+      }
+    },
+    "tree_map": {
+      "components": [
+        "-beta_111 + 3*beta_15_1_1/2 - 3*beta_15_1_3 + w_1050bar/16 + w_2772bar/80 + w_4125/56 + 9*w_54/280",
+        "-beta_111 - 3*beta_15_1_1/2 + 3*beta_15_1_3 + w_4125/8",
+        "-beta_111 + beta_15_1_1/2 - beta_15_1_3/2 + w_1050bar/18 + w_2772bar/72 + w_4125/18",
+        "-beta_111 + 3*beta_15_1_1/2 + 3*beta_15_1_3/2 + w_4125/8",
+        "-beta_111 - 3*beta_15_1_1/2 - 3*beta_15_1_3/2 + w_2772bar/8"
+      ],
+      "formula": "lambda_k(w, beta) = (1/8) sum_q w_q c_qk - sum_c beta_c f_ck, beta_c >= 0 (tree 210 exchange)",
+      "gap_identity": "lambda4 - lambda5 = (w_4125 - w_2772)/8 + 3 beta_(15,1,1) + 3 beta_(15,1,3)",
+      "gap_lam4_minus_lam5": "3*beta_15_1_1 + 3*beta_15_1_3 - w_2772bar/8 + w_4125/8",
+      "lambda_at_zero_exchange": [
+        "w_1050bar/16 + w_2772bar/80 + w_4125/56 + 9*w_54/280",
+        "w_4125/8",
+        "w_1050bar/18 + w_2772bar/72 + w_4125/18",
+        "w_4125/8",
+        "w_2772bar/8"
+      ]
+    },
+    "tree_vacuum_rows": {
+      "(6,1)_4/3": [
+        "0",
+        "0",
+        "0",
+        "4/3",
+        "-4/3"
+      ],
+      "meaning": "a tree vacuum needs lambda4 > lambda5 and lambda5 > 0",
+      "radial": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "4"
+      ]
+    },
+    "witness": {
+      "beta": {
+        "(1,1,1)": "0",
+        "(15,1,1)": "0",
+        "(15,1,3)": "0"
+      },
+      "lam4_minus_lam5": "1/128",
+      "lambda": [
+        "989/4480",
+        "17/128",
+        "53/288",
+        "17/128",
+        "1/8"
+      ],
+      "strictly_inside_W_SOS": true,
+      "tree_levels": {
+        "(1,1)_0 radial": "1/2",
+        "(1,1)_2": "1/96",
+        "(3,1)_1/3": "17/288",
+        "(3,1)_4/3": "37/576",
+        "(6,1)_1/3": "37/576",
+        "(6,1)_2/3": "353/3360",
+        "(6,1)_4/3": "1/96"
+      },
+      "weights": {
+        "1050bar": "2",
+        "2772bar": "1",
+        "4125": "17/16",
+        "54": "2"
+      }
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "module": "g6_sm_pati_salam_remnant_rg_nogo_v20",
+  "n_checks": 58,
+  "n_failed": 0,
+  "one_loop_masses": {
+    "checks": {
+      "cw_masses_match_independent_record": true,
+      "cw_masses_positive_at_region_points": true,
+      "fj_pole_masses_match_research_record": true,
+      "fj_pole_masses_positive_all_xi": true,
+      "fj_pole_masses_xi_independent": true,
+      "vev_fixed_landau_masses_positive_and_dv_controlled": true
+    },
+    "fj_pole_masses_over_v_R_squared": {
+      "no_spec": {
+        "VF_L": [
+          0.115747972894,
+          0.136424322922,
+          0.104944875211,
+          0.179067881665,
+          0.184002041339,
+          0.182715604345,
+          0.155320895752
+        ],
+        "dv_feyn": 0.195206877515,
+        "dv_landau": 0.184622255099,
+        "min_pole": 0.144107334497,
+        "pole_by_xi": {
+          "0.0": [
+            0.152001345444,
+            0.184659863765,
+            0.144107334497,
+            0.236357027226,
+            0.247282271046,
+            0.240328943885,
+            0.196101031142
+          ],
+          "0.5": [
+            0.152001345444,
+            0.184659863765,
+            0.144107334497,
+            0.236357027226,
+            0.247282271046,
+            0.240328943885,
+            0.196101031142
+          ],
+          "1.0": [
+            0.152001345444,
+            0.184659863765,
+            0.144107334497,
+            0.236357027226,
+            0.247282271046,
+            0.240328943885,
+            0.196101031142
+          ],
+          "10.0": [
+            0.152001345444,
+            0.184659863765,
+            0.144107334497,
+            0.236357027226,
+            0.247282271046,
+            0.240328943885,
+            0.196101031142
+          ],
+          "3.0": [
+            0.152001345444,
+            0.184659863765,
+            0.144107334497,
+            0.236357027226,
+            0.247282271046,
+            0.240328943885,
+            0.196101031142
+          ]
+        },
+        "tree": [
+          0.0981825634472,
+          0.130633061591,
+          0.106061046824,
+          0.155152328548,
+          0.171377577619,
+          0.156030321235,
+          0.110442089899
+        ],
+        "xi_spread": 2.1593837829e-14
+      },
+      "rho1e3": {
+        "VF_L": [
+          0.0997561961814,
+          0.108472038365,
+          0.0941547003968,
+          0.161278058829,
+          0.15952285159,
+          0.117753439723,
+          0.149646204548
+        ],
+        "dv_feyn": 0.187099843804,
+        "dv_landau": 0.176420674913,
+        "min_pole": 0.128398480101,
+        "pole_by_xi": {
+          "0.0": [
+            0.129477557781,
+            0.145993183771,
+            0.128398480101,
+            0.210382519333,
+            0.212527203997,
+            0.152512288307,
+            0.181291976265
+          ],
+          "0.5": [
+            0.129477557781,
+            0.145993183771,
+            0.128398480101,
+            0.210382519333,
+            0.212527203997,
+            0.152512288307,
+            0.181291976265
+          ],
+          "1.0": [
+            0.129477557781,
+            0.145993183771,
+            0.128398480101,
+            0.210382519333,
+            0.212527203997,
+            0.152512288307,
+            0.181291976265
+          ],
+          "10.0": [
+            0.129477557781,
+            0.145993183771,
+            0.128398480101,
+            0.210382519333,
+            0.212527203997,
+            0.152512288307,
+            0.181291976265
+          ],
+          "3.0": [
+            0.129477557781,
+            0.145993183771,
+            0.128398480101,
+            0.210382519333,
+            0.212527203997,
+            0.152512288307,
+            0.181291976265
+          ]
+        },
+        "tree": [
+          0.0842343495585,
+          0.106339989414,
+          0.0970514927474,
+          0.139168667527,
+          0.150221487455,
+          0.0985112674615,
+          0.0896883875213
+        ],
+        "xi_spread": 5.09037256791e-14
+      },
+      "rho1e4": {
+        "VF_L": [
+          0.113567469114,
+          0.209151698323,
+          0.110513503321,
+          0.18455650861,
+          0.227574753941,
+          0.118506617624,
+          0.160667652867
+        ],
+        "dv_feyn": 0.186693170571,
+        "dv_landau": 0.176069749114,
+        "min_pole": 0.147382110839,
+        "pole_by_xi": {
+          "0.0": [
+            0.147382110839,
+            0.27959290498,
+            0.149888487448,
+            0.2408388136,
+            0.302170341396,
+            0.153385070273,
+            0.200146230173
+          ],
+          "0.5": [
+            0.147382110839,
+            0.27959290498,
+            0.149888487448,
+            0.2408388136,
+            0.302170341396,
+            0.153385070273,
+            0.200146230173
+          ],
+          "1.0": [
+            0.147382110839,
+            0.27959290498,
+            0.149888487448,
+            0.2408388136,
+            0.302170341396,
+            0.153385070273,
+            0.200146230173
+          ],
+          "10.0": [
+            0.147382110839,
+            0.27959290498,
+            0.149888487448,
+            0.2408388136,
+            0.302170341396,
+            0.153385070273,
+            0.200146230173
+          ],
+          "3.0": [
+            0.147382110839,
+            0.27959290498,
+            0.149888487448,
+            0.2408388136,
+            0.302170341396,
+            0.153385070273,
+            0.200146230173
+          ]
+        },
+        "tree": [
+          0.0960262677027,
+          0.200037789034,
+          0.111816437307,
+          0.159829571159,
+          0.211835331824,
+          0.0990472606015,
+          0.112110619525
+        ],
+        "xi_spread": 1.74305014866e-14
+      }
+    },
+    "fj_pole_max_abs_deviation_from_research_record": 1.32616140291e-13,
+    "fj_pole_minimum": 0.128398480101,
+    "kind": "FLOAT",
+    "label": "one-loop FJ R_xi pole masses at the three best region points (recomputed, xi in {0, 0.5, 1, 3, 10}), the vev-fixed Landau masses VF_L and Landau-gauge p = 0 CW curvature masses; the renormalisation-scale variation of the pole masses stays RESEARCH_RECORD",
+    "masses_over_v_R_squared": {
+      "no_spec": {
+        "cw": [
+          0.0987399010074,
+          0.12419597653,
+          0.0943021166528,
+          0.156150830763,
+          0.165106846252,
+          0.160598434535,
+          0.153460866731
+        ],
+        "g4_gR": [
+          0.668413890051,
+          0.461029491891
+        ],
+        "tree": [
+          0.0981825634472,
+          0.130633061591,
+          0.106061046824,
+          0.155152328548,
+          0.171377577619,
+          0.156030321235,
+          0.110442089899
+        ]
+      },
+      "rho1e3": {
+        "cw": [
+          0.0841374658541,
+          0.0983525938306,
+          0.0839590829728,
+          0.139130979165,
+          0.141691309377,
+          0.101725063142,
+          0.148223058536
+        ],
+        "g4_gR": [
+          0.687949945492,
+          0.451455521599
+        ],
+        "tree": [
+          0.0842343495585,
+          0.106339989414,
+          0.0970514927474,
+          0.139168667527,
+          0.150221487455,
+          0.0985112674615,
+          0.0896883875213
+        ]
+      },
+      "rho1e4": {
+        "cw": [
+          0.0966177716153,
+          0.191528780856,
+          0.0993088877391,
+          0.160465569238,
+          0.203998725014,
+          0.103044286936,
+          0.158823754733
+        ],
+        "g4_gR": [
+          0.676164548044,
+          0.457055610932
+        ],
+        "tree": [
+          0.0960262677027,
+          0.200037789034,
+          0.111816437307,
+          0.159829571159,
+          0.211835331824,
+          0.0990472606015,
+          0.112110619525
+        ]
+      }
+    },
+    "max_abs_deviation_from_independent_record": 7.77485717612e-08,
+    "method": "Landau gauge, p = 0, vev-fixed Coleman-Weinberg (MS-bar, Q^2 = |D0|^2 = 1), V1 = [sum_s f(m_s^2, 3/2) + 3 sum_v f(m_v^2, 5/6)]/(64 pi^2), f = m^4 (ln|m^2| - c), m^2 = e.H.e + d^2V1/de^2 - (dV1/dphi_r)/|phi|, h = 2e-3",
+    "minimum": 0.0839590829728,
+    "pole_method": "port of the research polemass.py / eft_pole.py: MS-bar at Q^2 = v_R^2 (|D0| = 1), ordinary R_xi, Fleischer-Jegerlehner tadpoles (tree vev of the MS-bar potential), m_pole^2 = m^2 + Re Pi(p^2 = m^2) with scalar seagull and bubble, vector seagull, SV and VV bubbles, ghosts and the FJ tadpole (Martin A, B, K); massless vectors get M^2 = 1e-09 x scale; per-coupling Hessian derivatives by exact central differences (h = 0.5); VF_L = FJ(xi = 1) - 2 tree dv_Landau, dv = -T_radial/(m_radial^2 |x0|)",
+    "states": [
+      "(6,1)_4/3",
+      "(1,1)_2",
+      "(3,1)_1/3",
+      "(6,1)_1/3",
+      "(3,1)_4/3",
+      "(6,1)_2/3",
+      "(1,1)_0 radial"
+    ],
+    "tolerances": {
+      "cw_mass_abs": 1e-06,
+      "dv_max": 0.2,
+      "pole_research_abs": 1e-09,
+      "pole_xi_spread_abs": 1e-12
+    }
+  },
+  "overall_state": "SOS_WITNESS_FAMILY_TREE_MATCHING_DISJOINT_FROM_ONE_LOOP_REMNANT_REGION__G6_OPEN",
+  "provenance": {
+    "repository_inputs": [
+      "g3_sm_pati_salam_candidate_v20 (sigma_std_raw_coordinates, _integer_projected_pairs, SWAPPED/HISTORICAL_SELF_WEIGHTS, SIGMA_SCALE, a_square_source)",
+      "exact_gauged_u1x_g3_sos_bfb_stationarity_v20 (integer_sigma_generators, phi_source.pati_salam_direction)",
+      "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json (read-only cross-check of the witness levels)"
+    ],
+    "research_files": {
+      "d12_matching.json": {
+        "script": "d12_matching.py",
+        "sha256": "f35ae578794cb7feb42ba34f11e5a366610eb0caa06bc30361b61a30607b6c37"
+      },
+      "d13_region_no_spec.json": {
+        "script": "d13_region_prod.py",
+        "sha256": "3e6c32f9e0ce8c5b5367c7a3d81ad526430db88e4c55614db8332967896d1796"
+      },
+      "d13_region_rho1e3.json": {
+        "script": "d13_region_prod.py",
+        "sha256": "baf89f1118c1c75538b2522310ef5b619914e4f13cc5d51e05f7b06c1b103e3d"
+      },
+      "d13_region_rho1e4.json": {
+        "script": "d13_region_prod.py",
+        "sha256": "7a24d52cbb540a09aae0836b41e3b1f2d892d106ee01aeeb578cce33098beba6"
+      },
+      "d15_majorana.json": {
+        "script": "d15_majorana.py",
+        "sha256": "aebcfef3fbfee7dc2873512cb07e078caf8902cfec136871a2c5cfd52c261d95"
+      },
+      "d16_portals_f.json": {
+        "script": "d16_portals_f.py",
+        "sha256": "2d376a514ff698b81a37056ccc54b36fb74c0639b144f3adcfcee728c0db5727"
+      },
+      "d18_tuning_rho1e3.json": {
+        "script": "d18_tuning.py",
+        "sha256": "361388aa9f5eccc2cf79e7573a1e83ad3bd755caa51a499ddb696c86163b05d0"
+      },
+      "d19_witness_sos.json": {
+        "script": "d19_witness_sos.py",
+        "sha256": "5c9f15c0b013be5e53844d00d10798d046e196fd087c16f19432f97f334c7022"
+      },
+      "d20_summary.json": {
+        "script": "d20_summary.py",
+        "sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607"
+      },
+      "d21_threshold_matching.json": {
+        "script": "d21_threshold_matching.py",
+        "sha256": "2a8305720493b145c881a847caec919d3899958253caa4db4c879e1e3cfbdb20"
+      },
+      "d22_controlled_no_spec.json": {
+        "script": "d22_controlled.py",
+        "sha256": "6e89e32edbbde23bfd9ae512ec77835535af7a5920b989f3000f34d77310935a"
+      },
+      "d22_controlled_rho1e3.json": {
+        "script": "d22_controlled.py",
+        "sha256": "0f36280f9ecd528ecf3e3b9609f049ba9788389a22bec7b83c8ff4e6bdc37d7d"
+      },
+      "d22_controlled_rho1e4.json": {
+        "script": "d22_controlled.py",
+        "sha256": "29025a73ddc8a891fcb91a1e929963f4dcab43948a74f4ebf8dfa88935907af6"
+      },
+      "d23_box_extension_no_spec.json": {
+        "script": "d23_box_extension.py",
+        "sha256": "353cf488c6ee9bc477695bd3966ee8d8c54d56d6d6773ebd6f087cc74838a1dc"
+      },
+      "d23_box_extension_rho1e3.json": {
+        "script": "d23_box_extension.py",
+        "sha256": "0708eb0407f21c8b309e928c03934e8fb7c8cfbb2c2a85d067f9bb8a2c8d2735"
+      },
+      "d5_unitarity.json": {
+        "script": "d5_unitarity.py",
+        "sha256": "d816b2dbf4fee195c89daef5ba55135a26dae5fa7b01c055c2d9950157eea8be"
+      },
+      "d9_validate_pole.json": {
+        "script": "d9_validate_pole.py",
+        "sha256": "b5855269ff5cfec12f8716696e88ed73a89dd5d720bcf2245a04b31f2f35b868"
+      },
+      "profiles.json": {
+        "script": "d6_profiles.py",
+        "sha256": "d253ca54be7e905d65920e0b98f973089a4a9fd37d3a387b4094cbc66063d4ec"
+      },
+      "profiles.pkl": {
+        "script": "d6_profiles.py",
+        "sha256": "db86478396d7fee4ff25b52c8d43545c333301ff7bb6222f8bf4e68c193ec136"
+      },
+      "r_d_indep.json": {
+        "script": "r_d_indep.py (skeptic)",
+        "sha256": "663c8b15e85328a14512782e00856e3f1706c03a1e5abaf4e49dfd9edd7a9d79"
+      },
+      "r_d_running.json": {
+        "script": "r_d_running.py (skeptic)",
+        "sha256": "983b579879c7184bcdab66c7d831603504499b95310d90cd252d0599de227a2e"
+      },
+      "u2_coefficients.json": {
+        "script": "wfGNG/U2 (PyR@TE)",
+        "sha256": "03f361ed4a91c506891211eb6bc66c753d7c50180095f63c43ce4fcdee8d60a3"
+      },
+      "wfDA_review.md": {
+        "script": "skeptic review, part D",
+        "sha256": "8e1ac0bd123f4850e2eb7fb37da6e5f51e34a33345bdde45543a3c818029148a"
+      }
+    },
+    "research_note": "scratch research outputs of 2026-09-26 (study D-D, wfDA/D and wfDA/review); not in the repository; hashes recorded for audit only and not verifiable from the repository"
+  },
+  "research_record": {
+    "checks": {
+      "consistent_with_recomputation": true,
+      "entries_labelled_with_provenance": true,
+      "unverified_items_not_claimed": true
+    },
+    "consistency": {
+      "d22_best_core_lam_GUT_max_abs_deviation": 1.36582353094e-07,
+      "grid_limited_crossing_rel_deviation": {
+        "no_spec": -0.0204324855108,
+        "rho1e3": -0.0201755406966,
+        "rho1e4": -0.0207931587055
+      },
+      "profile_summaries_max_rel_deviation": 0.0,
+      "recorded_region_gap_max": {
+        "no_spec": -0.199657735934,
+        "rho1e3": -0.398504729032,
+        "rho1e4": -0.278163420209
+      },
+      "skeptic_crossing_max_rel_deviation": 1.32646915896e-07,
+      "skeptic_lam_GUT_max_abs_deviation": 8.68697094258e-08
+    },
+    "entries": {
+      "BG_max_quantiles": {
+        "key": "[tag].BG_q",
+        "label": "RESEARCH_RECORD",
+        "meaning": "Barbieri-Giudice sensitivity max_k |d ln m^2/d ln lambda_k(M_GUT)| over the region (q10, q50, q90)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": [
+            38.7538192151,
+            56.7039913309,
+            304.586028628
+          ],
+          "rho1e3": [
+            116.636158777,
+            161.327915937,
+            1050.0694416
+          ],
+          "rho1e4": [
+            59.6039079275,
+            85.9899427698,
+            491.889360826
+          ]
+        }
+      },
+      "UV_volume_region": {
+        "key": "UV_volume_region",
+        "label": "RESEARCH_RECORD",
+        "meaning": "region volume mapped to M_GUT (rho = 1e3)",
+        "reproducible_from_repository": false,
+        "source_json": "d18_tuning_rho1e3.json",
+        "source_json_sha256": "361388aa9f5eccc2cf79e7573a1e83ad3bd755caa51a499ddb696c86163b05d0",
+        "source_script": "d18_tuning.py",
+        "value": {
+          "rho1e3": 1.15882628924e-08
+        }
+      },
+      "best_controlled_pole_reference": {
+        "key": "[tag].best_controlled.{pole_by_xi, tree, VF_L}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "research FJ R_xi one-loop pole masses (m^2/v_R^2, Q = v_R) of the three best controlled points for xi in {0, 0.5, 1, 3, 10}, their tree levels and the vev-fixed Landau masses VF_L (reference of the recomputed one_loop pole checks)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": {
+            "VF_L": [
+              0.115747972894,
+              0.136424322922,
+              0.104944875211,
+              0.179067881665,
+              0.184002041339,
+              0.182715604345,
+              0.155320895752
+            ],
+            "pole_by_xi": {
+              "0.0": [
+                0.152001345444,
+                0.184659863765,
+                0.144107334497,
+                0.236357027226,
+                0.247282271046,
+                0.240328943885,
+                0.196101031142
+              ],
+              "0.5": [
+                0.152001345444,
+                0.184659863765,
+                0.144107334497,
+                0.236357027226,
+                0.247282271046,
+                0.240328943885,
+                0.196101031142
+              ],
+              "1.0": [
+                0.152001345444,
+                0.184659863765,
+                0.144107334497,
+                0.236357027226,
+                0.247282271046,
+                0.240328943885,
+                0.196101031142
+              ],
+              "10.0": [
+                0.152001345444,
+                0.184659863765,
+                0.144107334497,
+                0.236357027226,
+                0.247282271046,
+                0.240328943885,
+                0.196101031142
+              ],
+              "3.0": [
+                0.152001345444,
+                0.184659863765,
+                0.144107334497,
+                0.236357027226,
+                0.247282271046,
+                0.240328943885,
+                0.196101031142
+              ]
+            },
+            "tree": [
+              0.0981825634472,
+              0.130633061591,
+              0.106061046824,
+              0.155152328548,
+              0.171377577619,
+              0.156030321235,
+              0.110442089899
+            ]
+          },
+          "rho1e3": {
+            "VF_L": [
+              0.0997561961814,
+              0.108472038365,
+              0.0941547003968,
+              0.161278058829,
+              0.15952285159,
+              0.117753439723,
+              0.149646204548
+            ],
+            "pole_by_xi": {
+              "0.0": [
+                0.129477557781,
+                0.145993183771,
+                0.128398480101,
+                0.210382519333,
+                0.212527203997,
+                0.152512288307,
+                0.181291976265
+              ],
+              "0.5": [
+                0.129477557781,
+                0.145993183771,
+                0.128398480101,
+                0.210382519333,
+                0.212527203997,
+                0.152512288307,
+                0.181291976265
+              ],
+              "1.0": [
+                0.129477557781,
+                0.145993183771,
+                0.1283984801,
+                0.210382519333,
+                0.212527203997,
+                0.152512288307,
+                0.181291976265
+              ],
+              "10.0": [
+                0.129477557781,
+                0.145993183771,
+                0.128398480101,
+                0.210382519333,
+                0.212527203997,
+                0.152512288307,
+                0.181291976265
+              ],
+              "3.0": [
+                0.129477557781,
+                0.145993183771,
+                0.128398480101,
+                0.210382519333,
+                0.212527203997,
+                0.152512288307,
+                0.181291976265
+              ]
+            },
+            "tree": [
+              0.0842343495585,
+              0.106339989414,
+              0.0970514927474,
+              0.139168667527,
+              0.150221487455,
+              0.0985112674615,
+              0.0896883875213
+            ]
+          },
+          "rho1e4": {
+            "VF_L": [
+              0.113567469114,
+              0.209151698323,
+              0.110513503321,
+              0.18455650861,
+              0.227574753941,
+              0.118506617624,
+              0.160667652867
+            ],
+            "pole_by_xi": {
+              "0.0": [
+                0.147382110839,
+                0.27959290498,
+                0.149888487448,
+                0.2408388136,
+                0.302170341396,
+                0.153385070273,
+                0.200146230173
+              ],
+              "0.5": [
+                0.147382110839,
+                0.27959290498,
+                0.149888487448,
+                0.2408388136,
+                0.302170341396,
+                0.153385070273,
+                0.200146230173
+              ],
+              "1.0": [
+                0.147382110839,
+                0.27959290498,
+                0.149888487448,
+                0.2408388136,
+                0.302170341396,
+                0.153385070273,
+                0.200146230173
+              ],
+              "10.0": [
+                0.147382110839,
+                0.27959290498,
+                0.149888487448,
+                0.2408388136,
+                0.302170341396,
+                0.153385070274,
+                0.200146230173
+              ],
+              "3.0": [
+                0.147382110839,
+                0.27959290498,
+                0.149888487448,
+                0.2408388136,
+                0.302170341396,
+                0.153385070273,
+                0.200146230173
+              ]
+            },
+            "tree": [
+              0.0960262677027,
+              0.200037789034,
+              0.111816437307,
+              0.159829571159,
+              0.211835331824,
+              0.0990472606015,
+              0.112110619525
+            ]
+          }
+        }
+      },
+      "best_core_lam_GUT_rho1e3": {
+        "key": "best_core.lam_GUT",
+        "label": "RESEARCH_RECORD",
+        "meaning": "research lambda(M_GUT) of the best rho = 1e3 region point (compared with D04)",
+        "reproducible_from_repository": false,
+        "source_json": "d22_controlled_rho1e3.json",
+        "source_json_sha256": "0f36280f9ecd528ecf3e3b9609f049ba9788389a22bec7b83c8ff4e6bdc37d7d",
+        "source_script": "d22_controlled.py",
+        "value": [
+          0.559600144949,
+          0.242978823228,
+          0.242113706287,
+          0.156283135817,
+          0.572370590627
+        ]
+      },
+      "box_extension_no_spec": {
+        "key": "{ext_box, N, n_tree_pos_path_unitary, share_inside_prod_box}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "box-truncation check (tree-positive path-unitary points as the region proxy): 97.5% of the |det J|-weighted UV volume of an extended box lies inside the production box without spectators; the sign of lambda4 - lambda5 at M_GUT of the points outside it was not recorded",
+        "reproducible_from_repository": false,
+        "source_json": "d23_box_extension_no_spec.json",
+        "source_json_sha256": "353cf488c6ee9bc477695bd3966ee8d8c54d56d6d6773ebd6f087cc74838a1dc",
+        "source_script": "d23_box_extension.py",
+        "value": {
+          "N": 1500000,
+          "ext_box_hi": [
+            2.0,
+            1.6,
+            0.6,
+            0.7,
+            0.12
+          ],
+          "ext_box_lo": [
+            -2.0,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "n_tree_pos_path_unitary": 1359,
+          "share_inside_prod_box": 0.975338559265
+        }
+      },
+      "box_extension_rho1e3": {
+        "key": "{ext_box, N, n_tree_pos_path_unitary, share_inside_prod_box}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "box-truncation check (tree-positive path-unitary points as the region proxy): 99.7% of the |det J|-weighted UV volume of an extended box lies inside the production box at rho = 1e3; the sign of lambda4 - lambda5 at M_GUT of the points outside it was not recorded",
+        "reproducible_from_repository": false,
+        "source_json": "d23_box_extension_rho1e3.json",
+        "source_json_sha256": "0708eb0407f21c8b309e928c03934e8fb7c8cfbb2c2a85d067f9bb8a2c8d2735",
+        "source_script": "d23_box_extension.py",
+        "value": {
+          "N": 1500000,
+          "ext_box_hi": [
+            2.0,
+            1.6,
+            0.6,
+            0.7,
+            0.12
+          ],
+          "ext_box_lo": [
+            -2.0,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "n_tree_pos_path_unitary": 605,
+          "share_inside_prod_box": 0.996634265384
+        }
+      },
+      "fj_vs_vf_vev_shift": {
+        "key": "[tag].best_controlled.{dv_feyn, dv_landau}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "one-loop vev shift dv/v between the FJ and vev-fixed tadpole schemes (overall mass factor ~1.36 = 1 + 2 dv)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": {
+            "dv_feyn": 0.195206877515,
+            "dv_landau": 0.184622255099
+          },
+          "rho1e3": {
+            "dv_feyn": 0.187099843804,
+            "dv_landau": 0.176420674913
+          },
+          "rho1e4": {
+            "dv_feyn": 0.186693170571,
+            "dv_landau": 0.176069749114
+          }
+        }
+      },
+      "gut_thresholds": {
+        "key": "threshold.<key>.dlam_threshold",
+        "label": "RESEARCH_RECORD_INPUT",
+        "meaning": "one-loop M_GUT threshold dlambda of the Delta_R quartics, computed at the witness only (gX = g or 0)",
+        "reproducible_from_repository": false,
+        "source_json": "d12_matching.json",
+        "source_json_sha256": "f35ae578794cb7feb42ba34f11e5a366610eb0caa06bc30361b61a30607b6c37",
+        "source_script": "d12_matching.py",
+        "value": {
+          "alphainv23.78_gX0.0": [
+            0.0348975377041,
+            -0.169186898089,
+            0.0150067280537,
+            -0.0539356485638,
+            0.217853561127
+          ],
+          "alphainv23.78_gX1.0": [
+            -0.192974479385,
+            -0.0981475919849,
+            -0.0135912736908,
+            0.0171032944976,
+            0.58780196637
+          ],
+          "alphainv40.0_gX0.0": [
+            0.0407636866764,
+            -0.171142286068,
+            0.0176139007692,
+            -0.0539356484549,
+            0.221764321884
+          ],
+          "alphainv40.0_gX1.0": [
+            -0.030021232916,
+            -0.147985340028,
+            0.00945657008221,
+            -0.030778634136,
+            0.33886428078
+          ]
+        }
+      },
+      "matching_min_max_selfcoupling_w_over_8": {
+        "key": "matching_d0.0.min_max_selfcoupling_w_over_8_quantiles",
+        "label": "RESEARCH_RECORD",
+        "meaning": "smallest max_q w_q/8 of the anti-SOS weights that match the region exactly (min, median, max)",
+        "reproducible_from_repository": false,
+        "source_json": "d18_tuning_rho1e3.json",
+        "source_json_sha256": "361388aa9f5eccc2cf79e7573a1e83ad3bd755caa51a499ddb696c86163b05d0",
+        "source_script": "d18_tuning.py",
+        "value": {
+          "rho1e3": [
+            1.66484652103,
+            1.853778792,
+            2.20139392981
+          ]
+        }
+      },
+      "matching_tree_LP": {
+        "key": "[tag].matching",
+        "label": "RESEARCH_RECORD",
+        "meaning": "tree matching LP at M_GUT with slack 0.02 on 400 region points per profile: SOS-safe weights reach none, BFB-only (anti-SOS) weights reach all",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": {
+            "BFB_only_feasible": 400,
+            "SOS_safe_feasible": 0,
+            "n_tested": 400
+          },
+          "rho1e3": {
+            "BFB_only_feasible": 400,
+            "SOS_safe_feasible": 0,
+            "n_tested": 400
+          },
+          "rho1e4": {
+            "BFB_only_feasible": 400,
+            "SOS_safe_feasible": 0,
+            "n_tested": 400
+          }
+        }
+      },
+      "n_core_all_scales_no_spec": {
+        "key": "n_core_all_scales",
+        "label": "RESEARCH_RECORD",
+        "meaning": "controlled core points positive at all three scale choices (no spectators)",
+        "reproducible_from_repository": false,
+        "source_json": "d22_controlled_no_spec.json",
+        "source_json_sha256": "6e89e32edbbde23bfd9ae512ec77835535af7a5920b989f3000f34d77310935a",
+        "source_script": "d22_controlled.py",
+        "value": 240
+      },
+      "n_core_all_scales_rho1e3": {
+        "key": "n_core_all_scales",
+        "label": "RESEARCH_RECORD",
+        "meaning": "controlled core points positive at all three scale choices (rho = 1e3)",
+        "reproducible_from_repository": false,
+        "source_json": "d22_controlled_rho1e3.json",
+        "source_json_sha256": "0f36280f9ecd528ecf3e3b9609f049ba9788389a22bec7b83c8ff4e6bdc37d7d",
+        "source_script": "d22_controlled.py",
+        "value": 0
+      },
+      "n_core_all_scales_rho1e4": {
+        "key": "n_core_all_scales",
+        "label": "RESEARCH_RECORD",
+        "meaning": "controlled core points positive at all three scale choices (rho = 1e4)",
+        "reproducible_from_repository": false,
+        "source_json": "d22_controlled_rho1e4.json",
+        "source_json_sha256": "29025a73ddc8a891fcb91a1e929963f4dcab43948a74f4ebf8dfa88935907af6",
+        "source_script": "d22_controlled.py",
+        "value": 87
+      },
+      "pole_mass_scale_variation_recomputed_in_module": {
+        "key": "rho1e3.scale_variation",
+        "label": "RESEARCH_RECORD",
+        "meaning": "not verified in this module: the renormalisation-scale variation of the pole masses (Q = v_R/sqrt2, sqrt2 v_R, 2 v_R with joint lambda, mu^2 running) is research-recorded; the FJ pole masses at Q = v_R are recomputed",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": false
+      },
+      "pole_mass_xi_spread": {
+        "key": "[tag].best_controlled.xi_spread",
+        "label": "RESEARCH_RECORD",
+        "meaning": "spread of the FJ one-loop pole masses over xi in {0, 0.5, 1, 3, 10} at the best points (gauge independent to <= 2e-13)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": 7.73547892408e-14,
+          "rho1e3": 1.85157444932e-13,
+          "rho1e4": 1.57651669497e-14
+        }
+      },
+      "portals_and_majorana": {
+        "key": "rho1e3.<case>.n_path_unitary_tree_pos",
+        "label": "RESEARCH_RECORD",
+        "meaning": "rho = 1e3 tree-positive path-unitary points with the h/S portals (a1, a2, lamSD) and the Majorana Yukawa f on: never above the Delta-only baseline",
+        "reproducible_from_repository": false,
+        "source_json": "d16_portals_f.json",
+        "source_json_sha256": "2d376a514ff698b81a37056ccc54b36fb74c0639b144f3adcfcee728c0db5727",
+        "source_script": "d16_portals_f.py",
+        "value": {
+          "a1=0.3": 40,
+          "a1=0.6": 0,
+          "a2=0.3": 669,
+          "a2=0.6": 608,
+          "a2=1.0": 431,
+          "baseline": 697,
+          "f=0.3,ngen=1": 651,
+          "f=0.3,ngen=3": 579,
+          "f=0.6,ngen=1": 559,
+          "f=0.6,ngen=3": 362,
+          "f=1.0,ngen=1": 610,
+          "f=1.0,ngen=3": 486,
+          "f=1.5,ngen=1": 0,
+          "f=1.5,ngen=3": 0,
+          "lamSD=0.3": 0,
+          "lamSD=0.6": 0
+        }
+      },
+      "profile_M_X": {
+        "key": "<tag>.M_X",
+        "label": "RESEARCH_RECORD_INPUT",
+        "meaning": "gauge-unification scale M_X of each profile (where alpha_U^-1 is read off); used only for the M_GUT/M_X disclosure of the threshold coupling pairing",
+        "reproducible_from_repository": false,
+        "source_json": "profiles.json",
+        "source_json_sha256": "d253ca54be7e905d65920e0b98f973089a4a9fd37d3a387b4094cbc66063d4ec",
+        "source_script": "d6_profiles.py",
+        "value": {
+          "no_spec": 2.99423297121e+16,
+          "rho1e3": 8.35852104965e+16,
+          "rho1e4": 4.95852693055e+16
+        }
+      },
+      "profile_boundary_values": {
+        "key": "<tag>.y[0]",
+        "label": "RESEARCH_RECORD_INPUT",
+        "meaning": "(alpha_4^-1, alpha_L^-1, alpha_R^-1, y_PS) at t = ln M_I: the only boundary data of the rebuilt profiles",
+        "reproducible_from_repository": false,
+        "source_json": "profiles.pkl",
+        "source_json_sha256": "db86478396d7fee4ff25b52c8d43545c333301ff7bb6222f8bf4e68c193ec136",
+        "source_script": "d6_profiles.py",
+        "value": {
+          "no_spec": [
+            28.1267097512,
+            38.4266323407,
+            59.1224534675,
+            0.566250341321
+          ],
+          "rho1e3": [
+            26.5519354053,
+            37.7403613362,
+            61.6566501956,
+            0.58169520705
+          ],
+          "rho1e4": [
+            27.4855904458,
+            38.1470563548,
+            60.1550059906,
+            0.572413955438
+          ]
+        }
+      },
+      "profile_scales": {
+        "key": "<tag>.{M_I, M_GUT, rho}",
+        "label": "RESEARCH_RECORD_INPUT",
+        "meaning": "M_I = v_R, M_GUT and the spectator ratio rho = M_s/v_R of the three PS profiles (no_spec: no spectators)",
+        "reproducible_from_repository": false,
+        "source_json": "profiles.json",
+        "source_json_sha256": "d253ca54be7e905d65920e0b98f973089a4a9fd37d3a387b4094cbc66063d4ec",
+        "source_script": "d6_profiles.py",
+        "value": {
+          "no_spec": {
+            "M_GUT": 8.38930350945e+16,
+            "M_I": 4870634643.85
+          },
+          "rho1e3": {
+            "M_GUT": 1.62622714179e+17,
+            "M_I": 1223911937.85,
+            "rho": 1000.0
+          },
+          "rho1e4": {
+            "M_GUT": 1.12452593519e+17,
+            "M_I": 2775021134.41,
+            "rho": 10000.0
+          }
+        }
+      },
+      "profile_summaries": {
+        "key": "<tag>.profile.{g_vR, g_MGUT, alpha_inv_U}",
+        "label": "RESEARCH_RECORD_INPUT",
+        "meaning": "research gauge couplings (g4, gL, gR) at v_R and at M_GUT and alpha_U^-1 (reference values of D01)",
+        "reproducible_from_repository": false,
+        "source_json": "d19_witness_sos.json",
+        "source_json_sha256": "5c9f15c0b013be5e53844d00d10798d046e196fd087c16f19432f97f334c7022",
+        "source_script": "d19_witness_sos.py",
+        "value": {
+          "no_spec": {
+            "alpha_inv_U": 49.3242516713,
+            "g_MGUT": [
+              0.514188072073,
+              0.52144416916,
+              0.520232074841
+            ],
+            "g_vR": [
+              0.668413890051,
+              0.57185874844,
+              0.461029491891
+            ]
+          },
+          "rho1e3": {
+            "alpha_inv_U": 23.7839179363,
+            "g_MGUT": [
+              0.773770388251,
+              0.789708950147,
+              0.786706455752
+            ],
+            "g_vR": [
+              0.687949945492,
+              0.577034666528,
+              0.451455521599
+            ]
+          },
+          "rho1e4": {
+            "alpha_inv_U": 32.3156925776,
+            "g_MGUT": [
+              0.658558635762,
+              0.670477583588,
+              0.668372286803
+            ],
+            "g_vR": [
+              0.676164548044,
+              0.573950470905,
+              0.457055610932
+            ]
+          }
+        }
+      },
+      "ps_gauge_coefficients": {
+        "key": "models.U2PS, delta_PS_spectators",
+        "label": "RESEARCH_RECORD_INPUT",
+        "meaning": "two-loop PS gauge coefficients b, b_ij, c_Y and the universal spectator shifts (exact rationals)",
+        "reproducible_from_repository": false,
+        "source_json": "u2_coefficients.json",
+        "source_json_sha256": "03f361ed4a91c506891211eb6bc66c753d7c50180095f63c43ce4fcdee8d60a3",
+        "source_script": "wfGNG/U2 (PyR@TE)",
+        "value": {
+          "b": [
+            "-23/3",
+            "-3",
+            "11/3"
+          ],
+          "b_ij": [
+            [
+              "643/6",
+              "9/2",
+              "153/2"
+            ],
+            [
+              "45/2",
+              "8",
+              "3"
+            ],
+            [
+              "765/2",
+              "3",
+              "584/3"
+            ]
+          ],
+          "c_Y": [
+            "4",
+            "4",
+            "4"
+          ],
+          "spectator_b": [
+            "40/3",
+            "40/3",
+            "40/3"
+          ],
+          "spectator_b_ij": [
+            [
+              "1025/3",
+              "15",
+              "15"
+            ],
+            [
+              "75",
+              "490/3",
+              "0"
+            ],
+            [
+              "75",
+              "0",
+              "490/3"
+            ]
+          ]
+        }
+      },
+      "region_counts": {
+        "key": "[tag].{N_box, n_path_unitary, region_FJ, region_FJ_VF, region_u_le_half}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "box scan of lambda(v_R): path-unitary points, one-loop FJ pole-positive region, FJ and VF_L, and |a0| <= 1/4 (u <= 1/2)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": {
+            "N_box": 1500000,
+            "n_path_unitary": 135409,
+            "region_FJ_and_VF_L": 19510,
+            "region_pole": 20254,
+            "region_pole_u_le_half": 1225
+          },
+          "rho1e3": {
+            "N_box": 1500000,
+            "n_path_unitary": 83960,
+            "region_FJ_and_VF_L": 8477,
+            "region_pole": 8954,
+            "region_pole_u_le_half": 0
+          },
+          "rho1e4": {
+            "N_box": 1500000,
+            "n_path_unitary": 124920,
+            "region_FJ_and_VF_L": 17104,
+            "region_pole": 17818,
+            "region_pole_u_le_half": 155
+          }
+        }
+      },
+      "region_fraction_of_V_pos": {
+        "key": "[tag].tuning.region_fraction_of_V_pos",
+        "label": "RESEARCH_RECORD",
+        "meaning": "region volume as a fraction of the perturbative positive coupling volume (about 4e-8 at rho = 1e3)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": 5.82387791665e-06,
+          "rho1e3": 4.14954304943e-08,
+          "rho1e4": 1.05272644295e-06
+        }
+      },
+      "region_gap_outside_production_box_recorded": {
+        "key": "share_inside_prod_box",
+        "label": "RESEARCH_RECORD",
+        "meaning": "not verified: the sign of lambda4 - lambda5 at M_GUT for region points outside the production IR box (0.3% of the UV volume at rho = 1e3, 2.5% without spectators) was not recorded",
+        "reproducible_from_repository": false,
+        "source_json": "d23_box_extension_rho1e3.json",
+        "source_json_sha256": "0708eb0407f21c8b309e928c03934e8fb7c8cfbb2c2a85d067f9bb8a2c8d2735",
+        "source_script": "d23_box_extension.py",
+        "value": false
+      },
+      "region_gap_quantiles_no_spec": {
+        "key": "region_lam4_minus_lam5_GUT_quantiles",
+        "label": "RESEARCH_RECORD",
+        "meaning": "lambda4 - lambda5 at M_GUT over the no-spectator region (min, median, max): the maximum is < 0",
+        "reproducible_from_repository": false,
+        "source_json": "d13_region_no_spec.json",
+        "source_json_sha256": "3e6c32f9e0ce8c5b5367c7a3d81ad526430db88e4c55614db8332967896d1796",
+        "source_script": "d13_region_prod.py",
+        "value": [
+          -0.288952584671,
+          -0.241472436096,
+          -0.199657735934
+        ]
+      },
+      "region_gap_quantiles_rho1e3": {
+        "key": "region_lam4_minus_lam5_GUT_quantiles",
+        "label": "RESEARCH_RECORD",
+        "meaning": "lambda4 - lambda5 at M_GUT over the rho = 1e3 region (min, median, max): the maximum is < 0",
+        "reproducible_from_repository": false,
+        "source_json": "d13_region_rho1e3.json",
+        "source_json_sha256": "baf89f1118c1c75538b2522310ef5b619914e4f13cc5d51e05f7b06c1b103e3d",
+        "source_script": "d13_region_prod.py",
+        "value": [
+          -0.436806236902,
+          -0.41452176304,
+          -0.398504729032
+        ]
+      },
+      "region_gap_quantiles_rho1e4": {
+        "key": "region_lam4_minus_lam5_GUT_quantiles",
+        "label": "RESEARCH_RECORD",
+        "meaning": "lambda4 - lambda5 at M_GUT over the rho = 1e4 region (min, median, max): the maximum is < 0",
+        "reproducible_from_repository": false,
+        "source_json": "d13_region_rho1e4.json",
+        "source_json_sha256": "7a24d52cbb540a09aae0836b41e3b1f2d892d106ee01aeeb578cce33098beba6",
+        "source_script": "d13_region_prod.py",
+        "value": [
+          -0.342202964746,
+          -0.306661270592,
+          -0.278163420209
+        ]
+      },
+      "region_points": {
+        "key": "[tag].best_controlled.lam_vR",
+        "label": "RESEARCH_RECORD_INPUT",
+        "meaning": "best controlled points of the RG-improved one-loop remnant region, lambda at v_R (tree-positive, FJ and VF_L pole-positive, path-unitary, Delta-only EFT)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": [
+            0.0542355305098,
+            0.125585318668,
+            0.133671569299,
+            0.10124744506,
+            0.0276105224747
+          ],
+          "rho1e3": [
+            -0.0457587871278,
+            0.102177088941,
+            0.119473589628,
+            0.0855978590492,
+            0.0224220968803
+          ],
+          "rho1e4": [
+            -0.111727013983,
+            0.178055996657,
+            0.139844092189,
+            0.100047355658,
+            0.0280276548813
+          ]
+        }
+      },
+      "region_scan_box_no_spec": {
+        "key": "{box, N_box, n_prefilter, d_th}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "the region scan is a sampled, box-bounded set: N_box uniform lambda(v_R) points in the IR box [box_lo, box_hi], a tree prefilter (all six remnant tree levels > -0.1 v_R^2) and the matching-LP slack d_th; its statistics (gap quantiles, 0 of 400 reachable) are sample statistics, not a proof over all couplings",
+        "reproducible_from_repository": false,
+        "source_json": "d13_region_no_spec.json",
+        "source_json_sha256": "3e6c32f9e0ce8c5b5367c7a3d81ad526430db88e4c55614db8332967896d1796",
+        "source_script": "d13_region_prod.py",
+        "value": {
+          "N_box": 1500000,
+          "box_hi": [
+            0.8,
+            0.8,
+            0.35,
+            0.45,
+            0.08
+          ],
+          "box_lo": [
+            -0.8,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "matching_slack_d_th": 0.02,
+          "n_prefilter": 978576,
+          "prefilter_min_remnant_level": -0.1
+        }
+      },
+      "region_scan_box_rho1e3": {
+        "key": "{box, N_box, n_prefilter, d_th}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "the region scan is a sampled, box-bounded set: N_box uniform lambda(v_R) points in the IR box [box_lo, box_hi], a tree prefilter (all six remnant tree levels > -0.1 v_R^2) and the matching-LP slack d_th; its statistics (gap quantiles, 0 of 400 reachable) are sample statistics, not a proof over all couplings",
+        "reproducible_from_repository": false,
+        "source_json": "d13_region_rho1e3.json",
+        "source_json_sha256": "baf89f1118c1c75538b2522310ef5b619914e4f13cc5d51e05f7b06c1b103e3d",
+        "source_script": "d13_region_prod.py",
+        "value": {
+          "N_box": 1500000,
+          "box_hi": [
+            0.8,
+            0.8,
+            0.35,
+            0.45,
+            0.08
+          ],
+          "box_lo": [
+            -0.8,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "matching_slack_d_th": 0.02,
+          "n_prefilter": 978514,
+          "prefilter_min_remnant_level": -0.1
+        }
+      },
+      "region_scan_box_rho1e4": {
+        "key": "{box, N_box, n_prefilter, d_th}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "the region scan is a sampled, box-bounded set: N_box uniform lambda(v_R) points in the IR box [box_lo, box_hi], a tree prefilter (all six remnant tree levels > -0.1 v_R^2) and the matching-LP slack d_th; its statistics (gap quantiles, 0 of 400 reachable) are sample statistics, not a proof over all couplings",
+        "reproducible_from_repository": false,
+        "source_json": "d13_region_rho1e4.json",
+        "source_json_sha256": "7a24d52cbb540a09aae0836b41e3b1f2d892d106ee01aeeb578cce33098beba6",
+        "source_script": "d13_region_prod.py",
+        "value": {
+          "N_box": 1500000,
+          "box_hi": [
+            0.8,
+            0.8,
+            0.35,
+            0.45,
+            0.08
+          ],
+          "box_lo": [
+            -0.8,
+            -0.1,
+            -0.1,
+            -0.1,
+            0.0
+          ],
+          "matching_slack_d_th": 0.02,
+          "n_prefilter": 979077,
+          "prefilter_min_remnant_level": -0.1
+        }
+      },
+      "region_u_quantiles": {
+        "key": "[tag].u_q",
+        "label": "RESEARCH_RECORD",
+        "meaning": "path-unitarity measure u = 2 max |a0| over the region (min, q10, q50, q90); min |a0| = u/2 = 0.307 at rho = 1e3",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": [
+            0.373148368903,
+            0.530809636403,
+            0.740869508818,
+            0.94333517283
+          ],
+          "rho1e3": [
+            0.61420247678,
+            0.736414750886,
+            0.867518915993,
+            0.973335221153
+          ],
+          "rho1e4": [
+            0.447498562962,
+            0.588118963863,
+            0.77476944792,
+            0.950304578448
+          ]
+        }
+      },
+      "scale_variation": {
+        "key": "rho1e3.scale_variation",
+        "label": "RESEARCH_RECORD",
+        "meaning": "rho = 1e3 renormalisation-scale variation of the one-loop pole masses (Q = v_R/sqrt2 removes every region point)",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "Q_2_vR": {
+            "median_rel_dpole_region": 0.735233399327,
+            "region_at_Q": 1363,
+            "region_at_vR": 1906
+          },
+          "Q_sqrt2_vR": {
+            "median_rel_dpole_region": 0.492497630128,
+            "region_at_Q": 1728,
+            "region_at_vR": 1906
+          },
+          "Q_vR_over_sqrt2": {
+            "median_rel_dpole_region": 10.9223565378,
+            "region_at_Q": 0,
+            "region_at_vR": 1906
+          }
+        }
+      },
+      "skeptic_cw_masses": {
+        "key": "I4.<tag>.rows[].CW_p0_vevfixed_mine",
+        "label": "RESEARCH_RECORD",
+        "meaning": "the skeptic's Landau-gauge p = 0 vev-fixed CW curvature masses at the best points (reference of E02)",
+        "reproducible_from_repository": false,
+        "source_json": "r_d_indep.json",
+        "source_json_sha256": "663c8b15e85328a14512782e00856e3f1706c03a1e5abaf4e49dfd9edd7a9d79",
+        "source_script": "r_d_indep.py (skeptic)",
+        "value": {
+          "no_spec": [
+            0.09873990101,
+            0.124195976529,
+            0.0943021166537,
+            0.156150881294,
+            0.165106846251,
+            0.160598506903,
+            0.153460866729
+          ],
+          "rho1e3": [
+            0.0841374658524,
+            0.0983525938289,
+            0.0839590829736,
+            0.139131034417,
+            0.141691309377,
+            0.101725140891,
+            0.148223058533
+          ],
+          "rho1e4": [
+            0.0966177716135,
+            0.191528780851,
+            0.0993088877356,
+            0.160465621444,
+            0.20399872501,
+            0.103044361523,
+            0.15882375473
+          ]
+        }
+      },
+      "skeptic_running": {
+        "key": "<tag>.{lam_MGUT_mine, witness_lam5_zero_crossing_GeV, lam4_minus_lam5_MGUT}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "the skeptic's independent running (DOP853) of the region points and of the witness",
+        "reproducible_from_repository": false,
+        "source_json": "r_d_running.json",
+        "source_json_sha256": "983b579879c7184bcdab66c7d831603504499b95310d90cd252d0599de227a2e",
+        "source_script": "r_d_running.py (skeptic)",
+        "value": {
+          "no_spec": {
+            "lam4_minus_lam5_MGUT": -0.244821831586,
+            "lam_MGUT": [
+              0.461447583524,
+              0.285492626019,
+              0.27998767662,
+              0.226344578231,
+              0.471166409817
+            ],
+            "witness_lam5_zero_crossing_GeV": 1210183100230000.0
+          },
+          "rho1e3": {
+            "lam4_minus_lam5_MGUT": -0.416087474106,
+            "lam_MGUT": [
+              0.559600187596,
+              0.242978871782,
+              0.242113747117,
+              0.156283176336,
+              0.572370650442
+            ],
+            "witness_lam5_zero_crossing_GeV": 4.68087508082e+16
+          },
+          "rho1e4": {
+            "lam4_minus_lam5_MGUT": -0.31212184164,
+            "lam_MGUT": [
+              0.499487440264,
+              0.282478047891,
+              0.274845464796,
+              0.208034165652,
+              0.520156007292
+            ],
+            "witness_lam5_zero_crossing_GeV": 1.17115646094e+16
+          }
+        }
+      },
+      "skeptic_witness_betas": {
+        "key": "beta_mine_witness_g4_0.6_gR_0.5",
+        "label": "RESEARCH_RECORD",
+        "meaning": "one-loop betas at the witness couplings with g4 = 0.6, gR = 0.5 (research D2 = skeptic; reference of D12)",
+        "reproducible_from_repository": false,
+        "source_json": "r_d_indep.json",
+        "source_json_sha256": "663c8b15e85328a14512782e00856e3f1706c03a1e5abaf4e49dfd9edd7a9d79",
+        "source_script": "r_d_indep.py (skeptic)",
+        "value": [
+          0.0161784039658,
+          0.00209049287604,
+          -0.00671464314528,
+          -0.00557891606778,
+          0.0309492836546
+        ]
+      },
+      "sos_grid_tree": {
+        "key": "<tag>.sos_grid",
+        "label": "RESEARCH_RECORD",
+        "meaning": "30240 SOS weights with beta in {0, 0.05, 0.15}^3 run from tree matching to v_R",
+        "reproducible_from_repository": false,
+        "source_json": "d19_witness_sos.json",
+        "source_json_sha256": "5c9f15c0b013be5e53844d00d10798d046e196fd087c16f19432f97f334c7022",
+        "source_script": "d19_witness_sos.py",
+        "value": {
+          "no_spec": {
+            "alive_lam5_vR_pos": 0,
+            "n": 30240,
+            "path_unitary": 0
+          },
+          "rho1e3": {
+            "alive_lam5_vR_pos": 0,
+            "n": 30240,
+            "path_unitary": 0
+          },
+          "rho1e4": {
+            "alive_lam5_vR_pos": 0,
+            "n": 30240,
+            "path_unitary": 0
+          }
+        }
+      },
+      "sos_grid_with_threshold": {
+        "key": "<tag>.sos_grid_plus_threshold_gX*",
+        "label": "RESEARCH_RECORD",
+        "meaning": "SOS weight grid plus the witness threshold run to v_R: path-unitary with lambda5(v_R) > 0, and one-loop pole-positive (0 in every case)",
+        "reproducible_from_repository": false,
+        "source_json": "d21_threshold_matching.json",
+        "source_json_sha256": "2a8305720493b145c881a847caec919d3899958253caa4db4c879e1e3cfbdb20",
+        "source_script": "d21_threshold_matching.py",
+        "value": {
+          "no_spec": {
+            "n": 18144,
+            "path_unitary_lam5pos_gX0.0": 0,
+            "path_unitary_lam5pos_gX1.0": 429,
+            "pole_positive_gX1.0": 0
+          },
+          "rho1e3": {
+            "n": 18144,
+            "path_unitary_lam5pos_gX0.0": 0,
+            "path_unitary_lam5pos_gX1.0": 22,
+            "pole_positive_gX1.0": 0
+          },
+          "rho1e4": {
+            "n": 18144,
+            "path_unitary_lam5pos_gX0.0": 0,
+            "path_unitary_lam5pos_gX1.0": 7,
+            "pole_positive_gX1.0": 0
+          }
+        }
+      },
+      "sphere_min": {
+        "key": "[tag].sphere",
+        "label": "RESEARCH_RECORD",
+        "meaning": "of 60 region points, those where sigma is the global minimum of the tree quartic at v_R, and those where the quartic is negative somewhere",
+        "reproducible_from_repository": false,
+        "source_json": "d20_summary.json",
+        "source_json_sha256": "df5087df4e5bc27999bb2f310d48e2314533879326a9d64f60d13476207fe607",
+        "source_script": "d20_summary.py",
+        "value": {
+          "no_spec": {
+            "n": 60,
+            "n_quartic_negative_somewhere": 12,
+            "sigma_global_min": 39
+          },
+          "rho1e3": {
+            "n": 60,
+            "n_quartic_negative_somewhere": 11,
+            "sigma_global_min": 43
+          },
+          "rho1e4": {
+            "n": 60,
+            "n_quartic_negative_somewhere": 11,
+            "sigma_global_min": 42
+          }
+        }
+      },
+      "threshold_LP": {
+        "key": "rho1e3.LP_sos_minus_threshold_gX*",
+        "label": "RESEARCH_RECORD",
+        "meaning": "SOS-safe matching with the witness M_GUT threshold subtracted, 300 rho = 1e3 region points, slack 0.03",
+        "reproducible_from_repository": false,
+        "source_json": "d21_threshold_matching.json",
+        "source_json_sha256": "2a8305720493b145c881a847caec919d3899958253caa4db4c879e1e3cfbdb20",
+        "source_script": "d21_threshold_matching.py",
+        "value": {
+          "gX0.0": {
+            "feasible": 0,
+            "n": 300
+          },
+          "gX1.0": {
+            "feasible": 0,
+            "n": 300
+          }
+        }
+      },
+      "threshold_quality": {
+        "key": "threshold.<key>.{r0_stability_max, fit_resid}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "quality of the witness M_GUT threshold extraction (computed at the witness only)",
+        "reproducible_from_repository": false,
+        "source_json": "d12_matching.json",
+        "source_json_sha256": "f35ae578794cb7feb42ba34f11e5a366610eb0caa06bc30361b61a30607b6c37",
+        "source_script": "d12_matching.py",
+        "value": {
+          "alphainv23.78_gX0.0": {
+            "fit_resid": 2.72381781313e-06,
+            "r0_stability_max": 1.86199998282e-05
+          },
+          "alphainv23.78_gX1.0": {
+            "fit_resid": 2.2464219126e-06,
+            "r0_stability_max": 1.82809932276e-05
+          },
+          "alphainv40.0_gX0.0": {
+            "fit_resid": 2.72204534094e-06,
+            "r0_stability_max": 1.85372506862e-05
+          },
+          "alphainv40.0_gX1.0": {
+            "fit_resid": 2.78695068689e-06,
+            "r0_stability_max": 1.87843308204e-05
+          }
+        }
+      },
+      "threshold_w_independence_verified": {
+        "key": "D: flaws and caveats",
+        "label": "RESEARCH_RECORD",
+        "meaning": "not verified: the one-loop M_GUT threshold was computed at the witness only",
+        "reproducible_from_repository": false,
+        "source_json": "wfDA_review.md",
+        "source_json_sha256": "8e1ac0bd123f4850e2eb7fb37da6e5f51e34a33345bdde45543a3c818029148a",
+        "source_script": "skeptic review, part D",
+        "value": false
+      },
+      "two_loop_quartic_running": {
+        "key": "D: uncertain",
+        "label": "RESEARCH_RECORD",
+        "meaning": "not verified: the quartic running is one loop (two-loop PS gauge profiles only)",
+        "reproducible_from_repository": false,
+        "source_json": "wfDA_review.md",
+        "source_json_sha256": "8e1ac0bd123f4850e2eb7fb37da6e5f51e34a33345bdde45543a3c818029148a",
+        "source_script": "skeptic review, part D",
+        "value": false
+      },
+      "witness_crossing_grid_limited": {
+        "key": "<tag>.witness.lam5_zero_crossing_GeV",
+        "label": "RESEARCH_RECORD",
+        "meaning": "research lambda5 zero crossing of the witness located on a 400-point grid (about 2% below D02)",
+        "reproducible_from_repository": false,
+        "source_json": "d19_witness_sos.json",
+        "source_json_sha256": "5c9f15c0b013be5e53844d00d10798d046e196fd087c16f19432f97f334c7022",
+        "source_script": "d19_witness_sos.py",
+        "value": {
+          "no_spec": 1185456208820000.0,
+          "rho1e3": 4.58643608508e+16,
+          "rho1e4": 1.14680443099e+16
+        }
+      }
+    },
+    "kind": "RESEARCH_RECORD",
+    "problems": [],
+    "provenance_note": "scratch research outputs of 2026-09-26 (study D-D, wfDA/D and wfDA/review); not in the repository; hashes recorded for audit only and not verifiable from the repository",
+    "unverified_items": {
+      "pole_mass_scale_variation_recomputed_in_module": false,
+      "region_gap_outside_production_box_recorded": false,
+      "threshold_w_independence_verified": false,
+      "two_loop_quartic_running": false
+    }
+  },
+  "running": {
+    "accuracy_estimate": {
+      "budget": {
+        "crossing_rel": 5e-05,
+        "gap_abs": 1e-05,
+        "lambda_gut_abs": 1e-05,
+        "reference_convergence_abs": 1e-09,
+        "reference_convergence_rel": 1e-09
+      },
+      "meaning": "the primary running interpolates the tabulated profile linearly (np.interp, as in the research and skeptic codes); its error against the joint reference is about 2e-6 in lambda(M_GUT), 1e-6 in lambda4 - lambda5 and 1e-5 relative in the crossing, far below every margin used (>= 0.1 in the gap)",
+      "method": "joint RK4 of (alpha_4^-1, alpha_L^-1, alpha_R^-1, y_PS, lambda_1..5) without interpolation, uniform steps <= 0.02 and <= 0.01 on each side of ln(rho M_I); the finer one is the reference",
+      "per_profile": {
+        "no_spec": {
+          "primary_minus_reference_gap_abs": 1.08721923353e-07,
+          "primary_minus_reference_lambda_GUT_max_abs": 3.06186466514e-07,
+          "primary_over_reference_crossing_minus_1": 9.08902607399e-07,
+          "reference_crossing_GeV": 1210182160820000.0,
+          "reference_gap_lam4_minus_lam5_GUT": -0.244821754701,
+          "reference_lambda_GUT": [
+            0.461447397901,
+            0.285492459492,
+            0.279987526833,
+            0.226344435799,
+            0.4711661905
+          ],
+          "reference_self_convergence_crossing_rel": 5.68434188608e-14,
+          "reference_self_convergence_lambda_abs": 8.66473559569e-13
+        },
+        "rho1e3": {
+          "primary_minus_reference_gap_abs": 1.04551816604e-06,
+          "primary_minus_reference_lambda_GUT_max_abs": 2.10514841048e-06,
+          "primary_over_reference_crossing_minus_1": 8.35807568778e-06,
+          "reference_crossing_GeV": 4.6808361519e+16,
+          "reference_gap_lam4_minus_lam5_GUT": -0.416086444989,
+          "reference_lambda_GUT": [
+            0.559598147962,
+            0.242978717091,
+            0.242113218764,
+            0.156283003265,
+            0.572369448254
+          ],
+          "reference_self_convergence_crossing_rel": 2.44415598871e-12,
+          "reference_self_convergence_lambda_abs": 1.23767662785e-12
+        },
+        "rho1e4": {
+          "primary_minus_reference_gap_abs": 3.80048726045e-07,
+          "primary_minus_reference_lambda_GUT_max_abs": 8.12830011465e-07,
+          "primary_over_reference_crossing_minus_1": 5.99737023088e-06,
+          "reference_crossing_GeV": 1.17114944959e+16,
+          "reference_gap_lam4_minus_lam5_GUT": -0.312121496296,
+          "reference_lambda_GUT": [
+            0.49948671164,
+            0.282477929098,
+            0.274845232312,
+            0.208034040915,
+            0.520155537211
+          ],
+          "reference_self_convergence_crossing_rel": 8.24118551179e-13,
+          "reference_self_convergence_lambda_abs": 1.49102952207e-13
+        }
+      },
+      "within_budget": true
+    },
+    "bfb_only_min_slack": {
+      "no_spec": 0.0,
+      "rho1e3": 0.0,
+      "rho1e4": 0.0
+    },
+    "checks": {
+      "bfb_only_matching_exact_at_region_points": true,
+      "discretisation_accuracy_within_budget": true,
+      "gauge_profiles_reproduce_recorded_inputs": true,
+      "region_points_run_up": true,
+      "region_points_tree_positive_at_v_R": true,
+      "region_points_violate_sos_gap_at_M_GUT": true,
+      "sos_safe_grid_has_no_perturbative_tree_vacuum_at_v_R": true,
+      "threshold_matching_min_slack_pinned": true,
+      "threshold_scale_to_reach_sos_family": true,
+      "tree_matching_min_slack_is_half_gap": true,
+      "witness_betas_float_match_research": true,
+      "witness_flow_nonperturbative_before_v_R": true,
+      "witness_lambda5_zero_crossing": true
+    },
+    "gap_lam4_minus_lam5_GUT": {
+      "no_spec": -0.244821863423,
+      "rho1e3": -0.416087490507,
+      "rho1e4": -0.312121876345
+    },
+    "inputs": {
+      "gut_thresholds": {
+        "alphainv23.78_gX0.0": [
+          0.0348975377041,
+          -0.169186898089,
+          0.0150067280537,
+          -0.0539356485638,
+          0.217853561127
+        ],
+        "alphainv23.78_gX1.0": [
+          -0.192974479385,
+          -0.0981475919849,
+          -0.0135912736908,
+          0.0171032944976,
+          0.58780196637
+        ],
+        "alphainv40.0_gX0.0": [
+          0.0407636866764,
+          -0.171142286068,
+          0.0176139007692,
+          -0.0539356484549,
+          0.221764321884
+        ],
+        "alphainv40.0_gX1.0": [
+          -0.030021232916,
+          -0.147985340028,
+          0.00945657008221,
+          -0.030778634136,
+          0.33886428078
+        ]
+      },
+      "profile_M_X": {
+        "no_spec": 2.99423297121e+16,
+        "rho1e3": 8.35852104965e+16,
+        "rho1e4": 4.95852693055e+16
+      },
+      "profiles": {
+        "no_spec": {
+          "M_GUT": 8.38930350945e+16,
+          "M_I": 4870634643.85,
+          "y_MI": [
+            28.1267097512,
+            38.4266323407,
+            59.1224534675,
+            0.566250341321
+          ]
+        },
+        "rho1e3": {
+          "M_GUT": 1.62622714179e+17,
+          "M_I": 1223911937.85,
+          "rho": 1000.0,
+          "y_MI": [
+            26.5519354053,
+            37.7403613362,
+            61.6566501956,
+            0.58169520705
+          ]
+        },
+        "rho1e4": {
+          "M_GUT": 1.12452593519e+17,
+          "M_I": 2775021134.41,
+          "rho": 10000.0,
+          "y_MI": [
+            27.4855904458,
+            38.1470563548,
+            60.1550059906,
+            0.572413955438
+          ]
+        }
+      },
+      "region_points": {
+        "no_spec": [
+          0.0542355305098,
+          0.125585318668,
+          0.133671569299,
+          0.10124744506,
+          0.0276105224747
+        ],
+        "rho1e3": [
+          -0.0457587871278,
+          0.102177088941,
+          0.119473589628,
+          0.0855978590492,
+          0.0224220968803
+        ],
+        "rho1e4": [
+          -0.111727013983,
+          0.178055996657,
+          0.139844092189,
+          0.100047355658,
+          0.0280276548813
+        ]
+      },
+      "sos_cone_rows": [
+        "54",
+        "1050bar",
+        "4125"
+      ],
+      "threshold_alpha_inv": {
+        "alphainv23.78": 23.78,
+        "alphainv40.0": 40.0
+      },
+      "threshold_pairing": {
+        "no_spec": "alphainv40.0",
+        "rho1e3": "alphainv23.78",
+        "rho1e4": "alphainv40.0"
+      }
+    },
+    "kind": "FLOAT",
+    "method": {
+      "accuracy": "D13 compares the primary running with a joint gauge + quartic RK4 without interpolation (running.accuracy_estimate)",
+      "crossing": "first step with lambda5 from > 0 to <= 0, then 60 bisections, each a single RK4 sub-step from the bracket start",
+      "gauge_profiles": "two-loop PS gauge + y_PS, RK4 step 0.05 from ln M_I (step boundary at ln(rho M_I), spectators above), last step to ln M_GUT + 0.1; g by np.interp",
+      "inputs": "profile boundary values, region points and M_GUT thresholds are RESEARCH_RECORD_INPUT (see research_record)",
+      "lp": "scipy.optimize.linprog(method='highs'); variables w (4), beta (3), delta (5), s[, scale]",
+      "quartic_running": "one-loop exact-rational betas (group_theory), RK4 with 2000 uniform steps between ln M_GUT and ln M_I",
+      "threshold_matching": "D08 pins the min LP slack with the research witness threshold subtracted for both coupling pairings (alpha^-1 = 23.78 and 40) and both gX; record-only, no pass criterion on the margin (the threshold path is declared not robust)",
+      "threshold_scale": "D09 minimises the threshold scale directly as an LP variable (the min slack is convex in the scale), which replaces a bisection and gives the smallest scale exactly up to the LP tolerance"
+    },
+    "profiles": {
+      "no_spec": {
+        "M_GUT_GeV": 8.38930350945e+16,
+        "M_GUT_over_M_X": 2.8018205631,
+        "alpha_inv_MGUT_recomputed": [
+          47.5297870327,
+          46.2161999028,
+          46.4318100314
+        ],
+        "g_MGUT_recomputed": [
+          0.514188072073,
+          0.52144416916,
+          0.520232074841
+        ],
+        "g_vR_recomputed": [
+          0.668413890051,
+          0.57185874844,
+          0.461029491891
+        ],
+        "grid_points": 337,
+        "region_point_lambda_GUT": [
+          0.461447654366,
+          0.285492691623,
+          0.279987734323,
+          0.226344633264,
+          0.471166496687
+        ],
+        "region_point_lambda_vR": [
+          0.0542355305098,
+          0.125585318668,
+          0.133671569299,
+          0.10124744506,
+          0.0276105224747
+        ],
+        "region_point_run_completed": true,
+        "t_GUT": 38.9683189906,
+        "t_I": 22.3064900826,
+        "v_R_GeV": 4870634643.85,
+        "witness_events_GeV": {
+          "1e3": 43565029246.7,
+          "4pi": 56402478078.1
+        },
+        "witness_lambda5_zero_crossing_GeV": 1210183260760000.0,
+        "witness_reaches_v_R": false
+      },
+      "rho1e3": {
+        "M_GUT_GeV": 1.62622714179e+17,
+        "M_GUT_over_M_X": 1.94559196793,
+        "alpha_inv_MGUT_recomputed": [
+          20.9887054598,
+          20.1500321686,
+          20.3041323647
+        ],
+        "g_MGUT_recomputed": [
+          0.773770388251,
+          0.789708950147,
+          0.786706455752
+        ],
+        "g_vR_recomputed": [
+          0.687949945492,
+          0.577034666528,
+          0.451455521599
+        ],
+        "grid_points": 378,
+        "region_point_lambda_GUT": [
+          0.55960025311,
+          0.242978936904,
+          0.242113809798,
+          0.156283236702,
+          0.57237072721
+        ],
+        "region_point_lambda_vR": [
+          -0.0457587871278,
+          0.102177088941,
+          0.119473589628,
+          0.0855978590492,
+          0.0224220968803
+        ],
+        "region_point_run_completed": true,
+        "t_GUT": 39.6302092759,
+        "t_I": 20.9253180722,
+        "v_R_GeV": 1223911937.85,
+        "witness_events_GeV": {
+          "1e3": 30092941779300.0,
+          "4pi": 40214051145300.0
+        },
+        "witness_lambda5_zero_crossing_GeV": 4.68087527468e+16,
+        "witness_reaches_v_R": false
+      },
+      "rho1e4": {
+        "M_GUT_GeV": 1.12452593519e+17,
+        "M_GUT_over_M_X": 2.26786291763,
+        "alpha_inv_MGUT_recomputed": [
+          28.9748346226,
+          27.9538312509,
+          28.1302113892
+        ],
+        "g_MGUT_recomputed": [
+          0.658558635762,
+          0.670477583588,
+          0.668372286803
+        ],
+        "g_vR_recomputed": [
+          0.676164548044,
+          0.573950470905,
+          0.457055610932
+        ],
+        "grid_points": 355,
+        "region_point_lambda_GUT": [
+          0.49948752447,
+          0.282478070498,
+          0.274845498819,
+          0.208034188741,
+          0.520156065086
+        ],
+        "region_point_lambda_vR": [
+          -0.111727013983,
+          0.178055996657,
+          0.139844092189,
+          0.100047355658,
+          0.0280276548813
+        ],
+        "region_point_run_completed": true,
+        "t_GUT": 39.2613081368,
+        "t_I": 21.7439242001,
+        "v_R_GeV": 2775021134.41,
+        "witness_events_GeV": {
+          "1e3": 1034355838590.0,
+          "4pi": 1357029752490.0
+        },
+        "witness_lambda5_zero_crossing_GeV": 1.17115647341e+16,
+        "witness_reaches_v_R": false
+      }
+    },
+    "sos_safe_grid": {
+      "grid": {
+        "beta": [
+          "0",
+          "1/10"
+        ],
+        "blow_up_cap": 1000.0,
+        "rk4_steps": 800,
+        "w_2772bar": [
+          "1/2",
+          "1",
+          "2",
+          "4",
+          "8"
+        ],
+        "w_q_minus_w_2772bar": [
+          "0",
+          "1",
+          "4",
+          "12"
+        ]
+      },
+      "meaning": "no SOS grid point runs perturbatively to v_R with a tree vacuum: rho1e3: 2560 of 2560 exceed |lambda| = 1000 above v_R; rho1e4: 2560 of 2560 exceed |lambda| = 1000 above v_R; no_spec: 2556 of 2560 exceed |lambda| = 1000 above v_R, the 4 others reach v_R with lambda5(v_R) <= -28.7 (min -183); this is a statement about perturbative flows from SOS-safe tree matching, not a vacuum analysis at non-perturbative couplings",
+      "per_profile": {
+        "no_spec": {
+          "max_lambda5_vR_not_blown_up": -28.7277709604,
+          "min_lambda5_vR_not_blown_up": -182.98476376,
+          "n_points": 2560,
+          "not_blown_up": 4,
+          "tree_vacuum_at_v_R": 0
+        },
+        "rho1e3": {
+          "max_lambda5_vR_not_blown_up": null,
+          "min_lambda5_vR_not_blown_up": null,
+          "n_points": 2560,
+          "not_blown_up": 0,
+          "tree_vacuum_at_v_R": 0
+        },
+        "rho1e4": {
+          "max_lambda5_vR_not_blown_up": null,
+          "min_lambda5_vR_not_blown_up": null,
+          "n_points": 2560,
+          "not_blown_up": 0,
+          "tree_vacuum_at_v_R": 0
+        }
+      }
+    },
+    "target_gap_after_threshold": {
+      "no_spec": {
+        "alphainv23.78": {
+          "gX0.0": 0.0269673462675,
+          "gX1.0": 0.325876808449
+        },
+        "alphainv40.0": {
+          "gX0.0": 0.0308781069162,
+          "gX1.0": 0.124821051493
+        }
+      },
+      "rho1e3": {
+        "alphainv23.78": {
+          "gX0.0": -0.144298280817,
+          "gX1.0": 0.154611181365
+        },
+        "alphainv40.0": {
+          "gX0.0": -0.140387520168,
+          "gX1.0": -0.0464445755908
+        }
+      },
+      "rho1e4": {
+        "alphainv23.78": {
+          "gX0.0": -0.0403326666542,
+          "gX1.0": 0.258576795528
+        },
+        "alphainv40.0": {
+          "gX0.0": -0.0364219060054,
+          "gX1.0": 0.0575210385718
+        }
+      }
+    },
+    "threshold_gap_shift": {
+      "alphainv23.78_gX0.0": {
+        "dlam4_minus_dlam5": -0.27178920969,
+        "in_units_of_witness_tree_gap_1_128": -34.7890188404
+      },
+      "alphainv23.78_gX1.0": {
+        "dlam4_minus_dlam5": -0.570698671872,
+        "in_units_of_witness_tree_gap_1_128": -73.0494299997
+      },
+      "alphainv40.0_gX0.0": {
+        "dlam4_minus_dlam5": -0.275699970339,
+        "in_units_of_witness_tree_gap_1_128": -35.2895962034
+      },
+      "alphainv40.0_gX1.0": {
+        "dlam4_minus_dlam5": -0.369642914916,
+        "in_units_of_witness_tree_gap_1_128": -47.3142931093
+      }
+    },
+    "threshold_matching_min_slack": {
+      "no_spec": {
+        "gX0.0": 0.0536385475047,
+        "gX1.0": 0.0379814128347
+      },
+      "rho1e3": {
+        "gX0.0": 0.0913653633785,
+        "gX1.0": 0.0415469986672
+      },
+      "rho1e4": {
+        "gX0.0": 0.0699538241242,
+        "gX1.0": 0.0542966894542
+      }
+    },
+    "threshold_matching_min_slack_all_pairings": {
+      "no_spec": {
+        "alphainv23.78": {
+          "gX0.0": 0.053638544917,
+          "gX1.0": 0.00382018020568
+        },
+        "alphainv40.0": {
+          "gX0.0": 0.0536385475047,
+          "gX1.0": 0.0379814128347
+        }
+      },
+      "rho1e3": {
+        "alphainv23.78": {
+          "gX0.0": 0.0913653633785,
+          "gX1.0": 0.0415469986672
+        },
+        "alphainv40.0": {
+          "gX0.0": 0.0913653659662,
+          "gX1.0": 0.0757082312962
+        }
+      },
+      "rho1e4": {
+        "alphainv23.78": {
+          "gX0.0": 0.0699538215365,
+          "gX1.0": 0.0201354568252
+        },
+        "alphainv40.0": {
+          "gX0.0": 0.0699538241242,
+          "gX1.0": 0.0542966894542
+        }
+      }
+    },
+    "threshold_scale": {
+      "gX0_min_slack_over_scale_0_to_8": 0.0431975342988,
+      "meaning": "DISCLOSURE: the one-loop-threshold version of the disjointness is marginal",
+      "primary_profile": "rho1e3",
+      "scale_for_exact_reach": 1.7327579787,
+      "scale_for_slack_le_research_0.03": 1.20365262654,
+      "threshold": "alphainv23.78_gX1.0"
+    },
+    "tolerance_semantics": "regression tolerances against this module's own discretisation (RK4 on np.interp of the tabulated gauge profile, the research and skeptic method, so the research comparisons are like for like), not accuracy statements; the method error is measured in running.accuracy_estimate against a joint gauge + quartic RK4 without interpolation (about 2e-6 absolute in lambda(M_GUT), 1e-6 in lambda4 - lambda5 and 1e-5 relative in the lambda5 crossing)",
+    "tolerances": {
+      "beta_rel": 1e-12,
+      "bfb_only_slack_abs": 1e-09,
+      "blowup_rel": 0.02,
+      "crossing_rel": 1e-05,
+      "cw_mass_abs": 1e-06,
+      "gap_abs": 1e-06,
+      "half_gap_abs": 1e-07,
+      "lambda_gut_abs": 1e-06,
+      "pole_research_abs": 1e-09,
+      "pole_xi_spread_abs": 1e-12,
+      "profile_rel": 1e-09,
+      "research_crossing_rel": 0.03,
+      "research_lambda_gut_abs": 1e-06,
+      "threshold_scale_abs": 0.002,
+      "threshold_slack_abs": 1e-05,
+      "tree_levels_abs": 1e-09,
+      "tree_slack_abs": 1e-06
+    },
+    "tree_levels_at_v_R": {
+      "no_spec": [
+        0.0981825634472,
+        0.130633061591,
+        0.106061046824,
+        0.155152328548,
+        0.171377577619,
+        0.156030321235,
+        0.110442089899
+      ],
+      "rho1e3": [
+        0.0842343495585,
+        0.106339989414,
+        0.0970514927474,
+        0.139168667527,
+        0.150221487455,
+        0.0985112674615,
+        0.0896883875213
+      ],
+      "rho1e4": [
+        0.0960262677027,
+        0.200037789034,
+        0.111816437307,
+        0.159829571159,
+        0.211835331824,
+        0.0990472606015,
+        0.112110619525
+      ]
+    },
+    "tree_matching_min_slack": {
+      "no_spec": 0.122410931711,
+      "rho1e3": 0.208043745254,
+      "rho1e4": 0.156060938172
+    },
+    "witness_betas_float": [
+      0.0161784039658,
+      0.00209049287604,
+      -0.00671464314528,
+      -0.00557891606778,
+      0.0309492836546
+    ]
+  },
+  "runtime_seconds": 25.14742136,
+  "scope": {
+    "float_recomputed": [
+      "running (D): PS gauge profiles, witness lambda5 zero crossings and runaway above v_R, the three best region points run to M_GUT, tree LP margins, threshold LP margins for both coupling pairings (record-only), BFB-only reach, a 2560-point SOS-safe grid, and the method accuracy against a joint gauge + quartic RK4 without interpolation",
+      "one_loop_masses (E): FJ R_xi one-loop pole masses at the three best region points for xi in {0, 0.5, 1, 3, 10} (xi independence), the vev-fixed Landau masses VF_L with the FJ vev shifts, and Landau-gauge p = 0 vev-fixed CW curvature masses"
+    ],
+    "not_proved_or_out_of_scope": [
+      "anti-SOS G3 witnesses (outside degree-2 SOS certification): not excluded",
+      "the one-loop region as a whole: it is a sampled, box-bounded set (1.5M points per profile); its gap < 0 at M_GUT is a sampling statement, not a proof over all couplings",
+      "robustness beyond tree matching: with the recorded witness M_GUT threshold the lambda4 >= lambda5 obstruction is removed and the separation is marginal (0.042 at rho = 1e3, closing at 1.2 to 1.73 times that threshold; smaller at rho = 1e4 and without spectators with the alpha^-1 = 23.78 threshold); only the tree-matching statement is robust",
+      "two-loop quartic beta functions",
+      "the M_GUT one-loop threshold as a function of the weights w (assumed weight independent, not verified) and of the coupling at which it is taken",
+      "the renormalisation-scale variation of the pole masses (research-recorded, not recomputed)",
+      "region volume and tuning statistics (research-recorded, prior dependent)",
+      "electroweak symmetry breaking",
+      "heavy-Sigma exchange O(r0^2) corrections (r0 ~ 1e-8)",
+      "the h/S portals and the Majorana Yukawa f (research: they only shrink the region)",
+      "y_s / spectator Yukawas (Delta-only EFT)",
+      "the rho = 1e3 profile premise of study D (A2's strict window prefers rho >= 10^3.8, where the region is larger)"
+    ],
+    "proved_exactly": [
+      "group_theory (A): integer model of Delta_R = (10bar,1,3); Sym^2 irreps; SM-singlet vacuum; SM labels; tree mass matrix; Fierz vectors; 210 channels; one-loop beta tensors as exact rationals (SM Higgs identity on the same code path)",
+      "chart_binding (B): c_qk of the 126bar self-quartics restricted to Delta_R in the repository chart; witness portal squares vanish on Delta_R",
+      "matching (C): tree map at mu = M_GUT, gap identity lambda4 - lambda5 = (w_4125 - w_2772)/8 + 3 beta_(15,1,1) + 3 beta_(15,1,3) >= 0 on W_SOS (Farkas certificate), witness levels = the committed G6 tree levels"
+    ],
+    "research_recorded": [
+      "the one-loop region itself: 1.5M sampled lambda(v_R) points per profile in a finite IR box with a tree prefilter (d13), and its box-extension check (d23)",
+      "region volume and tuning (fraction of V_pos, UV volume, Barbieri-Giudice quantiles), path-unitarity quantiles",
+      "the 400-point tree matching LP per profile and the 300-point threshold LP (d13/d20, d21)",
+      "the renormalisation-scale variation of the pole masses",
+      "the one-loop M_GUT thresholds (computed at the witness only, at alpha^-1 = 23.78 and 40)"
+    ],
+    "status_statement": "G6 stays OPEN; this module is evidence only and never changes a gate status"
+  },
+  "status": "G6_SM_PATI_SALAM_REMNANT_RG__NOT_CLOSABLE_ON_SOS_WITNESS_FAMILY__G6_OPEN",
+  "tree_certificate_scope": "tree level at mu = M_GUT",
+  "verdict": "G6 is not closable on the SOS-certified witness family at one loop with tree-level matching, with the stated approximations. Exact tree-level matching of the Delta_R = (10bar,1,3) EFT at mu = M_GUT gives lambda4 - lambda5 = (w_4125 - w_2772)/8 + 3 beta_(15,1,1) + 3 beta_(15,1,3) >= 0 on every SOS-safe weight vector (and exactly 1/128 at the witness, whose tree levels 1/96, 17/288, 37/576, 353/3360 and 1/2 reproduce the G6 certificate), while the RG-improved one-loop-positive remnant region needs lambda4 - lambda5 < 0 at M_GUT (-0.416 at rho = 1e3 for its best point, whose FJ pole masses are recomputed here and xi independent to <= 1e-12; the region itself is a sampled, box-bounded research scan, so its lambda4 - lambda5 < 0 is a sampling statement, not a proof over all couplings). The certified witness runs tachyonic: lambda5 crosses zero at 4.68e16 GeV (rho = 1e3). Only the tree-matching statement is robust: the only computed one-loop M_GUT threshold (at the witness, assumed weight independent, not verified) shifts lambda4 - lambda5 by -0.57 (gX = g), which removes the lambda4 >= lambda5 obstruction; the remaining separation is 0.042 at rho = 1e3 and closes at 1.20 to 1.73 times that threshold (and is smaller at rho = 1e4 and without spectators with the alpha^-1 = 23.78 threshold). G6 stays OPEN; the G6 tree certificate is scoped to tree level at mu = M_GUT; G3 and G4 are unchanged; G6 is not shown impossible in the contract (an anti-SOS G3 witness might exist); closing G6 would need controlled weight-dependent M_GUT thresholds and two-loop quartic running and, unless those thresholds open an SOS-safe route, an anti-SOS G3 witness.",
+  "witness": {
+    "beta_210_exchange": {
+      "(1,1,1)": "0",
+      "(15,1,1)": "0",
+      "(15,1,3)": "0"
+    },
+    "lam4_minus_lam5": "1/128",
+    "lambda_at_M_GUT": [
+      "989/4480",
+      "17/128",
+      "53/288",
+      "17/128",
+      "1/8"
+    ],
+    "strictly_inside_W_SOS": true,
+    "tree_levels_r0_squared_units": {
+      "(1,1)_0 radial": "1/2",
+      "(1,1)_2": "1/96",
+      "(3,1)_1/3": "17/288",
+      "(3,1)_4/3": "37/576",
+      "(6,1)_1/3": "37/576",
+      "(6,1)_2/3": "353/3360",
+      "(6,1)_4/3": "1/96"
+    },
+    "weights": {
+      "1050bar": "2",
+      "2772bar": "1",
+      "4125": "17/16",
+      "54": "2"
+    }
+  }
+}

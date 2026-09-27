@@ -4,9 +4,10 @@
 G3 closes only through the SM Pati-Salam track, G5 only on its bound coupling
 vector and G4 only through the pure binding g4_sm_closure_binding_v20 on the
 committed exact G4 certificate (at the G3 witness, tree level).  With G3, G4
-and G5 CLOSED, G6 is OPEN (never CLOSED here: the G6 tree spectrum and the G8
-Route C flavour no-go are evidence only) and G7/G8 stay BLOCKED.  Any missing,
-forged or mismatched G4 certificate reopens G4 fail-closed.
+and G5 CLOSED, G6 is OPEN (never CLOSED here: the G6 tree spectrum at
+mu = M_GUT, the G6 remnant RG no-go on the SOS witness family and the G8 Route C
+flavour no-go are evidence only) and G7/G8 stay BLOCKED.  Any missing, forged or
+mismatched G4 certificate reopens G4 fail-closed.
 """
 from __future__ import annotations
 
@@ -950,8 +951,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
             "G8": ["await authoritative G3/G6/G7 before any unique lifetime claim"],
         }
         evidence_items = {
-            "G6": mod.G6_EVIDENCE_RECORDED_ITEM,
-            "G8": mod.G8_EVIDENCE_RECORDED_ITEM,
+            "G6": [mod.G6_EVIDENCE_RECORDED_ITEM, mod.G6_REMNANT_RG_RECORDED_ITEM],
+            "G8": [mod.G8_EVIDENCE_RECORDED_ITEM],
         }
         caveats = track["downstream_caveats"]
         self.assertEqual(len(caveats), 10)
@@ -966,19 +967,55 @@ class G1G8GateLedgerTests(unittest.TestCase):
             ]
             self.assertTrue(routed, gate_name)
             if gate_name in evidence_items:
-                self.assertEqual(open_scope[n_spec:-1], routed, gate_name)
-                self.assertEqual(open_scope[-1], evidence_items[gate_name], gate_name)
+                n_evidence = len(evidence_items[gate_name])
+                self.assertEqual(open_scope[n_spec:-n_evidence], routed, gate_name)
+                self.assertEqual(
+                    open_scope[-n_evidence:], evidence_items[gate_name], gate_name
+                )
             else:
                 self.assertEqual(open_scope[n_spec:], routed, gate_name)
         self.assertEqual(
             mod.G6_EVIDENCE_RECORDED_ITEM,
-            "tree-level evidence (does not close G6): g6_sm_pati_salam_tree_spectrum_v20 "
-            "(G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json) certifies exactly, for all r0, x0, eps > 0, "
-            "the tree-level Hessian spectrum at the G3 witness vacuum: 35 zero modes (34 eaten "
-            "Goldstones + the axion), 451 positive and 0 negative, with exact SM labels; still "
-            "open: one-loop positivity of the light 126bar remnant multiplets (R1), electroweak "
-            "symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified) and "
-            "the uncertainty budget",
+            "tree-level evidence at mu = M_GUT (does not close G6): "
+            "g6_sm_pati_salam_tree_spectrum_v20 (G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json) "
+            "certifies exactly, for all r0, x0, eps > 0, the tree-level Hessian spectrum at "
+            "mu = M_GUT at the G3 witness vacuum: 35 zero modes (34 eaten Goldstones + the "
+            "axion), 451 positive and 0 negative, with exact SM labels; still open: one-loop "
+            "positivity of the light 126bar remnant multiplets at the physical hierarchy (R1), "
+            "electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not "
+            "certified) and the uncertainty budget",
+        )
+        self.assertEqual(
+            mod.G6_REMNANT_RG_RECORDED_ITEM,
+            "remnant RG evidence (does not close G6): g6_sm_pati_salam_remnant_rg_nogo_v20 "
+            "(G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json) records that G6 is not closable on "
+            "the SOS-certified witness family at one loop with tree-level matching: exact "
+            "tree-level matching at mu = M_GUT forces lambda4 >= lambda5 for every SOS-safe "
+            "126bar weight vector, while the research-recorded one-loop-positive remnant "
+            "region (sampled scans; best points recomputed) needs lambda4 - lambda5 < 0 at "
+            "M_GUT, and the certified witness runs tachyonic (lambda5 = 0 near 4.7e16 GeV at "
+            "rho = 1e3); with the only computed one-loop M_GUT threshold (at the witness; "
+            "assumed weight independent, not verified) lambda4 - lambda5 shifts by -0.57, "
+            "which removes the lambda4 >= lambda5 obstruction: the remaining separation is "
+            "0.042 at rho = 1e3 and closes at 1.2-1.7 times that threshold, so only the "
+            "tree-matching statement is robust; G6 is not shown impossible in the contract "
+            "(an anti-SOS G3 witness might exist) and the G3/G4 tree-level closures are "
+            "unchanged; closing G6 would need controlled M_GUT thresholds and two-loop "
+            "quartic running and, unless those thresholds open an SOS-safe route, an "
+            "anti-SOS G3 witness",
+        )
+        self.assertEqual(
+            mod.G6_REMNANT_RG_SCOPE,
+            (
+                "SOS-certified witness family only (126bar self weights w_q >= w_2772)",
+                "tree-level matching at mu = M_GUT; one-loop quartic running with two-loop PS gauge profiles",
+                "the M_GUT one-loop threshold is assumed weight independent (not verified)",
+                "not a proof that G6 is impossible in the contract",
+                "disjointness robust at tree matching only (marginal with the one-loop M_GUT "
+                "threshold: 0.042 at rho = 1e3, closing at 1.2-1.7 times that threshold)",
+                "the one-loop-positive region is a sampled, box-bounded research scan (its best "
+                "points are recomputed)",
+            ),
         )
         self.assertIn("records Route C", mod.G8_EVIDENCE_RECORDED_ITEM)
         self.assertIn("need a user decision", mod.G8_EVIDENCE_RECORDED_ITEM)
@@ -995,11 +1032,35 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 "closes_gate": False,
                 "role": "evidence only: cited in the G6 open scope, never changes the G6 status",
                 "still_open": [
-                    "one-loop positivity of the light 126bar remnant multiplets (R1)",
+                    "one-loop positivity of the light 126bar remnant multiplets at the physical hierarchy (R1)",
                     "electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified)",
                     "the uncertainty budget of the threshold spectrum",
                 ],
             },
+        )
+        self.assertEqual(
+            gates["G6"]["remnant_rg_evidence"],
+            {
+                "source": "g6_sm_pati_salam_remnant_rg_nogo_v20",
+                "report": "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json",
+                "required_status": mod.G6_REMNANT_RG_NOGO_STATUS,
+                "status": mod.G6_REMNANT_RG_NOGO_STATUS,
+                "n_failed": 0,
+                "recorded": True,
+                "closes_gate": False,
+                "role": "evidence only: cited in the G6 open scope, never changes the G6 status",
+                "scope": list(mod.G6_REMNANT_RG_SCOPE),
+            },
+        )
+        self.assertEqual(
+            mod.G6_REMNANT_RG_NOGO_STATUS,
+            "G6_SM_PATI_SALAM_REMNANT_RG__NOT_CLOSABLE_ON_SOS_WITNESS_FAMILY__G6_OPEN",
+        )
+        self.assertEqual(mod.G6_REMNANT_RG_NOGO_N_CHECKS, 58)
+        self.assertEqual(mod.G6_REMNANT_RG_TREE_SCOPE, "tree level at mu = M_GUT")
+        self.assertEqual(len(mod.G6_REMNANT_RG_NEVER_TRUE_FLAGS), 13)
+        self.assertIn(
+            "disjointness_robust_to_one_loop_threshold", mod.G6_REMNANT_RG_NEVER_TRUE_FLAGS
         )
         flavour = gates["G8"]["flavour_evidence"]
         self.assertEqual(
@@ -1132,10 +1193,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 + " G5 is CLOSED on the same Pati-Salam coupling vector "
                 "(V4 >= |q|^4/167; the eps N_H term is quadratic). "
                 + g4_closure.G4_CLOSED_SENTENCE
-                + " G6 is OPEN (tree-level evidence only: "
+                + " G6 is OPEN (tree-level evidence at mu = M_GUT only: "
                 "g6_sm_pati_salam_tree_spectrum_v20; one-loop positivity of the "
-                "light 126bar remnants, electroweak symmetry breaking and the "
-                "uncertainty budget are open); G7 and G8 remain "
+                "light 126bar remnants at the physical hierarchy, electroweak symmetry "
+                "breaking and the uncertainty budget are open, and the G6 open scope "
+                "cites the remnant RG no-go on the SOS witness family); G7 and G8 remain "
                 "dependency-blocked. "
                 + sm_track.CAVEAT_ROUTING_SENTENCE
                 + " Diagnostics that cannot close G3: A perturbative 27-of-51 "
@@ -1554,17 +1616,24 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 )
 
     def test_g6_g8_evidence_never_changes_a_gate(self):
-        report = self._build_with(g6_report={}, g8_report={})
+        report = self._build_with(g6_report={}, g8_report={}, g6_rg_report={})
         tree = report["gates"]["G6"]["tree_level_evidence"]
+        remnant = report["gates"]["G6"]["remnant_rg_evidence"]
         flavour = report["gates"]["G8"]["flavour_evidence"]
         self.assertIs(tree["recorded"], False)
         self.assertIs(tree["closes_gate"], False)
         self.assertIsNone(tree["status"])
+        self.assertIs(remnant["recorded"], False)
+        self.assertIs(remnant["closes_gate"], False)
+        self.assertIsNone(remnant["status"])
         self.assertIs(flavour["recorded"], False)
         self.assertIs(flavour["closes_gate"], False)
         self.assertIsNone(flavour["route_recorded"])
         self.assertEqual(
-            report["gates"]["G6"]["open_scope"][-1], mod.G6_EVIDENCE_UNAVAILABLE_ITEM
+            report["gates"]["G6"]["open_scope"][-2], mod.G6_EVIDENCE_UNAVAILABLE_ITEM
+        )
+        self.assertEqual(
+            report["gates"]["G6"]["open_scope"][-1], mod.G6_REMNANT_RG_UNAVAILABLE_ITEM
         )
         self.assertEqual(
             report["gates"]["G8"]["open_scope"][-1], mod.G8_EVIDENCE_UNAVAILABLE_ITEM
@@ -1576,11 +1645,30 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(report["status"], self.report["status"])
         self.assertEqual(report["checks"], self.report["checks"])
         self.assertEqual(report["n_failed"], 0, report["audit_failures"])
+        # Replacing only the remnant RG report flips only that record and item.
+        only_rg = self._build_with(g6_rg_report={})
+        self.assertIs(only_rg["gates"]["G6"]["remnant_rg_evidence"]["recorded"], False)
+        self.assertIs(only_rg["gates"]["G6"]["tree_level_evidence"]["recorded"], True)
+        self.assertEqual(
+            only_rg["gates"]["G6"]["open_scope"][:-1],
+            self.report["gates"]["G6"]["open_scope"][:-1],
+        )
+        self.assertEqual(
+            only_rg["gates"]["G6"]["open_scope"][-1], mod.G6_REMNANT_RG_UNAVAILABLE_ITEM
+        )
+        self.assertEqual(
+            {name: row["status"] for name, row in only_rg["gates"].items()},
+            {name: row["status"] for name, row in self.report["gates"].items()},
+        )
+        self.assertEqual(only_rg["status"], self.report["status"])
+        self.assertEqual(only_rg["checks"], self.report["checks"])
 
     def test_g6_g8_evidence_records_are_fail_closed(self):
         g6 = mod._load_json_artifact(mod.G6_TREE_SPECTRUM_JSON)
+        g6_rg = mod._load_json_artifact(mod.G6_REMNANT_RG_NOGO_JSON)
         g8 = mod._load_json_artifact(mod.G8_FLAVOUR_NOGO_JSON)
         self.assertIs(mod.g6_tree_evidence(g6)["recorded"], True)
+        self.assertIs(mod.g6_remnant_rg_evidence(g6_rg)["recorded"], True)
         self.assertIs(mod.g8_flavour_evidence(g8)["recorded"], True)
 
         def forged(report, *path, value):
@@ -1613,6 +1701,39 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.assertIs(record["recorded"], False)
             self.assertIsNone(record["route_recorded"])
             self.assertIs(record["closes_gate"], False)
+        g6_rg_cases = (
+            None, [], {}, forged(g6_rg, "n_failed", value=False),
+            forged(g6_rg, "n_checks", value=52),
+            forged(g6_rg, "status", value="G6_CLOSED"),
+            forged(g6_rg, "flags", "G6_closed", value=True),
+            forged(g6_rg, "flags", "report_closes_g6_by_itself", value=True),
+            forged(g6_rg, "flags", "not_closable_on_sos_witness_family", value=False),
+            forged(
+                g6_rg, "flags", "sos_family_tree_matching_forces_lam4_ge_lam5_exact",
+                value=False,
+            ),
+            forged(g6_rg, "flags", "g6_impossible_in_contract_claimed", value=True),
+            forged(g6_rg, "flags", "changes_g3_g4_closure", value=True),
+            forged(
+                g6_rg, "flags", "one_loop_gut_threshold_w_independence_verified",
+                value=True,
+            ),
+            forged(g6_rg, "flags", value=None),
+            forged(g6_rg, "failures", value=["x"]),
+            forged(g6_rg, "G6_status", value="CLOSED"),
+            forged(g6_rg, "gate", value="G7"),
+            forged(g6_rg, "tree_certificate_scope", value="all scales"),
+        ) + tuple(
+            forged(g6_rg, "flags", name, value=True)
+            for name in mod.G6_REMNANT_RG_NEVER_TRUE_FLAGS
+        ) + tuple(
+            forged(g6_rg, "flags", name, value=None)
+            for name in mod.G6_REMNANT_RG_NEVER_TRUE_FLAGS
+        )
+        for case in g6_rg_cases:
+            record = mod.g6_remnant_rg_evidence(case)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["closes_gate"], False)
 
     def test_committed_ledger_json_records_the_g4_closure(self):
         # Regenerated by the integrator (g1_g8_gate_ledger_v20.py --write).
@@ -1628,6 +1749,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.report["gates"]["G4"]["closure_evidence"],
         )
         self.assertIs(committed["gates"]["G6"]["tree_level_evidence"]["recorded"], True)
+        self.assertIs(committed["gates"]["G6"]["remnant_rg_evidence"]["recorded"], True)
+        self.assertIs(committed["gates"]["G6"]["remnant_rg_evidence"]["closes_gate"], False)
         self.assertIs(committed["gates"]["G8"]["flavour_evidence"]["recorded"], True)
 
     def test_markdown_states_the_g4_closure_and_the_evidence_only_citations(self):
@@ -1640,6 +1763,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.assertIn("- " + item, text)
         self.assertIn("recorded `True`, closes gate `False`", text)
         self.assertIn("route `C`", text)
+        self.assertIn(
+            "remnant RG no-go `g6_sm_pati_salam_remnant_rg_nogo_v20` recorded `True`, "
+            "closes gate `False`",
+            text,
+        )
 
     def test_historical_g1_g2_results_are_preserved_but_scoped(self):
         historical = self.report["historical_option_c_subtheorems"]

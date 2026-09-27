@@ -32,7 +32,8 @@ CLOSED, G4 is CLOSED exactly when every binding criterion holds at the G3
 witness (tree level, benchmark r0 = 1/5, x0 = 1); a missing, forged or
 mismatched certificate reopens G4 fail-closed.  G6 then opens (its
 dependencies G3, G4 and G5 are CLOSED) but never closes here: the exact G6
-tree spectrum and the G8 Route C flavour no-go are cited as evidence only and
+tree spectrum (tree level at mu = M_GUT), the G6 remnant RG no-go on the SOS
+witness family and the G8 Route C flavour no-go are cited as evidence only and
 never change a status.  G7 and G8 stay BLOCKED.
 """
 from __future__ import annotations
@@ -138,6 +139,38 @@ G3_SM_PATI_SALAM_EQUALITY_SET_PROVED_STATUS = (
 G4_PHYSICAL_QUOTIENT_JSON = ROOT / g4_closure.G4_REPORT_FILE
 G6_TREE_SPECTRUM_JSON = ROOT / "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json"
 G8_FLAVOUR_NOGO_JSON = ROOT / "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json"
+G6_REMNANT_RG_NOGO_JSON = ROOT / "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json"
+G6_REMNANT_RG_NOGO_STATUS = "G6_SM_PATI_SALAM_REMNANT_RG__NOT_CLOSABLE_ON_SOS_WITNESS_FAMILY__G6_OPEN"
+G6_REMNANT_RG_NOGO_SOURCE = "g6_sm_pati_salam_remnant_rg_nogo_v20"
+G6_REMNANT_RG_NOGO_N_CHECKS = 58
+G6_REMNANT_RG_TREE_SCOPE = "tree level at mu = M_GUT"
+# Mirrors g6_sm_pati_salam_remnant_rg_nogo_v20.NEVER_TRUE_FLAGS (pinned equal by its test): a report that
+# sets any of these is not cited as recorded evidence.
+G6_REMNANT_RG_NEVER_TRUE_FLAGS = (
+    "G6_closed",
+    "report_closes_g6_by_itself",
+    "G6_gate_wired",
+    "g6_impossible_in_contract_claimed",
+    "anti_sos_g3_witness_excluded",
+    "changes_g3_g4_closure",
+    "one_loop_gut_threshold_w_independence_verified",
+    "disjointness_robust_to_one_loop_threshold",
+    "two_loop_quartic_running_included",
+    "pole_mass_scale_variation_recomputed_in_module",
+    "region_volume_and_tuning_recomputed_in_module",
+    "region_scan_exhaustive_beyond_sampled_box",
+    "tree_certificate_valid_below_M_GUT",
+)
+G6_REMNANT_RG_SCOPE = (
+    "SOS-certified witness family only (126bar self weights w_q >= w_2772)",
+    "tree-level matching at mu = M_GUT; one-loop quartic running with two-loop PS gauge profiles",
+    "the M_GUT one-loop threshold is assumed weight independent (not verified)",
+    "not a proof that G6 is impossible in the contract",
+    "disjointness robust at tree matching only (marginal with the one-loop M_GUT "
+    "threshold: 0.042 at rho = 1e3, closing at 1.2-1.7 times that threshold)",
+    "the one-loop-positive region is a sampled, box-bounded research scan (its best "
+    "points are recomputed)",
+)
 G6_TREE_SPECTRUM_STATUS = "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED"
 G8_FLAVOUR_NOGO_STATUS = "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN"
 G6_TREE_SPECTRUM_SOURCE = "g6_sm_pati_salam_tree_spectrum_v20"
@@ -151,22 +184,45 @@ G8_EVIDENCE_ROLE = (
     "evidence only: cited in the G8 open scope, never changes the G8 status"
 )
 G6_EVIDENCE_STILL_OPEN = (
-    "one-loop positivity of the light 126bar remnant multiplets (R1)",
+    "one-loop positivity of the light 126bar remnant multiplets at the physical hierarchy (R1)",
     "electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified)",
     "the uncertainty budget of the threshold spectrum",
 )
 G6_EVIDENCE_RECORDED_ITEM = (
-    "tree-level evidence (does not close G6): g6_sm_pati_salam_tree_spectrum_v20 "
+    "tree-level evidence at mu = M_GUT (does not close G6): g6_sm_pati_salam_tree_spectrum_v20 "
     "(G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json) certifies exactly, for all r0, x0, "
-    "eps > 0, the tree-level Hessian spectrum at the G3 witness vacuum: 35 zero "
-    "modes (34 eaten Goldstones + the axion), 451 positive and 0 negative, with "
-    "exact SM labels; still open: one-loop positivity of the light 126bar remnant "
-    "multiplets (R1), electroweak symmetry breaking (H = 0 at the witness; the "
-    "eps < 0 member is not certified) and the uncertainty budget"
+    "eps > 0, the tree-level Hessian spectrum at mu = M_GUT at the G3 witness vacuum: "
+    "35 zero modes (34 eaten Goldstones + the axion), 451 positive and 0 negative, "
+    "with exact SM labels; still open: one-loop positivity of the light 126bar "
+    "remnant multiplets at the physical hierarchy (R1), electroweak symmetry "
+    "breaking (H = 0 at the witness; the eps < 0 member is not certified) and the "
+    "uncertainty budget"
 )
 G6_EVIDENCE_UNAVAILABLE_ITEM = (
     "tree-level evidence unavailable: G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json is "
     "missing or not certified (fail closed; the G6 status does not depend on it)"
+)
+G6_REMNANT_RG_RECORDED_ITEM = (
+    "remnant RG evidence (does not close G6): g6_sm_pati_salam_remnant_rg_nogo_v20 "
+    "(G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json) records that G6 is not closable on "
+    "the SOS-certified witness family at one loop with tree-level matching: exact "
+    "tree-level matching at mu = M_GUT forces lambda4 >= lambda5 for every SOS-safe "
+    "126bar weight vector, while the research-recorded one-loop-positive remnant "
+    "region (sampled scans; best points recomputed) needs lambda4 - lambda5 < 0 at "
+    "M_GUT, and the certified witness runs tachyonic (lambda5 = 0 near 4.7e16 GeV at "
+    "rho = 1e3); with the only computed one-loop M_GUT threshold (at the witness; "
+    "assumed weight independent, not verified) lambda4 - lambda5 shifts by -0.57, "
+    "which removes the lambda4 >= lambda5 obstruction: the remaining separation is "
+    "0.042 at rho = 1e3 and closes at 1.2-1.7 times that threshold, so only the "
+    "tree-matching statement is robust; G6 is not shown impossible in the contract "
+    "(an anti-SOS G3 witness might exist) and the G3/G4 tree-level closures are "
+    "unchanged; closing G6 would need controlled M_GUT thresholds and two-loop "
+    "quartic running and, unless those thresholds open an SOS-safe route, an "
+    "anti-SOS G3 witness"
+)
+G6_REMNANT_RG_UNAVAILABLE_ITEM = (
+    "remnant RG evidence unavailable: G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json is "
+    "missing or not recorded (fail closed; the G6 status does not depend on it)"
 )
 G8_EVIDENCE_RECORDED_ITEM = (
     "flavour evidence (does not close G8): g8_sm_pati_salam_flavour_nogo_v20 "
@@ -526,6 +582,41 @@ def g6_tree_evidence(report: Any) -> dict[str, Any]:
         "closes_gate": False,
         "role": G6_EVIDENCE_ROLE,
         "still_open": list(G6_EVIDENCE_STILL_OPEN),
+    }
+
+
+def g6_remnant_rg_evidence(report: Any) -> dict[str, Any]:
+    """Evidence-only record of the G6 remnant RG no-go (never a G6 status)."""
+    fields = report if isinstance(report, dict) else {}
+
+    def _recorded() -> bool:
+        return bool(
+            fields.get("status") == G6_REMNANT_RG_NOGO_STATUS
+            and fields.get("gate") == "G6"
+            and fields.get("G6_status") == STATUS_OPEN
+            and fields.get("tree_certificate_scope") == G6_REMNANT_RG_TREE_SCOPE
+            and _evidence_int_eq(fields.get("n_failed"), 0)
+            and fields.get("failures") == []
+            and _evidence_int_eq(fields.get("n_checks"), G6_REMNANT_RG_NOGO_N_CHECKS)
+            and _evidence_flag(fields, "not_closable_on_sos_witness_family") is True
+            and _evidence_flag(fields, "sos_family_tree_matching_forces_lam4_ge_lam5_exact") is True
+            and all(
+                _evidence_flag(fields, name) is False
+                for name in G6_REMNANT_RG_NEVER_TRUE_FLAGS
+            )
+        )
+
+    header = _evidence_header(report)
+    return {
+        "source": G6_REMNANT_RG_NOGO_SOURCE,
+        "report": G6_REMNANT_RG_NOGO_JSON.name,
+        "required_status": G6_REMNANT_RG_NOGO_STATUS,
+        "status": header["status"],
+        "n_failed": header["n_failed"],
+        "recorded": _evidence_safe(_recorded),
+        "closes_gate": False,
+        "role": G6_EVIDENCE_ROLE,
+        "scope": list(G6_REMNANT_RG_SCOPE),
     }
 
 
@@ -4234,10 +4325,12 @@ def _gate_open_scope(
     track: Mapping[str, Any],
     *,
     evidence: Mapping[str, Any] | None = None,
+    remnant_rg_evidence: Mapping[str, Any] | None = None,
 ) -> list[str]:
     """The open scope of a gate: its specification, the D5-routed caveats and,
-    for G6 and G8 only, the evidence item (recorded or unavailable; the item
-    never changes a status)."""
+    for G6 and G8 only, the evidence items (recorded or unavailable; G6 cites
+    the tree spectrum and then the remnant RG no-go; an item never changes a
+    status)."""
     open_scope = list(GATE_SPECIFICATIONS[name][1])
     if name in {"G4", "G6", "G7", "G8"}:
         # Decision D5: the closing track's model-level caveats are routed
@@ -4254,6 +4347,15 @@ def _gate_open_scope(
     if name == "G6":
         open_scope.append(
             G6_EVIDENCE_RECORDED_ITEM if recorded else G6_EVIDENCE_UNAVAILABLE_ITEM
+        )
+        rg_recorded = (
+            isinstance(remnant_rg_evidence, Mapping)
+            and remnant_rg_evidence.get("recorded") is True
+        )
+        open_scope.append(
+            G6_REMNANT_RG_RECORDED_ITEM
+            if rg_recorded
+            else G6_REMNANT_RG_UNAVAILABLE_ITEM
         )
     elif name == "G8":
         open_scope.append(
@@ -4273,6 +4375,7 @@ def _build_gates(
     track: Mapping[str, Any],
     g4_binding: Mapping[str, Any],
     g6_evidence: Mapping[str, Any],
+    g6_rg_evidence: Mapping[str, Any],
     g8_evidence: Mapping[str, Any],
 ) -> dict[str, dict[str, Any]]:
     statuses = _expected_gate_statuses(
@@ -4294,7 +4397,10 @@ def _build_gates(
     for name, (title, _specification) in GATE_SPECIFICATIONS.items():
         status = statuses[name]
         open_scope = _gate_open_scope(
-            name, track, evidence=evidence_by_gate.get(name)
+            name,
+            track,
+            evidence=evidence_by_gate.get(name),
+            remnant_rg_evidence=g6_rg_evidence if name == "G6" else None,
         )
         unsatisfied = [
             dependency
@@ -4365,6 +4471,7 @@ def _build_gates(
             )
         if name == "G6":
             gates[name]["tree_level_evidence"] = dict(g6_evidence)
+            gates[name]["remnant_rg_evidence"] = dict(g6_rg_evidence)
         if name == "G8":
             gates[name]["flavour_evidence"] = dict(g8_evidence)
     return gates
@@ -4409,6 +4516,7 @@ def _build_report_from_inputs(
     g4_report: dict[str, Any] | None = None,
     g6_report: dict[str, Any] | None = None,
     g8_report: dict[str, Any] | None = None,
+    g6_rg_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states.
 
@@ -4416,7 +4524,9 @@ def _build_report_from_inputs(
     ``g3_sm_target_track_v20.INPUT_FILES``); None loads the committed JSONs.
     ``g4_report`` is the G4 certificate evaluated by g4_sm_closure_binding_v20;
     ``g6_report``/``g8_report`` are the evidence-only G6 tree-spectrum and G8
-    flavour no-go certificates.  None loads each committed JSON (fail closed).
+    flavour no-go certificates and ``g6_rg_report`` is the evidence-only G6
+    remnant RG no-go on the SOS witness family.  None loads each committed JSON
+    (fail closed).
     """
     declared_contract_consistent = bool(x_report["contract_consistent"])
     contract_evidence_complete = _root_contract_evidence_complete(x_report)
@@ -4538,6 +4648,8 @@ def _build_report_from_inputs(
         g6_report = _load_json_artifact(G6_TREE_SPECTRUM_JSON)
     if g8_report is None:
         g8_report = _load_json_artifact(G8_FLAVOUR_NOGO_JSON)
+    if g6_rg_report is None:
+        g6_rg_report = _load_json_artifact(G6_REMNANT_RG_NOGO_JSON)
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4596,6 +4708,7 @@ def _build_report_from_inputs(
         contract_consistent and g3_closed and g4_binding["certified"] is True
     )
     g6_evidence = g6_tree_evidence(g6_report)
+    g6_rg_evidence = g6_remnant_rg_evidence(g6_rg_report)
     g8_evidence = g8_flavour_evidence(g8_report)
     gates = _build_gates(
         contract_consistent=contract_consistent,
@@ -4607,6 +4720,7 @@ def _build_report_from_inputs(
         track=track,
         g4_binding=g4_binding,
         g6_evidence=g6_evidence,
+        g6_rg_evidence=g6_rg_evidence,
         g8_evidence=g8_evidence,
     )
     gates["G3"]["constructive_frontier_evidence"] = g3_frontier
@@ -5142,6 +5256,7 @@ def _build_report_from_inputs(
         ),
         "g6_g8_certificates_are_evidence_only": (
             gates["G6"]["tree_level_evidence"]["closes_gate"] is False
+            and gates["G6"]["remnant_rg_evidence"]["closes_gate"] is False
             and gates["G8"]["flavour_evidence"]["closes_gate"] is False
             and statuses["G6"] != STATUS_CLOSED
             and statuses["G8"] != STATUS_CLOSED
@@ -5302,10 +5417,11 @@ def _build_report_from_inputs(
             + " G5 is CLOSED on the same Pati-Salam coupling vector (V4 >= "
             "|q|^4/167; the eps N_H term is quadratic). "
             + g4_closure.G4_CLOSED_SENTENCE
-            + " G6 is OPEN (tree-level evidence only: "
+            + " G6 is OPEN (tree-level evidence at mu = M_GUT only: "
             "g6_sm_pati_salam_tree_spectrum_v20; one-loop positivity of the "
-            "light 126bar remnants, electroweak symmetry breaking and the "
-            "uncertainty budget are open); G7 and G8 remain "
+            "light 126bar remnants at the physical hierarchy, electroweak symmetry "
+            "breaking and the uncertainty budget are open, and the G6 open scope "
+            "cites the remnant RG no-go on the SOS witness family); G7 and G8 remain "
             "dependency-blocked. "
             + sm_track.CAVEAT_ROUTING_SENTENCE
             + " "
@@ -5624,6 +5740,7 @@ def build_report() -> dict[str, Any]:
         g4_report=g4_closure.load_g4_report(G4_PHYSICAL_QUOTIENT_JSON),
         g6_report=_load_json_artifact(G6_TREE_SPECTRUM_JSON),
         g8_report=_load_json_artifact(G8_FLAVOUR_NOGO_JSON),
+        g6_rg_report=_load_json_artifact(G6_REMNANT_RG_NOGO_JSON),
     )
 
 
@@ -5715,15 +5832,20 @@ def write_markdown(report: dict[str, Any]) -> str:
     lines.extend(["### G4 scope limits", ""])
     lines.extend(f"- {item}" for item in evidence.get("scope_limits") or [])
     g6_evidence = gates.get("G6", {}).get("tree_level_evidence") or {}
+    g6_rg_evidence = gates.get("G6", {}).get("remnant_rg_evidence") or {}
     g8_evidence = gates.get("G8", {}).get("flavour_evidence") or {}
+    g6_status = gates.get("G6", {}).get("status")
     lines.extend(
         [
             "",
             "### Evidence cited by G6 and G8 (never changes a status)",
             "",
-            f"- G6 (`{gates.get('G6', {}).get('status')}`): tree-level spectrum "
+            f"- G6 (`{g6_status}`): tree-level spectrum "
             f"`{g6_evidence.get('source')}` recorded `{g6_evidence.get('recorded')}`, "
             f"closes gate `{g6_evidence.get('closes_gate')}`",
+            f"- G6 (`{g6_status}`): remnant RG no-go "
+            f"`{g6_rg_evidence.get('source')}` recorded `{g6_rg_evidence.get('recorded')}`, "
+            f"closes gate `{g6_rg_evidence.get('closes_gate')}`",
             f"- G8 (`{gates.get('G8', {}).get('status')}`): flavour no-go "
             f"`{g8_evidence.get('source')}` recorded `{g8_evidence.get('recorded')}`, "
             f"route `{g8_evidence.get('route_recorded')}`, closes gate "

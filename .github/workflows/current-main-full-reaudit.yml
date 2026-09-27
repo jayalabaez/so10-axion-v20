@@ -194,6 +194,7 @@ jobs:
             test_g4_sm_closure_binding_v20.py \
             test_g4_sm_pati_salam_physical_quotient_v20.py \
             test_g6_sm_pati_salam_tree_spectrum_v20.py \
+            test_g6_sm_pati_salam_remnant_rg_nogo_v20.py \
             test_g8_sm_pati_salam_flavour_nogo_v20.py
           python -B -m pytest -q -p no:cacheprovider test_replicate_v20.py
           python -B corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check
@@ -573,7 +574,7 @@ jobs:
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['rank']==448, ck
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['nullity']==0, ck
           assert gl['summary']['closed']==['G1','G2','G3','G4','G5'] and gl['summary']['open']==['G6'] and gl['summary']['n_blocked']==2, gl
-          assert gl['gates']['G4']['closure_evidence']['certified'] is True and gl['gates']['G6']['tree_level_evidence']['closes_gate'] is False, gl['gates']['G4']
+          assert gl['gates']['G4']['closure_evidence']['certified'] is True and gl['gates']['G6']['tree_level_evidence']['closes_gate'] is False and gl['gates']['G6']['remnant_rg_evidence']['recorded'] is True and gl['gates']['G6']['remnant_rg_evidence']['closes_gate'] is False, gl['gates']['G4']
           assert not fm['classification']['whole_model_validated'], fm
           assert vm['overall_state']=='OPEN' and not vm['full_theory_validated'], vm
           PY
