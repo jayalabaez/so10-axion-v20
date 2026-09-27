@@ -2,13 +2,20 @@
 """Tests for the Route C flavour no-go of the SM Pati-Salam G3 witness branch (G8, v20).
 
 setUpClass builds one fresh report (census, exact Hessians at eight r0 values, spinor algebra, one-loop running,
-the five H-linear portals on the full H block with exact Schur data at five r0 values, seesaw scan; one to two
-minutes) and compares it with the committed artifact: exact leaves must match exactly, the float diagnostics (data
-comparison, O28 and portal-set repository bounds, eigenvalue-based colour radii, seesaw scan) only within declared
-tolerances.  The mutation tests call the section functions with one changed input each (model text, benchmark
-coefficients, census rows, doublet vev, data, repository scales, vectorlike couplings, upstream reports, pinned
-closed form, portal couplings, triplet couplings, hypercharge sources, Yukawa content, colour bracket) and require
-the corresponding checks to fail closed.
+the five H-linear portals on the full H block with exact Schur data at five r0 values, seesaw scan, and the six
+status-neutral v2 lemma sections: the (1,2,2) Clebsch via T15, the SU(5)-Casimir selection rule, |S| independence of
+tan beta = 1, the (B-L, T3R) Sigma-balance census to dimension 12 with the PS-invariant remainder, the G3221 s = 1
+theorem and the B1a inequality; one to two minutes) and compares it with the committed artifact: exact leaves must
+match exactly, the float diagnostics (data comparison, O28 and portal-set repository bounds, eigenvalue-based colour
+radii, seesaw scan, the NDA cutoff of the census lemma) only within declared tolerances.  The mutation tests call the
+section functions with one changed input each (model text, benchmark coefficients, census rows, doublet vev, data,
+repository scales, vectorlike couplings, upstream reports, pinned closed form, portal couplings, triplet couplings,
+hypercharge sources, Yukawa content, colour bracket; and for the v2 lemmas: a neutral PS-breaking spurion, a changed
+126bar X charge, an SU(2)_R-breaking mixing map, the wrong down-type doublet, an S-coupled binding unit, a symmetric
+"antisymmetric" matrix, a (15,2,2) form fed as a (1,2,2) source, and a Sigma vev overlapping e_0 ^ p in the exact O38
+form check) and require the corresponding checks to fail closed.  The Route B, Route A, census and s = 1 scope texts
+and the renamed v2 flags are pinned, so that no over-broad claim (Route B reduced to a 120_H among all extensions, a
+census exhaustive beyond its single-Higgs class, an all-orders statement beyond the H-linear operators) reappears.
 """
 from __future__ import annotations
 
@@ -16,10 +23,12 @@ import copy
 import json
 import math
 import unittest
+from collections import Counter
 from fractions import Fraction
 from typing import Any
 from unittest import mock
 
+import numpy as np
 import sympy
 
 import g3_candidate_physical_target_audit_v20 as target
@@ -33,6 +42,52 @@ O38 = "O38_B01_Phi_Hdag_Sigmadag"
 O45_B01 = "O45_B01_Phi2_Hdag_Sigma_210_1050"
 O45_B02 = "O45_B02_Phi2_Hdag_Sigma_210_1050"
 TWO_HDM = "candidate_PS_content_with_2HDM_below_M_I"
+EXPECTED_CHECK_COUNTS = {
+    "contract": 20,
+    "spinor": 18,
+    "light_doublet": 15,
+    "H_linear_portals": 20,
+    "O28_fix": 13,
+    "upstream": 7,
+    "data": 5,
+    "flavour_structure": 5,
+    "lemma_122_clebsch": 7,
+    "lemma_su5_casimir": 7,
+    "lemma_S_independence": 8,
+    "lemma_eft_census": 19,
+    "lemma_s1_g3221": 9,
+    "lemma_b1a": 4,
+}
+V2_TRUE_FLAGS = (
+    "one_two_two_clebsch_plus_one_via_T15_exact",
+    "su5_casimir_selection_rule_exact",
+    "light_doublet_pure_10H_and_tan_beta_one_for_every_S_modulus_exact",
+    "dirac_yukawas_sigma_balanced_at_every_dimension_exact",
+    "eft_census_single_higgs_light_16_monomials_exhaustive_to_dimension_12",
+    "ps_invariant_remainder_Me_equals_phase_Md_generic_Y_exact",
+    "tan_beta_one_forces_Md_equal_phase_Mu_for_H_linear_PS_invariant_operators_every_dimension_exact",
+    "s_equals_one_for_one_light_G3221_bidoublet_exact",
+    "b1a_inequality_proved_exact",
+    "route_B_one_two_two_source_extensions_excluded",
+    "v2_lemmas_status_neutral",
+)
+V2_FALSE_FLAGS = (
+    "second_10H_10H_conjugate_or_FFHstarSstar_can_split_d_from_e",
+    "su5_casimir_rule_covers_p_mediated_portal_paths",
+    "ps_invariant_remainder_Me_equals_phase_Md_transpose_generic_Y",
+    "multi_higgs_PS_invariant_composites_proved_exactly",
+    "g3221_vacuum_existence_or_certifiability_claimed",
+    "b1a_data_consequence_load_bearing",
+    "census_PQ_neutrality_claimed",
+    "route_B_reduced_to_120H_among_all_extensions",
+    "route_B_120H_repair_established",
+)
+# Over-broad flag names of the first v2 draft (must not reappear).
+V2_WITHDRAWN_FLAGS = (
+    "route_B_reduced_to_120H",
+    "eft_census_exhaustive_to_dimension_12",
+    "tan_beta_one_forces_Md_equal_phase_Mu_to_all_orders_in_PS_invariant_part_exact",
+)
 # Per-direction row entries computed with a float eigensolver (compared within tolerance, not exactly).
 EIGEN_FLOAT_KEYS = (
     "colour_radius",
@@ -62,10 +117,18 @@ def _split_float_sections(report: dict[str, Any]) -> tuple[dict[str, Any], dict[
         direction: [{key: row.pop(key) for key in EIGEN_FLOAT_KEYS} for row in rows]
         for direction, rows in portals["per_direction"].items()
     }
+    nda = report["lemma_eft_census"].pop("float_diagnostics")  # NDA cutoff (float, not a check)
     report.pop("verdict")  # formats float minima; checked separately
     return (
         report,
-        {"data": data, "bounds": bounds, "portal_bounds": portal_bounds, "portal_theta": portal_theta, "eigen": eigen},
+        {
+            "data": data,
+            "bounds": bounds,
+            "portal_bounds": portal_bounds,
+            "portal_theta": portal_theta,
+            "eigen": eigen,
+            "lemma_eft_census_float": nda,
+        },
         {"seesaw": seesaw},
     )
 
@@ -109,6 +172,7 @@ class G8FlavourNogoTest(unittest.TestCase):
                 "H_linear_portal_fix_excluded_at_every_repository_r0",
                 "seesaw_generic_nonperturbative_if_MD_equals_Mu_data",
                 "route_C_recorded",
+                *V2_TRUE_FLAGS,
             ):
                 self.assertIs(flags[name], True, name)
             for name in (
@@ -119,11 +183,14 @@ class G8FlavourNogoTest(unittest.TestCase):
                 # Findings the portal-set analysis does NOT support (recorded, not claimed).
                 "O28_alone_t_b_bound_survives_other_portals",
                 "O28_alone_b_tau_repairable",
+                # Scope statements of the v2 lemmas (not claimed).
+                *V2_FALSE_FLAGS,
             ):
                 self.assertIs(flags[name], False, name)
-            for name in ("O28_in_contract_fix_excluded", "seesaw_generic_nonperturbative"):
+            for name in ("O28_in_contract_fix_excluded", "seesaw_generic_nonperturbative", *V2_WITHDRAWN_FLAGS):
                 self.assertNotIn(name, flags)
-            self.assertEqual(report["n_checks"], 103)
+            self.assertEqual(report["n_checks"], 157)
+            self.assertEqual(dict(Counter(key.split(".")[0] for key in report["checks"])), EXPECTED_CHECK_COUNTS)
             self.assertEqual(set(report["routes"]), {"A", "B", "C"})
             self.assertIn("DOWN-type", report["routes"]["A"])
 
@@ -339,6 +406,239 @@ class G8FlavourNogoTest(unittest.TestCase):
         self.assertAlmostEqual(vus["pull_raw_sigma"], 0.2243 / 0.0008, places=6)
 
     # ------------------------------------------------------------------
+    # Status-neutral v2 lemmas (exact content).
+    # ------------------------------------------------------------------
+
+    def _lemma(self, key: str, count: int) -> dict[str, Any]:
+        """The fresh lemma section (committed-vs-fresh equality is test_committed_artifact_matches_fresh_report)."""
+        lemma = self.fresh[key]
+        self.assertEqual(len(lemma["checks"]), count, key)
+        self.assertTrue(all(lemma["checks"].values()), key)
+        return lemma
+
+    def test_lemma_122_clebsch_via_T15(self) -> None:
+        lemma = self._lemma("lemma_122_clebsch", 7)
+        self.assertEqual(
+            lemma["T15_values"], {"u": "1", "d": "1", "e": "-3", "nu": "-3", "uc": "-1", "dc": "-1", "ec": "3", "nuc": "3"}
+        )
+        self.assertEqual(lemma["oriented_ratio_120_over_10"], ["-1"])  # one constant: lepton/quark Clebsch +1
+        self.assertEqual(lemma["oriented_ratio_126bar_15_over_T15_10"], ["-I"])
+        self.assertEqual(lemma["oriented_ratio_120_15_over_T15_10"], ["I"])
+        self.assertIn("does not exclude a 120_H", lemma["scope"])
+        self.assertIn("F.F.H10^*.S^*", lemma["scope"])
+        self.assertIs(self.fresh["flags"]["second_10H_10H_conjugate_or_FFHstarSstar_can_split_d_from_e"], False)
+
+    def test_lemma_su5_casimir_selection_rule(self) -> None:
+        lemma = self._lemma("lemma_su5_casimir", 7)
+        self.assertEqual(
+            lemma["casimir"],
+            {
+                "z_k": "12/5",
+                "zbar_k": "12/5",
+                "sigma_std": "0",
+                "w_u": "12/5",
+                "w_d": "32/5",
+                "126_part_of_omega6_iota_zbar5_p": "12/5",
+                "126_part_of_zbar5_J_J": "12/5",
+            },
+        )
+        self.assertEqual(set(lemma["casimir_by_vector"].values()), {"12/5"})
+        self.assertEqual(lemma["doublet_spaces"], {"Y=+1/2": [3, 1], "Y=-1/2": [3, 1]})
+        self.assertEqual(lemma["doublet_space_monomials"], {"Y=+1/2": 6, "Y=-1/2": 6})
+        self.assertEqual(lemma["pairs"], {"w_u": ["nu-nuc", "u-uc"], "w_d": ["d-dc", "e-ec"]})
+        # Scope: p is not an SU(5) singlet, so the p-mediated portal paths rest on the per-r0 Schur computation.
+        self.assertIs(lemma["p_is_su5_singlet"], False)
+        self.assertIn("not on this lemma", lemma["scope"])
+        self.assertIs(self.fresh["flags"]["su5_casimir_rule_covers_p_mediated_portal_paths"], False)
+
+    def test_lemma_S_independence(self) -> None:
+        lemma = self._lemma("lemma_S_independence", 8)
+        self.assertEqual(lemma["S_block_units"], ["O04 |S|^2", "O23 |S|^4"])
+        self.assertEqual(lemma["units_coupling_S_to_other_blocks"], [])
+        self.assertEqual(lemma["S_dependent_nonzero_benchmark_directions"], list(nogo.S_DEPENDENT_NONZERO_DIRECTIONS))
+        self.assertEqual(lemma["S_dependent_H_linear_directions"], [O38])
+        self.assertEqual(
+            lemma["O12_component_block"], "Matrix([[2*c06 + 4*c12*s_r, -4*c12*s_i], [-4*c12*s_i, 2*c06 - 4*c12*s_r]])"
+        )
+        self.assertEqual(lemma["retuned_block_formula"], "diag(2, 2 + 2 r0 r_S | 0, 2 r0 r_S)")
+        self.assertEqual(lemma["tested_r_S_over_r0"], [1, 10, 1000])
+        self.assertEqual(lemma["tested_r0"], ["1/5", "1/20", "1/100", str(nogo.physical_r0())])
+        self.assertEqual(len(lemma["retuned_rows"]), 12)
+        self.assertTrue(all(row["matches_formula"] for row in lemma["retuned_rows"]))
+        self.assertIn("global minimum", lemma["scope"])
+        # (vii) is exact on forms; the compiler's lattice-bound O38 pattern is a corroboration, not a check.
+        self.assertEqual(
+            lemma["O38_exact_form_blocks"],
+            {
+                "H_by_S_block_zero_for_every_H_direction": True,
+                "doublet_H_by_Sigma_block_zero_e_a_wedge_p_vanishes": True,
+                "triplet_H_by_Sigma_block_nonzero": True,
+                "doublet_columns_reach_Phi": True,
+            },
+        )
+        self.assertIs(lemma["O38_compiler_pattern_corroboration_not_a_check"], True)
+        self.assertIn("unique 10 x 210 -> 126 contraction", lemma["scope"])
+        self.assertIn("recorded as a corroboration only", lemma["scope"])
+        self.assertIn("O38_compiler_pattern_corroboration_not_a_check", " ".join(self.fresh["scope"]["float_diagnostics"]))
+
+    def test_lemma_eft_census(self) -> None:
+        lemma = self._lemma("lemma_eft_census", 19)
+        self.assertEqual(lemma["max_dimension"], 12)
+        self.assertEqual(lemma["counts"], nogo.EFT_CENSUS_COUNTS)
+        self.assertEqual(lemma["counts"], {"X_neutral_monomials": 4657, "dirac": 1460, "majorana": 800})
+        self.assertEqual(
+            lemma["dirac_dimension_histogram"],
+            {"4": 6, "5": 15, "6": 36, "7": 64, "8": 110, "9": 167, "10": 248, "11": 344, "12": 470},
+        )
+        self.assertEqual(lemma["min_dimensions"], {"ps_breaking_dirac": 6, "Htilde_dirac": 5})
+        self.assertEqual(lemma["spurion_charges"]["Sigma"]["B_minus_L_T3R"], "(-2, 1)")
+        self.assertEqual(lemma["spurion_charges"]["Sigma*"]["B_minus_L_T3R"], "(2, -1)")
+        for name in ("Phi", "S", "S*", "Phi17", "Phi17*"):
+            self.assertEqual(lemma["spurion_charges"][name]["B_minus_L_T3R"], "(0, 0)", name)
+            self.assertIs(lemma["spurion_charges"][name]["ps_breaking"], False, name)
+        self.assertEqual(lemma["dirac_targets"], ["(0, -1)", "(0, 0)", "(0, 1)"])
+        self.assertEqual(lemma["majorana_target"], "(-2, 1)")
+        # Net Phi17 numbers are data only: no PQ-neutrality claim.
+        self.assertEqual(lemma["net_Phi17_numbers_dirac"], [-2, -1, 0])
+        self.assertIn("no PQ-neutrality claim", lemma["net_Phi17_note"])
+        self.assertIs(self.fresh["flags"]["census_PQ_neutrality_claimed"], False)
+        # Orientation: M_e = kappa M_d (no transpose) for generic Yukawas; the transposed form only for symmetric Y.
+        self.assertEqual(lemma["kappa_e_over_d"], {"d[+--]": "-1", "d[-+-]": "1", "d[--+]": "-1"})
+        self.assertEqual(lemma["kappa_nu_over_u"], {"u[+--]": "-1", "u[-+-]": "1", "u[--+]": "-1"})
+        self.assertEqual(set(lemma["tan_beta_one_ratios"].values()), {"exp(I*(-theta1 + theta2))"})
+        self.assertIn("no transpose", lemma["orientation_note"])
+        self.assertIs(self.fresh["flags"]["ps_invariant_remainder_Me_equals_phase_Md_transpose_generic_Y"], False)
+        self.assertIn("exhaustive to mass dimension 12", lemma["cutoff_statement"]["exact"])
+        self.assertIn("not a check", lemma["cutoff_statement"]["float"])
+        # The census class and the H-linear scope of the remainder are stated wherever exhaustiveness is claimed.
+        for text in (lemma["statement"], lemma["scope"], lemma["cutoff_statement"]["exact"]):
+            self.assertIn("single-Higgs (or Higgs-free) monomials", text)
+        for text in (lemma["statement"], lemma["scope"]):
+            self.assertIn("linear in H10 or H10^*", text)
+        self.assertIn("Multi-Higgs operators", lemma["scope"])
+        self.assertIn("covered only through the cited light-state lemma", lemma["scope"])
+        self.assertIn("multi-Higgs composites only hand-argued", lemma["cutoff_statement"]["exact"])
+        proved = " ".join(self.fresh["scope"]["proved_exactly"])
+        self.assertIn("single-Higgs (or Higgs-free) monomials of two light 16s (F, P, Q, R)", proved)
+        self.assertIn("SU(2)_L x SU(2)_R covariance", " ".join(self.fresh["scope"]["cited_or_hand_argued"]))
+        self.assertIn("multi-Higgs monomials", " ".join(self.fresh["scope"]["not_claimed"]))
+        self.assertIs(self.fresh["flags"]["multi_higgs_PS_invariant_composites_proved_exactly"], False)
+        nda = lemma["float_diagnostics"]["nda_Lambda_max_over_v_R"]
+        self.assertEqual(set(nda), set(self.fresh["data"]["tests_per_scale"]))
+        for row in nda.values():
+            self.assertTrue(150.0 < row["s_mu"] < 200.0, row)
+            self.assertTrue(50.0 < row["b_tau"] < 100.0, row)
+
+    def test_lemma_s1_g3221(self) -> None:
+        lemma = self._lemma("lemma_s1_g3221", 9)
+        self.assertEqual(
+            lemma["O15_ratio_to_iota15"],
+            {
+                "a": {"e6": "I", "e7": "I", "e8": "I", "e9": "I"},
+                "omega": {"e8": "none", "e9": "none", "z4": "I", "z5": "I", "zbar4": "-I", "zbar5": "-I"},
+                "p": "0",
+            },
+        )
+        self.assertEqual(set(lemma["one_bidoublet_Mu_over_Md"].values()), {"alpha/beta"})
+        self.assertEqual(len(lemma["one_bidoublet_Mu_over_Md"]), 3)
+        self.assertEqual(lemma["conjugate_mixing_determinant"], "16*I*c*d*(alpha*alphabar - beta*betabar)")
+        self.assertEqual(lemma["two_bidoublet_determinant"], "16*I*(alpha1*beta2 - alpha2*beta1)")
+        self.assertIn("Not claimed: existence or certifiability of any G3221 vacuum", lemma["scope"])
+        self.assertIs(self.fresh["flags"]["g3221_vacuum_existence_or_certifiability_claimed"], False)
+        # s is defined, and the <Sigma>-mediated (v_R-scale SU(2)_R-breaking) mixings are named as unanalysed.
+        self.assertIn("Definition: s = (v_u^126/v_u^10)/(v_d^126/v_d^10)", lemma["statement"])
+        self.assertIn("v_R-scale SU(2)_R breaking through <Sigma>", lemma["statement"])
+        self.assertIn("<Phi>-mediated O15 H-Sigma block", lemma["scope"])
+        self.assertIn("<Sigma>-mediated mixings, which break SU(2)_R at v_R, are not analysed", lemma["scope"])
+        self.assertNotIn("(true for O15 at a (15,1,1) vev", lemma["scope"])
+
+    def test_lemma_b1a_proved(self) -> None:
+        lemma = self._lemma("lemma_b1a", 4)
+        self.assertEqual(lemma["sharp_case"], "S = 0, x_d = 0")
+        for step in ("Tr(A^dag S) = 0", "Frobenius-orthogonal", "reverse triangle inequality", "Cauchy-Binet"):
+            self.assertIn(step, lemma["proof"])
+        self.assertIn("Not claimed: its data consequence", lemma["scope"])
+        self.assertIs(self.fresh["flags"]["b1a_data_consequence_load_bearing"], False)
+        self.assertNotIn("FLOAT", json.dumps(lemma))
+        # Float smoke test of the proved inequality (not a check of the report): random complex S, a, x_d, x_e.
+        rng = np.random.default_rng(20260926)
+
+        def adjugate_norm(matrix: np.ndarray) -> float:
+            values = np.linalg.svd(matrix, compute_uv=False)
+            return float(math.sqrt(values[0] ** 2 * values[1] ** 2 + values[0] ** 2 * values[2] ** 2 + values[1] ** 2 * values[2] ** 2))
+
+        worst = 0.0
+        for _ in range(2000):
+            symmetric = rng.normal(size=(3, 3)) + 1j * rng.normal(size=(3, 3))
+            symmetric = symmetric + symmetric.T
+            a = rng.normal(size=3) + 1j * rng.normal(size=3)
+            antisymmetric = np.array([[0, a[2], -a[1]], [-a[2], 0, a[0]], [a[1], -a[0], 0]])
+            x_d, x_e = (complex(*rng.normal(size=2)) * 10 ** rng.uniform(-1, 1) for _ in range(2))
+            m_d, m_e = symmetric + x_d * antisymmetric, symmetric + x_e * antisymmetric
+            lhs = abs(np.linalg.norm(m_e) ** 2 - np.linalg.norm(m_d) ** 2)
+            worst = max(worst, lhs / (2.0 * (adjugate_norm(m_d) + adjugate_norm(m_e))))
+        self.assertLessEqual(worst, 1.0 + 1.0e-9)
+
+    def test_route_b_text_is_corrected(self) -> None:
+        for routes in (self.fresh["routes"], self.committed["routes"], nogo.ROUTES):
+            route_b = routes["B"]
+            for text in ("120_H", "excluded", "Route A", "lemma_122_clebsch", "lemma_eft_census", "lemma_S_independence"):
+                self.assertIn(text, route_b)
+            self.assertNotIn("a 120_H, a second 10_H, or a UV completion", route_b)
+            # Scoped to the analysed candidates: not "reduced to a 120_H" among all extensions.
+            self.assertNotIn("reduced to a 120_H:", route_b)
+            self.assertNotIn("any UV completion that generates", route_b)
+            self.assertIn("Among the analysed candidate extensions", route_b)
+            self.assertIn("so Route B is not reduced to a 120_H among all extensions", route_b)
+            self.assertIn("the operator F.F.H10^*.S^* (whatever completion generates it)", route_b)
+            self.assertIn("H10's (X, Z17) = (-2, 15) or H10^*'s (2, 2) (hand-argued, not recomputed)", route_b)
+            for text in ("second 126bar_H", "a new B-L-breaking scalar vev (e.g. a 45_H", "vectorlike matter", "further PS-breaking operators near v_R"):
+                self.assertIn(text, route_b)
+            self.assertIn("A 120_H is not shown to repair G8", route_b)
+            self.assertIn("DOWN-type", routes["A"])
+            self.assertIn("lemma_s1_g3221", routes["A"])
+            self.assertIn("v_R-scale SU(2)_R breaking through <Sigma>", routes["A"])
+            self.assertIn("with a G3221-equivariant composition", routes["A"])
+        self.assertNotIn("120_H or a second 10_H", nogo.__doc__)
+        self.assertNotIn("reduced to a 120_H", nogo.__doc__)
+        self.assertIn("among the analysed candidates only a 120_H", nogo.__doc__)
+        for report in (self.fresh, self.committed):
+            self.assertNotIn("Route B reduces to a 120_H", report["verdict"])
+            self.assertIn("among the analysed candidate extensions only a 120_H can", report["verdict"])
+            self.assertIs(report["flags"]["route_B_reduced_to_120H_among_all_extensions"], False)
+            self.assertIs(report["flags"]["route_B_one_two_two_source_extensions_excluded"], True)
+            cited = " ".join(report["scope"]["cited_or_hand_argued"])
+            self.assertIn("H' -> H or H' -> conj(H)", cited)
+
+    def test_v2_lemmas_are_status_neutral(self) -> None:
+        for report in (self.committed, self.fresh):
+            self.assertEqual(report["status"], nogo.STATUS_RECORDED)
+            self.assertEqual(report["overall_state"], nogo.OVERALL_STATE_RECORDED)
+            self.assertEqual(report["G8_status"], "OPEN")
+            self.assertIs(report["flags"]["G8_closed"], False)
+            self.assertIs(report["flags"]["falsifies_so10_contract"], False)
+            self.assertIs(report["flags"]["v2_lemmas_status_neutral"], True)
+            v1_checks = [key for key in report["checks"] if not key.startswith(nogo.LEMMA_KEYS)]
+            self.assertEqual(len(v1_checks), 103)
+            not_claimed = " ".join(report["scope"]["not_claimed"])
+            self.assertIn(
+                "they do not falsify the contract: a 120_H extension, a Route A branch and the extensions not analysed "
+                "here remain logically open",
+                not_claimed,
+            )
+            self.assertIn("Route B is not reduced to a 120_H among all extensions", not_claimed)
+            self.assertIn("a UV completion that adds further PS-breaking operators near v_R is not analysed", not_claimed)
+            self.assertIn("its list of escapes is exhaustive only for G3221-equivariant compositions", not_claimed)
+            self.assertIn("radiative (loop-level) Pati-Salam breaking is not analysed", not_claimed)
+            self.assertIn("G8 stays OPEN and the contract is not falsified.", report["verdict"])
+            self.assertNotIn("M_e = phase x M_d^T for generic", report["verdict"])
+        # A failing lemma check fails closed like every other check.
+        report = copy.deepcopy(self.fresh)
+        report["n_failed"] = 1
+        report["failures"] = ["lemma_b1a.adjugate_parity_decomposition"]
+        self.assertIn("NOT recorded", nogo._verdict(report))
+
+    # ------------------------------------------------------------------
     # Fail-closed mutations.
     # ------------------------------------------------------------------
 
@@ -522,6 +822,89 @@ class G8FlavourNogoTest(unittest.TestCase):
         with mock.patch.object(nogo, "COLOUR_BRACKET_RELATIVE", -1.0e-3):  # brackets on the wrong side
             self.assertIs(nogo.colour_radius(gram, h)["exact_bracket"], False)
         self.assertIsNone(nogo.colour_radius([[Fraction(0)]], [Fraction(2)])["radius"])
+
+    def test_mutation_neutral_ps_breaking_spurion_breaks_the_census(self) -> None:
+        """A (B-L, T3R)-neutral Pati-Salam-breaking vev (a (15,1,1)-type Route A 210 orientation) evades the grading:
+        the Sigma-pair statement must fail by name and the minimal PS-breaking Dirac dimension drops to 5."""
+        contract = nogo.contract_section()
+        table = nogo.eft_spurion_table(contract)
+        table["Phi15"] = {"field": "Phi210[(15,1,1)]", "X": 0, "Z17": 0, "charge": (Fraction(0), Fraction(0)), "ps_breaking": True}
+        section = nogo.lemma_eft_census_section(contract, {}, spurions=table)
+        self.assertFalse(section["checks"]["every_ps_breaking_dirac_monomial_carries_a_sigma_pair"])
+        self.assertFalse(section["checks"]["min_dimension_ps_breaking_dirac_is_6"])
+        self.assertEqual(section["min_dimensions"]["ps_breaking_dirac"], 5)
+        self.assertTrue(section["checks"]["grading_forces_sigma_balance_at_every_dimension"])  # Sigma balance itself holds
+
+    def test_mutation_model_X_change_breaks_the_pinned_census(self) -> None:
+        text = self._model_text()
+        old = "{Delta126bar,  1, delta126bar, -126,  -2,"
+        self.assertIn(old, text)
+        contract = nogo.contract_section(text.replace(old, "{Delta126bar,  1, delta126bar, -126,  -4,"))
+        section = nogo.lemma_eft_census_section(contract, {})
+        self.assertFalse(section["checks"]["census_counts_to_dimension_12_pinned"])
+        self.assertNotEqual(section["counts"], nogo.EFT_CENSUS_COUNTS)
+
+    def test_mutation_su2r_breaking_mixing_breaks_s1(self) -> None:
+        """The O15 map at the G3211 direction omega (SU(2)_R-breaking) as the bidoublet mixing: M_u is no longer
+        proportional to M_d with a Yukawa-free ratio, and the equivariance hypothesis fails."""
+        section = nogo.lemma_s1_g3221_section(nogo.lemma_su5_casimir_section(), mixing_map=nogo._omega_mixing)
+        self.assertFalse(section["checks"]["one_light_bidoublet_Mu_proportional_Md_for_any_tan_beta"])
+        self.assertFalse(section["checks"]["iota15_is_G3221_equivariant"])
+
+    def test_mutation_wrong_down_doublet_breaks_casimir(self) -> None:
+        section = nogo.lemma_su5_casimir_section(down_doublet_vector=nogo.Z5_VECTOR)
+        self.assertFalse(section["checks"]["sigma_down_doublet_casimir_32_over_5_down_type_only"])
+        self.assertEqual(section["casimir"]["w_d"], "12/5")
+        self.assertEqual(section["pairs"]["w_d"], ["nu-nuc", "u-uc"])
+
+    def test_mutation_S_coupled_unit_breaks_the_decoupling(self) -> None:
+        original = nogo.exact_hessian.exact_unit_matrices
+
+        def with_s_phi_unit(r0: Fraction, x0: Fraction) -> tuple[dict[str, Any], ...]:
+            numerator = np.zeros((nogo.TOTAL_DIM, nogo.TOTAL_DIM), dtype=np.int64)
+            s_index, phi_index = nogo.chart.S_SLICE.start, nogo.PHI_SLICE.start
+            numerator[s_index, phi_index] = numerator[phi_index, s_index] = 1
+            fake = {
+                "name": "fake S-Phi unit",
+                "weights": {},
+                "source": "mutation",
+                "hessian": (numerator, 1),
+                "gradient": (np.zeros(nogo.TOTAL_DIM, dtype=np.int64), 1),
+            }
+            return (*original(r0, x0), fake)
+
+        patterns = self.fresh["H_linear_portals"]["lattice_binding"]["patterns"]
+        with mock.patch.object(nogo.exact_hessian, "exact_unit_matrices", side_effect=with_s_phi_unit):
+            section = nogo.lemma_S_independence_section(patterns)
+        self.assertFalse(section["checks"]["S_block_decoupled_in_every_binding_unit"])
+        self.assertIn("fake S-Phi unit @ r0 = 1/5", section["units_coupling_S_to_other_blocks"])
+
+    def test_mutation_sigma_overlapping_e_a_wedge_p_breaks_the_exact_O38_check(self) -> None:
+        """A Sigma vev whose support meets e_0 ^ p (here e0 ^ e6789) gives O38 an H x S block: the exact form check
+        (vii) must fail by name, while the lattice-pattern corroboration (not a check) is unaffected."""
+        patterns = self.fresh["H_linear_portals"]["lattice_binding"]["patterns"]
+        section = nogo.lemma_S_independence_section(patterns, o38_sigma_form={(0, 6, 7, 8, 9): (1, 0)})
+        self.assertFalse(section["checks"]["O38_H_columns_have_no_S_block"])
+        self.assertIs(section["O38_exact_form_blocks"]["H_by_S_block_zero_for_every_H_direction"], False)
+        self.assertIs(section["O38_compiler_pattern_corroboration_not_a_check"], True)
+        with mock.patch.object(nogo, "ps_singlet_form", return_value={(0, 1, 2, 3): (1, 0)}):
+            blocks = nogo.o38_exact_form_blocks()
+        self.assertIs(blocks["doublet_H_by_Sigma_block_zero_e_a_wedge_p_vanishes"], False)
+
+    def test_mutation_symmetric_A_breaks_b1a(self) -> None:
+        def symmetric(vector: Any) -> sympy.Matrix:
+            return sympy.Matrix([[0, vector[2], vector[1]], [vector[2], 0, vector[0]], [vector[1], vector[0], 0]])
+
+        checks = nogo.lemma_b1a_section(symmetric)["checks"]
+        self.assertFalse(checks["adjugate_parity_decomposition"])
+        self.assertFalse(checks["frobenius_pythagoras_TrAdagS_zero"])
+
+    def test_mutation_fifteen_as_one_two_two_source_breaks_clebsch_plus_one(self) -> None:
+        """omega6 ^ e_a (the T15-carrying (15,2,2) of a 120_H) fed as a (1,2,2) source: the oriented ratio to the 10 is
+        no longer one constant."""
+        section = nogo.lemma_122_clebsch_section(one_two_two_source=nogo._hypothetical_120_fifteen)
+        self.assertFalse(section["checks"]["one_two_two_120_clebsch_equals_ten_clebsch"])
+        self.assertEqual(section["oriented_ratio_120_over_10"], ["-3*I", "I"])
 
     def test_failed_check_changes_status(self) -> None:
         report = copy.deepcopy(self.fresh)
