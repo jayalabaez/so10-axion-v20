@@ -419,7 +419,49 @@
     },
     "G4": {
       "authoritative_for_manuscript": false,
+      "closure_evidence": {
+        "blockers": [],
+        "certified": true,
+        "closure_scope": "G4 gauge quotient and physical Hessian at the G3 witness benchmark (g4_sm_pati_salam_physical_quotient_v20 via g4_sm_closure_binding_v20; exact over Q at r0 = 1/5, x0 = 1, kappa = -r0/4 for every 0 < eps < 599/50; tree level): orbit ranks 33/34/35 (integer minors 1, 4, -68; 12 null vectors spanning the SM algebra), gauge quotient 452 and massive/transverse quotient 451, PQ global and not eaten; Hessian on the gauge quotient 451/1/0 with the physical axion (S phase 7225/7241, Phi17 phase 16/7241; period 2 pi/68 modulo the gauge group, v_a^2 = 2/7241 M_GUT^2) as its only zero mode; 35 zero modes = 34 eaten Goldstones + the axion, no negative mode; eps -> 0 adds only one SM doublet (1,2)_{1/2} of mass^2 eps, lifted at quartic order by lambda_eff = 127/64; vector-boson Gram rank 34; axion massless only for the renormalizable PQ-neutral benchmark potential; compiler binding float64",
+        "decision": "User instruction (2026-09-25, 'continue ... complete theory close all needed'): close G4 once its exact certificate passes; gates that are not proven stay OPEN or BLOCKED. User decision D-E (2026-09-26) overrides the decision-D3 cascade: a CLOSED G4 meets D3's G4 condition but does not approve the internal-candidate tier, which is held until G7 is CLOSED (theory_confirmation_verdict_v20).",
+        "integrity": {
+          "g4_float_evidence_not_promoted": true,
+          "g4_premises_all_hold": true,
+          "g4_report_does_not_overclaim": true,
+          "g4_report_executes": true,
+          "g4_scope_limits_disclosed": true
+        },
+        "n_checks": 69,
+        "n_failed": 0,
+        "report": "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json",
+        "required_statement": "At the G3 witness q0 of V_PS,eps (0 < eps < 599/50; r0 = 1/5, x0 = 1, kappa = -r0/4) the SO(10)xU(1)_X orbit has rank 34 and the SO(10)xU(1)_XxPQ orbit rank 35 (gauge quotient 452, massive/transverse quotient 451); the Hessian has no negative mode and exactly 35 zero modes, 34 eaten Goldstones (33 SO(10)/SM + 1 U(1)_X) and 1 physical axion; restricted to the 452-dimensional gauge quotient (canonical chart metric) it is PSD with the axion as its only zero mode and 451 strictly positive modes; as eps -> 0 the only extra zero modes are the 4 real modes of one SM doublet (1,2)_{1/2}, of mass^2 eps and lifted at quartic order by lambda_eff = 127/64 > 0.",
+        "required_status": "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__WIRED_AS_G4_EVIDENCE",
+        "science": {
+          "g4_eaten_goldstones_34_pq_global_not_eaten": true,
+          "g4_gauge_and_transverse_quotients_452_451_exact": true,
+          "g4_gauge_quotient_hessian_451_1_0": true,
+          "g4_open_scope_fully_covered": true,
+          "g4_orbit_ranks_33_34_35_exact": true,
+          "g4_physical_axion_exact": true,
+          "g4_required_statement_bound": true,
+          "g4_tuned_limit_is_one_sm_doublet_lifted_127_64": true,
+          "g4_vector_gram_rank_34": true,
+          "g4_witness_is_the_g3_witness": true,
+          "g4_zero_modes_35_are_34_eaten_plus_axion_no_negative": true
+        },
+        "scope_limits": [
+          "tree level only: loop corrections and running are not included",
+          "the benchmark point r0 = 1/5, x0 = 1 only; the physical hierarchy point is not certified",
+          "the compiler = exact-operator identity of the Hessian and the tangent binding are float64",
+          "the axion zero mode is exact only for the renormalizable PQ-neutral benchmark potential: the QCD anomaly and PQ-violating operators such as Phi17^4 conj(S)^17/M_Pl^17 give the axion a mass, and f_a = v_a/N_DW is not computed",
+          "G6-G8 physics (sub-M_I coloured states, electroweak symmetry breaking, RG content, the Higgs quartic, Yukawas and proton decay) is not addressed by G4"
+        ],
+        "source": "g4_sm_pati_salam_physical_quotient_v20",
+        "status": "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__WIRED_AS_G4_EVIDENCE",
+        "witness_bound_to_g3_track": true
+      },
       "closure_route_defined": true,
+      "decision": "User instruction (2026-09-25, 'continue ... complete theory close all needed'): close G4 once its exact certificate passes; gates that are not proven stay OPEN or BLOCKED. User decision D-E (2026-09-26) overrides the decision-D3 cascade: a CLOSED G4 meets D3's G4 condition but does not approve the internal-candidate tier, which is held until G7 is CLOSED (theory_confirmation_verdict_v20).",
       "dependencies": [
         "G2",
         "G3"
@@ -429,6 +471,9 @@
       "open_scope": [
         "carry the exact gauge quotient to the accepted G3 witness (the SM Pati-Salam eps member) and recompute its ranks there: SO(10)xU(1)_X rank 34 (gauge quotient 452, axion included) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451), replacing the rank-37/38 (449/448) values of the superseded p+delta point",
         "classify all remaining Hessian zero and negative modes at that witness, including the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes)"
+      ],
+      "routed_caveats_resolved_by_closure": [
+        "zero_modes_and_ranks_at_witness"
       ],
       "status": "PARTIAL",
       "title": "Gauge quotient, axion directions, and physical Hessian",
@@ -689,10 +734,26 @@
       "historical_option_c_evidence_retained": false,
       "model_contract_id": "historical_option_c_no_x_v20",
       "open_scope": [
-        "await authoritative G3/G4/G5 and emit the complete positive spectrum"
+        "with G3, G4 and G5 CLOSED, emit the complete positive physical spectrum with SM provenance (eigenmasses, irreps, mixings and uncertainties) beyond tree level",
+        "tree-level evidence (does not close G6): g6_sm_pati_salam_tree_spectrum_v20 (G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json) certifies exactly, for all r0, x0, eps > 0, the tree-level Hessian spectrum at the G3 witness vacuum: 35 zero modes (34 eaten Goldstones + the axion), 451 positive and 0 negative, with exact SM labels; still open: one-loop positivity of the light 126bar remnant multiplets (R1), electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified) and the uncertainty budget"
       ],
       "status": "PARTIAL",
       "title": "Physical threshold spectrum",
+      "tree_level_evidence": {
+        "closes_gate": false,
+        "n_failed": 0,
+        "recorded": true,
+        "report": "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json",
+        "required_status": "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED",
+        "role": "evidence only: cited in the G6 open scope, never changes the G6 status",
+        "source": "g6_sm_pati_salam_tree_spectrum_v20",
+        "status": "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED",
+        "still_open": [
+          "one-loop positivity of the light 126bar remnant multiplets (R1)",
+          "electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified)",
+          "the uncertainty budget of the threshold spectrum"
+        ]
+      },
       "unsatisfied_dependencies": [
         "G3",
         "G4",
@@ -724,10 +785,26 @@
         "G6",
         "G7"
       ],
+      "flavour_evidence": {
+        "closes_gate": false,
+        "n_failed": 0,
+        "recorded": true,
+        "report": "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",
+        "required_status": "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN",
+        "role": "evidence only: cited in the G8 open scope, never changes the G8 status",
+        "route_recorded": "C",
+        "routes_needing_user_decision": [
+          "A",
+          "B"
+        ],
+        "source": "g8_sm_pati_salam_flavour_nogo_v20",
+        "status": "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN"
+      },
       "historical_option_c_evidence_retained": false,
       "model_contract_id": "historical_option_c_no_x_v20",
       "open_scope": [
-        "await authoritative G3/G6/G7 before any unique lifetime claim"
+        "await authoritative G3/G6/G7 before any unique lifetime claim",
+        "flavour evidence (does not close G8): g8_sm_pati_salam_flavour_nogo_v20 (G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json) records Route C: on the witness branch (renormalizable benchmark, H-linear portals zero) the light doublet is pure 10_H, so CKM = 1, m_t = m_b, m_d = m_e and m_s = m_mu, which data exclude, and no H-linear portal repair survives at q0; the G3-G5 certificates and the SO(10) contract are not falsified; route A (a new in-contract G3 branch with a down-type (15,2,2) admixture, needing new G3/G4/G5 certificates) and route B (a contract extension: among the analysed extensions only a 120_H can split d from e; a second 126bar_H, a new B-L-breaking vev and vectorlike matter were not analysed) need a user decision"
       ],
       "status": "PARTIAL",
       "title": "Proton-decay prediction and falsification",
@@ -743,7 +820,7 @@
   "n_failed": 0,
   "next_exact_target": "Use gauged_u1x_scalar_contract_v20.py and the 44/51 derivative audit for the manuscript-authoritative theory.",
   "overall_state": "HISTORICAL",
-  "source_template_ledger_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G3_G5_CLOSED__G4_OPEN",
+  "source_template_ledger_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G3_G4_G5_CLOSED__G6_OPEN",
   "status": "HISTORICAL_OPTION_C_G1_CLOSED__G2_VALUE_AND_CHART_PARTIAL__NONAUTHORITATIVE",
   "summary": {
     "blocked": [],

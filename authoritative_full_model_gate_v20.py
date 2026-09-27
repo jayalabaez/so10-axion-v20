@@ -43,8 +43,10 @@ def _legacy_snapshot() -> dict[str, Any]:
         "empirical_realization_approved": report.get("empirical_realization_approved"),
         "authoritative_for_full_model": False,
         "reason": (
-            "The historical gate does not consume the corrected G1–G8 dependency "
-            "ledger, signed scalar-spectrum invalidation, or PR #105 proton gate."
+            "The ultimate gate's tiers are confirmation tiers: its "
+            "internal-candidate tier (decisions D3 and D-E) is never "
+            "full-model validation, which needs every G1-G8 gate CLOSED "
+            "and a unique proton lifetime from the same vacuum."
         ),
     }
 
@@ -172,13 +174,22 @@ def build_report() -> dict[str, Any]:
         + ", ".join(gates_closed)
         + (
             " (G3 on the SM Pati-Salam benchmark family only; see "
-            "FINAL_G3_ACCEPTANCE_GATE_V20)"
+            "FINAL_G3_ACCEPTANCE_GATE_V20"
             if "G3" in gates_closed
             else ""
         )
+        + (
+            "; G4 at the G3 witness benchmark, tree level; see "
+            "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20"
+            if "G3" in gates_closed and "G4" in gates_closed
+            else ""
+        )
+        + (")" if "G3" in gates_closed else "")
         + ", but "
         + ", ".join(gates_not_closed)
         + " and the unique proton-lifetime derivation are not closed. "
+        "The internal-candidate tier (decisions D3 and D-E) is not "
+        "full-model validation. "
         "Historical Option-C calculations remain context only and cannot "
         "validate or exclude the gauged model."
         if contract_consistent
@@ -230,6 +241,9 @@ def build_report() -> dict[str, Any]:
             "g3_closing_track": ledger.get("gates", {})
             .get("G3", {})
             .get("closing_track"),
+            "g4_closure_scope": ledger.get("gates", {})
+            .get("G4", {})
+            .get("closure_scope"),
         },
         "flag": {
             "authoritative_full_model_gate": True,

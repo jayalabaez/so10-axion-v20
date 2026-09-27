@@ -5,7 +5,7 @@
   "decision": "WITHHOLD_APPROVAL",
   "full_theory_validated": false,
   "empirical_discovery": false,
-  "current_tree_unit_tests_discovered": 1321,
+  "current_tree_unit_tests_discovered": 1357,
   "n_gates": 11,
   "n_failed_gates": 0,
   "failed_gates": [],
@@ -304,7 +304,7 @@
         "final_G3_acceptance_gate_overall_state": "PASS",
         "final_G3_closing_track": "sm_pati_salam",
         "authoritative_G3_closed": true,
-        "authoritative_G4_closed": false,
+        "authoritative_G4_closed": true,
         "authoritative_G6_closed": false,
         "vacuum_gate_requires_G4_and_G6_closed": true,
         "downstream_vacuum_gates_closed": false,
@@ -433,7 +433,7 @@
         "unit_test_attestation_present": false,
         "unit_tests_passed": false,
         "tests_discovered": null,
-        "current_tree_tests_discovered": 1321,
+        "current_tree_tests_discovered": 1357,
         "test_count_matches_current_tree": false,
         "attested_commit": null,
         "current_commit": "",
@@ -470,5 +470,5 @@
     "direct_37GHz_experiment": "Independent apparatus reproduce a signal with the predicted mass, linewidth, B^2 scaling, retuning behavior and temporal Doppler pattern.",
     "reproducibility_and_CI": "A clean environment executes all tests and gates on the exact commit, with scoped attestation and archived machine-readable artifacts."
   },
-  "verdict": "The gauged-U(1)_X model contract is attested by bound external SARAH execution evidence, and the mathematical and software core passes, but no benchmark is approvable while the full scalar potential, vacuum and spectrum gate remains open. The historical no-X calculations remain reproducible subtheorems, not validation. Full validity requires a matching contract, the complete operator basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, a common-scale flavour fit, UV-selected portal currents, proton decay, a fixed cosmology, and real independent 37 GHz data."
+  "verdict": "The gauged-U(1)_X model contract is attested by bound external SARAH execution evidence, and the mathematical and software core passes, but no conditional benchmark is approvable while the full scalar potential, vacuum and spectrum gate remains open (it needs G4 and G6 CLOSED in the ledger). The decision-D3 internal-candidate tier of theory_confirmation_verdict_v20 is separate from, and weaker than, a conditional benchmark. The historical no-X calculations remain reproducible subtheorems, not validation. Full validity requires a matching contract, the complete operator basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, a common-scale flavour fit, UV-selected portal currents, proton decay, a fixed cosmology, and real independent 37 GHz data."
 }

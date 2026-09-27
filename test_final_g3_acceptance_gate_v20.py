@@ -130,6 +130,16 @@ def test_current_gate_passes_on_the_sm_track_only():
     assert report["remaining_open_problem"].startswith(
         "none inside G3 on the closing track"
     )
+    # Status-neutral: the routed caveats' status is the G1-G8 ledger's.
+    assert mod.CLOSED_REMAINING_OPEN_PROBLEM == (
+        "none inside G3 on the closing track; its model-level caveats were "
+        "routed downstream by decision D5 (G4: zero-mode classification and "
+        "ranks 34/35 -> quotients 452/451 at the witness; G6: sub-M_I coloured "
+        "states, positive spectrum, no EWSB; G7: RG-anchor content, Higgs "
+        "quartic; G8: Yukawas, proton-decay mediators) and their status is the "
+        "G1-G8 ledger's; the naturalness of the DT/O05/M_I tunings lies outside "
+        "G1-G8"
+    )
 
     assert chiral["track"] == CHIRAL
     assert chiral["role"] == "DIAGNOSTIC"
@@ -377,7 +387,11 @@ def test_closed_verdict_is_scoped_and_chiral_summary_is_kept_in_its_track():
     assert verdict.endswith(mod.CLOSED_VERDICT_CHIRAL_TAIL)
     assert "can never close G3" in verdict
     assert "not a Standard-Model vacuum" in verdict
-    assert "internal candidate withheld" in verdict
+    # The G3 closure scope is status-neutral: the downstream G4/G6-G8 states
+    # and the decision-D3 internal-candidate tier are the ledger's and the
+    # confirmation verdict's, never this gate's.
+    assert "internal candidate withheld" not in verdict
+    assert "G4 OPEN" not in verdict
     assert "whole model neither validated nor excluded" in verdict
     assert "G3 remains open" not in verdict
     assert "not yet wired in" not in verdict

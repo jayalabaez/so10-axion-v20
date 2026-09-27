@@ -21,20 +21,22 @@ class PublicationRefereeTests(unittest.TestCase):
         self.assertFalse(self.report["flag"]["all_g1_g8_closed"])
 
     def test_gate_counts(self):
+        # G4 is CLOSED at the G3 witness benchmark (tree level), so G6 opens
+        # (not closed); G7 and G8 stay dependency-blocked.
         totals = self.report["authoritative_totals"]
-        self.assertEqual(totals["closed"], ["G1", "G2", "G3", "G5"])
-        self.assertEqual(totals["open"], ["G4"])
-        self.assertEqual(totals["n_closed"], 4)
-        self.assertEqual(totals["n_blocked"], 3)
+        self.assertEqual(totals["closed"], ["G1", "G2", "G3", "G4", "G5"])
+        self.assertEqual(totals["open"], ["G6"])
+        self.assertEqual(totals["n_closed"], 5)
+        self.assertEqual(totals["n_blocked"], 2)
         self.assertEqual(
             {name: row["status"] for name, row in self.report["gates"].items()},
             {
                 "G1": "CLOSED",
                 "G2": "CLOSED",
                 "G3": "CLOSED",
-                "G4": "OPEN",
+                "G4": "CLOSED",
                 "G5": "CLOSED",
-                "G6": "BLOCKED",
+                "G6": "OPEN",
                 "G7": "BLOCKED",
                 "G8": "BLOCKED",
             },

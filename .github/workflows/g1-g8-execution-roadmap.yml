@@ -78,6 +78,11 @@ on:
       - G3_SM_PATI_SALAM_EQUALITY_SET_V20.json
       - g3_sm_target_track_v20.py
       - test_g3_sm_target_track_v20.py
+      - g4_sm_closure_binding_v20.py
+      - test_g4_sm_closure_binding_v20.py
+      - G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json
+      - G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json
+      - G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json
       - g3_sm_pati_salam_candidate_v20.py
       - G3_SM_PATI_SALAM_CANDIDATE_V20.json
       - g3_sm_pati_salam_exact_hessian_v20.py
@@ -138,6 +143,8 @@ jobs:
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             g3_sm_target_track_v20.py \
             test_g3_sm_target_track_v20.py \
+            g4_sm_closure_binding_v20.py \
+            test_g4_sm_closure_binding_v20.py \
             final_g3_acceptance_gate_v20.py
       - name: Rebuild exact local G3 frontier
         run: |
@@ -177,6 +184,7 @@ jobs:
           python -B -m pytest -q -p no:cacheprovider \
             test_g1_g8_execution_roadmap_v20.py \
             test_g3_sm_target_track_v20.py \
+            test_g4_sm_closure_binding_v20.py \
             test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py \
             test_exact_gauged_u1x_g3_a_square_recoupling_v20.py \
             test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py \
@@ -261,9 +269,10 @@ jobs:
           assert x['executable_scaffold_contract']['tool_native_sarah_syntax']
           assert x['external_model_validation']['valid']
           assert x['repository_external_input_manifest']['valid']
-          assert report['summary']['closed'] == ['G1', 'G2', 'G3', 'G5']
-          assert report['gates']['G3']['status'] == 'CLOSED' and report['gates']['G4']['status'] == 'OPEN'
-          assert all(report['gates'][g]['status'] == 'BLOCKED' for g in ('G6', 'G7', 'G8'))
+          assert report['summary']['closed'] == ['G1', 'G2', 'G3', 'G4', 'G5']
+          assert report['gates']['G3']['status'] == 'CLOSED' and report['gates']['G4']['status'] == 'CLOSED'
+          assert report['gates']['G6']['status'] == 'OPEN' and all(report['gates'][g]['status'] == 'BLOCKED' for g in ('G7', 'G8'))
+          assert {t['id']: t['status'] for t in report['tasks']}['W3-G4-FULL-GAUGE-QUOTIENT'] == 'CLOSED'
           assert report['dependencies']['G8'] == ['G3', 'G6', 'G7']
           assert report['historical_option_c_subtheorems']['G1']['invariant_directions'] == 64
           assert report['historical_option_c_subtheorems']['G3']['massive_physical_quotient_dimension'] == 449

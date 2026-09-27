@@ -2483,10 +2483,13 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         classification = "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE"
         decision = "APPROVE_CONDITIONAL_CANDIDATE_ONLY"
     elif core_state == "PASS":
-        # Mirrors theory_confirmation_verdict_v20: a candidate needs the scalar
-        # vacuum (G1-G3) closed, and the older aligned benchmarks were computed
-        # under the superseded no-X contract, so none is approvable while the
-        # full scalar potential is open.
+        # A conditional benchmark needs the full scalar-vacuum-and-spectrum gate
+        # (ledger G4 and G6 CLOSED), and the older aligned benchmarks were
+        # computed under the superseded no-X contract, so none is approvable
+        # while that gate is open.  The internal-candidate tier of
+        # theory_confirmation_verdict_v20 (G1-G3 CLOSED, decision D3 satisfied,
+        # e.g. by G4 CLOSED, and G7 CLOSED by decision D-E) is a separate,
+        # weaker tier and is not decided by this matrix.
         classification = "INTERNALLY_CONSISTENT_CORE__AUTHORITATIVE_GATES_OPEN"
         decision = "WITHHOLD_APPROVAL"
     else:
@@ -2615,9 +2618,10 @@ def _verdict(classification: str, contract_state: str = "PASS") -> str:
             "external execution evidence"
         )
         lead = (
-            f"{contract}, and the mathematical and software core passes, "
-            "but no benchmark is approvable while the full scalar potential, "
-            "vacuum and spectrum gate remains open. "
+            f"{contract}, and the mathematical and software core passes, but no conditional benchmark is approvable "
+            "while the full scalar potential, vacuum and spectrum gate remains open (it needs G4 and G6 CLOSED in the "
+            "ledger). The decision-D3 internal-candidate tier of theory_confirmation_verdict_v20 is separate from, and "
+            "weaker than, a conditional benchmark. "
         )
     elif classification == "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE":
         lead = (
