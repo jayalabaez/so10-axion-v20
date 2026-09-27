@@ -399,6 +399,24 @@ Decisions adopted (D1-D6, D-E):
   this witness branch cannot reproduce flavour, and routes A (a new
   in-contract G3 branch) and B (a contract extension) need a decision.
 
+**Decoupled singlet scale (status-neutral).**
+`g3_sm_pati_salam_decoupled_singlet_family_v20.py` certifies exactly that the
+G3 witness is one member of a family with `|S| = r_S` independent of `r0`:
+only `O04 = -2 r_S^2` and `O06 = 2|kappa| r_S + eps` change, the SOS identity
+holds for every `kappa^2 < 8 r_S^2` (sharp: `V >= V0` fails for every
+`kappa^2 > 8 r_S^2`), `{V = V0} = G.(p, r0 sigma_std, 0, r_S, x0)`, and the
+exact 486 x 486 Hessian is 447/39/0 at `eps = 0` and 451/35/0 at `eps > 0` at
+four points (identical to the committed witness at `r_S = r0`; the `r_S = 5`
+stress point lies outside the `|c| < 12` perturbative box and its eps window
+is empty). The axion has `F_PQ^2 = 9248 r_S^2 x0^2/(16 r_S^2 + 289 x0^2)`,
+and the model file gives `N = -34`, `E/N = 8/3` and `N_DW = 1` modulo gauge;
+the one-wall string is the (13,-3) Phi17-winding string, and if Phi17 breaks
+before inflation S-only strings bound 17 walls. It chooses no benchmark and
+changes no gate: the `r_S = r0` witness still closes G3 and G4, the physical
+viability of decoupling (`y_s <~ 0.35`, the Landau criterion, a v_R/f_a/m_a
+benchmark) is open research, and `m_a = 153.5 ueV` is not a prediction of the
+family.
+
 Open items for this candidate:
 - The doublet-triplet splitting and the intermediate scale are tuned coupling
   relations.

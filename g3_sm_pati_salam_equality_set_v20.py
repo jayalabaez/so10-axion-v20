@@ -945,15 +945,22 @@ def _operator_dictionary() -> dict[str, sympy.Symbol]:
     return {key: sympy.Symbol(value, real=True) for key, value in names.items()}
 
 
-def _eight_term_operator_expansion(weights: Mapping[str, Fraction], sign: str) -> dict[str, Any]:
+def _eight_term_operator_expansion(
+    weights: Mapping[str, Fraction], sign: str, *, rs: Any = None, eps: Any = None
+) -> dict[str, Any]:
     """Expand the eight SOS terms into the candidate's operators and compare with expanded_sos_coefficient_map.
 
     Operator bookkeeping.  The dictionary is the candidate's own: ||M_Phi Sigma||^2 = sum_i a_i X_i and
     ||C_Phi Sigma||^2 = sum_i c_i X_i are the A- and C-square recouplings, which the candidate certifies exactly;
     |Phi|^4 = J0 and I_kappa = (channel quartic) . J.  N_Sigma^2 = sum_q I_q is Sym^2 completeness (P0).  The
     self weights w_q enter T4 = (1/8) sum_q (w_q - 1) I_q, so the comparison depends on them.
+
+    ``rs`` (a sympy symbol; default None: r0) is the singlet scale of the decoupled-singlet family in T6, and
+    ``eps`` (default None: absent) adds the term T9 = eps N_H of the eps family; both are used only by
+    g3_sm_pati_salam_decoupled_singlet_family_v20.
     """
     r, x = sympy.symbols("r0 x0", positive=True)
+    s = r if rs is None else rs
     if sign == "negative":
         k: Any = sympy.Symbol("kappa", negative=True)
     elif sign == "positive":
@@ -983,28 +990,35 @@ def _eight_term_operator_expansion(weights: Mapping[str, Fraction], sign: str) -
         "T3 (1/8)||C_Phi Sigma||^2": t * sum((c * xi for c, xi in zip(sos_source.C_SQUARE_WEIGHTS, x_ops, strict=True)), sympy.Integer(0)),
         "T4 (1/8)(W' - N^2)": t * sum(((w[q] - 1) * i_sigma[q] for q in SIGMA_CHANNELS), sympy.Integer(0)),
         "T5 (1/8)(N_Sigma - r0^2)^2": t * (sum(i_sigma.values(), sympy.Integer(0)) - 2 * r**2 * n + r**4),
-        "T6 V_HS + r0^4": 2 * op["lambda::O36_B01_H_self_quartics"]
+        ("T6 V_HS + r0^4" if rs is None else "T6 V_HS(rS) + rS^4"): 2 * op["lambda::O36_B01_H_self_quartics"]
         + 2 * op["lambda::O36_B02_H_self_quartics"]
-        + 2 * sympy.Abs(k) * r * op[candidate.O06_ID]
+        + 2 * sympy.Abs(k) * s * op[candidate.O06_ID]
         + k * op[candidate.O12_ID]
         + s4
-        - 2 * r**2 * s2
-        + r**4,
+        - 2 * s**2 * s2
+        + s**4,
         "T7 ||H wedge Phi||^2": sympy.Rational(3, 5) * op[candidate.O46_1_ID] - op[candidate.O46_54_ID],
         "T8 (1/32)(|Phi17|^2 - x0^2)^2": sympy.Rational(1, 32) * (x4 - 2 * x**2 * x2 + x**4),
     }
+    if eps is not None:
+        terms["T9 eps N_H"] = eps * op[candidate.O06_ID]
     total = sympy.expand(sum(terms.values(), sympy.Integer(0)))
     symbols = set(op.values())
     nonlinear = [str(term) for term in sympy.Add.make_args(total) if sum(sympy.degree(term, s) for s in term.free_symbols & symbols) > 1]
     expansion = {key: sympy.expand(total.coeff(symbol)) for key, symbol in op.items()}
     constant = sympy.expand(total.subs({symbol: 0 for symbol in symbols}))
-    expected = candidate.expanded_sos_coefficient_map(r, x, k)
+    if rs is None:
+        expected = candidate.expanded_sos_coefficient_map(r, x, k)
+    else:
+        expected = candidate.expanded_sos_coefficient_map(r, x, k, rs=rs)
+    if eps is not None:
+        expected[candidate.O06_ID] = expected.get(candidate.O06_ID, 0) + eps
     unmapped = sorted(set(expected) - set(op))
     keys = sorted(set(expected) | {key for key, value in expansion.items() if value != 0})
     residuals = {
         key: sympy.simplify(expansion.get(key, 0) - candidate._as_sympy(expected.get(key, 0))) for key in keys
     }
-    v0 = candidate.lower_bound_v0(r, x)
+    v0 = candidate.lower_bound_v0(r, x) if rs is None else candidate.lower_bound_v0(r, x, rs=rs)
     constant_residual = sympy.simplify(constant + v0)
     return {
         "kappa_sign": sign,
@@ -1022,8 +1036,13 @@ def _eight_term_operator_expansion(weights: Mapping[str, Fraction], sign: str) -
     }
 
 
-def _eight_term_expansion(weights: Mapping[str, Fraction]) -> dict[str, Any]:
-    rows = {sign: _eight_term_operator_expansion(weights, sign) for sign in ("negative", "positive", "zero")}
+def _eight_term_expansion(weights: Mapping[str, Fraction], *, rs: Any = None, eps: Any = None) -> dict[str, Any]:
+    if rs is None and eps is None:
+        rows = {sign: _eight_term_operator_expansion(weights, sign) for sign in ("negative", "positive", "zero")}
+    else:
+        rows = {
+            sign: _eight_term_operator_expansion(weights, sign, rs=rs, eps=eps) for sign in ("negative", "positive", "zero")
+        }
     return {
         "what_it_checks": (
             "operator-level bookkeeping: the eight SOS terms, written in the candidate's operator dictionary with this "
@@ -1038,29 +1057,38 @@ def _eight_term_expansion(weights: Mapping[str, Fraction]) -> dict[str, Any]:
     }
 
 
-def _bracket_algebra() -> dict[str, Any]:
-    n, s, k, r = sympy.symbols("N_H s k r0", nonnegative=True)
+def _bracket_algebra(scale: str = "r0") -> dict[str, Any]:
+    """The H/S bracket algebra in the scale symbol ``scale``: "r0" (committed witness, |S| = r0) or "rS" (the
+    decoupled-singlet family of g3_sm_pati_salam_decoupled_singlet_family_v20, |S| = rS).  The identities are the
+    same polynomial identities; only the symbol and the texts change."""
+    n, s, k, r = sympy.symbols(f"N_H s k {scale}", nonnegative=True)
     t = s - r
     reduced = 2 * n**2 + 2 * k * r * n - 2 * k * n * s + (s**2 - r**2) ** 2
     completed = 2 * (n - k * t / 2) ** 2 + t**2 * (4 * r**2 - k**2 / 2 + t * (t + 4 * r))
     nonpositive_t_form = 2 * n**2 + 2 * k * n * (r - s) + (s - r) ** 2 * (s + r) ** 2
     bracket = (s + r) ** 2 - (4 * r**2 + t * (t + 4 * r))
     boundary = sympy.factor(sympy.expand((s + r) ** 2 - (2 * sympy.sqrt(2) * r) ** 2 / 2))
-    return {
+    texts = {
         "H_S_reduced_form": "2 N_H^2 + 2|k| r0 N_H - 2|k| N_H |S| + (|S|^2 - r0^2)^2  (after Cauchy-Schwarz |H.H| <= N_H)",
-        "completed_square_residual": str(sympy.expand(reduced - completed)),
-        "nonpositive_t_form_residual": str(sympy.expand(reduced - nonpositive_t_form)),
-        "bracket_identity_residual": str(sympy.expand(bracket)),
-        "all_identities_exact": sympy.expand(reduced - completed) == 0
-        and sympy.expand(reduced - nonpositive_t_form) == 0
-        and sympy.expand(bracket) == 0,
         "argument": (
             "t = |S| - r0.  t <= 0: every term of 2 N_H^2 + 2|k| N_H (-t) + t^2 (|S| + r0)^2 is >= 0 and the sum is 0 "
             "iff N_H = 0 and t = 0 (|S| + r0 >= r0 > 0).  t > 0: the sum equals 2 (N_H - |k| t/2)^2 + "
             "t^2 [(|S| + r0)^2 - k^2/2] with (|S| + r0)^2 > 4 r0^2 > k^2/2, so it is > 0.  Hence V_HS + r0^4 = 0 "
             "iff H = 0 and |S| = r0 (Cauchy-Schwarz makes V_HS >= the reduced form)."
         ),
-        "boundary_remark_bracket_at_k2_eq_8r0^2": str(boundary),
+    }
+    if scale != "r0":
+        texts = {key: value.replace("r0", scale) for key, value in texts.items()}
+    return {
+        "H_S_reduced_form": texts["H_S_reduced_form"],
+        "completed_square_residual": str(sympy.expand(reduced - completed)),
+        "nonpositive_t_form_residual": str(sympy.expand(reduced - nonpositive_t_form)),
+        "bracket_identity_residual": str(sympy.expand(bracket)),
+        "all_identities_exact": sympy.expand(reduced - completed) == 0
+        and sympy.expand(reduced - nonpositive_t_form) == 0
+        and sympy.expand(bracket) == 0,
+        "argument": texts["argument"],
+        f"boundary_remark_bracket_at_k2_eq_8{scale}^2": str(boundary),
     }
 
 
@@ -2250,26 +2278,50 @@ def _exact_number(value: Any) -> Any:
     return value if isinstance(value, sympy.Basic) else Fraction(value)
 
 
-def _hs_point_list(hs_points: Sequence[tuple[Any, Any]] | None) -> list[tuple[Any, Any]]:
-    return [(_exact_number(r0), _exact_number(k)) for r0, k in (default_hs_points() if hs_points is None else hs_points)]
+def _hs_point_list(hs_points: Sequence[tuple[Any, ...]] | None) -> list[tuple[Any, ...]]:
+    """(r0, kappa) points, or (r0, kappa, rS) points of the decoupled-singlet family (|S| = rS)."""
+    points = default_hs_points() if hs_points is None else hs_points
+    if any(len(point) not in (2, 3) for point in points):
+        raise ValueError("hs_points entries must be (r0, kappa) or (r0, kappa, rS)")
+    return [tuple(_exact_number(value) for value in point) for point in points]
 
 
-def p3_section(hs_points: Sequence[tuple[Any, Any]] | None = None) -> tuple[dict[str, Any], dict[str, bool]]:
+def p3_section(hs_points: Sequence[tuple[Any, ...]] | None = None) -> tuple[dict[str, Any], dict[str, bool]]:
     points = _hs_point_list(hs_points)
     rows = []
-    for r0, kappa in points:
-        certificate = candidate.exact_hs_certificate(r0, kappa)
-        rows.append(
-            {
-                "r0": r0,
-                "kappa": kappa,
-                "kappa_squared_over_8_r0_squared": kappa * kappa / (8 * r0 * r0),
-                "margin_4r0^2_minus_kappa^2/2": certificate["margin_4r0_squared_minus_kappa_squared_over_2"],
-                "condition_holds_strictly": bool(certificate["condition_holds_strictly"]),
-                "square_completion_identity_exact": bool(certificate["square_completion_identity_exact"]),
-            }
-        )
-    brackets = sos_dependency_data()["bracket_algebra_H_S"]
+    for point in points:
+        if len(point) == 2:
+            r0, kappa = point
+            certificate = candidate.exact_hs_certificate(r0, kappa)
+            rows.append(
+                {
+                    "r0": r0,
+                    "kappa": kappa,
+                    "kappa_squared_over_8_r0_squared": kappa * kappa / (8 * r0 * r0),
+                    "margin_4r0^2_minus_kappa^2/2": certificate["margin_4r0_squared_minus_kappa_squared_over_2"],
+                    "condition_holds_strictly": bool(certificate["condition_holds_strictly"]),
+                    "square_completion_identity_exact": bool(certificate["square_completion_identity_exact"]),
+                }
+            )
+        else:
+            r0, kappa, rs = point
+            certificate = candidate.exact_hs_certificate(r0, kappa, rs=rs)
+            rows.append(
+                {
+                    "r0": r0,
+                    "rS": rs,
+                    "kappa": kappa,
+                    "kappa_squared_over_8_rS_squared": kappa * kappa / (8 * rs * rs),
+                    "margin_4rS^2_minus_kappa^2/2": certificate["margin_4r0_squared_minus_kappa_squared_over_2"],
+                    "condition_holds_strictly": bool(certificate["condition_holds_strictly"]),
+                    "square_completion_identity_exact": bool(certificate["square_completion_identity_exact"]),
+                }
+            )
+    # (r0, kappa, rS) rows: the decoupled-singlet family (|S| = rS), whose H/S texts are stated at rS.
+    family_rows = any(len(point) == 3 for point in points)
+    # The same (cached-free) bracket algebra that sos_dependency_data() records; calling it directly keeps P3
+    # independent of the candidate's heavy exact certificate.
+    brackets = _bracket_algebra("rS") if family_rows else _bracket_algebra()
     charges = charge_data()
     operators = operator_data()
     tangent = tangent_rank_data()
@@ -2312,7 +2364,28 @@ def p3_section(hs_points: Sequence[tuple[Any, Any]] | None = None) -> tuple[dict
         "operators": operators,
         "tangent_rank": tangent,
     }
+    if family_rows:
+        section = _p3_family_wording(section)
     return section, checks
+
+
+def _p3_family_wording(section: Mapping[str, Any]) -> dict[str, Any]:
+    """P3 texts at the singlet scale rS of the decoupled-singlet family (rows with rS = r0 are the witness scale)."""
+    output = dict(section)
+    for key in ("statement", "domain"):
+        output[key] = section[key].replace("r0", "rS")
+    output["HS_proof_for_all_rS_kappa"] = output.pop("HS_proof_for_all_r0_kappa").replace("r0", "rS")
+    output["tangent_rank"] = {
+        **section["tangent_rank"],
+        "scaling": "the chart tangent is D M with invertible diagonal D = (1, sqrt2 r0/4, sqrt2 rS, sqrt2 x0) on (Phi, "
+        "Sigma, S, Phi17): ranks hold for all r0, rS, x0 > 0",
+    }
+    output["S_scale"] = (
+        "rS: the decoupled-singlet family (|S| = rS independent of r0; g3_sm_pati_salam_decoupled_singlet_family_v20). "
+        "The H/S sector involves only rS; the charges, phases, operator neutrality and integer tangent ranks are "
+        "scale-free"
+    )
+    return output
 
 
 # ---------------------------------------------------------------------------
