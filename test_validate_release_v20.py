@@ -181,6 +181,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_g8_sm_pati_salam_flavour_nogo_v20.py",
             "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",
             "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.md",
+            "g3_sm_pati_salam_decoupled_singlet_family_v20.py",
+            "test_g3_sm_pati_salam_decoupled_singlet_family_v20.py",
+            "G3_SM_PATI_SALAM_DECOUPLED_SINGLET_FAMILY_V20.json",
+            "G3_SM_PATI_SALAM_DECOUPLED_SINGLET_FAMILY_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:

@@ -315,19 +315,25 @@ def candidate_coefficients(
     kappa: Any | None = None,
     *,
     o06_offset: Any = 0,
+    rs: Any | None = None,
 ) -> dict[str, Any]:
     """The SM Pati-Salam candidate: historical h=0 map plus the stated changes.
 
-    Accepts Fractions (exact benchmark values) or sympy symbols (identity check).
+    Accepts Fractions (exact benchmark values) or sympy symbols (identity check).  ``rs`` is the singlet scale |S|
+    of the decoupled-singlet family (g3_sm_pati_salam_decoupled_singlet_family_v20): it sets O04 = -2 rs^2 and
+    O06 = 2|kappa| rs + o06_offset and changes nothing else.  The default (None) is |S| = r0, the committed map.
     """
     kappa = -r0 / 4 if kappa is None else kappa
+    scale = r0 if rs is None else rs
     output = historical_coefficients(r0, x0, 0)
     t = SIGMA_SCALE
     output[SELF_IDS["2772bar"]] = t * SWAPPED_SELF_WEIGHTS["2772bar"]
     output[SELF_IDS["4125"]] = t * SWAPPED_SELF_WEIGHTS["4125"]
     output[O05_ID] = t * (4 - RADIAL_COEFFICIENT * r0 * r0)
-    output[O06_ID] = 2 * abs(kappa) * r0 + o06_offset
+    output[O06_ID] = 2 * abs(kappa) * scale + o06_offset
     output[O12_ID] = kappa
+    if rs is not None:
+        output[O04_ID] = -2 * rs * rs
     return {key: value for key, value in output.items() if value != 0}
 
 
@@ -347,14 +353,19 @@ def coefficient_changes(r0: Fraction = R0, x0: Fraction = X0) -> list[dict[str, 
     return rows
 
 
-def expanded_sos_coefficient_map(r0: Any = R0, x0: Any = X0, kappa: Any | None = None) -> dict[str, Any]:
+def expanded_sos_coefficient_map(
+    r0: Any = R0, x0: Any = X0, kappa: Any | None = None, *, rs: Any | None = None
+) -> dict[str, Any]:
     """Expand the adapted SOS decomposition into authoritative parameters.
 
     V = V_Phi + (1/8)[||(M-2)Sigma||^2 + ||C Sigma||^2 + W'(Sigma) - 2 r0^2 N_Sigma]
         + [2 N_H^2 + 2|k| r0 N_H + 2k Re(H.H S) + (|S|^2 - r0^2)^2]
         + ||H wedge Phi||^2 + (1/32)(|Phi17|^2 - x0^2)^2   (constants dropped).
+
+    ``rs`` (default None: r0) replaces r0 in the H/S bracket only (decoupled-singlet family).
     """
     kappa = -r0 / 4 if kappa is None else kappa
+    scale = r0 if rs is None else rs
     t = SIGMA_SCALE
     output: dict[str, Any] = {"lambda::O07_B01_Phi_norm": Fraction(-2)}
     for index, name in enumerate(("J0", "J2", "J3", "J4"), start=1):
@@ -372,9 +383,9 @@ def expanded_sos_coefficient_map(r0: Any = R0, x0: Any = X0, kappa: Any | None =
     # 2 N_H^2 = 2 (I_1 + I_54): Sym^2(10) = 1 + 54.
     output["lambda::O36_B01_H_self_quartics"] = Fraction(2)
     output["lambda::O36_B02_H_self_quartics"] = Fraction(2)
-    output[O06_ID] = 2 * abs(kappa) * r0
+    output[O06_ID] = 2 * abs(kappa) * scale
     output[O12_ID] = kappa
-    output[O04_ID] = -2 * r0 * r0
+    output[O04_ID] = -2 * scale * scale
     output["lambda::O23_B01_singlet_polynomial"] = Fraction(1)
     # (3/5) I_1 - I_54 = Hdag(||Phi||^2 I - C(Phi))H = ||H wedge Phi||^2.
     output[O46_1_ID] = Fraction(3, 5)
@@ -393,9 +404,11 @@ def _laurent_at(polynomial: Mapping[tuple[int, int, int], Fraction], h: Fraction
     return total
 
 
-def lower_bound_v0(r0: Any = R0, x0: Any = X0) -> Any:
-    """V0 = -1 - (1/8) r0^4 - r0^4 - x0^4/32 (no constant term in the compiler)."""
-    return -1 - SIGMA_SCALE * r0**4 - r0**4 - x0**4 / 32
+def lower_bound_v0(r0: Any = R0, x0: Any = X0, *, rs: Any | None = None) -> Any:
+    """V0 = -1 - (1/8) r0^4 - r0^4 - x0^4/32 (no constant term in the compiler); with the singlet scale rs
+    (decoupled-singlet family) the S term is -rs^4."""
+    s = r0 if rs is None else rs
+    return -1 - SIGMA_SCALE * r0**4 - s**4 - x0**4 / 32
 
 
 @lru_cache(maxsize=1)
@@ -502,12 +515,15 @@ def sigma_std_unit_coordinates() -> np.ndarray:
     return (real + 1j * imaginary) / 4.0
 
 
-def candidate_state(r0: Any = R0, x0: Any = X0, *, h: np.ndarray | None = None) -> potential.FieldState:
+def candidate_state(
+    r0: Any = R0, x0: Any = X0, *, h: np.ndarray | None = None, rs: Any | None = None
+) -> potential.FieldState:
+    """(p, h, r0 sigma_std, S, x0) with S = r0 (default) or the decoupled singlet scale rs."""
     return potential.FieldState(
         phi=direct.singlet_basis()["p"],
         h=np.zeros(chart.H_COMPLEX_DIM, dtype=complex) if h is None else np.asarray(h, dtype=complex),
         sigma=chart.sigma_from_coordinates(float(r0) * sigma_std_unit_coordinates()),
-        s=complex(float(r0)),
+        s=complex(float(r0 if rs is None else rs)),
         x=complex(float(x0)),
     ).validated()
 
@@ -698,13 +714,16 @@ def _hs_square_completion_residual() -> str:
     return str(sympy.expand(reduced - completed))
 
 
-def exact_hs_certificate(r0: Fraction = R0, kappa: Fraction | None = None) -> dict[str, Any]:
+def exact_hs_certificate(r0: Fraction = R0, kappa: Fraction | None = None, *, rs: Fraction | None = None) -> dict[str, Any]:
+    """H/S square completion at (r0, kappa); ``rs`` (default None: r0) is the singlet scale |S| of the
+    decoupled-singlet family, the only scale of the H/S sector (margin 4 rs^2 - kappa^2/2, lower bound -rs^4)."""
     kappa = -r0 / 4 if kappa is None else kappa
-    margin = 4 * r0 * r0 - kappa * kappa / 2
+    scale = r0 if rs is None else rs
+    margin = 4 * scale * scale - kappa * kappa / 2
     residual = _hs_square_completion_residual()
     sample = np.random.default_rng(10).normal(size=(2, 10))
     completeness = h_self_source.invariants(sample[0] + 1j * sample[1])["projector_completeness_residual"]
-    return {
+    output = {
         "I1_plus_I54_minus_NH2_float_residual_at_random_H": completeness,
         "sector": "V_HS = 2 N_H^2 + 2|k| r0 N_H + 2 k Re(conj(H.H) conj(S)) + |S|^4 - 2 r0^2 |S|^2",
         "O12_convention": "re::O12 multiplies 2 Re[(Hdag.Hdag) Sdag] (census orbit O12 = SARAH kappaH H10.H10.S)",
@@ -727,9 +746,19 @@ def exact_hs_certificate(r0: Fraction = R0, kappa: Fraction | None = None) -> di
         "condition": "k^2 < 8 r0^2 (equivalently lambda_eff = 2 - k^2/(4 r0^2) > 0)",
         "margin_4r0_squared_minus_kappa_squared_over_2": margin,
         "condition_holds_strictly": margin > 0,
-        "lower_bound": -(r0**4),
+        "lower_bound": -(scale**4),
         "equality_set": "H = 0 and |S| = r0 (strict inequality elsewhere)",
     }
+    if rs is not None:
+        # The decoupled-singlet family: the H/S scale is rS, so every statement text is given at rS.
+        for key in ("sector", "square_completion", "square_completion_identity", "condition", "equality_set"):
+            output[key] = output[key].replace("r0", "rS")
+        output["S_scale_rS"] = rs
+        output["S_scale_note"] = (
+            "the H/S sector involves only the singlet scale rS (the texts above are at rS); the key name "
+            "margin_4r0_squared_minus_kappa_squared_over_2 keeps the committed spelling and holds 4 rS^2 - kappa^2/2"
+        )
+    return output
 
 
 def exact_quartic_bound() -> dict[str, Any]:
@@ -1930,9 +1959,11 @@ def hierarchy_section(physical_states: Sequence[Mapping[str, Any]] | None = None
     }
 
 
-def exact_light_doublet_quartic(r0: Fraction, kappa: Fraction | None = None) -> dict[str, Fraction]:
+def exact_light_doublet_quartic(r0: Fraction, kappa: Fraction | None = None, *, rs: Fraction | None = None) -> dict[str, Fraction]:
+    """lambda_eff = 2 - kappa^2/(4 s^2) with s = |S| = r0 (default) or the decoupled singlet scale rs."""
     kappa = -r0 / 4 if kappa is None else kappa
-    shift = kappa * kappa / (4 * r0 * r0)
+    s = r0 if rs is None else rs
+    shift = kappa * kappa / (4 * s * s)
     return {"lambda_direct": Fraction(2), "S_exchange_shift": shift, "lambda_eff": 2 - shift}
 
 
@@ -2033,8 +2064,11 @@ class SosFormPotential:
         *,
         weights: Mapping[str, Fraction] = SWAPPED_SELF_WEIGHTS,
         quartic_only: bool = False,
+        rs: float | None = None,
     ) -> None:
         self.r0, self.x0, self.kappa, self.o06 = float(r0), float(x0), float(kappa), float(o06)
+        # Singlet scale |S| (decoupled-singlet family); None keeps the committed |S| = r0 (the same float object).
+        self.rs = self.r0 if rs is None else float(rs)
         self.t = float(SIGMA_SCALE)
         self.weights = {channel: float(value) for channel, value in weights.items()}
         self.quartic_only = quartic_only
@@ -2126,8 +2160,8 @@ class SosFormPotential:
         g_s += 2.0 * ss * s
         g_x += 2.0 * xx * x / 32.0
         if not quartic:
-            value += -2.0 * self.r0**2 * ss - (self.x0**2 / 16.0) * xx
-            g_s += -2.0 * self.r0**2 * s
+            value += -2.0 * self.rs**2 * ss - (self.x0**2 / 16.0) * xx
+            g_s += -2.0 * self.rs**2 * s
             g_x += -(self.x0**2 / 16.0) * x
         gradient = np.zeros(chart.TOTAL_DIM)
         gradient[chart.PHI_SLICE] = g_phi
@@ -2193,22 +2227,24 @@ def _random_block(rng: np.random.Generator, block: slice, scale: float) -> np.nd
     return values / np.linalg.norm(values) * scale
 
 
-def random_start(kind: str, rng: np.random.Generator, r0: float, x0: float) -> np.ndarray:
+def random_start(kind: str, rng: np.random.Generator, r0: float, x0: float, *, rs: float | None = None) -> np.ndarray:
+    """Random start of a local minimisation; ``rs`` (default None: r0) sets the S-block scale."""
+    s = r0 if rs is None else float(rs)
     q = np.zeros(chart.TOTAL_DIM)
     p_vector = chart.pack(candidate_state(R0, X0))[chart.PHI_SLICE]
     if kind == "generic":
         q[chart.PHI_SLICE] = _random_block(rng, chart.PHI_SLICE, rng.uniform(0.3, 1.5))
-        scales = {chart.H_SLICE: 0.5, chart.SIGMA_SLICE: max(3.0 * r0, 0.3), chart.S_SLICE: 3.0 * r0, chart.X_SLICE: 1.5 * x0}
+        scales = {chart.H_SLICE: 0.5, chart.SIGMA_SLICE: max(3.0 * r0, 0.3), chart.S_SLICE: 3.0 * s, chart.X_SLICE: 1.5 * x0}
     elif kind == "phi_near_p":
         noise = _random_block(rng, chart.PHI_SLICE, 0.4)
         q[chart.PHI_SLICE] = p_vector + noise
-        scales = {chart.H_SLICE: 0.05, chart.SIGMA_SLICE: 2.0 * SQRT2 * r0, chart.S_SLICE: 2.0 * r0, chart.X_SLICE: 1.5 * x0}
+        scales = {chart.H_SLICE: 0.05, chart.SIGMA_SLICE: 2.0 * SQRT2 * r0, chart.S_SLICE: 2.0 * s, chart.X_SLICE: 1.5 * x0}
     elif kind == "large_field":
         q[chart.PHI_SLICE] = _random_block(rng, chart.PHI_SLICE, rng.uniform(1.0, 3.0))
         scales = {chart.H_SLICE: 1.5, chart.SIGMA_SLICE: 2.0, chart.S_SLICE: 1.5, chart.X_SLICE: 3.0 * x0}
     elif kind == "sigma_dominated":
         q[chart.PHI_SLICE] = _random_block(rng, chart.PHI_SLICE, 0.1)
-        scales = {chart.H_SLICE: 0.1, chart.SIGMA_SLICE: 1.0, chart.S_SLICE: r0, chart.X_SLICE: x0}
+        scales = {chart.H_SLICE: 0.1, chart.SIGMA_SLICE: 1.0, chart.S_SLICE: s, chart.X_SLICE: x0}
     else:
         raise ValueError(kind)
     for block, scale in scales.items():
@@ -2281,14 +2317,25 @@ def soft_displacement(gap: float, r0: float) -> float:
 
 
 def endpoint_orbit_test(
-    gap: float, invariants: Mapping[str, float], stabilizer: Mapping[str, Any], r0: float, x0: float
+    gap: float,
+    invariants: Mapping[str, float],
+    stabilizer: Mapping[str, Any],
+    r0: float,
+    x0: float,
+    *,
+    rs: float | None = None,
 ) -> dict[str, Any]:
     """Convergence-aware classification of a float minimisation endpoint (see NUM_FULL_GAP_REACHED).
 
     on_orbit: converged (reached) and every normalised residual within the soft-mode tolerance, with a 12-dim
     stabilizer of hypercharge type; inconclusive: not converged enough to classify; off_orbit: converged but
     outside the tolerance, which would contradict the exact equality-set classification.
+
+    ``rs`` (default None: |S| = r0) is the decoupled singlet scale: the S residual becomes |S_abs - rs|/rs (key
+    abs_S_minus_rS_over_rS).  The soft-displacement tolerances stay r0-based (126bar remnants at r0^2/96), which
+    needs the S-sector curvatures min(4 rs^2, 4 |kappa| rs) above r0^2/96.
     """
+    s_key, s_scale = ("abs_S_minus_r0_over_r0", r0) if rs is None else ("abs_S_minus_rS_over_rS", rs)
     eps = soft_displacement(gap, r0)
     # gap <= NUM_FULL_GAP_REACHED and eps(gap) <= ENDPOINT_MAX_SOFT_DISPLACEMENT.
     reached_threshold = min(
@@ -2303,7 +2350,7 @@ def endpoint_orbit_test(
         "sqrt_Sigma_purity_defect": math.sqrt(max(invariants["Sigma_purity_defect"], 0.0)),
         "A_shift_norm_over_r0": invariants["A_shift_norm"] / r0,
         "C_norm_over_r0": invariants["C_norm"] / r0,
-        "abs_S_minus_r0_over_r0": abs(invariants["S_abs"] - r0) / r0,
+        s_key: abs(invariants["S_abs"] - s_scale) / s_scale,
         "abs_Phi17_minus_x0_over_x0": abs(invariants["Phi17_abs"] - x0) / x0,
         "N_H_over_r0_squared": invariants["N_H"] / r0**2,
         "kernel_singular_value_over_r0": stabilizer["largest_kernel_singular_value"] / r0,
@@ -2332,10 +2379,15 @@ def endpoint_orbit_test(
     }
 
 
-def classify_endpoint(fast: SosFormPotential, q: np.ndarray, r0: float, x0: float, *, gap: float) -> dict[str, Any]:
+def classify_endpoint(
+    fast: SosFormPotential, q: np.ndarray, r0: float, x0: float, *, gap: float, rs: float | None = None
+) -> dict[str, Any]:
     invariants = fast.invariants(q)
     stabilizer = numerical_stabilizer(q, r0)
-    test = endpoint_orbit_test(gap, invariants, stabilizer, r0, x0)
+    if rs is None:
+        test = endpoint_orbit_test(gap, invariants, stabilizer, r0, x0)
+    else:
+        test = endpoint_orbit_test(gap, invariants, stabilizer, r0, x0, rs=rs)
     classification = test.pop("classification")
     return {
         "invariants": invariants,

@@ -137,7 +137,7 @@ from collections.abc import Iterable, Mapping, Sequence
 from fractions import Fraction
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 
 import numpy as np
 import sympy
@@ -228,6 +228,25 @@ O20_ID = "lambda::O20_B01_singlet_polynomial"
 SELF_CHANNEL_BY_ID = {parameter: channel for channel, parameter in candidate.SELF_IDS.items()}
 
 ExactPieces = tuple[tuple[Fraction, np.ndarray], ...]
+
+
+class SingletPoint(NamedTuple):
+    """(r0, rS, x0, kappa) of the decoupled-singlet family (|S| = rS independent of r0); rS = r0, kappa = -r0/4 is
+    the committed witness.  Only the ``point``/``rs`` keywords use it
+    (g3_sm_pati_salam_decoupled_singlet_family_v20); every default path is the committed witness code."""
+
+    r0: Fraction
+    rs: Fraction
+    x0: Fraction
+    kappa: Fraction
+
+
+WITNESS_POINT = SingletPoint(R0, R0, X0, KAPPA)
+
+
+def as_singlet_point(point: Sequence[Any]) -> SingletPoint:
+    """A SingletPoint with exact Fraction entries (hashable cache key)."""
+    return SingletPoint(*(Fraction(value) for value in point))
 
 
 # ---------------------------------------------------------------------------
@@ -709,14 +728,17 @@ def _singlet_unit_pieces(block: slice, vev: Fraction, power: int) -> tuple[Exact
     )
 
 
-def binding_units(r0: Fraction = R0, x0: Fraction = X0) -> tuple[dict[str, Any], ...]:
+def binding_units(r0: Fraction = R0, x0: Fraction = X0, *, rs: Fraction | None = None) -> tuple[dict[str, Any], ...]:
     """Every compiler parameter of the benchmark, grouped into exactly evaluable operators.
 
     Each unit is {name, weights {parameter: w_p}, hessian pieces, gradient pieces, source}; the unit operator is
     sum_p w_p O_p, and its exact Hessian/gradient at q0 is the Fraction-weighted sum of the integer pieces.
+    ``rs`` (default None: |S| = r0) is the decoupled singlet scale: it replaces r0 in the re::O12 unit and the
+    S vev of the O04/O23 units only.
     """
     r0 = Fraction(r0)
     x0 = Fraction(x0)
+    s = r0 if rs is None else Fraction(rs)
     rho = r0 / 4  # z0 = rho * s  (sigma_std unit coordinates are raw/4)
     tensors = source_tensors()
     s_real, s_imaginary = tensors["s"]
@@ -837,9 +859,11 @@ def binding_units(r0: Fraction = R0, x0: Fraction = X0) -> tuple[dict[str, Any],
         {
             "name": "re::O12 2 Re[conj(H.H) conj(S)]",
             "weights": {O12_ID: Fraction(1)},
-            "hessian": ((r0, _diag_block(HB, [4, -4] * chart.H_COMPLEX_DIM)),),
+            "hessian": ((s, _diag_block(HB, [4, -4] * chart.H_COMPLEX_DIM)),),
             "gradient": (),
-            "source": "exact (S = r0 real at q0; the H-S and S-S second derivatives vanish at H = 0)",
+            "source": "exact (S = r0 real at q0; the H-S and S-S second derivatives vanish at H = 0)"
+            if rs is None
+            else "exact (S = rS real at q0; the H-S and S-S second derivatives vanish at H = 0)",
         }
     )
     for parameter, label in zip(O36_IDS, ("I_1", "I_54"), strict=True):
@@ -862,8 +886,8 @@ def binding_units(r0: Fraction = R0, x0: Fraction = X0) -> tuple[dict[str, Any],
         }
     )
     for parameter, block, vev, power, label in (
-        (O04_ID, SB, r0, 2, "O04 |S|^2"),
-        (O23_ID, SB, r0, 4, "O23 |S|^4"),
+        (O04_ID, SB, s, 2, "O04 |S|^2"),
+        (O23_ID, SB, s, 4, "O23 |S|^4"),
         (O03_ID, XB, x0, 2, "O03 |Phi17|^2"),
         (O20_ID, XB, x0, 4, "O20 |Phi17|^4"),
     ):
@@ -903,9 +927,10 @@ def unit_coefficients(units: Sequence[Mapping[str, Any]], coefficients: Mapping[
 
 
 @lru_cache(maxsize=8)
-def exact_unit_matrices(r0: Fraction = R0, x0: Fraction = X0) -> tuple[dict[str, Any], ...]:
+def exact_unit_matrices(r0: Fraction = R0, x0: Fraction = X0, *, rs: Fraction | None = None) -> tuple[dict[str, Any], ...]:
     rows = []
-    for unit in binding_units(r0, x0):
+    units = binding_units(r0, x0) if rs is None else binding_units(r0, x0, rs=rs)
+    for unit in units:
         hessian = combine(unit["hessian"], (TOTAL_DIM, TOTAL_DIM))
         gradient = combine(unit["gradient"], (TOTAL_DIM,))
         rows.append({**{key: unit[key] for key in ("name", "weights", "source")}, "hessian": hessian, "gradient": gradient})
@@ -925,28 +950,60 @@ def _freeze(overrides: Mapping[str, Any] | None) -> Overrides:
     return tuple(sorted((key, Fraction(value)) for key, value in (overrides or {}).items()))
 
 
-def benchmark_coefficients(variant: str = "benchmark", overrides: Mapping[str, Any] | None = None) -> dict[str, Fraction]:
+def variant_offset(variant: str, point: SingletPoint | None = None) -> Fraction:
+    """O06 offset eps of a variant: VARIANT_OFFSETS at the witness; r0^2/100 (raised_O06), r0^2/10^6 (tiny_eps)
+    at a decoupled-singlet point."""
+    if point is None:
+        return VARIANT_OFFSETS[variant]
+    r0 = Fraction(point.r0)
+    return {"benchmark": Fraction(0), "raised_O06": r0 * r0 / 100, "tiny_eps": r0 * r0 / 10**6}[variant]
+
+
+def benchmark_coefficients(
+    variant: str = "benchmark", overrides: Mapping[str, Any] | None = None, *, point: SingletPoint | None = None
+) -> dict[str, Fraction]:
     """The candidate's exact coefficients at (r0, x0, kappa) = (1/5, 1, -1/20); raised_O06 adds r0^2/100 to O06 and
     tiny_eps adds r0^2/10^6 (VARIANT_OFFSETS).
 
     ``overrides`` (parameter -> value, applied before the O06 raise) exists for fail-closed mutation tests only.
+    ``point`` (default None: the witness) is a decoupled-singlet family point (candidate map with rs = point.rs).
     """
-    output = {key: Fraction(value) for key, value in candidate.candidate_coefficients(R0, X0, KAPPA).items()}
+    if point is None:
+        source = candidate.candidate_coefficients(R0, X0, KAPPA)
+    else:
+        source = candidate.candidate_coefficients(point.r0, point.x0, point.kappa, rs=point.rs)
+    output = {key: Fraction(value) for key, value in source.items()}
     for key, value in _freeze(overrides):
         output[key] = value
-    output[O06_ID] = output.get(O06_ID, Fraction(0)) + VARIANT_OFFSETS[variant]
+    output[O06_ID] = output.get(O06_ID, Fraction(0)) + variant_offset(variant, point)
     return {key: value for key, value in output.items() if value != 0}
 
 
-def exact_hessian(variant: str = "benchmark", overrides: Mapping[str, Any] | None = None) -> dict[str, Any]:
-    """Exact H_u and grad_u at the benchmark as (object numerator, denominator)."""
-    return _exact_hessian_cached(variant, _freeze(overrides))
+def exact_hessian(
+    variant: str = "benchmark", overrides: Mapping[str, Any] | None = None, *, point: Sequence[Any] | None = None
+) -> dict[str, Any]:
+    """Exact H_u and grad_u at the benchmark as (object numerator, denominator); ``point`` (a SingletPoint, default
+    None: the witness) evaluates a decoupled-singlet family point instead."""
+    if point is None:
+        return _exact_hessian_cached(variant, _freeze(overrides))
+    return _exact_hessian_point_cached(variant, _freeze(overrides), as_singlet_point(point))
 
 
 @lru_cache(maxsize=8)
 def _exact_hessian_cached(variant: str, overrides: Overrides) -> dict[str, Any]:
     units = exact_unit_matrices(R0, X0)
     coefficients = benchmark_coefficients(variant, dict(overrides))
+    return _assemble_exact_hessian(units, coefficients)
+
+
+@lru_cache(maxsize=16)
+def _exact_hessian_point_cached(variant: str, overrides: Overrides, point: SingletPoint) -> dict[str, Any]:
+    units = exact_unit_matrices(point.r0, point.x0, rs=point.rs)
+    coefficients = benchmark_coefficients(variant, dict(overrides), point=point)
+    return _assemble_exact_hessian(units, coefficients)
+
+
+def _assemble_exact_hessian(units: Sequence[Mapping[str, Any]], coefficients: Mapping[str, Fraction]) -> dict[str, Any]:
     coverage = unit_coefficients(units, coefficients)
     unit_scalars = coverage["unit_coefficients"]
     hessian_terms = []
@@ -999,13 +1056,14 @@ def integer_tangent_matrix() -> np.ndarray:
     return np.column_stack(columns)
 
 
-def tangent_row_scale(r0: Fraction = R0, x0: Fraction = X0) -> tuple[Fraction, ...]:
-    """u-coordinate tangent at q0 = diag(1 on Phi, r0/4 on Sigma, r0 on S, x0 on Phi17) x integer matrix."""
+def tangent_row_scale(r0: Fraction = R0, x0: Fraction = X0, *, rs: Fraction | None = None) -> tuple[Fraction, ...]:
+    """u-coordinate tangent at q0 = diag(1 on Phi, r0/4 on Sigma, r0 on S, x0 on Phi17) x integer matrix; ``rs``
+    (default None: r0) is the decoupled singlet scale on the S rows."""
     scale = [Fraction(1)] * TOTAL_DIM
     for index in range(SG.start, SG.stop):
         scale[index] = Fraction(r0) / 4
     for index in range(SB.start, SB.stop):
-        scale[index] = Fraction(r0)
+        scale[index] = Fraction(r0) if rs is None else Fraction(rs)
     for index in range(XB.start, XB.stop):
         scale[index] = Fraction(x0)
     return tuple(scale)
@@ -1023,10 +1081,10 @@ def _rank_exact(matrix: np.ndarray) -> int:
     return equality.exact_rank(rows, np.asarray(matrix).shape[1]) if rows else 0
 
 
-@lru_cache(maxsize=1)
-def tangent_data() -> dict[str, Any]:
+@lru_cache(maxsize=8)
+def tangent_data(point: SingletPoint | None = None) -> dict[str, Any]:
     matrix = integer_tangent_matrix()
-    scale = tangent_row_scale()
+    scale = tangent_row_scale() if point is None else tangent_row_scale(point.r0, point.x0, rs=point.rs)
     common = math.lcm(*(value.denominator for value in scale))
     integer_scale = np.asarray([int(value * common) for value in scale], dtype=np.int64)
     scaled = matrix * integer_scale[:, None]  # common * T_u (integer)
@@ -1042,7 +1100,9 @@ def tangent_data() -> dict[str, Any]:
         "integer_matrix": matrix,
         "T_u_times_common": scaled,
         "common_denominator": common,
-        "row_scale": "diag(1 on Phi, r0/4 on Sigma, r0 on S, x0 on Phi17) at r0 = %s, x0 = %s" % (R0, X0),
+        "row_scale": "diag(1 on Phi, r0/4 on Sigma, r0 on S, x0 on Phi17) at r0 = %s, x0 = %s" % (R0, X0)
+        if point is None
+        else "diag(1 on Phi, r0/4 on Sigma, rS on S, x0 on Phi17) at r0 = %s, rS = %s, x0 = %s" % (point.r0, point.rs, point.x0),
         "exact_ranks": ranks,
         "matches_equality_module_ranks": bool(
             ranks["so10"] == recorded["rank_so10"]
@@ -1205,19 +1265,38 @@ def _factorization(value: int) -> dict[str, int]:
     return output
 
 
-def exact_certificate(variant: str = "benchmark", overrides: Mapping[str, Any] | None = None) -> dict[str, Any]:
-    """Exact inertia, kernel and spectral-gap certificate of H_u for one variant (fail-closed flags)."""
-    return _exact_certificate_cached(variant, _freeze(overrides))
+def exact_certificate(
+    variant: str = "benchmark", overrides: Mapping[str, Any] | None = None, *, point: Sequence[Any] | None = None
+) -> dict[str, Any]:
+    """Exact inertia, kernel and spectral-gap certificate of H_u for one variant (fail-closed flags); ``point`` (a
+    SingletPoint, default None: the witness) certifies a decoupled-singlet family point instead."""
+    if point is None:
+        return _exact_certificate_cached(variant, _freeze(overrides))
+    return _exact_certificate_point_cached(variant, _freeze(overrides), as_singlet_point(point))
 
 
 @lru_cache(maxsize=8)
 def _exact_certificate_cached(variant: str, overrides: Overrides) -> dict[str, Any]:
+    return _certificate(variant, overrides, None)
+
+
+@lru_cache(maxsize=16)
+def _exact_certificate_point_cached(variant: str, overrides: Overrides, point: SingletPoint) -> dict[str, Any]:
+    return _certificate(variant, overrides, point)
+
+
+def _certificate(variant: str, overrides: Overrides, point: SingletPoint | None) -> dict[str, Any]:
     # Every variant other than the benchmark lifts the doublet by eps = VARIANT_OFFSETS[variant] > 0 (the eps family).
     raised = variant != "benchmark"
-    exact = exact_hessian(variant, dict(overrides))
+    if point is None:
+        exact = exact_hessian(variant, dict(overrides))
+    else:
+        exact = exact_hessian(variant, dict(overrides), point=point)
     numerator, denominator = exact["hessian"]
     gradient_numerator, gradient_denominator = exact["gradient"]
-    tangents = tangent_data()
+    tangents = tangent_data() if point is None else tangent_data(point)
+    r0 = R0 if point is None else point.r0
+    offset = variant_offset(variant, point)
     # Exact integer products (no int64 bound heuristics: arbitrary exact perturbations must reach the checks).
     tangent_product = _exact_matmul(numerator, tangents["T_u_times_common"])
     doublet_product = _exact_matmul(numerator, doublet_matrix())
@@ -1238,7 +1317,7 @@ def _exact_certificate_cached(variant: str, overrides: Overrides) -> dict[str, A
     nullity = TOTAL_DIM - rank
     # Expected lightest massive level: r0^2/96 (126bar remnants) at the benchmark; the lifted doublet (eps = r0^2/100
     # raised, r0^2/10^6 tiny) otherwise.
-    gap_target = VARIANT_OFFSETS[variant] if raised else LIGHTEST_MASSIVE_OVER_R0_SQUARED * R0 * R0
+    gap_target = offset if raised else LIGHTEST_MASSIVE_OVER_R0_SQUARED * r0 * r0
     gap_inertia = component_inertia(numerator, denominator, shift=gap_target)
     kernel_is_expected_span = bool(
         psd
@@ -1265,7 +1344,7 @@ def _exact_certificate_cached(variant: str, overrides: Overrides) -> dict[str, A
         "variant": VARIANT_LABELS[variant],
         "coefficient_overrides": dict(overrides),
         "O06": exact["coefficients"].get(O06_ID, Fraction(0)),
-        "O06_offset": VARIANT_OFFSETS[variant],
+        "O06_offset": offset,
         "denominator": denominator,
         "denominator_factorization": _factorization(denominator),
         "maximum_abs_numerator": int(max(abs(int(value)) for value in numerator.flat)),
@@ -1305,7 +1384,7 @@ def _exact_certificate_cached(variant: str, overrides: Overrides) -> dict[str, A
         ),
         "spectral_gap": {
             "lambda": gap_target,
-            "lambda_over_r0_squared": gap_target / (R0 * R0),
+            "lambda_over_r0_squared": gap_target / (r0 * r0),
             "statement": "inertia of H_u - lambda D^2 = inertia of Hess_q - lambda I (Sylvester)",
             "negative": gap_inertia["negative"],
             "zero": gap_inertia["zero"],
@@ -1590,7 +1669,15 @@ SM_EPS_FINAL_THEOREM = (
     "exactly on the SO(10)xU(1)_XxPQ orbit of q0."
 )
 PERTURBATIVE_BOUND = Fraction(12)  # < 4 pi (pi > 3): exact rational comparisons only
-EPS_PERTURBATIVE_UPPER = PERTURBATIVE_BOUND - 2 * abs(KAPPA) * R0  # 599/50: O06_eps = 2|kappa| r0 + eps < 12
+
+
+def eps_perturbative_upper(kappa: Fraction = KAPPA, rs: Fraction = R0) -> Fraction:
+    """Exclusive upper end of the eps window: O06_eps = 2|kappa| rS + eps < PERTURBATIVE_BOUND (the window is empty
+    when this is <= 0, i.e. |kappa| rS >= 6).  rS = r0, kappa = -r0/4 is the witness value 599/50."""
+    return PERTURBATIVE_BOUND - 2 * abs(Fraction(kappa)) * Fraction(rs)
+
+
+EPS_PERTURBATIVE_UPPER = eps_perturbative_upper()  # 599/50: O06_eps = 2|kappa| r0 + eps < 12
 EQUALITY_H_CONDITION = "H = 0 and |S| = r0"
 EQUALITY_THEOREM_FRAGMENTS = (
     "satisfies V >= V0",

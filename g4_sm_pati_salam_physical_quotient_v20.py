@@ -477,7 +477,12 @@ def _chart_scale_string(power: int, value: Fraction) -> str:
     return str(rational) if power % 2 == 0 else "sqrt(2)*(%s)" % rational
 
 
-def rank_certificate(matrix: np.ndarray, columns: int) -> dict[str, Any]:
+def _row_scale(rs: Fraction | None) -> tuple[Fraction, ...]:
+    """D_u at the witness (rs None) or with the decoupled singlet scale rs on the S rows."""
+    return hessian.tangent_row_scale() if rs is None else hessian.tangent_row_scale(rs=rs)
+
+
+def rank_certificate(matrix: np.ndarray, columns: int, *, rs: Fraction | None = None) -> dict[str, Any]:
     """Nonzero integer minor plus independent exact right null vectors for the first ``columns`` generators."""
     rows = _integer_rows(matrix, columns)
     labels = GENERATOR_LABELS[:columns]
@@ -487,7 +492,7 @@ def rank_certificate(matrix: np.ndarray, columns: int) -> dict[str, Any]:
     null = superseded._right_nullspace(rows, pivot_rows)
     null_rank = _rank(null)
     residuals_zero = all(superseded._matrix_vector_product_is_zero(rows, vector) for vector in null)
-    scale = hessian.tangent_row_scale()
+    scale = _row_scale(rs)
     scale_product = math.prod((scale[row] for row in pivot_rows), start=Fraction(1))
     complex_rows = sum(1 for row in pivot_rows if row >= chart.PHI_DIM)
     names = chart.coordinate_names()
@@ -518,12 +523,20 @@ def rank_certificate(matrix: np.ndarray, columns: int) -> dict[str, Any]:
     }
 
 
-def gauge_quotient_section(matrix: np.ndarray, contract: Mapping[str, bool]) -> dict[str, Any]:
-    certificates = {
-        "SO10": rank_certificate(matrix, SO10_GENERATOR_COUNT),
-        "SO10_x_U1X": rank_certificate(matrix, GAUGE_GENERATOR_COUNT),
-        "SO10_x_U1X_x_PQ": rank_certificate(matrix, FULL_GENERATOR_COUNT),
-    }
+def gauge_quotient_section(matrix: np.ndarray, contract: Mapping[str, bool], *, rs: Fraction | None = None) -> dict[str, Any]:
+    """``rs`` (default None: the witness |S| = r0) is the decoupled singlet scale on the S rows of D_u."""
+    if rs is None:
+        certificates = {
+            "SO10": rank_certificate(matrix, SO10_GENERATOR_COUNT),
+            "SO10_x_U1X": rank_certificate(matrix, GAUGE_GENERATOR_COUNT),
+            "SO10_x_U1X_x_PQ": rank_certificate(matrix, FULL_GENERATOR_COUNT),
+        }
+    else:
+        certificates = {
+            "SO10": rank_certificate(matrix, SO10_GENERATOR_COUNT, rs=rs),
+            "SO10_x_U1X": rank_certificate(matrix, GAUGE_GENERATOR_COUNT, rs=rs),
+            "SO10_x_U1X_x_PQ": rank_certificate(matrix, FULL_GENERATOR_COUNT, rs=rs),
+        }
     expected_ranks = {"SO10": EXPECTED_SO10_RANK, "SO10_x_U1X": EXPECTED_GAUGE_RANK, "SO10_x_U1X_x_PQ": EXPECTED_FULL_RANK}
     so10 = certificates["SO10"]
     sm_basis = tuple(tuple(int(value) for value in vector) for vector in sigma_audit.standard_sm_integer_basis())
@@ -546,7 +559,7 @@ def gauge_quotient_section(matrix: np.ndarray, contract: Mapping[str, bool]) -> 
         np.array_equal(pristine[:, SO10_GENERATOR_COUNT], phase_column(X_CHARGES))
         and np.array_equal(pristine[:, GAUGE_GENERATOR_COUNT], phase_column(PQ_CHARGES))
     )
-    scale = hessian.tangent_row_scale()
+    scale = _row_scale(rs)
     row_scale_nonzero = all(value != 0 for index, value in enumerate(scale) if not chart.H_SLICE.start <= index < chart.H_SLICE.stop)
     h_rows_vanish = not np.any(np.asarray(matrix)[chart.H_SLICE])
     ranks = {name: certificates[name]["rank"] for name in certificates}
@@ -557,7 +570,9 @@ def gauge_quotient_section(matrix: np.ndarray, contract: Mapping[str, bool]) -> 
         and np.issubdtype(np.asarray(matrix).dtype, np.integer),
         "tangent_matrix_equals_equality_module_construction": bool(np.array_equal(matrix, pristine)),
         "phase_columns_rebuilt_from_declared_X_and_PQ_charges": phase_columns_bound,
-        "row_scaling_D_invertible_at_witness_r0_x0_positive": bool(row_scale_nonzero and R0 > 0 and X0 > 0),
+        "row_scaling_D_invertible_at_witness_r0_x0_positive": bool(
+            row_scale_nonzero and R0 > 0 and X0 > 0 and (rs is None or rs > 0)
+        ),
         "tangents_vanish_on_H_block": bool(h_rows_vanish),
     }
     for name, certificate in certificates.items():
@@ -589,12 +604,18 @@ def gauge_quotient_section(matrix: np.ndarray, contract: Mapping[str, bool]) -> 
     for certificate in certificates.values():
         certificate.pop("_null")
         certificate.pop("_rows")
+    if rs is None:
+        u_text = "D_u = diag(1 on Phi, r0/4 on Sigma, r0 on S, x0 on Phi17) = diag(1, 1/20, 1/5, 1)"
+        chart_text = "D = sqrt(2) D_u on the complex blocks: diag(1, sqrt2 r0/4, sqrt2 r0, sqrt2 x0)"
+    else:
+        u_text = "D_u = diag(1 on Phi, r0/4 on Sigma, rS on S, x0 on Phi17) = diag(1, %s, %s, %s)" % (R0 / 4, rs, X0)
+        chart_text = "D = sqrt(2) D_u on the complex blocks: diag(1, sqrt2 r0/4, sqrt2 rS, sqrt2 x0)"
     return {
         "matrix": "D M: M = 486 x 47 integer tangents at (p, 0, sigma_std raw, 1, 1) (equality module), columns 45 "
         "so(10) L_ab, U(1)_X, PQ",
         "row_scaling": {
-            "u_coordinates": "D_u = diag(1 on Phi, r0/4 on Sigma, r0 on S, x0 on Phi17) = diag(1, 1/20, 1/5, 1)",
-            "chart": "D = sqrt(2) D_u on the complex blocks: diag(1, sqrt2 r0/4, sqrt2 r0, sqrt2 x0)",
+            "u_coordinates": u_text,
+            "chart": chart_text,
             "invertible": row_scale_nonzero,
             "consequence": "rank(D M) = rank(M); a minor of D M is the integer minor times the row-scale product",
         },
@@ -639,9 +660,9 @@ def metric_diagonal() -> tuple[int, ...]:
     return tuple(hessian.congruence_scale_squared())
 
 
-def u_columns(matrix: np.ndarray) -> list[Vector]:
-    """T_u = D_u M column by column, sparse with Fraction entries."""
-    scale = hessian.tangent_row_scale()
+def u_columns(matrix: np.ndarray, *, rs: Fraction | None = None) -> list[Vector]:
+    """T_u = D_u M column by column, sparse with Fraction entries (``rs``: decoupled singlet scale, default r0)."""
+    scale = _row_scale(rs)
     matrix = np.asarray(matrix, dtype=np.int64)
     columns: list[Vector] = []
     for column in range(matrix.shape[1]):
@@ -663,8 +684,9 @@ def _dense(vector: Mapping[int, Fraction]) -> list[Fraction]:
     return output
 
 
-def vacuum_u() -> Vector:
-    """q0 in u-coordinates: Phi = p, Sigma = (r0/4) sigma_std raw (Re, Im), S = (r0, 0), Phi17 = (x0, 0)."""
+def vacuum_u(*, rs: Fraction | None = None) -> Vector:
+    """q0 in u-coordinates: Phi = p, Sigma = (r0/4) sigma_std raw (Re, Im), S = (r0, 0), Phi17 = (x0, 0); ``rs``
+    (default None: r0) is the decoupled singlet scale |S|."""
     vector: Vector = {equality.P_CHART_INDEX: Fraction(1)}
     s_real, s_imaginary = equality._sigma_std_integer()
     for index, (real, imaginary) in enumerate(zip(s_real.tolist(), s_imaginary.tolist(), strict=True)):
@@ -672,18 +694,28 @@ def vacuum_u() -> Vector:
             vector[chart.SIGMA_SLICE.start + 2 * index] = Fraction(int(real)) * R0 / 4
         if imaginary:
             vector[chart.SIGMA_SLICE.start + 2 * index + 1] = Fraction(int(imaginary)) * R0 / 4
-    vector[chart.S_SLICE.start] = Fraction(R0)
+    vector[chart.S_SLICE.start] = Fraction(R0) if rs is None else Fraction(rs)
     vector[chart.X_SLICE.start] = Fraction(X0)
     return vector
 
 
-def chart_normalisation_section(matrix: np.ndarray) -> dict[str, Any]:
-    """Exact: the chart conventions and the metric D_c^2; the vacuum is orthogonal to its orbit tangents."""
+def chart_normalisation_section(matrix: np.ndarray, *, rs: Fraction | None = None) -> dict[str, Any]:
+    """Exact: the chart conventions and the metric D_c^2; the vacuum is orthogonal to its orbit tangents.  ``rs``
+    (default None: the witness |S| = r0) is the decoupled singlet scale."""
     conventions = {block.name: block.coordinate_convention for block in chart.BLOCKS}
     metric = metric_diagonal()
     metric_by_block = {name: sorted({metric[index] for index in range(block.start, block.stop)}) for name, block in BLOCK_SLICES.items()}
-    q0 = vacuum_u()
-    orthogonal = all(metric_inner(q0, column) == 0 for column in u_columns(matrix))
+    if rs is None:
+        q0 = vacuum_u()
+        columns = u_columns(matrix)
+        expected = 1 + 4 * R0 * R0 + 2 * X0 * X0
+        norm_key = "vacuum_norm_squared_1_plus_4r0sq_plus_2x0sq"
+    else:
+        q0 = vacuum_u(rs=rs)
+        columns = u_columns(matrix, rs=rs)
+        expected = 1 + 2 * R0 * R0 + 2 * rs * rs + 2 * X0 * X0
+        norm_key = "vacuum_norm_squared_1_plus_2r0sq_plus_2rSsq_plus_2x0sq"
+    orthogonal = all(metric_inner(q0, column) == 0 for column in columns)
     norm_squared = metric_inner(q0, q0)
     return {
         "chart_statement": "live_g2_canonical_486_field_chart_v20: K_2 = 1/2 q^T q (identity kinetic metric); every "
@@ -692,13 +724,13 @@ def chart_normalisation_section(matrix: np.ndarray) -> dict[str, Any]:
         "u_coordinates": "u_Phi = q_Phi, u_c = q_c/sqrt(2) = (Re c, Im c); K_2 = 1/2 u^T D_c^2 u",
         "metric_D_c_squared_by_block": metric_by_block,
         "vacuum_norm_squared_chart": norm_squared,
-        "vacuum_norm_squared_expected": 1 + 4 * R0 * R0 + 2 * X0 * X0,
+        "vacuum_norm_squared_expected": expected,
         "checks": {
             "chart_blocks_use_canonical_conventions": conventions == BLOCK_CONVENTIONS,
             "metric_is_1_on_Phi_and_2_on_complex_blocks": metric_by_block
             == {"Phi210": [1], "H10": [2], "Sigma126bar": [2], "S": [2], "Phi17": [2]},
             "vacuum_orthogonal_to_all_47_orbit_tangents_exact": orthogonal,
-            "vacuum_norm_squared_1_plus_4r0sq_plus_2x0sq": norm_squared == 1 + 4 * R0 * R0 + 2 * X0 * X0,
+            norm_key: norm_squared == expected,
         },
     }
 
@@ -714,7 +746,12 @@ def _integer_vector(vector: Mapping[int, Fraction]) -> tuple[np.ndarray, int]:
 
 
 def axion_period_certificate(
-    matrix: np.ndarray, x_charges: Mapping[str, int], pq_charges: Mapping[str, int], norm_squared: Fraction
+    matrix: np.ndarray,
+    x_charges: Mapping[str, int],
+    pq_charges: Mapping[str, int],
+    norm_squared: Fraction,
+    *,
+    rs: Fraction | None = None,
 ) -> dict[str, Any]:
     """Exact period of the axion angle modulo SO(10) x U(1)_X, and v_a = F_PQ / (that period's denominator).
 
@@ -752,8 +789,9 @@ def axion_period_certificate(
                 element = {"theta_PQ": theta, "beta_U1X": beta, "so10_generator": label, "psi_so10": (sign * absorb) % 1}
                 break
     v_a_squared = norm_squared * x_gcd**2 / determinant**2 if determinant else None
-    closed_denominator = x_s**2 * R0 * R0 + x_17**2 * X0 * X0
-    v_a_closed = 2 * R0 * R0 * X0 * X0 * x_gcd**2 / closed_denominator if closed_denominator else None
+    s = R0 if rs is None else rs  # |S|: the witness r0 or the decoupled singlet scale
+    closed_denominator = x_s**2 * s * s + x_17**2 * X0 * X0
+    v_a_closed = 2 * s * s * X0 * X0 * x_gcd**2 / closed_denominator if closed_denominator else None
     certified = bool(
         denominator == EXPECTED_AXION_PERIOD_DENOMINATOR
         and element is not None
@@ -783,8 +821,17 @@ def axion_period_certificate(
     }
 
 
-def axion_section(matrix: np.ndarray, gauge_pivot_columns: Sequence[int], x_charges: Mapping[str, int], pq_charges: Mapping[str, int]) -> dict[str, Any]:
-    columns = u_columns(matrix)
+def axion_section(
+    matrix: np.ndarray,
+    gauge_pivot_columns: Sequence[int],
+    x_charges: Mapping[str, int],
+    pq_charges: Mapping[str, int],
+    *,
+    rs: Fraction | None = None,
+) -> dict[str, Any]:
+    """``rs`` (default None: the witness |S| = r0) is the decoupled singlet scale; the pinned witness checks
+    (9248/7241, 7225/7241, the period certificate's 2/7241) hold at the witness only."""
+    columns = u_columns(matrix) if rs is None else u_columns(matrix, rs=rs)
     gauge_columns = columns[:GAUGE_GENERATOR_COUNT]
     t_pq = columns[GAUGE_GENERATOR_COUNT]
     basis = [gauge_columns[index] for index in gauge_pivot_columns]
@@ -819,10 +866,14 @@ def axion_section(matrix: np.ndarray, gauge_pivot_columns: Sequence[int], x_char
         block.start <= index < block.stop for index in axion for block in (chart.PHI_SLICE, chart.H_SLICE, chart.SIGMA_SLICE)
     ))
     charge_minor = int(pq_charges["S"]) * int(x_charges["Phi17"]) - int(pq_charges["Phi17"]) * int(x_charges["S"])
-    closed_denominator = int(x_charges["S"]) ** 2 * R0 * R0 + int(x_charges["Phi17"]) ** 2 * X0 * X0
-    closed_form = 2 * R0 * R0 * X0 * X0 * charge_minor**2 / closed_denominator if closed_denominator else None
+    s = R0 if rs is None else rs
+    closed_denominator = int(x_charges["S"]) ** 2 * s * s + int(x_charges["Phi17"]) ** 2 * X0 * X0
+    closed_form = 2 * s * s * X0 * X0 * charge_minor**2 / closed_denominator if closed_denominator else None
     pq_norm_squared = metric_inner(t_pq, t_pq)
-    period = axion_period_certificate(matrix, x_charges, pq_charges, norm_squared)
+    if rs is None:
+        period = axion_period_certificate(matrix, x_charges, pq_charges, norm_squared)
+    else:
+        period = axion_period_certificate(matrix, x_charges, pq_charges, norm_squared, rs=rs)
     labels = [GENERATOR_LABELS[index] for index in gauge_pivot_columns]
     chart_components = {}
     names = chart.coordinate_names()
@@ -1327,8 +1378,10 @@ def _quadratic_roots(a: int, b: int, c: int) -> list[str]:
     return ["%s - (%s)*sqrt(%d)" % (centre, spread, free), "%s + (%s)*sqrt(%d)" % (centre, spread, free)]
 
 
-def vector_boson_section(matrix: np.ndarray) -> dict[str, Any]:
-    columns = u_columns(matrix)[:GAUGE_GENERATOR_COUNT]
+def vector_boson_section(matrix: np.ndarray, *, rs: Fraction | None = None) -> dict[str, Any]:
+    """``rs`` (default None: the witness |S| = r0) is the decoupled singlet scale; the pinned neutral-block checks
+    hold at the witness only."""
+    columns = (u_columns(matrix) if rs is None else u_columns(matrix, rs=rs))[:GAUGE_GENERATOR_COUNT]
     gram = [[metric_inner(left, right) for right in columns] for left in columns]
     gram_rank = _rank(gram)
     casimirs = adjoint_casimirs()
