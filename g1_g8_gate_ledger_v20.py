@@ -143,7 +143,7 @@ G8_FLAVOUR_NOGO_STATUS = "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDE
 G6_TREE_SPECTRUM_SOURCE = "g6_sm_pati_salam_tree_spectrum_v20"
 G8_FLAVOUR_NOGO_SOURCE = "g8_sm_pati_salam_flavour_nogo_v20"
 G6_TREE_SPECTRUM_N_CHECKS = 81
-G8_FLAVOUR_NOGO_N_CHECKS = 103
+G8_FLAVOUR_NOGO_N_CHECKS = 157
 G6_EVIDENCE_ROLE = (
     "evidence only: cited in the G6 open scope, never changes the G6 status"
 )
@@ -176,8 +176,10 @@ G8_EVIDENCE_RECORDED_ITEM = (
     "exclude, and no H-linear portal repair survives at q0; the G3-G5 "
     "certificates and the SO(10) contract are not falsified; route A (a new "
     "in-contract G3 branch with a down-type (15,2,2) admixture, needing new "
-    "G3/G4/G5 certificates) and route B (a contract extension: a 120_H or a "
-    "second 10_H) need a user decision"
+    "G3/G4/G5 certificates) and route B (a contract extension: among the "
+    "analysed extensions only a 120_H can split d from e; a second 126bar_H, "
+    "a new B-L-breaking vev and vectorlike matter were not analysed) need a "
+    "user decision"
 )
 G8_EVIDENCE_UNAVAILABLE_ITEM = (
     "flavour evidence unavailable: G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json is "

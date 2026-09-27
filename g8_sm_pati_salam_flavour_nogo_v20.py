@@ -75,8 +75,28 @@ float only where it meets data.
 (5) Scope.  This does not falsify the G3-G5 scalar-vacuum certificates or the SO(10) contract; it records that THIS
     witness branch (renormalizable 27-parameter SM Pati-Salam benchmark family, H-linear portals zero) cannot close
     G8, and that no H-linear portal repair survives at q0.  Routes: A (new in-contract G3 branch away from q0 with a
-    down-type (15,2,2) mixing channel), B (extension beyond the contract: 120_H or a second 10_H), C (record this
-    no-go, G8 OPEN).  G8 stays OPEN.
+    down-type (15,2,2) mixing channel), B (extension beyond the contract: among the analysed candidates only a 120_H
+    can split d from e, since a second 10_H and F.F.H10^*.S^* are excluded as Yukawa sources by (6); a second
+    126bar_H, a new B-L-breaking scalar vev and vectorlike matter were not analysed), C (record this no-go, G8 OPEN).
+    G8 stays OPEN.
+
+(6) Status-neutral v2 lemmas (exact; section I; no status changes).  lemma_122_clebsch: T15 = 3(B-L), and every
+    (1,2,2) Yukawa source (the 10, a second 10_H, 10_H^*, F.F.H10^*.S^*, F.F.H10.Phi210 at p) has the lepton/quark
+    Clebsch +1 of the 10, while the 126bar and a hypothetical 120_H (15,2,2) carry K T15.  lemma_su5_casimir: SU(5)
+    Casimir 12/5 on the 10_H doublets and the up-type 126bar doublet, 32/5 on the down-type one (scope: SU(5)-
+    equivariant mixings; p is not an SU(5) singlet).  lemma_S_independence: the light doublet stays pure 10_H with
+    tan beta = 1 for every |S| = r_S (D-A decoupling).  lemma_eft_census: every Dirac Yukawa monomial is (B-L, T3R)
+    Sigma-balanced at every dimension (B-L grading, any number of B-L-neutral Higgs insertions); the census of
+    single-Higgs (or Higgs-free) monomials of two light 16s (F, P, Q, R) and the witness spurions is exhaustive to
+    mass dimension 12; and for generic PS-invariant Yukawas of operators linear in H10 or H10^* (any number of
+    PS-singlet spurions) M_e = phase x M_d, M_D = phase x M_u (no transpose), with M_d = phase x M_u at tan beta = 1
+    (multi-Higgs composites: hand-argued SU(2)_L x SU(2)_R covariance only).  lemma_s1_g3221: with s =
+    (v_u^126/v_u^10)/(v_d^126/v_d^10), one light G3221 bidoublet with a G3221-equivariant 10/126bar composition
+    forces s = 1 (CKM = 1) for any tan beta at dimension four (escapes: two light bidoublets, a (15,1,3) component,
+    v_R-scale SU(2)_R breaking through <Sigma> of unanalysed size, conjugate mixing with tan beta != 1; no G3221
+    vacuum of the contract is claimed).  lemma_b1a: the pure 10 + 120 inequality is proved.  These are no-go
+    statements about this witness branch and the declared contract; they do not falsify the contract (a 120_H
+    extension, a Route A branch and the extensions not analysed in (5) remain logically open).
 """
 from __future__ import annotations
 
@@ -88,7 +108,7 @@ import math
 import re
 import time
 from collections import Counter, deque
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from fractions import Fraction
 from functools import lru_cache
 from pathlib import Path
@@ -100,6 +120,7 @@ from scipy.integrate import solve_ivp
 from scipy.optimize import minimize
 from sympy.polys.matrices import DomainMatrix
 
+import exact_210_pati_salam_global_vacuum_v20 as phi_source
 import g1_exact_declared_symmetry_character_census_v20 as census
 import g3_candidate_physical_target_audit_v20 as target
 import g3_sigma_hypercharge_audit_v20 as hypercharge
@@ -2851,6 +2872,1514 @@ def seesaw_section(data: Mapping[str, Any] = DATA, *, n_random: int = 4000, n_st
 
 
 # ---------------------------------------------------------------------------
+# (I) Status-neutral v2 lemmas (exact).  Six fail-closed lemma sections: the (1,2,2) Clebsch via T15 (L1), the
+#     SU(5)-Casimir selection rule (L2), tan beta = 1 and the pure-10_H doublet for every |S| (L3), the (B-L, T3R)
+#     Sigma-balance census and the Pati-Salam-invariant remainder (L4), the G3221 s = 1 theorem (L5) and the B1a
+#     inequality (L6).  They are no-go statements about THIS witness branch and the declared contract's operator
+#     content; none changes a status (build_report asserts it) and none falsifies the contract.
+# ---------------------------------------------------------------------------
+
+LemmaForm = dict[tuple[int, ...], tuple[int, int]]  # exact Gaussian-integer form (the hypercharge audit's ExactForm)
+SymbolicForm = dict[tuple[int, ...], Any]  # form with sympy Gaussian-rational coefficients
+GaussianRational = tuple[Fraction, Fraction]
+
+OMEGA6_FORM: LemmaForm = {pair: (int(value), 0) for pair, value in hypercharge.J6.items()}  # colour Kahler form (B-L)
+JR_FORM: LemmaForm = {(6, 7): (1, 0), (8, 9): (1, 0)}  # the T3R Kahler form on the weak slots
+J_FORM: LemmaForm = hypercharge._form_add(OMEGA6_FORM, JR_FORM)  # the U(5)-invariant Kahler form sum_k e_{2k,2k+1}
+J_GENERATOR = hypercharge._generator_vector({(0, 1): 1, (2, 3): 1, (4, 5): 1, (6, 7): 1, (8, 9): 1})
+Z5_VECTOR: dict[int, tuple[int, int]] = {8: (1, 0), 9: (0, 1)}  # z5 = e8 + i e9: the neutral Y = +1/2 ('5') component
+ZBAR5_VECTOR: dict[int, tuple[int, int]] = {8: (1, 0), 9: (0, -1)}  # its conjugate: the neutral Y = -1/2 ('5bar') one
+WEAK_INDICES = (6, 7, 8, 9)
+PARTICLE_BASES = ("u", "d", "e", "nu")
+COLOURS = ("--+", "-+-", "+--")
+LEMMA_KEYS = (
+    "lemma_122_clebsch",
+    "lemma_su5_casimir",
+    "lemma_S_independence",
+    "lemma_eft_census",
+    "lemma_s1_g3221",
+    "lemma_b1a",
+)
+CHARGE_GENERATORS: dict[str, tuple[tuple[int, ...], Fraction]] = {
+    "Y": (hypercharge.Y_STANDARD_INTEGER, Fraction(1, 6)),
+    "Q": (hypercharge.Q_EM_STANDARD_INTEGER, Fraction(1, 3)),
+    "B_minus_L": (hypercharge.BL_INTEGER, Fraction(-2, 3)),
+    "T3R": (hypercharge.T3R_INTEGER, Fraction(1, 2)),
+}
+EFT_MAX_DIMENSION = 12
+# The census of lemma_eft_census to mass dimension 12 (pinned, fail closed): X-neutral monomials, Dirac-admissible and
+# Majorana-admissible ones.
+EFT_CENSUS_COUNTS = {"X_neutral_monomials": 4657, "dirac": 1460, "majorana": 800}
+EFT_MIN_DIMENSIONS = {"ps_breaking_dirac": 6, "Htilde_dirac": 5}
+SIGMA_SPURIONS = ("Sigma", "Sigma*")
+TESTED_R_S_OVER_R0 = (1, 10, 1000)
+S_SECTOR_UNITS = ("O04 |S|^2", "O23 |S|^4")
+O12_UNIT = "re::O12 2 Re[conj(H.H) conj(S)]"
+O06_UNIT = "O06 N_H"
+O06_PARAMETER = "lambda::O06_B01_Hdag_H_norm"
+O12_PARAMETER = "re::O12_B01_Hdag_Hdag_pair"
+O12_DIRECTION = "O12_B01_Hdag_Hdag_pair"
+O38_DIRECTION = "O38_B01_Phi_Hdag_Sigmadag"
+# The nonzero benchmark directions that contain S or S^dag (pinned; census orbit keys re-derive them).
+S_DEPENDENT_NONZERO_DIRECTIONS = ("O04_B01_singlet_polynomial", "O12_B01_Hdag_Hdag_pair", "O23_B01_singlet_polynomial")
+DOUBLET_ALPHA, DOUBLET_BETA, DOUBLET_ALPHA_BAR, DOUBLET_BETA_BAR = sympy.symbols("alpha beta alphabar betabar")
+ORIENTATION_NOTE = (
+    "M_f[i][j] is the coefficient of f_i f^c_j (particle row, conjugate column; Weyl bilinears are symmetric under "
+    "exchange, so M_f = B[f, f^c] Y + B[f^c, f] Y^T per channel).  For generic PS-invariant Yukawas (symmetric and "
+    "antisymmetric parts, on v and on conj(v)) the exact relation is M_e = kappa M_d and M_D = kappa' M_u with no "
+    "transpose (kappa = +-1 per colour); M_e = kappa M_d^T holds only when the antisymmetric parts vanish (the symmetric "
+    "dimension-four contract Yukawa, flavour_structure).  The mass relations m_d = m_e, m_s = m_mu, m_b = m_tau do not "
+    "depend on the orientation"
+)
+
+
+@lru_cache(maxsize=1)
+def _ps_singlet_items() -> tuple[tuple[tuple[int, ...], tuple[int, int]], ...]:
+    """The witness 210 vev p = exact_210_pati_salam_global_vacuum_v20.pati_salam_direction(), converted to Gaussian
+    integers with an exactness assertion (hypercharge._exact_from_float raises on any non-Gaussian-integer entry)."""
+    return tuple(sorted(hypercharge._exact_from_float(phi_source.pati_salam_direction()[0]).items()))
+
+
+def ps_singlet_form() -> LemmaForm:
+    return dict(_ps_singlet_items())
+
+
+def _one_form(vector: Mapping[int, tuple[int, int]]) -> LemmaForm:
+    return {(index,): (int(value[0]), int(value[1])) for index, value in sorted(vector.items()) if tuple(value) != (0, 0)}
+
+
+def _interior(form: Mapping[tuple[int, ...], tuple[int, int]], vector: Mapping[int, tuple[int, int]]) -> LemmaForm:
+    """iota_v form = sum_a v_a iota_{e_a} form (exact, Gaussian integers)."""
+    total: LemmaForm = {}
+    for index, coefficient in sorted(vector.items()):
+        if tuple(coefficient) == (0, 0):
+            continue
+        piece = g2_audit._exact_interior(dict(form), index)
+        total = hypercharge._form_add(total, hypercharge._form_times(piece, (int(coefficient[0]), int(coefficient[1]))))
+    return total
+
+
+def _ps_singlet_dressing(vector: Mapping[int, tuple[int, int]]) -> LemmaForm:
+    """iota_v p: the 120-like (1,2,2) channel, i.e. the dimension-five F.F.H.Phi210 contraction at <Phi210> = p."""
+    return _interior(ps_singlet_form(), vector)
+
+
+def _iota15(vector: Mapping[int, tuple[int, int]]) -> LemmaForm:
+    """iota15(v) = omega6 ^ iota_v p: the G3221-equivariant map (1,2,2)_10 -> (15,2,2); its 16.16 bilinear projects
+    onto the 126bar half automatically."""
+    return g2_audit._exact_wedge(OMEGA6_FORM, _ps_singlet_dressing(vector))
+
+
+def _hypothetical_120_fifteen(vector: Mapping[int, tuple[int, int]]) -> LemmaForm:
+    """omega6 ^ v: the (15,2,2) component of a hypothetical 120_H (a 3-form); not a contract field."""
+    return g2_audit._exact_wedge(OMEGA6_FORM, _one_form(vector))
+
+
+def _omega_mixing(vector: Mapping[int, tuple[int, int]]) -> LemmaForm:
+    """v ^ omega6 ^ J_R: the O15 mixing map at the G3211 (SU(2)_R-breaking) 210 direction omega (for comparison)."""
+    return g2_audit._exact_wedge(_one_form(vector), g2_audit._exact_wedge(OMEGA6_FORM, JR_FORM))
+
+
+def _twice_plus_i_projection(form: Mapping[tuple[int, ...], tuple[int, int]]) -> LemmaForm:
+    """2 P_{+i}(form) = form - i *form (the 126 half; hypercharge._twice_minus_i_projection gives the 126bar half)."""
+    return hypercharge._form_add(dict(form), hypercharge._form_times(hypercharge._hodge(dict(form)), hypercharge.MINUS_I))
+
+
+def _gauss_div(numerator: tuple[Any, Any], denominator: tuple[Any, Any]) -> GaussianRational:
+    a, b = Fraction(numerator[0]), Fraction(numerator[1])
+    c, d = Fraction(denominator[0]), Fraction(denominator[1])
+    norm = c * c + d * d
+    return ((a * c + b * d) / norm, (b * c - a * d) / norm)
+
+
+def _gauss_mul(first: tuple[Any, Any], second: tuple[Any, Any]) -> GaussianRational:
+    a, b = Fraction(first[0]), Fraction(first[1])
+    c, d = Fraction(second[0]), Fraction(second[1])
+    return (a * c - b * d, a * d + b * c)
+
+
+def _gauss_str(value: GaussianRational | None) -> str:
+    if value is None:
+        return "none"
+    re_part, im_part = Fraction(value[0]), Fraction(value[1])
+    return str(sympy.Rational(re_part.numerator, re_part.denominator) + sympy.I * sympy.Rational(im_part.numerator, im_part.denominator))
+
+
+def _gaussian_form_ratio(first: Mapping[tuple[int, ...], tuple[int, int]], second: Mapping[tuple[int, ...], tuple[int, int]]) -> GaussianRational | None:
+    """lambda with first = lambda second exactly (None if second = 0 or the forms are not proportional)."""
+    if not second or set(first) != set(second):
+        return None
+    key = min(second)
+    ratio = _gauss_div(first[key], second[key])
+    for index, value in second.items():
+        if _gauss_mul(ratio, value) != (Fraction(first[index][0]), Fraction(first[index][1])):
+            return None
+    return ratio
+
+
+def _t15(state: int) -> Fraction:
+    """T15 = 3 (B-L) with B-L the repository Cartan generator on the spinor (spinor_states)."""
+    return 3 * spinor_states()["states"][state]["B_minus_L"]
+
+
+def _t3r(state: int) -> Fraction:
+    return _cartan_charge(state, hypercharge.T3R_INTEGER, Fraction(1, 2))
+
+
+def _oriented_ratio_set(source: GMatrix, reference: GMatrix, weight: Callable[[int], Fraction] | None = None) -> tuple[set[GaussianRational], bool]:
+    """Over the entries (i, j) of the 16 x 16 bilinears whose row state is a particle (u, d, e, nu) and where
+    ``reference`` is nonzero, the set of exact ratios source[i, j] / (reference[i, j] weight(state_i)); and whether
+    ``source`` vanishes wherever ``reference`` does (on every entry)."""
+    info = spinor_states()
+    sixteen = info["sixteen"]
+    ratios: set[GaussianRational] = set()
+    support_inside = True
+    for i, state in enumerate(sixteen):
+        particle = info["names"][state].split("[")[0] in PARTICLE_BASES
+        scale = Fraction(1) if weight is None else Fraction(weight(state))
+        for j in range(len(sixteen)):
+            ref = (int(reference[0][i, j]), int(reference[1][i, j]))
+            src = (int(source[0][i, j]), int(source[1][i, j]))
+            if ref == (0, 0):
+                support_inside &= src == (0, 0)
+            elif particle:
+                value = _gauss_div(src, ref)
+                ratios.add((value[0] / scale, value[1] / scale))
+    return ratios, bool(support_inside)
+
+
+def _is_symmetric(matrix: GMatrix) -> bool:
+    return not _g_is_zero(matrix) and _g_equal(_g_transpose(matrix), matrix)
+
+
+def _is_antisymmetric(matrix: GMatrix) -> bool:
+    return not _g_is_zero(matrix) and _g_equal(_g_transpose(matrix), _g_scale(matrix, (-1, 0)))
+
+
+def _pair_types(form: Mapping[tuple[int, ...], tuple[int, int]]) -> list[str]:
+    """Unordered SM pair types ('d-dc', 'nu-nuc', ...) of the nonzero 16.16 bilinear entries of a form."""
+    return sorted({"-".join(sorted((first.split("[")[0], second.split("[")[0]))) for first, second, _ in _entries(_form_bilinear(dict(form)))})
+
+
+# Symbolic (sympy Gaussian-rational) form algebra for the u(5) Casimir and the equivariance checks.
+
+
+def _to_symbolic(form: Mapping[tuple[int, ...], tuple[int, int]]) -> SymbolicForm:
+    return {key: sympy.Integer(int(value[0])) + sympy.I * sympy.Integer(int(value[1])) for key, value in sorted(form.items()) if tuple(value) != (0, 0)}
+
+
+def _symbolic_add(*forms: Mapping[tuple[int, ...], Any]) -> SymbolicForm:
+    output: SymbolicForm = {}
+    for form in forms:
+        for key, value in form.items():
+            output[key] = sympy.expand(output.get(key, sympy.Integer(0)) + value)
+    return {key: value for key, value in output.items() if value != 0}
+
+
+def _symbolic_scale(form: Mapping[tuple[int, ...], Any], coefficient: Any) -> SymbolicForm:
+    output = {key: sympy.expand(coefficient * value) for key, value in form.items()}
+    return {key: value for key, value in output.items() if value != 0}
+
+
+def _form_derivation(matrix: Any, form: Mapping[tuple[int, ...], Any]) -> SymbolicForm:
+    """Derivation action of a 10 x 10 sympy matrix X (X[b, a] = component b of X e_a) on a symbolic form."""
+    columns = {a: [(b, matrix[b, a]) for b in range(10) if matrix[b, a] != 0] for a in range(10)}
+    output: SymbolicForm = {}
+    for indices, coefficient in form.items():
+        for position, a in enumerate(indices):
+            for b, entry in columns[a]:
+                new = list(indices)
+                new[position] = b
+                if len(set(new)) < len(new):
+                    continue
+                ordered = tuple(sorted(new))
+                output[ordered] = sympy.expand(output.get(ordered, sympy.Integer(0)) + _perm_sign(tuple(new), ordered) * entry * coefficient)
+    return {key: value for key, value in output.items() if value != 0}
+
+
+def _eigenvalue(image: Mapping[tuple[int, ...], Any], form: Mapping[tuple[int, ...], Any]) -> Any:
+    """lambda with image = lambda form exactly, or None."""
+    if not form:
+        return None
+    key = min(form)
+    value = sympy.simplify(image.get(key, sympy.Integer(0)) / form[key])
+    return value if not _symbolic_add(image, _symbolic_scale(form, -value)) else None
+
+
+@lru_cache(maxsize=16)
+def _integer_generator_matrix(generator: tuple[int, ...]) -> Any:
+    return sympy.ImmutableMatrix(hypercharge._matrix(generator).tolist())
+
+
+def _form_charge(generator: Sequence[int], factor: Fraction, form: Mapping[tuple[int, ...], tuple[int, int]]) -> Fraction | None:
+    """factor x (-i) x the eigenvalue of the derivation of a repository integer Cartan generator on an exact form (the
+    spinor section's charge convention), or None if the form is not an eigenform with a real charge."""
+    symbolic = _to_symbolic(form)
+    value = _eigenvalue(_form_derivation(_integer_generator_matrix(tuple(int(item) for item in generator)), symbolic), symbolic)
+    if value is None:
+        return None
+    charge = sympy.expand(-sympy.I * value * sympy.Rational(factor.numerator, factor.denominator))
+    if not charge.is_Rational:
+        return None
+    return Fraction(int(charge.p), int(charge.q))
+
+
+def _z_form(slot: int, bar: bool = False) -> LemmaForm:
+    """z_slot = e_{2 slot - 2} + i e_{2 slot - 1} (1-indexed, hypercharge._z): z4 = e6 + i e7, z5 = e8 + i e9."""
+    return hypercharge._z(slot, bar=bar)
+
+
+@lru_cache(maxsize=1)
+def _u5_generators() -> dict[tuple[int, int], Any]:
+    """E_kl (0-indexed slots k, l; slot k <-> z_{k+1}) in the e-basis: z_l -> z_k, zbar_k -> -zbar_l."""
+    basis = sympy.zeros(10, 10)
+    for k in range(5):
+        basis[2 * k, k] = 1
+        basis[2 * k + 1, k] = sympy.I
+        basis[2 * k, 5 + k] = 1
+        basis[2 * k + 1, 5 + k] = -sympy.I
+    inverse = basis.inv()
+    output = {}
+    for k in range(5):
+        for l in range(5):
+            block = sympy.zeros(10, 10)
+            block[k, l] = 1
+            block[5 + l, 5 + k] = -1
+            output[(k, l)] = sympy.ImmutableMatrix((basis * block * inverse).applyfunc(sympy.expand))
+    return output
+
+
+def _u5_number_operator() -> Any:
+    generators = _u5_generators()
+    return sympy.ImmutableMatrix(sum((generators[(k, k)].as_mutable() for k in range(5)), sympy.zeros(10, 10)))
+
+
+def su5_casimir(form: Mapping[tuple[int, ...], Any]) -> SymbolicForm:
+    """C = (1/2) [sum_{k,l} D(E_kl) D(E_lk) - (1/5) D(N)^2], normalised to 12/5 on the 5."""
+    generators = _u5_generators()
+    total: SymbolicForm = {}
+    for (k, l), matrix in generators.items():
+        total = _symbolic_add(total, _form_derivation(matrix, _form_derivation(generators[(l, k)], form)))
+    number = _u5_number_operator()
+    squared = _form_derivation(number, _form_derivation(number, form))
+    return _symbolic_scale(_symbolic_add(total, _symbolic_scale(squared, sympy.Rational(-1, 5))), sympy.Rational(1, 2))
+
+
+def _casimir_value(form: Mapping[tuple[int, ...], tuple[int, int]]) -> Any:
+    symbolic = _to_symbolic(form)
+    return _eigenvalue(su5_casimir(symbolic), symbolic)
+
+
+def _colour_singlet(form: Mapping[tuple[int, ...], tuple[int, int]]) -> bool:
+    """Annihilated by every colour raising/lowering operator E_kl (k != l in the colour slots 0..2)."""
+    symbolic = _to_symbolic(form)
+    generators = _u5_generators()
+    return bool(symbolic) and all(not _form_derivation(generators[(k, l)], symbolic) for k in range(3) for l in range(3) if k != l)
+
+
+@lru_cache(maxsize=1)
+def _one_form_charges() -> dict[tuple[int, bool], dict[str, Fraction | None]]:
+    """(Y, Q, B-L, T3R) of every z_k and zbar_k from the derivations of the repository integer generators."""
+    return {
+        (slot, bar): {name: _form_charge(generator, factor, _z_form(slot, bar)) for name, (generator, factor) in CHARGE_GENERATORS.items()}
+        for slot in range(1, 6)
+        for bar in (False, True)
+    }
+
+
+def _neutral_doublet_space(hypercharge_value: Fraction) -> dict[str, Any]:
+    """The Q = 0, Y = hypercharge_value, zero-colour-weight 5-form monomials (generated from all 5-subsets of {z_k,
+    zbar_k}), the rank of their 126bar (2 P_{-i}) span and the dimension of its colour-singlet subspace."""
+    charges = _one_form_charges()
+    symbols = [(slot, bar) for slot in range(1, 6) for bar in (False, True)]
+    monomials = []
+    for subset in itertools.combinations(symbols, 5):
+        weight = {slot: sum(-1 if bar else 1 for item_slot, bar in subset if item_slot == slot) for slot in range(1, 6)}
+        if not weight[1] == weight[2] == weight[3]:
+            continue
+        if any(charges[item]["Y"] is None or charges[item]["Q"] is None for item in subset):
+            continue
+        y_value = sum(charges[item]["Y"] for item in subset)  # type: ignore[misc]
+        q_value = sum(charges[item]["Q"] for item in subset)  # type: ignore[misc]
+        if y_value == hypercharge_value and q_value == 0:
+            monomials.append(hypercharge._wedge_all(*[_z_form(slot, bar) for slot, bar in subset]))
+    basis = [_to_symbolic(hypercharge._twice_minus_i_projection(monomial)) for monomial in monomials]
+    keys = sorted({key for form in basis for key in form})
+    span = sympy.Matrix([[form.get(key, 0) for form in basis] for key in keys]) if keys else sympy.zeros(0, 0)
+    rank = int(span.rank()) if keys else 0
+    generators = _u5_generators()
+    constraints = []
+    for k in range(3):
+        for l in range(3):
+            if k == l:
+                continue
+            images = [_form_derivation(generators[(k, l)], form) for form in basis]
+            for key in sorted({item for image in images for item in image}):
+                constraints.append([image.get(key, 0) for image in images])
+    null = sympy.Matrix(constraints).nullspace() if constraints else [sympy.eye(len(basis))[:, n] for n in range(len(basis))]
+    vectors = [span * vector for vector in null] if keys else []
+    dimension = int(sympy.Matrix.hstack(*vectors).rank()) if vectors else 0
+    return {"monomials": len(monomials), "rank": rank, "singlet_dimension": dimension, "_span": span, "_keys": keys}
+
+
+def _in_span(form: Mapping[tuple[int, ...], tuple[int, int]], space: Mapping[str, Any]) -> bool:
+    keys = space["_keys"]
+    symbolic = _to_symbolic(form)
+    if not keys or set(symbolic) - set(keys):
+        return False
+    column = sympy.Matrix([symbolic.get(key, 0) for key in keys])
+    return int(sympy.Matrix.hstack(space["_span"], column).rank()) == int(space["rank"])
+
+
+@lru_cache(maxsize=1)
+def _sigma_doublet_items() -> tuple[tuple[tuple[tuple[int, ...], tuple[int, int]], ...], tuple[tuple[tuple[int, ...], tuple[int, int]], ...]]:
+    """(w_u, w_d): the 126bar neutral colour-singlet doublets, w_u = 2 P_{-i}(z5 ^ J ^ J) (Y = +1/2) and w_d = 2 P_{-i}(
+    omega6 ^ iota_{zbar5} p) (Y = -1/2)."""
+    w_u = hypercharge._twice_minus_i_projection(hypercharge._wedge_all(_z_form(5), J_FORM, J_FORM))
+    w_d = hypercharge._twice_minus_i_projection(_iota15(ZBAR5_VECTOR))
+    return tuple(sorted(w_u.items())), tuple(sorted(w_d.items()))
+
+
+def _sigma_doublet_forms() -> tuple[LemmaForm, LemmaForm]:
+    up, down = _sigma_doublet_items()
+    return dict(up), dict(down)
+
+
+def _state_positions() -> dict[str, int]:
+    info = spinor_states()
+    return {info["names"][state]: position for position, state in enumerate(info["sixteen"])}
+
+
+def _partner(name: str) -> str:
+    base, colour = name.split("[")
+    return f"{base}c[{''.join('-' if sign == '+' else '+' for sign in colour[:-1])}]"
+
+
+def _symbolic_bilinear(form: Mapping[tuple[int, ...], tuple[int, int]]) -> Any:
+    matrix = _form_bilinear(dict(form))
+    return sympy.Matrix(16, 16, lambda i, j: sympy.Integer(int(matrix[0][i, j])) + sympy.I * sympy.Integer(int(matrix[1][i, j])))
+
+
+def _linear_bilinear(builder: Callable[[Mapping[int, tuple[int, int]]], LemmaForm], component_8: Any, component_9: Any) -> Any:
+    """B(builder(v)) for v = component_8 e8 + component_9 e9 (builder complex-linear)."""
+    return _symbolic_bilinear(builder({8: (1, 0)})) * component_8 + _symbolic_bilinear(builder({9: (1, 0)})) * component_9
+
+
+def _doublet_components(alpha: Any, beta: Any) -> tuple[Any, Any]:
+    """(e8, e9) coefficients of v = alpha z5 + beta zbar5."""
+    return alpha + beta, sympy.I * alpha - sympy.I * beta
+
+
+def _conjugate_doublet_components(alpha_bar: Any, beta_bar: Any) -> tuple[Any, Any]:
+    """(e8, e9) coefficients of conj(v) = alphabar zbar5 + betabar z5."""
+    return alpha_bar + beta_bar, -sympy.I * alpha_bar + sympy.I * beta_bar
+
+
+def _generic_yukawa(name: str, symmetric: bool) -> Any:
+    raw = sympy.Matrix(3, 3, lambda i, j: sympy.Symbol(f"{name}{i}{j}"))
+    return raw + raw.T if symmetric else raw - raw.T
+
+
+def _family_mass(terms: Sequence[tuple[Any, Any]], particle: str, conjugate: str) -> Any:
+    """M_f[i][j] = coefficient of f_i f^c_j: sum over channels of B[f, f^c] Y + B[f^c, f] Y^T."""
+    positions = _state_positions()
+    p, c = positions[particle], positions[conjugate]
+    total = sympy.zeros(3, 3)
+    for bilinear, yukawa in terms:
+        total += bilinear[p, c] * yukawa + bilinear[c, p] * yukawa.T
+    return total.applyfunc(sympy.expand)
+
+
+def _proportional(first: Any, second: Any) -> tuple[bool, Any]:
+    """first = ratio x second with ratio = first[0, 0]/second[0, 0], by exact cross-multiplication."""
+    pivot = second[0, 0]
+    if pivot == 0:
+        return False, None
+    residual = (first * pivot - second * first[0, 0]).applyfunc(sympy.expand)
+    return all(value == 0 for value in residual), sympy.cancel(first[0, 0] / pivot)
+
+
+def _coefficient_determinant(first: Sequence[Any], second: Sequence[Any]) -> Any:
+    return sympy.expand(first[0] * second[1] - first[1] * second[0])
+
+
+def _constant_multiple(expression: Any, reference: Any) -> bool:
+    """expression = k x reference with k a nonzero constant."""
+    if reference == 0:
+        return False
+    ratio = sympy.cancel(expression / reference)
+    return not ratio.free_symbols and ratio != 0
+
+
+# L1 ------------------------------------------------------------------------
+
+
+def lemma_122_clebsch_section(one_two_two_source: Callable[[Mapping[int, tuple[int, int]]], LemmaForm] | None = None) -> dict[str, Any]:
+    """L1: T15 = 3(B-L) on the 16; every (1,2,2) Yukawa source (the 10 and the 120-like channel F.F.H.Phi at <Phi> = p)
+    has the lepton/quark Clebsch of the 10 (+1); the (15,2,2) of the 126bar and of a hypothetical 120_H carry K T15.
+    ``one_two_two_source`` replaces iota_v p for the mutation test only."""
+    info = spinor_states()
+    names = info["names"]
+    sixteen = info["sixteen"]
+    source = _ps_singlet_dressing if one_two_two_source is None else one_two_two_source
+    by_base: dict[str, set[Fraction]] = {}
+    for state in sixteen:
+        by_base.setdefault(names[state].split("[")[0], set()).add(_t15(state))
+    t15_values = {base: next(iter(values)) for base, values in by_base.items() if len(values) == 1}
+    expected_t15 = {"u": 1, "d": 1, "e": -3, "nu": -3, "uc": -1, "dc": -1, "ec": 3, "nuc": 3}
+
+    def trace(bases: tuple[str, ...]) -> Fraction:
+        return sum((_t15(state) for state in sixteen if names[state].split("[")[0] in bases), Fraction(0))
+
+    traceless = all(trace(group) == 0 for group in (("u", "nu"), ("d", "e"), ("uc", "nuc"), ("dc", "ec")))
+    t15_ok = (
+        len(t15_values) == len(expected_t15)
+        and all(t15_values.get(base) == Fraction(value) for base, value in expected_t15.items())
+        and traceless
+    )
+    p_form = ps_singlet_form()
+    ps_generators = [pair for pair in hypercharge.GENERATORS if (pair[0] < 6) == (pair[1] < 6)]
+    p_invariant = all(not g2_audit._exact_generator_action(p_form, first, second) for first, second in ps_generators)
+    ten, one_two_two, fifteen_126, fifteen_120 = {}, {}, {}, {}
+    for index in WEAK_INDICES:
+        vector = {index: (1, 0)}
+        ten[index] = _form_bilinear(_one_form(vector))
+        one_two_two[index] = _form_bilinear(source(vector))
+        fifteen_126[index] = _form_bilinear(_iota15(vector))
+        fifteen_120[index] = _form_bilinear(_hypothetical_120_fifteen(vector))
+    ratio_122: set[GaussianRational] = set()
+    ratio_126: set[GaussianRational] = set()
+    ratio_120: set[GaussianRational] = set()
+    support = True
+    for index in WEAK_INDICES:
+        ratios, inside = _oriented_ratio_set(one_two_two[index], ten[index])
+        ratio_122 |= ratios
+        support &= inside
+        ratios, inside = _oriented_ratio_set(fifteen_126[index], ten[index], _t15)
+        ratio_126 |= ratios
+        support &= inside
+        ratios, inside = _oriented_ratio_set(fifteen_120[index], ten[index], _t15)
+        ratio_120 |= ratios
+        support &= inside
+    zero = (Fraction(0), Fraction(0))
+    checks = {
+        "T15_is_three_B_minus_L_on_the_16": bool(t15_ok),
+        "p_is_the_repository_ps_singlet_e6789": p_form == {(6, 7, 8, 9): (1, 0)} and bool(p_invariant),
+        "one_two_two_channels_symmetric_10_antisymmetric_120": all(
+            _is_symmetric(ten[index]) and _is_antisymmetric(one_two_two[index]) for index in WEAK_INDICES
+        ),
+        "one_two_two_supports_inside_ten_support": bool(support),
+        "one_two_two_120_clebsch_equals_ten_clebsch": len(ratio_122) == 1 and zero not in ratio_122,
+        "fifteen_two_two_126bar_is_K_T15_times_ten": len(ratio_126) == 1
+        and zero not in ratio_126
+        and all(_is_symmetric(fifteen_126[index]) for index in WEAK_INDICES),
+        "hypothetical_120_fifteen_component_is_T15_type": len(ratio_120) == 1
+        and zero not in ratio_120
+        and all(_is_antisymmetric(fifteen_120[index]) for index in WEAK_INDICES),
+    }
+    return {
+        "statement": (
+            "On the 16, T15 = 3(B-L) (the repository Cartan B-L generator) is 1 on the quarks and -3 on the leptons of "
+            "(4,2,1) (-1, +3 on (4bar,1,2)) and traceless on every SU(4) multiplet.  For every component e_a (a = 6..9) "
+            "of the (1,2,2) of the 10: the 10 channel C Gamma_a is symmetric and the 120-like (1,2,2) channel C "
+            "Gamma_{iota_{e_a} p} (the dimension-five F.F.H.Phi210 at <Phi210> = p) antisymmetric, their ratio on every "
+            "oriented (particle-row) entry is one constant for all a, so every (1,2,2) Yukawa source has the lepton/quark "
+            "Clebsch of the 10 (+1); the 126bar (15,2,2) image omega6 ^ iota_{e_a} p equals K T15 times the 10 on "
+            "oriented entries with one K for all a (lepton/quark -3 on the up- and the down-type doublet alike), and so "
+            "does the (15,2,2) component omega6 ^ e_a of a hypothetical 120_H (with K')"
+        ),
+        "scope": (
+            "group theory of (1,2,2) Yukawa sources of any dimension (the Yukawa couplings of the 10_H, of a second 10_H "
+            "of any X charge, a 10_H^* Yukawa, F.F.H10^*.S^* and every Pati-Salam-singlet dressing such as F.F.H10.Phi210 "
+            "at <Phi210> = p); it covers the Yukawa sources only (not the scalar portals of a second 10_H), says nothing "
+            "about vevs, and does not exclude a 120_H (whose (15,2,2) component is T15-type)"
+        ),
+        "T15_values": {base: str(value) for base, value in sorted(t15_values.items())},
+        "oriented_ratio_120_over_10": sorted(_gauss_str(value) for value in ratio_122),
+        "oriented_ratio_126bar_15_over_T15_10": sorted(_gauss_str(value) for value in ratio_126),
+        "oriented_ratio_120_15_over_T15_10": sorted(_gauss_str(value) for value in ratio_120),
+        "checks": checks,
+    }
+
+
+# L2 ------------------------------------------------------------------------
+
+
+def lemma_su5_casimir_section(down_doublet_vector: Mapping[int, tuple[int, int]] | None = None) -> dict[str, Any]:
+    """L2: the SU(5) Casimir (12/5 on the 5) is 12/5 on both 10_H doublets and on the up-type 126bar doublet and 32/5
+    on the down-type one; the 5bar has no 126bar image.  ``down_doublet_vector`` (default zbar5) exists for the mutation
+    test only."""
+    down_vector = dict(ZBAR5_VECTOR if down_doublet_vector is None else down_doublet_vector)
+    generators = _u5_generators()
+    j_matrix = _integer_generator_matrix(tuple(J_GENERATOR))
+    number = _u5_number_operator()
+    zero10 = sympy.zeros(10, 10)
+    in_so10 = all((matrix.T + matrix).applyfunc(sympy.expand) == zero10 for matrix in generators.values())
+    commute = all((matrix * j_matrix - j_matrix * matrix).applyfunc(sympy.expand) == zero10 for matrix in generators.values())
+    number_is_j = (number + sympy.I * j_matrix).applyfunc(sympy.expand) == zero10
+    twelve_fifths = sympy.Rational(12, 5)
+    vector_values = {
+        f"{'zbar' if bar else 'z'}{slot}": _casimir_value(_z_form(slot, bar)) for slot in range(1, 6) for bar in (False, True)
+    }
+    sigma = candidate.sigma_std_exact_form()
+    sigma_symbolic = _to_symbolic(sigma)
+    sigma_value = _casimir_value(sigma)
+    sigma_off_diagonal_zero = all(
+        not _form_derivation(matrix, sigma_symbolic) for (k, l), matrix in generators.items() if k != l
+    )
+    p_symbolic = _to_symbolic(ps_singlet_form())
+    p_is_singlet = all(not _form_derivation(matrix, p_symbolic) for (k, l), matrix in generators.items() if k != l)
+    spaces = {"+": _neutral_doublet_space(Fraction(1, 2)), "-": _neutral_doublet_space(Fraction(-1, 2))}
+    w_u = hypercharge._twice_minus_i_projection(hypercharge._wedge_all(_z_form(5), J_FORM, J_FORM))
+    w_d = hypercharge._twice_minus_i_projection(_iota15(down_vector))
+    fivebar = hypercharge._wedge_all(_z_form(5, bar=True), J_FORM, J_FORM)
+    fivebar_126bar = hypercharge._twice_minus_i_projection(fivebar)
+    fivebar_126 = _twice_plus_i_projection(fivebar)
+    omega_iota_zbar5_126 = _twice_plus_i_projection(_iota15(ZBAR5_VECTOR))
+    values = {
+        "w_u": _casimir_value(w_u) if w_u else None,
+        "w_d": _casimir_value(w_d) if w_d else None,
+        "126_part_of_omega6_iota_zbar5_p": _casimir_value(omega_iota_zbar5_126) if omega_iota_zbar5_126 else None,
+        "126_part_of_zbar5_J_J": _casimir_value(fivebar_126) if fivebar_126 else None,
+    }
+    pairs = {"w_u": _pair_types(w_u) if w_u else [], "w_d": _pair_types(w_d) if w_d else []}
+    checks = {
+        "u5_generators_in_so10_and_commute_with_J": bool(in_so10 and commute and number_is_j),
+        "casimir_12_over_5_on_every_z_and_zbar": all(value == twelve_fifths for value in vector_values.values()),
+        "sigma_std_is_su5_singlet": sigma_value == 0 and bool(sigma_off_diagonal_zero),
+        "neutral_colour_singlet_doublet_spaces_of_126bar_are_one_dimensional": all(
+            space["monomials"] == 6 and space["rank"] == 3 and space["singlet_dimension"] == 1 for space in spaces.values()
+        ),
+        "sigma_up_doublet_casimir_12_over_5_up_type_only": bool(w_u)
+        and values["w_u"] == twelve_fifths
+        and pairs["w_u"] == ["nu-nuc", "u-uc"]
+        and _colour_singlet(w_u)
+        and _in_span(w_u, spaces["+"]),
+        "sigma_down_doublet_casimir_32_over_5_down_type_only": bool(w_d)
+        and values["w_d"] == sympy.Rational(32, 5)
+        and pairs["w_d"] == ["d-dc", "e-ec"]
+        and _colour_singlet(w_d)
+        and _in_span(w_d, spaces["-"]),
+        "fivebar_doublet_has_no_image_in_126bar": not fivebar_126bar and values["126_part_of_zbar5_J_J"] == twelve_fifths,
+    }
+    casimir = {
+        "z_k": str(vector_values["z1"]) if len({str(vector_values[f"z{slot}"]) for slot in range(1, 6)}) == 1 else "not uniform",
+        "zbar_k": str(vector_values["zbar1"]) if len({str(vector_values[f"zbar{slot}"]) for slot in range(1, 6)}) == 1 else "not uniform",
+        "sigma_std": str(sigma_value),
+        **{key: str(value) for key, value in values.items()},
+    }
+    return {
+        "statement": (
+            "With the SU(5) of the repository complex structure (z_k = e_{2k-2} + i e_{2k-1}) and C normalised to 12/5 on "
+            "the 5: C = 12/5 on every z_k and zbar_k, in particular on both 10_H neutral doublet components z5 (Y = +1/2) "
+            "and zbar5 (Y = -1/2); C(sigma_std) = 0 (SU(5) singlet); in the 126bar the Q = 0 colour-singlet doublet "
+            "space with Y = +1/2 and the one with Y = -1/2 are each one-dimensional (the 2 P_{-i} span of the six "
+            "zero-colour-weight monomials has rank 3); the Y = +1/2 one, w_u = 2 P_{-i}(z5 ^ J ^ J), has C = 12/5 and "
+            "only up-type 16.16 pairs (u u^c, nu nu^c); the Y = -1/2 one, w_d = 2 P_{-i}(omega6 ^ iota_{zbar5} p), has "
+            "C = 32/5 and only down-type pairs (d d^c, e e^c); and 2 P_{-i}(zbar5 ^ J ^ J) = 0 (the 5bar has no image in "
+            "the 126bar).  Corollary (Schur, cited): an SU(5)-equivariant (linear or antilinear) mixing of the 10_H "
+            "doublets into Sigma can only produce the Casimir-12/5 Sigma doublet, hence only up-type (Q u^c, L nu^c) Sigma "
+            "Yukawas; the down-type Sigma doublet (Casimir 32/5) is unreachable"
+        ),
+        "scope": (
+            "representation theory of SU(5)-equivariant maps: it explains the up-type-only rule for mixings built from "
+            "the SU(5)-singlet vevs sigma_std, S and Phi17 (e.g. O28 = H^dag Sigma^2 Sigma^dag).  The witness 210 vev p "
+            "is NOT an SU(5) singlet (p_is_su5_singlet = False), so the p-mediated portal paths (O15, O38, O45 through "
+            "<Phi210> = p and the p-dependent heavy Hessian) rest on the exact per-r0 Schur computation "
+            "(H_linear_portals.induced_126bar_vev_up_type_only_every_direction_every_r0), not on this lemma"
+        ),
+        "casimir": casimir,
+        "casimir_by_vector": {key: str(value) for key, value in vector_values.items()},
+        "doublet_spaces": {
+            "Y=+1/2": [spaces["+"]["rank"], spaces["+"]["singlet_dimension"]],
+            "Y=-1/2": [spaces["-"]["rank"], spaces["-"]["singlet_dimension"]],
+        },
+        "doublet_space_monomials": {"Y=+1/2": spaces["+"]["monomials"], "Y=-1/2": spaces["-"]["monomials"]},
+        "pairs": pairs,
+        "p_is_su5_singlet": bool(p_is_singlet),
+        "checks": checks,
+    }
+
+
+# L3 ------------------------------------------------------------------------
+
+
+def _nonzero_positions(matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    return np.nonzero(np.asarray(matrix != 0, dtype=bool))
+
+
+def _form_pairing(first: Mapping[tuple[int, ...], tuple[int, int]], second: Mapping[tuple[int, ...], tuple[int, int]]) -> tuple[int, int]:
+    """The SO(10)-invariant bilinear pairing sum_K first_K second_K of two k-forms (exact Gaussian integers)."""
+    total = (0, 0)
+    for key, value in first.items():
+        other = second.get(key)
+        if other is not None:
+            product = _gauss_mul(value, other)
+            total = (total[0] + int(product[0]), total[1] + int(product[1]))
+    return total
+
+
+def o38_exact_form_blocks(sigma_form: Mapping[tuple[int, ...], tuple[int, int]] | None = None) -> dict[str, bool]:
+    """Exact forms for O38 = <conj(H) ^ Phi, conj(Sigma)> conj(S) (the unique 10 x 210 -> 126 contraction, the 5-form
+    v ^ Phi; cited) at q0 = (p, 0, r0 sigma_std, r0, x0): its H x S block is the pairing of e_a ^ p with conj(r0
+    sigma_std), its H x Sigma block is e_a ^ p, and its H x Phi block pairs e_a ^ dPhi with conj(r0 sigma_std).
+    ``sigma_form`` replaces sigma_std for the mutation test only."""
+    sigma = dict(candidate.sigma_std_exact_form() if sigma_form is None else sigma_form)
+    targets = (
+        sigma,
+        hypercharge._conjugate(sigma),  # conj(sigma_std)
+        hypercharge._hodge(dict(sigma)),  # its Hodge dual (covers the 126 / 126bar projections)
+    )
+    p_form = ps_singlet_form()
+    images = {index: g2_audit._exact_wedge(_one_form({index: (1, 0)}), p_form) for index in range(10)}
+    h_by_s_zero = all(_form_pairing(image, target) == (0, 0) for image in images.values() for target in targets)
+    doublet_sigma_zero = all(not images[index] for index in WEAK_INDICES)
+    triplet_sigma_nonzero = all(bool(images[index]) for index in range(6))
+    doublet_phi_reached = all(any(index in key for key, value in sigma.items() if tuple(value) != (0, 0)) for index in WEAK_INDICES)
+    return {
+        "H_by_S_block_zero_for_every_H_direction": bool(h_by_s_zero),
+        "doublet_H_by_Sigma_block_zero_e_a_wedge_p_vanishes": bool(doublet_sigma_zero),
+        "triplet_H_by_Sigma_block_nonzero": bool(triplet_sigma_nonzero),
+        "doublet_columns_reach_Phi": bool(doublet_phi_reached),
+    }
+
+
+def lemma_S_independence_section(
+    patterns: Mapping[str, Mapping[str, Any]],
+    o38_sigma_form: Mapping[tuple[int, ...], tuple[int, int]] | None = None,
+) -> dict[str, Any]:
+    """L3: on the witness family q(s) = (p, 0, r0 sigma_std, s, x0) the light doublet stays pure 10_H with tan beta = 1
+    for every s (the D-A decoupling changes only O04, O23 and the O06 retune).  ``patterns`` = the portal lattice
+    binding's per-parameter patterns (float64 compiler bound to the (1/6) Z lattice; used only for the O38
+    corroboration field, not for a check).  ``o38_sigma_form`` exists for the mutation test only."""
+    r0_list = [*EXACT_R0_VALUES, physical_r0()]
+    s_window = chart.S_SLICE
+    coupled: list[str] = []
+    s_block_units: set[str] = set()
+    o12_h_only = True
+    o12_seen = 0
+    for r0 in r0_list:
+        for unit in exact_hessian.exact_unit_matrices(r0, X0):
+            numerator, _denominator = unit["hessian"]
+            rows, columns = _nonzero_positions(numerator)
+            in_s_row = (rows >= s_window.start) & (rows < s_window.stop)
+            in_s_column = (columns >= s_window.start) & (columns < s_window.stop)
+            if np.any(in_s_row & ~in_s_column) or np.any(in_s_column & ~in_s_row):
+                coupled.append(f"{unit['name']} @ r0 = {r0}")
+            if np.any(in_s_row & in_s_column):
+                s_block_units.add(unit["name"])
+            if unit["name"] == O12_UNIT:
+                o12_seen += 1
+                in_h = (rows >= H_SLICE.start) & (rows < H_SLICE.stop) & (columns >= H_SLICE.start) & (columns < H_SLICE.stop)
+                o12_h_only &= bool(rows.size) and bool(np.all(in_h))
+    rows_census = census_rows()
+    s_degree = {row["direction_id"]: int(row["counts"].get("S", 0)) + int(row["counts"].get("Sb", 0)) for row in rows_census}
+    nonzero = {key.split("::", 1)[1] for key, value in candidate.candidate_coefficients().items() if value != 0}
+    s_dependent_nonzero = sorted(direction for direction in nonzero if s_degree.get(direction, 0) > 0)
+    quadratic_directions = [parameter.split("::", 1)[1] for parameter in EXPECTED_NONZERO_H_QUADRATIC]
+    s_dependent_quadratic = sorted(direction for direction in quadratic_directions if s_degree.get(direction, 0) > 0)
+    s_dependent_linear = sorted(direction for direction in EXPECTED_H_LINEAR_DIRECTIONS if s_degree.get(direction, 0) > 0)
+    # (iii)-(iv): the O06 + O12 block of one complex H component, symbolic in S = s_r + i s_i.
+    s_r, s_i, c06, c12 = sympy.symbols("s_r s_i c06 c12", real=True)
+    x_symbol, y_symbol = sympy.symbols("x y", real=True)
+    h_component = x_symbol + sympy.I * y_symbol
+    potential = c06 * (x_symbol**2 + y_symbol**2) + c12 * 2 * sympy.re(
+        sympy.expand(sympy.conjugate(h_component**2) * sympy.conjugate(s_r + sympy.I * s_i))
+    )
+    block = sympy.hessian(potential, (x_symbol, y_symbol)).applyfunc(sympy.expand)
+    units_match = True
+    for r0 in r0_list:
+        for unit in exact_hessian.exact_unit_matrices(r0, X0):
+            if unit["name"] not in (O12_UNIT, O06_UNIT):
+                continue
+            numerator, denominator = unit["hessian"]
+            target_block = block.subs({c06: 0, c12: 1, s_r: sympy.Rational(r0.numerator, r0.denominator), s_i: 0}) if unit["name"] == O12_UNIT else block.subs({c06: 1, c12: 0})
+            for component in range(chart.H_COMPLEX_DIM):
+                start = H_SLICE.start + 2 * component
+                piece = sympy.Matrix(2, 2, lambda i, j: sympy.Rational(int(numerator[start + i, start + j]), int(denominator)))
+                units_match &= (piece - target_block).applyfunc(sympy.expand) == sympy.zeros(2, 2)
+    theta, radius = sympy.symbols("theta r", positive=True)
+    polar = block.subs({s_r: radius * sympy.cos(theta), s_i: radius * sympy.sin(theta)})
+    first = sympy.Matrix([sympy.cos(theta / 2), -sympy.sin(theta / 2)])
+    second = sympy.Matrix([sympy.sin(theta / 2), sympy.cos(theta / 2)])
+    eigen_first = sympy.simplify(polar * first - (2 * c06 + 4 * c12 * radius) * first) == sympy.zeros(2, 1)
+    eigen_second = sympy.simplify(polar * second - (2 * c06 - 4 * c12 * radius) * second) == sympy.zeros(2, 1)
+    real_s = polar.subs(theta, 0)
+    re_im_axes = (real_s * sympy.Matrix([1, 0]) - (2 * c06 + 4 * c12 * radius) * sympy.Matrix([1, 0])).applyfunc(sympy.expand) == sympy.zeros(2, 1) and (
+        real_s * sympy.Matrix([0, 1]) - (2 * c06 - 4 * c12 * radius) * sympy.Matrix([0, 1])
+    ).applyfunc(sympy.expand) == sympy.zeros(2, 1)
+    # (v) the retuned H block at q(r_S), Fractions.
+    retuned_ok = True
+    retuned_rows = []
+    for r0 in r0_list:
+        numerator, denominator = base_hessian(Fraction(r0))
+        coefficients = {key: Fraction(value) for key, value in candidate.candidate_coefficients(r0, X0, -Fraction(r0) / 4).items()}
+        c12_value = coefficients.get(O12_PARAMETER, Fraction(0))
+        c06_value = coefficients.get(O06_PARAMETER, Fraction(0))
+        consistent = c12_value != 0 and c06_value == 2 * abs(c12_value) * Fraction(r0)
+        h_rows = numerator[H_SLICE]
+        rows, columns = _nonzero_positions(h_rows)
+        decoupled = bool(np.all((columns >= H_SLICE.start) & (columns < H_SLICE.stop)))
+        size = H_SLICE.stop - H_SLICE.start
+        off_diagonal_zero = all(
+            int(numerator[H_SLICE.start + i, H_SLICE.start + j]) == 0 for i in range(size) for j in range(size) if i != j
+        )
+        diagonal = [Fraction(int(numerator[H_SLICE.start + i, H_SLICE.start + i]), int(denominator)) for i in range(size)]
+        for ratio in TESTED_R_S_OVER_R0:
+            r_s = Fraction(r0) * ratio
+            c06_new = 2 * abs(c12_value) * r_s
+            shifted = [
+                value + c12_value * (r_s - Fraction(r0)) * (4 if position % 2 == 0 else -4) + 2 * (c06_new - c06_value)
+                for position, value in enumerate(diagonal)
+            ]
+            expected = []
+            for component in range(chart.H_COMPLEX_DIM):
+                expected += [Fraction(2), 2 + 2 * Fraction(r0) * r_s] if component < 6 else [Fraction(0), 2 * Fraction(r0) * r_s]
+            doublet_null = all(shifted[index - H_SLICE.start] == 0 for index in DOUBLET_REAL_X)
+            row_ok = bool(consistent and decoupled and off_diagonal_zero and shifted == expected and doublet_null)
+            retuned_ok &= row_ok
+            retuned_rows.append({"r0": Fraction(r0), "r_S_over_r0": ratio, "matches_formula": row_ok})
+    # (vi) tan beta = 1 for every phase-rotated real doublet.
+    phase, a_real, b_real = sympy.symbols("phi a b", real=True)
+    v_up = sympy.exp(sympy.I * phase) * (a_real - sympy.I * b_real) / 2
+    v_down = sympy.exp(sympy.I * phase) * (a_real + sympy.I * b_real) / 2
+    tan_beta_one = sympy.simplify(v_up * sympy.conjugate(v_up) - v_down * sympy.conjugate(v_down)) == 0
+    # (vii) O38's H columns have no S block and its doublet columns reach only Phi: exact forms (o38_exact_form_blocks).
+    o38_blocks = o38_exact_form_blocks(o38_sigma_form)
+    o38_no_s = all(o38_blocks.values())
+    # Corroboration only (not a check): the compiler's lattice-bound O38 pattern (float64 bound to (1/6) Z, section
+    # H_linear_portals) shows the same blocks.
+    o38_rows = [patterns.get(f"{part}::{O38_DIRECTION}") for part in ("re", "im")]
+    o38_pattern_agrees = all(
+        isinstance(row, Mapping)
+        and row.get("doublet_column_block") == "Phi210"
+        and set(row.get("triplet_column_blocks", {})) <= {"Phi210", "Sigma126bar"}
+        for row in o38_rows
+    )
+    checks = {
+        "S_block_decoupled_in_every_binding_unit": not coupled
+        and s_block_units == set(S_SECTOR_UNITS)
+        and o12_seen == len(r0_list)
+        and bool(o12_h_only)
+        and tuple(s_dependent_nonzero) == S_DEPENDENT_NONZERO_DIRECTIONS,
+        "only_O12_is_S_dependent_among_nonzero_H_quadratics": s_dependent_quadratic == [O12_DIRECTION],
+        "only_O38_is_S_dependent_among_H_linear_directions": s_dependent_linear == [O38_DIRECTION] and s_degree.get(O38_DIRECTION) == 1,
+        "O12_block_symbolic_in_S_matches_binding_unit": bool(units_match),
+        "doublet_eigenvectors_independent_of_S_modulus": bool(eigen_first and eigen_second and re_im_axes),
+        "retuned_H_block_exact_at_every_tested_r_S": bool(retuned_ok) and len(retuned_rows) == len(r0_list) * len(TESTED_R_S_OVER_R0),
+        "tan_beta_one_for_every_phase_rotated_real_doublet": bool(tan_beta_one),
+        "O38_H_columns_have_no_S_block": bool(o38_no_s),
+    }
+    return {
+        "statement": (
+            "On the witness family q(s) = (p, 0, r0 sigma_std, S = s, x0), s any complex number (the D-A decoupling "
+            "changes only the S sector O04, O23 and the O06 retune), with the benchmark operator set (H-linear "
+            "parameters zero, O31 = O35 = 0): no binding unit couples S to another block and only O04, O23 carry S-S "
+            "entries (the O12 unit is H-H only), and the only nonzero S-dependent directions are O04, O23 and O12, so the "
+            "heavy Phi/Sigma/Phi17 Hessian does not depend on s; among the H-linear directions only O38 contains S "
+            "(S-degree 1); the O06 + O12 block of one complex H component is Matrix([[2 c06 + 4 c12 s_r, -4 c12 s_i], "
+            "[-4 c12 s_i, 2 c06 - 4 c12 s_r]]) (equal to the binding units at s = r0), with eigenvectors (cos theta/2, "
+            "-sin theta/2) and (sin theta/2, cos theta/2) for s = r e^{i theta} and every r, i.e. exactly Re H_6..9 and "
+            "Im H_6..9 for real s; with O06 retuned to 2|kappa| r_S the exact H block at q(r_S) is diag(2, 2 + 2 r0 r_S | "
+            "0, 2 r0 r_S); every phase-rotated real doublet has |v_up| = |v_down| (tan beta = 1); and O38 (the 10 x 210 -> "
+            "126 contraction <conj(H) ^ Phi, conj(Sigma)> times conj(S)) has no H x S block at q0 (exact forms: e_a ^ p "
+            "pairs to zero with sigma_std, its conjugate and its Hodge dual for every H direction e_a, a = 0..9) and its "
+            "doublet columns reach only Phi (e_a ^ p = 0 for a = 6..9), so its columns at q(s) are conj(s)/r0 times those "
+            "at q0 and the up-type-only portal selection rule and O38's Y = -1/2 source do not depend on |S|"
+        ),
+        "scope": (
+            "tree level, the portal-free witness family (plus the |S| scaling of O38's columns, which follows from its "
+            "S-degree 1).  Check (vii) models O38 by the unique 10 x 210 -> 126 contraction (cited: 10 x 210 = 120 + 126 "
+            "+ 126bar + 1728 contains the 126 once, the 5-form v ^ Phi) and is exact on forms; the compiler's lattice-bound "
+            "O38 pattern (float64 bound to (1/6) Z, H_linear_portals) is recorded as a corroboration only.  Not claimed: "
+            "that q(r_S) with r_S != r0 is a global minimum (G3 at r_S != r0 is not certified), anything about D-A "
+            "unification, or O31/O35 (Sigma-dependent, |S|-independent, zero in the benchmark).  The 'no induced "
+            "heavy-doublet vev' lemma (V even in H) holds for every s unchanged"
+        ),
+        "S_block_units": sorted(s_block_units),
+        "units_coupling_S_to_other_blocks": coupled,
+        "S_dependent_nonzero_benchmark_directions": s_dependent_nonzero,
+        "S_dependent_H_linear_directions": s_dependent_linear,
+        "O12_component_block": str(block),
+        "retuned_block_formula": "diag(2, 2 + 2 r0 r_S | 0, 2 r0 r_S)",
+        "tested_r_S_over_r0": list(TESTED_R_S_OVER_R0),
+        "tested_r0": r0_list,
+        "retuned_rows": retuned_rows,
+        "O38_exact_form_blocks": o38_blocks,
+        "O38_compiler_pattern_corroboration_not_a_check": bool(o38_pattern_agrees),
+        "checks": checks,
+    }
+
+
+# L4 ------------------------------------------------------------------------
+
+
+@lru_cache(maxsize=1)
+def _vev_charges() -> dict[str, tuple[Fraction | None, Fraction | None]]:
+    """(B-L, T3R) of the witness vev forms and the 10_H neutral doublet components (Cartan derivations)."""
+    forms = {
+        "sigma_std": candidate.sigma_std_exact_form(),
+        "p": ps_singlet_form(),
+        "z5": _z_form(5),
+        "zbar5": _z_form(5, bar=True),
+    }
+    output = {}
+    for name, form in forms.items():
+        output[name] = tuple(_form_charge(*CHARGE_GENERATORS[key], form) for key in ("B_minus_L", "T3R"))
+    return output  # type: ignore[return-value]
+
+
+def eft_spurion_table(contract: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+    """The witness spurions with (X, Z17) parsed from the model file and (B-L, T3R) derived from the vev forms: p (the
+    PS-singlet 210 vev), S, Phi17 (SO(10) singlets) and Sigma = r0 sigma_std, with their conjugates."""
+    fields = contract["fields"]
+    sigma_charge = _vev_charges()["sigma_std"]
+    p_charge = _vev_charges()["p"]
+    neutral = (Fraction(0), Fraction(0))
+
+    def singlet_charge(name: str) -> tuple[Fraction, Fraction] | None:
+        return neutral if str(fields[name]["so10"]) == "1" else None
+
+    def row(name: str, conjugate: bool, charge: Any, ps_breaking: bool) -> dict[str, Any]:
+        sign = -1 if conjugate else 1
+        if charge is not None and conjugate:
+            charge = (-charge[0], -charge[1])
+        return {
+            "field": f"conj[{name}]" if conjugate else name,
+            "X": sign * int(fields[name]["X"]),
+            "Z17": sign * int(fields[name]["Z17"]),
+            "charge": charge,
+            "ps_breaking": ps_breaking,
+        }
+
+    return {
+        "Phi": row("Phi210", False, p_charge, False),
+        "S": row("S", False, singlet_charge("S"), False),
+        "S*": row("S", True, singlet_charge("S"), False),
+        "Phi17": row("Phi17", False, singlet_charge("Phi17"), False),
+        "Phi17*": row("Phi17", True, singlet_charge("Phi17"), False),
+        "Sigma": row("Delta126bar", False, sigma_charge, True),
+        "Sigma*": row("Delta126bar", True, sigma_charge, True),
+    }
+
+
+def _charge_text(charge: Sequence[Any] | None) -> str:
+    return "none" if charge is None else f"({charge[0]}, {charge[1]})"
+
+
+def _bounded_compositions(parts: int, budget: int) -> list[tuple[int, ...]]:
+    if parts == 0:
+        return [()]
+    output = []
+    for first in range(budget + 1):
+        for rest in _bounded_compositions(parts - 1, budget - first):
+            output.append((first,) + rest)
+    return output
+
+
+def eft_census(contract: Mapping[str, Any], spurions: Mapping[str, Mapping[str, Any]], max_dimension: int = EFT_MAX_DIMENSION) -> list[dict[str, Any]]:
+    """Every monomial psi_1 psi_2 h s_1 ... s_n with psi in the light 16s (the rank certificate's kernel support), h in
+    {H10, conj[H10], none}, spurions with multiplicity (no pair reductions), mass dimension 3 + [h] + n <= max_dimension
+    and total X = 0 (necessary conditions only; SO(10) contraction coefficients are not computed)."""
+    fields = contract["fields"]
+    light = sorted(contract["vectorlike_rank_certificate"]["kernel_support_fields"])
+    names = sorted(spurions)
+    higgs = {
+        "H10": (int(fields["H10"]["X"]), int(fields["H10"]["Z17"])),
+        "conj[H10]": (-int(fields["H10"]["X"]), -int(fields["H10"]["Z17"])),
+        "none": (0, 0),
+    }
+    compositions = []
+    for counts in _bounded_compositions(len(names), max(0, max_dimension - 3)):
+        x_total = sum(int(spurions[name]["X"]) * count for name, count in zip(names, counts))
+        z_total = sum(int(spurions[name]["Z17"]) * count for name, count in zip(names, counts))
+        charges = [spurions[name]["charge"] for name, count in zip(names, counts) if count]
+        if any(charge is None for charge in charges):
+            charge_total = None
+        else:
+            charge_total = (
+                sum((Fraction(spurions[name]["charge"][0]) * count for name, count in zip(names, counts) if count), Fraction(0)),
+                sum((Fraction(spurions[name]["charge"][1]) * count for name, count in zip(names, counts) if count), Fraction(0)),
+            )
+        compositions.append((dict(zip(names, counts)), x_total, z_total, charge_total, sum(counts)))
+    rows = []
+    for first, second in itertools.combinations_with_replacement(light, 2):
+        x_pair = int(fields[first]["X"]) + int(fields[second]["X"])
+        z_pair = int(fields[first]["Z17"]) + int(fields[second]["Z17"])
+        for higgs_name, (x_higgs, z_higgs) in higgs.items():
+            base = 3 + (0 if higgs_name == "none" else 1)
+            for counts, x_total, z_total, charge_total, number in compositions:
+                if base + number > max_dimension or x_pair + x_higgs + x_total != 0:
+                    continue
+                rows.append(
+                    {
+                        "pair": f"{first}.{second}",
+                        "higgs": higgs_name,
+                        "dimension": base + number,
+                        "counts": counts,
+                        "charge": charge_total,
+                        "z17": (z_pair + z_higgs + z_total) % 17,
+                    }
+                )
+    return rows
+
+
+def _ps_invariant_remainder() -> dict[str, Any]:
+    """Sympy: generic symmetric + antisymmetric Yukawas on v (10 channel and the 120-like channel iota_v p) and on
+    conj(v) (H-tilde: F.F.H10^*.S^* and its p-dressing), v = alpha z5 + beta zbar5."""
+    v8, v9 = _doublet_components(DOUBLET_ALPHA, DOUBLET_BETA)
+    w8, w9 = _conjugate_doublet_components(DOUBLET_ALPHA_BAR, DOUBLET_BETA_BAR)
+    ten = {index: _symbolic_bilinear(_one_form({index: (1, 0)})) for index in (8, 9)}
+    dressed = {index: _symbolic_bilinear(_ps_singlet_dressing({index: (1, 0)})) for index in (8, 9)}
+    yukawas = {
+        "ten_v": _generic_yukawa("s", True),
+        "dressed_v": _generic_yukawa("a", False),
+        "ten_conj_v": _generic_yukawa("ts", True),
+        "dressed_conj_v": _generic_yukawa("ta", False),
+    }
+    yukawa_symbols = {symbol for matrix in yukawas.values() for symbol in matrix.free_symbols}
+    bilinears = {
+        "ten_v": ten[8] * v8 + ten[9] * v9,
+        "dressed_v": dressed[8] * v8 + dressed[9] * v9,
+        "ten_conj_v": ten[8] * w8 + ten[9] * w9,
+        "dressed_conj_v": dressed[8] * w8 + dressed[9] * w9,
+    }
+    terms = [(bilinears[key], yukawas[key]) for key in ("ten_v", "dressed_v", "ten_conj_v", "dressed_conj_v")]
+    symmetric_terms = [(bilinears[key], yukawas[key]) for key in ("ten_v", "ten_conj_v")]
+
+    def mass(base: str, colour: str, channel_terms: Sequence[tuple[Any, Any]]) -> Any:
+        name = f"{base}[{colour}]"
+        return _family_mass(channel_terms, name, _partner(name))
+
+    lepton_colour = "+++"
+    kappa_e: dict[str, str] = {}
+    kappa_nu: dict[str, str] = {}
+    e_ok = nu_ok = transposed_generic_fails = transposed_symmetric_holds = True
+    m_e = mass("e", lepton_colour, terms)
+    m_nu = mass("nu", lepton_colour, terms)
+    m_e_symmetric = mass("e", lepton_colour, symmetric_terms)
+    masses_d, masses_u = {}, {}
+    for colour in COLOURS:
+        m_d = mass("d", colour, terms)
+        m_u = mass("u", colour, terms)
+        masses_d[colour], masses_u[colour] = m_d, m_u
+        same, ratio = _proportional(m_e, m_d)
+        e_ok &= same and ratio is not None and not ratio.free_symbols and sympy.expand(ratio * sympy.conjugate(ratio)) == 1
+        kappa_e[f"d[{colour}]"] = str(ratio)
+        same, ratio = _proportional(m_nu, m_u)
+        nu_ok &= same and ratio is not None and not ratio.free_symbols and sympy.expand(ratio * sympy.conjugate(ratio)) == 1
+        kappa_nu[f"u[{colour}]"] = str(ratio)
+        transposed, _ = _proportional(m_e, m_d.T)
+        transposed_generic_fails &= not transposed
+        symmetric_same, symmetric_ratio = _proportional(m_e_symmetric, mass("d", colour, symmetric_terms).T)
+        transposed_symmetric_holds &= symmetric_same and symmetric_ratio is not None and not symmetric_ratio.free_symbols
+    # tan beta = 1: alpha = r w1, beta = r w2 with |w1| = |w2| = 1 (conj(w) = 1/w).
+    radius, w1, w2 = sympy.symbols("r w1 w2")
+    theta1, theta2 = sympy.symbols("theta1 theta2", real=True)
+    unit = {DOUBLET_ALPHA: radius * w1, DOUBLET_BETA: radius * w2, DOUBLET_ALPHA_BAR: radius / w1, DOUBLET_BETA_BAR: radius / w2}
+    angles = {w1: sympy.exp(sympy.I * theta1), w2: sympy.exp(sympy.I * theta2)}
+    tan_beta_ratios: dict[str, str] = {}
+    tan_beta_ok = True
+    generic_fails = True
+    for colour in COLOURS:
+        m_d = masses_d[colour].subs(unit).applyfunc(sympy.expand)
+        m_u = masses_u[colour].subs(unit).applyfunc(sympy.expand)
+        same, ratio = _proportional(m_d, m_u)
+        phase_value = sympy.simplify(ratio.subs(angles)) if ratio is not None else None
+        tan_beta_ok &= (
+            same
+            and ratio is not None
+            and ratio.free_symbols <= {w1, w2}
+            and sympy.simplify(phase_value * sympy.conjugate(phase_value)) == 1
+        )
+        tan_beta_ratios[f"d[{colour}]/u[{colour}]"] = str(phase_value)
+        generic_same, generic_ratio = _proportional(masses_d[colour], masses_u[colour])
+        generic_fails &= not generic_same and generic_ratio is not None and bool(generic_ratio.free_symbols & yukawa_symbols)
+    return {
+        "Me_kappa_Md": bool(e_ok),
+        "MD_kappa_Mu": bool(nu_ok),
+        "transposed_only_symmetric": bool(transposed_generic_fails and transposed_symmetric_holds),
+        "tan_beta_one": bool(tan_beta_ok),
+        "generic_not_proportional": bool(generic_fails),
+        "kappa_e_over_d": kappa_e,
+        "kappa_nu_over_u": kappa_nu,
+        "tan_beta_one_ratios": tan_beta_ratios,
+    }
+
+
+def lemma_eft_census_section(
+    contract: Mapping[str, Any],
+    comparison: Mapping[str, Any],
+    spurions: Mapping[str, Mapping[str, Any]] | None = None,
+    max_dimension: int = EFT_MAX_DIMENSION,
+) -> dict[str, Any]:
+    """L4: (B-L, T3R) Sigma balance of every Dirac Yukawa monomial (all orders), the explicit census to mass dimension
+    ``max_dimension`` and the Pati-Salam-invariant remainder (sympy).  ``spurions`` replaces eft_spurion_table for the
+    mutation test only; ``comparison`` is the data section (float NDA diagnostics only)."""
+    table = eft_spurion_table(contract) if spurions is None else {name: dict(row) for name, row in spurions.items()}
+    info = spinor_states()
+    names = info["names"]
+    states = info["states"]
+    by_name = {names[state]: state for state in info["sixteen"]}
+    vev = _vev_charges()
+    nuc_state = next(state for state in info["sixteen"] if names[state].split("[")[0] == "nuc")
+    nuc_pair = (2 * states[nuc_state]["B_minus_L"], 2 * _t3r(nuc_state))
+    sigma_charge = vev["sigma_std"]
+    t3r_consistent = all(_t3r(state) == states[state]["Y"] - states[state]["B_minus_L"] / 2 for state in info["sixteen"])
+    pair_charges: dict[str, tuple[Fraction, Fraction]] = {}
+    for name, state in sorted(by_name.items()):
+        if name.split("[")[0] not in PARTICLE_BASES:
+            continue
+        partner = by_name[_partner(name)]
+        pair_charges[f"{name}-{_partner(name)}"] = (
+            states[state]["B_minus_L"] + states[partner]["B_minus_L"],
+            _t3r(state) + _t3r(partner),
+        )
+    up_pairs = {key: value for key, value in pair_charges.items() if key.split("[")[0] in ("u", "nu")}
+    down_pairs = {key: value for key, value in pair_charges.items() if key.split("[")[0] in ("d", "e")}
+    half = Fraction(1, 2)
+    doublet_charges = {vev["z5"], vev["zbar5"]}
+    dirac_targets = {
+        (-(pair[0] + doublet[0]), -(pair[1] + doublet[1]))
+        for pair in set(pair_charges.values())
+        for doublet in doublet_charges
+        if doublet[0] is not None and doublet[1] is not None
+    }
+    majorana_target = (-nuc_pair[0], -nuc_pair[1])
+    rows = eft_census(contract, table, max_dimension)
+    dirac = [row for row in rows if row["higgs"] != "none" and row["charge"] in dirac_targets]
+    majorana = [row for row in rows if row["higgs"] == "none" and row["charge"] == majorana_target]
+    counts = {"X_neutral_monomials": len(rows), "dirac": len(dirac), "majorana": len(majorana)}
+
+    def n_sigma(row: Mapping[str, Any]) -> tuple[int, int]:
+        return int(row["counts"].get("Sigma", 0)), int(row["counts"].get("Sigma*", 0))
+
+    def ps_breaking(row: Mapping[str, Any]) -> bool:
+        return any(count and table[name]["ps_breaking"] for name, count in row["counts"].items())
+
+    ps_breaking_dirac = [row for row in dirac if ps_breaking(row)]
+    htilde_dirac = [row for row in dirac if row["higgs"] == "conj[H10]"]
+    min_ps = min((row["dimension"] for row in ps_breaking_dirac), default=None)
+    min_htilde = min((row["dimension"] for row in htilde_dirac), default=None)
+    histogram = dict(sorted(Counter(row["dimension"] for row in dirac).items()))
+    net_phi17 = sorted({int(row["counts"].get("Phi17", 0)) - int(row["counts"].get("Phi17*", 0)) for row in dirac})
+    # All-orders grading: every non-Sigma spurion neutral, Sigma* = -Sigma, Sigma has nonzero B-L and every Dirac
+    # target has B-L = 0, so k Sigma (k = n_Sigma - n_Sigmabar) is a Dirac target only for k = 0, at every dimension.
+    sigma_row, sigma_bar_row = table.get("Sigma"), table.get("Sigma*")
+    others_neutral = all(
+        row["charge"] == (0, 0) for name, row in table.items() if name not in SIGMA_SPURIONS
+    )
+    grading = bool(
+        sigma_row is not None
+        and sigma_bar_row is not None
+        and sigma_row["charge"] is not None
+        and sigma_bar_row["charge"] == (-sigma_row["charge"][0], -sigma_row["charge"][1])
+        and sigma_row["charge"][0] != 0
+        and others_neutral
+        and dirac_targets
+        and all(target[0] == 0 for target in dirac_targets)
+        and [k for k in range(-4 * max_dimension, 4 * max_dimension + 1) if (k * sigma_row["charge"][0], k * sigma_row["charge"][1]) in dirac_targets] == [0]
+    )
+    remainder = _ps_invariant_remainder()
+    kernel = contract["vectorlike_rank_certificate"]
+    fields = contract["fields"]
+    checks = {
+        "sigma_vev_charge_is_minus2_plus1": sigma_charge == (Fraction(-2), Fraction(1))
+        and sigma_charge == (-nuc_pair[0], -nuc_pair[1]),
+        "p_S_Phi17_vevs_carry_zero_charge": vev["p"] == (Fraction(0), Fraction(0))
+        and all(str(fields[name]["so10"]) == "1" for name in ("S", "Phi17")),
+        "ten_doublet_and_dirac_pair_charges": bool(t3r_consistent)
+        and vev["z5"] == (Fraction(0), half)
+        and vev["zbar5"] == (Fraction(0), -half)
+        and len(pair_charges) == 8
+        and all(value == (Fraction(0), -half) for value in up_pairs.values())
+        and all(value == (Fraction(0), half) for value in down_pairs.values()),
+        "light_sixteens_are_the_rank_certificate_kernel": list(kernel["kernel_support_fields"]) == ["F", "P", "Q", "R"]
+        and kernel["kernel_dimension"] == 3,
+        "z17_automatic_for_every_X_neutral_monomial": bool(rows) and all(row["z17"] == 0 for row in rows),
+        "census_counts_to_dimension_12_pinned": max_dimension == EFT_MAX_DIMENSION and counts == EFT_CENSUS_COUNTS,
+        "every_dirac_monomial_sigma_balanced_to_dimension_12": bool(dirac) and all(n_sigma(row)[0] == n_sigma(row)[1] for row in dirac),
+        "no_T3R_mismatched_dirac_monomial": bool(dirac) and all(row["charge"] == (0, 0) for row in dirac),
+        "no_single_sigma_dirac_monomial": bool(dirac) and all(sum(n_sigma(row)) != 1 for row in dirac),
+        "every_ps_breaking_dirac_monomial_carries_a_sigma_pair": bool(ps_breaking_dirac)
+        and all(min(n_sigma(row)) >= 1 for row in ps_breaking_dirac),
+        "min_dimension_ps_breaking_dirac_is_6": min_ps == EFT_MIN_DIMENSIONS["ps_breaking_dirac"],
+        "min_dimension_Htilde_dirac_is_5": min_htilde == EFT_MIN_DIMENSIONS["Htilde_dirac"],
+        "majorana_monomials_carry_net_one_sigma": bool(majorana) and all(n_sigma(row)[0] - n_sigma(row)[1] == 1 for row in majorana),
+        "grading_forces_sigma_balance_at_every_dimension": grading,
+        "ps_invariant_Me_equals_kappa_Md_for_generic_Y": remainder["Me_kappa_Md"],
+        "ps_invariant_MD_equals_kappa_Mu_for_generic_Y": remainder["MD_kappa_Mu"],
+        "transposed_relation_holds_only_for_symmetric_Y": remainder["transposed_only_symmetric"],
+        "tan_beta_one_gives_Md_equal_phase_Mu_with_Htilde_and_120_channel": remainder["tan_beta_one"],
+        "generic_tan_beta_Md_not_proportional_to_Mu_with_Htilde": remainder["generic_not_proportional"],
+    }
+    # Float (NDA, not a check): the Sigma-bearing entries are bounded by 4 pi (v_R/Lambda)^2 and can reach the observed
+    # SU(4)-breaking splittings only if Lambda <= v_R sqrt(4 pi/|y_l - y_q|).
+    nda = {}
+    higgs_vev = float((comparison.get("inputs") or DATA)["higgs_vev_GeV"])
+    for label, row in (comparison.get("tests_per_scale") or {}).items():
+        masses = row.get("running_masses_GeV", {}) if isinstance(row, Mapping) else {}
+        if not all(key in masses for key in ("s", "mu", "b", "tau")):
+            continue
+        yukawa = {key: math.sqrt(2.0) * float(masses[key]) / higgs_vev for key in ("s", "mu", "b", "tau")}
+        nda[label] = {
+            "s_mu": math.sqrt(4.0 * math.pi / abs(yukawa["mu"] - yukawa["s"])),
+            "b_tau": math.sqrt(4.0 * math.pi / abs(yukawa["tau"] - yukawa["b"])),
+        }
+    return {
+        "statement": (
+            "(a) Charges are derived, not typed: <Sigma> = sigma_std has (B-L, T3R) = (-2, +1) (Cartan derivations; minus "
+            "the charge of nu^c nu^c, the only pair it couples); p, S and Phi17 are neutral; the 10_H doublet components "
+            "are (0, +1/2) (z5) and (0, -1/2) (zbar5); every Dirac pair (f, f^c) has B-L = 0 and T3R = -1/2 (u, nu) or "
+            "+1/2 (d, e).  (b) All-orders grading: a Dirac entry needs spurion charge in {(0, -1), (0, 0), (0, +1)} and the "
+            "spurion B-L is -2 (n_Sigma - n_Sigmabar), so n_Sigma = n_Sigmabar and T3R = 0: every Dirac Yukawa monomial is "
+            "Sigma-balanced at every dimension (with extra H10/H10^* insertions, all B-L-neutral, n_Sigma = n_Sigmabar "
+            "still follows from B-L alone), and (with the witness spurions p, S, Phi17, Sigma) every Pati-Salam-breaking "
+            "Dirac entry carries at least one Sigma Sigma^dag pair, i.e. is O(|<Sigma>|^2/Lambda^2) relative to the "
+            "PS-invariant part for any operator scale Lambda.  (c) The explicit census of necessary conditions (U(1)_X, "
+            "Z17, (B-L, T3R)) over the single-Higgs (or Higgs-free) monomials psi_1 psi_2 h s_1 ... s_n of two light 16s "
+            "(F, P, Q, R), at most one h in {H10, H10^*} and witness spurions s_i in {p, S, S^*, Phi17, Phi17^*, Sigma, "
+            "Sigma^*} (with multiplicity) is exhaustive to mass dimension 12 for that class.  (d) For generic "
+            "PS-invariant Yukawas of the operators linear in H10 or H10^* (symmetric 10-type and antisymmetric 120-like "
+            "channels, on v and on conj(v), any number of PS-singlet spurions) and any v = alpha z5 + beta zbar5: M_e = "
+            "kappa M_d and M_D = kappa' M_u (kappa = +-1 per colour, no transpose); at |alpha| = |beta| (tan beta = 1, the "
+            "witness for every |S| by lemma_S_independence) M_d = phase x M_u identically, so CKM = 1 and m_t = m_b; for "
+            "|alpha| != |beta| the H-tilde terms make the ratio Yukawa-dependent"
+        ),
+        "scope": (
+            "exact at every dimension and for every Lambda: the grading (b) (it needs only B-L, so it also covers extra "
+            "B-L-neutral H10/H10^* insertions) and the PS-invariant remainder (d) for operators linear in H10 or H10^* "
+            "(any number of PS-singlet spurions); exhaustive to mass dimension 12: the census (c) of single-Higgs (or "
+            "Higgs-free) monomials of two light 16s (F, P, Q, R) and the witness spurions (necessary conditions X, Z17, "
+            "(B-L, T3R); SO(10) contraction coefficients are not computed, which is conservative for a no-go).  "
+            "Multi-Higgs operators (extra H H^dag dressings, e.g. F.F.H10.(H10^dag H10) at dimension 6, X- and "
+            "Z17-neutral) are B-L-neutral, so the grading (b) still applies to them, but they are EW-vev-suppressed and "
+            "not enumerated; for their PS-invariant part M_e = kappa M_d follows from lemma_122_clebsch, while M_d = phase "
+            "x M_u at tan beta = 1 rests on a hand-argued SU(2)_L x SU(2)_R covariance argument (cited_or_hand_argued), "
+            "not on a check.  Operators with 16bar or heavy fields are covered only through the cited light-state lemma.  "
+            "It assumes the witness spurion set (p, S, Phi17, Sigma): a B-L-breaking 210 vev ((15,1,1) or (15,1,3), Route "
+            "A) is (B-L, T3R)-neutral and PS-breaking and evades the grading.  The net Phi17 numbers of the Dirac "
+            "monomials are recorded as data only; no PQ-neutrality claim is made.  Radiative (loop-level) Pati-Salam "
+            "breaking is not analysed"
+        ),
+        "max_dimension": max_dimension,
+        "spurion_charges": {
+            name: {
+                "field": row["field"],
+                "X": row["X"],
+                "Z17": row["Z17"],
+                "B_minus_L_T3R": _charge_text(row["charge"]),
+                "ps_breaking": bool(row["ps_breaking"]),
+            }
+            for name, row in sorted(table.items())
+        },
+        "dirac_targets": sorted(_charge_text(target) for target in dirac_targets),
+        "majorana_target": _charge_text(majorana_target),
+        "counts": counts,
+        "dirac_dimension_histogram": {str(key): value for key, value in histogram.items()},
+        "min_dimensions": {"ps_breaking_dirac": min_ps, "Htilde_dirac": min_htilde},
+        "net_Phi17_numbers_dirac": net_phi17,
+        "net_Phi17_note": "recorded as data only: no PQ-neutrality claim (Dirac monomials with net Phi17 number -1, -2 exist)",
+        "kappa_e_over_d": remainder["kappa_e_over_d"],
+        "kappa_nu_over_u": remainder["kappa_nu_over_u"],
+        "tan_beta_one_ratios": remainder["tan_beta_one_ratios"],
+        "orientation_note": ORIENTATION_NOTE,
+        "cutoff_statement": {
+            "exact": (
+                "the grading (every Dirac Yukawa monomial Sigma-balanced, with any number of B-L-neutral Higgs "
+                "insertions; PS breaking only through Sigma Sigma^dag pairs) holds at every dimension and for every "
+                "operator scale Lambda; the PS-invariant remainder (M_e = kappa M_d, M_D = kappa' M_u; M_d = phase x M_u "
+                "at tan beta = 1) holds at every dimension for the operators linear in H10 or H10^* (any number of "
+                "PS-singlet spurions; multi-Higgs composites only hand-argued); the explicit census is exhaustive to mass "
+                "dimension 12 among the single-Higgs (or Higgs-free) monomials of two light 16s (F, P, Q, R) and the "
+                "witness spurions (multi-Higgs monomials and operators with 16bar or heavy fields are not enumerated)"
+            ),
+            "float": (
+                "NDA only, not a check: the Sigma-bearing entries, bounded by 4 pi (v_R/Lambda)^2, can reach the observed "
+                "SU(4)-breaking splittings only if Lambda <= v_R sqrt(4 pi/|y_mu - y_s|) (s-mu) and Lambda <= v_R sqrt(4 "
+                "pi/|y_tau - y_b|) (b-tau); float_diagnostics.nda_Lambda_max_over_v_R per scale of the data band"
+            ),
+        },
+        "float_diagnostics": {"nda_Lambda_max_over_v_R": nda},
+        "checks": checks,
+    }
+
+
+# L5 ------------------------------------------------------------------------
+
+
+def lemma_s1_g3221_section(
+    su5: Mapping[str, Any],
+    mixing_map: Callable[[Mapping[int, tuple[int, int]]], LemmaForm] | None = None,
+) -> dict[str, Any]:
+    """L5: with one light G3221 bidoublet L = c Phi10 + d Phi126, Phi126 = mixing_map(Phi10) (default iota15, the unique
+    G3221-equivariant image), M_u is proportional to M_d for any tan beta, so CKM = 1 (s = 1, with s =
+    (v_u^126/v_u^10)/(v_d^126/v_d^10) as defined in the section statement).  ``su5`` is the L2
+    section (its doublet-space dimensions give the uniqueness); ``mixing_map`` exists for the mutation test only."""
+    mix = _iota15 if mixing_map is None else mixing_map
+    generators = _u5_generators()
+    so4 = [sympy.ImmutableMatrix(hypercharge._elementary_matrix(first, second).tolist()) for first, second in itertools.combinations(WEAK_INDICES, 2)]
+    colour = [generators[(k, l)] for k in range(3) for l in range(3)]
+
+    def mix_symbolic(vector: Mapping[int, Any]) -> SymbolicForm:
+        total: SymbolicForm = {}
+        for index, coefficient in sorted(vector.items()):
+            if coefficient != 0:
+                total = _symbolic_add(total, _symbolic_scale(_to_symbolic(mix({index: (1, 0)})), coefficient))
+        return total
+
+    equivariant = True
+    for matrix in so4 + colour:
+        for index in WEAK_INDICES:
+            lhs = _form_derivation(matrix, _to_symbolic(mix({index: (1, 0)})))
+            rhs = mix_symbolic({row: matrix[row, index] for row in range(10) if matrix[row, index] != 0})
+            equivariant &= not _symbolic_add(lhs, _symbolic_scale(rhs, -1))
+    spaces = su5.get("doublet_spaces", {})
+    one_dimensional = spaces.get("Y=+1/2") == [3, 1] and spaces.get("Y=-1/2") == [3, 1]
+    w_u, w_d = _sigma_doublet_forms()
+    up_image = hypercharge._twice_minus_i_projection(mix(Z5_VECTOR))
+    down_image = hypercharge._twice_minus_i_projection(mix(ZBAR5_VECTOR))
+    unique = bool(
+        one_dimensional
+        and up_image
+        and down_image
+        and _gaussian_form_ratio(up_image, w_u) is not None
+        and _gaussian_form_ratio(down_image, w_d) is not None
+    )
+    # The contract's O15 mixing map v -> 2 P_{-i}(v ^ F) at three 210 directions F.
+    square = g2_audit._exact_wedge(OMEGA6_FORM, OMEGA6_FORM)
+    a_form = {key: (value[0] // 2, value[1] // 2) for key, value in square.items()}
+    a_exact = all(value[0] % 2 == 0 and value[1] % 2 == 0 for value in square.values())
+    omega_form = g2_audit._exact_wedge(OMEGA6_FORM, JR_FORM)
+
+    def o15(vector: Mapping[int, tuple[int, int]], direction: LemmaForm) -> LemmaForm:
+        return hypercharge._twice_minus_i_projection(g2_audit._exact_wedge(_one_form(vector), direction))
+
+    def iota_126bar(vector: Mapping[int, tuple[int, int]]) -> LemmaForm:
+        return hypercharge._twice_minus_i_projection(_iota15(vector))
+
+    test_vectors = {
+        **{f"e{index}": {index: (1, 0)} for index in WEAK_INDICES},
+        "z4": {6: (1, 0), 7: (0, 1)},
+        "zbar4": {6: (1, 0), 7: (0, -1)},
+        "z5": dict(Z5_VECTOR),
+        "zbar5": dict(ZBAR5_VECTOR),
+    }
+    ratio_a = {label: _gaussian_form_ratio(o15(vector, a_form), iota_126bar(vector)) for label, vector in test_vectors.items()}
+    ratio_omega = {label: _gaussian_form_ratio(o15(vector, omega_form), iota_126bar(vector)) for label, vector in test_vectors.items()}
+    at_p_zero = all(not o15(vector, ps_singlet_form()) for vector in test_vectors.values())
+    i_unit = (Fraction(0), Fraction(1))
+    minus_i = (Fraction(0), Fraction(-1))
+    # Mass matrices (sympy) with one light bidoublet L = c Phi10 + d mixing_map(Phi10).
+    c_symbol, d_symbol = sympy.symbols("c d")
+    v8, v9 = _doublet_components(DOUBLET_ALPHA, DOUBLET_BETA)
+    w8, w9 = _conjugate_doublet_components(DOUBLET_ALPHA_BAR, DOUBLET_BETA_BAR)
+    ten_v = _linear_bilinear(_one_form, v8, v9)
+    mixed_v = _linear_bilinear(mix, v8, v9)
+    mixed_conj = _linear_bilinear(mix, w8, w9)
+    linear_terms_bilinears = (c_symbol * ten_v, d_symbol * mixed_v)
+    conjugate_terms_bilinears = (c_symbol * ten_v, d_symbol * mixed_conj)
+    y10 = _generic_yukawa("y", True)
+    y126 = _generic_yukawa("w", True)
+    yukawa_symbols = y10.free_symbols | y126.free_symbols
+    positions = _state_positions()
+
+    def coefficient(bilinear: Any, particle: str) -> Any:
+        """Scalar coefficient of a symmetric Yukawa in M_f (B[f, f^c] + B[f^c, f])."""
+        p, c = positions[particle], positions[_partner(particle)]
+        return sympy.expand(bilinear[p, c] + bilinear[c, p])
+
+    one_ok = True
+    ratios_one: dict[str, str] = {}
+    lepton_split = True
+    conjugate_ok = True
+    two_ok = True
+    conjugate_det_text = ""
+    two_det_text = ""
+    radius, u1, u2 = sympy.symbols("r w1 w2")
+    unit = {DOUBLET_ALPHA: radius * u1, DOUBLET_BETA: radius * u2, DOUBLET_ALPHA_BAR: radius / u1, DOUBLET_BETA_BAR: radius / u2}
+    alpha1, beta1, alpha2, beta2 = sympy.symbols("alpha1 beta1 alpha2 beta2")
+    ten_1 = _linear_bilinear(_one_form, *_doublet_components(alpha1, beta1))
+    mixed_2 = _linear_bilinear(mix, *_doublet_components(alpha2, beta2))
+    linear_terms = list(zip(linear_terms_bilinears, (y10, y126)))
+    conjugate_terms = list(zip(conjugate_terms_bilinears, (y10, y126)))
+    for colour_label in COLOURS:
+        up, down = f"u[{colour_label}]", f"d[{colour_label}]"
+        m_u = _family_mass(linear_terms, up, _partner(up))
+        m_d = _family_mass(linear_terms, down, _partner(down))
+        m_e = _family_mass(linear_terms, "e[+++]", "ec[---]")
+        same, ratio = _proportional(m_u, m_d)
+        one_ok &= same and ratio is not None and not (ratio.free_symbols & (yukawa_symbols | {c_symbol, d_symbol}))
+        ratios_one[f"u[{colour_label}]/d[{colour_label}]"] = str(ratio)
+        e_same, _ = _proportional(m_e, m_d)
+        lepton_split &= not e_same
+        # Conjugate (antilinear, H.Sigma.S-type) mixing: Phi126 = mixing_map(conj Phi10).
+        det_conjugate = _coefficient_determinant(
+            (c_symbol * coefficient(ten_v, up), d_symbol * coefficient(mixed_conj, up)),
+            (c_symbol * coefficient(ten_v, down), d_symbol * coefficient(mixed_conj, down)),
+        )
+        conj_u = _family_mass(conjugate_terms, up, _partner(up))
+        conj_d = _family_mass(conjugate_terms, down, _partner(down))
+        generic_same, _ = _proportional(conj_u, conj_d)
+        unit_same, _ = _proportional(conj_u.subs(unit).applyfunc(sympy.expand), conj_d.subs(unit).applyfunc(sympy.expand))
+        conjugate_ok &= (
+            _constant_multiple(det_conjugate, c_symbol * d_symbol * (DOUBLET_ALPHA * DOUBLET_ALPHA_BAR - DOUBLET_BETA * DOUBLET_BETA_BAR))
+            and not generic_same
+            and unit_same
+        )
+        det_two = _coefficient_determinant(
+            (coefficient(ten_1, up), coefficient(mixed_2, up)),
+            (coefficient(ten_1, down), coefficient(mixed_2, down)),
+        )
+        two_ok &= det_two != 0 and _constant_multiple(det_two, alpha1 * beta2 - alpha2 * beta1)
+        if colour_label == COLOURS[0]:
+            conjugate_det_text = str(sympy.factor(det_conjugate))
+            two_det_text = str(sympy.factor(det_two))
+    checks = {
+        "iota15_is_G3221_equivariant": bool(equivariant),
+        "g3221_bidoublet_intertwiner_unique_up_to_scale": unique,
+        "O15_at_G3221_direction_a_equals_i_iota15": a_exact and all(ratio_a[f"e{index}"] == i_unit for index in WEAK_INDICES),
+        "O15_at_G3211_direction_omega_has_relative_sign_minus_one": ratio_omega["z5"] == i_unit and ratio_omega["zbar5"] == minus_i,
+        "O15_at_ps_singlet_p_vanishes_on_the_doublets": bool(at_p_zero),
+        "one_light_bidoublet_Mu_proportional_Md_for_any_tan_beta": bool(one_ok),
+        "one_light_bidoublet_Me_not_proportional_Md": bool(lepton_split),
+        "conjugate_mixing_proportional_iff_tan_beta_one": bool(conjugate_ok),
+        "two_independent_light_bidoublets_break_proportionality": bool(two_ok),
+    }
+    return {
+        "statement": (
+            "Definition: s = (v_u^126/v_u^10)/(v_d^126/v_d^10), the ratio of the 126bar-to-10 composition of the up-type "
+            "(Y = +1/2) and the down-type (Y = -1/2) component of the light bidoublet, with each 126bar vev measured in "
+            "units of the equivariant image iota15 of the corresponding 10 component; then M_d = H + F and M_u = r (H + s "
+            "F) with H, F the 10 and 126bar contributions to M_d and r = v_u^10/v_d^10, and s = 1 (an SU(2)_R-symmetric "
+            "composition) gives M_u = r M_d.  "
+            "(i) iota15(v) = omega6 ^ iota_v p is G3221-equivariant (the six so(4) generators on e6..e9 and the nine u(3) "
+            "colour generators); (ii) the Y = +-1/2 neutral colour-singlet doublet spaces of the 126bar are "
+            "one-dimensional (lemma_su5_casimir), so every G3221-equivariant complex-linear map (1,2,2)_10 -> 126bar is a "
+            "multiple of P_{-i} iota15 (Schur, cited); (iii) the contract's O15 mixing map v -> 2 P_{-i}(v ^ F) is exactly "
+            "i x 2 P_{-i} iota15(v) at the G3221 direction F = a = omega6 ^ omega6/2 (SU(2)_R-symmetric), has relative "
+            "sign -1 between z5 (+i) and zbar5 (-i) at the G3211 direction F = omega = omega6 ^ J_R (SU(2)_R-breaking), "
+            "and vanishes on the doublets at F = p (the witness); (iv) with one light bidoublet L = c Phi10 + d Phi126, "
+            "Phi126 = iota15(Phi10), symmetric Y10, Y126 and any v = alpha z5 + beta zbar5 (any tan beta), M_u = (alpha/"
+            "beta) M_d colour by colour with a Yukawa-free ratio, so M_u M_u^dag is proportional to M_d M_d^dag and CKM "
+            "= 1 (s = 1); M_e is not proportional to M_d (the theorem is about CKM); this is exact for a G3221-equivariant "
+            "composition, and v_R-scale SU(2)_R breaking through <Sigma> (e.g. O28 with <Sigma>^2, or the "
+            "<Sigma>-proportional O15 H-Phi block), whose size is not computed, is a further possible source of s != 1 "
+            "and CKM != 1; (v) escapes: conjugate (antilinear) mixing Phi126 = iota15(conj Phi10) has coefficient "
+            "determinant c d (alpha alphabar - beta betabar) x const, so proportionality holds iff tan beta = 1; two "
+            "independent light bidoublets give (alpha1 beta2 - alpha2 beta1) x const"
+        ),
+        "scope": (
+            "dimension-four Yukawas; the light bidoublet's 10/126bar composition map is G3221-equivariant (true for the "
+            "<Phi>-mediated O15 H-Sigma block at a (15,1,1) vev, check (iii); <Sigma>-mediated mixings, which break "
+            "SU(2)_R at v_R, are not analysed).  Not claimed: existence or certifiability of any G3221 vacuum of the "
+            "contract, the size of s - 1 from v_R-scale SU(2)_R breaking through <Sigma>, the size of conjugate mixing "
+            "(O38 with <S>), or anything about unification or the seesaw scale on such chains.  At the witness itself (p "
+            "only) the mixing vanishes (check iii), so the lemma scopes Route A and does not add to Route C"
+        ),
+        "O15_ratio_to_iota15": {
+            "a": {f"e{index}": _gauss_str(ratio_a[f"e{index}"]) for index in WEAK_INDICES},
+            "omega": {label: _gauss_str(ratio_omega[label]) for label in ("e8", "e9", "z4", "zbar4", "z5", "zbar5")},
+            "p": "0" if at_p_zero else "nonzero",
+        },
+        "one_bidoublet_Mu_over_Md": ratios_one,
+        "conjugate_mixing_determinant": conjugate_det_text,
+        "two_bidoublet_determinant": two_det_text,
+        "checks": checks,
+    }
+
+
+# L6 ------------------------------------------------------------------------
+
+
+def _cross_matrix(vector: Sequence[Any]) -> Any:
+    """[a]_x: the generic complex antisymmetric 3 x 3 matrix."""
+    return sympy.Matrix([[0, vector[2], -vector[1]], [-vector[2], 0, vector[0]], [vector[1], -vector[0], 0]])
+
+
+B1A_PROOF = (
+    "(1) Tr(A^dag S) = 0 for S symmetric and A antisymmetric, so ||M_f||_F^2 = ||S||_F^2 + |x_f|^2 ||A||_F^2 and the left "
+    "side equals ||x_e|^2 - |x_d|^2| ||A||_F^2.  (2) adj(S + x A) = adj S + x C1 + x^2 a a^T with adj S symmetric and C1 "
+    "antisymmetric (adj(M)^T = adj(M^T), M(x)^T = M(-x)); symmetric and antisymmetric matrices are Frobenius-orthogonal, "
+    "so ||adj M_f||_F >= ||adj S + x_f^2 a a^T||_F >= | |x_f|^2 ||a||^2 - ||adj S||_F | (reverse triangle inequality, "
+    "||a a^T||_F = ||a||^2).  (3) With ||A||_F^2 = 2 ||a||^2 and K = 2 ||adj S||_F: 2 ||adj M_f||_F >= | |x_f|^2 "
+    "||A||_F^2 - K |, and |u - w| <= |u - K| + |w - K| gives the claim.  (4) ||adj M||_F^2 = e2(M^dag M) = sum_{i<j} "
+    "m_i^2 m_j^2 (Cauchy-Binet).  Sharp: at S = 0, x_d = 0 both sides equal 2 |x_e|^2 ||a||^2 (adj(x A) = x^2 a a^T)"
+)
+
+
+def lemma_b1a_section(antisymmetric_builder: Callable[[Sequence[Any]], Any] | None = None) -> dict[str, Any]:
+    """L6: the pure 10 + 120 inequality | ||M_e||_F^2 - ||M_d||_F^2 | <= 2 (||adj M_e||_F + ||adj M_d||_F) for M_f = S + x_f A
+    (proved: sympy identities with independent symbols for entries and conjugates, plus the cited triangle
+    inequalities).  ``antisymmetric_builder`` exists for the mutation test only."""
+    builder = _cross_matrix if antisymmetric_builder is None else antisymmetric_builder
+    x = sympy.Symbol("x")
+    entries: dict[tuple[int, int], Any] = {}
+    conjugates: dict[tuple[int, int], Any] = {}
+    for i in range(3):
+        for j in range(i, 3):
+            entries[(i, j)] = entries[(j, i)] = sympy.Symbol(f"s{i}{j}")
+            conjugates[(i, j)] = conjugates[(j, i)] = sympy.Symbol(f"sbar{i}{j}")
+    a = sympy.symbols("a0:3")
+    a_bar = sympy.symbols("abar0:3")
+    s_matrix = sympy.Matrix(3, 3, lambda i, j: entries[(i, j)])
+    a_matrix = builder(a)
+    a_bar_matrix = builder(a_bar)
+    zero = sympy.zeros(3, 3)
+    frobenius = sympy.expand(sum(a_bar_matrix[i, j] * s_matrix[i, j] for i in range(3) for j in range(3))) == 0
+    adjugate = (s_matrix + x * a_matrix).adjugate().applyfunc(sympy.expand)
+    degree_ok = all(sympy.degree(value, x) <= 2 for value in adjugate if value != 0)
+    c0 = adjugate.applyfunc(lambda value: value.coeff(x, 0))
+    c1 = adjugate.applyfunc(lambda value: value.coeff(x, 1))
+    c2 = adjugate.applyfunc(lambda value: value.coeff(x, 2))
+    a_vector = sympy.Matrix(a)
+    a_bar_vector = sympy.Matrix(a_bar)
+    parity = (
+        degree_ok
+        and (c0 - s_matrix.adjugate()).applyfunc(sympy.expand) == zero
+        and (c0 - c0.T).applyfunc(sympy.expand) == zero
+        and (c1 + c1.T).applyfunc(sympy.expand) == zero
+        and (c2 - a_vector * a_vector.T).applyfunc(sympy.expand) == zero
+    )
+    norm_a = sum(a[i] * a_bar[i] for i in range(3))
+    outer, outer_bar = a_vector * a_vector.T, a_bar_vector * a_bar_vector.T
+    norms = (
+        sympy.expand(sum(outer[i, j] * outer_bar[i, j] for i in range(3) for j in range(3)) - norm_a**2) == 0
+        and sympy.expand(sum(a_matrix[i, j] * a_bar_matrix[i, j] for i in range(3) for j in range(3)) - 2 * norm_a) == 0
+    )
+    m = sympy.Matrix(3, 3, lambda i, j: sympy.Symbol(f"m{i}{j}"))
+    m_bar = sympy.Matrix(3, 3, lambda i, j: sympy.Symbol(f"mbar{i}{j}"))
+    gram = m_bar.T * m
+    e2 = sympy.expand((gram.trace() ** 2 - (gram * gram).trace()) / 2)
+    adj_m, adj_m_bar = m.adjugate(), m_bar.adjugate()
+    cauchy_binet = sympy.expand(sum(adj_m[i, j] * adj_m_bar[i, j] for i in range(3) for j in range(3)) - e2) == 0
+    checks = {
+        "frobenius_pythagoras_TrAdagS_zero": bool(frobenius),
+        "adjugate_parity_decomposition": bool(parity),
+        "norm_identities_aaT_and_A": bool(norms),
+        "adjugate_norm_is_e2_of_singular_values": bool(cauchy_binet),
+    }
+    return {
+        "statement": (
+            "For complex symmetric S, complex antisymmetric A = [a]_x (3 x 3) and complex x_d, x_e, with M_f = S + x_f A: "
+            "| ||M_e||_F^2 - ||M_d||_F^2 | <= 2 (||adj M_e||_F + ||adj M_d||_F), where ||M||_F^2 = sum m_i^2 and ||adj "
+            "M||_F^2 = sum_{i<j} m_i^2 m_j^2 (singular values).  By lemma_122_clebsch this is the form of the down-quark "
+            "and charged-lepton matrices in a pure 10 + 120 extension (the 10 and the (1,2,2) of the 120 share the "
+            "lepton/quark Clebsch +1; the (15,2,2) of the 120 has -3), up to the colour sign"
+        ),
+        "proof": B1A_PROOF,
+        "sharp_case": "S = 0, x_d = 0",
+        "scope": (
+            "a necessary condition for the hypothetical pure 10 + 120 extension (a Route B sub-branch), proved exactly "
+            "(sympy identities with independent symbols for entries and conjugates; the triangle inequalities are "
+            "cited).  Not claimed: its data consequence (not load-bearing, not recorded), any exclusion of a 120_H, or "
+            "any 10 + 126bar (+ 120) fit"
+        ),
+        "checks": checks,
+    }
+
+
+# ---------------------------------------------------------------------------
 # (H) Upstream artifacts (fail closed) and the report.
 # ---------------------------------------------------------------------------
 
@@ -2886,11 +4415,35 @@ ROUTES = {
         "(SOS27 needs portal = 0; O06 cures only the doublet saddle).  A Route A branch must therefore leave q0 (other "
         "vevs, or a (15,2,2) near M_I with a down-type mixing channel), keep the colour triplets non-tachyonic, and needs "
         "new exact G3/G4/G5 certificates; it may not exist and reopens the 2HDM proton-decay and high-v_R Higgs-matching "
-        "risks."
+        "risks.  At a G3221 point (a (15,1,1) vev, no (15,1,3)) the <Phi>-mediated O15 H-Sigma mixing is "
+        "SU(2)_R-symmetric, so with a G3221-equivariant composition one light bidoublet still gives M_u proportional to "
+        "M_d and CKM = 1 (lemma_s1_g3221, exact at dimension four).  The escapes that lemma leaves open are two light "
+        "bidoublets, an SU(2)_R-breaking (15,1,3) component, conjugate (H.Sigma.S-type) mixing with tan beta != 1, and "
+        "v_R-scale SU(2)_R breaking through <Sigma> in the bidoublet mixing (e.g. O28 with <Sigma>^2, or the "
+        "<Sigma>-proportional O15 H-Phi block), whose size is not analysed."
     ),
     "B": (
-        "Extension beyond the declared contract: a 120_H, a second 10_H, or a UV completion that generates "
-        "F.F.H10^*.S^* (U(1)_X allows it at dimension five).  Changes models/SO10Z17AxionV20.m; G1-G5 restart."
+        "Extension beyond the declared contract.  Among the analysed candidate extensions (a second 10_H, a 10_H^* "
+        "Yukawa, the operator F.F.H10^*.S^*, Pati-Salam-singlet dressings of the 10_H, a 120_H) only a 120_H can split d "
+        "from e: with X = -2 (Z17 phase 15) F.F.120_H is allowed, and its (15,2,2) component carries the T15 Clebsch "
+        "(lepton/quark -3) on the down-type doublet as well "
+        "(lemma_122_clebsch.hypothetical_120_fifteen_component_is_T15_type).  A second 10_H, a 10_H^* Yukawa and the "
+        "operator F.F.H10^*.S^* (whatever completion generates it), as "
+        "well as any other Pati-Salam-singlet dressing of the 10_H (e.g. F.F.H10.Phi210 at <Phi210> = p), are excluded "
+        "as flavour repairs at the level of their Yukawa sources: each is a (1,2,2) source with lepton/quark Clebsch +1 "
+        "(lemma_122_clebsch), so M_e = phase x M_d and M_D = phase x M_u for generic non-symmetric Yukawas and "
+        "independent vevs (lemma_eft_census) and the portal-immune tests stay excluded; for F.F.H10^*.S^* on the witness, "
+        "tan beta = 1 for every |S| (lemma_S_independence) also keeps M_d = phase x M_u (CKM = 1).  A second 10_H is "
+        "covered at the level of its Yukawa source; its own H'-linear portals are, term by term, the witness portals "
+        "under H' -> H or H' -> conj(H), so the existing up-type-only selection rule covers them only if it carries "
+        "H10's (X, Z17) = (-2, 15) or H10^*'s (2, 2) (hand-argued, not recomputed).  Not analysed: a second 10_H with "
+        "other charges beyond its Yukawa source, a UV completion that adds further PS-breaking operators near v_R, a "
+        "second 126bar_H, a new B-L-breaking scalar vev (e.g. a 45_H with a (15,1,1) vev, whose F.F.H10.45_H can carry a "
+        "Georgi-Jarlskog-type T15 Clebsch) and vectorlike matter; so Route B is not reduced to a 120_H among all "
+        "extensions.  A 120_H is not shown to repair G8: only its (15,2,2) component can split d from e, so the light "
+        "doublet needs a (15,2,2)_120 admixture whose size is not analysed here, and the pure 10 + 120 limit obeys the "
+        "exact inequality of lemma_b1a.  The other in-contract option, a B-L-breaking 210 orientation ((15,1,1) or "
+        "(15,1,3) components), is Route A, not Route B (lemma_s1_g3221).  Changes models/SO10Z17AxionV20.m; G1-G5 restart."
     ),
     "C": "Record this no-go (this artifact) and leave G8 OPEN on the current witness branch.",
 }
@@ -2925,6 +4478,13 @@ def build_report(
     portals = portals_section(data, o28=o28, comparison=comparison)
     seesaw = seesaw_section(data, n_random=seesaw_samples)
     upstream = upstream_section(candidate_report, hessian_report)
+    # (I) Status-neutral v2 lemmas (exact; fail closed like every other section).
+    lemma_clebsch = lemma_122_clebsch_section()
+    lemma_su5 = lemma_su5_casimir_section()
+    lemma_s = lemma_S_independence_section(portals["lattice_binding"]["patterns"])
+    lemma_eft = lemma_eft_census_section(contract, comparison)
+    lemma_s1 = lemma_s1_g3221_section(lemma_su5)
+    lemma_b1a = lemma_b1a_section()
     sections = {
         "contract": contract,
         "light_doublet": portal,
@@ -2934,6 +4494,12 @@ def build_report(
         "O28_fix": o28,
         "H_linear_portals": portals,
         "upstream": upstream,
+        "lemma_122_clebsch": lemma_clebsch,
+        "lemma_su5_casimir": lemma_su5,
+        "lemma_S_independence": lemma_s,
+        "lemma_eft_census": lemma_eft,
+        "lemma_s1_g3221": lemma_s1,
+        "lemma_b1a": lemma_b1a,
     }
     checks = _all_checks(sections)
     failures = sorted(key for key, value in checks.items() if not value)
@@ -2941,6 +4507,34 @@ def build_report(
     portal_checks_pass = all(value for key, value in checks.items() if key.startswith("H_linear_portals."))
     findings = portals["findings"]
     stable_reach = findings["tan_beta_reaches_m_t_over_m_b_colour_stable_with"]
+
+    def lemma_pass(prefix: str, names: Sequence[str] | None = None) -> bool:
+        section = sections[prefix]["checks"]
+        selected = section if names is None else {name: section.get(name, False) for name in names}
+        return bool(selected) and all(bool(value) for value in selected.values())
+
+    # Status neutrality: the status the v1 sections alone would give must equal the reported status.
+    v1_failures = [key for key in failures if not key.startswith(LEMMA_KEYS)]
+    v1_status = STATUS_RECORDED if not v1_failures else STATUS_INCOMPLETE
+    clebsch_exact = lemma_pass("lemma_122_clebsch")
+    eft_charges = ("sigma_vev_charge_is_minus2_plus1", "p_S_Phi17_vevs_carry_zero_charge", "ten_doublet_and_dirac_pair_charges")
+    eft_balance = (
+        "every_dirac_monomial_sigma_balanced_to_dimension_12",
+        "no_T3R_mismatched_dirac_monomial",
+        "no_single_sigma_dirac_monomial",
+        "every_ps_breaking_dirac_monomial_carries_a_sigma_pair",
+        "min_dimension_ps_breaking_dirac_is_6",
+        "min_dimension_Htilde_dirac_is_5",
+        "majorana_monomials_carry_net_one_sigma",
+        "grading_forces_sigma_balance_at_every_dimension",
+    )
+    eft_census_names = (
+        *eft_charges,
+        "light_sixteens_are_the_rank_certificate_kernel",
+        "z17_automatic_for_every_X_neutral_monomial",
+        "census_counts_to_dimension_12_pinned",
+        *eft_balance[:-1],
+    )
     flags = {
         "witness_branch_flavour_excluded_at_renormalizable_tree_level": excluded,
         "light_doublet_pure_10H_exact": all(value for key, value in checks.items() if key.startswith("light_doublet.")),
@@ -2984,11 +4578,40 @@ def build_report(
         "G8_closed": False,
         "falsifies_G3_G5_scalar_vacuum_certificates": False,
         "falsifies_so10_contract": False,
+        # Status-neutral v2 lemmas (derived from the lemma checks; the explicit Falses are scope statements).
+        "one_two_two_clebsch_plus_one_via_T15_exact": clebsch_exact,
+        "second_10H_10H_conjugate_or_FFHstarSstar_can_split_d_from_e": not clebsch_exact,
+        "su5_casimir_selection_rule_exact": lemma_pass("lemma_su5_casimir"),
+        "su5_casimir_rule_covers_p_mediated_portal_paths": False,
+        "light_doublet_pure_10H_and_tan_beta_one_for_every_S_modulus_exact": lemma_pass("lemma_S_independence"),
+        "dirac_yukawas_sigma_balanced_at_every_dimension_exact": lemma_pass("lemma_eft_census", eft_charges + eft_balance),
+        "eft_census_single_higgs_light_16_monomials_exhaustive_to_dimension_12": lemma_pass("lemma_eft_census", eft_census_names),
+        "ps_invariant_remainder_Me_equals_phase_Md_generic_Y_exact": lemma_pass(
+            "lemma_eft_census",
+            ("ps_invariant_Me_equals_kappa_Md_for_generic_Y", "ps_invariant_MD_equals_kappa_Mu_for_generic_Y"),
+        ),
+        "ps_invariant_remainder_Me_equals_phase_Md_transpose_generic_Y": False,
+        "tan_beta_one_forces_Md_equal_phase_Mu_for_H_linear_PS_invariant_operators_every_dimension_exact": lemma_pass(
+            "lemma_eft_census",
+            ("grading_forces_sigma_balance_at_every_dimension", "tan_beta_one_gives_Md_equal_phase_Mu_with_Htilde_and_120_channel"),
+        ),
+        "multi_higgs_PS_invariant_composites_proved_exactly": False,
+        "s_equals_one_for_one_light_G3221_bidoublet_exact": lemma_pass("lemma_s1_g3221"),
+        "g3221_vacuum_existence_or_certifiability_claimed": False,
+        "b1a_inequality_proved_exact": lemma_pass("lemma_b1a"),
+        "b1a_data_consequence_load_bearing": False,
+        "census_PQ_neutrality_claimed": False,
+        "route_B_one_two_two_source_extensions_excluded": clebsch_exact
+        and lemma_pass("lemma_eft_census", ("ps_invariant_Me_equals_kappa_Md_for_generic_Y",)),
+        "route_B_reduced_to_120H_among_all_extensions": False,
+        "route_B_120H_repair_established": False,
     }
+    status = STATUS_RECORDED if excluded else STATUS_INCOMPLETE
+    flags["v2_lemmas_status_neutral"] = status == v1_status
     report: dict[str, Any] = {
         "module": "g8_sm_pati_salam_flavour_nogo_v20",
         "model_contract_id": MODEL_CONTRACT_ID,
-        "status": STATUS_RECORDED if excluded else STATUS_INCOMPLETE,
+        "status": status,
         "overall_state": OVERALL_STATE_RECORDED if excluded else OVERALL_STATE_OPEN,
         "G8_status": "OPEN",
         "n_checks": len(checks),
@@ -3011,6 +4634,12 @@ def build_report(
         "H_linear_portals": portals,
         "seesaw": seesaw,
         "upstream": upstream,
+        "lemma_122_clebsch": lemma_clebsch,
+        "lemma_su5_casimir": lemma_su5,
+        "lemma_S_independence": lemma_s,
+        "lemma_eft_census": lemma_eft,
+        "lemma_s1_g3221": lemma_s1,
+        "lemma_b1a": lemma_b1a,
         "routes": ROUTES,
         "scope": {
             "proved_exactly": [
@@ -3029,7 +4658,8 @@ def build_report(
                 "phases nu/u and e/d; sigma_std couples only nu^c nu^c; the (15,2,2) lepton/quark Clebsch is -3",
                 "contract enumeration from the SARAH model file: no 16.16.10_H^* coupling, H10/126bar Yukawas only on the "
                 "X = 1 sixteens, 16.16bar masses only from SO(10) singlets, no 120_H",
-                "flavour structure (sympy): M_u M_u^dag = M_d M_d^dag, M_e = phase M_d^T, M_D = phase M_u^T",
+                "flavour structure (sympy): M_u M_u^dag = M_d M_d^dag, M_e = phase M_d^T, M_D = phase M_u^T (symmetric "
+                "dimension-four Y; see lemma_eft_census for generic Y)",
                 "O28 alone: lattice-bound H-Sigma block (+-192 r0^2), exact first-order admixture theta^2 = c^2 r0^4 R(r0) "
                 "with R = 7962624 (13 r^2+6)^2/(13 r^4+12 r^2+36)^2 (derived from 3 exact points, re-checked at 2, and "
                 "matched exactly by the first-order solve at 8 r0 values including the anchor and the 4 repository r0), "
@@ -3045,6 +4675,35 @@ def build_report(
                 "(integer lattice); the Sigma admixture Gram is 2 theta_Re^2 times the coupled-component projector "
                 "(theta(tan beta) exact up to the float t); and every portal-induced 126bar vev couples only Q u^c and "
                 "L nu^c (exact 16.16 bilinears), so M_e = phase x M_d^T for every portal combination at any coefficient",
+                "lemma_122_clebsch (v2): T15 = 3(B-L) on the 16; every (1,2,2) Yukawa source (the 10, a second 10_H, a "
+                "10_H^* Yukawa, F.F.H10^*.S^*, F.F.H10.Phi210 at <Phi210> = p) has the lepton/quark Clebsch of the 10 "
+                "(+1), exactly (oriented Gaussian-integer bilinears); the 126bar (15,2,2) and a hypothetical 120_H "
+                "(15,2,2) are K T15 times the 10 (lepton/quark -3 on the up- and down-type doublet alike)",
+                "lemma_su5_casimir (v2): SU(5) Casimir 12/5 on both 10_H doublets and on the up-type 126bar doublet, 32/5 "
+                "on the down-type 126bar doublet (the one coupling d d^c and e e^c); the neutral colour-singlet doublet "
+                "spaces of the 126bar are one-dimensional; the 5bar has no 126bar image (representation-theoretic scope: "
+                "SU(5)-equivariant mixings only; p is not an SU(5) singlet)",
+                "lemma_S_independence (v2): S enters the nonzero benchmark only through O04, O23 (S sector) and O12 (H "
+                "sector); the doublet eigenvectors are Re/Im H_6..9 for every r_S and the retuned H block is diag(2, 2 + 2 "
+                "r0 r_S | 0, 2 r0 r_S) (Fractions, r_S/r0 = 1, 10, 1000 at four r0), so the light doublet stays pure "
+                "10_H with tan beta = 1 for every |S|; O38 (the only S-dependent H-linear direction) has no H x S block and "
+                "its doublet columns reach only Phi (exact forms of the 10 x 210 -> 126 contraction: e_a ^ p pairs to zero "
+                "with sigma_std, its conjugate and its Hodge dual, and vanishes for a = 6..9)",
+                "lemma_eft_census (v2): (B-L, T3R) charges derived from the vev forms; every Dirac Yukawa monomial is "
+                "Sigma-balanced at every dimension (grading; B-L alone, so also with any number of B-L-neutral Higgs "
+                "insertions) and the census of X-, Z17- and (B-L, T3R)-admissible single-Higgs (or Higgs-free) monomials "
+                "of two light 16s (F, P, Q, R) and the witness spurions is exhaustive to mass dimension 12 (4657 / 1460 "
+                "Dirac / 800 Majorana; PS-breaking Dirac entries from dimension 6, H-tilde from 5); for generic "
+                "PS-invariant Yukawas of the operators linear in H10 or H10^* (any number of PS-singlet spurions) M_e = "
+                "kappa M_d and M_D = kappa' M_u (no transpose), and at tan beta = 1 M_d = phase x M_u (sympy)",
+                "lemma_s1_g3221 (v2): iota15 = omega6 ^ iota_v p is G3221-equivariant and (with the one-dimensional doublet "
+                "spaces) the unique bidoublet intertwiner up to scale; the <Phi>-mediated O15 H-Sigma map at the (15,1,1) "
+                "direction a is i x iota15, at omega it has relative sign -1, at p it vanishes; with a G3221-equivariant "
+                "composition one light bidoublet gives s = 1, i.e. M_u = (alpha/beta) M_d for any tan beta (CKM = 1); "
+                "conjugate mixing needs tan beta != 1 and two light bidoublets break it (sympy)",
+                "lemma_b1a (v2): the pure 10 + 120 inequality | ||M_e||_F^2 - ||M_d||_F^2 | <= 2 (||adj M_e||_F + ||adj "
+                "M_d||_F) (sympy identities: Tr(A^dag S) = 0, the parity split of the adjugate, the norm identities, "
+                "Cauchy-Binet; the triangle inequalities cited)",
             ],
             "float_diagnostics": [
                 "data comparison: PDG/FLAG/XZZ inputs, one-loop SM running, pulls (raw and with a 10% theory term)",
@@ -3058,6 +4717,11 @@ def build_report(
                 "range, and the phase of c",
                 "seesaw: generic Y_R and a scan (random + Nelder-Mead) of textured Y_126",
                 "the O28 and portal lattice bindings compare the compiler's float64 Hessian with the (1/6)-integer patterns",
+                "lemma_eft_census.float_diagnostics: the NDA cutoff Lambda_max/v_R = sqrt(4 pi/|y_l - y_q|) (s-mu, b-tau) "
+                "below which Sigma-bearing operators could reach the observed SU(4)-breaking splittings (not a check)",
+                "lemma_S_independence.O38_compiler_pattern_corroboration_not_a_check reads the H_linear_portals lattice "
+                "binding of the compiler's O38 (float64 bound to the (1/6) Z lattice); it corroborates the exact form "
+                "check (vii) and is not a check",
             ],
             "cited_or_hand_argued": [
                 "electroweak breaking proceeds along the light doublet Re H_6..9 (the only light scalar with doublet "
@@ -3075,6 +4739,31 @@ def build_report(
                 "Y_F (the Yukawa of the canonically normalised (1,2,2) inside the (15,2,2)), the contract's declared Y126 "
                 "and the seesaw Y_R differ by unfixed Clebsch normalisations; the O28-alone t-b bound is far above 4 pi, so "
                 "this O(1) ambiguity does not matter",
+                "Schur's lemma: uniqueness of the G3221-equivariant bidoublet map (lemma_s1_g3221) and the SU(5) "
+                "isotypic corollary of lemma_su5_casimir",
+                "B1a: Frobenius orthogonality of symmetric and antisymmetric matrices and the (reverse) triangle "
+                "inequality (the identities they act on are checked in sympy)",
+                "the |S| scaling of O38's columns follows from its homogeneity in S^dag (S-degree 1, checked from the "
+                "census orbit key)",
+                "lemma_S_independence (vii) models O38 by the 10 x 210 -> 126 contraction <conj(H) ^ Phi, conj(Sigma)> "
+                "conj(S): 10 x 210 = 120 + 126 + 126bar + 1728 contains the 126 once (the 5-form v ^ Phi), so the "
+                "compiler's O38 is a multiple of it",
+                "multi-Higgs PS-invariant composites (e.g. the (1,2,2) projection of H H H^dag in F.F.H.H.H^dag.S^n): at "
+                "|alpha| = |beta| the neutral bidoublet vev is r U with U in U(2); writing U = e^{i phi} U' with U' in "
+                "SU(2), SU(2)_L x SU(2)_R covariance F(L Phi R^dag) = L F(Phi) R^dag gives F(r U) = U' F(r e^{i phi} 1), "
+                "and F(r e^{i phi} 1) commutes with the diagonal SU(2), so it is a multiple of 1 (Schur): every covariant "
+                "composite is proportional to U, keeps tan beta = 1 and hence M_d = phase x M_u; M_e = kappa M_d for such "
+                "composites follows from lemma_122_clebsch (every (1,2,2) source has lepton/quark Clebsch +1).  "
+                "Hand-argued, not checked",
+                "a second 10_H with H10's (X, Z17) = (-2, 15) or H10^*'s (2, 2) adds H'-linear portals that are, term by "
+                "term, the witness H portals under H' -> H or H' -> conj(H); the up-type-only selection rule of "
+                "H_linear_portals is checked on every doublet column Re/Im H_6..9 (hence for every light-doublet "
+                "direction), so it covers them (not recomputed)",
+                "lemma_eft_census rests on the light-state lemma (light 16s in span{F, P, Q, R}) and on the light doublet "
+                "being pure 10_H; the (1,2,2) content of 16 x 16 is one symmetric (10) and one antisymmetric (120) "
+                "channel, which the PS-invariant remainder covers on v and on conj(v)",
+                "Weyl bilinears are symmetric under exchange: M_f[i][j] (the coefficient of f_i f^c_j) = B[f, f^c] Y + "
+                "B[f^c, f] Y^T per channel",
             ],
             "not_claimed": [
                 "no statement about the G3-G5 scalar-vacuum certificates or the SO(10) contract: they stand",
@@ -3086,11 +4775,44 @@ def build_report(
                 "inside it by O45_B02, so the O28-alone t-b bound is not a statement about the portal set",
                 "no analysis away from q0 (a vacuum with a light or down-type-mixing (15,2,2) is Route A)",
                 "G8 is not closed; Route A or B is required to reach it",
+                "the v2 lemmas are no-go statements about this witness branch and the declared contract's operator "
+                "content; they do not falsify the contract: a 120_H extension, a Route A branch and the extensions not "
+                "analysed here remain logically open",
+                "Route B is not reduced to a 120_H among all extensions: among the analysed candidate extensions (a second "
+                "10_H, a 10_H^* Yukawa, F.F.H10^*.S^*, PS-singlet dressings of the 10_H, a 120_H) only a 120_H can split d "
+                "from e; extensions that add a second 126bar_H, a new B-L-breaking scalar vev (e.g. a 45_H (15,1,1) vev) "
+                "or vectorlike matter were not analysed",
+                "a second 10_H with charges other than H10's or H10^*'s (X, Z17) is covered only at the level of its "
+                "Yukawa source (its scalar portals are not analysed); a UV completion that adds further PS-breaking "
+                "operators near v_R is not analysed (only the operator F.F.H10^*.S^* is)",
+                "lemma_122_clebsch says nothing about vevs and does not exclude a 120_H (its (15,2,2) is T15-type); a second "
+                "126bar_H was not analysed",
+                "lemma_su5_casimir does not cover the p-mediated portal paths (p is not an SU(5) singlet): those rest on the "
+                "exact per-r0 Schur computation of H_linear_portals",
+                "lemma_S_independence does not certify q(r_S) with r_S != r0 as a global minimum (G3 there is not "
+                "certified) and says nothing about D-A unification or O31/O35",
+                "lemma_eft_census: no PQ-neutrality claim (Dirac monomials with net Phi17 number -1, -2 exist); the census "
+                "checks necessary conditions only (SO(10) contraction coefficients are not computed); it assumes the "
+                "witness spurion set (a B-L-breaking 210 vev, Route A, evades it); M_e = phase x M_d^T is not claimed for "
+                "generic Yukawas",
+                "lemma_eft_census: the census covers single-Higgs (or Higgs-free) monomials of two light 16s and the "
+                "witness spurions only; multi-Higgs monomials (e.g. F.F.H10.(H10^dag H10)) and operators with 16bar or "
+                "heavy fields are not enumerated, and M_d = phase x M_u at tan beta = 1 is checked for the operators "
+                "linear in H10 or H10^* only (multi-Higgs PS-invariant composites: hand-argued)",
+                "radiative (loop-level) Pati-Salam breaking is not analysed",
+                "lemma_s1_g3221: no existence or certifiability of a G3221 vacuum of the contract is claimed, nor the size "
+                "of s - 1 from v_R-scale SU(2)_R breaking through <Sigma> (e.g. O28, or the <Sigma>-proportional O15 H-Phi "
+                "block) or of conjugate (O38 with <S>) mixing; its list of escapes is exhaustive only for G3221-equivariant "
+                "compositions",
+                "lemma_b1a: its data consequence is not load-bearing and not recorded; it excludes neither a 120_H nor a "
+                "10 + 126bar (+ 120) fit",
             ],
         },
         "runtime_seconds": 0.0,
         "verdict": "",
     }
+    if report["G8_status"] != "OPEN" or flags["G8_closed"] or flags["falsifies_so10_contract"]:
+        raise AssertionError("the v2 lemma layer is status-neutral: G8 stays OPEN and the contract is not falsified")
     report["verdict"] = _verdict(report)
     report["runtime_seconds"] = time.time() - started
     return report
@@ -3154,7 +4876,17 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "portal = 0), so any repair needs a new G3 certificate (Route A).  If M_D = M_u(data) (the generic SO(10) "
         "premise, not the witness's own M_D), the seesaw needs a non-perturbative Y_126 for generic textures ("
         + ("a tuned texture can evade this, so it is not load-bearing" if seesaw["textured_escape_exists_somewhere_in_band"] else "no texture found evades it")
-        + ").  Route C is recorded; G8 stays OPEN; the G3-G5 certificates and the SO(10) contract are not falsified."
+        + ").  Route C is recorded; G8 stays OPEN; the G3-G5 certificates and the SO(10) contract are not falsified.  "
+        "Status-neutral v2 lemmas (exact): every (1,2,2) Yukawa source has lepton/quark Clebsch +1 (T15-free), so a "
+        "second 10_H or F.F.H10^*.S^* cannot split d from e: among the analysed candidate extensions only a 120_H can (a "
+        "second 126bar_H, a new B-L-breaking scalar vev and vectorlike matter were not analysed); for SU(5)-equivariant "
+        "mixing the up-type-only rule follows from the SU(5) Casimir (10_H doublets 12/5, the 126bar down-type doublet "
+        "32/5); the light doublet stays pure 10_H with tan beta = 1 for every |S|; Dirac Yukawas are Sigma-balanced at "
+        "every dimension (the census of single-Higgs light-16 monomials is exhaustive to dimension 12), so the "
+        "PS-invariant part of the operators linear in H10 or H10^* keeps M_e = phase x M_d and, at tan beta = 1, M_d = "
+        "phase x M_u; one light G3221 bidoublet forces s = 1 (CKM = 1; dimension four, G3221-equivariant composition, "
+        "<Sigma>-mediated SU(2)_R breaking not analysed, no G3221 vacuum claimed); the pure 10 + 120 inequality B1a is "
+        "proved.  G8 stays OPEN and the contract is not falsified."
     )
 
 
@@ -3175,6 +4907,80 @@ PORTAL_SHORT_NAMES = {
     "O45_B01_Phi2_Hdag_Sigma_210_1050": "O45_B01",
     "O45_B02_Phi2_Hdag_Sigma_210_1050": "O45_B02",
 }
+
+
+LEMMA_TITLES = {
+    "lemma_122_clebsch": "L1. The (1,2,2) Clebsch is +1 via T15",
+    "lemma_su5_casimir": "L2. The SU(5)-Casimir selection rule (12/5 against 32/5)",
+    "lemma_S_independence": "L3. tan beta = 1 and the pure-10_H doublet for every |S| = r_S",
+    "lemma_eft_census": "L4. (B-L, T3R) Sigma balance, the census to dimension 12 and the PS-invariant remainder",
+    "lemma_s1_g3221": "L5. One light G3221 bidoublet forces s = 1 (CKM = 1)",
+    "lemma_b1a": "L6. The pure 10 + 120 inequality B1a (proved)",
+}
+
+
+def _lemma_values(key: str, lemma: Mapping[str, Any]) -> list[str]:
+    """Key exact values of one lemma for the Markdown (from the JSON-roundtripped report)."""
+    if key == "lemma_122_clebsch":
+        return [
+            "T15 on the 16: " + ", ".join(f"{base} = {value}" for base, value in sorted(lemma["T15_values"].items())) + ".",
+            f"Oriented ratios: (1,2,2)_120-like / 10 = {', '.join(lemma['oriented_ratio_120_over_10'])}; "
+            f"126bar (15,2,2) / (T15 x 10) = {', '.join(lemma['oriented_ratio_126bar_15_over_T15_10'])}; "
+            f"hypothetical 120_H (15,2,2) / (T15 x 10) = {', '.join(lemma['oriented_ratio_120_15_over_T15_10'])}.",
+        ]
+    if key == "lemma_su5_casimir":
+        casimir = lemma["casimir"]
+        return [
+            "Casimir: " + ", ".join(f"{name} = {value}" for name, value in sorted(casimir.items())) + ".",
+            "126bar neutral doublet spaces (2 P_{-i} span rank, colour-singlet dimension): "
+            + ", ".join(f"{name}: {value}" for name, value in sorted(lemma["doublet_spaces"].items()))
+            + f"; 16.16 pairs: w_u {', '.join(lemma['pairs']['w_u']) or 'none'}; w_d {', '.join(lemma['pairs']['w_d']) or 'none'}; "
+            f"p is an SU(5) singlet: {lemma['p_is_su5_singlet']}.",
+        ]
+    if key == "lemma_S_independence":
+        return [
+            f"S-S binding units: {', '.join(lemma['S_block_units'])}; units coupling S to other blocks: "
+            f"{', '.join(lemma['units_coupling_S_to_other_blocks']) or 'none'}; S-dependent nonzero directions: "
+            f"{', '.join(lemma['S_dependent_nonzero_benchmark_directions'])}; S-dependent H-linear directions: "
+            f"{', '.join(lemma['S_dependent_H_linear_directions'])}.",
+            f"O06 + O12 block per complex H component: {lemma['O12_component_block']}; retuned H block "
+            f"{lemma['retuned_block_formula']} at r0 = {', '.join(lemma['tested_r0'])} and r_S/r0 = "
+            f"{', '.join(str(value) for value in lemma['tested_r_S_over_r0'])}.",
+            "O38 blocks at q0 (exact forms): "
+            + ", ".join(f"{name} {value}" for name, value in sorted(lemma["O38_exact_form_blocks"].items()))
+            + "; the compiler's lattice-bound O38 pattern agrees (corroboration, not a check): "
+            + f"{lemma['O38_compiler_pattern_corroboration_not_a_check']}.",
+        ]
+    if key == "lemma_eft_census":
+        counts = lemma["counts"]
+        histogram = ", ".join(f"{dimension}: {count}" for dimension, count in sorted(lemma["dirac_dimension_histogram"].items(), key=lambda item: int(item[0])))
+        return [
+            "Spurion (B-L, T3R): " + ", ".join(f"{name} {row['B_minus_L_T3R']}" for name, row in sorted(lemma["spurion_charges"].items()))
+            + f"; Dirac targets {', '.join(lemma['dirac_targets'])}; Majorana target {lemma['majorana_target']}.",
+            f"Census to dimension {lemma['max_dimension']}: {counts['X_neutral_monomials']} X-neutral monomials, "
+            f"{counts['dirac']} Dirac-admissible, {counts['majorana']} Majorana-admissible; Dirac dimension histogram "
+            f"{{{histogram}}}; minimal PS-breaking Dirac dimension {lemma['min_dimensions']['ps_breaking_dirac']}, minimal "
+            f"H-tilde Dirac dimension {lemma['min_dimensions']['Htilde_dirac']}; net Phi17 numbers of Dirac monomials "
+            f"{', '.join(str(value) for value in lemma['net_Phi17_numbers_dirac'])}: {lemma['net_Phi17_note']}.",
+            "PS-invariant remainder: kappa(e/d) = " + ", ".join(f"{name}: {value}" for name, value in sorted(lemma["kappa_e_over_d"].items()))
+            + "; kappa(nu/u) = " + ", ".join(f"{name}: {value}" for name, value in sorted(lemma["kappa_nu_over_u"].items()))
+            + "; at tan beta = 1: " + ", ".join(f"{name} = {value}" for name, value in sorted(lemma["tan_beta_one_ratios"].items())) + ".",
+            f"Orientation: {lemma['orientation_note']}.",
+            f"Cutoff (exact): {lemma['cutoff_statement']['exact']}.  Cutoff (float): {lemma['cutoff_statement']['float']}.",
+        ]
+    if key == "lemma_s1_g3221":
+        ratio = lemma["O15_ratio_to_iota15"]
+        return [
+            "O15 mixing / (2 P_{-i} iota15): at a " + ", ".join(f"{name} {value}" for name, value in sorted(ratio["a"].items()))
+            + "; at omega " + ", ".join(f"{name} {value}" for name, value in sorted(ratio["omega"].items()))
+            + f"; at p {ratio['p']}.",
+            "One light bidoublet: " + ", ".join(f"{name} = {value}" for name, value in sorted(lemma["one_bidoublet_Mu_over_Md"].items()))
+            + f"; conjugate mixing determinant {lemma['conjugate_mixing_determinant']}; two-bidoublet determinant "
+            f"{lemma['two_bidoublet_determinant']}.",
+        ]
+    if key == "lemma_b1a":
+        return [f"Proof: {lemma['proof']}.", f"Sharp case: {lemma['sharp_case']}."]
+    return []
 
 
 def _markdown(report: Mapping[str, Any]) -> str:
@@ -3340,7 +5146,22 @@ def _markdown(report: Mapping[str, Any]) -> str:
             f"{row['normal']['median_Y_R']:.3g} | {row['normal']['minimum_Y_R_found']:.3g} | "
             f"{row['inverted']['minimum_Y_R_found']:.3g} |"
         )
-    lines += ["", report["seesaw"]["reading"], "", "## (5) Scope and routes", ""]
+    lines += ["", report["seesaw"]["reading"], "", "## (5) Status-neutral v2 lemmas (exact)", ""]
+    lines += [
+        "No lemma changes a status: G8 stays OPEN.  They are no-go statements about this witness branch and the declared "
+        "contract; a 120_H extension, a Route A branch and the extensions not analysed here (a second 126bar_H, a new "
+        "B-L-breaking scalar vev, vectorlike matter) remain logically open.",
+        "",
+    ]
+    for key in LEMMA_KEYS:
+        lemma = report[key]
+        n_lemma = sum(1 for name in report["checks"] if name.startswith(key + "."))
+        n_pass = sum(1 for name, value in report["checks"].items() if name.startswith(key + ".") and value)
+        lines += [f"### {LEMMA_TITLES[key]} (`{key}`, {n_pass}/{n_lemma} checks pass)", ""]
+        lines.append(f"- Statement: {lemma['statement']}.")
+        lines += [f"- {item}" for item in _lemma_values(key, lemma)]
+        lines += [f"- Scope: {lemma['scope']}.", ""]
+    lines += ["## (6) Scope and routes", ""]
     for key, value in report["scope"].items():
         lines.append(f"**{key}**")
         lines += [f"- {item}" for item in value]
