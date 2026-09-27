@@ -8,8 +8,6 @@ ANCHOR = {
     "M_I_GeV": 6.3139e11,
     "M_GUT_GeV": 9.9176e15,
     "alpha_inv_GUT": 37.313,
-    "M_GUT_two_loop_proxy_GeV": 9.9e15,
-    "alpha_inv_GUT_two_loop_proxy": 37.3,
 }
 
 

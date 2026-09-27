@@ -4,26 +4,27 @@
   "n_failed": 0,
   "failures": [],
   "gauge_anchor": {
-    "M_I_GeV": 160982556355.69574,
-    "M_GUT_GeV": 1152023707592865.0,
-    "scheme": "two-loop-corrected",
+    "M_I_GeV": 65608359036.3354,
+    "M_GUT_GeV": 1.251508824019244e+16,
+    "scheme": "two_loop_MV_gauge_anchor_no_spectators",
     "alpha_inv_PS_at_MI": [
-      33.727357334500326,
-      40.41374469907986,
-      50.184345953659516
-    ]
+      31.544394507437424,
+      39.06472998447957,
+      54.32109892814617
+    ],
+    "gauge_running": "genuine two-loop Machacek-Vaughn PS running (two_loop_thresholds_v20.ps_alpha_inv_two_loop)"
   },
   "ps_evolution_MI_to_MGUT": {
-    "n_steps": 5,
+    "n_steps": 6,
     "relative_change": {
-      "Y10": 0.11154922408725233,
-      "Y126": 0.05392667217658994,
-      "YR": 0.08292987925662373
+      "Y10": 0.15622562800708692,
+      "Y126": 0.08212296170450803,
+      "YR": 0.12157553286168368
     },
     "max_abs": {
-      "Y10": 1.0831194568071234,
-      "Y126": 0.3861913155603923,
-      "YR": 0.3166554384711809
+      "Y10": 1.1266624764129365,
+      "Y126": 0.37479356738117287,
+      "YR": 0.3033110167946276
     }
   },
   "component_matching_ledger": {

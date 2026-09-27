@@ -49,11 +49,10 @@ SOURCE_LEDGER = {
 
 
 def _unification_anchor() -> dict[str, float]:
-    """Load the repository's current gauge-chain anchor."""
+    """Load the repository's current (one-loop) gauge-chain anchor."""
     try:
         import two_loop_thresholds_v20 as thresholds
         one = thresholds.solve_unification(two_loop=False)
-        two = thresholds.solve_unification(two_loop=True)
     except Exception as exc:  # fail closed, but preserve a diagnostic payload
         return {
             "available": False,
@@ -61,16 +60,12 @@ def _unification_anchor() -> dict[str, float]:
             "M_I_GeV": float("nan"),
             "M_GUT_GeV": float("nan"),
             "alpha_inv_GUT": float("nan"),
-            "M_GUT_two_loop_proxy_GeV": float("nan"),
-            "alpha_inv_GUT_two_loop_proxy": float("nan"),
         }
     return {
         "available": True,
         "M_I_GeV": float(one["M_I_GeV"]),
         "M_GUT_GeV": float(one["M_GUT_GeV"]),
         "alpha_inv_GUT": float(one["alpha_inv_GUT"]),
-        "M_GUT_two_loop_proxy_GeV": float(two["M_GUT_GeV"]),
-        "alpha_inv_GUT_two_loop_proxy": float(two["alpha_inv_GUT"]),
     }
 
 

@@ -229,9 +229,9 @@ Decisions needed (historical record of the planner's questions):
 
 | artifact | loaded | error | sha256 (LF) |
 |---|---|---|---|
-| `FINAL_G3_ACCEPTANCE_GATE_V20.json` | `True` | `None` | `60958378143f3d7e6ffa3ce753e8940659648fe72e3e43f2d436db63755d735d` |
-| `G3_SM_PATI_SALAM_CANDIDATE_V20.json` | `True` | `None` | `27ca07b0b1d3626f65527686daf5e68223e250f1b687672a06c3fad39c6d073d` |
+| `FINAL_G3_ACCEPTANCE_GATE_V20.json` | `True` | `None` | `58464d9dad1acde71e2de7501914458fadca281e6857ca2747014f68dcb8e25f` |
+| `G3_SM_PATI_SALAM_CANDIDATE_V20.json` | `True` | `None` | `a4dbd8ab0214986d966e607e2a83706b94b289b0779a8010d671325ac87c59f3` |
 | `G3_SM_PATI_SALAM_EQUALITY_SET_V20.json` | `True` | `None` | `f41ec4d3dabce943c779754cfcb2325a2eb0c0b7ee6f2676015d2e55e0d1fa44` |
 | `G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json` | `True` | `None` | `dff9a7c611043c3d7a925db0af4fe19c2e499b29080576a4cc21a2ed01de3ec0` |
 | `G3_SIGMA_HYPERCHARGE_AUDIT_V20.json` | `True` | `None` | `93b52b5f96c5544c845da0c65cb581eee2ba47ddc61458277a169e2d103498ec` |
-| `G1_G8_GATE_LEDGER_V20.json` | `True` | `None` | `1504ef7e450c7aa4a5d1ded7a42532a220a1422425475d404c4d2cc42ad6d0ab` |
+| `G1_G8_GATE_LEDGER_V20.json` | `True` | `None` | `b21b8e98c0cccca0437466b12fea7cf10bad107c97d95abfbb6ff5be304c426f` |

@@ -45,10 +45,10 @@ def evolve_hf_two_loop(h0,f0,*,mu0,mu1,alpha_inv0,b10):
     return {"success":True,"n_steps":int(sol.y.shape[1]),"H":h1,"F":f1,"max_abs_H":float(np.max(np.abs(h1))),"max_abs_F":float(np.max(np.abs(f1))),"relative_change_H":float(np.linalg.norm(h1-h0)/max(np.linalg.norm(h0),1e-30)),"relative_change_F":float(np.linalg.norm(f1-f0)/max(np.linalg.norm(f0),1e-30))}
 
 def two_loop_so10_210_layer(bases:dict[str,Any]|None=None):
-    bases=bases or push.flavour_sector_bases(); gauge=thresholds.solve_unification(two_loop=True)
+    bases=bases or push.flavour_sector_bases(); gauge=thresholds.solve_unification(two_loop=False)
     mi=float(gauge["M_I_GeV"]); mg=float(gauge["M_GUT_GeV"]); ag=float(gauge["alpha_inv_GUT_after_spectators"])
     env=evolve_hf_two_loop(bases["H"],bases["F"],mu0=mi,mu1=mg,alpha_inv0=ag,b10=0.0)
-    return {"status":"HEURISTIC_TWO_LOOP_ENVELOPE__FULL_SO10_210_RGE_OPEN","MI_to_MGUT_heuristic":{k:v for k,v in env.items() if k not in ("H","F")},"gauge_anchor":{"M_I_GeV":mi,"M_GUT_GeV":mg,"uses_GUT_coupling_across_PS_interval":True,"includes_210_in_gauge_threshold_ledger":True},"missing_for_completion":["reference-derived representation contractions","scalar-quartic beta terms","Pati-Salam interval RGEs","component threshold matching"],"flag":{"heuristic_two_loop_ansatz_integrated":True,"two_loop_so10_complete":False,"explicit_two_loop_yukawa_betas":False,"reference_validated_coefficients":False,"piecewise_threshold_yukawa_matching_complete":False,"uses_10pct_damping_fudge":False,"includes_210_gauge_threshold":True}}
+    return {"status":"HEURISTIC_TWO_LOOP_ENVELOPE__FULL_SO10_210_RGE_OPEN","MI_to_MGUT_heuristic":{k:v for k,v in env.items() if k not in ("H","F")},"gauge_anchor":{"M_I_GeV":mi,"M_GUT_GeV":mg,"loop_order":"one-loop (two-loop spectator-corrected alpha_GUT UNAVAILABLE)","uses_GUT_coupling_across_PS_interval":True,"includes_210_in_gauge_threshold_ledger":True},"missing_for_completion":["reference-derived representation contractions","scalar-quartic beta terms","Pati-Salam interval RGEs","component threshold matching"],"flag":{"heuristic_two_loop_ansatz_integrated":True,"two_loop_so10_complete":False,"explicit_two_loop_yukawa_betas":False,"reference_validated_coefficients":False,"piecewise_threshold_yukawa_matching_complete":False,"uses_10pct_damping_fudge":False,"includes_210_gauge_threshold":True}}
 
 def uv_fixing_conditional_point():
     rep=json.loads((ROOT/"COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json").read_text(encoding="utf-8")); p=rep["representative_aligned_Cf"]

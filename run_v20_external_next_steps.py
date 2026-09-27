@@ -79,7 +79,9 @@ def main() -> int:
         "bottom_line": (
             "External next steps are computed. The 10+126 fit works at "
             "a natural v_R, but the corrected v_R=v_S profile is not viable. "
-            "Continuous thresholds reject the alpha=1/40 reset. A "
+            "Continuous one-loop thresholds reject the alpha=1/40 reset; "
+            "the two-loop spectator-corrected coupling is UNAVAILABLE (no "
+            "perturbative two-loop unification at the benchmark). A "
             "MADMAX-like forecast can reach the 37 GHz coupling in "
             "software — that is not a dark-matter discovery."
         ),
@@ -110,14 +112,19 @@ $\\chi^2={beta_best['chi2']:.2f}$; no scanned point has $\\chi^2<30$.
 Thus the constrained single-scale fit fails, while a full precision global
 flavour fit remains external.
 
-## 2. Two-loop threshold RG
+## 2. Threshold RG (one-loop chain; genuine two-loop anchor without spectators)
 
 - One-loop anchors: $M_I={thr['comparison']['MI_one_GeV']:.3e}$ GeV,
   $M_{{\\rm GUT}}={thr['comparison']['MGUT_one_GeV']:.3e}$ GeV (regression OK:
   {thr['regression_anchors']['MI_one_ok']}/{thr['regression_anchors']['MGUT_one_ok']}/{thr['regression_anchors']['IU_one_ok']}).
-- Continuous $\\alpha^{{-1}}(v_\\Phi)\\approx{thr['comparison']['alpha_inv_vPhi_phys_two']:.2f}$
-  — **not** 40.
-- $\\alpha(M_{{\\rm Pl}})\\approx{thr['comparison']['alpha_MPl_phys_two']}$ (physical 210).
+- One-loop continuous $\\alpha^{{-1}}(v_\\Phi)\\approx{thr['comparison']['alpha_inv_vPhi_phys_one']:.2f}$
+  — **not** 40; $\\alpha(M_{{\\rm Pl}})\\approx{thr['comparison']['alpha_MPl_phys_one']:.4f}$ (physical 210, one loop).
+- Genuine two-loop Machacek–Vaughn gauge running of the anchor content **without spectators** (not the declared
+  benchmark): $M_I={thr['comparison']['MI_two_GeV']:.3e}$ GeV, $M_{{\\rm GUT}}={thr['comparison']['MGUT_two_GeV']:.3e}$ GeV,
+  $\\alpha_U^{{-1}}={thr['comparison']['alpha_inv_GUT_two']:.2f}$.
+- Two-loop $\\alpha_{{\\rm GUT}}^{{-1}}$ after the $5\\times(16+\\overline{{16}})$ spectators at $M_s=M_I$ and two-loop
+  continuous Spin(10) running: **UNAVAILABLE** — no perturbative two-loop unification (`two_loop_thresholds_v20.json`,
+  `two_loop.unavailable`). The former constant-shift two-loop proxy was removed.
 
 ## 3. 36.6–37.6 GHz haloscope scan forecast
 

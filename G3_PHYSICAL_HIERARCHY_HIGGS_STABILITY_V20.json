@@ -23,11 +23,15 @@
     "one_loop_gauge_running_matches_analytic_solution": true,
     "one_loop_portal_requirement_reproduces_superseded_5f25846_2_033": true,
     "one_loop_reproduces_superseded_5f25846_minus_0_0335": true,
+    "pdg2024_critical_top_mass_puts_zero_at_M_I": true,
+    "pdg2024_msbar_zero_is_zero_of_lambda": true,
     "portal_anomalous_dimension_is_half_sm_linear_lambda_terms": true,
     "portal_betas_match_elias_miro_and_smash_after_convention_map": true,
     "portal_betas_match_general_scalar_tensor_formula": true,
     "pure_qcd_limit_matches_b0_to_b3": true,
     "sm_round_trip_mt_to_mpl_and_back": true,
+    "smdr_anchor_agrees_with_bednyakov_2015_table_I": true,
+    "smdr_anchor_reproduces_smdr_2019_2021_reference_points": true,
     "three_loop_correction_smaller_than_two_loop_correction": true,
     "three_loop_reproduces_buttazzo_planck_values": true,
     "three_loop_top_slope_matches_published": true,
@@ -68,6 +72,7 @@
         9917564798898606.0
       ]
     },
+    "input_set": "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; superseded headline)",
     "lambda_HS_required_at_lambda_H_eq_lambda_S_eq_1": {
       "1L": 2.033258702519,
       "1L_mu0_173.10": 2.033259122231,
@@ -108,6 +113,61 @@
     }
   },
   "headline": {
+    "Mt_crit_M_I_GeV": 172.038519517386,
+    "Mt_crit_M_I_error_GeV": 0.357037516155,
+    "input_set": "PDG 2024 (M_t = 172.57 +- 0.29, M_h = 125.20 +- 0.11, alpha_s = 0.1180 +- 0.0009); SMDR v1.3-anchored MSbar matching at mu = M_t; three-loop SM running with four-loop QCD in g3 (top Yukawa only)",
+    "lambda_SM_M_GUT": -0.009681160201,
+    "lambda_SM_M_GUT_sigma": 0.003115331826,
+    "lambda_SM_M_I": -0.003273696464,
+    "lambda_SM_M_I_sigma": 0.002855914331,
+    "lambda_SM_v_R_table": {
+      "1e10": {
+        "lambda": 0.003349665292,
+        "mu_GeV": 10000000000.0,
+        "sigma": 0.002606389293
+      },
+      "1e9": {
+        "lambda": 0.008617630176,
+        "mu_GeV": 1000000000.0,
+        "sigma": 0.002420021384
+      },
+      "5.65e9": {
+        "lambda": 0.004533673199,
+        "mu_GeV": 5650000000.0,
+        "sigma": 0.002563600465
+      },
+      "7.8e10": {
+        "lambda": -0.000331255037,
+        "mu_GeV": 78000000000.0,
+        "sigma": 0.002742882039
+      },
+      "M_GUT": {
+        "lambda": -0.009681160201,
+        "mu_GeV": 9917564798898606.0,
+        "sigma": 0.003115331826
+      },
+      "M_I": {
+        "lambda": -0.003273696464,
+        "mu_GeV": 631385523052.8793,
+        "sigma": 0.002855914331
+      }
+    },
+    "landau_veff_over_msbar_zero_range": [
+      2.5,
+      6.5
+    ],
+    "measured_Mt_above_bound_sigma_landau_veff_range": [
+      0.244059469484,
+      0.740234955323
+    ],
+    "measured_Mt_above_bound_sigma_msbar": 1.155458461322,
+    "msbar_zero_1sigma_band_GeV": [
+      11669623407.984493,
+      345318789691.65393
+    ],
+    "msbar_zero_GeV": 63480234966.50434
+  },
+  "headline_legacy_buttazzo_2013": {
     "Lambda_I_2L_GeV": 4764672963.254632,
     "Lambda_I_3L_GeV": 6189835908.210099,
     "Mt_max_absolute_stability_2L_GeV": 171.960731011549,
@@ -123,8 +183,6 @@
     "lambda_SM_M_Pl_3L": -0.014361270053,
     "lambda_S_max_radial_mode_below_Lambda_I": 1.423695e-05,
     "lambda_min_2L": -0.015453710765,
-    "measured_Mt_above_bound_sigma_landau_veff_estimate": 0.662290556056,
-    "measured_Mt_above_bound_sigma_msbar": 1.994377966129,
     "required_O34_with_O36_eq_O23_eq_1": 2.071948850539,
     "tree_level_lambda_eff_M_GUT_O36_eq_O23_eq_1": -0.073243009813,
     "tree_level_lambda_eff_M_GUT_window_middles": [
@@ -136,11 +194,74 @@
     ],
     "tree_level_lambda_eff_M_I": -0.008539461847
   },
+  "matching_validation": {
+    "anchor": "SMDR v1.3 ReferenceModel.dat (Martin and Robertson, arXiv:1907.02500), Q = M_t",
+    "bednyakov_2015_agrees": true,
+    "bednyakov_2015_minus_anchor_at_PDG2024": {
+      "g3": 2.2261105e-05,
+      "yt": 4.416015e-06
+    },
+    "bednyakov_2015_tolerance": 5e-05,
+    "legacy_buttazzo_fit_minus_anchor_at_PDG2024": {
+      "g2": 0.00015893841,
+      "g3": 0.001736812155,
+      "gY": -0.000398198215,
+      "lam": -0.000116323288,
+      "yt": 0.00094205344
+    },
+    "note": "The legacy Buttazzo et al. fit formulas (1307.3536 eqs. 55-60) give g3(M_t) and y_t(M_t) too high by 0.0017 and 0.0009 at PDG 2024 inputs relative to SMDR v1.3 (and to Bednyakov et al. 2015); they are kept only for the Buttazzo 2013 regression set.",
+    "pdg2024_anchored_couplings_at_mt": {
+      "g2": 0.64760026159,
+      "g3": 1.163423102131,
+      "gY": 0.358613498215,
+      "lam": 0.126290123288,
+      "yt": 0.93191674656
+    },
+    "smdr_reference_point_max_abs_residual": {
+      "g2": 5.8551981e-05,
+      "g3": 3.817843e-06,
+      "gY": 0.000133026722,
+      "lam": 2.4501477e-05,
+      "yt": 2.724659e-06
+    },
+    "smdr_reference_point_residuals": {
+      "2019": {
+        "g2": -3.8148908e-05,
+        "g3": 3.817843e-06,
+        "gY": 0.000133026722,
+        "lam": 2.4501477e-05,
+        "yt": 2.724659e-06
+      },
+      "2020": {
+        "g2": -5.8551981e-05,
+        "g3": 1.74783e-07,
+        "gY": 5.2526017e-05,
+        "lam": 2.0071153e-05,
+        "yt": 2.91307e-07
+      },
+      "2021": {
+        "g2": -9.342939e-06,
+        "g3": 5.44477e-07,
+        "gY": 5.5594414e-05,
+        "lam": 3.062713e-06,
+        "yt": 2.702348e-06
+      }
+    },
+    "smdr_reference_point_tolerances": {
+      "g2": 0.0001,
+      "g3": 1e-05,
+      "gY": 0.0002,
+      "lam": 5e-05,
+      "yt": 1e-05
+    },
+    "smdr_reference_points_reproduced": true
+  },
   "metastability_threshold_at_M_I_2L": {
     "action_exceeds_literature_threshold": true,
     "bounce_action_at_lambda_min": 3082.03790127123,
     "critical_action_at_lambda_min": 493.866849709787,
     "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
+    "input_set": "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; superseded headline)",
     "is_estimate": true,
     "lambda_min_in_window": -0.008539461847,
     "lifetime_exceeds_age_of_universe": true,
@@ -154,9 +275,191 @@
     ]
   },
   "model_contract_id": "gauged_u1x_phi17_v20",
-  "n_checks": 25,
+  "n_checks": 29,
   "n_failed": 0,
   "overall_state": "PHYSICAL_TARGET_CONSTRAINT",
+  "pdg2024_corrected": {
+    "Mt_crit_M_I_2L": {
+      "Mt_crit_GeV": 171.935031426422,
+      "error_budget_GeV": {
+        "Mh": 0.059997198825,
+        "Mt_exp": 0.29,
+        "alpha_s": 0.329927208813,
+        "bound_error": 0.355401296953,
+        "parametric": 0.335338078634,
+        "theory": 0.117721938883,
+        "theory_lambda": 0.079431443934,
+        "theory_yt": 0.086885560417,
+        "total_with_Mt_exp": 0.458704787283
+      },
+      "measured_minus_bound_sigma": 1.384264108816,
+      "measured_minus_bound_sigma_Mt_and_theory_only": 2.028762777782
+    },
+    "Mt_crit_M_I_GeV": 172.038519517386,
+    "Mt_crit_M_I_error_budget_GeV": {
+      "Mh": 0.059966159038,
+      "Mt_exp": 0.29,
+      "alpha_s": 0.33170929674,
+      "bound_error": 0.357037516155,
+      "parametric": 0.337086039126,
+      "theory": 0.117680882767,
+      "theory_lambda": 0.079390349821,
+      "theory_yt": 0.086867499815,
+      "total_with_Mt_exp": 0.459973681793
+    },
+    "Mt_crit_landau_veff_range_GeV": {
+      "factor_2.5": 172.229511402208,
+      "factor_6.5": 172.457739067245
+    },
+    "couplings_at_mt": {
+      "g2": 0.64760026159,
+      "g3": 1.163423102131,
+      "gY": 0.358613498215,
+      "lam": 0.126290123288,
+      "yt": 0.93191674656
+    },
+    "error_method": "symmetric half-differences of +-1 sigma shifts in M_t, alpha_s, M_h and the theory shifts (lambda 3e-4, y_t 5e-4 at mu = M_t), combined in quadrature",
+    "higgs_matching_verdict": "NOT_FALSIFIED__CONDITIONAL_AND_OPEN",
+    "input_set": "PDG 2024 (M_t = 172.57 +- 0.29, M_h = 125.20 +- 0.11, alpha_s = 0.1180 +- 0.0009); SMDR v1.3-anchored MSbar matching at mu = M_t; three-loop SM running with four-loop QCD in g3 (top Yukawa only)",
+    "inputs": {
+      "Mh_GeV": 125.2,
+      "Mh_err_GeV": 0.11,
+      "Mt_GeV": 172.57,
+      "Mt_err_GeV": 0.29,
+      "alpha_s": 0.118,
+      "alpha_s_err": 0.0009
+    },
+    "instability_scale_at_Mt_crit_GeV": 631385523441.9088,
+    "lambda_SM_table_3L": {
+      "1e10": {
+        "lambda": 0.003349665292,
+        "mu_GeV": 10000000000.0,
+        "sigma": 0.002606389293,
+        "sigma_parts": {
+          "Mh": 0.000365394187,
+          "Mt": 0.001668786844,
+          "alpha_s": 0.001841295077,
+          "theory_lambda": 0.000483752496,
+          "theory_yt": 0.000500518397
+        }
+      },
+      "1e9": {
+        "lambda": 0.008617630176,
+        "mu_GeV": 1000000000.0,
+        "sigma": 0.002420021384,
+        "sigma_parts": {
+          "Mh": 0.000362648751,
+          "Mt": 0.001566883246,
+          "alpha_s": 0.00167870668,
+          "theory_lambda": 0.000480117688,
+          "theory_yt": 0.000470422326
+        }
+      },
+      "5.65e9": {
+        "lambda": 0.004533673199,
+        "mu_GeV": 5650000000.0,
+        "sigma": 0.002563600465,
+        "sigma_parts": {
+          "Mh": 0.000364971977,
+          "Mt": 0.001645737155,
+          "alpha_s": 0.001803652692,
+          "theory_lambda": 0.000483193505,
+          "theory_yt": 0.000493713501
+        }
+      },
+      "7.8e10": {
+        "lambda": -0.000331255037,
+        "mu_GeV": 78000000000.0,
+        "sigma": 0.002742882039,
+        "sigma_parts": {
+          "Mh": 0.000365673437,
+          "Mt": 0.001740672559,
+          "alpha_s": 0.001962949205,
+          "theory_lambda": 0.000484122276,
+          "theory_yt": 0.000521727804
+        }
+      },
+      "M_GUT": {
+        "lambda": -0.009681160201,
+        "mu_GeV": 9917564798898606.0,
+        "sigma": 0.003115331826,
+        "sigma_parts": {
+          "Mh": 0.000343032452,
+          "Mt": 0.001906484233,
+          "alpha_s": 0.002328381162,
+          "theory_lambda": 0.000454147988,
+          "theory_yt": 0.00057037686
+        }
+      },
+      "M_I": {
+        "lambda": -0.003273696464,
+        "mu_GeV": 631385523052.8793,
+        "sigma": 0.002855914331,
+        "sigma_parts": {
+          "Mh": 0.000364232236,
+          "Mt": 0.001797806288,
+          "alpha_s": 0.002066129789,
+          "theory_lambda": 0.000482214327,
+          "theory_yt": 0.00053856395
+        }
+      }
+    },
+    "lambda_negative_at_7p8e10": true,
+    "lambda_positive_at_1e9": true,
+    "landau_veff_over_msbar_zero_range": [
+      2.5,
+      6.5
+    ],
+    "landau_veff_zero_below_M_I_for_both_factors": true,
+    "landau_veff_zero_estimate_range_GeV": [
+      158700587416.26086,
+      412621527282.2782
+    ],
+    "matching_fix_effect": {
+      "Mt_crit_M_I_3L_legacy_fit_GeV": 171.945716172848,
+      "Mt_crit_M_I_3L_smdr_GeV": 172.038519517386,
+      "delta_Mt_crit_GeV": 0.092803344539,
+      "delta_lambda_M_I": 0.000566640589,
+      "lambda_M_I_3L_legacy_fit": -0.003840337053,
+      "lambda_M_I_3L_smdr": -0.003273696464
+    },
+    "measured_minus_bound_sigma": 1.155458461322,
+    "measured_minus_bound_sigma_landau_veff_range": {
+      "factor_2.5": 0.740234955323,
+      "factor_6.5": 0.244059469484
+    },
+    "msbar_zero_1sigma_band_GeV": [
+      11669623407.984493,
+      345318789691.65393
+    ],
+    "msbar_zero_GeV": 63480234966.50434,
+    "msbar_zero_sigma_log10": 0.735581684494,
+    "msbar_zero_sigma_log10_parts": {
+      "Mh": 0.097617538821,
+      "Mt": 0.466464931431,
+      "alpha_s": 0.527242649189,
+      "theory_lambda": 0.129262483072,
+      "theory_yt": 0.138809573764
+    },
+    "realistic_v_R_band": "6e8-1.5e11 GeV, G6/G7 audit estimate",
+    "residual_differences": "yb, ytau and the four-loop QCD term of beta_yt are omitted: |Delta lambda| <= 3e-5 and |Delta M_t^crit| <= 0.003 GeV against an independent engine that keeps them",
+    "sigma_decomposition": {
+      "legacy_Mh_error_3L_GeV": 0.060025500527,
+      "legacy_Mt_crit_3L_PDG2024_GeV": 171.945716172848,
+      "legacy_alpha_s_error_3L_GeV": 0.331720664387,
+      "legacy_fit_Mt_and_theory_only": 1.994377966129,
+      "legacy_fit_full_budget": 1.35706076534,
+      "legacy_theory_error_2L_GeV": 0.117824707992,
+      "note": "legacy_fit_Mt_and_theory_only is the retracted 2.0 sigma (Buttazzo fit formulas, M_t and theory errors only); smdr_full_budget is the headline",
+      "smdr_Mt_and_theory_only": 1.698195878994,
+      "smdr_full_budget": 1.155458461322
+    },
+    "sign_flips_inside_realistic_v_R_band": true,
+    "two_loop": {
+      "lambda_M_I": -0.003914724882,
+      "msbar_zero_GeV": 44107718823.82896
+    }
+  },
   "portal": {
     "benchmark_O36_O23_kept_solve_O34": {
       "classification": {
@@ -1256,6 +1559,7 @@
       ],
       "nonzero_O34_required": "with O34 = 0 the Higgs mass forces lambda_H(M_GUT) = lambda_SM(M_GUT) < 0, which is not copositive"
     },
+    "input_set": "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; superseded headline)",
     "matching": {
       "M_I_over_instability_scale": 132.513926542735,
       "formula": "lambda_H(M_I) = lambda_SM(M_I) + lambda_HS^2/(4 lambda_S)",
@@ -1753,6 +2057,7 @@
   },
   "scientific_outcomes": {
     "M_I_matched_tuned_point_is_tree_level_saddle_at_M_I_for_every_solution": true,
+    "absolute_stability_excluded_beyond_2_sigma_pdg2024_corrected": false,
     "absolute_stability_excluded_beyond_2_sigma_under_both_definitions": false,
     "absolute_stability_possible_at_central_inputs": false,
     "absolute_stability_possible_at_central_inputs_if_radial_mode_below_Lambda_I": true,
@@ -1771,6 +2076,8 @@
     "n_window_middles": 5,
     "n_window_middles_with_tree_lambda_eff_at_gut_negative": 4,
     "negative_portal_cannot_help_when_lambda_SM_M_I_negative": true,
+    "pdg2024_lambda_SM_M_I_negative_at_central_inputs": true,
+    "pdg2024_lambda_SM_sign_flips_between_1e9_and_7p8e10_GeV": true,
     "requires_metastability_at_central_inputs": true,
     "requires_metastability_at_pdg2024_central_inputs_both_definitions": true,
     "sm_instability_scale_below_M_I_at_central_inputs": true,
@@ -1780,8 +2087,8 @@
     "Only the complex singlet S is kept between M_I and M_GUT. Other states near M_I are omitted: any colour-triplet partner (the F-branch formula extrapolated to M_I gives sqrt(beta) M_I ~ 1.4e11 GeV, but no such state has been constructed) and light Sigma_126bar components.",
     "The axion-sector vector-like fermion Yukawas (y S Q Qbar), which drive lambda_S through -6 y^4 and 12 y^2 lambda_S, are omitted, as are right-handed-neutrino Yukawas.",
     "Threshold matching is tree level at mu = M_I (or at m_rho in the radial-mode scan). One-loop threshold corrections and the log of m_rho/M_I are omitted.",
-    "Portal running is one loop; the singlet-only two-loop pieces from SMASH App. A enter only as a sensitivity estimate. SM running below M_I is two loop (three loop + four-loop QCD as a cross-check).",
-    "Stability is judged on the RG-improved tree potential, with lambda evaluated at mu ~ field value. The MSbar zero Lambda_I is not the Landau-gauge effective-potential zero, which is ~6.5x higher (Buttazzo et al.). Both sit below M_I at the Buttazzo and PDG 2024 central inputs. The top-mass bound moves by ~0.4 GeV between the two definitions, and it is quoted for both.",
+    "Portal running is one loop; the singlet-only two-loop pieces from SMASH App. A enter only as a sensitivity estimate. SM running below M_I is two loop (three loop + four-loop QCD as a cross-check). The PDG 2024 headline (pdg2024_corrected) uses three-loop running with four-loop QCD in g3 and SMDR v1.3-anchored matching; yb, ytau and the four-loop QCD term of beta_yt are omitted (|Delta lambda| <= 3e-5, |Delta M_t^crit| <= 0.003 GeV).",
+    "Stability is judged on the RG-improved tree potential, with lambda evaluated at mu ~ field value. The MSbar zero Lambda_I is not the Landau-gauge effective-potential zero, which is 2.5-6.5x higher depending on the definition (Hiller et al. 2401.08811: Lambda_0,eff/Lambda_0 ~ 2.5; Buttazzo et al. 1307.3536: ~6.5). Both sit below M_I at the Buttazzo and PDG 2024 central inputs even for the factor 6.5. The top-mass bound moves by 0.19-0.42 GeV between the definitions (PDG 2024: 172.04 GeV MSbar, 172.23-172.46 GeV effective potential), and it is quoted for all of them.",
     "The vacuum-decay numbers use the tree-level Fubini bounce, with no quantum, gravitational or thermal corrections. They are estimates.",
     "Tree-level local minimality at the tuned point (lambda_eff >= 0) is evaluated on the (H, S) block only, at M_I and at the running GUT values; it is a necessary condition, not a 486-field Hessian test.",
     "Identifying the GUT-scale light-field quartics with the tree-level coefficients O36_B02, O23 and O34 assumes no heavy-exchange shifts at M_GUT for S and HS; only the H shift was shown to vanish.",
@@ -1791,9 +2098,11 @@
     "Above M_N ~ f M_I, SO(10) Dirac neutrino Yukawas y_nu ~ y_t add -2 y_nu^4 to beta_lambda_H; the dynamical Delta_R and its portals give further thresholds (a matrix over the S and Delta_R radial modes) and make lambda_HS = 0 non-RG-invariant at one loop.",
     "For lambda_S << lambda_HS the relevant scale is the valley end h_c ~ sqrt2 (lambda_S/delta)^(1/4) M_I rather than m_rho; the radial-mode scan treats the threshold at m_rho and is optimistic there.",
     "The Fubini bounce at 1/R ~ M_I has a central field above the threshold; the action is used as a conservative lower bound (V >= lambda_SM(M_I) |H|^4 at tree level). Inflationary and thermal Higgs fluctuations are not addressed.",
-    "With PDG 2024 inputs, the effective-potential criterion and matching at m_rho, absolute stability is allowed for small lambda_S; the 'metastable at central inputs' status refers to the Buttazzo 2013 central values and the MSbar criterion."
+    "With PDG 2024 inputs, the effective-potential criterion and matching at m_rho, absolute stability is allowed for small lambda_S; the 'metastable at central inputs' status and the portal scan use the legacy Buttazzo 2013 central values and the MSbar criterion; at PDG 2024 central inputs with SMDR-anchored matching lambda_SM(M_I) = -0.0033 +- 0.0029 is also negative, but only 1.1 sigma from zero (top-mass tension 1.16 sigma), and lambda_SM(v_R) changes sign inside the realistic v_R band: the Higgs matching is conditional and open, not falsified.",
+    "Matching: the legacy Buttazzo et al. fit formulas (1307.3536 eqs. 55-60) give g3(M_t) and y_t(M_t) too high by 0.0017 and 0.0009 relative to SMDR v1.3 and Bednyakov et al. 2015; the PDG 2024 headline uses SMDR v1.3-anchored couplings (matching_validation), which raises lambda(M_I) by 0.0006 and M_t^crit by 0.09 GeV. The fit formulas are kept only for the Buttazzo 2013 regression set."
   ],
   "sm_running": {
+    "input_set": "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; superseded headline)",
     "inputs": {
       "M_W_GeV": 80.384,
       "M_h_GeV": 125.15,
@@ -1821,7 +2130,7 @@
       "mu0_GeV": 173.34,
       "source": "Buttazzo et al. arXiv:1307.3536 v3/v4 (JHEP 1312 (2013) 089), NNLO MSbar at mu = M_t"
     },
-    "instability_scale_definition": "first zero of the MSbar lambda(mu) (Buttazzo's Lambda_lambda ~ 2 Lambda_V); the Landau-gauge effective-potential zero Lambda_I ~ 13 Lambda_V is ~6.5x higher",
+    "instability_scale_definition": "first zero of the MSbar lambda(mu) (Buttazzo's Lambda_lambda ~ 2 Lambda_V); the Landau-gauge effective-potential zero is 2.5-6.5x higher (definition dependent: Hiller et al. 2401.08811; Buttazzo et al. 1307.3536)",
     "runs": {
       "1L": {
         "couplings_at_M_GUT": {
@@ -2065,22 +2374,38 @@
       "2L": 171.015369748553,
       "3L+4QCD": 171.124368280043
     },
+    "Mt_max_landau_veff_range_PDG2024_GeV": {
+      "factor_2.5": 172.229511402208,
+      "factor_6.5": 172.457739067245
+    },
     "Mt_max_landau_veff_zero_definition_estimate_GeV": {
       "2L": 172.376527133056,
-      "2L_PDG2024_Mh_alpha_s": 172.259545005572,
+      "2L_PDG2024_Mh_alpha_s": 172.355413078996,
       "3L+4QCD": 172.480480131061,
-      "3L+4QCD_PDG2024_Mh_alpha_s": 172.36268860264
+      "3L+4QCD_PDG2024_Mh_alpha_s": 172.457739067245
     },
     "Mt_max_with_PDG2024_Mh_and_alpha_s_GeV": {
-      "2L": 171.841407799532,
-      "3L+4QCD": 171.945716172848
+      "2L": 171.935031426422,
+      "3L+4QCD": 172.038519517386
     },
+    "Mt_max_with_PDG2024_Mh_and_alpha_s_legacy_buttazzo_fit_GeV": {
+      "2L": 171.841407799532,
+      "3L+4QCD": 171.945716172848,
+      "3L+4QCD_landau_veff_x6.5": 172.36268860264
+    },
+    "Mt_max_with_PDG2024_Mh_and_alpha_s_matching": "SMDR v1.3-anchored (smdr_anchored_inputs)",
     "definition": "largest M_t with lambda_SM(mu) > 0 for all mu < M_I, i.e. Lambda_I >= M_I",
     "instability_scale_at_bound_GeV": 631385523484.4094,
-    "landau_veff_definition_note": "Same bound with the Landau-gauge effective-potential zero, estimated as 6.5 x the MSbar zero (Buttazzo et al.: Lambda_lambda ~ 2 Lambda_V, Lambda_I ~ 13 Lambda_V), i.e. lambda_SM(M_I/6.5) = 0. The spread between the two definitions is a theory systematic of the RG-improved criterion.",
-    "measured_minus_bound_in_sigma_2L_PDG_like": 2.327608321257,
-    "measured_minus_bound_in_sigma_3L_PDG_like": 1.994377966129,
-    "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate": 0.662290556056,
+    "landau_veff_definition_note": "Same bound with the Landau-gauge effective-potential zero, estimated as 2.5-6.5 x the MSbar zero (definition dependent: Hiller et al. 2401.08811; Buttazzo et al. 1307.3536); keys without a factor use the conservative 6.5, i.e. lambda_SM(M_I/6.5) = 0 (2L/3L+4QCD: legacy Buttazzo inputs; *_PDG2024_Mh_alpha_s: PDG 2024 with SMDR v1.3-anchored matching). The spread between the definitions is a theory systematic of the RG-improved criterion.",
+    "legacy_input_set": "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; superseded headline)",
+    "measured_minus_bound_in_sigma_2L_PDG_like": 1.384264108816,
+    "measured_minus_bound_in_sigma_3L_PDG_like": 1.155458461322,
+    "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate": 0.244059469484,
+    "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_range": {
+      "factor_2.5": 0.740234955323,
+      "factor_6.5": 0.244059469484
+    },
+    "measured_minus_bound_significance_note": "PDG 2024 with SMDR v1.3-anchored matching and the full error budget (M_t, alpha_s, M_h, theory)",
     "measured_top_mass": {
       "Mt_GeV": 172.57,
       "error_GeV": 0.29,
@@ -2092,65 +2417,111 @@
         "Mt_GeV": 172.57,
         "alpha_s": 0.118,
         "couplings_at_mt": {
-          "g2": 0.6477592,
-          "g3": 1.165159914286,
-          "gY": 0.3582153,
-          "lam": 0.1261738,
-          "yt": 0.9328588
-        }
+          "g2": 0.64760026159,
+          "g3": 1.163423102131,
+          "gY": 0.358613498215,
+          "lam": 0.126290123288,
+          "yt": 0.93191674656
+        },
+        "matching": "SMDR v1.3-anchored (smdr_anchored_inputs)"
+      },
+      "legacy_buttazzo_fit_lambda_M_I": {
+        "2L": -0.004486160046,
+        "3L+4QCD": -0.003840337053
       },
       "runs": {
         "2L": {
           "decay_estimate": {
             "action_exceeds_literature_threshold": true,
-            "bounce_action_at_lambda_min": 5866.697754825191,
+            "bounce_action_at_lambda_min": 6723.063782061403,
             "critical_action_at_lambda_min": 493.866849709787,
             "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
             "is_estimate": true,
-            "lambda_min_in_window": -0.004486160046,
+            "lambda_min_in_window": -0.003914724882,
             "lifetime_exceeds_age_of_universe": true,
             "literature_action_threshold": 400.0,
-            "max_log10_decay_probability_in_past_light_cone": -2333.390814290874,
+            "max_log10_decay_probability_in_past_light_cone": -2705.30585440897,
             "mu_at_lambda_min_GeV": 631385523052.8802,
             "negative_lambda_window": true,
             "window_GeV": [
-              31700452308.34721,
+              44107718823.82896,
               631385523052.8793
             ]
           },
           "instability_below_M_I_landau_veff_estimate": true,
           "instability_below_M_I_msbar": true,
-          "lambda_M_GUT": -0.010917116974,
-          "lambda_M_I": -0.004486160046,
-          "landau_veff_zero_estimate_GeV": 206052940004.25687,
-          "msbar_instability_scale_GeV": 31700452308.34721
+          "lambda_M_GUT": -0.010385350186,
+          "lambda_M_I": -0.003914724882,
+          "landau_veff_zero_estimate_GeV": 286700172354.88824,
+          "landau_veff_zero_estimate_range_GeV": [
+            110269297059.57239,
+            286700172354.88824
+          ],
+          "msbar_instability_scale_GeV": 44107718823.82896
         },
         "3L+4QCD": {
           "decay_estimate": {
             "action_exceeds_literature_threshold": true,
-            "bounce_action_at_lambda_min": 6853.29040291024,
+            "bounce_action_at_lambda_min": 8039.519044186873,
             "critical_action_at_lambda_min": 493.866849709787,
             "formula": "S = 8 pi^2/(3|lambda(mu)|); p ~ (mu T_U)^4 exp(-S); T_U = 13.8 Gyr",
             "is_estimate": true,
-            "lambda_min_in_window": -0.003840337053,
+            "lambda_min_in_window": -0.003273696464,
             "lifetime_exceeds_age_of_universe": true,
             "literature_action_threshold": 400.0,
-            "max_log10_decay_probability_in_past_light_cone": -2761.862557240527,
+            "max_log10_decay_probability_in_past_light_cone": -3277.035110422561,
             "mu_at_lambda_min_GeV": 631385523052.8802,
             "negative_lambda_window": true,
             "window_GeV": [
-              44993533828.32863,
+              63480234966.50434,
               631385523052.8793
             ]
           },
           "instability_below_M_I_landau_veff_estimate": true,
           "instability_below_M_I_msbar": true,
-          "lambda_M_GUT": -0.010208633985,
-          "lambda_M_I": -0.003840337053,
-          "landau_veff_zero_estimate_GeV": 292457969884.1361,
-          "msbar_instability_scale_GeV": 44993533828.32863
+          "lambda_M_GUT": -0.009681160201,
+          "lambda_M_I": -0.003273696464,
+          "landau_veff_zero_estimate_GeV": 412621527282.2782,
+          "landau_veff_zero_estimate_range_GeV": [
+            158700587416.26086,
+            412621527282.2782
+          ],
+          "msbar_instability_scale_GeV": 63480234966.50434
         }
       }
+    },
+    "pdg2024_error_budget_2L_GeV": {
+      "Mh": 0.059997198825,
+      "Mt_exp": 0.29,
+      "alpha_s": 0.329927208813,
+      "bound_error": 0.355401296953,
+      "parametric": 0.335338078634,
+      "theory": 0.117721938883,
+      "theory_lambda": 0.079431443934,
+      "theory_yt": 0.086885560417,
+      "total_with_Mt_exp": 0.458704787283
+    },
+    "pdg2024_error_budget_GeV": {
+      "Mh": 0.059966159038,
+      "Mt_exp": 0.29,
+      "alpha_s": 0.33170929674,
+      "bound_error": 0.357037516155,
+      "parametric": 0.337086039126,
+      "theory": 0.117680882767,
+      "theory_lambda": 0.079390349821,
+      "theory_yt": 0.086867499815,
+      "total_with_Mt_exp": 0.459973681793
+    },
+    "sigma_decomposition": {
+      "legacy_Mh_error_3L_GeV": 0.060025500527,
+      "legacy_Mt_crit_3L_PDG2024_GeV": 171.945716172848,
+      "legacy_alpha_s_error_3L_GeV": 0.331720664387,
+      "legacy_fit_Mt_and_theory_only": 1.994377966129,
+      "legacy_fit_full_budget": 1.35706076534,
+      "legacy_theory_error_2L_GeV": 0.117824707992,
+      "note": "legacy_fit_Mt_and_theory_only is the retracted 2.0 sigma (Buttazzo fit formulas, M_t and theory errors only); smdr_full_budget is the headline",
+      "smdr_Mt_and_theory_only": 1.698195878994,
+      "smdr_full_budget": 1.155458461322
     },
     "theory_error_GeV_from_matching": {
       "combined": 0.117824707992,
@@ -2160,5 +2531,5 @@
       }
     }
   },
-  "verdict": "Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam anchor chain, and not realized by any current repository vacuum, whose Delta_R is not the SM singlet): two-loop SM running from the Buttazzo et al. inputs puts the MSbar instability scale at 4.76e+09 GeV, a factor 133 below M_I, with lambda_SM(M_I) = -0.00854 and lambda_SM(M_GUT) = -0.01511 (one loop: -0.0335). With the H-S portal threshold at M_I, positive-portal windows keep lambda_H > 0 up to M_GUT for every scanned lambda_S. Copositivity is not the tree-level local-minimum condition (the single-stage point is copositive too). At the tuned point of the tree potential the condition is lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S) >= 0 (g3_tuned_target_portal_threshold_v20). With the S threshold at M_I, lambda_eff(M_I) = lambda_SM(M_I) = -0.0085 < 0, so the M_I threshold does not remove the tree-level saddle; at the GUT coefficients lambda_eff is -0.073 for the O36 = O23 = 1 benchmark and negative at 4 of 5 window middles. Metastability is the RG-improved statement. In the RG-improved potential the EW vacuum is still not the global minimum at central inputs, because the SM segment [Lambda_I, M_I] has lambda_SM < 0; the bounce estimate S ~ 3082 far exceeds the ~500 needed, so it is metastable and long-lived (estimate). At tree level with the S vev the EW/S point is a local (and then global) minimum iff lambda_SM(threshold) >= 0, so at central inputs it is the tree-level saddle stated above. Absolute stability with the threshold at M_I needs M_t < 171.96 GeV (2L) / 172.07 GeV (3L) with the MSbar criterion. With PDG 2024 M_h and alpha_s this becomes 171.95 GeV, 2.0 sigma below the measured 172.57 +- 0.29 GeV; with the Landau-gauge effective-potential zero it is ~172.36 GeV (0.7 sigma). The alternative is a radial mode below Lambda_I, i.e. lambda_S <~ 1.4e-05, far from the certified O23 = 1 (RG-improved: lambda_eff(m_rho) > 0 there, but lambda_eff at the GUT coefficients is negative at every scanned window point). Keeping O36 = O23 = 1 needs O34 = lambda_HS(M_GUT) = 2.072 (RG-improved metastable; a tree-level saddle, since O34 > 2 at O36 = O23 = 1). Single-stage GUT matching needs lambda_eff(M_GUT) = -0.0151 at two loops (negative at every loop order), so that tuned point is not a tree-level local minimum either. The RG-improved M_I-threshold conclusions are marginal: they depend on M_t (1-2 sigma), on the MSbar versus effective-potential instability criterion, and on the omitted states listed in the scope. This is an RG-improved EFT statement, not an exact lower witness of the 486-field tree potential: G3 stays open and the model is neither validated nor excluded."
+  "verdict": "PDG 2024 headline (M_t = 172.57 +- 0.29, M_h = 125.20 +- 0.11, alpha_s = 0.1180 +- 0.0009; SMDR v1.3-anchored MSbar matching; three-loop SM running with four-loop QCD in g3): lambda_SM(M_I) = -0.0033 +- 0.0029 and lambda_SM(M_GUT) = -0.0097 +- 0.0031; the MSbar zero is at 6.3e+10 GeV (1 sigma 1.2e+10-3.5e+11 GeV) and the Landau-gauge effective-potential zero is 2.5-6.5x higher (definition dependent). Absolute stability with the threshold at M_I needs M_t < 172.04 +- 0.36 GeV, 1.16 sigma below the measured value once the alpha_s and M_h errors are included (172.23-172.46 GeV, 0.74-0.24 sigma, with the effective-potential zero). The earlier 2.0 sigma omitted the alpha_s and M_h errors and used the Buttazzo et al. fit formulas, whose g3(M_t) and y_t(M_t) are 0.0017 and 0.0009 too high. lambda_SM(v_R) is +0.0086 at 1e9 GeV and -0.0003 at 7.8e10 GeV: its sign flips inside the realistic v_R band, so the Higgs matching is conditional and open, not falsified. Legacy regression (Buttazzo et al. 2013 central inputs, M_t = 173.34 GeV; used for the portal analysis): Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam anchor chain, and not realized by any current repository vacuum, whose Delta_R is not the SM singlet): two-loop SM running from the Buttazzo et al. inputs puts the MSbar instability scale at 4.76e+09 GeV, a factor 133 below M_I, with lambda_SM(M_I) = -0.00854 and lambda_SM(M_GUT) = -0.01511 (one loop: -0.0335). With the H-S portal threshold at M_I, positive-portal windows keep lambda_H > 0 up to M_GUT for every scanned lambda_S. Copositivity is not the tree-level local-minimum condition (the single-stage point is copositive too). At the tuned point of the tree potential the condition is lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S) >= 0 (g3_tuned_target_portal_threshold_v20). With the S threshold at M_I, lambda_eff(M_I) = lambda_SM(M_I) = -0.0085 < 0, so the M_I threshold does not remove the tree-level saddle; at the GUT coefficients lambda_eff is -0.073 for the O36 = O23 = 1 benchmark and negative at 4 of 5 window middles. Metastability is the RG-improved statement. In the RG-improved potential the EW vacuum is still not the global minimum at central inputs, because the SM segment [Lambda_I, M_I] has lambda_SM < 0; the bounce estimate S ~ 3082 far exceeds the ~500 needed, so it is metastable and long-lived (estimate). At tree level with the S vev the EW/S point is a local (and then global) minimum iff lambda_SM(threshold) >= 0, so at central inputs it is the tree-level saddle stated above. Absolute stability with the threshold at M_I needs M_t < 171.96 GeV (2L) / 172.07 GeV (3L) with the MSbar criterion at these legacy inputs. The alternative is a radial mode below Lambda_I, i.e. lambda_S <~ 1.4e-05, far from the certified O23 = 1 (RG-improved: lambda_eff(m_rho) > 0 there, but lambda_eff at the GUT coefficients is negative at every scanned window point). Keeping O36 = O23 = 1 needs O34 = lambda_HS(M_GUT) = 2.072 (RG-improved metastable; a tree-level saddle, since O34 > 2 at O36 = O23 = 1). Single-stage GUT matching needs lambda_eff(M_GUT) = -0.0151 at two loops (negative at every loop order), so that tuned point is not a tree-level local minimum either. The RG-improved M_I-threshold conclusions are marginal: they depend on M_t (about 1 sigma), on the MSbar versus effective-potential instability criterion, and on the omitted states listed in the scope. This is an RG-improved EFT statement, not an exact lower witness of the 486-field tree potential: G3 stays open and the model is neither validated nor excluded."
 }

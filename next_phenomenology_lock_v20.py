@@ -168,9 +168,14 @@ def threshold_coupling_to_flavour() -> dict:
             "alpha_inv_GUT_after_spectators": one["alpha_inv_GUT_after_spectators"],
         },
         "two_loop_thresholds": {
+            "available": two.get("available") is not False,
             "M_I_GeV": two["M_I_GeV"],
             "M_GUT_GeV": two["M_GUT_GeV"],
             "alpha_inv_GUT_after_spectators": two["alpha_inv_GUT_after_spectators"],
+            "scope": "genuine two-loop MV gauge anchor, anchor content without spectators",
+            "alpha_inv_GUT_after_spectators_unavailable_reason": (two.get("unavailable") or {}).get(
+                "alpha_inv_GUT_after_spectators"
+            ),
         },
         "yukawa_RG_applied": False,
         "common_scale_identification": {
@@ -220,12 +225,17 @@ def build_report() -> dict:
             map(np.isfinite, had["C_p_range"] + had["C_n_range"])
         ),
         "thresholds_loaded": thr_c["one_loop_thresholds"]["M_I_GeV"] > 0,
+        "two_loop_anchor_available": thr_c["two_loop_thresholds"]["available"],
         "full_RG_not_overclaimed": not thr_c["flag"]["full_RG_global_fit"],
         "unique_Cf_not_claimed": not had["full_unique_Ce_Cp_Cn"],
     }
     failures = [k for k, v in checks.items() if not v]
     return {
-        "status": "NEXT_PHENOMENOLOGY_LOCK_PASS__FULL_UNIQUE_CF_STILL_OPEN",
+        "status": (
+            "NEXT_PHENOMENOLOGY_LOCK_PASS__FULL_UNIQUE_CF_STILL_OPEN"
+            if not failures
+            else "NEXT_PHENOMENOLOGY_LOCK_FAILED"
+        ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,

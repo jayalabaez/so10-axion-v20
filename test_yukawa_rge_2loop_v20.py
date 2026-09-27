@@ -36,6 +36,8 @@ class YukawaRGE2LoopTests(unittest.TestCase):
         self.assertFalse(
             report["flag"]["piecewise_component_threshold_matching_complete"]
         )
+        self.assertFalse(report["flag"]["heuristic_two_loop_gauge_thresholds_used"])
+        self.assertTrue(report["flag"]["genuine_two_loop_gauge_running_used"])
 
 
 if __name__ == "__main__":

@@ -6,10 +6,10 @@
   "chain": {
     "gauge_anchor": {
       "M_Z_GeV": 91.1876,
-      "M_I_GeV": 160982556355.69574,
-      "M_GUT_GeV": 1152023707592865.0,
-      "scheme": "two-loop-corrected",
-      "note": "Uses the repository two-loop-corrected threshold chain (M_I and M_GUT as returned by two_loop_thresholds_v20)."
+      "M_I_GeV": 65608359036.3354,
+      "M_GUT_GeV": 1.251508824019244e+16,
+      "scheme": "two_loop_MV_gauge_anchor_no_spectators",
+      "note": "Uses the genuine two-loop Machacek-Vaughn gauge running of two_loop_thresholds_v20 (anchor content: 2HDM below M_I, Pati-Salam above; no spectators); Yukawa betas are one loop."
     },
     "clebsch_matching_at_MI": {
       "eta_I": 1.0,
@@ -25,24 +25,24 @@
       "factor_minus_three_applied": true
     },
     "ps_evolution_MI_to_MGUT": {
-      "n_steps": 5,
+      "n_steps": 6,
       "relative_change": {
-        "Y10": 0.11154922408725233,
-        "Y126": 0.05392667217658994,
-        "YR": 0.08292987925662373
+        "Y10": 0.15622562800708692,
+        "Y126": 0.08212296170450803,
+        "YR": 0.12157553286168368
       },
       "max_abs": {
-        "Y10": 1.0831194568071234,
-        "Y126": 0.3861913155603923,
-        "YR": 0.3166554384711809
+        "Y10": 1.1266624764129365,
+        "Y126": 0.37479356738117287,
+        "YR": 0.3033110167946276
       }
     },
     "sm_evolution_MI_to_MZ": {
-      "n_steps": 11,
+      "n_steps": 10,
       "relative_change": {
-        "Yu": 0.13563874437777496,
-        "Yd": 0.10619090056629585,
-        "Ye": 0.20456505407613823
+        "Yu": 0.14572537036198455,
+        "Yd": 0.11721975507998944,
+        "Ye": 0.2025566858529743
       }
     }
   },
@@ -52,7 +52,8 @@
     "piecewise_yukawa_chain_integrated": true,
     "pati_salam_one_loop_yukawa_layer_used": true,
     "sm_2hdm_one_loop_layer_used": true,
-    "heuristic_two_loop_gauge_thresholds_used": true,
+    "heuristic_two_loop_gauge_thresholds_used": false,
+    "genuine_two_loop_gauge_running_used": true,
     "published_210_tensor_contractions": false,
     "two_loop_so10_complete": false,
     "explicit_two_loop_yukawa_betas": false,

@@ -89,9 +89,16 @@
       "retuned_O06": -0.080602195502,
       "zero_modes": 39
     },
+    "input_set": "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; superseded headline)",
     "lambda_HS_required_at_benchmark_lambda_H_lambda_S": 2.015054887557,
     "lambda_gut_required_two_loop": -0.015111549966,
-    "source": "g3_physical_hierarchy_higgs_stability_v20 (two-loop SM running, Buttazzo et al. inputs)",
+    "pdg2024_headline_lambda_SM_M_GUT_3L": {
+      "lambda": -0.009681160201,
+      "same_sign_as_legacy_target": true,
+      "sigma": 0.003115331826,
+      "source": "g3_physical_hierarchy_higgs_stability_v20.pdg2024_corrected_headline (PDG 2024 inputs, SMDR v1.3-anchored matching, 3L + 4L QCD in g3)"
+    },
+    "source": "g3_physical_hierarchy_higgs_stability_v20 (two-loop SM running, legacy Buttazzo et al. 2013 inputs at M_t = 173.34 GeV; superseded headline)",
     "valley": {
       "S_zero_branch": {
         "H_norm_over_Phi": 0.200751333124,
@@ -153,5 +160,5 @@
   },
   "status": "G3_PORTAL_THRESHOLD_EXACT__SM_MATCHED_PORTAL_MAKES_TUNED_POINT_A_SADDLE__G3_OPEN",
   "units": "Hessian eigenvalues of the canonical 486-real chart, units of the benchmark scale M (|Phi|=1)",
-  "verdict": "The declared H-S portal gives the exact singlet threshold lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S), but the tuned point stays a tree-level local minimum only while lambda_eff >= 0 (lambda_HS <= 2 at the benchmark). Matching the two-loop SM value lambda(M_GUT) = -0.0151 needs lambda_HS = 2.0151; the point is then a PSD but degenerate saddle that descends along the H-S valley to an electroweak-breaking, PQ-restoring configuration with S = 0. A tree-level portal threshold therefore cannot supply the negative matching quartic at a G3-admissible point. G3 stays open; nothing is excluded."
+  "verdict": "The declared H-S portal gives the exact singlet threshold lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S), but the tuned point stays a tree-level local minimum only while lambda_eff >= 0 (lambda_HS <= 2 at the benchmark). Matching the two-loop SM value lambda(M_GUT) = -0.0151 (legacy Buttazzo 2013 inputs; PDG 2024 headline -0.0097 +- 0.0031, same sign) needs lambda_HS = 2.0151; the point is then a PSD but degenerate saddle that descends along the H-S valley to an electroweak-breaking, PQ-restoring configuration with S = 0. A tree-level portal threshold therefore cannot supply the negative matching quartic at a G3-admissible point. G3 stays open; nothing is excluded."
 }

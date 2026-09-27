@@ -1,0 +1,2821 @@
+{
+  "G3_witness_unchanged": true,
+  "anomaly": {
+    "LagHC_terms": [
+      "Y10: F.F.H10",
+      "Y126: F.F.Delta126bar",
+      "yP: conj[Phi17].P.Pbar",
+      "yQ: conj[Phi17].Q.Qbar",
+      "yR: Phi17.R.Rbar",
+      "ys: S.SpecS.SpecB",
+      "lambdaP: P.F.H10",
+      "lambdaR: R.F.H10",
+      "lambdaQB: conj[S].Qbar.F",
+      "lambdaQR: S.Q.Rbar",
+      "kappaH: H10.H10.S"
+    ],
+    "PQ": {
+      "2N": "-68",
+      "E": "-272/3",
+      "E_over_N": "8/3",
+      "N": "-34",
+      "charges_with_spectator_split_SpecS_2_SpecB_minus_6": {
+        "F": 1,
+        "P": 1,
+        "Pbar": -1,
+        "Q": -3,
+        "Qbar": 3,
+        "R": 1,
+        "Rbar": -1,
+        "SpecB": -6,
+        "SpecS": 2
+      },
+      "heavy_vectorlike_pairs_PQ_sums": {
+        "P+Pbar": 0,
+        "Q+Qbar": 0,
+        "R+Rbar": 0
+      },
+      "spectator_split": "free (SpecS + SpecB = -4 per generation under PQ); N does not depend on it"
+    },
+    "PQ_table_equals_repository": true,
+    "SM_content_of_16": {
+      "T_SU3": "2",
+      "TrQ2": "16/3",
+      "content": [
+        [
+          "Q",
+          3,
+          2,
+          "1/6"
+        ],
+        [
+          "u^c",
+          3,
+          1,
+          "-2/3"
+        ],
+        [
+          "d^c",
+          3,
+          1,
+          "1/3"
+        ],
+        [
+          "L",
+          1,
+          2,
+          "-1/2"
+        ],
+        [
+          "e^c",
+          1,
+          1,
+          "1"
+        ],
+        [
+          "nu^c",
+          1,
+          1,
+          "0"
+        ]
+      ],
+      "dimension": 16
+    },
+    "V_s": {
+      "N": "0",
+      "charges": {
+        "F": 0,
+        "P": 0,
+        "Pbar": 0,
+        "Q": 0,
+        "Qbar": 0,
+        "R": 0,
+        "Rbar": 0,
+        "SpecB": -1,
+        "SpecS": 1
+      }
+    },
+    "X": {
+      "N": "0",
+      "charges": {
+        "F": 1,
+        "P": 1,
+        "Pbar": 16,
+        "Q": 14,
+        "Qbar": 3,
+        "R": 1,
+        "Rbar": -18,
+        "SpecB": -6,
+        "SpecS": 2
+      },
+      "every_LagHC_term_X_neutral": true,
+      "reproduces_model_file": true
+    },
+    "caveats": [
+      "N_DW = 1 holds modulo gauge only: the one-wall object is the (l, n) = (13, -3) string sector with Phi17 winding and S-winding 2 pi/17 (axion_so10_theory_v20.tex); if Phi17 breaks before inflation the S-only strings carry 17 walls, and the post-inflation branch is conditional on the (13, -3) string's existence and production",
+      "the anomaly and N_DW do not depend on rS; f_a = v_a/N_DW = F_PQ/68 does"
+    ],
+    "contract_portals": {
+      "O38 Phi Hdag Sigmadag Sdag": {
+        "PQ_charge": 0,
+        "X_charge": 0,
+        "field_counts": {
+          "Db": 1,
+          "Hb": 1,
+          "P": 1,
+          "Sb": 1
+        }
+      },
+      "kappaH H10.H10.S (census O12, conjugate Hdag.Hdag.Sdag)": {
+        "PQ_charge": 0,
+        "X_charge": 0,
+        "field_counts": {
+          "Hb": 2,
+          "Sb": 1
+        }
+      }
+    },
+    "declared_representations": {
+      "fermions_all_16_or_16bar": true,
+      "note": "T_SU3 = 2 and Tr Q^2 = 16/3 are the indices of a 16 (and of a 16bar); they apply only because every fermion is declared as a 16 or 16bar",
+      "scalars": {
+        "Delta126bar": -126,
+        "H10": 10,
+        "Phi17": 1,
+        "Phi210": 210,
+        "S": 1
+      },
+      "scalars_expected": {
+        "Delta126bar": -126,
+        "H10": 10,
+        "Phi17": 1,
+        "Phi210": 210,
+        "S": 1
+      },
+      "scalars_match": true
+    },
+    "domain_wall": {
+      "N_DW_cover_relative_to_S_phase": "17",
+      "N_DW_modulo_gauge": "1",
+      "explicit_gauge_element_units_of_2pi": {
+        "beta_U1X": "13/17",
+        "psi_so10": "1/2",
+        "so10_generator": "SO10:T[0,1]",
+        "theta_PQ": "1/68"
+      },
+      "f_a": "f_a = v_a/N_DW = v_a = F_PQ/68",
+      "gauge_part_anomaly_free": true,
+      "period_denominator_from_G4_period_certificate_at_rS_1": 68,
+      "theta_QCD_shift_over_one_period_units_of_2pi": "-1"
+    },
+    "fermions": {
+      "F": {
+        "X": 1,
+        "generations": 3,
+        "so10_rep": 16
+      },
+      "P": {
+        "X": 1,
+        "generations": 1,
+        "so10_rep": 16
+      },
+      "Pbar": {
+        "X": 16,
+        "generations": 1,
+        "so10_rep": -16
+      },
+      "Q": {
+        "X": 14,
+        "generations": 1,
+        "so10_rep": 16
+      },
+      "Qbar": {
+        "X": 3,
+        "generations": 1,
+        "so10_rep": -16
+      },
+      "R": {
+        "X": 1,
+        "generations": 1,
+        "so10_rep": 16
+      },
+      "Rbar": {
+        "X": -18,
+        "generations": 1,
+        "so10_rep": -16
+      },
+      "SpecB": {
+        "X": -6,
+        "generations": 5,
+        "so10_rep": -16
+      },
+      "SpecS": {
+        "X": 2,
+        "generations": 5,
+        "so10_rep": 16
+      }
+    },
+    "general_global_U1": {
+      "N_SU3_general": "-34*beta",
+      "fermion_charges": {
+        "F": "alpha + beta",
+        "P": "alpha + beta",
+        "Pbar": "16*alpha - beta",
+        "Q": "14*alpha - 3*beta",
+        "Qbar": "3*alpha + 3*beta",
+        "R": "alpha + beta",
+        "Rbar": "-18*alpha - beta",
+        "SpecB": "q_SpecB",
+        "SpecS": "-4*alpha - 4*beta - q_SpecB"
+      },
+      "free_parameters": [
+        "alpha",
+        "beta",
+        "q_SpecB"
+      ],
+      "solution_space_dimension": 3,
+      "unknowns": [
+        "q_F",
+        "q_P",
+        "q_R",
+        "q_SpecS",
+        "q_Q",
+        "q_Pbar",
+        "q_Qbar",
+        "q_Rbar",
+        "q_SpecB",
+        "alpha",
+        "beta"
+      ]
+    },
+    "model_file": "models/SO10Z17AxionV20.m",
+    "scalar_charges_X_model_PQ_repository": {
+      "Delta126bar": {
+        "PQ": -2,
+        "X": -2
+      },
+      "H10": {
+        "PQ": -2,
+        "X": -2
+      },
+      "Phi17": {
+        "PQ": 0,
+        "X": 17
+      },
+      "Phi210": {
+        "PQ": 0,
+        "X": 0
+      },
+      "S": {
+        "PQ": 4,
+        "X": 4
+      }
+    },
+    "scalars": {
+      "Delta126bar": {
+        "X": -2,
+        "generations": 1,
+        "so10_rep": -126
+      },
+      "H10": {
+        "X": -2,
+        "generations": 1,
+        "so10_rep": 10
+      },
+      "Phi17": {
+        "X": 17,
+        "generations": 1,
+        "so10_rep": 1
+      },
+      "Phi210": {
+        "X": 0,
+        "generations": 1,
+        "so10_rep": 210
+      },
+      "S": {
+        "X": 4,
+        "generations": 1,
+        "so10_rep": 1
+      }
+    }
+  },
+  "checks": {
+    "anomaly_E_over_N_8_over_3_from_SM_content_of_16": true,
+    "anomaly_N_DW_1_modulo_gauge_period_2pi_over_68": true,
+    "anomaly_N_PQ_minus_34_independent_of_spectator_split": true,
+    "anomaly_contract_kappaH_and_O38_X_and_PQ_neutral": true,
+    "anomaly_global_U1_space_is_3_dimensional_X_PQ_Vs": true,
+    "anomaly_model_X_charges_solve_every_LagHC_term_and_N_X_0": true,
+    "anomaly_model_file_parsed_9_fermion_16s_5_scalars_with_declared_reps_11_LagHC_terms": true,
+    "anomaly_scalar_charges_match_repository_X_and_PQ_tables": true,
+    "axion_in_kernel_of_eps_member_hessian_at_every_point": true,
+    "candidate_map_with_rS_eps_equals_expanded_sos_map_plus_eps_three_signs": true,
+    "committed_exact_hessian_report_certified_and_equal_to_rS_eq_r0_certificates": true,
+    "equality_set_premises_from_committed_report": true,
+    "family_V0_and_lambda_eff_closed_forms_symbolic": true,
+    "family_map_27_parameters_inside_51_parameter_contract": true,
+    "family_map_changes_only_O04_and_O06_symbolic": true,
+    "family_map_equals_witness_map_at_rS_equal_r0_symbolic_and_benchmarks": true,
+    "family_map_has_no_S_portal_parameters": true,
+    "family_operator_ids_equal_witness_operator_ids": true,
+    "g4_axion_closed_forms_and_period_at_rS_1": true,
+    "g4_axion_closed_forms_and_period_at_rS_1_over_10": true,
+    "g4_axion_closed_forms_and_period_at_rS_1_over_5": true,
+    "g4_axion_closed_forms_and_period_at_rS_2": true,
+    "g4_axion_closed_forms_and_period_at_rS_5": true,
+    "g4_axion_route_A_symbolic_closed_form_all_rS": true,
+    "g4_rS_eq_r0_values_equal_committed_G4_report": true,
+    "g4_vectors_and_chart_norm_at_rS_1": true,
+    "g4_vectors_and_chart_norm_at_rS_1_over_10": true,
+    "g4_vectors_and_chart_norm_at_rS_1_over_5": true,
+    "g4_vectors_and_chart_norm_at_rS_2": true,
+    "g4_vectors_and_chart_norm_at_rS_5": true,
+    "kappa_bound_sharp_curve_identity_exact": true,
+    "kappa_bound_violated_beyond_boundary_at_exact_rational_witnesses": true,
+    "kappa_boundary_bound_and_equality_set_hold_curve_and_completed_square_exact": true,
+    "kappa_minus_r0sq_over_4rS_point_keeps_witness_O06_and_H_block": true,
+    "lambda_eff_equals_2_minus_kappa_sq_over_4rS_sq_at_every_point": true,
+    "p3_family_P3_HS_domain_holds_strictly_at_sample_points": true,
+    "p3_family_P3_HS_square_completion_identities_exact_symbolic": true,
+    "p3_family_P3_S_Phi17_charge_matrix_nonsingular": true,
+    "p3_family_P3_V_phase_independent_at_H0": true,
+    "p3_family_P3_all_27_operators_X_and_PQ_neutral": true,
+    "p3_family_P3_charges_consistent_across_sources": true,
+    "p3_family_P3_explicit_group_element_reaches_all_phases": true,
+    "p3_family_P3_operator_count_27_and_25_at_kappa_0": true,
+    "p3_family_P3_orbit_tangent_rank_35_kernel_12_pure_so10": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__H_and_S_blocks_closed_form_and_decoupled": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__difference_from_witness_only_on_H_and_S_blocks": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__linear_in_eps_and_doublet_eigenvalue_eps": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true,
+    "point_rS_1_kappa_minus_rS_over_4__H_and_S_blocks_closed_form_and_decoupled": true,
+    "point_rS_1_kappa_minus_rS_over_4__difference_from_witness_only_on_H_and_S_blocks": true,
+    "point_rS_1_kappa_minus_rS_over_4__eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+    "point_rS_1_kappa_minus_rS_over_4__gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+    "point_rS_1_kappa_minus_rS_over_4__linear_in_eps_and_doublet_eigenvalue_eps": true,
+    "point_rS_1_kappa_minus_rS_over_4__tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true,
+    "point_rS_5_kappa_minus_rS_over_4_stress__H_and_S_blocks_closed_form_and_decoupled": true,
+    "point_rS_5_kappa_minus_rS_over_4_stress__difference_from_witness_only_on_H_and_S_blocks": true,
+    "point_rS_5_kappa_minus_rS_over_4_stress__eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+    "point_rS_5_kappa_minus_rS_over_4_stress__gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+    "point_rS_5_kappa_minus_rS_over_4_stress__linear_in_eps_and_doublet_eigenvalue_eps": true,
+    "point_rS_5_kappa_minus_rS_over_4_stress__tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true,
+    "point_rS_eq_r0_witness__H_and_S_blocks_closed_form_and_decoupled": true,
+    "point_rS_eq_r0_witness__difference_from_witness_only_on_H_and_S_blocks": true,
+    "point_rS_eq_r0_witness__eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+    "point_rS_eq_r0_witness__gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+    "point_rS_eq_r0_witness__linear_in_eps_and_doublet_eigenvalue_eps": true,
+    "point_rS_eq_r0_witness__tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true,
+    "rS_eq_r0_hessians_and_certificates_identical_to_witness_module": true,
+    "sos_eight_terms_expand_to_family_map_kappa_negative": true,
+    "sos_eight_terms_expand_to_family_map_kappa_positive": true,
+    "sos_eight_terms_expand_to_family_map_kappa_zero": true,
+    "sos_expanded_map_equals_family_map_at_every_point_exact": true,
+    "tangent_ranks_33_34_35_minors_and_SM_stabilizer_at_rS_1": true,
+    "tangent_ranks_33_34_35_minors_and_SM_stabilizer_at_rS_1_over_10": true,
+    "tangent_ranks_33_34_35_minors_and_SM_stabilizer_at_rS_1_over_5": true,
+    "tangent_ranks_33_34_35_minors_and_SM_stabilizer_at_rS_2": true
+  },
+  "committed_hessian_binding": {
+    "comparisons_with_rS_eq_r0_certificates": {
+      "eps_family.consistency_certificates.tiny_eps": {
+        "denominator": true,
+        "inertia_451_35_0": true
+      },
+      "exact_certificate": {
+        "denominator": true,
+        "exact_nullity": true,
+        "exact_rank": true,
+        "inertia": true,
+        "nonzero_entries": true,
+        "spectral_gap_lambda": true,
+        "spectral_gap_multiplicity": true
+      },
+      "exact_certificate_raised_O06": {
+        "denominator": true,
+        "exact_nullity": true,
+        "exact_rank": true,
+        "inertia": true,
+        "nonzero_entries": true,
+        "spectral_gap_lambda": true,
+        "spectral_gap_multiplicity": true
+      }
+    },
+    "n_failed": 0,
+    "source": "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json",
+    "status_certified": true
+  },
+  "equality_set": {
+    "claim": "{V = V0} = G.(p, r0 sigma_std, 0, rS, x0), G = SO(10) x U(1)_X x U(1)_PQ, for kappa^2 < 8 rS^2",
+    "committed_equality_report_premises": {
+      "O06_row_is_H_Hbar_and_X_PQ_neutral": true,
+      "equality_conditions_include_H_equal_0": true,
+      "equality_set_unique_modulo_symmetry_certified": true,
+      "no_failed_checks": true,
+      "operator_dictionary_maps_O06_to_N_H": true,
+      "same_model_contract": true,
+      "status_is_proved": true,
+      "theorem_claimed": true,
+      "theorem_states_V_ge_V0_and_equality_set_G_orbit": true
+    },
+    "family_operator_ids_equal_witness_ids": {
+      "rS_1_kappa_minus_r0sq_over_4rS": true,
+      "rS_1_kappa_minus_rS_over_4": true,
+      "rS_5_kappa_minus_rS_over_4_stress": true,
+      "rS_eq_r0_witness": true
+    },
+    "relies_on": {
+      "P0": "replaced by this report's sos_identity (eight terms with T6 at rS and T9 = eps N_H)",
+      "P1_Phi": "contains no S: carried over verbatim from the committed proved equality-set report (the exact 210 uniqueness; decision D6 inputs)",
+      "P2_Sigma": "contains no S: carried over verbatim from the committed proved equality-set report",
+      "P3": "the H/S bracket at rS (hs_sector.p3 with (r0, kappa, rS) points); the X/PQ charges, the explicit phase element and the operator neutrality are scale-free and the operator ids are the witness ids",
+      "eps_lemma_L1": "N_H >= 0 with equality iff H = 0 is scale-free, so {V_eps = V0} = {V = V0} for eps >= 0",
+      "tangent_ranks": "D = diag(1, sqrt2 r0/4, sqrt2 rS, sqrt2 x0) is invertible for rS > 0, so the integer ranks 33/34/35 and the 12-dimensional SM stabilizer carry over (tangent_ranks re-checks them exactly)"
+    }
+  },
+  "exact_hessian_points": {
+    "rS_1_kappa_minus_r0sq_over_4rS": {
+      "H_and_S_blocks": {
+        "benchmark": {
+          "H_chart_curvatures_by_value": {
+            "0": 4,
+            "1": 6,
+            "1/25": 4,
+            "26/25": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "raised_O06": {
+          "H_chart_curvatures_by_value": {
+            "1/2500": 4,
+            "101/2500": 4,
+            "2501/2500": 6,
+            "2601/2500": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "tiny_eps": {
+          "H_chart_curvatures_by_value": {
+            "1/25000000": 4,
+            "1000001/25000000": 4,
+            "25000001/25000000": 6,
+            "26000001/25000000": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        }
+      },
+      "H_block_equal_to_witness_all_variants": true,
+      "axion_in_kernel_of_raised_hessian": true,
+      "certificates": {
+        "benchmark": {
+          "O06": "1/50",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "51/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "checks": {
+        "H_and_S_blocks_closed_form_and_decoupled": true,
+        "difference_from_witness_only_on_H_and_S_blocks": true,
+        "eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+        "gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+        "linear_in_eps_and_doublet_eigenvalue_eps": true,
+        "tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true
+      },
+      "difference_support_vs_witness": {
+        "benchmark": [
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "raised_O06": [
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "tiny_eps": [
+          [
+            "S",
+            "S"
+          ]
+        ]
+      },
+      "doublet_eigenvalue_eps_exact": {
+        "benchmark": true,
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "linearity_in_eps_exact": {
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "lowest_level_precondition_4_abs_kappa_rS_and_4_rS2_above_r0sq_over_96": true,
+      "point": {
+        "kappa": "-1/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      }
+    },
+    "rS_1_kappa_minus_rS_over_4": {
+      "H_and_S_blocks": {
+        "benchmark": {
+          "H_chart_curvatures_by_value": {
+            "0": 4,
+            "1": 10,
+            "2": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "raised_O06": {
+          "H_chart_curvatures_by_value": {
+            "1/2500": 4,
+            "2501/2500": 10,
+            "5001/2500": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "tiny_eps": {
+          "H_chart_curvatures_by_value": {
+            "1/25000000": 4,
+            "25000001/25000000": 10,
+            "50000001/25000000": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        }
+      },
+      "H_block_equal_to_witness_all_variants": false,
+      "axion_in_kernel_of_raised_hessian": true,
+      "certificates": {
+        "benchmark": {
+          "O06": "1/2",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "1251/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "12500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "checks": {
+        "H_and_S_blocks_closed_form_and_decoupled": true,
+        "difference_from_witness_only_on_H_and_S_blocks": true,
+        "eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+        "gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+        "linear_in_eps_and_doublet_eigenvalue_eps": true,
+        "tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true
+      },
+      "difference_support_vs_witness": {
+        "benchmark": [
+          [
+            "H",
+            "H"
+          ],
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "raised_O06": [
+          [
+            "H",
+            "H"
+          ],
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "tiny_eps": [
+          [
+            "H",
+            "H"
+          ],
+          [
+            "S",
+            "S"
+          ]
+        ]
+      },
+      "doublet_eigenvalue_eps_exact": {
+        "benchmark": true,
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "linearity_in_eps_exact": {
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "lowest_level_precondition_4_abs_kappa_rS_and_4_rS2_above_r0sq_over_96": true,
+      "point": {
+        "kappa": "-1/4",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      }
+    },
+    "rS_5_kappa_minus_rS_over_4_stress": {
+      "H_and_S_blocks": {
+        "benchmark": {
+          "H_chart_curvatures_by_value": {
+            "0": 4,
+            "1": 6,
+            "25": 4,
+            "26": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "100",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "200",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "raised_O06": {
+          "H_chart_curvatures_by_value": {
+            "1/2500": 4,
+            "2501/2500": 6,
+            "62501/2500": 4,
+            "65001/2500": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "100",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "200",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "tiny_eps": {
+          "H_chart_curvatures_by_value": {
+            "1/25000000": 4,
+            "25000001/25000000": 6,
+            "625000001/25000000": 4,
+            "650000001/25000000": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "100",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "200",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        }
+      },
+      "H_block_equal_to_witness_all_variants": false,
+      "axion_in_kernel_of_raised_hessian": true,
+      "certificates": {
+        "benchmark": {
+          "O06": "25/2",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "31251/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "312500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "checks": {
+        "H_and_S_blocks_closed_form_and_decoupled": true,
+        "difference_from_witness_only_on_H_and_S_blocks": true,
+        "eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+        "gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+        "linear_in_eps_and_doublet_eigenvalue_eps": true,
+        "tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true
+      },
+      "difference_support_vs_witness": {
+        "benchmark": [
+          [
+            "H",
+            "H"
+          ],
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "raised_O06": [
+          [
+            "H",
+            "H"
+          ],
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "tiny_eps": [
+          [
+            "H",
+            "H"
+          ],
+          [
+            "S",
+            "S"
+          ]
+        ]
+      },
+      "doublet_eigenvalue_eps_exact": {
+        "benchmark": true,
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "linearity_in_eps_exact": {
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "lowest_level_precondition_4_abs_kappa_rS_and_4_rS2_above_r0sq_over_96": true,
+      "point": {
+        "kappa": "-5/4",
+        "r0": "1/5",
+        "rS": "5",
+        "x0": "1"
+      }
+    },
+    "rS_eq_r0_witness": {
+      "H_and_S_blocks": {
+        "benchmark": {
+          "H_chart_curvatures_by_value": {
+            "0": 4,
+            "1": 6,
+            "1/25": 4,
+            "26/25": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4/25",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8/25",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "raised_O06": {
+          "H_chart_curvatures_by_value": {
+            "1/2500": 4,
+            "101/2500": 4,
+            "2501/2500": 6,
+            "2601/2500": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4/25",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8/25",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        },
+        "tiny_eps": {
+          "H_chart_curvatures_by_value": {
+            "1/25000000": 4,
+            "1000001/25000000": 4,
+            "25000001/25000000": 6,
+            "26000001/25000000": 6
+          },
+          "H_curvatures_equal_closed_form": true,
+          "H_offdiagonal_zero": true,
+          "H_rows_vanish_outside_H": true,
+          "S_radial_chart_mass_squared": "4/25",
+          "S_rows_vanish_outside_S": true,
+          "S_u_block": [
+            [
+              "8/25",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "S_u_block_equals_8rS2_0_0_0": true
+        }
+      },
+      "H_block_equal_to_witness_all_variants": true,
+      "axion_in_kernel_of_raised_hessian": true,
+      "certificates": {
+        "benchmark": {
+          "O06": "1/50",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "51/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "checks": {
+        "H_and_S_blocks_closed_form_and_decoupled": true,
+        "difference_from_witness_only_on_H_and_S_blocks": true,
+        "eps_members_451_35_0_kernel_T35_strictly_positive_on_quotient": true,
+        "gaps_r0sq_over_96_mult_14_and_eps_mult_4": true,
+        "linear_in_eps_and_doublet_eigenvalue_eps": true,
+        "tuned_gradient_zero_psd_447_39_0_kernel_T35_plus_D4": true
+      },
+      "difference_support_vs_witness": {
+        "benchmark": [],
+        "raised_O06": [],
+        "tiny_eps": []
+      },
+      "doublet_eigenvalue_eps_exact": {
+        "benchmark": true,
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "linearity_in_eps_exact": {
+        "raised_O06": true,
+        "tiny_eps": true
+      },
+      "lowest_level_precondition_4_abs_kappa_rS_and_4_rS2_above_r0sq_over_96": true,
+      "point": {
+        "kappa": "-1/20",
+        "r0": "1/5",
+        "rS": "1/5",
+        "x0": "1"
+      }
+    }
+  },
+  "expected_n_checks": 77,
+  "failures": [],
+  "family": {
+    "S_portal_parameters": [
+      "lambda::O22_B01_singlet_polynomial",
+      "lambda::O26_B01_126bar_norm",
+      "lambda::O34_B01_Hdag_H_norm",
+      "re::O38_B01_Phi_Hdag_Sigmadag",
+      "im::O38_B01_Phi_Hdag_Sigmadag",
+      "lambda::O43_B01_Phi_norm",
+      "im::O12_B01_Hdag_Hdag_pair"
+    ],
+    "S_portal_parameters_declared_in_contract": true,
+    "V0": "-1 - r0^4/8 - rS^4 - x0^4/32",
+    "V0_symbolic_residual": "0",
+    "contract_parameter_count": 51,
+    "eps_window": "0 < eps < 12 - 2|kappa| rS (nonempty iff |kappa| rS < 6); a perturbative member also needs every coefficient in the 12 box (|O04| = 2 rS^2 < 12 iff rS < sqrt(6))",
+    "heavy_doublet_placement": "O06 = 2|kappa| rS and the Im H_6..9 curvature 4|kappa| rS; kappa = -r0^2/(4 rS) gives |kappa| rS = r0^2/4 for every rS (O06 = r0^2/2, the witness H block); kappa = -rS/4 gives |kappa| rS = rS^2/4",
+    "lambda_eff": "2 - kappa^2/(4 rS^2)",
+    "lambda_eff_symbolic_residual": "0",
+    "points": {
+      "rS_1_kappa_minus_r0sq_over_4rS": {
+        "O04": "-2",
+        "O06": "1/50",
+        "O12": "-1/100",
+        "V0": "-40629/20000",
+        "abs_kappa_times_rS": "1/100",
+        "changed_vs_witness": {
+          "lambda::O04_B01_singlet_polynomial": {
+            "point": "-2",
+            "witness": "-2/25"
+          },
+          "re::O12_B01_Hdag_Hdag_pair": {
+            "point": "-1/100",
+            "witness": "-1/20"
+          }
+        },
+        "kappa_is_minus_r0sq_over_4rS": true,
+        "kappa_squared_over_8_rS_squared": "1/80000",
+        "lambda_eff": "79999/40000",
+        "nonzero_count": 27,
+        "perturbative_box": {
+          "bound": "12",
+          "eps_window_nonempty": true,
+          "eps_window_upper_exclusive": "599/50",
+          "max_abs_coefficient": "73/8",
+          "perturbative_member": true
+        },
+        "point": {
+          "kappa": "-1/100",
+          "r0": "1/5",
+          "rS": "1",
+          "x0": "1"
+        }
+      },
+      "rS_1_kappa_minus_rS_over_4": {
+        "O04": "-2",
+        "O06": "1/2",
+        "O12": "-1/4",
+        "V0": "-40629/20000",
+        "abs_kappa_times_rS": "1/4",
+        "changed_vs_witness": {
+          "lambda::O04_B01_singlet_polynomial": {
+            "point": "-2",
+            "witness": "-2/25"
+          },
+          "lambda::O06_B01_Hdag_H_norm": {
+            "point": "1/2",
+            "witness": "1/50"
+          },
+          "re::O12_B01_Hdag_Hdag_pair": {
+            "point": "-1/4",
+            "witness": "-1/20"
+          }
+        },
+        "kappa_is_minus_r0sq_over_4rS": false,
+        "kappa_squared_over_8_rS_squared": "1/128",
+        "lambda_eff": "127/64",
+        "nonzero_count": 27,
+        "perturbative_box": {
+          "bound": "12",
+          "eps_window_nonempty": true,
+          "eps_window_upper_exclusive": "23/2",
+          "max_abs_coefficient": "73/8",
+          "perturbative_member": true
+        },
+        "point": {
+          "kappa": "-1/4",
+          "r0": "1/5",
+          "rS": "1",
+          "x0": "1"
+        }
+      },
+      "rS_5_kappa_minus_rS_over_4_stress": {
+        "O04": "-50",
+        "O06": "25/2",
+        "O12": "-5/4",
+        "V0": "-12520629/20000",
+        "abs_kappa_times_rS": "25/4",
+        "changed_vs_witness": {
+          "lambda::O04_B01_singlet_polynomial": {
+            "point": "-50",
+            "witness": "-2/25"
+          },
+          "lambda::O06_B01_Hdag_H_norm": {
+            "point": "25/2",
+            "witness": "1/50"
+          },
+          "re::O12_B01_Hdag_Hdag_pair": {
+            "point": "-5/4",
+            "witness": "-1/20"
+          }
+        },
+        "kappa_is_minus_r0sq_over_4rS": false,
+        "kappa_squared_over_8_rS_squared": "1/128",
+        "lambda_eff": "127/64",
+        "nonzero_count": 27,
+        "perturbative_box": {
+          "bound": "12",
+          "eps_window_nonempty": false,
+          "eps_window_upper_exclusive": "-1/2",
+          "max_abs_coefficient": "50",
+          "perturbative_member": false
+        },
+        "point": {
+          "kappa": "-5/4",
+          "r0": "1/5",
+          "rS": "5",
+          "x0": "1"
+        }
+      },
+      "rS_eq_r0_witness": {
+        "O04": "-2/25",
+        "O06": "1/50",
+        "O12": "-1/20",
+        "V0": "-20661/20000",
+        "abs_kappa_times_rS": "1/100",
+        "changed_vs_witness": {},
+        "kappa_is_minus_r0sq_over_4rS": true,
+        "kappa_squared_over_8_rS_squared": "1/128",
+        "lambda_eff": "127/64",
+        "nonzero_count": 27,
+        "perturbative_box": {
+          "bound": "12",
+          "eps_window_nonempty": true,
+          "eps_window_upper_exclusive": "599/50",
+          "max_abs_coefficient": "73/8",
+          "perturbative_member": true
+        },
+        "point": {
+          "kappa": "-1/20",
+          "r0": "1/5",
+          "rS": "1/5",
+          "x0": "1"
+        }
+      }
+    },
+    "reduction_at_rS_equal_r0_benchmarks": {
+      "1/100": true,
+      "1/1000": true,
+      "1/5": true,
+      "M_I/M_GUT": true
+    },
+    "reduction_at_rS_equal_r0_symbolic_residuals": {
+      "negative": {},
+      "positive": {}
+    },
+    "statement": "the committed 27-parameter map with |S| = rS: O04 = -2 rS^2, O06 = 2|kappa| rS + eps, every other entry unchanged (candidate_coefficients(r0, x0, kappa, o06_offset=eps, rs=rS))",
+    "symbolic_O04": "-2*rS**2",
+    "symbolic_O06": "eps - 2*kappa*rS",
+    "symbolic_changed_entries_vs_witness_map": {
+      "lambda::O04_B01_singlet_polynomial": "2*r0**2 - 2*rS**2",
+      "lambda::O06_B01_Hdag_H_norm": "2*kappa*(r0 - rS)"
+    }
+  },
+  "flags": {
+    "G3_witness_replaced": false,
+    "anomaly_N_DW_1_modulo_gauge": true,
+    "benchmark_chosen": false,
+    "decoupling_physically_viable_established": false,
+    "family_theorem_claimed": true,
+    "float_evidence_consistent": true,
+    "float_evidence_run": true,
+    "gate_status_changed": false,
+    "kappa_bound_sharp": true,
+    "kappa_minus_r0sq_over_4rS_keeps_witness_H_block": true,
+    "m_a_153_5_ueV_predicted": false,
+    "rS_eq_r0_reproduces_committed_witness": true,
+    "report_closes_g3_by_itself": false,
+    "report_closes_g4_by_itself": false,
+    "wired_into_gate_ledger": false
+  },
+  "float_evidence": {
+    "F1_live_compiler_at_rS_1_kappa_minus_1_over_100": {
+      "benchmark": {
+        "V_minus_V0": -3.10862446895e-15,
+        "half_lattice_margin": 0.499999655411,
+        "lattice_passes": true,
+        "max_abs_gradient_difference": 4.92106355665e-14,
+        "max_abs_hessian_difference": 8.7374552038e-14,
+        "within_tolerance": true
+      },
+      "point": {
+        "kappa": "-1/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      },
+      "raised_O06": {
+        "V_minus_V0": -3.10862446895e-15,
+        "half_lattice_margin": 0.499998277053,
+        "lattice_passes": true,
+        "max_abs_gradient_difference": 4.92106355665e-14,
+        "max_abs_hessian_difference": 8.7374552038e-14,
+        "within_tolerance": true
+      },
+      "seconds": 31.0770349503
+    },
+    "F2_anchor_rS_1000_r0": {
+      "V0": -1.031266427,
+      "V_minus_V0": -8.881784197e-16,
+      "V_tolerance": 1.031266427e-12,
+      "gradient_tolerance": 1e-12,
+      "lightest_massive_over_r0sq_over_96": 0.998545067349,
+      "max_abs_gradient": 1.77635920472e-15,
+      "note": "float64 cannot classify minimisation endpoints at the hierarchy anchor (r0 = M_I/M_GUT ~ 6.4e-5, rS = 1000 r0 ~ 0.064: the endpoint convergence threshold (1e-2 r0^2)^2/96 ~ 2e-23 falls below the float floor of V - V0 ~ 1e-14 at |V0| ~ 1.03), so rS/r0 = 1000 is covered by this point audit",
+      "point": {
+        "kappa": "-25772069/1619271617590000",
+        "r0": "51544138/809635808795",
+        "rS": "10308827600/161927161759",
+        "x0": "1"
+      },
+      "projected_negative": 0,
+      "projected_zero": 4,
+      "rS_over_r0": 1000,
+      "raised_variant_negative": 0,
+      "raised_variant_zero": 0,
+      "seconds": 20.9630141258,
+      "symmetry_ranks": {
+        "so10_orbit_rank": 33,
+        "so10_plus_u1x_plus_pq_rank": 35,
+        "so10_plus_u1x_rank": 34
+      },
+      "tolerance_rule": "|V - V0| <= 1e-12 max(1, |V0|) and max|grad| <= 1e-12 max(1, 4 rS^3) (the S-block gradient terms are ~ 4 rS^3)"
+    },
+    "F3_violating_direction": {
+      "compiler_V_minus_V0": -0.000341190000003,
+      "difference": -2.98882012889e-15,
+      "exact": "-34119/100000000",
+      "kappa": "-3",
+      "rS": "1",
+      "seconds": 0.277500391006,
+      "t": "3/100"
+    },
+    "F4_fast_evaluator_and_endpoints": {
+      "endpoints": [
+        {
+          "S_abs_over_rS": 1.00000000414,
+          "classification": "on_orbit",
+          "gap": 3.06421554797e-14,
+          "iterations": 499,
+          "kind": "generic"
+        },
+        {
+          "S_abs_over_rS": 0.999999998366,
+          "classification": "on_orbit",
+          "gap": 1.10578213253e-13,
+          "iterations": 548,
+          "kind": "phi_near_p"
+        }
+      ],
+      "inconclusive": 0,
+      "max_relative_fast_minus_compiler": 9.24995583087e-14,
+      "off_orbit": 0,
+      "on_orbit": 2,
+      "point": {
+        "kappa": "-1/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      },
+      "seconds": 25.8212485313
+    },
+    "checks": {
+      "float_F1_live_compiler_hessian_and_gradient_match_exact_within_1e_minus_12": true,
+      "float_F1_live_lattice_and_V_minus_V0": true,
+      "float_F2_anchor_gradient_and_V_minus_V0": true,
+      "float_F2_anchor_lightest_massive_r0sq_over_96_and_eps_variant": true,
+      "float_F2_anchor_ranks_33_34_35_and_projected_inertia_0_4": true,
+      "float_F3_violating_direction_matches_exact": true,
+      "float_F4_converged_endpoints_on_orbit": true,
+      "float_F4_fast_evaluator_matches_compiler": true
+    },
+    "failures": [],
+    "label": "FLOAT64 corroboration outside the exact check count",
+    "n_checks": 8,
+    "n_failed": 0,
+    "run": true,
+    "seconds": 78.1387979984
+  },
+  "float_verdict": "FLOAT64 corroboration, outside the exact check count: 8/8 passed (live compiler at (1/5, 1, 1, -1/100), anchor point audit at rS = 1000 r0, violating direction, endpoints).",
+  "g4_axion_and_vectors": {
+    "rS=1": {
+      "D_u_minor_determinants": {
+        "SO10": "1/512000000000",
+        "SO10_x_U1X": "1/128000000000",
+        "SO10_x_U1X_x_PQ": "-17/128000000000"
+      },
+      "PQ_tangent_norm_squared": "808/25",
+      "axion_norm_squared_F_PQ2": "9248/305",
+      "axion_norm_squared_closed_form": "9248/305",
+      "axion_period_denominator": 68,
+      "axion_period_modulo_gauge": "2 pi/68",
+      "axion_u_components": {
+        "Phi17.y": "-272/305",
+        "S.y": "1156/305"
+      },
+      "charged_vector_gamma": {
+        "(1,1)_1 + conj": "2/25",
+        "(1,3)_0": "0",
+        "(3,1)_2/3 + conj": "2/25",
+        "(3,2)_-5/6 + conj": "1",
+        "(3,2)_1/6 + conj": "27/25",
+        "(8,1)_0": "0"
+      },
+      "chart_checks": {
+        "chart_blocks_use_canonical_conventions": true,
+        "metric_is_1_on_Phi_and_2_on_complex_blocks": true,
+        "vacuum_norm_squared_1_plus_2r0sq_plus_2rSsq_plus_2x0sq": true,
+        "vacuum_orthogonal_to_all_47_orbit_tangents_exact": true
+      },
+      "chart_vacuum_norm_squared": "127/25",
+      "chart_vacuum_norm_squared_expected": "127/25",
+      "massless_vectors": 12,
+      "neutral_block_expected_terms": {
+        "(1, 2)": "244",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-15258/25",
+        "(3, 0)": "1"
+      },
+      "neutral_block_terms_lambda_t_exponents": {
+        "(1, 2)": "244",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-15258/25",
+        "(3, 0)": "1"
+      },
+      "period_element_units_of_2pi": {
+        "beta_U1X": "13/17",
+        "psi_so10": "1/2",
+        "so10_generator": "SO10:T[0,1]",
+        "theta_PQ": "1/68"
+      },
+      "rS_independent_axion_checks": {
+        "T35_cap_gauge_complement_is_one_dimensional": true,
+        "axion_is_pure_S_and_Phi17_phase": true,
+        "axion_lies_in_orbit_tangent_span_T35": true,
+        "axion_nonzero": true,
+        "axion_norm_squared_matches_closed_form": true,
+        "axion_not_in_gauge_span": true,
+        "axion_orthogonal_to_all_46_gauge_tangents_exact": true,
+        "gauge_gram_on_34_pivot_tangents_nonsingular": true
+      },
+      "rS_independent_vector_checks": {
+        "SM_sectors_decompose_so10_with_expected_dimensions": true,
+        "X_couples_only_to_the_neutral_sector": true,
+        "colour_casimir_normalised_on_vector_colour_block": true,
+        "gamma_scalar_on_every_charged_sector_with_expected_value": true,
+        "vector_gram_rank_34": true
+      },
+      "squared_norm_fractions": {
+        "H10": "0",
+        "Phi17": "16/305",
+        "Phi210": "0",
+        "S": "289/305",
+        "Sigma126bar": "0"
+      },
+      "v_a_squared": "2/305",
+      "vector_gram_rank": 34,
+      "witness_pinned_axion_checks_(ignored_off_witness)": {
+        "axion_composition_S_7225_Phi17_16_over_7241_Sigma_Phi_H_0": false,
+        "axion_norm_squared_9248_over_7241": false,
+        "axion_period_modulo_gauge_2pi_over_68": false
+      }
+    },
+    "rS=1/10": {
+      "D_u_minor_determinants": {
+        "SO10": "1/512000000000",
+        "SO10_x_U1X": "1/1280000000000",
+        "SO10_x_U1X_x_PQ": "-17/1280000000000"
+      },
+      "PQ_tangent_norm_squared": "16/25",
+      "axion_norm_squared_F_PQ2": "2312/7229",
+      "axion_norm_squared_closed_form": "2312/7229",
+      "axion_period_denominator": 68,
+      "axion_period_modulo_gauge": "2 pi/68",
+      "axion_u_components": {
+        "Phi17.y": "-68/7229",
+        "S.y": "2890/7229"
+      },
+      "charged_vector_gamma": {
+        "(1,1)_1 + conj": "2/25",
+        "(1,3)_0": "0",
+        "(3,1)_2/3 + conj": "2/25",
+        "(3,2)_-5/6 + conj": "1",
+        "(3,2)_1/6 + conj": "27/25",
+        "(8,1)_0": "0"
+      },
+      "chart_checks": {
+        "chart_blocks_use_canonical_conventions": true,
+        "metric_is_1_on_Phi_and_2_on_complex_blocks": true,
+        "vacuum_norm_squared_1_plus_2r0sq_plus_2rSsq_plus_2x0sq": true,
+        "vacuum_orthogonal_to_all_47_orbit_tangents_exact": true
+      },
+      "chart_vacuum_norm_squared": "31/10",
+      "chart_vacuum_norm_squared_expected": "31/10",
+      "massless_vectors": 12,
+      "neutral_block_expected_terms": {
+        "(1, 2)": "28916/125",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-14466/25",
+        "(3, 0)": "1"
+      },
+      "neutral_block_terms_lambda_t_exponents": {
+        "(1, 2)": "28916/125",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-14466/25",
+        "(3, 0)": "1"
+      },
+      "period_element_units_of_2pi": {
+        "beta_U1X": "13/17",
+        "psi_so10": "1/2",
+        "so10_generator": "SO10:T[0,1]",
+        "theta_PQ": "1/68"
+      },
+      "rS_independent_axion_checks": {
+        "T35_cap_gauge_complement_is_one_dimensional": true,
+        "axion_is_pure_S_and_Phi17_phase": true,
+        "axion_lies_in_orbit_tangent_span_T35": true,
+        "axion_nonzero": true,
+        "axion_norm_squared_matches_closed_form": true,
+        "axion_not_in_gauge_span": true,
+        "axion_orthogonal_to_all_46_gauge_tangents_exact": true,
+        "gauge_gram_on_34_pivot_tangents_nonsingular": true
+      },
+      "rS_independent_vector_checks": {
+        "SM_sectors_decompose_so10_with_expected_dimensions": true,
+        "X_couples_only_to_the_neutral_sector": true,
+        "colour_casimir_normalised_on_vector_colour_block": true,
+        "gamma_scalar_on_every_charged_sector_with_expected_value": true,
+        "vector_gram_rank_34": true
+      },
+      "squared_norm_fractions": {
+        "H10": "0",
+        "Phi17": "4/7229",
+        "Phi210": "0",
+        "S": "7225/7229",
+        "Sigma126bar": "0"
+      },
+      "v_a_squared": "1/14458",
+      "vector_gram_rank": 34,
+      "witness_pinned_axion_checks_(ignored_off_witness)": {
+        "axion_composition_S_7225_Phi17_16_over_7241_Sigma_Phi_H_0": false,
+        "axion_norm_squared_9248_over_7241": false,
+        "axion_period_modulo_gauge_2pi_over_68": false
+      }
+    },
+    "rS=1/5": {
+      "D_u_minor_determinants": {
+        "SO10": "1/512000000000",
+        "SO10_x_U1X": "1/640000000000",
+        "SO10_x_U1X_x_PQ": "-17/640000000000"
+      },
+      "PQ_tangent_norm_squared": "8/5",
+      "axion_norm_squared_F_PQ2": "9248/7241",
+      "axion_norm_squared_closed_form": "9248/7241",
+      "axion_period_denominator": 68,
+      "axion_period_modulo_gauge": "2 pi/68",
+      "axion_u_components": {
+        "Phi17.y": "-272/7241",
+        "S.y": "5780/7241"
+      },
+      "charged_vector_gamma": {
+        "(1,1)_1 + conj": "2/25",
+        "(1,3)_0": "0",
+        "(3,1)_2/3 + conj": "2/25",
+        "(3,2)_-5/6 + conj": "1",
+        "(3,2)_1/6 + conj": "27/25",
+        "(8,1)_0": "0"
+      },
+      "chart_checks": {
+        "chart_blocks_use_canonical_conventions": true,
+        "metric_is_1_on_Phi_and_2_on_complex_blocks": true,
+        "vacuum_norm_squared_1_plus_2r0sq_plus_2rSsq_plus_2x0sq": true,
+        "vacuum_orthogonal_to_all_47_orbit_tangents_exact": true
+      },
+      "chart_vacuum_norm_squared": "79/25",
+      "chart_vacuum_norm_squared_expected": "79/25",
+      "massless_vectors": 12,
+      "neutral_block_expected_terms": {
+        "(1, 2)": "28964/125",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-2898/5",
+        "(3, 0)": "1"
+      },
+      "neutral_block_terms_lambda_t_exponents": {
+        "(1, 2)": "28964/125",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-2898/5",
+        "(3, 0)": "1"
+      },
+      "period_element_units_of_2pi": {
+        "beta_U1X": "13/17",
+        "psi_so10": "1/2",
+        "so10_generator": "SO10:T[0,1]",
+        "theta_PQ": "1/68"
+      },
+      "rS_independent_axion_checks": {
+        "T35_cap_gauge_complement_is_one_dimensional": true,
+        "axion_is_pure_S_and_Phi17_phase": true,
+        "axion_lies_in_orbit_tangent_span_T35": true,
+        "axion_nonzero": true,
+        "axion_norm_squared_matches_closed_form": true,
+        "axion_not_in_gauge_span": true,
+        "axion_orthogonal_to_all_46_gauge_tangents_exact": true,
+        "gauge_gram_on_34_pivot_tangents_nonsingular": true
+      },
+      "rS_independent_vector_checks": {
+        "SM_sectors_decompose_so10_with_expected_dimensions": true,
+        "X_couples_only_to_the_neutral_sector": true,
+        "colour_casimir_normalised_on_vector_colour_block": true,
+        "gamma_scalar_on_every_charged_sector_with_expected_value": true,
+        "vector_gram_rank_34": true
+      },
+      "squared_norm_fractions": {
+        "H10": "0",
+        "Phi17": "16/7241",
+        "Phi210": "0",
+        "S": "7225/7241",
+        "Sigma126bar": "0"
+      },
+      "v_a_squared": "2/7241",
+      "vector_gram_rank": 34,
+      "witness_pinned_axion_checks_(ignored_off_witness)": {
+        "axion_composition_S_7225_Phi17_16_over_7241_Sigma_Phi_H_0": true,
+        "axion_norm_squared_9248_over_7241": true,
+        "axion_period_modulo_gauge_2pi_over_68": true
+      }
+    },
+    "rS=2": {
+      "D_u_minor_determinants": {
+        "SO10": "1/512000000000",
+        "SO10_x_U1X": "1/64000000000",
+        "SO10_x_U1X_x_PQ": "-17/64000000000"
+      },
+      "PQ_tangent_norm_squared": "3208/25",
+      "axion_norm_squared_F_PQ2": "36992/353",
+      "axion_norm_squared_closed_form": "36992/353",
+      "axion_period_denominator": 68,
+      "axion_period_modulo_gauge": "2 pi/68",
+      "axion_u_components": {
+        "Phi17.y": "-1088/353",
+        "S.y": "2312/353"
+      },
+      "charged_vector_gamma": {
+        "(1,1)_1 + conj": "2/25",
+        "(1,3)_0": "0",
+        "(3,1)_2/3 + conj": "2/25",
+        "(3,2)_-5/6 + conj": "1",
+        "(3,2)_1/6 + conj": "27/25",
+        "(8,1)_0": "0"
+      },
+      "chart_checks": {
+        "chart_blocks_use_canonical_conventions": true,
+        "metric_is_1_on_Phi_and_2_on_complex_blocks": true,
+        "vacuum_norm_squared_1_plus_2r0sq_plus_2rSsq_plus_2x0sq": true,
+        "vacuum_orthogonal_to_all_47_orbit_tangents_exact": true
+      },
+      "chart_vacuum_norm_squared": "277/25",
+      "chart_vacuum_norm_squared_expected": "277/25",
+      "massless_vectors": 12,
+      "neutral_block_expected_terms": {
+        "(1, 2)": "1412/5",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-17658/25",
+        "(3, 0)": "1"
+      },
+      "neutral_block_terms_lambda_t_exponents": {
+        "(1, 2)": "1412/5",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-17658/25",
+        "(3, 0)": "1"
+      },
+      "period_element_units_of_2pi": {
+        "beta_U1X": "13/17",
+        "psi_so10": "1/2",
+        "so10_generator": "SO10:T[0,1]",
+        "theta_PQ": "1/68"
+      },
+      "rS_independent_axion_checks": {
+        "T35_cap_gauge_complement_is_one_dimensional": true,
+        "axion_is_pure_S_and_Phi17_phase": true,
+        "axion_lies_in_orbit_tangent_span_T35": true,
+        "axion_nonzero": true,
+        "axion_norm_squared_matches_closed_form": true,
+        "axion_not_in_gauge_span": true,
+        "axion_orthogonal_to_all_46_gauge_tangents_exact": true,
+        "gauge_gram_on_34_pivot_tangents_nonsingular": true
+      },
+      "rS_independent_vector_checks": {
+        "SM_sectors_decompose_so10_with_expected_dimensions": true,
+        "X_couples_only_to_the_neutral_sector": true,
+        "colour_casimir_normalised_on_vector_colour_block": true,
+        "gamma_scalar_on_every_charged_sector_with_expected_value": true,
+        "vector_gram_rank_34": true
+      },
+      "squared_norm_fractions": {
+        "H10": "0",
+        "Phi17": "64/353",
+        "Phi210": "0",
+        "S": "289/353",
+        "Sigma126bar": "0"
+      },
+      "v_a_squared": "8/353",
+      "vector_gram_rank": 34,
+      "witness_pinned_axion_checks_(ignored_off_witness)": {
+        "axion_composition_S_7225_Phi17_16_over_7241_Sigma_Phi_H_0": false,
+        "axion_norm_squared_9248_over_7241": false,
+        "axion_period_modulo_gauge_2pi_over_68": false
+      }
+    },
+    "rS=5": {
+      "D_u_minor_determinants": {
+        "SO10": "1/512000000000",
+        "SO10_x_U1X": "1/25600000000",
+        "SO10_x_U1X_x_PQ": "-17/25600000000"
+      },
+      "PQ_tangent_norm_squared": "20008/25",
+      "axion_norm_squared_F_PQ2": "231200/689",
+      "axion_norm_squared_closed_form": "231200/689",
+      "axion_period_denominator": 68,
+      "axion_period_modulo_gauge": "2 pi/68",
+      "axion_u_components": {
+        "Phi17.y": "-6800/689",
+        "S.y": "5780/689"
+      },
+      "charged_vector_gamma": {
+        "(1,1)_1 + conj": "2/25",
+        "(1,3)_0": "0",
+        "(3,1)_2/3 + conj": "2/25",
+        "(3,2)_-5/6 + conj": "1",
+        "(3,2)_1/6 + conj": "27/25",
+        "(8,1)_0": "0"
+      },
+      "chart_checks": {
+        "chart_blocks_use_canonical_conventions": true,
+        "metric_is_1_on_Phi_and_2_on_complex_blocks": true,
+        "vacuum_norm_squared_1_plus_2r0sq_plus_2rSsq_plus_2x0sq": true,
+        "vacuum_orthogonal_to_all_47_orbit_tangents_exact": true
+      },
+      "chart_vacuum_norm_squared": "1327/25",
+      "chart_vacuum_norm_squared_expected": "1327/25",
+      "massless_vectors": 12,
+      "neutral_block_expected_terms": {
+        "(1, 2)": "2756/5",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-34458/25",
+        "(3, 0)": "1"
+      },
+      "neutral_block_terms_lambda_t_exponents": {
+        "(1, 2)": "2756/5",
+        "(2, 0)": "-2/5",
+        "(2, 2)": "-34458/25",
+        "(3, 0)": "1"
+      },
+      "period_element_units_of_2pi": {
+        "beta_U1X": "13/17",
+        "psi_so10": "1/2",
+        "so10_generator": "SO10:T[0,1]",
+        "theta_PQ": "1/68"
+      },
+      "rS_independent_axion_checks": {
+        "T35_cap_gauge_complement_is_one_dimensional": true,
+        "axion_is_pure_S_and_Phi17_phase": true,
+        "axion_lies_in_orbit_tangent_span_T35": true,
+        "axion_nonzero": true,
+        "axion_norm_squared_matches_closed_form": true,
+        "axion_not_in_gauge_span": true,
+        "axion_orthogonal_to_all_46_gauge_tangents_exact": true,
+        "gauge_gram_on_34_pivot_tangents_nonsingular": true
+      },
+      "rS_independent_vector_checks": {
+        "SM_sectors_decompose_so10_with_expected_dimensions": true,
+        "X_couples_only_to_the_neutral_sector": true,
+        "colour_casimir_normalised_on_vector_colour_block": true,
+        "gamma_scalar_on_every_charged_sector_with_expected_value": true,
+        "vector_gram_rank_34": true
+      },
+      "squared_norm_fractions": {
+        "H10": "0",
+        "Phi17": "400/689",
+        "Phi210": "0",
+        "S": "289/689",
+        "Sigma126bar": "0"
+      },
+      "v_a_squared": "50/689",
+      "vector_gram_rank": 34,
+      "witness_pinned_axion_checks_(ignored_off_witness)": {
+        "axion_composition_S_7225_Phi17_16_over_7241_Sigma_Phi_H_0": false,
+        "axion_norm_squared_9248_over_7241": false,
+        "axion_period_modulo_gauge_2pi_over_68": false
+      }
+    },
+    "rS_eq_r0_vs_committed_G4": {
+      "compared": true,
+      "comparisons": {
+        "axion.axion_norm_squared": true,
+        "axion.decay_constant.v_a_squared": true,
+        "axion.squared_norm_fractions": true,
+        "chart_normalisation.vacuum_norm_squared_chart": true,
+        "gauge_quotient.certificates.*.minor.determinant_D_u_M": true,
+        "vector_bosons.neutral_block.characteristic_polynomial_terms_lambda_t_exponents": true
+      },
+      "source": "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json"
+    },
+    "route_A_symbolic": {
+      "F_PQ_squared": "9248*rS**2*x0**2/(16*rS**2 + 289*x0**2)",
+      "GeV_form": "v_a = F_PQ/68 = v_S v_Phi/sqrt((4 v_S)^2 + (17 v_Phi)^2), v_S = sqrt2 rS, v_Phi = sqrt2 x0 (chart units M_GUT)",
+      "Phi17_share": "16*rS**2/(16*rS**2 + 289*x0**2)",
+      "S_share": "289*x0**2/(16*rS**2 + 289*x0**2)",
+      "Sigma_share": "0",
+      "X_and_PQ_Sigma_multiples_of_SO10_T01": {
+        "PQ": -2,
+        "X": -2
+      },
+      "argument": "t_PQ - b L01 and T_X - a L01 are supported on (Im S, Im Phi17) only; the so(10) tangents vanish there, so a = s_PQ - (<s_PQ, s_X>/<s_X, s_X>) s_X is the orthogonal projection of t_PQ onto G34^perp with s_PQ = (q_PQ(S) rS, q_PQ(Phi17) x0), s_X = (q_X(S) rS, q_X(Phi17) x0) in the metric 2",
+      "identities": {
+        "F_PQ2_equals_9248_rS2_x0_2_over_16rS2_plus_289x0_2": true,
+        "Phi17_share_equals_16rS2_over_denominator": true,
+        "S_share_equals_289x0_2_over_denominator": true,
+        "v_a2_equals_vS2_vPhi2_over_4vS_2_plus_17vPhi_2": true
+      },
+      "premises_exact_on_integer_matrix": {
+        "SO10_T01_column_supported_on_Sigma_only": true,
+        "S_and_Phi17_carry_only_the_imaginary_phase_tangent": true,
+        "S_and_Phi17_metric_is_2": true,
+        "X_and_PQ_Sigma_blocks_are_integer_multiples_of_SO10_T01": true,
+        "all_columns_vanish_on_H": true,
+        "integer_S_Phi17_phase_entries_equal_X_and_PQ_charges": true,
+        "so10_columns_vanish_on_S_and_Phi17": true
+      },
+      "r0_free": true,
+      "route_B_agreement_by_rS": {
+        "rS=1": true,
+        "rS=1/10": true,
+        "rS=1/5": true,
+        "rS=2": true,
+        "rS=5": true
+      }
+    }
+  },
+  "hs_sector": {
+    "lambda_eff": {
+      "rS_1_kappa_minus_r0sq_over_4rS": {
+        "closed_form_2_minus_kappa2_over_4rS2": "79999/40000",
+        "lambda_eff": "79999/40000"
+      },
+      "rS_1_kappa_minus_rS_over_4": {
+        "closed_form_2_minus_kappa2_over_4rS2": "127/64",
+        "lambda_eff": "127/64"
+      },
+      "rS_5_kappa_minus_rS_over_4_stress": {
+        "closed_form_2_minus_kappa2_over_4rS2": "127/64",
+        "lambda_eff": "127/64"
+      },
+      "rS_eq_r0_witness": {
+        "closed_form_2_minus_kappa2_over_4rS2": "127/64",
+        "lambda_eff": "127/64"
+      }
+    },
+    "p3": {
+      "HS_bracket_algebra": {
+        "H_S_reduced_form": "2 N_H^2 + 2|k| rS N_H - 2|k| N_H |S| + (|S|^2 - rS^2)^2  (after Cauchy-Schwarz |H.H| <= N_H)",
+        "all_identities_exact": true,
+        "argument": "t = |S| - rS.  t <= 0: every term of 2 N_H^2 + 2|k| N_H (-t) + t^2 (|S| + rS)^2 is >= 0 and the sum is 0 iff N_H = 0 and t = 0 (|S| + rS >= rS > 0).  t > 0: the sum equals 2 (N_H - |k| t/2)^2 + t^2 [(|S| + rS)^2 - k^2/2] with (|S| + rS)^2 > 4 rS^2 > k^2/2, so it is > 0.  Hence V_HS + rS^4 = 0 iff H = 0 and |S| = rS (Cauchy-Schwarz makes V_HS >= the reduced form).",
+        "boundary_remark_bracket_at_k2_eq_8rS^2": "(-rS + s)*(3*rS + s)",
+        "bracket_identity_residual": "0",
+        "completed_square_residual": "0",
+        "nonpositive_t_form_residual": "0"
+      },
+      "HS_points": [
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-1/20",
+          "kappa_squared_over_8_rS_squared": "1/128",
+          "margin_4rS^2_minus_kappa^2/2": "127/800",
+          "r0": "1/5",
+          "rS": "1/5",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-1/100",
+          "kappa_squared_over_8_rS_squared": "1/80000",
+          "margin_4rS^2_minus_kappa^2/2": "79999/20000",
+          "r0": "1/5",
+          "rS": "1",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-1/4",
+          "kappa_squared_over_8_rS_squared": "1/128",
+          "margin_4rS^2_minus_kappa^2/2": "127/32",
+          "r0": "1/5",
+          "rS": "1",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-5/4",
+          "kappa_squared_over_8_rS_squared": "1/128",
+          "margin_4rS^2_minus_kappa^2/2": "3175/32",
+          "r0": "1/5",
+          "rS": "5",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-1/10",
+          "kappa_squared_over_8_rS_squared": "1/8",
+          "margin_4rS^2_minus_kappa^2/2": "7/200",
+          "r0": "1/5",
+          "rS": "1/10",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-1/20",
+          "kappa_squared_over_8_rS_squared": "1/128",
+          "margin_4rS^2_minus_kappa^2/2": "127/800",
+          "r0": "1/5",
+          "rS": "1/5",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-1/100",
+          "kappa_squared_over_8_rS_squared": "1/80000",
+          "margin_4rS^2_minus_kappa^2/2": "79999/20000",
+          "r0": "1/5",
+          "rS": "1",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-1/200",
+          "kappa_squared_over_8_rS_squared": "1/1280000",
+          "margin_4rS^2_minus_kappa^2/2": "1279999/80000",
+          "r0": "1/5",
+          "rS": "2",
+          "square_completion_identity_exact": true
+        },
+        {
+          "condition_holds_strictly": true,
+          "kappa": "-707/250",
+          "kappa_squared_over_8_rS_squared": "499849/500000",
+          "margin_4rS^2_minus_kappa^2/2": "151/125000",
+          "r0": "1/5",
+          "rS": "1",
+          "square_completion_identity_exact": true
+        }
+      ],
+      "HS_proof_for_all_rS_kappa": "Cauchy-Schwarz |H.H| <= N_H (elementary, not machine-checked) reduces V_HS + rS^4 to the reduced form; the square-completion identities are exact sympy identities in symbolic (N_H, |S|, |kappa|, rS); the sign argument in HS_bracket_algebra.argument (elementary, argued in the text) finishes the proof for every kappa^2 < 8 rS^2.  HS_points are rational sample points of the domain condition only.",
+      "Phi17": "(1/32)(|Phi17|^2 - x0^2)^2 = 0 iff |Phi17| = x0 (x0 > 0)",
+      "S_scale": "rS: the decoupled-singlet family (|S| = rS independent of r0; g3_sm_pati_salam_decoupled_singlet_family_v20). The H/S sector involves only rS; the charges, phases, operator neutrality and integer tangent ranks are scale-free",
+      "charges": {
+        "PQ_charges": {
+          "H10": -2,
+          "Phi17": 0,
+          "S": 4,
+          "Sigma126bar": -2
+        },
+        "PQ_status": "U(1)_PQ is declared in the contract as an accidental global symmetry (gauge SO(10) x U(1)_X, accidental_global PQ; census neutrality includes PQ); all 27 benchmark operators are PQ-neutral.  The uniqueness statement is modulo G = SO(10) x U(1)_X x U(1)_PQ and uses PQ.",
+        "S_Phi17_charge_matrix_rows_X_PQ": [
+          [
+            4,
+            17
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "X_charges": {
+          "H10": -2,
+          "Phi17": 17,
+          "S": 4,
+          "Sigma126bar": -2
+        },
+        "action": "U(1) with charges q acts on each complex field by psi -> exp(i q angle) psi; SO(10) acts on Phi, Sigma, H",
+        "census_charges_consistent": true,
+        "determinant": -68,
+        "determinant_matches_recorded": true,
+        "explicit_element_exact": true,
+        "explicit_element_to_(p, r0 sigma_std, 0, r0 e^{ia}, x0 e^{ib})": {
+          "L01_angle": "a/2",
+          "PQ_angle": "a/4 - b/17",
+          "X_angle": "b/17"
+        },
+        "sources": "exact_gauged_u1x_physical_quotient_v20.U1X_CHARGES / PQ_CHARGES; cross-checked with the census charge table",
+        "without_PQ": {
+          "PQ_charge": -68,
+          "SO10_invariant": true,
+          "X_charge": 0,
+          "X_invariant_phase_monomial": "Phi17^4 conj(S)^17",
+          "consequence": "the monomial is SO(10) x U(1)_X-invariant and has nonzero PQ charge; on {V = V0} it equals x0^4 r0^17 e^(i phase) with every phase attained (P3 explicit element), so modulo SO(10) x U(1)_X alone {V = V0} is a circle of orbits (tangent rank 34 < 35), the axion direction; uniqueness modulo symmetry needs U(1)_PQ",
+          "uniqueness_needs_PQ": true
+        }
+      },
+      "domain": "kappa^2 < 8 rS^2  <=>  4 rS^2 - kappa^2/2 > 0  <=>  lambda_eff = 2 - kappa^2/(4 rS^2) > 0",
+      "operators": {
+        "H_free_operators_balanced": true,
+        "all_X_and_PQ_neutral": true,
+        "compiler_dressing": "each direction value = SO(10) base invariant x S^nS conj(S)^nSb Phi17^nX conj(Phi17)^nXb",
+        "count": 27,
+        "count_at_kappa_0": 25,
+        "operators": [
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-x0**2/16",
+            "counts": {
+              "X": 1,
+              "Xb": 1
+            },
+            "parameter": "lambda::O03_B01_singlet_polynomial"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-2*r0**2",
+            "counts": {
+              "S": 1,
+              "Sb": 1
+            },
+            "parameter": "lambda::O04_B01_singlet_polynomial"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "1/2 - r0**2/4",
+            "counts": {
+              "D": 1,
+              "Db": 1
+            },
+            "parameter": "lambda::O05_B01_126bar_norm"
+          },
+          {
+            "H_free": false,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-2*kappa*r0",
+            "counts": {
+              "H": 1,
+              "Hb": 1
+            },
+            "parameter": "lambda::O06_B01_Hdag_H_norm"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-2",
+            "counts": {
+              "P": 2
+            },
+            "parameter": "lambda::O07_B01_Phi_norm"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-1/2",
+            "counts": {
+              "D": 1,
+              "Db": 1,
+              "P": 1
+            },
+            "parameter": "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "1/32",
+            "counts": {
+              "X": 2,
+              "Xb": 2
+            },
+            "parameter": "lambda::O20_B01_singlet_polynomial"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "1",
+            "counts": {
+              "S": 2,
+              "Sb": 2
+            },
+            "parameter": "lambda::O23_B01_singlet_polynomial"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "1/4",
+            "counts": {
+              "D": 2,
+              "Db": 2
+            },
+            "parameter": "lambda::O27_B01_126bar_self_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "1/4",
+            "counts": {
+              "D": 2,
+              "Db": 2
+            },
+            "parameter": "lambda::O27_B02_126bar_self_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "1/8",
+            "counts": {
+              "D": 2,
+              "Db": 2
+            },
+            "parameter": "lambda::O27_B03_126bar_self_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "17/128",
+            "counts": {
+              "D": 2,
+              "Db": 2
+            },
+            "parameter": "lambda::O27_B04_126bar_self_projectors"
+          },
+          {
+            "H_free": false,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "2",
+            "counts": {
+              "H": 2,
+              "Hb": 2
+            },
+            "parameter": "lambda::O36_B01_H_self_quartics"
+          },
+          {
+            "H_free": false,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "2",
+            "counts": {
+              "H": 2,
+              "Hb": 2
+            },
+            "parameter": "lambda::O36_B02_H_self_quartics"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "41/8",
+            "counts": {
+              "D": 1,
+              "Db": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O44_B01_Phi2_Sigma_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "73/8",
+            "counts": {
+              "D": 1,
+              "Db": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O44_B02_Phi2_Sigma_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "29/8",
+            "counts": {
+              "D": 1,
+              "Db": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O44_B03_Phi2_Sigma_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-7/8",
+            "counts": {
+              "D": 1,
+              "Db": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O44_B04_Phi2_Sigma_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-11/8",
+            "counts": {
+              "D": 1,
+              "Db": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O44_B05_Phi2_Sigma_projectors"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "13/8",
+            "counts": {
+              "D": 1,
+              "Db": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O44_B06_Phi2_Sigma_projectors"
+          },
+          {
+            "H_free": false,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "3/5",
+            "counts": {
+              "H": 1,
+              "Hb": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O46_B01_Phi2_HdagH_channels"
+          },
+          {
+            "H_free": false,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-1",
+            "counts": {
+              "H": 1,
+              "Hb": 1,
+              "P": 2
+            },
+            "parameter": "lambda::O46_B03_Phi2_HdagH_channels"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-21/200",
+            "counts": {
+              "P": 4
+            },
+            "parameter": "lambda::O48_B01_Phi_self_quartics"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "2467/28800",
+            "counts": {
+              "P": 4
+            },
+            "parameter": "lambda::O48_B02_Phi_self_quartics"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "-77/3200",
+            "counts": {
+              "P": 4
+            },
+            "parameter": "lambda::O48_B03_Phi_self_quartics"
+          },
+          {
+            "H_free": true,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": true,
+            "coefficient": "119/115200",
+            "counts": {
+              "P": 4
+            },
+            "parameter": "lambda::O48_B04_Phi_self_quartics"
+          },
+          {
+            "H_free": false,
+            "PQ_charge": 0,
+            "X_charge": 0,
+            "balanced_in_S_Phi17_Sigma": false,
+            "coefficient": "kappa",
+            "counts": {
+              "Hb": 2,
+              "Sb": 1
+            },
+            "parameter": "re::O12_B01_Hdag_Hdag_pair"
+          }
+        ],
+        "phase_dependent_at_H0": [],
+        "vanishing_at_kappa_0": [
+          "lambda::O06_B01_Hdag_H_norm",
+          "re::O12_B01_Hdag_Hdag_pair"
+        ]
+      },
+      "statement": "V_HS + rS^4 = 0 iff H = 0 and |S| = rS (kappa^2 < 8 rS^2); |Phi17| = x0; U(1)_X x U(1)_PQ reach every (S, Phi17) phase pair (det -68) and the Sigma phase they induce is undone by exp(theta L01) in Stab(p)",
+      "tangent_rank": {
+        "kernel_dimension": 12,
+        "kernel_has_no_X_or_PQ_component": true,
+        "matrix": "486 x 47 integer tangents at (p, sigma_std raw, 0, 1, 1): 45 so(10) generators, X, PQ",
+        "nonzero_rows": 202,
+        "rank_so10": 33,
+        "rank_so10_plus_X": 34,
+        "rank_so10_plus_X_plus_PQ": 35,
+        "scaling": "the chart tangent is D M with invertible diagonal D = (1, sqrt2 r0/4, sqrt2 rS, sqrt2 x0) on (Phi, Sigma, S, Phi17): ranks hold for all r0, rS, x0 > 0"
+      }
+    },
+    "p3_checks": {
+      "P3_HS_domain_holds_strictly_at_sample_points": true,
+      "P3_HS_square_completion_identities_exact_symbolic": true,
+      "P3_S_Phi17_charge_matrix_nonsingular": true,
+      "P3_V_phase_independent_at_H0": true,
+      "P3_all_27_operators_X_and_PQ_neutral": true,
+      "P3_charges_consistent_across_sources": true,
+      "P3_explicit_group_element_reaches_all_phases": true,
+      "P3_operator_count_27_and_25_at_kappa_0": true,
+      "P3_orbit_tangent_rank_35_kernel_12_pure_so10": true
+    },
+    "p3_note": "equality.p3_section with (r0, kappa, rS) points states P3 at rS (statement, domain, proof text and the H/S bracket algebra in the scale symbol rS); the charges, phases, operator neutrality and the integer tangent ranks are scale-free",
+    "sharpness": {
+      "Q_H_doublet_row_and_column_6_zero": true,
+      "boundary_bracket_at_kappa_squared_eq_8_rS_squared": "u*(4*rS + u)",
+      "boundary_global_lower_bound": "u = |S| - rS: T6 >= 2 N_H^2 - 2|kappa| N_H u + u^2 (u + 2 rS)^2 = 2 (N_H - |kappa| u/2)^2 + u^2 [(u + 2 rS)^2 - kappa^2/2] (Cauchy-Schwarz |H.H| <= N_H)",
+      "boundary_global_residuals": {
+        "completed_square": "0",
+        "nonpositive_u_form": "0"
+      },
+      "boundary_kappa_squared_eq_8_rS_squared": "t**3*(4*rS + t)",
+      "boundary_note": "at kappa^2 = 8 rS^2 (lambda_eff = 0) the bound and the equality set still hold: for u > 0 T6 >= 2 (N_H - |kappa| u/2)^2 + u^3 (u + 4 rS) > 0; for -rS <= u < 0 every term of 2 N_H^2 + 2|kappa| N_H |u| + u^2 (u + 2 rS)^2 is >= 0 and u^2 (u + 2 rS)^2 > 0; at u = 0 T6 >= 2 N_H^2, which is 0 iff H = 0 (the elementary sign argument of P3).  So V >= V0 with {V = V0} unchanged on the boundary, and the bound is sharp in the sense that it fails for every kappa^2 > 8 rS^2.  The certified domain is the open kappa^2 < 8 rS^2 (the committed convention; lambda_eff > 0 and the exact Hessians are certified only there)",
+      "curve": "H = h e_6 real (a weak-doublet direction: ||H wedge p||^2 = h^2 Q_H[6,6] = 0), S = rS + t real, kappa < 0, h^2 = |kappa| t/2: V_HS + rS^4 = t^2 [(2 rS + t)^2 - kappa^2/2]",
+      "curve_identity_residual": "0",
+      "kappa_positive": "for kappa > 0 the same curve with H = i h e_6 (H.H = -h^2, the same N_H and Q_H value) gives the same identity, so V >= V0 fails for every kappa^2 > 8 rS^2 of either sign (0 < t < |kappa|/sqrt2 - 2 rS)",
+      "other_sos_terms_vanish": "T1-T5 and T8 involve only (Phi, Sigma, Phi17), which sit at the vacuum values; T7 = ||H wedge p||^2 = h^2 Q_H[6,6] = 0 (Q_H = diag(1^6, 0^4), integer); T9 = eps N_H is absent at eps = 0; so V - V0 = T6 exactly on the curve",
+      "violating_witnesses": [
+        {
+          "S_value": "103/100",
+          "V_minus_V0_equals_T6": "-34119/100000000",
+          "curve_formula_t2_times_bracket": "-34119/100000000",
+          "expected": "-34119/100000000",
+          "field_point": {
+            "H": "h e_6 (real, weak-doublet component Re H_6), h^2 = |kappa| t/2",
+            "Phi": "p",
+            "Phi17": "x0",
+            "S": "rS + t (real)",
+            "Sigma": "r0 sigma_std"
+          },
+          "h_squared": "9/200",
+          "kappa": "-3",
+          "kappa_squared_minus_8_rS_squared": "1",
+          "negative": true,
+          "rS": "1",
+          "t": "3/100"
+        },
+        {
+          "S_value": "10001/10000",
+          "V_minus_V0_equals_T6": "-122049/10000000000000000",
+          "curve_formula_t2_times_bracket": "-122049/10000000000000000",
+          "expected": "-122049/10000000000000000",
+          "field_point": {
+            "H": "h e_6 (real, weak-doublet component Re H_6), h^2 = |kappa| t/2",
+            "Phi": "p",
+            "Phi17": "x0",
+            "S": "rS + t (real)",
+            "Sigma": "r0 sigma_std"
+          },
+          "h_squared": "2829/20000000",
+          "kappa": "-2829/1000",
+          "kappa_squared_minus_8_rS_squared": "3241/1000000",
+          "negative": true,
+          "rS": "1",
+          "t": "1/10000"
+        }
+      ]
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "module": "g3_sm_pati_salam_decoupled_singlet_family_v20",
+  "n_checks": 77,
+  "n_failed": 0,
+  "overall_state": "EXACT_VACUUM_FAMILY_WITH_R_S_INDEPENDENT_OF_R0__NO_BENCHMARK__NO_GATE_CHANGE",
+  "physics_status": {
+    "axion_mass": "m_a = 153.5 ueV is not a prediction of the family: f_a = v_S v_Phi/sqrt((4 v_S)^2 + (17 v_Phi)^2) (v_F = sqrt2 <F>, N_DW = 1 modulo gauge) depends on rS, which the family leaves free",
+    "certifies": "the tree-level vacuum family only: the committed 27-parameter SM Pati-Salam map with |S| = rS independent of r0 (O04 = -2 rS^2, O06 = 2|kappa| rS + eps)",
+    "does_not_change_G3_or_G4": "this report does NOT change G3 or G4 closure: the committed rS = r0 witness (r0 = 1/5, x0 = 1, kappa = -r0/4, 0 < eps < 599/50) remains the closing instance; no gate status, ledger entry or roadmap text changes",
+    "does_not_choose_a_benchmark": "this report does NOT choose a benchmark: its (r0, rS, kappa) points are certificate points, not benchmarks",
+    "kappa_placement": "kappa = -r0^2/(4 rS) keeps O06 = r0^2/2 and the H block of the witness (heavy Im-10_H doublet at M_I) with |kappa| rS = r0^2/4; kappa = -rS/4 puts that doublet at <S>; neither placement is chosen here",
+    "open_research": "the physics viability of decoupling (y_s <= ~0.35 from two-loop running, the reduced-Planck Landau/perturbativity criterion, and a v_R / f_a / m_a benchmark such as BM-DA1) is open research pending user decisions DA', (d) and the kappa placement"
+  },
+  "rS_eq_r0_regression": {
+    "tangents_equal": true,
+    "variants": {
+      "benchmark": {
+        "certificates_equal": true,
+        "gradients_equal": true,
+        "hessian_denominators_equal": true,
+        "hessian_numerators_equal": true
+      },
+      "raised_O06": {
+        "certificates_equal": true,
+        "gradients_equal": true,
+        "hessian_denominators_equal": true,
+        "hessian_numerators_equal": true
+      },
+      "tiny_eps": {
+        "certificates_equal": true,
+        "gradients_equal": true,
+        "hessian_denominators_equal": true,
+        "hessian_numerators_equal": true
+      }
+    },
+    "witness_point": {
+      "kappa": "-1/20",
+      "r0": "1/5",
+      "rS": "1/5",
+      "x0": "1"
+    }
+  },
+  "runtime_seconds": 105.666614771,
+  "scope": {
+    "float64_evidence_only": [
+      "the live compiler Hessian and gradient at (1/5, 1, 1, -1/100) against the exact one (F1)",
+      "the compiler point audit at the hierarchy anchor with rS = 1000 r0 (F2)",
+      "the compiler value along the violating direction (F3)",
+      "the rS-aware fast evaluator and minimisation endpoints at (1/5, 1, 1, -1/100) (F4)"
+    ],
+    "not_proved_or_out_of_scope": [
+      "a member with a nonzero S portal (O22, O26, O34, O38, O43): not certified; the S portals stay 0",
+      "the G6 tree spectrum and G8 flavour no-go re-pins at a decoupled point (roadmap PR 3)",
+      "two-loop running with y_s, the reduced-Planck Landau criterion, and v_R / f_a / m_a numbers (roadmap PR 4, research)",
+      "the committed exact Hessian report's flags.other_r0_x0_kappa_certified stays False: the family certificates live only in this report",
+      "no manuscript change"
+    ],
+    "proved_exactly": [
+      "the family coefficient map (symbolic): only O04 = -2 rS^2 and O06 = 2|kappa| rS + eps change; 27 parameters inside the 51-parameter contract; no S portal; V0 and lambda_eff closed forms",
+      "the eight-term SOS identity with T6 at rS and T9 = eps N_H for kappa < 0, > 0 and = 0, and the sharpness of kappa^2 < 8 rS^2 (exact curve identity and rational violating points beyond it) and the boundary kappa^2 = 8 rS^2 (exact completed square: the bound and the equality set still hold there, lambda_eff = 0; elementary sign argument as in P3)",
+      "P3 at rS (bracket algebra, charges, phases, operator neutrality, integer tangent ranks) at the HS points",
+      "exact 486 x 486 Hessians over Q at the four family points (tuned 447/39/0, eps members 451/35/0, gaps, H/S blocks), the rS = r0 point identical to the committed witness; the rS = 5 point is a stress point outside the |c| < 12 perturbative box (empty eps window), an exact member only",
+      "tangent ranks 33/34/35 and the SM stabilizer at rS in {1/10, 1/5, 1, 2}; the G4 axion (F_PQ^2, composition, period 2 pi/68) and vector/chart sections at rS in {1/10, 1/5, 1, 2, 5}; route A for all rS",
+      "the model-file anomaly (declared representations checked): N_X = 0, N_PQ = -34, E/N = 8/3, N_DW = 1 modulo gauge"
+    ],
+    "relies_on_committed": [
+      "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json (proved status; P1/P2 contain no S and carry over verbatim)",
+      "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json (certified; equal to this report's rS = r0 certificates)",
+      "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json (equal to this report's rS = r0 G4 values)",
+      "GAUGED_U1X_SCALAR_CONTRACT_V20.json (gauge SO(10) x U(1)_X, accidental global PQ)",
+      "models/SO10Z17AxionV20.m (fermion content, X charges, Yukawa/portal terms)"
+    ],
+    "status_neutrality": "status-neutral: not read by g1_g8_gate_ledger_v20, final_g3_acceptance_gate_v20, g4_sm_closure_binding_v20 or any roadmap/readiness module; G1-G5 stay CLOSED, G6 OPEN, G7/G8 BLOCKED exactly as committed, and the committed rS = r0 witness remains the G3 and G4 closing instance"
+  },
+  "sos_identity": {
+    "candidate_map_minus_expanded_map_plus_eps_residuals": {
+      "negative": {},
+      "positive": {},
+      "zero": {}
+    },
+    "eight_term_operator_expansion": {
+      "W_prime_minus_N2_coefficients": {
+        "1050bar": "1",
+        "2772bar": "0",
+        "4125": "1/16",
+        "54": "1"
+      },
+      "by_kappa_sign": {
+        "negative": {
+          "constant": "r0**4/8 + rS**4 + x0**4/32 + 1",
+          "constant_plus_V0": "0",
+          "kappa_sign": "negative",
+          "matches_operator_by_operator_and_constant_is_minus_V0": true,
+          "mismatched_operators": {},
+          "nonlinear_monomials": [],
+          "operators_compared": 27,
+          "terms_in_operators": {
+            "T1 (|Phi|^2 - 1)^2 + I45 + I210 + I5940": "-21*J0/200 + 2467*J2/28800 - 77*J3/3200 + 119*J4/115200 - 2*|Phi|^2 + 1",
+            "T2 (1/8)||(M_Phi - 2) Sigma||^2": "-<Sigma,M_Phi Sigma>/2 + N_Sigma/2 + 5*X1_Phi2_Sigma + 9*X2_Phi2_Sigma + 7*X3_Phi2_Sigma/2 - X4_Phi2_Sigma - 3*X5_Phi2_Sigma/2 + 3*X6_Phi2_Sigma/2",
+            "T3 (1/8)||C_Phi Sigma||^2": "X1_Phi2_Sigma/8 + X2_Phi2_Sigma/8 + X3_Phi2_Sigma/8 + X4_Phi2_Sigma/8 + X5_Phi2_Sigma/8 + X6_Phi2_Sigma/8",
+            "T4 (1/8)(W' - N^2)": "I1050bar_Sigma/8 + I4125_Sigma/128 + I54_Sigma/8",
+            "T5 (1/8)(N_Sigma - r0^2)^2": "I1050bar_Sigma/8 + I2772bar_Sigma/8 + I4125_Sigma/8 + I54_Sigma/8 - N_Sigma*r0**2/4 + r0**4/8",
+            "T6 V_HS(rS) + rS^4": "2Re(conj(H.H)conj(S))*kappa + 2*I1_H + 2*I54_H - 2*N_H*kappa*rS + rS**4 - 2*rS**2*|S|^2 + |S|^4",
+            "T7 ||H wedge Phi||^2": "3*I1_PhiH/5 - I54_PhiH",
+            "T8 (1/32)(|Phi17|^2 - x0^2)^2": "x0**4/32 - x0**2*|Phi17|^2/16 + |Phi17|^4/32",
+            "T9 eps N_H": "N_H*eps"
+          },
+          "unmapped_candidate_operators": []
+        },
+        "positive": {
+          "constant": "r0**4/8 + rS**4 + x0**4/32 + 1",
+          "constant_plus_V0": "0",
+          "kappa_sign": "positive",
+          "matches_operator_by_operator_and_constant_is_minus_V0": true,
+          "mismatched_operators": {},
+          "nonlinear_monomials": [],
+          "operators_compared": 27,
+          "terms_in_operators": {
+            "T1 (|Phi|^2 - 1)^2 + I45 + I210 + I5940": "-21*J0/200 + 2467*J2/28800 - 77*J3/3200 + 119*J4/115200 - 2*|Phi|^2 + 1",
+            "T2 (1/8)||(M_Phi - 2) Sigma||^2": "-<Sigma,M_Phi Sigma>/2 + N_Sigma/2 + 5*X1_Phi2_Sigma + 9*X2_Phi2_Sigma + 7*X3_Phi2_Sigma/2 - X4_Phi2_Sigma - 3*X5_Phi2_Sigma/2 + 3*X6_Phi2_Sigma/2",
+            "T3 (1/8)||C_Phi Sigma||^2": "X1_Phi2_Sigma/8 + X2_Phi2_Sigma/8 + X3_Phi2_Sigma/8 + X4_Phi2_Sigma/8 + X5_Phi2_Sigma/8 + X6_Phi2_Sigma/8",
+            "T4 (1/8)(W' - N^2)": "I1050bar_Sigma/8 + I4125_Sigma/128 + I54_Sigma/8",
+            "T5 (1/8)(N_Sigma - r0^2)^2": "I1050bar_Sigma/8 + I2772bar_Sigma/8 + I4125_Sigma/8 + I54_Sigma/8 - N_Sigma*r0**2/4 + r0**4/8",
+            "T6 V_HS(rS) + rS^4": "2Re(conj(H.H)conj(S))*kappa + 2*I1_H + 2*I54_H + 2*N_H*kappa*rS + rS**4 - 2*rS**2*|S|^2 + |S|^4",
+            "T7 ||H wedge Phi||^2": "3*I1_PhiH/5 - I54_PhiH",
+            "T8 (1/32)(|Phi17|^2 - x0^2)^2": "x0**4/32 - x0**2*|Phi17|^2/16 + |Phi17|^4/32",
+            "T9 eps N_H": "N_H*eps"
+          },
+          "unmapped_candidate_operators": []
+        },
+        "zero": {
+          "constant": "r0**4/8 + rS**4 + x0**4/32 + 1",
+          "constant_plus_V0": "0",
+          "kappa_sign": "zero",
+          "matches_operator_by_operator_and_constant_is_minus_V0": true,
+          "mismatched_operators": {},
+          "nonlinear_monomials": [],
+          "operators_compared": 26,
+          "terms_in_operators": {
+            "T1 (|Phi|^2 - 1)^2 + I45 + I210 + I5940": "-21*J0/200 + 2467*J2/28800 - 77*J3/3200 + 119*J4/115200 - 2*|Phi|^2 + 1",
+            "T2 (1/8)||(M_Phi - 2) Sigma||^2": "-<Sigma,M_Phi Sigma>/2 + N_Sigma/2 + 5*X1_Phi2_Sigma + 9*X2_Phi2_Sigma + 7*X3_Phi2_Sigma/2 - X4_Phi2_Sigma - 3*X5_Phi2_Sigma/2 + 3*X6_Phi2_Sigma/2",
+            "T3 (1/8)||C_Phi Sigma||^2": "X1_Phi2_Sigma/8 + X2_Phi2_Sigma/8 + X3_Phi2_Sigma/8 + X4_Phi2_Sigma/8 + X5_Phi2_Sigma/8 + X6_Phi2_Sigma/8",
+            "T4 (1/8)(W' - N^2)": "I1050bar_Sigma/8 + I4125_Sigma/128 + I54_Sigma/8",
+            "T5 (1/8)(N_Sigma - r0^2)^2": "I1050bar_Sigma/8 + I2772bar_Sigma/8 + I4125_Sigma/8 + I54_Sigma/8 - N_Sigma*r0**2/4 + r0**4/8",
+            "T6 V_HS(rS) + rS^4": "2*I1_H + 2*I54_H + rS**4 - 2*rS**2*|S|^2 + |S|^4",
+            "T7 ||H wedge Phi||^2": "3*I1_PhiH/5 - I54_PhiH",
+            "T8 (1/32)(|Phi17|^2 - x0^2)^2": "x0**4/32 - x0**2*|Phi17|^2/16 + |Phi17|^4/32",
+            "T9 eps N_H": "N_H*eps"
+          },
+          "unmapped_candidate_operators": []
+        }
+      },
+      "operator_dictionary": {
+        "lambda::O03_B01_singlet_polynomial": "|Phi17|^2",
+        "lambda::O04_B01_singlet_polynomial": "|S|^2",
+        "lambda::O05_B01_126bar_norm": "N_Sigma",
+        "lambda::O06_B01_Hdag_H_norm": "N_H",
+        "lambda::O07_B01_Phi_norm": "|Phi|^2",
+        "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "<Sigma,M_Phi Sigma>",
+        "lambda::O20_B01_singlet_polynomial": "|Phi17|^4",
+        "lambda::O23_B01_singlet_polynomial": "|S|^4",
+        "lambda::O27_B01_126bar_self_projectors": "I54_Sigma",
+        "lambda::O27_B02_126bar_self_projectors": "I1050bar_Sigma",
+        "lambda::O27_B03_126bar_self_projectors": "I2772bar_Sigma",
+        "lambda::O27_B04_126bar_self_projectors": "I4125_Sigma",
+        "lambda::O36_B01_H_self_quartics": "I1_H",
+        "lambda::O36_B02_H_self_quartics": "I54_H",
+        "lambda::O44_B01_Phi2_Sigma_projectors": "X1_Phi2_Sigma",
+        "lambda::O44_B02_Phi2_Sigma_projectors": "X2_Phi2_Sigma",
+        "lambda::O44_B03_Phi2_Sigma_projectors": "X3_Phi2_Sigma",
+        "lambda::O44_B04_Phi2_Sigma_projectors": "X4_Phi2_Sigma",
+        "lambda::O44_B05_Phi2_Sigma_projectors": "X5_Phi2_Sigma",
+        "lambda::O44_B06_Phi2_Sigma_projectors": "X6_Phi2_Sigma",
+        "lambda::O46_B01_Phi2_HdagH_channels": "I1_PhiH",
+        "lambda::O46_B03_Phi2_HdagH_channels": "I54_PhiH",
+        "lambda::O48_B01_Phi_self_quartics": "J0",
+        "lambda::O48_B02_Phi_self_quartics": "J2",
+        "lambda::O48_B03_Phi_self_quartics": "J3",
+        "lambda::O48_B04_Phi_self_quartics": "J4",
+        "re::O12_B01_Hdag_Hdag_pair": "2Re(conj(H.H)conj(S))"
+      },
+      "passes": true,
+      "what_it_checks": "operator-level bookkeeping: the eight SOS terms, written in the candidate's operator dictionary with this module's self weights, reproduce candidate.expanded_sos_coefficient_map operator by operator (27 operators, 25 at kappa = 0), and their constant is -V0.  The link to the compiler's source-bound operators is the candidate's exact certificate (P0_candidate_exact_certificate_passes)."
+    },
+    "expanded_map_equals_family_map_at_points": {
+      "rS_1_kappa_minus_r0sq_over_4rS": true,
+      "rS_1_kappa_minus_rS_over_4": true,
+      "rS_5_kappa_minus_rS_over_4_stress": true,
+      "rS_eq_r0_witness": true
+    },
+    "operators_compared_by_sign": {
+      "negative": 27,
+      "positive": 27,
+      "zero": 26
+    },
+    "self_weights_54_1050bar_2772bar_4125": {
+      "1050bar": "2",
+      "2772bar": "1",
+      "4125": "17/16",
+      "54": "2"
+    },
+    "statement": "V - V0 = T1 + ... + T8 + T9 with T6 = V_HS(rS) + rS^4 = 2 N_H^2 + 2|kappa| rS N_H + 2 kappa Re(conj(H.H) conj(S)) + (|S|^2 - rS^2)^2 and T9 = eps N_H; every term >= 0 for kappa^2 < 8 rS^2, eps >= 0",
+    "symbols": "r0, x0, rS > 0, eps >= 0; kappa < 0, kappa > 0 (sympy symbols) and kappa = 0"
+  },
+  "status": "SM_PATI_SALAM_DECOUPLED_SINGLET_FAMILY_EXACT__STATUS_NEUTRAL",
+  "tangent_ranks": {
+    "by_rS": {
+      "rS=1": {
+        "D_u_minor_determinants": {
+          "SO10": "1/512000000000",
+          "SO10_x_U1X": "1/128000000000",
+          "SO10_x_U1X_x_PQ": "-17/128000000000"
+        },
+        "gauge_quotient_checks_all_true": true,
+        "integer_minor_determinants": {
+          "SO10": 1,
+          "SO10_x_U1X": 4,
+          "SO10_x_U1X_x_PQ": -68
+        },
+        "point": {
+          "kappa": "-1/100",
+          "r0": "1/5",
+          "rS": "1",
+          "x0": "1"
+        },
+        "row_scale": "diag(1 on Phi, r0/4 on Sigma, rS on S, x0 on Phi17) at r0 = 1/5, rS = 1, x0 = 1",
+        "scaled_ranks_so10_X_PQ": [
+          33,
+          34,
+          35
+        ],
+        "stabilizer_dimension": 12,
+        "stabilizer_equals_standard_SM_algebra": true
+      },
+      "rS=1/10": {
+        "D_u_minor_determinants": {
+          "SO10": "1/512000000000",
+          "SO10_x_U1X": "1/1280000000000",
+          "SO10_x_U1X_x_PQ": "-17/1280000000000"
+        },
+        "gauge_quotient_checks_all_true": true,
+        "integer_minor_determinants": {
+          "SO10": 1,
+          "SO10_x_U1X": 4,
+          "SO10_x_U1X_x_PQ": -68
+        },
+        "point": {
+          "kappa": "-1/10",
+          "r0": "1/5",
+          "rS": "1/10",
+          "x0": "1"
+        },
+        "row_scale": "diag(1 on Phi, r0/4 on Sigma, rS on S, x0 on Phi17) at r0 = 1/5, rS = 1/10, x0 = 1",
+        "scaled_ranks_so10_X_PQ": [
+          33,
+          34,
+          35
+        ],
+        "stabilizer_dimension": 12,
+        "stabilizer_equals_standard_SM_algebra": true
+      },
+      "rS=1/5": {
+        "D_u_minor_determinants": {
+          "SO10": "1/512000000000",
+          "SO10_x_U1X": "1/640000000000",
+          "SO10_x_U1X_x_PQ": "-17/640000000000"
+        },
+        "gauge_quotient_checks_all_true": true,
+        "integer_minor_determinants": {
+          "SO10": 1,
+          "SO10_x_U1X": 4,
+          "SO10_x_U1X_x_PQ": -68
+        },
+        "point": {
+          "kappa": "-1/20",
+          "r0": "1/5",
+          "rS": "1/5",
+          "x0": "1"
+        },
+        "row_scale": "diag(1 on Phi, r0/4 on Sigma, rS on S, x0 on Phi17) at r0 = 1/5, rS = 1/5, x0 = 1",
+        "scaled_ranks_so10_X_PQ": [
+          33,
+          34,
+          35
+        ],
+        "stabilizer_dimension": 12,
+        "stabilizer_equals_standard_SM_algebra": true
+      },
+      "rS=2": {
+        "D_u_minor_determinants": {
+          "SO10": "1/512000000000",
+          "SO10_x_U1X": "1/64000000000",
+          "SO10_x_U1X_x_PQ": "-17/64000000000"
+        },
+        "gauge_quotient_checks_all_true": true,
+        "integer_minor_determinants": {
+          "SO10": 1,
+          "SO10_x_U1X": 4,
+          "SO10_x_U1X_x_PQ": -68
+        },
+        "point": {
+          "kappa": "-1/200",
+          "r0": "1/5",
+          "rS": "2",
+          "x0": "1"
+        },
+        "row_scale": "diag(1 on Phi, r0/4 on Sigma, rS on S, x0 on Phi17) at r0 = 1/5, rS = 2, x0 = 1",
+        "scaled_ranks_so10_X_PQ": [
+          33,
+          34,
+          35
+        ],
+        "stabilizer_dimension": 12,
+        "stabilizer_equals_standard_SM_algebra": true
+      }
+    },
+    "statement": "rS enters only the S rows of the invertible D_u; these ranks are a regression of an rS-free statement (integer ranks of M), re-checked exactly on D_u M"
+  },
+  "theorem": "For every r0, rS, x0 > 0, real kappa with kappa^2 < 8 rS^2 and eps >= 0, the decoupled-singlet member V (the committed 27-parameter SM Pati-Salam map with O04 = -2 rS^2 and O06 = 2|kappa| rS + eps) satisfies V >= V0 = -1 - r0^4/8 - rS^4 - x0^4/32 and {V = V0} = G.(p, r0 sigma_std, 0, rS, x0), G = SO(10) x U(1)_X x U(1)_PQ (given the committed equality-set theorem's rS-free parts).  The domain is sharp: V >= V0 fails for every kappa^2 > 8 rS^2 (exact violating points), while at kappa^2 = 8 rS^2 the bound and the equality set still hold (lambda_eff = 0); the certified domain is the open kappa^2 < 8 rS^2.  Exact over Q at (r0, rS, x0, kappa) = (1/5,1/5,1,-1/20), (1/5,1,1,-1/100), (1/5,1,1,-1/4) and the stress point (1/5,5,1,-5/4) (outside the |c| < 12 perturbative box, eps window 12 - 2|kappa| rS empty; an exact family member only): grad V(q0) = 0, the 486 x 486 Hessian has inertia 447/39/0 at eps = 0 (kernel = 35 orbit tangents + 4 real doublet directions) and 451/35/0 at eps = r0^2/100 and r0^2/10^6 (kernel = the orbit tangents), identical to the committed witness at rS = r0.  The orbit ranks are 33/34/35 at rS in {1/10, 1/5, 1, 2}; F_PQ^2 = 9248 rS^2 x0^2/(16 rS^2 + 289 x0^2) with S share 289 x0^2/(16 rS^2 + 289 x0^2), Phi17 share 16 rS^2/(16 rS^2 + 289 x0^2) and no Sigma share.  The model file gives N_X = 0, N_PQ = -34, E/N = 8/3 and N_DW = 1 modulo gauge (axion period 2 pi/68).",
+  "theorem_claimed": true,
+  "verdict": "Exact over Q (77 checks): the committed SM Pati-Salam map with |S| = rS independent of r0 changes only O04 = -2 rS^2 and O06 = 2|kappa| rS + eps; the eight-term SOS identity holds for every kappa^2 < 8 rS^2 and eps >= 0, so V >= V0 = -1 - r0^4/8 - rS^4 - x0^4/32 with {V = V0} = G.(p, r0 sigma_std, 0, rS, x0) (sharp: V >= V0 fails for every kappa^2 > 8 rS^2; at kappa^2 = 8 rS^2 it still holds with lambda_eff = 0); the exact 486 x 486 Hessian at 4 points is 447/39/0 at eps = 0 and 451/35/0 at eps > 0 (kernel T35; the rS = 5 point is a stress point outside the |c| < 12 perturbative box with an empty eps window), identical to the committed witness at rS = r0; the orbit ranks stay 33/34/35; F_PQ^2 = 9248 rS^2 x0^2/(16 rS^2 + 289 x0^2) with no Sigma share; the model file gives N = -34, E/N = 8/3 and N_DW = 1 modulo gauge.  Status-neutral: no benchmark is chosen, G3 and G4 stay closed on the committed rS = r0 witness, and the physics viability of decoupling (y_s, the Landau criterion, v_R/f_a/m_a) is open research; m_a = 153.5 ueV is not a prediction of the family."
+}

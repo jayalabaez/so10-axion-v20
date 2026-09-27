@@ -693,8 +693,8 @@ def attack_overclaim_detectors() -> list[dict]:
     ):
         rows.append(_row("N_overclaim", f"detector armed: {name}", name in soft, "armed"))
     th = thr.build_report()
-    inv = th["comparison"]["alpha_inv_vPhi_phys_two"]
-    rows.append(_row("N_overclaim", "continuous alpha_inv(vPhi) != 40", abs(inv - 40) > 10, f"{inv:.3f}"))
+    inv = th["comparison"]["alpha_inv_vPhi_phys_one"]
+    rows.append(_row("N_overclaim", "continuous one-loop alpha_inv(vPhi) != 40", abs(inv - 40) > 10, f"{inv:.3f}"))
     return rows
 
 

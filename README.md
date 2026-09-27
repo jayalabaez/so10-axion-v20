@@ -7,6 +7,20 @@
 
 **Candidate field-theory construction — not a dark-matter discovery.**
 
+**One-loop benchmark only (two-loop disclosure).** The spectator-corrected
+`alpha_GUT^-1 = 16.81`, the proton-decay Monte Carlo that uses it, and the axion
+benchmark `m_a = 153.5 ueV` (`v_S = M_I = 6.31e11 GeV`) are one-loop results with
+no two-loop counterpart. At two loops the declared benchmark (five `16 + 16bar`
+spectator pairs at `M_s ~ M_I`) has no perturbative gauge unification (three
+independent two-loop codes; `two_loop_thresholds_v20.py` ships a spectator probe
+that reproduces this). The removed `two_loop_calibrated_proxy` (the earlier
+two-loop column: hand-inserted constant beta shifts and a x1.1 Spin(10) factor)
+was not two-loop running. Genuine two-loop Machacek-Vaughn running of the anchor
+content without spectators (not the declared benchmark) gives `M_I ~ 6.6e10 GeV`,
+`M_GUT ~ 1.25e16 GeV`, `alpha_U^-1 ~ 33.5` (gauge-only Machacek-Vaughn betas with
+tree-level matching; independent-code variants with Yukawa terms or one-loop
+matching give `M_I` 6.6-7.1e10 GeV, `M_GUT` 1.24-1.28e16 GeV, `alpha_U^-1` 33.5-33.7).
+
 This repository is a pristine, self-contained release of the v20 Spin(10) axion
 package: anomaly cancellation, decay-safe anomalons, independent error audit,
 broken-phase 10+126 Clebsch/flavour fit, continuous threshold RG, and a
@@ -401,15 +415,39 @@ Decisions adopted (D1-D6, D-E):
   the contract (an anti-SOS G3 witness might exist), and G3 and G4 are
   unchanged.
 
+**Decoupled singlet scale (status-neutral).**
+`g3_sm_pati_salam_decoupled_singlet_family_v20.py` certifies exactly that the
+G3 witness is one member of a family with `|S| = r_S` independent of `r0`:
+only `O04 = -2 r_S^2` and `O06 = 2|kappa| r_S + eps` change, the SOS identity
+holds for every `kappa^2 < 8 r_S^2` (sharp: `V >= V0` fails for every
+`kappa^2 > 8 r_S^2`), `{V = V0} = G.(p, r0 sigma_std, 0, r_S, x0)`, and the
+exact 486 x 486 Hessian is 447/39/0 at `eps = 0` and 451/35/0 at `eps > 0` at
+four points (identical to the committed witness at `r_S = r0`; the `r_S = 5`
+stress point lies outside the `|c| < 12` perturbative box and its eps window
+is empty). The axion has `F_PQ^2 = 9248 r_S^2 x0^2/(16 r_S^2 + 289 x0^2)`,
+and the model file gives `N = -34`, `E/N = 8/3` and `N_DW = 1` modulo gauge;
+the one-wall string is the (13,-3) Phi17-winding string, and if Phi17 breaks
+before inflation S-only strings bound 17 walls. It chooses no benchmark and
+changes no gate: the `r_S = r0` witness still closes G3 and G4, the physical
+viability of decoupling (`y_s <~ 0.35`, the Landau criterion, a v_R/f_a/m_a
+benchmark) is open research, and `m_a = 153.5 ueV` is not a prediction of the
+family.
+
 Open items for this candidate:
 - The doublet-triplet splitting and the intermediate scale are tuned coupling
   relations.
 - The light doublet's tree-level quartic is `127/64` at the benchmark
   `kappa = -r0/4` (m_h ~ 195 GeV). The same SOS certificate covers
   `kappa^2 < 8 r0^2`, i.e. `lambda_eff` in `(0, 2]`; `lambda_eff -> 0+` comes
-  within a few GeV of 125 GeV, but tree-level global minimality forbids the
-  slightly negative `lambda(M_I) = -0.0085` that SM running prefers at
-  `M_t = 173.34` GeV.
+  within a few GeV of 125 GeV, but tree-level global minimality forbids a
+  negative `lambda(M_I)`. With PDG 2024 inputs (SMDR v1.3-anchored matching,
+  three-loop running plus four-loop QCD) SM running gives
+  `lambda_SM(M_I) = -0.0033 +- 0.0029` at `M_I = 6.31e11` GeV: negative at
+  central values, but the corresponding top-mass tension is only 1.16 sigma, and
+  `lambda_SM = 0` at `6.3e10` GeV (1 sigma `1.2e10-3.4e11` GeV), so the sign
+  flips inside the realistic `v_R` band. Higgs matching is conditional and open,
+  not falsified. (Superseded: `-0.0085` from the Buttazzo et al. 2013 central
+  inputs, `M_t = 173.34` GeV.)
 - 126bar colour triplets and sextets lie below `M_I`.
 - The spectrum is not the 2HDM + (15,2,2) content assumed by the RG anchor,
   and the declared benchmark has no perturbative two-loop unification (D-E
@@ -428,23 +466,33 @@ minimality requires `lambda_eff >= 0`
 (`g3_tuned_target_effective_higgs_quartic_v20.py`).
 The declared H-S portal gives the exact threshold
 `lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S)`, but at the two-loop
-SM-matching value (`lambda_HS = 2.015 > 2 sqrt(lambda_H lambda_S)`) the tuned
+SM-matching value (legacy Buttazzo 2013 inputs; `lambda_HS = 2.015 > 2 sqrt(lambda_H lambda_S)`) the tuned
 point becomes a degenerate saddle with a lower electroweak-breaking,
 PQ-restoring configuration (`g3_tuned_target_portal_threshold_v20.py`), so
 tree-level portal exchange cannot supply a negative matching quartic at a
-locally minimal point. `g3_physical_hierarchy_higgs_stability_v20.py` (two-loop
-SM RGEs; two independent transcriptions of the one/two-loop coefficient tables
+locally minimal point. `g3_physical_hierarchy_higgs_stability_v20.py` (SM
+RGEs; two independent transcriptions of the one/two-loop coefficient tables
 agree exactly, and the three-loop + four-loop-QCD terms reproduce the published
-Buttazzo et al. Planck-scale values) quantifies the SM-EFT side:
-`lambda_SM(M_GUT) = -0.0151` and a `lambda = 0` scale of
-`4.8e9 GeV`, so single-stage matching at `M_GUT` has no tree-level local
-minimum. Moving the S threshold to `M_I` does not change that at tree level:
+Buttazzo et al. Planck-scale values) quantifies the SM-EFT side at PDG 2024
+inputs (SMDR v1.3-anchored matching, three loops + four-loop QCD):
+`lambda_SM(M_GUT) = -0.0097 +- 0.0031` and an MSbar `lambda = 0` scale of
+`6.3e10 GeV` (1 sigma `1.2e10-3.4e11 GeV`); the Landau-gauge
+effective-potential zero is 2.5-6.5x higher (definition dependent). Single-stage
+matching at `M_GUT` therefore has no tree-level local minimum. Moving the S
+threshold to `M_I` does not change that at tree level at central inputs:
 `lambda_eff(M_I) = lambda_SM(M_I) < 0`, and at the GUT coefficients
 `lambda_eff` is `-0.073` for the `O36 = O23 = 1` benchmark and negative at most
-window points. In RG-improved terms the EW vacuum is metastable and long-lived
-at the 2013 central inputs, and marginal at PDG 2024 inputs. These running
-statements assume an SM + singlet EFT, which neither the repository's 2HDM +
-Pati-Salam anchor nor any current repository vacuum realizes.
+window points (portal scan on the legacy Buttazzo 2013 regression inputs, where
+`lambda_SM(M_GUT) = -0.0151` and `lambda = 0` at `4.8e9 GeV`). In RG-improved
+terms the EW vacuum is metastable and long-lived at central inputs. Absolute
+stability with the S threshold at `M_I` needs `M_t < 172.04 +- 0.36` GeV,
+1.16 sigma below the measured `172.57 +- 0.29` GeV once the alpha_s and M_h
+errors are included (`172.23-172.46` GeV with the effective-potential zero).
+The earlier "2.0 sigma" omitted the alpha_s error and used the Buttazzo et al.
+fit formulas, whose `g3(M_t)` and `y_t(M_t)` are 0.0017 and 0.0009 too high.
+These running statements assume an SM + singlet EFT, which neither the
+repository's 2HDM + Pati-Salam anchor nor any current repository vacuum
+realizes.
 
 Exact `X` neutrality reduces the
 renormalizable scalar potential from the historical `64/91` compiler superset
@@ -561,13 +609,17 @@ validated nor discarded.
 - The executable `b10=-4` backend omits the spectators/anomalons and is a
   truncated scaffold coefficient, not the complete above-`v_Phi` beta function
 - Unit-coefficient loop numbers are **not** physical predictions
+- The removed `two_loop_calibrated_proxy` (hand-inserted constant beta shifts and a
+  x1.1 Spin(10) factor in `two_loop_thresholds_v20.py`) was not two-loop running;
+  it has been replaced by genuine Machacek-Vaughn running of the anchor content,
+  and its proton benchmark withdrawn
 
 ## External / referee next steps (computed here)
 
 | Package | Result |
 |---|---|
 | 10+126 flavour fit at exact $v_R=v_S$ | fails corrected Takagi/PMNS constrained fit |
-| Continuous thresholds | $\alpha^{-1}(v_\Phi)\sim16.6$, not 40 |
+| Continuous thresholds | $\alpha^{-1}(v_\Phi)\sim15.8$ (one loop; no two-loop counterpart at the benchmark), not 40 |
 | 37 GHz forecast | MADMAX-like projection can reach the coupling (**software only**) |
 | Heavy–light spectrum + lifetimes | 3 light families; all components decay above portal floor |
 | Explicit P=8 Spin(10) reconstruction | matches unit kernel |

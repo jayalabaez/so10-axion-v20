@@ -7,7 +7,7 @@ A self-contained release of the **SO(10)×ℤ₁₇ axion candidate (v20)** with
 - anomaly / minimality / decay-portal engines
 - independent error audit (imports no v20 engine narrative)
 - broken-phase 10+126 Clebsch/flavour fit
-- continuous one-/two-loop threshold RG
+- continuous one-loop threshold RG and a genuine two-loop gauge anchor (anchor content without spectators; two-loop spectator unification UNAVAILABLE)
 - 36.6–37.6 GHz haloscope **forecast** (software only)
 - adversarial falsification suite
 - arbitrary-matrix physical portal-current matching
@@ -76,7 +76,8 @@ pdflatex -interaction=nonstopmode -halt-on-error axion_so10_theory_v20.tex
 | Anomalon portal current | moving-frame sum is universal; physical $Q_{\rm proj}$ remains portal dependent |
 | Fermion coefficients | aligned benchmark only; exact full matching open |
 | Corrected $v_R=v_S$ flavour profile | no $\chi^2<30$ point in current constrained ansatz |
-| Continuous $\alpha^{-1}(v_\Phi)$ | ~16.6, **not** 40 |
+| Continuous $\alpha^{-1}(v_\Phi)$ (one loop) | ~15.8, **not** 40 |
+| Two-loop $\alpha_{\rm GUT}^{-1}$ after spectators | UNAVAILABLE (no perturbative two-loop unification at $M_s=M_I$) |
 | Haloscope mock | software forecast only |
 
 If any **hard** check fails, the candidate construction is broken.

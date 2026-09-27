@@ -2,9 +2,9 @@
 
 **Status:** `PATI_SALAM_ONE_LOOP_YUKAWA_LAYER_COMPLETE__COMPONENT_MATCHING_OPEN`
 
-- ΔY10: 0.1115
-- ΔY126: 0.05393
-- ΔYR: 0.08293
+- ΔY10: 0.1562
+- ΔY126: 0.08212
+- ΔYR: 0.1216
 - Component matching complete: **False**
 
 ## Verdict

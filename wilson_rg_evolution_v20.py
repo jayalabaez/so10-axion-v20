@@ -33,7 +33,7 @@ def alpha_inv_piecewise(mu: float) -> float:
         (MZ, 30.0),          # rough mean of SM couplings
         (VS, 35.0),
         (MGUT, 37.313),
-        (VPHI, 16.65),       # spectator-corrected continuous value
+        (VPHI, 15.83),       # one-loop spectator-corrected continuous value (two_loop_thresholds_v20 one_loop; no two-loop counterpart)
         (MPL, 8.0),          # illustrative physical running endpoint
     ]
     if mu <= anchors[0][0]:
