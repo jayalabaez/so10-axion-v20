@@ -16,8 +16,9 @@ sit at M_I = 6.31e11 GeV, so the threshold belongs at M_I.  This module redoes
 the problem as a two-stage running problem:
 
 * below M_I: the Standard Model, two loops (complete 1L+2L gauge / yt / lambda
-  betas, gY not GUT-normalised), from the Buttazzo et al. 2013 NNLO MSbar inputs
-  at mu = M_t;
+  betas, gY not GUT-normalised), from PDG 2024 inputs with SMDR v1.3-anchored
+  matching (headline) and from the Buttazzo et al. 2013 inputs (legacy
+  regression and portal scan) at mu = M_t;
 * at M_I: tree-level matching lambda_H = lambda_SM + lambda_HS^2/(4 lambda_S);
 * above M_I: SM + complex gauge singlet S with
   V > lambda_H (H^dag H)^2 + lambda_S |S|^4 + lambda_HS (H^dag H)|S|^2, with
@@ -36,8 +37,27 @@ consensus solver ``sm_rge2.py``: two independent one/two-loop transcriptions
 the three-loop + four-loop-QCD terms reproduce the published Buttazzo
 lambda(M_Pl) = -0.0143.
 
-Results at the Buttazzo central inputs (M_t = 173.34, M_h = 125.15,
-alpha_s = 0.1184), two loops:
+PDG 2024 headline (M_t = 172.57 +- 0.29, M_h = 125.20 +- 0.11, alpha_s =
+0.1180 +- 0.0009; SMDR v1.3-anchored MSbar matching; three-loop SM running with
+four-loop QCD in g3; pdg2024_corrected_headline()):
+
+* lambda_SM = +0.0086 +- 0.0024 at 1e9 GeV, +0.0045 at 5.65e9 GeV, +0.0033 at
+  1e10 GeV, -0.0003 at 7.8e10 GeV and -0.0033 +- 0.0029 at M_I; the MSbar zero
+  is at 6.3e10 GeV (1 sigma 1.2e10-3.5e11 GeV) and the Landau-gauge
+  effective-potential zero is 2.5-6.5x higher (definition dependent).  The sign
+  flips inside the realistic v_R band, so the Higgs matching is conditional and
+  open, not falsified.
+* Absolute stability with the threshold at M_I needs M_t < 172.04 +- 0.36 GeV
+  (MSbar criterion), 1.16 sigma below the measured 172.57 +- 0.29 GeV once the
+  alpha_s and M_h errors are included (172.23-172.46 GeV, 0.74-0.24 sigma, with
+  the effective-potential zero).  The earlier 2.0 sigma omitted the alpha_s and
+  M_h errors and used the Buttazzo et al. fit formulas, whose g3(M_t) and
+  y_t(M_t) are 0.0017 and 0.0009 too high relative to SMDR v1.3 and Bednyakov et
+  al. 2015 (matching_validation()).
+
+Legacy regression (superseded headline) at the Buttazzo central inputs
+(M_t = 173.34, M_h = 125.15, alpha_s = 0.1184), two loops; the portal analysis
+below uses these inputs:
 
 * Lambda_I (MSbar lambda = 0) = 4.76e9 GeV, below M_I by a factor ~130;
   lambda_SM(M_I) = -0.00854, lambda_SM(M_GUT) = -0.0151, lambda_min = -0.0155.
@@ -57,11 +77,10 @@ alpha_s = 0.1184), two loops:
   middles (+0.0003 at lambda_S(M_I) = 0.5).  Metastability is the RG-improved
   statement.
 * Absolute stability with the threshold at M_I needs M_t < 171.96 GeV (2L),
-  172.07 GeV (3L) with the MSbar-lambda criterion.  With PDG 2024 M_h and alpha_s
-  the 3L bound is 171.95 GeV, 2.0 sigma below the measured 172.57 +- 0.29 GeV.
-  With the Landau-gauge effective-potential zero (~6.5x higher) it is ~172.36 GeV,
-  0.7 sigma below.  At both the Buttazzo and PDG 2024 central inputs the instability
-  lies below M_I under either definition.
+  172.07 GeV (3L) with the MSbar-lambda criterion at these legacy inputs (the
+  PDG 2024 bound is quoted above).  At both the Buttazzo and PDG 2024 central
+  inputs the instability lies below M_I under either definition (Landau-gauge
+  effective-potential zero 2.5-6.5x the MSbar zero).
 * GUT-scale coefficients: the certified (O36, O23, O34) = (1, 1, 0) gives m_h ~ 173
   GeV at two loops (lambda_HS = 0 is RG-invariant, S decouples).  Every window
   point needs O34 != 0.  Keeping O36 = O23 = 1 needs O34 = lambda_HS(M_GUT) ~ 2.07
@@ -88,6 +107,7 @@ whole_model_excluded stay False.
 from __future__ import annotations
 
 import argparse
+import copy
 import itertools
 import json
 import math
@@ -122,6 +142,8 @@ ANCHOR_RTOL = 1.0e-12
 # =============================================================================
 # Standard Model inputs
 # =============================================================================
+# Legacy regression set (superseded headline; the PDG 2024 headline uses the
+# SMDR v1.3-anchored inputs below).
 # Buttazzo, Degrassi, Giardino, Giudice, Sala, Salvio, Strumia, arXiv:1307.3536
 # v3/v4 (JHEP 1312 (2013) 089), NNLO MSbar couplings at mu = M_t.  These central
 # values belong to M_t = 173.34, M_h = 125.15, alpha_s(M_Z) = 0.1184 and
@@ -140,9 +162,11 @@ BUTTAZZO_PUBLISHED = {
     "yt_M_Pl": 0.3825,
     "dlambda_M_Pl_dMt_per_GeV": -0.0066,
 }
-# Buttazzo et al. sec. 5: Lambda_lambda (MSbar lambda = 0) ~ 2 Lambda_V and the
-# Landau-gauge effective-potential zero Lambda_I ~ 13 Lambda_V, so Lambda_I ~ 6.5 Lambda_lambda.
-LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO = 13.0 / 2.0
+# Landau-gauge effective-potential zero over the MSbar lambda zero: definition dependent.
+# Hiller, Hoehne, Litim, Steudtner 2401.08811v4: Lambda_0,eff ~ 5.3e11 / Lambda_0 ~ 2.1e11 -> 2.5;
+# Buttazzo et al. 1307.3536 sec. 5: Lambda_lambda ~ 2 Lambda_V, Lambda_I ~ 13 Lambda_V -> 6.5.
+LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO_RANGE = (2.5, 6.5)
+LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO = LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO_RANGE[1]  # conservative upper end (legacy key)
 # Regression anchor: these constants reproduce the superseded commit-5f25846
 # one-loop portal values (same inputs started at mu0 = 173.10, matched at
 # M_GUT = 1e16 GeV); the current portal module uses the two-loop value.
@@ -150,8 +174,49 @@ SUPERSEDED_5F25846_MU0 = 173.10
 SUPERSEDED_5F25846_LAMBDA_GUT_ONE_LOOP = -0.033538209985
 SUPERSEDED_5F25846_LAMBDA_HS_REQUIRED = 2.033261626043
 SUPERSEDED_5F25846_ATOL = 1.0e-9
-# Comparison values (PDG 2024): direct-measurement top mass, Higgs mass, alpha_s.
-PDG2024 = {"Mt_GeV": 172.57, "Mt_err_GeV": 0.29, "Mh_GeV": 125.20, "alpha_s": 0.1180}
+# PDG 2024 (Review of Particle Physics, Phys. Rev. D 110 (2024) 030001): direct-measurement top mass,
+# Higgs mass, alpha_s(M_Z).
+PDG2024 = {"Mt_GeV": 172.57, "Mt_err_GeV": 0.29, "Mh_GeV": 125.20, "Mh_err_GeV": 0.11,
+           "alpha_s": 0.1180, "alpha_s_err": 0.0009}
+# S.P. Martin and D.G. Robertson, SMDR v1.3 (15 July 2025), ReferenceModel.dat; Comput. Phys. Commun. 244 (2019) 1
+# [arXiv:1907.02500]. MSbar couplings at Q = M_t = 172.4 GeV for M_t = 172.4, M_h = 125.20, alpha_s(M_Z) = 0.1180,
+# Delta alpha_had^(5) = 0.02783 (2025 PDG-based inputs; gp = gY, g = g2).
+SMDR_V13_REFERENCE = {"Q_GeV": 172.4, "Mt_GeV": 172.4, "Mh_GeV": 125.20, "alpha_s": 0.1180,
+                      "gY": 0.3585947982153167, "g2": 0.6475934615902679, "g3": 1.1635013021305831,
+                      "yt": 0.9309715465595599, "lam": 0.1262969232875777}
+# SMDR benchmark_data/ReferenceModel_2019/2020/2021.dat (Q = M_t), used only as a fail-closed cross-check
+SMDR_REFERENCE_POINTS = {
+    "2019": {"Mt_GeV": 173.1, "Mh_GeV": 125.10, "alpha_s": 0.1181, "g3": 1.1636240557157115, "g2": 0.6476596104984968,
+             "gY": 0.3585387714929383, "lam": 0.1260384218104124, "yt": 0.9348008219005578},
+    "2020": {"Mt_GeV": 172.4, "Mh_GeV": 125.10, "alpha_s": 0.1179, "g3": 1.1630525559189414, "g2": 0.6476520135708738,
+             "gY": 0.3585422721981650, "lam": 0.1260708521350064, "yt": 0.9310312552525753},
+    "2021": {"Mt_GeV": 172.5, "Mh_GeV": 125.25, "alpha_s": 0.1179, "g3": 1.1630061862251946, "g2": 0.6476068045290379,
+             "gY": 0.3585502038013288, "lam": 0.1263928605745786, "yt": 0.9315848442119853},
+}
+SMDR_MATCHING_TOLERANCES = {"g3": 1.0e-5, "yt": 1.0e-5, "lam": 5.0e-5, "g2": 1.0e-4, "gY": 2.0e-4}
+# Buttazzo et al. 1307.3536 v3/v4 eqs. 55-60 linear dependences (the same slopes buttazzo_inputs() uses)
+BUTTAZZO_LINEAR_DERIVATIVES = {
+    "Mt_per_GeV": {"gY": 0.00011, "g2": 0.00004, "g3": -0.00046, "yt": 0.00556, "lam": -0.00004},
+    "alpha_s_per_unit": {"g3": 0.00314 / 0.0007, "yt": -0.00042 / 0.0007},
+    "Mh_per_GeV": {"lam": 0.00206},
+}
+# A.V. Bednyakov, B.A. Kniehl, A.F. Pikelner, O.L. Veretin, Phys. Rev. Lett. 115 (2015) 201802 [arXiv:1507.08833],
+# Table I: x = x0 + x_as (as-0.1185)/0.0006 + x_MW (MW-80.385)/0.015 + x_Mh (Mh-125.7)/0.4 + x_Mt (Mt-173.21)/0.87
+#         + x_mu (mu-173.21)/173.21, evaluated at mu = M_t, MW = 80.385
+BEDNYAKOV_2015_TABLE_I = {"g3": (1.16540, 2.7e-3, 8.9e-8, 7.8e-8, -4.0e-5, -7.2e-2),
+                          "yt": (0.93517, -3.6e-4, -1.3e-7, -8.6e-6, 5.1e-3, -5.2e-2)}
+BEDNYAKOV_TOLERANCE = 5.0e-5
+PDG2024_HEADLINE_SCALES = (("1e9", 1.0e9), ("5.65e9", 5.65e9), ("1e10", 1.0e10), ("7.8e10", 7.8e10),
+                           ("M_I", M_I_GEV), ("M_GUT", M_GUT_GEV))
+REALISTIC_V_R_BAND = "6e8-1.5e11 GeV, G6/G7 audit estimate"
+LEGACY_INPUT_SET = (
+    "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; "
+    "superseded headline)"
+)
+PDG2024_INPUT_SET = (
+    "PDG 2024 (M_t = 172.57 +- 0.29, M_h = 125.20 +- 0.11, alpha_s = 0.1180 +- 0.0009); SMDR v1.3-anchored MSbar "
+    "matching at mu = M_t; three-loop SM running with four-loop QCD in g3 (top Yukawa only)"
+)
 TOP_MASS_SCAN_GEV = (-1.0, 0.0, 1.0)
 
 # =============================================================================
@@ -213,6 +278,75 @@ def buttazzo_inputs(
         "g3": 1.1666 + 0.00314 * das - 0.00046 * dt,
         "yt": 0.93690 + 0.00556 * dt - 0.00042 * das,
         "lam": 0.12604 + 0.00206 * (Mh - MH_REF) - 0.00004 * dt,
+    }
+
+
+def smdr_anchored_inputs(Mt: float = PDG2024["Mt_GeV"], Mh: float = PDG2024["Mh_GeV"],
+                         alpha_s: float = PDG2024["alpha_s"],
+                         shift: Mapping[str, float] | None = None) -> dict[str, float]:
+    """MSbar couplings at mu = M_t anchored to the SMDR v1.3 reference model (M_t = 172.4, M_h = 125.20,
+    alpha_s = 0.1180) and moved to (M_t, M_h, alpha_s) with the Buttazzo et al. linear slopes; only the small
+    differences from the reference point use the slopes (validated in matching_validation())."""
+    ref = SMDR_V13_REFERENCE
+    d_mt, d_mh, d_as = Mt - ref["Mt_GeV"], Mh - ref["Mh_GeV"], alpha_s - ref["alpha_s"]
+    slope_mt = BUTTAZZO_LINEAR_DERIVATIVES["Mt_per_GeV"]
+    slope_as = BUTTAZZO_LINEAR_DERIVATIVES["alpha_s_per_unit"]
+    slope_mh = BUTTAZZO_LINEAR_DERIVATIVES["Mh_per_GeV"]
+    couplings = {
+        "gY": ref["gY"] + slope_mt["gY"] * d_mt,
+        "g2": ref["g2"] + slope_mt["g2"] * d_mt,
+        "g3": ref["g3"] + slope_mt["g3"] * d_mt + slope_as["g3"] * d_as,
+        "yt": ref["yt"] + slope_mt["yt"] * d_mt + slope_as["yt"] * d_as,
+        "lam": ref["lam"] + slope_mt["lam"] * d_mt + slope_mh["lam"] * d_mh,
+    }
+    for key, value in (shift or {}).items():
+        couplings[key] += value
+    return couplings
+
+
+def pdg2024_corrected_inputs(shift: Mapping[str, float] | None = None) -> dict[str, float]:
+    """SMDR v1.3-anchored couplings at mu = M_t for the PDG 2024 central M_t, M_h, alpha_s."""
+    return smdr_anchored_inputs(PDG2024["Mt_GeV"], PDG2024["Mh_GeV"], PDG2024["alpha_s"], shift)
+
+
+def bednyakov_2015_inputs(Mt: float, Mh: float, alpha_s: float, MW: float = 80.385) -> dict[str, float]:
+    """g3 and y_t at mu = M_t from Bednyakov, Kniehl, Pikelner, Veretin 1507.08833 Table I (cross-check only)."""
+    out = {}
+    for key, (x0, x_as, x_mw, x_mh, x_mt, x_mu) in BEDNYAKOV_2015_TABLE_I.items():
+        out[key] = (x0 + x_as * (alpha_s - 0.1185) / 0.0006 + x_mw * (MW - 80.385) / 0.015
+                    + x_mh * (Mh - 125.7) / 0.4 + x_mt * (Mt - 173.21) / 0.87 + x_mu * (Mt - 173.21) / 173.21)
+    return out
+
+
+def matching_validation() -> dict[str, Any]:
+    """Fail-closed checks of the SMDR v1.3 anchor, and the legacy Buttazzo-fit bias at PDG 2024."""
+    residuals = {}
+    for release, point in SMDR_REFERENCE_POINTS.items():
+        anchored = smdr_anchored_inputs(point["Mt_GeV"], point["Mh_GeV"], point["alpha_s"])
+        residuals[release] = {key: anchored[key] - point[key] for key in COUPLINGS}
+    max_abs = {key: max(abs(row[key]) for row in residuals.values()) for key in COUPLINGS}
+    anchor = pdg2024_corrected_inputs()
+    bednyakov = bednyakov_2015_inputs(PDG2024["Mt_GeV"], PDG2024["Mh_GeV"], PDG2024["alpha_s"])
+    bednyakov_minus_anchor = {key: bednyakov[key] - anchor[key] for key in bednyakov}
+    legacy = buttazzo_inputs(Mt=PDG2024["Mt_GeV"], Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"])
+    return {
+        "anchor": "SMDR v1.3 ReferenceModel.dat (Martin and Robertson, arXiv:1907.02500), Q = M_t",
+        "smdr_reference_point_residuals": residuals,
+        "smdr_reference_point_max_abs_residual": max_abs,
+        "smdr_reference_point_tolerances": SMDR_MATCHING_TOLERANCES,
+        "smdr_reference_points_reproduced": all(
+            max_abs[key] < tolerance for key, tolerance in SMDR_MATCHING_TOLERANCES.items()
+        ),
+        "bednyakov_2015_minus_anchor_at_PDG2024": bednyakov_minus_anchor,
+        "bednyakov_2015_tolerance": BEDNYAKOV_TOLERANCE,
+        "bednyakov_2015_agrees": all(abs(value) < BEDNYAKOV_TOLERANCE for value in bednyakov_minus_anchor.values()),
+        "pdg2024_anchored_couplings_at_mt": anchor,
+        "legacy_buttazzo_fit_minus_anchor_at_PDG2024": {key: legacy[key] - anchor[key] for key in COUPLINGS},
+        "note": (
+            "The legacy Buttazzo et al. fit formulas (1307.3536 eqs. 55-60) give g3(M_t) and y_t(M_t) too high by "
+            "0.0017 and 0.0009 at PDG 2024 inputs relative to SMDR v1.3 (and to Bednyakov et al. 2015); they are "
+            "kept only for the Buttazzo 2013 regression set."
+        ),
     }
 
 
@@ -899,7 +1033,8 @@ def sm_running_audit() -> dict[str, Any]:
         },
         "instability_scale_definition": (
             "first zero of the MSbar lambda(mu) (Buttazzo's Lambda_lambda ~ 2 Lambda_V); the "
-            "Landau-gauge effective-potential zero Lambda_I ~ 13 Lambda_V is ~6.5x higher"
+            "Landau-gauge effective-potential zero is 2.5-6.5x higher (definition dependent: Hiller et al. "
+            "2401.08811; Buttazzo et al. 1307.3536)"
         ),
     }
 
@@ -907,14 +1042,24 @@ def sm_running_audit() -> dict[str, Any]:
 # =============================================================================
 # (d) top-mass bound and metastability
 # =============================================================================
+MATCHING_CHOICES = ("legacy_buttazzo_fit", "smdr_v1_3")
+
+
 def critical_top_mass(mu: float = M_I_GEV, loops: int = 2, Mh: float = MH_REF,
                       alpha_s: float = ALPHA_S_REF, shift: Mapping[str, float] | None = None,
-                      bracket: tuple[float, float] = (166.0, 175.0)) -> float:
-    """M_t at which the MSbar lambda_SM(mu) = 0 (i.e. Lambda_I = mu)."""
+                      bracket: tuple[float, float] = (166.0, 175.0),
+                      matching: str = "legacy_buttazzo_fit") -> float:
+    """M_t at which the MSbar lambda_SM(mu) = 0 (i.e. Lambda_I = mu).
+
+    matching = "legacy_buttazzo_fit" (default, every legacy caller) uses the Buttazzo et al. fit formulas;
+    "smdr_v1_3" uses smdr_anchored_inputs (the PDG 2024 headline)."""
+    if matching not in MATCHING_CHOICES:
+        raise ValueError(f"matching must be one of {MATCHING_CHOICES}")
+    inputs = buttazzo_inputs if matching == "legacy_buttazzo_fit" else smdr_anchored_inputs
     shift = dict(shift or {})
 
     def residual(mt: float) -> float:
-        couplings = buttazzo_inputs(Mt=mt, Mh=Mh, alpha_s=alpha_s)
+        couplings = inputs(Mt=mt, Mh=Mh, alpha_s=alpha_s)
         for key, value in shift.items():
             couplings[key] += value
         return run_sm(couplings, mt, mu, loops=loops)["lam"]
@@ -922,17 +1067,194 @@ def critical_top_mass(mu: float = M_I_GEV, loops: int = 2, Mh: float = MH_REF,
     return brentq(residual, *bracket, xtol=1.0e-9, rtol=1.0e-12)
 
 
+def _half_spread(up: float, down: float) -> float:
+    return abs(up - down) / 2.0
+
+
+def _smdr_critical_top_mass_budget(mu: float, loops: int) -> dict[str, Any]:
+    """M_t^crit(mu) at PDG 2024 central inputs (SMDR-anchored) and its symmetric +-1 sigma error budget."""
+    pdg = PDG2024
+    central = critical_top_mass(mu=mu, loops=loops, Mh=pdg["Mh_GeV"], alpha_s=pdg["alpha_s"], matching="smdr_v1_3")
+
+    def crit(**kwargs: Any) -> float:
+        options = {"mu": mu, "loops": loops, "Mh": pdg["Mh_GeV"], "alpha_s": pdg["alpha_s"], "matching": "smdr_v1_3"}
+        options.update(kwargs)
+        return critical_top_mass(**options)
+
+    errors = {
+        "alpha_s": _half_spread(crit(alpha_s=pdg["alpha_s"] + pdg["alpha_s_err"]),
+                                crit(alpha_s=pdg["alpha_s"] - pdg["alpha_s_err"])),
+        "Mh": _half_spread(crit(Mh=pdg["Mh_GeV"] + pdg["Mh_err_GeV"]), crit(Mh=pdg["Mh_GeV"] - pdg["Mh_err_GeV"])),
+        "theory_lambda": _half_spread(crit(shift={"lam": +BUTTAZZO_THEORY_ERRORS["lam"]}),
+                                      crit(shift={"lam": -BUTTAZZO_THEORY_ERRORS["lam"]})),
+        "theory_yt": _half_spread(crit(shift={"yt": +BUTTAZZO_THEORY_ERRORS["yt"]}),
+                                  crit(shift={"yt": -BUTTAZZO_THEORY_ERRORS["yt"]})),
+    }
+    parametric = math.hypot(errors["alpha_s"], errors["Mh"])
+    theory = math.hypot(errors["theory_lambda"], errors["theory_yt"])
+    bound_error = math.hypot(parametric, theory)
+    total = math.sqrt(pdg["Mt_err_GeV"] ** 2 + parametric ** 2 + theory ** 2)
+    return {
+        "Mt_crit_GeV": central,
+        "error_budget_GeV": {
+            **errors,
+            "parametric": parametric,
+            "theory": theory,
+            "bound_error": bound_error,
+            "Mt_exp": pdg["Mt_err_GeV"],
+            "total_with_Mt_exp": total,
+        },
+        "measured_minus_bound_sigma": (pdg["Mt_GeV"] - central) / total,
+        "measured_minus_bound_sigma_Mt_and_theory_only": (pdg["Mt_GeV"] - central) / math.hypot(pdg["Mt_err_GeV"], theory),
+    }
+
+
+@lru_cache(maxsize=1)
+def _pdg2024_corrected_headline_cached() -> dict[str, Any]:
+    pdg = PDG2024
+    mt = pdg["Mt_GeV"]
+    theory_errors = BUTTAZZO_THEORY_ERRORS
+    central_inputs = pdg2024_corrected_inputs()
+    central = sm_profile(central_inputs, mt, 3)
+
+    def profile(Mt: float = mt, Mh: float = pdg["Mh_GeV"], alpha_s: float = pdg["alpha_s"],
+                shift: Mapping[str, float] | None = None, loops: int = 3) -> SMProfile:
+        return sm_profile(smdr_anchored_inputs(Mt, Mh, alpha_s, shift), Mt, loops)
+
+    variants = {
+        "Mt": (profile(Mt=mt + pdg["Mt_err_GeV"]), profile(Mt=mt - pdg["Mt_err_GeV"])),
+        "alpha_s": (profile(alpha_s=pdg["alpha_s"] + pdg["alpha_s_err"]),
+                    profile(alpha_s=pdg["alpha_s"] - pdg["alpha_s_err"])),
+        "Mh": (profile(Mh=pdg["Mh_GeV"] + pdg["Mh_err_GeV"]), profile(Mh=pdg["Mh_GeV"] - pdg["Mh_err_GeV"])),
+        "theory_lambda": (profile(shift={"lam": +theory_errors["lam"]}), profile(shift={"lam": -theory_errors["lam"]})),
+        "theory_yt": (profile(shift={"yt": +theory_errors["yt"]}), profile(shift={"yt": -theory_errors["yt"]})),
+    }
+    table = {}
+    for label, mu in PDG2024_HEADLINE_SCALES:
+        parts = {key: _half_spread(up.lam(mu), down.lam(mu)) for key, (up, down) in variants.items()}
+        table[label] = {
+            "mu_GeV": mu,
+            "lambda": central.lam(mu),
+            "sigma": math.sqrt(sum(value * value for value in parts.values())),
+            "sigma_parts": parts,
+        }
+    zero = central.instability_scale()
+    zero_parts = {
+        key: _half_spread(math.log10(up.instability_scale()), math.log10(down.instability_scale()))
+        for key, (up, down) in variants.items()
+    }
+    sigma_log10 = math.sqrt(sum(value * value for value in zero_parts.values()))
+    band = [10.0 ** (math.log10(zero) - sigma_log10), 10.0 ** (math.log10(zero) + sigma_log10)]
+    low, high = LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO_RANGE
+    two_loop = sm_profile(central_inputs, mt, 2)
+
+    three = _smdr_critical_top_mass_budget(M_I_GEV, 3)
+    two = _smdr_critical_top_mass_budget(M_I_GEV, 2)
+    total = three["error_budget_GeV"]["total_with_Mt_exp"]
+    landau_crit = {
+        f"factor_{factor}": critical_top_mass(mu=M_I_GEV / factor, loops=3, Mh=pdg["Mh_GeV"], alpha_s=pdg["alpha_s"],
+                                              matching="smdr_v1_3")
+        for factor in (low, high)
+    }
+    landau_sigma = {key: (mt - value) / total for key, value in landau_crit.items()}
+    at_crit = sm_profile(smdr_anchored_inputs(three["Mt_crit_GeV"], pdg["Mh_GeV"], pdg["alpha_s"]),
+                         three["Mt_crit_GeV"], 3)
+
+    # legacy Buttazzo fit at the same PDG 2024 inputs (significance decomposition and matching-fix effect)
+    legacy_inputs = buttazzo_inputs(Mt=mt, Mh=pdg["Mh_GeV"], alpha_s=pdg["alpha_s"])
+    legacy_crit = critical_top_mass(loops=3, Mh=pdg["Mh_GeV"], alpha_s=pdg["alpha_s"])
+    legacy_theory = math.hypot(*(
+        _half_spread(critical_top_mass(loops=2, shift={key: +error}), critical_top_mass(loops=2, shift={key: -error}))
+        for key, error in theory_errors.items()
+    ))
+    legacy_alpha_s = _half_spread(
+        critical_top_mass(loops=3, Mh=pdg["Mh_GeV"], alpha_s=pdg["alpha_s"] + pdg["alpha_s_err"]),
+        critical_top_mass(loops=3, Mh=pdg["Mh_GeV"], alpha_s=pdg["alpha_s"] - pdg["alpha_s_err"]))
+    legacy_mh = _half_spread(
+        critical_top_mass(loops=3, Mh=pdg["Mh_GeV"] + pdg["Mh_err_GeV"], alpha_s=pdg["alpha_s"]),
+        critical_top_mass(loops=3, Mh=pdg["Mh_GeV"] - pdg["Mh_err_GeV"], alpha_s=pdg["alpha_s"]))
+    legacy_lambda_m_i = sm_profile(legacy_inputs, mt, 3).lam(M_I_GEV)
+    sigma_decomposition = {
+        "legacy_fit_Mt_and_theory_only": (mt - legacy_crit) / math.hypot(pdg["Mt_err_GeV"], legacy_theory),
+        "legacy_fit_full_budget": (mt - legacy_crit) / math.sqrt(
+            pdg["Mt_err_GeV"] ** 2 + legacy_alpha_s ** 2 + legacy_mh ** 2 + legacy_theory ** 2),
+        "smdr_Mt_and_theory_only": three["measured_minus_bound_sigma_Mt_and_theory_only"],
+        "smdr_full_budget": three["measured_minus_bound_sigma"],
+        "legacy_Mt_crit_3L_PDG2024_GeV": legacy_crit,
+        "legacy_theory_error_2L_GeV": legacy_theory,
+        "legacy_alpha_s_error_3L_GeV": legacy_alpha_s,
+        "legacy_Mh_error_3L_GeV": legacy_mh,
+        "note": (
+            "legacy_fit_Mt_and_theory_only is the retracted 2.0 sigma (Buttazzo fit formulas, M_t and theory "
+            "errors only); smdr_full_budget is the headline"
+        ),
+    }
+    lam_1e9, lam_7p8e10 = table["1e9"]["lambda"], table["7.8e10"]["lambda"]
+    return {
+        "input_set": PDG2024_INPUT_SET,
+        "inputs": dict(PDG2024),
+        "couplings_at_mt": central_inputs,
+        "lambda_SM_table_3L": table,
+        "msbar_zero_GeV": zero,
+        "msbar_zero_sigma_log10": sigma_log10,
+        "msbar_zero_sigma_log10_parts": zero_parts,
+        "msbar_zero_1sigma_band_GeV": band,
+        "landau_veff_over_msbar_zero_range": [low, high],
+        "landau_veff_zero_estimate_range_GeV": [low * zero, high * zero],
+        "landau_veff_zero_below_M_I_for_both_factors": high * zero < M_I_GEV,
+        "two_loop": {"lambda_M_I": two_loop.lam(M_I_GEV), "msbar_zero_GeV": two_loop.instability_scale()},
+        "Mt_crit_M_I_GeV": three["Mt_crit_GeV"],
+        "Mt_crit_M_I_error_budget_GeV": three["error_budget_GeV"],
+        "measured_minus_bound_sigma": three["measured_minus_bound_sigma"],
+        "Mt_crit_M_I_2L": two,
+        "Mt_crit_landau_veff_range_GeV": landau_crit,
+        "measured_minus_bound_sigma_landau_veff_range": landau_sigma,
+        "instability_scale_at_Mt_crit_GeV": at_crit.instability_scale(),
+        "sigma_decomposition": sigma_decomposition,
+        "matching_fix_effect": {
+            "lambda_M_I_3L_legacy_fit": legacy_lambda_m_i,
+            "lambda_M_I_3L_smdr": table["M_I"]["lambda"],
+            "delta_lambda_M_I": table["M_I"]["lambda"] - legacy_lambda_m_i,
+            "Mt_crit_M_I_3L_legacy_fit_GeV": legacy_crit,
+            "Mt_crit_M_I_3L_smdr_GeV": three["Mt_crit_GeV"],
+            "delta_Mt_crit_GeV": three["Mt_crit_GeV"] - legacy_crit,
+        },
+        "lambda_positive_at_1e9": lam_1e9 > 0.0,
+        "lambda_negative_at_7p8e10": lam_7p8e10 < 0.0,
+        "sign_flips_inside_realistic_v_R_band": lam_1e9 > 0.0 > lam_7p8e10,
+        "realistic_v_R_band": REALISTIC_V_R_BAND,
+        "higgs_matching_verdict": "NOT_FALSIFIED__CONDITIONAL_AND_OPEN",
+        "residual_differences": (
+            "yb, ytau and the four-loop QCD term of beta_yt are omitted: |Delta lambda| <= 3e-5 and "
+            "|Delta M_t^crit| <= 0.003 GeV against an independent engine that keeps them"
+        ),
+        "error_method": (
+            "symmetric half-differences of +-1 sigma shifts in M_t, alpha_s, M_h and the theory shifts "
+            "(lambda 3e-4, y_t 5e-4 at mu = M_t), combined in quadrature"
+        ),
+    }
+
+
+def pdg2024_corrected_headline() -> dict[str, Any]:
+    """PDG 2024 headline: 3L + 4L QCD running with SMDR v1.3-anchored matching, all at PDG central inputs."""
+    return copy.deepcopy(_pdg2024_corrected_headline_cached())
+
+
 def pdg2024_central_run() -> dict[str, Any]:
-    """SM running at the PDG 2024 central M_t, M_h, alpha_s through the Buttazzo fits."""
+    """PDG 2024 central inputs with SMDR v1.3-anchored matching."""
     mt = PDG2024["Mt_GeV"]
-    couplings = buttazzo_inputs(Mt=mt, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"])
+    couplings = pdg2024_corrected_inputs()
+    legacy = buttazzo_inputs(Mt=mt, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"])
+    low, high = LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO_RANGE
     rows = {}
     for label, loops in (("2L", 2), ("3L+4QCD", 3)):
         profile = sm_profile(couplings, mt, loops)
         instability = profile.instability_scale()
         rows[label] = {
             "msbar_instability_scale_GeV": instability,
+            # conservative upper end (factor 6.5) of the definition-dependent range
             "landau_veff_zero_estimate_GeV": LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO * instability,
+            "landau_veff_zero_estimate_range_GeV": [low * instability, high * instability],
             "lambda_M_I": profile.lam(M_I_GEV),
             "lambda_M_GUT": profile.lam(M_GUT_GEV),
             "instability_below_M_I_msbar": instability < M_I_GEV,
@@ -940,23 +1262,36 @@ def pdg2024_central_run() -> dict[str, Any]:
             "decay_estimate": tunnelling_estimate(profile, instability, M_I_GEV),
         }
     return {"inputs": {"Mt_GeV": mt, "Mh_GeV": PDG2024["Mh_GeV"], "alpha_s": PDG2024["alpha_s"],
-                       "couplings_at_mt": couplings}, "runs": rows}
+                       "matching": "SMDR v1.3-anchored (smdr_anchored_inputs)",
+                       "couplings_at_mt": couplings},
+            "runs": rows,
+            "legacy_buttazzo_fit_lambda_M_I": {
+                "2L": sm_profile(legacy, mt, 2).lam(M_I_GEV),
+                "3L+4QCD": sm_profile(legacy, mt, 3).lam(M_I_GEV),
+            }}
 
 
 def top_mass_bound_audit() -> dict[str, Any]:
+    pdg2024 = pdg2024_corrected_headline()
     reference = {"2L": critical_top_mass(loops=2), "3L+4QCD": critical_top_mass(loops=3)}
     pdg_like = {
-        "2L": critical_top_mass(loops=2, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"]),
-        "3L+4QCD": critical_top_mass(loops=3, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"]),
+        "2L": pdg2024["Mt_crit_M_I_2L"]["Mt_crit_GeV"],
+        "3L+4QCD": pdg2024["Mt_crit_M_I_GeV"],
     }
     mu_veff = M_I_GEV / LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO
+    legacy_pdg = {
+        "2L": critical_top_mass(loops=2, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"]),
+        "3L+4QCD": pdg2024["sigma_decomposition"]["legacy_Mt_crit_3L_PDG2024_GeV"],
+        "3L+4QCD_landau_veff_x6.5": critical_top_mass(
+            mu=mu_veff, loops=3, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"]),
+    }
     veff = {
         "2L": critical_top_mass(mu=mu_veff, loops=2),
         "3L+4QCD": critical_top_mass(mu=mu_veff, loops=3),
         "2L_PDG2024_Mh_alpha_s": critical_top_mass(
-            mu=mu_veff, loops=2, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"]),
-        "3L+4QCD_PDG2024_Mh_alpha_s": critical_top_mass(
-            mu=mu_veff, loops=3, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"]),
+            mu=mu_veff, loops=2, Mh=PDG2024["Mh_GeV"], alpha_s=PDG2024["alpha_s"], matching="smdr_v1_3"),
+        "3L+4QCD_PDG2024_Mh_alpha_s": pdg2024["Mt_crit_landau_veff_range_GeV"][
+            f"factor_{LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO}"],
     }
     shifts = {}
     for key, error in BUTTAZZO_THEORY_ERRORS.items():
@@ -964,7 +1299,6 @@ def top_mass_bound_audit() -> dict[str, Any]:
         down = critical_top_mass(loops=2, shift={key: -error})
         shifts[key] = abs(up - down) / 2.0
     theory = math.sqrt(sum(value * value for value in shifts.values()))
-    total_error = math.hypot(PDG2024["Mt_err_GeV"], theory)
     at_bound = sm_profile(buttazzo_inputs(Mt=reference["2L"]), reference["2L"], 2)
     gut_zero = {
         "2L": critical_top_mass(mu=M_GUT_GEV, loops=2),
@@ -973,25 +1307,38 @@ def top_mass_bound_audit() -> dict[str, Any]:
     return {
         "definition": "largest M_t with lambda_SM(mu) > 0 for all mu < M_I, i.e. Lambda_I >= M_I",
         "Mt_max_absolute_stability_threshold_at_M_I_GeV": reference,
+        "legacy_input_set": LEGACY_INPUT_SET,
         "Mt_max_with_PDG2024_Mh_and_alpha_s_GeV": pdg_like,
+        "Mt_max_with_PDG2024_Mh_and_alpha_s_matching": "SMDR v1.3-anchored (smdr_anchored_inputs)",
+        "Mt_max_with_PDG2024_Mh_and_alpha_s_legacy_buttazzo_fit_GeV": legacy_pdg,
         "Mt_max_landau_veff_zero_definition_estimate_GeV": veff,
+        "Mt_max_landau_veff_range_PDG2024_GeV": pdg2024["Mt_crit_landau_veff_range_GeV"],
         "landau_veff_definition_note": (
-            "Same bound with the Landau-gauge effective-potential zero, estimated as "
-            f"{LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO} x the MSbar zero (Buttazzo et al.: Lambda_lambda ~ 2 Lambda_V, "
-            "Lambda_I ~ 13 Lambda_V), i.e. lambda_SM(M_I/6.5) = 0. The spread between the two definitions "
-            "is a theory systematic of the RG-improved criterion."
+            "Same bound with the Landau-gauge effective-potential zero, estimated as 2.5-6.5 x the MSbar zero "
+            "(definition dependent: Hiller et al. 2401.08811; Buttazzo et al. 1307.3536); keys without a factor use "
+            f"the conservative {LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO}, i.e. lambda_SM(M_I/6.5) = 0 (2L/3L+4QCD: legacy "
+            "Buttazzo inputs; *_PDG2024_Mh_alpha_s: PDG 2024 with SMDR v1.3-anchored matching). The spread between "
+            "the definitions is a theory systematic of the RG-improved criterion."
         ),
         "theory_error_GeV_from_matching": {"per_input": shifts, "combined": theory},
+        "pdg2024_error_budget_GeV": pdg2024["Mt_crit_M_I_error_budget_GeV"],
+        "pdg2024_error_budget_2L_GeV": pdg2024["Mt_crit_M_I_2L"]["error_budget_GeV"],
         "instability_scale_at_bound_GeV": at_bound.instability_scale(),
         "measured_top_mass": {
             "Mt_GeV": PDG2024["Mt_GeV"],
             "error_GeV": PDG2024["Mt_err_GeV"],
             "source": "PDG 2024 average of direct measurements (MC-mass interpretation ambiguity ~0.5 GeV not included)",
         },
-        "measured_minus_bound_in_sigma_3L_PDG_like": (PDG2024["Mt_GeV"] - pdg_like["3L+4QCD"]) / total_error,
-        "measured_minus_bound_in_sigma_2L_PDG_like": (PDG2024["Mt_GeV"] - pdg_like["2L"]) / total_error,
-        "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate": (
-            PDG2024["Mt_GeV"] - veff["3L+4QCD_PDG2024_Mh_alpha_s"]) / total_error,
+        "measured_minus_bound_in_sigma_3L_PDG_like": pdg2024["measured_minus_bound_sigma"],
+        "measured_minus_bound_in_sigma_2L_PDG_like": pdg2024["Mt_crit_M_I_2L"]["measured_minus_bound_sigma"],
+        "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate": pdg2024[
+            "measured_minus_bound_sigma_landau_veff_range"][f"factor_{LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO}"],
+        "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_range": pdg2024[
+            "measured_minus_bound_sigma_landau_veff_range"],
+        "measured_minus_bound_significance_note": (
+            "PDG 2024 with SMDR v1.3-anchored matching and the full error budget (M_t, alpha_s, M_h, theory)"
+        ),
+        "sigma_decomposition": pdg2024["sigma_decomposition"],
         "Mt_max_for_lambda_SM_M_GUT_nonnegative_GeV": gut_zero,
         "pdg2024_central": pdg2024_central_run(),
     }
@@ -1532,9 +1879,14 @@ def build_report() -> dict[str, Any]:
     portal = portal_analysis()
     gut = gut_single_stage_audit()
     anchor = anchor_check()
+    pdg2024 = pdg2024_corrected_headline()
+    validation = matching_validation()
     profile = sm_profile(loops=2)
     instability = profile.instability_scale()
     decay_mi = tunnelling_estimate(profile, instability, M_I_GEV)
+    for block in (running, portal, decay_mi, gut):
+        block["input_set"] = LEGACY_INPUT_SET
+    pdg_central_profile = sm_profile(pdg2024_corrected_inputs(), PDG2024["Mt_GeV"], 3)
     runs = running["runs"]
     planck = running["three_loop_planck_couplings"]
     grid = portal["classification_grid"]
@@ -1595,6 +1947,13 @@ def build_report() -> dict[str, Any]:
             for window in windows
         ),
         "benchmark_compatible_portal_solution_converged": fix["converged"],
+        "smdr_anchor_reproduces_smdr_2019_2021_reference_points": validation["smdr_reference_points_reproduced"],
+        "smdr_anchor_agrees_with_bednyakov_2015_table_I": validation["bednyakov_2015_agrees"],
+        "pdg2024_msbar_zero_is_zero_of_lambda": abs(pdg_central_profile.lam(pdg2024["msbar_zero_GeV"])) < 1.0e-12,
+        "pdg2024_critical_top_mass_puts_zero_at_M_I": (
+            pdg2024["instability_scale_at_Mt_crit_GeV"] is not None
+            and abs(math.log(pdg2024["instability_scale_at_Mt_crit_GeV"] / M_I_GEV)) < 1.0e-5
+        ),
         "no_gate_closed_or_model_excluded": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
@@ -1655,8 +2014,36 @@ def build_report() -> dict[str, Any]:
         "n_radial_windows": len(radial_windows),
         "n_metastable_grid_rows": len(metastable_rows),
         "n_metastable_grid_rows_with_tree_lambda_eff_at_gut_nonnegative": len(metastable_tree_min),
+        "pdg2024_lambda_SM_M_I_negative_at_central_inputs": ok
+        and pdg2024["lambda_SM_table_3L"]["M_I"]["lambda"] < 0.0,
+        "pdg2024_lambda_SM_sign_flips_between_1e9_and_7p8e10_GeV": ok
+        and pdg2024["sign_flips_inside_realistic_v_R_band"],
+        "absolute_stability_excluded_beyond_2_sigma_pdg2024_corrected": ok
+        and pdg2024["measured_minus_bound_sigma"] > 2.0,
     }
+    pdg_table = pdg2024["lambda_SM_table_3L"]
+    pdg_budget = pdg2024["Mt_crit_M_I_error_budget_GeV"]
+    pdg_landau = pdg2024["Mt_crit_landau_veff_range_GeV"]
+    pdg_landau_sigma = pdg2024["measured_minus_bound_sigma_landau_veff_range"]
     headline = {
+        "input_set": PDG2024_INPUT_SET,
+        "lambda_SM_M_I": pdg_table["M_I"]["lambda"],
+        "lambda_SM_M_I_sigma": pdg_table["M_I"]["sigma"],
+        "lambda_SM_M_GUT": pdg_table["M_GUT"]["lambda"],
+        "lambda_SM_M_GUT_sigma": pdg_table["M_GUT"]["sigma"],
+        "lambda_SM_v_R_table": {
+            label: {"mu_GeV": row["mu_GeV"], "lambda": row["lambda"], "sigma": row["sigma"]}
+            for label, row in pdg_table.items()
+        },
+        "msbar_zero_GeV": pdg2024["msbar_zero_GeV"],
+        "msbar_zero_1sigma_band_GeV": pdg2024["msbar_zero_1sigma_band_GeV"],
+        "Mt_crit_M_I_GeV": pdg2024["Mt_crit_M_I_GeV"],
+        "Mt_crit_M_I_error_GeV": pdg_budget["bound_error"],
+        "measured_Mt_above_bound_sigma_msbar": pdg2024["measured_minus_bound_sigma"],
+        "measured_Mt_above_bound_sigma_landau_veff_range": sorted(pdg_landau_sigma.values()),
+        "landau_veff_over_msbar_zero_range": list(LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO_RANGE),
+    }
+    legacy = {
         "Lambda_I_2L_GeV": instability,
         "Lambda_I_3L_GeV": runs["3L+4QCD"]["instability_scale_GeV"],
         "lambda_SM_M_I_2L": runs["2L"]["lambda_at"]["M_I"],
@@ -1668,12 +2055,10 @@ def build_report() -> dict[str, Any]:
         "lambda_SM_M_Pl_3L": runs["3L+4QCD"]["lambda_at"]["M_Pl"],
         "Mt_max_absolute_stability_2L_GeV": bound["Mt_max_absolute_stability_threshold_at_M_I_GeV"]["2L"],
         "Mt_max_absolute_stability_3L_GeV": bound["Mt_max_absolute_stability_threshold_at_M_I_GeV"]["3L+4QCD"],
-        "Mt_max_absolute_stability_3L_PDG2024_Mh_alpha_s_GeV": bound["Mt_max_with_PDG2024_Mh_and_alpha_s_GeV"]["3L+4QCD"],
+        "Mt_max_absolute_stability_3L_PDG2024_Mh_alpha_s_GeV": bound[
+            "Mt_max_with_PDG2024_Mh_and_alpha_s_legacy_buttazzo_fit_GeV"]["3L+4QCD"],
         "Mt_max_absolute_stability_3L_PDG2024_landau_veff_estimate_GeV": bound[
-            "Mt_max_landau_veff_zero_definition_estimate_GeV"]["3L+4QCD_PDG2024_Mh_alpha_s"],
-        "measured_Mt_above_bound_sigma_msbar": bound["measured_minus_bound_in_sigma_3L_PDG_like"],
-        "measured_Mt_above_bound_sigma_landau_veff_estimate": bound[
-            "measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate"],
+            "Mt_max_with_PDG2024_Mh_and_alpha_s_legacy_buttazzo_fit_GeV"]["3L+4QCD_landau_veff_x6.5"],
         "bounce_action_window_Lambda_I_to_M_I": decay_mi.get("bounce_action_at_lambda_min"),
         "lambda_S_max_radial_mode_below_Lambda_I": radial["lambda_S_max_for_m_rho_below_Lambda_I_2L"],
         "required_O34_with_O36_eq_O23_eq_1": fix["required_O34_at_M_GUT"],
@@ -1681,45 +2066,58 @@ def build_report() -> dict[str, Any]:
         "tree_level_lambda_eff_M_GUT_O36_eq_O23_eq_1": fix["tree_level_lambda_eff_at_gut_values"],
         "tree_level_lambda_eff_M_GUT_window_middles": middles,
     }
+    band_lo, band_hi = pdg2024["msbar_zero_1sigma_band_GeV"]
     verdict = (
+        "PDG 2024 headline (M_t = 172.57 +- 0.29, M_h = 125.20 +- 0.11, alpha_s = 0.1180 +- 0.0009; SMDR "
+        "v1.3-anchored MSbar matching; three-loop SM running with four-loop QCD in g3): "
+        f"lambda_SM(M_I) = {pdg_table['M_I']['lambda']:.4f} +- {pdg_table['M_I']['sigma']:.4f} and "
+        f"lambda_SM(M_GUT) = {pdg_table['M_GUT']['lambda']:.4f} +- {pdg_table['M_GUT']['sigma']:.4f}; the MSbar "
+        f"zero is at {pdg2024['msbar_zero_GeV']:.2g} GeV (1 sigma {band_lo:.2g}-{band_hi:.2g} GeV) and the "
+        "Landau-gauge effective-potential zero is 2.5-6.5x higher (definition dependent). Absolute stability "
+        f"with the threshold at M_I needs M_t < {pdg2024['Mt_crit_M_I_GeV']:.2f} +- {pdg_budget['bound_error']:.2f} "
+        f"GeV, {pdg2024['measured_minus_bound_sigma']:.2f} sigma below the measured value once the alpha_s and "
+        f"M_h errors are included ({pdg_landau['factor_2.5']:.2f}-{pdg_landau['factor_6.5']:.2f} GeV, "
+        f"{pdg_landau_sigma['factor_2.5']:.2f}-{pdg_landau_sigma['factor_6.5']:.2f} sigma, with the "
+        "effective-potential zero). The earlier 2.0 sigma omitted the alpha_s and M_h errors and used the "
+        "Buttazzo et al. fit formulas, whose g3(M_t) and y_t(M_t) are 0.0017 and 0.0009 too high. "
+        f"lambda_SM(v_R) is {pdg_table['1e9']['lambda']:+.4f} at 1e9 GeV and {pdg_table['7.8e10']['lambda']:+.4f} "
+        "at 7.8e10 GeV: its sign flips inside the realistic v_R band, so the Higgs matching is conditional and "
+        "open, not falsified. "
+        "Legacy regression (Buttazzo et al. 2013 central inputs, M_t = 173.34 GeV; used for the portal "
+        "analysis): "
         "Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam anchor chain, and not "
         "realized by any current repository vacuum, whose Delta_R is not the SM singlet): "
         f"two-loop SM running from the Buttazzo et al. inputs puts the MSbar instability scale at "
         f"{instability:.3g} GeV, a factor {M_I_GEV / instability:.0f} below M_I, with "
-        f"lambda_SM(M_I) = {headline['lambda_SM_M_I_2L']:.5f} and lambda_SM(M_GUT) = "
-        f"{headline['lambda_SM_M_GUT_2L']:.5f} (one loop: {headline['lambda_SM_M_GUT_1L']:.4f}). With the H-S "
+        f"lambda_SM(M_I) = {legacy['lambda_SM_M_I_2L']:.5f} and lambda_SM(M_GUT) = "
+        f"{legacy['lambda_SM_M_GUT_2L']:.5f} (one loop: {legacy['lambda_SM_M_GUT_1L']:.4f}). With the H-S "
         "portal threshold at M_I, positive-portal windows keep lambda_H > 0 up to M_GUT for every scanned "
         "lambda_S. Copositivity is not the tree-level local-minimum condition (the single-stage point is "
         "copositive too). At the tuned point of the tree potential the condition is lambda_eff = lambda_H - "
         "lambda_HS^2/(4 lambda_S) >= 0 (g3_tuned_target_portal_threshold_v20). With the S threshold at M_I, "
         f"lambda_eff(M_I) = lambda_SM(M_I) = {lam_eff_mi:.4f} < 0, so the M_I threshold does not remove the "
         "tree-level saddle; at the GUT coefficients lambda_eff is "
-        f"{headline['tree_level_lambda_eff_M_GUT_O36_eq_O23_eq_1']:.3f} for the O36 = O23 = 1 benchmark and "
+        f"{legacy['tree_level_lambda_eff_M_GUT_O36_eq_O23_eq_1']:.3f} for the O36 = O23 = 1 benchmark and "
         f"negative at {outcomes['n_window_middles_with_tree_lambda_eff_at_gut_negative']} of "
         f"{outcomes['n_window_middles']} window middles. Metastability is the RG-improved statement. "
         "In the RG-improved potential the EW vacuum is still not the global minimum at central inputs, "
         "because the SM segment [Lambda_I, M_I] has lambda_SM < 0; the bounce estimate S ~ "
-        f"{headline['bounce_action_window_Lambda_I_to_M_I']:.0f} far exceeds the ~500 needed, so it is "
+        f"{legacy['bounce_action_window_Lambda_I_to_M_I']:.0f} far exceeds the ~500 needed, so it is "
         "metastable and long-lived (estimate). At tree level with the S vev the EW/S point is a local (and "
         "then global) minimum iff lambda_SM(threshold) >= 0, so at central inputs it is the tree-level saddle "
         "stated above. Absolute stability with the threshold at M_I needs "
-        f"M_t < {headline['Mt_max_absolute_stability_2L_GeV']:.2f} GeV (2L) / "
-        f"{headline['Mt_max_absolute_stability_3L_GeV']:.2f} GeV (3L) with the MSbar criterion. With "
-        f"PDG 2024 M_h and alpha_s this becomes {headline['Mt_max_absolute_stability_3L_PDG2024_Mh_alpha_s_GeV']:.2f} GeV, "
-        f"{headline['measured_Mt_above_bound_sigma_msbar']:.1f} sigma below the measured "
-        f"{PDG2024['Mt_GeV']} +- {PDG2024['Mt_err_GeV']} GeV; with the Landau-gauge effective-potential zero it is ~"
-        f"{headline['Mt_max_absolute_stability_3L_PDG2024_landau_veff_estimate_GeV']:.2f} GeV "
-        f"({headline['measured_Mt_above_bound_sigma_landau_veff_estimate']:.1f} sigma). The alternative is a "
-        "radial mode below Lambda_I, i.e. "
-        f"lambda_S <~ {headline['lambda_S_max_radial_mode_below_Lambda_I']:.2g}, far from the certified O23 = 1 "
+        f"M_t < {legacy['Mt_max_absolute_stability_2L_GeV']:.2f} GeV (2L) / "
+        f"{legacy['Mt_max_absolute_stability_3L_GeV']:.2f} GeV (3L) with the MSbar criterion at these legacy "
+        "inputs. The alternative is a radial mode below Lambda_I, i.e. "
+        f"lambda_S <~ {legacy['lambda_S_max_radial_mode_below_Lambda_I']:.2g}, far from the certified O23 = 1 "
         "(RG-improved: lambda_eff(m_rho) > 0 there, but lambda_eff at the GUT coefficients is negative at every "
         "scanned window point). "
         "Keeping O36 = O23 = 1 needs O34 = lambda_HS(M_GUT) = "
-        f"{headline['required_O34_with_O36_eq_O23_eq_1']:.3f} (RG-improved metastable; a tree-level saddle, since "
+        f"{legacy['required_O34_with_O36_eq_O23_eq_1']:.3f} (RG-improved metastable; a tree-level saddle, since "
         "O34 > 2 at O36 = O23 = 1). Single-stage GUT matching needs "
         f"lambda_eff(M_GUT) = {gut['lambda_eff_required_at_M_GUT']['2L']:.4f} at two loops (negative at every loop "
         "order), so that tuned point is not a tree-level local minimum either. The RG-improved M_I-threshold "
-        "conclusions are marginal: they depend on M_t (1-2 sigma), on the MSbar versus "
+        "conclusions are marginal: they depend on M_t (about 1 sigma), on the MSbar versus "
         "effective-potential instability criterion, and on the omitted states listed in the scope. This is an "
         "RG-improved EFT statement, not an exact lower witness of the 486-field tree potential: G3 stays open "
         "and the model is neither validated nor excluded."
@@ -1747,6 +2145,9 @@ def build_report() -> dict[str, Any]:
         "checks": checks,
         "scientific_outcomes": outcomes,
         "headline": headline,
+        "headline_legacy_buttazzo_2013": legacy,
+        "pdg2024_corrected": pdg2024,
+        "matching_validation": validation,
         "scales_GeV": {
             "M_I": M_I_GEV,
             "M_GUT": M_GUT_GEV,
@@ -1783,11 +2184,16 @@ def build_report() -> dict[str, Any]:
             "Threshold matching is tree level at mu = M_I (or at m_rho in the radial-mode scan). One-loop "
             "threshold corrections and the log of m_rho/M_I are omitted.",
             "Portal running is one loop; the singlet-only two-loop pieces from SMASH App. A enter only as a "
-            "sensitivity estimate. SM running below M_I is two loop (three loop + four-loop QCD as a cross-check).",
+            "sensitivity estimate. SM running below M_I is two loop (three loop + four-loop QCD as a cross-check). "
+            "The PDG 2024 headline (pdg2024_corrected) uses three-loop running with four-loop QCD in g3 and SMDR "
+            "v1.3-anchored matching; yb, ytau and the four-loop QCD term of beta_yt are omitted (|Delta lambda| <= "
+            "3e-5, |Delta M_t^crit| <= 0.003 GeV).",
             "Stability is judged on the RG-improved tree potential, with lambda evaluated at mu ~ field value. "
-            "The MSbar zero Lambda_I is not the Landau-gauge effective-potential zero, which is ~6.5x higher "
-            "(Buttazzo et al.). Both sit below M_I at the Buttazzo and PDG 2024 central inputs. The top-mass "
-            "bound moves by ~0.4 GeV between the two definitions, and it is quoted for both.",
+            "The MSbar zero Lambda_I is not the Landau-gauge effective-potential zero, which is 2.5-6.5x higher "
+            "depending on the definition (Hiller et al. 2401.08811: Lambda_0,eff/Lambda_0 ~ 2.5; Buttazzo et al. "
+            "1307.3536: ~6.5). Both sit below M_I at the Buttazzo and PDG 2024 central inputs even for the factor "
+            "6.5. The top-mass bound moves by 0.19-0.42 GeV between the definitions (PDG 2024: 172.04 GeV MSbar, "
+            "172.23-172.46 GeV effective potential), and it is quoted for all of them.",
             "The vacuum-decay numbers use the tree-level Fubini bounce, with no quantum, gravitational or "
             "thermal corrections. They are estimates.",
             "Tree-level local minimality at the tuned point (lambda_eff >= 0) is evaluated on the (H, S) block "
@@ -1810,8 +2216,15 @@ def build_report() -> dict[str, Any]:
             "conservative lower bound (V >= lambda_SM(M_I) |H|^4 at tree level). Inflationary and thermal "
             "Higgs fluctuations are not addressed.",
             "With PDG 2024 inputs, the effective-potential criterion and matching at m_rho, absolute stability is "
-            "allowed for small lambda_S; the 'metastable at central inputs' status refers to the Buttazzo 2013 "
-            "central values and the MSbar criterion.",
+            "allowed for small lambda_S; the 'metastable at central inputs' status and the portal scan use the "
+            "legacy Buttazzo 2013 central values and the MSbar criterion; at PDG 2024 central inputs with "
+            "SMDR-anchored matching lambda_SM(M_I) = -0.0033 +- 0.0029 is also negative, but only 1.1 sigma from "
+            "zero (top-mass tension 1.16 sigma), and lambda_SM(v_R) changes sign inside the realistic v_R band: the "
+            "Higgs matching is conditional and open, not falsified.",
+            "Matching: the legacy Buttazzo et al. fit formulas (1307.3536 eqs. 55-60) give g3(M_t) and y_t(M_t) too "
+            "high by 0.0017 and 0.0009 relative to SMDR v1.3 and Bednyakov et al. 2015; the PDG 2024 headline uses "
+            "SMDR v1.3-anchored couplings (matching_validation), which raises lambda(M_I) by 0.0006 and M_t^crit by "
+            "0.09 GeV. The fit formulas are kept only for the Buttazzo 2013 regression set.",
         ],
         "verdict": verdict,
     }
@@ -1825,12 +2238,27 @@ def _fmt_num(value: Any, spec: str = ".4g") -> str:
     return format(value, spec)
 
 
+def _same_sign(a: float, b: float) -> str:
+    return "same" if (a < 0.0) == (b < 0.0) else "OPPOSITE"
+
+
 def _markdown(report: dict[str, Any]) -> str:
     running = report["sm_running"]
     bound = report["top_mass_bound"]
     portal = report["portal"]
     gut = report["gut_single_stage_matching"]
     decay = report["metastability_threshold_at_M_I_2L"]
+    pdg2024 = report["pdg2024_corrected"]
+    budget = pdg2024["Mt_crit_M_I_error_budget_GeV"]
+    landau = pdg2024["Mt_crit_landau_veff_range_GeV"]
+    landau_sigma = pdg2024["measured_minus_bound_sigma_landau_veff_range"]
+    decomposition = pdg2024["sigma_decomposition"]
+    validation = report["matching_validation"]
+    bias = validation["legacy_buttazzo_fit_minus_anchor_at_PDG2024"]
+    residual = validation["smdr_reference_point_max_abs_residual"]
+    bednyakov = validation["bednyakov_2015_minus_anchor_at_PDG2024"]
+    fix_effect = pdg2024["matching_fix_effect"]
+    band_lo, band_hi = pdg2024["msbar_zero_1sigma_band_GeV"]
     lines = [
         "# Higgs-vacuum stability in an SM + singlet EFT at the repository scales -- v20",
         "",
@@ -1838,7 +2266,39 @@ def _markdown(report: dict[str, Any]) -> str:
         "",
         report["verdict"],
         "",
-        "## SM running (Buttazzo et al. 1307.3536 v3/v4 inputs, mu0 = M_t = 173.34 GeV)",
+        "## PDG 2024 headline (SMDR v1.3-anchored matching, 3L + 4L QCD in g3)",
+        "",
+        "| scale | mu [GeV] | lambda_SM | 1 sigma |",
+        "|---|---|---|---|",
+    ]
+    for label, row in pdg2024["lambda_SM_table_3L"].items():
+        lines.append(f"| {label} | {row['mu_GeV']:.4g} | {row['lambda']:+.4f} | {row['sigma']:.4f} |")
+    lines += [
+        "",
+        f"- MSbar zero `{pdg2024['msbar_zero_GeV']:.3g}` GeV (1 sigma `{band_lo:.2g}`-`{band_hi:.2g}` GeV); "
+        "Landau-gauge effective-potential zero 2.5-6.5 x higher (definition dependent).",
+        f"- Absolute stability with the threshold at M_I: M_t < `{pdg2024['Mt_crit_M_I_GeV']:.2f}` +- "
+        f"`{budget['bound_error']:.2f}` GeV (alpha_s `{budget['alpha_s']:.2f}`, M_h `{budget['Mh']:.2f}`, theory "
+        f"`{budget['theory']:.2f}`); measured {PDG2024['Mt_GeV']} +- {PDG2024['Mt_err_GeV']} GeV: "
+        f"`{pdg2024['measured_minus_bound_sigma']:.2f}` sigma; effective-potential zero "
+        f"`{landau['factor_2.5']:.2f}`-`{landau['factor_6.5']:.2f}` GeV "
+        f"(`{landau_sigma['factor_2.5']:.2f}`-`{landau_sigma['factor_6.5']:.2f}` sigma).",
+        f"- Significance decomposition (M_t + theory only / full budget): legacy Buttazzo fit "
+        f"`{decomposition['legacy_fit_Mt_and_theory_only']:.2f}` / `{decomposition['legacy_fit_full_budget']:.2f}` "
+        f"(the retracted 2.0 sigma is the first); SMDR-anchored `{decomposition['smdr_Mt_and_theory_only']:.2f}` / "
+        f"`{decomposition['smdr_full_budget']:.2f}` (headline).",
+        f"- Matching bias of the legacy Buttazzo fit formulas at PDG 2024 (fit minus SMDR v1.3 anchor): g3 "
+        f"`{bias['g3']:+.5f}`, y_t `{bias['yt']:+.5f}`, lambda `{bias['lam']:+.5f}`; the fix moves lambda(M_I) by "
+        f"`{fix_effect['delta_lambda_M_I']:+.4f}` and M_t^crit by `{fix_effect['delta_Mt_crit_GeV']:+.3f}` GeV.",
+        f"- Validation: SMDR 2019/2020/2021 reference points reproduced (max |residual| g3 `{residual['g3']:.1e}`, "
+        f"y_t `{residual['yt']:.1e}`, lambda `{residual['lam']:.1e}`: "
+        f"{validation['smdr_reference_points_reproduced']}); Bednyakov et al. 2015 Table I |dg3| "
+        f"`{abs(bednyakov['g3']):.1e}`, |dy_t| `{abs(bednyakov['yt']):.1e}`: {validation['bednyakov_2015_agrees']}.",
+        f"- {pdg2024['residual_differences']}.",
+        "- Verdict: Higgs matching not falsified; conditional and open (sign flips inside the realistic v_R band).",
+        "",
+        "## Legacy regression: SM running at the Buttazzo et al. 2013 inputs (mu0 = M_t = 173.34 GeV; "
+        "superseded headline)",
         "",
         "| run | Lambda_I [GeV] | lambda(M_I) | lambda(M_GUT) | lambda(M_Pl) | lambda_min |",
         "|---|---|---|---|---|---|",
@@ -1867,23 +2327,28 @@ def _markdown(report: dict[str, Any]) -> str:
         "## Top-mass bound and metastability (threshold at M_I)",
         "",
         f"- Absolute stability needs Lambda_I >= M_I: M_t < `{mt['2L']:.3f}` GeV (2L), `{mt['3L+4QCD']:.3f}` GeV "
-        f"(3L+4QCD); with M_h = 125.20, alpha_s = 0.1180: `{pdg['2L']:.3f}` / `{pdg['3L+4QCD']:.3f}` GeV "
-        f"(matching theory error +-{bound['theory_error_GeV_from_matching']['combined']:.2f} GeV).",
-        f"- With the Landau-gauge effective-potential zero (~6.5 x the MSbar zero) instead: "
-        f"`{veff['3L+4QCD']:.3f}` GeV (3L), `{veff['3L+4QCD_PDG2024_Mh_alpha_s']:.3f}` GeV (3L, PDG 2024 M_h, alpha_s); "
-        "an estimate.",
+        f"(3L+4QCD) at the legacy inputs; PDG 2024 M_h = 125.20, alpha_s = 0.1180 with SMDR v1.3-anchored "
+        f"matching: `{pdg['2L']:.3f}` / `{pdg['3L+4QCD']:.3f}` GeV (legacy matching theory error "
+        f"+-{bound['theory_error_GeV_from_matching']['combined']:.2f} GeV; full PDG 2024 bound error "
+        f"+-{bound['pdg2024_error_budget_GeV']['bound_error']:.2f} GeV).",
+        f"- With the Landau-gauge effective-potential zero (2.5-6.5 x the MSbar zero; 6.5 shown) instead: "
+        f"`{veff['3L+4QCD']:.3f}` GeV (3L, legacy inputs), `{veff['3L+4QCD_PDG2024_Mh_alpha_s']:.3f}` GeV (3L, "
+        "PDG 2024, SMDR matching); an estimate.",
         f"- Measured M_t = {PDG2024['Mt_GeV']} +- {PDG2024['Mt_err_GeV']} GeV: "
-        f"{bound['measured_minus_bound_in_sigma_3L_PDG_like']:.1f} sigma above the 3L MSbar bound, "
-        f"{bound['measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate']:.1f} sigma above the "
-        "effective-potential estimate.",
-        f"- PDG 2024 central inputs (3L): MSbar zero `{central['msbar_instability_scale_GeV']:.3g}` GeV, "
-        f"effective-potential zero ~`{central['landau_veff_zero_estimate_GeV']:.3g}` GeV, both below M_I; "
+        f"{bound['measured_minus_bound_in_sigma_3L_PDG_like']:.2f} sigma above the 3L MSbar bound (PDG 2024, SMDR "
+        "matching, full error budget incl. alpha_s and M_h), "
+        f"{bound['measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate']:.2f} sigma above the "
+        "effective-potential estimate (factor 6.5).",
+        f"- PDG 2024 central inputs (3L, SMDR matching): MSbar zero `{central['msbar_instability_scale_GeV']:.3g}` GeV, "
+        f"effective-potential zero ~`{central['landau_veff_zero_estimate_range_GeV'][0]:.3g}`-"
+        f"`{central['landau_veff_zero_estimate_range_GeV'][1]:.3g}` GeV, both below M_I; "
         f"lambda_SM(M_I) = `{central['lambda_M_I']:.5f}`.",
-        f"- Window [Lambda_I, M_I]: lambda_min = `{decay['lambda_min_in_window']:.5f}`, bounce action "
+        f"- Window [Lambda_I, M_I] (legacy Buttazzo 2013 inputs, M_t = 173.34 GeV; superseded headline): "
+        f"lambda_min = `{decay['lambda_min_in_window']:.5f}`, bounce action "
         f"S ~ `{decay['bounce_action_at_lambda_min']:.0f}` vs ~{decay['critical_action_at_lambda_min']:.0f} needed; "
         f"max log10 p ~ `{decay['max_log10_decay_probability_in_past_light_cone']:.0f}` (estimate).",
         "",
-        "## Portal windows at M_I (lambda_H > 0 and |lambda| < 4 pi up to M_GUT)",
+        "## Portal windows at M_I (legacy Buttazzo 2013 inputs; lambda_H > 0 and |lambda| < 4 pi up to M_GUT)",
         "",
         "| lambda_S(M_I) | lambda_HS min | lambda_HS max | delta min | (lambda_H, lambda_S, lambda_HS)(M_GUT) at middle "
         "| tree lambda_eff(M_GUT) at middle | class |",
@@ -1903,7 +2368,11 @@ def _markdown(report: dict[str, Any]) -> str:
     lines += [
         "",
         f"- Tree level: lambda_eff(M_I) = lambda_SM(M_I) = "
-        f"`{portal['matching']['tree_level_lambda_eff_at_M_I_every_solution']:.5f}` for every M_I solution, so the "
+        f"`{portal['matching']['tree_level_lambda_eff_at_M_I_every_solution']:.5f}` (legacy Buttazzo 2013 inputs; "
+        f"PDG 2024 headline `{pdg2024['lambda_SM_table_3L']['M_I']['lambda']:.4f}` +- "
+        f"`{pdg2024['lambda_SM_table_3L']['M_I']['sigma']:.4f}`, "
+        f"{_same_sign(pdg2024['lambda_SM_table_3L']['M_I']['lambda'], portal['matching']['tree_level_lambda_eff_at_M_I_every_solution'])}"
+        " sign) for every M_I solution, so the "
         "M_I-matched tuned point is a tree-level saddle; the classes above are RG-improved. Metastable grid rows "
         f"with lambda_eff(M_GUT) >= 0: {outcomes['n_metastable_grid_rows_with_tree_lambda_eff_at_gut_nonnegative']} "
         f"of {outcomes['n_metastable_grid_rows']}.",
@@ -1932,9 +2401,14 @@ def _markdown(report: dict[str, Any]) -> str:
     zero = gut["lambda_eff_zero_prediction"]
     lines += [
         "",
-        "## Single-stage matching at M_GUT (portal module; the 1L mu0 = 173.10 row reproduces the superseded "
-        "commit-5f25846 value)",
+        "## Single-stage matching at M_GUT (legacy Buttazzo 2013 inputs; portal module; the 1L mu0 = 173.10 row "
+        "reproduces the superseded commit-5f25846 value)",
         "",
+        f"- PDG 2024 headline (3L + 4L QCD, SMDR matching): lambda_SM(M_GUT) = "
+        f"`{pdg2024['lambda_SM_table_3L']['M_GUT']['lambda']:.4f}` +- "
+        f"`{pdg2024['lambda_SM_table_3L']['M_GUT']['sigma']:.4f}`, the "
+        f"{_same_sign(pdg2024['lambda_SM_table_3L']['M_GUT']['lambda'], required['2L'])} sign as the legacy 2L value "
+        "below.",
         f"- lambda_eff(M_GUT) required: 1L (mu0 173.10) `{required['1L_mu0_173.10']:.4f}`, 2L `{required['2L']:.4f}`, "
         f"3L `{required['3L+4QCD']:.4f}`: negative, so the tuned point is not a tree-level local minimum.",
         f"- lambda_eff(M_GUT) = 0 would give m_h(tree) = `{zero['m_h_tree_GeV']:.1f}` GeV "

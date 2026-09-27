@@ -1,6 +1,6 @@
 {
   "status": "NEXT_PHENOMENOLOGY_LOCK_PASS__FULL_UNIQUE_CF_STILL_OPEN",
-  "n_checks": 6,
+  "n_checks": 7,
   "n_failed": 0,
   "failures": [],
   "flag": {
@@ -117,9 +117,12 @@
       "alpha_inv_GUT_after_spectators": 16.809853842854203
     },
     "two_loop_thresholds": {
-      "M_I_GeV": 160982556355.69574,
-      "M_GUT_GeV": 1152023707592865.0,
-      "alpha_inv_GUT_after_spectators": 18.541724059310894
+      "available": true,
+      "M_I_GeV": 65608359036.3354,
+      "M_GUT_GeV": 1.251508824019244e+16,
+      "alpha_inv_GUT_after_spectators": null,
+      "scope": "genuine two-loop MV gauge anchor, anchor content without spectators",
+      "alpha_inv_GUT_after_spectators_unavailable_reason": "UNAVAILABLE: no perturbative two-loop gauge unification exists with the contract spectators 5 x (16 + 16bar) at M_s = M_I (three independent two-loop codes agree; reproduced by build_report()['spectator_two_loop_probe']). The one-loop additive shift -(40/3)/(2 pi) ln(M_GUT/M_s) does not carry over to two loops because the spectators' two-loop b_ij are non-universal."
     },
     "yukawa_RG_applied": false,
     "common_scale_identification": {

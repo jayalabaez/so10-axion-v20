@@ -111,9 +111,10 @@ class ThresholdTests(unittest.TestCase):
         self.assertTrue(reg["IU_one_ok"])
 
     def test_continuous_alpha_not_reset_to_40(self):
-        inv = self.report["comparison"]["alpha_inv_vPhi_phys_two"]
+        inv = self.report["comparison"]["alpha_inv_vPhi_phys_one"]
         self.assertLess(abs(inv - 40.0), 40.0)  # exists
         self.assertGreater(abs(inv - 40.0), 10.0)  # far from the fake reset
+        self.assertIsNone(self.report["comparison"]["alpha_inv_vPhi_phys_two"])
 
 
 class HaloscopeTests(unittest.TestCase):

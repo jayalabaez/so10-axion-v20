@@ -2,8 +2,9 @@
 
 **Status:** `PIECEWISE_YUKAWA_RGE_WITH_CLEBSCH_THRESHOLDS_COMPLETE__PUBLISHED_TWO_LOOP_210_OPEN`
 
-- M_I: 1.61e+11 GeV
-- M_GUT: 1.152e+15 GeV
+- M_I: 6.561e+10 GeV
+- M_GUT: 1.252e+16 GeV
+- Gauge running: genuine two-loop MV (anchor content, no spectators)
 - Ye = H − 3F identity: **True**
 - Published two-loop SO(10)+210: **False**
 

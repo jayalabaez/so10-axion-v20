@@ -24,6 +24,12 @@ import two_loop_thresholds_v20 as thresholds
 ROOT = Path(__file__).resolve().parent
 SIXTEEN_PI2 = 16.0 * math.pi**2
 TWO_PI = 2.0 * math.pi
+# Two different M_I values meet in this layer (D-C); say so wherever a scale is reported.
+PUSH_END_POINT_SCALE_SOURCE = (
+    "push end point = genuine two-loop anchor M_I without spectators (not the declared benchmark "
+    "v_R = v_S = M_I); the SO(10)-style envelope starts at the one-loop M_I; no running is performed "
+    "between the two scales"
+)
 
 
 def rge_scaled_mass_targets(bases: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -41,6 +47,7 @@ def rge_scaled_mass_targets(bases: dict[str, Any] | None = None) -> dict[str, An
     return {
         "status": "CLIPPED_DIAGNOSTIC_TARGETS__PRECISION_COMMON_SCALE_OPEN",
         "scale_GeV": float(rge["integration"]["mu_stop_GeV"]),
+        "scale_scheme": rge["gauge_anchor"]["scheme"], "scale_source": PUSH_END_POINT_SCALE_SOURCE,
         "targets": targets, "ratios_MI_over_low_clipped": ratios,
         "clipped_channels": clipped,
         "clip_note": "Clipping and diagnostic singular-value ratios prevent these targets from serving as a precision common-scale data set.",
@@ -73,7 +80,8 @@ def optimize_common_scale(*, starts: int = 6, seed: int = 37,
                            "viable_chi2_lt_30": bool(row.get("viable_chi2_lt_30", False))})
     return {
         "status": "COMMON_SCALE_PROXY_WITNESS__PRECISION_REFIT_OPEN",
-        "scale_GeV": scaled["scale_GeV"], "mass_target_construction": scaled,
+        "scale_GeV": scaled["scale_GeV"], "scale_source": scaled["scale_source"],
+        "mass_target_construction": scaled,
         "v_r_grid_GeV": [row["v_r_GeV"] for row in points], "points": points,
         "best_point": best, "any_viable": bool(global_fit.get("any_viable", best["viable_chi2_lt_30"])),
         "viable_tan_beta_samples": viable_tans,
@@ -128,7 +136,7 @@ def evolve_hf_so10(h0: np.ndarray, f0: np.ndarray, *, mu0: float, mu1: float,
 def so10_threshold_yukawa_layer(bases: dict[str, Any] | None = None) -> dict[str, Any]:
     bases = bases or push.flavour_sector_bases()
     broken = push.solve_one_loop_matrix_yukawa_rge(bases)
-    gauge = thresholds.solve_unification(two_loop=True)
+    gauge = thresholds.solve_unification(two_loop=False)
     mi, mgut = float(gauge["M_I_GeV"]), float(gauge["M_GUT_GeV"])
     alpha_inv_gut = float(gauge["alpha_inv_GUT_after_spectators"])
     envelope = evolve_hf_so10(np.asarray(bases["H"], dtype=complex),
@@ -138,7 +146,16 @@ def so10_threshold_yukawa_layer(bases: dict[str, Any] | None = None) -> dict[str
     return {
         "status": "SO10_STYLE_ENVELOPE_ONLY__PATI_SALAM_MATCHING_OPEN",
         "broken_phase": {"status": broken["status"], "mu_stop_GeV": broken["integration"]["mu_stop_GeV"],
+                         "mu_stop_scheme": broken["gauge_anchor"]["scheme"],
+                         "mu_stop_source": PUSH_END_POINT_SCALE_SOURCE,
+                         "running_in_this_module": broken["gauge_anchor"]["running_in_this_module"],
                          "relative_matrix_change_MZ_to_MI": broken["relative_matrix_change_MZ_to_MI"]},
+        "gauge_anchor": {"loop_order": "one-loop", "M_I_GeV": mi, "M_GUT_GeV": mgut,
+                         "alpha_inv_GUT_after_spectators": alpha_inv_gut,
+                         "note": ("two-loop spectator-corrected alpha_GUT UNAVAILABLE; the SO(10)-style envelope uses "
+                                  "the one-loop chain. The broken phase ends at the two-loop no-spectator anchor M_I "
+                                  f"(broken_phase.mu_stop_GeV), a factor {mi / float(broken['integration']['mu_stop_GeV']):.1f} "
+                                  "below this one-loop M_I; no running is performed between them")},
         "matching_at_MI": {"method": "not performed", "pati_salam_decomposition_included": False,
                            "exact_matching_matrices_included": False},
         "MI_to_MGUT_diagnostic": {"n_steps": envelope["n_steps"],
@@ -155,8 +172,16 @@ def so10_threshold_yukawa_layer(bases: dict[str, Any] | None = None) -> dict[str
 
 
 def build_report() -> dict[str, Any]:
-    bases = push.flavour_sector_bases(); witness = optimize_common_scale()
-    layer = so10_threshold_yukawa_layer(bases); aligned = witness["best_point"]["aligned_Cf"]
+    bases = push.flavour_sector_bases()
+    try:
+        witness = optimize_common_scale(); layer = so10_threshold_yukawa_layer(bases)
+    except thresholds.TwoLoopAnchorUnavailable as exc:  # fail closed
+        return {"status": "COMMON_SCALE_DIAGNOSTIC_AUDIT_FAILED", "n_checks": 1, "n_failed": 1,
+                "failures": ["two_loop_gauge_anchor_available"], "error": str(exc),
+                "flag": {"full_RG_global_fit_minimal": False, "two_loop_so10_complete": False},
+                "representative_aligned_Cf": None,
+                "verdict": f"Fail closed: the broken-phase layer needs the two-loop anchor M_I ({exc})."}
+    aligned = witness["best_point"]["aligned_Cf"]
     checks = {"proxy_witness_available": witness["flag"]["proxy_witness_available"],
               "precision_fit_not_overclaimed": not witness["flag"]["full_RG_global_fit_minimal"],
               "threshold_matching_not_overclaimed": not layer["flag"]["piecewise_threshold_yukawa_matching_complete"],

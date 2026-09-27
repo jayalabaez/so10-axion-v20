@@ -41,20 +41,22 @@ def ps_gauge_couplings_at_mu(mu: float, gauge: dict[str, Any]) -> dict[str, floa
     """Interpolate PS couplings between M_I and M_GUT using the threshold chain."""
     mi = float(gauge["M_I_GeV"])
     mgut = float(gauge["M_GUT_GeV"])
-    ps_mi = gauge.get("alpha_inv_PS_at_MI")
-    if not (isinstance(ps_mi, list) and len(ps_mi) == 3):
-        # Fallback: use GUT coupling as degenerate PS snapshot.
-        inv = float(gauge["alpha_inv_GUT"])
-        return {"g4": math.sqrt(4 * math.pi / inv), "gL": math.sqrt(4 * math.pi / inv), "gR": math.sqrt(4 * math.pi / inv)}
-    i4, iL, iR = (float(x) for x in ps_mi)
-    # One-loop PS betas (as in two_loop_thresholds_v20 PS block).
-    b4, bL, bR = -7.0 / 3.0, 2.0, 26.0 / 3.0
-    if two_loop_thresholds_uses_two_loop(gauge):
-        b4, bL, bR = b4 - 0.25, bL + 0.15, bR + 0.40
-    t = math.log(max(mu, mi) / mi) / TWO_PI
-    inv4 = i4 - b4 * t
-    invL = iL - bL * t
-    invR = iR - bR * t
+    if int(gauge.get("loops", 1)) == 2:
+        # Genuine two-loop Machacek-Vaughn PS running (two_loop_thresholds_v20).
+        inv4, invL, invR = thresholds.ps_alpha_inv_two_loop(min(max(mu, mi), mgut))
+    else:
+        ps_mi = gauge.get("alpha_inv_PS_at_MI")
+        if not (isinstance(ps_mi, list) and len(ps_mi) == 3):
+            # Fallback: use GUT coupling as degenerate PS snapshot.
+            inv = float(gauge["alpha_inv_GUT"])
+            return {"g4": math.sqrt(4 * math.pi / inv), "gL": math.sqrt(4 * math.pi / inv), "gR": math.sqrt(4 * math.pi / inv)}
+        i4, iL, iR = (float(x) for x in ps_mi)
+        # One-loop PS betas (as in two_loop_thresholds_v20 PS block).
+        b4, bL, bR = -7.0 / 3.0, 2.0, 26.0 / 3.0
+        t = math.log(max(mu, mi) / mi) / TWO_PI
+        inv4 = i4 - b4 * t
+        invL = iL - bL * t
+        invR = iR - bR * t
     return {
         "g4": math.sqrt(4 * math.pi / inv4) if inv4 > 0 else 0.0,
         "gL": math.sqrt(4 * math.pi / invL) if invL > 0 else 0.0,
@@ -62,10 +64,6 @@ def ps_gauge_couplings_at_mu(mu: float, gauge: dict[str, Any]) -> dict[str, floa
         "mu": float(mu),
         "alpha_inv": [inv4, invL, invR],
     }
-
-
-def two_loop_thresholds_uses_two_loop(gauge: dict[str, Any]) -> bool:
-    return "two-loop" in str(gauge.get("scheme", "")).lower()
 
 
 def ps_yukawa_betas(
@@ -208,6 +206,18 @@ def component_matching_ledger() -> dict[str, Any]:
 def build_report() -> dict[str, Any]:
     bases = push.flavour_sector_bases()
     gauge = thresholds.solve_unification(two_loop=True)
+    try:
+        thresholds.require_two_loop_available(gauge)
+    except thresholds.TwoLoopAnchorUnavailable as exc:  # fail closed
+        return {
+            "status": "PATI_SALAM_MATCHING_FAILED",
+            "n_checks": 1,
+            "n_failed": 1,
+            "failures": ["two_loop_gauge_anchor_available"],
+            "error": str(exc),
+            "flag": {"pati_salam_interval_matching": False, "two_loop_so10_complete": False},
+            "verdict": f"Fail closed: the PS interval needs the two-loop anchor M_I, M_GUT ({exc}).",
+        }
     mi = float(gauge["M_I_GeV"])
     mgut = float(gauge["M_GUT_GeV"])
     h = np.asarray(bases["H"], dtype=complex)
@@ -243,6 +253,7 @@ def build_report() -> dict[str, Any]:
             "M_GUT_GeV": mgut,
             "scheme": gauge["scheme"],
             "alpha_inv_PS_at_MI": gauge.get("alpha_inv_PS_at_MI"),
+            "gauge_running": "genuine two-loop Machacek-Vaughn PS running (two_loop_thresholds_v20.ps_alpha_inv_two_loop)",
         },
         "ps_evolution_MI_to_MGUT": {
             "n_steps": evolved["n_steps"],
@@ -266,6 +277,9 @@ def build_report() -> dict[str, Any]:
 
 
 def write_markdown(report: dict[str, Any]) -> str:
+    if "ps_evolution_MI_to_MGUT" not in report:  # fail-closed report
+        return "\n".join(["# Pati–Salam Yukawa matching — v20", "", f"**Status:** `{report['status']}`", "",
+                          report["verdict"], ""])
     evo = report["ps_evolution_MI_to_MGUT"]
     return "\n".join([
         "# Pati–Salam Yukawa matching — v20",
@@ -297,7 +311,7 @@ def main() -> int:
         "status": report["status"],
         "n_failed": report["n_failed"],
         "flag": report["flag"],
-        "ps_evolution_MI_to_MGUT": report["ps_evolution_MI_to_MGUT"],
+        "ps_evolution_MI_to_MGUT": report.get("ps_evolution_MI_to_MGUT"),
         "verdict": report["verdict"],
     }, indent=2))
     return 0 if report["n_failed"] == 0 else 1

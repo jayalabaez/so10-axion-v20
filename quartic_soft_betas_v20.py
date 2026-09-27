@@ -70,6 +70,7 @@ PORTAL_COMPONENTS = {
 
 SOURCES = {
     "gauge_chain": "two_loop_thresholds_v20 B_PS one-loop Pati–Salam chain",
+    "gauge_coupling_input": "one-loop spectator-corrected alpha_GUT^-1 from two_loop_thresholds_v20.solve_unification(False) (two-loop counterpart UNAVAILABLE)",
     "component_decomposition": {
         "10_H": "(1,2,2)+(6,1,1); H10_eff uses the bidoublet",
         "126bar_H": "Delta_R uses (10bar,1,3)",
@@ -282,8 +283,8 @@ def build_report() -> dict[str, Any]:
 
     m_i = float(anchor["M_I_GeV"])
     m_gut = float(anchor["M_GUT_GeV"])
-    two = thr.solve_unification(two_loop=True)
-    alpha_inv = float(two["alpha_inv_GUT_after_spectators"])
+    one = thr.solve_unification(two_loop=False)
+    alpha_inv = float(one["alpha_inv_GUT_after_spectators"])
 
     radial = scalar_pd.reduced_radial_vacuum_witness(anchor)
     raw = radial["potential_definition"]["self_quartics"]

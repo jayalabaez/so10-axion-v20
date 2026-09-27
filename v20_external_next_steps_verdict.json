@@ -17,16 +17,28 @@
   },
   "thresholds": {
     "MI_one_GeV": 631385523052.8793,
-    "MI_two_GeV": 160982556355.69574,
+    "MI_two_GeV": 65608359036.3354,
     "MGUT_one_GeV": 9917564798898606.0,
-    "MGUT_two_GeV": 1152023707592865.0,
+    "MGUT_two_GeV": 1.251508824019244e+16,
     "alpha_inv_GUT_one": 37.313045234373135,
-    "alpha_inv_GUT_two": 37.37661804404197,
-    "alpha_inv_GUT_after_spectators_two": 18.541724059310894,
-    "alpha_inv_vPhi_phys_two": 16.647292142506746,
-    "alpha_MPl_phys_two": 0.09358475823033739,
-    "alpha_MPl_cons_two": 0.18285101757861186,
-    "weakly_coupled_phys_two": true
+    "alpha_inv_GUT_two": 33.468908753814695,
+    "alpha_inv_GUT_after_spectators_two": null,
+    "alpha_inv_vPhi_phys_two": null,
+    "alpha_MPl_phys_two": null,
+    "alpha_MPl_cons_two": null,
+    "weakly_coupled_phys_two": null,
+    "alpha_inv_GUT_after_spectators_one": 16.809853842854203,
+    "alpha_inv_vPhi_phys_one": 15.829093218708618,
+    "alpha_MPl_phys_one": 0.09606809779721827,
+    "alpha_MPl_cons_one": 0.17646180493948224,
+    "weakly_coupled_phys_one": true,
+    "two_loop_scope": "anchor content without spectators; gauge-only MV; tree-level matching",
+    "two_loop_unavailable": {
+      "alpha_inv_GUT_after_spectators": "UNAVAILABLE: no perturbative two-loop gauge unification exists with the contract spectators 5 x (16 + 16bar) at M_s = M_I (three independent two-loop codes agree; reproduced by build_report()['spectator_two_loop_probe']). The one-loop additive shift -(40/3)/(2 pi) ln(M_GUT/M_s) does not carry over to two loops because the spectators' two-loop b_ij are non-universal.",
+      "spectator_shift": "UNAVAILABLE: no perturbative two-loop gauge unification exists with the contract spectators 5 x (16 + 16bar) at M_s = M_I (three independent two-loop codes agree; reproduced by build_report()['spectator_two_loop_probe']). The one-loop additive shift -(40/3)/(2 pi) ln(M_GUT/M_s) does not carry over to two loops because the spectators' two-loop b_ij are non-universal.",
+      "M_s_GeV": "UNAVAILABLE: no perturbative two-loop gauge unification exists with the contract spectators 5 x (16 + 16bar) at M_s = M_I (three independent two-loop codes agree; reproduced by build_report()['spectator_two_loop_probe']). The one-loop additive shift -(40/3)/(2 pi) ln(M_GUT/M_s) does not carry over to two loops because the spectators' two-loop b_ij are non-universal.",
+      "continuous_spin10": "UNAVAILABLE: continuous two-loop Spin(10) running above M_GUT needs the contract's two-loop spectator-corrected alpha_GUT at M_GUT as its initial condition, and none exists (no perturbative two-loop gauge unification with 5 x (16 + 16bar) at M_s = M_I; see alpha_inv_GUT_after_spectators). Neither the one-loop 16.81 nor the no-spectator two-loop anchor 33.47 is that matching condition. The former x1.1 heavy-beta factor was not two-loop running and has been removed."
+    }
   },
   "threshold_regression_ok": {
     "expect_MI_one": 631390000000.0,
@@ -51,5 +63,5 @@
       "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\so10-axion-v20-reaudit\\haloscope_37ghz_templates\\v20_haloscope_target_brief.md"
     ]
   },
-  "bottom_line": "External next steps are computed. The 10+126 fit works at a natural v_R, but the corrected v_R=v_S profile is not viable. Continuous thresholds reject the alpha=1/40 reset. A MADMAX-like forecast can reach the 37 GHz coupling in software \u2014 that is not a dark-matter discovery."
+  "bottom_line": "External next steps are computed. The 10+126 fit works at a natural v_R, but the corrected v_R=v_S profile is not viable. Continuous one-loop thresholds reject the alpha=1/40 reset; the two-loop spectator-corrected coupling is UNAVAILABLE (no perturbative two-loop unification at the benchmark). A MADMAX-like forecast can reach the 37 GHz coupling in software \u2014 that is not a dark-matter discovery."
 }

@@ -75,7 +75,9 @@ Physics caveats recorded in the report (not hidden behind the SM label):
   GeV.  The certificate holds whenever kappa^2 < 8 r0^2 (equivalently
   lambda_eff > 0), and lambda_eff -> 0+ brings m_h within a few GeV of the
   measured value; global minimality forces lambda_eff >= 0, whereas SM running
-  at M_t = 173.34 GeV needs a slightly negative lambda(M_I).
+  with PDG 2024 inputs prefers a slightly negative lambda(M_I) at the anchor M_I
+  (-0.0039 at two loops; -0.0033 +- 0.0029 at three loops, a 1.16 sigma
+  top-mass tension), with a sign that flips inside the realistic v_R band.
 
 The equality set {V = V0} is classified exactly in
 g3_sm_pati_salam_equality_set_v20: it is G.(p, r0 sigma_std, 0, r0, x0), unique
@@ -1937,10 +1939,12 @@ def exact_light_doublet_quartic(r0: Fraction, kappa: Fraction | None = None) -> 
 
 
 def lambda_at_top_from(lambda_matching: float, matching_scale: float) -> float:
-    """lambda(M_t) from lambda(mu): SM couplings run up, lambda replaced, then run down (two loops)."""
-    high = stability.run_sm(stability.BUTTAZZO_INPUTS, stability.MT_REF, matching_scale, loops=2)
+    """lambda(M_t) from lambda(mu): SM couplings run up, lambda replaced, then run down (PDG 2024 inputs,
+    SMDR v1.3-anchored matching; two loops)."""
+    mt = stability.PDG2024["Mt_GeV"]
+    high = stability.run_sm(stability.pdg2024_corrected_inputs(), mt, matching_scale, loops=2)
     high["lam"] = lambda_matching
-    return float(stability.run_sm(high, matching_scale, stability.MT_REF, loops=2)["lam"])
+    return float(stability.run_sm(high, matching_scale, mt, loops=2)["lam"])
 
 
 def light_doublet_quartic_section() -> dict[str, Any]:
@@ -1950,7 +1954,9 @@ def light_doublet_quartic_section() -> dict[str, Any]:
     for label, value in (("lambda_eff_127_over_64", float(lambda_eff)), ("lambda_zero", 0.0)):
         top = lambda_at_top_from(value, m_i)
         predictions[label] = {"lambda_M_I": value, "lambda_at_mt": top, **stability.higgs_mass_estimates(top)}
-    required = float(stability.sm_profile(loops=2).lam(m_i))
+    required = float(
+        stability.sm_profile(stability.pdg2024_corrected_inputs(), stability.PDG2024["Mt_GeV"], loops=2).lam(m_i)
+    )
     return {
         "normalization": "V = lambda (h^dag h)^2, canonically normalised h (g3_tuned_target_effective_higgs_quartic_v20)",
         "derivation": [
@@ -1968,8 +1974,9 @@ def light_doublet_quartic_section() -> dict[str, Any]:
         ),
         "conditional_sm_running": {
             "scheme": (
-                "two-loop SM RGEs of g3_physical_hierarchy_higgs_stability_v20 (Buttazzo et al. 2013 inputs at "
-                "M_t = 173.34 GeV), tree-level matching lambda(M_I) = lambda_eff at the anchor M_I"
+                "two-loop SM RGEs of g3_physical_hierarchy_higgs_stability_v20 (PDG 2024 inputs M_t = 172.57, "
+                "M_h = 125.20, alpha_s = 0.1180 with SMDR v1.3-anchored MSbar matching), tree-level matching "
+                "lambda(M_I) = lambda_eff at the anchor M_I"
             ),
             "matching_scale_GeV": m_i,
             "predictions": predictions,
@@ -1983,9 +1990,10 @@ def light_doublet_quartic_section() -> dict[str, Any]:
         "higgs_mass_compatible": bool(abs(float(lambda_eff) - required) < 1.0e-2),
         "conclusion": (
             f"lambda_eff = 127/64 gives m_h ~ {predictions['lambda_eff_127_over_64']['m_h_tree_GeV']:.0f} GeV under "
-            f"conditional SM running, while the measured Higgs mass needs lambda(M_I) = {required:.4f} < 0 at M_t = "
-            f"{stability.MT_REF} GeV, which global minimality forbids at tree level for this family (the sign of the "
-            "required lambda(M_I) is M_t-dependent at ~2 sigma; lambda(M_I) = 0 gives m_h ~ "
+            f"conditional SM running, while the measured Higgs mass needs lambda(M_I) = {required:.4f} < 0 at the "
+            "anchor M_I (PDG 2024 inputs, two loops), which global minimality forbids at tree level for this family "
+            "(the sign is not robust: lambda_SM(M_I) = -0.0033 +- 0.0029 at three loops, a 1.16 sigma top-mass "
+            "tension, and it flips inside the realistic v_R band; lambda(M_I) = 0 gives m_h ~ "
             f"{predictions['lambda_zero']['m_h_tree_GeV']:.0f} GeV at tree level, within a few GeV of the measured value)."
         ),
     }
@@ -3095,7 +3103,9 @@ def build_report(
                 f"(lambda(M_I) = 0: m_h ~ {lambda_zero['m_h_tree_GeV']:.1f} GeV tree, "
                 f"{lambda_zero['M_h_scaled_to_buttazzo_GeV']:.1f} GeV Buttazzo-scaled, vs {M_H_OBSERVED_GEV:.2f} GeV). "
                 "The remaining tension is lambda_eff >= 0 (tree-level global minimality) versus the SM-required "
-                f"lambda(M_I) = {lambda_required:.4f} at M_t = 173.34 GeV, whose sign is M_t-dependent at about 2 sigma"
+                f"lambda(M_I) = {lambda_required:.4f} at two loops (PDG 2024 inputs), whose sign is not robust "
+                "(three-loop headline -0.0033 +- 0.0029, a 1.16 sigma top-mass tension; sign flips inside the "
+                "realistic v_R band)"
             ),
         },
         "units": UNITS,
@@ -3143,7 +3153,7 @@ def build_report(
                 "doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed",
                 "light 126bar coloured states below M_I: (3,1)_1/3 at ~0.24 M_I (proton-decay mediator quantum numbers, coupled to 16.16 by the 126bar Yukawa that Majorana nu_R masses need), (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), (3,1)_4/3 + (6,1)_1/3 at ~0.25 M_I, (6,1)_2/3 at ~0.32 M_I; their proton-decay and RG/unification consequences are not analysed",
                 "RG consistency: the anchor's M_I, M_GUT assume a light (15,2,2) above M_I and a 2HDM below; this candidate has the (15,2,2) at ~0.7 M_GUT and a 1HDM, and re-solving the one-loop chain with its content moves M_I and M_GUT (rg_anchor_consistency)",
-                f"Higgs mass: the benchmark's tree-level lambda_eff = 127/64 at M_I is too large (m_h ~ {m_h_conditional:.0f} GeV under conditional SM running); the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass (m_h ~ {lambda_zero['m_h_tree_GeV']:.0f} GeV at lambda(M_I) = 0), but tree-level global minimality forbids the slightly negative SM value lambda(M_I) = {lambda_required:.4f} at M_t = 173.34 GeV (sign M_t-dependent at ~2 sigma)",
+                f"Higgs mass: the benchmark's tree-level lambda_eff = 127/64 at M_I is too large (m_h ~ {m_h_conditional:.0f} GeV under conditional SM running); the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass (m_h ~ {lambda_zero['m_h_tree_GeV']:.0f} GeV at lambda(M_I) = 0), but tree-level global minimality forbids the slightly negative SM value lambda(M_I) = {lambda_required:.4f} at two loops (PDG 2024; three-loop headline -0.0033 +- 0.0029, a 1.16 sigma top-mass tension; sign flips inside the realistic v_R band)",
                 "intermediate scale: O05 = (1/8)(4 - 2 r0^2) cancels the Phi-induced O14/O44 (10bar,1,3) mass to precision ~ (M_I/M_GUT)^2 ~ 4e-9 at the anchor; its radiative stability is not addressed",
                 "light doublet is an equal 5/5bar mixture (tan beta = 1 structure): with 10_H-only Yukawas m_t = m_b at matching",
                 "realistic Yukawa sector: the H-linear portals O15, O38, O45, O28 vanish",
@@ -3189,7 +3199,9 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the "
         f"benchmark (m_h ~ {m_h:.0f} GeV under conditional SM running), too large; the certified family kappa^2 < "
         "8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the "
-        f"slightly negative SM value at M_t = 173.34 GeV. {uniqueness}; this report does not close G3 by itself "
+        f"slightly negative SM value at the anchor M_I with PDG 2024 inputs (three-loop headline -0.0033 +- 0.0029, "
+        f"a 1.16 sigma top-mass tension; v_R-dependent). {uniqueness}; "
+        "this report does not close G3 by itself "
         "(final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track) and the model is neither "
         "validated nor excluded."
     )

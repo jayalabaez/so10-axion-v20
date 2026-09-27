@@ -344,7 +344,7 @@
       },
       "r0": "1/100",
       "r0_float": 0.01,
-      "seconds": 24.3379058838,
+      "seconds": 28.6627225876,
       "state": "(p, r0 sigma_std, 0, r0, x0)",
       "symmetry_ranks": {
         "so10_orbit_rank": 33,
@@ -547,7 +547,7 @@
       },
       "r0": "1/1000",
       "r0_float": 0.001,
-      "seconds": 24.2380468845,
+      "seconds": 28.8936769962,
       "state": "(p, r0 sigma_std, 0, r0, x0)",
       "symmetry_ranks": {
         "so10_orbit_rank": 33,
@@ -1378,7 +1378,7 @@
       },
       "r0": "1/5",
       "r0_float": 0.2,
-      "seconds": 38.465929985,
+      "seconds": 46.3615744114,
       "sm_generators_annihilate_vacuum": 2.77555756156e-17,
       "state": "(p, r0 sigma_std, 0, r0, x0)",
       "symmetry_ranks": {
@@ -1582,7 +1582,7 @@
       },
       "r0": "51544138/809635808795",
       "r0_float": 6.36633625145e-05,
-      "seconds": 24.2881524563,
+      "seconds": 30.4555613995,
       "state": "(p, r0 sigma_std, 0, r0, x0)",
       "symmetry_ranks": {
         "so10_orbit_rank": 33,
@@ -1875,7 +1875,7 @@
     "exactly_stationary": "follows from global minimality; the exact slice gradient also vanishes identically",
     "global_minimum_certified": "exact: adapted SOS27 lower bound attained at the vacuum (repository source-bound recouplings plus new exact sigma_std pieces); uniqueness modulo SO(10) x U(1)_X x U(1)_PQ is certified separately (see equality_set_unique_modulo_symmetry_certified)",
     "hessian_psd_kernel_is_symmetry": "False by its literal meaning: at every benchmark the PSD Hessian's kernel is the 35 symmetry tangents (SO(10)/SM + U(1)_X + PQ) PLUS the 4 real modes of the deliberately tuned light doublet (O06 = 2|kappa| r0); see hessian_psd_kernel_is_symmetry_plus_tuned_light_doublet. Raising O06 by r0^2/100 leaves exactly the 35 symmetry tangents (hessian_kernel_is_symmetry_when_O06_raised). Kernel counts are float64.",
-    "higgs_mass_compatible": "False at the benchmark (a benchmark-only flag): tree-level lambda_eff = 127/64 at kappa = -r0/4 (m_h ~ 195 GeV under conditional SM running). The certified family kappa^2 < 8 r0^2 spans lambda_eff in (0, 2], and lambda_eff -> 0+ gives m_h within a few GeV of the measured value (lambda(M_I) = 0: m_h ~ 126.2 GeV tree, 127.7 GeV Buttazzo-scaled, vs 125.20 GeV). The remaining tension is lambda_eff >= 0 (tree-level global minimality) versus the SM-required lambda(M_I) = -0.0085 at M_t = 173.34 GeV, whose sign is M_t-dependent at about 2 sigma",
+    "higgs_mass_compatible": "False at the benchmark (a benchmark-only flag): tree-level lambda_eff = 127/64 at kappa = -r0/4 (m_h ~ 195 GeV under conditional SM running). The certified family kappa^2 < 8 r0^2 spans lambda_eff in (0, 2], and lambda_eff -> 0+ gives m_h within a few GeV of the measured value (lambda(M_I) = 0: m_h ~ 124.9 GeV tree, 126.5 GeV Buttazzo-scaled, vs 125.20 GeV). The remaining tension is lambda_eff >= 0 (tree-level global minimality) versus the SM-required lambda(M_I) = -0.0039 at two loops (PDG 2024 inputs), whose sign is not robust (three-loop headline -0.0033 +- 0.0029, a 1.16 sigma top-mass tension; sign flips inside the realistic v_R band)",
     "physical_benchmark_uses_canonical_phi17_scale": "False: x0 = 1 at every benchmark (canonical x0 ~ 10.08)",
     "rg_anchor_field_content_reproduced": "False: anchor betas assume a light (15,2,2) above M_I and a 2HDM below; the candidate has neither and has sub-M_I coloured scalars (rg_anchor_consistency)",
     "target_unbroken_algebra_is_standard_model": "exact integer stabilizer of (p, sigma_std); gated by the audit passing (fail-closed), like every other positive flag"
@@ -2111,26 +2111,26 @@
     "unit_identification": "chart unit |Phi| = 1 identified with the RG M_GUT and r0 = |Sigma|/|Phi| with M_I/M_GUT (a vev ratio), without gauge-coupling or group-theory factors"
   },
   "light_doublet_quartic": {
-    "conclusion": "lambda_eff = 127/64 gives m_h ~ 195 GeV under conditional SM running, while the measured Higgs mass needs lambda(M_I) = -0.0085 < 0 at M_t = 173.34 GeV, which global minimality forbids at tree level for this family (the sign of the required lambda(M_I) is M_t-dependent at ~2 sigma; lambda(M_I) = 0 gives m_h ~ 126 GeV at tree level, within a few GeV of the measured value).",
+    "conclusion": "lambda_eff = 127/64 gives m_h ~ 195 GeV under conditional SM running, while the measured Higgs mass needs lambda(M_I) = -0.0039 < 0 at the anchor M_I (PDG 2024 inputs, two loops), which global minimality forbids at tree level for this family (the sign is not robust: lambda_SM(M_I) = -0.0033 +- 0.0029 at three loops, a 1.16 sigma top-mass tension, and it flips inside the realistic v_R band; lambda(M_I) = 0 gives m_h ~ 125 GeV at tree level, within a few GeV of the measured value).",
     "conditional_sm_running": {
       "applicability": "Conditional: assumes pure SM running below M_I and the anchor's M_I. The candidate has sub-M_I coloured scalars, a tan beta = 1 light doublet, and a field content that does not reproduce the anchor's M_I.",
-      "lambda_M_I_required_for_sm_two_loop": -0.00853946184721,
+      "lambda_M_I_required_for_sm_two_loop": -0.0039147248818,
       "matching_scale_GeV": 631385523053.0,
       "predictions": {
         "lambda_eff_127_over_64": {
-          "M_h_scaled_to_buttazzo_GeV": 197.40344806,
+          "M_h_scaled_to_buttazzo_GeV": 197.147310015,
           "lambda_M_I": 1.984375,
-          "lambda_at_mt": 0.313585631524,
-          "m_h_tree_GeV": 194.991824257
+          "lambda_at_mt": 0.312772382295,
+          "m_h_tree_GeV": 194.73881538
         },
         "lambda_zero": {
-          "M_h_scaled_to_buttazzo_GeV": 127.740128921,
+          "M_h_scaled_to_buttazzo_GeV": 126.467155388,
           "lambda_M_I": 0.0,
-          "lambda_at_mt": 0.131311084103,
-          "m_h_tree_GeV": 126.179562789
+          "lambda_at_mt": 0.128707005723,
+          "m_h_tree_GeV": 124.922140824
         }
       },
-      "scheme": "two-loop SM RGEs of g3_physical_hierarchy_higgs_stability_v20 (Buttazzo et al. 2013 inputs at M_t = 173.34 GeV), tree-level matching lambda(M_I) = lambda_eff at the anchor M_I"
+      "scheme": "two-loop SM RGEs of g3_physical_hierarchy_higgs_stability_v20 (PDG 2024 inputs M_t = 172.57, M_h = 125.20, alpha_s = 0.1180 with SMDR v1.3-anchored MSbar matching), tree-level matching lambda(M_I) = lambda_eff at the anchor M_I"
     },
     "derivation": [
       "direct: 2 N_H^2 (O36_B01 = O36_B02 = 2, Sym^2(10) = 1 + 54) with h^dag h = N_H on the doublet gives 2; ||H wedge Phi||^2 vanishes on doublets (P = diag(1_6, 0_4)); the map has no H-Sigma or H-Phi17 terms",
@@ -4207,7 +4207,7 @@
       "doublet-triplet splitting is tuned, not automatic: O46_1 = -(3/5) O46_54 (precision ~ (m_h/M_GUT)^2 ~ 2e-28) and O06 = 2|kappa| r0 (precision ~ (m_h/M_I)^2 ~ 4e-20); their radiative stability is not addressed",
       "light 126bar coloured states below M_I: (3,1)_1/3 at ~0.24 M_I (proton-decay mediator quantum numbers, coupled to 16.16 by the 126bar Yukawa that Majorana nu_R masses need), (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), (3,1)_4/3 + (6,1)_1/3 at ~0.25 M_I, (6,1)_2/3 at ~0.32 M_I; their proton-decay and RG/unification consequences are not analysed",
       "RG consistency: the anchor's M_I, M_GUT assume a light (15,2,2) above M_I and a 2HDM below; this candidate has the (15,2,2) at ~0.7 M_GUT and a 1HDM, and re-solving the one-loop chain with its content moves M_I and M_GUT (rg_anchor_consistency)",
-      "Higgs mass: the benchmark's tree-level lambda_eff = 127/64 at M_I is too large (m_h ~ 195 GeV under conditional SM running); the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass (m_h ~ 126 GeV at lambda(M_I) = 0), but tree-level global minimality forbids the slightly negative SM value lambda(M_I) = -0.0085 at M_t = 173.34 GeV (sign M_t-dependent at ~2 sigma)",
+      "Higgs mass: the benchmark's tree-level lambda_eff = 127/64 at M_I is too large (m_h ~ 195 GeV under conditional SM running); the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass (m_h ~ 125 GeV at lambda(M_I) = 0), but tree-level global minimality forbids the slightly negative SM value lambda(M_I) = -0.0039 at two loops (PDG 2024; three-loop headline -0.0033 +- 0.0029, a 1.16 sigma top-mass tension; sign flips inside the realistic v_R band)",
       "intermediate scale: O05 = (1/8)(4 - 2 r0^2) cancels the Phi-induced O14/O44 (10bar,1,3) mass to precision ~ (M_I/M_GUT)^2 ~ 4e-9 at the anchor; its radiative stability is not addressed",
       "light doublet is an equal 5/5bar mixture (tan beta = 1 structure): with 10_H-only Yukawas m_t = m_b at matching",
       "realistic Yukawa sector: the H-linear portals O15, O38, O45, O28 vanish",
@@ -4362,5 +4362,5 @@
   },
   "status": "SM_PATI_SALAM_G3_CANDIDATE__EXACT_GLOBAL_MINIMUM_OF_BENCHMARK_POTENTIAL__SM_UNBROKEN__G3_OPEN",
   "units": "Hessian eigenvalues of the canonical 486-real chart, units of M_GUT^2 (|Phi| = 1)",
-  "verdict": "The 27-parameter member of the declared exact-X potential obtained from the historical p-branch map by swapping the 2772bar/4125 self-projector weights, setting O05 = (1/8)(4 - 2 r0^2) and adding kappa_H = -r0/4 with O06 = 2|kappa| r0 has the vacuum (p, r0 sigma_std, 0, r0, x0), sigma_std = z1^z2^z3^z4^z5, whose unbroken algebra is exactly SU(3)_c x SU(2)_L x U(1)_Y (SO(10) -> Pati-Salam at M_GUT -> SM at r0 M_GUT). An adapted exact SOS identity gives V >= -1 - r0^4/8 - r0^4 - x0^4/32 on the whole field space and the vacuum attains it, so it is an exact global minimum of this benchmark potential, exactly stationary with PSD Hessian, for every r0 > 0 (checked on the live compiler at r0 = 1/5, 1/100, 1/1000 and M_I/M_GUT with x0 = 1: symmetry rank 35, kernel = symmetry tangents plus the 4 modes of one tuned light doublet, lightest massive mode r0^2/96). Physics caveats: one 10_H doublet is light (exactly massless at tree level) only because O46_1 = -(3/5) O46_54 and O06 = 2|kappa| r0 are tuned, while the 10_H colour triplets are at M_GUT for generic O46 couplings (doublet-triplet splitting is tuned, not automatic); the intermediate scale is itself a cancellation of O(1) couplings to ~(M_I/M_GUT)^2; 126bar colour triplets and sextets and a doubly charged singlet lie below M_I; only the breaking route matches the manuscript's Pati-Salam RG anchor, not its field content (no light (15,2,2), 1HDM instead of 2HDM), so the GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the benchmark (m_h ~ 195 GeV under conditional SM running), too large; the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the slightly negative SM value at M_t = 173.34 GeV. The equality set {V = V0} is exactly the orbit of the vacuum under SO(10) x U(1)_X x U(1)_PQ (g3_sm_pati_salam_equality_set_v20), so the minimum is unique modulo symmetry once the accidental U(1)_PQ is included (modulo SO(10) x U(1)_X alone it is a circle of orbits). Electroweak breaking and a realistic Yukawa sector remain open; this report does not close G3 by itself (final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track) and the model is neither validated nor excluded."
+  "verdict": "The 27-parameter member of the declared exact-X potential obtained from the historical p-branch map by swapping the 2772bar/4125 self-projector weights, setting O05 = (1/8)(4 - 2 r0^2) and adding kappa_H = -r0/4 with O06 = 2|kappa| r0 has the vacuum (p, r0 sigma_std, 0, r0, x0), sigma_std = z1^z2^z3^z4^z5, whose unbroken algebra is exactly SU(3)_c x SU(2)_L x U(1)_Y (SO(10) -> Pati-Salam at M_GUT -> SM at r0 M_GUT). An adapted exact SOS identity gives V >= -1 - r0^4/8 - r0^4 - x0^4/32 on the whole field space and the vacuum attains it, so it is an exact global minimum of this benchmark potential, exactly stationary with PSD Hessian, for every r0 > 0 (checked on the live compiler at r0 = 1/5, 1/100, 1/1000 and M_I/M_GUT with x0 = 1: symmetry rank 35, kernel = symmetry tangents plus the 4 modes of one tuned light doublet, lightest massive mode r0^2/96). Physics caveats: one 10_H doublet is light (exactly massless at tree level) only because O46_1 = -(3/5) O46_54 and O06 = 2|kappa| r0 are tuned, while the 10_H colour triplets are at M_GUT for generic O46 couplings (doublet-triplet splitting is tuned, not automatic); the intermediate scale is itself a cancellation of O(1) couplings to ~(M_I/M_GUT)^2; 126bar colour triplets and sextets and a doubly charged singlet lie below M_I; only the breaking route matches the manuscript's Pati-Salam RG anchor, not its field content (no light (15,2,2), 1HDM instead of 2HDM), so the GeV masses at r0 = M_I/M_GUT are illustrative; and the light doublet's tree-level quartic is 127/64 at the benchmark (m_h ~ 195 GeV under conditional SM running), too large; the certified family kappa^2 < 8 r0^2 reaches lambda_eff -> 0+, near the measured Higgs mass, but tree-level global minimality forbids the slightly negative SM value at the anchor M_I with PDG 2024 inputs (three-loop headline -0.0033 +- 0.0029, a 1.16 sigma top-mass tension; v_R-dependent). The equality set {V = V0} is exactly the orbit of the vacuum under SO(10) x U(1)_X x U(1)_PQ (g3_sm_pati_salam_equality_set_v20), so the minimum is unique modulo symmetry once the accidental U(1)_PQ is included (modulo SO(10) x U(1)_X alone it is a circle of orbits). Electroweak breaking and a realistic Yukawa sector remain open; this report does not close G3 by itself (final_g3_acceptance_gate_v20 decides it through its sm_pati_salam track) and the model is neither validated nor excluded."
 }

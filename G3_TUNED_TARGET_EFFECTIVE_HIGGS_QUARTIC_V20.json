@@ -141,7 +141,14 @@
   "sm_running": {
     "M_GUT_GeV": 9917564798898606.0,
     "applicability": "Only for an SM vacuum with pure SM running below M_GUT. Neither holds for the r = 1/5 benchmark: its stabilizer is SU(3) x SU(2)_L x U(1)_T3R, and its spectrum below M_GUT has non-SM scalars (m^2 ~ 2e-4 to 5e-3 M^2) with O(1) couplings to |h|^2, whose one-loop logs shift lambda by O(0.1).",
+    "input_set": "LEGACY_BUTTAZZO_2013_REGRESSION (M_t = 173.34, M_h = 125.15, alpha_s = 0.1184; Buttazzo fit matching; superseded headline)",
     "lambda_gut_required_for_sm_two_loop": -0.015111549966,
+    "pdg2024_headline_lambda_SM_M_GUT_3L": {
+      "lambda": -0.009681160201,
+      "same_sign_as_legacy_required": true,
+      "sigma": 0.003115331826,
+      "source": "g3_physical_hierarchy_higgs_stability_v20.pdg2024_corrected_headline (PDG 2024 inputs, SMDR v1.3-anchored matching, 3L + 4L QCD in g3)"
+    },
     "predictions": {
       "certified_lambda_eff": {
         "M_h_scaled_to_buttazzo_GeV": 175.153068595004,
@@ -162,7 +169,7 @@
         "m_h_tree_GeV": 128.247893491548
       }
     },
-    "scheme": "two-loop SM RGEs from g3_physical_hierarchy_higgs_stability_v20 (Buttazzo et al. 2013 inputs at M_t = 173.34 GeV), tree-level matching lambda(M_GUT) = lambda_eff"
+    "scheme": "two-loop SM RGEs from g3_physical_hierarchy_higgs_stability_v20 (legacy Buttazzo et al. 2013 inputs at M_t = 173.34 GeV; superseded headline), tree-level matching lambda(M_GUT) = lambda_eff"
   },
   "status": "G3_TUNED_POINT_LAMBDA_EFF_EQUALS_DIRECT_H_QUARTIC__LOCAL_MINIMALITY_NEEDS_LAMBDA_EFF_NONNEGATIVE__G3_OPEN",
   "tuned_point_hessian": {
@@ -235,8 +242,8 @@
     "state": "(F, r Delta_R, H=0, r, 1) with O06 tuned to the massless-doublet value",
     "symmetry_orbit_rank_gauge_plus_X_plus_PQ": 35,
     "zero_modes": 39,
-    "zero_modes_outside_orbit_plus_light_doublet": 0.0
+    "zero_modes_outside_orbit_plus_light_doublet": 1e-12
   },
   "units": "Hessian eigenvalues of the canonical 486-real chart, units of the benchmark scale M (|Phi|=1)",
-  "verdict": "At the r = 1/5 tuned point the light doublet has no tree-level coupling to heavy modes, so lambda_eff equals the direct H quartic, 1. The Hessian is PSD with 39 zero modes (33 broken SO(10) generators, U(1)_X, PQ and the doublet); the unbroken group is SU(3) x SU(2)_L x U(1)_T3R, not the SM, because the certified Delta_R carries hypercharge. Since the doublet is exactly flat, local minimality at tree level requires lambda_eff >= 0. If this were an SM vacuum with pure SM running below M_GUT, two-loop running would need lambda(M_GUT) = -0.0151 for the measured Higgs mass, which that condition forbids, and lambda_eff = 1 would give m_h ~ 173 GeV; neither premise holds for this benchmark. G3 stays open; nothing is excluded."
+  "verdict": "At the r = 1/5 tuned point the light doublet has no tree-level coupling to heavy modes, so lambda_eff equals the direct H quartic, 1. The Hessian is PSD with 39 zero modes (33 broken SO(10) generators, U(1)_X, PQ and the doublet); the unbroken group is SU(3) x SU(2)_L x U(1)_T3R, not the SM, because the certified Delta_R carries hypercharge. Since the doublet is exactly flat, local minimality at tree level requires lambda_eff >= 0. If this were an SM vacuum with pure SM running below M_GUT, two-loop running would need lambda(M_GUT) = -0.0151 (legacy Buttazzo 2013 inputs; PDG 2024 headline -0.0097 +- 0.0031, same sign) for the measured Higgs mass, which that condition forbids, and lambda_eff = 1 would give m_h ~ 173 GeV; neither premise holds for this benchmark. G3 stays open; nothing is excluded."
 }

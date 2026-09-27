@@ -301,14 +301,25 @@ def sm_running_audit(lambda_eff: float) -> dict[str, Any]:
         lam_top = lambda_at_top(value)
         predictions[label] = {"lambda_gut": value, "lambda_at_mt": lam_top, **stability.higgs_mass_estimates(lam_top)}
     required = float(stability.sm_profile(loops=2).lam(stability.M_GUT_GEV))
+    pdg2024_gut = stability.pdg2024_corrected_headline()["lambda_SM_table_3L"]["M_GUT"]
     return {
         "scheme": (
-            "two-loop SM RGEs from g3_physical_hierarchy_higgs_stability_v20 (Buttazzo et al. 2013 inputs at "
-            "M_t = 173.34 GeV), tree-level matching lambda(M_GUT) = lambda_eff"
+            "two-loop SM RGEs from g3_physical_hierarchy_higgs_stability_v20 (legacy Buttazzo et al. 2013 inputs at "
+            "M_t = 173.34 GeV; superseded headline), tree-level matching lambda(M_GUT) = lambda_eff"
         ),
+        "input_set": stability.LEGACY_INPUT_SET,
         "M_GUT_GeV": stability.M_GUT_GEV,
         "predictions": predictions,
         "lambda_gut_required_for_sm_two_loop": required,
+        "pdg2024_headline_lambda_SM_M_GUT_3L": {
+            "lambda": float(pdg2024_gut["lambda"]),
+            "sigma": float(pdg2024_gut["sigma"]),
+            "same_sign_as_legacy_required": (float(pdg2024_gut["lambda"]) < 0.0) == (required < 0.0),
+            "source": (
+                "g3_physical_hierarchy_higgs_stability_v20.pdg2024_corrected_headline (PDG 2024 inputs, "
+                "SMDR v1.3-anchored matching, 3L + 4L QCD in g3)"
+            ),
+        },
         "applicability": (
             "Only for an SM vacuum with pure SM running below M_GUT. Neither holds for the r = 1/5 benchmark: its "
             "stabilizer is SU(3) x SU(2)_L x U(1)_T3R, and its spectrum below M_GUT has non-SM scalars (m^2 ~ 2e-4 to "
@@ -387,6 +398,7 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     ok = not failures
     required = running["lambda_gut_required_for_sm_two_loop"]
+    pdg_gut = running["pdg2024_headline_lambda_SM_M_GUT_3L"]
     outcomes = {
         "lambda_eff_at_certified_couplings": quartic["lambda_eff"],
         "tree_level_local_minimum_requires_lambda_eff_nonnegative": True,
@@ -433,7 +445,9 @@ def build_report() -> dict[str, Any]:
             "SO(10) generators, U(1)_X, PQ and the doublet); the unbroken group is SU(3) x SU(2)_L x U(1)_T3R, not the "
             "SM, because the certified Delta_R carries hypercharge. Since the doublet is exactly flat, local "
             "minimality at tree level requires lambda_eff >= 0. If this were an SM vacuum with pure SM running below "
-            f"M_GUT, two-loop running would need lambda(M_GUT) = {required:.4f} for the measured Higgs mass, which "
+            f"M_GUT, two-loop running would need lambda(M_GUT) = {required:.4f} (legacy Buttazzo 2013 inputs; PDG 2024 "
+            f"headline {pdg_gut['lambda']:.4f} +- {pdg_gut['sigma']:.4f}, "
+            f"{'same' if pdg_gut['same_sign_as_legacy_required'] else 'OPPOSITE'} sign) for the measured Higgs mass, which "
             "that condition forbids, and lambda_eff = 1 would give m_h ~ "
             f"{running['predictions']['certified_lambda_eff']['m_h_tree_GeV']:.0f} GeV; neither premise holds for "
             "this benchmark. G3 stays open; nothing is excluded."
@@ -460,7 +474,11 @@ def _markdown(report: dict[str, Any]) -> str:
             "- conditional two-loop statement (SM vacuum, SM running below M_GUT): "
             f"certified `{predictions['certified_lambda_eff']['m_h_tree_GeV']:.1f}` GeV, lambda = 0 "
             f"`{predictions['zero']['m_h_tree_GeV']:.1f}` GeV (tree-level m_h); SM needs lambda(M_GUT) = "
-            f"`{running['lambda_gut_required_for_sm_two_loop']:.4f}`;",
+            f"`{running['lambda_gut_required_for_sm_two_loop']:.4f}` (legacy Buttazzo 2013 inputs; PDG 2024 headline "
+            f"`{running['pdg2024_headline_lambda_SM_M_GUT_3L']['lambda']:.4f}` +- "
+            f"`{running['pdg2024_headline_lambda_SM_M_GUT_3L']['sigma']:.4f}`, "
+            f"{'same' if running['pdg2024_headline_lambda_SM_M_GUT_3L']['same_sign_as_legacy_required'] else 'OPPOSITE'}"
+            " sign);",
             "- G3: `OPEN`; whole model: neither validated nor excluded.",
             "",
         ]

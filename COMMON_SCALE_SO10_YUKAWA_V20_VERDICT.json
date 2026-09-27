@@ -5,31 +5,34 @@
   "failures": [],
   "common_scale_refit": {
     "status": "COMMON_SCALE_PROXY_WITNESS__PRECISION_REFIT_OPEN",
-    "scale_GeV": 160982556355.69574,
+    "scale_GeV": 65608359036.3354,
+    "scale_source": "push end point = genuine two-loop anchor M_I without spectators (not the declared benchmark v_R = v_S = M_I); the SO(10)-style envelope starts at the one-loop M_I; no running is performed between the two scales",
     "mass_target_construction": {
       "status": "CLIPPED_DIAGNOSTIC_TARGETS__PRECISION_COMMON_SCALE_OPEN",
-      "scale_GeV": 160982556355.69574,
+      "scale_GeV": 65608359036.3354,
+      "scale_scheme": "two_loop_MV_gauge_anchor_no_spectators",
+      "scale_source": "push end point = genuine two-loop anchor M_I without spectators (not the declared benchmark v_R = v_S = M_I); the SO(10)-style envelope starts at the one-loop M_I; no running is performed between the two scales",
       "targets": {
         "m_u": 0.0108,
-        "m_c": 1.8878269245402173,
-        "m_t": 97.64447188069985,
-        "m_d": 0.0024696889428980893,
-        "m_s": 0.04918527513346362,
-        "m_b": 2.5519432856007445,
-        "m_e": 0.0005423752329717887,
-        "m_mu": 0.11216257720456851,
-        "m_tau": 1.9622398334857736
+        "m_c": 1.92210003977242,
+        "m_t": 99.04630073742838,
+        "m_d": 0.0025074960191556425,
+        "m_s": 0.049938151151917666,
+        "m_b": 2.5807732127143495,
+        "m_e": 0.0005425568394610776,
+        "m_mu": 0.11219947902791913,
+        "m_tau": 1.9594032868607374
       },
       "ratios_MI_over_low_clipped": {
         "m_u": 5.0,
-        "m_c": 1.4864778933387537,
-        "m_t": 0.5654321146603732,
-        "m_d": 0.5288413153957365,
-        "m_s": 0.5288739261662755,
-        "m_b": 0.6105127477513743,
-        "m_e": 1.0613996731346158,
-        "m_mu": 1.0615424683377674,
-        "m_tau": 1.1042430126537837
+        "m_c": 1.513464598246,
+        "m_t": 0.5735497176294423,
+        "m_d": 0.5369370490697307,
+        "m_s": 0.5369693672249212,
+        "m_b": 0.6174098595010405,
+        "m_e": 1.0617550674385081,
+        "m_mu": 1.0618917189846595,
+        "m_tau": 1.1026467568152716
       },
       "clipped_channels": [
         "m_u"
@@ -172,12 +175,22 @@
     "status": "SO10_STYLE_ENVELOPE_ONLY__PATI_SALAM_MATCHING_OPEN",
     "broken_phase": {
       "status": "DIAGNOSTIC_MATRIX_ODE_INTEGRATED__VALIDATED_2HDM_RGE_OPEN",
-      "mu_stop_GeV": 160982556355.69574,
+      "mu_stop_GeV": 65608359036.3354,
+      "mu_stop_scheme": "two_loop_MV_gauge_anchor_no_spectators",
+      "mu_stop_source": "push end point = genuine two-loop anchor M_I without spectators (not the declared benchmark v_R = v_S = M_I); the SO(10)-style envelope starts at the one-loop M_I; no running is performed between the two scales",
+      "running_in_this_module": "one-loop 2HDM gauge + one-loop Yukawa (diagnostic); only the end point M_I comes from the two-loop anchor",
       "relative_matrix_change_MZ_to_MI": {
-        "Yu": 0.4242918189226599,
-        "Yd": 0.389531987375219,
-        "Ye": 0.10412331761725918
+        "Yu": 0.41602569067941514,
+        "Yd": 0.38263423187292445,
+        "Ye": 0.10253161290444372
       }
+    },
+    "gauge_anchor": {
+      "loop_order": "one-loop",
+      "M_I_GeV": 631385523052.8793,
+      "M_GUT_GeV": 9917564798898606.0,
+      "alpha_inv_GUT_after_spectators": 16.809853842854203,
+      "note": "two-loop spectator-corrected alpha_GUT UNAVAILABLE; the SO(10)-style envelope uses the one-loop chain. The broken phase ends at the two-loop no-spectator anchor M_I (broken_phase.mu_stop_GeV), a factor 9.6 below this one-loop M_I; no running is performed between them"
     },
     "matching_at_MI": {
       "method": "not performed",
@@ -185,11 +198,11 @@
       "exact_matching_matrices_included": false
     },
     "MI_to_MGUT_diagnostic": {
-      "n_steps": 5,
-      "relative_change_H": 0.26849234468179317,
-      "relative_change_F": 0.2967609967641023,
-      "max_abs_H": 0.46034169837345634,
-      "max_abs_F": 0.24283566052554112,
+      "n_steps": 6,
+      "relative_change_H": 0.3238770978634508,
+      "relative_change_F": 0.35046450137489266,
+      "max_abs_H": 0.4254878837744289,
+      "max_abs_F": 0.2242914541879326,
       "uses_GUT_coupling_across_broken_interval": true
     },
     "flag": {
