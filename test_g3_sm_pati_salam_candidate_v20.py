@@ -490,6 +490,8 @@ class SmPatiSalamCandidateTest(unittest.TestCase):
         self.assertLess(running["lambda_M_I_required_for_sm_two_loop"], 0.0)
         self.assertGreater(running["predictions"]["lambda_eff_127_over_64"]["m_h_tree_GeV"], 180.0)
         self.assertFalse(quartic["higgs_mass_compatible"])
+        self.assertAlmostEqual(running["lambda_M_I_required_for_sm_two_loop"], -0.003915, delta=2.0e-5)
+        self.assertIn("PDG 2024", running["scheme"])
 
     def test_fast_sos_evaluator_matches_the_compiler_at_the_vacuum(self) -> None:
         fast = candidate.fast_potential()

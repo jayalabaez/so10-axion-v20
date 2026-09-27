@@ -2,9 +2,28 @@
 
 **Status:** `G3_SM_SINGLET_EFT_HIGGS_STABILITY__TUNED_POINT_TREE_SADDLE_FOR_GUT_OR_M_I_MATCHING__EW_VACUUM_METASTABLE_AT_BUTTAZZO_CENTRAL_INPUTS__G3_OPEN`
 
-Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam anchor chain, and not realized by any current repository vacuum, whose Delta_R is not the SM singlet): two-loop SM running from the Buttazzo et al. inputs puts the MSbar instability scale at 4.76e+09 GeV, a factor 133 below M_I, with lambda_SM(M_I) = -0.00854 and lambda_SM(M_GUT) = -0.01511 (one loop: -0.0335). With the H-S portal threshold at M_I, positive-portal windows keep lambda_H > 0 up to M_GUT for every scanned lambda_S. Copositivity is not the tree-level local-minimum condition (the single-stage point is copositive too). At the tuned point of the tree potential the condition is lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S) >= 0 (g3_tuned_target_portal_threshold_v20). With the S threshold at M_I, lambda_eff(M_I) = lambda_SM(M_I) = -0.0085 < 0, so the M_I threshold does not remove the tree-level saddle; at the GUT coefficients lambda_eff is -0.073 for the O36 = O23 = 1 benchmark and negative at 4 of 5 window middles. Metastability is the RG-improved statement. In the RG-improved potential the EW vacuum is still not the global minimum at central inputs, because the SM segment [Lambda_I, M_I] has lambda_SM < 0; the bounce estimate S ~ 3082 far exceeds the ~500 needed, so it is metastable and long-lived (estimate). At tree level with the S vev the EW/S point is a local (and then global) minimum iff lambda_SM(threshold) >= 0, so at central inputs it is the tree-level saddle stated above. Absolute stability with the threshold at M_I needs M_t < 171.96 GeV (2L) / 172.07 GeV (3L) with the MSbar criterion. With PDG 2024 M_h and alpha_s this becomes 171.95 GeV, 2.0 sigma below the measured 172.57 +- 0.29 GeV; with the Landau-gauge effective-potential zero it is ~172.36 GeV (0.7 sigma). The alternative is a radial mode below Lambda_I, i.e. lambda_S <~ 1.4e-05, far from the certified O23 = 1 (RG-improved: lambda_eff(m_rho) > 0 there, but lambda_eff at the GUT coefficients is negative at every scanned window point). Keeping O36 = O23 = 1 needs O34 = lambda_HS(M_GUT) = 2.072 (RG-improved metastable; a tree-level saddle, since O34 > 2 at O36 = O23 = 1). Single-stage GUT matching needs lambda_eff(M_GUT) = -0.0151 at two loops (negative at every loop order), so that tuned point is not a tree-level local minimum either. The RG-improved M_I-threshold conclusions are marginal: they depend on M_t (1-2 sigma), on the MSbar versus effective-potential instability criterion, and on the omitted states listed in the scope. This is an RG-improved EFT statement, not an exact lower witness of the 486-field tree potential: G3 stays open and the model is neither validated nor excluded.
+PDG 2024 headline (M_t = 172.57 +- 0.29, M_h = 125.20 +- 0.11, alpha_s = 0.1180 +- 0.0009; SMDR v1.3-anchored MSbar matching; three-loop SM running with four-loop QCD in g3): lambda_SM(M_I) = -0.0033 +- 0.0029 and lambda_SM(M_GUT) = -0.0097 +- 0.0031; the MSbar zero is at 6.3e+10 GeV (1 sigma 1.2e+10-3.5e+11 GeV) and the Landau-gauge effective-potential zero is 2.5-6.5x higher (definition dependent). Absolute stability with the threshold at M_I needs M_t < 172.04 +- 0.36 GeV, 1.16 sigma below the measured value once the alpha_s and M_h errors are included (172.23-172.46 GeV, 0.74-0.24 sigma, with the effective-potential zero). The earlier 2.0 sigma omitted the alpha_s and M_h errors and used the Buttazzo et al. fit formulas, whose g3(M_t) and y_t(M_t) are 0.0017 and 0.0009 too high. lambda_SM(v_R) is +0.0086 at 1e9 GeV and -0.0003 at 7.8e10 GeV: its sign flips inside the realistic v_R band, so the Higgs matching is conditional and open, not falsified. Legacy regression (Buttazzo et al. 2013 central inputs, M_t = 173.34 GeV; used for the portal analysis): Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam anchor chain, and not realized by any current repository vacuum, whose Delta_R is not the SM singlet): two-loop SM running from the Buttazzo et al. inputs puts the MSbar instability scale at 4.76e+09 GeV, a factor 133 below M_I, with lambda_SM(M_I) = -0.00854 and lambda_SM(M_GUT) = -0.01511 (one loop: -0.0335). With the H-S portal threshold at M_I, positive-portal windows keep lambda_H > 0 up to M_GUT for every scanned lambda_S. Copositivity is not the tree-level local-minimum condition (the single-stage point is copositive too). At the tuned point of the tree potential the condition is lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S) >= 0 (g3_tuned_target_portal_threshold_v20). With the S threshold at M_I, lambda_eff(M_I) = lambda_SM(M_I) = -0.0085 < 0, so the M_I threshold does not remove the tree-level saddle; at the GUT coefficients lambda_eff is -0.073 for the O36 = O23 = 1 benchmark and negative at 4 of 5 window middles. Metastability is the RG-improved statement. In the RG-improved potential the EW vacuum is still not the global minimum at central inputs, because the SM segment [Lambda_I, M_I] has lambda_SM < 0; the bounce estimate S ~ 3082 far exceeds the ~500 needed, so it is metastable and long-lived (estimate). At tree level with the S vev the EW/S point is a local (and then global) minimum iff lambda_SM(threshold) >= 0, so at central inputs it is the tree-level saddle stated above. Absolute stability with the threshold at M_I needs M_t < 171.96 GeV (2L) / 172.07 GeV (3L) with the MSbar criterion at these legacy inputs. The alternative is a radial mode below Lambda_I, i.e. lambda_S <~ 1.4e-05, far from the certified O23 = 1 (RG-improved: lambda_eff(m_rho) > 0 there, but lambda_eff at the GUT coefficients is negative at every scanned window point). Keeping O36 = O23 = 1 needs O34 = lambda_HS(M_GUT) = 2.072 (RG-improved metastable; a tree-level saddle, since O34 > 2 at O36 = O23 = 1). Single-stage GUT matching needs lambda_eff(M_GUT) = -0.0151 at two loops (negative at every loop order), so that tuned point is not a tree-level local minimum either. The RG-improved M_I-threshold conclusions are marginal: they depend on M_t (about 1 sigma), on the MSbar versus effective-potential instability criterion, and on the omitted states listed in the scope. This is an RG-improved EFT statement, not an exact lower witness of the 486-field tree potential: G3 stays open and the model is neither validated nor excluded.
 
-## SM running (Buttazzo et al. 1307.3536 v3/v4 inputs, mu0 = M_t = 173.34 GeV)
+## PDG 2024 headline (SMDR v1.3-anchored matching, 3L + 4L QCD in g3)
+
+| scale | mu [GeV] | lambda_SM | 1 sigma |
+|---|---|---|---|
+| 1e9 | 1e+09 | +0.0086 | 0.0024 |
+| 5.65e9 | 5.65e+09 | +0.0045 | 0.0026 |
+| 1e10 | 1e+10 | +0.0033 | 0.0026 |
+| 7.8e10 | 7.8e+10 | -0.0003 | 0.0027 |
+| M_I | 6.314e+11 | -0.0033 | 0.0029 |
+| M_GUT | 9.918e+15 | -0.0097 | 0.0031 |
+
+- MSbar zero `6.35e+10` GeV (1 sigma `1.2e+10`-`3.5e+11` GeV); Landau-gauge effective-potential zero 2.5-6.5 x higher (definition dependent).
+- Absolute stability with the threshold at M_I: M_t < `172.04` +- `0.36` GeV (alpha_s `0.33`, M_h `0.06`, theory `0.12`); measured 172.57 +- 0.29 GeV: `1.16` sigma; effective-potential zero `172.23`-`172.46` GeV (`0.74`-`0.24` sigma).
+- Significance decomposition (M_t + theory only / full budget): legacy Buttazzo fit `1.99` / `1.36` (the retracted 2.0 sigma is the first); SMDR-anchored `1.70` / `1.16` (headline).
+- Matching bias of the legacy Buttazzo fit formulas at PDG 2024 (fit minus SMDR v1.3 anchor): g3 `+0.00174`, y_t `+0.00094`, lambda `-0.00012`; the fix moves lambda(M_I) by `+0.0006` and M_t^crit by `+0.093` GeV.
+- Validation: SMDR 2019/2020/2021 reference points reproduced (max |residual| g3 `3.8e-06`, y_t `2.7e-06`, lambda `2.5e-05`: True); Bednyakov et al. 2015 Table I |dg3| `2.2e-05`, |dy_t| `4.4e-06`: True.
+- yb, ytau and the four-loop QCD term of beta_yt are omitted: |Delta lambda| <= 3e-5 and |Delta M_t^crit| <= 0.003 GeV against an independent engine that keeps them.
+- Verdict: Higgs matching not falsified; conditional and open (sign flips inside the realistic v_R band).
+
+## Legacy regression: SM running at the Buttazzo et al. 2013 inputs (mu0 = M_t = 173.34 GeV; superseded headline)
 
 | run | Lambda_I [GeV] | lambda(M_I) | lambda(M_GUT) | lambda(M_Pl) | lambda_min |
 |---|---|---|---|---|---|
@@ -24,13 +43,13 @@ Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam ancho
 
 ## Top-mass bound and metastability (threshold at M_I)
 
-- Absolute stability needs Lambda_I >= M_I: M_t < `171.961` GeV (2L), `172.066` GeV (3L+4QCD); with M_h = 125.20, alpha_s = 0.1180: `171.841` / `171.946` GeV (matching theory error +-0.12 GeV).
-- With the Landau-gauge effective-potential zero (~6.5 x the MSbar zero) instead: `172.480` GeV (3L), `172.363` GeV (3L, PDG 2024 M_h, alpha_s); an estimate.
-- Measured M_t = 172.57 +- 0.29 GeV: 2.0 sigma above the 3L MSbar bound, 0.7 sigma above the effective-potential estimate.
-- PDG 2024 central inputs (3L): MSbar zero `4.5e+10` GeV, effective-potential zero ~`2.92e+11` GeV, both below M_I; lambda_SM(M_I) = `-0.00384`.
-- Window [Lambda_I, M_I]: lambda_min = `-0.00854`, bounce action S ~ `3082` vs ~494 needed; max log10 p ~ `-1124` (estimate).
+- Absolute stability needs Lambda_I >= M_I: M_t < `171.961` GeV (2L), `172.066` GeV (3L+4QCD) at the legacy inputs; PDG 2024 M_h = 125.20, alpha_s = 0.1180 with SMDR v1.3-anchored matching: `171.935` / `172.039` GeV (legacy matching theory error +-0.12 GeV; full PDG 2024 bound error +-0.36 GeV).
+- With the Landau-gauge effective-potential zero (2.5-6.5 x the MSbar zero; 6.5 shown) instead: `172.480` GeV (3L, legacy inputs), `172.458` GeV (3L, PDG 2024, SMDR matching); an estimate.
+- Measured M_t = 172.57 +- 0.29 GeV: 1.16 sigma above the 3L MSbar bound (PDG 2024, SMDR matching, full error budget incl. alpha_s and M_h), 0.24 sigma above the effective-potential estimate (factor 6.5).
+- PDG 2024 central inputs (3L, SMDR matching): MSbar zero `6.35e+10` GeV, effective-potential zero ~`1.59e+11`-`4.13e+11` GeV, both below M_I; lambda_SM(M_I) = `-0.00327`.
+- Window [Lambda_I, M_I] (legacy Buttazzo 2013 inputs, M_t = 173.34 GeV; superseded headline): lambda_min = `-0.00854`, bounce action S ~ `3082` vs ~494 needed; max log10 p ~ `-1124` (estimate).
 
-## Portal windows at M_I (lambda_H > 0 and |lambda| < 4 pi up to M_GUT)
+## Portal windows at M_I (legacy Buttazzo 2013 inputs; lambda_H > 0 and |lambda| < 4 pi up to M_GUT)
 
 | lambda_S(M_I) | lambda_HS min | lambda_HS max | delta min | (lambda_H, lambda_S, lambda_HS)(M_GUT) at middle | tree lambda_eff(M_GUT) at middle | class |
 |---|---|---|---|---|---|---|
@@ -40,7 +59,7 @@ Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam ancho
 | 0.2 | 0.10975 | 0.7985 | 0.01506 | (0.1132, 0.2834, 0.3826) | -0.0159 | METASTABLE_LONG_LIVED_ESTIMATE |
 | 0.5 | 0.16417 | 1.0942 | 0.01348 | (0.1012, 1.4015, 0.7520) | +0.0003 | METASTABLE_LONG_LIVED_ESTIMATE |
 
-- Tree level: lambda_eff(M_I) = lambda_SM(M_I) = `-0.00854` for every M_I solution, so the M_I-matched tuned point is a tree-level saddle; the classes above are RG-improved. Metastable grid rows with lambda_eff(M_GUT) >= 0: 2 of 14.
+- Tree level: lambda_eff(M_I) = lambda_SM(M_I) = `-0.00854` (legacy Buttazzo 2013 inputs; PDG 2024 headline `-0.0033` +- `0.0029`, same sign) for every M_I solution, so the M_I-matched tuned point is a tree-level saddle; the classes above are RG-improved. Metastable grid rows with lambda_eff(M_GUT) >= 0: 2 of 14.
 - Certified benchmark (1, 1, 0) at M_GUT: lambda(M_t) = `0.2468`, m_h(tree) = `173.0` GeV (two loops).
 - Keeping O36 = O23 = 1: lambda_S(M_I) = `0.3623`, lambda_HS(M_I) = `0.7616`, O34 = lambda_HS(M_GUT) = `2.0719`; class `METASTABLE_LONG_LIVED_ESTIMATE` (RG-improved); tree-level lambda_eff(M_GUT) = `-0.0732`, a saddle.
 - Radial-mode threshold m_rho = 2 sqrt(lambda_S) M_I is below Lambda_I iff lambda_S < `1.42e-05`:
@@ -49,20 +68,21 @@ Within an SM + complex-singlet EFT (not the repository's 2HDM + Pati-Salam ancho
   - lambda_S = 0.0001: m_rho = 1.26e+10 GeV, below Lambda_I: False; lambda_HS in [0.00252, 0.0189]; class METASTABLE_LONG_LIVED_ESTIMATE; tree lambda_eff(m_rho) = -0.0021, lambda_eff(M_GUT) at middle = -0.0062 (class RG-improved)
   - lambda_S = 0.01: m_rho = 1.26e+11 GeV, below Lambda_I: False; lambda_HS in [0.0252, 0.187]; class METASTABLE_LONG_LIVED_ESTIMATE; tree lambda_eff(m_rho) = -0.0062, lambda_eff(M_GUT) at middle = -0.0127 (class RG-improved)
 
-## Single-stage matching at M_GUT (portal module; the 1L mu0 = 173.10 row reproduces the superseded commit-5f25846 value)
+## Single-stage matching at M_GUT (legacy Buttazzo 2013 inputs; portal module; the 1L mu0 = 173.10 row reproduces the superseded commit-5f25846 value)
 
+- PDG 2024 headline (3L + 4L QCD, SMDR matching): lambda_SM(M_GUT) = `-0.0097` +- `0.0031`, the same sign as the legacy 2L value below.
 - lambda_eff(M_GUT) required: 1L (mu0 173.10) `-0.0335`, 2L `-0.0151`, 3L `-0.0144`: negative, so the tuned point is not a tree-level local minimum.
 - lambda_eff(M_GUT) = 0 would give m_h(tree) = `128.2` GeV (scaled `129.8` GeV) at two loops; lambda_SM(M_GUT) >= 0 needs M_t < `171.02` GeV (2L).
 
-Checks: 25/25 passed. G3: `OPEN`; whole model: neither validated nor excluded.
+Checks: 29/29 passed. G3: `OPEN`; whole model: neither validated nor excluded.
 
 ## Scope
 
 - Only the complex singlet S is kept between M_I and M_GUT. Other states near M_I are omitted: any colour-triplet partner (the F-branch formula extrapolated to M_I gives sqrt(beta) M_I ~ 1.4e11 GeV, but no such state has been constructed) and light Sigma_126bar components.
 - The axion-sector vector-like fermion Yukawas (y S Q Qbar), which drive lambda_S through -6 y^4 and 12 y^2 lambda_S, are omitted, as are right-handed-neutrino Yukawas.
 - Threshold matching is tree level at mu = M_I (or at m_rho in the radial-mode scan). One-loop threshold corrections and the log of m_rho/M_I are omitted.
-- Portal running is one loop; the singlet-only two-loop pieces from SMASH App. A enter only as a sensitivity estimate. SM running below M_I is two loop (three loop + four-loop QCD as a cross-check).
-- Stability is judged on the RG-improved tree potential, with lambda evaluated at mu ~ field value. The MSbar zero Lambda_I is not the Landau-gauge effective-potential zero, which is ~6.5x higher (Buttazzo et al.). Both sit below M_I at the Buttazzo and PDG 2024 central inputs. The top-mass bound moves by ~0.4 GeV between the two definitions, and it is quoted for both.
+- Portal running is one loop; the singlet-only two-loop pieces from SMASH App. A enter only as a sensitivity estimate. SM running below M_I is two loop (three loop + four-loop QCD as a cross-check). The PDG 2024 headline (pdg2024_corrected) uses three-loop running with four-loop QCD in g3 and SMDR v1.3-anchored matching; yb, ytau and the four-loop QCD term of beta_yt are omitted (|Delta lambda| <= 3e-5, |Delta M_t^crit| <= 0.003 GeV).
+- Stability is judged on the RG-improved tree potential, with lambda evaluated at mu ~ field value. The MSbar zero Lambda_I is not the Landau-gauge effective-potential zero, which is 2.5-6.5x higher depending on the definition (Hiller et al. 2401.08811: Lambda_0,eff/Lambda_0 ~ 2.5; Buttazzo et al. 1307.3536: ~6.5). Both sit below M_I at the Buttazzo and PDG 2024 central inputs even for the factor 6.5. The top-mass bound moves by 0.19-0.42 GeV between the definitions (PDG 2024: 172.04 GeV MSbar, 172.23-172.46 GeV effective potential), and it is quoted for all of them.
 - The vacuum-decay numbers use the tree-level Fubini bounce, with no quantum, gravitational or thermal corrections. They are estimates.
 - Tree-level local minimality at the tuned point (lambda_eff >= 0) is evaluated on the (H, S) block only, at M_I and at the running GUT values; it is a necessary condition, not a 486-field Hessian test.
 - Identifying the GUT-scale light-field quartics with the tree-level coefficients O36_B02, O23 and O34 assumes no heavy-exchange shifts at M_GUT for S and HS; only the H shift was shown to vanish.
@@ -72,4 +92,5 @@ Checks: 25/25 passed. G3: `OPEN`; whole model: neither validated nor excluded.
 - Above M_N ~ f M_I, SO(10) Dirac neutrino Yukawas y_nu ~ y_t add -2 y_nu^4 to beta_lambda_H; the dynamical Delta_R and its portals give further thresholds (a matrix over the S and Delta_R radial modes) and make lambda_HS = 0 non-RG-invariant at one loop.
 - For lambda_S << lambda_HS the relevant scale is the valley end h_c ~ sqrt2 (lambda_S/delta)^(1/4) M_I rather than m_rho; the radial-mode scan treats the threshold at m_rho and is optimistic there.
 - The Fubini bounce at 1/R ~ M_I has a central field above the threshold; the action is used as a conservative lower bound (V >= lambda_SM(M_I) |H|^4 at tree level). Inflationary and thermal Higgs fluctuations are not addressed.
-- With PDG 2024 inputs, the effective-potential criterion and matching at m_rho, absolute stability is allowed for small lambda_S; the 'metastable at central inputs' status refers to the Buttazzo 2013 central values and the MSbar criterion.
+- With PDG 2024 inputs, the effective-potential criterion and matching at m_rho, absolute stability is allowed for small lambda_S; the 'metastable at central inputs' status and the portal scan use the legacy Buttazzo 2013 central values and the MSbar criterion; at PDG 2024 central inputs with SMDR-anchored matching lambda_SM(M_I) = -0.0033 +- 0.0029 is also negative, but only 1.1 sigma from zero (top-mass tension 1.16 sigma), and lambda_SM(v_R) changes sign inside the realistic v_R band: the Higgs matching is conditional and open, not falsified.
+- Matching: the legacy Buttazzo et al. fit formulas (1307.3536 eqs. 55-60) give g3(M_t) and y_t(M_t) too high by 0.0017 and 0.0009 relative to SMDR v1.3 and Bednyakov et al. 2015; the PDG 2024 headline uses SMDR v1.3-anchored couplings (matching_validation), which raises lambda(M_I) by 0.0006 and M_t^crit by 0.09 GeV. The fit formulas are kept only for the Buttazzo 2013 regression set.

@@ -202,6 +202,7 @@ def yukawa_beta_2hdm(yu: np.ndarray, yd: np.ndarray, ye: np.ndarray,
 def solve_one_loop_matrix_yukawa_rge(bases: dict[str, Any] | None = None) -> dict[str, Any]:
     bases = bases or flavour_sector_bases()
     gauge = thresholds.solve_unification(two_loop=True)
+    thresholds.require_two_loop_available(gauge)  # fail closed (TwoLoopAnchorUnavailable), never float(None)
     mz, mi = 91.1876, float(gauge["M_I_GeV"])
     h, f = np.asarray(bases["H"], dtype=complex), np.asarray(bases["F"], dtype=complex)
     yu0, yd0, ye0 = h + f, h + f, h - 3.0 * f
@@ -228,7 +229,8 @@ def solve_one_loop_matrix_yukawa_rge(bases: dict[str, Any] | None = None) -> dic
         "integration": {"method": "RK45", "success": True, "n_steps": int(sol.y.shape[1]),
                         "mu_start_GeV": mz, "mu_stop_GeV": mi, "message": sol.message},
         "gauge_anchor": {"scheme": gauge["scheme"], "M_I_GeV": mi,
-                         "M_GUT_GeV": float(gauge["M_GUT_GeV"])},
+                         "M_GUT_GeV": float(gauge["M_GUT_GeV"]),
+                         "running_in_this_module": "one-loop 2HDM gauge + one-loop Yukawa (diagnostic); only the end point M_I comes from the two-loop anchor"},
         "relative_matrix_change_MZ_to_MI": {"Yu": rel(yu0,yu1), "Yd": rel(yd0,yd1), "Ye": rel(ye0,ye1)},
         "running_masses_at_MI_GeV": {"up": [float(x) for x in su[::-1]],
                                      "down": [float(x) for x in sd[::-1]],
@@ -263,7 +265,13 @@ def common_scale_sensitivity(rge: dict[str, Any], bases: dict[str, Any]) -> dict
 def build_report() -> dict[str, Any]:
     bases = flavour_sector_bases(); expansion = hierarchical_w_expansion()
     envelope = portal_cf_envelope(); fcnc = fcnc_experimental_bound_application(bases)
-    rge = solve_one_loop_matrix_yukawa_rge(bases); sensitivity = common_scale_sensitivity(rge, bases)
+    try:
+        rge = solve_one_loop_matrix_yukawa_rge(bases)
+    except thresholds.TwoLoopAnchorUnavailable as exc:  # fail closed
+        return {"status": "PHENOMENOLOGY_DIAGNOSTICS_FAILED", "n_checks": 1, "n_failed": 1,
+                "failures": ["two_loop_gauge_anchor_available"], "error": str(exc),
+                "verdict": f"Fail closed: the broken-phase matrix ODE needs the two-loop anchor M_I ({exc})."}
+    sensitivity = common_scale_sensitivity(rge, bases)
     checks = {"hierarchical_expansion_controlled": expansion["epsilon"] < 1e-3,
               "portal_envelope_nonunique": not envelope["flag"]["unconditional_unique_Cf"],
               "fcnc_not_called_likelihood": not fcnc["flag"]["experimental_FCNC_bound_applied"],
@@ -299,7 +307,7 @@ def main():
     ROOT.joinpath("PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json").write_text(json.dumps(report, indent=2)+"\n", encoding="utf-8")
     ROOT.joinpath("PUSH_PHENOMENOLOGY_LIMITS_V20.md").write_text(write_markdown(report), encoding="utf-8")
     print(json.dumps({"status": report["status"], "n_failed": report["n_failed"],
-                      "advances": report["advances"], "verdict": report["verdict"]}, indent=2))
+                      "advances": report.get("advances"), "verdict": report["verdict"]}, indent=2))
     return 0 if report["n_failed"] == 0 else 1
 
 

@@ -115,20 +115,19 @@ def sm_2hdm_yukawa_betas(
 
 
 def gauge_sm_at_mu(mu: float, gauge: dict[str, Any]) -> dict[str, float]:
-    """Rough one-loop SM(2HDM) interpolation MZ→M_I using low-scale anchors."""
+    """SM(2HDM) gauge couplings between M_Z and M_I: genuine two-loop Machacek-Vaughn running when gauge['loops'] == 2 (two_loop_thresholds_v20), otherwise one-loop."""
     mz = 91.1876
     mi = float(gauge["M_I_GeV"])
-    # Start from PDG-like inverses used in two_loop_thresholds_v20.
-    a1, a2, a3 = 59.02, 29.57, 1.0 / 0.1179
-    b1, b2, b3 = 21.0 / 5.0, -3.0, -7.0
-    if "two-loop" in str(gauge.get("scheme", "")).lower():
-        b1, b2, b3 = b1 + 0.35, b2 - 0.20, b3 - 0.45
-    t = math.log(max(mu, mz) / mz) / TWO_PI
-    inv1 = a1 - b1 * t
-    inv2 = a2 - b2 * t
-    inv3 = a3 - b3 * t
-    # Clamp near M_I if requested (not used beyond M_I).
-    _ = mi
+    if int(gauge.get("loops", 1)) == 2:
+        inv1, inv2, inv3 = thresholds.sm_alpha_inv_two_loop(min(max(mu, mz), mi))
+    else:
+        # Start from PDG-like inverses used in two_loop_thresholds_v20.
+        a1, a2, a3 = 59.02, 29.57, 1.0 / 0.1179
+        b1, b2, b3 = 21.0 / 5.0, -3.0, -7.0
+        t = math.log(max(mu, mz) / mz) / TWO_PI
+        inv1 = a1 - b1 * t
+        inv2 = a2 - b2 * t
+        inv3 = a3 - b3 * t
     return {
         "g1": math.sqrt(4 * math.pi / inv1) if inv1 > 0 else 0.0,
         "g2": math.sqrt(4 * math.pi / inv2) if inv2 > 0 else 0.0,
@@ -211,6 +210,7 @@ def evolve_sm_yukawas(
 def run_piecewise_chain(*, eta_i: float = 1.0) -> dict[str, Any]:
     bases = push.flavour_sector_bases()
     gauge = thresholds.solve_unification(two_loop=True)
+    thresholds.require_two_loop_available(gauge)  # fail closed (TwoLoopAnchorUnavailable), never float(None)
     mi = float(gauge["M_I_GeV"])
     mgut = float(gauge["M_GUT_GeV"])
     mz = 91.1876
@@ -240,8 +240,9 @@ def run_piecewise_chain(*, eta_i: float = 1.0) -> dict[str, Any]:
             "M_GUT_GeV": mgut,
             "scheme": gauge["scheme"],
             "note": (
-                "Uses the repository two-loop-corrected threshold chain "
-                "(M_I and M_GUT as returned by two_loop_thresholds_v20)."
+                "Uses the genuine two-loop Machacek-Vaughn gauge running of "
+                "two_loop_thresholds_v20 (anchor content: 2HDM below M_I, "
+                "Pati-Salam above; no spectators); Yukawa betas are one loop."
             ),
         },
         "clebsch_matching_at_MI": {
@@ -263,7 +264,19 @@ def run_piecewise_chain(*, eta_i: float = 1.0) -> dict[str, Any]:
 
 
 def build_report() -> dict[str, Any]:
-    chain = run_piecewise_chain(eta_i=1.0)
+    try:
+        chain = run_piecewise_chain(eta_i=1.0)
+    except thresholds.TwoLoopAnchorUnavailable as exc:  # fail closed
+        return {
+            "status": "YUKAWA_RGE_2LOOP_CHAIN_FAILED",
+            "n_checks": 1,
+            "n_failed": 1,
+            "failures": ["two_loop_gauge_anchor_available"],
+            "error": str(exc),
+            "flag": {"piecewise_yukawa_chain_integrated": False, "genuine_two_loop_gauge_running_used": False,
+                     "two_loop_so10_complete": False},
+            "verdict": f"Fail closed: the piecewise chain needs the two-loop gauge anchor ({exc}).",
+        }
     checks = {
         "clebsch_yd_identity": chain["clebsch_matching_at_MI"][
             "clebsch_identity_check"
@@ -294,7 +307,8 @@ def build_report() -> dict[str, Any]:
             "piecewise_yukawa_chain_integrated": True,
             "pati_salam_one_loop_yukawa_layer_used": True,
             "sm_2hdm_one_loop_layer_used": True,
-            "heuristic_two_loop_gauge_thresholds_used": True,
+            "heuristic_two_loop_gauge_thresholds_used": False,
+            "genuine_two_loop_gauge_running_used": True,
             "published_210_tensor_contractions": False,
             "two_loop_so10_complete": False,
             "explicit_two_loop_yukawa_betas": False,
@@ -312,6 +326,9 @@ def build_report() -> dict[str, Any]:
 
 
 def write_markdown(report: dict[str, Any]) -> str:
+    if "chain" not in report:  # fail-closed report
+        return "\n".join(["# Piecewise Yukawa RGE + Clebsch thresholds — v20", "",
+                          f"**Status:** `{report['status']}`", "", report["verdict"], ""])
     c = report["chain"]
     return "\n".join(
         [
@@ -321,6 +338,7 @@ def write_markdown(report: dict[str, Any]) -> str:
             "",
             f"- M_I: {c['gauge_anchor']['M_I_GeV']:.4g} GeV",
             f"- M_GUT: {c['gauge_anchor']['M_GUT_GeV']:.4g} GeV",
+            "- Gauge running: genuine two-loop MV (anchor content, no spectators)",
             f"- Ye = H − 3F identity: "
             f"**{c['clebsch_matching_at_MI']['clebsch_identity_check']['Ye_equals_H_minus_3F']}**",
             f"- Published two-loop SO(10)+210: **False**",
@@ -347,7 +365,7 @@ def main() -> int:
                 "status": report["status"],
                 "n_failed": report["n_failed"],
                 "flag": report["flag"],
-                "gauge_anchor": report["chain"]["gauge_anchor"],
+                "gauge_anchor": (report.get("chain") or {}).get("gauge_anchor"),
                 "verdict": report["verdict"],
             },
             indent=2,

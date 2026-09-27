@@ -1,7 +1,7 @@
 # Extensive confirmation / falsification campaign
 
 **Status:** PASS — 53 checks, 0 failed
-**Unittest discovery:** 964 tests available in package
+**Unittest discovery:** 1312 tests available in package
 
 ## Coverage
 
@@ -63,9 +63,9 @@
 - [PASS] single-scale v_R=v_S is more stressed than 1e14 in full Clebsch fit: `documented by flavour package chi2_v20 > chi2_natural`
 
 ### H_wilson — PASS (4/4)
-- [PASS] O(1) mild-shrink safe: `1.349702770863388`
-- [PASS] O(1) mild-grow safe: `0.7409038653453398`
-- [PASS] critical Planck |C| for quality violation is >> 1: `C_crit_lower_bound~1.861e+07`
+- [PASS] O(1) mild-shrink safe: `1.3559851763074326`
+- [PASS] O(1) mild-grow safe: `0.7374711888246186`
+- [PASS] critical Planck |C| for quality violation is >> 1: `C_crit_lower_bound~1.863e+07`
 - [PASS] forced 1e6 scenario remains tracked: `safe=True`
 
 ### I_halo — PASS (3/3)
@@ -97,7 +97,7 @@
 - [PASS] detector armed: correct inequality is Gamma <= massless benchmark: `armed`
 - [PASS] detector armed: v20 'perturbative to M_Pl with alpha=1/40' claim fails under single RG trajectory: `armed`
 - [PASS] detector armed: manuscript portal list is incomplete: `armed`
-- [PASS] continuous alpha_inv(vPhi) != 40: `16.647`
+- [PASS] continuous one-loop alpha_inv(vPhi) != 40: `15.829`
 
 ### O_fermion — PASS (5/5)
 - [PASS] moving-frame identity is algebraically verified: `worst=5.984e-11`

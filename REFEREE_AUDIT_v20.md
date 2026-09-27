@@ -59,7 +59,7 @@
    after Spin(10) breaking; verify component lifetimes and induced flavour
    operators. **Done in-repo:** `heavy_light_spectrum_v20.py`.
 3. Run two-loop Spin(10)×`U(1)_X` RGEs with realistic GUT thresholds.
-   **Partial:** `two_loop_thresholds_v20.py` + `wilson_rg_evolution_v20.py`.
+   **Partial:** `two_loop_thresholds_v20.py` (genuine two-loop Machacek–Vaughn gauge running of the anchor content without spectators; with the benchmark 5×(16+16bar) spectators at M_s = M_I there is no perturbative two-loop unification, so the two-loop Spin(10) running is UNAVAILABLE; the earlier constant-shift proxy was removed) + `wilson_rg_evolution_v20.py`.
 4. Evolve the dimension-five and dimension-eight Wilson tensors from
    `M_Pl` through `vPhi`, the GUT thresholds and `vS`.
    **Envelope done:** `wilson_rg_evolution_v20.py` (full mixing basis external).

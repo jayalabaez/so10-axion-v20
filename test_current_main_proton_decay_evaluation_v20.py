@@ -49,9 +49,9 @@ class ProtonDecayReportTests(unittest.TestCase):
                 "M_GUT_GeV": 9.917564798898132e15,
                 "alpha_inv_GUT": 37.31304523437261,
             },
-            "two_loop_proxy": {
-                "M_GUT_GeV": 1.1520237075928928e15,
-                "alpha_inv_GUT": 37.376618044042196,
+            "two_loop_contract_benchmark": {
+                "available": False,
+                "reason": "test: no perturbative two-loop solution",
             },
         }
 
@@ -92,10 +92,6 @@ class ProtonDecayReportTests(unittest.TestCase):
             return {
                 "available": True,
                 "one_loop": {"M_GUT_GeV": 1.0e17, "alpha_inv_GUT": 40.0},
-                "two_loop_proxy": {
-                    "M_GUT_GeV": 8.0e16,
-                    "alpha_inv_GUT": 40.0,
-                },
             }
 
         report = mod.build_report(
@@ -109,6 +105,27 @@ class ProtonDecayReportTests(unittest.TestCase):
         )
         self.assertFalse(
             report["classification"]["whole_model_excluded_by_proton_decay"]
+        )
+
+    def test_no_two_loop_contract_benchmark(self):
+        report = mod.build_report(
+            anchor_loader=self.anchor_loader,
+            selected_xy_loader=self.selected_loader,
+            legacy_loader=self.legacy_loader,
+        )
+        self.assertEqual(
+            set(report["benchmarks"]),
+            {"one_loop_unification_anchor", "selected_vev_xy_mass"},
+        )
+        self.assertNotIn("two_loop_calibrated_proxy", report["benchmarks"])
+        self.assertIs(report["two_loop_contract_benchmark"]["available"], False)
+        self.assertTrue(report["two_loop_contract_benchmark"]["reason"])
+        self.assertEqual(
+            set(mod._load_anchor()),
+            {"available", "one_loop", "two_loop_contract_benchmark"},
+        )
+        self.assertIs(
+            mod.TWO_LOOP_CONTRACT_BENCHMARK["counterfactual_benchmarks_included"], False
         )
 
 
