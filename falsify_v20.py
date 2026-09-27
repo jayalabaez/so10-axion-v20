@@ -106,10 +106,10 @@ def build_falsification_report() -> dict:
             "hard",
         )
     )
-    inv_v = t["comparison"]["alpha_inv_vPhi_phys_two"]
+    inv_v = t["comparison"]["alpha_inv_vPhi_phys_one"]
     rows.append(
         _row(
-            "continuous alpha_inv(v_Phi) is not the 1/40 reset",
+            "continuous one-loop alpha_inv(v_Phi) is not the 1/40 reset",
             abs(inv_v - 40.0)
             > GOLDEN["running_soft_falsification"]["require_continuous_differs_from_reset_by"],
             f"{inv_v:.3f} vs 40",

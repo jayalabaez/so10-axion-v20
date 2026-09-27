@@ -21,6 +21,13 @@ Honesty
   SARAH/PyR@TE literature — this is not a claim that a SARAH model file
   for the full SO(10)×Z₁₇ potential was executed in this repository.
 * Quartic / soft-parameter two-loop βs and unique ``τ_p`` remain OPEN.
+* Known normalisation error (D-C fix round; see ``LEDGER_NORMALISATION_CAVEAT``):
+  ``c2_of`` carries an extra factor C₂(G) = 8 (C₂(16) = 45 instead of 45/8)
+  and ``two_loop_b2_gauge_only`` gives Weyl 16s the Dirac weight and the real
+  210 the complex-scalar weight, so ``b₂`` is overstated about 11.6x (below
+  v_Φ).  The "two-loop" α⁻¹ outputs are therefore a mis-normalised
+  diagnostic, **not** genuine two-loop running; correcting the ledger (and
+  its CI pin ``casimirs['16'] == 45``) is a separate decision.
 """
 
 from __future__ import annotations
@@ -60,6 +67,29 @@ SOURCES = {
         "scope": "simple-group gauge β up to two loops (Yukawa-free b₂ piece)",
     },
     "casimir": "C₂(R) = T(R)·dim(G)/dim(R)·C₂(G) with C₂(G)=8, dim(G)=45",
+}
+
+LEDGER_NORMALISATION_CAVEAT = {
+    "label": "MIS_NORMALISED_DIAGNOSTIC__NOT_GENUINE_TWO_LOOP_RUNNING",
+    "outputs_are_genuine_two_loop_running": False,
+    "casimir_error": (
+        "c2_of() multiplies T(R) dim(G)/dim(R) by an extra C2(G) = 8: C2(16) = 45 (correct 45/8), C2(126) = 100 "
+        "(25/2), C2(210) = 96 (12), C2(45) = 64 (C2(G) = 8)"
+    ),
+    "two_loop_weight_error": (
+        "two_loop_b2_gauge_only() gives Weyl 16s the Dirac weight [(20/3) C2(G) + 4 C2] T (Weyl: "
+        "[(10/3) C2(G) + 2 C2] T) and the real 210 the complex-scalar weight (real: half of it)"
+    ),
+    "effect": (
+        "the 'two-loop' alpha^-1(v_Phi) / alpha^-1(M_Pl) values and the breakdown between M_GUT and v_Phi are "
+        "artefacts of the normalisation; with the correct Machacek-Vaughn normalisation (D-C fix-round cross-check, "
+        "gauge-only, RK4) the below-v_Phi content reaches v_Phi perturbatively from the one-loop "
+        "alpha_GUT^-1 = 16.81 (alpha^-1(v_Phi) ~ 6.8) and turns non-perturbative near 2e17 GeV, below M_Pl"
+    ),
+    "status_of_fix": (
+        "separate decision (changes c2_of, the Weyl/real two-loop weights, this module's test and the "
+        "sarah-pyrate-so10-210-betas.yml pin casimirs['16'] == 45); D-C only relabels and no longer cites it"
+    ),
 }
 
 # Published Dynkin indices T(R) for SO(10).
@@ -136,6 +166,30 @@ def two_loop_b2_gauge_only(
         b2 += ((2.0 / 3.0) * C2_G + 4.0 * c2_of(r)) * T_SO10[r]
     for r in real_scalars:
         b2 += ((2.0 / 3.0) * C2_G + 4.0 * c2_of(r)) * T_SO10[r]
+    return float(b2)
+
+
+def two_loop_b2_gauge_only_mv_reference(
+    *,
+    weyl_16: int,
+    complex_scalars: list[str],
+    real_scalars: list[str],
+) -> float:
+    """Correctly normalised Machacek-Vaughn b₂ (reference for LEDGER_NORMALISATION_CAVEAT only).
+
+    C₂(R) = T(R)·dim(G)/dim(R); Weyl fermions T[2 C₂ + (10/3) C₂(G)], complex scalars T[4 C₂ + (2/3) C₂(G)],
+    real scalars half of the complex weight.  Not used by the running above (which keeps its pinned ledger).
+    """
+
+    def c2(rep: str) -> float:
+        return T_SO10[rep] * DIM_G / float(rep)
+
+    b2 = -(34.0 / 3.0) * (C2_G**2)
+    b2 += weyl_16 * T_SO10["16"] * (2.0 * c2("16") + (10.0 / 3.0) * C2_G)
+    for r in complex_scalars:
+        b2 += T_SO10[r] * (4.0 * c2(r) + (2.0 / 3.0) * C2_G)
+    for r in real_scalars:
+        b2 += 0.5 * T_SO10[r] * (4.0 * c2(r) + (2.0 / 3.0) * C2_G)
     return float(b2)
 
 
@@ -330,7 +384,7 @@ def continuous_spin10_with_ingested(
 ) -> dict[str, Any]:
     b_lo = betas["below_vPhi"]
     b_hi = betas["above_vPhi"]
-    # Prior fudge path (for Δ comparison)
+    # Retracted x1.1 proxy path (reference only)
     inv_vphi_1l = run_alpha_inv_one_loop(
         alpha_inv_gut_spec, mu0=m_gut, mu1=VPHI, b1=b_lo["b1"]
     )
@@ -375,10 +429,11 @@ def continuous_spin10_with_ingested(
         "weakly_coupled_alpha_lt_0_25": (
             to_mpl["alpha_inv_end"] > 4.0 if not to_mpl["landau_pole"] else False
         ),
+        "diagnostic_label": LEDGER_NORMALISATION_CAVEAT["label"],
         "note": (
-            "Large T(210)=56 drives a two-loop Landau / non-perturbative "
-            "breakdown between M_GUT and v_Φ when the full 210 remains light "
-            "— consistent with known MSGUT strong-coupling lore."
+            "Mis-normalised diagnostic, not genuine two-loop running: with this "
+            "ledger (b₂ overstated ~11.6x) the run breaks down between M_GUT and "
+            "v_Φ, an artefact of the normalisation (see ledger_normalisation)."
         ),
     }
 
@@ -387,7 +442,7 @@ def yukawa_sensitivity_vs_heuristic() -> dict[str, Any]:
     bases = push.flavour_sector_bases()
     h = np.asarray(bases["H"], dtype=complex)
     f = np.asarray(bases["F"], dtype=complex)
-    gauge = thr.solve_unification(two_loop=True)
+    gauge = thr.solve_unification(two_loop=False)
     g10 = math.sqrt(4.0 * math.pi / float(gauge["alpha_inv_GUT_after_spectators"]))
     # Heuristic from two_loop_so10_210_yukawa_v20
     from two_loop_so10_210_yukawa_v20 import so10_yukawa_betas_two_loop as heur
@@ -422,12 +477,13 @@ def build_report() -> dict[str, Any]:
 
     content = v20_content_blocks()
     betas = beta_ledger(content)
-    two = thr.solve_unification(two_loop=True)
-    m_gut = float(two["M_GUT_GeV"])
-    inv_spec = float(two["alpha_inv_GUT_after_spectators"])
+    one = thr.solve_unification(two_loop=False)
+    m_gut = float(one["M_GUT_GeV"])
+    inv_spec = float(one["alpha_inv_GUT_after_spectators"])
     spin = continuous_spin10_with_ingested(
         alpha_inv_gut_spec=inv_spec, m_gut=m_gut, betas=betas
     )
+    spin["input_alpha_inv_GUT_after_spectators_loop_order"] = "one-loop (two-loop counterpart UNAVAILABLE)"
     yuk = yukawa_sensitivity_vs_heuristic()
 
     # Gauge-width diagnostic: use matrix-flavour GUT CKM with existing α_GUT
@@ -437,7 +493,10 @@ def build_report() -> dict[str, Any]:
     tau_mat = float(mat["gauge_width"]["tau_e_matrix_years"])
     alpha_inv = float(anchor["alpha_inv_GUT"])
     alpha_shift = {
-        "note": "SO(10)+210 βs correct continuous running above M_GUT",
+        "note": (
+            "mis-normalised SO(10)+210 b₂ diagnostic above M_GUT (not genuine two-loop running; "
+            "see ledger_normalisation)"
+        ),
         "alpha_inv_MPl_ingested": spin["alpha_inv_MPl_ingested_2loop"],
         "alpha_inv_MPl_prior_fudge": spin["alpha_inv_MPl_fudge_1p1"],
         "delta_inv": spin["delta_inv_MPl_vs_fudge"],
@@ -463,6 +522,23 @@ def build_report() -> dict[str, Any]:
         "baseline_g_singlet_available": prev.get("n_failed", 1) == 0,
     }
     failures = [n for n, ok in checks.items() if not ok]
+    b2_reference = {
+        name: two_loop_b2_gauge_only_mv_reference(
+            weyl_16=content[name]["weyl_16"],
+            complex_scalars=content[name]["complex_scalars"],
+            real_scalars=content[name]["real_scalars"],
+        )
+        for name in ("below_vPhi", "above_vPhi")
+    }
+    ledger_normalisation = {
+        **LEDGER_NORMALISATION_CAVEAT,
+        "b2_as_coded": {name: betas[name]["b2_gauge_only"] for name in ("below_vPhi", "above_vPhi")},
+        "b2_correct_Machacek_Vaughn": b2_reference,
+        "b2_overstatement_factor": {
+            name: betas[name]["b2_gauge_only"] / b2_reference[name] for name in ("below_vPhi", "above_vPhi")
+        },
+        "casimirs_correct": {r: T_SO10[r] * DIM_G / float(r) for r in ("10", "16", "45", "126", "210")},
+    }
 
     return {
         "status": (
@@ -473,6 +549,7 @@ def build_report() -> dict[str, Any]:
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
+        "ledger_normalisation": ledger_normalisation,
         "sources": SOURCES,
         "content": {
             "below_vPhi": content["below_vPhi"],
@@ -497,18 +574,23 @@ def build_report() -> dict[str, Any]:
             "two_loop_so10_gauge_complete_for_content": True,
             "two_loop_quartic_betas_complete": False,
             "ad_hoc_1p1_fudge_replaced": True,
+            "b2_normalisation_verified": False,
+            "outputs_are_genuine_two_loop_running": False,
             "two_loop_landau_or_breakdown_above_MGUT": True,
             "one_loop_stability_conditional": True,
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
         },
         "verdict": (
-            f"Ingested SARAH/PyR@TE-formula SO(10)+210 two-loop gauge βs "
+            "Mis-normalised diagnostic, not genuine two-loop running: the SO(10)+210 gauge-β ledger "
+            "(Machacek-Vaughn/Jones form) has C₂ x8 and Weyl/real two-loop weights x2, so b₂ is overstated "
+            f"{ledger_normalisation['b2_overstatement_factor']['below_vPhi']:.1f}x below v_Φ "
             f"(b₁(below)={betas['below_vPhi']['b1']:.3f}, "
-            f"b₂={betas['below_vPhi']['b2_gauge_only']:.3f}; "
-            f"Δα⁻¹(M_Pl) vs 1.1-fudge={spin['delta_inv_MPl_vs_fudge']:.3f}; "
+            f"b₂ as coded={betas['below_vPhi']['b2_gauge_only']:.3f}, "
+            f"correct MV b₂={b2_reference['below_vPhi']:.3f}; "
+            f"Δα⁻¹(M_Pl) vs retracted x1.1 proxy={spin['delta_inv_MPl_vs_fudge']:.3f}; "
             f"Yukawa |Δβ_H|/|β_H|={yuk['rel_delta_H']:.3e}). "
-            "Live SARAH run and quartic βs remain OPEN."
+            "Correcting the ledger is a separate decision. Live SARAH run and quartic βs remain OPEN."
         ),
     }
 
@@ -522,25 +604,30 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         f"**Status:** `{report['status']}`",
         "",
+        f"**Label:** `{report['ledger_normalisation']['label']}`",
+        "",
         report["verdict"],
         "",
-        "## Gauge β ledger",
+        "## Gauge β ledger (mis-normalised; see ledger_normalisation)",
         "",
         f"- below v_Φ: b₁={b['below_vPhi']['b1']:.6f}, "
-        f"b₂={b['below_vPhi']['b2_gauge_only']:.6f}",
+        f"b₂ as coded={b['below_vPhi']['b2_gauge_only']:.6f} "
+        f"(correct MV {report['ledger_normalisation']['b2_correct_Machacek_Vaughn']['below_vPhi']:.6f})",
         f"- above v_Φ: b₁={b['above_vPhi']['b1']:.6f}, "
-        f"b₂={b['above_vPhi']['b2_gauge_only']:.6f}",
+        f"b₂ as coded={b['above_vPhi']['b2_gauge_only']:.6f} "
+        f"(correct MV {report['ledger_normalisation']['b2_correct_Machacek_Vaughn']['above_vPhi']:.6f})",
         "",
-        "## Continuous Spin(10)",
+        "## Continuous Spin(10) (mis-normalised b₂ diagnostic, not genuine two-loop running)",
         "",
-        f"- α⁻¹(v_Φ) 2-loop: {sp['alpha_inv_vPhi_2loop']:.6f}",
-        f"- α⁻¹(M_Pl) ingested: {sp['alpha_inv_MPl_ingested_2loop']:.6f}",
-        f"- α⁻¹(M_Pl) prior 1.1-fudge: {sp['alpha_inv_MPl_fudge_1p1']:.6f}",
-        f"- Δ vs fudge: {sp['delta_inv_MPl_vs_fudge']:.6f}",
+        f"- α⁻¹(v_Φ), mis-normalised b₂: {sp['alpha_inv_vPhi_2loop']:.6f}",
+        f"- α⁻¹(M_Pl), mis-normalised b₂: {sp['alpha_inv_MPl_ingested_2loop']:.6f}",
+        f"- α⁻¹(M_Pl) retracted x1.1 proxy: {sp['alpha_inv_MPl_fudge_1p1']:.6f}",
+        f"- Δ vs retracted proxy: {sp['delta_inv_MPl_vs_fudge']:.6f}",
+        f"- {report['ledger_normalisation']['effect']}",
         "",
         "## Yukawa two-loop sensitivity",
         "",
-        f"- C₂(16)={yuk['C2_16']:.1f}; "
+        f"- C₂(16)={yuk['C2_16']:.1f} (x8 normalisation; correct 45/8); "
         f"|Δβ_H|/|β_H|={yuk['rel_delta_H']:.3e}",
         "",
         "## Next exact calculation",

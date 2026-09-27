@@ -226,10 +226,74 @@ class PhysicalHierarchyHiggsStabilityTest(unittest.TestCase):
         self.assertGreater(veff["3L+4QCD"], msbar["3L+4QCD"])
         self.assertLess(veff["3L+4QCD_PDG2024_Mh_alpha_s"], stability.PDG2024["Mt_GeV"])
         self.assertAlmostEqual(math.log(bound["instability_scale_at_bound_GeV"] / stability.M_I_GEV), 0.0, delta=1.0e-5)
-        self.assertGreater(bound["measured_minus_bound_in_sigma_3L_PDG_like"], 1.5)
+        self.assertAlmostEqual(bound["measured_minus_bound_in_sigma_3L_PDG_like"], 1.155, delta=0.01)
         self.assertLess(bound["measured_minus_bound_in_sigma_3L_PDG_like_landau_veff_estimate"], 1.0)
         self.assertFalse(self.report["scientific_outcomes"]["absolute_stability_excluded_beyond_2_sigma_under_both_definitions"])
         self.assertTrue(self.report["scientific_outcomes"]["requires_metastability_at_pdg2024_central_inputs_both_definitions"])
+
+    def test_pdg2024_headline_with_smdr_matching(self) -> None:
+        pdg = self.report["pdg2024_corrected"]
+        table = pdg["lambda_SM_table_3L"]
+        expected = {"1e9": 0.008618, "5.65e9": 0.004534, "1e10": 0.003350, "7.8e10": -0.000331,
+                    "M_I": -0.003274, "M_GUT": -0.009681}
+        task_table = {"1e9": 0.0086, "5.65e9": 0.0045, "1e10": 0.0033, "7.8e10": -0.0004, "M_I": -0.0033}
+        sigmas = {"1e9": 0.00242, "5.65e9": 0.00256, "1e10": 0.00261, "7.8e10": 0.00274, "M_I": 0.00286,
+                  "M_GUT": 0.00312}
+        for label, value in expected.items():
+            self.assertAlmostEqual(table[label]["lambda"], value, delta=2.0e-5, msg=label)
+            self.assertAlmostEqual(table[label]["sigma"], sigmas[label], delta=1.0e-4, msg=label)
+        for label, value in task_table.items():
+            self.assertAlmostEqual(table[label]["lambda"], value, delta=1.0e-4, msg=label)
+        self.assertAlmostEqual(pdg["msbar_zero_GeV"] / 6.35e10, 1.0, delta=0.02)
+        low, high = pdg["msbar_zero_1sigma_band_GeV"]
+        self.assertAlmostEqual(low / 1.17e10, 1.0, delta=0.05)
+        self.assertAlmostEqual(high / 3.45e11, 1.0, delta=0.05)
+        self.assertAlmostEqual(pdg["Mt_crit_M_I_GeV"], 172.0385, delta=0.005)
+        self.assertAlmostEqual(pdg["Mt_crit_M_I_error_budget_GeV"]["bound_error"], 0.357, delta=0.005)
+        self.assertAlmostEqual(pdg["measured_minus_bound_sigma"], 1.155, delta=0.01)
+        landau = pdg["Mt_crit_landau_veff_range_GeV"]
+        self.assertAlmostEqual(landau["factor_2.5"], 172.23, delta=0.01)
+        self.assertAlmostEqual(landau["factor_6.5"], 172.46, delta=0.01)
+        landau_sigma = pdg["measured_minus_bound_sigma_landau_veff_range"]
+        self.assertAlmostEqual(landau_sigma["factor_2.5"], 0.74, delta=0.02)
+        self.assertAlmostEqual(landau_sigma["factor_6.5"], 0.24, delta=0.02)
+        self.assertTrue(pdg["sign_flips_inside_realistic_v_R_band"])
+        self.assertEqual(pdg["higgs_matching_verdict"], "NOT_FALSIFIED__CONDITIONAL_AND_OPEN")
+        headline = self.report["headline"]
+        self.assertAlmostEqual(headline["measured_Mt_above_bound_sigma_msbar"], 1.155, delta=0.01)
+        self.assertEqual(headline["landau_veff_over_msbar_zero_range"], [2.5, 6.5])
+        outcomes = self.report["scientific_outcomes"]
+        self.assertTrue(outcomes["pdg2024_lambda_SM_M_I_negative_at_central_inputs"])
+        self.assertTrue(outcomes["pdg2024_lambda_SM_sign_flips_between_1e9_and_7p8e10_GeV"])
+        self.assertFalse(outcomes["absolute_stability_excluded_beyond_2_sigma_pdg2024_corrected"])
+        self.assertIn("1.16 sigma below the measured value", self.report["verdict"])
+        self.assertIn("conditional and open, not falsified", self.report["verdict"])
+
+    def test_smdr_matching_validation(self) -> None:
+        validation = stability.matching_validation()
+        self.assertTrue(validation["smdr_reference_points_reproduced"])
+        for key, tolerance in stability.SMDR_MATCHING_TOLERANCES.items():
+            self.assertLess(validation["smdr_reference_point_max_abs_residual"][key], tolerance, key)
+        self.assertTrue(validation["bednyakov_2015_agrees"])
+        self.assertLess(abs(validation["bednyakov_2015_minus_anchor_at_PDG2024"]["g3"]), 5.0e-5)
+        self.assertLess(abs(validation["bednyakov_2015_minus_anchor_at_PDG2024"]["yt"]), 5.0e-5)
+        bias = validation["legacy_buttazzo_fit_minus_anchor_at_PDG2024"]
+        self.assertAlmostEqual(bias["g3"], 0.00174, delta=2.0e-5)
+        self.assertAlmostEqual(bias["yt"], 0.00094, delta=2.0e-5)
+        anchored = stability.pdg2024_corrected_inputs()
+        self.assertAlmostEqual(anchored["g3"], 1.1634231021, delta=1.0e-9)
+        self.assertAlmostEqual(anchored["yt"], 0.9319167466, delta=1.0e-9)
+        self.assertTrue(self.report["checks"]["smdr_anchor_reproduces_smdr_2019_2021_reference_points"])
+        self.assertTrue(self.report["checks"]["smdr_anchor_agrees_with_bednyakov_2015_table_I"])
+
+    def test_sigma_decomposition_and_landau_range(self) -> None:
+        decomposition = self.report["pdg2024_corrected"]["sigma_decomposition"]
+        self.assertAlmostEqual(decomposition["legacy_fit_Mt_and_theory_only"], 1.994, delta=0.01)
+        self.assertAlmostEqual(decomposition["legacy_fit_full_budget"], 1.357, delta=0.01)
+        self.assertAlmostEqual(decomposition["smdr_Mt_and_theory_only"], 1.698, delta=0.01)
+        self.assertAlmostEqual(decomposition["smdr_full_budget"], 1.155, delta=0.01)
+        self.assertEqual(stability.LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO_RANGE, (2.5, 6.5))
+        self.assertEqual(stability.LANDAU_VEFF_ZERO_OVER_MSBAR_ZERO, 6.5)
 
     def test_radial_mode_threshold_below_Lambda_I_allows_absolute_stability(self) -> None:
         radial = self.report["portal"]["radial_mode_threshold"]
@@ -279,6 +343,26 @@ class PhysicalHierarchyHiggsStabilityTest(unittest.TestCase):
             self.assertEqual(committed[key], self.json[key], key)
         self.assertEqual(_mismatches(committed, self.json), [])
         self.assertTrue(stability.OUT_MD.read_text(encoding="utf-8").startswith("# Higgs-vacuum stability"))
+
+    def test_markdown_labels_every_legacy_lambda_value(self) -> None:
+        """The superseded Buttazzo-2013 lambda_SM(M_I) never appears in the markdown without a legacy label."""
+        legacy = f"{self.report['portal']['matching']['tree_level_lambda_eff_at_M_I_every_solution']:.5f}"
+        self.assertEqual(legacy, "-0.00854")
+        for markdown in (stability._markdown(self.report), stability.OUT_MD.read_text(encoding="utf-8")):
+            header, hits = "", []
+            for line in markdown.splitlines():
+                if line.startswith("## "):
+                    header = line
+                elif legacy in line:
+                    hits.append((header, line))
+            self.assertGreaterEqual(len(hits), 2)
+            for header, line in hits:
+                # labelled on the line itself, or a table row of a section whose header is labelled legacy
+                self.assertTrue("legacy" in line.lower() or (line.startswith("|") and "legacy" in header.lower()),
+                                (header, line))
+            for header in ("## Portal windows at M_I", "## Single-stage matching at M_GUT"):
+                line = next(row for row in markdown.splitlines() if row.startswith(header))
+                self.assertIn("legacy Buttazzo 2013 inputs", line)
 
     def test_report_is_deterministic(self) -> None:
         again = json.loads(json.dumps(stability._jsonable(stability.build_report()), sort_keys=True))

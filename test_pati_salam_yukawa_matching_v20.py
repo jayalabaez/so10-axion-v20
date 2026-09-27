@@ -27,6 +27,44 @@ class PatiSalamYukawaMatchingTests(unittest.TestCase):
         self.assertFalse(report["flag"]["two_loop_so10_complete"])
         self.assertFalse(report["flag"]["uses_so10_beta_across_PS_interval"])
 
+    def test_genuine_two_loop_ps_couplings_unify_at_mgut(self) -> None:
+        import two_loop_thresholds_v20 as thresholds
+
+        gauge = thresholds.solve_unification(two_loop=True)
+        couplings = ps.ps_gauge_couplings_at_mu(float(gauge["M_GUT_GeV"]), gauge)
+        self.assertAlmostEqual(couplings["g4"], couplings["gL"], delta=1e-7)
+        self.assertAlmostEqual(couplings["gL"], couplings["gR"], delta=1e-7)
+        self.assertFalse(hasattr(ps, "two_loop_thresholds_uses_two_loop"))
+
+    def test_consumers_fail_closed_when_two_loop_anchor_is_unavailable(self) -> None:
+        import common_scale_so10_yukawa_v20 as common
+        import next_phenomenology_lock_v20 as nxt
+        import push_phenomenology_limits_v20 as push
+        import two_loop_matrix_flavour_rg_ps_v20 as matrix
+        import two_loop_thresholds_v20 as thresholds
+        import yukawa_rge_2loop_v20 as yukawa
+
+        original = thresholds._solve_two_loop_uncached
+
+        def _boom():
+            raise RuntimeError("injected failure")
+
+        try:
+            thresholds._solve_two_loop_uncached = _boom
+            thresholds._two_loop_solution.cache_clear()
+            self.assertIs(thresholds.solve_unification(two_loop=True)["available"], False)
+            consumers = (("push", push), ("ps", ps), ("yukawa", yukawa), ("common", common),
+                         ("next_phenomenology_lock", nxt), ("matrix_flavour", matrix))
+            for name, module in consumers:
+                with self.subTest(consumer=name):
+                    report = module.build_report()  # must not raise
+                    self.assertGreater(report["n_failed"], 0)
+                    self.assertIn("FAILED", report["status"])
+        finally:
+            thresholds._solve_two_loop_uncached = original
+            thresholds._two_loop_solution.cache_clear()
+        self.assertIs(thresholds.solve_unification(two_loop=True)["available"], True)
+
 
 if __name__ == "__main__":
     unittest.main()

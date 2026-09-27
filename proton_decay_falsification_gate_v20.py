@@ -100,18 +100,32 @@ def classify_point(
     }
 
 
+TWO_LOOP_CONTRACT_BENCHMARK = {
+    "available": False,
+    "reason": (
+        "No two-loop contract benchmark exists: there is no perturbative two-loop gauge unification with the "
+        "contract spectators 5 x (16 + 16bar) at v_S = M_I (two_loop_thresholds_v20: two_loop.unavailable). The "
+        "genuine two-loop anchor without spectators is not the contract and is not used as a benchmark."
+    ),
+    "counterfactual_benchmarks_included": False,
+}
+
+
 def _load_anchor() -> dict[str, Any]:
     try:
         import two_loop_thresholds_v20 as thresholds
         one = thresholds.solve_unification(two_loop=False)
-        two = thresholds.solve_unification(two_loop=True)
         return {
             "available": True,
             "one_loop": {"M_GUT_GeV": float(one["M_GUT_GeV"]), "alpha_inv_GUT": float(one["alpha_inv_GUT"])},
-            "two_loop_proxy": {"M_GUT_GeV": float(two["M_GUT_GeV"]), "alpha_inv_GUT": float(two["alpha_inv_GUT"])},
+            "two_loop_contract_benchmark": dict(TWO_LOOP_CONTRACT_BENCHMARK),
         }
     except Exception as exc:
-        return {"available": False, "error": f"{type(exc).__name__}: {exc}"}
+        return {
+            "available": False,
+            "error": f"{type(exc).__name__}: {exc}",
+            "two_loop_contract_benchmark": dict(TWO_LOOP_CONTRACT_BENCHMARK),
+        }
 
 
 def _selected_xy_evidence() -> dict[str, Any]:
@@ -178,12 +192,9 @@ def build_report(
     benchmarks: dict[str, Any] = {}
     failures: list[str] = []
     if anchor.get("available"):
-        one, two = anchor["one_loop"], anchor["two_loop_proxy"]
+        one = anchor["one_loop"]
         benchmarks["one_loop_unification_anchor"] = _benchmark(
             "one_loop_unification_anchor", float(one["M_GUT_GeV"]), float(one["alpha_inv_GUT"]), "conditional M_X=M_GUT benchmark"
-        )
-        benchmarks["two_loop_calibrated_proxy"] = _benchmark(
-            "two_loop_calibrated_proxy", float(two["M_GUT_GeV"]), float(two["alpha_inv_GUT"]), "calibrated proxy, not validated component-threshold matching"
         )
     else:
         failures.append("unification_anchor_unavailable")
@@ -221,6 +232,7 @@ def build_report(
         "sources": SOURCES,
         "experimental_reference": SOURCES["experiment"],
         "benchmarks": benchmarks,
+        "two_loop_contract_benchmark": dict(anchor.get("two_loop_contract_benchmark") or TWO_LOOP_CONTRACT_BENCHMARK),
         "selected_xy_evidence": selected,
         "legacy_semantic_audit": legacy,
         "prediction_readiness": readiness,
@@ -250,6 +262,7 @@ def write_markdown(report: dict[str, Any]) -> str:
             f"- scope: {row['scope']}",
             "",
         ]
+    lines += ["## Two-loop contract benchmark", "", f"- UNAVAILABLE: {report['two_loop_contract_benchmark']['reason']}", ""]
     lines += ["## Missing inputs", ""]
     lines += [f"- [{'x' if ready else ' '}] `{key}`" for key, ready in report["prediction_readiness"].items()]
     lines += ["", "## Legacy audit", "", f"- semantic overclaim detected: **{report['legacy_semantic_audit'].get('semantic_overclaim_detected', False)}**", "- legacy uniqueness certificates are non-authoritative.", ""]

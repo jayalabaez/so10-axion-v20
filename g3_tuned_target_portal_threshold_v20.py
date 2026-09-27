@@ -165,7 +165,8 @@ def build_report() -> dict[str, Any]:
     lambda_h = coefficients[H_QUARTIC_ID]
     lambda_s = coefficients[S_QUARTIC_ID]
     profile = stability.sm_profile(loops=2)
-    lambda_target = float(profile.lam(stability.M_GUT_GEV))
+    lambda_target = float(profile.lam(stability.M_GUT_GEV))  # legacy Buttazzo 2013 inputs (superseded headline)
+    pdg2024_gut = stability.pdg2024_corrected_headline()["lambda_SM_table_3L"]["M_GUT"]
     needed = 2.0 * math.sqrt(lambda_s * (lambda_h - lambda_target))
     matched = compiler_threshold(needed)
     stable_control = valley_audit(1.0)
@@ -225,7 +226,20 @@ def build_report() -> dict[str, Any]:
         "scan": scan,
         "sm_matching": {
             "lambda_gut_required_two_loop": lambda_target,
-            "source": "g3_physical_hierarchy_higgs_stability_v20 (two-loop SM running, Buttazzo et al. inputs)",
+            "source": (
+                "g3_physical_hierarchy_higgs_stability_v20 (two-loop SM running, legacy Buttazzo et al. 2013 inputs "
+                "at M_t = 173.34 GeV; superseded headline)"
+            ),
+            "input_set": stability.LEGACY_INPUT_SET,
+            "pdg2024_headline_lambda_SM_M_GUT_3L": {
+                "lambda": float(pdg2024_gut["lambda"]),
+                "sigma": float(pdg2024_gut["sigma"]),
+                "same_sign_as_legacy_target": (float(pdg2024_gut["lambda"]) < 0.0) == (lambda_target < 0.0),
+                "source": (
+                    "g3_physical_hierarchy_higgs_stability_v20.pdg2024_corrected_headline (PDG 2024 inputs, "
+                    "SMDR v1.3-anchored matching, 3L + 4L QCD in g3)"
+                ),
+            },
             "lambda_HS_required_at_benchmark_lambda_H_lambda_S": needed,
             "compiler_point": matched,
             "valley": matched_valley,
@@ -245,7 +259,10 @@ def build_report() -> dict[str, Any]:
         "verdict": (
             "The declared H-S portal gives the exact singlet threshold lambda_eff = lambda_H - lambda_HS^2/(4 lambda_S), "
             "but the tuned point stays a tree-level local minimum only while lambda_eff >= 0 (lambda_HS <= 2 at the "
-            f"benchmark). Matching the two-loop SM value lambda(M_GUT) = {lambda_target:.4f} needs lambda_HS = {needed:.4f}; "
+            f"benchmark). Matching the two-loop SM value lambda(M_GUT) = {lambda_target:.4f} (legacy Buttazzo 2013 "
+            f"inputs; PDG 2024 headline {pdg2024_gut['lambda']:.4f} +- {pdg2024_gut['sigma']:.4f}, "
+            f"{'same' if (pdg2024_gut['lambda'] < 0.0) == (lambda_target < 0.0) else 'OPPOSITE'} sign) needs "
+            f"lambda_HS = {needed:.4f}; "
             "the point is then a PSD but degenerate saddle that descends along the H-S valley to an electroweak-breaking, "
             "PQ-restoring configuration with S = 0. A tree-level portal threshold therefore cannot supply the negative "
             "matching quartic at a G3-admissible point. G3 stays open; nothing is excluded."
@@ -274,7 +291,11 @@ def _markdown(report: dict[str, Any]) -> str:
     lines += [
         "",
         f"- local minimum requires lambda_HS <= `{report['scientific_outcomes']['local_minimum_requires_lambda_HS_at_most']:.6g}`;",
-        f"- two-loop SM target lambda(M_GUT) = `{matching['lambda_gut_required_two_loop']:.5f}` needs lambda_HS = "
+        f"- two-loop SM target lambda(M_GUT) = `{matching['lambda_gut_required_two_loop']:.5f}` (legacy Buttazzo 2013 "
+        f"inputs; PDG 2024 headline `{matching['pdg2024_headline_lambda_SM_M_GUT_3L']['lambda']:.4f}` +- "
+        f"`{matching['pdg2024_headline_lambda_SM_M_GUT_3L']['sigma']:.4f}`, "
+        f"{'same' if matching['pdg2024_headline_lambda_SM_M_GUT_3L']['same_sign_as_legacy_target'] else 'OPPOSITE'} "
+        "sign) needs lambda_HS = "
         f"`{matching['lambda_HS_required_at_benchmark_lambda_H_lambda_S']:.5f}`;",
         f"- at that coupling the S = 0 branch lies `{valley['S_zero_branch']['delta_V']:.3e}` M^4 below the tuned point "
         f"(analytic `{valley['S_zero_branch']['analytic']:.3e}`), at |H|/|Phi| = `{valley['S_zero_branch']['H_norm_over_Phi']:.3f}`;",

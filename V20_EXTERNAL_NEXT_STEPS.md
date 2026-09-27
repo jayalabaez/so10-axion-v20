@@ -20,14 +20,19 @@ $\chi^2=51.10$; no scanned point has $\chi^2<30$.
 Thus the constrained single-scale fit fails, while a full precision global
 flavour fit remains external.
 
-## 2. Two-loop threshold RG
+## 2. Threshold RG (one-loop chain; genuine two-loop anchor without spectators)
 
 - One-loop anchors: $M_I=6.314e+11$ GeV,
   $M_{\rm GUT}=9.918e+15$ GeV (regression OK:
   True/True/True).
-- Continuous $\alpha^{-1}(v_\Phi)\approx16.65$
-  — **not** 40.
-- $\alpha(M_{\rm Pl})\approx0.09358475823033739$ (physical 210).
+- One-loop continuous $\alpha^{-1}(v_\Phi)\approx15.83$
+  — **not** 40; $\alpha(M_{\rm Pl})\approx0.0961$ (physical 210, one loop).
+- Genuine two-loop Machacek–Vaughn gauge running of the anchor content **without spectators** (not the declared
+  benchmark): $M_I=6.561e+10$ GeV, $M_{\rm GUT}=1.252e+16$ GeV,
+  $\alpha_U^{-1}=33.47$.
+- Two-loop $\alpha_{\rm GUT}^{-1}$ after the $5\times(16+\overline{16})$ spectators at $M_s=M_I$ and two-loop
+  continuous Spin(10) running: **UNAVAILABLE** — no perturbative two-loop unification (`two_loop_thresholds_v20.json`,
+  `two_loop.unavailable`). The former constant-shift two-loop proxy was removed.
 
 ## 3. 36.6–37.6 GHz haloscope scan forecast
 
@@ -40,4 +45,4 @@ flavour fit remains external.
 
 ## Bottom line
 
-External next steps are computed. The 10+126 fit works at a natural v_R, but the corrected v_R=v_S profile is not viable. Continuous thresholds reject the alpha=1/40 reset. A MADMAX-like forecast can reach the 37 GHz coupling in software — that is not a dark-matter discovery.
+External next steps are computed. The 10+126 fit works at a natural v_R, but the corrected v_R=v_S profile is not viable. Continuous one-loop thresholds reject the alpha=1/40 reset; the two-loop spectator-corrected coupling is UNAVAILABLE (no perturbative two-loop unification at the benchmark). A MADMAX-like forecast can reach the 37 GHz coupling in software — that is not a dark-matter discovery.
