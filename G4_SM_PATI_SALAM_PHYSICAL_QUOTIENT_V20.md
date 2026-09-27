@@ -1,12 +1,12 @@
 # G4 at the G3 witness: gauge quotient, axion and physical Hessian -- v20
 
-**Status:** `G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__G4_NOT_WIRED`
+**Status:** `G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__WIRED_AS_G4_EVIDENCE`
 
 **Theorem claimed:** `True` (69/69 checks)
 
 Exact over Q at the G3 witness (V_PS,eps, 0 < eps < 599/50, r0 = 1/5, x0 = 1, kappa = -r0/4, q0 = (p, 0, r0 sigma_std, r0, x0)): the orbit tangent ranks are SO(10) 33, SO(10)xU(1)_X 34 and SO(10)xU(1)_XxPQ 35 (nonzero integer minors 1, 4, -68 and 12 independent integer null vectors spanning the standard SM algebra, without X or PQ coefficient), so the gauge quotient has dimension 452 and the massive/transverse quotient 451; PQ is global, neither gauged nor eaten.  In the canonical chart metric the PQ tangent's component orthogonal to the gauge tangents, a, spans T35 cap G34^perp; with ker Hess = T35 (PSD) for every eps > 0 the Hessian restricted to the 452-dimensional gauge quotient is PSD with a single zero mode, the physical axion (|a|^2 = 9248/7241; S phase 7225/7241, Phi17 phase 16/7241, Sigma phase 0), and 451 positive modes equal to the positive spectrum of the Hessian; the 35 zero modes of the full Hessian are 34 eaten Goldstones (33 + 1) and the axion, with no negative mode.  At eps = 0 the only extra zero modes are Re H_6..9, one SM doublet (1,2)_{1/2}, lifted at quartic order by lambda_eff = 127/64; for eps > 0 their mass^2 is eps.
 
-Exact over Q at the G3 witness V_PS,eps (0 < eps < 599/50, r0 = 1/5, x0 = 1, kappa = -r0/4): the orbit tangent ranks are 33 (SO(10)), 34 (SO(10) x U(1)_X) and 35 (+ PQ), with nonzero integer minors 1, 4, -68 and 12 independent integer null vectors spanning the standard SM algebra; the gauge quotient has dimension 452 (axion included) and the massive/transverse quotient 451.  PQ is global.  The physical axion is the PQ tangent's component orthogonal to the gauge tangents, |a|^2 = 9248/7241 (S phase 7225/7241, Phi17 phase 16/7241, Sigma phase 0).  On the 452-dimensional gauge quotient the Hessian is PSD with the axion as its only zero mode and 451 positive modes (the positive spectrum of the Hessian, lowest eps with multiplicity 4 for eps < r0^2/96); the 35 zero modes of the full Hessian are 34 eaten Goldstones (33 + 1) and the axion, and no mode is negative.  At eps = 0 the 4 extra zero modes are one SM doublet (1,2)_{1/2}, lifted at quartic order by lambda_eff = 127/64.  The vector-boson Gram matrix has rank 34.  Compiler binding is float64.  G4 is NOT wired: the ledger keeps G4 OPEN (under decision D3 a CLOSED G4 approves the internal candidate, so wiring G4 is the user's decision).
+Exact over Q at the G3 witness V_PS,eps (0 < eps < 599/50, r0 = 1/5, x0 = 1, kappa = -r0/4): the orbit tangent ranks are 33 (SO(10)), 34 (SO(10) x U(1)_X) and 35 (+ PQ), with nonzero integer minors 1, 4, -68 and 12 independent integer null vectors spanning the standard SM algebra; the gauge quotient has dimension 452 (axion included) and the massive/transverse quotient 451.  PQ is global.  The physical axion is the PQ tangent's component orthogonal to the gauge tangents, |a|^2 = 9248/7241 (S phase 7225/7241, Phi17 phase 16/7241, Sigma phase 0).  On the 452-dimensional gauge quotient the Hessian is PSD with the axion as its only zero mode and 451 positive modes (the positive spectrum of the Hessian, lowest eps with multiplicity 4 for eps < r0^2/96); the 35 zero modes of the full Hessian are 34 eaten Goldstones (33 + 1) and the axion, and no mode is negative.  At eps = 0 the 4 extra zero modes are one SM doublet (1,2)_{1/2}, lifted at quartic order by lambda_eff = 127/64.  The vector-boson Gram matrix has rank 34.  Compiler binding is float64.  This certificate is the G4 closure evidence: the ledger closes G4 on it (at this benchmark witness, tree level) when the model contract is attested and G3 is CLOSED, and it does not close G4 by itself.  The axion is massless only for the renormalizable PQ-neutral benchmark potential.
 
 ## Gauge quotient (exact rank certificate)
 
@@ -72,13 +72,13 @@ Exact over Q at the G3 witness V_PS,eps (0 < eps < 599/50, r0 = 1/5, x0 = 1, kap
 | (1,1)_1 + conj | `2` | `2/25` |
 | (1,1)_0 | `2` | `neutral block` |
 
-## Final acceptance test (G4, not wired)
+## Final acceptance test (G4, wired as closure evidence)
 
 **Required statement:** At the G3 witness q0 of V_PS,eps (0 < eps < 599/50; r0 = 1/5, x0 = 1, kappa = -r0/4) the SO(10)xU(1)_X orbit has rank 34 and the SO(10)xU(1)_XxPQ orbit rank 35 (gauge quotient 452, massive/transverse quotient 451); the Hessian has no negative mode and exactly 35 zero modes, 34 eaten Goldstones (33 SO(10)/SM + 1 U(1)_X) and 1 physical axion; restricted to the 452-dimensional gauge quotient (canonical chart metric) it is PSD with the axion as its only zero mode and 451 strictly positive modes; as eps -> 0 the only extra zero modes are the 4 real modes of one SM doublet (1,2)_{1/2}, of mass^2 eps and lifted at quartic order by lambda_eff = 127/64 > 0.
 
-**Currently passes:** `True`; wired into the gate ledger: `False`; closes G4 by itself: `False`.
+**Currently passes:** `True`; wired into the gate ledger: `True`; closes G4 by itself: `False`.
 
-Wiring: left to the user: under decision D3 a CLOSED G4 approves the internal candidate, so this report does not wire G4 and the ledger keeps G4 OPEN.
+Wiring: wired: g1_g8_gate_ledger_v20 closes G4 on this certificate through g4_sm_closure_binding_v20 when the model contract is attested and G3 is CLOSED; a CLOSED G4 meets decision D3's G4 condition but does not approve the internal-candidate tier, which decision D-E (2026-09-26) holds until G7 is CLOSED (theory_confirmation_verdict_v20).
 
 ## G4 open-scope coverage
 
@@ -191,6 +191,6 @@ Wiring: left to the user: under decision D3 a CLOSED G4 approves the internal ca
 - PQ-violating non-renormalizable operators (e.g. the dimension-21 axion-quality term Phi17^4 conj(S)^17 / M_Pl^17, SO(10) x U(1)_X-invariant with PQ charge -68), which lift the axion explicitly; the axion zero mode is exact for the renormalizable PQ-neutral benchmark potential only
 - the G6 positivity/EWSB caveats: H = 0 on the witness, no electroweak breaking, sub-M_I coloured 126bar states; the complete positive spectrum with SM provenance is a G6 task
 - gauge coupling values: the vector-boson matrix is given up to g and g_X
-- wiring G4 into the gate ledger (under decision D3 a CLOSED G4 approves the internal candidate, so wiring is the user's decision)
+- G6-G8: the complete physical spectrum beyond tree level, electroweak symmetry breaking, RG matching, Yukawas and proton decay (this certificate supports only G4)
 
 Runtime: 12 s.

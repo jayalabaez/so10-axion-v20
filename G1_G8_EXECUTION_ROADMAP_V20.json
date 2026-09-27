@@ -16,6 +16,7 @@
     "task_frontier_matches_contract_state": true,
     "task_ids_unique": true,
     "w3_g3_closed_only_through_sm_track": true,
+    "w3_g4_closed_only_on_the_certified_binding": true,
     "wave_zero_precedes_G1": true,
     "wave_zero_task_unique": true,
     "whole_model_neither_validated_nor_excluded": true
@@ -87,7 +88,7 @@
     },
     "blockers": [],
     "closed": true,
-    "closure_scope": "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.",
+    "closure_scope": "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither validated nor excluded.",
     "decisions": {
       "D1": "The final G3 gate has an SM (Pati-Salam) track that is the only route to closing G3; the non-SM SU(5)+Delta chiral-H track stays an integrity-checked diagnostic that can never close G3.",
       "D2": "The G3 witness is the light-but-massive doublet member V_PS,eps = V_PS + eps N_H (O06 = 2|kappa| r0 + eps, eps > 0 inside the perturbative window 0 < eps < 599/50) at r0 = 1/5, x0 = 1, kappa = -r0/4, whose Hessian kernel is exactly the symmetry orbit (451/35); the tuned eps = 0 point is not the witness.",
@@ -488,7 +489,7 @@
       "closed_on_current_authoritative_contract": true,
       "closing_track": "sm_pati_salam",
       "closure_route_defined": true,
-      "closure_scope": "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded.",
+      "closure_scope": "G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither validated nor excluded.",
       "constructive_frontier_evidence": {
         "G3_closed": false,
         "SOS_candidate_exact_local_and_globally_rejected": true,
@@ -738,11 +739,56 @@
       "unsatisfied_dependencies": []
     },
     "G4": {
-      "authoritative_closed_scope": [],
+      "authoritative_closed_scope": [
+        "G4 gauge quotient and physical Hessian at the G3 witness benchmark (g4_sm_pati_salam_physical_quotient_v20 via g4_sm_closure_binding_v20; exact over Q at r0 = 1/5, x0 = 1, kappa = -r0/4 for every 0 < eps < 599/50; tree level): orbit ranks 33/34/35 (integer minors 1, 4, -68; 12 null vectors spanning the SM algebra), gauge quotient 452 and massive/transverse quotient 451, PQ global and not eaten; Hessian on the gauge quotient 451/1/0 with the physical axion (S phase 7225/7241, Phi17 phase 16/7241; period 2 pi/68 modulo the gauge group, v_a^2 = 2/7241 M_GUT^2) as its only zero mode; 35 zero modes = 34 eaten Goldstones + the axion, no negative mode; eps -> 0 adds only one SM doublet (1,2)_{1/2} of mass^2 eps, lifted at quartic order by lambda_eff = 127/64; vector-boson Gram rank 34; axion massless only for the renormalizable PQ-neutral benchmark potential; compiler binding float64"
+      ],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
       "blocking_root": null,
-      "closed_on_current_authoritative_contract": false,
+      "closed_on_current_authoritative_contract": true,
+      "closure_evidence": {
+        "blockers": [],
+        "certified": true,
+        "closure_scope": "G4 gauge quotient and physical Hessian at the G3 witness benchmark (g4_sm_pati_salam_physical_quotient_v20 via g4_sm_closure_binding_v20; exact over Q at r0 = 1/5, x0 = 1, kappa = -r0/4 for every 0 < eps < 599/50; tree level): orbit ranks 33/34/35 (integer minors 1, 4, -68; 12 null vectors spanning the SM algebra), gauge quotient 452 and massive/transverse quotient 451, PQ global and not eaten; Hessian on the gauge quotient 451/1/0 with the physical axion (S phase 7225/7241, Phi17 phase 16/7241; period 2 pi/68 modulo the gauge group, v_a^2 = 2/7241 M_GUT^2) as its only zero mode; 35 zero modes = 34 eaten Goldstones + the axion, no negative mode; eps -> 0 adds only one SM doublet (1,2)_{1/2} of mass^2 eps, lifted at quartic order by lambda_eff = 127/64; vector-boson Gram rank 34; axion massless only for the renormalizable PQ-neutral benchmark potential; compiler binding float64",
+        "decision": "User instruction (2026-09-25, 'continue ... complete theory close all needed'): close G4 once its exact certificate passes; gates that are not proven stay OPEN or BLOCKED. User decision D-E (2026-09-26) overrides the decision-D3 cascade: a CLOSED G4 meets D3's G4 condition but does not approve the internal-candidate tier, which is held until G7 is CLOSED (theory_confirmation_verdict_v20).",
+        "integrity": {
+          "g4_float_evidence_not_promoted": true,
+          "g4_premises_all_hold": true,
+          "g4_report_does_not_overclaim": true,
+          "g4_report_executes": true,
+          "g4_scope_limits_disclosed": true
+        },
+        "n_checks": 69,
+        "n_failed": 0,
+        "report": "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json",
+        "required_statement": "At the G3 witness q0 of V_PS,eps (0 < eps < 599/50; r0 = 1/5, x0 = 1, kappa = -r0/4) the SO(10)xU(1)_X orbit has rank 34 and the SO(10)xU(1)_XxPQ orbit rank 35 (gauge quotient 452, massive/transverse quotient 451); the Hessian has no negative mode and exactly 35 zero modes, 34 eaten Goldstones (33 SO(10)/SM + 1 U(1)_X) and 1 physical axion; restricted to the 452-dimensional gauge quotient (canonical chart metric) it is PSD with the axion as its only zero mode and 451 strictly positive modes; as eps -> 0 the only extra zero modes are the 4 real modes of one SM doublet (1,2)_{1/2}, of mass^2 eps and lifted at quartic order by lambda_eff = 127/64 > 0.",
+        "required_status": "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__WIRED_AS_G4_EVIDENCE",
+        "science": {
+          "g4_eaten_goldstones_34_pq_global_not_eaten": true,
+          "g4_gauge_and_transverse_quotients_452_451_exact": true,
+          "g4_gauge_quotient_hessian_451_1_0": true,
+          "g4_open_scope_fully_covered": true,
+          "g4_orbit_ranks_33_34_35_exact": true,
+          "g4_physical_axion_exact": true,
+          "g4_required_statement_bound": true,
+          "g4_tuned_limit_is_one_sm_doublet_lifted_127_64": true,
+          "g4_vector_gram_rank_34": true,
+          "g4_witness_is_the_g3_witness": true,
+          "g4_zero_modes_35_are_34_eaten_plus_axion_no_negative": true
+        },
+        "scope_limits": [
+          "tree level only: loop corrections and running are not included",
+          "the benchmark point r0 = 1/5, x0 = 1 only; the physical hierarchy point is not certified",
+          "the compiler = exact-operator identity of the Hessian and the tangent binding are float64",
+          "the axion zero mode is exact only for the renormalizable PQ-neutral benchmark potential: the QCD anomaly and PQ-violating operators such as Phi17^4 conj(S)^17/M_Pl^17 give the axion a mass, and f_a = v_a/N_DW is not computed",
+          "G6-G8 physics (sub-M_I coloured states, electroweak symmetry breaking, RG content, the Higgs quartic, Yukawas and proton decay) is not addressed by G4"
+        ],
+        "source": "g4_sm_pati_salam_physical_quotient_v20",
+        "status": "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__WIRED_AS_G4_EVIDENCE",
+        "witness_bound_to_g3_track": true
+      },
       "closure_route_defined": true,
+      "closure_scope": "G4 gauge quotient and physical Hessian at the G3 witness benchmark (g4_sm_pati_salam_physical_quotient_v20 via g4_sm_closure_binding_v20; exact over Q at r0 = 1/5, x0 = 1, kappa = -r0/4 for every 0 < eps < 599/50; tree level): orbit ranks 33/34/35 (integer minors 1, 4, -68; 12 null vectors spanning the SM algebra), gauge quotient 452 and massive/transverse quotient 451, PQ global and not eaten; Hessian on the gauge quotient 451/1/0 with the physical axion (S phase 7225/7241, Phi17 phase 16/7241; period 2 pi/68 modulo the gauge group, v_a^2 = 2/7241 M_GUT^2) as its only zero mode; 35 zero modes = 34 eaten Goldstones + the axion, no negative mode; eps -> 0 adds only one SM doublet (1,2)_{1/2} of mass^2 eps, lifted at quartic order by lambda_eff = 127/64; vector-boson Gram rank 34; axion massless only for the renormalizable PQ-neutral benchmark potential; compiler binding float64",
+      "decision": "User instruction (2026-09-25, 'continue ... complete theory close all needed'): close G4 once its exact certificate passes; gates that are not proven stay OPEN or BLOCKED. User decision D-E (2026-09-26) overrides the decision-D3 cascade: a CLOSED G4 meets D3's G4 condition but does not approve the internal-candidate tier, which is held until G7 is CLOSED (theory_confirmation_verdict_v20).",
       "dependencies": [
         "G2",
         "G3"
@@ -753,7 +799,10 @@
         "classify all remaining Hessian zero and negative modes at that witness, including the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes)",
         "routed from G3 by decision D5 (zero_modes_and_ranks_at_witness): Zero-mode classification at the witness belongs to G4: the recomputed ranks 34/35 (SO(10) x U(1)_X rank 34, gauge quotient 452 with the axion included; SO(10) x U(1)_X x U(1)_PQ rank 35, massive/transverse quotient 451, i.e. quotients 452/451), the axion/PQ direction and the eps -> 0 tuned light doublet (4 real modes); it is resolved only when G4 is CLOSED."
       ],
-      "status": "OPEN",
+      "routed_caveats_resolved_by_closure": [
+        "zero_modes_and_ranks_at_witness"
+      ],
+      "status": "CLOSED",
       "title": "Gauge quotient, axion directions, and physical Hessian",
       "unsatisfied_dependencies": []
     },
@@ -1046,7 +1095,7 @@
     "G6": {
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
-      "blocking_root": "DEPENDENCY_NOT_CLOSED",
+      "blocking_root": null,
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
       "dependencies": [
@@ -1056,16 +1105,30 @@
       ],
       "historical_option_c_evidence_retained": false,
       "open_scope": [
-        "await authoritative G3/G4/G5 and emit the complete positive spectrum",
+        "with G3, G4 and G5 CLOSED, emit the complete positive physical spectrum with SM provenance (eigenmasses, irreps, mixings and uncertainties) beyond tree level",
         "routed from G3 by decision D5 (sub_M_I_coloured_126bar_states): Light 126bar coloured states lie below M_I at the benchmark ((3,1)_1/3 near 0.24 M_I, (6,1)_4/3 and (1,1)_2 at M_I/sqrt(96), and further (3,1)_4/3, (6,1)_1/3 and (6,1)_2/3 states), so the complete physical spectrum and its thresholds are a G6 task.",
         "routed from G3 by decision D5 (positivity_without_EWSB): The witness has H = 0 and a light but massive doublet (mass^2 eps M_GUT^2), so electroweak symmetry is not broken and a positive physical spectrum with electroweak breaking is a G6 task.",
-        "routed from G3 by decision D5 (phi17_benchmark_scale): The benchmark uses x0 = 1 instead of the canonical Phi17 scale, so its GeV values are illustrative and the physical Phi17 threshold is a G6 task."
+        "routed from G3 by decision D5 (phi17_benchmark_scale): The benchmark uses x0 = 1 instead of the canonical Phi17 scale, so its GeV values are illustrative and the physical Phi17 threshold is a G6 task.",
+        "tree-level evidence (does not close G6): g6_sm_pati_salam_tree_spectrum_v20 (G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json) certifies exactly, for all r0, x0, eps > 0, the tree-level Hessian spectrum at the G3 witness vacuum: 35 zero modes (34 eaten Goldstones + the axion), 451 positive and 0 negative, with exact SM labels; still open: one-loop positivity of the light 126bar remnant multiplets (R1), electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified) and the uncertainty budget"
       ],
-      "status": "BLOCKED",
+      "status": "OPEN",
       "title": "Physical threshold spectrum",
-      "unsatisfied_dependencies": [
-        "G4"
-      ]
+      "tree_level_evidence": {
+        "closes_gate": false,
+        "n_failed": 0,
+        "recorded": true,
+        "report": "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json",
+        "required_status": "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED",
+        "role": "evidence only: cited in the G6 open scope, never changes the G6 status",
+        "source": "g6_sm_pati_salam_tree_spectrum_v20",
+        "status": "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED",
+        "still_open": [
+          "one-loop positivity of the light 126bar remnant multiplets (R1)",
+          "electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified)",
+          "the uncertainty budget of the threshold spectrum"
+        ]
+      },
+      "unsatisfied_dependencies": []
     },
     "G7": {
       "authoritative_closed_scope": [],
@@ -1099,12 +1162,28 @@
         "G6",
         "G7"
       ],
+      "flavour_evidence": {
+        "closes_gate": false,
+        "n_failed": 0,
+        "recorded": true,
+        "report": "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",
+        "required_status": "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN",
+        "role": "evidence only: cited in the G8 open scope, never changes the G8 status",
+        "route_recorded": "C",
+        "routes_needing_user_decision": [
+          "A",
+          "B"
+        ],
+        "source": "g8_sm_pati_salam_flavour_nogo_v20",
+        "status": "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN"
+      },
       "historical_option_c_evidence_retained": false,
       "open_scope": [
         "await authoritative G3/G6/G7 before any unique lifetime claim",
         "routed from G3 by decision D5 (tan_beta_one_light_doublet): The light doublet is an equal 5/5bar mixture (a tan beta = 1 structure), so with 10_H-only Yukawas m_t = m_b at matching and the flavour structure is a G8 task.",
         "routed from G3 by decision D5 (realistic_yukawa_sector): The H-linear portals O15, O38, O45 and O28 vanish at the benchmark, so the witness has no realistic Yukawa sector; building one is a G8 (and flavour-gate) task.",
-        "routed from G3 by decision D5 (proton_decay_mediators): The sub-M_I (3,1)_1/3 state has proton-decay mediator quantum numbers and couples to 16.16 through the 126bar Yukawa that Majorana neutrino masses need, so its proton-decay consequences are a G8 task."
+        "routed from G3 by decision D5 (proton_decay_mediators): The sub-M_I (3,1)_1/3 state has proton-decay mediator quantum numbers and couples to 16.16 through the 126bar Yukawa that Majorana neutrino masses need, so its proton-decay consequences are a G8 task.",
+        "flavour evidence (does not close G8): g8_sm_pati_salam_flavour_nogo_v20 (G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json) records Route C: on the witness branch (renormalizable benchmark, H-linear portals zero) the light doublet is pure 10_H, so CKM = 1, m_t = m_b, m_d = m_e and m_s = m_mu, which data exclude, and no H-linear portal repair survives at q0; the G3-G5 certificates and the SO(10) contract are not falsified; route A (a new in-contract G3 branch with a down-type (15,2,2) admixture, needing new G3/G4/G5 certificates) and route B (a contract extension: among the analysed extensions only a 120_H can split d from e; a second 126bar_H, a new B-L-breaking vev and vectorlike matter were not analysed) need a user decision"
       ],
       "status": "BLOCKED",
       "title": "Proton-decay prediction and falsification",
@@ -521152,7 +521231,7 @@
       "verdict": "The signed filter follows the manuscript's declared SO(10) x U(1)_X gauge symmetry and accidental PQ symmetry. Exact X neutrality removes low-dimensional Phi17 terms and their H10 portals. The SO(10)-forbidden 210\u00b710dag\u00b710 cubic is excluded, while the distinct allowed 210\u00b7Hdag\u00b7126bar cubic is now retained and forces a complete mixed-Hessian re-audit."
     }
   },
-  "n_checks": 18,
+  "n_checks": 19,
   "n_failed": 0,
   "new_physics_policy": "Historical calculations remain scoped subtheorems. No whole-model validation, exclusion, or discovery claim is permitted until every authoritative gauged-U(1)_X gate is complete.",
   "overall_state": "OPEN",
@@ -521172,16 +521251,14 @@
     }
   ],
   "scientific_blockers": [
-    "GAUGED_U1X_G4_G6_G7_G8_CLOSURE_REQUIRED",
-    "G4_SM_WITNESS_ZERO_MODES_AND_RANKS_34_35_UNCLASSIFIED",
+    "GAUGED_U1X_G6_G7_G8_CLOSURE_REQUIRED",
     "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
     "G7_RG_ANCHOR_CONTENT_AND_HIGGS_QUARTIC_MATCHING",
     "G8_YUKAWA_SECTOR_AND_PROTON_DECAY_MEDIATORS"
   ],
-  "status": "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G5_CLOSED__G4_OPEN",
+  "status": "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G4_G5_CLOSED__G6_OPEN",
   "summary": {
     "blocked": [
-      "G6",
       "G7",
       "G8"
     ],
@@ -521189,14 +521266,15 @@
       "G1",
       "G2",
       "G3",
+      "G4",
       "G5"
     ],
-    "n_blocked": 3,
-    "n_closed": 4,
+    "n_blocked": 2,
+    "n_closed": 5,
     "n_open": 1,
     "n_partial": 0,
     "open": [
-      "G4"
+      "G6"
     ],
     "partial": []
   },
@@ -521246,13 +521324,13 @@
     },
     {
       "acceptance": "exact gauge/global-symmetry ranks remain compiler-bound and the completed G3 Hessian has no unexplained zero or negative modes",
-      "deliverable": "recompute the exact gauge quotient at the accepted G3 witness (the SM Pati-Salam eps member): SO(10)xU(1)_X rank 34 (gauge quotient 452, axion included) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451), replacing the rank-37/38 (449/448) values of the superseded p+delta point, and classify the witness's zero modes (the axion/PQ direction; the eps -> 0 tuned doublet)",
+      "deliverable": "recompute the exact gauge quotient at the accepted G3 witness (the SM Pati-Salam eps member): SO(10)xU(1)_X rank 34 (gauge quotient 452, axion included) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451), replacing the rank-37/38 (449/448) values of the superseded p+delta point, and classify the witness's zero modes (the axion/PQ direction; the eps -> 0 tuned doublet); done: G4 is CLOSED at the G3 witness benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, every 0 < eps < 599/50), tree level (g4_sm_pati_salam_physical_quotient_v20 through g4_sm_closure_binding_v20): SO(10)xU(1)_X rank 34 (gauge quotient 452) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451); on the gauge quotient the Hessian is 451/1/0 with the physical axion as its only zero mode, the 35 zero modes of the full Hessian are 34 eaten Goldstones and the axion, and no mode is negative; as eps -> 0 the only extra zero modes are one SM doublet (1,2)_{1/2}, lifted at quartic order by lambda_eff = 127/64. The axion is massless only for the renormalizable PQ-neutral benchmark potential: the QCD anomaly and PQ-violating operators such as Phi17^4 conj(S)^17/M_Pl^17 give it a mass.",
       "gates": [
         "G4"
       ],
       "id": "W3-G4-FULL-GAUGE-QUOTIENT",
       "issue": 178,
-      "status": "OPEN",
+      "status": "CLOSED",
       "wave": 3
     },
     {
@@ -521274,7 +521352,7 @@
       ],
       "id": "W4-G6-SPECTRUM",
       "issue": 106,
-      "status": "BLOCKED_ON_G4",
+      "status": "OPEN",
       "wave": 4
     },
     {
@@ -521300,5 +521378,5 @@
       "wave": 6
     }
   ],
-  "verdict": "Wave 0 and the gauged scalar G1/G2 recertification are CLOSED. G3 is CLOSED on the SM Pati-Salam track (g3_sm_target_track_v20 through final_g3_acceptance_gate_v20): G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; G4 OPEN, G6-G8 blocked; caveats routed downstream; internal candidate withheld; whole model neither validated nor excluded. G5 is CLOSED on the same coupling vector. W3-G4 is OPEN: recompute the ranks 34/35 (quotients 452/451) at the witness and classify its zero modes. G6-G8 remain dependency-blocked. Model-level caveats are routed downstream and G3 keeps only disclosures: sub-M_I coloured states and positivity (no EWSB) go to G6; RG-anchor content and the Higgs quartic go to G7; Yukawas and proton-decay mediators go to G8; zero-mode classification and the recomputed ranks (34 gauge -> 452, 35 -> 451) go to G4; the naturalness of the tunings (DT splitting, O05, M_I) lies outside G1-G8. Diagnostics that cannot close G3: the historical 27-of-51 perturbative SOS candidate with J0=-21/200. Source-bound identities prove exact stationarity and complete BFB; direct exact P+Delta rank/nullity 429/33 plus the extension certificate prove a strict local minimum on all 448 transverse directions. An exact second stationary orbit is lower by 25*r^4/19008, so the selected global vacuum is rejected. The fixed-P branch with this Delta_R orientation is exactly excluded and its lower replacement has the wrong gauge symmetry. The SU(5)+Delta Phi/Sigma orbit is an exact global SOS minimum with a 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1) and rank/nullity 429/33. Its chiral-H full Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the symmetry orbit. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier maps, and explicit 45-element Phi210 invariant quadratic basis now feed an exact augmented census: dimension 22366, 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic map is exact-rank-6057 with shape 6057x18085 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma and general/full H remain open for that non-SM point (the exact 448/38 full Hessian is certified separately). The historical 64/91 saddle/search remains scoped to option C."
+  "verdict": "Wave 0 and the gauged scalar G1/G2 recertification are CLOSED. G3 is CLOSED on the SM Pati-Salam track (g3_sm_target_track_v20 through final_g3_acceptance_gate_v20): G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither validated nor excluded. G5 is CLOSED on the same coupling vector. G4 is CLOSED at the G3 witness benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, every 0 < eps < 599/50), tree level (g4_sm_pati_salam_physical_quotient_v20 through g4_sm_closure_binding_v20): SO(10)xU(1)_X rank 34 (gauge quotient 452) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451); on the gauge quotient the Hessian is 451/1/0 with the physical axion as its only zero mode, the 35 zero modes of the full Hessian are 34 eaten Goldstones and the axion, and no mode is negative; as eps -> 0 the only extra zero modes are one SM doublet (1,2)_{1/2}, lifted at quartic order by lambda_eff = 127/64. The axion is massless only for the renormalizable PQ-neutral benchmark potential: the QCD anomaly and PQ-violating operators such as Phi17^4 conj(S)^17/M_Pl^17 give it a mass. W4-G6 is OPEN (tree-level evidence only); G7-G8 remain dependency-blocked. Model-level caveats are routed downstream and G3 keeps only disclosures: sub-M_I coloured states and positivity (no EWSB) go to G6; RG-anchor content and the Higgs quartic go to G7; Yukawas and proton-decay mediators go to G8; zero-mode classification and the recomputed ranks (34 gauge -> 452, 35 -> 451) go to G4; the naturalness of the tunings (DT splitting, O05, M_I) lies outside G1-G8. Diagnostics that cannot close G3: the historical 27-of-51 perturbative SOS candidate with J0=-21/200. Source-bound identities prove exact stationarity and complete BFB; direct exact P+Delta rank/nullity 429/33 plus the extension certificate prove a strict local minimum on all 448 transverse directions. An exact second stationary orbit is lower by 25*r^4/19008, so the selected global vacuum is rejected. The fixed-P branch with this Delta_R orientation is exactly excluded and its lower replacement has the wrong gauge symmetry. The SU(5)+Delta Phi/Sigma orbit is an exact global SOS minimum with a 12-dimensional stabilizer (SU(3)_c x SU(2)_L x U(1)_T3R, not the SM: its Delta_R has Y=-1) and rank/nullity 429/33. Its chiral-H full Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the symmetry orbit. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier maps, and explicit 45-element Phi210 invariant quadratic basis now feed an exact augmented census: dimension 22366, 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 real Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic map is exact-rank-6057 with shape 6057x18085 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma and general/full H remain open for that non-SM point (the exact 448/38 full Hessian is certified separately). The historical 64/91 saddle/search remains scoped to option C."
 }

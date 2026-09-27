@@ -11,6 +11,7 @@ from typing import Any
 import g1_g8_gate_ledger_v20 as ledger
 import corrected_rank1_endpoint_v21 as corrected_rank1
 import g3_sm_target_track_v20 as sm_track
+import g4_sm_closure_binding_v20 as g4_closure
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_EXECUTION_ROADMAP_V20.json"
@@ -85,6 +86,29 @@ def w3_g3_deliverable(sm_track_closed: bool) -> str:
     )
 
 
+# The W3-G4 deliverable follows the ledger's G4 closure evidence
+# (g4_sm_pati_salam_physical_quotient_v20 through the pure binding
+# g4_sm_closure_binding_v20): the "done" clause appears only when the ledger's
+# G4 row carries certified closure evidence and the SM track is closed.
+W3_G4_TASK_ID = "W3-G4-FULL-GAUGE-QUOTIENT"
+_W3_G4_DELIVERABLE = (
+    "recompute the exact gauge quotient at the accepted G3 witness (the "
+    "SM Pati-Salam eps member): SO(10)xU(1)_X rank 34 (gauge quotient "
+    "452, axion included) and SO(10)xU(1)_XxPQ rank 35 "
+    "(massive/transverse quotient 451), replacing the rank-37/38 "
+    "(449/448) values of the superseded p+delta point, and classify the "
+    "witness's zero modes (the axion/PQ direction; the eps -> 0 tuned "
+    "doublet)"
+)
+
+
+def w3_g4_deliverable(g4_closed: bool) -> str:
+    """W3-G4 deliverable; the "done" clause appears only for a literal True."""
+    if g4_closed is True:
+        return _W3_G4_DELIVERABLE + "; done: " + g4_closure.G4_CLOSED_SENTENCE
+    return _W3_G4_DELIVERABLE
+
+
 def _dig(value: Any, *keys: str) -> Any:
     for key in keys:
         if not isinstance(value, dict):
@@ -107,9 +131,19 @@ def _g5_bound_to_closing_vector(gate_report: dict[str, Any]) -> bool:
     )
 
 
+def _g4_certified(gate_report: dict[str, Any]) -> bool:
+    """The ledger's G4 closure evidence is certified (g4_sm_closure_binding_v20; fail closed)."""
+    return (
+        _dig(gate_report, "gates", "G4", "closure_evidence", "certified")
+        is True
+    )
+
+
 # The static table is fail-closed: its W3-G3 deliverable carries the
-# not-certified clause, and _tasks_for_gate_report substitutes the "done"
-# clause only when the ledger's SM track is closed.
+# not-certified clause and its W3-G4 deliverable no "done" clause;
+# _tasks_for_gate_report substitutes the "done" clauses only when the ledger's
+# SM track is closed (W3-G3) and, in addition, its G4 closure evidence is
+# certified (W3-G4).
 TASKS: list[dict[str, Any]] = [
     {
         "id": "W0-MODEL-CONTRACT",
@@ -164,24 +198,15 @@ TASKS: list[dict[str, Any]] = [
         ),
     },
     {
-        "id": "W3-G4-FULL-GAUGE-QUOTIENT",
+        "id": W3_G4_TASK_ID,
         "wave": 3,
         "gates": ["G4"],
         "status": "RANKS_34_35_AT_SM_WITNESS_PENDING__BLOCKED_ON_G3",
         "issue": 178,
-        "deliverable": (
-            "recompute the exact gauge quotient at the accepted G3 witness (the "
-            "SM Pati-Salam eps member): SO(10)xU(1)_X rank 34 (gauge quotient "
-            "452, axion included) and SO(10)xU(1)_XxPQ rank 35 "
-            "(massive/transverse quotient 451), replacing the rank-37/38 "
-            "(449/448) values of the superseded p+delta point, and classify the "
-            "witness's zero modes (the axion/PQ direction; the eps -> 0 tuned "
-            "doublet)"
-        ),
-        "acceptance": (
-            "exact gauge/global-symmetry ranks remain compiler-bound and the "
-            "completed G3 Hessian has no unexplained zero or negative modes"
-        ),
+        "deliverable": w3_g4_deliverable(False),
+        # The G4 certificate binds this acceptance text verbatim
+        # (roadmap_W3_G4_acceptance; g4_sm_closure_binding_v20 criterion 16).
+        "acceptance": g4_closure.W3_G4_ACCEPTANCE,
     },
     {
         "id": "W3-G5-FULL-BFB",
@@ -277,27 +302,33 @@ def _late_task_statuses(statuses: dict[str, Any]) -> dict[str, str]:
     }
 
 
+def _w3_g4_status(g3_closed: bool, g4_certified: bool) -> str:
+    """W3-G4 on a consistent contract: CLOSED only on certified evidence with G3 CLOSED."""
+    if g3_closed and g4_certified:
+        return ledger.STATUS_CLOSED
+    return ledger.STATUS_OPEN if g3_closed else "BLOCKED_ON_G3"
+
+
 def _promoted_task_statuses(gate_report: dict[str, Any]) -> dict[str, str]:
     """Task states on a consistent contract.
 
-    W3 follows the ledger's SM track and G5 binding; the late-wave tasks
-    (W4-G6, W6-G8) name the gates they still wait on in the gate frontier
-    that this track state implies (cross-checked against the ledger's own
-    closure waves by ``late_wave_tasks_match_ledger_closure_waves``).
+    W3 follows the ledger's SM track, G4 closure evidence and G5 binding; the
+    late-wave tasks (W4-G6, W6-G8) name the gates they still wait on in the
+    gate frontier that this state implies (cross-checked against the ledger's
+    own closure waves by ``late_wave_tasks_match_ledger_closure_waves``).
     """
     g3_closed = _sm_track_closed(gate_report)
+    g4_certified = _g4_certified(gate_report)
     g5_closed = _g5_bound_to_closing_vector(gate_report)
     gate_statuses = ledger._expected_gate_statuses(
-        True, g3_closed=g3_closed, g5_closed=g5_closed
+        True, g3_closed=g3_closed, g5_closed=g5_closed, g4_closed=g4_certified
     )
     return {
         "W0-MODEL-CONTRACT": ledger.STATUS_CLOSED,
         "W1-G1-GAUGED-RECERTIFICATION": ledger.STATUS_CLOSED,
         "W2-G2-GAUGED-PROJECTION": ledger.STATUS_CLOSED,
         W3_G3_TASK_ID: ledger.STATUS_CLOSED if g3_closed else ledger.STATUS_OPEN,
-        "W3-G4-FULL-GAUGE-QUOTIENT": (
-            ledger.STATUS_OPEN if g3_closed else "BLOCKED_ON_G3"
-        ),
+        W3_G4_TASK_ID: _w3_g4_status(g3_closed, g4_certified),
         "W3-G5-FULL-BFB": ledger.STATUS_CLOSED if g5_closed else ledger.STATUS_OPEN,
         **_late_task_statuses(gate_statuses),
     }
@@ -307,11 +338,23 @@ def _tasks_for_gate_report(gate_report: dict[str, Any]) -> list[dict[str, Any]]:
     """Promote task states when the authoritative contract is repaired.
 
     The W3-G3 deliverable carries the "done" clause only when the ledger's
-    SM Pati-Salam track (g3_sm_target_track) is closed.
+    SM Pati-Salam track (g3_sm_target_track) is closed; the W3-G4 deliverable
+    carries it only when, in addition, the ledger's G4 closure evidence is
+    certified (gates.G4.closure_evidence, g4_sm_closure_binding_v20) and the
+    model contract is attested (on a blocked contract every gate is BLOCKED,
+    so the G4 closure sentence would be false).
     """
-    w3_g3 = w3_g3_deliverable(_sm_track_closed(gate_report))
+    sm_closed = _sm_track_closed(gate_report)
+    w3_g3 = w3_g3_deliverable(sm_closed)
+    w3_g4 = w3_g4_deliverable(
+        gate_report.get("contract_consistent") is True
+        and _g4_certified(gate_report)
+        and sm_closed
+    )
+    substituted = {W3_G3_TASK_ID: w3_g3, W3_G4_TASK_ID: w3_g4}
     tasks = [
-        {**task, "deliverable": w3_g3} if task["id"] == W3_G3_TASK_ID
+        {**task, "deliverable": substituted[task["id"]]}
+        if task["id"] in substituted
         else dict(task)
         for task in TASKS
     ]
@@ -328,7 +371,9 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
     """Build the roadmap from a current or hypothetically repaired ledger.
 
     G3 closes only through the ledger's SM Pati-Salam track
-    (g3_sm_target_track, from g3_sm_target_track_v20); G5 closes only on the
+    (g3_sm_target_track, from g3_sm_target_track_v20); G4 closes only on the
+    ledger's certified closure evidence (gates.G4.closure_evidence, from
+    g4_sm_closure_binding_v20) with G3 CLOSED; G5 closes only on the
     Pati-Salam coupling vector (gates.G5.bfb_coupling_vector).
     """
     gates = gate_report["gates"]
@@ -349,9 +394,13 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
     ]
     contract_consistent = bool(gate_report["contract_consistent"])
     g3_closed = _sm_track_closed(gate_report)
+    g4_certified = _g4_certified(gate_report)
     g5_closed = _g5_bound_to_closing_vector(gate_report)
     expected_statuses = ledger._expected_gate_statuses(
-        contract_consistent, g3_closed=g3_closed, g5_closed=g5_closed
+        contract_consistent,
+        g3_closed=g3_closed,
+        g5_closed=g5_closed,
+        g4_closed=g4_certified,
     )
     statuses = {name: row["status"] for name, row in gates.items()}
     expected_task_frontier = {task["id"]: task["status"] for task in TASKS}
@@ -364,9 +413,7 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "W3-G3-FULL-STATIONARITY": (
                     ledger.STATUS_CLOSED if g3_closed else ledger.STATUS_OPEN
                 ),
-                "W3-G4-FULL-GAUGE-QUOTIENT": (
-                    ledger.STATUS_OPEN if g3_closed else "BLOCKED_ON_G3"
-                ),
+                W3_G4_TASK_ID: _w3_g4_status(g3_closed, g4_certified),
                 "W3-G5-FULL-BFB": (
                     ledger.STATUS_CLOSED if g5_closed else ledger.STATUS_OPEN
                 ),
@@ -763,11 +810,21 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             task_statuses[W3_G3_TASK_ID] != ledger.STATUS_CLOSED
             or g3_closing_track == sm_track.TRACK_NAME
         ),
+        "w3_g4_closed_only_on_the_certified_binding": (
+            task_statuses[W3_G4_TASK_ID] != ledger.STATUS_CLOSED
+            or (
+                gates["G4"]["status"] == ledger.STATUS_CLOSED
+                and _g4_certified(gate_report)
+            )
+        ),
     }
     audit_failures = [name for name, passed in checks.items() if not passed]
     if audit_failures:
         status = "G1_G8_EXECUTION_ROADMAP_AUDIT_FAILED"
         overall_state = "EXECUTION_FAIL"
+    elif contract_consistent and g3_closed and g4_certified:
+        status = "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G4_G5_CLOSED__G6_OPEN"
+        overall_state = ledger.STATUS_OPEN
     elif contract_consistent and g3_closed:
         status = "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G3_G5_CLOSED__G4_OPEN"
         overall_state = ledger.STATUS_OPEN
@@ -784,7 +841,20 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         if isinstance(track, dict) and isinstance(track.get("blockers"), list)
         else []
     )
-    if contract_consistent and g3_closed:
+    if contract_consistent and g3_closed and g4_certified:
+        verdict_head = (
+            "Wave 0 and the gauged scalar G1/G2 recertification are CLOSED. "
+            "G3 is CLOSED on the SM Pati-Salam track (g3_sm_target_track_v20 "
+            "through final_g3_acceptance_gate_v20): "
+            + sm_track.CLOSURE_SCOPE
+            + " G5 is CLOSED on the same coupling vector. "
+            + g4_closure.G4_CLOSED_SENTENCE
+            + " W4-G6 is OPEN (tree-level evidence only); G7-G8 remain "
+            "dependency-blocked. "
+            + sm_track.CAVEAT_ROUTING_SENTENCE
+            + " Diagnostics that cannot close G3: "
+        )
+    elif contract_consistent and g3_closed:
         verdict_head = (
             "Wave 0 and the gauged scalar G1/G2 recertification are CLOSED. "
             "G3 is CLOSED on the SM Pati-Salam track (g3_sm_target_track_v20 "

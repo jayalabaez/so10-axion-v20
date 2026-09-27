@@ -4,6 +4,12 @@
 The gate consumes the fresh contract-aware confirmation layer.  It does not
 load the historical release verdict stack, so an old Option-C approval cannot
 override the manuscript/executable U(1)_X mismatch.
+
+Its tiers are the confirmation tiers (``ULTIMATE_THEORY_GATE_V20_SCOPE.md``).
+Decisions D3 and D-E can approve only tier 1, the internal candidate
+(internal consistency, not phenomenology), and D-E holds even that approval
+until G7 is CLOSED; an approval would not be full-model validation, and the
+overall state stays OPEN until every G1-G8 gate is CLOSED.
 """
 
 from __future__ import annotations
@@ -21,8 +27,65 @@ OUT_JSON = ROOT / "ULTIMATE_THEORY_GATE_V20_VERDICT.json"
 OUT_MD = ROOT / "ULTIMATE_THEORY_GATE_V20.md"
 
 
-def _verdict(contract_ready: bool, g3_closed: bool = False) -> str:
-    """Verdict text, branched on model-contract readiness and ledger G3."""
+VERDICT_INTERNAL_CANDIDATE_HELD_PENDING_G7 = (
+    "WITHHOLD APPROVAL. The audit has no execution failure and the gauged-U(1)_X model contract is attested by bound "
+    "external SARAH execution evidence; G1, G2, G3 (SM Pati-Salam benchmark family, scoped), G4 (at the G3 witness "
+    "benchmark, tree level) and G5 are closed, which meets decision D3, but decision D-E holds the internal-candidate "
+    "tier until G7 is CLOSED: for the declared benchmark (5 x (16 + 16bar) spectators at M_s ~ M_I, v_S = M_I) three "
+    "independent two-loop RG codes find no perturbative gauge unification, a G7 no-go for that benchmark. The G6-G8 "
+    "scientific gates remain open or blocked (sub-M_I coloured states, positivity beyond tree level and electroweak "
+    "symmetry breaking, RG-anchor content and the Higgs quartic, Yukawas (flavour excluded on this witness branch at "
+    "renormalizable tree level, Route C) and proton decay). No internal-candidate, conditional-benchmark, "
+    "full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved; the whole model is "
+    "neither validated nor excluded."
+)
+
+
+def _verdict(
+    contract_ready: bool,
+    g3_closed: bool = False,
+    g4_closed: bool = False,
+    internal_candidate: bool = False,
+    held_pending_g7: bool = False,
+) -> str:
+    """Verdict text, branched on model-contract readiness, ledger G3/G4, D3 and D-E.
+
+    ``g4_closed`` is the confirmation's strict G4 closure (status CLOSED with
+    certified closure evidence), ``internal_candidate`` its approval (D3 and
+    G7 CLOSED by D-E) and ``held_pending_g7`` its decision-D-E hold.
+    """
+    if contract_ready and g3_closed and internal_candidate:
+        # Approval needs decision D3 and G7 CLOSED (decision D-E); this branch
+        # is unreachable while G7 is not CLOSED.  Nothing claims G4 unless it
+        # is CLOSED.
+        d3_basis = (
+            "G4 is CLOSED at the G3 witness benchmark, tree level"
+            if g4_closed
+            else "the closing track's downstream caveats are recorded as resolved while G4 is not CLOSED"
+        )
+        return (
+            "APPROVE INTERNAL CANDIDATE ONLY. The audit has no execution failure and the gauged-U(1)_X model contract "
+            "is attested by bound external SARAH execution evidence; G1, G2 and G3 (SM Pati-Salam benchmark family, "
+            "scoped) are closed, decision D3 is met (" + d3_basis + ") and G7 is CLOSED (decision D-E), so the "
+            "internal-candidate tier is approved. No conditional-benchmark, full-phenomenology, empirical-realization, "
+            "or whole-model-exclusion claim is approved: the internal candidate is not phenomenologically validated, "
+            "and the whole model is neither validated nor excluded."
+        )
+    if contract_ready and g3_closed and g4_closed:
+        # G1-G5 CLOSED in G1_G8_GATE_LEDGER_V20 (G4 at the G3 witness, tree
+        # level); G4 meets decision D3, but decision D-E holds the tier.
+        return VERDICT_INTERNAL_CANDIDATE_HELD_PENDING_G7
+    if contract_ready and g3_closed and held_pending_g7:
+        # Hypothetical decision-D-E hold on the D3 caveats path (the closing
+        # track's caveats recorded as resolved while G4 is not CLOSED).
+        return (
+            "WITHHOLD APPROVAL. The audit has no execution failure and the gauged-U(1)_X model contract is attested "
+            "by bound external SARAH execution evidence; G3 is closed on the SM Pati-Salam benchmark family (scoped) "
+            "and the closing track's downstream caveats are recorded as resolved, which meets decision D3, but "
+            "decision D-E holds the internal-candidate tier until G7 is CLOSED, and the G4 and G6-G8 scientific gates "
+            "remain open. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or "
+            "whole-model-exclusion claim is approved."
+        )
     if contract_ready and g3_closed:
         # G1, G2, G3 (SM Pati-Salam track, scoped) and G5 are CLOSED in
         # G1_G8_GATE_LEDGER_V20; decision D3 keeps the internal candidate
@@ -75,6 +138,8 @@ def evaluate_reports(
         status = "ULTIMATE_GATE_COMPLETE__MODEL_EXCLUDED"
     elif result["full_phenomenology_approved"]:
         status = "ULTIMATE_GATE_COMPLETE__FULL_PHENOMENOLOGY_VALIDATED"
+    elif result["overall_state"] == "OPEN" and result["internal_candidate_approved"]:
+        status = "ULTIMATE_GATE_AUDIT_COMPLETE__INTERNAL_CANDIDATE_APPROVED__FULL_APPROVAL_OPEN"
     else:
         status = "ULTIMATE_GATE_AUDIT_COMPLETE__APPROVAL_OPEN"
 
@@ -94,6 +159,9 @@ def evaluate_reports(
             "internal_candidate_approved"
         ],
         "internal_candidate_gate": result["internal_candidate_gate"],
+        "internal_candidate_scope": result["internal_candidate_scope"],
+        "internal_candidate_hold": result["internal_candidate_hold"],
+        "tiers": result["tiers"],
         "conditional_benchmark_approved": result[
             "conditional_benchmark_approved"
         ],
@@ -126,6 +194,9 @@ def evaluate_reports(
         "verdict": _verdict(
             result["model_contract_ready"],
             g3_closed=result["internal_candidate_gate"]["G3_closed"],
+            g4_closed=result["internal_candidate_gate"]["G4_closed"],
+            internal_candidate=result["internal_candidate_approved"],
+            held_pending_g7=result["internal_candidate_gate"]["approval_held_pending_G7"],
         ),
     }
 
@@ -152,6 +223,14 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Approval levels",
         "",
         f"- Internal candidate: **{report['internal_candidate_approved']}**",
+    ]
+    scope = report.get("internal_candidate_scope")
+    if scope is not None:
+        lines.append(f"- Internal-candidate scope: {scope}")
+    hold = report.get("internal_candidate_hold")
+    if hold is not None:
+        lines.append(f"- Internal-candidate hold: {hold}")
+    lines += [
         f"- Conditional benchmark: **{report['conditional_benchmark_approved']}**",
         f"- Full phenomenology: **{report['full_phenomenology_approved']}**",
         f"- Empirical realization: **{report['empirical_realization_approved']}**",

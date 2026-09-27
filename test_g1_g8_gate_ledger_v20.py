@@ -1,16 +1,30 @@
 #!/usr/bin/env python3
-"""Regression tests for the contract-aware G1-G8 gate ledger."""
+"""Regression tests for the contract-aware G1-G8 gate ledger.
+
+G3 closes only through the SM Pati-Salam track, G5 only on its bound coupling
+vector and G4 only through the pure binding g4_sm_closure_binding_v20 on the
+committed exact G4 certificate (at the G3 witness, tree level).  With G3, G4
+and G5 CLOSED, G6 is OPEN (never CLOSED here: the G6 tree spectrum and the G8
+Route C flavour no-go are evidence only) and G7/G8 stay BLOCKED.  Any missing,
+forged or mismatched G4 certificate reopens G4 fail-closed.
+"""
 from __future__ import annotations
 
 import copy
+import json
 import tempfile
 import unittest
 from pathlib import Path
 
 import g1_g8_gate_ledger_v20 as mod
 import g3_sm_target_track_v20 as sm_track
+import g4_sm_closure_binding_v20 as g4_closure
 
-CLOSED_G3_STATUS = (
+CLOSED_G4_STATUS = (
+    "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
+    "G1_G2_G3_G4_G5_CLOSED__G6_OPEN"
+)
+G4_OPEN_STATUS = (
     "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
     "G1_G2_G3_G5_CLOSED__G4_OPEN"
 )
@@ -22,12 +36,26 @@ SM_TRACK_CLOSED_STATUSES = {
     "G1": mod.STATUS_CLOSED,
     "G2": mod.STATUS_CLOSED,
     "G3": mod.STATUS_CLOSED,
-    "G4": mod.STATUS_OPEN,
+    "G4": mod.STATUS_CLOSED,
     "G5": mod.STATUS_CLOSED,
-    "G6": mod.STATUS_BLOCKED,
+    "G6": mod.STATUS_OPEN,
     "G7": mod.STATUS_BLOCKED,
     "G8": mod.STATUS_BLOCKED,
 }
+G4_REOPENED_STATUSES = {
+    **SM_TRACK_CLOSED_STATUSES,
+    "G4": mod.STATUS_OPEN,
+    "G6": mod.STATUS_BLOCKED,
+}
+RENAMED_G3_G5_CHECK = "only_sm_track_G3_certified_G4_and_bound_G5_close_among_G3_G8"
+NEW_G4_CHECKS = (
+    "g4_closed_only_on_the_certified_witness_binding",
+    "g6_g8_certificates_are_evidence_only",
+)
+G6_SPECIFICATION = (
+    "with G3, G4 and G5 CLOSED, emit the complete positive physical spectrum with "
+    "SM provenance (eigenmasses, irreps, mixings and uncertainties) beyond tree level"
+)
 DIAGNOSTIC_COERCIVITY_PROBLEM = (
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN"
 )
@@ -72,16 +100,31 @@ class G1G8GateLedgerTests(unittest.TestCase):
             g3_sm_track_inputs=sm_inputs,
         )
 
+    def _build_with(self, **reports):
+        inputs = self.report["model_contract_reports"]
+        return mod._build_report_from_inputs(
+            x_report=inputs["exact_X"],
+            g1_report=inputs["gauged_G1_character_census"],
+            g2_report=inputs["gauged_G2_derivative_audit"],
+            filter_report=inputs["gauged_scalar_filter"],
+            **reports,
+        )
+
     def test_audit_succeeds_with_attested_contract_and_g3_closed_on_sm_track(self):
         self.assertEqual(self.report["n_failed"], 0, self.report["audit_failures"])
-        self.assertEqual(self.report["status"], CLOSED_G3_STATUS)
+        self.assertEqual(self.report["status"], CLOSED_G4_STATUS)
         self.assertEqual(self.report["overall_state"], mod.STATUS_OPEN)
+        self.assertEqual(self.report["n_checks"], 44)
         self.assertTrue(self.report["contract_consistent"])
         self.assertTrue(self.report["contract_evidence_complete"])
         self.assertNotIn(mod.CONTRACT_BLOCKER, self.report["scientific_blockers"])
         self.assertEqual(
             self.report["scientific_blockers"],
-            list(sm_track.DOWNSTREAM_BLOCKERS),
+            list(g4_closure.DOWNSTREAM_BLOCKERS_AFTER_G4),
+        )
+        self.assertNotIn(
+            "G4_SM_WITNESS_ZERO_MODES_AND_RANKS_34_35_UNCLASSIFIED",
+            self.report["scientific_blockers"],
         )
         self.assertNotIn(
             "G3_SM_PRESERVING_TARGET_REQUIRED",
@@ -106,48 +149,71 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertIs(track["downstream_caveats_resolved"], False)
         self.assertEqual(track["closure_scope"], sm_track.CLOSURE_SCOPE)
         for name in (
-            "only_sm_track_G3_and_bound_G5_close_among_G3_G8",
+            RENAMED_G3_G5_CHECK,
+            *NEW_G4_CHECKS,
             "g3_sm_track_is_the_only_closure_route",
             "chiral_H_diagnostic_track_cannot_close_G3",
             "g5_closed_only_on_the_bound_pati_salam_vector",
             "gate_frontier_matches_contract_state",
+            "closed_gates_have_closed_dependencies",
+            "open_gates_have_closed_dependencies",
         ):
             self.assertIs(self.report["checks"][name], True, name)
         self.assertNotIn(
             "only_certified_G5_closes_among_G3_G8", self.report["checks"]
         )
+        self.assertNotIn(
+            "only_sm_track_G3_and_bound_G5_close_among_G3_G8", self.report["checks"]
+        )
         self.assertIs(
             self.report["feasibility"]["gauged_G3_sm_pati_salam_track_closed"],
+            True,
+        )
+        self.assertIs(
+            self.report["feasibility"]["gauged_G4_sm_witness_quotient_closed"],
             True,
         )
 
     def test_expected_gate_statuses_follow_the_sm_track_and_the_dag(self):
         blocked = {f"G{i}": mod.STATUS_BLOCKED for i in range(1, 9)}
         for g3_closed in (False, True):
-            for g5_closed in (False, True):
-                self.assertEqual(
-                    mod._expected_gate_statuses(
-                        False, g3_closed=g3_closed, g5_closed=g5_closed
-                    ),
-                    blocked,
-                )
-                self.assertEqual(
-                    mod._expected_gate_statuses(
-                        True, g3_closed=g3_closed, g5_closed=g5_closed
-                    ),
-                    {
-                        "G1": mod.STATUS_CLOSED,
-                        "G2": mod.STATUS_CLOSED,
-                        "G3": mod.STATUS_CLOSED if g3_closed else mod.STATUS_OPEN,
-                        "G4": mod.STATUS_OPEN if g3_closed else mod.STATUS_BLOCKED,
-                        "G5": mod.STATUS_CLOSED if g5_closed else mod.STATUS_OPEN,
-                        "G6": mod.STATUS_BLOCKED,
-                        "G7": mod.STATUS_BLOCKED,
-                        "G8": mod.STATUS_BLOCKED,
-                    },
-                )
+            for g4_closed in (False, True):
+                for g5_closed in (False, True):
+                    flags = dict(
+                        g3_closed=g3_closed, g5_closed=g5_closed, g4_closed=g4_closed
+                    )
+                    self.assertEqual(
+                        mod._expected_gate_statuses(False, **flags), blocked
+                    )
+                    if g3_closed:
+                        g4_status = mod.STATUS_CLOSED if g4_closed else mod.STATUS_OPEN
+                    else:
+                        g4_status = mod.STATUS_BLOCKED
+                    self.assertEqual(
+                        mod._expected_gate_statuses(True, **flags),
+                        {
+                            "G1": mod.STATUS_CLOSED,
+                            "G2": mod.STATUS_CLOSED,
+                            "G3": mod.STATUS_CLOSED if g3_closed else mod.STATUS_OPEN,
+                            "G4": g4_status,
+                            "G5": mod.STATUS_CLOSED if g5_closed else mod.STATUS_OPEN,
+                            "G6": (
+                                mod.STATUS_OPEN
+                                if g3_closed and g4_closed and g5_closed
+                                else mod.STATUS_BLOCKED
+                            ),
+                            "G7": mod.STATUS_BLOCKED,
+                            "G8": mod.STATUS_BLOCKED,
+                        },
+                        flags,
+                    )
         with self.assertRaises(TypeError):
             mod._expected_gate_statuses(True)  # the track inputs are required
+        with self.assertRaises(TypeError):
+            # g4_closed is required (keyword-only, no default).
+            mod._expected_gate_statuses(True, g3_closed=True, g5_closed=True)
+        with self.assertRaises(TypeError):
+            mod._expected_gate_statuses(True, True, True, True)
 
     def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
         forged = copy.deepcopy(
@@ -762,7 +828,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.assertEqual(gate["status"], mod.STATUS_CLOSED)
             self.assertTrue(gate["scoped_calculation_complete"])
 
-    def test_attested_contract_closes_g1_g2_g3_g5_and_leaves_g4_open(self):
+    def test_attested_contract_closes_g1_to_g5_and_opens_g6(self):
         gates = self.report["gates"]
         self.assertEqual(set(gates), {f"G{i}" for i in range(1, 9)})
         self.assertEqual(
@@ -770,17 +836,51 @@ class G1G8GateLedgerTests(unittest.TestCase):
             SM_TRACK_CLOSED_STATUSES,
         )
         self.assertEqual(
-            self.report["summary"]["closed"], ["G1", "G2", "G3", "G5"]
+            self.report["summary"]["closed"], ["G1", "G2", "G3", "G4", "G5"]
         )
-        self.assertEqual(self.report["summary"]["open"], ["G4"])
-        self.assertEqual(self.report["summary"]["blocked"], ["G6", "G7", "G8"])
-        self.assertEqual(self.report["summary"]["n_closed"], 4)
+        self.assertEqual(self.report["summary"]["open"], ["G6"])
+        self.assertEqual(self.report["summary"]["blocked"], ["G7", "G8"])
+        self.assertEqual(self.report["summary"]["n_closed"], 5)
         self.assertEqual(self.report["summary"]["n_open"], 1)
-        self.assertEqual(self.report["summary"]["n_blocked"], 3)
-        self.assertEqual(gates["G4"]["unsatisfied_dependencies"], [])
-        self.assertIsNone(gates["G4"]["blocking_root"])
-        self.assertEqual(gates["G6"]["unsatisfied_dependencies"], ["G4"])
-        self.assertEqual(gates["G6"]["blocking_root"], "DEPENDENCY_NOT_CLOSED")
+        self.assertEqual(self.report["summary"]["n_blocked"], 2)
+        for name in ("G4", "G6"):
+            self.assertEqual(gates[name]["unsatisfied_dependencies"], [], name)
+            self.assertIsNone(gates[name]["blocking_root"], name)
+        self.assertEqual(gates["G7"]["unsatisfied_dependencies"], ["G6"])
+        self.assertEqual(gates["G7"]["blocking_root"], "DEPENDENCY_NOT_CLOSED")
+        self.assertEqual(gates["G8"]["unsatisfied_dependencies"], ["G6", "G7"])
+        # G4 closes on the certified witness binding, never on a status alone.
+        g4 = gates["G4"]
+        evidence = g4["closure_evidence"]
+        self.assertIs(evidence["certified"], True, evidence["blockers"])
+        self.assertEqual(evidence["blockers"], [])
+        self.assertEqual(evidence["status"], g4_closure.REQUIRED_STATUS)
+        self.assertEqual(evidence["required_status"], g4_closure.REQUIRED_STATUS)
+        self.assertIs(evidence["witness_bound_to_g3_track"], True)
+        self.assertEqual(
+            evidence,
+            g4_closure.evaluate_g4_binding(
+                g4_closure.load_g4_report(mod.G4_PHYSICAL_QUOTIENT_JSON),
+                g3_witness=self.report["g3_sm_target_track"]["witness"],
+                g4_open_scope=g4["open_scope"],
+            ),
+        )
+        self.assertIs(g4["closed_on_current_authoritative_contract"], True)
+        self.assertEqual(g4["closure_scope"], g4_closure.G4_LEDGER_CLOSED_SCOPE)
+        self.assertEqual(
+            g4["routed_caveats_resolved_by_closure"],
+            [g4_closure.ROUTED_G4_CAVEAT_ID],
+        )
+        self.assertEqual(g4["decision"], g4_closure.G4_CLOSURE_DECISION)
+        # Decision D-E: the G4 closure itself approves no internal candidate.
+        self.assertIn("held until G7 is CLOSED", g4["decision"])
+        self.assertIs(g4_closure.ledger_g4_closed(self.report), True)
+        self.assertIs(
+            g4_closure.ledger_g4_closed(json.loads(json.dumps(self.report))), True
+        )
+        # G6 is OPEN, not CLOSED: the tree spectrum is evidence only.
+        self.assertIs(gates["G6"]["closed_on_current_authoritative_contract"], False)
+        self.assertEqual(gates["G6"]["authoritative_closed_scope"], [])
         g3 = gates["G3"]
         self.assertEqual(g3["closing_track"], "sm_pati_salam")
         self.assertEqual(g3["closure_scope"], sm_track.CLOSURE_SCOPE)
@@ -815,13 +915,18 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 "G1": ["promoted exact-X scalar census"],
                 "G2": ["promoted exact-X dense derivative and Ward audit"],
                 "G3": [sm_track.G3_LEDGER_CLOSED_SCOPE],
-                "G4": [],
+                "G4": [g4_closure.G4_LEDGER_CLOSED_SCOPE],
                 "G5": [sm_track.G5_LEDGER_CLOSED_SCOPE],
                 "G6": [],
                 "G7": [],
                 "G8": [],
             },
         )
+        # The G4 open scope is unchanged by the closure (the certificate pins it).
+        self.assertEqual(
+            gates["G4"]["open_scope"], mod._gate_open_scope("G4", track)
+        )
+        self.assertEqual(len(gates["G4"]["open_scope"]), 3)
         g4_spec = gates["G4"]["open_scope"][0]
         self.assertIn("rank 34", g4_spec)
         self.assertIn("452", g4_spec)
@@ -840,9 +945,13 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         spec_items = {
             "G4": list(gates["G4"]["open_scope"][:2]),
-            "G6": ["await authoritative G3/G4/G5 and emit the complete positive spectrum"],
+            "G6": [G6_SPECIFICATION],
             "G7": ["await G6 and independently validate the full beta system"],
             "G8": ["await authoritative G3/G6/G7 before any unique lifetime claim"],
+        }
+        evidence_items = {
+            "G6": mod.G6_EVIDENCE_RECORDED_ITEM,
+            "G8": mod.G8_EVIDENCE_RECORDED_ITEM,
         }
         caveats = track["downstream_caveats"]
         self.assertEqual(len(caveats), 10)
@@ -856,7 +965,59 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 if c["gate"] == gate_name
             ]
             self.assertTrue(routed, gate_name)
-            self.assertEqual(open_scope[n_spec:], routed, gate_name)
+            if gate_name in evidence_items:
+                self.assertEqual(open_scope[n_spec:-1], routed, gate_name)
+                self.assertEqual(open_scope[-1], evidence_items[gate_name], gate_name)
+            else:
+                self.assertEqual(open_scope[n_spec:], routed, gate_name)
+        self.assertEqual(
+            mod.G6_EVIDENCE_RECORDED_ITEM,
+            "tree-level evidence (does not close G6): g6_sm_pati_salam_tree_spectrum_v20 "
+            "(G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json) certifies exactly, for all r0, x0, eps > 0, "
+            "the tree-level Hessian spectrum at the G3 witness vacuum: 35 zero modes (34 eaten "
+            "Goldstones + the axion), 451 positive and 0 negative, with exact SM labels; still "
+            "open: one-loop positivity of the light 126bar remnant multiplets (R1), electroweak "
+            "symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified) and "
+            "the uncertainty budget",
+        )
+        self.assertIn("records Route C", mod.G8_EVIDENCE_RECORDED_ITEM)
+        self.assertIn("need a user decision", mod.G8_EVIDENCE_RECORDED_ITEM)
+        tree = gates["G6"]["tree_level_evidence"]
+        self.assertEqual(
+            tree,
+            {
+                "source": "g6_sm_pati_salam_tree_spectrum_v20",
+                "report": "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json",
+                "required_status": mod.G6_TREE_SPECTRUM_STATUS,
+                "status": mod.G6_TREE_SPECTRUM_STATUS,
+                "n_failed": 0,
+                "recorded": True,
+                "closes_gate": False,
+                "role": "evidence only: cited in the G6 open scope, never changes the G6 status",
+                "still_open": [
+                    "one-loop positivity of the light 126bar remnant multiplets (R1)",
+                    "electroweak symmetry breaking (H = 0 at the witness; the eps < 0 member is not certified)",
+                    "the uncertainty budget of the threshold spectrum",
+                ],
+            },
+        )
+        flavour = gates["G8"]["flavour_evidence"]
+        self.assertEqual(
+            flavour,
+            {
+                "source": "g8_sm_pati_salam_flavour_nogo_v20",
+                "report": "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",
+                "required_status": mod.G8_FLAVOUR_NOGO_STATUS,
+                "status": mod.G8_FLAVOUR_NOGO_STATUS,
+                "n_failed": 0,
+                "recorded": True,
+                "closes_gate": False,
+                "role": "evidence only: cited in the G8 open scope, never changes the G8 status",
+                "route_recorded": "C",
+                "routes_needing_user_decision": ["A", "B"],
+            },
+        )
+        self.assertEqual(gates["G8"]["status"], mod.STATUS_BLOCKED)
         self.assertTrue(
             any(
                 item.startswith(
@@ -916,7 +1077,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(wave3["wave"], 3)
         self.assertEqual(wave3["gates"], ["G3", "G4", "G5"])
         self.assertEqual(
-            wave3["status"], "G3_CLOSED_ON_SM_PATI_SALAM_TRACK__G4_OPEN__G5_CLOSED"
+            wave3["status"],
+            "G3_CLOSED_ON_SM_PATI_SALAM_TRACK__G4_CLOSED_AT_G3_WITNESS__G5_CLOSED",
         )
         deliverable = wave3["deliverable"]
         self.assertEqual(
@@ -928,11 +1090,13 @@ class G1G8GateLedgerTests(unittest.TestCase):
             + sm_track.WITNESS_SENTENCE
             + " "
             + sm_track.CAVEAT_ROUTING_SENTENCE
-            + " G4 is OPEN: recompute the ranks 34/35 (quotients 452/451) at "
-            "the witness and classify its zero modes. G5 is CLOSED on the same "
-            "Pati-Salam coupling vector. "
+            + " "
+            + g4_closure.G4_CLOSED_SENTENCE
+            + " G5 is CLOSED on the same Pati-Salam coupling vector. "
             + mod.CHIRAL_WAVE3_TAIL,
         )
+        self.assertNotIn("G4 is OPEN", deliverable)
+        self.assertIn("massless only for the renormalizable PQ-neutral", deliverable)
         self.assertIn(sm_track.CAVEAT_ROUTING_SENTENCE, deliverable)
         self.assertIn(sm_track.CLOSURE_SCOPE, deliverable)
         self.assertNotIn("still needs its model-level caveats resolved", deliverable)
@@ -952,7 +1116,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertNotIn("and G3 remain open", deliverable)
         self.assertEqual(
             [(wave["wave"], wave["status"]) for wave in waves[4:]],
-            [(4, "BLOCKED_ON_G4"), (5, "BLOCKED_ON_G6"), (6, "BLOCKED_ON_G6_G7")],
+            [(4, "OPEN"), (5, "BLOCKED_ON_G6"), (6, "BLOCKED_ON_G6_G7")],
         )
         verdict = self.report["verdict"]
         self.assertTrue(
@@ -966,13 +1130,20 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 + " "
                 + sm_track.WITNESS_SENTENCE
                 + " G5 is CLOSED on the same Pati-Salam coupling vector "
-                "(V4 >= |q|^4/167; the eps N_H term is quadratic). G4 is OPEN; "
-                "G6-G8 remain dependency-blocked. "
+                "(V4 >= |q|^4/167; the eps N_H term is quadratic). "
+                + g4_closure.G4_CLOSED_SENTENCE
+                + " G6 is OPEN (tree-level evidence only: "
+                "g6_sm_pati_salam_tree_spectrum_v20; one-loop positivity of the "
+                "light 126bar remnants, electroweak symmetry breaking and the "
+                "uncertainty budget are open); G7 and G8 remain "
+                "dependency-blocked. "
                 + sm_track.CAVEAT_ROUTING_SENTENCE
                 + " Diagnostics that cannot close G3: A perturbative 27-of-51 "
                 "SOS candidate with J0=-21/200 has"
             )
         )
+        self.assertNotIn("G4 is OPEN", verdict)
+        self.assertNotIn("G6 is CLOSED", verdict)
         self.assertTrue(
             verdict.endswith(
                 "Historical Option-C evidence remains scoped and closes no "
@@ -1113,12 +1284,19 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.assertEqual(g3["authoritative_closed_scope"], [], key)
             self.assertEqual(g3["unsatisfied_dependencies"], [], key)
             self.assertEqual(report["gates"]["G4"]["unsatisfied_dependencies"], ["G3"])
+            self.assertEqual(report["gates"]["G4"]["authoritative_closed_scope"], [], key)
+            self.assertIsNone(report["gates"]["G4"]["closure_scope"], key)
             self.assertIs(
                 report["feasibility"]["gauged_G3_sm_pati_salam_track_closed"],
                 False,
             )
+            self.assertIs(
+                report["feasibility"]["gauged_G4_sm_witness_quotient_closed"],
+                False,
+            )
             for name in (
-                "only_sm_track_G3_and_bound_G5_close_among_G3_G8",
+                RENAMED_G3_G5_CHECK,
+                *NEW_G4_CHECKS,
                 "g3_sm_track_is_the_only_closure_route",
                 "g5_closed_only_on_the_bound_pati_salam_vector",
                 "gate_frontier_matches_contract_state",
@@ -1235,6 +1413,233 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertIs(
             report["feasibility"]["gauged_G3_sm_pati_salam_track_closed"], False
         )
+        # A certified G4 binding cannot close G4 on a blocked contract.
+        g4 = report["gates"]["G4"]
+        self.assertEqual(g4["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(g4["blocking_root"], mod.CONTRACT_BLOCKER)
+        # The binding itself is certified (the witness is the track's own),
+        # but the blocked contract keeps G4 BLOCKED.
+        self.assertIs(g4["closure_evidence"]["certified"], True)
+        self.assertEqual(g4["closure_evidence"]["blockers"], [])
+        self.assertIs(g4["closed_on_current_authoritative_contract"], False)
+        self.assertEqual(g4["authoritative_closed_scope"], [])
+        self.assertIsNone(g4["closure_scope"])
+        self.assertEqual(g4["routed_caveats_resolved_by_closure"], [])
+        self.assertIs(g4_closure.ledger_g4_closed(report), False)
+        self.assertIs(
+            report["feasibility"]["gauged_G4_sm_witness_quotient_closed"], False
+        )
+        for name in (RENAMED_G3_G5_CHECK, *NEW_G4_CHECKS):
+            self.assertIs(report["checks"][name], True, name)
+
+    def test_blocked_contract_keeps_g4_blocked_even_with_a_certified_binding(self):
+        inputs = self.report["model_contract_reports"]
+        blocked_x = mod.exact_x.build_report(
+            model_text=mod.exact_x.MODEL.read_text(encoding="utf-8")
+        )
+        certified = g4_closure.evaluate_g4_binding(
+            g4_closure.load_g4_report(mod.G4_PHYSICAL_QUOTIENT_JSON)
+        )
+        self.assertIs(certified["certified"], True)
+        self.assertEqual(
+            mod._expected_gate_statuses(
+                False, g3_closed=True, g5_closed=True, g4_closed=True
+            ),
+            {f"G{i}": mod.STATUS_BLOCKED for i in range(1, 9)},
+        )
+        report = mod._build_report_from_inputs(
+            x_report=blocked_x,
+            g1_report=inputs["gauged_G1_character_census"],
+            g2_report=inputs["gauged_G2_derivative_audit"],
+            filter_report=inputs["gauged_scalar_filter"],
+            g4_report=g4_closure.load_g4_report(mod.G4_PHYSICAL_QUOTIENT_JSON),
+        )
+        self.assertEqual(report["n_failed"], 0, report["audit_failures"])
+        self.assertEqual(
+            {row["status"] for row in report["gates"].values()},
+            {mod.STATUS_BLOCKED},
+        )
+        self.assertEqual(report["gates"]["G4"]["authoritative_closed_scope"], [])
+        self.assertNotIn("G4", report["summary"]["closed"])
+
+    def test_forged_or_missing_g4_report_reopens_g4_fail_closed(self):
+        committed = g4_closure.load_g4_report(mod.G4_PHYSICAL_QUOTIENT_JSON)
+        n_failed_bool = copy.deepcopy(committed)
+        n_failed_bool["n_failed"] = True
+        old_status = copy.deepcopy(committed)
+        old_status["status"] = "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_CERTIFIED__G4_NOT_WIRED"
+        superseded_ranks = copy.deepcopy(committed)
+        gauge = superseded_ranks["gauge_quotient"]
+        gauge["ranks"]["SO10_x_U1X"] = 37
+        gauge["ranks"]["SO10_x_U1X_x_PQ"] = 38
+        gauge["gauge_quotient_dimension_including_axion"] = 449
+        gauge["massive_transverse_quotient_dimension"] = 448
+        superseded_json = mod._load_json_artifact(
+            mod.ROOT / "EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json"
+        )
+        self.assertTrue(superseded_json)
+        cases = {
+            "empty": {},
+            "n_failed True": n_failed_bool,
+            "old status": old_status,
+            "ranks 37/38, quotients 449/448": superseded_ranks,
+            "superseded p+delta quotient JSON": superseded_json,
+        }
+        for label, forged in cases.items():
+            with self.subTest(case=label):
+                report = self._build_with(g4_report=forged)
+                self._assert_g4_reopened(report, label)
+
+    def _assert_g4_reopened(self, report, label):
+        statuses = {name: row["status"] for name, row in report["gates"].items()}
+        self.assertEqual(report["n_failed"], 0, (label, report["audit_failures"]))
+        self.assertEqual(report["status"], G4_OPEN_STATUS, label)
+        self.assertEqual(report["overall_state"], mod.STATUS_OPEN, label)
+        self.assertEqual(statuses, G4_REOPENED_STATUSES, label)
+        self.assertEqual(
+            report["scientific_blockers"], list(sm_track.DOWNSTREAM_BLOCKERS), label
+        )
+        waves = report["closure_waves"]
+        self.assertEqual(
+            waves[3]["status"],
+            "G3_CLOSED_ON_SM_PATI_SALAM_TRACK__G4_OPEN__G5_CLOSED",
+            label,
+        )
+        self.assertEqual(waves[4]["status"], "BLOCKED_ON_G4", label)
+        g4 = report["gates"]["G4"]
+        self.assertIn(
+            "the G4 closure binding is not certified; blockers: "
+            + ", ".join(g4["closure_evidence"]["blockers"])
+            + ").",
+            waves[3]["deliverable"],
+            label,
+        )
+        self.assertNotIn(g4_closure.G4_CLOSED_SENTENCE, waves[3]["deliverable"], label)
+        self.assertIn(
+            "G4 is OPEN; G6-G8 remain dependency-blocked.", report["verdict"], label
+        )
+        self.assertIs(g4["closure_evidence"]["certified"], False, label)
+        self.assertTrue(g4["closure_evidence"]["blockers"], label)
+        self.assertEqual(g4["authoritative_closed_scope"], [], label)
+        self.assertIsNone(g4["closure_scope"], label)
+        self.assertEqual(g4["routed_caveats_resolved_by_closure"], [], label)
+        self.assertEqual(g4["open_scope"], self.report["gates"]["G4"]["open_scope"], label)
+        self.assertEqual(report["gates"]["G6"]["unsatisfied_dependencies"], ["G4"], label)
+        self.assertEqual(
+            report["gates"]["G6"]["blocking_root"], "DEPENDENCY_NOT_CLOSED", label
+        )
+        self.assertIs(g4_closure.ledger_g4_closed(report), False, label)
+        self.assertIs(
+            report["feasibility"]["gauged_G4_sm_witness_quotient_closed"], False, label
+        )
+        self.assertEqual(report["feasibility"]["current_authoritative_closed_gates"], 4)
+        for name in (RENAMED_G3_G5_CHECK, *NEW_G4_CHECKS, "gate_frontier_matches_contract_state"):
+            self.assertIs(report["checks"][name], True, (label, name))
+
+    def test_g4_witness_mismatched_with_the_g3_track_leaves_g4_open(self):
+        committed = g4_closure.load_g4_report(mod.G4_PHYSICAL_QUOTIENT_JSON)
+        kappa = copy.deepcopy(committed)
+        kappa["witness"]["kappa"] = "-1/10"
+        vacuum = copy.deepcopy(committed)
+        vacuum["witness"]["vacuum"] = (
+            "q0 = (Phi, H, Sigma, S, Phi17) = (F, 0, r Delta_R, r0, x0), independent of eps"
+        )
+        for label, forged in (("kappa", kappa), ("vacuum", vacuum)):
+            with self.subTest(forged=label):
+                report = self._build_with(g4_report=forged)
+                self._assert_g4_reopened(report, label)
+                self.assertIn(
+                    "g4_witness_is_the_g3_witness",
+                    report["gates"]["G4"]["closure_evidence"]["blockers"],
+                )
+
+    def test_g6_g8_evidence_never_changes_a_gate(self):
+        report = self._build_with(g6_report={}, g8_report={})
+        tree = report["gates"]["G6"]["tree_level_evidence"]
+        flavour = report["gates"]["G8"]["flavour_evidence"]
+        self.assertIs(tree["recorded"], False)
+        self.assertIs(tree["closes_gate"], False)
+        self.assertIsNone(tree["status"])
+        self.assertIs(flavour["recorded"], False)
+        self.assertIs(flavour["closes_gate"], False)
+        self.assertIsNone(flavour["route_recorded"])
+        self.assertEqual(
+            report["gates"]["G6"]["open_scope"][-1], mod.G6_EVIDENCE_UNAVAILABLE_ITEM
+        )
+        self.assertEqual(
+            report["gates"]["G8"]["open_scope"][-1], mod.G8_EVIDENCE_UNAVAILABLE_ITEM
+        )
+        self.assertEqual(
+            {name: row["status"] for name, row in report["gates"].items()},
+            {name: row["status"] for name, row in self.report["gates"].items()},
+        )
+        self.assertEqual(report["status"], self.report["status"])
+        self.assertEqual(report["checks"], self.report["checks"])
+        self.assertEqual(report["n_failed"], 0, report["audit_failures"])
+
+    def test_g6_g8_evidence_records_are_fail_closed(self):
+        g6 = mod._load_json_artifact(mod.G6_TREE_SPECTRUM_JSON)
+        g8 = mod._load_json_artifact(mod.G8_FLAVOUR_NOGO_JSON)
+        self.assertIs(mod.g6_tree_evidence(g6)["recorded"], True)
+        self.assertIs(mod.g8_flavour_evidence(g8)["recorded"], True)
+
+        def forged(report, *path, value):
+            copied = copy.deepcopy(report)
+            target = copied
+            for key in path[:-1]:
+                target = target[key]
+            target[path[-1]] = value
+            return copied
+
+        g6_cases = (
+            None, [], {}, forged(g6, "n_failed", value=False), forged(g6, "n_checks", value=80),
+            forged(g6, "status", value="G6_CLOSED"), forged(g6, "flags", "G6_closed", value=True),
+            forged(g6, "flags", "report_closes_g6_by_itself", value=True),
+            forged(g6, "flags", "tree_level_proof_grade", value=False),
+            forged(g6, "flags", value=None),
+        )
+        for case in g6_cases:
+            record = mod.g6_tree_evidence(case)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["closes_gate"], False)
+        g8_cases = (
+            None, [], {}, forged(g8, "n_failed", value="0"), forged(g8, "n_checks", value=102),
+            forged(g8, "flags", "G8_closed", value=True),
+            forged(g8, "flags", "route_C_recorded", value=False),
+            forged(g8, "flags", "falsifies_G3_G5_scalar_vacuum_certificates", value=True),
+        )
+        for case in g8_cases:
+            record = mod.g8_flavour_evidence(case)
+            self.assertIs(record["recorded"], False)
+            self.assertIsNone(record["route_recorded"])
+            self.assertIs(record["closes_gate"], False)
+
+    def test_committed_ledger_json_records_the_g4_closure(self):
+        # Regenerated by the integrator (g1_g8_gate_ledger_v20.py --write).
+        committed = json.loads(mod.OUT_JSON.read_text(encoding="utf-8"))
+        self.assertEqual(committed["status"], CLOSED_G4_STATUS)
+        self.assertIs(g4_closure.ledger_g4_closed(committed), True)
+        self.assertEqual(
+            {name: row["status"] for name, row in committed["gates"].items()},
+            SM_TRACK_CLOSED_STATUSES,
+        )
+        self.assertEqual(
+            committed["gates"]["G4"]["closure_evidence"],
+            self.report["gates"]["G4"]["closure_evidence"],
+        )
+        self.assertIs(committed["gates"]["G6"]["tree_level_evidence"]["recorded"], True)
+        self.assertIs(committed["gates"]["G8"]["flavour_evidence"]["recorded"], True)
+
+    def test_markdown_states_the_g4_closure_and_the_evidence_only_citations(self):
+        text = mod.write_markdown(json.loads(json.dumps(self.report)))
+        self.assertIn("## G4: gauge quotient and physical Hessian at the G3 witness", text)
+        self.assertIn("**G4 status:** `CLOSED`", text)
+        self.assertIn("**Closure evidence certified:** `True`", text)
+        self.assertIn("Closure scope: " + g4_closure.G4_LEDGER_CLOSED_SCOPE, text)
+        for item in g4_closure.G4_SCOPE_LIMITS:
+            self.assertIn("- " + item, text)
+        self.assertIn("recorded `True`, closes gate `False`", text)
+        self.assertIn("route `C`", text)
 
     def test_historical_g1_g2_results_are_preserved_but_scoped(self):
         historical = self.report["historical_option_c_subtheorems"]
@@ -1267,8 +1672,9 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
     def test_no_whole_model_validation_or_exclusion_claim(self):
         feasibility = self.report["feasibility"]
-        self.assertEqual(feasibility["current_authoritative_closed_gates"], 4)
+        self.assertEqual(feasibility["current_authoritative_closed_gates"], 5)
         self.assertIs(feasibility["gauged_G3_sm_pati_salam_track_closed"], True)
+        self.assertIs(feasibility["gauged_G4_sm_witness_quotient_closed"], True)
         self.assertFalse(feasibility["guarantee_model_survives_recertification"])
         self.assertTrue(
             feasibility["gauged_G1_scalar_census_scoped_subtheorem_complete"]
@@ -1310,18 +1716,23 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
         self.assertEqual(report["n_failed"], 0, report["audit_failures"])
         self.assertEqual(report["overall_state"], mod.STATUS_OPEN)
-        self.assertEqual(report["status"], CLOSED_G3_STATUS)
-        self.assertEqual(report["summary"]["closed"], ["G1", "G2", "G3", "G5"])
-        self.assertEqual(report["summary"]["open"], ["G4"])
+        self.assertEqual(report["status"], CLOSED_G4_STATUS)
+        self.assertEqual(
+            report["summary"]["closed"], ["G1", "G2", "G3", "G4", "G5"]
+        )
+        self.assertEqual(report["summary"]["open"], ["G6"])
         self.assertEqual(
             {name: row["status"] for name, row in report["gates"].items()},
             SM_TRACK_CLOSED_STATUSES,
         )
         self.assertEqual(report["gates"]["G4"]["unsatisfied_dependencies"], [])
+        self.assertEqual(report["gates"]["G6"]["unsatisfied_dependencies"], [])
         self.assertEqual(report["gates"]["G7"]["unsatisfied_dependencies"], ["G6"])
+        self.assertIs(report["gates"]["G4"]["closure_evidence"]["certified"], True)
         self.assertNotIn(mod.CONTRACT_BLOCKER, report["scientific_blockers"])
         self.assertEqual(
-            report["scientific_blockers"], list(sm_track.DOWNSTREAM_BLOCKERS)
+            report["scientific_blockers"],
+            list(g4_closure.DOWNSTREAM_BLOCKERS_AFTER_G4),
         )
 
     def test_unbound_boolean_cannot_promote_model_contract(self):

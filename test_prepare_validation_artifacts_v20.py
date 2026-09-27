@@ -95,6 +95,10 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
                 any(token in display for display in displays),
                 msg=f"missing command token: {token}",
             )
+        # Decision D-E holds the internal candidate until G7 is CLOSED, so no
+        # command may require the internal approval.
+        for command in prepare.FULL_COMMANDS:
+            self.assertNotIn("--require-internal-approval", command)
 
         stabilizer = "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
         stabilizer_commands = [

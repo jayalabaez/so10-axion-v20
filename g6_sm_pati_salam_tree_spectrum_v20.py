@@ -75,8 +75,9 @@ window 0 < eps < 12 - 2|kappa| r0, i.e. 0 < eps < 599/50 at the benchmark).  Pos
 certified: prior float estimates of the one-loop Coleman-Weinberg shifts (R1, scratch, being checked separately)
 make the sub-M_I 126bar remnants tachyonic.
 Electroweak symmetry is not broken at the witness (H = 0, eps > 0); the eps < 0 EWSB member is not certified here.
-The GeV values at the physical member are illustrative (anchor M_GUT).  G6 is not wired: no ledger or gate
-changes, G6 stays BLOCKED (its acceptance also asks for uncertainties, which the open loop question prevents).
+The GeV values at the physical member are illustrative (anchor M_GUT).  The G1-G8 ledger cites this report as
+tree-level evidence only: G6 is OPEN once G3, G4 and G5 are CLOSED and is never CLOSED on this evidence (its
+acceptance also asks for loop-level positivity and the uncertainties, which the open loop question prevents).
 """
 from __future__ import annotations
 
@@ -117,7 +118,7 @@ CANDIDATE_JSON = candidate.OUT_JSON
 
 MODEL_CONTRACT_ID = candidate.MODEL_CONTRACT_ID
 STATUS_CERTIFIED = "G6_SM_PATI_SALAM_TREE_SPECTRUM_EXACT__TREE_LEVEL_ONLY__NOT_WIRED"
-STATUS_INCOMPLETE = "G6_SM_PATI_SALAM_TREE_SPECTRUM_NOT_CERTIFIED__G6_BLOCKED"
+STATUS_INCOMPLETE = "G6_SM_PATI_SALAM_TREE_SPECTRUM_NOT_CERTIFIED__G6_NOT_CLOSED"
 OVERALL_STATE_CERTIFIED = "EXACT_TREE_SPECTRUM_PARAMETRIC_IN_R0__LOOP_POSITIVITY_AND_EWSB_OPEN__GATE_NOT_WIRED"
 OVERALL_STATE_OPEN = "G6_TREE_SPECTRUM_OPEN"
 
@@ -2624,7 +2625,8 @@ def build_report(
                 "times the periodicity scale v_a and is not f_a",
                 "the vacuum property of q0 outside the G3 witness window (for eps >= 12 - 2|kappa| r0 the parametric "
                 "statements are about the Hessian at the stationary point only)",
-                "G6 wiring: no ledger, gate, workflow or README change; G6 stays BLOCKED",
+                "G6 closure: the ledger cites this report as tree-level evidence only; it does not close G6 (OPEN "
+                "once G3, G4 and G5 are CLOSED)",
             ],
         },
         "G6_closed": False,
@@ -2652,7 +2654,7 @@ def _verdict(report: Mapping[str, Any]) -> str:
     if report["n_failed"]:
         return (
             "FAIL-CLOSED: the exact tree-level spectrum is NOT certified: " + ", ".join(report["failures"]) + ".  G6 "
-            "stays BLOCKED."
+            "is not closed."
         )
     points = report["point_certificates"]
     counts = points["benchmark"]["root_counts"]
@@ -2674,8 +2676,8 @@ def _verdict(report: Mapping[str, Any]) -> str:
         "group, the periodicity scale is v_a = F_PQ/68 (physical member, illustrative: F_PQ = "
         f"{physical_axion['F_PQ_GeV_illustrative']:.3e} GeV, v_a = {physical_axion['v_a_GeV_illustrative']:.3e} GeV; "
         "f_a = v_a/N_DW is not computed).  Tree level only: one-loop positivity is NOT certified (R1 open), "
-        "electroweak symmetry is not broken (H = 0, eps > 0), sub-M_I coloured 126bar states remain, and G6 is not "
-        "wired (no gate change; G6 stays BLOCKED)."
+        "electroweak symmetry is not broken (H = 0, eps > 0), sub-M_I coloured 126bar states remain, "
+        "and this report does not close G6 (the ledger cites it as tree-level evidence only)."
     )
 
 

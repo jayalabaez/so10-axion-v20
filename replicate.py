@@ -443,6 +443,7 @@ def main() -> int:
             "test_gauged_u1x_g3_corrected_common_kernel_v20.py",
             "test_g1_g8_gate_ledger_v20.py",
             "test_g1_g8_execution_roadmap_v20.py",
+            "test_g4_sm_closure_binding_v20.py",
             "test_theory_validation_matrix_v20.py",
         ]
     )
@@ -454,7 +455,7 @@ def main() -> int:
             "--check",
         ]
     )
-    print("=== REPLICATION PASS (SCIENTIFIC STATE: BLOCKED) ===", flush=True)
+    print("=== REPLICATION PASS (SCIENTIFIC STATE: OPEN; G4 CLOSED; INTERNAL CANDIDATE HELD PENDING G7 (DECISION D-E)) ===", flush=True)
     print(
         "Passing replication means the fail-closed snapshot is reproducible. "
         "It does not validate the manuscript model or claim a discovery.",
