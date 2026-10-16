@@ -75,10 +75,16 @@ float only where it meets data.
 (5) Scope.  This does not falsify the G3-G5 scalar-vacuum certificates or the SO(10) contract; it records that THIS
     witness branch (renormalizable 27-parameter SM Pati-Salam benchmark family, H-linear portals zero) cannot close
     G8, and that no H-linear portal repair survives at q0.  Routes: A (new in-contract G3 branch away from q0 with a
-    down-type (15,2,2) mixing channel), B (extension beyond the contract: among the analysed candidates only a 120_H
-    can split d from e, since a second 10_H and F.F.H10^*.S^* are excluded as Yukawa sources by (6); a second
-    126bar_H, a new B-L-breaking scalar vev and vectorlike matter were not analysed), C (record this no-go, G8 OPEN).
-    G8 stays OPEN.
+    down-type (15,2,2) mixing channel), B (extension beyond the contract: on the certified witness orientation, among
+    the candidates analysed here only a 120_H can split d from e, since a second 10_H and F.F.H10^*.S^* are excluded
+    as Yukawa sources by (6), and it does so only through a (15,2,2)_120 admixture of O((v_R/M15)^2), i.e. O(r0^2)
+    for a GUT-scale (15,2,2)_120 (X-parity bounds the PS-breaking H/T entries at O(r0^2)); a tuned-light
+    (15,2,2)_120, which SOS squares allow, gives O(1) splitting (research selection120 C4_tuned_15) and is excluded
+    only numerically (no perturbative two-loop root, research); the rescue study, research-recorded in
+    g8_sm_pati_salam_structural_obstruction_v20 and not re-derived here, found that the 45 scalar portal, vectorlike
+    matter with a reoriented 210 and the off-witness ERT channel also split d from e, but all sit
+    off the certified orientation, and that a second 126bar_H is Landau-excluded at BM-DA1 (8.1e17 GeV at two
+    loops)), C (record this no-go, G8 OPEN).  G8 stays OPEN.
 
 (6) Status-neutral v2 lemmas (exact; section I; no status changes).  lemma_122_clebsch: T15 = 3(B-L), and every
     (1,2,2) Yukawa source (the 10, a second 10_H, 10_H^*, F.F.H10^*.S^*, F.F.H10.Phi210 at p) has the lepton/quark
@@ -96,7 +102,8 @@ float only where it meets data.
     v_R-scale SU(2)_R breaking through <Sigma> of unanalysed size, conjugate mixing with tan beta != 1; no G3221
     vacuum of the contract is claimed).  lemma_b1a: the pure 10 + 120 inequality is proved.  These are no-go
     statements about this witness branch and the declared contract; they do not falsify the contract (a 120_H
-    extension, a Route A branch and the extensions not analysed in (5) remain logically open).
+    extension, a Route A branch and the extensions not analysed here, a second 10_H with other charges and a UV
+    completion adding PS-breaking operators near v_R, remain logically open).
 """
 from __future__ import annotations
 
@@ -4424,8 +4431,9 @@ ROUTES = {
     ),
     "B": (
         "Extension beyond the declared contract.  Among the analysed candidate extensions (a second 10_H, a 10_H^* "
-        "Yukawa, the operator F.F.H10^*.S^*, Pati-Salam-singlet dressings of the 10_H, a 120_H) only a 120_H can split d "
-        "from e: with X = -2 (Z17 phase 15) F.F.120_H is allowed, and its (15,2,2) component carries the T15 Clebsch "
+        "Yukawa, the operator F.F.H10^*.S^*, Pati-Salam-singlet dressings of the 10_H, a 120_H), on the certified witness "
+        "orientation only a 120_H can split d from e: with X = -2 (Z17 phase "
+        "15) F.F.120_H is allowed, and its (15,2,2) component carries the T15 Clebsch "
         "(lepton/quark -3) on the down-type doublet as well "
         "(lemma_122_clebsch.hypothetical_120_fifteen_component_is_T15_type).  A second 10_H, a 10_H^* Yukawa and the "
         "operator F.F.H10^*.S^* (whatever completion generates it), as "
@@ -4436,13 +4444,22 @@ ROUTES = {
         "tan beta = 1 for every |S| (lemma_S_independence) also keeps M_d = phase x M_u (CKM = 1).  A second 10_H is "
         "covered at the level of its Yukawa source; its own H'-linear portals are, term by term, the witness portals "
         "under H' -> H or H' -> conj(H), so the existing up-type-only selection rule covers them only if it carries "
-        "H10's (X, Z17) = (-2, 15) or H10^*'s (2, 2) (hand-argued, not recomputed).  Not analysed: a second 10_H with "
-        "other charges beyond its Yukawa source, a UV completion that adds further PS-breaking operators near v_R, a "
-        "second 126bar_H, a new B-L-breaking scalar vev (e.g. a 45_H with a (15,1,1) vev, whose F.F.H10.45_H can carry a "
-        "Georgi-Jarlskog-type T15 Clebsch) and vectorlike matter; so Route B is not reduced to a 120_H among all "
-        "extensions.  A 120_H is not shown to repair G8: only its (15,2,2) component can split d from e, so the light "
-        "doublet needs a (15,2,2)_120 admixture whose size is not analysed here, and the pure 10 + 120 limit obeys the "
-        "exact inequality of lemma_b1a.  The other in-contract option, a B-L-breaking 210 orientation ((15,1,1) or "
+        "H10's (X, Z17) = (-2, 15) or H10^*'s (2, 2) (hand-argued, not recomputed).  Not analysed here: a second 10_H "
+        "with other charges beyond its Yukawa source and a UV completion that adds further PS-breaking operators near "
+        "v_R.  The rescue study (research-recorded in g8_sm_pati_salam_structural_obstruction_v20, not re-derived here) "
+        "found that a new B-L-breaking scalar vev (e.g. a 45_H: the 45 scalar portal H^*.126bar.45.45 with the 45.45.210 "
+        "cubic), vectorlike matter with a reoriented 210 "
+        "((15,1,1)/(15,1,3) vevs) and the off-witness ERT channel (H.126bar^*.210 at a != omega) also split d from e, but "
+        "all sit off the certified orientation, and that a second 126bar_H is Landau-excluded at BM-DA1 (8.1e17 GeV at "
+        "two loops); so Route B is not reduced to a 120_H among all extensions.  Separately (hand-argued here, not "
+        "recomputed), F.F.H10.45_H can carry a Georgi-Jarlskog-type T15 Clebsch.  A 120_H is not shown to repair G8: only "
+        "its (15,2,2) component can split d from e, so the light doublet needs a (15,2,2)_120 admixture of "
+        "O((v_R/M15)^2), i.e. O(r0^2) for a GUT-scale (15,2,2)_120 (X-parity bounds the PS-breaking H/T entries at "
+        "O(r0^2), g8_sm_pati_salam_structural_obstruction_v20); a tuned-light (15,2,2)_120, which SOS squares allow, gives "
+        "O(1) splitting (research selection120 C4_tuned_15) and is excluded only numerically (no perturbative two-loop "
+        "root, research); and the pure 10 "
+        "+ 120 limit obeys the exact inequality of lemma_b1a.  The other in-contract option, a B-L-breaking 210 "
+        "orientation ((15,1,1) or "
         "(15,1,3) components), is Route A, not Route B (lemma_s1_g3221).  Changes models/SO10Z17AxionV20.m; G1-G5 restart."
     ),
     "C": "Record this no-go (this artifact) and leave G8 OPEN on the current witness branch.",
@@ -4778,15 +4795,24 @@ def build_report(
                 "the v2 lemmas are no-go statements about this witness branch and the declared contract's operator "
                 "content; they do not falsify the contract: a 120_H extension, a Route A branch and the extensions not "
                 "analysed here remain logically open",
-                "Route B is not reduced to a 120_H among all extensions: among the analysed candidate extensions (a second "
-                "10_H, a 10_H^* Yukawa, F.F.H10^*.S^*, PS-singlet dressings of the 10_H, a 120_H) only a 120_H can split d "
-                "from e; extensions that add a second 126bar_H, a new B-L-breaking scalar vev (e.g. a 45_H (15,1,1) vev) "
-                "or vectorlike matter were not analysed",
+                "Route B is not reduced to a 120_H among all extensions: on the certified witness orientation, among the "
+                "analysed candidate extensions (a second 10_H, a 10_H^* Yukawa, F.F.H10^*.S^*, PS-singlet dressings of the "
+                "10_H, a 120_H) only a 120_H can split d from e, and only through a (15,2,2)_120 admixture of "
+                "O((v_R/M15)^2), i.e. O(r0^2) for a GUT-scale (15,2,2)_120 (X-parity bounds the PS-breaking H/T entries "
+                "at O(r0^2)); a tuned-light (15,2,2)_120, which SOS squares allow, gives O(1) splitting (research "
+                "selection120 C4_tuned_15) and is excluded only numerically (no perturbative two-loop root, research); the "
+                "rescue study (research-recorded in g8_sm_pati_salam_structural_obstruction_v20, not re-derived here) found that "
+                "the 45 scalar portal (H^*.126bar.45.45 with the 45.45.210 cubic), vectorlike matter with a reoriented 210 "
+                "((15,1,1)/(15,1,3) vevs) and the off-witness ERT channel (H.126bar^*.210 at a != omega) also split d from "
+                "e, but all sit off the certified orientation; a second 126bar_H is Landau-excluded at BM-DA1 (8.1e17 GeV "
+                "at two loops)",
                 "a second 10_H with charges other than H10's or H10^*'s (X, Z17) is covered only at the level of its "
                 "Yukawa source (its scalar portals are not analysed); a UV completion that adds further PS-breaking "
                 "operators near v_R is not analysed (only the operator F.F.H10^*.S^* is)",
                 "lemma_122_clebsch says nothing about vevs and does not exclude a 120_H (its (15,2,2) is T15-type); a second "
-                "126bar_H was not analysed",
+                "126bar_H is not analysed by this lemma (the rescue study found no first-order d/e split from it in a "
+                "quartic-level census and a Landau exclusion at BM-DA1: research-recorded in "
+                "g8_sm_pati_salam_structural_obstruction_v20)",
                 "lemma_su5_casimir does not cover the p-mediated portal paths (p is not an SU(5) singlet): those rest on the "
                 "exact per-r0 Schur computation of H_linear_portals",
                 "lemma_S_independence does not certify q(r_S) with r_S != r0 as a global minimum (G3 there is not "
@@ -4878,8 +4904,14 @@ def _verdict(report: Mapping[str, Any]) -> str:
         + ("a tuned texture can evade this, so it is not load-bearing" if seesaw["textured_escape_exists_somewhere_in_band"] else "no texture found evades it")
         + ").  Route C is recorded; G8 stays OPEN; the G3-G5 certificates and the SO(10) contract are not falsified.  "
         "Status-neutral v2 lemmas (exact): every (1,2,2) Yukawa source has lepton/quark Clebsch +1 (T15-free), so a "
-        "second 10_H or F.F.H10^*.S^* cannot split d from e: among the analysed candidate extensions only a 120_H can (a "
-        "second 126bar_H, a new B-L-breaking scalar vev and vectorlike matter were not analysed); for SU(5)-equivariant "
+        "second 10_H or F.F.H10^*.S^* cannot split d from e: on the certified witness orientation, among the analysed "
+        "candidate extensions only a 120_H can, and only through a (15,2,2)_120 admixture of O((v_R/M15)^2), i.e. "
+        "O(r0^2) for a GUT-scale (15,2,2)_120 (X-parity bounds the PS-breaking H/T entries at O(r0^2)), while a "
+        "tuned-light (15,2,2)_120, which SOS squares allow, gives O(1) splitting (research selection120 C4_tuned_15) and "
+        "is excluded only numerically (no perturbative two-loop root, research); the 45 scalar portal, vectorlike matter "
+        "with a reoriented 210 and the off-witness ERT channel also split d from e, but all sit off the certified "
+        "orientation, and a second 126bar_H is Landau-excluded at BM-DA1 (research-recorded in "
+        "g8_sm_pati_salam_structural_obstruction_v20); for SU(5)-equivariant "
         "mixing the up-type-only rule follows from the SU(5) Casimir (10_H doublets 12/5, the 126bar down-type doublet "
         "32/5); the light doublet stays pure 10_H with tan beta = 1 for every |S|; Dirac Yukawas are Sigma-balanced at "
         "every dimension (the census of single-Higgs light-16 monomials is exhaustive to dimension 12), so the "
@@ -5149,8 +5181,11 @@ def _markdown(report: Mapping[str, Any]) -> str:
     lines += ["", report["seesaw"]["reading"], "", "## (5) Status-neutral v2 lemmas (exact)", ""]
     lines += [
         "No lemma changes a status: G8 stays OPEN.  They are no-go statements about this witness branch and the declared "
-        "contract; a 120_H extension, a Route A branch and the extensions not analysed here (a second 126bar_H, a new "
-        "B-L-breaking scalar vev, vectorlike matter) remain logically open.",
+        "contract; a 120_H extension, a Route A branch and the extensions not analysed here (a second 10_H with other "
+        "charges, a UV completion adding PS-breaking operators near v_R) remain logically open.  The rescue study's "
+        "off-orientation splitters (the 45 scalar portal, vectorlike matter with a reoriented 210, the off-witness ERT "
+        "channel) also split d from e, but all sit off the certified orientation (research-recorded in "
+        "g8_sm_pati_salam_structural_obstruction_v20).",
         "",
     ]
     for key in LEMMA_KEYS:

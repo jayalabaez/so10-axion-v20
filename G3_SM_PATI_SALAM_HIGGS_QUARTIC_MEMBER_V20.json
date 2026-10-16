@@ -1,0 +1,1437 @@
+{
+  "G3_witness_unchanged": true,
+  "bfb": {
+    "G5_binding": "G5 stays bound to the committed lambda_H = 2 coefficient vector (constant 1/167); this report records the member's constant only (status-neutral)",
+    "bound": "V4(q) >= |q|^4 / sum(beta^2/alpha) with alpha_NH = lambda_H (the candidate's Cauchy-Schwarz argument)",
+    "committed_G5_constant": "1/167",
+    "constant": "lambda_H/(165*lambda_H + 4)",
+    "label": "EXACT",
+    "quartic_part": "V4 = Q(Phi) + (1/8)(||M_Phi Sigma||^2 + ||C_Phi Sigma||^2 + W'(Sigma)) + lambda_H N_H^2 + ||H wedge Phi||^2 + |S|^4 + |Phi17|^4/32 (the kappa term is cubic)",
+    "values": {
+      "1/100": "1/565",
+      "1/1000": "1/4165",
+      "2": "1/167"
+    }
+  },
+  "check_labels": {
+    "bfb_quartic_constant_lambda_H_over_165_lambda_H_plus_4_symbolic_points_and_committed_1_over_167": "EXACT",
+    "committed_family_report_certified_77_checks_0_failed_float_consistent": "EXACT",
+    "equality_set_premises_from_committed_report": "EXACT",
+    "h_self_I1_I54_homogeneous_quartics_value_gradient_hessian_vanish_at_H0": "EXACT",
+    "h_self_I1_plus_I54_equals_NH_squared_sympy_20_real_variables": "EXACT",
+    "h_self_NH2_minus_abs_HdotH2_equals_45_current_sum_of_squares_sympy": "EXACT",
+    "h_self_quartic_multiple_of_NH2_iff_O36_B01_eq_O36_B02_and_member_entries_equal_lambda_H": "EXACT",
+    "lambda_eff_equals_lambda_H_minus_candidate_S_exchange_shift_at_every_point": "EXACT",
+    "lambda_eff_minus_lambda_H_is_minus_r0_4_over_64_lambda_S_rS_4_at_kappa_minus_r0sq_over_4rS": "EXACT",
+    "lambda_eff_series_closed_form_with_and_without_O34_symbolic": "EXACT",
+    "member_V0_equals_family_V0_lambda_H_free_symbolic": "EXACT",
+    "member_operator_ids_equal_witness_and_committed_P3_operator_ids": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__margin_positive_and_lambda_eff_closed_form": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__margin_positive_and_lambda_eff_closed_form": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__margin_positive_and_lambda_eff_closed_form": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": "EXACT",
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": "EXACT",
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": "EXACT",
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": "EXACT",
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__margin_positive_and_lambda_eff_closed_form": "EXACT",
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": "EXACT",
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": "EXACT",
+    "research_record_consistent_with_exact_values_and_disclosed_outliers": "RESEARCH_RECORD",
+    "research_record_entries_labelled_with_provenance": "RESEARCH_RECORD",
+    "sharpness_curve_identity_exact": "EXACT",
+    "sharpness_only_at_eps_0_exact_eps_positive_domain": "EXACT",
+    "sharpness_other_sos_terms_vanish_on_curve_Q_H_row_and_column_6_zero": "EXACT",
+    "sharpness_violating_points_exact_beyond_margin": "EXACT",
+    "sos_T6_prime_equals_T6_plus_T9_plus_lambda_H_minus_2_times_I1_plus_I54_three_signs": "EXACT",
+    "sos_family_eight_term_expansion_passes_three_kappa_signs": "EXACT",
+    "sos_hs_boundary_bracket_equals_lambda_S_t_times_s_plus_3rS": "EXACT",
+    "sos_hs_completed_square_identity_symbolic_residual_zero": "EXACT",
+    "sos_hs_completed_square_reduces_to_committed_identity_at_lambda_H_2_lambda_S_1": "EXACT",
+    "sos_hs_margin_equivalent_to_lambda_eff_positive_symbolic": "EXACT",
+    "sos_hs_sign_argument_identities_exact": "EXACT",
+    "sos_member_map_equals_family_sos_map_plus_eps_except_O36_equal_lambda_H_three_signs": "EXACT",
+    "sos_non_T6_terms_kappa_free_three_signs": "EXACT",
+    "witness_point_member_certificates_equal_committed_exact_hessian_report": "EXACT"
+  },
+  "checks": {
+    "bfb_quartic_constant_lambda_H_over_165_lambda_H_plus_4_symbolic_points_and_committed_1_over_167": true,
+    "committed_family_report_certified_77_checks_0_failed_float_consistent": true,
+    "equality_set_premises_from_committed_report": true,
+    "h_self_I1_I54_homogeneous_quartics_value_gradient_hessian_vanish_at_H0": true,
+    "h_self_I1_plus_I54_equals_NH_squared_sympy_20_real_variables": true,
+    "h_self_NH2_minus_abs_HdotH2_equals_45_current_sum_of_squares_sympy": true,
+    "h_self_quartic_multiple_of_NH2_iff_O36_B01_eq_O36_B02_and_member_entries_equal_lambda_H": true,
+    "lambda_eff_equals_lambda_H_minus_candidate_S_exchange_shift_at_every_point": true,
+    "lambda_eff_minus_lambda_H_is_minus_r0_4_over_64_lambda_S_rS_4_at_kappa_minus_r0sq_over_4rS": true,
+    "lambda_eff_series_closed_form_with_and_without_O34_symbolic": true,
+    "member_V0_equals_family_V0_lambda_H_free_symbolic": true,
+    "member_operator_ids_equal_witness_and_committed_P3_operator_ids": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__margin_positive_and_lambda_eff_closed_form": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__margin_positive_and_lambda_eff_closed_form": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__margin_positive_and_lambda_eff_closed_form": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": true,
+    "point_rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": true,
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__benchmark_certificate_447_39_0_kernel_T35_plus_D4_gap_r0sq_over_96_mult_14": true,
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__hessian_and_gradient_bit_identical_to_lambda_H_2_member_three_variants": true,
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__margin_positive_and_lambda_eff_closed_form": true,
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__member_map_27_parameters_in_contract_changes_only_O36_vs_family_map": true,
+    "point_rS_eq_r0_witness__lambda_H_1_over_10__raised_O06_certificate_451_35_0_kernel_T35_gap_r0sq_over_100_mult_4": true,
+    "research_record_consistent_with_exact_values_and_disclosed_outliers": true,
+    "research_record_entries_labelled_with_provenance": true,
+    "sharpness_curve_identity_exact": true,
+    "sharpness_only_at_eps_0_exact_eps_positive_domain": true,
+    "sharpness_other_sos_terms_vanish_on_curve_Q_H_row_and_column_6_zero": true,
+    "sharpness_violating_points_exact_beyond_margin": true,
+    "sos_T6_prime_equals_T6_plus_T9_plus_lambda_H_minus_2_times_I1_plus_I54_three_signs": true,
+    "sos_family_eight_term_expansion_passes_three_kappa_signs": true,
+    "sos_hs_boundary_bracket_equals_lambda_S_t_times_s_plus_3rS": true,
+    "sos_hs_completed_square_identity_symbolic_residual_zero": true,
+    "sos_hs_completed_square_reduces_to_committed_identity_at_lambda_H_2_lambda_S_1": true,
+    "sos_hs_margin_equivalent_to_lambda_eff_positive_symbolic": true,
+    "sos_hs_sign_argument_identities_exact": true,
+    "sos_member_map_equals_family_sos_map_plus_eps_except_O36_equal_lambda_H_three_signs": true,
+    "sos_non_T6_terms_kappa_free_three_signs": true,
+    "witness_point_member_certificates_equal_committed_exact_hessian_report": true
+  },
+  "committed_witness_binding": {
+    "compared": true,
+    "comparisons_with_rS_eq_r0_certificates": {
+      "eps_family.consistency_certificates.tiny_eps": {
+        "denominator": true,
+        "inertia_451_35_0": true
+      },
+      "exact_certificate": {
+        "denominator": true,
+        "exact_nullity": true,
+        "exact_rank": true,
+        "inertia": true,
+        "nonzero_entries": true,
+        "spectral_gap_lambda": true,
+        "spectral_gap_multiplicity": true
+      },
+      "exact_certificate_raised_O06": {
+        "denominator": true,
+        "exact_nullity": true,
+        "exact_rank": true,
+        "inertia": true,
+        "nonzero_entries": true,
+        "spectral_gap_lambda": true,
+        "spectral_gap_multiplicity": true
+      }
+    },
+    "n_failed": 0,
+    "source": "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json",
+    "status_certified": true
+  },
+  "equality_set": {
+    "V0": "-1 - r0^4/8 - rS^4 - x0^4/32 (the constant of the SOS expansion; T6' has the constant lambda_S rS^4 = rS^4 of T6, and O36 contributes no constant)",
+    "argument": "{V = V0} is the intersection of the zero sets of the SOS terms (each >= 0): {V_member = V0} = Z(T1..T5, T7, T8) and Z(T6'), with Z(T6') = {H = 0, |S| = rS} = Z(T6) (sos_identity.sign_argument; T9 = eps N_H is part of T6').  T1-T5, T7 and T8 are kappa-free (kappa enters the SOS map only through O06 and O12, i.e. T6: sos_non_T6_terms_kappa_free_three_signs), so the set equals {V_family(kappa') = V0} = G.q0 for any kappa' with kappa'^2 < 8 rS^2 (e.g. kappa' = 0) by the committed decoupled-singlet family certificate (rS) and the committed equality-set theorem (P1/P2 contain no H or S and carry over verbatim; charges, phases, operator neutrality and the tangent ranks are lambda_H-free).  This covers lambda_H > 2 with 8 rS^2 <= kappa^2 < 4 lambda_H lambda_S rS^2, where the family at the same kappa is not certified",
+    "claim": "{V = V0} = G.(p, r0 sigma_std, 0, rS, x0), G = SO(10) x U(1)_X x U(1)_PQ, for kappa^2 < 4 lambda_H lambda_S rS^2",
+    "committed_equality_report_premises": {
+      "O06_row_is_H_Hbar_and_X_PQ_neutral": true,
+      "equality_conditions_include_H_equal_0": true,
+      "equality_set_unique_modulo_symmetry_certified": true,
+      "no_failed_checks": true,
+      "operator_dictionary_maps_O06_to_N_H": true,
+      "same_model_contract": true,
+      "status_is_proved": true,
+      "theorem_claimed": true,
+      "theorem_states_V_ge_V0_and_equality_set_G_orbit": true
+    },
+    "committed_family_report_binding": {
+      "F1_live_compiler_equals_exact_at_keeps_point": true,
+      "all_checks_true": true,
+      "family_theorem_claimed": true,
+      "float_evidence_consistent": true,
+      "n_checks_77": true,
+      "n_failed_0": true,
+      "status_certified": true,
+      "tangent_ranks_and_p3_checks_true": true
+    },
+    "label": "EXACT (committed-artifact bindings fail closed)",
+    "member_operator_ids_equal_witness_ids": {
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100": true,
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000": true,
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2": true,
+      "rS_eq_r0_witness__lambda_H_1_over_10": true
+    }
+  },
+  "expected_n_checks": 48,
+  "failures": [],
+  "flags": {
+    "G3_witness_replaced": false,
+    "G5_bound_vector_changed": false,
+    "benchmark_chosen": false,
+    "float_evidence_consistent": true,
+    "float_evidence_run": true,
+    "gate_status_changed": false,
+    "hessian_bit_identical_to_lambda_H_2_member": true,
+    "lambda_SM_matched_by_certificate": false,
+    "lambda_eff_free_positive_parameter": true,
+    "margin_sharp_at_eps_0": true,
+    "margin_sufficient_not_sharp_for_eps_positive": true,
+    "member_theorem_claimed": true,
+    "one_loop_matching_computed": false,
+    "report_closes_g3_by_itself": false,
+    "report_closes_g5_by_itself": false,
+    "research_record_disclosed": true,
+    "wired_into_gate_ledger": false
+  },
+  "float_evidence": {
+    "F1_live_O36_rows_at_q0": {
+      "point": {
+        "kappa": "-1/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      },
+      "rows": {
+        "lambda::O36_B01_H_self_quartics": {
+          "abs_value": 0.0,
+          "max_abs_gradient": 0.0,
+          "max_abs_hessian": 0.0
+        },
+        "lambda::O36_B02_H_self_quartics": {
+          "abs_value": 0.0,
+          "max_abs_gradient": 0.0,
+          "max_abs_hessian": 0.0
+        }
+      },
+      "seconds": 0.707935810089
+    },
+    "F2_compiler_O36_directions": {
+      "max_relative_difference": 4.72438574264e-16,
+      "samples": [
+        {
+          "I_1": 26.017132296,
+          "I_54": 1189.78473837,
+          "N_H": 34.8683505584,
+          "relative_differences": {
+            "I_1": 0.0,
+            "I_54": 0.0,
+            "lambda_H_NH2": 1.46105782715e-16
+          }
+        },
+        {
+          "I_1": 0.523387647931,
+          "I_54": 416.62431268,
+          "N_H": 20.4241939946,
+          "relative_differences": {
+            "I_1": 3.33066907388e-16,
+            "I_54": 1.36438074137e-16,
+            "lambda_H_NH2": 2.12917012128e-16
+          }
+        },
+        {
+          "I_1": 26.1887244697,
+          "I_54": 725.806110908,
+          "N_H": 27.4225242343,
+          "relative_differences": {
+            "I_1": 0.0,
+            "I_54": 0.0,
+            "lambda_H_NH2": 4.72438574264e-16
+          }
+        }
+      ],
+      "seconds": 1.09381341934,
+      "seed": 20260927
+    },
+    "F3_violating_direction": {
+      "compiler_V_minus_V0": -4.05999002862e-07,
+      "difference": -2.86153458208e-15,
+      "exact": "-405999/1000000000000",
+      "lambda_H": "1/100",
+      "point": {
+        "kappa": "-21/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      },
+      "seconds": 0.37375831604,
+      "t": "1/1000"
+    },
+    "checks": {
+      "float_F1_live_O36_rows_value_gradient_hessian_zero_at_q0": true,
+      "float_F2_compiler_O36_directions_equal_I1_I54_and_lambda_H_NH2": true,
+      "float_F3_compiler_matches_exact_violating_value": true
+    },
+    "failures": [],
+    "label": "NUM (FLOAT64 corroboration outside the exact check count)",
+    "n_checks": 3,
+    "n_failed": 0,
+    "run": true,
+    "seconds": 2.17550754547
+  },
+  "float_verdict": "FLOAT64 corroboration (NUM), outside the exact check count: 3/3 passed (live O36 rows vanish at q0, compiler O36 directions = I_1 and I_54, compiler violating value).",
+  "h_self": {
+    "I1_plus_I54_minus_NH2": "0",
+    "I1_terms": 255,
+    "I54_terms": 255,
+    "cauchy_schwarz_identity": "N_H^2 - |H.H|^2 = sum_{i<j} |conj(H_i) H_j - conj(H_j) H_i|^2 (so |H.H| <= N_H)",
+    "cauchy_schwarz_residual": "0",
+    "consequence": "the member's H quartic lambda_H (I_1 + I_54) is lambda_H N_H^2 exactly",
+    "definitions": {
+      "I_1": "|H.H|^2/10 (O36_B01, exact_h10_self_quartic_family_v20)",
+      "I_54": "sum_ij |H_i H_j - delta_ij (H.H)/10|^2 (O36_B02)",
+      "N_H": "H^dag H"
+    },
+    "hessian_at_H0": "every monomial of I_1 and I_54 has degree 4, so their value, gradient and Hessian vanish at H = 0 (the O36 binding units of g3_sm_pati_salam_exact_hessian_v20 have empty pieces for this reason)",
+    "iff_solution": {
+      "a": "b",
+      "c": "b"
+    },
+    "iff_statement": "a I_1 + b I_54 = b N_H^2 + (a - b) I_1; at H = e_0 (I_1 = 1/10, N_H^2 = 1) and at the null vector H = e_0 + i e_1 (I_1 = 0, N_H^2 = 4) the identity a I_1 + b I_54 = c N_H^2 forces a = c = b",
+    "label": "EXACT",
+    "member_entries": {
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100": {
+        "O36_B01": "1/100",
+        "O36_B02": "1/100",
+        "equal_to_lambda_H": true
+      },
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000": {
+        "O36_B01": "1/1000",
+        "O36_B02": "1/1000",
+        "equal_to_lambda_H": true
+      },
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2": {
+        "O36_B01": "2",
+        "O36_B02": "2",
+        "equal_to_lambda_H": true
+      },
+      "rS_eq_r0_witness__lambda_H_1_over_10": {
+        "O36_B01": "1/10",
+        "O36_B02": "1/10",
+        "equal_to_lambda_H": true
+      }
+    },
+    "monomial_degrees": {
+      "I_1": [
+        4
+      ],
+      "I_54": [
+        4
+      ]
+    },
+    "variables": "H_i = x_i + i y_i, i = 0..9 (20 real sympy symbols); real and imaginary parts expanded explicitly"
+  },
+  "lambda_eff": {
+    "anchor_rS_1000_r0": {
+      "float": -1.5625e-14,
+      "lambda_eff_minus_lambda_H": "-1/64000000000000"
+    },
+    "at_kappa_minus_r0sq_over_4rS": "-r0**4/(64*lambda_S*rS**4)",
+    "derivation": "along the light line H = eta e (real doublet), S = rS + tau eta^2 relaxes: V - V0 = c4(tau) eta^4 + O(eta^6) with no eta^2 term; minimising c4 over tau gives the tree light-doublet quartic (S-radial exchange; the only |h|^2-heavy trilinear is kappa's, ||H wedge Phi||^2 vanishes on doublets, and O36 changes nothing else)",
+    "eta2_coefficient": "0",
+    "eta4_coefficient": "-2*k*tau + 2*l34*rS*tau + lambda_H + 4*lambda_S*rS**2*tau**2",
+    "label": "EXACT",
+    "lambda_eff": "lambda_H - kappa^2/(4 lambda_S rS^2)",
+    "lambda_eff_series": "-k**2/(4*lambda_S*rS**2) + k*l34/(2*lambda_S*rS) - l34**2/(4*lambda_S) + lambda_H",
+    "lambda_eff_with_O34": "lambda_H - (|kappa| - l34 rS)^2/(4 lambda_S rS^2) (series identity only; an O34 member is an S portal and is NOT certified here)",
+    "normalisation": "V = lambda (h^dag h)^2 on the light doublet, h^dag h = N_H (the candidate's convention: lambda_eff = 2 - kappa^2/(4 r0^2) = 127/64 for the committed witness)",
+    "points": {
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100": {
+        "lambda_H": "1/100",
+        "lambda_H_minus_candidate_shift": "399/40000",
+        "lambda_eff": "399/40000"
+      },
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000": {
+        "lambda_H": "1/1000",
+        "lambda_H_minus_candidate_shift": "39/40000",
+        "lambda_eff": "39/40000"
+      },
+      "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2": {
+        "lambda_H": "2",
+        "lambda_H_minus_candidate_shift": "79999/40000",
+        "lambda_eff": "79999/40000"
+      },
+      "rS_eq_r0_witness__lambda_H_1_over_10": {
+        "lambda_H": "1/10",
+        "lambda_H_minus_candidate_shift": "27/320",
+        "lambda_eff": "27/320"
+      }
+    },
+    "positivity": "lambda_eff > 0 is the certified domain (sos_identity.margin_equivalence), so lambda_eff takes any positive value: at kappa = -r0^2/(4 rS), lambda_eff = lambda_H - r0^4/(64 rS^4) for every lambda_H > r0^4/(64 rS^4)",
+    "tau_star": "(k - l34*rS)/(4*lambda_S*rS**2)"
+  },
+  "member_points": {
+    "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_100": {
+      "V0": "-40629/20000",
+      "candidate_S_exchange_shift_kappa2_over_4rS2": "1/40000",
+      "certificates": {
+        "benchmark": {
+          "O06": "1/50",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "51/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "changed_vs_family_map": {
+        "lambda::O36_B01_H_self_quartics": {
+          "family": "2",
+          "member": "1/100"
+        },
+        "lambda::O36_B02_H_self_quartics": {
+          "family": "2",
+          "member": "1/100"
+        }
+      },
+      "exact_violating_point": null,
+      "hessian_identity_vs_lambda_H_2": {
+        "benchmark": {
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "raised_O06": {
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "tiny_eps": {
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        }
+      },
+      "hessian_note": "O36 is quartic in H: its binding units have empty pieces, so the exact H_u, gradient and certificates equal those of the lambda_H = 2 member bit for bit; the global statement rests on the SOS identity (the Hessian cannot detect a margin violation)",
+      "is_committed_witness_point": false,
+      "lambda_H": "1/100",
+      "lambda_eff": "399/40000",
+      "lambda_eff_minus_lambda_H": "-1/40000",
+      "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "399/10000",
+      "nonzero_count": 27,
+      "perturbative_box": {
+        "bound": "12",
+        "eps_window_nonempty": true,
+        "eps_window_upper_exclusive": "599/50",
+        "max_abs_coefficient": "73/8",
+        "perturbative_member": true
+      },
+      "point": {
+        "kappa": "-1/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      }
+    },
+    "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_1_over_1000": {
+      "V0": "-40629/20000",
+      "candidate_S_exchange_shift_kappa2_over_4rS2": "1/40000",
+      "certificates": {
+        "benchmark": {
+          "O06": "1/50",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "51/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "changed_vs_family_map": {
+        "lambda::O36_B01_H_self_quartics": {
+          "family": "2",
+          "member": "1/1000"
+        },
+        "lambda::O36_B02_H_self_quartics": {
+          "family": "2",
+          "member": "1/1000"
+        }
+      },
+      "exact_violating_point": null,
+      "hessian_identity_vs_lambda_H_2": {
+        "benchmark": {
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "raised_O06": {
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "tiny_eps": {
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        }
+      },
+      "hessian_note": "O36 is quartic in H: its binding units have empty pieces, so the exact H_u, gradient and certificates equal those of the lambda_H = 2 member bit for bit; the global statement rests on the SOS identity (the Hessian cannot detect a margin violation)",
+      "is_committed_witness_point": false,
+      "lambda_H": "1/1000",
+      "lambda_eff": "39/40000",
+      "lambda_eff_minus_lambda_H": "-1/40000",
+      "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "39/10000",
+      "nonzero_count": 27,
+      "perturbative_box": {
+        "bound": "12",
+        "eps_window_nonempty": true,
+        "eps_window_upper_exclusive": "599/50",
+        "max_abs_coefficient": "73/8",
+        "perturbative_member": true
+      },
+      "point": {
+        "kappa": "-1/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      }
+    },
+    "rS_1_kappa_minus_r0sq_over_4rS__lambda_H_2": {
+      "V0": "-40629/20000",
+      "candidate_S_exchange_shift_kappa2_over_4rS2": "1/40000",
+      "certificates": {
+        "benchmark": {
+          "O06": "1/50",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "51/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "changed_vs_family_map": {},
+      "exact_violating_point": null,
+      "hessian_identity_vs_lambda_H_2": {
+        "benchmark": {
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "raised_O06": {
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "tiny_eps": {
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        }
+      },
+      "hessian_note": "O36 is quartic in H: its binding units have empty pieces, so the exact H_u, gradient and certificates equal those of the lambda_H = 2 member bit for bit; the global statement rests on the SOS identity (the Hessian cannot detect a margin violation)",
+      "is_committed_witness_point": false,
+      "lambda_H": "2",
+      "lambda_eff": "79999/40000",
+      "lambda_eff_minus_lambda_H": "-1/40000",
+      "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "79999/10000",
+      "nonzero_count": 27,
+      "perturbative_box": {
+        "bound": "12",
+        "eps_window_nonempty": true,
+        "eps_window_upper_exclusive": "599/50",
+        "max_abs_coefficient": "73/8",
+        "perturbative_member": true
+      },
+      "point": {
+        "kappa": "-1/100",
+        "r0": "1/5",
+        "rS": "1",
+        "x0": "1"
+      }
+    },
+    "rS_eq_r0_witness__lambda_H_1_over_10": {
+      "V0": "-20661/20000",
+      "candidate_S_exchange_shift_kappa2_over_4rS2": "1/64",
+      "certificates": {
+        "benchmark": {
+          "O06": "1/50",
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "eps": "0",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "447/39/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 14,
+          "nonzero_entries": 5358,
+          "nullity": 39,
+          "rank": 447,
+          "smallest_nonzero_eigenvalue": "1/2400",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": false
+        },
+        "raised_O06": {
+          "O06": "51/2500",
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "eps": "1/2500",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/2500",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        },
+        "tiny_eps": {
+          "O06": "500001/25000000",
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "eps": "1/25000000",
+          "exactly_symmetric": true,
+          "gradient_exactly_zero": true,
+          "inertia_positive_zero_negative": "451/35/0",
+          "is_smallest": true,
+          "kernel_equals_expected_span": true,
+          "multiplicity": 4,
+          "nonzero_entries": 5362,
+          "nullity": 35,
+          "rank": 451,
+          "smallest_nonzero_eigenvalue": "1/25000000",
+          "strictly_positive_on_kernel_complement": true,
+          "strictly_positive_on_symmetry_quotient": true
+        }
+      },
+      "changed_vs_family_map": {
+        "lambda::O36_B01_H_self_quartics": {
+          "family": "2",
+          "member": "1/10"
+        },
+        "lambda::O36_B02_H_self_quartics": {
+          "family": "2",
+          "member": "1/10"
+        }
+      },
+      "exact_violating_point": null,
+      "hessian_identity_vs_lambda_H_2": {
+        "benchmark": {
+          "coverage_ok": true,
+          "denominator": 2016000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "raised_O06": {
+          "coverage_ok": true,
+          "denominator": 10080000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        },
+        "tiny_eps": {
+          "coverage_ok": true,
+          "denominator": 6300000000,
+          "gradient_exactly_zero": true,
+          "gradient_identical": true,
+          "hessian_denominator_identical": true,
+          "hessian_numerator_identical": true
+        }
+      },
+      "hessian_note": "O36 is quartic in H: its binding units have empty pieces, so the exact H_u, gradient and certificates equal those of the lambda_H = 2 member bit for bit; the global statement rests on the SOS identity (the Hessian cannot detect a margin violation)",
+      "is_committed_witness_point": true,
+      "lambda_H": "1/10",
+      "lambda_eff": "27/320",
+      "lambda_eff_minus_lambda_H": "-1/64",
+      "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "27/2000",
+      "nonzero_count": 27,
+      "perturbative_box": {
+        "bound": "12",
+        "eps_window_nonempty": true,
+        "eps_window_upper_exclusive": "599/50",
+        "max_abs_coefficient": "73/8",
+        "perturbative_member": true
+      },
+      "point": {
+        "kappa": "-1/20",
+        "r0": "1/5",
+        "rS": "1/5",
+        "x0": "1"
+      }
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "module": "g3_sm_pati_salam_higgs_quartic_member_v20",
+  "n_checks": 48,
+  "n_failed": 0,
+  "overall_state": "EXACT_O36_LAMBDA_H_MEMBER__TREE_LIGHT_DOUBLET_QUARTIC_FREE__NO_BENCHMARK__NO_GATE_CHANGE",
+  "physics_status": {
+    "certifies": "the tree-level O36 lambda_H member of the SOS-certified decoupled-singlet family only: the family map with O36_B01 = O36_B02 = lambda_H (committed 2), certified for kappa^2 < 4 lambda_H lambda_S rS^2 (lambda_S = O23 = 1); its light-doublet tree quartic lambda_eff = lambda_H - kappa^2/(4 lambda_S rS^2) is a free positive parameter",
+    "does_not_change_G3_G4_G5": "the committed witness (lambda_H = 2, rS = r0, kappa = -r0/4) remains the G3 and G4 closing instance and G5 stays bound to the committed lambda_H = 2 coefficient vector; no gate status, ledger entry or roadmap text changes",
+    "does_not_choose_a_benchmark": "this report does NOT choose a benchmark: its (r0, rS, x0, kappa, lambda_H) points are certificate points, not benchmarks",
+    "higgs_matching_is_research": "research record (CONDITIONAL): tree matching of lambda_SM(v_R) at the research benchmarks BM-DA1/BM-E needs lambda_H(M_GUT) ~ 0.036-0.104, inside the certified domain; that running used an anti-SOS Delta_R region point (G6 assumed fixed); the a1/lh2 sensitivity rows are outside the certified member (an H-Sigma portal and O36_B01 != O36_B02), and one further row needs lambda_H < 0; the G7 evidence on these benchmarks is recorded separately (g7_decoupled_singlet_benchmark_evidence_v20)",
+    "tree_level_only": "lambda_eff is the tree-level light-doublet quartic; the one-loop quartic matching at v_R (research estimate +-0.004) is not computed, and the running of lambda_H is research-recorded only"
+  },
+  "provenance": {
+    "repository_modules_imported_read_only": [
+      "g3_sm_pati_salam_candidate_v20",
+      "g3_sm_pati_salam_decoupled_singlet_family_v20",
+      "g3_sm_pati_salam_exact_hessian_v20 (exact_hessian/exact_certificate with the documented overrides keyword, used read-only for the two O36 entries)",
+      "g3_sm_pati_salam_equality_set_v20",
+      "exact_h10_self_quartic_family_v20",
+      "g3_candidate_physical_target_audit_v20 (live compiler rows, float only)"
+    ],
+    "research_files": {
+      "E-G7-completion/e1_quartic_member.json": {
+        "script": "E-G7-completion/e1_quartic_member.py",
+        "sha256": "2e3e64a139b4d8df2f50c4cc94ffd932dfecd2761b0966acca41837ac025de4d"
+      },
+      "E-G7-completion/e3_quartic_rg.json": {
+        "script": "E-G7-completion/e3_quartic_rg.py",
+        "sha256": "b49b21f4191af7a0c95979e6ade7050f8cf9b90f1be8b9c9694330de4b96df2c"
+      },
+      "E-G7-completion/e3b_quartic_sens.json": {
+        "script": "E-G7-completion/e3b_quartic_sens.py",
+        "sha256": "20617026db9b1ed7db541ec192ecce65275a1cb76b6153f5d78ce076e1f38d98"
+      },
+      "E-G7-completion/verify-feasibility/v_sos.json": {
+        "script": "E-G7-completion/verify-feasibility/v_sos.py",
+        "sha256": "4974fd881893c27053afe7d0aa39321e836d29e72a21988b828fd7cbc3986447"
+      },
+      "E-G7-completion/verify-physics/v4_e1_check.json": {
+        "script": "E-G7-completion/verify-physics/v4_e1_check.py",
+        "sha256": "b879932351e08ac8b71ce3fefc7f2395a8eac4b70ff15df895d0b717201865b5"
+      }
+    },
+    "research_note": "scratch research outputs of 2026-09-27 (wfRESCUE rescue study); not in the repository; hashes recorded for audit only; the source files are not in the repository and were hashed at generation time (the session scratch area that held them was wiped afterwards), so the sha256 values are a record of the inputs and are not re-verified at runtime",
+    "research_script_sha256": {
+      "E-G7-completion/e1_quartic_member.py": "d78f5baaf8322b4d8a36b553d008895b0f0d46aecdbc0e3cbb87cfab1929e5c2",
+      "E-G7-completion/e3_quartic_rg.py": "8ca253eb116457dcb9dcc220001cb5ccc34419dc040cbef26fc4fcaddd31d80c",
+      "E-G7-completion/e3b_quartic_sens.py": "7dd46bf816f85b68946427769319c98a6a5c26ca0a6ceeee73335ff15608758c",
+      "E-G7-completion/verify-feasibility/v_sos.py": "42ddff2d9c5bf990f47dabcc190fb4a0c23f6fb629b3f599fd617de51f52b9e6",
+      "E-G7-completion/verify-physics/v4_e1_check.py": "d18cb79b3dbad80a63c4f5e0b5d1705c0927c6f92b7472341ab54085957a8ea0"
+    }
+  },
+  "research_record": {
+    "conditional": "the e3/e3b running used D's anti-SOS Delta_R region point with G6 assumed fixed and a one-loop PS-EFT; lambda_SM(v_R) is matched at tree level only; BM-DA1/BM-E are research benchmarks, not chosen here",
+    "consistency": {
+      "e1_exact_strings_equal_module": true,
+      "e1_projection_max_relative_deviation": 7.39376255932e-05,
+      "e3_required_lambda_H_inside_certified_domain": {
+        "BM-DA1": true,
+        "BM-E": true
+      },
+      "e3b_lambda_H_ranges": {
+        "BM-DA1": {
+          "T": [
+            0.036707398525,
+            0.15705084065
+          ],
+          "W": [
+            -0.00901156314302,
+            0.103984420275
+          ]
+        },
+        "BM-E": {
+          "T": [
+            0.0415675206997,
+            0.111568271338
+          ],
+          "W": [
+            5.81259739402e-05,
+            0.067561503296
+          ]
+        }
+      },
+      "e3b_rows_outside_domain": {
+        "BM-DA1": [
+          "W_Delta_GUT_hi"
+        ],
+        "BM-E": []
+      },
+      "e3b_rows_outside_member_map": {
+        "BM-DA1": [
+          "T_a1G=+0.02",
+          "T_a1G=-0.02",
+          "T_lh2G=+0.02",
+          "T_lh2G=-0.02",
+          "W_a1G=+0.02",
+          "W_a1G=-0.02",
+          "W_lh2G=+0.02",
+          "W_lh2G=-0.02"
+        ],
+        "BM-E": [
+          "T_a1G=+0.02",
+          "T_a1G=-0.02",
+          "T_lh2G=+0.02",
+          "T_lh2G=-0.02",
+          "W_a1G=+0.02",
+          "W_a1G=-0.02",
+          "W_lh2G=+0.02",
+          "W_lh2G=-0.02"
+        ]
+      },
+      "v4_BM-DA1_relative_deviation": 0.0,
+      "v4_BM-E_relative_deviation": 0.0
+    },
+    "disclosed_rows_outside_domain": {
+      "BM-DA1": [
+        "W_Delta_GUT_hi"
+      ],
+      "BM-E": []
+    },
+    "disclosed_rows_outside_member_map": {
+      "BM-DA1": [
+        "T_a1G=+0.02",
+        "T_a1G=-0.02",
+        "T_lh2G=+0.02",
+        "T_lh2G=-0.02",
+        "W_a1G=+0.02",
+        "W_a1G=-0.02",
+        "W_lh2G=+0.02",
+        "W_lh2G=-0.02"
+      ],
+      "BM-E": [
+        "T_a1G=+0.02",
+        "T_a1G=-0.02",
+        "T_lh2G=+0.02",
+        "T_lh2G=-0.02",
+        "W_a1G=+0.02",
+        "W_a1G=-0.02",
+        "W_lh2G=+0.02",
+        "W_lh2G=-0.02"
+      ]
+    },
+    "entries": {
+      "e1_float_hessian_and_plane_scan": {
+        "key": "float.<lam_H>.{hessian_max_diff_vs_lamH2, n_negative, n_zero, min_massive, S_H_plane_scan_min_gap}",
+        "label": "RESEARCH_RECORD",
+        "meaning": "float64 live-compiler Hessian at q0 identical for every lambda_H (max difference 0), projected inertia 0 negative / 4 zero, lightest massive r0^2/96, and the (|S|, light doublet) plane scan minimum gap (all rows equal)",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/e1_quartic_member.json",
+        "source_json_sha256": "2e3e64a139b4d8df2f50c4cc94ffd932dfecd2761b0966acca41837ac025de4d",
+        "source_script": "E-G7-completion/e1_quartic_member.py",
+        "value": {
+          "S_H_plane_scan_min_gap": 0.002437890625,
+          "hessian_max_diff_vs_lamH2": 0.0,
+          "lambda_H_values": [
+            "2",
+            "1/10",
+            "1/100",
+            "1/1000",
+            "1/10000"
+          ],
+          "min_massive": 0.000416666666602,
+          "projected_n_negative": 0,
+          "projected_n_zero": 4
+        }
+      },
+      "e1_lambda_eff_exact_strings": {
+        "key": "float.<lam_H>.lambda_eff_exact",
+        "label": "RESEARCH_RECORD",
+        "meaning": "research exact lambda_eff = lambda_H - kappa^2/(4 rS^2) at (r0, rS, x0, kappa) = (1/5, 1, 1, -1/100) per lambda_H (re-derived exactly by this module)",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/e1_quartic_member.json",
+        "source_json_sha256": "2e3e64a139b4d8df2f50c4cc94ffd932dfecd2761b0966acca41837ac025de4d",
+        "source_script": "E-G7-completion/e1_quartic_member.py",
+        "value": {
+          "1/10": "3999/40000",
+          "1/100": "399/40000",
+          "1/1000": "39/40000",
+          "1/10000": "3/40000",
+          "2": "79999/40000"
+        }
+      },
+      "e1_lambda_eff_numerical_projection": {
+        "key": "float.<lam_H>.lambda_eff_numerical_projection",
+        "label": "RESEARCH_RECORD",
+        "meaning": "float64 tree quartic of the light doublet by projection (V minimised over every other field at fixed doublet amplitude, fit V - V0 = c2 a^2 + c4 a^4 + c6 a^6, lambda = 4 c4) at (1/5, 1, 1, -1/100)",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/e1_quartic_member.json",
+        "source_json_sha256": "2e3e64a139b4d8df2f50c4cc94ffd932dfecd2761b0966acca41837ac025de4d",
+        "source_script": "E-G7-completion/e1_quartic_member.py",
+        "value": {
+          "1/10": 0.0999750046022,
+          "1/100": 0.00997501143479,
+          "1/1000": 0.00097501197595,
+          "1/10000": 7.50055453219e-05,
+          "2": 1.99997501292
+        }
+      },
+      "e3_lambda_H_required_BM_DA1": {
+        "key": "BM-DA1.variants.<V>.solutions.{central, central-0.004thr, central+0.004thr}.lam_H_MGUT_required",
+        "label": "RESEARCH_RECORD",
+        "meaning": "CONDITIONAL tree matching of lambda_SM(v_R) (PDG 2024, three-loop curve) through the one-loop PS-EFT running v_R..M_GUT: the required lambda_H(M_GUT) per Yukawa variant (W witness box, Tn top + Dirac nu, T top only, T0 no Yukawa) and with a +-0.004 one-loop threshold shift; the running uses D's anti-SOS Delta_R region point (rho = 1e3), i.e. assumes G6 fixed",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/e3_quartic_rg.json",
+        "source_json_sha256": "b49b21f4191af7a0c95979e6ade7050f8cf9b90f1be8b9c9694330de4b96df2c",
+        "source_script": "E-G7-completion/e3_quartic_rg.py",
+        "value": {
+          "M_GUT_GeV": 1.5205e+17,
+          "inside_SOS_region_every_row": true,
+          "lambda_H_MGUT_required": {
+            "T": 0.0835734776344,
+            "T0": 0.103776466928,
+            "Tn": 0.0755152747379,
+            "W": 0.0358703551665
+          },
+          "lambda_SM_vR": 0.00801253155717,
+          "rho": 1000.0,
+          "sigma_lambda_SM_vR": 0.0024409314596,
+          "threshold_band_minus_plus_0p004": {
+            "T": [
+              0.0798966717494,
+              0.0873580120053
+            ],
+            "T0": [
+              0.100720627188,
+              0.106910459686
+            ],
+            "Tn": [
+              0.0716282514138,
+              0.0795212682749
+            ],
+            "W": [
+              0.0311763450274,
+              0.0407338638025
+            ]
+          },
+          "v_R_GeV": 1266500000.0
+        }
+      },
+      "e3_lambda_H_required_BM_E": {
+        "key": "BM-E(rho=10^2.5, D remnants).variants.<V>.solutions.{central, central-0.004thr, central+0.004thr}.lam_H_MGUT_required",
+        "label": "RESEARCH_RECORD",
+        "meaning": "as e3_lambda_H_required_BM_DA1 at BM-E (rho = 10^2.5, D remnants); CONDITIONAL in the same way",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/e3_quartic_rg.json",
+        "source_json_sha256": "b49b21f4191af7a0c95979e6ade7050f8cf9b90f1be8b9c9694330de4b96df2c",
+        "source_script": "E-G7-completion/e3_quartic_rg.py",
+        "value": {
+          "M_GUT_GeV": 1.0085e+17,
+          "inside_SOS_region_every_row": true,
+          "lambda_H_MGUT_required": {
+            "T": 0.080042105892,
+            "T0": 0.0984007193667,
+            "Tn": 0.0728284687542,
+            "W": 0.0377629929658
+          },
+          "lambda_SM_vR": 0.00448541297745,
+          "rho": 316.227766017,
+          "sigma_lambda_SM_vR": 0.00256560438659,
+          "threshold_band_minus_plus_0p004": {
+            "T": [
+              0.0763966428667,
+              0.0837821149152
+            ],
+            "T0": [
+              0.0953486270085,
+              0.101522830446
+            ],
+            "Tn": [
+              0.0689772192706,
+              0.0767836806429
+            ],
+            "W": [
+              0.033078895257,
+              0.0425946496106
+            ]
+          },
+          "v_R_GeV": 5745500000.0
+        }
+      },
+      "e3b_sensitivity_lambda_H": {
+        "key": "<BM>.rows.<row>.lam_H",
+        "label": "RESEARCH_RECORD",
+        "meaning": "sensitivity of the required lambda_H(M_GUT) to the Delta_R sector (lam_(35,5) x0.7/x1.3, D's lam_GUT corners) for Yukawa variants T and W, and to two GUT-threshold deformations that are NOT boundary conditions of the certified member: a1 = +-0.02 (an H-Sigma portal (D^+D)(h^+h) at M_GUT, not in the 27-parameter member map) and lh2 = +-0.02 (O36_B01 != O36_B02, not lambda_H N_H^2)",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/e3b_quartic_sens.json",
+        "source_json_sha256": "20617026db9b1ed7db541ec192ecce65275a1cb76b6153f5d78ce076e1f38d98",
+        "source_script": "E-G7-completion/e3b_quartic_sens.py",
+        "value": {
+          "BM-DA1": {
+            "T_Delta_GUT_hi": 0.036707398525,
+            "T_Delta_GUT_lo": 0.15705084065,
+            "T_a1G=+0.02": 0.0655140576262,
+            "T_a1G=-0.02": 0.107306165508,
+            "T_baseline": 0.0835734774883,
+            "T_lam5x0.7": 0.101143368112,
+            "T_lam5x1.3": 0.0742904508245,
+            "T_lh2G=+0.02": 0.0600755487675,
+            "T_lh2G=-0.02": 0.110328806953,
+            "W_Delta_GUT_hi": -0.00901156314302,
+            "W_Delta_GUT_lo": 0.103984420275,
+            "W_a1G=+0.02": 0.0190752325553,
+            "W_a1G=-0.02": 0.0577890189769,
+            "W_baseline": 0.0358703565269,
+            "W_lam5x0.7": 0.0527541299533,
+            "W_lam5x1.3": 0.0269654714748,
+            "W_lh2G=+0.02": 0.0130015741734,
+            "W_lh2G=-0.02": 0.0613175459185
+          },
+          "BM-E": {
+            "T_Delta_GUT_hi": 0.0415675206997,
+            "T_Delta_GUT_lo": 0.0490477557943,
+            "T_a1G=+0.02": 0.0573796163841,
+            "T_a1G=-0.02": 0.111568271338,
+            "T_baseline": 0.0800421060911,
+            "T_lam5x0.7": 0.098757561118,
+            "T_lam5x1.3": 0.0701310537965,
+            "T_lh2G=+0.02": 0.0573768598842,
+            "T_lh2G=-0.02": 0.10547614509,
+            "W_Delta_GUT_hi": 5.81259739402e-05,
+            "W_Delta_GUT_lo": 0.00720889000787,
+            "W_a1G=+0.02": 0.0161263539627,
+            "W_a1G=-0.02": 0.067561503296,
+            "W_baseline": 0.0377629901669,
+            "W_lam5x0.7": 0.056246451752,
+            "W_lam5x1.3": 0.0279942396219,
+            "W_lh2G=+0.02": 0.0153677503729,
+            "W_lh2G=-0.02": 0.06241130428
+          }
+        }
+      },
+      "v4_kappa_correction_DA_prime": {
+        "key": "kappa_correction_<BM>",
+        "label": "RESEARCH_RECORD",
+        "meaning": "lambda_H - lambda_eff = (v_R/v_S)^4/64 for kappa = -r0^2/(4 rS) in the research DA' convention (r0 <-> v_R, rS <-> v_S); independent verifier sympy check of the O36 H/S block",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/verify-physics/v4_e1_check.json",
+        "source_json_sha256": "b879932351e08ac8b71ce3fefc7f2395a8eac4b70ff15df895d0b717201865b5",
+        "source_script": "E-G7-completion/verify-physics/v4_e1_check.py",
+        "value": {
+          "BM-DA1": {
+            "lambda_H_minus_lambda_eff": 3.16477965478e-17,
+            "v_R_GeV": 1266500000.0,
+            "v_S_GeV": 5970000000000.0
+          },
+          "BM-E": {
+            "lambda_H_minus_lambda_eff": 3.16389362012e-15,
+            "v_R_GeV": 5745500000.0,
+            "v_S_GeV": 8565000000000.0
+          }
+        }
+      },
+      "v_sos_sampling": {
+        "key": "identity_residual, min_T6_normalised_over_samples",
+        "label": "RESEARCH_RECORD",
+        "meaning": "independent verifier: sympy residual of the completed square and the minimum of the unreduced T6'/(1 + N^2 + |S|^4) over 2e5 random samples under a strict margin (sample count from the script, range(200000))",
+        "reproducible_from_repository": false,
+        "source_json": "E-G7-completion/verify-feasibility/v_sos.json",
+        "source_json_sha256": "4974fd881893c27053afe7d0aa39321e836d29e72a21988b828fd7cbc3986447",
+        "source_script": "E-G7-completion/verify-feasibility/v_sos.py",
+        "value": {
+          "identity_residual": "0",
+          "min_T6_normalised_over_samples": 6.4824181132e-11,
+          "samples": 200000
+        }
+      }
+    },
+    "kind": "RESEARCH_RECORD",
+    "problems": [],
+    "provenance_note": "scratch research outputs of 2026-09-27 (wfRESCUE rescue study); not in the repository; hashes recorded for audit only; the source files are not in the repository and were hashed at generation time (the session scratch area that held them was wiped afterwards), so the sha256 values are a record of the inputs and are not re-verified at runtime",
+    "research_root": "wfRESCUE (session scratchpad of the rescue study; paths below are relative to it; not in the repository)"
+  },
+  "runtime_seconds": 30.8580739498,
+  "scope": {
+    "claimed": [
+      "EXACT: I_1 + I_54 = N_H^2 and N_H^2 - |H.H|^2 = sum of squares (sympy, 20 real variables); the H quartic is lambda_H N_H^2 iff O36_B01 = O36_B02",
+      "EXACT: the O36 member's SOS identity for every kappa^2 < 4 lambda_H lambda_S rS^2 (lambda_S = O23 = 1) and eps >= 0 (sympy residual 0; reduces to the committed identity at lambda_H = 2), valid on the boundary, and sharp at eps = 0 (exact violating points beyond it); for eps > 0 the exact H/S-block domain is |kappa| <= 2 sqrt(lambda_H lambda_S) rS + sqrt(2 eps sqrt(lambda_H lambda_S)), so the margin is sufficient but not sharp there",
+      "EXACT: V0 and the equality set unchanged for every lambda_H > 0 in the domain (T1-T5, T7, T8 are kappa-free; bound to the committed equality-set and family artifacts)",
+      "EXACT: the 486 x 486 Hessian over Q bit-identical to the lambda_H = 2 member at (1/5, 1, 1, -1/100) for lambda_H in {2, 1/100, 1/1000} and at the witness point for lambda_H = 1/10 (447/39/0, 451/35/0), and the witness-point certificates equal to the committed exact-Hessian report",
+      "EXACT: lambda_eff = lambda_H - kappa^2/(4 lambda_S rS^2) (series), a free positive parameter; lambda_eff - lambda_H = -r0^4/(64 rS^4) at kappa = -r0^2/(4 rS)",
+      "EXACT: V4 >= lambda_H |q|^4/(165 lambda_H + 4)",
+      "NUM: the live compiler's O36 rows vanish at q0, its O36 directions equal I_1 and I_54, and it reproduces the exact violating value"
+    ],
+    "not_claimed": [
+      "no benchmark is chosen: the (r0, rS, x0, kappa, lambda_H) points are certificate points",
+      "tree level only: the one-loop quartic matching at v_R (research estimate +-0.004) is not computed, and the RG running of lambda_H is research-recorded only (CONDITIONAL)",
+      "lambda_SM(v_R) is not matched by this certificate; the required lambda_H(M_GUT) values are research records at research benchmarks (BM-DA1, BM-E) with an anti-SOS Delta_R point (G6 assumed fixed); the a1/lh2 sensitivity rows are outside the certified member (an H-Sigma portal and O36_B01 != O36_B02), and one further row needs lambda_H < 0 (outside the certified domain)",
+      "no S-portal member (O34 or others) is certified; the O34 lambda_eff formula is a series identity only",
+      "the committed witness (lambda_H = 2) stays the G3/G4 closing instance and G5 stays bound to the committed lambda_H = 2 vector; no gate status changes and nothing is wired into the ledger",
+      "the G6 tree spectrum, G7 running and G8 flavour are unchanged by O36 at tree level (O36 is quartic in H and invisible at q0) and are not re-derived here",
+      "no manuscript change"
+    ],
+    "relies_on_committed": [
+      "G3_SM_PATI_SALAM_DECOUPLED_SINGLET_FAMILY_V20.json (certified, 77 checks, 0 failed; the rS family, its eight-term SOS identity, tangent ranks and P3 at rS)",
+      "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json (proved status; P1/P2 contain no H or S)",
+      "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json (certified; equal to the witness-point member certificates)"
+    ],
+    "status_neutrality": "status-neutral: not read by g1_g8_gate_ledger_v20, final_g3_acceptance_gate_v20, g4_sm_closure_binding_v20 or any roadmap/readiness module; G1-G5 stay CLOSED, G6 OPEN, G7/G8 BLOCKED exactly as committed, the committed lambda_H = 2 witness remains the G3 and G4 closing instance, and G5 stays bound to the committed coefficient vector"
+  },
+  "sharpness": {
+    "Q_H_row_and_column_6_zero": true,
+    "curve": "H = h e_6 real (weak-doublet direction), S = rS + t real, kappa < 0, N_H = h^2 = |kappa| t/lambda_H: V - V0 = t^2 [lambda_S (2 rS + t)^2 - kappa^2/lambda_H] (for kappa > 0 the same with H = i h e_6)",
+    "curve_identity_residual": "0",
+    "eps_positive_domain": {
+      "identities": {
+        "4_lambda_H_R_min_minus_g_times_(2c t u + 2k t - eps)": "0",
+        "discriminant_of_g_in_t_minus_4(delta^2 - 2 c eps)": "0",
+        "reduced_at_N_star_minus_R_min": "0",
+        "reduced_minus_R_min_minus_lambda_H_(N-N_star)^2": "0"
+      },
+      "label": "EXACT",
+      "rows": [
+        {
+          "abs_kappa": "21/100",
+          "c_squared_equals_lambda_H_lambda_S": true,
+          "consistent": true,
+          "delta": "1/100",
+          "discriminant_of_g": "-1/2500",
+          "eps": "1/1000",
+          "expected_violation": false,
+          "lambda_H": "1/100",
+          "lambda_S": "1",
+          "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "-41/10000",
+          "rS": "1"
+        },
+        {
+          "R_min_closed_form": "-203301/400000000",
+          "V_minus_V0_equals_T6_prime": "-203301/400000000",
+          "abs_kappa": "21/100",
+          "c_squared_equals_lambda_H_lambda_S": true,
+          "consistent": true,
+          "delta": "1/100",
+          "discriminant_of_g": "49/125000",
+          "eps": "1/100000",
+          "expected_violation": true,
+          "h_squared": "2099/2000",
+          "lambda_H": "1/100",
+          "lambda_S": "1",
+          "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "-41/10000",
+          "rS": "1",
+          "t_star": "1/20"
+        }
+      ],
+      "statement": "for eps > 0 the certified margin kappa^2 < 4 lambda_H lambda_S rS^2 is sufficient but not sharp: with c = sqrt(lambda_H lambda_S) and delta = |kappa| - 2 c rS the reduced form is lambda_H (N - N*)^2 + R_min, N* = (2|kappa| t - eps)/(2 lambda_H), 4 lambda_H R_min = (2c t^2 - 2 delta t + eps)(2c t u + 2|kappa| t - eps); so V >= V0 holds exactly iff |kappa| <= 2 c rS + sqrt(2 c eps) (discriminant 4(delta^2 - 2 c eps)), with the equality set unchanged strictly inside; beyond it the curve H = h e_6, S = rS + t* with t* = delta/(2c) violates.  This extension is exact but is not a completed-square SOS certificate, and no member point uses it"
+    },
+    "label": "EXACT",
+    "other_sos_terms_vanish": "T1-T5 and T8 involve only (Phi, Sigma, Phi17) at their vacuum values; T7 = ||H wedge p||^2 = h^2 Q_H[6,6] = 0 (Q_H = diag(1^6, 0^4), integer); so V - V0 = T6' exactly on the curve (T9 = eps N_H is part of T6'), and at eps = 0 V >= V0 fails for every kappa^2 > 4 lambda_H lambda_S rS^2 (0 < t < |kappa|/sqrt(lambda_H lambda_S) - 2 rS); for eps > 0 see eps_positive_domain",
+    "violating_witnesses": [
+      {
+        "V_minus_V0_equals_T6_prime": "-405999/1000000000000",
+        "abs_kappa": "21/100",
+        "curve_formula": "-405999/1000000000000",
+        "expected": "-405999/1000000000000",
+        "h_squared": "21/1000",
+        "lambda_H": "1/100",
+        "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "-41/10000",
+        "negative": true,
+        "rS": "1",
+        "t": "1/1000"
+      },
+      {
+        "V_minus_V0_equals_T6_prime": "-89959999/10000000000000000",
+        "abs_kappa": "7/100",
+        "curve_formula": "-89959999/10000000000000000",
+        "expected": "-89959999/10000000000000000",
+        "h_squared": "7/1000",
+        "lambda_H": "1/1000",
+        "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "-9/10000",
+        "negative": true,
+        "rS": "1",
+        "t": "1/10000"
+      },
+      {
+        "V_minus_V0_equals_T6_prime": "-34119/100000000",
+        "abs_kappa": "3",
+        "curve_formula": "-34119/100000000",
+        "expected": "-34119/100000000",
+        "h_squared": "9/200",
+        "lambda_H": "2",
+        "margin_4_lambda_H_lambda_S_rS2_minus_kappa2": "-1",
+        "negative": true,
+        "rS": "1",
+        "t": "3/100"
+      }
+    ]
+  },
+  "sos_identity": {
+    "T6_prime": "lambda_H N_H^2 + (2|kappa| rS + eps) N_H + 2 kappa Re(conj(H.H) conj(S)) + lambda_S (|S|^2 - rS^2)^2 (lambda_S = O23 = 1 in the map; O04 = -2 lambda_S rS^2)",
+    "boundary_bracket_at_k2_eq_4_lambda_H_lambda_S_rS2": "lambda_S*(-rS + s)*(3*rS + s)",
+    "boundary_note": "at kappa^2 = 4 lambda_H lambda_S rS^2 (lambda_eff = 0) the bracket is lambda_S t (s + 3 rS) >= 0 for t >= 0 and the t < 0 argument is unchanged, so V >= V0 and the equality set still hold on the boundary; the certified domain is the open kappa^2 < 4 lambda_H lambda_S rS^2 (the committed convention)",
+    "cauchy_schwarz": "2 kappa Re(conj(H.H) conj(S)) >= -2|kappa| |H.H| |S| >= -2|kappa| N_H |S| (|H.H| <= N_H: h_self.cauchy_schwarz_identity), so T6' >= R(N_H, |S|)",
+    "completed_square": "R = lambda_H (N - k t/lambda_H)^2 + t^2 (lambda_S u^2 - k^2/lambda_H) + eps N, t = s - rS, u = s + rS",
+    "completed_square_residual": "0",
+    "domain": "kappa^2 < 4 lambda_H lambda_S rS^2, equivalently lambda_eff = lambda_H - kappa^2/(4 lambda_S rS^2) > 0",
+    "label": "EXACT",
+    "margin_equivalence_residual": "0",
+    "operator_level": {
+      "T6_prime_rows": {
+        "negative": {
+          "H_S_coefficient_residuals_vs_member_map": {
+            "lambda::O04_B01_singlet_polynomial": "0",
+            "lambda::O06_B01_Hdag_H_norm": "0",
+            "lambda::O23_B01_singlet_polynomial": "0",
+            "lambda::O36_B01_H_self_quartics": "0",
+            "lambda::O36_B02_H_self_quartics": "0",
+            "re::O12_B01_Hdag_Hdag_pair": "0"
+          },
+          "T6_prime": "2Re(conj(H.H)conj(S))*kappa + N_H*(eps - 2*kappa*rS) + lambda_H*(I1_H + I54_H) + rS**4 - 2*rS**2*|S|^2 + |S|^4",
+          "T6_prime_minus_T6_minus_T9_minus_(lambda_H-2)(I1+I54)": "0",
+          "constant": "rS**4",
+          "operators_outside_H_S_block": []
+        },
+        "positive": {
+          "H_S_coefficient_residuals_vs_member_map": {
+            "lambda::O04_B01_singlet_polynomial": "0",
+            "lambda::O06_B01_Hdag_H_norm": "0",
+            "lambda::O23_B01_singlet_polynomial": "0",
+            "lambda::O36_B01_H_self_quartics": "0",
+            "lambda::O36_B02_H_self_quartics": "0",
+            "re::O12_B01_Hdag_Hdag_pair": "0"
+          },
+          "T6_prime": "2Re(conj(H.H)conj(S))*kappa + N_H*(eps + 2*kappa*rS) + lambda_H*(I1_H + I54_H) + rS**4 - 2*rS**2*|S|^2 + |S|^4",
+          "T6_prime_minus_T6_minus_T9_minus_(lambda_H-2)(I1+I54)": "0",
+          "constant": "rS**4",
+          "operators_outside_H_S_block": []
+        },
+        "zero": {
+          "H_S_coefficient_residuals_vs_member_map": {
+            "lambda::O04_B01_singlet_polynomial": "0",
+            "lambda::O06_B01_Hdag_H_norm": "0",
+            "lambda::O23_B01_singlet_polynomial": "0",
+            "lambda::O36_B01_H_self_quartics": "0",
+            "lambda::O36_B02_H_self_quartics": "0",
+            "re::O12_B01_Hdag_Hdag_pair": "0"
+          },
+          "T6_prime": "N_H*eps + lambda_H*(I1_H + I54_H) + rS**4 - 2*rS**2*|S|^2 + |S|^4",
+          "T6_prime_minus_T6_minus_T9_minus_(lambda_H-2)(I1+I54)": "0",
+          "constant": "rS**4",
+          "operators_outside_H_S_block": []
+        }
+      },
+      "family_eight_term_expansion_passes": true,
+      "family_rows_ok": {
+        "negative": true,
+        "positive": true,
+        "zero": true
+      },
+      "member_map_minus_family_sos_map_plus_eps": {
+        "negative": {
+          "lambda::O36_B01_H_self_quartics": "lambda_H - 2",
+          "lambda::O36_B02_H_self_quartics": "lambda_H - 2"
+        },
+        "positive": {
+          "lambda::O36_B01_H_self_quartics": "lambda_H - 2",
+          "lambda::O36_B02_H_self_quartics": "lambda_H - 2"
+        },
+        "zero": {
+          "lambda::O36_B01_H_self_quartics": "lambda_H - 2",
+          "lambda::O36_B02_H_self_quartics": "lambda_H - 2"
+        }
+      },
+      "non_T6_terms_kappa_free": {
+        "identical_for_the_three_kappa_signs": true,
+        "meaning": "kappa enters the SOS map only through O06 and O12, i.e. T6; T1-T5, T7, T8 and T9 are kappa-free, which the equality-set argument uses for lambda_H > 2",
+        "terms": [
+          "T1 (|Phi|^2 - 1)^2 + I45 + I210 + I5940",
+          "T2 (1/8)||(M_Phi - 2) Sigma||^2",
+          "T3 (1/8)||C_Phi Sigma||^2",
+          "T4 (1/8)(W' - N^2)",
+          "T5 (1/8)(N_Sigma - r0^2)^2",
+          "T7 ||H wedge Phi||^2",
+          "T8 (1/32)(|Phi17|^2 - x0^2)^2",
+          "T9 eps N_H"
+        ]
+      },
+      "operators_compared_by_sign": {
+        "negative": 27,
+        "positive": 27,
+        "zero": 26
+      },
+      "statement": "V_member - V0 = T1 + ... + T5 + T6' + T7 + T8 with T6' = T6 + T9 + (lambda_H - 2)(I_1 + I_54) = T6 + T9 + (lambda_H - 2) N_H^2 (the family's eight-term identity plus the H self-identity)"
+    },
+    "reduced_form": "R = lambda_H N^2 + 2 k N (rS - s) + lambda_S (s^2 - rS^2)^2 + eps N",
+    "reduction_to_committed": {
+      "committed_identity_residual_candidate": "0",
+      "completed_square_at_lambda_H_2_minus_committed": "0",
+      "reduced_form_at_lambda_H_2_minus_committed": "0"
+    },
+    "sign_argument": "t >= 0: u >= 2 rS, so the bracket is >= 4 lambda_S rS^2 - k^2/lambda_H + lambda_S t (t + 4 rS) > 0 when k^2 < 4 lambda_H lambda_S rS^2, hence R > 0 unless t = 0 and N = 0; t < 0: R = lambda_H N^2 + 2 k N |t| + lambda_S t^2 u^2 + eps N with every term >= 0 and lambda_S t^2 u^2 > 0 (u > 0).  Zero set: t = 0, N_H = 0, i.e. H = 0 and |S| = rS",
+    "sign_identities": {
+      "bracket_minus_margin_minus_lambda_S_t_(t+4rS)": "0",
+      "lambda_H_margin_form_minus_(4 lambda_H lambda_S rS^2 - k^2)": "0",
+      "reduced_minus_nonpositive_t_form": "0"
+    },
+    "symbols": "N_H >= 0, s = |S| >= 0, rS > 0, lambda_H > 0, lambda_S > 0, k = |kappa| >= 0, eps >= 0 (sympy); kappa < 0, > 0 and = 0 for the operator-level rows"
+  },
+  "status": "SM_PATI_SALAM_HIGGS_QUARTIC_MEMBER_EXACT__TREE_LEVEL__STATUS_NEUTRAL",
+  "theorem": "For every r0, rS, x0 > 0, lambda_H > 0, real kappa with kappa^2 < 4 lambda_H lambda_S rS^2 (lambda_S = O23 = 1) and eps >= 0, the O36 member (the decoupled-singlet map with O36_B01 = O36_B02 = lambda_H instead of 2; 27 parameters inside the 51-parameter contract) satisfies V >= V0 = -1 - r0^4/8 - rS^4 - x0^4/32 with {V = V0} = G.(p, r0 sigma_std, 0, rS, x0), G = SO(10) x U(1)_X x U(1)_PQ (given the committed family certificate and the committed equality-set theorem's lambda_H-free parts).  The H quartic is lambda_H N_H^2 exactly (I_1 + I_54 = N_H^2), and after Cauchy-Schwarz the H/S block is lambda_H (N_H - |kappa| t/lambda_H)^2 + t^2 (lambda_S u^2 - kappa^2/lambda_H) + eps N_H, t = |S| - rS, u = |S| + rS (sympy residual 0).  The domain is sharp at eps = 0: V >= V0 fails for every kappa^2 > 4 lambda_H lambda_S rS^2 when eps = 0 (exact violating points), while on the boundary the bound and the equality set still hold; for eps > 0 the exact domain of the H/S block is |kappa| <= 2 sqrt(lambda_H lambda_S) rS + sqrt(2 eps sqrt(lambda_H lambda_S)), so the certified margin is sufficient there but not sharp.  The equality set holds for every lambda_H > 0 in the domain because T1-T5, T7, T8 are kappa-free.  The tree light-doublet quartic is lambda_eff = lambda_H - kappa^2/(4 lambda_S rS^2) > 0, a free positive parameter (lambda_eff - lambda_H = -r0^4/(64 rS^4) at kappa = -r0^2/(4 rS)), and V4 >= lambda_H |q|^4/(165 lambda_H + 4).  Exact over Q at (1/5, 1, 1, -1/100) with lambda_H in {2, 1/100, 1/1000} and at the witness point (1/5, 1/5, 1, -1/20) with lambda_H = 1/10: grad V(q0) = 0 and the 486 x 486 Hessian is bit-identical to the lambda_H = 2 member (447/39/0 at eps = 0, kernel = 35 orbit tangents + 4 doublet directions, gap r0^2/96 x 14; 451/35/0 at eps = r0^2/100).  Tree level only.",
+  "theorem_claimed": true,
+  "verdict": "Exact (48 checks): setting the H self-quartics O36_B01 = O36_B02 = lambda_H (committed 2) in the decoupled-singlet map keeps the SOS certificate for every kappa^2 < 4 lambda_H lambda_S rS^2 (lambda_S = O23 = 1): I_1 + I_54 = N_H^2 (sympy, 10 complex variables) and, after Cauchy-Schwarz, the H/S block is lambda_H (N_H - |kappa| t/lambda_H)^2 + t^2 (lambda_S u^2 - kappa^2/lambda_H) + eps N_H (sympy residual 0); the margin is sharp at eps = 0 (exact violating points beyond it; for eps > 0 the exact domain is |kappa| <= 2 sqrt(lambda_H lambda_S) rS + sqrt(2 eps sqrt(lambda_H lambda_S)), so the margin is sufficient but not sharp) and the bound still holds on the boundary.  V0, the equality set and the exact 486 x 486 Hessian at q0 are unchanged (bit-identical at 4 member points; 447/39/0 and 451/35/0).  The tree light-doublet quartic lambda_eff = lambda_H - kappa^2/(4 lambda_S rS^2) is a free positive parameter (lambda_eff - lambda_H = -r0^4/(64 rS^4) at kappa = -r0^2/(4 rS), -1.5625e-14 at rS = 1000 r0), and V4 >= lambda_H |q|^4/(165 lambda_H + 4).  Tree level only: the one-loop matching at v_R (research estimate +-0.004) is not computed, lambda_SM(v_R) is matched only in the research record (CONDITIONAL), no benchmark is chosen, the committed lambda_H = 2 witness remains the G3/G4 closing instance, G5 stays bound to it, and no gate changes."
+}

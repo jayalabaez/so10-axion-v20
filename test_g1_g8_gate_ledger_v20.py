@@ -1019,6 +1019,18 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         self.assertIn("records Route C", mod.G8_EVIDENCE_RECORDED_ITEM)
         self.assertIn("need a user decision", mod.G8_EVIDENCE_RECORDED_ITEM)
+        # Rescue-study correction of the Route B parenthesis (text only; the companion module is not wired in).
+        for text in (
+            "on the certified witness orientation, among the analysed extensions only a 120_H can split d from e",
+            "only through a (15,2,2)_120 admixture of O((v_R/M15)^2)",
+            "a tuned-light (15,2,2)_120, which SOS squares allow, gives O(1) splitting",
+            "also split d from e but sit off the certified orientation",
+            "g8_sm_pati_salam_structural_obstruction_v20",
+        ):
+            self.assertIn(text, mod.G8_EVIDENCE_RECORDED_ITEM)
+        self.assertNotIn("vectorlike matter were not analysed", mod.G8_EVIDENCE_RECORDED_ITEM)
+        self.assertNotIn("orientation only a 120_H", mod.G8_EVIDENCE_RECORDED_ITEM)
+        self.assertNotIn("at O(r0^2) when added as SOS squares", mod.G8_EVIDENCE_RECORDED_ITEM)
         tree = gates["G6"]["tree_level_evidence"]
         self.assertEqual(
             tree,

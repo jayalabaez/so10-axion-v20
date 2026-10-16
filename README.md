@@ -433,6 +433,97 @@ viability of decoupling (`y_s <~ 0.35`, the Landau criterion, a v_R/f_a/m_a
 benchmark) is open research, and `m_a = 153.5 ueV` is not a prediction of the
 family.
 
+**G8 structural obstruction (status-neutral).**
+`g8_sm_pati_salam_structural_obstruction_v20.py` records the exact G8 lemmas
+of the rescue study (78 checks). The pi-rotation in the (3,5) plane (spinor
+lift `Gamma_3 Gamma_5`) maps `d <-> e` and fixes the 210 singlet `p`, the
+10_H doublet directions and the singlets, while `sigma_std` couples only
+`nu^c nu^c`; so `spec(M_d) = spec(M_e)` for any 16/16bar content. The
+pi-rotation in the (7,9) plane maps `u <-> d`: at `tan beta = 1`,
+`spec(M_u) = spec(M_d)` and CKM = 1 at the level of the light (dimension-4)
+Yukawa matrices; with 16bar content the charged current of full mass
+eigenstates is non-unitary at O(v^2/M_V^2) (dimension 6). Every vacuum of the
+degree-2-SOS-certified witness family (the committed witness, the `r_S`
+family and the O36 `lambda_H` member certified by
+`g3_sm_pati_salam_higgs_quartic_member_v20.py`) is therefore flavour-dead in
+this sense (`M_e = phase x M_d^T`, CKM = 1) with vectorlike 16s on contract
+scalars, with P/Q/R promotion, and with a 120_H added as SOS squares whose
+(15,2,2) sits at the GUT scale: the d/e split then enters only through a
+(15,2,2)_120 admixture of O((v_R/M15)^2) = O(r0^2) (X-parity: the Sigma
+number is even through degree 11; the first odd-Sigma monomial has degree 12).
+A tuned-light (15,2,2)_120, which SOS squares allow, gives O(1) splitting and
+is excluded only numerically (no perturbative two-loop root; research-recorded).
+An H-linear portal keeps `M_e = phase x M_d^T` at any coefficient; every
+doublet-coupled portal (O15, O28, O38, O45_B02) turns q0 into a saddle,
+O45_B01 has no doublet coupling, and any nonzero portal is outside the SOS27
+certificate.
+Research-recorded, not re-derived: the 45 scalar portal, vectorlike matter
+with a reoriented 210 and the off-witness ERT channel also split d from e,
+but all sit off the certified orientation, and a second 126bar_H is
+Landau-excluded at BM-DA1 (8.1e17 GeV at two loops). The Route B text of
+`g8_sm_pati_salam_flavour_nogo_v20.py` is corrected to match (its 157
+checks and status are unchanged). No gate changes.
+
+**G7 on the decoupled-singlet benchmark (status-neutral).**
+`g7_decoupled_singlet_benchmark_evidence_v20.py` computes the exact SO(10)
+phase gauge coefficients (the three-loop formula is checked against QCD and
+the SM three-loop coefficients of arXiv:1201.5868, which fix 4 linear
+combinations of its 8 scalar coefficients; both SO(10) values are reproduced
+by PyR@TE 3) and runs
+them from the research-recorded BM-DA1 roots of two codes with two
+integrators that agree to 1e-7. The running is gauge + matter only at every
+order (the Yukawa terms, which would raise the `alpha = 1` scale, are
+omitted). BM-DA1 passes the reduced-Planck Landau criterion at two loops
+(`alpha = 1` at 3.72e18 GeV on the U1 root, 3.88e18 GeV on the U2 root). At
+three loops (gauge-only, P,Q,R at `x0 p`) it fails on the U1 root
+(2.34e18 GeV < 2.435e18 GeV, -3.8%) and passes marginally on the U2 root
+(2.438e18 GeV, +0.14%), so its three-loop outcome lies within the two-code
+root uncertainty. With the RG-improved remnant masses (conditional:
+anti-SOS region points and the committed GUT scalar spectrum;
+`v_R = 8.56e9 GeV`, `<S> = 2.85e13 GeV` at `y_s = 0.30`) both
+axion-quality bounds fail (NDA 0.27, Z17 3.2e-6, against 1e-10); doubling
+the GUT scalar masses removes that failure (research scheme variant), while
+U2 and the other scheme variants keep it. The NDA bound uses
+`Lambda = <S>`, more conservative than the manuscript's eq. (qualitybound)
+(`Lambda = M_s`); both are recorded. Every flavour-capable addition fails at
+three loops (a 120_H, a second 126bar and vectorlike pairs already at two
+loops). A Planck gauge-kinetic term would move the `alpha = 1` scale by more
+than the three-loop margins (an estimate). G7 stays BLOCKED.
+
+**Higgs-quartic member (status-neutral).**
+`g3_sm_pati_salam_higgs_quartic_member_v20.py` certifies exactly (48
+checks) that setting both H self-quartics `O36_B01 = O36_B02 = lambda_H`
+(committed value 2) keeps the SOS certificate for every
+`kappa^2 < 4 lambda_H lambda_S r_S^2`. The H/S block becomes
+`lambda_H (N_H - |kappa| t/lambda_H)^2 + t^2 (lambda_S u^2 - kappa^2/lambda_H) + eps N_H`
+(sympy residual 0). The margin is sharp at `eps = 0`; for `eps > 0` the
+exact domain is `|kappa| <= 2 sqrt(lambda_H lambda_S) r_S + sqrt(2 eps sqrt(lambda_H lambda_S))`,
+so there the margin is sufficient but not sharp. V0, the equality set (the
+SOS terms other than the H/S block are kappa-free) and the exact
+486 x 486 Hessian at q0 are unchanged (bit-identical; 447/39/0 and
+451/35/0). The tree light-doublet quartic
+`lambda_eff = lambda_H - kappa^2/(4 lambda_S r_S^2)` is thus a free positive
+parameter (certified at `lambda_H = 2, 1/100, 1/1000`), so it can match the
+SM quartic at `v_R` at tree level (research-recorded, conditional; the
+research sensitivity rows with an H-Sigma portal or `O36_B01 != O36_B02` are
+outside the certified member). The result is tree level only: the one-loop matching is not computed, no
+benchmark is chosen, and the `lambda_H = 2` witness still closes G3 and G4.
+
+**Witness perturbative unitarity (status-neutral).**
+`g3_sm_pati_salam_witness_unitarity_v20.py` computes exactly the tree-level
+s-wave singlet-channel matrix of the committed witness (57 checks). Its
+`a0_max = 21.65` (the 210 singlet entry alone gives 21.57), so the benchmark
+normalisation is non-perturbative. Scaling whole SOS terms by positive
+factors keeps the certificate exactly. The overall x1/50 member keeps the
+vacuum, the SOS identity, the equality set and the Hessian inertia
+(447/39/0, and 451/35/0 raised; gap `r0^2/4800`), and has
+`a0_max = 0.433 < 1/2` in the computed channel. The largest overall factor
+that is perturbative in the singlet channel lies in (1/44, 1/43); rescaling
+only the 210 block by 1/50 leaves `a0_max = 1.98`. Scalar tree masses scale
+by `sqrt(1/50)`; the vevs and the gauge-boson masses do not change.
+Non-singlet channels are not computed, the GUT thresholds are not
+recomputed, and the committed witness remains the G3 closing instance.
+
 Open items for this candidate:
 - The doublet-triplet splitting and the intermediate scale are tuned coupling
   relations.
