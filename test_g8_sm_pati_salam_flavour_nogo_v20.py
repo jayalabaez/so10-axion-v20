@@ -82,6 +82,22 @@ V2_FALSE_FLAGS = (
     "route_B_reduced_to_120H_among_all_extensions",
     "route_B_120H_repair_established",
 )
+# The rescue-study correction of the Route B line (text only; the companion module research-records the splitters).
+NEW_ROUTE_B_PHRASES = (
+    "on the certified witness orientation",
+    "also split d from e",
+    "off the certified orientation",
+    "g8_sm_pati_salam_structural_obstruction_v20",
+)
+OLD_ROUTE_B_PHRASE = "vectorlike matter were not analysed"
+# The 120_H statement carries its premise (the (15,2,2)_120 mass): O(r0^2) only for a GUT-scale (15,2,2)_120.
+NEW_120_PHRASES = (
+    "(15,2,2)_120 admixture of O((v_R/M15)^2)",
+    "O(r0^2) for a GUT-scale (15,2,2)_120",
+    "a tuned-light (15,2,2)_120, which SOS squares allow, gives O(1) splitting",
+    "excluded only numerically",
+)
+OLD_120_PHRASES = ("and, added as SOS squares, only at O(r0^2)", "which is O(r0^2) when the 120_H is added as SOS squares")
 # Over-broad flag names of the first v2 draft (must not reappear).
 V2_WITHDRAWN_FLAGS = (
     "route_B_reduced_to_120H",
@@ -595,16 +611,46 @@ class G8FlavourNogoTest(unittest.TestCase):
             for text in ("second 126bar_H", "a new B-L-breaking scalar vev (e.g. a 45_H", "vectorlike matter", "further PS-breaking operators near v_R"):
                 self.assertIn(text, route_b)
             self.assertIn("A 120_H is not shown to repair G8", route_b)
+            # Rescue-study correction (text only): the off-orientation splitters are research-recorded in the companion.
+            for text in NEW_ROUTE_B_PHRASES + NEW_120_PHRASES:
+                self.assertIn(text, route_b)
+            self.assertNotIn(OLD_ROUTE_B_PHRASE, route_b)
+            for text in OLD_120_PHRASES:
+                self.assertNotIn(text, route_b)
+            # The Georgi-Jarlskog note is G8 v2's own hand-argued remark, not attributed to the research record.
+            self.assertIn("Separately (hand-argued here, not recomputed), F.F.H10.45_H can carry a Georgi-Jarlskog", route_b)
             self.assertIn("DOWN-type", routes["A"])
             self.assertIn("lemma_s1_g3221", routes["A"])
             self.assertIn("v_R-scale SU(2)_R breaking through <Sigma>", routes["A"])
             self.assertIn("with a G3221-equivariant composition", routes["A"])
         self.assertNotIn("120_H or a second 10_H", nogo.__doc__)
         self.assertNotIn("reduced to a 120_H", nogo.__doc__)
-        self.assertIn("among the analysed candidates only a 120_H", nogo.__doc__)
+        self.assertIn("the candidates analysed here only a 120_H", nogo.__doc__)
+        for text in NEW_ROUTE_B_PHRASES:
+            self.assertIn(text, nogo.__doc__)
+        self.assertNotIn(OLD_ROUTE_B_PHRASE, nogo.__doc__)
+        docstring = " ".join(nogo.__doc__.split())
+        for text in NEW_120_PHRASES:
+            self.assertIn(text, docstring)
+        for text in OLD_120_PHRASES:
+            self.assertNotIn(text, docstring)
         for report in (self.fresh, self.committed):
             self.assertNotIn("Route B reduces to a 120_H", report["verdict"])
             self.assertIn("among the analysed candidate extensions only a 120_H can", report["verdict"])
+            not_claimed = " ".join(report["scope"]["not_claimed"])
+            for text in NEW_ROUTE_B_PHRASES + NEW_120_PHRASES:
+                self.assertIn(text, report["verdict"])
+                self.assertIn(text, not_claimed)
+            for text in (report["verdict"], not_claimed):
+                self.assertNotIn(OLD_ROUTE_B_PHRASE, text)
+                for old in OLD_120_PHRASES:
+                    self.assertNotIn(old, text)
+                self.assertNotIn("a second 126bar_H was not analysed", text)
+            self.assertIn(
+                "they do not falsify the contract: a 120_H extension, a Route A branch and the extensions not analysed "
+                "here remain logically open",
+                not_claimed,
+            )
             self.assertIs(report["flags"]["route_B_reduced_to_120H_among_all_extensions"], False)
             self.assertIs(report["flags"]["route_B_one_two_two_source_extensions_excluded"], True)
             cited = " ".join(report["scope"]["cited_or_hand_argued"])

@@ -1,0 +1,1811 @@
+{
+  "G3_witness_unchanged": true,
+  "blockwise_test_member": {
+    "a0_max_float": 0.461413199946,
+    "alpha": {
+      "H": "11",
+      "Phi": "542/25",
+      "Phi17": "1/8",
+      "S": "1",
+      "Sigma": "16645/896"
+    },
+    "beta": {
+      "H|Phi": "6/5",
+      "Phi|H": "63/5",
+      "Phi|Sigma": "41/40",
+      "Sigma|Phi": "123/100"
+    },
+    "certificate_benchmark": {
+      "O06": "1/200",
+      "O06_offset": "0",
+      "certificate_gap_flag": false,
+      "certificate_gap_target": "1/2400",
+      "coverage_ok": true,
+      "denominator": 20160000,
+      "exact_PSD": true,
+      "exact_nullity": 39,
+      "exact_rank": 447,
+      "gradient_exactly_zero": true,
+      "inertia_positive_zero_negative": "447/39/0",
+      "kernel_equals_expected_span": true,
+      "kernel_spanning_set": "35 symmetry tangents + 4 real light-doublet directions",
+      "strictly_positive_on_kernel_complement": true
+    },
+    "eigenvalues_float": [
+      -23.1931571075,
+      -18.3433487964,
+      -9.72050302468,
+      -1.0,
+      -0.125
+    ],
+    "label": "EXACT (lemma test point, NOT a benchmark); NUM (a0 float)",
+    "note": "different positive factors per SOS term (A and C together) keep the exact inertia 447/39/0 and the kernel T35 + 4 doublet directions, as the lemma states; this point also has a0_max < 1/2 while scaling the Sigma self term only by 1/2 and the H/S term by 1/4",
+    "term_scales": {
+      "A_square": "1/50",
+      "C_square": "1/50",
+      "T_HPhi": "1/10",
+      "T_HS": "1/4",
+      "T_Phi": "1/50",
+      "T_X": "1",
+      "W": "1/2"
+    }
+  },
+  "check_labels": {
+    "T_Phi_only_1_over_50_not_perturbative_exact": "EXACT",
+    "a0_max_between_21_and_22_exact": "EXACT",
+    "alpha_H_22_per_unit_lambda_H_and_trace_independent_of_unit_vector": "EXACT",
+    "alpha_Sigma_equals_dimension_weighted_channel_sum": "EXACT",
+    "beta_H_Phi_equals_two_trace_Q_H_of_the_wedge_square": "EXACT",
+    "block_dimensions_and_congruence_factors_match_chart": "EXACT",
+    "blockwise_test_member_a0_below_half_exact": "EXACT",
+    "blockwise_test_member_inertia_447_39_0_kernel_T35_plus_doublets": "EXACT",
+    "characteristic_polynomial_factorises_with_pinned_cubic": "EXACT",
+    "chart_norms_at_q0_equal_1_2r0sq_2r0sq_2x0sq": "EXACT",
+    "committed_Phi_H_Sigma_self_entries_exceed_half_S_Phi17_below_exact": "EXACT",
+    "committed_Phi_Sigma_and_Phi_H_mixings_exceed_the_bound_exact": "EXACT",
+    "committed_equality_set_artifact_proved": "EXACT",
+    "committed_exact_hessian_artifact_certified_and_equal_to_fresh_witness_certificates": "EXACT",
+    "euler_degree_matches_table_for_every_unit_with_nonzero_gradient": "EXACT",
+    "euler_values_at_q0_sum_to_V0": "EXACT",
+    "every_other_pair_zero_S_and_Phi17_decouple": "EXACT",
+    "every_unit_computable_term_group_hessian_psd_at_q0_exact": "EXACT",
+    "every_unit_computable_term_group_stationary_at_q0_exact": "EXACT",
+    "gaussian_biquadratic_moment_identity_exact": "EXACT",
+    "gaussian_fourth_moment_identity_exact": "EXACT",
+    "h_self_identity_I1_plus_I54_equals_NH_squared_sympy": "EXACT",
+    "kappa_margin_scale_invariant_under_T_HS_scaling_sympy": "EXACT",
+    "largest_root_isolated_exactly_and_a0_enclosed": "EXACT",
+    "lee_quigg_thacker_calibration_a0_3_lambda_over_8_pi": "EXACT",
+    "member_V0_equals_s_V0_and_sum_of_scaled_minima": "EXACT",
+    "member_a0_below_half_exact": "EXACT",
+    "member_benchmark_inertia_447_39_0_kernel_T35_plus_doublets": "EXACT",
+    "member_gradient_exactly_zero": "EXACT",
+    "member_hessian_equals_s_times_witness_hessian_exact": "EXACT",
+    "member_is_whole_term_scaling_with_positive_factors": "EXACT",
+    "member_lambda_eff_equals_127_over_3200": "EXACT",
+    "member_per_block_necessary_conditions_hold_exact": "EXACT",
+    "member_raised_O06_inertia_451_35_0_kernel_T35": "EXACT",
+    "member_singlet_matrix_equals_s_times_witness": "EXACT",
+    "member_smallest_nonzero_eigenvalue_s_r0sq_over_96_multiplicity_14_both_variants": "EXACT",
+    "num_eigenvalues_consistent_with_exact_characteristic_polynomial": "NUM",
+    "overall_1_over_40_not_perturbative_exact": "EXACT",
+    "phi_sigma_consistency_n_Sigma_beta_equals_n_Phi_beta_equals_12915": "EXACT",
+    "proper_subset_scaling_O27_only_moves_Sigma_radius_exact": "EXACT",
+    "proper_subset_scaling_O48_only_moves_Phi_radius_exact": "EXACT",
+    "quartic_unit_supports_within_declared_blocks_and_no_S_or_Phi17_portal": "EXACT",
+    "rational_matrix_Phi_H_Sigma_block_equals_pinned": "EXACT",
+    "research_MC_a0_max_within_3_sigma_of_exact": "RESEARCH_RECORD consistency",
+    "research_MC_matrix_within_3_sigma_of_exact": "RESEARCH_RECORD consistency",
+    "research_entries_labelled_with_provenance_and_pinned_digest": "RESEARCH_RECORD consistency",
+    "research_sigma_self_entry_equals_exact_16645_over_448": "RESEARCH_RECORD consistency",
+    "s_max_between_1_over_44_and_1_over_43_exact": "EXACT",
+    "scaled_map_and_V0_linear_identity_sympy_residual_zero": "EXACT",
+    "singlet_alphas_equal_pinned_exact_values": "EXACT",
+    "singlet_betas_equal_pinned_exact_values": "EXACT",
+    "sos_term_partition_equals_benchmark_coefficients_at_witness": "EXACT",
+    "sos_term_partition_sums_to_committed_map_symbolically": "EXACT",
+    "term_group_values_at_q0_equal_committed_minima": "EXACT",
+    "unit_coverage_of_committed_map_exact": "EXACT",
+    "unit_list_equals_classification_table": "EXACT",
+    "zero_gradient_units_classified_by_field_content_and_exact_vev_scaling": "EXACT"
+  },
+  "checks": {
+    "T_Phi_only_1_over_50_not_perturbative_exact": true,
+    "a0_max_between_21_and_22_exact": true,
+    "alpha_H_22_per_unit_lambda_H_and_trace_independent_of_unit_vector": true,
+    "alpha_Sigma_equals_dimension_weighted_channel_sum": true,
+    "beta_H_Phi_equals_two_trace_Q_H_of_the_wedge_square": true,
+    "block_dimensions_and_congruence_factors_match_chart": true,
+    "blockwise_test_member_a0_below_half_exact": true,
+    "blockwise_test_member_inertia_447_39_0_kernel_T35_plus_doublets": true,
+    "characteristic_polynomial_factorises_with_pinned_cubic": true,
+    "chart_norms_at_q0_equal_1_2r0sq_2r0sq_2x0sq": true,
+    "committed_Phi_H_Sigma_self_entries_exceed_half_S_Phi17_below_exact": true,
+    "committed_Phi_Sigma_and_Phi_H_mixings_exceed_the_bound_exact": true,
+    "committed_equality_set_artifact_proved": true,
+    "committed_exact_hessian_artifact_certified_and_equal_to_fresh_witness_certificates": true,
+    "euler_degree_matches_table_for_every_unit_with_nonzero_gradient": true,
+    "euler_values_at_q0_sum_to_V0": true,
+    "every_other_pair_zero_S_and_Phi17_decouple": true,
+    "every_unit_computable_term_group_hessian_psd_at_q0_exact": true,
+    "every_unit_computable_term_group_stationary_at_q0_exact": true,
+    "gaussian_biquadratic_moment_identity_exact": true,
+    "gaussian_fourth_moment_identity_exact": true,
+    "h_self_identity_I1_plus_I54_equals_NH_squared_sympy": true,
+    "kappa_margin_scale_invariant_under_T_HS_scaling_sympy": true,
+    "largest_root_isolated_exactly_and_a0_enclosed": true,
+    "lee_quigg_thacker_calibration_a0_3_lambda_over_8_pi": true,
+    "member_V0_equals_s_V0_and_sum_of_scaled_minima": true,
+    "member_a0_below_half_exact": true,
+    "member_benchmark_inertia_447_39_0_kernel_T35_plus_doublets": true,
+    "member_gradient_exactly_zero": true,
+    "member_hessian_equals_s_times_witness_hessian_exact": true,
+    "member_is_whole_term_scaling_with_positive_factors": true,
+    "member_lambda_eff_equals_127_over_3200": true,
+    "member_per_block_necessary_conditions_hold_exact": true,
+    "member_raised_O06_inertia_451_35_0_kernel_T35": true,
+    "member_singlet_matrix_equals_s_times_witness": true,
+    "member_smallest_nonzero_eigenvalue_s_r0sq_over_96_multiplicity_14_both_variants": true,
+    "num_eigenvalues_consistent_with_exact_characteristic_polynomial": true,
+    "overall_1_over_40_not_perturbative_exact": true,
+    "phi_sigma_consistency_n_Sigma_beta_equals_n_Phi_beta_equals_12915": true,
+    "proper_subset_scaling_O27_only_moves_Sigma_radius_exact": true,
+    "proper_subset_scaling_O48_only_moves_Phi_radius_exact": true,
+    "quartic_unit_supports_within_declared_blocks_and_no_S_or_Phi17_portal": true,
+    "rational_matrix_Phi_H_Sigma_block_equals_pinned": true,
+    "research_MC_a0_max_within_3_sigma_of_exact": true,
+    "research_MC_matrix_within_3_sigma_of_exact": true,
+    "research_entries_labelled_with_provenance_and_pinned_digest": true,
+    "research_sigma_self_entry_equals_exact_16645_over_448": true,
+    "s_max_between_1_over_44_and_1_over_43_exact": true,
+    "scaled_map_and_V0_linear_identity_sympy_residual_zero": true,
+    "singlet_alphas_equal_pinned_exact_values": true,
+    "singlet_betas_equal_pinned_exact_values": true,
+    "sos_term_partition_equals_benchmark_coefficients_at_witness": true,
+    "sos_term_partition_sums_to_committed_map_symbolically": true,
+    "term_group_values_at_q0_equal_committed_minima": true,
+    "unit_coverage_of_committed_map_exact": true,
+    "unit_list_equals_classification_table": true,
+    "zero_gradient_units_classified_by_field_content_and_exact_vev_scaling": true
+  },
+  "committed_artifacts": {
+    "equality_set_artifact": {
+      "n_failed": 0,
+      "status": "SM_PATI_SALAM_EQUALITY_SET__UNIQUE_MODULO_SYMMETRY_EXACT__G3_OPEN"
+    },
+    "exact_hessian_artifact": {
+      "n_failed": 0,
+      "status": "SM_PATI_SALAM_EXACT_FULL_HESSIAN_RANK_447_NULLITY_39_CERTIFIED__G3_OPEN"
+    },
+    "fresh_witness_certificates_vs_committed": {
+      "benchmark": {
+        "denominator": [
+          2016000,
+          2016000
+        ],
+        "exact_nullity": [
+          39,
+          39
+        ],
+        "exact_rank": [
+          447,
+          447
+        ],
+        "gradient_exactly_zero": [
+          true,
+          true
+        ],
+        "kernel_equals_expected_span": [
+          true,
+          true
+        ],
+        "maximum_abs_numerator": [
+          16208640,
+          16208640
+        ],
+        "nonzero_entries": [
+          5358,
+          5358
+        ]
+      },
+      "raised_O06": {
+        "denominator": [
+          10080000,
+          10080000
+        ],
+        "exact_nullity": [
+          35,
+          35
+        ],
+        "exact_rank": [
+          451,
+          451
+        ],
+        "gradient_exactly_zero": [
+          true,
+          true
+        ],
+        "kernel_equals_expected_span": [
+          true,
+          true
+        ],
+        "maximum_abs_numerator": [
+          81043200,
+          81043200
+        ],
+        "nonzero_entries": [
+          5362,
+          5362
+        ]
+      }
+    }
+  },
+  "expected_n_checks": 57,
+  "failures": [],
+  "flags": {
+    "G3_witness_replaced": false,
+    "benchmark_chosen": false,
+    "committed_witness_singlet_channel_nonperturbative": true,
+    "float_evidence_consistent": true,
+    "float_evidence_run": true,
+    "gate_status_changed": false,
+    "non_singlet_channels_computed": false,
+    "overall_one_fiftieth_member_perturbative_in_computed_channel": true,
+    "phi_block_only_rescaling_insufficient": true,
+    "record_claimed": true,
+    "report_closes_g3_by_itself": false,
+    "report_closes_g6_by_itself": false,
+    "rescaling_lemma_whole_sos_terms_exact": true,
+    "s_max_bracketed_1_over_44_to_1_over_43": true,
+    "thresholds_recomputed": false,
+    "wired_into_gate_ledger": false
+  },
+  "float_evidence": {
+    "F1_O36_values": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "F1_max_abs_deviation": 5.55111512313e-16,
+    "F1_target_lambda_H_over_4": 0.5,
+    "F2_Q_at_p": 1.0,
+    "F2_T_Phi_at_p": -1.0,
+    "checks": {
+      "float_F1_compiler_O36_value_equals_lambda_H_N_H_squared_at_random_unit_H": true,
+      "float_F2_compiler_Q_at_p_equals_1_and_T_Phi_at_p_equals_minus_1": true
+    },
+    "failures": [],
+    "label": "FLOAT64 corroboration outside the exact check count (live compiler)",
+    "n_checks": 2,
+    "n_failed": 0,
+    "run": true,
+    "seed": 20260927,
+    "tolerance": 1e-12
+  },
+  "float_verdict": "FLOAT64 corroboration, outside the exact check count: 2/2 passed (live compiler: O36 = lambda_H N_H^2 at random unit H; Q(p) = 1 and T_Phi(p) = -1).",
+  "method": {
+    "H_self_quartic": {
+      "alpha_H_formula": "alpha_H = alpha(I_1) O36_B01 + alpha(I_54) O36_B02 = 22 lambda_H at O36_B01 = O36_B02 = lambda_H",
+      "alpha_by_channel": {
+        "I_1": "2/5",
+        "I_54": "108/5",
+        "N_H^2": "22"
+      },
+      "chart": "H_i = (x_i + i y_i)/sqrt(2), 20 canonical reals",
+      "definitions": "I_1 = |H.H|^2/10, I_54 = sum_ij |H_i H_j - delta_ij H.H/10|^2 (exact_h10_self_quartic_family_v20)",
+      "identity_I1_plus_I54_equals_NH_squared": true,
+      "per_channel": {
+        "I_1": {
+          "alpha": "2/5",
+          "hessian_trace_at_test_unit_vectors": [
+            "2/5",
+            "2/5"
+          ]
+        },
+        "I_54": {
+          "alpha": "108/5",
+          "hessian_trace_at_test_unit_vectors": [
+            "108/5",
+            "108/5"
+          ]
+        },
+        "N_H^2": {
+          "alpha": "22",
+          "hessian_trace_at_test_unit_vectors": [
+            "22",
+            "22"
+          ]
+        }
+      },
+      "test_unit_vectors": [
+        "x_0",
+        "(3/5) x_0 + (4/5) y_3"
+      ],
+      "trace_equals_alpha_at_test_unit_vectors": true
+    },
+    "V0_from_Euler_values": "-20661/20000",
+    "blocks": {
+      "H": {
+        "n_real": 20,
+        "q_trace_factor": "1/2",
+        "vev_chart_norm_squared": "0"
+      },
+      "Phi": {
+        "n_real": 210,
+        "q_trace_factor": "1",
+        "vev_chart_norm_squared": "1"
+      },
+      "Phi17": {
+        "n_real": 2,
+        "q_trace_factor": "1/2",
+        "vev_chart_norm_squared": "2"
+      },
+      "S": {
+        "n_real": 2,
+        "q_trace_factor": "1/2",
+        "vev_chart_norm_squared": "2/25"
+      },
+      "Sigma": {
+        "n_real": 252,
+        "q_trace_factor": "1/2",
+        "vev_chart_norm_squared": "2/25"
+      }
+    },
+    "chart": "canonical chart K = q^T q/2 (live_g2_canonical_486_field_chart_v20)",
+    "formulas": {
+      "matrix": "M_AA = -alpha_A, M_AB = -sqrt(n_B/n_A) beta_{A|B}; eig M = eig(-4 N^-1 E); a0 = eig/(16 pi)",
+      "mixed": "E[V_AB] = (1/4) Lap_A Lap_B V_AB = (n_B/2) beta_{A|B}, beta_{A|B} = Tr_A Hess_q V_AB(x_B unit)",
+      "pi_bounds": "333/106 < pi < 22/7: max|eig| < 1332/53 certifies a0 < 1/2, max|eig| > 176/7 certifies a0 > 1/2",
+      "self": "E[V4_A] = (1/8) Lap^2 V4_A = (n_A/4) alpha_A, alpha_A = Tr Hess_q V4_A(e)",
+      "unitarity": "|a0| <= 1/2"
+    },
+    "gaussian_moments": {
+      "mixed_all_equal": true,
+      "mixed_identity": "E[P_AB] = (1/4) Lap_A Lap_B P_AB for P quadratic in x_A and in x_B",
+      "mixed_monomials_checked": 9,
+      "self_all_equal": true,
+      "self_identity": "E[P4] = (1/8) Lap^2 P4 for x ~ N(0, I)",
+      "self_monomials_checked": 15
+    },
+    "irreducibility_premise": "Phi (210, real type), H (10 (x) C with U(1)_X), Sigma (126bar), S and Phi17 (charged singlets) are irreducible real representations of SO(10) x U(1)_X x U(1)_PQ, so Lap of an invariant quartic restricted to a block is c |x_A|^2 (standard representation theory; checked for H with sympy and for Sigma against the dimension-weighted channel sum)",
+    "label": "EXACT lemma",
+    "lee_quigg_thacker_calibration": {
+      "M_entry": "-6*lambda",
+      "a0": "3*lambda/(8*pi)",
+      "a0_equals_3_lambda_over_8_pi": true,
+      "expectation": "6*lambda",
+      "potential": "lambda (H^dag H)^2, H a complex doublet, H^dag H = |q|^2/2 (4 canonical reals)",
+      "reference": "the standard Lee-Quigg-Thacker value 3 lambda/(8 pi) (calibration; the paper is not re-read here)"
+    },
+    "regime": "tree level, s -> infinity: quartic contact terms only (trilinear exchange falls off as 1/s)",
+    "unit_classification": {
+      "O03 |Phi17|^2": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi17": "2"
+        },
+        "support_blocks": [
+          [
+            "Phi17",
+            "Phi17"
+          ]
+        ],
+        "table": [
+          2,
+          "quadratic",
+          [
+            "Phi17"
+          ]
+        ],
+        "value_at_q0": "1"
+      },
+      "O04 |S|^2": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "S": "2"
+        },
+        "support_blocks": [
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "table": [
+          2,
+          "quadratic",
+          [
+            "S"
+          ]
+        ],
+        "value_at_q0": "1/25"
+      },
+      "O05 N_Sigma": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Sigma": "252"
+        },
+        "support_blocks": [
+          [
+            "Sigma",
+            "Sigma"
+          ]
+        ],
+        "table": [
+          2,
+          "quadratic",
+          [
+            "Sigma"
+          ]
+        ],
+        "value_at_q0": "1/25"
+      },
+      "O06 N_H": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "H": 1,
+          "Hdag": 1
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "H",
+        "q_traces": {
+          "H": "20"
+        },
+        "support_blocks": [
+          [
+            "H",
+            "H"
+          ]
+        ],
+        "table": [
+          2,
+          "quadratic",
+          [
+            "H"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 0
+      },
+      "O07 |Phi|^2": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi": "420"
+        },
+        "support_blocks": [
+          [
+            "Phi",
+            "Phi"
+          ]
+        ],
+        "table": [
+          2,
+          "quadratic",
+          [
+            "Phi"
+          ]
+        ],
+        "value_at_q0": "1"
+      },
+      "O14 Sigma^dag M_Phi Sigma": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {},
+        "support_blocks": [
+          [
+            "Phi",
+            "Sigma"
+          ],
+          [
+            "Sigma",
+            "Phi"
+          ],
+          [
+            "Sigma",
+            "Sigma"
+          ]
+        ],
+        "table": [
+          3,
+          "cubic",
+          [
+            "Phi",
+            "Sigma"
+          ]
+        ],
+        "value_at_q0": "2/25"
+      },
+      "O20 |Phi17|^4": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi17": "8"
+        },
+        "support_blocks": [
+          [
+            "Phi17",
+            "Phi17"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Phi17"
+          ]
+        ],
+        "value_at_q0": "1"
+      },
+      "O23 |S|^4": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "S": "8/25"
+        },
+        "support_blocks": [
+          [
+            "S",
+            "S"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "S"
+          ]
+        ],
+        "value_at_q0": "1/625"
+      },
+      "O27 I_1050bar": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "Sigma": 2,
+          "Sigmadag": 2
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "Sigma",
+        "q_traces": {
+          "Sigma": "8/3"
+        },
+        "support_blocks": [
+          [
+            "Sigma",
+            "Sigma"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Sigma"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 2
+      },
+      "O27 I_2772bar": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Sigma": "176/25"
+        },
+        "support_blocks": [
+          [
+            "Sigma",
+            "Sigma"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Sigma"
+          ]
+        ],
+        "value_at_q0": "1/625"
+      },
+      "O27 I_4125": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "Sigma": 2,
+          "Sigmadag": 2
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "Sigma",
+        "q_traces": {
+          "Sigma": "220/21"
+        },
+        "support_blocks": [
+          [
+            "Sigma",
+            "Sigma"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Sigma"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 2
+      },
+      "O27 I_54": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "Sigma": 2,
+          "Sigmadag": 2
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "Sigma",
+        "q_traces": {
+          "Sigma": "24/175"
+        },
+        "support_blocks": [
+          [
+            "Sigma",
+            "Sigma"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Sigma"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 2
+      },
+      "O36 I_1(H) (quartic in H)": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "H": 2,
+          "Hdag": 2
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "H",
+        "q_traces": {},
+        "support_blocks": [],
+        "table": [
+          4,
+          "self_analytic",
+          [
+            "H"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 0
+      },
+      "O36 I_54(H) (quartic in H)": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "H": 2,
+          "Hdag": 2
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "H",
+        "q_traces": {},
+        "support_blocks": [],
+        "table": [
+          4,
+          "self_analytic",
+          [
+            "H"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 0
+      },
+      "O44 ||M_Phi Sigma||^2 + ||C_Phi Sigma||^2": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi": "164/5",
+          "Sigma": "492"
+        },
+        "support_blocks": [
+          [
+            "Phi",
+            "Phi"
+          ],
+          [
+            "Phi",
+            "Sigma"
+          ],
+          [
+            "Sigma",
+            "Phi"
+          ],
+          [
+            "Sigma",
+            "Sigma"
+          ]
+        ],
+        "table": [
+          4,
+          "mixed",
+          [
+            "Phi",
+            "Sigma"
+          ]
+        ],
+        "value_at_q0": "4/25"
+      },
+      "O46 (3/5) I_1 - I_54 = H^dag(|Phi|^2 - C(Phi))H": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "H": 1,
+          "Hdag": 1,
+          "Phi": 2
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "H",
+        "q_traces": {
+          "H": "12"
+        },
+        "support_blocks": [
+          [
+            "H",
+            "H"
+          ]
+        ],
+        "table": [
+          4,
+          "mixed",
+          [
+            "H",
+            "Phi"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 0
+      },
+      "O48 J0": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi": "848"
+        },
+        "support_blocks": [
+          [
+            "Phi",
+            "Phi"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Phi"
+          ]
+        ],
+        "value_at_q0": "1"
+      },
+      "O48 J2": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi": "14592"
+        },
+        "support_blocks": [
+          [
+            "Phi",
+            "Phi"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Phi"
+          ]
+        ],
+        "value_at_q0": "24"
+      },
+      "O48 J3": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi": "86016"
+        },
+        "support_blocks": [
+          [
+            "Phi",
+            "Phi"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Phi"
+          ]
+        ],
+        "value_at_q0": "192"
+      },
+      "O48 J4": {
+        "classification": "Euler: H_u u0 = (d - 1) grad_u",
+        "degree_certified": true,
+        "gradient_nonzero": true,
+        "q_traces": {
+          "Phi": "1929216"
+        },
+        "support_blocks": [
+          [
+            "Phi",
+            "Phi"
+          ]
+        ],
+        "table": [
+          4,
+          "self",
+          [
+            "Phi"
+          ]
+        ],
+        "value_at_q0": "3552"
+      },
+      "re::O12 2 Re[conj(H.H) conj(S)]": {
+        "classification": "zero gradient at q0: field content, block support and exact vev scaling H(2 r0) = 2^e H(r0)",
+        "degree_certified": true,
+        "field_content": {
+          "Hdag": 2,
+          "Sdag": 1
+        },
+        "gradient_nonzero": false,
+        "hessian_block": "H",
+        "q_traces": {},
+        "support_blocks": [
+          [
+            "H",
+            "H"
+          ]
+        ],
+        "table": [
+          3,
+          "cubic",
+          [
+            "H",
+            "S"
+          ]
+        ],
+        "value_at_q0": "0",
+        "vev_scaling_exponent": 1
+      }
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "module": "g3_sm_pati_salam_witness_unitarity_v20",
+  "n_checks": 57,
+  "n_failed": 0,
+  "negative_results": {
+    "T_Phi_only_1_over_50": {
+      "a0_max_float": 1.97929795251,
+      "corrects": "rescue synthesis PR-4 line 'Rescale the 210 block by 0.02 or less' (research record)",
+      "eigenvalues_float": [
+        -99.4903665098,
+        -41.7359643297,
+        -4.0,
+        -0.125,
+        38.3923129824
+      ],
+      "perturbative": false,
+      "reason": "the 210 self entry drops to 1084/50 but the H (44) and Sigma (16645/448) self entries and the Phi-Sigma (sqrt(6/5) 205/4) and Phi-H (sqrt(2/21) 126) mixings are untouched and each exceeds 8 pi"
+    },
+    "label": "EXACT (inertia of (c/4) N +- E); NUM (a0 floats)",
+    "overall_1_over_40": {
+      "a0_max_float": 0.541348506928,
+      "perturbative": false
+    },
+    "per_block_necessary_conditions": {
+      "T_HS": "22 lambda_H s_HS <= 8 pi, i.e. lambda_H <= 4 pi/11 at s_HS = 1",
+      "T_Phi": "s_TPhi <= 8 pi/1084 = 2 pi/271 (< 44/1897 with pi < 22/7)",
+      "W": "s_W <= 8 pi/(16645/448) = 3584 pi/16645",
+      "statement": "max|eig M| >= max_A |M_AA| (Rayleigh), so a0 <= 1/2 needs s_A alpha_A <= 8 pi for every block"
+    },
+    "s_max": {
+      "a0_at_bracket_float": [
+        0.492135006299,
+        0.503580006445
+      ],
+      "bracket": [
+        "1/44",
+        "1/43"
+      ],
+      "statement": "a0_max(s) = s a0_max(1); at s = 1/44 max|eig| < 1332/53 < 8 pi, at s = 1/43 max|eig| > 176/7 > 8 pi"
+    }
+  },
+  "overall_state": "COMMITTED_WITNESS_SINGLET_A0_21_65__OVERALL_ONE_FIFTIETH_MEMBER_A0_0_433__NO_GATE_CHANGE",
+  "perturbative_member": {
+    "E": [
+      [
+        "5691/5",
+        "63/5",
+        "2583/40",
+        "0",
+        "0"
+      ],
+      [
+        "63/5",
+        "22/5",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "2583/40",
+        "0",
+        "29961/640",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1/25",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "1/800"
+      ]
+    ],
+    "V0": "-20661/1000000",
+    "a0_bound": "max|eig| < 1332/53 < 8 pi (exact inertia of (1332/53) N/4 +- E), so a0_max < 1/2",
+    "a0_max_float": 0.433078805543,
+    "alpha": {
+      "H": "22/25",
+      "Phi": "542/25",
+      "Phi17": "1/400",
+      "S": "2/25",
+      "Sigma": "3329/4480"
+    },
+    "beta": {
+      "H|Phi": "6/25",
+      "Phi|H": "63/25",
+      "Phi|Sigma": "41/40",
+      "Sigma|Phi": "123/100"
+    },
+    "certificate_benchmark": {
+      "O06": "1/2500",
+      "O06_offset": "0",
+      "certificate_gap_flag": false,
+      "certificate_gap_target": "1/2400",
+      "coverage_ok": true,
+      "denominator": 100800000,
+      "exact_PSD": true,
+      "exact_nullity": 39,
+      "exact_rank": 447,
+      "gradient_exactly_zero": true,
+      "inertia_positive_zero_negative": "447/39/0",
+      "kernel_equals_expected_span": true,
+      "kernel_spanning_set": "35 symmetry tangents + 4 real light-doublet directions",
+      "strictly_positive_on_kernel_complement": true
+    },
+    "certificate_gap_flag_note": "hessian.exact_certificate tests the gap target r0^2/96 (raised: eps), valid only for the committed normalisation; it is re-checked here at s r0^2/96",
+    "certificate_raised_O06": {
+      "O06": "1/1250",
+      "O06_offset": "1/2500",
+      "certificate_gap_flag": false,
+      "certificate_gap_target": "1/2500",
+      "coverage_ok": true,
+      "denominator": 100800000,
+      "exact_PSD": true,
+      "exact_nullity": 35,
+      "exact_rank": 451,
+      "gradient_exactly_zero": true,
+      "inertia_positive_zero_negative": "451/35/0",
+      "kernel_equals_expected_span": true,
+      "kernel_spanning_set": "35 symmetry tangents",
+      "strictly_positive_on_kernel_complement": true
+    },
+    "coefficients": {
+      "lambda::O03_B01_singlet_polynomial": "-1/800",
+      "lambda::O04_B01_singlet_polynomial": "-1/625",
+      "lambda::O05_B01_126bar_norm": "49/5000",
+      "lambda::O06_B01_Hdag_H_norm": "1/2500",
+      "lambda::O07_B01_Phi_norm": "-1/25",
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-1/100",
+      "lambda::O20_B01_singlet_polynomial": "1/1600",
+      "lambda::O23_B01_singlet_polynomial": "1/50",
+      "lambda::O27_B01_126bar_self_projectors": "1/200",
+      "lambda::O27_B02_126bar_self_projectors": "1/200",
+      "lambda::O27_B03_126bar_self_projectors": "1/400",
+      "lambda::O27_B04_126bar_self_projectors": "17/6400",
+      "lambda::O36_B01_H_self_quartics": "1/25",
+      "lambda::O36_B02_H_self_quartics": "1/25",
+      "lambda::O44_B01_Phi2_Sigma_projectors": "41/400",
+      "lambda::O44_B02_Phi2_Sigma_projectors": "73/400",
+      "lambda::O44_B03_Phi2_Sigma_projectors": "29/400",
+      "lambda::O44_B04_Phi2_Sigma_projectors": "-7/400",
+      "lambda::O44_B05_Phi2_Sigma_projectors": "-11/400",
+      "lambda::O44_B06_Phi2_Sigma_projectors": "13/400",
+      "lambda::O46_B01_Phi2_HdagH_channels": "3/250",
+      "lambda::O46_B03_Phi2_HdagH_channels": "-1/50",
+      "lambda::O48_B01_Phi_self_quartics": "-21/10000",
+      "lambda::O48_B02_Phi_self_quartics": "2467/1440000",
+      "lambda::O48_B03_Phi_self_quartics": "-77/160000",
+      "lambda::O48_B04_Phi_self_quartics": "119/5760000",
+      "re::O12_B01_Hdag_Hdag_pair": "-1/1000"
+    },
+    "common_scale": "1/50",
+    "eigenvalues_float": [
+      -21.7689151027,
+      -0.860816705398,
+      -0.673348549049,
+      -0.08,
+      -0.0025
+    ],
+    "gap_recheck": {
+      "benchmark_negative_zero_positive": [
+        39,
+        14,
+        433
+      ],
+      "lambda": "1/120000",
+      "lambda_over_r0_squared": "1/4800",
+      "raised_O06_at_eps_r0sq_over_100_negative_zero_positive": [
+        85,
+        5,
+        396
+      ],
+      "raised_O06_negative_zero_positive": [
+        35,
+        14,
+        437
+      ]
+    },
+    "hessian": {
+      "denominator": 100800000,
+      "numerators_identical_to_witness": true,
+      "statement": "H_u(member) = s H_u(witness) entrywise (exact), so every Hessian eigenvalue scales by s",
+      "witness_denominator": 2016000
+    },
+    "label": "EXACT (certificates, identities, a0 bound); NUM (a0 float)",
+    "lambda_eff": "127/3200",
+    "raised_O06_note": "the raised variant adds eps = r0^2/100 to O06 after scaling (unscaled offset): its doublet at r0^2/100 lies above the scaled remnants at s r0^2/96 = r0^2/4800, which are the lightest massive states",
+    "term_scales": {
+      "A_square": "1/50",
+      "C_square": "1/50",
+      "T_HPhi": "1/50",
+      "T_HS": "1/50",
+      "T_Phi": "1/50",
+      "T_X": "1/50",
+      "W": "1/50"
+    }
+  },
+  "provenance": {
+    "research_files": {
+      "wfRESCUE/D-G6-certification/VERIFY_physics.md": {
+        "producer": "D-G6-certification physics verifier review",
+        "sha256": "7a979d737afaa8d75a2a0538f31e3ef45dd18b1b4982e1a78c1cd8ed49503242"
+      },
+      "wfRESCUE/D-G6-certification/s03_unitarity.json": {
+        "producer": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed"
+      },
+      "wfRESCUE/D-G6-certification/s03_unitarity.py": {
+        "producer": "research script producing s03_unitarity.json",
+        "sha256": "1abb418aef9e32a5dc099c4db518af71a54073504adec02dfb3cfa81ecb0196a"
+      },
+      "wfRESCUE/FINAL.md": {
+        "producer": "rescue-study final adjudication",
+        "sha256": "90f29e8ea8bc7a2b204cf65b515e8155ca0e03651572dbb65659537be1dd194d"
+      },
+      "wfRESCUE/SYNTHESIS.md": {
+        "producer": "rescue-study synthesis (route scorecard, PR-1..PR-5)",
+        "sha256": "a805b3272a2a2ec109181f3feb2a44b4c2e0f6d6029cd420ec28545045acf01b"
+      }
+    },
+    "research_note": "scratch research outputs of 2026-09-27 (wfRESCUE rescue study); not in the repository; hashes recorded for audit only; the source files are not in the repository and were hashed at generation time (the session scratch area that held them was wiped afterwards), so the sha256 values are a record of the inputs and are not re-verified at runtime",
+    "reuses": [
+      "g3_sm_pati_salam_exact_hessian_v20: exact_unit_matrices, unit_coefficients, combine, exact_hessian, exact_certificate (overrides keyword used read-only for the rescaled members), component_inertia, exact_inertia, h_wedge_data, phi_sigma_data, source_tensors",
+      "g3_sm_pati_salam_candidate_v20: candidate_coefficients, expanded_sos_coefficient_map, lower_bound_v0, exact_light_doublet_quartic, compiler_value (FLOAT64 corroboration only)"
+    ]
+  },
+  "record_claimed": true,
+  "rescaling_lemma": {
+    "C_square_value_at_q0": "t ||C_p Sigma0||^2 = 0 (C_p sigma_std = 0 exactly, hessian.phi_sigma_data)",
+    "V0_at_s_equal_1_residual": "0",
+    "V0_scaled": "-r0**4*s_T_HS - r0**4*s_W/8 - s_T_Phi - s_T_X*x0**4/32",
+    "kappa_margin": {
+      "committed": "4 r0^2 - kappa^2/2 (candidate.exact_hs_certificate) = (8 r0^2 - kappa^2)/2",
+      "scale_invariant": true,
+      "scaled": "4 lambda_H(s) lambda_S(s) r0^2 - kappa(s)^2 = s^2 (8 r0^2 - kappa^2)"
+    },
+    "label": "EXACT",
+    "linear_identity_residual": "0",
+    "parameters_compared": 27,
+    "proper_subset_counterexamples": {
+      "O27_only_x1/50": "grad V(q0) supported on Sigma with u0 . grad = -49/3125 != 0: the Sigma radius moves (exact)",
+      "O48_only_x1/50": "grad_Phi(q0) = (s - 1) grad Q(p) = (s - 1) 4 p != 0: |Phi| moves (exact)"
+    },
+    "statement": "For s_k > 0, V(s) = sum_k s_k T_k (parameter map c(s) = sum_k s_k c_k) satisfies V(s) - V0(s) = sum_k s_k (T_k - m_k) >= 0 with V0(s) = sum_k s_k m_k; {V(s) = V0(s)} = cap_k {T_k = m_k} = G.q0 (unchanged: every T_k attains m_k at q0); Hess V(s)(q0) = sum_k s_k Hess T_k(q0) with every Hess T_k(q0) PSD, so its kernel is cap_k ker Hess T_k(q0), independent of s: inertia 447/39/0 for every positive scaling",
+    "symbolic_partition_residuals_zero": true,
+    "terms": {
+      "A_square": {
+        "parameters": {
+          "lambda::O05_B01_126bar_norm": "1/2",
+          "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-1/2",
+          "lambda::O44_B01_Phi2_Sigma_projectors": "5",
+          "lambda::O44_B02_Phi2_Sigma_projectors": "9",
+          "lambda::O44_B03_Phi2_Sigma_projectors": "7/2",
+          "lambda::O44_B04_Phi2_Sigma_projectors": "-1",
+          "lambda::O44_B05_Phi2_Sigma_projectors": "-3/2",
+          "lambda::O44_B06_Phi2_Sigma_projectors": "3/2"
+        },
+        "text": "(1/8)||(M_Phi - 2)Sigma||^2 (O44 a-weights (40,72,28,-8,-12,12)/8, O14 = -1/2, O05 part 1/2); minimum 0"
+      },
+      "C_square": {
+        "parameters": {
+          "lambda::O44_B01_Phi2_Sigma_projectors": "1/8",
+          "lambda::O44_B02_Phi2_Sigma_projectors": "1/8",
+          "lambda::O44_B03_Phi2_Sigma_projectors": "1/8",
+          "lambda::O44_B04_Phi2_Sigma_projectors": "1/8",
+          "lambda::O44_B05_Phi2_Sigma_projectors": "1/8",
+          "lambda::O44_B06_Phi2_Sigma_projectors": "1/8"
+        },
+        "text": "(1/8)||C_Phi Sigma||^2 (O44 c-weights (1,...,1)/8); minimum 0"
+      },
+      "T_HPhi": {
+        "parameters": {
+          "lambda::O46_B01_Phi2_HdagH_channels": "3/5",
+          "lambda::O46_B03_Phi2_HdagH_channels": "-1"
+        },
+        "text": "||H wedge Phi||^2 (O46_B01 = 3/5, O46_B03 = -1); minimum 0"
+      },
+      "T_HS": {
+        "parameters": {
+          "lambda::O04_B01_singlet_polynomial": "-2/25",
+          "lambda::O06_B01_Hdag_H_norm": "1/50",
+          "lambda::O23_B01_singlet_polynomial": "1",
+          "lambda::O36_B01_H_self_quartics": "2",
+          "lambda::O36_B02_H_self_quartics": "2",
+          "re::O12_B01_Hdag_Hdag_pair": "-1/20"
+        },
+        "text": "2 N_H^2 + 2|k| r0 N_H + 2k Re(conj(H.H) conj(S)) + |S|^4 - 2 r0^2 |S|^2 (O36 x2, O06, re::O12, O04, O23); minimum -r0^4"
+      },
+      "T_Phi": {
+        "parameters": {
+          "lambda::O07_B01_Phi_norm": "-2",
+          "lambda::O48_B01_Phi_self_quartics": "-21/200",
+          "lambda::O48_B02_Phi_self_quartics": "2467/28800",
+          "lambda::O48_B03_Phi_self_quartics": "-77/3200",
+          "lambda::O48_B04_Phi_self_quartics": "119/115200"
+        },
+        "text": "-2|Phi|^2 + Q(Phi) (O07, O48 x4); minimum -1"
+      },
+      "T_X": {
+        "parameters": {
+          "lambda::O03_B01_singlet_polynomial": "-1/16",
+          "lambda::O20_B01_singlet_polynomial": "1/32"
+        },
+        "text": "(1/32)|Phi17|^4 - (x0^2/16)|Phi17|^2 (O03, O20); minimum -x0^4/32"
+      },
+      "W": {
+        "parameters": {
+          "lambda::O05_B01_126bar_norm": "-1/100",
+          "lambda::O27_B01_126bar_self_projectors": "1/4",
+          "lambda::O27_B02_126bar_self_projectors": "1/4",
+          "lambda::O27_B03_126bar_self_projectors": "1/8",
+          "lambda::O27_B04_126bar_self_projectors": "17/128"
+        },
+        "text": "(1/8)[W'(Sigma) - 2 r0^2 N_Sigma] (O27 weights w_q/8, O05 part -r0^2/4); minimum -r0^4/8"
+      }
+    },
+    "unit_computable_groups": {
+      "A_square+C_square": {
+        "expected_minimum": "0",
+        "gradient_exactly_zero_at_q0": true,
+        "hessian_inertia_positive_negative_zero": [
+          211,
+          0,
+          275
+        ],
+        "parameters": [
+          "lambda::O05_B01_126bar_norm",
+          "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic",
+          "lambda::O44_B01_Phi2_Sigma_projectors",
+          "lambda::O44_B02_Phi2_Sigma_projectors",
+          "lambda::O44_B03_Phi2_Sigma_projectors",
+          "lambda::O44_B04_Phi2_Sigma_projectors",
+          "lambda::O44_B05_Phi2_Sigma_projectors",
+          "lambda::O44_B06_Phi2_Sigma_projectors"
+        ],
+        "terms": [
+          "A_square",
+          "C_square"
+        ],
+        "value_at_q0": "0"
+      },
+      "T_HPhi": {
+        "expected_minimum": "0",
+        "gradient_exactly_zero_at_q0": true,
+        "hessian_inertia_positive_negative_zero": [
+          12,
+          0,
+          474
+        ],
+        "parameters": [
+          "lambda::O46_B01_Phi2_HdagH_channels",
+          "lambda::O46_B03_Phi2_HdagH_channels"
+        ],
+        "terms": [
+          "T_HPhi"
+        ],
+        "value_at_q0": "0"
+      },
+      "T_HS": {
+        "expected_minimum": "-1/625",
+        "gradient_exactly_zero_at_q0": true,
+        "hessian_inertia_positive_negative_zero": [
+          11,
+          0,
+          475
+        ],
+        "parameters": [
+          "lambda::O04_B01_singlet_polynomial",
+          "lambda::O06_B01_Hdag_H_norm",
+          "lambda::O23_B01_singlet_polynomial",
+          "lambda::O36_B01_H_self_quartics",
+          "lambda::O36_B02_H_self_quartics",
+          "re::O12_B01_Hdag_Hdag_pair"
+        ],
+        "terms": [
+          "T_HS"
+        ],
+        "value_at_q0": "-1/625"
+      },
+      "T_Phi": {
+        "expected_minimum": "-1",
+        "gradient_exactly_zero_at_q0": true,
+        "hessian_inertia_positive_negative_zero": [
+          186,
+          0,
+          300
+        ],
+        "parameters": [
+          "lambda::O07_B01_Phi_norm",
+          "lambda::O48_B01_Phi_self_quartics",
+          "lambda::O48_B02_Phi_self_quartics",
+          "lambda::O48_B03_Phi_self_quartics",
+          "lambda::O48_B04_Phi_self_quartics"
+        ],
+        "terms": [
+          "T_Phi"
+        ],
+        "value_at_q0": "-1"
+      },
+      "T_X": {
+        "expected_minimum": "-1/32",
+        "gradient_exactly_zero_at_q0": true,
+        "hessian_inertia_positive_negative_zero": [
+          1,
+          0,
+          485
+        ],
+        "parameters": [
+          "lambda::O03_B01_singlet_polynomial",
+          "lambda::O20_B01_singlet_polynomial"
+        ],
+        "terms": [
+          "T_X"
+        ],
+        "value_at_q0": "-1/32"
+      },
+      "W": {
+        "expected_minimum": "-1/5000",
+        "gradient_exactly_zero_at_q0": true,
+        "hessian_inertia_positive_negative_zero": [
+          231,
+          0,
+          255
+        ],
+        "parameters": [
+          "lambda::O05_B01_126bar_norm",
+          "lambda::O27_B01_126bar_self_projectors",
+          "lambda::O27_B02_126bar_self_projectors",
+          "lambda::O27_B03_126bar_self_projectors",
+          "lambda::O27_B04_126bar_self_projectors"
+        ],
+        "terms": [
+          "W"
+        ],
+        "value_at_q0": "-1/5000"
+      }
+    },
+    "why_A_and_C_are_grouped": "the exact Hessian module binds O44 as one unit with weights a_j + c_j; the lemma holds for independent s_A and s_C by the same argument (both are squares vanishing at q0), but only s_A = s_C members are evaluated exactly here"
+  },
+  "research_record": {
+    "checks": {
+      "research_MC_a0_max_within_3_sigma_of_exact": true,
+      "research_MC_matrix_within_3_sigma_of_exact": true,
+      "research_entries_labelled_with_provenance_and_pinned_digest": true,
+      "research_sigma_self_entry_equals_exact_16645_over_448": true
+    },
+    "consistency": {
+      "max_abs_deviation_in_sigma_units": 1.94312307904,
+      "sigmas_allowed": 3
+    },
+    "entries": {
+      "final_g6_row": {
+        "key": "section 3 table, G6",
+        "label": "RESEARCH_RECORD",
+        "meaning": "final adjudication, redesign-track G6 row (quoted with ASCII '~')",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/FINAL.md",
+        "source_json_sha256": "90f29e8ea8bc7a2b204cf65b515e8155ca0e03651572dbb65659537be1dd194d",
+        "source_script": "rescue-study final adjudication",
+        "value": "perturbative unitarity is unknown (the witness normalization had a0 ~ 21.6)"
+      },
+      "mc_a0_max": {
+        "key": "witness.a0_max",
+        "label": "RESEARCH_RECORD",
+        "meaning": "max |eig|/(16 pi) of the Monte Carlo matrix",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/s03_unitarity.json",
+        "source_json_sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed",
+        "source_script": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "value": 21.650366749
+      },
+      "mc_eigenvalues": {
+        "key": "witness.eigs",
+        "label": "RESEARCH_RECORD",
+        "meaning": "eigenvalues of the Monte Carlo matrix",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/s03_unitarity.json",
+        "source_json_sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed",
+        "source_script": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "value": [
+          -1088.26613002,
+          -42.7227780667,
+          -33.6463066463,
+          -3.8740142492,
+          -0.114474111346
+        ]
+      },
+      "mc_samples": {
+        "key": "witness.n_mc",
+        "label": "RESEARCH_RECORD",
+        "meaning": "Gaussian samples per block combination",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/s03_unitarity.json",
+        "source_json_sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed",
+        "source_script": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "value": 2000
+      },
+      "mc_singlet_matrix": {
+        "key": "witness.M_singlet",
+        "label": "RESEARCH_RECORD",
+        "meaning": "Monte Carlo singlet-channel matrix M (blocks Phi, H, Sigma, S, Phi17) of the committed witness",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/s03_unitarity.json",
+        "source_json_sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed",
+        "source_script": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "value": [
+          [
+            -1083.82355778,
+            -38.851495816,
+            -56.1320988115,
+            5.52524693998e-13,
+            3.5143868611e-13
+          ],
+          [
+            -38.851495816,
+            -43.6624081322,
+            0.0,
+            1.82563340366e-15,
+            6.33705441078e-15
+          ],
+          [
+            -56.1320988115,
+            0.0,
+            -37.1492488178,
+            -2.22737501327e-14,
+            -4.37908653253e-14
+          ],
+          [
+            5.52524693998e-13,
+            1.82563340366e-15,
+            -2.22737501327e-14,
+            -3.8740142492,
+            5.55111512313e-17
+          ],
+          [
+            3.5143868611e-13,
+            6.33705441078e-15,
+            -4.37908653253e-14,
+            5.55111512313e-17,
+            -0.114474111346
+          ]
+        ]
+      },
+      "mc_singlet_matrix_error": {
+        "key": "witness.M_err",
+        "label": "RESEARCH_RECORD",
+        "meaning": "one-sigma Monte Carlo errors of M",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/s03_unitarity.json",
+        "source_json_sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed",
+        "source_script": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "value": [
+          [
+            4.63661204322,
+            15.2249119805,
+            4.44038356034,
+            47.5201403349,
+            47.5114000011
+          ],
+          [
+            15.2249119805,
+            0.646626655226,
+            0.633920827862,
+            2.07323259074,
+            2.04562421649
+          ],
+          [
+            4.44038356034,
+            0.633920827862,
+            0.149560580436,
+            1.68671052445,
+            1.67905546183
+          ],
+          [
+            47.5201403349,
+            2.07323259074,
+            1.68671052445,
+            0.17760055323,
+            0.180376665957
+          ],
+          [
+            47.5114000011,
+            2.04562421649,
+            1.67905546183,
+            0.180376665957,
+            0.00541699533491
+          ]
+        ]
+      },
+      "sigma_self_M_SS_exact": {
+        "key": "witness.M_SS_exact",
+        "label": "RESEARCH_RECORD",
+        "meaning": "Sigma self entry M_SS",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/s03_unitarity.json",
+        "source_json_sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed",
+        "source_script": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "value": -37.1540178571
+      },
+      "sigma_self_a0_exact": {
+        "key": "witness.a0_sigma_exact",
+        "label": "RESEARCH_RECORD",
+        "meaning": "Sigma self channel a0 = sum_q dim_q w_q/(252 x 16 pi) at w = (2, 2, 1, 17/16)",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/s03_unitarity.json",
+        "source_json_sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed",
+        "source_script": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "value": 0.739155699711
+      },
+      "synthesis_pr4_rescale_line": {
+        "key": "section 4, PR-4",
+        "label": "RESEARCH_RECORD",
+        "meaning": "PR-4 plan line, corrected here: rescaling the 210 block (T_Phi) alone by 1/50 leaves a0_max = 1.98",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/SYNTHESIS.md",
+        "source_json_sha256": "a805b3272a2a2ec109181f3feb2a44b4c2e0f6d6029cd420ec28545045acf01b",
+        "source_script": "rescue-study synthesis (route scorecard, PR-1..PR-5)",
+        "value": "Rescale the 210 block by 0.02 or less."
+      },
+      "synthesis_witness_a0": {
+        "key": "section 1, route D verifier corrections",
+        "label": "RESEARCH_RECORD",
+        "meaning": "rescue-study statement (quoted with ASCII '~' for the approximate sign)",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/SYNTHESIS.md",
+        "source_json_sha256": "a805b3272a2a2ec109181f3feb2a44b4c2e0f6d6029cd420ec28545045acf01b",
+        "source_script": "rescue-study synthesis (route scorecard, PR-1..PR-5)",
+        "value": "The committed witness has a0 ~ 21.6 in the 210 singlet channel, so the benchmark itself is non-perturbative."
+      },
+      "verify_sigma_channel_formula": {
+        "key": "SO(10) Sigma-singlet channel",
+        "label": "RESEARCH_RECORD",
+        "meaning": "the physics verifier's derivation of the Sigma singlet entry (quoted)",
+        "reproducible_from_repository": false,
+        "source_json": "wfRESCUE/D-G6-certification/VERIFY_physics.md",
+        "source_json_sha256": "7a979d737afaa8d75a2a0538f31e3ef45dd18b1b4982e1a78c1cd8ed49503242",
+        "source_script": "D-G6-certification physics verifier review",
+        "value": "a0_Sigma = sum_q d_q w_q / (252 * 16 pi); the witness value is 0.739"
+      }
+    },
+    "kind": "RESEARCH_RECORD",
+    "problems": [],
+    "provenance_note": "scratch research outputs of 2026-09-27 (wfRESCUE rescue study); not in the repository; hashes recorded for audit only; the source files are not in the repository and were hashed at generation time (the session scratch area that held them was wiped afterwards), so the sha256 values are a record of the inputs and are not re-verified at runtime",
+    "research_files": {
+      "wfRESCUE/D-G6-certification/VERIFY_physics.md": {
+        "producer": "D-G6-certification physics verifier review",
+        "sha256": "7a979d737afaa8d75a2a0538f31e3ef45dd18b1b4982e1a78c1cd8ed49503242"
+      },
+      "wfRESCUE/D-G6-certification/s03_unitarity.json": {
+        "producer": "wfRESCUE/D-G6-certification/s03_unitarity.py",
+        "sha256": "3e0d46fdf37a49482ba0dcc7204cddac822a35709088d9e0047643c6d49e31ed"
+      },
+      "wfRESCUE/D-G6-certification/s03_unitarity.py": {
+        "producer": "research script producing s03_unitarity.json",
+        "sha256": "1abb418aef9e32a5dc099c4db518af71a54073504adec02dfb3cfa81ecb0196a"
+      },
+      "wfRESCUE/FINAL.md": {
+        "producer": "rescue-study final adjudication",
+        "sha256": "90f29e8ea8bc7a2b204cf65b515e8155ca0e03651572dbb65659537be1dd194d"
+      },
+      "wfRESCUE/SYNTHESIS.md": {
+        "producer": "rescue-study synthesis (route scorecard, PR-1..PR-5)",
+        "sha256": "a805b3272a2a2ec109181f3feb2a44b4c2e0f6d6029cd420ec28545045acf01b"
+      }
+    },
+    "research_files_digest": "e08d4824ea7aa8938f6731f4332e7007d7357bf30b318cce39ffff13f72b5558"
+  },
+  "runtime_seconds": 26.6426393986,
+  "scope": {
+    "claimed": [
+      "the exact tree-level s -> infinity singlet-channel matrix of the committed witness (five scalar blocks) and 21 < a0_max < 22 (a0_max = 21.654): the committed normalisation is non-perturbative",
+      "the rescaling lemma: whole SOS terms scaled by positive factors keep the SOS identity, the vacuum, the equality set and the Hessian inertia (exact per-term stationarity/PSD at q0; blockwise test point)",
+      "proper-subset scalings (O48 alone, O27 alone) break stationarity at q0 (exact)",
+      "the overall x1/50 member: H_u = H_u(witness)/50, 447/39/0 and 451/35/0, gap r0^2/4800, V0/50, lambda_eff = 127/3200 and a0_max = 0.4331 < 1/2 in the computed channel (exact rational bound)",
+      "s_max in (1/44, 1/43); x1/40 and the T_Phi-only x1/50 rescaling are not perturbative (exact)"
+    ],
+    "not_claimed": [
+      "non-singlet two-particle channels are not computed: |a0| <= 1/2 is shown in the singlet channel only (a necessary condition, not full perturbative unitarity)",
+      "finite-energy partial waves (trilinear exchange) and loop-level perturbativity or running are not computed",
+      "the D12 GUT thresholds, the G6 remnant RG no-go and the G7 running are not recomputed at the rescaled member; they assume the committed normalisation",
+      "no benchmark is chosen: the committed witness remains the G3 closing instance and this adds one perturbative family member; the blockwise point is a lemma test point",
+      "no gate status, ledger entry, internal candidate or manuscript text changes"
+    ],
+    "relies_on_committed": [
+      "G3_SM_PATI_SALAM_EQUALITY_SET_V20.json (proved status; the equality set of every whole-term member is the same intersection of term zero sets)",
+      "G3_SM_PATI_SALAM_EXACT_HESSIAN_V20.json (certified; equal to the fresh witness certificates)",
+      "g3_sm_pati_salam_exact_hessian_v20 binding units (bound to the live compiler in that module)",
+      "g3_sm_pati_salam_candidate_v20 SOS identity (term partition = expanded_sos_coefficient_map)"
+    ],
+    "status_neutrality": "status-neutral: not read by g1_g8_gate_ledger_v20, final_g3_acceptance_gate_v20 or any roadmap/readiness module; G1-G5 stay CLOSED, G6 OPEN, G7/G8 BLOCKED exactly as committed; the committed witness remains the G3 closing instance and the internal candidate is unchanged"
+  },
+  "status": "SM_PATI_SALAM_WITNESS_UNITARITY__COMMITTED_NONPERTURBATIVE__RESCALED_MEMBER_SINGLET_CHANNEL_PERTURBATIVE_EXACT__STATUS_NEUTRAL",
+  "theorem": "Tree level, s -> infinity, coupled SO(10) x U(1)_X x U(1)_PQ singlet two-particle channel of the five scalar blocks: at the committed G3 witness the singlet-channel matrix is exactly -4 N^-1 E with alpha = (1084, 44, 16645/448, 4, 1/8), beta_{Phi|Sigma} = 205/4, beta_{Sigma|Phi} = 123/2, beta_{H|Phi} = 12 and no other pair, so 21 < a0_max < 22 (a0_max = 21.654): the committed normalisation is non-perturbative.  Scaling every SOS term of the committed identity by its own positive factor keeps the SOS identity, the vacuum, the equality set and the Hessian inertia; the overall x1/50 member has H_u = H_u(witness)/50, inertia 447/39/0 (451/35/0 raised), smallest nonzero eigenvalue r0^2/4800, V0/50 and a0_max = 0.4331 < 1/2 in the computed channel; s_max lies in (1/44, 1/43); rescaling the 210 block alone by 1/50 leaves a0_max = 1.98.",
+  "verdict": "Exact (57 checks): at the committed G3 witness the tree-level singlet-channel matrix has a0_max = 21.654 (exactly between 21 and 22; the 210 singlet entry alone is 21.565), so the benchmark normalisation is non-perturbative.  Scaling whole SOS terms by positive factors keeps the certificate exactly; the overall x1/50 member keeps the vacuum, the SOS identity, the equality set and the inertia 447/39/0 (451/35/0 raised), with gap r0^2/4800, and has a0_max = 0.4331 < 1/2 in the computed channel.  s_max lies in (1/44, 1/43); rescaling only the 210 block by 1/50 leaves a0_max = 1.98.  Status-neutral: no gate changes, the committed witness remains the G3 closing instance, non-singlet channels are not computed and the D12 thresholds are not recomputed.",
+  "what_changes": {
+    "eps_windows": {
+      "member_doublet_is_lightest_for_eps_below": "1/120000",
+      "member_perturbative_box": "29999/2500",
+      "note": "eps enters quadratically (no effect on the s -> infinity amplitude); the |c| < 12 box of the committed eps family moves to 12 - 2 s |kappa| r0, and the eps doublet is the lightest massive state only below s r0^2/96",
+      "witness_doublet_is_lightest_for_eps_below": "1/2400",
+      "witness_perturbative_box": "599/50"
+    },
+    "gauge_boson_masses": "unchanged (vevs and gauge couplings only)",
+    "lambda_eff": {
+      "member": "127/3200",
+      "witness": "127/64"
+    },
+    "mass_squared": "every tree mass^2 (Hessian eigenvalue) scales by s = 1/50 (exact: H_u(s) = s H_u(1))",
+    "masses_factor_float": 0.141421356237,
+    "not_recomputed": "the D12 GUT thresholds, the G6 remnant RG no-go numbers and the G7 research running assume the committed normalisation and are not recomputed at the rescaled member",
+    "vevs": "unchanged: the same vacuum q0 = (p, 0, r0 sigma_std, r0, x0) (exact zero gradient)"
+  },
+  "witness": {
+    "E": [
+      [
+        "56910",
+        "630",
+        "12915/4",
+        "0",
+        "0"
+      ],
+      [
+        "630",
+        "220",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "12915/4",
+        "0",
+        "149805/64",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "2",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "1/16"
+      ]
+    ],
+    "M_symmetric_float": [
+      [
+        -1084.0,
+        -38.8844441904,
+        -56.1415621443,
+        0.0,
+        0.0
+      ],
+      [
+        -38.8844441904,
+        -44.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -56.1415621443,
+        0.0,
+        -37.1540178571,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        -4.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.125
+      ]
+    ],
+    "a0_max_between": "21 < a0_max < 22: (16 x 21 x 22/7) N/4 +- E is not positive semidefinite for one sign and (16 x 22 x 333/106) N/4 +- E is positive definite for both signs (exact inertia)",
+    "a0_max_exact_enclosure": [
+      "344262331/15904768",
+      "2929319911/135275256"
+    ],
+    "a0_max_exact_enclosure_float": [
+      21.6452280851,
+      21.6545138972
+    ],
+    "a0_max_float": 21.6539402771,
+    "alpha": {
+      "H": "44",
+      "Phi": "1084",
+      "Phi17": "1/8",
+      "S": "4",
+      "Sigma": "16645/448"
+    },
+    "alpha_Sigma_closed_form": "8 t sum_q w_q dim_q / 252 with dims (54, 1050, 2772, 4125), w = (2, 2, 1, 17/16): 16645/448",
+    "beta": {
+      "H|Phi": "12",
+      "Phi|H": "126",
+      "Phi|Sigma": "205/4",
+      "Sigma|Phi": "123/2"
+    },
+    "beta_H_Phi_closed_form": "2 Tr Q_H(p), Q_H = diag(1^6, 0^4) (hessian.h_wedge_data): 12",
+    "beta_measured_at_q0": {
+      "H|Phi": "12",
+      "Phi|Sigma": "205/4",
+      "Sigma|Phi": "123/2"
+    },
+    "characteristic_polynomial": {
+      "cubic_Phi_H_Sigma": "lam**3 + 521989*lam**2/448 + 594593*lam/7 + 88325365/56",
+      "decoupled_roots": {
+        "Phi17": "-1/8",
+        "S": "-4"
+      },
+      "full": "(lam + 4)*(8*lam + 1)*(448*lam**3 + 521989*lam**2 + 38053952*lam + 706602920)/3584"
+    },
+    "eigenvalues_float": [
+      -1088.44575513,
+      -43.0408352699,
+      -33.6674274524,
+      -4.0,
+      -0.125
+    ],
+    "label": "EXACT (matrix, characteristic polynomial, enclosures); NUM (float eigenvalues, a0 values)",
+    "largest_root_isolating_interval": [
+      "-55270187/50779",
+      "-49180333/45184"
+    ],
+    "max_abs_eigenvalue_interval": [
+      "49180333/45184",
+      "55270187/50779"
+    ],
+    "minus_4_Ninv_E": [
+      [
+        "-1084",
+        "-12",
+        "-123/2",
+        "0",
+        "0"
+      ],
+      [
+        "-126",
+        "-44",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "-205/4",
+        "0",
+        "-16645/448",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "-4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "-1/8"
+      ]
+    ],
+    "mixing_entries_squared": {
+      "Phi-H": "1512",
+      "Phi-Sigma": "25215/8"
+    },
+    "nonperturbative": "every self entry of Phi, H and Sigma and both nonzero mixings exceed |a0| = 1/2 by themselves",
+    "per_block_labels": {
+      "H": "10_H singlet",
+      "Phi": "210 singlet channel",
+      "Phi17": "Phi17",
+      "S": "S",
+      "Sigma": "126bar singlet"
+    },
+    "per_block_self_a0": {
+      "H": 0.875352187005,
+      "Phi": 21.565494789,
+      "Phi17": 0.00248679598581,
+      "S": 0.0795774715459,
+      "Sigma": 0.739155699711
+    },
+    "phi_sigma_consistency": {
+      "n_Phi_beta_Sigma_Phi": "12915",
+      "n_Sigma_beta_Phi_Sigma": "12915"
+    }
+  }
+}

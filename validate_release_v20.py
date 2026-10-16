@@ -172,6 +172,26 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_g3_sm_pati_salam_decoupled_singlet_family_v20.py",
     "G3_SM_PATI_SALAM_DECOUPLED_SINGLET_FAMILY_V20.json",
     "G3_SM_PATI_SALAM_DECOUPLED_SINGLET_FAMILY_V20.md",
+    # G8 structural obstruction of the SOS-certified witness family: status-neutral rescue-study record, no gate change.
+    "g8_sm_pati_salam_structural_obstruction_v20.py",
+    "test_g8_sm_pati_salam_structural_obstruction_v20.py",
+    "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json",
+    "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.md",
+    # G7 evidence on the decoupled-singlet benchmark BM-DA1: status-neutral rescue-study record, no gate change.
+    "g7_decoupled_singlet_benchmark_evidence_v20.py",
+    "test_g7_decoupled_singlet_benchmark_evidence_v20.py",
+    "G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json",
+    "G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.md",
+    # O36 lambda_H Higgs-quartic member of the G3 witness family: status-neutral rescue-study record, no gate change.
+    "g3_sm_pati_salam_higgs_quartic_member_v20.py",
+    "test_g3_sm_pati_salam_higgs_quartic_member_v20.py",
+    "G3_SM_PATI_SALAM_HIGGS_QUARTIC_MEMBER_V20.json",
+    "G3_SM_PATI_SALAM_HIGGS_QUARTIC_MEMBER_V20.md",
+    # Witness perturbative-unitarity normalisation: status-neutral rescue-study record, no gate change.
+    "g3_sm_pati_salam_witness_unitarity_v20.py",
+    "test_g3_sm_pati_salam_witness_unitarity_v20.py",
+    "G3_SM_PATI_SALAM_WITNESS_UNITARITY_V20.json",
+    "G3_SM_PATI_SALAM_WITNESS_UNITARITY_V20.md",
 )
 
 
