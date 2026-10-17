@@ -35,12 +35,22 @@ dependencies G3, G4 and G5 are CLOSED) but never closes here: the exact G6
 tree spectrum (tree level at mu = M_GUT), the G6 remnant RG no-go on the SOS
 witness family and the G8 Route C flavour no-go are cited as evidence only and
 never change a status.  G7 and G8 stay BLOCKED.
+
+The committed G1 truncation scope (g1_contract_truncation_scope_v20), the G7
+decoupled-singlet benchmark evidence and the G8 structural obstruction are
+read from their committed JSONs only (never imported) and cited as scope or
+evidence; none of them changes a status.  The separate ``program_verdict``
+field records user decision U1 (accept the no-go and re-scope the program
+claim: NOT VIABLE as a complete description of nature under the declared
+standards, method-limited at G3 x G8); it is bound fail-closed to those
+committed certificates and never changes a gate, a check or the ledger status.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import math
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Mapping
@@ -241,12 +251,384 @@ G8_EVIDENCE_RECORDED_ITEM = (
     "research); the 45 scalar portal, vectorlike matter with a reoriented 210 "
     "and the off-witness ERT channel also split d from e but sit off the "
     "certified orientation (research-recorded in "
-    "g8_sm_pati_salam_structural_obstruction_v20)) need a user decision"
+    "g8_sm_pati_salam_structural_obstruction_v20)) are not pursued (user "
+    "decision U1: the no-go is accepted and the program claim re-scoped; see "
+    "program_verdict)"
 )
 G8_EVIDENCE_UNAVAILABLE_ITEM = (
     "flavour evidence unavailable: G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json is "
     "missing or not recorded (fail closed; the G8 status does not depend on it)"
 )
+G8_FLAVOUR_PULL_THRESHOLD_SIGMA = 5.0
+G8_FLAVOUR_SCALE_BAND_GEV = [1e9, 2e16]
+G8_FLAVOUR_PULL_FIELDS = (
+    "data.minimum_load_bearing_pull_raw_sigma",
+    "data.minimum_load_bearing_pull_conservative_sigma",
+)
+G8_FLAVOUR_VERDICT_FRAGMENTS = (
+    "CKM = 1, m_t = m_b, m_d = m_e",
+    "tan-beta-independent tests",
+    "1e9-2e16 GeV",
+)
+
+# Decision U5: the G1 truncation scope of the attested model contract.  The
+# module g1_contract_truncation_scope_v20 is never imported here: its committed
+# JSON is read fail-closed and cited as scope only (it never changes G1).
+G1_TRUNCATION_JSON = ROOT / "G1_CONTRACT_TRUNCATION_SCOPE_V20.json"
+G1_TRUNCATION_SOURCE = "g1_contract_truncation_scope_v20"
+G1_TRUNCATION_STATUS = (
+    "G1_CONTRACT_TRUNCATION_SCOPE__26_ALLOWED_10_DECLARED_16_UNDECLARED__EXACT__NO_GATE_CHANGE"
+)
+G1_TRUNCATION_N_CHECKS = 37
+# Mirror g1_contract_truncation_scope_v20.NEVER_TRUE_FLAGS / TRUE_FLAGS (pinned
+# equal by the ledger test).
+G1_TRUNCATION_NEVER_TRUE_FLAGS = (
+    "G1_reopened",
+    "gate_status_changed",
+    "couplings_added_to_contract",
+    "radiative_generation_computed",
+    "one_loop_generation_claimed_exact",
+    "rg_closure_modulo_field_redefinitions_analysed",
+    "falsifies_so10_contract",
+    "changes_g8_flavour_conclusion",
+)
+G1_TRUNCATION_TRUE_FLAGS = (
+    "declared_lagrangian_is_a_truncation_exact",
+    "undeclared_couplings_unprotected_by_any_U1_exact",
+    "undeclared_couplings_unprotected_by_any_multiplet_diagonal_phase_symmetry_exact",
+    "all_allowed_couplings_PQ_neutral_exact",
+    "F_P_R_charge_degenerate_exact",
+    "g8_dimension4_analysis_covers_all_allowed_couplings",
+    "truncation_not_removable_by_field_redefinitions_exact",
+    "evidence_only",
+)
+G1_TRUNCATION_UNDECLARED = (
+    "Delta126bar.F.P",
+    "Delta126bar.F.R",
+    "Delta126bar.P.P",
+    "Delta126bar.P.R",
+    "Delta126bar.R.R",
+    "H10.P.P",
+    "H10.P.R",
+    "H10.R.R",
+    "Phi17.F.Rbar",
+    "Phi17.P.Rbar",
+    "conj[Delta126bar].Pbar.Rbar",
+    "conj[H10].Pbar.Rbar",
+    "conj[Phi17].F.Pbar",
+    "conj[Phi17].R.Pbar",
+    "conj[S].P.Qbar",
+    "conj[S].R.Qbar",
+)
+G1_TRUNCATION_F_MASS_MIXINGS = ("Phi17.F.Rbar", "conj[Phi17].F.Pbar")
+# Exact dimension count of the certificate's census.field_redefinitions
+# record: the 16 omitted couplings span 48 real generation-expanded
+# dimensions, more than the 25 of U(5) on the five X = 1 sixteens, so no
+# field basis removes the truncation (the 16 labels refer to the model
+# file's field basis).
+G1_TRUNCATION_REDEFINITION_DIMENSIONS = {
+    "undeclared_real_dimension": 48,
+    "mixing_redefinition_real_dimension": 25,
+    "declared_orbit_real_dimension_bound": 125,
+    "all_couplings_real_dimension": 148,
+}
+G1_TRUNCATION_KERNEL_DIMENSIONS = {
+    "declared_LagHC": 3,
+    "declared_LagHC_plus_G1_scalar_links": 3,
+    "allowed_26_plus_kappaH": 3,
+    "allowed_26_plus_kappaH_plus_G1_scalar_links": 3,
+    "allowed_26_without_scalar_links": 4,
+}
+G1_TRUNCATION_ROLE = (
+    "scope only: states that G1 and the attested model contract attest a "
+    "truncation; never changes the G1 status"
+)
+G1_TRUNCATION_CLOSED_SCOPE = (
+    "attestation of a truncation: the declared Lagrangian keeps 10 of the 26 renormalizable fermion bilinears "
+    "allowed by SO(10) x U(1)_X x Z17 (labels in the model file's field basis; no field redefinition removes the "
+    "truncation); the 16 omitted couplings are PQ neutral and unprotected by any U(1) or multiplet-diagonal phase "
+    "symmetry of the declared Lagrangian (g1_contract_truncation_scope_v20)"
+)
+G1_TRUNCATION_UNAVAILABLE_SCOPE = (
+    "truncation scope unavailable: G1_CONTRACT_TRUNCATION_SCOPE_V20.json is missing or not recorded "
+    "(fail closed; the G1 status does not depend on it)"
+)
+G1_TRUNCATION_SCOPE_TEXT = (
+    "G1 and the SARAH-attested model contract attest a truncation (g1_contract_truncation_scope_v20, "
+    "G1_CONTRACT_TRUNCATION_SCOPE_V20.json): the declared Lagrangian keeps 10 of the 26 renormalizable fermion "
+    "bilinears allowed by SO(10) x U(1)_X x Z17 (Z17 = X mod 17 for every field, so Z17 adds no condition). The 16 "
+    "omitted couplings in the model file's field basis (Delta126bar.F.P, Delta126bar.F.R, Delta126bar.P.P, Delta126bar.P.R, Delta126bar.R.R, "
+    "H10.P.P, H10.P.R, H10.R.R, Phi17.F.Rbar, Phi17.P.Rbar, conj[Delta126bar].Pbar.Rbar, conj[H10].Pbar.Rbar, "
+    "conj[Phi17].F.Pbar, conj[Phi17].R.Pbar, conj[S].P.Qbar, conj[S].R.Qbar) each involve P, R, Pbar, Rbar or Qbar "
+    "of the vectorlike sector (Phi17.F.Rbar and conj[Phi17].F.Pbar are F-Rbar and F-Pbar mass mixings) and are PQ "
+    "neutral. EXACT: the declared terms and all 26 couplings plus the scalar links have the same 3-dimensional U(1) "
+    "kernel (X, PQ, spectator number), F, P and R carry identical charges, and each omitted charge vector is an "
+    "integer combination of declared ones, so no U(1) and no multiplet-diagonal phase symmetry of the declared "
+    "Lagrangian protects the truncation. EXACT: the 16-label list depends on the field basis because F, P and R are "
+    "charge-degenerate, but no field basis removes the truncation: the omitted couplings span 48 real "
+    "generation-expanded dimensions, more than the 25 of U(5) on the five X = 1 sixteens, the only linear, "
+    "kinetic-term-preserving field redefinition that mixes distinct multiplets. ARGUMENT, not computed: the truncation is therefore not expected to be "
+    "stable under renormalisation. At the dimension-4 level the committed G8 analysis already includes all 26 "
+    "couplings. The couplings are not added (that would be a new contract)."
+)
+
+# G7 decoupled-singlet benchmark evidence (PR #206).  The module is never
+# imported: its committed JSON is read fail-closed and cited as evidence only.
+G7_BENCHMARK_JSON = ROOT / "G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json"
+G7_BENCHMARK_SOURCE = "g7_decoupled_singlet_benchmark_evidence_v20"
+G7_BENCHMARK_STATUS = (
+    "G7_DECOUPLED_SINGLET_BENCHMARK_BM_DA1__TWO_LOOP_PASS__THREE_LOOP_WITHIN_TWO_CODE_ROOT_"
+    "UNCERTAINTY__RG_IMPROVED_QUALITY_FAIL_CONDITIONAL__G7_BLOCKED"
+)
+G7_BENCHMARK_N_CHECKS = 46
+# Mirrors g7_decoupled_singlet_benchmark_evidence_v20.NEVER_TRUE_FLAGS (pinned
+# equal by the ledger test).
+G7_BENCHMARK_NEVER_TRUE_FLAGS = (
+    "G7_closed",
+    "gate_status_changed",
+    "wired_into_gate_ledger",
+    "report_closes_G7_by_itself",
+    "benchmark_adopted",
+    "three_loop_includes_yukawa_quartic",
+    "planck_kinetic_term_computed",
+    "G6_closed_assumed_true",
+)
+G7_BENCHMARK_TRUE_FLAGS = (
+    "bm_da1_two_loop_pass_both_roots",
+    "bm_da1_three_loop_fail_on_U1_root",
+    "bm_da1_three_loop_marginal_pass_on_U2_root",
+    "bm_da1_rg_improved_quality_fail_conditional",
+    "bm_e_three_loop_fail_both_roots",
+    "evidence_recorded",
+    "integrators_agree",
+)
+G7_EVIDENCE_ROLE = (
+    "evidence only: cited in the G7 open scope, never changes the G7 status"
+)
+G7_BENCHMARK_RECORDED_ITEM = (
+    "decoupled-singlet benchmark evidence (does not close G7): g7_decoupled_singlet_benchmark_evidence_v20 "
+    "(G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json) records that BM-DA1 (v_S decoupled from v_R) passes the "
+    "reduced-Planck Landau criterion at two loops on both two-code roots, that its three-loop (gauge-only) outcome "
+    "lies within the two-code root uncertainty (fail on the U1 root, marginal pass on the U2 root), and that the "
+    "RG-improved remnant masses give a conditional axion-quality failure; with the U1 root held fixed, a 120_H, a "
+    "second 126bar and vectorlike pairs (also with a 45_H) fail the criterion already at two loops, while the other "
+    "analysed flavour-capable additions (10_F, a real or complex 45_H) pass at two loops and fail at three loops, as "
+    "does the contract content itself on that root (the three-loop verdict is convention- and threshold-limited, and "
+    "the omitted Yukawa terms are not conservative for a fail statement); the running is gauge + matter only, the "
+    "GUT thresholds are uncontrolled and G6 is not closed, so G7 stays BLOCKED"
+)
+# The decision-D-E coupled-singlet two-loop non-unification: research runs of
+# three codes, reproduced by the committed gauge-only spectator probe of
+# two_loop_thresholds_v20 (its JSON is read fail-closed; the module is never
+# imported).  Evidence only: it never changes the G7 status.
+TWO_LOOP_PROBE_JSON = ROOT / "two_loop_thresholds_v20.json"
+TWO_LOOP_PROBE_SOURCE = "two_loop_thresholds_v20"
+TWO_LOOP_PROBE_FIELD = "spectator_two_loop_probe"
+TWO_LOOP_PROBE_REPORT_STATUS = "two-loop threshold RG report"
+TWO_LOOP_PROBE_CONTENT = "anchor content + 5 x (16+16bar) at M_s = M_I"
+TWO_LOOP_PROBE_SCAN_LOG10_M_I = [8.0, 14.5]
+TWO_LOOP_PROBE_LABEL = (
+    "NUM (gauge-only two-loop Machacek-Vaughn running; Yukawa terms and threshold matching omitted)"
+)
+TWO_LOOP_PROBE_ROLE = (
+    "evidence only: reproduces the decision-D-E coupled-singlet two-loop non-unification; never changes "
+    "the G7 status"
+)
+G7_COUPLED_SINGLET_PROBE_RECORDED_ITEM = (
+    "coupled-singlet two-loop evidence (does not close G7): for the declared benchmark (5 x (16 + 16bar) "
+    "spectators at M_s = M_I, v_S = M_I) three independent two-loop RG codes find no perturbative gauge "
+    "unification (research runs recorded with decision D-E); the committed gauge-only Machacek-Vaughn spectator "
+    "probe of two_loop_thresholds_v20 (two_loop_thresholds_v20.json, spectator_two_loop_probe) reproduces it: no "
+    "perturbative root for log10(M_I/GeV) in [8, 14.5] (Yukawa terms and threshold matching omitted)"
+)
+G7_COUPLED_SINGLET_PROBE_UNAVAILABLE_ITEM = (
+    "coupled-singlet two-loop evidence: for the declared benchmark three independent two-loop RG codes find no "
+    "perturbative gauge unification (research runs recorded with decision D-E, not a committed certificate); the "
+    "committed spectator probe (two_loop_thresholds_v20.json) is missing or not recorded (fail closed; the G7 "
+    "status does not depend on it)"
+)
+G7_BENCHMARK_UNAVAILABLE_ITEM = (
+    "decoupled-singlet benchmark evidence unavailable: G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json is missing "
+    "or not recorded (fail closed; the G7 status does not depend on it)"
+)
+
+# G8 structural obstruction (PR #206).  The module is never imported: its
+# committed JSON is read fail-closed and cited as evidence only.
+G8_STRUCTURAL_JSON = ROOT / "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json"
+G8_STRUCTURAL_SOURCE = "g8_sm_pati_salam_structural_obstruction_v20"
+G8_STRUCTURAL_STATUS = (
+    "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION__SOS_CERTIFIED_FAMILY_FLAVOUR_DEAD__RECORDED__NO_GATE_CHANGE"
+)
+G8_STRUCTURAL_OVERALL_STATE = (
+    "CERTIFIED_WITNESS_FAMILY_FLAVOUR_DEAD_EXACT__OFF_ORIENTATION_SPLITTERS_RESEARCH_RECORDED"
+)
+G8_STRUCTURAL_N_CHECKS = 78
+# Mirrors g8_sm_pati_salam_structural_obstruction_v20.NEVER_TRUE_FLAGS (pinned
+# equal by the ledger test).
+G8_STRUCTURAL_NEVER_TRUE_FLAGS = (
+    "G8_closed",
+    "gate_status_changed",
+    "wired_into_gate_ledger",
+    "report_closes_G8_by_itself",
+    "falsifies_so10_contract",
+    "falsifies_G3_G5_certificates",
+    "route_B_reduced_to_120H_among_all_extensions",
+    "loop_level_flavour_analysed",
+    "off_orientation_splitters_rederived_here",
+)
+G8_STRUCTURAL_TRUE_FLAGS = (
+    "certified_family_flavour_dead_exact",
+    "L1_portal_robust",
+    "evidence_only",
+    "off_orientation_splitters_research_recorded",
+)
+G8_STRUCTURAL_PHI_SECTOR_NOT_CLAIMED = (
+    "the Phi-sector-only degree-2 SOS no-go for G3221/G3211 orientations is a "
+    "research NUM statement, not proved here"
+)
+G8_STRUCTURAL_LABEL = (
+    "EXACT at the dimension-4 level on the degree-2-SOS-certified witness family; "
+    "off-orientation splitters research-recorded"
+)
+G8_STRUCTURAL_RECORDED_ITEM = (
+    "structural evidence (does not close G8): g8_sm_pati_salam_structural_obstruction_v20 "
+    "(G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json) proves exactly that every vacuum of the "
+    "degree-2-SOS-certified witness family (the committed witness, the r_S family and the O36 lambda_H member) is "
+    "flavour-dead at the dimension-4 level (M_e = phase x M_d^T, CKM = 1 at tan beta = 1), for any H-linear portal, "
+    "vectorlike 16s on contract scalars, P/Q/R promotion and a 120_H added as SOS squares with a GUT-scale "
+    "(15,2,2)_120, up to an O((v_R/M15)^2) = O(r0^2) (15,2,2)_120 admixture; the in-contract H-linear-portal down-type sources require leaving the certified orientation "
+    "(exact, dimension 4); a tuned-light (15,2,2)_120 extension is excluded only numerically (research) and the "
+    "unanalysed extensions remain open; no certification method has been demonstrated for the flavour-capable "
+    "orientations (the degree-2 SOS Phi-sector no-go at the G3221/G3211 orientations is research-recorded, not "
+    "proved); the SO(10) contract and the G3-G5 certificates are not falsified"
+)
+G8_STRUCTURAL_UNAVAILABLE_ITEM = (
+    "structural evidence unavailable: G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json is missing or not recorded "
+    "(fail closed; the G8 status does not depend on it)"
+)
+
+# Decision U1: the program verdict.  A separate field: it never changes a
+# gate status, a check or the ledger status, and is recorded only while every
+# bound certificate is recorded and the gate frontier is the expected one.
+PROGRAM_VERDICT_DECISION = (
+    "U1 (user decision after the 2026-09-27 rescue study): accept the no-go and re-scope the "
+    "project claim; gate statuses do not change"
+)
+PROGRAM_VERDICT_CODE = "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8"
+PROGRAM_VERDICT_CODE_UNAVAILABLE = "PROGRAM_VERDICT_NOT_RECORDED__EVIDENCE_INCOMPLETE"
+PROGRAM_VERDICT_HEADLINE = (
+    "NOT VIABLE as a complete description of nature under the declared standards; the "
+    "no-go is method-limited at G3 x G8"
+)
+PROGRAM_VERDICT_EXPECTED_STATUSES = {
+    "G1": "CLOSED",
+    "G2": "CLOSED",
+    "G3": "CLOSED",
+    "G4": "CLOSED",
+    "G5": "CLOSED",
+    "G6": "OPEN",
+    "G7": "BLOCKED",
+    "G8": "BLOCKED",
+}
+PROGRAM_VERDICT_METHOD_LIMITED_AT = ("G3", "G8")
+PROGRAM_VERDICT_ROLE = (
+    "program verdict only: separate from the gate statuses (G1-G5 CLOSED, G6 OPEN, G7 BLOCKED, "
+    "G8 BLOCKED stay as computed); it never changes a gate, a check or the ledger status"
+)
+PROGRAM_VERDICT_TEXT = (
+    "Program verdict (user decision U1): SO10Z17AxionV20 is a certified tree-level vacuum with exact no-go lemmas "
+    "and numerical no-go evidence, and it is NOT VIABLE as a complete description of nature under the declared "
+    "standards (exact G3 vacuum certification and the G1-G8 gate criteria of G1_G8_GATE_LEDGER_V20); the no-go is "
+    "method-limited at G3 x G8. EXACT: every vacuum of the degree-2-SOS-certified witness "
+    "family is flavour-dead at the dimension-4 level (M_e = phase x M_d^T, CKM = 1 at tan beta = 1; "
+    "g8_sm_pati_salam_structural_obstruction_v20). EXACT relations, NUM data comparison: on the witness branch "
+    "the renormalizable Yukawas give CKM = 1, m_t = m_b and m_d = m_e, which the tan-beta-independent tests "
+    "exclude (G8 Route C; g8_sm_pati_salam_flavour_nogo_v20). Research-recorded, not a committed "
+    "certificate: no certification method has been demonstrated for the flavour-capable vacuum orientations "
+    "(degree-2 SOS leaves flat Phi-sector directions at the G3221/G3211 orientations; rescue-study NUM, Phi sector "
+    "only). NUM: G6 is not closable on the SOS-certified witness family at one loop with tree-level matching "
+    "(sampled region; only the tree-matching statement is robust; g6_sm_pati_salam_remnant_rg_nogo_v20); on the "
+    "decoupled-singlet benchmark BM-DA1 (U1 root held fixed; gauge + matter running) a 120_H, a second 126bar and "
+    "vectorlike pairs (also with a 45_H) fail the reduced-Planck Landau criterion already at two loops, and the "
+    "other analysed additions (10_F, a real or complex 45_H) pass at two loops and fail at three loops, as does the "
+    "contract content itself on that root (three-loop verdict convention- and threshold-limited; omitted Yukawa "
+    "terms not conservative for a fail statement; g7_decoupled_singlet_benchmark_evidence_v20). The attested "
+    "contract is a truncation "
+    "(g1_contract_truncation_scope_v20). Gate statuses are unchanged (G1-G5 CLOSED, G6 OPEN, G7 BLOCKED, G8 "
+    "BLOCKED); this is not a proof-grade exclusion of the SO(10) x U(1)_X contract, and the whole model is neither "
+    "validated nor excluded by any gate."
+)
+PROGRAM_VERDICT_UNAVAILABLE_TEXT = (
+    "Program verdict not recorded: a bound certificate (G1 truncation scope, G6 remnant RG no-go, G7 decoupled-"
+    "singlet evidence, G8 flavour no-go or G8 structural obstruction) is missing or not recorded, the G3/G4 "
+    "closure evidence is not certified, the ledger audit failed, or the gate frontier is not G1-G5 CLOSED, G6 OPEN, "
+    "G7-G8 BLOCKED (fail closed; no gate status depends on it)"
+)
+PROGRAM_VERDICT_COMPONENT_TEXTS = {
+    "certified_tree_level_vacuum": (
+        "G1-G5 CLOSED: the SM Pati-Salam witness is the exact SM-preserving global vacuum of the declared exact-X "
+        "potential's 27-parameter benchmark at tree level (G3), with the exact gauge quotient and Hessian at the "
+        "witness benchmark (G4) and the BFB certificate on the same coupling vector (G5)"
+    ),
+    "certified_family_flavour_dead": (
+        "every vacuum of the degree-2-SOS-certified witness family (the committed witness, the r_S family and the "
+        "O36 lambda_H member) is flavour-dead at the level of the light (dimension-4) Yukawa matrices: "
+        "M_e = phase x M_d^T and CKM = 1 at tan beta = 1"
+    ),
+    "witness_branch_flavour_excluded": (
+        "on the witness branch the renormalizable Yukawas give CKM = 1, m_t = m_b and m_d = m_e; across 1e9-2e16 GeV "
+        "the tan-beta-independent tests exclude them with minimum load-bearing pulls of {raw:.2f} sigma "
+        "(experimental errors alone) and {cons:.2f} sigma (with a 10% theory term)"
+    ),
+    "flavour_capable_orientations_uncertified": (
+        "no certification method has been demonstrated for the flavour-capable vacuum orientations: degree-2 SOS "
+        "leaves flat Phi-sector directions at the G3221/G3211 orientations (rescue-study NUM, Phi sector only); "
+        "g8_sm_pati_salam_structural_obstruction_v20 records this as research, not proved"
+    ),
+    "g6_not_closable_on_certified_family": (
+        "G6 is not closable on the SOS-certified witness family at one loop with tree-level matching (the "
+        "one-loop-positive remnant region is a sampled research scan; not a proof that G6 is impossible in the "
+        "contract)"
+    ),
+    "flavour_capable_additions_fail_landau": (
+        "on the decoupled-singlet benchmark BM-DA1 (U1 root held fixed; gauge + matter running) a 120_H, a second "
+        "126bar and vectorlike pairs (also with a 45_H) fail the reduced-Planck Landau criterion already at two "
+        "loops; the other analysed additions (10_F, a real or complex 45_H) pass at two loops and fail at three "
+        "loops, as does the contract content itself on that root (three-loop verdict convention- and "
+        "threshold-limited; omitted Yukawa terms not conservative for a fail statement)"
+    ),
+    "contract_truncation": (
+        "the attested model contract is a truncation: 10 of the 26 allowed renormalizable fermion bilinears are "
+        "declared (labels in the model file's field basis; no field redefinition removes the truncation), and the 16 "
+        "omitted ones are PQ neutral and unprotected by any U(1) or multiplet-diagonal phase symmetry of the declared "
+        "Lagrangian"
+    ),
+}
+PROGRAM_VERDICT_FLAVOUR_UNAVAILABLE_TEXT = "witness-branch flavour evidence not recorded (fail closed)"
+PROGRAM_VERDICT_COMPONENT_LABELS = {
+    "certified_tree_level_vacuum": "EXACT (tree level)",
+    "certified_family_flavour_dead": "EXACT (dimension 4; SOS-certified witness family)",
+    "witness_branch_flavour_excluded": "EXACT relations, NUM data comparison",
+    "flavour_capable_orientations_uncertified": "RESEARCH_RECORDED (not a committed certificate)",
+    "g6_not_closable_on_certified_family": "EXACT tree-matching map, NUM region",
+    "flavour_capable_additions_fail_landau": "NUM (gauge + matter running, U1 root held fixed)",
+    "contract_truncation": (
+        "EXACT census and symmetry statement; radiative generation argued, not computed"
+    ),
+}
+PROGRAM_VERDICT_COMPONENT_SOURCES = {
+    "certified_tree_level_vacuum": (
+        "FINAL_G3_ACCEPTANCE_GATE_V20.json",
+        "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json",
+    ),
+    "certified_family_flavour_dead": ("G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json",),
+    "witness_branch_flavour_excluded": ("G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",),
+    "flavour_capable_orientations_uncertified": ("G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json",),
+    "g6_not_closable_on_certified_family": ("G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json",),
+    "flavour_capable_additions_fail_landau": ("G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json",),
+    "contract_truncation": ("G1_CONTRACT_TRUNCATION_SCOPE_V20.json",),
+}
+PROGRAM_VERDICT_COMPONENT_IDS = tuple(PROGRAM_VERDICT_COMPONENT_LABELS)
 G4_OPEN_WAVE3_TEXT = (
     " G4 is OPEN: recompute the ranks 34/35 (quotients 452/451) at the witness"
     " and classify its zero modes (the G4 closure binding is not certified;"
@@ -626,11 +1008,40 @@ def g6_remnant_rg_evidence(report: Any) -> dict[str, Any]:
     }
 
 
+def _evidence_finite_number(value: Any) -> bool:
+    """An int or float (never a bool) with a finite value."""
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and math.isfinite(value)
+    )
+
+
+def _g8_flavour_scale_band(data: Mapping[str, Any]) -> list[float]:
+    band = data["scale_band"]
+    values = list(band.values())
+    if not values or not all(_evidence_finite_number(value) for value in values):
+        raise ValueError("malformed scale band")
+    return [min(values), max(values)]
+
+
 def g8_flavour_evidence(report: Any) -> dict[str, Any]:
-    """Evidence-only record of the G8 Route C flavour no-go (never a G8 status)."""
+    """Evidence-only record of the G8 Route C flavour no-go (never a G8 status).
+
+    The minimum load-bearing pulls are read from the exact JSON fields
+    ``data.minimum_load_bearing_pull_raw_sigma`` and
+    ``data.minimum_load_bearing_pull_conservative_sigma`` and are reported only
+    when the whole record is recorded (fail closed).
+    """
     fields = report if isinstance(report, dict) else {}
 
     def _recorded() -> bool:
+        data = fields["data"]
+        raw = data["minimum_load_bearing_pull_raw_sigma"]
+        conservative = data["minimum_load_bearing_pull_conservative_sigma"]
+        threshold = data["threshold_sigma"]
+        checks = data["checks"]
+        verdict = fields["verdict"]
         return bool(
             fields.get("status") == G8_FLAVOUR_NOGO_STATUS
             and _evidence_int_eq(fields.get("n_failed"), 0)
@@ -647,10 +1058,23 @@ def g8_flavour_evidence(report: Any) -> dict[str, Any]:
                 fields, "falsifies_G3_G5_scalar_vacuum_certificates"
             )
             is False
+            and _evidence_finite_number(raw)
+            and _evidence_finite_number(conservative)
+            and _evidence_finite_number(threshold)
+            and threshold == G8_FLAVOUR_PULL_THRESHOLD_SIGMA
+            and conservative >= G8_FLAVOUR_PULL_THRESHOLD_SIGMA
+            and raw >= conservative
+            and checks.get("every_load_bearing_test_excluded_raw_at_threshold") is True
+            and checks.get("every_load_bearing_test_excluded_conservative_at_threshold")
+            is True
+            and _g8_flavour_scale_band(data) == G8_FLAVOUR_SCALE_BAND_GEV
+            and isinstance(verdict, str)
+            and all(fragment in verdict for fragment in G8_FLAVOUR_VERDICT_FRAGMENTS)
         )
 
     header = _evidence_header(report)
     recorded = _evidence_safe(_recorded)
+    data = fields.get("data") if recorded else None
     return {
         "source": G8_FLAVOUR_NOGO_SOURCE,
         "report": G8_FLAVOUR_NOGO_JSON.name,
@@ -661,7 +1085,299 @@ def g8_flavour_evidence(report: Any) -> dict[str, Any]:
         "closes_gate": False,
         "role": G8_EVIDENCE_ROLE,
         "route_recorded": "C" if recorded else None,
-        "routes_needing_user_decision": ["A", "B"],
+        "routes_not_pursued_user_decision_U1": ["A", "B"],
+        "pull_fields": list(G8_FLAVOUR_PULL_FIELDS),
+        "minimum_load_bearing_pull_raw_sigma": (
+            data["minimum_load_bearing_pull_raw_sigma"] if recorded else None
+        ),
+        "minimum_load_bearing_pull_conservative_sigma": (
+            data["minimum_load_bearing_pull_conservative_sigma"] if recorded else None
+        ),
+        "threshold_sigma": data["threshold_sigma"] if recorded else None,
+        "scale_band_GeV": _g8_flavour_scale_band(data) if recorded else None,
+    }
+
+
+def g1_truncation_evidence(report: Any, g8_report: Any = None) -> dict[str, Any]:
+    """Scope-only record of the G1 truncation certificate (never a G1 status).
+
+    Besides the certificate's own fields, the ledger cross-checks that the
+    committed G8 flavour JSON lists the same 16 undeclared couplings
+    (``contract.allowed_but_undeclared``); any mismatch fails closed.
+    """
+    fields = report if isinstance(report, dict) else {}
+    g8_fields = g8_report if isinstance(g8_report, dict) else {}
+
+    def _recorded() -> bool:
+        flags = fields["flags"]
+        census = fields["census"]
+        return bool(
+            fields.get("status") == G1_TRUNCATION_STATUS
+            and fields.get("module") == G1_TRUNCATION_SOURCE
+            and fields.get("gate") == "G1"
+            and fields.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+            and _evidence_int_eq(fields.get("n_failed"), 0)
+            and fields.get("failures") == []
+            and _evidence_int_eq(fields.get("n_checks"), G1_TRUNCATION_N_CHECKS)
+            and isinstance(flags, Mapping)
+            and all(flags.get(name) is True for name in G1_TRUNCATION_TRUE_FLAGS)
+            and all(flags.get(name) is False for name in G1_TRUNCATION_NEVER_TRUE_FLAGS)
+            and _evidence_int_eq(census.get("allowed_count"), 26)
+            and _evidence_int_eq(census.get("declared_count"), 10)
+            and _evidence_int_eq(census.get("undeclared_count"), 16)
+            and census.get("undeclared") == list(G1_TRUNCATION_UNDECLARED)
+            and fields["kernel"]["dimensions"] == G1_TRUNCATION_KERNEL_DIMENSIONS
+            and all(
+                _evidence_int_eq(value, G1_TRUNCATION_KERNEL_DIMENSIONS[key])
+                for key, value in fields["kernel"]["dimensions"].items()
+            )
+            and fields["sector"]["F_16bar_mass_mixings"]
+            == list(G1_TRUNCATION_F_MASS_MIXINGS)
+            and _evidence_int_eq(fields["pq"]["anomaly"]["N_PQ"], -34)
+            and all(
+                _evidence_int_eq(census["field_redefinitions"][key], value)
+                for key, value in G1_TRUNCATION_REDEFINITION_DIMENSIONS.items()
+            )
+            and g8_fields["contract"]["allowed_but_undeclared"]
+            == list(G1_TRUNCATION_UNDECLARED)
+        )
+
+    header = _evidence_header(report)
+    recorded = _evidence_safe(_recorded)
+    census = fields.get("census") if recorded else None
+    return {
+        "source": G1_TRUNCATION_SOURCE,
+        "report": G1_TRUNCATION_JSON.name,
+        "required_status": G1_TRUNCATION_STATUS,
+        "status": header["status"],
+        "n_failed": header["n_failed"],
+        "recorded": recorded,
+        "changes_gate": False,
+        "role": G1_TRUNCATION_ROLE,
+        "allowed_count": census["allowed_count"] if recorded else None,
+        "declared_count": census["declared_count"] if recorded else None,
+        "undeclared": list(census["undeclared"]) if recorded else None,
+        "F_16bar_mass_mixings": (
+            list(fields["sector"]["F_16bar_mass_mixings"]) if recorded else None
+        ),
+        "scope_text": (
+            G1_TRUNCATION_SCOPE_TEXT if recorded else G1_TRUNCATION_UNAVAILABLE_SCOPE
+        ),
+    }
+
+
+def g7_benchmark_evidence(report: Any) -> dict[str, Any]:
+    """Evidence-only record of the G7 BM-DA1 benchmark evidence (never a G7 status)."""
+    fields = report if isinstance(report, dict) else {}
+
+    def _recorded() -> bool:
+        return bool(
+            fields.get("status") == G7_BENCHMARK_STATUS
+            and fields.get("gate") == "G7"
+            and fields.get("G7_status") == STATUS_BLOCKED
+            and _evidence_int_eq(fields.get("n_failed"), 0)
+            and fields.get("failures") == []
+            and _evidence_int_eq(fields.get("n_checks"), G7_BENCHMARK_N_CHECKS)
+            and all(
+                _evidence_flag(fields, name) is True
+                for name in G7_BENCHMARK_TRUE_FLAGS
+            )
+            and all(
+                _evidence_flag(fields, name) is False
+                for name in G7_BENCHMARK_NEVER_TRUE_FLAGS
+            )
+            and fields["checks"]["landau_cost.every_option_fails_three_loop"] is True
+        )
+
+    header = _evidence_header(report)
+    return {
+        "source": G7_BENCHMARK_SOURCE,
+        "report": G7_BENCHMARK_JSON.name,
+        "required_status": G7_BENCHMARK_STATUS,
+        "status": header["status"],
+        "n_failed": header["n_failed"],
+        "recorded": _evidence_safe(_recorded),
+        "closes_gate": False,
+        "role": G7_EVIDENCE_ROLE,
+    }
+
+
+def g7_coupled_singlet_probe_evidence(report: Any) -> dict[str, Any]:
+    """Evidence-only record of the committed coupled-singlet two-loop probe (never a G7 status).
+
+    Reads ``spectator_two_loop_probe`` of the committed
+    ``two_loop_thresholds_v20.json`` (the module is never imported): recorded
+    only when the probe is available, scans the declared content over
+    log10(M_I/GeV) in [8, 14.5], reports no perturbative root and no sign
+    change, and every finite row has delta_RL < 0 (an independent re-check
+    of the no-root flag).  Any malformed input fails closed.
+    """
+    fields = report if isinstance(report, dict) else {}
+
+    def _recorded() -> bool:
+        probe = fields[TWO_LOOP_PROBE_FIELD]
+        rows = probe["rows"]
+        finite = [row["delta_RL"] for row in rows if row["delta_RL"] is not None]
+        return bool(
+            fields.get("status") == TWO_LOOP_PROBE_REPORT_STATUS
+            and probe["available"] is True
+            and probe["perturbative_root_exists"] is False
+            and probe["sign_change"] is False
+            and probe["content"] == TWO_LOOP_PROBE_CONTENT
+            and probe["scan_log10_M_I"] == TWO_LOOP_PROBE_SCAN_LOG10_M_I
+            and isinstance(rows, list)
+            and len(rows) > 0
+            and _evidence_int_eq(probe["n_rows"], len(rows))
+            and _evidence_int_eq(probe["n_finite"], len(finite))
+            and all(
+                row["reason"] is not None for row in rows if row["delta_RL"] is None
+            )
+            and all(_evidence_finite_number(value) and value < 0 for value in finite)
+        )
+
+    recorded = _evidence_safe(_recorded)
+    status = fields.get("status")
+    return {
+        "source": TWO_LOOP_PROBE_SOURCE,
+        "report": TWO_LOOP_PROBE_JSON.name,
+        "field": TWO_LOOP_PROBE_FIELD,
+        "status": status if isinstance(status, str) else None,
+        "recorded": recorded,
+        "closes_gate": False,
+        "role": TWO_LOOP_PROBE_ROLE,
+        "label": TWO_LOOP_PROBE_LABEL,
+        "content": TWO_LOOP_PROBE_CONTENT if recorded else None,
+        "scan_log10_M_I": list(TWO_LOOP_PROBE_SCAN_LOG10_M_I) if recorded else None,
+        "perturbative_root_exists": False if recorded else None,
+    }
+
+
+def g8_structural_evidence(report: Any) -> dict[str, Any]:
+    """Evidence-only record of the G8 structural obstruction (never a G8 status)."""
+    fields = report if isinstance(report, dict) else {}
+
+    def _recorded() -> bool:
+        not_claimed = fields["scope"]["not_claimed"]
+        return bool(
+            fields.get("status") == G8_STRUCTURAL_STATUS
+            and fields.get("overall_state") == G8_STRUCTURAL_OVERALL_STATE
+            and fields.get("gate") == "G8"
+            and _evidence_int_eq(fields.get("n_failed"), 0)
+            and fields.get("failures") == []
+            and _evidence_int_eq(fields.get("n_checks"), G8_STRUCTURAL_N_CHECKS)
+            and all(
+                _evidence_flag(fields, name) is True
+                for name in G8_STRUCTURAL_TRUE_FLAGS
+            )
+            and all(
+                _evidence_flag(fields, name) is False
+                for name in G8_STRUCTURAL_NEVER_TRUE_FLAGS
+            )
+            and fields["headline"]["checks"][
+                "flavour_capable_sources_require_leaving_the_certified_orientation"
+            ]
+            is True
+            and isinstance(not_claimed, list)
+            and G8_STRUCTURAL_PHI_SECTOR_NOT_CLAIMED in not_claimed
+        )
+
+    header = _evidence_header(report)
+    return {
+        "source": G8_STRUCTURAL_SOURCE,
+        "report": G8_STRUCTURAL_JSON.name,
+        "required_status": G8_STRUCTURAL_STATUS,
+        "status": header["status"],
+        "n_failed": header["n_failed"],
+        "recorded": _evidence_safe(_recorded),
+        "closes_gate": False,
+        "role": G8_EVIDENCE_ROLE,
+        "label": G8_STRUCTURAL_LABEL,
+    }
+
+
+def program_verdict_record(
+    *,
+    contract_consistent: bool,
+    statuses: Mapping[str, Any],
+    track: Mapping[str, Any],
+    g4_binding: Mapping[str, Any],
+    g1_truncation: Mapping[str, Any],
+    g6_rg_evidence: Mapping[str, Any],
+    g7_evidence: Mapping[str, Any],
+    g8_evidence: Mapping[str, Any],
+    g8_structural: Mapping[str, Any],
+    audit_failed: bool = False,
+) -> dict[str, Any]:
+    """Decision U1: the program verdict, separate from every gate status.
+
+    Recorded only on a consistent contract with the expected gate frontier
+    (G1-G5 CLOSED, G6 OPEN, G7-G8 BLOCKED), every component recorded and no
+    audit failure; otherwise the unavailable variant is returned (fail closed).
+    """
+
+    def _is_recorded(record: Mapping[str, Any]) -> bool:
+        return isinstance(record, Mapping) and record.get("recorded") is True
+
+    frontier = {name: statuses.get(name) for name in PROGRAM_VERDICT_EXPECTED_STATUSES}
+    first_five_closed = all(
+        frontier[f"G{index}"] == STATUS_CLOSED for index in range(1, 6)
+    )
+    flavour_recorded = _is_recorded(g8_evidence)
+    if flavour_recorded:
+        flavour_text = PROGRAM_VERDICT_COMPONENT_TEXTS["witness_branch_flavour_excluded"].format(
+            raw=g8_evidence["minimum_load_bearing_pull_raw_sigma"],
+            cons=g8_evidence["minimum_load_bearing_pull_conservative_sigma"],
+        )
+    else:
+        flavour_text = PROGRAM_VERDICT_FLAVOUR_UNAVAILABLE_TEXT
+    component_recorded = {
+        "certified_tree_level_vacuum": bool(
+            first_five_closed
+            and isinstance(track, Mapping)
+            and track.get("closed") is True
+            and isinstance(g4_binding, Mapping)
+            and g4_binding.get("certified") is True
+        ),
+        "certified_family_flavour_dead": _is_recorded(g8_structural),
+        "witness_branch_flavour_excluded": flavour_recorded,
+        "flavour_capable_orientations_uncertified": _is_recorded(g8_structural),
+        "g6_not_closable_on_certified_family": _is_recorded(g6_rg_evidence),
+        "flavour_capable_additions_fail_landau": _is_recorded(g7_evidence),
+        "contract_truncation": _is_recorded(g1_truncation),
+    }
+    components = [
+        {
+            "id": component_id,
+            "label": PROGRAM_VERDICT_COMPONENT_LABELS[component_id],
+            "text": (
+                flavour_text
+                if component_id == "witness_branch_flavour_excluded"
+                else PROGRAM_VERDICT_COMPONENT_TEXTS[component_id]
+            ),
+            "sources": list(PROGRAM_VERDICT_COMPONENT_SOURCES[component_id]),
+            "recorded": component_recorded[component_id],
+        }
+        for component_id in PROGRAM_VERDICT_COMPONENT_IDS
+    ]
+    recorded = bool(
+        contract_consistent
+        and not audit_failed
+        and frontier == PROGRAM_VERDICT_EXPECTED_STATUSES
+        and all(component["recorded"] is True for component in components)
+    )
+    return {
+        "decision": PROGRAM_VERDICT_DECISION,
+        "code": PROGRAM_VERDICT_CODE if recorded else PROGRAM_VERDICT_CODE_UNAVAILABLE,
+        "headline": PROGRAM_VERDICT_HEADLINE if recorded else None,
+        "text": PROGRAM_VERDICT_TEXT if recorded else PROGRAM_VERDICT_UNAVAILABLE_TEXT,
+        "recorded": recorded,
+        "gate_statuses": frontier,
+        "expected_gate_statuses": dict(PROGRAM_VERDICT_EXPECTED_STATUSES),
+        "gate_statuses_changed": False,
+        "proof_grade_whole_model_exclusion": False,
+        "method_limited_at": list(PROGRAM_VERDICT_METHOD_LIMITED_AT),
+        "components": components,
+        "role": PROGRAM_VERDICT_ROLE,
     }
 
 
@@ -4332,11 +5048,16 @@ def _gate_open_scope(
     *,
     evidence: Mapping[str, Any] | None = None,
     remnant_rg_evidence: Mapping[str, Any] | None = None,
+    g7_evidence: Mapping[str, Any] | None = None,
+    structural_evidence: Mapping[str, Any] | None = None,
+    probe_evidence: Mapping[str, Any] | None = None,
 ) -> list[str]:
     """The open scope of a gate: its specification, the D5-routed caveats and,
-    for G6 and G8 only, the evidence items (recorded or unavailable; G6 cites
-    the tree spectrum and then the remnant RG no-go; an item never changes a
-    status)."""
+    for G6, G7 and G8 only, the evidence items (recorded or unavailable; G6
+    cites the tree spectrum and then the remnant RG no-go, G7 the
+    coupled-singlet two-loop probe and then the decoupled-singlet benchmark
+    evidence, G8 the flavour no-go and then the
+    structural obstruction; an item never changes a status)."""
     open_scope = list(GATE_SPECIFICATIONS[name][1])
     if name in {"G4", "G6", "G7", "G8"}:
         # Decision D5: the closing track's model-level caveats are routed
@@ -4363,9 +5084,33 @@ def _gate_open_scope(
             if rg_recorded
             else G6_REMNANT_RG_UNAVAILABLE_ITEM
         )
+    elif name == "G7":
+        probe_recorded = (
+            isinstance(probe_evidence, Mapping) and probe_evidence.get("recorded") is True
+        )
+        open_scope.append(
+            G7_COUPLED_SINGLET_PROBE_RECORDED_ITEM
+            if probe_recorded
+            else G7_COUPLED_SINGLET_PROBE_UNAVAILABLE_ITEM
+        )
+        g7_recorded = (
+            isinstance(g7_evidence, Mapping) and g7_evidence.get("recorded") is True
+        )
+        open_scope.append(
+            G7_BENCHMARK_RECORDED_ITEM if g7_recorded else G7_BENCHMARK_UNAVAILABLE_ITEM
+        )
     elif name == "G8":
         open_scope.append(
             G8_EVIDENCE_RECORDED_ITEM if recorded else G8_EVIDENCE_UNAVAILABLE_ITEM
+        )
+        structural_recorded = (
+            isinstance(structural_evidence, Mapping)
+            and structural_evidence.get("recorded") is True
+        )
+        open_scope.append(
+            G8_STRUCTURAL_RECORDED_ITEM
+            if structural_recorded
+            else G8_STRUCTURAL_UNAVAILABLE_ITEM
         )
     return open_scope
 
@@ -4383,15 +5128,35 @@ def _build_gates(
     g6_evidence: Mapping[str, Any],
     g6_rg_evidence: Mapping[str, Any],
     g8_evidence: Mapping[str, Any],
+    g7_evidence: Mapping[str, Any] | None = None,
+    g8_structural: Mapping[str, Any] | None = None,
+    g1_truncation: Mapping[str, Any] | None = None,
+    probe_evidence: Mapping[str, Any] | None = None,
 ) -> dict[str, dict[str, Any]]:
+    if g7_evidence is None:
+        g7_evidence = g7_benchmark_evidence(None)
+    if probe_evidence is None:
+        probe_evidence = g7_coupled_singlet_probe_evidence(None)
+    if g8_structural is None:
+        g8_structural = g8_structural_evidence(None)
+    if g1_truncation is None:
+        g1_truncation = g1_truncation_evidence(None)
     statuses = _expected_gate_statuses(
         contract_consistent,
         g3_closed=g3_closed,
         g5_closed=g5_closed,
         g4_closed=g4_closed,
     )
+    truncation_recorded = g1_truncation.get("recorded") is True
     closed_scopes = {
-        "G1": ["promoted exact-X scalar census"],
+        "G1": [
+            "promoted exact-X scalar census",
+            (
+                G1_TRUNCATION_CLOSED_SCOPE
+                if truncation_recorded
+                else G1_TRUNCATION_UNAVAILABLE_SCOPE
+            ),
+        ],
         "G2": ["promoted exact-X dense derivative and Ward audit"],
         "G3": [sm_track.G3_LEDGER_CLOSED_SCOPE],
         "G4": [g4_closure.G4_LEDGER_CLOSED_SCOPE],
@@ -4407,6 +5172,9 @@ def _build_gates(
             track,
             evidence=evidence_by_gate.get(name),
             remnant_rg_evidence=g6_rg_evidence if name == "G6" else None,
+            g7_evidence=g7_evidence if name == "G7" else None,
+            structural_evidence=g8_structural if name == "G8" else None,
+            probe_evidence=probe_evidence if name == "G7" else None,
         )
         unsatisfied = [
             dependency
@@ -4475,11 +5243,17 @@ def _build_gates(
             gates[name]["constructive_frontier_evidence_role"] = (
                 G5_CONSTRUCTIVE_FRONTIER_EVIDENCE_ROLE
             )
+        if name == "G1":
+            gates[name]["model_contract_truncation_scope"] = dict(g1_truncation)
         if name == "G6":
             gates[name]["tree_level_evidence"] = dict(g6_evidence)
             gates[name]["remnant_rg_evidence"] = dict(g6_rg_evidence)
+        if name == "G7":
+            gates[name]["benchmark_evidence"] = dict(g7_evidence)
+            gates[name]["coupled_singlet_two_loop_probe"] = dict(probe_evidence)
         if name == "G8":
             gates[name]["flavour_evidence"] = dict(g8_evidence)
+            gates[name]["structural_obstruction_evidence"] = dict(g8_structural)
     return gates
 
 
@@ -4523,6 +5297,10 @@ def _build_report_from_inputs(
     g6_report: dict[str, Any] | None = None,
     g8_report: dict[str, Any] | None = None,
     g6_rg_report: dict[str, Any] | None = None,
+    g1_truncation_report: dict[str, Any] | None = None,
+    g7_report: dict[str, Any] | None = None,
+    g8_structural_report: dict[str, Any] | None = None,
+    two_loop_probe_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states.
 
@@ -4531,8 +5309,13 @@ def _build_report_from_inputs(
     ``g4_report`` is the G4 certificate evaluated by g4_sm_closure_binding_v20;
     ``g6_report``/``g8_report`` are the evidence-only G6 tree-spectrum and G8
     flavour no-go certificates and ``g6_rg_report`` is the evidence-only G6
-    remnant RG no-go on the SOS witness family.  None loads each committed JSON
-    (fail closed).
+    remnant RG no-go on the SOS witness family.  ``g1_truncation_report`` is the
+    scope-only G1 truncation certificate (decision U5), ``g7_report`` the
+    evidence-only G7 BM-DA1 benchmark evidence and ``g8_structural_report`` the
+    evidence-only G8 structural obstruction; they and the reports above bind
+    the separate program verdict (decision U1).  ``two_loop_probe_report`` is
+    the committed two_loop_thresholds_v20.json (its coupled-singlet spectator
+    probe is G7 evidence only).  None loads each committed JSON (fail closed).
     """
     declared_contract_consistent = bool(x_report["contract_consistent"])
     contract_evidence_complete = _root_contract_evidence_complete(x_report)
@@ -4656,6 +5439,14 @@ def _build_report_from_inputs(
         g8_report = _load_json_artifact(G8_FLAVOUR_NOGO_JSON)
     if g6_rg_report is None:
         g6_rg_report = _load_json_artifact(G6_REMNANT_RG_NOGO_JSON)
+    if g1_truncation_report is None:
+        g1_truncation_report = _load_json_artifact(G1_TRUNCATION_JSON)
+    if g7_report is None:
+        g7_report = _load_json_artifact(G7_BENCHMARK_JSON)
+    if g8_structural_report is None:
+        g8_structural_report = _load_json_artifact(G8_STRUCTURAL_JSON)
+    if two_loop_probe_report is None:
+        two_loop_probe_report = _load_json_artifact(TWO_LOOP_PROBE_JSON)
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4716,6 +5507,12 @@ def _build_report_from_inputs(
     g6_evidence = g6_tree_evidence(g6_report)
     g6_rg_evidence = g6_remnant_rg_evidence(g6_rg_report)
     g8_evidence = g8_flavour_evidence(g8_report)
+    # Scope and evidence records (decisions U1/U5): bound to committed JSONs
+    # only; they never change a gate status.
+    g1_truncation = g1_truncation_evidence(g1_truncation_report, g8_report)
+    g7_evidence = g7_benchmark_evidence(g7_report)
+    g8_structural = g8_structural_evidence(g8_structural_report)
+    probe_evidence = g7_coupled_singlet_probe_evidence(two_loop_probe_report)
     gates = _build_gates(
         contract_consistent=contract_consistent,
         contract_blocker=contract_blocker,
@@ -4728,6 +5525,10 @@ def _build_report_from_inputs(
         g6_evidence=g6_evidence,
         g6_rg_evidence=g6_rg_evidence,
         g8_evidence=g8_evidence,
+        g7_evidence=g7_evidence,
+        g8_structural=g8_structural,
+        g1_truncation=g1_truncation,
+        probe_evidence=probe_evidence,
     )
     gates["G3"]["constructive_frontier_evidence"] = g3_frontier
     gates["G5"]["constructive_frontier_evidence"] = g3_frontier
@@ -4760,6 +5561,21 @@ def _build_report_from_inputs(
         if dependency == "MODEL_CONTRACT":
             return contract_consistent
         return statuses[dependency] == STATUS_CLOSED
+
+    # Decision U1: the program verdict is a separate field computed from the
+    # gate frontier and the bound certificates; it never feeds a status.
+    program_verdict_inputs = {
+        "contract_consistent": contract_consistent,
+        "statuses": statuses,
+        "track": track,
+        "g4_binding": g4_binding,
+        "g1_truncation": gates["G1"]["model_contract_truncation_scope"],
+        "g6_rg_evidence": gates["G6"]["remnant_rg_evidence"],
+        "g7_evidence": gates["G7"]["benchmark_evidence"],
+        "g8_evidence": gates["G8"]["flavour_evidence"],
+        "g8_structural": gates["G8"]["structural_obstruction_evidence"],
+    }
+    program_verdict = program_verdict_record(**program_verdict_inputs)
 
     checks = {
         "exact_X_audit_executes": x_report["n_failed"] == 0,
@@ -5267,6 +6083,14 @@ def _build_report_from_inputs(
             and statuses["G6"] != STATUS_CLOSED
             and statuses["G8"] != STATUS_CLOSED
         ),
+        "program_verdict_and_scope_records_never_change_a_gate": (
+            statuses == expected_statuses
+            and program_verdict["gate_statuses_changed"] is False
+            and gates["G1"]["model_contract_truncation_scope"]["changes_gate"] is False
+            and gates["G7"]["benchmark_evidence"]["closes_gate"] is False
+            and gates["G7"]["coupled_singlet_two_loop_probe"]["closes_gate"] is False
+            and gates["G8"]["structural_obstruction_evidence"]["closes_gate"] is False
+        ),
         "g3_sm_track_is_the_only_closure_route": (
             (statuses["G3"] == STATUS_CLOSED) == g3_closed
             and gates["G3"]["closing_track"]
@@ -5291,6 +6115,11 @@ def _build_report_from_inputs(
         ),
     }
     audit_failures = [name for name, passed in checks.items() if not passed]
+    if audit_failures:
+        # A failed audit never carries a recorded program verdict.
+        program_verdict = program_verdict_record(
+            **program_verdict_inputs, audit_failed=True
+        )
 
     if audit_failures:
         status = "G1_G8_LEDGER_AUDIT_EXECUTION_FAILED"
@@ -5647,6 +6476,8 @@ def _build_report_from_inputs(
         },
         "closure_waves": closure_waves,
         "g3_sm_pati_salam_equality_set_binding": sm_pati_salam_equality_set,
+        "program_verdict": program_verdict,
+        "model_contract_scope": dict(gates["G1"]["model_contract_truncation_scope"]),
         "feasibility": {
             "closure_program_defined": True,
             "current_authoritative_closed_gates": len(closed),
@@ -5747,6 +6578,9 @@ def build_report() -> dict[str, Any]:
         g6_report=_load_json_artifact(G6_TREE_SPECTRUM_JSON),
         g8_report=_load_json_artifact(G8_FLAVOUR_NOGO_JSON),
         g6_rg_report=_load_json_artifact(G6_REMNANT_RG_NOGO_JSON),
+        g1_truncation_report=_load_json_artifact(G1_TRUNCATION_JSON),
+        g7_report=_load_json_artifact(G7_BENCHMARK_JSON),
+        g8_structural_report=_load_json_artifact(G8_STRUCTURAL_JSON),
     )
 
 
@@ -5760,13 +6594,41 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         report["verdict"],
         "",
-        "## Critical path",
-        "",
-        "`MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`",
-        "",
-        "## Authoritative gates",
-        "",
     ]
+    program_verdict = report.get("program_verdict") or {}
+    lines.extend(
+        [
+            "## Program verdict (decision U1)",
+            "",
+            f"**Code:** `{program_verdict.get('code')}`",
+            "",
+            str(program_verdict.get("text")),
+            "",
+        ]
+    )
+    lines.extend(
+        f"- [{component.get('label')}] {component.get('text')} "
+        f"({', '.join(component.get('sources') or [])}; recorded "
+        f"`{component.get('recorded')}`)"
+        for component in program_verdict.get("components") or []
+        if isinstance(component, dict)
+    )
+    contract_scope = report.get("model_contract_scope") or {}
+    lines.extend(
+        [
+            "",
+            "## Model-contract scope (G1)",
+            "",
+            str(contract_scope.get("scope_text")),
+            "",
+            "## Critical path",
+            "",
+            "`MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`",
+            "",
+            "## Authoritative gates",
+            "",
+        ]
+    )
     lines.extend(
         (
             f"- `{name}`: `{row['status']}` - "
@@ -5840,11 +6702,14 @@ def write_markdown(report: dict[str, Any]) -> str:
     g6_evidence = gates.get("G6", {}).get("tree_level_evidence") or {}
     g6_rg_evidence = gates.get("G6", {}).get("remnant_rg_evidence") or {}
     g8_evidence = gates.get("G8", {}).get("flavour_evidence") or {}
+    g7_evidence = gates.get("G7", {}).get("benchmark_evidence") or {}
+    g7_probe = gates.get("G7", {}).get("coupled_singlet_two_loop_probe") or {}
+    g8_structural = gates.get("G8", {}).get("structural_obstruction_evidence") or {}
     g6_status = gates.get("G6", {}).get("status")
     lines.extend(
         [
             "",
-            "### Evidence cited by G6 and G8 (never changes a status)",
+            "### Evidence cited by G6, G7 and G8 (never changes a status)",
             "",
             f"- G6 (`{g6_status}`): tree-level spectrum "
             f"`{g6_evidence.get('source')}` recorded `{g6_evidence.get('recorded')}`, "
@@ -5856,6 +6721,15 @@ def write_markdown(report: dict[str, Any]) -> str:
             f"`{g8_evidence.get('source')}` recorded `{g8_evidence.get('recorded')}`, "
             f"route `{g8_evidence.get('route_recorded')}`, closes gate "
             f"`{g8_evidence.get('closes_gate')}`",
+            f"- G7 (`{gates.get('G7', {}).get('status')}`): decoupled-singlet benchmark "
+            f"evidence `{g7_evidence.get('source')}` recorded `{g7_evidence.get('recorded')}`, "
+            f"closes gate `{g7_evidence.get('closes_gate')}`",
+            f"- G7 (`{gates.get('G7', {}).get('status')}`): coupled-singlet two-loop probe "
+            f"`{g7_probe.get('source')}` recorded `{g7_probe.get('recorded')}`, "
+            f"closes gate `{g7_probe.get('closes_gate')}`",
+            f"- G8 (`{gates.get('G8', {}).get('status')}`): structural obstruction "
+            f"`{g8_structural.get('source')}` recorded `{g8_structural.get('recorded')}`, "
+            f"closes gate `{g8_structural.get('closes_gate')}`",
         ]
     )
     return "\n".join(lines) + "\n"

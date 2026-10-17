@@ -6,9 +6,12 @@ load the historical release verdict stack, so an old Option-C approval cannot
 override the manuscript/executable U(1)_X mismatch.
 
 Its tiers are the confirmation tiers (``ULTIMATE_THEORY_GATE_V20_SCOPE.md``).
-Decisions D3 and D-E can approve only tier 1, the internal candidate
-(internal consistency, not phenomenology), and D-E holds even that approval
-until G7 is CLOSED; an approval would not be full-model validation, and the
+Decision U3 removes the approval of tier 1, the internal candidate
+(internal consistency, not phenomenology): ``internal_candidate_approved`` is
+False on every path and ``--require-internal-approval`` always fails.  A
+candidate that meets decision D3 may be released, never approved (tier
+state RELEASED_NOT_APPROVED: certified tree-level vacuum, excluded by G8
+flavour); decision D-E holds approval until G7 is CLOSED in any case.  The
 overall state stays OPEN until every G1-G8 gate is CLOSED.
 """
 
@@ -40,36 +43,59 @@ VERDICT_INTERNAL_CANDIDATE_HELD_PENDING_G7 = (
     "neither validated nor excluded."
 )
 
+# Decision U3: the candidate released, never approved.
+VERDICT_INTERNAL_CANDIDATE_RELEASED_TEMPLATE = (
+    "WITHHOLD APPROVAL. The audit has no execution failure and the gauged-U(1)_X model contract is attested by bound "
+    "external SARAH execution evidence; G1, G2, G3 (SM Pati-Salam benchmark family, scoped), G4 (at the G3 witness "
+    "benchmark, tree level) and G5 are closed, which meets decision D3, but decision D-E holds approval of the "
+    "internal-candidate tier until G7 is CLOSED, and decision U3 never approves it. By decision U3 the internal "
+    "candidate is released: {label} (CKM = 1, m_t = m_b, m_d = m_e; G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json). The "
+    "G6-G8 scientific gates remain open or blocked (sub-M_I coloured states, positivity beyond tree level and "
+    "electroweak symmetry breaking, RG-anchor content and the Higgs quartic, Yukawas and proton decay). No "
+    "internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion "
+    "claim is approved; the whole model is neither validated nor excluded by a proof-grade certificate."
+)
+
 
 def _verdict(
     contract_ready: bool,
     g3_closed: bool = False,
     g4_closed: bool = False,
-    internal_candidate: bool = False,
     held_pending_g7: bool = False,
+    release_label: str | None = None,
+    program_recorded: bool = False,
+    frontier: dict[str, Any] | None = None,
 ) -> str:
-    """Verdict text, branched on model-contract readiness, ledger G3/G4, D3 and D-E.
+    """Verdict text, branched on model-contract readiness, ledger G3/G4, D3, D-E and U3.
 
     ``g4_closed`` is the confirmation's strict G4 closure (status CLOSED with
-    certified closure evidence), ``internal_candidate`` its approval (D3 and
-    G7 CLOSED by D-E) and ``held_pending_g7`` its decision-D-E hold.
+    certified closure evidence), ``held_pending_g7`` its decision-D-E hold,
+    ``release_label`` the decision-U3 release label (None when the release is
+    not available), ``program_recorded`` whether the ledger's program verdict
+    (decision U1) is recorded and ``frontier`` the ledger's G5-G8 statuses
+    (None: the recorded G5 CLOSED, G6 OPEN, G7-G8 BLOCKED frontier).  There is no
+    approval branch: decision U3 never approves the internal-candidate tier.
     """
-    if contract_ready and g3_closed and internal_candidate:
-        # Approval needs decision D3 and G7 CLOSED (decision D-E); this branch
-        # is unreachable while G7 is not CLOSED.  Nothing claims G4 unless it
-        # is CLOSED.
-        d3_basis = (
-            "G4 is CLOSED at the G3 witness benchmark, tree level"
-            if g4_closed
-            else "the closing track's downstream caveats are recorded as resolved while G4 is not CLOSED"
-        )
+    frontier_expected = frontier is None or dict(frontier) == confirmation.EXPECTED_G5_G8_FRONTIER
+    if contract_ready and g3_closed and not frontier_expected:
+        # Hypothetical or forged G5-G8 frontier (for example G6 and G7 CLOSED).
         return (
-            "APPROVE INTERNAL CANDIDATE ONLY. The audit has no execution failure and the gauged-U(1)_X model contract "
-            "is attested by bound external SARAH execution evidence; G1, G2 and G3 (SM Pati-Salam benchmark family, "
-            "scoped) are closed, decision D3 is met (" + d3_basis + ") and G7 is CLOSED (decision D-E), so the "
-            "internal-candidate tier is approved. No conditional-benchmark, full-phenomenology, empirical-realization, "
-            "or whole-model-exclusion claim is approved: the internal candidate is not phenomenologically validated, "
-            "and the whole model is neither validated nor excluded."
+            "WITHHOLD APPROVAL. The audit has no execution failure and the gauged-U(1)_X model contract is attested "
+            "by bound external SARAH execution evidence; G3 is closed on the SM Pati-Salam benchmark family (scoped), "
+            "but the ledger records " + confirmation._frontier_text(frontier) + ", not the recorded "
+            + confirmation.EXPECTED_FRONTIER_TEXT + " frontier. Decision U3 never approves the "
+            "internal-candidate tier"
+            + (": it is released as " + release_label if release_label else "")
+            + ". No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or "
+            "whole-model-exclusion claim is approved."
+        )
+    if contract_ready and g3_closed and g4_closed and release_label:
+        # Decision U3: G1-G5 CLOSED, D-E holds approval, and the candidate is
+        # released (never approved) on the ledger's bound G8 evidence.
+        return VERDICT_INTERNAL_CANDIDATE_RELEASED_TEMPLATE.format(label=release_label) + (
+            " Program verdict (decision U1): " + confirmation.gate_ledger.PROGRAM_VERDICT_HEADLINE + "."
+            if program_recorded
+            else ""
         )
     if contract_ready and g3_closed and g4_closed:
         # G1-G5 CLOSED in G1_G8_GATE_LEDGER_V20 (G4 at the G3 witness, tree
@@ -85,6 +111,11 @@ def _verdict(
             "decision D-E holds the internal-candidate tier until G7 is CLOSED, and the G4 and G6-G8 scientific gates "
             "remain open. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or "
             "whole-model-exclusion claim is approved."
+            + (
+                " By decision U3 the candidate is released: " + release_label + "."
+                if release_label
+                else ""
+            )
         )
     if contract_ready and g3_closed:
         # G1, G2, G3 (SM Pati-Salam track, scoped) and G5 are CLOSED in
@@ -138,8 +169,6 @@ def evaluate_reports(
         status = "ULTIMATE_GATE_COMPLETE__MODEL_EXCLUDED"
     elif result["full_phenomenology_approved"]:
         status = "ULTIMATE_GATE_COMPLETE__FULL_PHENOMENOLOGY_VALIDATED"
-    elif result["overall_state"] == "OPEN" and result["internal_candidate_approved"]:
-        status = "ULTIMATE_GATE_AUDIT_COMPLETE__INTERNAL_CANDIDATE_APPROVED__FULL_APPROVAL_OPEN"
     else:
         status = "ULTIMATE_GATE_AUDIT_COMPLETE__APPROVAL_OPEN"
 
@@ -161,7 +190,13 @@ def evaluate_reports(
         "internal_candidate_gate": result["internal_candidate_gate"],
         "internal_candidate_scope": result["internal_candidate_scope"],
         "internal_candidate_hold": result["internal_candidate_hold"],
+        "internal_candidate_release": result["internal_candidate_release"],
+        "internal_candidate_release_label": result["internal_candidate_release_label"],
+        "internal_candidate_release_binding": result["internal_candidate_release_binding"],
         "tiers": result["tiers"],
+        "tier_state_definitions": result["tier_state_definitions"],
+        "program_verdict": result["program_verdict"],
+        "model_contract_scope": result["model_contract_scope"],
         "conditional_benchmark_approved": result[
             "conditional_benchmark_approved"
         ],
@@ -195,8 +230,10 @@ def evaluate_reports(
             result["model_contract_ready"],
             g3_closed=result["internal_candidate_gate"]["G3_closed"],
             g4_closed=result["internal_candidate_gate"]["G4_closed"],
-            internal_candidate=result["internal_candidate_approved"],
             held_pending_g7=result["internal_candidate_gate"]["approval_held_pending_G7"],
+            release_label=result["internal_candidate_release_label"],
+            program_recorded=result["program_verdict"]["recorded"],
+            frontier=result["internal_candidate_gate"]["G5_G8_frontier"],
         ),
     }
 
@@ -230,11 +267,23 @@ def write_markdown(report: dict[str, Any]) -> str:
     hold = report.get("internal_candidate_hold")
     if hold is not None:
         lines.append(f"- Internal-candidate hold: {hold}")
+    release = report.get("internal_candidate_release")
+    if release is not None:
+        lines.append(f"- Internal-candidate release: {release}")
+    tiers = report.get("tiers") or {}
+    lines.append(f"- Internal-candidate tier: **{tiers.get('INTERNAL_CANDIDATE')}**")
+    program = report.get("program_verdict") or {}
     lines += [
         f"- Conditional benchmark: **{report['conditional_benchmark_approved']}**",
         f"- Full phenomenology: **{report['full_phenomenology_approved']}**",
         f"- Empirical realization: **{report['empirical_realization_approved']}**",
         f"- Whole-model exclusion: **{report['whole_model_excluded']}**",
+        "",
+        "## Program verdict (decision U1)",
+        "",
+        f"**Code:** `{program.get('code')}`",
+        "",
+        str(program.get("text") if program.get("text") is not None else "Program verdict not recorded."),
         "",
         "## Scientific blockers",
         "",

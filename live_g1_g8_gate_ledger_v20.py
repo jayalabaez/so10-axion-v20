@@ -46,10 +46,14 @@ AUTHORITATIVE_ONLY_ROW_KEYS = (
     "diagnostic_tracks",
     "bfb_coupling_vector",
     "constructive_frontier_evidence_role",
+    "model_contract_truncation_scope",
 )
 # Open-scope items that the authoritative ledger routes from its SM-track G3
 # closure (decision D5); they are not items of the historical contract.
 AUTHORITATIVE_ROUTED_SCOPE_PREFIX = "routed from G3 by decision D5"
+# The program verdict (decision U1) belongs to the authoritative ledger only;
+# this historical snapshot points to it and never copies it.
+AUTHORITATIVE_PROGRAM_VERDICT_SOURCE = "G1_G8_GATE_LEDGER_V20.json:program_verdict"
 
 
 def build_report() -> dict[str, Any]:
@@ -195,6 +199,7 @@ def build_report() -> dict[str, Any]:
         "failures": failures,
         "checks": checks,
         "supersedes_for_current_status": False,
+        "authoritative_program_verdict_source": AUTHORITATIVE_PROGRAM_VERDICT_SOURCE,
         "source_template_ledger_status": historical_report["status"],
         "dependencies": historical.DEPENDENCIES,
         "gates": gates,

@@ -16,6 +16,23 @@ def test_historical_gate_summary_has_only_option_c_g1_closed():
     assert report["summary"]["n_blocked"] == 0
 
 
+def test_program_verdict_is_only_pointed_to_never_copied():
+    # Decision U1's program verdict belongs to the authoritative ledger; the
+    # historical snapshot only names its source and never carries the G1
+    # truncation-scope row of the authoritative contract.
+    report = ledger.build_report()
+    assert "program_verdict" not in report
+    assert "model_contract_scope" not in report
+    assert (
+        report["authoritative_program_verdict_source"]
+        == "G1_G8_GATE_LEDGER_V20.json:program_verdict"
+    )
+    assert ledger.AUTHORITATIVE_PROGRAM_VERDICT_SOURCE == report["authoritative_program_verdict_source"]
+    assert "model_contract_truncation_scope" in ledger.AUTHORITATIVE_ONLY_ROW_KEYS
+    for gate, row in report["gates"].items():
+        assert "model_contract_truncation_scope" not in row, gate
+
+
 def test_historical_g1_closed_g2_value_and_chart_partial():
     report = ledger.build_report()
     assert report["gates"]["G1"]["status"] == "CLOSED"
