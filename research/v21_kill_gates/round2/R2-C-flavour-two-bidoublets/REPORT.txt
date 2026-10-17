@@ -1,0 +1,351 @@
+GATE R2-C -- decisive flavour fit with TWO light bidoublets (10_H + 126bar_H, no Ytilde10)
+v21-F17-B63-G3221 -- REPORT (2026-10-17)
+=====================================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-C-flavour-two-bidoublets\
+        code and results in v2\ ; the first, interrupted attempt of this gate (src\) is SUPERSEDED (see 2.4).
+Labels: EXACT (exact arithmetic / proved), NUM (computed; uncertainty stated), LIT-abstract / LIT-snippet (only abstracts
+or search snippets were available -- nothing was read in full), EST (order of magnitude / convention dependent),
+CONJ (argued, not computed).
+Checkouts: _g6_nogo (54a2cd1) and _record (8707fda) were not imported or run by this gate (only round-1 scratch code was
+copied); `git status --short` = 0 lines in both at the start and at the end.  _rescope was not touched.
+
+0. VERDICT: FAIL
+---------------------------------------------------------------------------------------------------------------------
+(for the configuration as specified: renormalisable 10_H + 126bar_H Yukawas with X forbidding Ytilde10, two light
+bidoublets, type-I seesaw; type II is NOT realisable in the one-step G3221 vacuum and therefore cannot rescue it)
+
+Criterion: PASS if chi2_min <= 15 with every pull < 3 sigma for a perturbative Yukawa set at some v_R in [1e11, 1e14];
+FAIL if the robust global minimum exceeds 25 at every v_R in [2e10, 1e14] without type II AND with type II where it is
+realisable; UNDECIDED otherwise.
+
+Decisive numbers [NUM].  Exact top-down chain M_U -> v_R (G3221, both bidoublets, one loop) -> M_Z (SM two loop +
+sequential nu^c decoupling); 18 observables (9 masses, 4 CKM, 3 PMNS angles, 2 Delta m^2); PDG-2024 masses at M_Z
+with a 1 % mass theory floor, PDG CKM, NuFIT 6.0 NO with SK; 19 parameters (dof = -1); perturbativity |Y10_act|,
+|Y126_act| <= 1.5 and Delta_R Majorana coupling |f| <= sqrt(4 pi).
+   v_R     content (M_U)     chi2_min   floor 0   chi2 w/o th23   sin^2 th23 (pull)   what binds
+   2e10    C2   (6.05e15)    9667       1.0e5     --              0.89               M_R <= f v_R  ->  m_nu ~ 25-60 meV each, CKM/masses wrecked
+   1e11    R813 (2.4e16)     3110 (*)   --        2918            0.68               same
+   3e11    R813              839 (c)                              0.58               same
+   5e11    R813              360 (c)                              0.52               same
+   1e12    R813              200.3      419       199.3           0.455 (-1.0)       f at its bound; 8 pulls > 3
+   2e12    R813              109.7 (c)  164 (**)  75.2            0.382 (-5.9)       f at its bound (f(M_U) = sqrt(4 pi)); main campaign 124.6
+   3e12    R622 (1.9e16)     121.3-122.3 138.4    51.4            0.344 (-8.4)       --
+   5e12    R622              135.4 (c)                            0.337 (-8.9)
+   1e13    R622              138.9-139.5 157.5    53.8            0.331 (-9.3)       --
+   2e13    R622              139.4 (c)                            0.333 (-9.1)
+   3e13    R622              145.1      159.2     45.2            0.320 (-10.0)      c_d126 near its normalisation maximum
+   1e14    R622              1576       1915      1326            0.233              composition-normalisation bound
+   (*) best of two independent exact searches (3110 and 3959); (c) exact continuation scan from the main-run minima;
+   (**) floor-0 value at the main-campaign 2e12 point (the 109.7 continuation point was not floor-0 polished).
+   GUT-scale proxy (same data, universal gauge-factor targets): 182.6-186.3 at every v_R >= 1e11, four optimisers agree.
+ => global minimum over v_R in [2e10, 1e14]: chi2 = 109.7 at v_R ~ 2e12 (102.2 if the Majorana bound is relaxed to
+    2 sqrt(4 pi) or removed), i.e. >= 4x the FAIL threshold of 25, with >= 3 pulls above 3 sigma at every v_R
+    (sin^2 th23 alone contributes 35-100).  The PASS region (chi2 <= 15) is missed by a factor >= 7.
+ Type II (free v_L, 21 parameters, v_R = 1e13): proxy chi2 -> 1e-10, exact (under-converged, 6 seeds) 35.1 -- type II
+ WOULD very probably rescue the fit -- but it needs v_L = 0.86 eV (8.6e-10 GeV, type-I and type-II contributions of equal
+ size, 0.2 eV each at v_R).  The one-step G3221 vacuum induces only v_L ~ beta v_R v^2 / M_DeltaL^2 ~ beta x 1e-5 eV
+ (v_R = 1e13, M_DeltaL ~ 0.11 |Phi| ~ 5e15 GeV as at R2-A's explicit C2 point L5_Am45_C2_loc, (1,3)_{Y=1} eigenvalue
+ 0.0128 |Phi|^2) and ~ beta x 1.5e-7 eV for C2 at v_R = 2e10: short by >= 1e5 for |beta| <= 1 [EST].  Realising it
+ would need an extra light Delta_L (1,3,1)_{B-L=2} at ~2e13 sqrt(beta) GeV (a new ~1e-5 mass^2 tuning, a new light
+ multiplet for unification, a new R2-A check): not part of the configuration.  The FAIL condition is therefore met.
+ Robustness (sections 5-7): 4 proxy optimisers x 50 random starts + literature seeds at every v_R; exact polishing of
+ the 10 best distinct minima + exact DE / CMA-ES / basin hopping; an exact fine continuation scan in v_R; data variants
+ (NuFIT 6.0 without SK: 290.7; NuFIT 3.2 neutrinos with modern quark data: 32.7); floor 0 (+14 to +40); content / M_U
+ variants (-8 to -1); Majorana-coupling bound variants (-8 at the best v_R); theta23 profile (17-observable chi2 =
+ 53.8 / 150.7 / 238 at sin^2 th23 = 0.331 / 0.395 / 0.441); theta23 dropped altogether: chi2_17 = 25.5 and the model
+ then PREDICTS sin^2 th23 = 0.314 (10.4 sigma below NuFIT 6.0); at 2e12 / 1e12 even chi2_17 = 64.1 / 198.5.
+ Origin of the literature's "chi2 ~ 15-25": DATA PRECISION, not RG / PQ / normalisation: with NuFIT 3.2 (2018) AND a
+ literature-era quark error model the identical code finds chi2 = 7.1 (all pulls < 1.9) in a basin with sin^2 th23 =
+ 0.479 -- but that basin needs m_s/m_d ~ 35 (lattice: 19.9) and m_c +15 %, and has chi2 = 544 with today's data
+ (m_d -15.6 sigma, m_s +15.2 sigma, m_c +8.3 sigma).
+ Scope caveat (section 10, does NOT change the verdict for the specified model): X-allowed Planck-suppressed operators
+ F F H10 Phi210 / Lambda and F F Delta126bar Phi210 / Lambda give effective 120-like (and 10-, 126-like) Yukawas of size
+ c |Phi|/M_Pl,red ~ c x (0.7-2) x 1e-2 -- larger than y_u, y_d, y_e, y_s, y_mu at M_U unless c <~ 1e-4.  With generic
+ c ~ 1e-2..1 the light-flavour sector is effectively 10 + 126bar + 120 (+ a d=5 Ytilde10 ~ c x 1e-5 from F F H10* S*),
+ for which the literature reports good fits; that (less predictive) variant is NOT tested here.
+
+1. LITERATURE (searched this session; only abstracts / search snippets -> LIT-abstract or LIT-snippet)
+------------------------------------------------------------------------------------------------------------------------
+* Joshipura-Patel, arXiv:1102.5148 (PRD 83, 095002) [LIT-abstract]: SUSY and non-SUSY, minimal (10+126bar) and
+  non-minimal (+120); "the minimal non-supersymmetric model with type-I seesaw dominance gives excellent fits"; type-II
+  failures tied to the absence of b-tau unification.  Snippet: charged-fermion masses RUN TO THE GUT SCALE are the fit
+  inputs (no intermediate-scale top-down RG).  2011 data.
+* Dueck-Rodejohann, arXiv:1306.4468 (JHEP 09 (2013) 024) [LIT-snippet]: 10/120/126 combinations, SUSY and non-SUSY;
+  only normal ordering works; "the observable that provides the most tension is theta23"; type I favoured over type II.
+  (Round-1 K2 quoted "chi2 = 1.1 without RGE, full RG worsens the fit considerably" -- not re-read here.)
+* Babu-Bajc-Saad, arXiv:1612.04329 [LIT-abstract]: the realistic minimal Yukawa sector there is REAL 10 + REAL 120 +
+  complex 126bar -- a different structure (needs 120_H); not a fit of the 10+126bar(PQ) model.
+* Meloni-Ohlsson-Riad, arXiv:1612.07973 (JHEP 03 (2017) 045) [LIT-abstract]: 10+120+126bar with a Pati-Salam intermediate
+  scale; the minimal (10+126bar) variant shows "an equally good potential"; GUT-scale Yukawas run with SM-like evolution
+  miss the data by up to ~80 % (intermediate-scale running matters).
+* Ohlsson-Pernow, arXiv:1804.04560 (JHEP 11 (2018) 028) [LIT-snippet]: with full RG and an intermediate scale the
+  MINIMAL-Yukawa model FAILS to reproduce the EW-scale observables, the extended one fits for normal ordering; the
+  difficulty is attributed to the intermediate breaking and to the tension in theta23 ("contrary to previous works").
+* Ohlsson-Pernow, arXiv:1903.08241 (JHEP 06 (2019) 085) [LIT-snippet]: top-down RG fits, non-SUSY 10+126bar: type I
+  chi2 ~ 14.8 (NO), type I + II 14.7 (type-I dominated), pure type II 119, inverted ordering O(1000); "the largest
+  contribution to chi2 comes from sin^2 theta23, favoured below 0.5 (lower octant), against the latest data" (2018).
+* Boucenna-Ohlsson-Pernow, arXiv:1812.10548 (PLB 792 (2019) 251; erratum PLB 797 (2019) 134902, content not seen)
+  [LIT-snippet]: minimal non-SUSY SO(10) with PQ, H/F/r/s parametrisation, 19 observables: chi2 ~ 21.0 (NO), ~918 (IO),
+  ~413 with N1 leptogenesis imposed; best-fit sin^2 theta23 ~ 0.445 vs the then 1-sigma range (0.517, 0.577).
+* Mummidi-Patel, arXiv:2109.04050 (JHEP 12 (2021) 042) [LIT-abstract]: complex 10_H + 126bar_H with a PQ-like symmetry
+  (= our Yukawa structure), fermion fit + leptogenesis; predicts m_nu1 = 2-8 meV, m_bb = 4-10 meV (our failing best fits:
+  m_nu1 = 2.0-3.1 meV, m_bb = 4.2-5.5 meV, compatible); chi2 and theta23 not visible in any snippet.
+* Fong-Patel, arXiv:2505.06391 (JHEP 09 (2025) 148) [LIT-abstract]: same 10+126bar(PQ) framework; "quark-lepton
+  unification and the flavour structure of the Yukawa couplings enforce type-I dominance".
+* Babu-Khan, arXiv:1507.06712 (PRD 92 075018): non-SUSY SO(10) with PQ, fit numbers not retrieved.  Bertolini-Schwetz-
+  Malinsky hep-ph/0605006 (SUSY): not re-searched.  No 2022-2026 non-SUSY 10+126bar fit against NuFIT 5/6 was found.
+* Data history [LIT-snippet]: NuFIT 3.2 (2018) NO: sin^2 theta23 = 0.538 +0.033 -0.069 (3 sigma 0.418-0.613).  The
+  2018-2019 fits were evaluated against a theta23 likelihood whose LOWER error was 0.069 (and against 2010s light-quark
+  mass errors of 15-30 %); NuFIT 6.0 (used here, repository values) gives 0.470 +- 0.015 (with SK) or 0.561 +- 0.014
+  (without SK), and FLAG/PDG-2024 light-quark masses are known to 1-2 %.
+Summary: every top-down non-SUSY 10+126bar fit that reports numbers has chi2 ~ 15-21 for <= 1 d.o.f., NO only, type-I
+(dominated), and its chi2 is DOMINATED by sin^2 theta23 being too small; one paper (1804.04560) states the minimal model
+fails, blaming theta23 and the intermediate scale.  None (that I could see) claims a good fit with NuFIT-5/6 precision on
+theta23 together with lattice-precision light-quark masses.
+
+2. MODEL, CONVENTIONS, CODE
+---------------------------
+2.1 Yukawa sector [EXACT, charge arithmetic].  X(F) = 1, X(H10) = X(Delta) = -2: F.F.H10 and F.F.Delta126bar allowed,
+  F.F.H10* (X = 4) forbidden -> no Ytilde10; 16.16.126 is not SO(10)-invariant.  With the B63 charges there is no
+  renormalisable mixing of F with the vector-like states: F.16(X').H10 needs X' = 1, F.16(X').H10* needs X' = -3 (the
+  B63 16s carry -35, -28, 34, -35), F.16bar(X').{S, S*, Phi17, Phi17*} needs X' in {-5, 3, -18, 16} (the 16bars carry
+  39, 32, -30, 18).  So the light Yukawas are exactly Y10 + Y126 (symmetric) at the renormalisable level.  With a complex
+  10 and one 126bar there are exactly two (1,2,2)_0 multiplets: "two light bidoublets" = Phi_10 and Phi_126 (colour
+  singlet of (15,2,2)); above v_R their Yukawas are Y10 (quarks and leptons) and Y126 (quarks), -3 Y126 (leptons), no
+  tilde couplings, so the G3221 RGEs have no vertex terms (all scalar couplings holomorphic).
+2.2 Parametrisation (standard r, s) at M_U in the d-diagonal basis:
+      Yd = H + F,  Ye = H - 3F,  Yu = r (H + s F),  Ynu = r (H - 3 s F),  M_R = C_R v_R F / c_d126,  C_R = 2 sqrt6,
+  H = c_d10 Y10, F = c_d126 Y126, r = c_u10/c_d10 > 0, s = (c_u126/c_d126)/r complex; 15 (H, F) + 3 (r, s) + 1 (c_d126)
+  = 19 parameters; type II adds t (2).  Corrected composition normalisation (round-1 bug fixed):
+      |c_u10|^2 + |c_u126|^2 + |c_d10|^2 + |c_d126|^2 = 1,  c_d10 = sqrt((1 - c_d126^2 (1 + |r s|^2)) / (1 + r^2)).
+  Perturbativity: Y10_act = Y10_def/(2 sqrt2), Y126_act = (sqrt3/4) Y126_def <= 1.5 at M_U and v_R (round-1 exact
+  Clebsch normalisation) and the Delta_R Majorana coupling f (M_R = f v_R, f(M_U) = C_R Y126_def) <= sqrt(4 pi) at M_U
+  and v_R (component-level EFT bound, added because at v_R <= 2e12 the Y126_act bound alone allows f ~ 17).
+2.3 RG [NUM].  M_Z -> v_R: SM two-loop gauge + Yukawa (Luo-Wang-Xiao), one-loop nu^c sector and Weinberg operator,
+  sequential tree-level decoupling of each nu^c at its mass; B63 vector-like 3 x (16+16bar) + 2 x 10_F at M_s = 1e13
+  (+28/3 to every SM b_i, T_S = 14); the Phi17 pair at ~1e17 > M_U (R2-B convention).  v_R -> M_U: G3221 one loop with
+  BOTH bidoublets (wave-function and mixing anomalous dimensions T_ca = 3 Tr Y_c^+ Y_a + Tr Yl_c^+ Yl_a), the Majorana
+  coupling f, gauge couplings at one loop with the EXACT b's of the content.  b's (GUT-normalised B-L, with S-sector):
+  C2 (7/3, 20/3, 22/3, 89/6), C1 (23/6, 28/3, 22/3, 89/6), C1' (7/3, 7, 22/3, 89/6) -- identical to R2-B [EXACT];
+  R813 = C1 + (8,1,3)_0: (16/3, 28/3, 10, 89/6); R622 = C1 + (6,2,2)_{2/3}: (43/6, 34/3, 28/3, 97/6) [EXACT].  M_U fixed
+  to R2-B's two-loop nominal value of the content; g_R(M_U) = g_L(M_U), g_BL from g_Y at v_R; tree-level matching at
+  v_R (light SM doublet = the composition above; the three other doublets decouple at v_R) and at M_U.
+  Content per v_R: 2e10: C2 (R2-B: 2.13e10); 3e11-2e12: R813 (R2-B range 1.6e10-4e12, nominal 2.7e11); 3e12-1e14: R622
+  (R2-B range 3e12-3.8e13, nominal 9.5e12; no realisable content unifies at 1e14).
+2.4 Code (all in v2\): lib_r2c.py (data, observables, exact b's, SM / G3221 RGEs), model_r2c.py (parametrisation, proxy,
+  scalar top-down chain), bexact.py (batched top-down chain + perturbativity penalties), search_r2c.py (DE, CMA-ES, BH,
+  LM), mapping.py (proxy -> exact map), run_vr.py (driver), floor0.py, sens.py, vscan.py, typeII_vL.py, summarize.py,
+  make_tables.py, queue*.sh / post*.sh (job queues), patch_v2.py (documented fixes on top of the first attempt).
+  Fixes relative to round 1 and to the first attempt src\ (superseded): (i) composition normalisation (round-1 bug);
+  (ii) exact b's (round-1 K2 used wrong b's; the first attempt counted 4 instead of 3 vector-like pairs at M_s and used a
+  one-loop g3 = gL crossing, M_U ~ 1e15, instead of R2-B's two-loop M_U); (iii) |f| <= sqrt(4 pi); (iv) unphysical
+  points get residual 1e8 (an earlier 1e3 fallback was LOWER than the true chi2 at low v_R and stalled the exact polish
+  at 1e11 / 2e10; those exact stages were rerun).  Validation: independent scalar DOP853 chain vs batched RK4 (h = 0.5):
+  |dchi2| <= 0.2 at every reported point with f(M_U) <~ 5 (<= 0.1 for chi2 < 300); for f(M_U) >= 7 the fixed-step RK4 fails
+  (1e12 variants in 6.5) and only DOP853 values are quoted; convention round trips 1e-13 (first attempt's
+  test_conventions); SM running reproduces y_t(2e16) = 0.41 and the 13 % running of s23, s13.
+
+3. DATA AND ERROR MODEL
+----------------------
+Masses at M_Z (round-1 K2 inputs from PDG-2024, 4-loop QCD / 1-loop QED): m_u 1.248(42) MeV, m_d 2.717(48), m_s 54.04(68),
+m_c 0.6322(99) GeV, m_b 2.866(15), m_t 169.5(5); m_e, m_mu, m_tau (experimental errors negligible); 1 % theory floor in
+quadrature on all nine masses (main runs; removed in the floor-0 continuation 1 % -> 0.3 % -> 0.1 % -> 0.03 % -> 0).
+CKM: s12 0.22501(68), s23 0.04182(80), s13 0.003731(106), delta 1.147(23) rad (no floor).  NuFIT 6.0 NO with SK:
+sin^2 th12 0.308(12), sin^2 th23 0.470(15), sin^2 th13 0.02215(60), dm21 7.49(19)e-5, dm31 2.513(21)e-3 eV^2 (repository
+values; delta_PMNS not fitted; the CP-conjugate point is quoted when delta_CKM < 0, so delta_PMNS refers to delta_CKM > 0).
+Variants: NuFIT 6.0 without SK (sin^2 th23 0.561(14), dm31 2.534(24)e-3); NuFIT 3.2 (0.538, its LOWER error 0.069 used
+symmetrically); 'literature-era' errors (EST, recollection of Xing-Zhang-Zhou 2011/12 M_Z errors: m_u 30 %, m_d 17 %,
+m_s 21 %, m_c 13 %, m_b 1.1 %, m_t 0.7 %, leptons 1 %; CKM errors x2; central values unchanged).
+
+4. GLOBAL SEARCH AND CONVERGENCE [NUM]
+-------------------------------------
+Proxy (GUT-scale, batched, ~1.3 ms/point) at every main v_R: 50 DE (popsize 20 x 1000 generations, ~1.3e7 evaluations),
+50 CMA-ES (IPOP x3, ~9.5e6), 50 basin hoppings (25 annealed LM hops each, ~9.5e6), 50 multi-start LM with neutrino-weight
+continuation (~1.6e6), + 3 x 3 DE at fixed literature / round-1 (r, s) seeds (r = 77.4, s = 0.314 - 0.028i "Mummidi-Patel-
+like"; r = 66, s = 0.39 "OP-2019-like"; r = 63.7, s = 0.475 round-1 skeptic) followed by free LM.  DE and CMA-ES agree to
+1e-5 at every v_R (e.g. 184.761 / 184.761 at 1e13; 186.327 / 186.327 at 3e12; 182.574 / 182.574 at 2e12); BH within 1;
+5-11 of 50 DE runs within 1 of the minimum; the literature seeds land in the same basin (free LM 190-212).
+Exact (top-down, batched, ~0.8 ms/point): the 10 best distinct proxy minima mapped (inverse G3221 quark transfer) and
+TRF-polished (they land within ~4-10 of each other: 1e13 139.5-143.6; 3e12 122.3-132.8; 3e13 145.1-149.2), 2 random-
+start exact DE (popsize 10 x 400: never better, 196-4300), 2 exact CMA-ES from the best points, 2 x 10 exact basin hops
+(no improvement), then a continuation scan in v_R from the best points (vscan).  The exact minimum lies 40-80 below the
+proxy one (Yukawa-dependent G3221 running) in the same (r, s) basin for 3e12 <= v_R <= 3e13; for v_R <= 1e12 and at
+1e14 the binding perturbativity / normalisation constraints move it to other (r, s).
+
+5. RESULTS PER v_R (best exact points; full records v2\summary.txt, v2\final_numbers.json, v2\tables.txt) [NUM]
+------------------------------------------------------------------------------------------------------------
+  v_R = 2e+10  C2   M_U = 6.05e+15: chi2 = 9666.85 (scalar DOP853 9666.67), floor0 = 101359.8, max|pull| = 70.23, #(|pull|>3) = 14
+     pulls: m_u=+3.20 m_c=-1.34 m_t=-70.23 m_d=+8.30 m_s=-8.32 m_b=+27.74 m_e=+6.92 m_mu=-15.94 m_tau=-34.07 s12=-1.17 s23=-22.55 s13=+21.08 delta=+19.00 sin2_th12=+10.90 sin2_th23=+27.99 sin2_th13=+0.69 dm21=+0.28 dm31=+11.57
+     r = 20.87, s = +0.1423-0.1740i, c_d126 = 0.0006039; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.9988, 0.002833, 0.04787, 0.0006039
+     max|Y10_act| = 0.072, max|Y126_act| = 0.196, f(v_R) max sv = 1.407; M_R = 3.17e+09, 2.19e+10, 2.81e+10 GeV
+     m_nu = 25.57, 27.01, 58.39 meV, sum = 111.0 meV, m_bb = 25.17 meV, delta_PMNS = 206.5 deg, sin^2 th23 = 0.8898
+  v_R = 1e+11  R813 M_U = 2.40e+16 [first run, old 1e3 fallback; exact DE+CMA+BH in the physical region]: chi2 = 3110.20 (scalar DOP853 3110.20), floor0 = None, max|pull| = 31.68, #(|pull|>3) = 10
+     pulls: m_u=+1.02 m_c=+2.83 m_t=-31.68 m_d=-16.74 m_s=-2.56 m_b=+25.21 m_e=+6.89 m_mu=-7.82 m_tau=-26.68 s12=+2.28 s23=-10.63 s13=-2.27 delta=+1.91 sin2_th12=+4.04 sin2_th23=+13.85 sin2_th13=-2.30 dm21=+1.61 dm31=+3.43
+     r = 33.56, s = +0.2753+0.0257i, c_d126 = 0.001295; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.9995, 0.01202, 0.02978, 0.001295
+     max|Y10_act| = 0.112, max|Y126_act| = 0.148, f(v_R) max sv = 1.297; M_R = 3.28e+09, 9.07e+10, 1.3e+11 GeV
+     m_nu = 7.58, 11.64, 51.41 meV, sum = 70.6 meV, m_bb = 8.00 meV, delta_PMNS = 180.8 deg, sin^2 th23 = 0.6778
+  v_R = 1e+11  R813 M_U = 2.40e+16 [rerun 'mainfix', corrected fallback]: chi2 = 3958.70 (scalar DOP853 3958.70), floor0 = 14382.39, max|pull| = 39.69, #(|pull|>3) = 11
+     pulls: m_u=+0.18 m_c=-1.21 m_t=-24.29 m_d=-6.95 m_s=+7.97 m_b=+21.39 m_e=-0.26 m_mu=-13.16 m_tau=-39.69 s12=+1.03 s23=-25.05 s13=+12.80 delta=+12.95 sin2_th12=+2.65 sin2_th23=+6.20 sin2_th13=-6.24 dm21=+1.41 dm31=+1.65
+     r = 38.58, s = +0.0874-0.0123i, c_d126 = 0.0005891; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.9997, 0.002005, 0.02591, 0.0005891
+     max|Y10_act| = 0.123, max|Y126_act| = 0.165, f(v_R) max sv = 1.442; M_R = 2.07e+10, 6.93e+10, 1.44e+11 GeV
+     m_nu = 7.04, 11.28, 50.96 meV, sum = 69.3 meV, m_bb = 7.28 meV, delta_PMNS = 193.7 deg, sin^2 th23 = 0.5631
+  v_R = 1e+12  R813 M_U = 2.40e+16: chi2 = 200.34 (scalar DOP853 200.29), floor0 = None, max|pull| = 5.77, #(|pull|>3) = 8
+     pulls: m_u=+0.03 m_c=+3.71 m_t=-5.47 m_d=-5.10 m_s=+5.23 m_b=+5.77 m_e=-0.30 m_mu=-4.48 m_tau=-1.05 s12=+2.03 s23=+4.36 s13=+0.14 delta=+4.12 sin2_th12=+1.64 sin2_th23=-1.00 sin2_th13=-2.06 dm21=+0.73 dm31=+0.13
+     r = 50.44, s = +0.3180+0.1704i, c_d126 = 0.003764; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.9974, 0.0685, 0.01977, 0.003764
+     max|Y10_act| = 0.163, max|Y126_act| = 0.314, f(v_R) max sv = 1.599; M_R = 5.05e+09, 2.39e+11, 1.6e+12 GeV
+     m_nu = 4.26, 9.72, 50.34 meV, sum = 64.3 meV, m_bb = 5.93 meV, delta_PMNS = 71.6 deg, sin^2 th23 = 0.4550
+  v_R = 2e+12  R813 M_U = 2.40e+16 [main campaign; the continuation scan below finds 109.75 at the same v_R]: chi2 = 124.61 (scalar DOP853 124.61), floor0 = 183.2, max|pull| = 5.47, #(|pull|>3) = 6
+     pulls: m_u=+0.07 m_c=+3.23 m_t=-3.67 m_d=-4.67 m_s=+3.09 m_b=+2.97 m_e=-0.03 m_mu=-1.99 m_tau=-0.68 s12=+1.64 s23=+2.56 s13=-0.42 delta=+3.13 sin2_th12=+1.24 sin2_th23=-5.47 sin2_th13=-1.92 dm21=+1.26 dm31=-0.30
+     r = 55.91, s = +0.3907-0.0921i, c_d126 = 0.003947; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.9959, 0.08857, 0.01781, 0.003947
+     max|Y10_act| = 0.172, max|Y126_act| = 0.231, f(v_R) max sv = 1.556; M_R = 1.23e+10, 4.85e+11, 3.11e+12 GeV
+     m_nu = 3.03, 9.30, 50.16 meV, sum = 62.5 meV, m_bb = 5.40 meV, delta_PMNS = 18.7 deg, sin^2 th23 = 0.3880
+  v_R = 3e+12  R622 M_U = 1.90e+16: chi2 = 122.28 (scalar DOP853 122.28), floor0 = 138.37, max|pull| = 8.42, #(|pull|>3) = 3
+     pulls: m_u=+0.09 m_c=+3.01 m_t=-2.07 m_d=-3.85 m_s=+1.56 m_b=+1.64 m_e=+0.08 m_mu=-0.83 m_tau=+0.07 s12=+1.41 s23=+2.26 s13=-0.51 delta=+2.63 sin2_th12=-0.43 sin2_th23=-8.42 sin2_th13=-1.20 dm21=+1.14 dm31=-0.43
+     r = 59.05, s = +0.4278-0.0446i, c_d126 = 0.004018; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.9946, 0.1021, 0.01684, 0.004018
+     max|Y10_act| = 0.179, max|Y126_act| = 0.214, f(v_R) max sv = 1.557; M_R = 1.99e+10, 7.25e+11, 4.67e+12 GeV
+     m_nu = 2.47, 9.12, 50.10 meV, sum = 61.7 meV, m_bb = 4.94 meV, delta_PMNS = 9.8 deg, sin^2 th23 = 0.3437
+  v_R = 1e+13  R622 M_U = 1.90e+16: chi2 = 139.51 (scalar DOP853 139.51), floor0 = 157.55, max|pull| = 9.26, #(|pull|>3) = 3
+     pulls: m_u=+0.09 m_c=+2.96 m_t=-2.26 m_d=-3.09 m_s=+2.58 m_b=+1.24 m_e=+0.05 m_mu=-1.11 m_tau=-0.06 s12=+1.47 s23=+0.71 s13=-0.16 delta=+3.14 sin2_th12=-2.25 sin2_th23=-9.26 sin2_th13=-1.49 dm21=+0.98 dm31=-0.32
+     r = 63.30, s = +0.4274+0.0118i, c_d126 = 0.01253; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.9405, 0.3392, 0.01486, 0.01253
+     max|Y10_act| = 0.179, max|Y126_act| = 0.044, f(v_R) max sv = 0.521; M_R = 2.93e+10, 9.71e+11, 5.21e+12 GeV
+     m_nu = 2.17, 9.03, 50.11 meV, sum = 61.3 meV, m_bb = 4.64 meV, delta_PMNS = 10.1 deg, sin^2 th23 = 0.3311
+  v_R = 3e+13  R622 M_U = 1.90e+16: chi2 = 145.13 (scalar DOP853 145.14), floor0 = 159.19, max|pull| = 10.00, #(|pull|>3) = 1
+     pulls: m_u=+0.03 m_c=+2.43 m_t=-1.65 m_d=-2.99 m_s=+2.44 m_b=+0.58 m_e=+0.06 m_mu=-0.64 m_tau=-0.05 s12=+1.32 s23=+0.30 s13=-0.11 delta=+2.90 sin2_th12=-2.77 sin2_th23=-10.00 sin2_th13=-1.39 dm21=+0.91 dm31=-0.42
+     r = 64.96, s = +0.4346-0.0052i, c_d126 = 0.03316; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.3499, 0.9362, 0.005386, 0.03316
+     max|Y10_act| = 0.776, max|Y126_act| = 0.016, f(v_R) max sv = 0.189; M_R = 3.61e+10, 1.13e+12, 5.68e+12 GeV
+     m_nu = 2.05, 8.99, 50.08 meV, sum = 61.1 meV, m_bb = 4.18 meV, delta_PMNS = 9.8 deg, sin^2 th23 = 0.3200
+  v_R = 1e+14  R622 M_U = 1.90e+16: chi2 = 1576.32 (scalar DOP853 1576.35), floor0 = 1915.04, max|pull| = 20.40, #(|pull|>3) = 13
+     pulls: m_u=+0.21 m_c=+1.19 m_t=+3.67 m_d=-9.72 m_s=+10.84 m_b=+8.15 m_e=+2.98 m_mu=-5.05 m_tau=-6.06 s12=+2.79 s23=+20.17 s13=-0.56 delta=+5.29 sin2_th12=-20.40 sin2_th23=-15.82 sin2_th13=-7.30 dm21=-5.62 dm31=-4.19
+     r = 98.07, s = +0.3169+0.1686i, c_d126 = 0.02703; |c_u10|, |c_u126|, |c_d10|, |c_d126| = 0.3068, 0.9514, 0.003129, 0.02703
+     max|Y10_act| = 1.339, max|Y126_act| = 0.067, f(v_R) max sv = 0.594; M_R = 5.56e+10, 3.81e+12, 5.94e+13 GeV
+     m_nu = 0.31, 8.02, 49.24 meV, sum = 57.6 meV, m_bb = 1.25 meV, delta_PMNS = 33.9 deg, sin^2 th23 = 0.2327
+  Fine exact continuation scan (vscan.py; starts = best points of the main runs; f <= sqrt(4 pi)):
+     v_R = 3e+11 R813: chi2 = 838.69, sin^2 th23 = 0.5841, max|pull| = 17.78, r = 42.9, |s| = 0.271, max|Y126_act(M_U)| = 0.150, f(v_R) = 1.36, M_R3 = 4.09e+11
+     v_R = 5e+11 R813: chi2 = 360.36, sin^2 th23 = 0.5172, max|pull| = 8.97, r = 49.6, |s| = 0.265, max|Y126_act(M_U)| = 0.208, f(v_R) = 1.47, M_R3 = 7.36e+11
+     v_R = 1e+12 R813: chi2 = 200.36, sin^2 th23 = 0.4541, max|pull| = 5.80, r = 50.4, |s| = 0.360, max|Y126_act(M_U)| = 0.314, f(v_R) = 1.60, M_R3 = 1.6e+12
+     v_R = 2e+12 R813: chi2 = 109.75, sin^2 th23 = 0.3818, max|pull| = 5.88, r = 54.7, |s| = 0.402, max|Y126_act(M_U)| = 0.314, f(v_R) = 1.64, M_R3 = 3.29e+12
+     v_R = 3e+12 R622: chi2 = 121.27, sin^2 th23 = 0.3444, max|pull| = 8.37, r = 59.1, |s| = 0.430, max|Y126_act(M_U)| = 0.206, f(v_R) = 1.56, M_R3 = 4.69e+12
+     v_R = 5e+12 R622: chi2 = 135.38, sin^2 th23 = 0.3372, max|pull| = 8.86, r = 62.2, |s| = 0.429, max|Y126_act(M_U)| = 0.080, f(v_R) = 1.00, M_R3 = 4.99e+12
+     v_R = 1e+13 R622: chi2 = 138.85, sin^2 th23 = 0.3331, max|pull| = 9.13, r = 63.3, |s| = 0.426, max|Y126_act(M_U)| = 0.036, f(v_R) = 0.51, M_R3 = 5.11e+12
+     v_R = 2e+13 R622: chi2 = 139.41, sin^2 th23 = 0.3332, max|pull| = 9.12, r = 63.6, |s| = 0.422, max|Y126_act(M_U)| = 0.018, f(v_R) = 0.25, M_R3 = 5.07e+12
+  Majorana-bound variants (vscan from the same starts):
+     f <= 2 sqrt(4 pi): v_R = 1e12: 176.3 (scalar DOP853; batched RK4 157.5 -- f(M_U) = 7.1, step too coarse), 2e12: 102.25 (f(M_U) = 4.6,
+                        DOP853 = RK4), 3e12: 121.27 (unchanged)
+     no f bound:          v_R = 1e12: batched 136.2 but DOP853 1.06e5 (f(M_U) ~ 10: non-perturbative, numerically unreliable -> discarded),
+                        2e12: 102.25 (same point as with f <= 2 sqrt(4 pi))
+  theta23-FREE continuation (sigma(sin^2 th23) = 10; chi2 of the other 17): 3e12: 25.5 (full DIAG campaign), 2e12: 64.1, 1e12: 198.5
+Light-doublet composition and r, s are what R2-A has to realise (section 9).  M_R spectra are type-I hierarchical
+(M_R3 ~ 3-6e12 GeV wherever the fit is not perturbativity-limited), which is what sets the v_R window.
+
+6. ROBUSTNESS (all at the indicated v_R; exact chain) [NUM]
+---------------------------------------------------------
+6.1 theta23 is structural.  Profile at v_R = 1e13 (sin^2 th23 constrained to X +- 0.003; chi2 of the other 17):
+      X free (fit 0.331): 53.8   |   X = 0.40 (fit 0.395): 150.7   |   X = 0.45 (fit 0.441): 238.2
+    i.e. raising theta23 forces m_c (+5.5..+9.3 sigma), m_t, m_d, m_b, s23, delta_CKM away.  theta23 dropped altogether
+    (sigma -> 10, v_R = 3e12): chi2_17 = 25.5 (all pulls < 2.3) and the model PREDICTS sin^2 th23 = 0.314;
+    continuation of the same theta23-free fit: chi2_17 = 64.1 at 2e12 and 198.5 at 1e12.  Since chi2_18 >= chi2_17,
+    no value of theta23 data could bring the 18-observable chi2 below ~25 in this model at v_R <= 3e12 [NUM, search-limited].
+6.2 Data.  NuFIT 6.0 without SK (sin^2 th23 = 0.561): chi2 = 290.7 (v_R = 1e13; 7 pulls > 3).  NuFIT 3.2 neutrino data with
+    modern quark data: 32.7 (sin^2 th23 = 0.288, pull -3.6 with the 2018 error 0.069; chi2 w/o th23 19.6).  NuFIT 3.2
+    plus literature-era quark errors: 7.1 (section 8).
+6.3 Theory floor.  Without the 1 % mass floor: 138.4 (3e12), 157.5 (1e13), 159.2 (3e13), 419 (1e12), 1915 (1e14),
+    164 (main-campaign point, 124.6 at floor 1 %) (2e12); i.e. +14 to +40 in the window.
+6.4 Content / M_U above v_R (re-polish + 12 hops): v_R = 1e13 with C1 (M_U = 2.18e15): 131.3; with C2 (6.05e15): 132.7
+    (R622: 139.5); v_R = 3e13 with R813 (2.4e16): 144.2 (R622: 145.1).  Effect <= 8.
+6.5 Perturbativity convention of the Majorana coupling (the other common normalisation M_R = 2 f v_R doubles the
+    bound): f <= 2 sqrt(4 pi): 176.3 (1e12, DOP853), 102.2 (2e12), 121.3 (3e12); no f bound at all (only |Y126_act| <= 1.5):
+    2e12 unchanged (102.2); at 1e12 the optimiser runs into f(M_U) ~ 10 where the one-loop RG is meaningless (discarded).
+    The window edge moves, the minimum does not approach 25 (lowest value anywhere: 102.2).
+6.6 Composition normalisation: with the corrected normalisation c_d126 <= (1 + |r s|^2)^(-1/2) ~ 0.035 for |r s| ~ 26-28,
+    so M_R >= C_R v_R F (1 + |r s|^2)^(1/2) -- this alone kills v_R >~ 4e13 (1e14: 1576).  At the low end M_R <= f v_R
+    kills v_R <~ 1e12.  Allowed type-I window ~[2e12, 3e13] [NUM]; C2's v_R = 2.1e10 (the only content passing R2-B's
+    unification + Super-K test robustly) lies far outside it: chi2 = 9667 (neutrino masses 25-58 meV each, m_t -70 sigma).
+6.7 RG / threshold approximations not included (one-loop G3221 Yukawa running, tree-level matching at v_R and M_U,
+    one-loop gauge couplings above v_R with M_U imposed): these move Yukawa ratios by O(1 %) [EST]; with 1-2 % errors that
+    is worth O(10) in chi2 (cf. the proxy-vs-exact shift of 40-80 caused by the much larger full Yukawa running), not the
+    factor >= 4 needed.  The neutrino angles of a hierarchical NO spectrum barely run below M_R [standard].
+6.8 Inverted ordering: not computed (literature: chi2 ~ 918 / O(1000), LIT-snippet; NuFIT 6.0 IO has sin^2 th23 ~ 0.55,
+    even further from the model's ~0.31-0.34).
+
+7. TYPE II
+----------
+* Fit (v_R = 1e13, R622, m_nu = type I + t Y126(v_R) v^2): proxy chi2 -> 7.8e-11 (DE), 3.4e-10 (CMA-ES), 5.3e-9 (BH);
+  exact chain (6 mapped seeds, 1 DE, 1 CMA, 12 hops; under-converged): 35.1 (sin^2 th23 = 0.395, pull -5.0, all other
+  pulls < 1.8).  Type II would very probably bring chi2 to O(0-10) if it were available.  [NUM]
+* Required triplet vev: v_L = |t| v^2 / C_L = 0.86-0.89 eV (8.6e-10 GeV) at the best points, with type-I and type-II
+  matrices of equal size (largest singular values 0.20 eV each at v_R) [NUM, typeII_vL.py].
+* Induced v_L in this vacuum: the only Delta_L tadpole is the quartic Delta_L Delta_R Phi* Phi* from the X-allowed
+  126bar.126bar.10*.10* (and 126bar.126bar.126bar*.126bar*-type) invariants; the cubic Delta_L* Delta_R <210> vanishes
+  because the G3221 vev of 210 has no (x,3,3) component [EXACT, group theory].  Hence v_L ~ beta v_R v^2 / M_DeltaL^2 with
+  M_DeltaL ~ 0.11 |Phi| (R2-A explicit C2 point: (1,3)_{Y=1} at 0.0128 |Phi|^2), |Phi| ~ 1.7e16 (C2) - 4.9e16 (R622):
+  v_L ~ beta x 1e-5 eV (v_R = 1e13) or beta x 1.5e-7 eV (C2, v_R = 2e10) [EST], i.e. >= 1e5 too small for |beta| <= 1.
+* Making type II available needs M_DeltaL ~ 2e13 sqrt(beta) GeV (v_R = 1e13): an additional light (1,3,1)_{B-L=2}
+  multiplet (b_2L +2/3, b_BL +3/2 GUT-normalised), an extra mass^2 tuning ~1e-5, and new R2-A / R2-B checks.  Not part
+  of the configuration => "type II where realisable" is empty; the FAIL rests on type I.
+
+8. WHY THE LITERATURE CLAIMS OF chi2 ~ 15-25 ARE NOT REPRODUCED -- AND HOW THEY ARE
+-----------------------------------------------------------------------------------
+* Same code, same model, v_R = 1e13, 2018-era inputs (NuFIT 3.2, light-quark errors 17-30 %, CKM errors x2): chi2 = 7.07
+  (proxy 16.6; exact seeds 7.07-7.22; floor 0 7.06), all pulls < 1.9: m_d -1.85, m_s +1.16, m_c +1.19, sin^2 th23 = 0.479
+  (pull -0.86 against 0.538 +- 0.069); r = 65.9, s = 0.337 + 0.005i, m_nu1 = 4.7 meV, m_bb = 6.6 meV.  This REPRODUCES
+  (and slightly beats) Ohlsson-Pernow 2019 (14.8) and Boucenna-Ohlsson-Pernow 2019 (21.0) [their exact inputs are not
+  known to me, so the comparison is qualitative].
+* That point under today's data: chi2 = 544 -- m_d -15.6 sigma (fit m_d 31 % low), m_s +15.2 sigma (28 % high), m_c +8.3
+  sigma (15 % high), everything else < 1 sigma; i.e. the theta23-compatible basin needs m_s/m_d ~ 35 vs the lattice 19.9.
+* With modern quark data and the 2018 theta23 likelihood: 32.7.  With modern quark data and NuFIT 6.0: 102-122 (best v_R).
+* Therefore the disagreement with the literature is DATA (theta23 precision: lower error 0.069 -> 0.015, and lattice-
+  precision m_d, m_s, m_c), not the RG treatment, not the PQ restriction (all quoted fits use the same r, s structure,
+  i.e. no Ytilde10), not type II (OP 2019: I+II 14.7 vs I 14.8), and not the composition normalisation (which only
+  affects perturbativity / the v_R window).  The round-1 "chi2 ~ 220" two-bidoublet fits (r ~ 64-66, s ~ 0.39-0.48) are
+  the same basin as here; their higher chi2 came from the round-1 bugs (wrong b's, normalisation, CKM running convention).
+
+9. REQUIRED LIGHT-DOUBLET COMPOSITIONS (for R2-A) AND NEUTRINO PREDICTIONS OF THE (FAILING) BEST FITS
+------------------------------------------------------------------------------------------------------
+* Required (r, s, c_d126) at the best points [NUM]:
+    v_R = 2e12: r = 54.7, s = 0.386 - 0.113i, c_d126 = 0.0036; (|c_u10|, |c_u126|, |c_d10|, |c_d126|) = (0.997, 0.079, 0.0182, 0.0036)
+    v_R = 3e12: r = 59.1, s = 0.428 - 0.045i, c_d126 = 0.0040; (|c_u10|, |c_u126|, |c_d10|, |c_d126|) = (0.995, 0.102, 0.0168, 0.0040)
+    v_R = 1e13: r = 63.3, s = 0.427 + 0.012i, c_d126 = 0.0125; (0.941, 0.339, 0.0149, 0.0125)
+    v_R = 3e13: r = 65.0, s = 0.435 - 0.005i, c_d126 = 0.0332; (0.350, 0.936, 0.0054, 0.0332)
+  i.e. a light SM doublet that is almost purely up-type (|c_u|/|c_d| ~ 30-60), with
+  c_u126/c_u10 = r s c_d126 / c_u10 growing like v_R (0.10 at 3e12 -> 2.7 at 3e13) and |s| ~ 0.43, |arg s| < 0.1.
+  (R2-A's sampled realisable |r| at its explicit C2 point reached 40 at most; the target (r, s) = (66, 0.43) is being
+  tested there.)  Since every such fit FAILS, realisability does not change the verdict.
+* Neutrino predictions of the failing best fits (NO, type I): m_nu = (2.0-3.1, 9.0-9.4, 50.1) meV, sum = 61-63 meV,
+  m_bb = 4.2-5.5 meV, delta_PMNS ~ 10-21 deg (CP-conjugated so that delta_CKM > 0), sin^2 th23 ~ 0.32-0.38;
+  M_R ~ (1-4e10, 0.5-1.1e12, 3-6e12) GeV.  [NUM; these are predictions of a model that does not fit.]
+
+10. CAVEATS AND OPEN ESCAPE ROUTES (none is part of the tested configuration)
+----------------------------------------------------------------------------
+(a) Higher-dimensional Yukawa operators [EST/CONJ]: F F H10 Phi210 / Lambda and F F Delta126bar Phi210 / Lambda are X-
+    and SO(10)-allowed and contain (16 16)_120 pieces: effective antisymmetric 120-like Yukawas c |Phi|/Lambda with
+    |Phi|/M_Pl,red = 0.007 (C2) - 0.02 (R622); F F H10* S* / Lambda (X = 1+1+2-4 = 0) gives a d=5 Ytilde10 ~ c x 1.2e-5.
+    These are not negligible against the light-generation Yukawas at M_U unless c <~ 1e-4.  A model with generic c is
+    effectively 10 + 126bar + 120(+Ytilde10) -- known to fit (LIT) but with more parameters; it is NOT tested here and it
+    is not the configuration specified for this gate.  This is the most plausible way out for the theory as an EFT.
+(b) Type II with an extra light Delta_L (section 7).  (c) A renormalisable 120_H (new field).  (d) A lower-octant
+    theta23 near 0.31-0.34 would have to be confirmed by future data (NuFIT 6.0 excludes it at ~9-10 sigma with SK and
+    ~16 sigma without).
+
+11. MISSING COMPUTATIONS (none of them can turn this FAIL into a PASS for the specified model; they bound its scope)
+------------------------------------------------------------------------------------------------------------------
+(M1) Two-loop G3221 Yukawa RGEs and one-loop threshold matching at v_R and M_U (expected O(10) in chi2, section 6.7).
+(M2) A d=5 operator flavour fit (10 + 126bar + Planck-suppressed 120-like/Ytilde10 pieces) to decide whether the theory
+     as an EFT (rather than the renormalisable model) can fit -- a different, less predictive model.
+(M3) Type-II rescue: realisability of a light Delta_L (R2-A) and unification with it (R2-B), plus a converged exact
+     type-II fit (the exact type-II search here is under-converged: 35.1 vs proxy 0).
+(M4) Inverted ordering fit (literature: much worse).
+(M5) Primary-literature check (full texts) of OP 2019 / BOP 2019 / Mummidi-Patel 2021 inputs, to make section 8
+     quantitative rather than qualitative.
+
+12. FILES (all under the folder above)
+--------------------------------------
+v2\REPORT inputs: summary.txt / summary.json (all runs), final_numbers.json, tables.txt; per run:
+  main_<vR>_<content>_I.json/.log (+ _proxy.json, _floor0.json) for vR = 2e10 (C2), 1e11 (R813; mainfix_ = rerun),
+  1e12 (R813), 2e12 (R813), 3e12, 1e13, 3e13, 1e14 (R622);
+  vscan_fine.json (continuation 3e11-2e13), vscan_fh7.json, vscan_fhinf.json (Majorana-bound variants);
+  sens_C1_1e+13_C1.json, sens_C2_1e+13_C2.json, sens_R813_3e+13_R813.json (content / M_U);
+  litera_1e+13_R622_I.json (2018-era data), nufit32_1e+13_R622_I.json, nosk_1e+13_R622_I.json, prof040_*, prof045_*
+  (theta23 profile), noth23_3e+12_R622_I.json (theta23 dropped), typeII_1e+13_R622_II.json + _vL.json (type II);
+  code: lib_r2c.py, model_r2c.py, bexact.py, search_r2c.py, mapping.py, run_vr.py, floor0.py, sens.py, vscan.py,
+  typeII_vL.py, summarize.py, make_tables.py, patch_v2.py, queue.sh, post*.sh; logs queue_*.log.
+src\ (first attempt, superseded: wrong S-sector count and one-loop M_U; kept for the record).

@@ -1,0 +1,132 @@
+{
+ "point": [
+  1,
+  1
+ ],
+ "orbit_dim": 30,
+ "normal_dim": 180,
+ "cubic_family_completeness": {
+  "F4": {
+   "n_cubic_candidates": 7,
+   "rank_as_polynomial_maps": 7,
+   "names": [
+    "I2Phi",
+    "A3",
+    "SPhi",
+    "cross",
+    "MPhi",
+    "eps3x3x3",
+    "eps4x3x2"
+   ]
+  },
+  "F2": {
+   "n_cubic_candidates": 4,
+   "rank_as_polynomial_maps": 3,
+   "names": [
+    "PhiM",
+    "SM",
+    "chain",
+    "eps"
+   ]
+  },
+  "S2": {
+   "n_cubic_candidates": 3,
+   "rank_as_polynomial_maps": 3,
+   "names": [
+    "chain",
+    "cross",
+    "SS"
+   ]
+  },
+  "SC": {
+   "n_cubic_candidates": 1,
+   "rank_as_polynomial_maps": 1,
+   "names": [
+    "I3"
+   ]
+  }
+ },
+ "per_target": {
+  "F4": {
+   "covariants": [
+    "I2Phi",
+    "A3",
+    "SPhi",
+    "cross",
+    "MPhi",
+    "eps3x3x3",
+    "eps4x3x2",
+    "gradI3",
+    "Phi"
+   ],
+   "n_covariants": 9,
+   "rank_at_phi0": 2,
+   "n_vanishing_combinations": 7,
+   "gradient_ranks_per_combination": [
+    179,
+    107,
+    116,
+    116,
+    116,
+    156,
+    1
+   ]
+  },
+  "F2": {
+   "covariants": [
+    "PhiM",
+    "SM",
+    "chain",
+    "eps",
+    "M"
+   ],
+   "n_covariants": 5,
+   "rank_at_phi0": 1,
+   "n_vanishing_combinations": 4,
+   "gradient_ranks_per_combination": [
+    24,
+    0,
+    0,
+    36
+   ]
+  },
+  "S2": {
+   "covariants": [
+    "chain",
+    "cross",
+    "SS",
+    "S",
+    "I2delta",
+    "delta"
+   ],
+   "n_covariants": 6,
+   "rank_at_phi0": 2,
+   "n_vanishing_combinations": 4,
+   "gradient_ranks_per_combination": [
+    0,
+    40,
+    40,
+    40
+   ]
+  },
+  "SC": {
+   "covariants": [
+    "I3",
+    "I2",
+    "one"
+   ],
+   "n_covariants": 3,
+   "rank_at_phi0": 1,
+   "n_vanishing_combinations": 2,
+   "gradient_ranks_per_combination": [
+    1,
+    1
+   ]
+  }
+ },
+ "W3_rank_float": 210,
+ "W3_rank_exact": 210,
+ "flat_modes_degree3_lower_bound": -30,
+ "max_tangent_overlap": 96.0,
+ "elapsed_s": 84.39185810089111
+}

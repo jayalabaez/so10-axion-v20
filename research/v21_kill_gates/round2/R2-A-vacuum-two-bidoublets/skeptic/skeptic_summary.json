@@ -1,0 +1,21 @@
+{
+ "gate": "R2-A skeptic",
+ "refuted": false,
+ "corrected_verdict": "FAIL (NUM, not certified)",
+ "reproduced_descent_values": {"R1_bankA": [-73.781573, -73.781573], "R1_hs2": [-54.167761, -54.167761], "R3_rnd41": [-5.192346, -5.192346],
+                               "X3_rnd71": [-23.994778, -23.994778], "N1_rnd61": [-3.549417, -3.549417],
+                               "gauge_tangent_max_dVds": 2.3e-9, "fd_stationarity_qstar_max": 2e-9},
+ "own_lp_validation": {"D400_C2_K2_noc_t": [0.01048, 0.01044], "D400_C2_K2_R123_beta0_s_over_8_Uiters": [7.25, 7.22, 7.20, 7.17, 7.23, 7.18, 7.16, 7.23],
+                       "Am45_C2_K2f09_R123_beta0_s": 4.07},
+ "beta_loophole": {"Am45_C2_K2f09_R123": {"beta_abs2": 1.93e-6, "s_star": -0.0967, "modes": "35/0/20/431", "min_gap": 0.0967, "a0_max": 0.5, "screens": "clean"},
+                   "D400_C2_K2f09_R123": {"beta_abs2": 9.0e-7, "s_star": -0.0946, "modes": "35/0/20/431", "min_gap": 0.0946, "screens": "clean"},
+                   "Am45_C2_K2_R123_beta": {"s_star": 5.26}, "D400_C2_K2_R123_beta": {"s_star": 2.77},
+                   "D400_C2_noEW_R123": {"s_star": -0.113}},
+ "fresh_descents_at_beta_points": {"Am45": [-11.47, -6.53, -0.69, -16.18, -49.10, -1.08], "D400": [-26.40, -7.39], "n_lower": "8/8"},
+ "lambda": {"G7_D470_validation": {"lambda_direct": 0.0004, "R_heavy": 0.08254, "lambda_eff_all": -0.04088},
+            "G7_D470_valley_dV": {"0.01": -9.73e-11, "0.02": -1.62e-9, "0.05": -6.37e-8, "0.1": -1.02e-6},
+            "gate_round2_3_points_lambda_eff_all": {"G14_Am45_C2_K2f09_R12": -4.21, "G15_Am45x_C1622_K2_X12": -4.05, "G13_Am45_C2noew_R12": -4.15},
+            "beta_point_Am45": {"lambda_eff_heavy": -0.0011, "lambda_eff_all": -1.70}},
+ "discarded": {"MTs_Am45_C2_K2f09b_R123": "t=0.0037 but SM-singlet subspace runaway and exact lower point -645 (sk_screen)"},
+ "checkouts_unchanged": true
+}

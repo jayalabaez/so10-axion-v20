@@ -1,0 +1,279 @@
+{
+ "closures_fermi_safe": {
+  "safe_noH10_noPhi_noFamily": {
+   "K": 15.0,
+   "target_Phi17": 4,
+   "ops": [
+    "1 x [F Vec2bar S*^2] (dim 5)",
+    "1 x [F* Vec1bar* S*^3 Phi17] (dim 7)",
+    "2 x [Vec2bar* Vec3* S*^4 Phi17] (dim 8)",
+    "1 x [Vec1* Vec2* Vec3bar*^2 Phi17] (dim 7)"
+   ],
+   "yukawas": {
+    "y1": 1,
+    "y2": 1,
+    "y3": 2
+   },
+   "kappa": {},
+   "vev_monomial": {
+    "S": -17,
+    "Phi17": 4
+   },
+   "fermion_fields": 20,
+   "H10_propagators": 0,
+   "vertices": 9,
+   "loops": 2,
+   "nda_rows": {
+    "Ms=1e+13,ys=0.304": {
+     "log10_dtheta": -5.98,
+     "log10_dtheta_H10_at_MU": -5.98
+    },
+    "Ms=1e+13,ys=0.374": {
+     "log10_dtheta": -7.15,
+     "log10_dtheta_H10_at_MU": -7.15
+    },
+    "Ms=3e+12,ys=0.091": {
+     "log10_dtheta": -7.02,
+     "log10_dtheta_H10_at_MU": -7.02
+    },
+    "Ms=3e+12,ys=0.350": {
+     "log10_dtheta": -14.62,
+     "log10_dtheta_H10_at_MU": -14.62
+    }
+   }
+  },
+  "safe_noH10_noPhi_noFamily_noDeltaVev": {
+   "K": 15.0,
+   "target_Phi17": 4,
+   "ops": [
+    "1 x [F Vec2bar S*^2] (dim 5)",
+    "1 x [F* Vec1bar* S*^3 Phi17] (dim 7)",
+    "2 x [Vec2bar* Vec3* S*^4 Phi17] (dim 8)",
+    "1 x [Vec1* Vec2* Vec3bar*^2 Phi17] (dim 7)"
+   ],
+   "yukawas": {
+    "y1": 1,
+    "y2": 1,
+    "y3": 2
+   },
+   "kappa": {},
+   "vev_monomial": {
+    "S": -17,
+    "Phi17": 4
+   },
+   "fermion_fields": 20,
+   "H10_propagators": 0,
+   "vertices": 9,
+   "loops": 2,
+   "nda_rows": {
+    "Ms=1e+13,ys=0.304": {
+     "log10_dtheta": -5.98,
+     "log10_dtheta_H10_at_MU": -5.98
+    },
+    "Ms=1e+13,ys=0.374": {
+     "log10_dtheta": -7.15,
+     "log10_dtheta_H10_at_MU": -7.15
+    },
+    "Ms=3e+12,ys=0.091": {
+     "log10_dtheta": -7.02,
+     "log10_dtheta_H10_at_MU": -7.02
+    },
+    "Ms=3e+12,ys=0.350": {
+     "log10_dtheta": -14.62,
+     "log10_dtheta_H10_at_MU": -14.62
+    }
+   }
+  },
+  "safe_noH10_noPhi_noFamily_noDelta_noTensors": {
+   "K": 15.0,
+   "target_Phi17": 4,
+   "ops": [
+    "1 x [Vec1bar* Vec2* S*^4 Phi17] (dim 8)",
+    "2 x [Vec2bar* Vec3* S*^4 Phi17] (dim 8)",
+    "1 x [Vec1* Vec2* Vec3bar*^2 Phi17] (dim 7)"
+   ],
+   "yukawas": {
+    "y1": 1,
+    "y2": 2,
+    "y3": 2
+   },
+   "kappa": {},
+   "vev_monomial": {
+    "S": -17,
+    "Phi17": 4
+   },
+   "fermion_fields": 20,
+   "H10_propagators": 0,
+   "vertices": 9,
+   "loops": 2,
+   "nda_rows": {
+    "Ms=1e+13,ys=0.304": {
+     "log10_dtheta": -6.5,
+     "log10_dtheta_H10_at_MU": -6.5
+    },
+    "Ms=1e+13,ys=0.374": {
+     "log10_dtheta": -7.58,
+     "log10_dtheta_H10_at_MU": -7.58
+    },
+    "Ms=3e+12,ys=0.091": {
+     "log10_dtheta": -8.06,
+     "log10_dtheta_H10_at_MU": -8.06
+    },
+    "Ms=3e+12,ys=0.350": {
+     "log10_dtheta": -15.08,
+     "log10_dtheta_H10_at_MU": -15.08
+    }
+   }
+  },
+  "safe_all_with_H10": {
+   "K": 9.0,
+   "target_Phi17": 4,
+   "ops": [
+    "2 x [Vec1* PhiVbar* S*^2] (dim 5)",
+    "2 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "1 x [Vec2bar*^2 PhiV*^2 S*] (dim 7)"
+   ],
+   "yukawas": {
+    "Y126": 2,
+    "lamF2*": 4,
+    "y1": 2,
+    "y2": 4,
+    "yP": 2
+   },
+   "kappa": {
+    "kappa*": 2
+   },
+   "vev_monomial": {
+    "Delta": 4,
+    "S": -15,
+    "Phi17": 4
+   },
+   "fermion_fields": 40,
+   "H10_propagators": 4,
+   "vertices": 21,
+   "loops": 4,
+   "nda_rows": {
+    "Ms=1e+13,ys=0.304": {
+     "log10_dtheta": 19.29,
+     "log10_dtheta_H10_at_MU": -7.29
+    },
+    "Ms=1e+13,ys=0.374": {
+     "log10_dtheta": 18.66,
+     "log10_dtheta_H10_at_MU": -7.92
+    },
+    "Ms=3e+12,ys=0.091": {
+     "log10_dtheta": 21.39,
+     "log10_dtheta_H10_at_MU": -9.37
+    },
+    "Ms=3e+12,ys=0.350": {
+     "log10_dtheta": 17.29,
+     "log10_dtheta_H10_at_MU": -13.47
+    }
+   }
+  },
+  "safe_noPhi_noH10Yuk_noFamily(with_kappa)": {
+   "K": 12.0,
+   "target_Phi17": 4,
+   "ops": [
+    "1 x [Vec1* Vec3* H10 S*] (dim 5)",
+    "2 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "1 x [Vec1bar* Vec2bar* H10 S* Phi17] (dim 6)",
+    "2 x [Vec2*^2 H10 S*] (dim 5)",
+    "1 x [Vec1*^2 Vec2bar* Vec3bar* Phi17] (dim 7)"
+   ],
+   "yukawas": {
+    "y1": 3,
+    "y2": 4,
+    "y3": 1
+   },
+   "kappa": {
+    "kappa*": 2
+   },
+   "vev_monomial": {
+    "Delta": 2,
+    "S": -16,
+    "Phi17": 4
+   },
+   "fermion_fields": 32,
+   "H10_propagators": 4,
+   "vertices": 17,
+   "loops": 4,
+   "nda_rows": {
+    "Ms=1e+13,ys=0.304": {
+     "log10_dtheta": 3.42,
+     "log10_dtheta_H10_at_MU": -23.16
+    },
+    "Ms=1e+13,ys=0.374": {
+     "log10_dtheta": 2.7,
+     "log10_dtheta_H10_at_MU": -23.88
+    },
+    "Ms=3e+12,ys=0.091": {
+     "log10_dtheta": 3.43,
+     "log10_dtheta_H10_at_MU": -27.33
+    },
+    "Ms=3e+12,ys=0.350": {
+     "log10_dtheta": -1.25,
+     "log10_dtheta_H10_at_MU": -32.01
+    }
+   }
+  }
+ },
+ "decay_operators": {
+  "f1": {
+   "f=(1, 0, 0),nf=2": {
+    "dim": 7.0,
+    "op": "F* Vec1bar* S*^3 Phi17",
+    "so10_singlets": 1
+   },
+   "f=(1, 0, 0),nf=4": {
+    "dim": 9.0,
+    "op": "F* Vec1* Vec1bar*^2 S*^2 Phi17",
+    "so10_singlets": 3
+   },
+   "f=(-1, 0, 0),nf=2": {
+    "dim": 7.000000000000002,
+    "op": "F Vec1bar S^3 Phi17*",
+    "so10_singlets": 1
+   },
+   "f=(-1, 0, 0),nf=4": {
+    "dim": 8.999999999999991,
+    "op": "F Vec1 Vec1bar^2 S^2 Phi17*",
+    "so10_singlets": 3
+   }
+  },
+  "f2": {
+   "f=(0, 1, 0),nf=2": {
+    "dim": 10.0,
+    "op": "F* Vec3* Delta S*^5 Phi17",
+    "so10_singlets": 0
+   },
+   "f=(0, 1, 0),nf=4": {
+    "dim": 11.0,
+    "op": "F* Vec3*^2 PhiV* S*^5",
+    "so10_singlets": 2
+   },
+   "f=(0, -1, 0),nf=2": {
+    "dim": 10.000000000000002,
+    "op": "F PhiVbar S^6 Phi17*",
+    "so10_singlets": 1
+   },
+   "f=(0, -1, 0),nf=4": {
+    "dim": 11.000000000000155,
+    "op": "F Vec3^2 PhiV S^5",
+    "so10_singlets": 2
+   }
+  },
+  "f3": {
+   "f=(0, 0, 1),nf=2": "infeasible",
+   "f=(0, 0, 1),nf=4": "infeasible",
+   "f=(0, 0, -1),nf=2": "infeasible",
+   "f=(0, 0, -1),nf=4": "infeasible"
+  }
+ },
+ "Vec3_lifetime": {
+  "mixing_mass_GeV": 4.881454594932577e-13,
+  "angle": 4.8814545949325777e-26,
+  "Gamma_GeV": 1.739313792875064e-40,
+  "tau_s": 3784251022996854.0
+ }
+}

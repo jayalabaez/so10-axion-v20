@@ -1,0 +1,85 @@
+{
+ "tag": "Am45",
+ "solution": "P831b.npz",
+ "blocks": {
+  "(1,2)_|Y|=1/2": {
+   "kind": "sub2",
+   "n_light": 2,
+   "light_eigs": [
+    2.6290814534618798e-06,
+    2.9881045062856914e-06
+   ],
+   "n_conditions": 3,
+   "singular_values": [
+    60.9427600283947,
+    0.009042433221400251,
+    0.006400000628942306,
+    7.138804454487166e-06
+   ],
+   "tuning_levels": [
+    4.9226520075595984e-08,
+    0.00033176910755614513,
+    0.00046874995393489426
+   ]
+  },
+  "(8,3)_|Y|=0": {
+   "kind": "sandwich",
+   "n_light": 1,
+   "light_eigs": [
+    4.999999960730861e-07
+   ],
+   "n_conditions": 1,
+   "singular_values": [
+    79.18552341142129
+   ],
+   "tuning_levels": [
+    3.788571282673742e-08
+   ]
+  }
+ },
+ "total_conditions": 4,
+ "BG": [
+  {
+   "label": "(8,3)",
+   "m2": 5e-07,
+   "mult": 24,
+   "BG_max": 3602984.2410714156,
+   "driver": "lambda::O48_B02_Phi_self_quartics"
+  },
+  {
+   "label": "(1,1)",
+   "m2": 5e-07,
+   "mult": 1,
+   "BG_max": 62262.57558984243,
+   "driver": "lambda::O44_B02_Phi2_Sigma_projectors"
+  },
+  {
+   "label": "(1,1)",
+   "m2": 5.041e-07,
+   "mult": 2,
+   "BG_max": 61753.468533758234,
+   "driver": "lambda::O44_B02_Phi2_Sigma_projectors"
+  },
+  {
+   "label": "(1,2)",
+   "m2": 2.6291e-06,
+   "mult": 4,
+   "BG_max": 874548.071985738,
+   "driver": "lambda::O33_B01_Hdag_H_norm"
+  },
+  {
+   "label": "(1,1)",
+   "m2": 2.6466e-06,
+   "mult": 1,
+   "BG_max": 124.56658943844461,
+   "driver": "lambda::O22_B01_singlet_polynomial"
+  },
+  {
+   "label": "(1,2)",
+   "m2": 2.9881e-06,
+   "mult": 4,
+   "BG_max": 769470.4490368715,
+   "driver": "lambda::O33_B01_Hdag_H_norm"
+  }
+ ]
+}

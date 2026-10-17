@@ -1,0 +1,301 @@
+{
+ "anomalies": {
+  "SO10^2 X": "0",
+  "grav X": "0",
+  "X^3": "0",
+  "all_zero": true,
+  "T_S": "14",
+  "T_Phi": "4",
+  "b_X_integer_X": "12865/3",
+  "b1_SO10_F17": "8",
+  "alpha_X_inv_min_at_M_U(alpha_X(MPl)=1)": 3235.4088343627077
+ },
+ "couplings": {
+  "enumerated": [
+   "F.F.Delta126bar",
+   "F.F.H10",
+   "F.Vec2.conj[H10]",
+   "PhiV.PhiVbar.Phi17",
+   "SingN.SingM.S",
+   "TenA.SingM.conj[H10]",
+   "TenA.TenB.conj[S]",
+   "TenB.SingN.H10",
+   "Vec1.Vec1bar.conj[S]",
+   "Vec2.Vec2bar.conj[S]",
+   "Vec3.Vec3bar.conj[S]",
+   "Vec3bar.PhiVbar.H10"
+  ],
+  "count": 12,
+  "declared_equals_enumerated": true,
+  "Z17_only_allowed_but_X_forbidden_bare_masses": [
+   "PhiV.PhiVbar (X=-17): forbidden by gauged U(1)_X, allowed by Z17 alone"
+  ],
+  "model_file_defect": "v21 LagHC omits kappaH H10.H10.S (present in v20 LagHC); 'scalar rows verbatim' is false"
+ },
+ "kernel_pq": {
+  "rank": 12,
+  "kernel_dim": 5,
+  "N": "34",
+  "E": "272/3",
+  "E/N": "8/3",
+  "N_DW_mod_gauge_bruteforce": 1,
+  "N_DW_S_only_strings": 17,
+  "note": "pre-inflationary PQ breaking (FINAL: T_RH << 1e12, theta_i ~ 0.4): N_DW is moot"
+ },
+ "lemma_violations": [],
+ "decay_operators_two_fermion_min_dim": {
+  "f=(-1, -1, 0)": {
+   "dim": 11,
+   "operators": [
+    "Vec1* Vec3bar* none S^-6 Phi17^2 (dim 11)",
+    "Vec1* PhiV* H10 S^-6 Phi17^1 (dim 11)"
+   ]
+  },
+  "f=(-1, 0, 0)": {
+   "dim": 6,
+   "operators": [
+    "Vec1bar Vec2bar H10* S^1 Phi17^-1 (dim 6)",
+    "Vec1bar Vec2bar Delta* S^1 Phi17^-1 (dim 6)"
+   ]
+  },
+  "f=(-1, 1, 0)": {
+   "dim": 5,
+   "operators": [
+    "Vec1* Vec3* H10 S^-1 Phi17^0 (dim 5)",
+    "Vec1* PhiVbar* none S^-2 Phi17^0 (dim 5)"
+   ]
+  },
+  "f=(-2, 0, 0)": {
+   "dim": 12,
+   "operators": [
+    "Vec1bar Vec1bar H10* S^6 Phi17^-2 (dim 12)",
+    "Vec1bar Vec1bar Delta* S^6 Phi17^-2 (dim 12)"
+   ]
+  },
+  "f=(0, -1, 0)": {
+   "dim": 8,
+   "operators": [
+    "Vec2bar Vec3 none S^4 Phi17^-1 (dim 8)"
+   ]
+  },
+  "f=(0, -2, 0)": {
+   "dim": 8,
+   "operators": [
+    "Vec3bar* PhiV* none S^-4 Phi17^1 (dim 8)",
+    "PhiV* PhiV* H10 S^-4 Phi17^0 (dim 8)"
+   ]
+  },
+  "f=(0, 0, -2)": {
+   "dim": 11,
+   "operators": [
+    "TenB TenB none S^6 Phi17^-2 (dim 11)"
+   ]
+  },
+  "f=(0, 0, 2)": {
+   "dim": 11,
+   "operators": [
+    "TenB* TenB* none S^-6 Phi17^2 (dim 11)"
+   ]
+  },
+  "f=(0, 1, 0)": {
+   "dim": 8,
+   "operators": [
+    "Vec2bar* Vec3* none S^-4 Phi17^1 (dim 8)"
+   ]
+  },
+  "f=(0, 2, 0)": {
+   "dim": 8,
+   "operators": [
+    "Vec3bar PhiV none S^4 Phi17^-1 (dim 8)",
+    "PhiV PhiV H10* S^4 Phi17^0 (dim 8)"
+   ]
+  },
+  "f=(1, -1, 0)": {
+   "dim": 5,
+   "operators": [
+    "Vec1 Vec3 H10* S^1 Phi17^0 (dim 5)",
+    "Vec1 PhiVbar none S^2 Phi17^0 (dim 5)"
+   ]
+  },
+  "f=(1, 0, 0)": {
+   "dim": 6,
+   "operators": [
+    "Vec1bar* Vec2bar* H10 S^-1 Phi17^1 (dim 6)",
+    "Vec1bar* Vec2bar* Delta S^-1 Phi17^1 (dim 6)"
+   ]
+  },
+  "f=(1, 1, 0)": {
+   "dim": 11,
+   "operators": [
+    "Vec1 Vec3bar none S^6 Phi17^-2 (dim 11)",
+    "Vec1 PhiV H10* S^6 Phi17^-1 (dim 11)"
+   ]
+  },
+  "f=(2, 0, 0)": {
+   "dim": 12,
+   "operators": [
+    "Vec1bar* Vec1bar* H10 S^-6 Phi17^2 (dim 12)",
+    "Vec1bar* Vec1bar* Delta S^-6 Phi17^2 (dim 12)"
+   ]
+  }
+ },
+ "Vec3_lifetime": {
+  "operator": "F Vec3 conj[H10] S^5 conj[Phi17] / M_Pl^6 (16.16.10 singlet; X = 1-6+2+20-17 = 0)",
+  "g_eff(c=1)": 1.8477290577005932e-26,
+  "Gamma_GeV": 6.79214145325688e-41,
+  "tau_s": 9690610899812582.0,
+  "age_universe_s": 4.35e+17,
+  "researcher_named_operator": "F Vec3 Delta* S^5 Phi17*: NOT SO(10) invariant (16.16.126 has no singlet); the dimension 10 and tau ~ 1e15-1e16 s survive via the H10* operator",
+  "note": "decays after recombination (t ~ 3e8 yr): CMB/diffuse-photon bounds on its abundance are far stronger than for a stable relic"
+ },
+ "kappa_configuration": {
+  "M_I=2.5e+13,<S>=3.29e+13": 4749999999999.999,
+  "M_I=2.5e+13,<S>=2.67e+13": 5843749999999.999,
+  "M_I=2.6e+13,<S>=3.29e+13": 5137600000000.0,
+  "M_I=2.6e+13,<S>=2.67e+13": 6320600000000.0,
+  "M_I=3.4e+13,<S>=3.29e+13": 8785599999999.999,
+  "M_I=3.4e+13,<S>=2.67e+13": 10808600000000.0
+ },
+ "NDA_scan": {
+  "M_s=1e+13,y_s=0.304,<Phi>=1e+17": {
+   "log10_dtheta_E(c=1,config kappa=5.1e+12)": 0.64,
+   "log10_dtheta_E(c=0.1)": -6.36,
+   "log10_dtheta_K15_2loop(c=1)": -6.5,
+   "log10_dtheta_K15_2loop(c=0.3)": -9.11,
+   "log10_dtheta_declared_dim21": -9.99
+  },
+  "M_s=1e+13,y_s=0.304,<Phi>=3e+16": {
+   "log10_dtheta_E(c=1,config kappa=5.1e+12)": -1.45,
+   "log10_dtheta_E(c=0.1)": -8.45,
+   "log10_dtheta_K15_2loop(c=1)": -8.59,
+   "log10_dtheta_K15_2loop(c=0.3)": -11.21,
+   "log10_dtheta_declared_dim21": -12.08
+  },
+  "M_s=1e+13,y_s=0.304,<Phi>=1e+16": {
+   "log10_dtheta_E(c=1,config kappa=5.1e+12)": -3.36,
+   "log10_dtheta_E(c=0.1)": -10.36,
+   "log10_dtheta_K15_2loop(c=1)": -10.5,
+   "log10_dtheta_K15_2loop(c=0.3)": -13.11,
+   "log10_dtheta_declared_dim21": -13.99
+  },
+  "M_s=1e+13,y_s=0.350,<Phi>=1e+17": {
+   "log10_dtheta_E(c=1,config kappa=5.9e+12)": 0.28,
+   "log10_dtheta_E(c=0.1)": -6.72,
+   "log10_dtheta_K15_2loop(c=1)": -7.23,
+   "log10_dtheta_K15_2loop(c=0.3)": -9.85,
+   "log10_dtheta_declared_dim21": -11.03
+  },
+  "M_s=1e+13,y_s=0.350,<Phi>=3e+16": {
+   "log10_dtheta_E(c=1,config kappa=5.9e+12)": -1.81,
+   "log10_dtheta_E(c=0.1)": -8.81,
+   "log10_dtheta_K15_2loop(c=1)": -9.33,
+   "log10_dtheta_K15_2loop(c=0.3)": -11.94,
+   "log10_dtheta_declared_dim21": -13.12
+  },
+  "M_s=1e+13,y_s=0.350,<Phi>=1e+16": {
+   "log10_dtheta_E(c=1,config kappa=5.9e+12)": -3.72,
+   "log10_dtheta_E(c=0.1)": -10.72,
+   "log10_dtheta_K15_2loop(c=1)": -11.23,
+   "log10_dtheta_K15_2loop(c=0.3)": -13.85,
+   "log10_dtheta_declared_dim21": -15.03
+  },
+  "M_s=1e+13,y_s=0.374,<Phi>=1e+17": {
+   "log10_dtheta_E(c=1,config kappa=6.3e+12)": 0.1,
+   "log10_dtheta_E(c=0.1)": -6.9,
+   "log10_dtheta_K15_2loop(c=1)": -7.58,
+   "log10_dtheta_K15_2loop(c=0.3)": -10.19,
+   "log10_dtheta_declared_dim21": -11.52
+  },
+  "M_s=1e+13,y_s=0.374,<Phi>=3e+16": {
+   "log10_dtheta_E(c=1,config kappa=6.3e+12)": -1.99,
+   "log10_dtheta_E(c=0.1)": -8.99,
+   "log10_dtheta_K15_2loop(c=1)": -9.67,
+   "log10_dtheta_K15_2loop(c=0.3)": -12.29,
+   "log10_dtheta_declared_dim21": -13.61
+  },
+  "M_s=1e+13,y_s=0.374,<Phi>=1e+16": {
+   "log10_dtheta_E(c=1,config kappa=6.3e+12)": -3.9,
+   "log10_dtheta_E(c=0.1)": -10.9,
+   "log10_dtheta_K15_2loop(c=1)": -11.58,
+   "log10_dtheta_K15_2loop(c=0.3)": -14.19,
+   "log10_dtheta_declared_dim21": -15.52
+  },
+  "M_s=3e+12,y_s=0.091,<Phi>=1e+17": {
+   "log10_dtheta_E(c=1,config kappa=5.1e+12)": 0.65,
+   "log10_dtheta_E(c=0.1)": -6.35,
+   "log10_dtheta_K15_2loop(c=1)": -8.06,
+   "log10_dtheta_K15_2loop(c=0.3)": -10.67,
+   "log10_dtheta_declared_dim21": -9.97
+  },
+  "M_s=3e+12,y_s=0.091,<Phi>=3e+16": {
+   "log10_dtheta_E(c=1,config kappa=5.1e+12)": -1.44,
+   "log10_dtheta_E(c=0.1)": -8.44,
+   "log10_dtheta_K15_2loop(c=1)": -10.15,
+   "log10_dtheta_K15_2loop(c=0.3)": -12.76,
+   "log10_dtheta_declared_dim21": -12.07
+  },
+  "M_s=3e+12,y_s=0.091,<Phi>=1e+16": {
+   "log10_dtheta_E(c=1,config kappa=5.1e+12)": -3.35,
+   "log10_dtheta_E(c=0.1)": -10.35,
+   "log10_dtheta_K15_2loop(c=1)": -12.06,
+   "log10_dtheta_K15_2loop(c=0.3)": -14.67,
+   "log10_dtheta_declared_dim21": -13.97
+  },
+  "M_s=3e+12,y_s=0.350,<Phi>=1e+17": {
+   "log10_dtheta_E(c=1,config kappa=2.0e+13)": -2.86,
+   "log10_dtheta_E(c=0.1)": -9.86,
+   "log10_dtheta_K15_2loop(c=1)": -15.08,
+   "log10_dtheta_K15_2loop(c=0.3)": -17.69,
+   "log10_dtheta_declared_dim21": -19.92
+  },
+  "M_s=3e+12,y_s=0.350,<Phi>=3e+16": {
+   "log10_dtheta_E(c=1,config kappa=2.0e+13)": -4.95,
+   "log10_dtheta_E(c=0.1)": -11.95,
+   "log10_dtheta_K15_2loop(c=1)": -17.17,
+   "log10_dtheta_K15_2loop(c=0.3)": -19.78,
+   "log10_dtheta_declared_dim21": -22.01
+  },
+  "M_s=3e+12,y_s=0.350,<Phi>=1e+16": {
+   "log10_dtheta_E(c=1,config kappa=2.0e+13)": -6.86,
+   "log10_dtheta_E(c=0.1)": -13.86,
+   "log10_dtheta_K15_2loop(c=1)": -19.08,
+   "log10_dtheta_K15_2loop(c=0.3)": -21.69,
+   "log10_dtheta_declared_dim21": -23.92
+  }
+ },
+ "NDA_E_benchmark": {
+  "log10_dtheta": 0.6445445788429457,
+  "c_per_operator_for_1e-10 (7 ops)": 0.030154405761086134,
+  "kappa_for_1e-10_if_kappa_were_free_GeV": 1454048062.1427078
+ },
+ "NDA_K15_benchmark": {
+  "log10_dtheta": -6.50059474916998,
+  "c_per_operator_for_1e-10 (5 ops)": 0.19958088764294746
+ },
+ "ys_cap_pure_yukawa": {
+  "M_s=1e+13 y(MPl)<=sqrt(4pi) [researcher]": 0.3217,
+  "M_s=1e+13 y(MPl)<=1.8 (a0<=1/2 coupled-channel, sqrt(60) enhancement)": 0.318,
+  "M_s=1e+13 y(MPl)<=1.0": 0.3074,
+  "M_s=3e+12 y(MPl)<=sqrt(4pi) [researcher]": 0.3073,
+  "M_s=3e+12 y(MPl)<=1.8 (a0<=1/2 coupled-channel, sqrt(60) enhancement)": 0.304,
+  "M_s=3e+12 y(MPl)<=1.0": 0.2947
+ },
+ "axion": {
+  "y_s=0.304": [
+   2736481343144.4585,
+   2.082966877987261
+  ],
+  "y_s=0.374": [
+   2224305692944.867,
+   2.5625974064983357
+  ],
+  "y_s=0.388": [
+   2144047240407.3284,
+   2.6585235122511146
+  ],
+  "M_s=3e12,y=0.35": [
+   713048854833.0145,
+   7.9938421629396705
+  ]
+ }
+}

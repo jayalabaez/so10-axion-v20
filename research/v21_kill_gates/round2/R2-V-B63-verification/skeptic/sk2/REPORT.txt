@@ -1,0 +1,139 @@
+SECOND SKEPTIC (sk2) - adversarial check of R2-V (independent verification of round-1 K0b, v21-F17-B63)   2026-10-17
+=====================================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-V-B63-verification\skeptic\sk2\
+Labels: EXACT / NUM / EST / CONJ / LIT.
+Independence and hygiene: all code here is mine. Nothing was imported from R2-V, from skeptic-1 (skeptic\*.py) or
+from round 1; their files were only read. The only repository file touched is _record\GAUGED_U1X_SCALAR_CONTRACT_V20.json,
+which was parsed read-only to list its non-self-conjugate directions. 'git status --short' of _g6_nogo (54a2cd1) and
+_record (8707fda) gives 0 lines before and after. _rescope was not touched. No Wolfram kernel was used.
+Methods that differ from R2-V (integer DP with a partial-sum window and an ordering lemma) and from skeptic-1 (HiGHS
+MILP, Slansky tables):
+  - the quality certificate uses a dimension-ordered unbounded-knapsack DP whose X range holds every partial sum
+    (|X| <= 21 W), so no ordering lemma is needed;
+  - a third code path enumerates multisets explicitly with itertools for d <= 7;
+  - I ran my own cutting-plane LP from scratch, with my DP as the oracle and no round-1 mu as input;
+  - the coupling selection is X filter, then Spin(10)-centre filter, then textbook bilinear decompositions.
+
+VERDICT ON R2-V: NOT REFUTED. Corrected verdict: PASS, with its scope stated: every decisive EXACT/NUM claim about B63
+reproduces, and no FAIL trigger fires. Several EST statements are corrected, and R2-V's own relic correction is
+itself incomplete (item 6).
+
+1. EXACT ALGEBRA (sk2_exact.py -> sk2_exact.json/.log)                                                  ALL REPRODUCED
+   - Anomalies: [SO(10)]^2 X = 0, grav-X = 0, X^3 = 0, net 16 - 16bar = 3. b_X = 101203, so alpha_X^-1(M_U) = 76332
+     and g_X(M_U) <= 0.01283.
+   - Exactly 12 renormalizable structures, the same list as R2-V and K0b. The 7 X-allowed but forbidden terms are the
+     same: 6 are already killed by the Spin(10) centre (T.NMm bare and with Phi210, N1.N3b.Delta*/H10*,
+     N1b.N3.Delta/H10), and Vb2.Vb3.Delta is killed by 16bar x 16bar containing no 126. There is no bare mass, no
+     Phi210 Yukawa and no family-exotic Yukawa, and F.F.H10* is absent.
+   - The v20 contract (read-only parse): the non-self-conjugate directions are exactly O12, O15, O28, O31, O38 and
+     O45 (B01, B02), matching R2-V section 7.
+     Also EXACT: no renormalizable scalar term can contain Phi17 non-self-conjugately (|17 n| > 4(4 - |n|) for every
+     n != 0). So no scalar term the contract might lack could break G2; the scalar projection of the kernel is always
+     span(X, G2).
+   - Kernel: sympy rational nullspace in my own basis. Constraint rank 13 on 20 charges, so dimension 7. The round-1
+     basis X, G2, f1..f5 lies in the kernel and spans it. Scalar projection rank 2.
+   - N(PQ = X - 17 G2) = 34, E = 272/3, E/N = 8/3; N(X) = 0, N(G2) = -2, N(f1..f5) = 0.
+   - N_DW = 1 (explicit stabiliser computation over Spin(10) centre x U(1)_X). ARGUMENT GAP in R2-V section 3: its
+     reasoning ('gcd(4,17) = 1, so each fibre is one gauge orbit') ignores the X-charged vevs of Delta_R (X = -2) and,
+     later, H10. With those vevs, U(1)_X alone leaves an identification of period 1/2, which would give N_DW = 2. It is
+     the centre element c^2 combined with X(pi/2), which fixes Delta and H10 and rotates Phi17 by pi/2, that restores
+     N_DW = 1. B-L/T3R rotations of Delta_R do the same. Round 1 and skeptic-1 used the centre. The conclusion stands.
+   - The explicit K = 17 closure 4x[N1 N2b S*^2 Phi17] + [N1*^2 N3b*^2 S*] + 2x[N1b N2^2 N3b S*] checks out: every
+     operator has X = 0, is Lorentz-even and is mu-tight; sum q = (4,0,0,0,0,0) and K = 17.
+   - T_S = 14 and T_Phi = 4, and Lemma A gives 6 + 28 - 34 = 0.
+
+2. DECISIVE: QUALITY CERTIFICATE K_min >= 17 (sk2_cert.py -> sk2_cert.json/.log)                    EXACT, REPRODUCED
+   - Round-1 mu = (17/4, -7/2, -7, -57/4, -12, -51/4) on (G2, f1..f5). Max over admissible monomials of
+     4[mu.q - (d-4)]:
+       * undressed oracle set (one derivative for odd/odd): 0 for every 5 <= d <= 40;
+       * dressed set (any number of derivatives and field strengths): 0 for every 5 <= d <= 30, and max 4 mu.q = 0
+         for every d <= 4.
+     The pattern of tight dimensions is identical to R2-V's: 6, 7, 9-17, 19, 21 (S*^17 Phi17^4).
+   - DP equals explicit itertools enumeration for d = 5, 6, 7 (-4, 0, 0).
+   - My own LP from scratch (dressed superset, d <= 20) converges in 20 iterations (42 cuts) to 4 mu_0 = 17.000. The
+     optimal mu is identical to round 1's, and the exact rational recheck to d = 24 gives max excess 0.
+   - Sensitivity: dropping the centre condition breaks the certificate already at d = 5 (Vb2* T* Phi17^2) and at
+     d = 6 (Vb1* V2* Delta S* Phi17, excess 6/4). Both are non-singlets (z = 3 and z = 2), so the centre condition is
+     essential and correctly imposed.
+   - Tight two-fermion operators (sk2_tight2.py), from my own reduction: Phi210, neutral pairs or two H-type legs are
+     never tight, so R2-V's '<= 3 H10/Delta legs' cut is harmless. I find exactly the same 15 operators as R2-V.
+     Multisets with sum q = (4,0,...) (sk2_ringq.py):
+       * n = 2: 6, of which 4 have no explicit H10/Delta leg;
+       * n = 3: 10;
+       * n = 4 and n = 5: 0;
+       * all have K = 17.
+     This matches R2-V's 4 + 10 = 14 one-loop rings; line connectivity was not re-checked.
+   So round-1 fact (v) is now closed by three independent exact methods (R2-V DP, skeptic-1 MILP, sk2 wide-window DP
+   and LP): K_min = 17. This holds under the standard O(1)-coefficient Planck cost model (CONJ).
+
+3. NUM QUALITY NUMBERS (sk2_numbers.py -> sk2_numbers.json/.log)                                     ALL REPRODUCED
+   - dtheta_tree = 4.040e-12 / 2.137e-11 / 1.026e-10 / 4.74e-10 at <S> = 2.72 / 3.0 / 3.29 / 3.6e13.
+   - <S>_max = 3.2851e13 and margin x4.68 at 3e13.
+   - y_s floor 0.30441. No-gauge cap 0.31661 (y <= sqrt(4 pi)) and 0.30294 (y <= 1).
+   - f_a = 2.261e12-2.736e12 GeV and m_a = 2.083-2.521 ueV.
+   - Tolerances: suppression scale >= 0.9132 M_Pl,red; |g| <= 25.16 (cap 0.368) and 1.95 (floor);
+     <Phi17> <= 2.24e17 (0.368) and 1.18e17 (floor).
+   - M_s,max = 1.040e13 / 1.209e13 / 1.248e13 for caps 0.3166 / 0.368 / 0.380.
+   - Floor if the tree coefficient is renormalized: x1.35 gives 0.3098 (R2-V '<= 0.310' confirmed); x2 gives 0.3171;
+     x4.7 gives 0.3334.
+
+4. CROSS-GATE ADDITIONS (EST; these weaken two of R2-V's own caveats rather than strengthen the verdict against it)
+   - y_s cap versus gauge environment (sk2_yscap_env.py). This is my simplified one-loop model: SM Casimirs below M_U,
+     couplings interpolated to alpha_U, and two-loop SO(10) above M_U.
+       * It calibrates to the round-1 environment at 0.374 (R2-V: 0.373-0.380) and 0.352 for y <= 1 (skeptic-1:
+         0.356-0.362).
+       * With R2-B's realisable unification points (alpha_U^-1 = 33-35, M_U = 2-6e15), the caps are:
+
+           content   y <= sqrt(4 pi)   y <= 1
+           C0        0.383             0.359
+           C1        0.386             0.362
+           C2        0.374             0.351
+           C1'       0.379             0.356
+
+     So the 0.368 upper end does not depend on the non-realisable T2+F17 running (EST). The window still needs
+     M_s <= 1.21e13, which is not derived for any realisable content: R2-B takes M_s = 1e13 as an input.
+   - SO(10) coupling at M_Pl,red (two-loop, b1 = 8, b2 = 7267/2 recomputed). In the round-1 environment,
+     alpha^-1(M_Pl) = 5.16 with a two-loop Landau scale of 1.30 M_Pl. It sits within 0.53 in alpha_U^-1 of
+     alpha^-1(M_Pl) = 3 (R2-V's small-instanton danger value, 3e-10 C) and within 0.81 of a sub-Planckian pole.
+     For R2-B's contents, alpha^-1(M_Pl) is:
+       * C0: 9.9;
+       * C1: 8.5;
+       * C2: 15.9;
+       * C1': 13.5.
+     The instanton measure is then 3e-9, 2e-6, 4e-22 and 8e-17 times R2-V's value, so 'SO(10) small instantons
+     negligible' holds a fortiori for the realisable contents (EST; C_SO(10) is still unknown).
+
+5. CRITERION AND OVERCLAIMS
+   (a) The literal criterion is 'PASS if every K0b claim reproduces'. K0b also claimed four things R2-V did not re-check:
+       - Lemma A for all admissible variants, under the assumption T_S* + T_S <= 16;
+       - the single- and two-multiplet maps;
+       - about 300 complete-model scans;
+       - the A48 alternative passing.
+       R2-V's 'No computation is missing, so UNDECIDED does not apply' contradicts its own missing_computations list,
+       which names these. They are irrelevant to B63's viability, so the honest label is 'PASS, scope = B63 decisive
+       claims; K0b scan/variant claims not re-verified'. A fully literal reading would give UNDECIDED.
+   (b) 'All six session-1 scripts re-run with byte-identical JSON': dual_dp.json differs from prev_run in two
+       'seconds' timing fields. The content is identical (trivial).
+   (c) N_DW argument gap (item 1).
+
+6. EST RELIC CORRECTION OF R2-V IS ITSELF INCOMPLETE (sk2_relic.py -> sk2_relic.json/.log)
+   R2-V's relic enumeration (relics.py) allows only one sector field plus F or the R-odd pool. It never considers
+   transitions into another R-even exotic sector.
+   - f1 -> f2 mixing: the dimension-9 operator V1 Vb2 Phi17* S^5 (an X- and centre-neutral 16 x 16bar singlet, and in
+     fact one of the 15 tight operators) gives an off-diagonal 16 x 16bar mass delta = 2.8e-8 GeV, so
+     theta ~ 2.8e-21 (Delta M / M_s)^-1. The f1 state then decays through its f2 admixture (f2 decays at dim 7), with
+     tau ~ 5e27 s x (Delta M / M_s)^2 (EST). R2-V's 'generic' 1e43 s is about 1e15 too long.
+     The conclusion survives: the state is cosmologically long-lived (decay before BBN would need |M(V1') - M(V2)|
+     < ~0.1 GeV), so T_RH << M_s is still required, as K5 already imposes.
+   - f3/f4: the dimension-6 tight operator N1 N2b Phi17 S*^2 mixes the f3 and f4 sectors (delta ~ 1.5e7 GeV), so
+     'f3 and f4 are dim 9' is not the leading transition. The effect depends on the mass ordering and stays among
+     R-odd states, so the exact stability of the lightest R-odd state is unaffected.
+   These are EST items in sections R2-V already labels EST. Neither is a FAIL trigger.
+
+7. NOT RECOMPUTED HERE
+   - The lambda_S window [0.154, 0.248] (NUM detail).
+   - The NDA size of the 14 one-loop rings: the count is checked, the size is not.
+   - Ring line connectivity, global anomalies (LIT-abstract), and the small-instanton prefactor C_SO(10) and Pi_fam.
+
+FILES (this folder): sk2_exact.py/.json/.log, sk2_cert.py/.json/.log, sk2_numbers.py/.json/.log, sk2_tight2.py/.json/
+.log, sk2_ringq.py/.json/.log, sk2_so10_r2b_env.py/.json, sk2_yscap_env.py/.json/.log, sk2_relic.py/.json/.log.

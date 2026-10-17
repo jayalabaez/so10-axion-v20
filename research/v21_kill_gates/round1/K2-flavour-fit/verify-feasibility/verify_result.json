@@ -1,0 +1,41 @@
+{
+ "gate": "K2 flavour fit (v21-F17-G3221) - FEASIBILITY/STANDARDS verification",
+ "researcher_verdict": "UNDECIDED",
+ "verifier_verdict": "UNDECIDED overall; the T2 branch (one light G3221 bidoublet, omega = 0) is FAIL by an exact structural argument; the T3 branch (two light bidoublets) is the only in-scope route and has not been computed",
+ "refuted": true,
+ "reproduced": {
+  "proxy_chi2_best_point": 215.681,
+  "full_rg_chi2_best_point": 217.965,
+  "pulls_full_rg": {"m_u": -0.23, "m_c": -0.43, "m_t": -0.58, "m_d": -2.26, "m_s": 2.73, "m_b": 0.27, "m_e": 0.09, "m_mu": -3.04, "m_tau": -0.28, "s12": 0.69, "s23": -0.24, "s13": -0.42, "delta": 5.05, "sin2_th12": -4.79, "sin2_th23": -9.57, "sin2_th13": -7.28, "dm21": 1.18, "dm31": -0.40},
+  "observable_extraction_round_trip": "CKM and PMNS angles and dm2 reproduced exactly in the code's holomorphic-Weyl convention (pipeline_test2.log); CP phases come out sign-flipped (code delta = -delta_phys), harmless for chi2 (delta_PMNS not fitted; global conjugation symmetry)",
+  "x_charge_enumeration": "F.F.H10 and F.F.Delta126bar allowed; F.F.H10* forbidden; 10_F(-1).10_F(5).S* confirmed; BUT F(1).16(-3).H10* is X- and SO(10)-allowed (1-3+2 = 0; 10 is real), so 'no renormalisable F-F17 mixing' is false (effect on light masses O(Y'^2 v^2/M'^2) ~ 1e-22, numerically irrelevant)",
+  "independent_multistart": "structured random starts -> charged-only LM -> nu-weight ramp -> LM + hops (multistart.py, seeds 1 and 2): every joint minimum >= 206.9; the researcher's basin (|r| ~ 66, |s| ~ 0.47, c_d126 ~ 0.018) is re-found from independent starts within minutes; no basin below ~200 found (see ms_1.json / ms_2.json for the final counts)"
+ },
+ "errors_found": {
+  "composition_normalisation_bug": "fit.Proxy.composition sets c_d10 = sqrt(rem) instead of sqrt(rem/(1+|r|^2)); the recorded composition has sum|c|^2 = 1782 (c_u10 = 42.2). Corrected at the best point: c_u10 = 0.636, c_u126 = 0.771, c_d10 = 0.0096, c_d126 = 0.0242 (sum = 1): the light doublet is 59% 126bar(15,2,2) up-type, not '99.98% up-type 10' as the report says; max|Y10_act| = 0.234 (reported 0.0035), still perturbative",
+  "T2_structural": "one light complex G3221 bidoublet Phi_light = alpha Phi_10 + beta Phi_126 (the other at M_U), no tilde couplings (X-forbidden), omega = 0: the quark sector below M_U has ONE matrix Y_q = alpha* Y10 + beta* Y126, so M_u = (kappa_u/kappa_d) M_d exactly, s = 1 and CKM = 1 up to O((v_R/M_U)^2) = 1.5e-6 heavy-bidoublet admixture; data pulls s12 -331 sigma, s23 -52, s13 -35; m_u/m_d = 0.46 vs m_c/m_s = 11.7 vs m_t/m_b = 59. Forcing s = 1 in the researcher's own proxy gives chi2 = 3.3e9. This is the repo's own G8 v2 lemma (g8_sm_pati_salam_flavour_nogo_v20: 'one light G3221 bidoublet with a G3221-equivariant 10/126bar composition forces s = 1 (CKM = 1) for any tan beta; escapes: two light bidoublets, a (15,1,3) component, ...'). The fit's best point needs s = 0.48 e^{0.11 i}; the literature basin (Mummidi-Patel 2109.04050, LIT-snippet) has r = 77.4, s = 0.314-0.028i with h_d mainly from 126bar. Hence T3 (two light bidoublets) is NECESSARY, contrary to 'T3 not required by the counting'",
+  "rg_segment_inconsistent": "rge.g3221_yuk_rhs runs Yu, Yd, Ye, Ynu as four independent matrices (2HDM-II-like); with T2 there is one quark and one lepton matrix, with T3 the correct system is Y10 and Y126 (two bidoublets, SO(10)-fixed lepton Clebsch -3). The segment must be rewritten for T3",
+  "dof_count": "19 physical parameters (F 12 + 3 up masses fixed to data + |r|, s, c_d126 = 5; the phase of r is redundant), 18 observables: dof = -1 (type I), -3 (type I+II), not +1 / -1",
+  "literature_attribution": "OP 2018 (1804.04560, LIT-abstract): the MINIMAL 10+126bar Yukawa sector with intermediate-scale running FAILS; chi2 ~ 18.6 refers to the EXTENDED sector with a 120_H (LIT-snippet). So 'the literature finds chi2 ~ 15-23 for this identical structure with RG' is not supported as stated; the 14.8 figure (OP 2019) was not verified",
+  "minor": "16bar(10).16bar(-8).Delta126bar is SO(10)-forbidden (16bar x 16bar has no 126bar), only .H10 is allowed; the code's delta is -delta_phys (convention); F17 states with masses y v_S ~ 1e12-1e13 < v_R are counted above v_R in the G3221 b's and dropped below"
+ },
+ "standards_check": {
+  "pdg_2024_inputs": "quark/lepton masses, alpha_s, Wolfenstein parameters and NuFIT 6.0 (SK-atm) values as in inputs_mz.json are the 2024 numbers (recalled by the researcher, consistent with my recollection); a 1% theory floor is added to all nine masses (lenient relative to 'PDG 2024 errors': m_e, m_mu, m_tau errors inflated from <1e-6 to 1%); the strict scheme was not run",
+  "perturbativity": "|Y_act| <= 1.5 and a0 <= 1/2 not binding (corrected max|Y10_act| = 0.23, |Y126_act| = 0.016)",
+  "reduced_MPl_criterion, quality dtheta": "not touched by K2",
+  "user_decisions": "no conflict",
+  "exact_labels": "Clebsch numbers are machine-precision numerics of an explicit Clifford construction (acceptable as EXACT-numeric; not independently re-derived here; c_R = 2 sqrt6 is not load-bearing since M_R <= 6e12 << kappa v_R |Y126|max); the X-selection-rule EXACT claim is partly wrong (F.16(-3).H10*)"
+ },
+ "cross_gate_conflicts": [
+  "K2 fit composition (s != 1, c_u126 = 0.77) vs vacuum T2 with omega = 0: incompatible (exact). Needs T3, or an O(1) (15,1,3) omega vev at M_U (then the intermediate group is G3211, not G3221: G7 running, K1 v_R/M_U solutions and the K2 RG segment all change), or non-renormalisable F.F.H10*.S*/Lambda operators (outside the declared renormalisable contract)",
+  "K3 must realise, for the best point found, a light SM doublet with |c_u10| = 0.64, |c_u126| = 0.77, |c_d10| = 0.0096, |c_d126| = 0.024 (tan-beta-like ratio 66), i.e. an O(1) 126bar admixture in the UP-type doublet and a 126bar-dominated down-type doublet - not the near-pure-10 doublet the report describes",
+  "G7/K1 used T2 and T3 points (v_R, M_U) = (2.6e13, 2.13e16) and (3.08e13, 3.05e16); K2 only ran T2, whose Yukawa sector is dead; the T3 point was not fitted",
+  "Higgs/G6: the 59%-126bar composition of the SM doublet changes lambda_eff matching (O36 member assumed a 10-dominated doublet) - to be checked, not computed"
+ ],
+ "missing_computations_corrected": [
+  "T3 fit with the correct two-bidoublet G3221 Yukawa RGEs (Y10, Y126 run separately; lepton Clebsch -3), v_R = 3.08e13, M_U = 3.05e16, sequential nu^c decoupling, both error schemes, type I and I+II, converged global search",
+  "a K3 statement whether omega = 0 (G3221) or omega = O(M_U) (G3211) in the declared vacuum",
+  "strict error scheme (experimental errors; lepton masses at 0.1%)"
+ ],
+ "files": ["repro_best.py", "repro_best.json", "structural_checks.py", "structural_checks.log", "pipeline_test.py", "pipeline_test2.py", "pipeline_test2.log", "multistart.py", "ms_1.log", "ms_2.log", "ms_1.json", "ms_2.json"]
+}

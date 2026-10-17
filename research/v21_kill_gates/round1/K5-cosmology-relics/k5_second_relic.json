@@ -1,0 +1,669 @@
+{
+ "partA": {
+  "vevs": {
+   "vS": 40000000000000.0,
+   "vR": 30000000000000.0,
+   "vPhi": 1e+17,
+   "vEW": 174.0
+  },
+  "M": 10000000000000.0,
+  "Yukawa_assumed": 0.5,
+  "operators": [
+   {
+    "operator": "C A H10^dag S / M_P",
+    "dim": 5,
+    "mixing_mass_GeV": 0.002858316221765914,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "16.16.10 ok; H10^dag is a 10; EW-vev mixing (3e-3 GeV) AND a C-A-h Yukawa vertex y_eff = <S>/M_P"
+   },
+   {
+    "operator": "C A Delta S^2 / M_P^2",
+    "dim": 6,
+    "mixing_mass_GeV": 8095.493087207856,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "16.16.126bar ok; <Delta_R> = v_R in the nu^c nu^c direction: singlet-singlet mixing"
+   },
+   {
+    "operator": "C A Delta^dag S / M_P  (verifier/K0 'Vec1 Vec3 Delta^ S')",
+    "dim": 5,
+    "mixing_mass_GeV": null,
+    "SO10_invariant": false,
+    "X_sum": 0,
+    "note": "16.16.126 has no singlet: NOT SO(10) invariant (X-only candidate)"
+   },
+   {
+    "operator": "C F H10^dag S^5 Phi17^dag / M_P^6",
+    "dim": 10,
+    "mixing_mass_GeV": 8.547820854275223e-24,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "direct C-F; negligible"
+   },
+   {
+    "operator": "C F Delta^dag ... ",
+    "dim": 10,
+    "mixing_mass_GeV": null,
+    "SO10_invariant": false,
+    "X_sum": null,
+    "note": "16.16.126 not invariant; the invariant partner needs Delta (X=-2): C F Delta S^6 Phi17^dag is dim 11"
+   },
+   {
+    "operator": "Cbar Abar H10 S^dag^3 / M_P^4",
+    "dim": 7,
+    "mixing_mass_GeV": 3.167622069043125e-31,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "16bar.16bar.10 ok; negligible"
+   },
+   {
+    "operator": "Cbar Abar Delta^dag S^dag^4 / M_P^5",
+    "dim": 8,
+    "mixing_mass_GeV": 8.971527491448347e-25,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "16bar.16bar.126 ok; negligible"
+   },
+   {
+    "operator": "C Bbar S^4 Phi17^dag / M_P^5",
+    "dim": 8,
+    "mixing_mass_GeV": 2.990509163816116e-21,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "negligible"
+   },
+   {
+    "operator": "C Abar S^dag^8 Phi17^2 / M_P^10",
+    "dim": 13,
+    "mixing_mass_GeV": 8.943145058868165e-42,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "negligible"
+   },
+   {
+    "operator": "C B H10^dag S^6 Phi17^dag / M_P^7",
+    "dim": 11,
+    "mixing_mass_GeV": 1.4041594832484968e-28,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "negligible"
+   },
+   {
+    "operator": "Cbar P S^4 Phi17^dag / M_P^5",
+    "dim": 8,
+    "mixing_mass_GeV": 2.990509163816116e-21,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "mixing with the 1e17 Phi-sector; negligible"
+   },
+   {
+    "operator": "Cbar Pbar H10 (renormalizable)",
+    "dim": 4,
+    "mixing_mass_GeV": null,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "P-sector (1e17) decays promptly into Cbar + h; keeps the C-sector number"
+   },
+   {
+    "operator": "C Cbar S^dag (renormalizable mass)",
+    "dim": 4,
+    "mixing_mass_GeV": null,
+    "SO10_invariant": true,
+    "X_sum": 0,
+    "note": "M_C = y_C <S>"
+   }
+  ],
+  "A_sector": {
+   "m_AF_GeV": 443.2850424206902,
+   "theta_AF": 4.432850424206902e-11,
+   "Gamma_GeV": 9.773189235789432e-11,
+   "tau_s": 6.734751411439683e-15
+  },
+  "C_branch1_mC_gt_mA": {
+   "y_eff5": 1.642710472279261e-05,
+   "Gamma_GeV": 53.68490589980827,
+   "tau_s": 1.2260429425514754e-26
+  },
+  "C_branch2_mC_lt_mA": {
+   "m_CA6_GeV": 8095.493087207856,
+   "m_CA5_GeV": 0.002858316221765914,
+   "two_step_mixing": [
+    {
+     "dM": 100000000000.0,
+     "theta_CA": 8.095493087207856e-08,
+     "theta_eff": 3.5886109965793384e-18,
+     "Gamma_GeV": 6.405055843080273e-25,
+     "tau_s": 1.0276257008923488
+    },
+    {
+     "dM": 300000000000.0,
+     "theta_CA": 2.698497695735952e-08,
+     "theta_eff": 1.1962036655264463e-18,
+     "Gamma_GeV": 7.116728714533638e-26,
+     "tau_s": 9.248631308031138
+    },
+    {
+     "dM": 1000000000000.0,
+     "theta_CA": 8.095493087207856e-09,
+     "theta_eff": 3.5886109965793387e-19,
+     "Gamma_GeV": 6.405055843080274e-27,
+     "tau_s": 102.76257008923487
+    },
+    {
+     "dM": 3000000000000.0,
+     "theta_CA": 2.698497695735952e-09,
+     "theta_eff": 1.1962036655264462e-19,
+     "Gamma_GeV": 7.116728714533638e-28,
+     "tau_s": 924.8631308031138
+    }
+   ],
+   "three_body_offshell_A": [
+    {
+     "dM": 100000000000.0,
+     "Gamma_GeV": 2.226780287655897e-18,
+     "tau_s": 2.9558371952936525e-07
+    },
+    {
+     "dM": 300000000000.0,
+     "Gamma_GeV": 2.474200319617664e-19,
+     "tau_s": 2.660253475764287e-06
+    },
+    {
+     "dM": 1000000000000.0,
+     "Gamma_GeV": 2.226780287655897e-20,
+     "tau_s": 2.9558371952936527e-05
+    },
+    {
+     "dM": 3000000000000.0,
+     "Gamma_GeV": 2.4742003196176634e-21,
+     "tau_s": 0.0002660253475764287
+    }
+   ],
+   "direct_dim10": {
+    "m_CF10_GeV": 8.547820854275223e-24,
+    "Gamma_GeV": 3.633966978166969e-62,
+    "tau_s": 1.8112437563535775e+37
+   }
+  },
+  "conclusion": "EST: branch 1 prompt (1e-20 s). Branch 2: tau ~ 1e-4 ... 10 s for dM = 1e11..3e12 (two-step mixing), i.e. around or before BBN onset; K0's 1e15-1e16 s (dim-10 only) is superseded by the dim-5/6 C-A operators. Residual: Planck coefficients and dM unknown -> tau uncertain by >= 2 orders; the late-decay bounds below cover the worst case."
+ },
+ "partB_late_decay_thresholds": [
+  {
+   "M": 3000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 41562995799.181625,
+   "note": "ok",
+   "M_over_TRH": 72.1795900972824
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = 1e-4 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 30785528938.8411,
+   "note": "ok",
+   "M_over_TRH": 97.44838251633864
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = 1e-6 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 27206262289.683975,
+   "note": "ok",
+   "M_over_TRH": 110.26873034071772
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = 1e-8 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 24043137580.82677,
+   "note": "ok",
+   "M_over_TRH": 124.77572820580428
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 17775099805.871346,
+   "note": "ok",
+   "M_over_TRH": 168.77542364116917
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = 1e-4 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 12672148742.282833,
+   "note": "ok",
+   "M_over_TRH": 236.7396454233509
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = 1e-6 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 10914759728.57669,
+   "note": "ok",
+   "M_over_TRH": 274.85717272781477
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = 1e-8 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 9495120994.353397,
+   "note": "ok",
+   "M_over_TRH": 315.9517400340716
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 11884289892.751055,
+   "note": "ok",
+   "M_over_TRH": 252.43409804652114
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = 1e-4 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 8319371012.40055,
+   "note": "ok",
+   "M_over_TRH": 360.604184562548
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = 1e-6 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 7108203785.146513,
+   "note": "ok",
+   "M_over_TRH": 422.04755106611856
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = 1e-8 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 6137402733.565024,
+   "note": "ok",
+   "M_over_TRH": 488.8061172184792
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 364671145978.82605,
+   "note": "ok",
+   "M_over_TRH": 27.421966641091565
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = 1e-4 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 274921957002.89417,
+   "note": "ok",
+   "M_over_TRH": 36.3739590282879
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = 1e-6 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 242958270630.1074,
+   "note": "ok",
+   "M_over_TRH": 41.15933149369725
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_C = 1e-8 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 218535601123.13654,
+   "note": "ok",
+   "M_over_TRH": 45.75913466092593
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 145157540962.4375,
+   "note": "ok",
+   "M_over_TRH": 68.89066826082225
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = 1e-4 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 107688031502.26492,
+   "note": "ok",
+   "M_over_TRH": 92.86083012660211
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = 1e-6 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 94618523599.91875,
+   "note": "ok",
+   "M_over_TRH": 105.68755059298545
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_C = 1e-8 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 83135190450.94707,
+   "note": "ok",
+   "M_over_TRH": 120.2860057907774
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 95828089316.56636,
+   "note": "ok",
+   "M_over_TRH": 104.3535363307222
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = 1e-4 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 69957065530.5549,
+   "note": "ok",
+   "M_over_TRH": 142.94481799886725
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = 1e-6 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 61039604517.798584,
+   "note": "ok",
+   "M_over_TRH": 163.8280601422326
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_C = 1e-8 Omega_DM [VL16: k=10, gX=64]",
+   "k": 10.0,
+   "gX": 64.0,
+   "TRH_max": 53258856577.7096,
+   "note": "ok",
+   "M_over_TRH": 187.76219848822842
+  }
+ ],
+ "partB_Rodd_6e12": [
+  {
+   "M": 6000000000000.0,
+   "HI": 100000.0,
+   "criterion": "Omega_X = Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 266773817090.3783,
+   "note": "below target even at hi",
+   "M_over_TRH": 22.49096281426788
+  },
+  {
+   "M": 6000000000000.0,
+   "HI": 100000.0,
+   "criterion": "Omega_X = 1e-3 Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 266773817090.3783,
+   "note": "below target even at hi",
+   "M_over_TRH": 22.49096281426788
+  },
+  {
+   "M": 6000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_X = Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 159035370504.7622,
+   "note": "ok",
+   "M_over_TRH": 37.727456357391475
+  },
+  {
+   "M": 6000000000000.0,
+   "HI": 1000000.0,
+   "criterion": "Omega_X = 1e-3 Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 126417295555.38222,
+   "note": "ok",
+   "M_over_TRH": 47.46186013267035
+  },
+  {
+   "M": 6000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_X = Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 66787006119.41334,
+   "note": "ok",
+   "M_over_TRH": 89.8378344624726
+  },
+  {
+   "M": 6000000000000.0,
+   "HI": 10000000.0,
+   "criterion": "Omega_X = 1e-3 Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 52075306992.78428,
+   "note": "ok",
+   "M_over_TRH": 115.21775571733795
+  },
+  {
+   "M": 6000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 44560542150.68843,
+   "note": "ok",
+   "M_over_TRH": 134.6482720005978
+  },
+  {
+   "M": 6000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = 1e-3 Omega_DM [R-odd: k=1, gX=40]",
+   "k": 1.0,
+   "gX": 40.0,
+   "TRH_max": 34281995631.142704,
+   "note": "ok",
+   "M_over_TRH": 175.01898269158625
+  }
+ ],
+ "partC_leptogenesis": {
+  "K2_M_R_GeV": [
+   5900000000000.0,
+   740000000000.0,
+   64000000000.0
+  ],
+  "M1": 64000000000.0,
+  "eps1_DI_max": 6.308162627502788e-06,
+  "kappa_efficiency_needed": 0.009670010683308599,
+  "windows": [
+   {
+    "M_lightest_Rodd": 3000000000000.0,
+    "HI": 100000.0,
+    "TRH_max_OmegaDM": 116987107960.68558,
+    "window_TRH_ge_M1": true,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 3000000000000.0,
+    "HI": 1000000.0,
+    "TRH_max_OmegaDM": 47031039998.677444,
+    "window_TRH_ge_M1": false,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 3000000000000.0,
+    "HI": 10000000.0,
+    "TRH_max_OmegaDM": 20230346395.43055,
+    "window_TRH_ge_M1": false,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 3000000000000.0,
+    "HI": 30000000.0,
+    "TRH_max_OmegaDM": 13764121089.437141,
+    "window_TRH_ge_M1": false,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 6000000000000.0,
+    "HI": 100000.0,
+    "TRH_max_OmegaDM": 266773817090.3783,
+    "window_TRH_ge_M1": 1.0,
+    "window_TRH_ge_M1_over_5": 1.0,
+    "window_TRH_ge_1e9": 1.0
+   },
+   {
+    "M_lightest_Rodd": 6000000000000.0,
+    "HI": 1000000.0,
+    "TRH_max_OmegaDM": 159035370504.7622,
+    "window_TRH_ge_M1": true,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 6000000000000.0,
+    "HI": 10000000.0,
+    "TRH_max_OmegaDM": 66787006119.41334,
+    "window_TRH_ge_M1": true,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 6000000000000.0,
+    "HI": 30000000.0,
+    "TRH_max_OmegaDM": 44560542150.68843,
+    "window_TRH_ge_M1": false,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 10000000000000.0,
+    "HI": 100000.0,
+    "TRH_max_OmegaDM": 266773817090.3783,
+    "window_TRH_ge_M1": true,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 10000000000000.0,
+    "HI": 1000000.0,
+    "TRH_max_OmegaDM": 405425342691.8405,
+    "window_TRH_ge_M1": true,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 10000000000000.0,
+    "HI": 10000000.0,
+    "TRH_max_OmegaDM": 161951905652.27393,
+    "window_TRH_ge_M1": true,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   },
+   {
+    "M_lightest_Rodd": 10000000000000.0,
+    "HI": 30000000.0,
+    "TRH_max_OmegaDM": 107547904326.06792,
+    "window_TRH_ge_M1": true,
+    "window_TRH_ge_M1_over_5": true,
+    "window_TRH_ge_1e9": true
+   }
+  ],
+  "note": "K2's point is a non-converged best fit (chi2 = 218); M_1 = 6.4e10 is provisional. Thermal N_1 leptogenesis needs T_RH >~ M_1 (zero initial abundance) or >~ M_1/5 (strong washout, EST); DI bound M_1 > ~1e9 (LIT-abstract)."
+ },
+ "partD_graviton_freeze_in": [
+  {
+   "M": 3000000000000.0,
+   "TRH": 100000000000.0,
+   "Y_grav": 2.51730473998388e-55,
+   "Omega_h2": 2.0692244962667497e-34,
+   "Omega_over_DM": 1.724353746888958e-33
+  },
+  {
+   "M": 3000000000000.0,
+   "TRH": 300000000000.0,
+   "Y_grav": 1.5998484094142422e-36,
+   "Omega_h2": 1.3150753925385072e-15,
+   "Omega_over_DM": 1.095896160448756e-14
+  },
+  {
+   "M": 3000000000000.0,
+   "TRH": 1000000000000.0,
+   "Y_grav": 7.125868708058414e-29,
+   "Omega_h2": 5.857464078024017e-08,
+   "Omega_over_DM": 4.881220065020014e-07
+  },
+  {
+   "M": 10000000000000.0,
+   "TRH": 100000000000.0,
+   "Y_grav": 3.978398908892376e-116,
+   "Omega_h2": 1.0900813010365111e-94,
+   "Omega_over_DM": 9.084010841970926e-94
+  },
+  {
+   "M": 10000000000000.0,
+   "TRH": 300000000000.0,
+   "Y_grav": 8.649739171016246e-57,
+   "Omega_h2": 2.3700285328584514e-35,
+   "Omega_over_DM": 1.975023777382043e-34
+  },
+  {
+   "M": 10000000000000.0,
+   "TRH": 1000000000000.0,
+   "Y_grav": 5.92536447931201e-35,
+   "Omega_h2": 1.6235498673314906e-13,
+   "Omega_over_DM": 1.3529582227762422e-12
+  }
+ ],
+ "runtime_s": 107.37015438079834
+}

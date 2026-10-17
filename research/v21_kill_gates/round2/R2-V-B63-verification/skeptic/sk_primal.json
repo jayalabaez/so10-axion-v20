@@ -1,0 +1,101 @@
+[
+ {
+  "J": 1,
+  "G2target": 4,
+  "status": 2,
+  "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+  "objective": null,
+  "dual_bound": null,
+  "seconds": 0.0035059452056884766
+ },
+ {
+  "J": 2,
+  "G2target": 4,
+  "status": 0,
+  "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "objective": 17.0,
+  "dual_bound": 17.0,
+  "ops": [
+   {
+    "d": 19.0,
+    "mono": {
+     "N1b": 1,
+     "N2": 1,
+     "S*": 13,
+     "Phi17": 3
+    }
+   },
+   {
+    "d": 6.0,
+    "mono": {
+     "N1": 1,
+     "N2b": 1,
+     "S*": 2,
+     "Phi17": 1
+    }
+   }
+  ],
+  "K": 17.0,
+  "seconds": 0.6112771034240723
+ },
+ {
+  "J": 3,
+  "G2target": 4,
+  "status": 0,
+  "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "objective": 16.999999999999986,
+  "dual_bound": 16.999999999999986,
+  "ops": [
+   {
+    "d": 16.0,
+    "mono": {
+     "N2b": 1,
+     "NMm": 1,
+     "S*": 13
+    }
+   },
+   {
+    "d": 9.0,
+    "mono": {
+     "N2": 1,
+     "NMm": 1,
+     "S*": 2,
+     "Phi17": 4
+    }
+   }
+  ],
+  "K": 17.0,
+  "seconds": 37.27528762817383
+ },
+ {
+  "J": 4,
+  "G2target": 4,
+  "status": 1,
+  "message": "Time limit reached. (HiGHS Status 13: Time limit reached)",
+  "objective": 16.999999999989406,
+  "dual_bound": 12.5,
+  "ops": [
+   {
+    "d": 16.0,
+    "mono": {
+     "V2*": 1,
+     "Pb*": 1,
+     "S*": 11,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 9.0,
+    "mono": {
+     "V1*": 1,
+     "V3*": 1,
+     "H10": 1,
+     "S*": 4,
+     "Phi17": 1
+    }
+   }
+  ],
+  "K": 17.0,
+  "seconds": 400.1657204627991
+ }
+]

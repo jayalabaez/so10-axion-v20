@@ -1,0 +1,301 @@
+FINAL ADJUDICATION - v21-F17-B63-G3221 (SO(10) x U(1)_X, v20 51-parameter potential incl. kappaH, B63 fermions,
+one-step G3221 'Am45' vacuum)                                                                         2026-10-17
+=====================================================================================================================
+Inputs read: wfV21\ROUND1_SUMMARY.md, wfV21\ROUND1_RESULTS.json (gate verdicts), and every round-2 REPORT.txt with its
+skeptic report(s): R2-A (+skeptic), R2-B (+skeptic sk2, sk_checks.log), R2-C (+skeptic), R2-V (+skeptic, +sk2).
+No new physics computation was run for this adjudication. Every number below is quoted from those reports and keeps the
+label it had there. Labels: EXACT, NUM (with uncertainty), EST, CONJ, LIT-abstract/snippet.
+Hygiene: 'git status --short' gives 0 lines in _g6_nogo (54a2cd1) and in _record (8707fda). _rescope was not touched.
+
+0. VERDICT: NO_GO
+-----------------
+v21-F17-B63-G3221 is not a viable completion. No gate found a strictly better nearby variant.
+The reason is a combination of kills, each upheld by its skeptic, that between them eliminate every flavour-capable
+light content. The chain of logic:
+
+1. The flavour lemma (EXACT) requires two light bidoublets. The G3211 escape is closed: 27/27 LPs collapse at
+   omega != 0 (NUM).
+2. Every two-bidoublet point of the v20 potential has deeper vacua that break SU(2)_L at the GUT scale. All 60 of 60
+   descents found one (R2-A FAIL, NUM, reproduced independently).
+3. The only content that unifies with a Super-K pass is C2. C2 fails flavour at its own v_R (chi2 = 9667 at 2e10, and
+   >= 360 everywhere up to 5e11). Its nominal proton pass holds only in the optimistic normalisation.
+4. The contents whose v_R falls in the flavour window are each dead for other reasons:
+   - C1 + (8,1,3)_0 cannot be realised at all;
+   - C1 + (6,2,2)_{2/3} fails three-loop Landau and global minimality;
+   - C1 and C1' fail proton decay.
+5. The renormalisable 10 + 126bar fit fails at every v_R (chi2_min = 109.7; 108.8 independently).
+
+The positive gates, quality (R2-V PASS, K_min = 17 EXACT) and cosmology (K5 PASS), cannot offset these kills.
+
+1. GATE LEDGER (research verdict / skeptic verdict / decisive numbers)
+----------------------------------------------------------------------
+Flavour lemma (round 1, K2): EXACT, both skeptics.
+  X(F) = 1 and X(H10) = -2, so F.F.H10* has X = 4 and is forbidden. With ONE light complex bidoublet:
+  - s = 1, so Yu is proportional to Yd and CKM = 1 + O((v_R/M_U)^2) ~ 1e-6;
+  - the pulls are s12 -331 sigma, s23 -52 sigma, s13 -35 sigma.
+  This kills C0, which is K3's only realised content.
+  Scope: exact at the renormalisable level. The X-allowed d=5 term F F H10* S*/Lambda gives Ytilde10 ~ c x 1.2e-5 (EST).
+
+R2-V, B63 quality: PASS / PASS (two skeptics).
+  - K_min = 17 is EXACT, by three independent methods: integer DP, HiGHS MILP, and a wide-window DP plus LP.
+  - dtheta_tree = 2.14e-11 at <S> = 3e13 (margin x4.7); <S>_max = 3.285e13.
+  - The 14 one-loop K = 17 rings renormalise dtheta by <= 35% (EST).
+  - y_s window [0.304, 0.368] at M_s = 1e13. It needs M_s <= 1.21e13.
+  - Recomputed with the realisable-content gauge environments, the cap is 0.374-0.386 (EST, sk2).
+  Corrections adopted:
+  - the N_DW = 1 argument needs the centre element (the conclusion stands);
+  - the f1 relic lifetime is ~5e27 s x (Delta M/M_s)^2 through f1-f2 mixing, not 1e43 s; it still needs T_RH << M_s;
+  - the scope of the PASS is B63's decisive claims only (the K0b scans were not re-verified).
+  Round-1 fact (v) is closed.
+
+K5, cosmology: PASS / PASS. Pre-inflation PQ, H_I <= 3-4e7, T_RH in [1e10, 1.1e11].
+
+R2-A, vacuum with two light bidoublets: FAIL / FAIL (NUM, not certified; one leg withdrawn).
+  Local realisability (NUM; fraction of D-odd orientations that are clean):
+  - C2: 32/36;
+  - C1: 15/26;
+  - C1': 24/27;
+  - C1 + (6,2,2)_{2/3}: 9/36, only for theta in [-50.5, -44.5] deg;
+  - C1 + (8,1,3)_0: 0/27 (a structural 210-sector LP gives heavy/light <= 0.58 everywhere).
+  Any EW composition (r, s) is realisable (EXACT map, 20/20 targets).
+  Tunings (EXACT count): 10 real conditions for the two bidoublets, against 3 for one.
+  Global search: 52/52 gate descents plus 8/8 skeptic descents, 60/60 in all, ended below V*.
+  - Depths at x = 4: -0.69 to -73.8 against V* = -257.
+  - Depths at x = 1.4: -0.72 to -29.4 against V* = -3.85.
+  - The lower regions are GUT-scale SU(2)_L x U(1)_Y-breaking "H-Sigma" configurations (|H|, |Sigma| ~ 1-5 |Phi|).
+  - The skeptic reproduced the descent values on an independent evaluation path to 1e-12, with gauge-tangent
+    |dV/ds| <= 2.3e-9.
+  Withdrawn leg: "the flavour cells are empty after the cuts". This was an artefact of fixing the Phi210-doublet
+  admixture beta = 0. With |beta|^2 ~ 1e-6 the K2f09 cell is feasible at Am45 and D400 (s* = -0.097 / -0.095).
+  The 8 fresh descents from those points are all lower (-0.69 to -49.1).
+  lambda_eff at points that survive the cuts is unphysical:
+  - the tree maximum is -0.089 and the one-loop CW shift is about -1.3, so it cannot be dialled;
+  - the round-2/3 cut points sit at -4.2, and the beta point at -1.70.
+  Criterion caveats (adopted):
+  (a) An SM-matched point needs tree lambda_eff ~ -0.04, and that alone already gives a lower point along the Higgs
+      valley (dV = -9.7e-11 at h = 0.01 M_U). Strict tree-level global minimality is therefore unattainable in this
+      potential. The kill rests on the separate H-Sigma vacua, which are deeper by 0.69-74 box units, not by 1e-10.
+  (b) "Physically fatal" is NOT established: no bounce was computed.
+  (c) A FAIL needs no certificate: the lower points are explicit, and the K4 gap matters only for PASS claims.
+
+R2-B, unification / proton / Landau: UNDECIDED / UNDECIDED, with a correction that hardens C2's status (EST).
+  Two-loop nominal points (M_s = 1e13, y_s = 0.336, MS-bar S_V with the sign derived directly):
+
+    content   v_R       M_U       aU^-1   tau_repo   tau_dir    Lambda_2L   Lambda_3L
+    C0        6.63e12   3.02e15   33.26   6.2e33     1.4e33     4.6         1.72
+    C1        7.78e12   2.18e15   33.53   1.7e33     3.8e32     3.9         1.44
+    C2        2.13e10   6.05e15   34.64   1.08e35    2.38e34    14.2        5.20
+    C1'       1.14e11   3.20e15   34.91   8.6e33     1.9e33     9.3         3.36
+
+  Lambda in units of M_Pl,red. The skeptic reproduced C2 at 2.123e10 / 6.031e15 / 1.07e35. C1 fails by a factor
+  of 14, C1' by 2.8 and C0 by 3.9.
+  Skeptic correction (EST, +-25%): the repository alpha_H = 0.012 GeV^3 leaves out (1+D+F), worth a factor 4.4 with
+  W0 = 0.131 GeV^2, which is LIT-unverified. The chain-specific A_R = 3.28 instead of 2.726 gives a further x0.69.
+  C2 nominal then has tau = 1.67e34 yr = 0.70 x Super-K, a nominal FAIL.
+  C2 pass fraction in the threshold scan: 86% (repository), 53.5% (lattice), 44% (lattice x A_R). With v_R >= 1e11
+  required as well: 7% (repository), 1% (lattice x A_R).
+  Explicit C2-family spectra (R2-A; stage-A, not vacua): tau_repo = 7.5e34-1.6e35; lattice x A_R = 1.2e34-2.5e34
+  (knife edge).
+  C1 + (6,2,2)_{2/3} (R2-A explicit spectra):
+  - v_R 3.6e12-1.1e13; tau_repo 2.8e35-5.8e37 (direct 6e34-1.3e37);
+  - Lambda_2L = 1.08-1.34 at the LP-optimum points but 0.69-1.09 for random realisable spectra (10/16 fail);
+  - Lambda_3L = 0.31-0.67 at every realisable spectrum (fails).
+  The SO(10)-phase loop expansion is not controlled (2L/1L = 1.5), so the three-loop kill is convention-limited.
+
+R2-C, flavour with two bidoublets (renormalisable 10_H + 126bar_H, type I): FAIL / FAIL (diagnosis corrected).
+  chi2_min by v_R (independent value in brackets):
+
+    v_R:   2e10   1e11   3e11   5e11   1e12            2e12            3e12            1e13            3e13            1e14
+    chi2:  9667   3110   839    360    200.3 (199.3)   109.7 (108.8)   121.3 (118.7)   138.9 (138.5)   145.1 (151.2)   1576
+           (9687 independently at 2e10)
+
+  At least 3 pulls exceed 3 sigma at every v_R. The type-I window is [2e12, 3e13]. Type II needs v_L = 0.86 eV
+  against an induced beta x 1e-5 eV (EST), so it is not realisable.
+  Skeptic corrections:
+  - The true conflict is the GUT-scale m_s/m_d prediction (34.6 against lattice 19.9), not theta23 precision. The
+    same code fits at chi2 = 6.0 once m_d and m_s carry literature-era errors.
+  - FRAGILITY: an extra m_d, m_s floor of 10% gives 22.6 and 20% gives 6.9-7.8. The window-interior FAIL needs the
+    m_d, m_s theory error below ~8-9%. A uniform 5% floor still gives 43.8.
+  - The kappa-RGE convention bug is absorbed by refitting (|d chi2| <= 2.6).
+  - The omitted lam23 H10.Vb2.Vb3 term makes the fit worse.
+  - The low-octant penalty is underclaimed (NuFIT 6.0's error is asymmetric).
+  Scope (EST/CONJ): X allows F F H10 Phi210/Lambda and F F Delta Phi210/Lambda (~c x (0.7-2)e-2) and
+  F F H10* S*/Lambda (~c x 1.2e-5). These exceed the light Yukawas unless c <~ 1e-4. Under the same O(1)-coefficient
+  Planck cost model that underlies the quality certificate, c ~ O(1) is the default. The renormalisable fit is therefore
+  a truncation, and R2-C kills the truncation, not the EFT. The EFT fit (10 + 126bar + 120-like + Ytilde10) is UNTESTED.
+
+K3 (round 1), vacuum with one bidoublet: FAIL. P831 is a local minimum but not global (full-chart descents reach
+  -26.6, the same H-Sigma region). It is moot for the verdict, because C0 is dead by the lemma and by proton decay.
+
+K4 (round 1), certification method: UNDECIDED, method gap.
+  - The orbit-space method is unusable.
+  - Degree-2 SOS is impossible (EXACT).
+  - Degree-3 SOS is infeasible on a 210-only prototype (NUM).
+  Even a full physics pass could reach only "consistent, numerically global, not certified" (relaxation U2a). Under
+  U2a, R2-A is a FAIL.
+
+2. CONTENT-ELIMINATION MATRIX (every flavour-capable light content; each needs only one kill)
+---------------------------------------------------------------------------------------------
+C0 (one bidoublet + (8,3,1)_0 + Delta_R), the reference:
+  - flavour lemma (EXACT);
+  - proton: tau = 6.2e33 nominal (NUM), 6.4e32 with P831;
+  - not global (K3, NUM).
+
+C1 (two bidoublets + (8,3,1)_0):
+  - proton: tau = 1.7e33 (x14 short; 0.5% of the scan in the repository normalisation, 0% on the lattice;
+    explicit spectra <= 5.2e33; skeptic reproduced 1.71e33). Robust NUM;
+  - flavour: chi2 >= 131 at its v_R (renormalisable).
+
+C1' (two bidoublets + (1,3,1)_0):
+  - proton: x2.8 short (19.5% / 2% / 1.5% of the scan; explicit <= 5.2e33);
+  - vacuum: collapses under the round-2 cuts (t = 2.8e-6);
+  - flavour: chi2 ~ 3110 at v_R ~ 1e11.
+
+C2 (two bidoublets + Delta_R):
+  - vacuum: 15/15 descents from C2 points lower (R3 4/4, N1 3/3, skeptic beta points 8/8); 60/60 over all
+    two-bidoublet points (NUM);
+  - flavour at v_R = 2e10-4e11: chi2 9667 down to >= 360 (NUM, search-limited). The cause is the perturbativity cap
+    M_R <= f v_R ~ 1e11-1e12 against the M_R3 ~ 3-6e12 the fit needs. This is not the m_s/m_d issue, so the floor
+    fragility does not apply (EST). Enlarged floors were not run at these v_R;
+  - seesaw window missed: none of R2-A's 20 random realisable spectra, nor the d6 spectrum, has v_R >= 1e11 together
+    with tau_dir > 2.4e34. In R2-B's threshold scan, 1-5% of samples do;
+  - proton nominal at 0.70 x Super-K in the lattice x A_R normalisation (EST).
+
+C1 + (8,1,3)_0:
+  - not realisable at any of 27 orientations (NUM, a structural necessary condition).
+
+C1 + (6,2,2)_{2/3}, the closest to viable:
+  - vacuum: 45/45 descents lower (R1 and R2 at x = 4; X1-X3 at x = 1.4);
+  - Landau: Lambda_3L = 0.31-0.67, and Lambda_2L fails for 10/16 random spectra;
+  - flavour: renormalisable chi2 ~ 110-122, with the m_s/m_d fragility and the d=5 escape both open.
+
+C1 + (8,2,2)_0:
+  - not realisable at Am45 (K3).
+
+Why this is NO_GO and not CONDITIONAL: no content is left with only UNDECIDED items. Every flavour-capable content
+carries at least one kill upheld by a skeptic. C2 and C1 + (6,2,2) each carry the R2-A global-vacuum kill, and that kill
+cannot be escaped by changing coupling values within the box, the Phi17 vev, the orientation, the composition or beta.
+R2-A's CONJ (shared by its skeptic) is that the scalar sector itself must change.
+
+3. ROBUSTNESS OF THE KILLS (strongest first) AND WHAT COULD OVERTURN EACH
+------------------------------------------------------------------------
+(1) Flavour lemma: EXACT for renormalisable Yukawas. The only escape is the d=5 Ytilde10 (~1e-5 c). That cannot revive
+    C0, which is proton-dead.
+(2) C1 + (8,1,3)_0 not realisable: NUM. A necessary-condition LP inside the 210 fails at all 27 orientations.
+(3) C1 proton: NUM, robust in both normalisations and under the threshold and Planck scans.
+(4) R2-A global minimality for two bidoublets: NUM.
+    - Support: 60/60 descents, 3 feedback rounds at each of two Phi17 vevs, 8 orientations, two box sizes, light-cubic
+      bound relaxed, independent re-evaluation.
+    - Not established: a certificate (no method exists), and physical relevance (no bounce yet).
+    - It could be overturned only by (a) a large region missed by both searches (unlikely after the beta loophole was
+      found and then closed by fresh descents), or (b) changing the programme's G3 standard from global minimality to
+      metastability, together with a computed long lifetime.
+(5) C2 flavour at v_R <= 4e11: NUM, search-limited. The mechanism is the M_R perturbativity cap (EST-robust). The
+    d=5 operators shift M_R only by c x 1e-2 x v_R, so they do not lift the cap (EST).
+(6) C1 + (6,2,2) three-loop Landau: NUM within a convention, since the SO(10) phase is near strong coupling. This is a
+    soft kill.
+(7) R2-C inside the window: NUM. It is fragile to a >= 9% m_d, m_s error and to the d=5 EFT operators. Taken alone it
+    would NOT justify NO_GO.
+(8) C2 proton in the lattice normalisation: EST. It hinges on W0, which is LIT-unverified, and on the chain A_R.
+
+4. NEARBY VARIANTS EXAMINED (none is strictly better)
+-----------------------------------------------------
+- beta-rescued C2 K2f09 cell (R2-A skeptic): feasible after the cuts, but 8/8 descents are lower and tree
+  lambda_eff = -1.70 is unphysical.
+- C1 + (6,2,2)_{2/3} at theta in [-50.5, -44.5] deg: the best unification (v_R in the seesaw window, large proton
+  margin). It is worse than C2 on Landau, and it fails the vacuum test.
+- EFT flavour with X-allowed d=5 operators: this is the one plausible flavour escape. It is untested, and it cannot fix
+  the vacuum kill or C2's M_R cap.
+- Type II with an extra light Delta_L: needs a new ~1e-5 tuning plus new R2-A and R2-B work. It is not realisable in
+  this vacuum.
+- G3211 (omega != 0): excluded (NUM).
+- A modified scalar sector (CONJ: needed to lift the H-Sigma vacua without the O(1) H-Delta_R portals that destroy
+  lambda_eff). This is a NEW theory: new model file, new K0b quality certificate (any new X-charged scalar changes the
+  DP), and every gate rerun.
+  Note on the terms that drive the deepest point:
+  - Im O31 = H10*^2 Delta^2, the leading driver, survives every abelian symmetry that keeps O15 (EXACT charge
+    arithmetic). Phi210 is real, so its Z_n charge q has 2q = 0. O15 is allowed iff d-h = -q, and then
+    O31 ~ 2(d-h) = -2q = 0.
+  - O28 (phase d-h, the same as O15) can be removed only by making Phi210 odd, which also forbids Phi210^3.
+  - O27_B02 and O35_B02 are self-conjugate, phase-insensitive directions.
+
+5. HONEST PROBABILITY (EST)
+---------------------------
+- That v21-F17-B63-G3221 as specified becomes viable with further work: about 1%. Two things would both have to happen:
+  - R2-A's 60/60 lower-vacuum pattern turns out to be a search artefact, AND
+  - either C2's seesaw/flavour failure or C1 + (6,2,2)'s Landau failure dissolves.
+- That a modified nearby theory passes every physics gate at the "numerically global, not certified" level: 3-5%. Such
+  a theory keeps the B63 fermions (the quality structure re-certified), changes the scalar sector so the H-Sigma vacua
+  are lifted, uses EFT d=5 flavour, and builds on the C1 + (6,2,2)-type unification. It needs about four new gates:
+  vacuum, quality, flavour and Landau. Each currently looks unfavourable or marginal.
+  - If G3 is relaxed to metastability and Lambda to two loops, the specified configuration's C1 + (6,2,2) branch could
+    reach roughly 3% at most (bounce long-lived ~0.4, two-loop Landau with a realistic spectrum ~0.3, EFT flavour fit
+    ~0.6, one-loop lambda/tuning dial ~0.5, M_s/quality consistency ~0.8). That is a policy change, not a completion
+    under the current standard.
+- That any of these obtains an exact G3 certificate with known methods: below 1% (K4).
+
+6. SINGLE MOST DECISIVE NEXT COMPUTATION
+----------------------------------------
+Under the programme's current G3 standard (global minimum, numerically screened: relaxation U2a), no single computation
+can turn this NO_GO into GO. The configuration needs a different scalar sector.
+
+The one computation that decides whether the theory is physically dead, and not only procedurally dead, is the
+following.
+
+  Tunnelling (O(4) bounce) from SM-matched two-bidoublet false vacua to the explicit H-Sigma minima.
+  - Points: G7_D470_C1622_K2 (C1 + (6,2,2), tree lambda_eff = -0.041, dialable as in K3; 16 explicit lower endpoints
+    down to -73.8) and G7_Am45_C2 (C2). Use points from before the cuts, where lambda can be matched; the cut-surviving
+    points have lambda_eff ~ -2 to -4 and are unphysical.
+  - Method: path deformation in the full 486-real chart with the exact compiler rows. The endpoints and banks are in
+    R2-A\descend_*_bank.npz.
+  - Target: S_E against ~530 (EST, from Gamma/V ~ M_U^4 e^{-S} over a Hubble volume of today's age).
+  - Outcome S_E << 500 at both points: the vacuum kill is physical. It is then independent of the G3 policy and of the
+    K4 certification gap, and the whole v20 two-bidoublet family is closed.
+  - Outcome S_E >> 500: the vacuum leg is a policy-only kill. The next decisive items would be (i) an EFT d=5 flavour
+    fit at v_R = 4e12-1e13 for C1 + (6,2,2), (ii) a decision on the Landau standard, and (iii) a one-loop lambda/tuning
+    dial (K3: the CW curvature of the tuned states is 1e5-1e7 x tree).
+  - Cost: one gate, about 1-2 days at 2 processes, plus new bounce code. The rest of the machinery exists.
+
+7. REPOSITORY CONSEQUENCES
+--------------------------
+- Implement NOTHING for this configuration in the repository: no models/SO10Z17AxionV21.m, no G1-G8 modules, no SARAH
+  attestation. The K0 draft V21 model file (which dropped kappaH) must not be used.
+- If a successor ever reaches GO, the repository list would be:
+  1. a model file with the kappaH H10.H10.S row restored, plus SARAH attestation (G1);
+  2. G2 quality from the R2-V exact DP;
+  3. G3 under the U2a relaxation (numerical global search plus exact local Hessian), stated as not certified;
+  4. G4-G8 modules from the R2-B, R2-C and K5 code.
+- Reusable scratch assets (not committed; all in this workflow's scratchpad folders):
+  - quality: R2-V dual_dp.py and sk2_cert.py (exact quality certificate);
+  - unification: R2-B r2b_lib.py, r2b_model.py and r2b_r2a_c2check.py (exact MV/PGJ coefficients, threshold code);
+  - vacuum: R2-A r2_lp6.py (three bugs fixed) and r2_descend.py; R2-A skeptic sk_phase1.py (with beta and
+    U-iteration) and sk_screen.py (a 40000-sample screen; 12-polish in-LP screens can miss runaways);
+  - flavour: R2-C v2/lib_r2c.py and bexact.py (fix the kappa convention and add lam23 before reuse).
+
+8. SKEPTIC CORRECTIONS ADOPTED IN THIS ADJUDICATION
+---------------------------------------------------
+R2-A:
+- withdraw "cells empty at all 8 orientations" (beta artefact);
+- withdraw "physically fatal" (no bounce);
+- add the tree-lambda criterion caveat;
+- note that lambda_eff is unphysical at the cut-surviving points.
+R2-B:
+- C2's "nominal pass" holds in the repository normalisation only; nominal is 0.70 x Super-K with lattice W0 x chain A_R;
+- Lambda_2L is 10.8 (not 14.2) with M_Phi consistent with <Phi17>.
+R2-C:
+- the obstruction is m_s/m_d, not theta23;
+- the FAIL is fragile to an m_d, m_s floor of >= 9%;
+- the kappa-RGE convention is corrected, and lam23 is omitted;
+- "C2 robustly passes unification" overstates R2-B.
+R2-V:
+- the N_DW argument gap is fixed;
+- the f1 lifetime is corrected;
+- the PASS is scoped to B63's decisive claims.
+
+Bottom line: NO_GO.
+- Decisive kills: R2-A (two light bidoublets are never globally minimal: 60/60, NUM, upheld), combined with R2-B and
+  R2-C (the only unifying content, C2, is flavour-dead at v_R <= 4e11 with chi2 >= 360; the window contents are
+  unrealisable or fail Landau), on top of the EXACT one-bidoublet flavour lemma.
+- Chance of a viable completion: about 1% for this configuration, 3-5% for a modified scalar sector, below 1% for a
+  certified one.
+- Most decisive next step: the H-Sigma bounce computation.

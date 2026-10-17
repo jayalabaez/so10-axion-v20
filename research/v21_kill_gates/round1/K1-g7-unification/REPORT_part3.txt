@@ -1,0 +1,114 @@
+10. Proton decay [NUM / EST]
+----------------------------
+Gauge d = 6, repository normalisation tau = (4/pi)(f_pi^2/m_p) M_X^4 alpha_U^-2 /(alpha_H^2 A_R^2 F_q) with f_pi = 0.139,
+alpha_H = 0.012, A_R = 2.726, F_q = 7.6, M_X = M_U ((3,2,2) vectors): nominal T2 8.6e36 yr, T3 3.3e37 yr (M_s = 1e13;
+8.2e36-9.3e36 and 3.1e37-3.6e37 over the M_s window).  Super-K p -> e+ pi0 limit 2.4e34 yr: margins x360 / x1400.
+The SO(10) (3,2,2) contains both X,Y and X',Y'; the repository formula is SU(5)-like, so the true rate can be up to ~2x
+larger (EST), still > 1e36 yr.  Threshold Monte Carlo at M_s = 1e13: tau_p median 8.9e36 (T2) / 3.4e37 (T3); fraction
+below Super-K 0.5% / 0.25% (combined GUT x1/2..x2 and light x1/3..x3; those samples have M_U -> 3.7e15), 0% in the
+GUT-only and light-only scans; below the Hyper-K reach (1e35 yr) 1.5% / 0.25%.  At M_s = 3e12 with the Phi pair at
+M_U the worst sampled point reaches 2.2e34 yr (M_U ~ 1.2e16).  Proton decay therefore PASSES except in an adverse-
+threshold corner (NUM).
+Scalar-mediated channels: none of the tuned light multiplets ((1,2,2), Delta_R, (8,2,2)_0, (8,3,1)_0, (1,3,1)_0, (8,1,1)_0)
+has a B-violating renormalisable coupling ((8,2,2) couples Q_L Q_R-bar, B-conserving; the 210 pieces have no 16.16
+couplings; Delta_R is Delta L = 2 only).  The colour triplets of 10_H and 126bar sit at M_U x (1/2..2); their d = 6
+amplitude relative to the gauge one is ~ (Y_u1 Y_d1/g^2)(M_X/M_T)^2 ~ 1e-9, i.e. a negligible rate (EST).
+
+11. What decides the gate, and the verdict
+-----------------------------------------
+TWO LOOPS (MV gauge + two-loop Yukawa terms, one-loop thresholds).  Unification exists for T2 and T3 everywhere in the
+window; Lambda_2L = 1.03-2.4 M_Pl,red at nominal thresholds (1.03 only for M_s = 3e12 with the Phi pair at M_U;
+1.3-2.4 for M_Phi >= 1e17).  The Planck operator never breaks it (min 2.0 (T2) / 1.8 (T3) M_Pl,red over the whole
+c-scan at M_s = 1e13).  Combined threshold Monte Carlo (GUT x1/2..x2, light x1/3..x3): two-loop pass fraction 100% at
+M_s = 1e13 (min 1.53 / 1.38 M_Pl), 100% at 7e12 (min 1.39 / 1.40) and 5e12 (min 1.16 / 1.20), 91-97% at 3e12 with
+Phi at 1e17 (min 0.91 / 0.96) and 53-56% at 3e12 with Phi at M_U (min 0.57 / 0.62).  Under a declared TWO-LOOP
+convention the gate would be PASSED robustly for M_s >= 5e12 (all c, all thresholds, Phi pair >= 1e17) and
+marginally at the bottom of the window.
+THREE LOOPS (gauge + matter b3; two-loop Yukawa terms included; three-loop Yukawa/quartic terms unavailable).
+Nominal (c = 0, all thresholds at scale): Lambda_3L/M_Pl,red = 1.051 (T2) / 1.049 (T3) at M_s = 1e13 with M_Phi = 1e17;
+1.084 / 1.082 at M_Phi = 1.25e17 (the a0 <= 1/2 limit of y_phi); 0.836 / 0.880 with the Phi pair at M_U; the crossing
+Lambda_3L = M_Pl,red lies at M_s = 9.0e12 (M_Phi = 1e17) / 8.5e12 (1.25e17) for both contents, i.e. only the top
+10-15% of the declared window [3e12, 1e13] passes nominally; M_s = 2e13 would give 1.5 and 3.6e13 (the quality x
+unitarity cap) 2.1, outside the declared window.  The sign of Lambda_3L - M_Pl,red is set by:
+  (i)  the Planck gauge-kinetic coefficient c.  With physical solutions (v_R in [8e12, 1e14], M_U <= 1e17) the three-
+       loop test passes for EVERY 210 orientation (th, s) only for c in [-0.3, +0.1] (T2) and [-0.2, 0.0] (T3); c = +0.2
+       (T2) / +0.1 (T3) already fails for some orientations.  Sensitivities at c = 0 over the orientations:
+       d ln Lambda_3L/dc in [-0.44, +0.05] (T2), [-0.65, +0.09] (T3); d ln v_R/dc in [-1.2, +0.8] / [-1.5, +1.0];
+       d ln M_U/dc in [-1.8, +0.9] / [-2.7, +1.4]; d alpha_U^-1/dc in [-2.3, +3.6] / [-3.6, +5.6]; per unit c the
+       largest |Delta alpha_i^-1| is 0.7-1.2 (T2) / 0.9-1.6 (T3) units.  So c = 0.1 moves Lambda_3L by up to -4.4% /
+       -6.5%, v_R by x1.1-1.2 and M_U by up to x1.3: comparable to or larger than the +5% margin.  Beyond |c| ~ 0.3-0.5
+       the continuation leaves the physical region (M_U up to 6e19, v_R 1e10-1e16) or finds no perturbative solution.
+       c is a UV input (|c| ~ 1 is the naive expectation, LIT-abstract 0805.0145, 1006.1252): the three-loop result is
+       undecidable without the assumption |c| <~ 0.1.
+  (ii) the GUT-scale scalar spectrum (not computable: G3 BLOCKED).  x1/2..x2: three-loop pass fraction 75% (T2) / 66%
+       (T3), Lambda_3L/M_Pl 5-95% = 0.89-1.28 / 0.85-1.26; the sign is set mostly by the universal part (coherent x2:
+       1.79 / 1.77; coherent x1/2: 0.62 / 0.62), the strongest single states being 126bar (6,3,1), (3,3,1), (3,2,2) and
+       210 (3,3,1) (correlations 0.3-0.5).  In the unitarity-favoured half x1/2..x1 (masses from self-quartics with
+       a0 <= 1/2, section 5) the pass fraction is 0% for both contents (max 0.97 / 0.94, median 0.81 / 0.81): a three-
+       loop pass needs GUT scalars heavier than the gauge bosons, i.e. quartics lambda >~ g^2 ~ 0.5 on the 210/126bar,
+       for which the EST singlet-channel a0 ~ lambda (n+2)/(16 pi) ~ 2 (NUM for the running, EST for the unitarity
+       normalisation; K3 must settle it with the exact partial-wave machinery).
+  (iii) the light thresholds (x1/3..x3): pass fraction 63% / 62% (5-95%: 0.85-1.34 / 0.86-1.29), dominated by the W_R
+       mass (correlation -0.9: a heavier W_R lowers Lambda); combined with (ii): 61% / 58% at M_s = 1e13 (5-95%:
+       0.78-1.43 / 0.78-1.46), 29% / 22% at 7e12, 7% / 3% at 5e12, 0-1% at 3e12 (Phi at 1e17).
+  (iv) the uncomputed four-loop gauge term.  On the three-loop trajectory 2L/1L = 1.33 already at M_U (alpha_U^-1 = 27:
+       b2/b1 = 454) and 10.3 at M_Pl,red; 3L/2L = 0.13 at M_U, 0.35 at 1.39e18 (alpha_10^-1 = 10), 0.50 at 1.97e18
+       (alpha_10^-1 = 6.9) and 0.98-0.99 at M_Pl,red (alpha_10^-1 = 3.5): the loop expansion of the scalar-heavy SO(10)
+       phase is two-loop dominated from M_U up and has broken down (equal successive terms) at M_Pl,red, so the
+       three-loop Lambda is not a controlled quantity.  The b3 x0.75 / x1.25 proxy for a four-loop term of +-25% of the
+       three-loop one moves Lambda_3L/M_Pl to 1.25 / 0.90 (T2) and 1.24 / 0.90 (T3); x0.5 / x1.5: 1.51 / 0.78.
+  (v)  the two-loop GUT/v_R threshold corrections (not computed): differential <= 0.05 units, coherent <= 0.3 units of
+       alpha_i^-1 for a x2 spectrum -> <= 1-7% on Lambda (EST, k1_twoloop_threshold_est.json; d ln Lambda/d alpha_U^-1 =
+       0.32-0.34).
+  (vi) three-loop Yukawa terms (EST < 0.5% of b3) and three-loop quartic terms (EST a few % of b3 under a0 <= 1/2;
+       up to 20% for O(1) quartics, the critic's estimate): below (iv).
+  (vii) U(1)_X feedback (two-loop cross term b_10X = 2060 with U(1)_X at alpha_X(M_Pl,red) = 1, 0.1 or 1/4pi; the
+       result is insensitive to which because b_X/(2 pi) ln(M_Pl/mu) dominates alpha_X^-1): Lambda_3L -> 1.030 (T2,
+       -2%) / 0.970-0.981 (T3, -7%); negligible if g_X is well below its bound.  Product-group pure three-loop terms in
+       the SM/G3221 phases: +0.8% on Lambda_3L, +3.6-4% on M_U (EST).  alpha_s +-1 sigma: +-2%.  A light second doublet
+       (2HDM below v_R, NOT the declared configuration): 0.71 / 0.70.
+VERDICT: UNDECIDED.
+  Not FAIL: the window has two-loop passes with margins up to x2.4 that survive every scanned threshold and every c,
+  and the three-loop test passes (nominal thresholds) for the non-empty c-range [-0.3, +0.1] (T2) / [-0.2, 0] (T3) at
+  M_s in [9e12, 1e13] with the Phi pair at >= 1e17 (margin +5-8%).
+  Not PASS: the three-loop margin is +5% and flips sign under each of (i)-(iv) separately, all of which are uncomputed
+  or unknowable terms larger than the margin; in particular (ii) with the unitarity-favoured spectrum gives 0% and (iv)
+  shows the expansion is out of control at M_Pl,red.  "Robust" cannot be claimed at three loops; a three-loop pass
+  requires simultaneously M_s >= 9e12 (y_s >= 0.31-0.35), M_Phi >= 1e17, c in [-0.2, 0] and a GUT spectrum heavier
+  than the gauge bosons (coherent x1.0-x2).
+  Perturbativity-based cut (user option U2b): FAILS: 2L/1L > 1 from M_U upward and 3L/2L = 0.5 at 1.97e18 < M_Pl,red.
+  Two-loop convention (U2b): PASS for M_s >= 5e12 and M_Phi >= 1e17 (100% of thresholds, all c), marginal at 3e12.
+Named missing computations that would decide the three-loop sign: (1) the GUT-scale spectrum from an actual G3221
+vacuum with the exact a0 (K3/K4); (2) the four-loop SO(10) gauge term, or a declared loop-order convention; (3) the
+two-loop threshold matching at M_U and v_R; (4) an assumption on the Planck coefficient (|c| <= 0.1); (5) the three-
+loop quartic terms with the actual quartics; (6) the actual g_X (U(1)_X feedback).
+
+12. Axion band implied (section 5) and consistency of the window
+----------------------------------------------------------------
+At the three-loop point (M_s = 1e13, <S> = <S>_max = 2.9e13, y_s = 0.345): f_a = 2.41e12 GeV, m_a = 2.37 ueV (2.0 ueV in
+convention B, 2.18 with <Phi17> = 1e17/sqrt2), DFSZ-I-like coupling (E/N = 8/3), g_agg ~ 3.4e-16 GeV^-1 (EST).  It sits
+just below the ADMX DFSZ band 2.66-3.34 ueV because <S> is at its quality maximum; y_s = 0.388 (m_a = 2.66 ueV) enters
+the band; the next open DFSZ windows at M_s = 1e13 are y_s in [0.49, 0.57] (3.34-3.9 ueV), [0.60, 0.66] (4.1-4.51) and
+[0.67, 1.25] (4.59-8.6 ueV), where larger y_s is also what the quality bound prefers.  Across the M_s window the implied
+band is 2.37-28.6 ueV (unit Wilson coefficient; an O(1) coefficient c21 rescales the lower edge by c21^(1/17)).  The RG
+results depend on y_s only through the 14 y_s^2 Yukawa term (< 0.1%), so the axion-mass choice is free within the
+window.  Pre-inflation PQ breaking is required (FINAL), and T_RH << M_s because of the stable R-odd tensor fermion.
+
+13. Configuration refinements fixed by K1 for the other gates
+------------------------------------------------------------
+- Three-loop-viable sub-window (c = 0, nominal thresholds): M_s in [9.0e12, 1e13] (y_s in [0.31-0.35, 0.39]; quality
+  minimum 0.345 (A) / 0.29 (B); DFSZ-free up to 0.388 or in [0.49, 0.57], [0.60, 0.66], [0.67, 1.25]), the Phi pair at
+  M_Phi in [1e17, 1.25e17] (y_phi in [1, 1.25]), Planck coefficient c in [-0.3, +0.1] (T2) / [-0.2, 0] (T3), GUT
+  scalars at or above M_U.  Outputs there: T2 v_R = 2.50e13, M_U = 2.05e16, alpha_U^-1 = 27.10, Lambda_2L = 5.9e18
+  (2.42 M_Pl), Lambda_3L = 2.56e18 (1.05), tau_p = 8.6e36 yr; T3 v_R = 2.96e13, M_U = 2.91e16, alpha_U^-1 = 26.13,
+  Lambda_2L = 5.7e18 (2.35), Lambda_3L = 2.55e18 (1.05), tau_p = 3.3e37 yr; m_a = 2.37-2.66 ueV.
+- Two-loop-viable window: M_s in [5e12, 1e13] robust (100% of thresholds, all c, M_Phi >= 1e17); 3e12: 91-97% /
+  53-56% (M_Phi = 1e17 / M_U).
+- Thresholds for K3: heavier GUT scalars raise Lambda (coherent x2: 1.8 M_Pl; x1/2: 0.62); the unitarity-favoured
+  x1/2..x1 spectrum never passes at three loops; a heavier W_R lowers Lambda (light-threshold correlation -0.9).
+- U(1)_X: g_X(1e17) <= 0.076 (alpha_X <= 1 at M_Pl,red); an SO(10)-like g_X poles at 1.04e17; the feedback on the
+  SO(10) Landau scale at the bound is -2% (T2) / -7% (T3).
+- For K2 (flavour): v_R = 2.5-3.0e13 and M_U = 2.0-2.9e16 at c = 0, but x(0.9-1.2) and x(0.8-1.3) per 0.1 of c, and v_R
+  spans 0.6-1.2e14 .. 6e12 over the light-threshold scan (W_R mass); any G8 fit at M_U inherits these.
+- The Y126 two-loop term is +0.4-2.2% on Lambda_3L for Y126_33 = 0-1 (exact norm 63/4 Tr Y126^2); Y10: 10 Tr Y10^2.
+- The light second doublet must NOT be below v_R (2HDM below v_R gives Lambda_3L = 0.71 M_Pl and M_U = 7-9e15).

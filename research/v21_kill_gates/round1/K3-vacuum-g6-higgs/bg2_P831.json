@@ -1,0 +1,155 @@
+{
+ "solution": "P831.npz",
+ "light_levels": [
+  {
+   "label": "(1,1)",
+   "m2": 5e-07,
+   "multiplicity": 1,
+   "BG_max": 58098.00772188031,
+   "driver": "lambda::O44_B02_Phi2_Sigma_projectors",
+   "top3": [
+    [
+     "lambda::O44_B02_Phi2_Sigma_projectors",
+     58098.00772188031
+    ],
+    [
+     "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic",
+     36136.87397674551
+    ],
+    [
+     "lambda::O44_B01_Phi2_Sigma_projectors",
+     34748.540310121556
+    ]
+   ]
+  },
+  {
+   "label": "(8,3)",
+   "m2": 5e-07,
+   "multiplicity": 24,
+   "BG_max": 3963710.4990660995,
+   "driver": "lambda::O48_B02_Phi_self_quartics",
+   "top3": [
+    [
+     "lambda::O48_B02_Phi_self_quartics",
+     3963710.4990660995
+    ],
+    [
+     "lambda::O48_B01_Phi_self_quartics",
+     2651279.5515471045
+    ],
+    [
+     "lambda::O48_B03_Phi_self_quartics",
+     1002772.4223626828
+    ]
+   ]
+  },
+  {
+   "label": "(1,1)",
+   "m2": 5.01e-07,
+   "multiplicity": 2,
+   "BG_max": 57949.20377118091,
+   "driver": "lambda::O44_B02_Phi2_Sigma_projectors",
+   "top3": [
+    [
+     "lambda::O44_B02_Phi2_Sigma_projectors",
+     57949.20377118091
+    ],
+    [
+     "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic",
+     36044.31667629289
+    ],
+    [
+     "lambda::O44_B01_Phi2_Sigma_projectors",
+     34659.54035501411
+    ]
+   ]
+  },
+  {
+   "label": "(1,1)",
+   "m2": 5.46e-07,
+   "multiplicity": 1,
+   "BG_max": 1379.9221687967797,
+   "driver": "lambda::O04_B01_singlet_polynomial",
+   "top3": [
+    [
+     "lambda::O04_B01_singlet_polynomial",
+     1379.9221687967797
+    ],
+    [
+     "lambda::O22_B01_singlet_polynomial",
+     1370.0114909616407
+    ],
+    [
+     "lambda::O43_B01_Phi_norm",
+     9.411071441696098
+    ]
+   ]
+  },
+  {
+   "label": "(1,2)",
+   "m2": 2.871e-06,
+   "multiplicity": 4,
+   "BG_max": 252662.53455100424,
+   "driver": "lambda::O33_B01_Hdag_H_norm",
+   "top3": [
+    [
+     "lambda::O33_B01_Hdag_H_norm",
+     252662.53455100424
+    ],
+    [
+     "lambda::O06_B01_Hdag_H_norm",
+     251544.17264902598
+    ],
+    [
+     "lambda::O46_B03_Phi2_HdagH_channels",
+     1926.8497098386322
+    ]
+   ]
+  },
+  {
+   "label": "(1,2)",
+   "m2": 2.988e-06,
+   "multiplicity": 4,
+   "BG_max": 242757.43553560827,
+   "driver": "lambda::O33_B01_Hdag_H_norm",
+   "top3": [
+    [
+     "lambda::O33_B01_Hdag_H_norm",
+     242757.43553560827
+    ],
+    [
+     "lambda::O06_B01_Hdag_H_norm",
+     241682.91664103844
+    ],
+    [
+     "lambda::O46_B03_Phi2_HdagH_channels",
+     1851.3116519399614
+    ]
+   ]
+  }
+ ],
+ "lambda_eff": -0.006999999999658384,
+ "BG_lambda_top5": [
+  [
+   "lambda::O48_B02_Phi_self_quartics",
+   6383.094516906514
+  ],
+  [
+   "lambda::O04_B01_singlet_polynomial",
+   3416.6121494309427
+  ],
+  [
+   "lambda::O48_B03_Phi_self_quartics",
+   3242.504291664976
+  ],
+  [
+   "lambda::O48_B01_Phi_self_quartics",
+   2510.227845654373
+  ],
+  [
+   "lambda::O48_B04_Phi_self_quartics",
+   700.0569675526028
+  ]
+ ],
+ "note": "BG_max = max_i |c_i dX/dc_i| / |X| with X the light mass^2 (Hellmann-Feynman) or lambda_eff (finite differences; single-coupling shifts, stationarity not re-imposed)"
+}

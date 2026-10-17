@@ -1,0 +1,313 @@
+{
+ "anomalies": {
+  "SO10^2_X": "0",
+  "grav_X": "0",
+  "X^3": "0",
+  "net_16_minus_16b": 3,
+  "b_X": "101203",
+  "alpha_X^-1(M_U=2.13e16) with alpha_X(MPl)=1": 76331.79143350388,
+  "g_X(M_U)_max": 0.012830754769885716
+ },
+ "couplings": {
+  "n": 12,
+  "list": [
+   {
+    "pair": "F.F",
+    "ins": "Delta",
+    "flavour": "sym 3x3"
+   },
+   {
+    "pair": "F.F",
+    "ins": "H10",
+    "flavour": "sym 3x3"
+   },
+   {
+    "pair": "V1.Vb1",
+    "ins": "S*",
+    "flavour": "2x1"
+   },
+   {
+    "pair": "V1.Pb",
+    "ins": "Phi17",
+    "flavour": "2x1"
+   },
+   {
+    "pair": "V2.Vb2",
+    "ins": "S*",
+    "flavour": "1x1"
+   },
+   {
+    "pair": "Vb2.Vb3",
+    "ins": "H10",
+    "flavour": "1x1"
+   },
+   {
+    "pair": "V3.Vb3",
+    "ins": "S*",
+    "flavour": "1x1"
+   },
+   {
+    "pair": "T.T",
+    "ins": "S*",
+    "flavour": "sym 2x2"
+   },
+   {
+    "pair": "N1.N1b",
+    "ins": "S",
+    "flavour": "1x1"
+   },
+   {
+    "pair": "N2.N2b",
+    "ins": "S",
+    "flavour": "1x1"
+   },
+   {
+    "pair": "N3.N3b",
+    "ins": "S*",
+    "flavour": "1x1"
+   },
+   {
+    "pair": "NMm.NMm",
+    "ins": "S",
+    "flavour": "sym 2x2"
+   }
+  ],
+  "X_allowed_but_forbidden": [
+   {
+    "pair": "Vb2.Vb3",
+    "ins": "Delta",
+    "why_not": "SO(10) (no 126 in 16b x 16b)"
+   },
+   {
+    "pair": "T.NMm",
+    "ins": "bare",
+    "why_not": "centre"
+   },
+   {
+    "pair": "T.NMm",
+    "ins": "Phi210",
+    "why_not": "centre"
+   },
+   {
+    "pair": "N1.N3b",
+    "ins": "Delta*",
+    "why_not": "centre"
+   },
+   {
+    "pair": "N1.N3b",
+    "ins": "H10*",
+    "why_not": "centre"
+   },
+   {
+    "pair": "N1b.N3",
+    "ins": "Delta",
+    "why_not": "centre"
+   },
+   {
+    "pair": "N1b.N3",
+    "ins": "H10",
+    "why_not": "centre"
+   }
+  ]
+ },
+ "kernel": {
+  "n_charges": 20,
+  "constraint_rank": 13,
+  "kernel_dim": 7,
+  "round1_basis_in_kernel": {
+   "X": true,
+   "G2": true,
+   "f1": true,
+   "f2": true,
+   "f3": true,
+   "f4": true,
+   "f5": true
+  },
+  "round1_basis_rank": 7,
+  "round1_basis_spans_kernel": true,
+  "scalar_projection_rank": 2,
+  "contract_parse": [
+   {
+    "top_keys": [
+     "model_contract_id",
+     "historical_counterfactual_contract_id",
+     "status",
+     "overall_state",
+     "n_checks",
+     "n_failed",
+     "failures",
+     "implementation_matches_manuscript",
+     "implementation_mismatches",
+     "checks",
+     "authoritative_contract",
+     "manuscript_and_scaffold",
+     "counts",
+     "gauged_directions",
+     "gauged_orbit_multiplicity_audit",
+     "historical_option_c_orbit_multiplicity_audit",
+     "gauged_parameter_ids",
+     "excluded_option_c_directions",
+     "excluded_option_c_parameter_ids",
+     "missing_source_modules"
+    ]
+   }
+  ]
+ },
+ "pq": {
+  "X": {
+   "N": "0",
+   "E": "0"
+  },
+  "G2": {
+   "N": "-2",
+   "E": "-16/3"
+  },
+  "f1": {
+   "N": "0",
+   "E": "0"
+  },
+  "f2": {
+   "N": "0",
+   "E": "0"
+  },
+  "f3": {
+   "N": "0",
+   "E": "0"
+  },
+  "f4": {
+   "N": "0",
+   "E": "0"
+  },
+  "f5": {
+   "N": "0",
+   "E": "0"
+  },
+  "PQ=X-17G2": {
+   "N": "34",
+   "E": "272/3",
+   "E/N": "8/3",
+   "PQ(S)": 4,
+   "PQ(Phi17)": 0,
+   "PQ(H10)": -2,
+   "PQ(Delta)": -2
+  }
+ },
+ "N_DW": {
+  "S,Phi17 only": {
+   "phi17_shifts_by_gauge (units 2pi)": [
+    "0",
+    "1/4",
+    "1/2",
+    "3/4"
+   ],
+   "physical period of theta_Phi (units 2pi)": "1/4",
+   "N_DW": "1",
+   "N_DW_if_centre_ignored": "1"
+  },
+  "S,Phi17,Delta_R": {
+   "phi17_shifts_by_gauge (units 2pi)": [
+    "0",
+    "1/4",
+    "1/2",
+    "3/4"
+   ],
+   "physical period of theta_Phi (units 2pi)": "1/4",
+   "N_DW": "1",
+   "N_DW_if_centre_ignored": "2"
+  },
+  "S,Phi17,Delta_R,H10 (EW)": {
+   "phi17_shifts_by_gauge (units 2pi)": [
+    "0",
+    "1/4",
+    "1/2",
+    "3/4"
+   ],
+   "physical period of theta_Phi (units 2pi)": "1/4",
+   "N_DW": "1",
+   "N_DW_if_centre_ignored": "2"
+  }
+ },
+ "closure": {
+  "ops": [
+   {
+    "op": {
+     "N1": 1,
+     "N2b": 1,
+     "S": -2,
+     "Phi17": 1
+    },
+    "mult": 4,
+    "X": 0,
+    "d": "6",
+    "q": [
+     1,
+     0,
+     0,
+     1,
+     -1,
+     0
+    ],
+    "mu.q": "2",
+    "tight": true,
+    "Lorentz_even": true
+   },
+   {
+    "op": {
+     "N1": -2,
+     "N3b": -2,
+     "S": -1
+    },
+    "mult": 1,
+    "X": 0,
+    "d": "7",
+    "q": [
+     0,
+     0,
+     0,
+     -2,
+     0,
+     2
+    ],
+    "mu.q": "3",
+    "tight": true,
+    "Lorentz_even": true
+   },
+   {
+    "op": {
+     "N1b": 1,
+     "N2": 2,
+     "N3b": 1,
+     "S": -1
+    },
+    "mult": 2,
+    "X": 0,
+    "d": "7",
+    "q": [
+     0,
+     0,
+     0,
+     -1,
+     2,
+     -1
+    ],
+    "mu.q": "3",
+    "tight": true,
+    "Lorentz_even": true
+   }
+  ],
+  "K": "17",
+  "sum_q": [
+   4,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "T_S_T_Phi": {
+  "T_S": "V1'Vb1 4 + V2Vb2 4 + V3Vb3 4 + T 2 = 14",
+  "T_Phi": "V1''Pb 4",
+  "lemmaA": "0"
+ }
+}

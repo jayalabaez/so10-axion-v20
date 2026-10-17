@@ -1,0 +1,58 @@
+ADVERSARIAL SKEPTIC (second) of gate R2-B -- v21-F17-B63-G3221 (Am45 one-step G3221)          2026-10-17
+Folder: ...\wfV21R2\R2-B-unification\skeptic\sk2\  (own code; no r2b_*/k1_*/sk_* module imported; R2-B files only read;
+R2-A spectra taken as input numbers from r2b_r2a_c2check.json).  Checkouts _g6_nogo (54a2cd1) and _record (8707fda):
+git status --short 0 lines before and after; nothing run inside them; _rescope not touched.
+
+RESULT: verdict UNDECIDED UPHELD (refuted = false), with corrections to the characterisation.
+
+1. Independent reproduction [EXACT coefficients, NUM roots; sk2_lib.py, sk2_nominal.py/.json/.log]
+ - Own group theory + Machacek-Vaughn: SM b, b_ij; SM+S (403/30, 37/6, 7/3); G3221 b for C0/C1/C2/C1' with and without
+   the S-sector; two-loop rows of C1, C2 quoted in the report; SO(10) (16/3, 20891/6) and (8, 7267/2); S_V = (5,6,6,8),
+   6/5; scalar completeness 210/252/20 real -- all identical to R2-B.
+ - Two-loop nominal (M_s 1e13, y_s 0.336, (3,1,1) at 0.894 M_X, MS-bar S_V), own code vs R2-B:
+     C2  v_R 2.123e10 (2.13e10)  M_U 6.031e15 (6.05e15)  aU^-1 34.63  tau_repo 1.07e35 (1.08e35)  L2 14.1 (14.2)
+     C1  1.71e33 (1.70e33);  C1' 8.52e33 (8.58e33);  C0 6.20e33 (6.20e33);  1L C2 9.04e9 / 1.379e16 (identical).
+   With 2L Yukawa terms off my numbers equal the first skeptic's to all digits (2.111e10 / 6.085e15 / 34.586 / 1.103e35).
+   S_V off / opposite: tau x0.83 / x0.69 (R2-B: -17% / -31%).
+ - Explicit R2-A stage-A C2-family spectra (g_U iterated): S5 1.62e35, L5 1.56e35, d6 7.47e34 yr repo (R2-B 1.63e35,
+   1.58e35, 7.52e34); x0.5 / x2 / opposite-S_V variants also reproduced to ~1%.
+ - Own threshold MC (200 C2 / 200 C1' / 100 C1 / 100 C0, declared ranges): pass fraction (tau > 2.4e34 & L2 > 1)
+   C2 86% repo (R2-B 86.5%), C1' 19.5% (20%), C1 1% (0.5%), C0 10% (9%); L2 min 7.8 for C2.
+ - Heavy-vector constant sign: own d-dimensional derivation (vector+ghost bracket (d/12 - 2 - 1/6) = -11/6 - eps/6,
+   Goldstone 1/12) gives lambda_V = T(1 - 21 ln(M_V/mu)), alpha_low^-1 = alpha_G^-1 - (C_G - C_i)/(12 pi) at mu = M_V:
+   same sign as R2-B [EXACT derivation; primary Weinberg/Hall/BDM texts not read; web searches returned no text].
+
+2. Issues found (none flips the verdict)
+ (a) Proton normalisation -- R2-B's headline "C2 passes at its nominal point" holds ONLY in the repository formula.
+     The repository formula is the Parida-school form (1312.3185 / 1007.5085, LIT-snippet) with alpha_H = 0.012 GeV^3
+     declared to be alpha_bar_H(1+D+F); lattice alpha_bar = 0.011-0.014 GeV^3 makes alpha_bar(1+D+F) ~ 0.025-0.033, i.e.
+     the repository number is effectively the chiral factor omitted (EST).  Own check: the repository formula and the
+     Aoki-type lattice formula have the SAME structure (Sum|C|^2 = 4 k^4 * 2(1+|V_ud|^2)^2); only the hadronic input
+     differs (W_eff = 0.061 vs W0 = 0.131 GeV^2): ratio 4.41 (R2-B 4.53; different C^{RL} flavour factor, 3%).
+     BChPT with alpha = 0.0144 explicitly: ratio 8.4 (C2 nominal 1.28e34); alpha = 0.0112: 5.1 (2.1e34).
+ (b) A_R = 2.726 is a fixed literature number, not computed for the chain.  Chain-specific one-loop A_SD (own gamma
+     formula, reproduces SM 2, 9/4, 23/20, 11/20 exactly; G3221 gamma = (2, 9/4, 9/4, 1/4)) along the two-loop C2 run:
+     A_SD = 2.67 / 2.58 (two chiralities), A_R = 1.25 A_SD = 3.28 -> tau x0.69 (C1' x0.73, C1 x0.78, C0 x0.77) [EST].
+     (SM-only to 1e16 gives A_SD 2.48/2.32, consistent with literature A_R ~ 3.0-3.2, e.g. 1608.03956 snippet.)
+     => In the best-founded normalisation (lattice W0 + chain A_R) C2's NOMINAL two-loop point gives tau = 1.67e34 yr
+        = 0.70 x Super-K (FAILS nominally, EST; +-25% from W0 0.10-0.13 and lattice errors).  S5 / L5 explicit spectra:
+        2.52e34 / 2.44e34 (1.05 / 1.02 x bound, knife edge); d6: 1.20e34 (fails).  Threshold MC with this correction:
+        C2 44% pass (55% if W0 = 0.10); C1' 1.5%; C1, C0 0%.  Repository normalisation x A_R: C2 nominal 7.4e34 (pass).
+     So "not FAIL" survives only through threshold-favourable spectra (about half of the declared scan, and the two
+     t = 0.0128 stage-A points at the knife edge); the report's "C2 passes nominally" should be stated as
+     "passes nominally only in the repository normalisation; fails nominally (x0.70) in the lattice normalisation with a
+     chain-specific A_R".
+ (c) Landau nominal M_Phi = 1e17 is not consistent with <Phi17> ~ 1.4 |Phi| = 2.2e16 (|Phi| = 1.55e16 for C2) and
+     y_phi <= 1 (the code uses y_phi = 1 in the Yukawa term): consistent M_Phi <~ 2.2e16 gives Lambda_2L = 10.8 M_Pl
+     (8.6 with M_Phi = M_U) instead of 14.2.  Still passes by a large factor; R2-B's grid covers this case.
+ (d) Seesaw-window statement re-checked: C2 fraction passing tau + Landau + v_R >= 1e11 = 7% (repo), 1% (lattice x A_R).
+
+3. Why not PASS / not FAIL (criterion check)
+ PASS needs robustness under the declared scan: C2 fails Super-K in 14% (repo) to 56% (lattice x A_R) of samples -> no.
+ FAIL needs that no flavour-capable content has ANY two-loop solution passing tau and Landau: C2 passes in 44-86% of the
+ declared threshold scan (all normalisations considered) and the S5/L5 stage-A spectra are at or above the bound -> no.
+ The decisive missing inputs remain those listed by R2-B, plus: the chain-specific A_R (operator running incl. the G3221
+ segment) and a primary-source W0; C2's realisability (R2-A: BFB-complete, lambda_SM-matched C2 vacuum) decides.
+
+Files: sk2_lib.py, sk2_nominal.py (+.json/.log), sk2_spectra_mc.py (+.json/.log), sk2_asd.py (+.json/.log),
+sk2_extra.py (+.json/.log).

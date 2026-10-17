@@ -1,0 +1,2143 @@
+{
+ "mu4_round1": [
+  17,
+  -14,
+  -28,
+  -57,
+  -48,
+  -51
+ ],
+ "items": [
+  "F",
+  "F*",
+  "V1",
+  "V1*",
+  "Vb1",
+  "Vb1*",
+  "V2",
+  "V2*",
+  "Vb2",
+  "Vb2*",
+  "V3",
+  "V3*",
+  "Vb3",
+  "Vb3*",
+  "T",
+  "T*",
+  "Pb",
+  "Pb*",
+  "N1",
+  "N1*",
+  "N1b",
+  "N1b*",
+  "N2",
+  "N2*",
+  "N2b",
+  "N2b*",
+  "N3",
+  "N3*",
+  "N3b",
+  "N3b*",
+  "NMm",
+  "NMm*",
+  "Phi210",
+  "Delta",
+  "Delta*",
+  "H10",
+  "H10*",
+  "S",
+  "S*",
+  "Phi17",
+  "Phi17*"
+ ],
+ "oracle": {
+  "rows": [
+   {
+    "val": 0,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "N1*": 1,
+     "N1b*": 1,
+     "H10": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 5,
+    "sign": 1
+   },
+   {
+    "val": 0,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "N3b": 1,
+     "N3b*": 1,
+     "Phi210": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 5,
+    "sign": -1
+   },
+   {
+    "val": 8,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     -2,
+     0,
+     1,
+     0
+    ],
+    "mono": {
+     "V2*": 2,
+     "T": 1,
+     "N2": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 6,
+    "sign": 1
+   },
+   {
+    "val": 8,
+    "excess4": 0,
+    "q": [
+     -1,
+     0,
+     0,
+     -1,
+     1,
+     0
+    ],
+    "mono": {
+     "N1*": 1,
+     "N2b*": 1,
+     "S": 2,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 6,
+    "sign": -1
+   },
+   {
+    "val": 12,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     -1,
+     2,
+     -1
+    ],
+    "mono": {
+     "N1b": 1,
+     "N2": 2,
+     "N3*": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 7,
+    "sign": 1
+   },
+   {
+    "val": 12,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     1,
+     -2,
+     1
+    ],
+    "mono": {
+     "N1": 1,
+     "N2*": 2,
+     "N3": 1,
+     "S": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 7,
+    "sign": -1
+   },
+   {
+    "val": 12,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     -1,
+     2,
+     -1
+    ],
+    "mono": {
+     "N1b": 1,
+     "N2": 1,
+     "N2b*": 1,
+     "N3*": 1,
+     "H10": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 8,
+    "sign": 1
+   },
+   {
+    "val": 12,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     -2
+    ],
+    "mono": {
+     "N1b*": 2,
+     "N3*": 1,
+     "N3b": 1,
+     "Phi210": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 8,
+    "sign": -1
+   },
+   {
+    "val": 20,
+    "excess4": 0,
+    "q": [
+     4,
+     0,
+     0,
+     0,
+     1,
+     0
+    ],
+    "mono": {
+     "N2": 1,
+     "NMm": 1,
+     "S*": 2,
+     "Phi17": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 9,
+    "sign": 1
+   },
+   {
+    "val": 20,
+    "excess4": 0,
+    "q": [
+     0,
+     -1,
+     1,
+     1,
+     0,
+     -1
+    ],
+    "mono": {
+     "V1*": 1,
+     "V2": 1,
+     "N1b*": 1,
+     "N3b": 1,
+     "S": 2,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 9,
+    "sign": -1
+   },
+   {
+    "val": 24,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     -3,
+     2,
+     1
+    ],
+    "mono": {
+     "N1b": 3,
+     "N2": 2,
+     "N3b*": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 10,
+    "sign": 1
+   },
+   {
+    "val": 24,
+    "excess4": 0,
+    "q": [
+     2,
+     -4,
+     0,
+     2,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1": 2,
+     "Pb": 2,
+     "N1b*": 2,
+     "S": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 10,
+    "sign": -1
+   },
+   {
+    "val": 28,
+    "excess4": 0,
+    "q": [
+     0,
+     2,
+     -2,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1*": 2,
+     "V2*": 2,
+     "S*": 3,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 11,
+    "sign": 1
+   },
+   {
+    "val": 28,
+    "excess4": 0,
+    "q": [
+     0,
+     -2,
+     2,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1": 2,
+     "V2": 2,
+     "S": 3,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 11,
+    "sign": -1
+   },
+   {
+    "val": 32,
+    "excess4": 0,
+    "q": [
+     0,
+     1,
+     -1,
+     -2,
+     2,
+     0
+    ],
+    "mono": {
+     "V2*": 1,
+     "Pb*": 1,
+     "N1b": 2,
+     "N2": 2,
+     "S*": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 12,
+    "sign": 1
+   },
+   {
+    "val": 32,
+    "excess4": 0,
+    "q": [
+     -1,
+     0,
+     0,
+     2,
+     -1,
+     -1
+    ],
+    "mono": {
+     "N1b*": 2,
+     "N2*": 1,
+     "N3b": 1,
+     "S": 4,
+     "Phi17*": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 12,
+    "sign": -1
+   },
+   {
+    "val": 36,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     -4,
+     4,
+     0
+    ],
+    "mono": {
+     "N1b": 4,
+     "N2": 4,
+     "S*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 13,
+    "sign": 1
+   },
+   {
+    "val": 36,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     4,
+     -4,
+     0
+    ],
+    "mono": {
+     "N1b*": 4,
+     "N2*": 4,
+     "S": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 13,
+    "sign": -1
+   },
+   {
+    "val": 40,
+    "excess4": 0,
+    "q": [
+     2,
+     0,
+     0,
+     -1,
+     0,
+     1
+    ],
+    "mono": {
+     "N1*": 1,
+     "N3b*": 1,
+     "S*": 9,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 14,
+    "sign": 1
+   },
+   {
+    "val": 40,
+    "excess4": 0,
+    "q": [
+     -1,
+     -1,
+     1,
+     1,
+     -1,
+     0
+    ],
+    "mono": {
+     "Vb1": 1,
+     "V2": 1,
+     "N1b*": 1,
+     "N2*": 1,
+     "S": 6,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 14,
+    "sign": -1
+   },
+   {
+    "val": 44,
+    "excess4": 0,
+    "q": [
+     1,
+     0,
+     0,
+     -3,
+     3,
+     0
+    ],
+    "mono": {
+     "N1b": 3,
+     "N2": 3,
+     "S*": 5,
+     "Phi17": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 15,
+    "sign": 1
+   },
+   {
+    "val": 44,
+    "excess4": 0,
+    "q": [
+     -1,
+     0,
+     0,
+     3,
+     -3,
+     0
+    ],
+    "mono": {
+     "N1b*": 3,
+     "N2*": 3,
+     "S": 5,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 15,
+    "sign": -1
+   },
+   {
+    "val": 48,
+    "excess4": 0,
+    "q": [
+     2,
+     1,
+     -1,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1*": 1,
+     "V2*": 1,
+     "S*": 10,
+     "Phi17": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 16,
+    "sign": 1
+   },
+   {
+    "val": 48,
+    "excess4": 0,
+    "q": [
+     -2,
+     -1,
+     1,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "V2": 1,
+     "Pb": 1,
+     "S": 11,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 16,
+    "sign": -1
+   },
+   {
+    "val": 52,
+    "excess4": 0,
+    "q": [
+     2,
+     0,
+     0,
+     -2,
+     2,
+     0
+    ],
+    "mono": {
+     "N1b": 2,
+     "N2": 2,
+     "S*": 9,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 17,
+    "sign": 1
+   },
+   {
+    "val": 52,
+    "excess4": 0,
+    "q": [
+     -2,
+     0,
+     0,
+     2,
+     -2,
+     0
+    ],
+    "mono": {
+     "N1b*": 2,
+     "N2*": 2,
+     "S": 9,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 17,
+    "sign": -1
+   },
+   {
+    "val": 52,
+    "excess4": -4,
+    "q": [
+     2,
+     0,
+     0,
+     -2,
+     2,
+     0
+    ],
+    "mono": {
+     "N1b": 2,
+     "N2": 2,
+     "H10": 2,
+     "S*": 8,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 18,
+    "sign": 1
+   },
+   {
+    "val": 52,
+    "excess4": -4,
+    "q": [
+     -2,
+     0,
+     0,
+     2,
+     -2,
+     0
+    ],
+    "mono": {
+     "N1b*": 2,
+     "N2*": 2,
+     "Phi210": 1,
+     "S": 9,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 18,
+    "sign": -1
+   },
+   {
+    "val": 60,
+    "excess4": 0,
+    "q": [
+     3,
+     0,
+     0,
+     -1,
+     1,
+     0
+    ],
+    "mono": {
+     "N1b": 1,
+     "N2": 1,
+     "S*": 13,
+     "Phi17": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 19,
+    "sign": 1
+   },
+   {
+    "val": 60,
+    "excess4": 0,
+    "q": [
+     -3,
+     0,
+     0,
+     1,
+     -1,
+     0
+    ],
+    "mono": {
+     "N1b*": 1,
+     "N2*": 1,
+     "S": 13,
+     "Phi17*": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 19,
+    "sign": -1
+   },
+   {
+    "val": 60,
+    "excess4": -4,
+    "q": [
+     3,
+     0,
+     0,
+     -1,
+     1,
+     0
+    ],
+    "mono": {
+     "N1b": 1,
+     "N2": 1,
+     "H10": 2,
+     "S*": 12,
+     "Phi17": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 20,
+    "sign": 1
+   },
+   {
+    "val": 60,
+    "excess4": -4,
+    "q": [
+     -3,
+     0,
+     0,
+     1,
+     -1,
+     0
+    ],
+    "mono": {
+     "N1b*": 1,
+     "N2*": 1,
+     "H10*": 2,
+     "S": 12,
+     "Phi17*": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 20,
+    "sign": -1
+   },
+   {
+    "val": 68,
+    "excess4": 0,
+    "q": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "S*": 17,
+     "Phi17": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 21,
+    "sign": 1
+   },
+   {
+    "val": 68,
+    "excess4": 0,
+    "q": [
+     -4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "S": 17,
+     "Phi17*": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 21,
+    "sign": -1
+   },
+   {
+    "val": 68,
+    "excess4": -4,
+    "q": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "H10": 2,
+     "S*": 16,
+     "Phi17": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 22,
+    "sign": 1
+   },
+   {
+    "val": 68,
+    "excess4": -4,
+    "q": [
+     -4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "H10*": 2,
+     "S": 16,
+     "Phi17*": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 22,
+    "sign": -1
+   },
+   {
+    "val": 70,
+    "excess4": -6,
+    "q": [
+     0,
+     1,
+     -3,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "V2*": 2,
+     "Vb3*": 1,
+     "Pb*": 1,
+     "S*": 17
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 23,
+    "sign": 1
+   },
+   {
+    "val": 70,
+    "excess4": -6,
+    "q": [
+     0,
+     -1,
+     3,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1": 1,
+     "V2": 2,
+     "Vb3": 1,
+     "S": 16,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 23,
+    "sign": -1
+   },
+   {
+    "val": 74,
+    "excess4": -6,
+    "q": [
+     1,
+     0,
+     0,
+     -1,
+     0,
+     0
+    ],
+    "mono": {
+     "T*": 1,
+     "N1b": 1,
+     "H10": 1,
+     "S*": 18,
+     "Phi17": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 24,
+    "sign": 1
+   },
+   {
+    "val": 74,
+    "excess4": -6,
+    "q": [
+     -1,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    "mono": {
+     "T": 1,
+     "N1": 1,
+     "H10*": 1,
+     "S": 19,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 24,
+    "sign": -1
+   }
+  ],
+  "worst_d_ge_5": {
+   "val": 8,
+   "excess4": 0,
+   "q": [
+    0,
+    0,
+    -2,
+    0,
+    1,
+    0
+   ],
+   "mono": {
+    "V2*": 2,
+    "T": 1,
+    "N2": 1
+   },
+   "exact_ok": true,
+   "status": 0,
+   "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+   "d": 6,
+   "sign": 1
+  },
+  "holds": true,
+  "all_exact_ok": true
+ },
+ "dressed": {
+  "rows": [
+   {
+    "val": 0,
+    "excess4": 12,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Phi210": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 1,
+    "sign": 1
+   },
+   {
+    "val": 0,
+    "excess4": 12,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Phi210": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 1,
+    "sign": -1
+   },
+   {
+    "val": 0,
+    "excess4": 8,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Phi210": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 2,
+    "sign": 1
+   },
+   {
+    "val": 0,
+    "excess4": 8,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Phi17": 1,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 2,
+    "sign": -1
+   },
+   {
+    "val": 0,
+    "excess4": 4,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "H10*": 2,
+     "S*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 3,
+    "sign": 1
+   },
+   {
+    "val": 0,
+    "excess4": 4,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Phi210": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 3,
+    "sign": -1
+   },
+   {
+    "val": 0,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Phi210": 1,
+     "H10*": 2,
+     "S*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 4,
+    "sign": 1
+   },
+   {
+    "val": 0,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "N1": 1,
+     "N1*": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 4,
+    "sign": -1
+   },
+   {
+    "val": 0,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "V2*": 1,
+     "V3*": 1,
+     "H10*": 1,
+     "S": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 5,
+    "sign": 1
+   },
+   {
+    "val": 0,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Phi210": 1,
+     "S": 2,
+     "S*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 5,
+    "sign": -1
+   },
+   {
+    "val": 8,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     -2,
+     0,
+     1,
+     0
+    ],
+    "mono": {
+     "V2*": 2,
+     "T": 1,
+     "N2": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 6,
+    "sign": 1
+   },
+   {
+    "val": 8,
+    "excess4": 0,
+    "q": [
+     -1,
+     0,
+     0,
+     -1,
+     1,
+     0
+    ],
+    "mono": {
+     "N1*": 1,
+     "N2b*": 1,
+     "S": 2,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 6,
+    "sign": -1
+   },
+   {
+    "val": 12,
+    "excess4": 0,
+    "q": [
+     -1,
+     2,
+     0,
+     -1,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1*": 1,
+     "T*": 1,
+     "Pb*": 1,
+     "N1b": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 7,
+    "sign": 1
+   },
+   {
+    "val": 12,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     1,
+     -2,
+     1
+    ],
+    "mono": {
+     "N1": 1,
+     "N2*": 2,
+     "N3": 1,
+     "S": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 7,
+    "sign": -1
+   },
+   {
+    "val": 12,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     -1,
+     2,
+     -1
+    ],
+    "mono": {
+     "N1b": 1,
+     "N2": 2,
+     "N3*": 1,
+     "Phi210": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 8,
+    "sign": 1
+   },
+   {
+    "val": 12,
+    "excess4": -4,
+    "q": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     -2
+    ],
+    "mono": {
+     "N1": 2,
+     "N3b": 2,
+     "H10*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 8,
+    "sign": -1
+   },
+   {
+    "val": 20,
+    "excess4": 0,
+    "q": [
+     0,
+     1,
+     -1,
+     -1,
+     0,
+     1
+    ],
+    "mono": {
+     "Vb1*": 1,
+     "V2*": 1,
+     "N1*": 1,
+     "N3b*": 1,
+     "S*": 2,
+     "Phi17": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 9,
+    "sign": 1
+   },
+   {
+    "val": 20,
+    "excess4": 0,
+    "q": [
+     -1,
+     0,
+     0,
+     0,
+     -1,
+     1
+    ],
+    "mono": {
+     "N2*": 1,
+     "N3": 1,
+     "S": 4,
+     "Phi17*": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 9,
+    "sign": -1
+   },
+   {
+    "val": 24,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     -3,
+     2,
+     1
+    ],
+    "mono": {
+     "N1b": 3,
+     "N2": 2,
+     "N3b*": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 10,
+    "sign": 1
+   },
+   {
+    "val": 24,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     3,
+     -2,
+     -1
+    ],
+    "mono": {
+     "N1": 1,
+     "N1b*": 2,
+     "N2*": 2,
+     "N3b": 1,
+     "S": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 10,
+    "sign": -1
+   },
+   {
+    "val": 28,
+    "excess4": 0,
+    "q": [
+     0,
+     2,
+     -2,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1*": 2,
+     "V2*": 2,
+     "S*": 3,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 11,
+    "sign": 1
+   },
+   {
+    "val": 28,
+    "excess4": 0,
+    "q": [
+     0,
+     -2,
+     2,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1": 2,
+     "V2": 2,
+     "S": 3,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 11,
+    "sign": -1
+   },
+   {
+    "val": 32,
+    "excess4": 0,
+    "q": [
+     0,
+     1,
+     -1,
+     -2,
+     2,
+     0
+    ],
+    "mono": {
+     "V2*": 1,
+     "Pb*": 1,
+     "N1b": 2,
+     "N2": 2,
+     "S*": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 12,
+    "sign": 1
+   },
+   {
+    "val": 32,
+    "excess4": 0,
+    "q": [
+     -1,
+     0,
+     0,
+     2,
+     -1,
+     -1
+    ],
+    "mono": {
+     "N1b*": 2,
+     "N2*": 1,
+     "N3b": 1,
+     "S": 4,
+     "Phi17*": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 12,
+    "sign": -1
+   },
+   {
+    "val": 36,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     -4,
+     4,
+     0
+    ],
+    "mono": {
+     "N1b": 4,
+     "N2": 4,
+     "S*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 13,
+    "sign": 1
+   },
+   {
+    "val": 36,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     0,
+     4,
+     -4,
+     0
+    ],
+    "mono": {
+     "N1b*": 4,
+     "N2*": 4,
+     "S": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 13,
+    "sign": -1
+   },
+   {
+    "val": 40,
+    "excess4": 0,
+    "q": [
+     2,
+     0,
+     0,
+     -1,
+     0,
+     1
+    ],
+    "mono": {
+     "N1*": 1,
+     "N3b*": 1,
+     "S*": 9,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 14,
+    "sign": 1
+   },
+   {
+    "val": 40,
+    "excess4": 0,
+    "q": [
+     -1,
+     -1,
+     1,
+     1,
+     -1,
+     0
+    ],
+    "mono": {
+     "Vb1": 1,
+     "V2": 1,
+     "N1b*": 1,
+     "N2*": 1,
+     "S": 6,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 14,
+    "sign": -1
+   },
+   {
+    "val": 44,
+    "excess4": 0,
+    "q": [
+     1,
+     0,
+     0,
+     -3,
+     3,
+     0
+    ],
+    "mono": {
+     "N1b": 3,
+     "N2": 3,
+     "S*": 5,
+     "Phi17": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 15,
+    "sign": 1
+   },
+   {
+    "val": 44,
+    "excess4": 0,
+    "q": [
+     -1,
+     0,
+     0,
+     3,
+     -3,
+     0
+    ],
+    "mono": {
+     "N1b*": 3,
+     "N2*": 3,
+     "S": 5,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 15,
+    "sign": -1
+   },
+   {
+    "val": 48,
+    "excess4": 0,
+    "q": [
+     2,
+     1,
+     -1,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1*": 1,
+     "V2*": 1,
+     "S*": 10,
+     "Phi17": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 16,
+    "sign": 1
+   },
+   {
+    "val": 48,
+    "excess4": 0,
+    "q": [
+     -2,
+     -1,
+     1,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "V2": 1,
+     "Pb": 1,
+     "S": 11,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 16,
+    "sign": -1
+   },
+   {
+    "val": 52,
+    "excess4": 0,
+    "q": [
+     2,
+     0,
+     0,
+     -2,
+     2,
+     0
+    ],
+    "mono": {
+     "N1b": 2,
+     "N2": 2,
+     "S*": 9,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 17,
+    "sign": 1
+   },
+   {
+    "val": 52,
+    "excess4": 0,
+    "q": [
+     -2,
+     0,
+     0,
+     2,
+     -2,
+     0
+    ],
+    "mono": {
+     "N1b*": 2,
+     "N2*": 2,
+     "S": 9,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 17,
+    "sign": -1
+   },
+   {
+    "val": 52,
+    "excess4": -4,
+    "q": [
+     2,
+     0,
+     0,
+     -2,
+     2,
+     0
+    ],
+    "mono": {
+     "N1b": 2,
+     "N2": 2,
+     "Phi210": 1,
+     "S*": 9,
+     "Phi17": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 18,
+    "sign": 1
+   },
+   {
+    "val": 52,
+    "excess4": -4,
+    "q": [
+     -2,
+     0,
+     0,
+     2,
+     -2,
+     0
+    ],
+    "mono": {
+     "N1b*": 2,
+     "N2*": 2,
+     "Phi210": 1,
+     "S": 9,
+     "Phi17*": 2
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 18,
+    "sign": -1
+   },
+   {
+    "val": 60,
+    "excess4": 0,
+    "q": [
+     3,
+     0,
+     0,
+     -1,
+     1,
+     0
+    ],
+    "mono": {
+     "N1b": 1,
+     "N2": 1,
+     "S*": 13,
+     "Phi17": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 19,
+    "sign": 1
+   },
+   {
+    "val": 60,
+    "excess4": 0,
+    "q": [
+     -3,
+     0,
+     0,
+     1,
+     -1,
+     0
+    ],
+    "mono": {
+     "N1b*": 1,
+     "N2*": 1,
+     "S": 13,
+     "Phi17*": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 19,
+    "sign": -1
+   },
+   {
+    "val": 60,
+    "excess4": -4,
+    "q": [
+     3,
+     0,
+     0,
+     -1,
+     1,
+     0
+    ],
+    "mono": {
+     "N1b": 1,
+     "N2": 1,
+     "H10": 2,
+     "S*": 12,
+     "Phi17": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 20,
+    "sign": 1
+   },
+   {
+    "val": 60,
+    "excess4": -4,
+    "q": [
+     -3,
+     0,
+     0,
+     1,
+     -1,
+     0
+    ],
+    "mono": {
+     "N1b*": 1,
+     "N2*": 1,
+     "Phi210": 1,
+     "S": 13,
+     "Phi17*": 3
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 20,
+    "sign": -1
+   },
+   {
+    "val": 68,
+    "excess4": 0,
+    "q": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "S*": 17,
+     "Phi17": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 21,
+    "sign": 1
+   },
+   {
+    "val": 68,
+    "excess4": 0,
+    "q": [
+     -4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "S": 17,
+     "Phi17*": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 21,
+    "sign": -1
+   },
+   {
+    "val": 68,
+    "excess4": -4,
+    "q": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "H10": 2,
+     "S*": 16,
+     "Phi17": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 22,
+    "sign": 1
+   },
+   {
+    "val": 68,
+    "excess4": -4,
+    "q": [
+     -4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "H10*": 2,
+     "S": 16,
+     "Phi17*": 4
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 22,
+    "sign": -1
+   },
+   {
+    "val": 70,
+    "excess4": -6,
+    "q": [
+     0,
+     1,
+     -3,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "V2*": 3,
+     "Pb*": 1,
+     "H10": 1,
+     "S*": 16
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 23,
+    "sign": 1
+   },
+   {
+    "val": 70,
+    "excess4": -6,
+    "q": [
+     0,
+     -1,
+     3,
+     0,
+     0,
+     0
+    ],
+    "mono": {
+     "Vb1": 1,
+     "V2": 3,
+     "H10*": 1,
+     "S": 15,
+     "Phi17*": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 23,
+    "sign": -1
+   },
+   {
+    "val": 74,
+    "excess4": -6,
+    "q": [
+     1,
+     0,
+     0,
+     -1,
+     0,
+     0
+    ],
+    "mono": {
+     "T*": 1,
+     "N1b": 1,
+     "H10": 1,
+     "S*": 18,
+     "Phi17": 1,
+     "D": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 24,
+    "sign": 1
+   },
+   {
+    "val": 74,
+    "excess4": -6,
+    "q": [
+     0,
+     0,
+     2,
+     2,
+     -2,
+     0
+    ],
+    "mono": {
+     "V2": 1,
+     "Vb3": 1,
+     "N1b*": 2,
+     "N2*": 2,
+     "S": 15
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 24,
+    "sign": -1
+   }
+  ],
+  "worst_d_ge_5": {
+   "val": 8,
+   "excess4": 0,
+   "q": [
+    0,
+    0,
+    -2,
+    0,
+    1,
+    0
+   ],
+   "mono": {
+    "V2*": 2,
+    "T": 1,
+    "N2": 1
+   },
+   "exact_ok": true,
+   "status": 0,
+   "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+   "d": 6,
+   "sign": 1
+  },
+  "holds": true,
+  "all_exact_ok": true
+ },
+ "lp_colgen_dressed": {
+  "mu": [
+   4.25,
+   -3.5,
+   -7.0,
+   -14.25,
+   -12.0,
+   -12.75
+  ],
+  "four_mu0": 17.0,
+  "iterations": 31,
+  "cuts": 31
+ }
+}

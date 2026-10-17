@@ -1,0 +1,476 @@
+{
+ "n_ops": 4635,
+ "by_dim": {
+  "8": 3362,
+  "6": 291,
+  "7": 930,
+  "5": 52
+ },
+ "variants": {
+  "A_all": {
+   "K": 9.0,
+   "target_Phi17": 4,
+   "ops": [
+    "2 x [Vec1* PhiVbar* S*^2] (dim 5)",
+    "2 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "1 x [Vec2bar*^2 PhiV*^2 S*] (dim 7)"
+   ],
+   "yukawas": {
+    "Y126": 2,
+    "lamF2*": 4,
+    "y1": 2,
+    "y2": 4,
+    "yP": 2
+   },
+   "kappa": {
+    "kappa*": 2
+   },
+   "vev_monomial": {
+    "Delta": 4,
+    "S": -15,
+    "Phi17": 4
+   },
+   "fermion_fields": 40,
+   "H10_propagators": 4,
+   "vertices": 21,
+   "loops": 4,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -12.0,
+    "log10_V": 15.31385726006522,
+    "log10_dtheta": 19.802069453548466,
+    "log10_dtheta_H10_at_mH": 19.802069453548466,
+    "log10_ratio_to_tree": 29.768572700838263
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -12.0,
+    "log10_V": 15.31385726006522,
+    "log10_dtheta": 19.802069453548466,
+    "log10_dtheta_H10_at_mH": -6.775684904322886,
+    "log10_ratio_to_tree": 29.768572700838263
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -12.0,
+    "log10_V": 7.915917251393182,
+    "log10_dtheta": 12.404129444876428,
+    "log10_dtheta_H10_at_mH": 12.404129444876428,
+    "log10_ratio_to_tree": 22.370632692166225
+   }
+  },
+  "B_no_PhiSector": {
+   "K": 10.0,
+   "target_Phi17": 4,
+   "ops": [
+    "4 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "1 x [Vec1*^4] (dim 6)"
+   ],
+   "yukawas": {
+    "Y126": 2,
+    "lamF2*": 4,
+    "y1": 4,
+    "y2": 4
+   },
+   "kappa": {
+    "kappa*": 2
+   },
+   "vev_monomial": {
+    "Delta": 6,
+    "S": -14,
+    "Phi17": 4
+   },
+   "fermion_fields": 40,
+   "H10_propagators": 4,
+   "vertices": 21,
+   "loops": 4,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -12.0,
+    "log10_V": 10.238791050578357,
+    "log10_dtheta": 14.727003244061603,
+    "log10_dtheta_H10_at_mH": 14.727003244061603,
+    "log10_ratio_to_tree": 24.6935064913514
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -12.0,
+    "log10_V": 10.238791050578357,
+    "log10_dtheta": 14.727003244061603,
+    "log10_dtheta_H10_at_mH": -11.85075111380975,
+    "log10_ratio_to_tree": 24.6935064913514
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -12.0,
+    "log10_V": 2.840851041906319,
+    "log10_dtheta": 7.329063235389566,
+    "log10_dtheta_H10_at_mH": 7.329063235389566,
+    "log10_ratio_to_tree": 17.295566482679362
+   }
+  },
+  "C_no_PhiSector_lamF2=0": {
+   "K": 12.0,
+   "target_Phi17": 4,
+   "ops": [
+    "4 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "2 x [Vec2*^2 H10 S*] (dim 5)",
+    "1 x [Vec1*^4] (dim 6)"
+   ],
+   "yukawas": {
+    "y1": 4,
+    "y2": 4
+   },
+   "kappa": {
+    "kappa*": 1
+   },
+   "vev_monomial": {
+    "Delta": 4,
+    "S": -15,
+    "Phi17": 4
+   },
+   "fermion_fields": 32,
+   "H10_propagators": 2,
+   "vertices": 16,
+   "loops": 3,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -8.0,
+    "log10_V": 2.255870078449391,
+    "log10_dtheta": 6.744082271932638,
+    "log10_dtheta_H10_at_mH": 6.744082271932638,
+    "log10_ratio_to_tree": 16.710585519222434
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -8.0,
+    "log10_V": 2.255870078449391,
+    "log10_dtheta": 6.744082271932638,
+    "log10_dtheta_H10_at_mH": -6.5447949070030385,
+    "log10_ratio_to_tree": 16.710585519222434
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -8.0,
+    "log10_V": -1.4430999258866564,
+    "log10_dtheta": 3.0451122675965907,
+    "log10_dtheta_H10_at_mH": 3.0451122675965907,
+    "log10_ratio_to_tree": 13.011615514886387
+   }
+  },
+  "E_no_PhiSector_no_H10Yuk_no_familyYuk": {
+   "K": 12.0,
+   "target_Phi17": 4,
+   "ops": [
+    "4 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "2 x [Vec2*^2 H10 S*] (dim 5)",
+    "1 x [Vec1*^4] (dim 6)"
+   ],
+   "yukawas": {
+    "y1": 4,
+    "y2": 4
+   },
+   "kappa": {
+    "kappa*": 1
+   },
+   "vev_monomial": {
+    "Delta": 4,
+    "S": -15,
+    "Phi17": 4
+   },
+   "fermion_fields": 32,
+   "H10_propagators": 2,
+   "vertices": 16,
+   "loops": 3,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -8.0,
+    "log10_V": 2.255870078449391,
+    "log10_dtheta": 6.744082271932638,
+    "log10_dtheta_H10_at_mH": 6.744082271932638,
+    "log10_ratio_to_tree": 16.710585519222434
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -8.0,
+    "log10_V": 2.255870078449391,
+    "log10_dtheta": 6.744082271932638,
+    "log10_dtheta_H10_at_mH": -6.5447949070030385,
+    "log10_ratio_to_tree": 16.710585519222434
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -8.0,
+    "log10_V": -1.4430999258866564,
+    "log10_dtheta": 3.0451122675965907,
+    "log10_dtheta_H10_at_mH": 3.0451122675965907,
+    "log10_ratio_to_tree": 13.011615514886387
+   }
+  },
+  "E_plus_no_Delta_vev": {
+   "K": 12.0,
+   "target_Phi17": -4,
+   "ops": [
+    "2 x [Vec1 Vec3 H10* S] (dim 5)",
+    "2 x [Vec1bar Vec2bar H10* S Phi17*] (dim 6)",
+    "2 x [Vec2^2 H10* S] (dim 5)",
+    "1 x [Vec2bar^2 Vec3bar^2 Phi17*^2] (dim 8)"
+   ],
+   "yukawas": {
+    "y1*": 2,
+    "y2*": 4,
+    "y3*": 2
+   },
+   "kappa": {
+    "kappa": 3
+   },
+   "vev_monomial": {
+    "S": 17,
+    "Phi17": -4
+   },
+   "fermion_fields": 32,
+   "H10_propagators": 6,
+   "vertices": 18,
+   "loops": 5,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -8.0,
+    "log10_V": -3.365894881094448,
+    "log10_dtheta": 1.122317312388799,
+    "log10_dtheta_H10_at_mH": 1.122317312388799,
+    "log10_ratio_to_tree": 11.088820559678595
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -8.0,
+    "log10_V": -3.365894881094448,
+    "log10_dtheta": 1.122317312388799,
+    "log10_dtheta_H10_at_mH": -38.744314224418225,
+    "log10_ratio_to_tree": 11.088820559678595
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -8.0,
+    "log10_V": -14.462804894102476,
+    "log10_dtheta": -9.97459270061923,
+    "log10_dtheta_H10_at_mH": -9.97459270061923,
+    "log10_ratio_to_tree": -0.008089453329432672
+   }
+  },
+  "E_plus_no_dim5_ops": {
+   "K": 14.0,
+   "target_Phi17": 4,
+   "ops": [
+    "2 x [Vec1bar* Vec2* S*^4 Phi17] (dim 8)",
+    "2 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "1 x [Vec1*^4] (dim 6)"
+   ],
+   "yukawas": {
+    "y1": 4,
+    "y2": 2
+   },
+   "kappa": {},
+   "vev_monomial": {
+    "Delta": 2,
+    "S": -16,
+    "Phi17": 4
+   },
+   "fermion_fields": 24,
+   "H10_propagators": 0,
+   "vertices": 11,
+   "loops": 2,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -4.0,
+    "log10_V": -5.417246973708018,
+    "log10_dtheta": -0.9290347802247707,
+    "log10_dtheta_H10_at_mH": -0.9290347802247707,
+    "log10_ratio_to_tree": 9.037468467065025
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -4.0,
+    "log10_V": -5.417246973708018,
+    "log10_dtheta": -0.9290347802247707,
+    "log10_dtheta_H10_at_mH": -0.9290347802247707,
+    "log10_ratio_to_tree": 9.037468467065025
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -4.0,
+    "log10_V": -5.417246973708018,
+    "log10_dtheta": -0.9290347802247707,
+    "log10_dtheta_H10_at_mH": -0.9290347802247707,
+    "log10_ratio_to_tree": 9.037468467065025
+   }
+  },
+  "E_plus_no_dim5_dim6_ops": {
+   "K": 15.0,
+   "target_Phi17": 4,
+   "ops": [
+    "2 x [Vec1bar* Vec2* S*^4 Phi17] (dim 8)",
+    "1 x [Vec2bar* Vec3* S*^4 Phi17] (dim 8)",
+    "1 x [Vec1*^2 Vec2bar* Vec3bar* Phi17] (dim 7)"
+   ],
+   "yukawas": {
+    "y1": 2,
+    "y2": 2,
+    "y3": 1
+   },
+   "kappa": {},
+   "vev_monomial": {
+    "S": -17,
+    "Phi17": 4
+   },
+   "fermion_fields": 20,
+   "H10_propagators": 0,
+   "vertices": 9,
+   "loops": 2,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -2.0,
+    "log10_V": -10.659246739672767,
+    "log10_dtheta": -6.17103454618952,
+    "log10_dtheta_H10_at_mH": -6.17103454618952,
+    "log10_ratio_to_tree": 3.795468701100276
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -2.0,
+    "log10_V": -10.659246739672767,
+    "log10_dtheta": -6.17103454618952,
+    "log10_dtheta_H10_at_mH": -6.17103454618952,
+    "log10_ratio_to_tree": 3.795468701100276
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -2.0,
+    "log10_V": -10.659246739672767,
+    "log10_dtheta": -6.17103454618952,
+    "log10_dtheta_H10_at_mH": -6.17103454618952,
+    "log10_ratio_to_tree": 3.795468701100276
+   }
+  },
+  "E_no_kappa_needed(no_H10_at_all)": {
+   "K": 14.0,
+   "target_Phi17": 4,
+   "ops": [
+    "2 x [Vec1bar* Vec2* S*^4 Phi17] (dim 8)",
+    "2 x [Vec1bar* Vec2bar* Delta S* Phi17] (dim 6)",
+    "1 x [Vec1*^4] (dim 6)"
+   ],
+   "yukawas": {
+    "y1": 4,
+    "y2": 2
+   },
+   "kappa": {},
+   "vev_monomial": {
+    "Delta": 2,
+    "S": -16,
+    "Phi17": 4
+   },
+   "fermion_fields": 24,
+   "H10_propagators": 0,
+   "vertices": 11,
+   "loops": 2,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -4.0,
+    "log10_V": -5.417246973708018,
+    "log10_dtheta": -0.9290347802247707,
+    "log10_dtheta_H10_at_mH": -0.9290347802247707,
+    "log10_ratio_to_tree": 9.037468467065025
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -4.0,
+    "log10_V": -5.417246973708018,
+    "log10_dtheta": -0.9290347802247707,
+    "log10_dtheta_H10_at_mH": -0.9290347802247707,
+    "log10_ratio_to_tree": 9.037468467065025
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -4.0,
+    "log10_V": -5.417246973708018,
+    "log10_dtheta": -0.9290347802247707,
+    "log10_dtheta_H10_at_mH": -0.9290347802247707,
+    "log10_ratio_to_tree": 9.037468467065025
+   }
+  },
+  "S_sector_only_no_F_no_Delta_no_H10": {
+   "K": 15.0,
+   "target_Phi17": 4,
+   "ops": [
+    "1 x [Vec1bar* Vec2* S*^4 Phi17] (dim 8)",
+    "2 x [Vec2bar* Vec3* S*^4 Phi17] (dim 8)",
+    "1 x [Vec1* Vec2* Vec3bar*^2 Phi17] (dim 7)"
+   ],
+   "yukawas": {
+    "y1": 1,
+    "y2": 2,
+    "y3": 2
+   },
+   "kappa": {},
+   "vev_monomial": {
+    "S": -17,
+    "Phi17": 4
+   },
+   "fermion_fields": 20,
+   "H10_propagators": 0,
+   "vertices": 9,
+   "loops": 2,
+   "nda_all_lines_Ms": {
+    "loop_dim_D": -2.0,
+    "log10_V": -10.659246739672767,
+    "log10_dtheta": -6.17103454618952,
+    "log10_dtheta_H10_at_mH": -6.17103454618952,
+    "log10_ratio_to_tree": 3.795468701100276
+   },
+   "nda_H10_at_MU": {
+    "loop_dim_D": -2.0,
+    "log10_V": -10.659246739672767,
+    "log10_dtheta": -6.17103454618952,
+    "log10_dtheta_H10_at_mH": -6.17103454618952,
+    "log10_ratio_to_tree": 3.795468701100276
+   },
+   "nda_kappa_1e9": {
+    "loop_dim_D": -2.0,
+    "log10_V": -10.659246739672767,
+    "log10_dtheta": -6.17103454618952,
+    "log10_dtheta_H10_at_mH": -6.17103454618952,
+    "log10_ratio_to_tree": 3.795468701100276
+   }
+  }
+ },
+ "dim5_ops": [
+  "F^2 H10* S*",
+  "F Vec2 Delta S",
+  "F Vec2 H10 S",
+  "F Vec2* S*",
+  "F Vec2bar S*^2",
+  "F*^2 H10 S",
+  "F* Vec2 S",
+  "F* Vec2* H10* S*",
+  "F* Vec2* Delta* S*",
+  "F* Vec2bar* S^2",
+  "TenA TenB Delta^2",
+  "TenA TenB H10^2",
+  "TenA SingN* H10",
+  "TenA SingM H10 S",
+  "TenA* TenB* H10*^2",
+  "TenA* TenB* Delta*^2",
+  "TenA* SingN H10*",
+  "TenA* SingM* H10* S*",
+  "TenB SingN H10* S*",
+  "TenB* SingN* H10 S",
+  "Vec1 Vec1bar H10 Delta",
+  "Vec1 Vec1bar H10^2",
+  "Vec1 Vec3 H10* S",
+  "Vec1 PhiVbar S^2",
+  "Vec1* Vec1bar* H10*^2",
+  "Vec1* Vec1bar* H10* Delta*",
+  "Vec1* Vec3* H10 S*",
+  "Vec1* PhiVbar* S*^2",
+  "Vec2^2 H10* S",
+  "Vec2 Vec2bar H10 Delta",
+  "Vec2 Vec2bar H10^2",
+  "Vec2*^2 H10 S*",
+  "Vec2* Vec2bar* H10*^2",
+  "Vec2* Vec2bar* H10* Delta*",
+  "Vec3 Vec3bar H10 Delta",
+  "Vec3 Vec3bar H10^2",
+  "Vec3 PhiV Delta Phi17",
+  "Vec3 PhiV H10 Phi17",
+  "Vec3 PhiVbar* Delta",
+  "Vec3 PhiVbar* H10",
+  "Vec3* Vec3bar* H10*^2",
+  "Vec3* Vec3bar* H10* Delta*",
+  "Vec3* PhiV* H10* Phi17*",
+  "Vec3* PhiV* Delta* Phi17*",
+  "Vec3* PhiVbar H10*",
+  "Vec3* PhiVbar Delta*",
+  "Vec3bar PhiVbar H10* S*",
+  "Vec3bar PhiVbar Delta* S*",
+  "Vec3bar* PhiVbar* Delta S",
+  "Vec3bar* PhiVbar* H10 S",
+  "SingN SingM H10*^2",
+  "SingN* SingM* H10^2"
+ ]
+}

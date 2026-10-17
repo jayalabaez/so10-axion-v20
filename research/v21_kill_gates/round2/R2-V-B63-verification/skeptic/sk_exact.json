@@ -1,0 +1,252 @@
+{
+ "anomalies": {
+  "SO10^2X": "0",
+  "grav-X": "0",
+  "X^3": "0",
+  "b_X": "101203",
+  "net16": 3
+ },
+ "yukawas": [
+  [
+   "F.F",
+   "Delta",
+   "3x3 sym"
+  ],
+  [
+   "F.F",
+   "H10",
+   "3x3 sym"
+  ],
+  [
+   "V1.Vb1",
+   "conj[S]",
+   "2x1"
+  ],
+  [
+   "V1.Pb",
+   "Phi17",
+   "2x1"
+  ],
+  [
+   "V2.Vb2",
+   "conj[S]",
+   "1x1"
+  ],
+  [
+   "Vb2.Vb3",
+   "H10",
+   "1x1"
+  ],
+  [
+   "V3.Vb3",
+   "conj[S]",
+   "1x1"
+  ],
+  [
+   "T.T",
+   "conj[S]",
+   "2x2 sym"
+  ],
+  [
+   "N1.N1b",
+   "S",
+   "1x1"
+  ],
+  [
+   "N2.N2b",
+   "S",
+   "1x1"
+  ],
+  [
+   "N3.N3b",
+   "conj[S]",
+   "1x1"
+  ],
+  [
+   "NMm.NMm",
+   "S",
+   "2x2 sym"
+  ]
+ ],
+ "n_yukawas": 12,
+ "X_allowed_but_SO10_forbidden": [
+  [
+   "Vb2.Vb3",
+   "Delta"
+  ],
+  [
+   "T.NMm",
+   "mass"
+  ],
+  [
+   "T.NMm",
+   "Phi210"
+  ],
+  [
+   "N1.N3b",
+   "conj[Delta]"
+  ],
+  [
+   "N1.N3b",
+   "conj[H10]"
+  ],
+  [
+   "N1b.N3",
+   "Delta"
+  ],
+  [
+   "N1b.N3",
+   "H10"
+  ]
+ ],
+ "kernel": {
+  "rank": 13,
+  "kernel_dim": 7,
+  "basis_in_kernel": {
+   "X": true,
+   "G2": true,
+   "f1": true,
+   "f2": true,
+   "f3": true,
+   "f4": true,
+   "f5": true
+  },
+  "basis_rank": 7,
+  "spans": true,
+  "names": [
+   "F",
+   "V1",
+   "Vb1",
+   "V2",
+   "Vb2",
+   "V3",
+   "Vb3",
+   "T",
+   "Pb",
+   "N1",
+   "N1b",
+   "N2",
+   "N2b",
+   "N3",
+   "N3b",
+   "NMm",
+   "H10",
+   "Delta",
+   "S",
+   "Phi17"
+  ]
+ },
+ "pq": {
+  "N": "34",
+  "E": "272/3",
+  "E/N": "8/3",
+  "N(X)": "0",
+  "N(G2)": "-2",
+  "N(f)": [
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ]
+ },
+ "ndw": {
+  "gauge_identified_Phi_shifts(2pi units)": [
+   "0",
+   "1/4",
+   "1/2",
+   "3/4"
+  ],
+  "axion_period_in_theta_Phi": "1/4",
+  "theta_QCD_winding_over_period": "1",
+  "N_DW": "1"
+ },
+ "closure": {
+  "ops": [
+   {
+    "mult": 4,
+    "X": 0,
+    "d": "6",
+    "undotted": 2,
+    "dotted": 0,
+    "q": [
+     1,
+     0,
+     0,
+     1,
+     -1,
+     0
+    ],
+    "max_power_per_Weyl_singlet<=2": true
+   },
+   {
+    "mult": 1,
+    "X": 0,
+    "d": "7",
+    "undotted": 0,
+    "dotted": 4,
+    "q": [
+     0,
+     0,
+     0,
+     -2,
+     0,
+     2
+    ],
+    "max_power_per_Weyl_singlet<=2": true
+   },
+   {
+    "mult": 2,
+    "X": 0,
+    "d": "7",
+    "undotted": 4,
+    "dotted": 0,
+    "q": [
+     0,
+     0,
+     0,
+     -1,
+     2,
+     -1
+    ],
+    "max_power_per_Weyl_singlet<=2": true
+   }
+  ],
+  "K": "17",
+  "sum_q": [
+   4,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "explicit_vev_S_power": -11,
+  "vev_Phi17_power": 4,
+  "X_of_explicit_vevs": 24,
+  "S*_needed_from_mass_insertions": 6,
+  "fermion_fields": 20
+ },
+ "numbers": {
+  "dtheta(2.72e13)": 4.040463085974693e-12,
+  "dtheta(3e13)": 2.1370815995643455e-11,
+  "dtheta(3.29e13)": 1.0258645911853737e-10,
+  "S_max": 32850617890456.88,
+  "ys_min": 0.3044082772916428,
+  "cap_no_gauge_analytic": 0.31660978336619067,
+  "f_a(2.7e13,3.29e13)": [
+   2246103893180.7983,
+   2736919188357.343
+  ],
+  "m_a_ueV(2.7e13,3.29e13)": [
+   2.537727670258387,
+   2.082633650364026
+  ],
+  "g_tolerance_floor": 1.9505354395061931,
+  "g_tolerance_cap0.368": 25.15666941186231,
+  "g_tolerance_cap0.380": 43.40715955162449,
+  "Phi17_tol_cap0.368": 2.2395630092702605e+17,
+  "Phi17_tol_floor": 1.1817849674603538e+17,
+  "window_width_floor_percent": 4.008270137430595
+ }
+}

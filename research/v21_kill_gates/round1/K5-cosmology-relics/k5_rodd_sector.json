@@ -1,0 +1,234 @@
+{
+ "fermions": {
+  "F1": [
+   "16",
+   1
+  ],
+  "F2": [
+   "16",
+   1
+  ],
+  "F3": [
+   "16",
+   1
+  ],
+  "T1": [
+   "10",
+   -1
+  ],
+  "T2": [
+   "10",
+   5
+  ],
+  "A": [
+   "16",
+   0
+  ],
+  "Abar": [
+   "16bar",
+   4
+  ],
+  "B": [
+   "16",
+   -3
+  ],
+  "Bbar": [
+   "16bar",
+   7
+  ],
+  "C": [
+   "16",
+   -6
+  ],
+  "Cbar": [
+   "16bar",
+   10
+  ],
+  "N3a": [
+   "1",
+   -3
+  ],
+  "N1a": [
+   "1",
+   -1
+  ],
+  "N3b": [
+   "1",
+   -3
+  ],
+  "N1b": [
+   "1",
+   -1
+  ],
+  "P": [
+   "16",
+   -9
+  ],
+  "Pbar": [
+   "16bar",
+   -8
+  ]
+ },
+ "scalars": {
+  "Phi210": [
+   "210",
+   0,
+   true
+  ],
+  "Delta": [
+   "126bar",
+   -2,
+   false
+  ],
+  "H": [
+   "10",
+   -2,
+   false
+  ],
+  "S": [
+   "1",
+   4,
+   false
+  ],
+  "Phi17": [
+   "1",
+   17,
+   false
+  ]
+ },
+ "allowed_renormalizable_yukawa_structures": [
+  "A.Abar.S*",
+  "B.Bbar.S*",
+  "C.Cbar.S*",
+  "Cbar.Pbar.H",
+  "F.B.H*",
+  "F.F.Delta",
+  "F.F.H",
+  "N1.N3.S",
+  "N3.N1.S",
+  "P.Pbar.Phi17",
+  "T1.N1.H*",
+  "T1.T2.S*",
+  "T2.N3.H"
+ ],
+ "n_structures": 13,
+ "R_parity_fermions": {
+  "F1": 1,
+  "F2": 1,
+  "F3": 1,
+  "T1": -1,
+  "T2": -1,
+  "A": 1,
+  "Abar": 1,
+  "B": 1,
+  "Bbar": 1,
+  "C": 1,
+  "Cbar": 1,
+  "N3a": -1,
+  "N1a": -1,
+  "N3b": -1,
+  "N1b": -1,
+  "P": 1,
+  "Pbar": 1
+ },
+ "R_parity_scalars": {
+  "Phi210": 1,
+  "Delta": 1,
+  "H": 1,
+  "S": 1,
+  "Phi17": 1
+ },
+ "R_odd_fermions": [
+  "N1a",
+  "N1b",
+  "N3a",
+  "N3b",
+  "T1",
+  "T2"
+ ],
+ "all_couplings_R_even": true,
+ "anomalies": {
+  "SU3sq_X": "0",
+  "grav_X": "0",
+  "X3": "0",
+  "T_S": "14",
+  "T_Phi": "4"
+ },
+ "PQ": {
+  "normalisation": "S -> e^{i gamma} S, Phi17 fixed, Phi210 fixed; scalar charges q_H = q_Delta = -1/2 from S.H.H and H.Delta*.Phi210",
+  "free_fermion_only_directions": [
+   "q_Abar",
+   "q_N1b",
+   "q_Pbar"
+  ],
+  "QCD_anomaly_of_free_directions": {
+   "q_Abar": "0",
+   "q_N1b": "0",
+   "q_Pbar": "0"
+  },
+  "N_S_charge1": "17/2",
+  "N_for_S_charge_4": "34",
+  "N_Phi_rotation": "-2",
+  "theta_shift_over_vartheta_shift": "1",
+  "gauge_invariant_phase": "vartheta = 17 theta_S - 4 theta_Phi17 (invariant under X: 4*17 - 17*4 = 0); theta_QCD = +-vartheta + const",
+  "f_a": "v_S/17 x [1 + O((4 v_S/17 v_Phi)^2)] with v_S = sqrt2 <S>; exact: v_S v_Phi/sqrt((4v_S)^2+(17v_Phi)^2)",
+  "N_DW": 1,
+  "E_over_N": "8/3"
+ },
+ "decomposition_10": {
+  "G3221 (SU3,SU2L,SU2R)_{B-L}": [
+   "(1,2,2)_0",
+   "(3,1,1)_{-2/3}",
+   "(3bar,1,1)_{+2/3}"
+  ],
+  "SM (SU3,SU2)_Y, Y = T3R + (B-L)/2": [
+   "(1,2)_{+1/2}",
+   "(1,2)_{-1/2}",
+   "(3,1)_{-1/3}",
+   "(3bar,1)_{+1/3}"
+  ],
+  "electric charges": {
+   "(1,2)_{+1/2}": [
+    "+1",
+    "0"
+   ],
+   "(1,2)_{-1/2}": [
+    "0",
+    "-1"
+   ],
+   "(3,1)_{-1/3}": [
+    "-1/3 (colour triplet)"
+   ],
+   "(3bar,1)_{+1/3}": [
+    "+1/3 (colour antitriplet)"
+   ]
+  },
+  "Dirac pairing": "T1 = 10(-1) and T2 = 10(5) pair into 10 Dirac fermions with the common mass M_10 = y_10 <S> from T1.T2.S*"
+ },
+ "scalar_charges_solution": {
+  "Phi210": "0",
+  "Delta": "-1/2",
+  "H": "-1/2",
+  "S": "1",
+  "Phi17": "0"
+ },
+ "fermion_charges_solution": {
+  "F1": "1/4",
+  "F2": "1/4",
+  "F3": "1/4",
+  "T1": "-q_N1b - 1/2",
+  "T2": "q_N1b + 3/2",
+  "A": "1 - q_Abar",
+  "Abar": "q_Abar",
+  "B": "-3/4",
+  "Bbar": "7/4",
+  "C": "q_Pbar + 1/2",
+  "Cbar": "1/2 - q_Pbar",
+  "N3a": "-q_N1b - 1",
+  "N1a": "q_N1b",
+  "N3b": "-q_N1b - 1",
+  "N1b": "q_N1b",
+  "P": "-q_Pbar",
+  "Pbar": "q_Pbar"
+ }
+}

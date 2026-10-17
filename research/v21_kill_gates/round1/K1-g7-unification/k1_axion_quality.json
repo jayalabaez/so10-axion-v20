@@ -1,0 +1,394 @@
+{
+ "quality_conventions": {
+  "A_17x_moduli": {
+   "prefactor": 17.0,
+   "phi17_used": 1e+17,
+   "S_max_GeV": 28964887174139.49,
+   "v_S_max_GeV": 40962536274274.58,
+   "f_a_min_GeV": 2409560957310.2695,
+   "m_a_min_ueV": 2.365576177978399
+  },
+  "B_1x_moduli": {
+   "prefactor": 1.0,
+   "phi17_used": 1e+17,
+   "S_max_GeV": 34217729554464.465,
+   "v_S_max_GeV": 48391177209538.336,
+   "f_a_min_GeV": 2846539835855.1963,
+   "m_a_min_ueV": 2.002431136990405
+  },
+  "A_17x_phi_over_sqrt2": {
+   "prefactor": 17.0,
+   "phi17_used": 7.0710678118654744e+16,
+   "S_max_GeV": 31425857346700.77,
+   "v_S_max_GeV": 44442873668906.4,
+   "f_a_min_GeV": 2614286686406.259,
+   "m_a_min_ueV": 2.1803270580991754
+  }
+ },
+ "quality_note": "dtheta ~ n Lambda_PQ^4 sin(delta)/chi with Lambda_PQ^4 = <Phi17>^4 <S>^17/M_Pl,red^17 and n = 17 (the S-phase winding of the operator) is convention A; the FINAL used <S>_max = 3.3e13 (convention B-like).  The bound depends on the unknown O(1) Wilson coefficient and on the sin(delta) phase: a coefficient c_21 = 0.1 raises <S>_max by 10^(1/17) = 1.145.",
+ "S_max_used_in_K1": 28964887174139.49,
+ "unitarity_EST": {
+  "y_max_16pair_a0_half": 1.2533141373155001,
+  "y_max_10pair_a0_half": 1.5853309190424043,
+  "sqrt_4pi": 3.5449077018110318,
+  "assumption": "tree-level s-wave amplitude of the Yukawa in the SO(10)-singlet channel, a0 = N y^2/(16 pi), N = multiplicity of the fermion pair; this is the K3-style normalisation a0 <= 1/2 (EST, not computed with the repo's exact partial-wave machinery)"
+ },
+ "y_s_windows": [
+  {
+   "M_s": 3000000000000.0,
+   "y_s_min_convA": 0.10357368153943539,
+   "y_s_min_convB": 0.08767384741950487,
+   "y_s_max_unitarity_16": 1.2533141373155001,
+   "window_open_convA": true,
+   "S_at_y_min": 28964887174139.49,
+   "S_at_y_max": 2393653682408.596,
+   "f_a_at_quality_max_S_GeV": 2409560957310.2695,
+   "m_a_at_quality_max_S_ueV": 2.365576177978399,
+   "f_a_at_unitarity_min_S_GeV": 199125735369.79636,
+   "m_a_at_unitarity_min_S_ueV": 28.62512969212408
+  },
+  {
+   "M_s": 5000000000000.0,
+   "y_s_min_convA": 0.17262280256572565,
+   "y_s_min_convB": 0.14612307903250812,
+   "y_s_max_unitarity_16": 1.2533141373155001,
+   "window_open_convA": true,
+   "S_at_y_min": 28964887174139.49,
+   "S_at_y_max": 3989422804014.327,
+   "f_a_at_quality_max_S_GeV": 2409560957310.2695,
+   "m_a_at_quality_max_S_ueV": 2.365576177978399,
+   "f_a_at_unitarity_min_S_GeV": 331876225616.3273,
+   "m_a_at_unitarity_min_S_ueV": 17.17507781527445
+  },
+  {
+   "M_s": 7000000000000.0,
+   "y_s_min_convA": 0.24167192359201592,
+   "y_s_min_convB": 0.20457231064551137,
+   "y_s_max_unitarity_16": 1.2533141373155001,
+   "window_open_convA": true,
+   "S_at_y_min": 28964887174139.49,
+   "S_at_y_max": 5585191925620.058,
+   "f_a_at_quality_max_S_GeV": 2409560957310.2695,
+   "m_a_at_quality_max_S_ueV": 2.365576177978399,
+   "f_a_at_unitarity_min_S_GeV": 464626715862.85815,
+   "m_a_at_unitarity_min_S_ueV": 12.267912725196036
+  },
+  {
+   "M_s": 10000000000000.0,
+   "y_s_min_convA": 0.3452456051314513,
+   "y_s_min_convB": 0.29224615806501625,
+   "y_s_max_unitarity_16": 1.2533141373155001,
+   "window_open_convA": true,
+   "S_at_y_min": 28964887174139.49,
+   "S_at_y_max": 7978845608028.654,
+   "f_a_at_quality_max_S_GeV": 2409560957310.2695,
+   "m_a_at_quality_max_S_ueV": 2.365576177978399,
+   "f_a_at_unitarity_min_S_GeV": 663752451232.6545,
+   "m_a_at_unitarity_min_S_ueV": 8.587538907637224
+  },
+  {
+   "M_s": 20000000000000.0,
+   "y_s_min_convA": 0.6904912102629026,
+   "y_s_min_convB": 0.5844923161300325,
+   "y_s_max_unitarity_16": 1.2533141373155001,
+   "window_open_convA": true,
+   "S_at_y_min": 28964887174139.49,
+   "S_at_y_max": 15957691216057.309,
+   "f_a_at_quality_max_S_GeV": 2409560957310.2695,
+   "m_a_at_quality_max_S_ueV": 2.365576177978399,
+   "f_a_at_unitarity_min_S_GeV": 1327504902465.309,
+   "m_a_at_unitarity_min_S_ueV": 4.293769453818612
+  },
+  {
+   "M_s": 36000000000000.0,
+   "y_s_min_convA": 1.2428841784732247,
+   "y_s_min_convB": 1.0520861690340586,
+   "y_s_max_unitarity_16": 1.2533141373155001,
+   "window_open_convA": true,
+   "S_at_y_min": 28964887174139.49,
+   "S_at_y_max": 28723844188903.156,
+   "f_a_at_quality_max_S_GeV": 2409560957310.2695,
+   "m_a_at_quality_max_S_ueV": 2.365576177978399,
+   "f_a_at_unitarity_min_S_GeV": 2389508824437.5566,
+   "m_a_at_unitarity_min_S_ueV": 2.385427474343673
+  }
+ ],
+ "dfsz_excluded_bands_ueV_LIT": [
+  [
+   2.66,
+   2.81,
+   "ADMX arXiv:1804.05750 (DFSZ sensitivity)"
+  ],
+  [
+   2.81,
+   3.31,
+   "ADMX arXiv:1910.08638 (full benchmark range excluded)"
+  ],
+  [
+   3.27,
+   3.34,
+   "ADMX arXiv:2408.15227, PRL 134, 111002 (2025) DFSZ 90% CL"
+  ],
+  [
+   3.9,
+   4.1,
+   "ADMX arXiv:2110.06096 run 1C: DFSZ only in 3.9-4.1 (KSVZ over 3.3-4.2); DFSZ sub-band from the APS talk abstract, LIT-weak"
+  ],
+  [
+   4.51,
+   4.59,
+   "CAPP arXiv:2210.10961 (DFSZ sensitivity)"
+  ]
+ ],
+ "axion_windows_avoiding_DFSZ_bands": [
+  {
+   "M_s": 3000000000000.0,
+   "m_a_range_ueV": [
+    2.365576177978399,
+    28.62512969212408
+   ],
+   "y_s_range": [
+    0.10357368153943539,
+    1.2533141373155001
+   ],
+   "allowed_m_a_segments_ueV": [
+    [
+     2.365576177978399,
+     2.66
+    ],
+    [
+     3.34,
+     3.9
+    ],
+    [
+     4.1,
+     4.51
+    ],
+    [
+     4.59,
+     28.62512969212408
+    ]
+   ],
+   "allowed_y_s_segments": [
+    [
+     0.10357368153943539,
+     0.11646464631307842
+    ],
+    [
+     0.1462375634156699,
+     0.1707564363236864
+    ],
+    [
+     0.17951317664797803,
+     0.1974644943127758
+    ],
+    [
+     0.20096719044249245,
+     1.2533141373155001
+    ]
+   ]
+  },
+  {
+   "M_s": 5000000000000.0,
+   "m_a_range_ueV": [
+    2.365576177978399,
+    17.17507781527445
+   ],
+   "y_s_range": [
+    0.17262280256572565,
+    1.2533141373155001
+   ],
+   "allowed_m_a_segments_ueV": [
+    [
+     2.365576177978399,
+     2.66
+    ],
+    [
+     3.34,
+     3.9
+    ],
+    [
+     4.1,
+     4.51
+    ],
+    [
+     4.59,
+     17.17507781527445
+    ]
+   ],
+   "allowed_y_s_segments": [
+    [
+     0.17262280256572565,
+     0.1941077438551307
+    ],
+    [
+     0.24372927235944983,
+     0.28459406053947733
+    ],
+    [
+     0.29918862774663,
+     0.32910749052129296
+    ],
+    [
+     0.33494531740415406,
+     1.2533141373155001
+    ]
+   ]
+  },
+  {
+   "M_s": 7000000000000.0,
+   "m_a_range_ueV": [
+    2.365576177978399,
+    12.267912725196036
+   ],
+   "y_s_range": [
+    0.24167192359201592,
+    1.2533141373155001
+   ],
+   "allowed_m_a_segments_ueV": [
+    [
+     2.365576177978399,
+     2.66
+    ],
+    [
+     3.34,
+     3.9
+    ],
+    [
+     4.1,
+     4.51
+    ],
+    [
+     4.59,
+     12.267912725196036
+    ]
+   ],
+   "allowed_y_s_segments": [
+    [
+     0.24167192359201592,
+     0.271750841397183
+    ],
+    [
+     0.34122098130322975,
+     0.39843168475526825
+    ],
+    [
+     0.41886407884528204,
+     0.46075048672981017
+    ],
+    [
+     0.4689234443658157,
+     1.2533141373155003
+    ]
+   ]
+  },
+  {
+   "M_s": 10000000000000.0,
+   "m_a_range_ueV": [
+    2.365576177978399,
+    8.587538907637224
+   ],
+   "y_s_range": [
+    0.3452456051314513,
+    1.2533141373155001
+   ],
+   "allowed_m_a_segments_ueV": [
+    [
+     2.365576177978399,
+     2.66
+    ],
+    [
+     3.34,
+     3.9
+    ],
+    [
+     4.1,
+     4.51
+    ],
+    [
+     4.59,
+     8.587538907637224
+    ]
+   ],
+   "allowed_y_s_segments": [
+    [
+     0.3452456051314513,
+     0.3882154877102614
+    ],
+    [
+     0.48745854471889966,
+     0.5691881210789547
+    ],
+    [
+     0.59837725549326,
+     0.6582149810425859
+    ],
+    [
+     0.6698906348083081,
+     1.2533141373155001
+    ]
+   ]
+  }
+ ],
+ "three_loop_point_axion": {
+  "M_s": 10000000000000.0,
+  "y_s": 0.3452456051314513,
+  "S": 28964887174139.49,
+  "f_a_GeV": 2409560957310.2695,
+  "m_a_ueV": 2.365576177978399,
+  "E_over_N": "8/3 (EXACT, FINAL J1a)",
+  "coupling": "DFSZ-I-like",
+  "g_agg_GeV^-1_EST": 3.391290008749832e-16
+ },
+ "gut_scalar_unitarity_EST": {
+  "210 self-quartic theta=30": {
+   "lambda_max": 0.11855066617319975,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.6324555320336759
+  },
+  "210 self-quartic theta=45": {
+   "lambda_max": 0.11855066617319975,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.5773502691896257
+  },
+  "210 self-quartic theta=60": {
+   "lambda_max": 0.11855066617319975,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.5345224838248488
+  },
+  "210 self-quartic theta=90": {
+   "lambda_max": 0.11855066617319975,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.5
+  },
+  "126bar self-quartic theta=30": {
+   "lambda_max": 0.09894780011306435,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.577804696862647
+  },
+  "126bar self-quartic theta=45": {
+   "lambda_max": 0.09894780011306435,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.5274611105068436
+  },
+  "126bar self-quartic theta=60": {
+   "lambda_max": 0.09894780011306435,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.48833409795558685
+  },
+  "126bar self-quartic theta=90": {
+   "lambda_max": 0.09894780011306435,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 0.45679472120727777
+  },
+  "10_H self-quartic theta=30": {
+   "lambda_max": 1.1423973285781066,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 1.9632996344280855
+  },
+  "10_H self-quartic theta=45": {
+   "lambda_max": 1.1423973285781066,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 1.7922391615298476
+  },
+  "10_H self-quartic theta=60": {
+   "lambda_max": 1.1423973285781066,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 1.6592910393438378
+  },
+  "10_H self-quartic theta=90": {
+   "lambda_max": 1.1423973285781066,
+   "M_scalar_over_M_U_max_if_self_quartic_dominated": 1.5521246435421703
+  }
+ },
+ "gut_scalar_unitarity_note": "EST: with a0 <= 1/2 on the dominant self-quartic channel the 210 and 126bar masses generated by their own quartics are <= ~0.5-1.0 M_U, i.e. the x1/2..x1 half of the GUT threshold window (the S2u Monte Carlo); cross-quartics and the unknown vacuum (G3 blocked) can move individual states, so x1/2..x2 is kept as the declared window."
+}

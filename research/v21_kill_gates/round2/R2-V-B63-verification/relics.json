@@ -1,0 +1,841 @@
+{
+ "R_parity": {
+  "R_of_fermions": {
+   "F": 1,
+   "V1": 1,
+   "Vb1": 1,
+   "V2": 1,
+   "Vb2": 1,
+   "V3": 1,
+   "Vb3": 1,
+   "T": -1,
+   "Pb": 1,
+   "N1": -1,
+   "N1b": -1,
+   "N2": -1,
+   "N2b": -1,
+   "N3": -1,
+   "N3b": -1,
+   "NMm": -1
+  },
+  "R_odd": [
+   "T",
+   "N1",
+   "N1b",
+   "N2",
+   "N2b",
+   "N3",
+   "N3b",
+   "NMm"
+  ],
+  "unbroken_(centre k, X angle 2pi a/68)": [
+   [
+    0,
+    0
+   ],
+   [
+    2,
+    0
+   ]
+  ],
+  "note": "all scalars have even z -> R-even; the only unbroken element besides 1 is the Spin(10) centre element k=2 ((-1)^z), so R = (-1)^z (-1)^(2s) is exact and the lightest R-odd state is absolutely stable"
+ },
+ "sectors": {
+  "f1 (V1,Vb1,Pb)": {
+   "SM": [
+    {
+     "dim": 12.0,
+     "fermions": [
+      "V1",
+      "F"
+     ],
+     "scalars": {
+      "H10^": 1,
+      "S": 8
+     },
+     "derivative": 0,
+     "Gamma_GeV": 5.606434741409237e-68,
+     "tau_s": 1.1740081359344501e+43,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 12.0,
+     "fermions": [
+      "V1^",
+      "F^"
+     ],
+     "scalars": {
+      "H10": 1,
+      "S^": 8
+     },
+     "derivative": 0,
+     "Gamma_GeV": 5.606434741409237e-68,
+     "tau_s": 1.1740081359344501e+43,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 13.0,
+     "fermions": [
+      "V1",
+      "F^"
+     ],
+     "scalars": {
+      "S": 9
+     },
+     "derivative": 1,
+     "Gamma_GeV": 1.7110440735763118e-103,
+     "tau_s": 3.846774084692474e+78,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 13.0,
+     "fermions": [
+      "Vb1",
+      "F"
+     ],
+     "scalars": {
+      "S^": 10
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.539939666218681e-76,
+     "tau_s": 4.274193427436081e+51,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 13.0,
+     "fermions": [
+      "Pb",
+      "F"
+     ],
+     "scalars": {
+      "S^": 9,
+      "Phi17": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.711044073576312e-69,
+     "tau_s": 3.846774084692474e+44,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 13.0,
+     "fermions": [
+      "V1^",
+      "F"
+     ],
+     "scalars": {
+      "S^": 9
+     },
+     "derivative": 1,
+     "Gamma_GeV": 1.7110440735763118e-103,
+     "tau_s": 3.846774084692474e+78,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 13.0,
+     "fermions": [
+      "Vb1^",
+      "F^"
+     ],
+     "scalars": {
+      "S": 10
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.539939666218681e-76,
+     "tau_s": 4.274193427436081e+51,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 13.0,
+     "fermions": [
+      "Pb^",
+      "F^"
+     ],
+     "scalars": {
+      "S": 9,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.711044073576312e-69,
+     "tau_s": 3.846774084692474e+44,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    }
+   ],
+   "SM+Rodd": [
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V1",
+      "F",
+      "T",
+      "NMm"
+     ],
+     "scalars": {
+      "Phi17": 2
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.359118827914976e-18,
+     "tau_s": 4.842843660769121e-07,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V1",
+      "F",
+      "T^",
+      "NMm^"
+     ],
+     "scalars": {
+      "Phi17": 2
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.359118827914976e-18,
+     "tau_s": 4.842843660769121e-07,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Vb1",
+      "F^",
+      "T^",
+      "NMm"
+     ],
+     "scalars": {
+      "Phi17^": 2
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.359118827914976e-18,
+     "tau_s": 4.842843660769121e-07,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Pb",
+      "F",
+      "T",
+      "NMm"
+     ],
+     "scalars": {
+      "Delta": 1,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 9.187643276705237e-26,
+     "tau_s": 7.163969912380358,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Pb",
+      "F",
+      "T^",
+      "NMm^"
+     ],
+     "scalars": {
+      "Delta": 1,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 9.187643276705237e-26,
+     "tau_s": 7.163969912380358,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Pb",
+      "F^",
+      "T",
+      "NMm"
+     ],
+     "scalars": {
+      "Phi17^": 1
+     },
+     "derivative": 1,
+     "Gamma_GeV": 1.3591188279149761e-52,
+     "tau_s": 4.8428436607691207e+27,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Pb",
+      "F^",
+      "T",
+      "NMm^"
+     ],
+     "scalars": {
+      "S^": 1,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.2232069451234782e-25,
+     "tau_s": 5.38093740085458,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Pb",
+      "F^",
+      "T^",
+      "NMm"
+     ],
+     "scalars": {
+      "S": 1,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.2232069451234782e-25,
+     "tau_s": 5.38093740085458,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Pb",
+      "F^",
+      "T^",
+      "NMm^"
+     ],
+     "scalars": {
+      "Phi17^": 1
+     },
+     "derivative": 1,
+     "Gamma_GeV": 1.3591188279149761e-52,
+     "tau_s": 4.8428436607691207e+27,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V1^",
+      "F^",
+      "T",
+      "NMm"
+     ],
+     "scalars": {
+      "Phi17^": 2
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.359118827914976e-18,
+     "tau_s": 4.842843660769121e-07,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V1^",
+      "F^",
+      "T^",
+      "NMm^"
+     ],
+     "scalars": {
+      "Phi17^": 2
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.359118827914976e-18,
+     "tau_s": 4.842843660769121e-07,
+     "mode": "4-fermion"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Vb1^",
+      "F",
+      "T",
+      "NMm^"
+     ],
+     "scalars": {
+      "Phi17": 2
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.359118827914976e-18,
+     "tau_s": 4.842843660769121e-07,
+     "mode": "4-fermion"
+    }
+   ]
+  },
+  "f2 (V2,Vb2,V3,Vb3)": {
+   "SM": [
+    {
+     "dim": 7.0,
+     "fermions": [
+      "V2",
+      "F"
+     ],
+     "scalars": {
+      "H10^": 1,
+      "S": 2,
+      "Phi17": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 7.730745391591253e-12,
+     "tau_s": 8.514056105326214e-14,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 7.0,
+     "fermions": [
+      "Vb3",
+      "F"
+     ],
+     "scalars": {
+      "S": 3,
+      "Phi17": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.3989227287101828e-10,
+     "tau_s": 4.705049010154158e-15,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 7.0,
+     "fermions": [
+      "V2^",
+      "F^"
+     ],
+     "scalars": {
+      "H10": 1,
+      "S^": 2,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 7.730745391591253e-12,
+     "tau_s": 8.514056105326214e-14,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 7.0,
+     "fermions": [
+      "Vb3^",
+      "F^"
+     ],
+     "scalars": {
+      "S^": 3,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.3989227287101828e-10,
+     "tau_s": 4.705049010154158e-15,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V2",
+      "F^"
+     ],
+     "scalars": {
+      "S": 3,
+      "Phi17": 1
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.359368599960673e-47,
+     "tau_s": 2.7897294217231305e+22,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Vb2",
+      "F"
+     ],
+     "scalars": {
+      "S^": 4,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1234317399646058e-20,
+     "tau_s": 3.099699357470145e-05,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V2^",
+      "F"
+     ],
+     "scalars": {
+      "S^": 3,
+      "Phi17^": 1
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.359368599960673e-47,
+     "tau_s": 2.7897294217231305e+22,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Vb2^",
+      "F^"
+     ],
+     "scalars": {
+      "S": 4,
+      "Phi17": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1234317399646058e-20,
+     "tau_s": 3.099699357470145e-05,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    }
+   ],
+   "SM+Rodd": [
+    {
+     "dim": 7.0,
+     "fermions": [
+      "V2",
+      "F"
+     ],
+     "scalars": {
+      "H10^": 1,
+      "S": 2,
+      "Phi17": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 7.730745391591253e-12,
+     "tau_s": 8.514056105326214e-14,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 7.0,
+     "fermions": [
+      "Vb3",
+      "F"
+     ],
+     "scalars": {
+      "S": 3,
+      "Phi17": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.3989227287101828e-10,
+     "tau_s": 4.705049010154158e-15,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 7.0,
+     "fermions": [
+      "V2^",
+      "F^"
+     ],
+     "scalars": {
+      "H10": 1,
+      "S^": 2,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 7.730745391591253e-12,
+     "tau_s": 8.514056105326214e-14,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 7.0,
+     "fermions": [
+      "Vb3^",
+      "F^"
+     ],
+     "scalars": {
+      "S^": 3,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 1.3989227287101828e-10,
+     "tau_s": 4.705049010154158e-15,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V2",
+      "F^"
+     ],
+     "scalars": {
+      "S": 3,
+      "Phi17": 1
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.359368599960673e-47,
+     "tau_s": 2.7897294217231305e+22,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Vb2",
+      "F"
+     ],
+     "scalars": {
+      "S^": 4,
+      "Phi17^": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1234317399646058e-20,
+     "tau_s": 3.099699357470145e-05,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "V2^",
+      "F"
+     ],
+     "scalars": {
+      "S^": 3,
+      "Phi17^": 1
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.359368599960673e-47,
+     "tau_s": 2.7897294217231305e+22,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "Vb2^",
+      "F^"
+     ],
+     "scalars": {
+      "S": 4,
+      "Phi17": 1
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1234317399646058e-20,
+     "tau_s": 3.099699357470145e-05,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    }
+   ]
+  },
+  "f3 (N1,N1b)": {
+   "SM+Rodd": [
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N1",
+      "T"
+     ],
+     "scalars": {
+      "H10^": 1,
+      "S": 2,
+      "Phi17": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1990014109696372e-17,
+     "tau_s": 2.993176797052487e-08,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N1b",
+      "T"
+     ],
+     "scalars": {
+      "H10": 1,
+      "S^": 2,
+      "Phi17^": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1990014109696372e-17,
+     "tau_s": 2.993176797052487e-08,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N1b",
+      "T^"
+     ],
+     "scalars": {
+      "H10": 1,
+      "S^": 1,
+      "Phi17^": 3
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.443334901077375e-44,
+     "tau_s": 2.6938591173472387e+19,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N1^",
+      "T^"
+     ],
+     "scalars": {
+      "H10": 1,
+      "S^": 2,
+      "Phi17^": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1990014109696372e-17,
+     "tau_s": 2.993176797052487e-08,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N1b^",
+      "T"
+     ],
+     "scalars": {
+      "H10^": 1,
+      "S": 1,
+      "Phi17": 3
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.443334901077375e-44,
+     "tau_s": 2.6938591173472387e+19,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    },
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N1b^",
+      "T^"
+     ],
+     "scalars": {
+      "H10^": 1,
+      "S": 2,
+      "Phi17": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.1990014109696372e-17,
+     "tau_s": 2.993176797052487e-08,
+     "mode": "psi -> F + h (physical light Higgs leg)"
+    }
+   ]
+  },
+  "f4 (N2,N2b)": {
+   "SM+Rodd": [
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N2",
+      "NMm"
+     ],
+     "scalars": {
+      "S^": 2,
+      "Phi17": 4
+     },
+     "derivative": 0,
+     "Gamma_GeV": 4.421354673878912e-09,
+     "tau_s": 1.48868400874647e-16,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 9.0,
+     "fermions": [
+      "N2^",
+      "NMm^"
+     ],
+     "scalars": {
+      "S": 2,
+      "Phi17^": 4
+     },
+     "derivative": 0,
+     "Gamma_GeV": 4.421354673878912e-09,
+     "tau_s": 1.48868400874647e-16,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    }
+   ]
+  },
+  "f5 (N3,N3b)": {
+   "SM+Rodd": [
+    {
+     "dim": 8.0,
+     "fermions": [
+      "N3",
+      "NMm"
+     ],
+     "scalars": {
+      "S": 2,
+      "Phi17": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.6215206666229703e-06,
+     "tau_s": 2.510756479550817e-19,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "N3",
+      "NMm^"
+     ],
+     "scalars": {
+      "S": 1,
+      "Phi17": 3
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.91280074069219e-33,
+     "tau_s": 225968083.15957347,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "N3b",
+      "NMm"
+     ],
+     "scalars": {
+      "S^": 2,
+      "Phi17^": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.6215206666229703e-06,
+     "tau_s": 2.510756479550817e-19,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "N3^",
+      "NMm"
+     ],
+     "scalars": {
+      "S^": 1,
+      "Phi17^": 3
+     },
+     "derivative": 1,
+     "Gamma_GeV": 2.91280074069219e-33,
+     "tau_s": 225968083.15957347,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "N3^",
+      "NMm^"
+     ],
+     "scalars": {
+      "S^": 2,
+      "Phi17^": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.6215206666229703e-06,
+     "tau_s": 2.510756479550817e-19,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    },
+    {
+     "dim": 8.0,
+     "fermions": [
+      "N3b^",
+      "NMm^"
+     ],
+     "scalars": {
+      "S": 2,
+      "Phi17": 3
+     },
+     "derivative": 0,
+     "Gamma_GeV": 2.6215206666229703e-06,
+     "tau_s": 2.510756479550817e-19,
+     "mode": "mass mixing with F, theta = m_mix/M"
+    }
+   ]
+  }
+ }
+}

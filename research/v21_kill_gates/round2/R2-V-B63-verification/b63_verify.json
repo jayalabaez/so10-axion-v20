@@ -1,0 +1,646 @@
+{
+ "content_check": {
+  "round1_candB63_json_equals_task_statement": true,
+  "round1": [
+   [
+    "F",
+    16,
+    1,
+    3
+   ],
+   [
+    "N1",
+    1,
+    -63,
+    1
+   ],
+   [
+    "N1b",
+    1,
+    59,
+    1
+   ],
+   [
+    "N2",
+    1,
+    -58,
+    1
+   ],
+   [
+    "N2b",
+    1,
+    54,
+    1
+   ],
+   [
+    "N3",
+    1,
+    -57,
+    1
+   ],
+   [
+    "N3b",
+    1,
+    61,
+    1
+   ],
+   [
+    "NMm",
+    1,
+    -2,
+    2
+   ],
+   [
+    "Pb",
+    -16,
+    18,
+    1
+   ],
+   [
+    "T",
+    10,
+    2,
+    2
+   ],
+   [
+    "V1",
+    16,
+    -35,
+    2
+   ],
+   [
+    "V2",
+    16,
+    -28,
+    1
+   ],
+   [
+    "V3",
+    16,
+    34,
+    1
+   ],
+   [
+    "Vb1",
+    -16,
+    39,
+    1
+   ],
+   [
+    "Vb2",
+    -16,
+    32,
+    1
+   ],
+   [
+    "Vb3",
+    -16,
+    -30,
+    1
+   ]
+  ]
+ },
+ "so10_selftest": {
+  "dims": {
+   "10": 10,
+   "16": 16,
+   "-16": 16,
+   "45": 45,
+   "54": 54,
+   "120": 120,
+   "126": 126,
+   "-126": 126,
+   "210": 210,
+   "144": 144
+  },
+  "16x16": {
+   "10": 1,
+   "120": 1,
+   "126": 1
+  },
+  "16x16bar": {
+   "1": 1,
+   "45": 1,
+   "210": 1
+  },
+  "10x10": {
+   "1": 1,
+   "45": 1,
+   "54": 1
+  },
+  "16x10": {
+   "-16": 1,
+   "144": 1
+  },
+  "16barx16bar": {
+   "10": 1,
+   "120": 1,
+   "-126": 1
+  },
+  "16barx10": {
+   "16": 1,
+   "-144": 1
+  },
+  "singlet_tests": {
+   "16.16.126bar": 1,
+   "16.16.126": 0,
+   "16bar.16bar.10": 1,
+   "16.16bar.210": 1,
+   "126bar^2": 0,
+   "126.126bar": 1,
+   "210^3": 2,
+   "210.126.126bar": 1,
+   "210.10.126bar": 1,
+   "210.10.126": 1,
+   "10.10.210": 0,
+   "126bar^4": 3
+  }
+ },
+ "anomalies": {
+  "SO10^2_X": "0",
+  "grav_X": "0",
+  "X^3": "0",
+  "net_16_minus_16bar": 3,
+  "SO10^3": "0 identically (SO(10) has no cubic Casimir); net chirality 3 = families",
+  "b_X_integer_X": "101203",
+  "partnerships": {
+   "V1'+Vb1 [conj S]": {
+    "charge_sum": 4,
+    "T_p": "4"
+   },
+   "V2+Vb2 [conj S]": {
+    "charge_sum": 4,
+    "T_p": "4"
+   },
+   "V3+Vb3 [conj S]": {
+    "charge_sum": 4,
+    "T_p": "4"
+   },
+   "T1+T2 Majorana [conj S]": {
+    "charge_sum": 4,
+    "T_p": "2"
+   },
+   "V1''+Pb [Phi17]": {
+    "charge_sum": -17,
+    "T_p": "4"
+   }
+  },
+  "T_S": "14",
+  "T_Phi": "4",
+  "lemmaA_6+2T_S-17/2T_Phi": "0",
+  "S_coupled_Dirac_equivalent_components": 62,
+  "all_zero": true
+ },
+ "couplings": {
+  "terms": [
+   {
+    "fermions": [
+     "F",
+     "F"
+    ],
+    "insertion": "Delta",
+    "gens": "3x3",
+    "n_singlets_plain": 1,
+    "sym_singlets": 1,
+    "antisym_singlets": 0,
+    "flavour_structure": "sym 3x3"
+   },
+   {
+    "fermions": [
+     "F",
+     "F"
+    ],
+    "insertion": "H10",
+    "gens": "3x3",
+    "n_singlets_plain": 1,
+    "sym_singlets": 1,
+    "antisym_singlets": 0,
+    "flavour_structure": "sym 3x3"
+   },
+   {
+    "fermions": [
+     "V1",
+     "Vb1"
+    ],
+    "insertion": "conj[S]",
+    "gens": "2x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "V1",
+     "Pb"
+    ],
+    "insertion": "Phi17",
+    "gens": "2x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "V2",
+     "Vb2"
+    ],
+    "insertion": "conj[S]",
+    "gens": "1x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "Vb2",
+     "Vb3"
+    ],
+    "insertion": "H10",
+    "gens": "1x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "V3",
+     "Vb3"
+    ],
+    "insertion": "conj[S]",
+    "gens": "1x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "T",
+     "T"
+    ],
+    "insertion": "conj[S]",
+    "gens": "2x2",
+    "n_singlets_plain": 1,
+    "sym_singlets": 1,
+    "antisym_singlets": 0,
+    "flavour_structure": "sym 2x2"
+   },
+   {
+    "fermions": [
+     "N1",
+     "N1b"
+    ],
+    "insertion": "S",
+    "gens": "1x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "N2",
+     "N2b"
+    ],
+    "insertion": "S",
+    "gens": "1x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "N3",
+     "N3b"
+    ],
+    "insertion": "conj[S]",
+    "gens": "1x1",
+    "n_singlets_plain": 1
+   },
+   {
+    "fermions": [
+     "NMm",
+     "NMm"
+    ],
+    "insertion": "S",
+    "gens": "2x2",
+    "n_singlets_plain": 1,
+    "sym_singlets": 1,
+    "antisym_singlets": 0,
+    "flavour_structure": "sym 2x2"
+   }
+  ],
+  "n_structures": 12,
+  "bare_masses": [],
+  "phi210_yukawas": [],
+  "family_exotic_yukawas": [],
+  "kinetic_mixings_between_distinct_species": [],
+  "X_allowed_but_SO10_forbidden": [
+   {
+    "fermions": [
+     "Vb2",
+     "Vb3"
+    ],
+    "insertion": "Delta",
+    "gens": "1x1",
+    "n_singlets_plain": 0
+   },
+   {
+    "fermions": [
+     "T",
+     "NMm"
+    ],
+    "insertion": "mass",
+    "gens": "2x2",
+    "n_singlets_plain": 0
+   },
+   {
+    "fermions": [
+     "T",
+     "NMm"
+    ],
+    "insertion": "Phi210",
+    "gens": "2x2",
+    "n_singlets_plain": 0
+   },
+   {
+    "fermions": [
+     "N1",
+     "N3b"
+    ],
+    "insertion": "conj[Delta]",
+    "gens": "1x1",
+    "n_singlets_plain": 0
+   },
+   {
+    "fermions": [
+     "N1",
+     "N3b"
+    ],
+    "insertion": "conj[H10]",
+    "gens": "1x1",
+    "n_singlets_plain": 0
+   },
+   {
+    "fermions": [
+     "N1b",
+     "N3"
+    ],
+    "insertion": "Delta",
+    "gens": "1x1",
+    "n_singlets_plain": 0
+   },
+   {
+    "fermions": [
+     "N1b",
+     "N3"
+    ],
+    "insertion": "H10",
+    "gens": "1x1",
+    "n_singlets_plain": 0
+   }
+  ]
+ },
+ "kernel": {
+  "names": [
+   "F",
+   "V1",
+   "Vb1",
+   "V2",
+   "Vb2",
+   "V3",
+   "Vb3",
+   "T",
+   "Pb",
+   "N1",
+   "N1b",
+   "N2",
+   "N2b",
+   "N3",
+   "N3b",
+   "NMm",
+   "H10",
+   "Delta",
+   "S",
+   "Phi17"
+  ],
+  "n_charges": 20,
+  "constraint_rank": 13,
+  "kernel_dim": 7,
+  "X_in_kernel": true,
+  "round1_basis_in_kernel": {
+   "X": true,
+   "G2": true,
+   "f1": true,
+   "f2": true,
+   "f3": true,
+   "f4": true,
+   "f5": true
+  },
+  "rank_of_X_G2_f1..f5": 7,
+  "basis_spans_kernel": true,
+  "scalar_projection_rank": 2,
+  "scalar_terms_SO10_singlets": {
+   "kappaH H10.H10.S": 1,
+   "Phi210.conj[H10].Delta": 1,
+   "Phi210.conj[H10].conj[Delta].conj[S] (O38-type)": 1,
+   "Delta^2.conj[H10]^2": 1
+  },
+  "G2": {
+   "V1": "-1",
+   "Vb1": "1",
+   "Phi17": "1"
+  },
+  "f": [
+   {
+    "V1": "1",
+    "Vb1": "-1",
+    "Pb": "-1"
+   },
+   {
+    "V2": "1",
+    "Vb2": "-1",
+    "V3": "-1",
+    "Vb3": "1"
+   },
+   {
+    "N1": "1",
+    "N1b": "-1"
+   },
+   {
+    "N2": "1",
+    "N2b": "-1"
+   },
+   {
+    "N3": "1",
+    "N3b": "-1"
+   }
+  ]
+ },
+ "pq": {
+  "PQ_charges": {
+   "F": "1",
+   "V1": "-18",
+   "Vb1": "22",
+   "V2": "-28",
+   "Vb2": "32",
+   "V3": "34",
+   "Vb3": "-30",
+   "T": "2",
+   "Pb": "18",
+   "N1": "-63",
+   "N1b": "59",
+   "N2": "-58",
+   "N2b": "54",
+   "N3": "-57",
+   "N3b": "61",
+   "NMm": "-2",
+   "H10": "-2",
+   "Delta": "-2",
+   "S": "4",
+   "Phi17": "0"
+  },
+  "N": "34",
+  "E": "272/3",
+  "E_over_N": "8/3",
+  "N(X)": "0",
+  "N(G2)": "-2",
+  "N(f_k)": [
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ],
+  "theta_eff_coefficients(theta_S,theta_Phi)": [
+   "17",
+   "-4"
+  ],
+  "theta_eff_gauge_invariant": true,
+  "theta_eff = k*(17 theta_S - 4 theta_Phi), k": "1",
+  "N_DW_mod_gauge": "1",
+  "N_DW_S_phase_alone": "17",
+  "2N": "68"
+ },
+ "mass_matrices": {
+  "16x16bar_singular_values_GeV": [
+   2460278909480.857,
+   5454575989806.106,
+   7127956580611.994,
+   5.18738314061796e+16
+  ],
+  "rank_16": 4,
+  "massless_16_combinations": 3,
+  "massless_16_family_weight": 1.0,
+  "10_singular_values_GeV": [
+   16054291599194.488,
+   45577603010858.09
+  ],
+  "singlet_singular_values_GeV": [
+   2703163416367.5386,
+   2703163416367.539,
+   16635542283303.982,
+   16635542283303.982,
+   20291643953396.62,
+   22802832077945.098,
+   25361003569496.28,
+   25361003569496.29
+  ],
+  "rank_singlets": 8,
+  "note": "random O(0.3) complex Yukawas; exotic 16bar all paired (rank 4), the 3 massless 16 are pure F; T (2x2) and the 8 singlets full rank; F couples only via Y10/Y126 (light families)"
+ },
+ "closure_K17": {
+  "operators": [
+   {
+    "mult": 4,
+    "op": {
+     "N1": [
+      1,
+      0
+     ],
+     "N2b": [
+      1,
+      0
+     ],
+     "S": [
+      0,
+      2
+     ],
+     "Phi17": [
+      1,
+      0
+     ]
+    },
+    "dim": "6",
+    "X": 0,
+    "lorentz_ok": true,
+    "grassmann_nonzero": true
+   },
+   {
+    "mult": 1,
+    "op": {
+     "N1": [
+      0,
+      2
+     ],
+     "N3b": [
+      0,
+      2
+     ],
+     "S": [
+      0,
+      1
+     ]
+    },
+    "dim": "7",
+    "X": 0,
+    "lorentz_ok": true,
+    "grassmann_nonzero": true
+   },
+   {
+    "mult": 2,
+    "op": {
+     "N1b": [
+      1,
+      0
+     ],
+     "N2": [
+      2,
+      0
+     ],
+     "N3b": [
+      1,
+      0
+     ],
+     "S": [
+      0,
+      1
+     ]
+    },
+    "dim": "7",
+    "X": 0,
+    "lorentz_ok": true,
+    "grassmann_nonzero": true
+   }
+  ],
+  "K": "17",
+  "vev_monomial": {
+   "S": -17,
+   "Phi17": 4
+  },
+  "f3": 0,
+  "f4": 0,
+  "f5": 0,
+  "G2": 4,
+  "fermion_fields": 32,
+  "planck_ops": 7,
+  "yukawa_vertices": 6,
+  "loops_if_connected": 4,
+  "loop_integral_dimension_D": 0,
+  "log10_ratio_to_tree_y=0.304": -12.197467406188228,
+  "log10_ratio_to_tree_y=0.350": -11.830300641739097,
+  "log10_ratio_to_tree_y=0.368": -11.699621995799646
+ },
+ "quality": {
+  "dtheta_tree(<S>=2.72e+13)": 4.040463085974693e-12,
+  "dtheta_tree(<S>=3e+13)": 2.1370815995643458e-11,
+  "dtheta_tree(<S>=3.29e+13)": 1.0258645911853737e-10,
+  "dtheta_tree(<S>=3.6e+13)": 4.741352972804082e-10,
+  "<S>_max(dtheta=1e-10)": 32850617890456.88,
+  "y_s_min(M_s=1e13)": 0.3044082772916428,
+  "<S>_max if <Phi17>=2e17": 27906987345282.14,
+  "<S>_max if coefficient 1 (no h.c. factor 2)": 34217729554464.39,
+  "f_a, m_a(ueV) at <S>=2.72e+13": [
+   2260571546487.1147,
+   2.521486218322836
+  ],
+  "f_a, m_a(ueV) at <S>=3.29e+13": [
+   2736481343144.4585,
+   2.0829668779872614
+  ]
+ }
+}

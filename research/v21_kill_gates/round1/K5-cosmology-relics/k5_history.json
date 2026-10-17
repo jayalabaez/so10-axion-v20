@@ -1,0 +1,417 @@
+{
+ "homotopy": {
+  "SO10_to_G3221": "pi_2(SO(10)/G3221) = pi_1(G3221) = Z (one U(1)): GUT monopoles, mass ~ M_U/alpha_U ~ 1e18 GeV; must be inflated away",
+  "Y_loop_minimal_period_in_2pi": 6,
+  "BL_loop_minimal_period_in_2pi": 3,
+  "degree_of_Y_loop_in_BL": "1",
+  "G3221_to_SM_monopoles": "pi_2(G3221/H) = ker(pi_1(H)->pi_1(G3221)) = ker(Z -> Z, degree 1) = 0 : NO monopoles at v_R",
+  "z2_in_connected_SM_subgroup": false,
+  "G3221_to_SM_strings": "H = G_SM x Z_2 with Z_2 = z^2 = (-1)^{3(B-L)} (not in the connected G_SM: it acts as -1 on the SM-singlet nu^c); pi_0(H) = Z_2 -> Z_2 (Kibble-Lazarides-Shafi) strings at v_R; formed only if the transition happens after inflation",
+  "U1X_breaking": "Phi17 (X=17) breaks U(1)_X -> Z_17 (gauge): local strings, pi_1(U(1)/Z_17) = Z; no walls (Z_17 is gauged). S (X=4, gcd(4,17)=1) breaks Z_17 and U(1)_PQ: axion; pure gauge string winding (n_S,n_Phi) = (4,17) carries no axion winding; S-only (1,0) string carries axion winding 17 (17 walls); (1,4) string carries axion winding 1 (one wall, N_DW=1). All irrelevant if the vevs are never restored after inflation."
+ },
+ "windows": [
+  {
+   "M": 3000000000000.0,
+   "HI": 100000.0,
+   "TRH_max_Omega_DM": 116987107960.68558,
+   "TRH_max_1em3_DM": 92845896869.42221,
+   "TRH_max_nX_nB_1em10": 134388831684.73613,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": true,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 1000000.0,
+   "TRH_max_Omega_DM": 47031039998.677444,
+   "TRH_max_1em3_DM": 36730691472.086685,
+   "TRH_max_nX_nB_1em10": 54166474514.15548,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": true,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 10000000.0,
+   "TRH_max_Omega_DM": 20230346395.43055,
+   "TRH_max_1em3_DM": 15463164333.4823,
+   "TRH_max_nX_nB_1em10": 23959856468.617107,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": true,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "TRH_max_Omega_DM": 13764121089.437141,
+   "TRH_max_1em3_DM": 10261196144.469584,
+   "TRH_max_nX_nB_1em10": 16624371358.356392,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 1000000000.0,
+   "TRH_max_Omega_DM": 4419056508.957423,
+   "TRH_max_1em3_DM": 3064506282.422198,
+   "TRH_max_nX_nB_1em10": 5640387151.193453,
+   "isocurvature_ok": false,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": false,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 100000000000.0,
+   "TRH_max_Omega_DM": 1360783587.2433758,
+   "TRH_max_1em3_DM": 751582332.40166,
+   "TRH_max_nX_nB_1em10": 1985416206.0207067,
+   "isocurvature_ok": false,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": false,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 10000000000000.0,
+   "TRH_max_Omega_DM": null,
+   "TRH_max_1em3_DM": null,
+   "TRH_max_nX_nB_1em10": 551075289.5334103,
+   "isocurvature_ok": false,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": false,
+   "thermal_leptogenesis_1e10_ok": false,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 100000.0,
+   "TRH_max_Omega_DM": 266773817090.3783,
+   "TRH_max_1em3_DM": 266773817090.3783,
+   "TRH_max_nX_nB_1em10": 266773817090.3783,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": true,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "False"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 1000000.0,
+   "TRH_max_Omega_DM": 405425342691.8405,
+   "TRH_max_1em3_DM": 322272807678.2253,
+   "TRH_max_nX_nB_1em10": 492336036795.4512,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": true,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 10000000.0,
+   "TRH_max_Omega_DM": 161951905652.27393,
+   "TRH_max_1em3_DM": 127540563455.94635,
+   "TRH_max_nX_nB_1em10": 197621491205.01843,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": true,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "TRH_max_Omega_DM": 107547904326.06792,
+   "TRH_max_1em3_DM": 83612836376.40155,
+   "TRH_max_nX_nB_1em10": 132650670293.64246,
+   "isocurvature_ok": true,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 1000000000.0,
+   "TRH_max_Omega_DM": 31511088002.622234,
+   "TRH_max_1em3_DM": 23226790316.775578,
+   "TRH_max_nX_nB_1em10": 41213613498.04701,
+   "isocurvature_ok": false,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": true,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 100000000000.0,
+   "TRH_max_Omega_DM": 7968327722.365756,
+   "TRH_max_1em3_DM": 5105141835.049043,
+   "TRH_max_nX_nB_1em10": 11783900383.666924,
+   "isocurvature_ok": false,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": false,
+   "HI_above_H_TRH": "True"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 10000000000000.0,
+   "TRH_max_Omega_DM": 1515877345.2990773,
+   "TRH_max_1em3_DM": null,
+   "TRH_max_nX_nB_1em10": 5686994555.810531,
+   "isocurvature_ok": false,
+   "isocurvature_ok_conservative": false,
+   "thermal_leptogenesis_1e9_ok": true,
+   "thermal_leptogenesis_1e10_ok": false,
+   "HI_above_H_TRH": "True"
+  }
+ ],
+ "inflaton_direct_decay": {
+  "M=3e+12": {
+   "Y_max": 1.45985401459854e-22,
+   "Br_times_TRH_over_mphi_max": 9.7323600973236e-23,
+   "comment": "kinematically closed if m_phi < 2 M; with H_I <= 3e7 that needs m_phi/H_I < 2e+05"
+  },
+  "M=1e+13": {
+   "Y_max": 4.37956204379562e-23,
+   "Br_times_TRH_over_mphi_max": 2.9197080291970803e-23,
+   "comment": "kinematically closed if m_phi < 2 M; with H_I <= 3e7 that needs m_phi/H_I < 7e+05"
+  }
+ },
+ "gravitational": {
+  "M_over_HI_min": 85714.28571428571,
+  "comment": "M_X/H_I >= 8.6e4 >> 1: inflationary gravitational production is exponentially suppressed (CCKR hep-ph/0104100 regime M_X < H_I does not apply); graviton-mediated thermal production needs T_max >~ M (not the case in the allowed window)"
+ },
+ "axion_points": [
+  {
+   "label": "three-loop point, y_s=0.305",
+   "M_s": 10000000000000.0,
+   "y_s": 0.305,
+   "v_S": 46367657782724.43,
+   "f_a": 2727509281336.731,
+   "m_a_ueV": 2.089818736457782,
+   "g_agg_GeV_inv": 3.179405965821357e-16,
+   "theta_i_for_Omega_DM": 0.4431180166228158,
+   "theta_i_n7": 0.5140716507668048,
+   "Omega_check": 0.12000000000036959,
+   "H_I_max_GeV": 34566203.18769486,
+   "H_I_max_conservative_half": 17283101.59384743,
+   "r_tensor_at_HI_max": 1.9445377623293476e-14,
+   "V_quarter_GeV": 12074124111301.514,
+   "T_RH_max_instant": 4959855707108.945
+  },
+  {
+   "label": "three-loop point, y_s=0.35",
+   "M_s": 10000000000000.0,
+   "y_s": 0.35,
+   "v_S": 40406101782088.44,
+   "f_a": 2376829516593.4375,
+   "m_a_ueV": 2.3981526483941757,
+   "g_agg_GeV_inv": 3.6484986493031965e-16,
+   "theta_i_for_Omega_DM": 0.48223292010730334,
+   "theta_i_n7": 0.5583628763448312,
+   "Omega_check": 0.12000000000053168,
+   "H_I_max_GeV": 32780903.537784792,
+   "H_I_max_conservative_half": 16390451.768892396,
+   "r_tensor_at_HI_max": 1.7488592728760197e-14,
+   "V_quarter_GeV": 11758184117230.402,
+   "T_RH_max_instant": 4830072646387.3125
+  },
+  {
+   "label": "three-loop point, y_s=0.389",
+   "M_s": 10000000000000.0,
+   "y_s": 0.389,
+   "v_S": 36355104431184.96,
+   "f_a": 2138535554775.586,
+   "m_a_ueV": 2.6653753720723845,
+   "g_agg_GeV_inv": 4.0550456416541243e-16,
+   "theta_i_for_Omega_DM": 0.5157691458648286,
+   "theta_i_n7": 0.5948348845206282,
+   "Omega_check": 0.12000000000080735,
+   "H_I_max_GeV": 31545532.7755617,
+   "H_I_max_conservative_half": 15772766.38778085,
+   "r_tensor_at_HI_max": 1.6195291068290873e-14,
+   "V_quarter_GeV": 11534498842126.332,
+   "T_RH_max_instant": 4738186338271.372
+  },
+  {
+   "label": "y_s=0.40 (ADMX-excluded per FINAL)",
+   "M_s": 10000000000000.0,
+   "y_s": 0.4,
+   "v_S": 35355339059327.375,
+   "f_a": 2079725827019.2573,
+   "m_a_ueV": 2.7407458838790584,
+   "g_agg_GeV_inv": 4.1697127420607965e-16,
+   "theta_i_for_Omega_DM": 0.5249614054027504,
+   "theta_i_n7": 0.6048367310858658,
+   "Omega_check": 0.11999999999873408,
+   "H_I_max_GeV": 31224787.679926604,
+   "H_I_max_conservative_half": 15612393.839963302,
+   "r_tensor_at_HI_max": 1.586762807467867e-14,
+   "V_quarter_GeV": 11475709436733.84,
+   "T_RH_max_instant": 4714036597456.586
+  },
+  {
+   "label": "two-loop low end, y_s=0.31",
+   "M_s": 3000000000000.0,
+   "y_s": 0.31,
+   "v_S": 13685937700384.793,
+   "f_a": 805055158846.1643,
+   "m_a_ueV": 7.080260200020899,
+   "g_agg_GeV_inv": 1.0771757916990388e-15,
+   "theta_i_for_Omega_DM": 0.9131951222684026,
+   "theta_i_n7": 1.0554969413286068,
+   "Omega_check": 0.1199999999967932,
+   "H_I_max_GeV": 21025931.904558476,
+   "H_I_max_conservative_half": 10512965.952279238,
+   "r_tensor_at_HI_max": 7.194879612536351e-15,
+   "V_quarter_GeV": 9416888391935.004,
+   "T_RH_max_instant": 3868306073666.171
+  },
+  {
+   "label": "two-loop low end, y_s=0.39",
+   "M_s": 3000000000000.0,
+   "y_s": 0.39,
+   "v_S": 10878565864408.424,
+   "f_a": 639915639082.8485,
+   "m_a_ueV": 8.907424122606939,
+   "g_agg_GeV_inv": 1.3551566411697588e-15,
+   "theta_i_for_Omega_DM": 1.0399353709240629,
+   "theta_i_n7": 1.2016339978060433,
+   "Omega_check": 0.12000000000010895,
+   "H_I_max_GeV": 19032467.954206303,
+   "H_I_max_conservative_half": 9516233.977103151,
+   "r_tensor_at_HI_max": 5.895263736325037e-15,
+   "V_quarter_GeV": 8959367479260.031,
+   "T_RH_max_instant": 3680363852024.717
+  }
+ ],
+ "splitting": {
+  "M10": 10000000000000.0,
+  "MU": 2.5e+16,
+  "alphaU_inv": 36.0,
+  "dM_over_M_triplet_minus_bidoublet": 0.0041563616661677285,
+  "dM_GeV": 41563616661.677284,
+  "alpha_inv_at_M10": {
+   "3": 45.754,
+   "L": 50.943,
+   "R": 48.037,
+   "BL": 54.471
+  }
+ },
+ "coloured_decay": [
+  {
+   "M10": 10000000000000.0,
+   "dM": 41563616661.677284,
+   "tau_s_MU2p5e16": 1.6878588648583086e-08,
+   "tau_s_MU3p1e16": 3.990459153235995e-08
+  },
+  {
+   "M10": 3000000000000.0,
+   "dM": 15809107128.128176,
+   "tau_s_MU2p5e16": 2.1201474727391706e-06,
+   "tau_s_MU3p1e16": 5.012481828279173e-06
+  }
+ ],
+ "instant_reheating_cross_check": [
+  {
+   "M": 3000000000000.0,
+   "TRH": 100000000000.0,
+   "Y_freeze_in_instant": 1.39313761257596e-23,
+   "Omega_h2": 0.011451591175374391
+  },
+  {
+   "M": 3000000000000.0,
+   "TRH": 300000000000.0,
+   "Y_freeze_in_instant": 1.4059692048344806e-06,
+   "Omega_h2": 1155706686373943.0
+  },
+  {
+   "M": 3000000000000.0,
+   "TRH": 1000000000000.0,
+   "Y_freeze_in_instant": 1.0261710296644524,
+   "Omega_h2": 8.435125863841799e+20
+  },
+  {
+   "M": 10000000000000.0,
+   "TRH": 100000000000.0,
+   "Y_freeze_in_instant": 2.011847417097205e-84,
+   "Omega_h2": 5.512461922846342e-63
+  },
+  {
+   "M": 10000000000000.0,
+   "TRH": 300000000000.0,
+   "Y_freeze_in_instant": 5.8319634094221745e-27,
+   "Omega_h2": 1.597957974181676e-05
+  },
+  {
+   "M": 10000000000000.0,
+   "TRH": 1000000000000.0,
+   "Y_freeze_in_instant": 4.2179076145034415e-07,
+   "Omega_h2": 1155706686373943.0
+  }
+ ],
+ "robustness_k": [
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = Omega_DM, k=0.1",
+   "TRH_max": 15286294877.201162,
+   "TRH_max_over_M": 0.005095431625733721,
+   "note": "ok"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = Omega_DM, k=0.1",
+   "TRH_max": 118195332214.58095,
+   "TRH_max_over_M": 0.011819533221458095,
+   "note": "ok"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = Omega_DM, k=1.0",
+   "TRH_max": 13764121089.437141,
+   "TRH_max_over_M": 0.004588040363145714,
+   "note": "ok"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = Omega_DM, k=1.0",
+   "TRH_max": 107547904326.06792,
+   "TRH_max_over_M": 0.01075479043260679,
+   "note": "ok"
+  },
+  {
+   "M": 3000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = Omega_DM, k=10.0",
+   "TRH_max": 12393521836.821695,
+   "TRH_max_over_M": 0.0041311739456072315,
+   "note": "ok"
+  },
+  {
+   "M": 10000000000000.0,
+   "HI": 30000000.0,
+   "criterion": "Omega_X = Omega_DM, k=10.0",
+   "TRH_max": 98891497519.80945,
+   "TRH_max_over_M": 0.009889149751980944,
+   "note": "ok"
+  }
+ ]
+}

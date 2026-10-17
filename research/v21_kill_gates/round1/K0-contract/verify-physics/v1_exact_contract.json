@@ -1,0 +1,236 @@
+{
+ "anomalies": {
+  "SO10_SO10_X": "0",
+  "grav_X": "0",
+  "X3": "0",
+  "T_S": "14",
+  "T_Phi": "4"
+ },
+ "couplings": {
+  "enumerated": [
+   [
+    "F",
+    "F",
+    "Delta126bar"
+   ],
+   [
+    "F",
+    "F",
+    "H10"
+   ],
+   [
+    "F",
+    "Vec2",
+    "conj[H10]"
+   ],
+   [
+    "PhiV",
+    "PhiVbar",
+    "Phi17"
+   ],
+   [
+    "PhiVbar",
+    "Vec3bar",
+    "H10"
+   ],
+   [
+    "SingM",
+    "SingN",
+    "S"
+   ],
+   [
+    "SingM",
+    "TenA",
+    "conj[H10]"
+   ],
+   [
+    "SingN",
+    "TenB",
+    "H10"
+   ],
+   [
+    "TenA",
+    "TenB",
+    "conj[S]"
+   ],
+   [
+    "Vec1",
+    "Vec1bar",
+    "conj[S]"
+   ],
+   [
+    "Vec2",
+    "Vec2bar",
+    "conj[S]"
+   ],
+   [
+    "Vec3",
+    "Vec3bar",
+    "conj[S]"
+   ]
+  ],
+  "n_enumerated": 12,
+  "declared": [
+   [
+    "F",
+    "F",
+    "Delta126bar"
+   ],
+   [
+    "F",
+    "F",
+    "H10"
+   ],
+   [
+    "F",
+    "Vec2",
+    "conj[H10]"
+   ],
+   [
+    "PhiV",
+    "PhiVbar",
+    "Phi17"
+   ],
+   [
+    "PhiVbar",
+    "Vec3bar",
+    "H10"
+   ],
+   [
+    "SingM",
+    "SingN",
+    "S"
+   ],
+   [
+    "SingM",
+    "TenA",
+    "conj[H10]"
+   ],
+   [
+    "SingN",
+    "TenB",
+    "H10"
+   ],
+   [
+    "TenA",
+    "TenB",
+    "conj[S]"
+   ],
+   [
+    "Vec1",
+    "Vec1bar",
+    "conj[S]"
+   ],
+   [
+    "Vec2",
+    "Vec2bar",
+    "conj[S]"
+   ],
+   [
+    "Vec3",
+    "Vec3bar",
+    "conj[S]"
+   ]
+  ],
+  "enum_minus_declared": [],
+  "declared_minus_enum": []
+ },
+ "model_rows_bad": [],
+ "kappaH_in_v21_LagHC": false,
+ "kappaH_in_v20_LagHC": true,
+ "LagNoHC_identical_to_v20": true,
+ "v20_LagHC_scalar_only_terms": [
+  "kappaH H10.H10.S"
+ ],
+ "kernel": {
+  "rank": 12,
+  "dim": 5,
+  "hand_parametrisation_in_kernel": true,
+  "generators_in_kernel": {
+   "X": true,
+   "G2": true,
+   "f1": true,
+   "f2": true,
+   "f3": true
+  },
+  "generators_rank": 5
+ },
+ "PQ": {
+  "N": "34",
+  "E": "272/3",
+  "E_over_N": "8/3",
+  "two_N": "68",
+  "N_of_generators": {
+   "X": "0",
+   "G2": "-2",
+   "f1": "0",
+   "f2": "0",
+   "f3": "0"
+  },
+  "PQ_charges": {
+   "F": 1,
+   "TenA": -1,
+   "TenB": 5,
+   "Vec1": 0,
+   "Vec1bar": 4,
+   "Vec2": -3,
+   "Vec2bar": 7,
+   "Vec3": -6,
+   "Vec3bar": 10,
+   "PhiV": 8,
+   "PhiVbar": -8,
+   "SingN": -3,
+   "SingM": -1,
+   "H10": -2,
+   "Delta126bar": -2,
+   "S": 4,
+   "Phi17": 0
+  }
+ },
+ "N_DW": {
+  "theta_eff": "17 theta_S -4 theta_Phi",
+  "quotient_generator": [
+   -1,
+   -4
+  ],
+  "winding_mod_gauge": 1,
+  "N_DW_S_phase_only": 17
+ },
+ "axion_numbers": {
+  "rows": {
+   "y_s=0.304": {
+    "S": 32894736842105.266,
+    "f_a": 2736481343144.4585,
+    "m_a_ueV": 2.082966877987261,
+    "dtheta_declared": 1.0230782535353556e-10
+   },
+   "y_s=0.350": {
+    "S": 28571428571428.574,
+    "f_a": 2376829511222.4507,
+    "m_a_ueV": 2.3981526538133466,
+    "dtheta_declared": 9.324016230440385e-12
+   },
+   "y_s=0.374": {
+    "S": 26737967914438.504,
+    "f_a": 2224305692944.867,
+    "m_a_ueV": 2.5625974064983357,
+    "dtheta_declared": 3.0195521692411605e-12
+   },
+   "y_s=0.388": {
+    "S": 25773195876288.66,
+    "f_a": 2144047240407.3284,
+    "m_a_ueV": 2.6585235122511146,
+    "dtheta_declared": 1.6166665021390687e-12
+   }
+  },
+  "S_max_declared": 32850617890456.88,
+  "y_min_declared_Ms1e13": 0.3044082772916428
+ },
+ "lemma_violations": [],
+ "R_odd": [
+  "TenA",
+  "TenB",
+  "SingN",
+  "SingM"
+ ]
+}

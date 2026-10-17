@@ -1,0 +1,48 @@
+GATE K2 - top-down 10_H + 126bar_H flavour fit for v21-F17-G3221 (2026-10-16)
+VERDICT: UNDECIDED (global minimisation not converged; best point found chi2 = 218 for 1 dof, 4 pulls > 3 sigma,
+but the search has not reached the basin the literature reports for this same Yukawa structure, chi2 ~ 15-23).
+
+Files (all under this folder): so10_clebsch.py / clebsch.json (exact Clebsches), inputs_mz.py / inputs_mz.json (M_Z inputs),
+rge.py (SM two-loop + G3221 one-loop RG), fit.py (parametrisations, observables, seesaw, chi2), stage2b.py (full top-down refit),
+de_run.py / de_run2.py (differential-evolution global search), de_I_0.json (best proxy point), s2_de_I_0.json (its full-RG refit),
+logs *.log.  No repository checkout was written to (git status of _g6_nogo empty; _record changed only by the other job's commit 8707fda).
+
+1. Yukawa sector (EXACT, charge arithmetic): X(F)=1, X(H10)=-2 => F.F.H10 allowed (1+1-2=0), F.F.H10* forbidden (=4); F.F.Delta126bar
+   allowed. No renormalisable F-16bar mixing (F(1).16bar(X').phi needs X' in {-1,1,+-3,-5,16,-18}; the 16bars carry 4,7,10,-8),
+   no 16_H scalar exists for F-10_F or F-singlet mixing: the light sector is exactly Y10 (symmetric) + Y126 (symmetric).
+   The 10_F mass term is 10_F(-1).10_F(5).S* (-1+5-4=0). Undeclared-but-allowed terms such as 16bar(10).16bar(-8).H10 / .Delta126bar
+   do not involve F.
+2. Clebsches (EXACT, so10_clebsch.py, 32-dim Clifford algebra, unit-norm canonical components): 10: c_d=c_e=sqrt2 (ratio -1 in my
+   sign convention), c_u=c_nu=sqrt2; 126bar colour-singlet (15,2,2): c_d=c_u=2/sqrt3, c_e=c_nu=2*sqrt3 with ratio +3, i.e. -3
+   relative to the 10; nu^c nu^c singlet: 4*sqrt2; nu nu triplet: 4*sqrt2. Hence with Y126 normalised by the doublet coupling
+   (M_d^126 = v_d^126 Y126): M_R = 2*sqrt6 * v_R * Y126 = 4.90 v_R Y126 and M_L = 4.90 v_L Y126 (v = canonical complex-component vev;
+   a sqrt2 convention change in v_R rescales this). Perturbativity map: Y10_act = Y10_def/(2 sqrt2), Y126_act = (sqrt3/4) Y126_def.
+3. Inputs at M_Z (NUM, PDG-2024 inputs + 4-loop QCD running, my own code): m_u=1.248 MeV (3.4%), m_d=2.717 (1.8%), m_s=54.04 (1.3%),
+   m_c=0.6322 GeV (1.6%), m_b=2.866 (0.5%), m_t=169.5+-0.5 (from y_t(M_t)=0.9369 run with the SM RGE), m_e=0.4867, m_mu=102.73,
+   m_tau=1746.4 MeV (one-loop QED). Cross-check: Huang-Zhou 2020 values (recalled) 1.23/2.67/53.2/0.620/2.839/168.3 MeV-GeV: agree to
+   1-2% (scheme). CKM: s12=0.22501(68), s23=0.04182(80), s13=0.003731(106), delta=1.147(23). PMNS: NuFIT 6.0 NO (as in the repo).
+   Error scheme 'floor1': 1% theory floor on all nine masses (uncomputed G3221 thresholds, scheme); strict scheme prepared, not run.
+4. RG (NUM): SM two-loop matrix Yukawa RGEs (validated: y_t(2e16)=0.413, y_b=0.0057, y_tau=0.0096, alpha^-1=(37.3,46.0,45.7));
+   G3221 one-loop with T2+F17 content b=(9.33,13.67,8.33,9.89), gauge couplings at M_U alpha^-1=(28.3,28.0,28.0,32.8[B-L]) (one-loop,
+   no thresholds; CRITIC's two-loop root has 25.9). Targets at M_U=2.13e16, v_R=2.6e13: y_t=0.390, y_b=0.00538, y_tau=0.00917.
+   Type-I seesaw at v_R (all nu^c integrated out at v_R), SM kappa running below. G3221 Yukawa RGE approximations stated in rge.py.
+5. Fit (NUM): parametrisation in the up-diagonal basis, F complex symmetric (12), r, s complex (4), cd126 (1) [+ v_L (2)]: 17 (19)
+   parameters vs 18 observables => dof = 1 (type I), -1 (type I+II).  Charged sector alone: exact solutions exist (chi2 = 0,
+   6-dim manifold, 40% LM success from structured seeds).  Joint with neutrinos: direct LM from 40 structured seeds: best 420;
+   continuation from charged solutions: >= 261 (type II), 4038 (type I); differential evolution (popsize 25, 1500 it, 6.4e5 evals):
+   215.7 (proxy) -> full top-down refit 218.0 (pen 0).  Pulls at that point (type I, T2, floor1): m_u -0.2, m_c -0.4, m_t -0.6,
+   m_d -2.3, m_s +2.7, m_b +0.3, m_e +0.1, m_mu -3.0, m_tau -0.3, s12 +0.7, s23 -0.2, s13 -0.4, delta_CKM +5.1, sin2th12 -4.8,
+   sin2th23 -9.6, sin2th13 -7.3, dm21 +1.2, dm31 -0.4.  Perturbative: max|Y10_act|=0.004, max|Y126_act|=0.016; M_R=(5.9e12,
+   7.4e11, 6.4e10) GeV; down-doublet 126 fraction cd126=0.017.  Longer DE runs (popsize 30 x 5000 it, type I and I+II) were
+   running when this report was forced out and are killed at the end of the turn.
+6. Literature (LIT-abstract only): Dueck-Rodejohann 1306.4468 (abstract: non-SUSY minimal chi2 1.1 without RGE, 'full RG analysis
+   worsens the fit considerably'); Ohlsson-Pernow 1811.xxxx/JHEP11(2018)028 (minimal Yukawa sector fails to reproduce EW-scale
+   observables; extended sector ok for NO) and JHEP06(2019)085 (type I or I-dominated mixtures acceptable, NO only); Joshipura-Patel
+   1102.5148 (minimal non-SUSY type-I dominance 'excellent fits', no intermediate-scale RG); BBS 1612.04329 (needs 120_H).
+   The rescue-study numbers chi2 = 14.8 (OP 2019) and ~23 (DR) were not re-read here.
+7. Why UNDECIDED, not FAIL: the literature's chi2 ~ 15-23 for the identical 10+126bar(PQ) Yukawa structure with RG means my optimiser
+   has not found the known basin (my best 218 is an optimiser limit, not a physics bound); dof = 1 so a converged chi2 ~ 15-25 is the
+   plausible outcome, i.e. marginal-to-failing against the chi2 <= 15 / all pulls < 3 sigma criterion.  Missing: converged global
+   search (DE 5000 it x several seeds, type I and II), strict error scheme, T3 content, v_R = 3.4e13, kappa_R/sqrt2 convention.
+8. Vacuum record for K3: the fit needs the SM doublet composition |c_u|/|c_d| ~ r ~ 70 (tan-beta-like), a down-doublet 126bar
+   admixture cd126 ~ 1e-2, an up-doublet 126 admixture |r s cd126|, and v_R Y126 ~ 1e12-6e12 GeV for the heaviest nu^c.

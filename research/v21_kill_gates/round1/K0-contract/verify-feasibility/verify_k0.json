@@ -1,0 +1,332 @@
+{
+ "anomalies": {
+  "SO10^2 X": "0",
+  "grav X": "0",
+  "X^3": "0",
+  "T_S": "14",
+  "T_Phi": "4",
+  "b_X": "12865/3",
+  "all_zero": true,
+  "alpha_X_inv_min_at_M_U=2.13e16": 3235.4088343627077,
+  "g_X_max_at_M_U=2.13e16": 0.062321851691341495,
+  "alpha_X_inv_min_at_<Phi17>=1e17": 2179.9331491493604,
+  "g_X_max_at_<Phi17>=1e17": 0.07592474539675181
+ },
+ "couplings": {
+  "enumerated": [
+   "F.F.Delta126bar",
+   "F.F.H10",
+   "F.Vec2.conj[H10]",
+   "PhiV.PhiVbar.Phi17",
+   "SingN.SingM.S",
+   "TenA.SingM.conj[H10]",
+   "TenA.TenB.conj[S]",
+   "TenB.SingN.H10",
+   "Vec1.Vec1bar.conj[S]",
+   "Vec2.Vec2bar.conj[S]",
+   "Vec3.Vec3bar.conj[S]",
+   "Vec3bar.PhiVbar.H10"
+  ],
+  "count": 12,
+  "declared_equals_enumerated": true,
+  "missing_in_draft_LagHC_vs_v20": "kappaH H10.H10.S (scalar cubic, census orbit O12) - present in v20 LagHC, absent in v21 draft"
+ },
+ "kernel_pq": {
+  "rank": 12,
+  "kernel_dim": 5,
+  "kernel_vectors_with_N_QCD": [
+   {
+    "vector": {
+     "F": 0,
+     "TenA": 0,
+     "TenB": 0,
+     "Vec1": -1,
+     "Vec1bar": 1,
+     "Vec2": 0,
+     "Vec2bar": 0,
+     "Vec3": 0,
+     "Vec3bar": 0,
+     "PhiV": 0,
+     "PhiVbar": 0,
+     "SingN": 0,
+     "SingM": 0,
+     "H10": 0,
+     "Delta126bar": 0,
+     "S": 0,
+     "Phi17": 0
+    },
+    "N_QCD": "0"
+   },
+   {
+    "vector": {
+     "F": 0,
+     "TenA": 0,
+     "TenB": 0,
+     "Vec1": 0,
+     "Vec1bar": 0,
+     "Vec2": 0,
+     "Vec2bar": 0,
+     "Vec3": 1,
+     "Vec3bar": -1,
+     "PhiV": -1,
+     "PhiVbar": 1,
+     "SingN": 0,
+     "SingM": 0,
+     "H10": 0,
+     "Delta126bar": 0,
+     "S": 0,
+     "Phi17": 0
+    },
+    "N_QCD": "0"
+   },
+   {
+    "vector": {
+     "F": 0,
+     "TenA": -1,
+     "TenB": 1,
+     "Vec1": 0,
+     "Vec1bar": 0,
+     "Vec2": 0,
+     "Vec2bar": 0,
+     "Vec3": 0,
+     "Vec3bar": 0,
+     "PhiV": 0,
+     "PhiVbar": 0,
+     "SingN": -1,
+     "SingM": 1,
+     "H10": 0,
+     "Delta126bar": 0,
+     "S": 0,
+     "Phi17": 0
+    },
+    "N_QCD": "0"
+   },
+   {
+    "vector": {
+     "F": 1,
+     "TenA": -2,
+     "TenB": 6,
+     "Vec1": 4,
+     "Vec1bar": 0,
+     "Vec2": -3,
+     "Vec2bar": 7,
+     "Vec3": 2,
+     "Vec3bar": 2,
+     "PhiV": 0,
+     "PhiVbar": 0,
+     "SingN": -4,
+     "SingM": 0,
+     "H10": -2,
+     "Delta126bar": -2,
+     "S": 4,
+     "Phi17": 0
+    },
+    "N_QCD": "34"
+   },
+   {
+    "vector": {
+     "F": 0,
+     "TenA": 0,
+     "TenB": 0,
+     "Vec1": 0,
+     "Vec1bar": 0,
+     "Vec2": 0,
+     "Vec2bar": 0,
+     "Vec3": 0,
+     "Vec3bar": 0,
+     "PhiV": -1,
+     "PhiVbar": 0,
+     "SingN": 0,
+     "SingM": 0,
+     "H10": 0,
+     "Delta126bar": 0,
+     "S": 0,
+     "Phi17": 1
+    },
+    "N_QCD": "-2"
+   }
+  ],
+  "PQ=X-17G2": {
+   "F": 1,
+   "TenA": -1,
+   "TenB": 5,
+   "Vec1": 0,
+   "Vec1bar": 4,
+   "Vec2": -3,
+   "Vec2bar": 7,
+   "Vec3": -6,
+   "Vec3bar": 10,
+   "PhiV": 8,
+   "PhiVbar": -8,
+   "SingN": -3,
+   "SingM": -1,
+   "H10": -2,
+   "Delta126bar": -2,
+   "S": 4,
+   "Phi17": 0
+  },
+  "N": "34",
+  "2N": "68",
+  "E": "272/3",
+  "E/N": "8/3",
+  "N_DW_mod_gauge_bruteforce": 1,
+  "N_DW_S_only_strings": 17
+ },
+ "lemma_violations": [],
+ "variant_E": {
+  "operators": [
+   [
+    "Vec1* Vec3* H10 S*",
+    2
+   ],
+   [
+    "Vec1bar* Vec2bar* H10 S* Phi17",
+    2
+   ],
+   [
+    "Vec2* Vec2* H10 S*",
+    2
+   ],
+   [
+    "Vec2bar* Vec2bar* Vec3bar* Vec3bar* Phi17 Phi17",
+    1
+   ]
+  ],
+  "yukawa_mass_insertions": {
+   "y1 (S* Vec1 Vec1bar)": 2,
+   "y2 (S* Vec2 Vec2bar)": 4,
+   "y3 (S* Vec3 Vec3bar)": 2
+  },
+  "X_of_each_operator": {
+   "Vec1* Vec3* H10 S*": 0,
+   "Vec1bar* Vec2bar* H10 S* Phi17": 0,
+   "Vec2* Vec2* H10 S*": 0,
+   "Vec2bar* Vec2bar* Vec3bar* Vec3bar* Phi17 Phi17": 0
+  },
+  "chirality_balance_per_species": {
+   "F": 0,
+   "TenA": 0,
+   "TenB": 0,
+   "Vec1": 0,
+   "Vec1bar": 0,
+   "Vec2": 0,
+   "Vec2bar": 0,
+   "Vec3": 0,
+   "Vec3bar": 0,
+   "PhiV": 0,
+   "PhiVbar": 0,
+   "SingN": 0,
+   "SingM": 0
+  },
+  "all_balanced": true,
+  "K_planck_power": 12,
+  "scalar_net_before_kappa": {
+   "H10": 6,
+   "S": -14,
+   "Phi17": 4,
+   "Delta": 0
+  },
+  "kappa_vertices": 3,
+  "vev_monomial": {
+   "H10": 0,
+   "S": -17,
+   "Phi17": 4,
+   "Delta": 0
+  },
+  "vev_X": 0,
+  "vev_PQ": -68,
+  "so10_singlet_structures_exist": true,
+  "fermion_fields": 32,
+  "fermion_propagators_mass_basis": 8,
+  "H_propagators": 3,
+  "vertices_mass_basis": 7,
+  "loops": 5
+ },
+ "NDA": {
+  "formula": "dtheta = c^7 (16pi^2)^-5 (<S>/MPl)^4 (<S><Phi>/MPl^2)^2 (<Phi>^2/MPl^4) (m_pair^2)^3 (M_s/M_loop)^8 / chi, m_pair^2 = kappa<S> (or lambda_{DDHH} v_R^2); the y^8 M_s^8 of the 8 mass insertions cancels the M_s^-8 loop integral when M_loop = M_s",
+  "baseline(<S>=3.3e13,<Phi>=1e17,kappa=5e12,M_s=1e13)": 4.184672148994935,
+  "log10": 0.621661438563491,
+  "researcher_value_log10": 1.12,
+  "per_operator_coefficient_needed_for_1e-10 (7 operators)": 0.0303822403100299,
+  "kappa_needed_for_1e-10_at_planned_scales_GeV": 1440178063.2734246,
+  "Im10_doublet_mass_at_that_kappa_GeV": 436008605823.431,
+  "alternative_pairing_lambda_DDHH_vR2(lambda=0.1,vR=2.6e13)": 0.2877727677240411,
+  "heavy_H_only(M_loop=M_U=2.1e16, m_pair^2=M_U^2)": 2.112374987795755e-07,
+  "scan": {
+   "<S>=3.3e+13,<Phi>=1e+17,kappa=5e+12": 4.184672148994935,
+   "<S>=3.3e+13,<Phi>=1e+17,kappa=5e+10": 4.1846721489949335e-06,
+   "<S>=3.3e+13,<Phi>=1e+17,kappa=1e+09": 3.347737719195947e-11,
+   "<S>=3.3e+13,<Phi>=3e+16,kappa=5e+12": 0.03389584440685896,
+   "<S>=3.3e+13,<Phi>=3e+16,kappa=5e+10": 3.389584440685896e-08,
+   "<S>=3.3e+13,<Phi>=3e+16,kappa=1e+09": 2.7116675525487167e-13,
+   "<S>=3.3e+13,<Phi>=1e+16,kappa=5e+12": 0.0004184672148994932,
+   "<S>=3.3e+13,<Phi>=1e+16,kappa=5e+10": 4.184672148994932e-10,
+   "<S>=3.3e+13,<Phi>=1e+16,kappa=1e+09": 3.3477377191959455e-15,
+   "<S>=2.6e+13,<Phi>=1e+17,kappa=5e+12": 0.4895489364550534,
+   "<S>=2.6e+13,<Phi>=1e+17,kappa=5e+10": 4.895489364550532e-07,
+   "<S>=2.6e+13,<Phi>=1e+17,kappa=1e+09": 3.916391491640427e-12,
+   "<S>=2.6e+13,<Phi>=3e+16,kappa=5e+12": 0.003965346385285932,
+   "<S>=2.6e+13,<Phi>=3e+16,kappa=5e+10": 3.9653463852859324e-09,
+   "<S>=2.6e+13,<Phi>=3e+16,kappa=1e+09": 3.1722771082287465e-14,
+   "<S>=2.6e+13,<Phi>=1e+16,kappa=5e+12": 4.895489364550534e-05,
+   "<S>=2.6e+13,<Phi>=1e+16,kappa=5e+10": 4.895489364550533e-11,
+   "<S>=2.6e+13,<Phi>=1e+16,kappa=1e+09": 3.916391491640427e-16,
+   "<S>=8.6e+12,<Phi>=1e+17,kappa=5e+12": 2.320181934003391e-05,
+   "<S>=8.6e+12,<Phi>=1e+17,kappa=5e+10": 2.320181934003391e-11,
+   "<S>=8.6e+12,<Phi>=1e+17,kappa=1e+09": 1.856145547202713e-16,
+   "<S>=8.6e+12,<Phi>=3e+16,kappa=5e+12": 1.8793473665427476e-07,
+   "<S>=8.6e+12,<Phi>=3e+16,kappa=5e+10": 1.8793473665427474e-13,
+   "<S>=8.6e+12,<Phi>=3e+16,kappa=1e+09": 1.5034778932341981e-18,
+   "<S>=8.6e+12,<Phi>=1e+16,kappa=5e+12": 2.320181934003391e-09,
+   "<S>=8.6e+12,<Phi>=1e+16,kappa=5e+10": 2.320181934003391e-15,
+   "<S>=8.6e+12,<Phi>=1e+16,kappa=1e+09": 1.856145547202713e-20
+  },
+  "kappa_max_from_HS_certificate_GeV": 93338095116624.28,
+  "Im10_doublet_mass_max_GeV": 110998326813490.33,
+  "Im10_doublet_mass_at_kappa=5e12_GeV": 25690465157330.258
+ },
+ "Vec3_pair_decay": {
+  "researcher_dim10_F_Vec3_Delta*_S^5_Phi17*_is_SO10_singlet": false,
+  "reason": "16x16 contains 126 (so F.F.Delta126bar is invariant); F Vec3 Delta* = 16.16.126 has no singlet",
+  "genuine_dim10": "F* PhiVbar* S*^6 Phi17 / MPl^6 (F-PhiVbar mixing)",
+  "mixing_mass_dim10_GeV": 6.195692370491349e-13,
+  "angle_via_PhiVbar": 6.195692370491349e-30,
+  "Gamma_GeV_dim10_route": 7.63677220889491e-48,
+  "tau_s_dim10_route": 8.618824576610565e+22,
+  "genuine_dim11_no_heavy_line": "F Vec3 Delta S^6 Phi17* / MPl^7 (nu^c channel, <Delta_R>=v_R)",
+  "mixing_mass_dim11_GeV": 6.6155236810174576e-18,
+  "angle_dim11_nondegenerate": 6.615523681017458e-31,
+  "tau_s_dim11_route": 3.7798040051962843e+24,
+  "age_of_universe_s": 4.35e+17,
+  "conclusion": "tau >> age of the universe: effectively a second STABLE superheavy relic (EST), not 1e15-1e16 s"
+ },
+ "ys_cap_pure_yukawa": {
+  "M_s=1e+13 y(MPl)<=sqrt(4pi)": 0.32171617935134017,
+  "M_s=1e+13 y(MPl)<=1": 0.3074066879712046,
+  "M_s=1e+13 y(MPl)<=0.65 (coupled-channel a0<=1/2, N-scaling)": 0.289290521573972,
+  "M_s=1e+13 y(MPl)<=1.27 (coupled-channel a0<=1/2, sqrtN-scaling)": 0.3130793329089593,
+  "M_s=3e+12 y(MPl)<=sqrt(4pi)": 0.3072653780813547,
+  "M_s=3e+12 y(MPl)<=1": 0.2947264034928768,
+  "M_s=3e+12 y(MPl)<=0.65 (coupled-channel a0<=1/2, N-scaling)": 0.27864820427632914,
+  "M_s=3e+12 y(MPl)<=1.27 (coupled-channel a0<=1/2, sqrtN-scaling)": 0.29971440864658366
+ },
+ "ys_cap_note": "gauge terms widen the cap by ~0.05 (researcher: 0.322 -> 0.374 least-gauged at M_s=1e13); the cap moves by < 0.02 between y(MPl) <= sqrt(4 pi) and y(MPl) <= 1 (log-dominated)",
+ "axion": {
+  "y_s=0.304 (<S>=3.29e13)": [
+   2736481343144.4585,
+   2.082966877987261
+  ],
+  "y_s=0.374": [
+   2224305692944.867,
+   2.5625974064983357
+  ],
+  "y_s=0.388": [
+   2144047240407.3284,
+   2.6585235122511146
+  ],
+  "M_s=3e12,y=0.35": [
+   713048854833.0145,
+   7.9938421629396705
+  ]
+ }
+}

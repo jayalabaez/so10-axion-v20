@@ -1,0 +1,156 @@
+GATE K3 (v21-F17-G3221): vacuum, G6 and the Higgs quartic with the v20 51-parameter potential kept verbatim
+==========================================================================================================
+Working folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21\K3-vacuum-g6-higgs\
+Repository checkouts were imported read-only (sys.path); no writer was run; git status of both checkouts unchanged
+(baseline snapshots baseline_git_status_*.txt).
+Labels: EXACT (proved), NUM (computed, float64 on the repo's exact-X compiler rows; stated precision), LIT, EST, CONJ.
+
+0. VERDICT (preview; details below): FAIL for the declared T2/T3 light content at tree level; the G3221 vacuum itself exists.
+--------------------------------------------------------------------------------------------------------------------
+(filled in at the end of the run; see sections 2-7)
+
+1. METHOD
+---------
+* Chart: the repo's canonical 486-real chart (210 real components; H10, Sigma126bar(-i Hodge), S, Phi17 as (x+iy)/sqrt2
+  pairs; kinetic form q^T q/2).  Point: Phi = p P + a A + omega W (P = e6789 (1,1,1), A = *_6(e01+e23+e45) (15,1,1),
+  W = (e01+e23+e45)^(e67+e89) (15,1,3); unit chart norm), Sigma = r sigma_std (sigma_std = z1^..^z5, the Y = 0 SM
+  singlet of (10bar,1,3)), H = 0, S = s, Phi17 = x.  Orientations run: A20 (p,a) = (cos20,sin20), A45, A70, Am45
+  (p,-a: the D-parity conjugate orientation relative to Delta_R), W45 (p = a = 0.612, omega = 0.5; G3211).
+  r = 1.2e-3, s = 1.6e-3, x = 4.0 in |Phi| = 1 units.
+* V = sum_i c_i D_i(q) is LINEAR in the 51 exact-X couplings (44 directions; 7 complex).  The repo's
+  target.parameter_rows gives (value, gradient, 486x486 Hessian) per parameter at any state (~75 s/point).
+  Stationarity J c = 0: rank J = 6 exactly (p, a, omega, |Sigma|, |S|, |Phi17| directions; the 9-dim SM-singlet
+  subspace minus the 3 U(1) phases), Ward identity T^T J = 3e-13; c = N y with N the 45-dim null space, so every
+  solution below is exactly stationary (|grad| <= 1e-11).
+* Symmetry: tangent rank 33/34/35 (so(10) / +U(1)_X / +PQ = 47 - dim SM = 35) at every point: the Hessian kernel is
+  exactly the 35 Goldstones (3 singlet phases + (3,2)_{1/6}+(3,2)_{5/6}+(3,1)_{2/3}+(1,1)_1 of the coset).
+* SM-isotypic block reduction (exact Casimirs; 26 isotypic types; highest-weight slices; multiplicities checked by
+  D = ctype*m*dR for every block): the 51 Hessians reduce to m x m Hermitian blocks; e.g. (1,2)_{1/2}: m = 5
+  (Phi(10bar,2,2), H_u, H_d*, Sigma_u, Sigma_d*), (8,2)_{1/2}: m = 2, (8,3)_0, (1,3)_0: m = 1, (1,1)_0: m = 9.
+* Convex feasibility (cutting-plane LP, HiGHS, exact in y): maximise the heavy gap t subject to
+  lambda_min(block | Goldstone complement) >= t for heavy blocks, eps_lo <= lambda <= eps_hi for light blocks
+  (eps = [0.5e-6, 3e-6] ~ r^2 window), invariant light subspaces for mixed blocks (sequential update), per-degree
+  boxes |quartic| <= 1, |cubic| <= 2, |mass^2| <= 40, optionally the singlet-channel unitarity |a0| <= 1/2 as cuts.
+  For all-light ("sandwich") and heavy blocks the problem is exactly convex: a converged LP optimum is the true
+  maximum of the heavy gap.  Every solution is re-verified on the full 486x486 Hessian (zero/negative/light/heavy counts).
+* Pure-sector sum rules: with only the 210 couplings (O07, O17, O48 x4) the Hessian on the 210 G3221 irreps at a
+  G3221 point is linear in 6 parameters, 2 of which are fixed by stationarity; the mass forms of the 11
+  non-Goldstone 210 irreps are extracted exactly (common-eigenvector check <= 8e-15) and their rank computed.
+
+2. THE G3221 VACUUM EXISTS AS A TREE-LEVEL LOCAL MINIMUM (nothing tuned light)  [NUM, exact stationarity]
+--------------------------------------------------------------------------------------------------------
+Light-by-vev content is only the G3221 irrep (1,1,3)_{B-L=2} of Delta_R (radial (1,1)_0 and the doubly charged (1,1)_2;
+(1,1)_1 eaten) plus the S radial mode; the coloured parts (6bar,1,3)_{-2/3}, (3bar,1,3)_{2/3} of the Pati-Salam
+(10bar,1,3) are separate G3221 irreps and can sit at M_U (the LP confirms exact SU(2)_R degeneracy within each:
+sextets 0.84, triplets 0.154, singlet ~0 in one test).  Forcing the whole PS (10bar,1,3) light (the rescue study's
+wording) is INCOMPATIBLE with a heavy remainder (joint heavy gap collapses to ~4e-6 ~ 3 r^2; conflict analysis
+A45_conflict_alpha.json), so the configuration refinement is: Delta_R at v_R means (1,1,3)_2 only.
+Maximal heavy gap t (boxes |quartic| <= 1) with full-Hessian verification (35 zero, 0 negative, 4 vev-light, 447 heavy):
+   A45: t = 0.0755   A20: t = 0.0186   A70: t = 0.0891   Am45: t = 0.0034   W45 (omega = 0.5): no PSD solution found
+   (216 zero / 16 negative modes at the LP endpoint; the 210 mass forms have rank 2 there) -> the G3211 variant fails.
+Gauge-boson masses from the chart tangents (M^2 = (g^2/2) G^T G, index-1 normalisation): M_WR = g r |Phi| exactly
+(so v_R == r|Phi|), M_ZR = sqrt5 g r |Phi|, SO(10)/G3221 bosons M_X/g = 0.577-0.645 |Phi| at A45.  Hence for
+M_X = 2.5e16 and alpha_U^-1 ~ 37 (g ~ 0.58): |Phi| ~ 7e16 GeV and v_R = 3e13 corresponds to r ~ 4e-4; the runs used
+r = 1.2e-3 (structure unchanged; the light window scales as r^2).
+Tunings for this baseline: none beyond stationarity (the vev conditions); the heavy spectrum sits at
+m^2 >= t |Phi|^2 before the unitarity rescaling.
+
+3. THE DECLARED LIGHT CONTENT T2/T3 IS NOT TUNABLE: TREE-LEVEL SUM RULES  [NUM on exact rows; structure exact]
+-------------------------------------------------------------------------------------------------------------
+3a. 210 sector.  At every G3221 point the 11 non-Goldstone 210 G3221-irrep masses span a rank-3 space
+   (6 couplings - 2 stationarity - 1 flat combination), i.e. 8 linear sum rules (least-squares residual <= 7e-14):
+   LP "min m^2(X) subject to all other 210 irreps >= 1" (homogeneous, so a value k means m^2(X) >= k min(others)):
+      A45 : (8,3,1)_0 >= 5.73, (1,3,1)_0 >= 1.93, (3,3,1)_{2/3} >= 3.20 ...   (only (8,1,1)#1 and (3,1,1)_{5/3} free)
+      A20 : (8,3,1)_0 >= 8.52, (1,3,1)_0 >= 5.17;   A70 : (8,3,1)_0 >= 5.60, (1,3,1)_0 free
+      Am45: (8,3,1)_0 free, (1,3,1)_0 free, (3,3,1)_{2/3} free -- but BOTH light together: max min(others)/max(targets)
+            = 1.007 (pair210.py), i.e. the rest of the 210 collapses to the same scale;
+      W45 : rank 2, every (15,3,1) member locked (>= 9.6 .. 28).
+   => with the v20 potential a G3221 vacuum can carry at most ONE of (8,3,1)_0, (1,3,1)_0 light (and only for
+      p*a < 0 relative to Delta_R); T2 and T3 both demand both.  Mechanism: the real 210 has 1 mass, 1 cubic and
+      4 quartic invariants for ~14 G3221 irreps; the Sigma/H/S/Phi17 portals add only universal shifts + O(r^2).
+3b. 126bar sector (Sigma-only blocks, couplings O05, O14, O25, O26, O27x4, O44x6; 12 masses, rank 6):
+      (8,2,2)_0 >= 3.16 min(others) at A45, >= 18.6 at Am45, >= 1.0 at A70  => (8,2,2)_0 cannot be the lightest
+      Sigma multiplet: tuning it light drags the (10,3,1) and the rest of (15,2,2) with it.
+3c. Full 51-parameter LP, single tuned multiplet (everything exact and converged; A45 (8,3,1) re-run with 1500
+   cutting-plane iterations gives the same t = 5.24e-7):
+      block light   | A20            A45            A70            Am45
+      bidoublet     | 4.0e-6 (267L)  8.0e-6 (183L)  6.6e-6 (273L)  theta0=35deg 8.0e-6 (132L); theta0=0: t = 0.0425 (12 L)  <-- OK
+      (8,2,2)_0     | 1.2e-5 (174L)  4.6e-5 (68L)   8.7e-4 (68L)   1.7e-6 (239L)
+      (8,3,1)_0     | 6.2e-8 (183L)  5.2e-7 (184L)  1.7e-7 (183L)  3.4e-3 (28L)  <-- OK alone
+      (1,3,1)_0     | 5.3e-7 (183L)  1.3e-6 (292L)  2.3e-6 (155L)  3.4e-3 (7L)   <-- OK alone
+   (t = maximal heavy gap; L = number of light real modes on the full Hessian; eps window [0.5e-6, 3e-6]).
+   Full T2 at A45: t = 5.2e-7 with 418 light modes; T2 minus any one member: t <= 1.6e-6 (A45_lt_T2_no_*).
+   The bidoublet collapse at theta0 = 35deg was an initialisation artefact of the sequential subspace update; with a
+   pure-H10 initial composition the light bidoublet is clean (Am45_bid_th0: heavy partners at 0.018-0.042 and 0.79-3.7).
+
+4. PERTURBATIVE UNITARITY (singlet channel; the repo's exact trace lemma re-derived and re-implemented)  [NUM]
+------------------------------------------------------------------------------------------------------------
+alpha_A = Tr_A Hess V4(e_A), beta_{A|B} = Tr_A Hess V4(e_B) from fresh rows at unit vectors of the five
+G-irreducible blocks (unit_rows_traces.json); M_AA = alpha_A, M_AB = sqrt(n_B/n_A) beta_{A|B}, a0 = eig(M)/(16 pi);
+the exact crossing symmetry n_B beta_{A|B} = n_A beta_{B|A} holds to 1e-12 (consistency check of the implementation).
+Box-saturated LP vertices are non-perturbative (A45 vev-only: a0_max = 77, 210-dominated: alpha_Phi = 3876); a0_max
+is a convex function of c, so |a0| <= 1/2 was added as LP cuts ("unit" runs, section 5).  Caveat: only the
+G-singlet two-particle channel is bounded; non-singlet channels (e.g. the 54/770-type channels of Sym^2(210)) are
+not computed here, so a0 <= 1/2 in this channel is necessary, not sufficient (the same scope as the repo's record).
+
+5. UNITARITY-NORMALISED SPECTRA AND THE BIDOUBLET COMPOSITION (Am45)  [NUM]   -- filled from the chained runs
+-------------------------------------------------------------------------------------------------------------
+(see Am45_cb_*.json, Am45_mix*.json; summary inserted in section 8)
+
+6. ONE-LOOP (Coleman-Weinberg) CURVATURE OF THE LIGHT DIRECTIONS  [NUM, Landau gauge, vev-fixed, mu = |Phi|]
+------------------------------------------------------------------------------------------------------------
+Method: V1 = (1/64 pi^2)[sum_s m_s^4 (ln m_s^2 - 3/2) + 3 sum_V M_V^4 (ln M_V^2 - 5/6)], scalar masses from fresh
+Hessian rows at q +- eta v, gauge masses from the chart tangents at the displaced points (g = 0.58); d^2V1/dv^2 by a
+3-point stencil along one representative light eigenvector per light level.  Fermion loops (F17 sector: masses
+~ y<S>, y<Phi17>, and the 16_F Yukawas) are NOT included.  The number to compare with the tree m^2 ~ 1e-6 is the
+generic one-loop shift ~ (couplings) x M_heavy^2/(16 pi^2); see section 8 for the computed ratios.
+
+7. TREE-LEVEL LIGHT-DOUBLET QUARTIC lambda_eff  [NUM, exact finite differences of a quartic]
+-------------------------------------------------------------------------------------------
+V is quartic, so H(q +- eta u) give d_u H and d_u^2 H exactly: b = (d_u H) u = d^3V/du^2 dphi, V4 = u^T d_u^2 H u;
+V4_eff = V4 - 3 b^T M^-1 b over the heavy physical modes; lambda_eff = V4_eff/6 (V = lambda (H^dag H)^2, neutral
+component h/sqrt2).  The light-state responses (-3 b_phi^2/m_phi^2 for the v_R-scale states) are listed separately:
+they are the tree-level thresholds at v_R.  Numbers in section 8.
+
+7b. TUNINGS AND BARBIERI-GIUDICE SENSITIVITIES (reduced blocks; eps ~ r^2 = 1.44e-6 window)  [NUM]
+--------------------------------------------------------------------------------------------------
+Each tuned light level is one independent cancellation among O(1)-O(17) terms; BG_max = max_i |c_i dm^2/dc_i|/m^2:
+   light bidoublet (bid_th0)  : BG = 3.4e7 (O06 vs the Phi17 portal O33 x^2 = 16.9) and 5.6e6 for the second doublet
+   light bidoublet (bid_th60) : BG = 8.5e6 / 1.3e6
+   (8,3,1)_0 alone (oct831)   : BG = 2.3e7 (O07, O48, O42)          (1,3,1)_0 alone (trip131): BG = 2.7e8 (O48, O42)
+   vev-light (1,1,3)_2 states : BG = 1e4 - 1e5 (the vev condition; O44, O05, O14)
+Tuning count for the maximal realisable content at Am45 (bidoublet + ONE of (8,3,1)_0/(1,3,1)_0, see section 8):
+2 (bidoublet: both doublets at ~v_R; the splitting between them is automatic) + 1 = 3 tunings of relative size
+~ r^2 = 1e-6 (4e-7 at the physical r), plus the usual electroweak tuning of one doublet; the Phi17 vev (x = 4)
+enters the doublet mass through O33 |H|^2 |Phi17|^2 at the level 16 c33, which is why BG ~ 1e7 rather than 1e6.
+
+8. DECISIVE COMBINATIONS AT Am45 (full 51-parameter LP, exact stationarity, full-Hessian verification)  [NUM]
+-------------------------------------------------------------------------------------------------------------
+   light content                      | heavy gap t | light real modes (expected if clean) | verdict
+   bidoublet (pure H10 start)         | 0.0425      | 12  (8 + 4 vev-light)                | clean local minimum
+   bidoublet, wide window [1e-6,1e-4] | 0.0548      | 12                                   | clean
+   bidoublet, 75% Sigma(15,2,2) admix | 0.0023      | 12                                   | clean (heavy floor 0.048|Phi|)
+   bidoublet + (8,3,1)_0              | 0.0550      | 36  (8 + 24 + 4)                     | clean
+   bidoublet + (1,3,1)_0              | 0.0513      | 15  (8 + 3 + 4)                      | clean
+   bidoublet + (8,2,2)_0              | 1.7e-6      | 244 (expected 76)                    | COLLAPSE (Sigma sum rules)
+   (8,3,1)_0 + (1,3,1)_0              | 3.9e-6      | 188 (expected 31)                    | COLLAPSE (210 sum rules)
+   full T2                            | 1.7e-6      | 424 (expected 103)                   | COLLAPSE
+   T3 (adds a 2nd bidoublet, (8,1,1)) | not run: contains T2                                | excluded a fortiori
+Maximal realisable "T2-like" content of the v20 potential at a G3221 vacuum: bidoublet (any admixture) + exactly one
+of {(8,3,1)_0, (1,3,1)_0}; neither (8,2,2)_0 nor the (8,3,1)+(1,3,1) pair can be light while the rest is heavy.
+
+9. UNITARITY-NORMALISED BASELINE AND ONE-LOOP NUMBERS  [NUM]
+-----------------------------------------------------------
+* Am45 vev-only with |a0_singlet| <= 1/2 imposed (loose boxes): heavy gap t = 0.0205 (a0 eigenvalues saturate at
+  +-0.5): heavy scalars m >= 0.143 |Phi| ~ 1.0e16 GeV for |Phi| ~ 7e16 GeV; 35 zero, 0 negative, 4 vev-light, 447 heavy.
+  (The bidoublet + unitarity and the admixture + unitarity variants: section 10.)
+* One-loop vev-fixed CW curvature (Landau gauge, mu = |Phi|, g = 0.58, scalars + gauge bosons, no fermions) along
+  the light directions of the bid_th0 solution (box units, eta = 0.05, 3-point stencil; the tree stencil value
+  includes the quartic eta^2 term, see cw_bid_th0.log):
+     light doublet  : m^2_tree = 5.0e-7,  d^2V1/dv^2 = -5.36    (ratio -1.1e7)
+     (1,1)_2 Delta_R: m^2_tree = 1.4e-6,  d^2V1/dv^2 = -0.40    (ratio -2.9e5)
+     (1,1)_0 radial : m^2_tree = 3.0e-6,  d^2V1/dv^2 = -0.20    (ratio -6.8e4)
+  i.e. the one-loop corrections are 1e5-1e7 times the tuned tree masses (and negative): the tuned light states do NOT
+  stay at their tree values without re-tuning; the tuning must be redone at one loop (same count, same BG order).
+  The vev-light Delta_R states inherit the same statement for their common mass; their splittings at O(r^2) and the
+  G6-type IR running (M_U -> v_R) of the light EFT were not computed (missing computation, section 11).

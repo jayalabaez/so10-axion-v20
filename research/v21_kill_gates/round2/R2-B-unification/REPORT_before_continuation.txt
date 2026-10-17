@@ -1,0 +1,453 @@
+GATE R2-B (unification, Landau, proton decay for the REALISABLE light contents with the B63 fermions)
+v21-F17-B63-G3221 -- REPORT (2026-10-16)
+======================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-B-unification\
+Labels: EXACT (exact arithmetic / proved), NUM (computed; uncertainty stated), LIT (read; here only abstracts and
+search snippets = LIT-abstract / LIT-snippet), EST (order of magnitude / convention-dependent), CONJ (argued).
+Repository checkouts _g6_nogo (54a2cd1) and _record (8707fda) were only imported read-only (r2b_coeffs.py); git status
+--short: 0 lines in both before and after (checked inside r2b_coeffs.py and at the end).  _rescope was not touched.
+
+0. VERDICT: UNDECIDED  (no flavour-capable content passes ROBUSTLY; one passes nominally; not FAIL)
+--------------------------------------------------------------------------------------------------
+Criterion: PASS if a flavour-capable content (C1, C2 or C1') has a two-loop solution with tau_p > 2.4e34 yr and
+Lambda_2L > M_Pl,red robust under the threshold scan, with the three-loop statement quantified; FAIL if no
+flavour-capable content has any two-loop solution passing tau_p and Landau; else UNDECIDED.
+
+Decisive numbers (two loops, B63 S-sector at M_s = 1e13 with y_s = 0.336, Phi pair at 1e17, MS-bar heavy-vector
+constant included, Am45 (3,1,1)_{4/3} at 0.894 M_X, c = 0; tau in the repository normalisation, tau_dir = tau/4.53
+in the direct-lattice normalisation derived in section 9):
+  content                         v_R        M_U        aU^-1   tau [yr]   tau_dir    L2/MPl  L3/MPl
+  C0  bid + (8,3,1) + Delta_R     6.63e12    3.02e15    33.26   6.2e33     1.4e33     4.6     1.72    FAIL tau
+  C1  2 bid + (8,3,1) + Delta_R   7.78e12    2.18e15    33.53   1.7e33     3.8e32     3.9     1.44    FAIL tau
+  C2  2 bid + Delta_R             2.13e10    6.05e15    34.64   1.08e35    2.38e34    14.2    5.20    pass (repo) /
+                                                                                                      knife-edge (dir)
+  C1' 2 bid + (1,3,1) + Delta_R   1.14e11    3.20e15    34.91   8.6e33     1.9e33     9.3     3.36    FAIL tau
+Threshold scan (independent log-uniform: light states x1/3..x3 of v_R per SM multiplet incl. W_R; GUT scalars
+x1/2..x2 per G3221 multiplet; 200 combined samples per content): fraction with tau > 2.4e34 AND Lambda_2L > M_Pl:
+  C0 9.0% (direct normalisation 1.5%), C1 0.5% (0%), C2 86.5% (49%), C1' 20% (0.5%).
+Landau: Lambda_2L > M_Pl,red in 100% of all samples of all four contents (min 2.3 M_Pl for C1, 8.4 for C2);
+Lambda_3L > M_Pl,red in 99-100% (C2 min 3.06 M_Pl) at M_s = 1e13; at M_s = 3e12 C0/C1 fail three loops.
+Hence:
+* C1 is dead at two loops (nominal tau = 1.7e33, a factor 14 short; 1 of 200 scan points passes; max over the
+  Planck-operator scan 3.3e33).  C1' fails nominally by a factor 2.8 (passes only in a 20% threshold tail, and at
+  Planck coefficient c >= +0.8 with s = -1).  C0 (flavour-dead reference) fails by a factor 3.9.
+* C2 passes nominally (tau = 1.08e35 yr, repo normalisation, margin x4.5; Lambda_2L = 14 M_Pl, Lambda_3L = 5.2 M_Pl)
+  but NOT robustly: 13.5% of the declared threshold scan fails Super-K (min 5.2e33 yr); in the direct-lattice
+  normalisation its nominal tau = 2.38e34 yr is 0.99 x the bound (knife edge) and only 49% of the scan passes; with
+  the only REALISABLE GUT spectrum available (the explicit K3 vacuum points P831/P831b, transplanted, section 6) it
+  fails by a factor 1.7-9 (tau = 2.7e33-1.4e34 yr).  So "not FAIL" rests on C2's nominal point in the repository
+  normalisation and on the declared x1/2..x2 window.
+* Item (e): C2's v_R = 2.1e10 GeV (scan range 1e9-3.6e11) lies BELOW the type-I seesaw window 1e11-1e14 (only 5% of
+  scan points, 1% in the direct normalisation, satisfy tau, Landau AND v_R >= 1e11).  C0/C1/C1' have v_R in the window
+  but fail tau.  No realisable flavour-capable content satisfies tau + Landau + seesaw window at its nominal point.
+* Minimal rescues (section 12; all need R2-A realisability, none is in the K3-realisable list): adding ONE more light
+  210 multiplet to C1 -- (8,1,3)_0 [from (15,1,3)] or (6,2,2)_{2/3} [from (10,2,2)] -- gives v_R = 2.7e11 / 9.5e12,
+  M_U = 2.4e16 / 1.9e16, tau = 1.7e37 / 6.2e36 yr, Lambda_2L = 3.4 / 2.4 M_Pl (C1 + (8,2,2)_0 also works but K3 excludes
+  a light (8,2,2)_0 at Am45).  Under the declared threshold scan C1 + (8,1,3)_0 is two-loop robust (tau >= 7.8e34 in every sample, direct
+  normalisation >= 1.7e34 at the extreme corner; Lambda_2L >= 2.1 M_Pl at M_s = 1e13) with v_R in the seesaw window in
+  85-100% of samples, but three loops fail at M_s = 3e12 (9% pass) and for a coherent GUT x1/2 spectrum (0.80-0.83);
+  C1 + (6,2,2)_{2/3} is two-loop robust at M_s = 1e13 (tau >= 1.3e35, Lambda_2L >= 1.39) but fails the two-loop
+  Landau test in 12% of the M_s = 3e12 samples, and its three-loop scale is below M_Pl,red in 35% (M_s = 1e13) to
+  100% (M_s = 3e12, or GUT x1/2..x1) of the samples (section 12).  With the P831-type spectrum C1 + (6,2,2) loses the two-loop Landau test (0.95) and
+  C1 + (8,1,3) the three-loop one (0.52) while tau still passes (section 6).  Neither was tested for realisability
+  by K3 (that is R2-A's question).
+* The binding constraint is proton decay, not Landau: alpha_U^-1 = 33-35 for the realisable contents (fewer light
+  states than T2), so the SO(10) x U(1)_X alpha = 1 scale is far above M_Pl,red at two loops; the B63 U(1)_X feedback
+  is negligible (alpha_10^-1(M_Pl) shifts by <= 0.2) once g_X(M_U) <~ 0.011 (required for the U(1)_X itself).
+* Three-loop statement (quantified): including the per-factor pure three-loop terms in the G3221/SM phases moves M_U
+  by +0.7-1.2% and tau by +3-5% (EST; mixed three-loop terms and two-loop matching omitted); the SO(10)-phase PGJ term
+  lowers the alpha = 1 scale by a factor 2.7-2.8 (C2: 14.2 -> 5.2 M_Pl) but it stays above M_Pl,red for C2 and C1' at
+  every M_s in [3e12, 1.21e13] and Phi-pair mass >= 3e16 (C2: min 1.70 M_Pl even with the Phi pair at M_U;
+  C1': min 1.41 for M_Phi >= 3e16, 0.99 with the Phi pair at M_U and M_s = 3e12; C0/C1 fail 3L at M_s = 3e12); the loop expansion of the SO(10) phase is not
+  controlled (2L/1L term ratio at M_U = b2 alpha_U/(4 pi b1) = 1.50 for C2), so Lambda itself is convention-defined.
+Exact missing computations (to turn UNDECIDED into PASS or FAIL):
+  (M1) an explicit C2 (or C1', or rescue-content) vacuum point of the v20 potential and its heavy spectrum, run through
+       the threshold code (r2b_p831.py does this in 2 s per point): the declared x1/2..x2 window vs the P831-type
+       spectrum (states at 0.10-0.3 M_X) decides C2;
+  (M2) the hadronic normalisation of p -> e+ pi0 fixed from the primary literature (repository formula vs direct
+       lattice W0; factor 4.53), which decides C2's nominal point (margin x4.5 vs x0.99);
+  (M3) realisability (R2-A) of C2 and of the rescue contents C1 + (8,1,3)_0 / C1 + (6,2,2)_{2/3}.
+The flavour issue (K2: two-bidoublet fits chi2 ~ 220) and the seesaw scale for C2 (v_R ~ 2e10) are outside this
+gate's criterion but are listed in section 10 as cross-gate conflicts.
+
+1. METHOD, CONVENTIONS, VALIDATION
+----------------------------------
+Code (all in this folder; K1's library copied, not imported from round 1):
+  r2b_lib.py       = K1 k1_lib.py (exact Machacek-Vaughn b_i, b_ij for product groups; PGJ single-group three-loop
+                     table; DOP853 integrator with an optional single-coupling Landau event).
+  r2b_model.py     generalised K1 model: any set of light G3221 multiplets taken from the complete G3221 table of
+                     210 (real) + 126bar + 10 (complex) (Goldstones removed; completeness re-checked EXACT in every
+                     factor), B63 S-sector 3 x (16+16bar) + 2 x 10 Weyl at M_s, Phi pair 16(-35)+16bar(18) at M_Phi,
+                     SM-language light thresholds at v_R (SM Higgs and the Delta_R^+ Goldstone removed), heavy
+                     G3221 thresholds at M_U, (3,1,1)_{4/3} vector at the Am45 ratio, MS-bar heavy-vector constant
+                     (switchable sign), Planck operator with exact Am45 Clebsches, SO(10) x U(1)_X running with the
+                     exact B63 U(1)_X coefficients and U(1)_X shooting to a prescribed alpha_X^-1(M_Pl,red).
+  r2b_validate.py  reproduces K1 and the K1 feasibility skeptic EXACTLY (see below).
+  r2b_coeffs.py    exact coefficient tables + cross-checks against the repository (read-only imports).
+  r2b_nominal.py   nominal 1/2/3-loop solutions of C0, C1, C2, C1' for the three S_V conventions.
+  r2b_scan.py      grid (M_s, y_s, S_V, M_Phi, U(1)_X), threshold Monte Carlo + coherent extremes, Planck c scan.
+  r2b_rescue.py    minimal-addition search (one or two extra light G3221 multiplets).
+  r2b_p831.py      GUT thresholds of the explicit K3 vacuum points P831 / P831b (realisable-spectrum sample).
+  r2b_analytic.py  one-loop analytic structure (A, B) and the axion band.
+Running: t = ln(mu/GeV); d alpha_i^-1/dt = -b_i/(2 pi) - sum_j b_ij alpha_j/(8 pi^2) + Y_i/(32 pi^3)
+  - b3_i alpha_i^2/(32 pi^3).  Segments: SM (1 Higgs doublet) [M_Z, min(M_s, v_R)]; SM + B63 S-sector [M_s, v_R]
+  if M_s < v_R; G3221 (+ S-sector above M_s) [v_R, M_U]; SO(10) x U(1)_X [M_U, M_Phi], + Phi pair above M_Phi.
+  Inputs alpha_1^-1 = 59.02, alpha_2^-1 = 29.57, alpha_3 = 0.1179 at M_Z (repository inputs).  Two-loop Yukawa
+  terms as in K1 (y_t, 14 y_s^2 for the B63 S-sector since T_S = 14, 4 y_phi^2, 10 Tr Y10^2 + 63/4 Tr Y126^2 in the
+  SO(10) phase; Tr Y126^2 = 0.5).  Three loops: PGJ gauge+matter b3 in the SO(10) phase (exact); per-factor pure
+  three-loop terms in the SM/G3221 phases ('sm3L' runs; mixed alpha_i^2 alpha_j terms and three-loop Yukawa terms
+  omitted, EST); two-loop threshold matching is NOT included (needed for a consistent three-loop treatment).
+Unification solver: unknowns (ln v_R, ln M_U, alpha_2R^-1(v_R)); conditions alpha_i^-1(M_U) (after thresholds) equal
+  to alpha_U^-1 (1 + eps_i); M_U := mass of the (3,2,2)_{-2/3} vectors (the proton-decay mediators).
+Validation (r2b_validate.json): with K1's settings (S_V off, (3,1,1) at M_U, y_s = 0.345) T2: 1L 1.4060e13 /
+  4.6310e16 / 26.578; 2L 2.4965e13 / 2.0448e16 / 27.102, tau_p = 8.64e36 yr (K1: identical to all quoted digits);
+  T3: 2.9583e13 / 2.9140e16 / 26.129 (identical); Lambda_2L/M_Pl = 2.431 (K1 2.417, skeptic 2.43), Lambda_3L = 1.055
+  (K1 1.051, skeptic 1.056).  Skeptic K3-contents (gauge-only 2L): bid+Delta_R 2.8627e9 / 1.7883e16 / 33.917, tau =
+  7.91e36; T2 minus (8,2,2) 8.0172e12 / 2.2967e15 / 33.267, tau = 2.07e33 (identical to the skeptic's json).
+
+2. EXACT COEFFICIENTS (r2b_coeffs.json) [EXACT]
+-----------------------------------------------
+Contents (light at v_R, besides 3 x 16_F and the B63 S-sector): C0 = 126bar/10 bidoublet (one combination) +
+(8,3,1)_0 [210, real] + Delta_R (1,1,3)_2 [126bar]; C1 = both (1,2,2)_0 (the 10's and the 126bar's) + (8,3,1)_0 +
+Delta_R; C2 = both bidoublets + Delta_R; C1' = both bidoublets + (1,3,1)_0 [210, real] + Delta_R.  (With a complex
+H10 and one 126bar there are exactly two (1,2,2)_0 multiplets, so 'two light bidoublets' = all of them.)
+One loop, G3221 = (SU3, SU2L, SU2R, B-L), GUT-normalised B-L, with the S-sector (without):
+  C0  (23/6, 9, 7, 89/6)       (-11/2, -1/3, -7/3, 11/2)
+  C1  (23/6, 28/3, 22/3, 89/6) (-11/2, 0, -2, 11/2)
+  C2  (7/3, 20/3, 22/3, 89/6)  (-7, -8/3, -2, 11/2)
+  C1' (7/3, 7, 22/3, 89/6)     (-7, -7/3, -2, 11/2)
+  SM (41/10, -19/6, -7); SM + B63 S-sector (403/30, 37/6, 7/3) (universal shift (2/3) T_S = 28/3, T_S = 14).
+Two loop rows (with S), e.g. C2: SU3 (454/3, 27/2, 27/2, 13/6), SU2L (36, 380/3, 9, 9/2), SU2R (36, 9, 436/3, 33/2),
+B-L (52/3, 27/2, 99/2, 229/6); C1: (643/3, 99/2, 27/2, 13/6), (132, 604/3, 9, 9/2), (36, 9, 436/3, 33/2),
+(52/3, 27/2, 99/2, 229/6); all tables in r2b_coeffs.json.
+Per-factor pure three-loop (EST input, single-group PGJ): C2 (94841/54, 173543/432, 177839/432, -415949/864).
+SO(10) phase (identical to K1's v21 content multiplet by multiplet, since B63 has T_S = 14, T_Phi = 4):
+  below M_Phi (b1, b2, b3) = (16/3, 20891/6, 142437589/864); above (8, 7267/2, 5041501/32).
+Cross-checks (all True): every G3221 and SM table equals the repository's two_loop_thresholds_v20.mv_gauge_coefficients
+(real scalars as complex x 1/2); SM b, b_ij equal the literature (41/10, -19/6, -7; 199/50 ... -26); SM pure
+three-loop equals Mihaila-Salomon-Steinhauser 1201.5868 (-388613/24000, 324953/1728, 65/2) through this gate's
+per-factor PGJ routine; QCD b3 for n_f = 5, 6: -9769/54, 65/2; SO(10) B63 b1, b2, b3 equal the repository's
+g7 pgj_b/content_invariants/mv_single_group; the repository pins 132706057/864 and 109873879/864 are reproduced;
+the PGJ table is identical to the repository's (_record/g7_decoupled_singlet_benchmark_evidence_v20.py); scalar
+completeness (heavy + light + 30 Goldstones = full 210 + 126bar + 10 in every factor) for all four contents.
+One-loop light thresholds at v_R: W_R^+- (vector), Delta_R^{++}, the three extra doublets of the two bidoublets (one
+for C0), (8,3)_0 / (1,3)_0 where present; the Delta_R^+ Goldstone and the SM Higgs are removed.
+
+3. HEAVY-VECTOR MS-bar MATCHING CONSTANT (item b)
+-------------------------------------------------
+Result used (sign fixed by derivation; labels below):  at mu = M_V,
+     alpha_i^-1(low, MS-bar) = alpha_G^-1(high, MS-bar) - [C2(G) - C2(H_i)]/(12 pi) = alpha_G^-1 - S_V,i/(12 pi),
+with S_V,i = sum over the heavy (eaten) vectors of the factor-i Dynkin index = (5, 6, 6, 8) for (SU3, SU2L, SU2R, B-L)
+at M_U [EXACT from the (3,2,2)_{-2/3} + (3,1,1)_{4/3} vectors and their conjugates], and 6/5 for U(1)_Y (GUT norm.)
+from W_R^+- at v_R [EXACT].  In the code's convention alpha_high = alpha_low + (1/2pi) sum b^k ln(M_k/mu) + S_V/(12 pi).
+Derivation [EXACT given two literature facts]: (i) in DR-bar the one-loop matching has no constant for any spin
+(Langacker-Polonsky hep-ph/9210235, LIT-abstract/snippet; Antoniadis-Kounnas-Tamvakis 1982, LIT-abstract);
+(ii) for an unbroken group 1/alpha_DR = 1/alpha_MS - C2(G)/(12 pi) (alpha_s^DR = alpha_s^MS (1 + alpha_s/4pi) for SU(3);
+Martin-Vaughn hep-ph/9308222 computes this scheme difference, LIT-abstract; coefficient quoted from standard knowledge,
+NOT re-read in this session).  Then alpha_i,MS^-1 = alpha_i,DR^-1 + C_i/(12pi) = alpha_G,DR^-1 + C_i/(12pi) =
+alpha_G,MS^-1 - (C_G - C_i)/(12pi).  This is the Weinberg-Hall structure lambda_i ~ (C_G - C_i) - 21 Tr(t_V^2 ln(M_V/mu))
+in which the constant and the vector log enter with opposite relative signs (the round-1 feasibility skeptic's form
+-(2/21)(b_V+b_GB) + 2(b_V+b_GB) ln(M_V/mu) has the same structure: its "+1" sign).  The round-1 physics skeptic's claim
+"MS-bar has no constant, a DR-bar-like constant would be the ambiguity" is the reverse of (i)+(ii) and is not adopted.
+Primary papers (Weinberg PLB 91 (1980) 51, Hall NPB 178 (1981) 75, Bertolini-Di Luzio-Malinsky 0912.1796) could not
+be read (no WebFetch; the searches returned no text of them): the sign is therefore EXACT-conditional on (i), (ii).
+Size: shifts (0.133, 0.159, 0.159, 0.212) in alpha^-1 at M_U and 0.032 in alpha_1^-1 at v_R; effect on the solutions
+(two loops): M_U +4.5-4.6% (all four contents); tau_p +20.2-20.4%; v_R +4.8-5.0%; Lambda_2L +8.3-8.5%.  All main
+numbers below use the derived sign; the opposite sign and 'off' are tabulated as systematics.
+
+4. UNIFICATION SOLUTIONS: 1L / 2L / 3L, nominal B63 point (r2b_nominal.json) [NUM, solver residual < 1e-13]
+-----------------------------------------------------------------------------------------------------------
+M_s = 1e13, y_s = 0.336, Phi pair 1e17, Tr Y126^2 = 0.5, c = 0, (3,1,1) at 0.894 M_X.  'sm3L' = per-factor pure
+three-loop terms also below M_U.  tau_dir = direct-lattice normalisation (section 9).
+  content S_V    loops   v_R        M_U        aU^-1   tau [yr]   tau_dir    Lambda/MPl (2L or 3L)
+  C0  MS-bar     1L      3.71e12    6.56e15    32.80   1.34e35    2.96e34    -
+  C0  MS-bar     2L      6.63e12    3.02e15    33.26   6.20e33    1.37e33    4.62
+  C0  MS-bar     3L      6.63e12    3.02e15    33.26   6.20e33    1.37e33    1.72
+  C0  MS-bar     3L+sm3L 6.65e12    3.06e15    33.23   6.50e33    1.44e33    1.72
+  C0  off        2L      6.32e12    2.89e15    33.14   5.15e33    1.14e33    4.26
+  C0  opposite   2L      6.03e12    2.76e15    33.03   4.28e33    9.45e32    3.93
+  C1  MS-bar     1L      4.63e12    4.46e15    33.09   2.91e34    6.42e33    -
+  C1  MS-bar     2L      7.78e12    2.18e15    33.53   1.70e33    3.76e32    3.91
+  C1  MS-bar     3L+sm3L 7.80e12    2.20e15    33.51   1.78e33    3.93e32    1.44
+  C1  off/opp.   2L      7.42e12/7.08e12  2.08e15/1.99e15         1.42e33/1.18e33
+  C2  MS-bar     1L      9.04e9     1.38e16    34.31   2.87e36    6.32e35    -
+  C2  MS-bar     2L      2.13e10    6.05e15    34.64   1.08e35    2.38e34    14.17
+  C2  MS-bar     3L+sm3L 2.13e10    6.10e15    34.62   1.11e35    2.46e34    5.20
+  C2  off        2L      2.03e10    5.78e15    34.52   8.97e34    1.98e34    13.06
+  C2  opposite   2L      1.94e10    5.53e15    34.41   7.46e34    1.65e34    12.04
+  C1' MS-bar     1L      5.45e10    6.88e15    34.57   1.80e35    3.96e34    -
+  C1' MS-bar     2L      1.14e11    3.20e15    34.91   8.58e33    1.89e33    9.30
+  C1' MS-bar     3L+sm3L 1.14e11    3.22e15    34.90   8.80e33    1.94e33    3.36
+  C1' off/opp.   2L      1.09e11/1.04e11  3.06e15/2.93e15         7.13e33/5.93e33
+The two-loop M_U is 0.44-0.49 x the one-loop M_U (two-loop terms of the realisable contents plus the B63 S-sector);
+this halving is what moves C0/C1/C1' below the Super-K line (their one-loop tau would pass for C0, C1' and, marginally, C1).
+The S-sector itself is universal at one loop (EXACT) and changes the two-loop M_U by ~4-5% between M_s = 3e12 and
+1.21e13 (C0: 3.14e15 -> 3.01e15; C2: 6.30e15 -> 6.01e15; C1': 3.32e15 -> 3.18e15; y_s inside the window: <0.1%);
+v_R is essentially M_s-independent (C2 2.11e10-2.14e10).
+
+5. THRESHOLD SCAN (r2b_scan_mc_C0_C1_C2_C1p.json, tables_mc.txt) [NUM; MC statistical error ~ +-2.5% on fractions]
+------------------------------------------------------------------------------------------------------------------
+3L-capable runs (Landau at 2L and 3L), M_s = 1e13 (y_s = 0.336) unless stated, Phi pair 1e17, MS-bar S_V.
+f_SK = fraction with tau > 2.4e34 (repo), f_dir = same in the direct normalisation, f_all = tau > SK & L2 > 1 &
+v_R in [1e11, 1e14].
+  content scenario              n    tau min / median / max        f_SK   f_dir  M_U range           v_R range          L2min  L3min  f_all
+  C0  light x1/3..x3            100  1.8e33 / 7.1e33 / 2.2e34      0.00   0.00   2.2e15-4.2e15       2.3e12-2.1e13      3.49   1.29   0.00
+  C0  GUT x1/2..x2              100  3.0e32 / 7.3e33 / 6.7e34      0.06   0.00   1.4e15-5.6e15       2.2e12-1.5e13      3.31   1.25   0.06
+  C0  both                      200  2.2e32 / 6.3e33 / 2.4e35      0.09   0.015  1.3e15-7.7e15       1.6e12-4.7e13      2.83   1.03   0.09
+  C0  both, M_s = 3e12          100  3.7e32 / 6.7e33 / 9.0e34      0.20   0.00   1.5e15-6.1e15       1.7e12-2.5e13      1.47   0.57   0.20
+  C0  GUT x1/2..x1 (unitarity)  100  2.5e33 / 7.9e33 / 2.5e34      0.01   0.00   2.4e15-4.4e15       3.7e12-9.4e12      2.78   1.06   0.01
+  C1  light                     100  6.3e32 / 1.6e33 / 5.0e33      0.00   0.00   1.7e15-2.9e15       3.1e12-2.3e13      3.17   1.16   0.00
+  C1  GUT                       100  1.7e32 / 1.3e33 / 1.7e34      0.00   0.00   1.2e15-3.9e15       3.6e12-2.2e13      2.93   1.09   0.00
+  C1  both                      200  1.3e32 / 1.7e33 / 3.0e34      0.005  0.00   1.1e15-4.6e15       2.6e12-3.5e13      2.26   0.83   0.005
+  C1  both, M_s = 3e12          100  1.7e32 / 1.9e33 / 2.3e34      0.00   0.00   1.2e15-4.3e15       2.3e12-3.3e13      1.23   0.47   0.00
+  C1  GUT x1/2..x1              100  7.6e32 / 2.3e33 / 6.1e33      0.00   0.00   1.8e15-3.1e15       4.4e12-1.1e13      2.31   0.87   0.00
+  C2  light                     100  5.6e34 / 1.0e35 / 2.3e35      1.00   0.46   5.1e15-7.3e15       6.2e9-7.4e10       12.7   4.65   0.00
+  C2  GUT                       100  3.7e33 / 1.4e35 / 2.8e36      0.86   0.54   2.6e15-1.4e16       1.9e9-3.2e11       8.31   3.05   0.01
+  C2  both                      200  5.2e33 / 1.1e35 / 4.6e36      0.865  0.49   2.8e15-1.6e16       1.1e9-3.6e11       8.38   3.06   0.05
+  C2  both, M_s = 3e12          100  7.7e33 / 1.3e35 / 4.4e36      0.91   0.56   3.2e15-1.6e16       9.3e8-3.4e11       3.52   1.33   0.02
+  C2  GUT x1/2..x1              100  1.9e34 / 1.3e35 / 6.3e35      0.99   0.62   3.9e15-9.6e15       6.9e9-7.4e10       7.80   2.92   0.00
+  C1' light                     100  3.7e33 / 8.0e33 / 2.0e34      0.00   0.00   2.6e15-4.0e15       3.3e10-3.5e11      8.07   2.90   0.00
+  C1' GUT                       100  3.6e32 / 6.9e33 / 9.9e34      0.14   0.00   1.4e15-5.9e15       2.3e10-7.5e11      6.06   2.16   0.03
+  C1' both                      200  3.7e32 / 7.7e33 / 1.3e35      0.20   0.005  1.4e15-6.3e15       6.1e9-1.2e12       5.52   1.96   0.105
+  C1' both, M_s = 3e12          100  6.6e32 / 1.1e34 / 1.4e35      0.27   0.01   1.7e15-6.6e15       1.3e10-1.2e12      3.02   1.14   0.06
+  C1' GUT x1/2..x1              100  3.2e33 / 1.2e34 / 3.3e34      0.05   0.00   2.5e15-4.6e15       5.6e10-2.9e11      5.05   1.86   0.00
+Coherent extremes (all GUT scalars x f_g, all light states x f_l, f_g in {1/2, 1, 2}, f_l in {1/3, 1, 3}):
+  C2: tau = 6.9e34 (f_g = 2) ... 1.66e35 (f_g = 1/2), v_R = 6.8e9-6.7e10, L2 = 6.4-32, L3 = 2.5-11: all pass SK (repo),
+      none reaches v_R = 1e11; in the direct normalisation 1.5e34-3.7e34 (fails for f_g >= 1).
+  C1': tau = 4.9e33-1.5e34 (all fail);  C1: 8.9e32-3.3e33 (all fail);  C0: 3.5e33-1.1e34 (all fail).
+  (For these contents raising the GUT scalars lowers M_U; the independent scan, which splits the 126bar multiplets
+  from each other, produces the large spread.)
+Hyper-K (7.8e34 yr, 90% CL): C2 above it in 59% (repo) of the combined scan; in the direct normalisation the whole
+C2 window lies within Hyper-K reach (max tau_dir = 1.0e36 only in the far tail; median 2.3e34).
+
+6. A REALISABLE GUT SPECTRUM: THE EXPLICIT K3 VACUUM POINTS P831 / P831b (r2b_p831.json) [NUM for C0; EST transplant]
+----------------------------------------------------------------------------------------------------------------------
+K3's P831 and P831b are explicit coupling points of the v20 potential at the Am45 G3221 vacuum with exactly the C0
+light content (local minima with the 35 Goldstone zero modes; NOT global minima, see K3).  From K3's SM-isotypic
+reduced Hessians (Am45_blocks.npz) and the coupling vectors I computed all 451 non-Goldstone modes and assigned every
+heavy eigenvalue to its G3221 multiplet by the degeneracy pattern across SM blocks (all 22 heavy multiplets assigned,
+no leftovers except three gauge-singlet (1,1)_0 modes).  m/M_X with M_X = 0.6455 g_U |Phi|:
+  P831: 126bar (6,3,1) and (3,2,2)_{4/3} 0.104; 10-bidoublet 0.12; (3b,2,2)_{-4/3} 0.135; colour triplets 0.14-0.32;
+  (3,3,1)_{-2/3} 0.29; (3b,1,3) 0.38; (8,2,2) 0.43; 210 (8,1,1) 0.60, Delta_L 0.64, (3,2,2) 0.64, (6b,1,3) 0.74,
+  (1,1,3) 0.75, (6,2,2) 0.76, (3,3,1)_{4/3} 0.85, (3,1,3) 0.96, (1,3,1) 1.19, (1,2,2)_{-2} 1.19, (8,1,3) 1.52;
+  geometric mean 0.41 (P831b: same pattern, 0.11-1.45).  K3's stage-A LP MAXIMISED the lightest heavy mass for the C0
+  content at Am45 under its constraints (boxes |quartic| <= 1, singlet-channel a0 <= 1/2, BFB/competitor/light-cubic
+  cuts): optimum m^2 = 0.00342 |Phi|^2, i.e. m = 0.0585 |Phi| = 0.14 M_X.  Hence EVERY coupling point of that family has
+  at least one heavy multiplet at <= 0.14 M_X, outside the declared x1/2..x2 window (NUM for C0 at Am45; CONJ that the
+  same holds for C1/C2/C1' vacua).
+Results (two loops, MS-bar S_V):
+  C0 (exact content of the point): v_R = 2.14e13, M_U = 1.76e15, aU^-1 = 31.5, tau = 6.4e32 yr (tau_dir 1.4e32),
+      Lambda_2L = 1.48, Lambda_3L = 0.56 M_Pl  -> fails tau by x38 and the three-loop Landau test (P831b: 7.3e32, 0.59).
+  Transplant (EST: same 210/126bar/10 masses, the multiplets light in the target content removed; (8,3,1)_0, light at
+      P831, put at f M_X):
+      C1:  M_U = 1.55e15, tau = 3.8e32 (FAIL);
+      C2:  f = 0.3 / 1 / 2: v_R = 8.2e11 / 2.7e11 / 1.4e11, M_U = 2.7e15 / 3.3e15 / 3.7e15, tau = 3.8e33 / 8.3e33 / 1.3e34
+           (sv +1); 2.7e33 / 5.8e33 / 9.1e33 (opposite sign) -> FAILS Super-K by 1.7-9 (P831b up to 1.4e34; direct 6e32-3e33);
+           note that v_R moves INTO the seesaw window with this spectrum;
+      C1': f = 0.1-1: tau = 4.5e32-1.2e33 (FAIL);
+      whole spectrum scaled x2, x3, x5 (C2): tau = 5.3e33, 4.0e33, 2.9e33 (worse: raising the heavy scalars lowers M_U).
+  Rescue contents with the P831 spectrum: C1 + (8,1,3)_0: tau = 6.9e35 (direct 1.5e35), Lambda_2L = 1.19, Lambda_3L =
+      0.52 (three-loop Landau FAILS); C1 + (6,2,2)_{2/3}: tau = 1.3e35 (direct 2.8e34), Lambda_2L = 0.95 (two-loop
+      Landau FAILS); C1 + (8,2,2)_0: tau = 6.8e34, Lambda_2L = 1.006.
+  Caveats: P831 is at r = 1.2e-3, x = <Phi17>/|Phi| = 4 (not the physical r = 4e-4, x ~ 1.4; the 126bar masses get
+  O(x^2) portal shifts), it is one point of a family chosen by an LP for the C0 content, and it is not a global minimum.
+  It is the only realisable spectrum available and it moves every content in the adverse direction.
+
+7. PLANCK GAUGE-KINETIC OPERATOR, c in [-1, 1], exact Am45 Clebsches (r2b_scan_planck_*.json, tables_planck.txt) [NUM]
+---------------------------------------------------------------------------------------------------------------------
+K = (-2a, 2sp, -2sp, 4a) |Phi| with (p, a) = (0.7071, -0.4082) (K1 normalisation of the K3 point (p, a_K3) =
+(0.7071, -0.7071)), |Phi| = M_U/(0.6455 g_U), alpha_i^-1(M_U) = alpha_U^-1 (1 + c K_i/M_Pl,red); s = +-1 is the L/R
+labelling (D-parity sign) not fixed by the label 'Am45', so both are shown.  Because M_U ~ 3-6e15 here, |Phi|/M_Pl is
+only ~3e-3 and the effect is mild (K1's T2 had M_U ~ 2e16):
+  C0: tau in [2.9e33, 1.9e34] over c, s (never passes).   C1: [1.0e33, 3.3e33] (never).
+  C1': [3.7e33, 3.6e34]; passes only for s = -1, c >= +0.8 (3 of the 42 (s, c) points).
+  C2:  s = +1: [8.8e34, 1.3e35] (all pass), v_R 6e9-6.7e10; s = -1: [2.3e34, 1.2e36], fails at c = -1.0 (2.26e34),
+       no perturbative solution for c >= 0.7.  Lambda_2L >= 11.7, Lambda_3L >= 4.2 M_Pl over the whole scan.
+  C1 + (8,1,3)_0: tau >= 4.4e35 wherever a solution exists (none for s = -1, c >= 0.2; s = +1, c = -1), Lambda_3L >= 1.39;
+  C1 + (6,2,2)_{2/3}: tau >= 2.9e35, Lambda_2L >= 2.05 but Lambda_3L >= 0.91 (three-loop fails for some c).
+
+8. SO(10) x U(1)_X alpha = 1 SCALE vs M_Pl,red: two and three loops, M_s, y_s, M_Phi, U(1)_X (item c) [NUM]
+-------------------------------------------------------------------------------------------------------------
+Grid (r2b_scan_grid_C1_C2_C1p.json/.log; C0 from grid_C0_partial.out): M_s in {3e12, 5e12, 7e12, 8.2e12, 1e13, 1.21e13},
+y_s at both edges of the B63 window at each M_s, S_V in {MS-bar, off, opposite}, Phi pair at {M_U, 3e16, 1e17, 1.25e17}.
+y_s inside the window changes Lambda by < 1%.  Lambda/M_Pl,red (MS-bar S_V; ranges over y_s):
+  C2, 2L: Phi at M_U / 3e16 / 1e17 / 1.25e17 = 4.3 / 5.7 / 6.9 / 7.2 (M_s = 3e12) ... 9.6 / 12.9 / 15.9 / 16.5 (1.21e13)
+  C2, 3L: 1.70 / 2.20 / 2.64 / 2.72 (3e12) ... 3.65 / 4.79 / 5.80 / 6.01 (1.21e13)       -> passes everywhere
+  C1', 2L: 2.52 / 3.70 / 4.52 / 4.68 (3e12) ... 5.68 / 8.51 / 10.45 / 10.85 (1.21e13); opposite S_V: -15%
+  C1', 3L: 0.99 / 1.41 / 1.69 / 1.74 (3e12) ... 2.14 / 3.12 / 3.76 / 3.89 (1.21e13)     -> passes for M_Phi >= 3e16
+  C1, 2L: 1.03 / 1.60 / 1.93 / 2.00 (3e12) ... 2.27 / 3.60 / 4.39 / 4.55 (1.21e13); opposite S_V at 3e12, Phi at M_U: 0.86
+  C1, 3L: 0.41 / 0.62 / 0.73 / 0.75 (3e12) ... 0.88 / 1.35 / 1.61 / 1.66 (1.21e13)       -> fails at low M_s
+  C0, 2L: 1.28 / 1.88 / 2.28 / 2.36 (3e12) ... 2.83 / 4.25 / 5.19 / 5.37 (1.21e13)
+  C0, 3L: 0.52 / 0.74 / 0.88 / 0.90 (3e12) ... 1.10 / 1.60 / 1.92 / 1.98 (1.21e13)       -> fails at low M_s
+U(1)_X (section 8b): with the worst admissible g_X (alpha_X(M_Pl,red) = 1) alpha_10^-1(M_Pl,red) drops by 0.15-0.20
+(C2 2L at M_s = 1e13: 17.95 -> 17.80; C2 3L: 15.99 -> 15.82), so the U(1)_X never decides the Landau test for B63; it
+itself requires g_X(M_U) <~ 0.011 and then hits alpha_X = 1 at ~1.2-1.3 M_Pl,red.
+Planck operator (section 7): Lambda_2L >= 11.7 and Lambda_3L >= 4.2 M_Pl for C2 over c in [-1, 1], both s.
+Loop control (K1-skeptic caveat, recomputed): at M_U the SO(10) two-loop term is 1.50 (C2, aU^-1 = 34.6) to 1.55 (C1)
+times the one-loop term, so the alpha = 1 scale is a convention-defined number at two and three loops; the margins
+(Lambda_3L >= 1.7 M_Pl for C2) are large compared with the 3L/2L shift factor 2.7-2.8, but no statement beyond the
+declared alpha = 1 convention is possible.
+
+8b. U(1)_X OF B63 [EXACT coefficients, NUM running]
+-----------------------------------------------------
+Integer-X normalisation (X(16_F) = 1): below M_Phi b_X = 254041/3, b_{10,X} = 27044, b_{X,10} = 1216980,
+b_XX = 388484332; full content (above M_Phi) b_X = 101203 (= K0b), b_{10,X} = 33240, b_{X,10} = 1495800,
+b_XX = 439863564.  With the two-loop self term included, alpha_X(M_Pl,red) <= 1 requires alpha_X^-1(M_U) >= 9.5e4-1.06e5
+(g_X(M_U) <= 0.0109-0.0115; K0b's one-loop 0.013); the stricter EST criterion alpha_X X_max^2 <= 1 at M_Pl,red
+(X_max = 63) requires alpha_X^-1(M_Pl) >= 3969 and gives practically the same g_X(M_U) bound (0.0107-0.0113), because
+b_X ~ 1e5 makes alpha_X^-1 fall by ~1.6e4 per e-fold: in every admissible case the U(1)_X reaches alpha_X = 1 within
+~0.2-0.3 e-folds above M_Pl,red (1.2-1.3 M_Pl,red at alpha_X^-1(M_Pl) = 3969).  Feedback on SO(10): with the worst
+admissible g_X (alpha_X(M_Pl) = 1) alpha_10^-1(M_Pl,red) drops by only 0.16-0.20 (e.g. C2 2L: 17.96 -> 17.80; C0 3L:
+9.49 -> 9.28), i.e. U(1)_X is not the binding constraint for B63 (unlike K1's F17 estimate, where the feedback was
+larger because b_{10,X}/b_X was larger and alpha_10^-1(M_Pl) smaller).  g_X is a free parameter; the bound is a
+contract constraint (g_X(M_U) <~ 0.011), not a kill.
+
+9. PROTON DECAY NORMALISATION (item d)
+--------------------------------------
+Repository normalisation (instructed; proton_decay_falsification_gate_v20.gauge_lifetime_years):
+  tau = (4/pi)(f_pi^2/m_p) M_X^4 alpha_U^-2 / (alpha_H^2 A_R^2 F_q), f_pi = 0.139, alpha_H = 0.012 GeV^3, A_R = 2.726,
+  F_q = 7.6 = 2(1+|V_ud|^2)^2, M_X = M_U = M(3,2,2).  The literature form behind it, Gamma = (pi m_p/4 f_pi^2) alpha_U^2
+  F_q A_R^2 alpha_H^2 / M_X^4, is confirmed at snippet level (LIT-abstract: e.g. 2306.02401, 1003.2625 where the width
+  is m_p/(64 pi f_pi^2) (1+D+F)^2 alpha_bar_H^2 (g^2 A_R/M_X^2)^2, i.e. alpha_H = (1+D+F) alpha_bar_H).
+Second normalisation (EST, derived here; r2b_model.proton_lifetime_direct_years): direct lattice form factor
+  W0 = <pi0|(ud)_R u_L|p> ~ 0.131 GeV^2 (Aoki-Izubuchi-Shintani-Soni 1705.01338; the abstract read says the direct form
+  factors are 1.4x smaller than the indirect BChPT ones; the value 0.131 is quoted from memory, LIT-unverified),
+  SO(10) X,Y,X',Y' exchange with k^2 = g_U^2/(2 M_X^2), Weyl Fierz (factor 2): C^{LR} = 2k^2(1+|V_ud|^2), C^{RL} = 4k^2,
+  Gamma = (m_p/32pi)(1 - m_pi^2/m_p^2)^2 A_R^2 W0^2 (|C^{LR}|^2 + |C^{RL}|^2).
+  => tau_direct = tau_repo / 4.53 for every (M_X, alpha_U) [NUM].  The repository formula corresponds to an effective
+  W_eff = alpha_H/(sqrt2 f_pi) = 0.061 GeV^2, i.e. BChPT WITHOUT the (1+D+F) = 2.27 factor; with it, W = 0.139 GeV^2,
+  consistent with the direct lattice value.  Independent literature check: the MEMPHYS study (hep-ex/0607026,
+  LIT-snippet) quotes tau(p -> e+ pi0) ~ 1e35 yr (M_X/1e16 GeV)^4 (alpha_U^-1/25)^2 with newer lattice input; at
+  (1e16 GeV, 25) the direct normalisation gives 9.3e34 yr and the repository one 4.2e35 yr.  Hence the repository
+  normalisation is probably optimistic by a factor ~4-5 (EST); both are reported and the criterion is evaluated in both.
+  Super-K 90% CL bound tau > 2.4e34 yr (2010.16098, repository citation) requires M_X > 4.16e15 GeV (repo) /
+  6.07e15 GeV (direct) at alpha_U^-1 = 34.5.  Hyper-K 90% CL sensitivity 7.8e34 yr (1805.04163 via 2002.04890,
+  LIT-snippet; ~1-2e35 for longer exposure, LIT-snippet).
+
+10. v_R WINDOW, SEESAW, B63 QUALITY WINDOW, CROSS-GATE (item e) [NUM / EST]
+---------------------------------------------------------------------------
+* Type-I seesaw window ~1e11-1e14 (task): C0 6.6e12, C1 7.8e12, C1' 1.1e11 (edge) are inside; C2 2.1e10 is below
+  (scan: 1e9-3.6e11; coherent extremes 6.8e9-6.7e10; Planck scan 6e9-6.7e10).  With M_R = Y126 v_R and a top-like
+  Dirac mass m_D3 ~ 100 GeV, m_nu3 ~ 0.05 eV needs M_R3 ~ 2e14 GeV, i.e. v_R >~ 1e14/Y126 (EST): v_R ~ 2e10 would need
+  m_D3 <~ 1 GeV or a dominant type-II term -- not available in the K2 fits (EST; R2/K2 should check).  With the P831
+  spectrum (section 6) C2's v_R moves to 1.4e11-8e11 but tau then fails.
+* B63 quality window: <S> = 2.7-3.29e13, y_s in [0.304, 0.368] -> M_s = 0.82-1.21e13.  M_s > v_R for C2 (the S-sector
+  runs in the G3221 phase from M_s), M_s ~ v_R for C0/C1, M_s ~ 100 v_R for C1'.  Nothing in the unification forbids
+  this: the S-sector is a set of complete SO(10) multiplets (one-loop universal, two-loop effect on M_U ~4-5% over M_s = 3e12-1.21e13), so the
+  B63 window is compatible with every content; the window does constrain the Landau scale through M_s (Lambda grows with
+  M_s: C2 3L from 2.6 (3e12) to 5.8 (1.21e13) M_Pl at M_Phi = 1e17).
+* Cross-gate conflicts (not part of the R2-B criterion): K2's two-bidoublet 10 + 126bar fits sit at chi2 ~ 220 (C2
+  and C1' are exactly the contents those fits assume); K3 realised only ONE bidoublet + (8,3,1)_0 + Delta_R (C0) and did
+  not test a second light bidoublet; K4: no certificate method.
+
+11. AXION MASS BAND (item f)
+---------------------------------------------------------------------------------------------------------
+[NUM; conventions of K0b/K1: f_a = sqrt2 <S>/17, m_a = 5.70 ueV (1e12 GeV/f_a), Gorghetto-Villadoro 1812.01008
+LIT-abstract; <S>_max = 3.29e13 from the B63 quality bound]
+Unification does not fix <S>: the B63 window enters the running only through M_s = y_s <S> (S-sector threshold,
+complete SO(10) multiplets -> two-loop only) and the 14 y_s^2 Yukawa term.  Over the scanned M_s with y_s in the
+B63 window (lower edge from quality, upper edge from the K0b RG cap):
+   M_s = 3e12: m_a = 2.08-7.90 ueV;  5e12: 2.08-4.87;  7e12: 2.08-3.54;  8.2e12: 2.08-3.04;  1e13: 2.08-2.52;
+   1.21e13: 2.08 (window closes).  The B63 nominal band (M_s = 1e13) 2.09-2.52 ueV lies below the first ADMX
+   DFSZ-excluded band (Run 1A, 645-680 MHz = 2.66-2.81 ueV, 1804.05750, LIT-abstract); no DFSZ-sensitivity result
+   covering 505-610 MHz was found (LIT-search negative, not a proof of absence).  For M_s < 1e13 the upper part of the
+   band (> 2.66 ueV) overlaps the ADMX DFSZ exclusions 2.66-3.31 and 3.27-3.34 ueV (K1's list, LIT-abstract).
+The axion band is the same for every content C0-C2 (it does not depend on v_R or M_U).
+
+12. MINIMAL ADDITIONS THAT RESCUE C1 / C2 / C1' (r2b_rescue.py; flagged: ALL NEED R2-A REALISABILITY) [NUM]
+-----------------------------------------------------------------------------------------------------------
+Two-loop nominal screen over every single and every pair of extra light G3221 multiplets of 210 + 126bar + 10.
+Criteria A: tau > 2.4e34 & Lambda_2L > M_Pl;  B: A & v_R in [1e11, 1e14] & M_U < 1e18;  C: B & tau > 7.8e34 (Hyper-K).
+  base  singles A/B/C      pairs A/B/C (of all pairs)
+  C1    3 / 3 / 3          49 / 44 / 37 (of 210)
+  C2    7 / 0 / 0          48 / 12 / 12 (of 231)
+  C1'   8 / 1 / 1          50 / 14 / 10 (of 210)
+  C0    4 / 4 / 4          71 / 58 / 41 (of 231)   (flavour-dead reference; C0 + (8,1,1)_0 alone already gives
+                                                  tau = 9.2e34, v_R = 6.1e12, L2 = 5.4)
+Single additions passing B (all three onto C1):
+  C1 + 210 (8,1,3)_0       v_R 2.7e11, M_U 2.38e16, aU^-1 27.7, tau 1.7e37 (dir 3.7e36), L2 3.4   (dA, dB) = (+8/5, -3/2)
+  C1 + 210 (6,2,2)_{2/3}   v_R 9.5e12, M_U 1.87e16, aU^-1 27.3, tau 6.2e36 (dir 1.4e36), L2 2.4   (-4/15, -4/3)
+  C1 + 126bar (8,2,2)_0    v_R 2.3e13, M_U 1.94e16, aU^-1 27.3, tau 7.1e36,             L2 2.5   (K3: (8,2,2)_0 can
+                                                                                               never be the lightest
+                                                                                               126bar multiplet at Am45)
+  C1' + (8,2,2)_0 also passes B (v_R 1.8e11, M_U 5.3e17) but carries the same K3 exclusion.
+No single addition rescues C2 into the seesaw window (C2 + (1,3,1) = C1' fails tau; C2 + Delta_L: v_R 1.1e11, tau 4e32;
+C2 + (8,1,1)_0 or + a colour triplet keeps tau but v_R = 3e9-1e10).  Pairs onto C2 that pass B all contain (8,3,1)_0
+(= C1 + one more) or (8,2,2)_0 or the (6,2,2)/(3,3,1) combination.
+Robustness of the two 210-type rescues (r2b_scan.py mc, logs mc_rescue_C1+813.out / mc_rescue622.out; same scenarios as section 5;
+M_s = 1e13 unless stated):
+    C1+813  light        n= 75 tau min 3.1e+36 (dir 6.8e+35), median 1.7e+37; L2 min 2.58; L3 min 1.11, f(L3>1) = 1.00; v_R 3.7e+10-1.5e+12, f(v_R in window) = 0.88; f(tau>SK & L2>1) = 1.00
+    C1+813  gut          n= 75 tau min 7.2e+35 (dir 1.6e+35), median 2.8e+37; L2 min 2.84; L3 min 1.17, f(L3>1) = 1.00; v_R 7.4e+10-1.1e+12, f(v_R in window) = 0.93; f(tau>SK & L2>1) = 1.00
+    C1+813  both         n=150 tau min 7.8e+34 (dir 1.7e+34), median 1.5e+37; L2 min 2.08; L3 min 0.92, f(L3>1) = 0.97; v_R 1.6e+10-4e+12, f(v_R in window) = 0.86; f(tau>SK & L2>1) = 1.00
+    C1+813  both_Ms3e12  n= 75 tau min 2.4e+35 (dir 5.2e+34), median 1.3e+37; L2 min 1.17; L3 min 0.50, f(L3>1) = 0.09; v_R 2.4e+10-2.9e+12, f(v_R in window) = 0.85; f(tau>SK & L2>1) = 1.00
+    C1+813  gut_half     n= 75 tau min 3.8e+36 (dir 8.3e+35), median 1.9e+37; L2 min 2.18; L3 min 0.95, f(L3>1) = 0.91; v_R 1e+11-5.4e+11, f(v_R in window) = 1.00; f(tau>SK & L2>1) = 1.00
+    C1+813  coherent extremes: tau 1.3e+37-2.1e+37, L3 0.80-2.73, v_R 8.6e+10-8.7e+11
+    C1+622  light        n= 60 tau min 1e+36 (dir 2.2e+35), median 7.2e+36; L2 min 1.87; L3 min 0.81, f(L3>1) = 0.62; v_R 3.3e+12-2.9e+13, f(v_R in window) = 1.00; f(tau>SK & L2>1) = 1.00
+    C1+622  gut          n= 60 tau min 8.5e+34 (dir 1.9e+34), median 5.5e+36; L2 min 1.91; L3 min 0.81, f(L3>1) = 0.68; v_R 4.6e+12-1.8e+13, f(v_R in window) = 1.00; f(tau>SK & L2>1) = 1.00
+    C1+622  both         n=100 tau min 1.3e+35 (dir 2.8e+34), median 5.7e+36; L2 min 1.39; L3 min 0.59, f(L3>1) = 0.65; v_R 3.1e+12-3.8e+13, f(v_R in window) = 1.00; f(tau>SK & L2>1) = 1.00
+    C1+622  both_Ms3e12  n= 60 tau min 1.5e+35 (dir 3.3e+34), median 7.8e+36; L2 min 0.83; L3 min 0.37, f(L3>1) = 0.00; v_R 3.8e+12-3.6e+13, f(v_R in window) = 1.00; f(tau>SK & L2>1) = 0.88
+    C1+622  gut_half     n= 60 tau min 1.1e+36 (dir 2.4e+35), median 6e+36; L2 min 1.56; L3 min 0.67, f(L3>1) = 0.00; v_R 6.2e+12-1.5e+13, f(v_R in window) = 1.00; f(tau>SK & L2>1) = 1.00
+    C1+622  coherent extremes: tau 4.6e+36-8.2e+36, L3 0.59-1.95, v_R 2.7e+12-3.4e+13
+
+Realisability status: K3 found the 210 sector at a G3221 point has a rank-3 mass structure (four couplings for eleven
+irreps) and that (8,3,1)_0 and (1,3,1)_0 cannot both be light; (8,1,3)_0 is the D-parity partner of (8,3,1)_0 (both
+in (15,3,1)+(15,1,3)) and (6,2,2)_{2/3} sits in (10,2,2); whether either can be tuned light together with (8,3,1)_0 and
+both bidoublets was NOT tested -- this is exactly the R2-A question.  Note the rescues have aU^-1 ~ 27, so the
+P831-type spectrum pushes their Landau scale to the edge (section 6).
+
+13. WHY THE REALISABLE CONTENTS FAIL: ONE-LOOP ANALYTIC STRUCTURE [EXACT arithmetic, r2b_analytic.json]
+---------------------------------------------------------------------------------------------------------
+With L1 = ln(v_R/M_Z), L2 = ln(M_U/v_R) and tree matching,
+   2 pi (alpha_1^-1 - alpha_2^-1)(M_Z) = 185.0 = (109/15) L1 + A L2,   A = 3/5 b_2R + 2/5 b_BL - b_2L,
+   2 pi (alpha_2^-1 - alpha_3^-1)(M_Z) = 132.5 = (23/6) L1 + B L2,     B = b_2L - b_3      (G3221 segment),
+so L2 = 34.90/(B - 0.5275 A), ln(M_U/M_Z) = 25.46 + L2 (1 - 0.1376 A).  The two-loop M_U is 0.43-0.49 x the
+one-loop M_U for these contents, so tau_p > 2.4e34 (repo normalisation) needs M_U(1L) >~ 9e15, and v_R(2L) >= 1e11
+needs A L2 <~ 40.  Together: B <~ 5.16 - 0.18 A with A <~ 3.3.
+   content   A       B      1L v_R    1L M_U      verdict of the inequality
+   C0        17/15   31/6   3.2e12    6.6e15      B too large by ~0.21
+   C1        1       11/2   4.0e12    4.4e15      B too large by ~0.52
+   C2        11/3    13/3   6.8e9     1.41e16     tau fine, A L2 = 53 > 40 (v_R too low)
+   C1'       10/3    14/3   4.3e10    6.9e15      marginal on both
+   T2        -4/15   25/6   1.4e13    4.6e16      (round 1; not realisable)
+Per-multiplet (dA, dB): (8,3,1)_0 (-8/3, +7/6) is what drives C0/C1 to large B (low M_U); a bidoublet adds (-2/15,
++1/3); (1,3,1)_0 (-1/3, +1/3); (8,1,3)_0 (+8/5, -3/2); (6,2,2)_{2/3} (-4/15, -4/3); (8,2,2)_0 (-16/15, -4/3);
+(8,1,1)_0 (0, -1/2); colour triplets (3,1,1) (+1/15, -1/6).  Hence a light (8,3,1)_0 without an SU(3)-heavy partner
+lowers M_U below the Super-K limit, and removing it (C2) drives v_R to ~1e10: this is the structural reason.
+
+14. WHAT IS EXACT / NUM / EST / LIT
+-----------------------------------
+EXACT: all one-, two-loop coefficients and the per-factor/SO(10) three-loop coefficients (Fractions, repository-
+identical); S_V = (5,6,6,8) and 6/5; the B63 U(1)_X coefficients; the Am45 vector-mass ratio sqrt(0.8) and Clebsches;
+the one-loop analytic (A, B) structure; the sign of the MS-bar constant GIVEN facts (i), (ii) of section 3.
+NUM: every unification root (residual < 1e-13), Landau scale (DOP853 rtol 1e-10; K1 integrator cross-checks carried
+over), threshold-scan fractions (+-2.5% statistical), Planck scan, P831 spectra (exact compiler rows from K3).
+EST: the direct-lattice proton normalisation (factor 4.53), the P831 transplant to C1/C2/C1', the three-loop terms
+below M_U (mixed terms and two-loop matching omitted), the seesaw statement, the U(1)_X strong-coupling criterion.
+LIT (abstract/snippet only): Super-K 2.4e34 (repository citation 2010.16098), Hyper-K 7.8e34 (1805.04163 via
+2002.04890), proton-decay formula family (2306.02401, 1003.2625, 2204.06392 snippets), MEMPHYS normalisation
+(hep-ex/0607026 snippet), Aoki et al. 1705.01338 abstract (direct/indirect ratio 1.4; the value 0.131 GeV^2 is from
+memory), Langacker-Polonsky hep-ph/9210235 (DR-bar constants vanish), Martin-Vaughn hep-ph/9308222 (abstract), ADMX
+1804.05750 (2.66-2.81 ueV DFSZ), Gorghetto-Villadoro 1812.01008 (via K1).  Primary Weinberg/Hall/BDM texts NOT read.
+
+15. MISSING COMPUTATIONS (exact)
+--------------------------------
+1. (decisive) An explicit coupling point realising C2 (and/or C1', C1 + (8,1,3)_0, C1 + (6,2,2)_{2/3}) at a one-step
+   G3221 vacuum of the v20 potential, with its full heavy spectrum fed to r2b_p831.py-style thresholds (R2-A).
+2. (decisive for C2's nominal point) the p -> e+ pi0 hadronic normalisation fixed from the primary literature
+   (repository alpha_H = 0.012 formula vs direct lattice W0 = 0.131 GeV^2 with explicit Wilson coefficients).
+3. Two-loop threshold matching at v_R and M_U (needed for a consistent three-loop running; affects tau at the 10-20%
+   level, EST) and the mixed three-loop gauge terms in the G3221 phase.
+4. A seesaw/flavour fit at v_R ~ 2e10 for C2 (K2 territory) -- C2's only unification window has v_R outside 1e11-1e14.
+5. The primary-text confirmation of the MS-bar constant sign (Weinberg 1980 / Hall 1981 / BDM 0912.1796).
+
+16. FILES
+---------
+r2b_lib.py, r2b_model.py, r2b_validate.py (+.json), r2b_coeffs.py (+.json), r2b_nominal.py (+.json, .log),
+r2b_scan.py (+ r2b_scan_mc_C0_C1_C2_C1p.json/.log, r2b_scan_planck_*.json/.log, r2b_scan_grid_C1_C2_C1p.json/.log,
+grid_C0_partial.out), r2b_rescue.py (+ rescue.out, r2b_rescue_*.json/.log), r2b_p831.py (+ r2b_p831.json, p831_early.out),
+r2b_p831_rescue.py (+.json, p831_rescue.out), r2b_analytic.py (+.json), r2b_tables.py (tables_mc.txt),
+summ_mc.py, summ_planck.py (tables_planck.txt), summ_grid.py, summ_mcr.py, fills_src.py, assemble_report.py,
+rescue-candidate MC: mc_rescue_C1+813.out (= r2b_scan_mc_C1+813_C1+622.log; that process was stopped after C1+813, so
+only its log exists) and r2b_scan_mc_C1+622.json/.log (mc_rescue622.out); k1_lib.py / k1_model_ref.py (round-1 copies).
+Checkout status at the end: _g6_nogo 0 lines (54a2cd1), _record 0 lines (8707fda).
+

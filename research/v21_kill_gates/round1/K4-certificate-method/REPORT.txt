@@ -1,0 +1,69 @@
+GATE K4 - exact global-minimum certification method for the one-step G3221 vacuum (210-sector prototype)
+Workflow wfV21, agent label K4-certificate-method, 2026-10-16.  Continuation of the cut-off run (sections 1-5 and 7 of
+the earlier partial report are retained below in condensed form; sections 6, 8, 9 are new).  The harness refuses .md
+report files, hence REPORT.txt.  PRELIMINARY VERSION - the exact dual verification (g5) is running; see section 8.
+
+Labels: EXACT = proved (exact rational/integer arithmetic or theorem); NUM = computed numerically (uncertainty stated);
+LIT / LIT-abstract = read (abstract or search snippet only); EST = order of magnitude; CONJ = argued.
+Nothing in the repository checkouts was modified (git status --short of _g6_nogo and _record stayed empty).  All modules
+used (k4lib, k4cov, k4van, k4g, k4ts) are self-contained; the repo was imported read-only in the earlier run only.
+
+0. VERDICT: UNDECIDED (method gate) - see section 9.  Degree-2 SOS: impossible (EXACT).  Degree-3 multiplier SOS with the
+   COMPLETE symmetry-adapted block set: infeasible (NUM residual 2.5e-4; exact Farkas certificate in progress).  Degree 4
+   not attempted (size estimates given).  No lower orbit found (NUM, 1740 starts).
+
+1. Toolkit (EXACT): k4lib.py exact/fast algebra of the real 210 = Lambda^4(R^10); (p,a,w) singlet forms; stabilisers
+   PS (orbit 24) / G3221 (orbit 30, normal 180) / G3211 (orbit 32).  Validated against the repo generators and pair moments.
+
+2. Orbit-space method is unusable (EXACT): generic stabiliser finite, orbit space 165-dimensional; symmetric-stratum
+   critical-point enumeration proves stationarity only (Michel/Palais).  Method (b) dead.
+
+3. Degree-2 SOS impossible at every D-odd G3221 point (EXACT): the quadric ideal of the orbit has gradient span 1 (radial),
+   so every degree-2 SOS certificate has 179 flat modes vs a positive-definite 180-dim normal Hessian (reproduces and
+   explains the rescue study's 146).  No quartic-Gram / bilinear-copositivity certificate exists.
+
+4. Prototype (EXACT local / NUM global): Phi0 = 3P + 2A, I2 = 21, couplings c2 = -4931/2380, c3 = -233533/17735760,
+   la = 20633/985320, lb = 32503/11823840, lc = -185537/11823840, le = 803/397440 (quartic = sum beta_kappa I_kappa, all
+   beta >= 1/24); V0 = -64772237/2955960 = -21.91242; exact gradient 0, exact normal Hessian PD (eigs 0.415..8.38);
+   1740-start search: no lower value, next minima -21.614/-21.495/-20.738 (margin 1.4%).
+
+5. Degree-3 necessary conditions (EXACT/NUM): with the 4 small blocks (1,45,54+1,210) the gradient span of the vanishing
+   ideal is the full normal space (flat modes 0), but the restricted SDP is infeasible (residual 1.1e-2) and the
+   Hessian-level LMI with PSD Grams has residual 0.18 (t7, new): a genuine second-order PSD obstruction -> all other
+   blocks are necessary.
+
+6. Complete symmetry-adapted degree-3 machinery (new; EXACT where stated)
+   Carriers and covariants: a degree-d covariant into Sym^2(210) is the Psi-Hessian of a bidegree-(d,2) invariant; by
+   Weyl's FFT these are delta-contractions = loopless 4-regular multigraphs (odd ones: one Phi vertex Hodge-dualised).
+   k4g.py enumerates them (1/2/15/79 graphs for degree 0/1/2/3); numerical ranks as maps = 1/1/10/29 = the EXACT
+   character multiplicities (sum 41 over the 10 channels 210:7, 5940:7, 1050+bar:8, 4125:4, 8910:4, 1:3, 45:3, 770:3,
+   54:2) -> complete.  Antisymmetric parts: 29 = exact count for Lambda^2(210) = 45+210+2x945+5940+6930+6930bar.
+   k4ts.py: carrier 210 x Sym^2_0(10) = 8085+1050+1050bar+945+210 for the 8085 block (ranks 1/3/18 = exact).
+   Projectors: so(10) pair operator C (eigenvalues 24,16,14,12,6,2,0,-4 on Sym^2; 16,12,8,2,-2 on Lambda^2; 10,6,4,-2 on
+   210xSym^2_0 - all verified by Krylov minimal polynomials to 1e-11..1e-14) and gl(10) pair operator K (4,-2,-16 on Sym^2,
+   separating 770 from 1050+bar; 2,-8 on Lambda^2, separating the two 945 copies).  Completeness/idempotency 1e-13.
+   Vanishing families at Phi0 (EXACT: integer Grams from exact traces, null spaces over Q, LLL; identically-vanishing
+   projections removed with 3 generic points): channel generic-mult / rank at Phi0 (= dim V^H) / vanishing:
+   1: 3/1/2, 45: 3/1/2, 54: 2/1/1, 210: 7/2/5, 770: 3/2/1, 1050+bar: 8/2/6, 4125: 4/2/2, 5940: 7/3/4, 8910: 4/3/1,
+   945A: 4/1/3, 945B: 4/1/3, 6930+bar: 4/2/2, 8085: 3/2/1.  Total 33 families (945A/945B duplicate the same 3-dim space).
+   Every multiplicity equals the exact character count and every rank the exact H-singlet dimension (t4c).
+   These 13 blocks exhaust the isotypic components of the degree-<=3 polynomials that contain polynomials vanishing on
+   the orbit (72765, 17920, 23040, 73710, ... have mult <= dim V^H, hence no vanishing combination): the ansatz
+   (h0 + h1 I2)(V - V0) = sum of squares of degree-<=3 polynomials, h0 >= 1, h1 >= 0, is COMPLETELY covered.
+
+7. Literature (LIT-abstract): Gatermann-Parrilo arXiv:math/0211450 (invariant SOS = block Grams); Reznick
+   arXiv:math/0306163 (no uniform denominators; bad points); Scheiderer Math. Z. 2003 (local-global principle, finitely
+   many zeros - not our case); Artin's theorem (multiplier exists at SOME degree, no usable bound); Abud-Sartori;
+   Esposito-Mielke-Rosa gr-qc/9507053; Kim as quoted in cond-mat/9708084.
+
+8. Full-block degree-3 SDP (NUM) and exact Farkas dual (in progress)
+   60 random integer points (entries -3..3, density 0.35), exact integer covariant values, float projections, Clarabel:
+   Sym^2 blocks only (24 families, 58 Gram unknowns): status optimal, minimal relative residual 7.0e-4.
+   + Lambda^2 blocks 945A, 945B, 6930 (32 families, 73 unknowns): 2.4963e-4.
+   + 8085 block (33 families, 74 unknowns, COMPLETE): 2.4965e-4 (unchanged; the 8085 square lies in the span).
+   Span test with indefinite Grams: residual 1e-13, rank 27 in all three cases (the identity lies in the linear span of
+   the Gram functions; the obstruction is purely the PSD requirement).  Dual (g5): maximal separation S1 = 4.5e-3 at
+   ||u|| <= 1 and a strict margin t = 1.9e-4 (stage 2, Clarabel optimal) -> a Farkas ray exists numerically; its exact
+   rational verification (exact Grams at the 60 points via mod-p traces + CRT, exact LDL) is running.
+
+9. Verdict: UNDECIDED (see final version).

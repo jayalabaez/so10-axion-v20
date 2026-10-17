@@ -1,0 +1,105 @@
+SKEPTIC REPORT - adversarial check of R2-V (independent verification of round-1 K0b, v21-F17-B63)      2026-10-16
+=====================================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-V-B63-verification\skeptic\
+Labels: EXACT / NUM / EST / CONJ / LIT.
+Independence: all code here is my own. R2-V's files were read, not copied or imported. SO(10) products come from the
+Slansky tables, hard-coded, not from characters. The kernel uses sympy. The quality certificate is checked by MILP
+(HiGHS, scipy.optimize.milp), not by R2-V's integer DP. I also ran my own LP column generation and a primal search
+that does not depend on mu. No repository checkout was imported or run. 'git status --short' of _g6_nogo and _record
+is empty before and after. _rescope was not touched.
+
+VERDICT ON R2-V: NOT REFUTED. Corrected verdict: PASS for the decisive (EXACT/NUM) K0b claims. Some minor issues are
+listed below; none of them changes a decisive statement.
+
+1. EXACT ITEMS RE-DERIVED (sk_exact.py -> sk_exact.json)
+   - [SO(10)]^2 X = 0, grav-X = 0, X^3 = 0; b_X = 101203; net 16 - 16bar = 3.                          REPRODUCED
+   - Exactly 12 renormalizable structures, identical list. The 7 X-allowed but SO(10)-forbidden terms are identical.
+     There is no bare mass, Phi210 Yukawa or family-exotic Yukawa. I also checked by hand every pair sum against
+     +-2, +-4, +-17 and 0.                                                                            REPRODUCED
+   - Constraint rank 13 on 20 charges, kernel dimension 7. The round-1 basis X, G2, f1..f5 lies in the kernel and
+     spans it. Phi17 cannot enter any renormalizable scalar term phase-sensitively: 17 is odd and the other scalar X
+     charges are even, with |X| <= 12 from three fields.                                              REPRODUCED
+   - N = 34, E = 272/3, E/N = 8/3, N(X) = 0, N(G2) = -2, N(f_k) = 0. N_DW = 1: the gauge X(pi/2) x centre element
+     identifies theta_Phi with theta_Phi + 2pi/4, and G2 over that period winds theta_QCD once.       REPRODUCED
+   - T_S = 14 and T_Phi = 4. Lemma A, 6 + 2*14 - (17/2)*4 = 0, holds only with 14/4, so the dossier's 16/2 is indeed
+     a labelling artifact.                                                                            REPRODUCED
+   - R-parity: the stabilizer of S and Phi17 in U(1)_X is trivial (4a, 17a in 2piZ means a in 2piZ). The remaining
+     Z4-centre elements that fix the z = 2 vevs are {1, c^2 = (-1)^z}, so R = (-1)^z (-1)^2s is exact. (Derived
+     analytically.)                                                                                   REPRODUCED
+   - The explicit closure 4x[N1 N2b S*^2 Phi17] + [N1*^2 N3b*^2 S*] + 2x[N1b N2^2 N3b S*] has K = 17, sum q =
+     (4,0,0,0,0,0), and each operator is X = 0 and Lorentz-even with at most 2 of each singlet Weyl field. Its 20
+     operator fermions plus 12 on the 6 Yukawa vertices give 32. With 13 vertices and 16 lines it has 4 loops and
+     D = 0.                                                                                           REPRODUCED
+   - NUM: dtheta_tree = 4.04e-12 / 2.137e-11 / 1.026e-10 at <S> = 2.72 / 3.0 / 3.29e13; <S>_max = 3.285e13;
+     y_s,min = 0.3044; no-gauge cap 0.3166; f_a = 2.25-2.74e12 GeV; m_a = 2.08-2.54 ueV; |g| tolerance 1.95
+     (floor) / 25.2 (0.368) / 43.4 (0.380); <Phi17> tolerance 1.18e17 (floor) / 2.24e17 (0.368).       REPRODUCED
+
+2. DECISIVE: QUALITY CERTIFICATE K_min >= 17 (sk_milp.py -> sk_milp.json/.log; sk_primal.py -> sk_primal.json/.log)
+   Method: for each d, the MILP maximises 4 mu.q over all integer monomials in 32 fermion and 9 scalar items, subject
+   to X = 0, sum z = 4k, and #undotted + n_D and #dotted + n_D both even. The dimension is fixed, and both signs of
+   mu are tried. Every optimum was re-checked in exact integer arithmetic (all exact_ok = True). The objective is an
+   integer and mip_rel_gap = 0.
+   - Oracle set (at most one derivative, used for odd/odd parity), 5 <= d <= 24: max 4[mu.q - (d-4)] = 0, both
+     signs. It is tight at d = 6, 7, 9-17, 19 and 21 (21: S*^17 Phi17^4).                            EXACT (solver-based)
+   - Dressed set (any number of derivatives or field strengths), 1 <= d <= 24: every d <= 4 monomial has 4 mu.q = 0,
+     and for d >= 5 the max excess is 0.                                                             EXACT (solver-based)
+     Both results agree with R2-V's DP row by row. The argmax monomials differ, but the values are the same, as
+     expected for ties.
+   - My own LP column generation, with the MILP as oracle over the dressed set and d <= 20, converges in 31
+     iterations to 4 mu_0 = 17.000. Its mu = (4.25, -3.5, -7, -14.25, -12, -12.75) is identical to round 1's, so the
+     LP-dual optimum is exactly 17.
+   - Primal search that does not use mu (minimum K over J operator slots, sum q = (4,0,...,0), d in [5,20], any
+     dressing): J = 1 is infeasible; J = 2 gives K = 17, proven optimal; J = 3 gives K = 17, proven optimal.
+     J = 4 hit its 400 s limit with incumbent K = 17 and slot-LP bound 12.5. That is heuristic only; I stopped the
+     J = 5/7 runs to free the shared machine. The dual certificate covers every K <= 16 closure, since each one needs
+     d_i <= 20 for every operator. Together: K_min = 17 EXACTLY.
+   NEW FINDING (narrative correction, not decisive): the cheapest K = 17 fermion closures are ONE-LOOP, not 4-loop.
+     Examples: [N1b N2 S*^13 Phi17^3] (d = 19) + [N1 N2b S*^2 Phi17] (d = 6), closed by the chirality-flip
+     propagators <N1 N1b> and <N2 N2b>; or [N2b NMm S*^13] + [N2 NMm S*^2 Phi17^4] with <N2 N2b> and the Majorana
+     <NMm NMm>. Each is a bubble with two mass insertions, D = 0, NDA ~ y^2/(16 pi^2) ln(M_Pl^2/M_s^2) = 1.5-2.1e-2
+     x tree (EST). R2-V's highlighted closure (4 loops, 10^-11.83 x tree) is valid but is not representative of
+     fermion-loop corrections, which are about 1e-2 of tree. This does NOT change K_min or 'dtheta ~ dtheta_tree up to
+     O(1)': it is an O(1%) renormalization of the dim-21 coefficient. R2-V's general statement in 4c (K >= 17
+     closures renormalize the tree coefficient) is correct.
+
+3. y_s WINDOW (sk_yscap.py, sk_criterion.json; NUM, deliberately rough)
+   - My rough grouped one-loop RG (G3221 averaged Casimir 15/8 below M_U, SO(10) 45/8 above; alpha_U^-1 = 25.9 at
+     2.13e16; singlets ungauged) gives caps of 0.379-0.389. These are insensitive to one-loop versus two-loop SO(10)
+     running above M_U (0.379 vs 0.382). This supports R2-V's 0.373-0.380 and round 1's 0.368 as conservative.
+   - Caveat R2-V did not state: the 'environment-independent' floor window [0.304, 0.317] depends on the
+     perturbativity criterion. With y(M_Pl) <= 1 instead of sqrt(4 pi), the no-gauge cap is 0.3029 < 0.3044 and
+     the floor window is EMPTY. With gauge running and y <= 1, the rough cap is 0.356-0.362, so the window survives
+     only through the gauge environment.
+   - Caveat R2-V did not state (cross-gate): the window needs M_s <= cap x <S>_max, i.e. M_s <= 1.04e13 (strict
+     floor), <= 1.21e13 (0.368) or <= 1.25e13 (0.380). M_s = 1e13 comes from K1's T2 unification, and K3 found that
+     content is not realisable. Unification for a realisable content with B63 fermions has never been computed, so
+     the quality window rests on an M_s that is still undetermined. A lower M_s is harmless; M_s > 1.2e13 kills
+     the window.
+
+4. MINOR ISSUES / OVERCLAIMS
+   (a) The gate criterion is literally 'every K0b claim reproduces'. Several round-1 claims did NOT reproduce:
+       - f1 lowest SM operator dim 13 / 1e55 s (now dim 12 / 1e43 s);
+       - f1 'tau >~ 1e8 s' (now prompt 1e-6 s if the channel is open, else 1e43 s);
+       - f3 dim 13 (now dim 9);
+       - lambda_S window [0.143, 0.268] (now [0.154, 0.248]);
+       - the dossier field T_S = 16, T_Phi = 2.
+       All of these are EST, NUM or bookkeeping, and R2-V reported them transparently, so PASS on the decisive claims
+       is fair. A strict reading would make it 'PASS (decisive) with EST corrections'.
+   (b) With universal Yukawas at M_s, m_T + m_NMm ~ 2 M_s > m_V1' ~ M_s, so the R-odd channel is closed by default.
+       The f1 state is then a cosmologically stable (tau ~ 1e43 s) 1e13 GeV 16-component relic. Its abundance must
+       be Boltzmann-suppressed (T_RH <~ 1.1e11 << M_s gives exp(-90)), which K5 already requires. R2-V's
+       two-branch statement is correct, but the 'stable' branch is the generic one. (EST)
+   (c) Not examined by anyone (outside R2-V's scope; EST): high-scale SO(10)/SU(2)_R small-instanton contributions
+       are usually aligned with theta_QCD at leading order. Misalignment from Yukawa phases has not been estimated.
+   (d) 'K >= 17 => dtheta <~ tree' stays EST/CONJ, as R2-V labels it: O(1) Planck coefficients, and no IR
+       enhancement from light dimensionful cubics.
+
+5. CROSS-GATE
+   R2-V's scope (B63 fermion sector, quality, PQ) is consistent with round-1 facts (i)-(vi). Fact (v), that the
+   K >= 17 certificate had never been independently verified, is now closed: R2-V's DP plus my independent MILP, LP
+   and primal search all give K_min = 17. Nothing here touches the open kills (flavour with one bidoublet,
+   unification for realisable content, the second light bidoublet, global minimality, G3 certification). The
+   theory as a whole remains UNDECIDED or failing on those gates, independent of this PASS.
+
+FILES: sk_exact.py/.json/.log, sk_milp.py/.json/.log, sk_primal.py/.json/.log, sk_yscap.py/.json/.log,
+sk_criterion.json/.log (all in this folder).

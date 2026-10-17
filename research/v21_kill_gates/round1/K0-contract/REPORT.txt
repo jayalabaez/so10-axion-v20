@@ -1,0 +1,196 @@
+GATE K0 - the v21-F17 contract (exact)                                   2026-10-16
+=====================================================================================
+Working folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21\K0-contract\
+Labels: EXACT (proved / integer-exact computation), NUM (computed, uncertainty stated), LIT (read; -abstract =
+search snippet only), EST (order of magnitude), CONJ (argued).  Repositories _g6_nogo and _record were only read
+(git status unchanged by this gate; SARAH was run from a scratch copy of tools/validate-exact-x-model.wls on a
+scratch copy of the model; its work directory is in %TEMP% and was deleted by the driver).
+
+VERDICT: FAIL (quality), with every exact contract item PASS.
+  - PASS (EXACT): anomaly cancellation, complete coupling catalogue (12 structures, no undeclared-coupling
+    loophole), SARAH 4.15.3 attestation of the draft, accidental-U(1) kernel, PQ with |N| = 34, E/N = 8/3,
+    N_DW = 1 modulo gauge, exact R-parity and stability of the lightest tensor fermion.
+  - PASS (NUM): a consistent y_s window exists at M_s = 1e13 under the DECLARED quality convention:
+    0.304 <= y_s <= 0.374 (perturbativity cap, least-gauged component), m_a = 2.1-2.6 ueV (below the ADMX band).
+  - FAIL (NUM/EST, margin >= 1e8): the declared single-operator quality estimate is NOT the leading
+    PQ-violating effect.  Products of verified SO(10) x U(1)_X-invariant Planck operators of dimension 5-8,
+    closed by the renormalizable S-sector Yukawas y1, y2, y3 and the kappa H H S lock, generate the same
+    Phi17^4 S*^17 vev monomial with only M_Pl^-12 (even M_Pl^-9 with Phi-sector lines) and IR-dominated
+    loop integrals ~ M_s^-8: NDA estimate dtheta ~ 10^(1.1) at <S> = 3.3e13, M_s = 1e13, kappa = 5e12 GeV,
+    y = 0.35 (variant E: no lamF2, no Phi-sector lines, no Delta vevs, no family Yukawas), and 10^(9)..10^(20)
+    for the other closures.  Under the standard assumption of O(1) Planck coefficients this violates
+    dtheta < 1e-10 by >= 11 orders of magnitude.  The structural part (existence of K = 9/10/12 closures) is
+    EXACT (integer program over 4635 Susyno-verified singlet operators with exact chirality closure); the
+    magnitude is NDA (loop-integral O(1) factors, SM-component Clebsches and selection rules not evaluated).
+    This also refutes, for F17, the FINAL C3 expectation that the dimension-21 VEV content implies M_Pl^-17
+    suppression: the vev-content lemma holds (EXACT) but the suppression does not.
+
+-------------------------------------------------------------------------------------
+1. MODEL FILE DRAFT (item 1)  - models\SO10Z17AxionV21.m  [EXACT completeness]
+-------------------------------------------------------------------------------------
+Format: byte-compatible with models/SO10Z17AxionV20.m (Gauge rows, Global Z[17], ScalarFields unchanged,
+FermionFields rows {name, generations, components, SO(10) signed dim, X, Z17 phase = Exp[2 Pi I (X mod 17)/17]},
+LagHC / LagNoHC with the v20 scalar rows verbatim).  Field names avoid Mathematica built-ins (no D, N, C).
+Fermions (left-handed Weyl):  F 3x16(1) | TenA 10(-1), TenB 10(5) | Vec1 16(0)+Vec1bar 16bar(4) |
+Vec2 16(-3)+Vec2bar 16bar(7) | Vec3 16(-6)+Vec3bar 16bar(10) | PhiV 16(-9)+PhiVbar 16bar(-8) |
+SingN 2x1(-3), SingM 2x1(-1).
+EVERY renormalizable SO(10)-singlet, X-neutral fermion term (k0_couplings.py, exhaustive over all pairs of
+fermion species x {no scalar, each scalar, each conjugate}, SO(10) tensor products 16x16=10+120+126,
+16barx16bar=10+120+126bar, 16x16bar=1+45+210, 10x10=1+45+54, 10x16=16+144, 10x16bar=16bar+144bar):
+  Y10 F.F.H10 (3x3 sym) | Y126 F.F.Delta126bar (3x3 sym) | lamF2 F.Vec2.conj[H10] (3-vector)
+  lam3P Vec3bar.PhiVbar.H10 | y1 conj[S].Vec1.Vec1bar | y2 conj[S].Vec2.Vec2bar | y3 conj[S].Vec3.Vec3bar
+  yP Phi17.PhiV.PhiVbar | yAB conj[S].TenA.TenB  (the exact 10(-1).10(5) term: X = -1+5-4 = 0 with conj[S];
+  it is the Dirac mass of the two 10_F: 10 Dirac components at y_AB <S>)
+  yAM TenA.SingM.conj[H10] (2-vector) | yBN TenB.SingN.H10 (2-vector) | yNM S.SingN.SingM (2x2).
+No bare mass is X-neutral; no Phi210 Yukawa is X-neutral; 30 X-neutral combinations fail SO(10) invariance
+(listed in k0_couplings.json) and 0 SO(10)-invariant X-neutral terms are missing: declared set == enumerated set
+(completeness_PASS = true).  The 16 undeclared couplings of v20 have no analogue here.
+SARAH (item 6, done): tools\validate-exact-x-model-v21.wls (= the repo driver with the model name switched), 54 s,
+exit 0: model_parse PASS, model_initialization PASS (Susyno labels/indices T(16)=2, T(10)=1), lagrangian
+construction PASS (20 registered = 20 expected terms), gauge_invariance PASS (all 20 terms: X_sum 0, Z17 phase 1,
+Susyno invariant count 1, SARAH local+global charge checks True), anomaly_check PASS (X^3 = 0, X grav^2 = 0,
+SO10^2 X = 0, no WARNING).  Log: sarah_run\sarah_v21.log.
+
+-------------------------------------------------------------------------------------
+2. ANOMALIES, KERNEL, PQ, N_DW, f_a (item 2)  - k0_anomalies_pq.py/.json  [EXACT]
+-------------------------------------------------------------------------------------
+[SO(10)]^2 X = sum gen T(R) X = 6-1+5+0+8-6+14-12+20-18-16 = 0; grav-X = 0; X^3 = 0 (Fractions, per-field table
+in the json).  [SO(10)]^3 = 0 (no cubic Casimir), X^2 SO(10) = 0 (Tr T^a = 0), no Witten anomaly.  Z17 is a
+subgroup of the anomaly-free U(1)_X; Ibanez-Ross sums are the same integers, all 0 mod 17.  T_S = 14, T_Phi = 4.
+Global U(1) kernel of the 12 Yukawa structures + the 4 phase-sensitive scalar terms (kappa H H S, Phi210 H* Delta,
+O38 Phi210 H* Delta* S*, Delta^2 H*^2; scalar-sector constraints have rank 2 in (h,d,s,x)): rank 12 on 17 charges,
+kernel dimension 5, spanned exactly by X, G2 (Phi17-number, extended to fermions by yP: G2(PhiV)+G2(PhiVbar) = -1),
+f1 (Vec1 number), f2 (Vec3bar, PhiV: +1; Vec3, PhiVbar: -1), f3 (TenA, SingN: +1; TenB, SingM: -1).
+QCD anomaly (T_SU3(16) = 2, T_SU3(10) = 1 from the SM decomposition): N(X) = 0, N(f1) = N(f2) = N(f3) = 0
+(all three fermion-only U(1)s are vectorlike and QCD-anomaly free, so N is unambiguous), N(G2) = -2.
+PQ = X - 17 G2 (repository convention PQ(H10) = PQ(Delta) = -2, PQ(S) = 4, PQ(Phi17) = 0):
+  N_PQ = +34 (families 6, three 16-pairs 24, 10-pair 4, Phi-pair 0, singlets 0), 2N = 68,
+  E_PQ = 272/3, E/N = 8/3 exactly (Tr Q^2 / T_SU3 = 8/3 for every complete SO(10) multiplet).
+theta_eff = theta_0 + 17 theta_S - 4 theta_Phi (S-sector +14, Phi-sector -4, families -6 theta_H with
+theta_H = -theta_S/2 locked by kappa H H S and O38); gauge invariant under (theta_S, theta_Phi) -> +(4b, 17b);
+PQ shifts it by 68 alpha.  The smallest PQ angle that is a lattice shift modulo gauge is 2 pi/68 (1 + 4n = 17m has
+the solution n = 4, m = 1; gcd(17,4) = 1), so N_DW = 68/68 = 1 modulo gauge; relative to the S phase alone it is 17
+(the repository caveat: S-only strings bind 17 walls if Phi17 breaks first).
+f_a = v_S v_Phi / sqrt((4 v_S)^2 + (17 v_Phi)^2), v = sqrt2 <field>  (-> v_S/17 = sqrt2 <S>/17 for v_Phi >> v_S);
+the QCD potential is -chi cos(a/f_a) with a ~ a + 2 pi f_a.  With <Phi17> = 1e17, M_s = y_s <S>:
+  y_s = 0.304 -> <S> = 3.29e13, f_a = 2.74e12, m_a = 2.08 ueV; y_s = 0.374 -> m_a = 2.56 ueV; y_s = 0.388 -> 2.66 ueV
+  (m_a = 5.70 ueV x 1e12/f_a, chi = (75.5 MeV)^4: Grilli di Cortona et al. 1511.02867 [LIT-abstract]).
+
+-------------------------------------------------------------------------------------
+3. QUALITY (item 3)  - k0_quality_relics.py/.json, k0_vacuum_diagram.py/.json, tools\so10_singlets.wls
+-------------------------------------------------------------------------------------
+3a. Lemma (EXACT, checked field by field): with z the Spin(10) centre exponent (16: 1, 16bar: 3, 10 and 126bar: 2,
+    singlets/210: 0), X = z + G2 - f1 + 3 f2 + f3 (mod 4) for every field; hence for every SO(10)-invariant
+    operator that is neutral under f1, f2, f3: X = G2 (mod 4).  UV (X = 0): PQ violation <=> G2 != 0 <=> |G2| >= 4.
+    Consequences: (i) the minimal PQ-violating X-invariant SCALAR monomial is Phi17^4 S*^17 (dim 21; the 2-field-
+    conjugation-free list up to dim 23 is in the json: 86 entries, none below 21); (ii) the minimal PQ-violating
+    X-invariant f-neutral OPERATOR including fermions has dimension 19 (centre-level ILP bound; candidate
+    Vec2bar^8 S^3 Phi17*^4; (16bar)^8 does contain 175 SO(10) singlets - Susyno), 20 with four fermions
+    (Vec2bar*^4 S*^10 Phi17^4), 21 with two: the FINAL C3 ">= dimension-21 operator" statement is refuted as an
+    operator statement, but (iii) every PQ-violating VEV monomial still has >= 21 fields with >= 4 net Phi17
+    (EXACT: the lemma applied to the scalar vev monomial).  Z17-EFT (free <Phi17> insertions): PQ of an
+    f-neutral operator is a multiple of 68; minimal scalar operator S^17 (dim 17), 2-fermion 17, 4-fermion 16.
+3b. Single-operator numbers (NUM): dtheta_declared = 2 <Phi17>^4 <S>^17 /(M_Pl,red^17 chi) (reproduces FINAL's
+    <S>_max = 3.29e13 at <Phi17> = 1e17) -> y_s >= 0.304 at M_s = 1e13 (0.091 at 3e12);
+    Z17-EFT S^17/M_Pl^13 with c = 1 (manuscript eq. scalarquality): <S>_max = 1.55e13 -> y_s >= 0.645 at 1e13
+    (above every perturbativity cap: no window); v20-style NDA P = 12 with Lambda = <S>: y_s >= 1.36 (no window).
+3c. Multi-operator vacuum diagrams (the fermion-loop question of the task).  Enumerated all X-neutral,
+    centre-consistent, Lorentz-consistent operators with <= 4 fermions and dim <= 8 (5025), verified SO(10)
+    invariance with Susyno ReduceRepProduct (SARAH's bundled copy; tests: 16.16.126bar -> 1, 16.16.126 -> 0,
+    16bar.16bar.10 -> 1, 16.16bar.210 -> 1, 126bar^2 -> 0, 126bar^4 -> 3): 4635 genuine singlets (52 of dim 5,
+    291 of dim 6).  Integer program: choose Planck operators and renormalizable vertices (all 12 Yukawas and
+    conjugates) such that every fermion species has zero net chirality (exact closure into a vacuum graph) and the
+    scalar vev monomial has net Phi17 = +-4 (PQ violation); minimise the total Planck power K = sum(d_i - 4)
+    (UV, Phi17 counted) or the manuscript's P (EFT, <Phi17> free), then the number of vertices.  Results:
+      A  all:                        K = 9  (2x[Vec1* PhiVbar* S*^2], 2x[Vec1bar* Vec2bar* Delta S* Phi17],
+                                     1x[Vec2bar*^2 PhiV*^2 S*]; closure y1^2 y2^4 yP^2 lamF2*^4 Y126^2; 4 loops)
+      B  no Phi-sector lines:        K = 10 (4x[Vec1bar* Vec2bar* H10 S* Phi17] + [Vec1*^4]; needs lamF2; 6 loops)
+      C  B and lamF2 = 0:            K = 12 (2x[Vec1* Vec3* H10 S*], 3x[Vec1bar* Vec2bar* H10 S* Phi17],
+                                     [Vec2*^2 H10 S*], [Vec1* Vec2* Vec3bar*^2 Phi17]; y1^3 y2^3 y3^2; 5 loops)
+      E  no Phi-sector, no H10-type Yukawas, no family Yukawas: K = 12 (2x[Vec1* Vec3* H10 S*],
+                                     2x[Vec1bar* Vec2bar* H10 S* Phi17], 2x[Vec2*^2 H10 S*],
+                                     [Vec2bar*^2 Vec3bar*^2 Phi17^2]; closure y1^2 y2^4 y3^2 only; 6 H10 lines
+                                     paired by 3 kappa* vertices; vev monomial exactly S*^17 Phi17^4; 5 loops)
+      F/G EFT counting:              P = 6 (versus the manuscript's P = 12 for v20).
+    Estimate for E (EST/NDA; all lines at M_s = 1e13, loop-integral dimension D = 4 + 12 - 24 = -8 -> M_s^-8,
+    (16 pi^2)^-5, y^8 = 0.35^8, kappa = 5e12 GeV from kappa ~ r0^2 M_U/(4 r_S), <S> = 3.3e13, <Phi17> = 1e17):
+      V ~ 10^(-3.4) GeV^4,  dtheta = V/chi ~ 10^(1.1),  ratio to the declared tree operator = 10^(11.1)
+      (the loop replaces M_Pl^-5 by kappa^3 (16 pi^2)^-5 y^8 M_s^-8 = 1.2e11 M_Pl^-5).
+    Variants A/B/D give 10^(9)..10^(20) with lamF2 = 1 (A: 10^(11.8) even at lamF2 = 0.01; B: 10^(1.1) at 0.01).
+    Robustness of the kill: independent of lamF2 (E uses none), of the Phi-sector (E has no PhiV lines, so no
+    (M_s/M_Phi)^2 suppression), of Delta-vev component selection (E has no Delta), of Fermi statistics (E has no
+    four identical fields; Vec2*^2 H10 S* is the ordinary symmetric 16bar.16bar.10 structure); it requires the
+    H10 lines to be doublet components at <= M_I ~ 1e13 (the Im-10 doublet of the kappa lock sits exactly there);
+    with only M_U-mass H10 components it would be suppressed by (M_s/M_U)^12 ~ 1e-40.  Not evaluated: SO(10)
+    Clebsches and the SM-component flow (generic O(1)), exact loop integrals (O(1-10^3) either way), the
+    unknown Planck coefficients (assumed O(1)).  Therefore: NOT PASS; FAIL under generic Planck coefficients
+    with a margin of >= 8 (conservatively) to 11 orders of magnitude.  The declared-operator convention used by
+    FINAL and prescribed for K1 under-estimates dtheta by ~10^11 for this fermion content.
+    What would overturn it: an explicit component-level computation of all K <= 12 closures (there are many;
+    the ILP solution is only the cheapest) showing cancellation by >= 1e11, or a contract variant whose
+    vectorlike X charges forbid every dim <= 8 operator carrying Phi17 or mixing distinct vectorlike sectors
+    (the K0 machinery can scan such assignments; not in scope).
+
+-------------------------------------------------------------------------------------
+4. R-PARITY, STABLE AND DECAYING STATES (item 4)  [EXACT for the parity; NUM/EST for lifetimes]
+-------------------------------------------------------------------------------------
+R = z^2 (-1)^(2s): z^2 (order-2 centre of Spin(10)) is -1 on 16/16bar and +1 on 10, 45, 54, 120, 126, 210 and
+singlets; every scalar of the contract is a tensor, so z^2 fixes all vevs at every scale (EXACT); (-1)^(2s) is
+exact in any Lorentz-invariant theory.  R is therefore an exact Z2 of the complete theory including every
+gauge-invariant Planck operator; in the SM phase z^2 = (-1)^(3(B-L)) = the matter parity left by the B-L = 2 vev
+of the 126bar (Martin, hep-ph/9207218 and hep-ph/9602349 [LIT-abstract]: 126 is a "safe" representation).
+R-odd fields: TenA, TenB, SingN, SingM only (the ILP confirms no f3-violating operator exists with <= 4 fermions:
+f3 = +-1 is infeasible).  The lightest R-odd state is absolutely stable: either the SU(2)-doublet (neutral member
+after EW splitting) of the 10_F Dirac pair at y_AB <S> (the colour triplet is heavier by RG, ~ +12 % EST), or a
+SingN/SingM Dirac singlet at y_NM <S> if y_NM < y_AB.  Cosmology (K5): T_RH << its mass.
+f1 sector (Vec1 pair, ~1e13): lowest f1-changing operator F Vec1bar S^3 Phi17*/M_Pl^3 (dim 7): mixing mass
+  ~ <Phi17><S>^3/M_Pl^3 ~ 4e2 GeV, angle ~ 4e-11, tau ~ 1e-13 s (prompt).  Vec2 pair: lamF2 (renormalizable) and
+  Vec2bar F S*^2/M_Pl (dim 5, mixing ~ 4e8 GeV): prompt.  PhiV pair (~1e17): prompt via lam3P into Vec3bar + H10.
+f2 sector (Vec3 pair, ~1e13, fed by PhiV decays): lowest f2-changing operators have dimension 10
+  (F Vec3 Delta* S^5 Phi17* and F* PhiVbar* S*^6 Phi17; 4-fermion: dim 11 with a PhiV line): mixing mass
+  ~ v_R <S>^5 <Phi17>/M_Pl^6 ~ 5e-13 GeV, angle ~ 5e-26, Gamma ~ theta^2 alpha m ~ 2e-40 GeV, tau ~ 1e15-1e16 s
+  (EST): a second long-lived relic (its lightest component is the SM-singlet nu^c-like one, EST), decaying after
+  BBN but before today -> its abundance must be negligible: same T_RH << 1e13 requirement.  FINAL's statement that
+  the 16-type exotics all decay promptly through Planck operators holds for Vec1/Vec2/PhiV but not for Vec3.
+Heavier R-odd states decay to the lightest via the SO(10) gauge bosons (m^5/M_U^4 alpha_U^2 -> tau ~ 1e-21 s) and
+yAM/yBN.
+
+-------------------------------------------------------------------------------------
+5. y_s CAP AND WINDOW (item 5)  - k0_ys_cap.py/.json  [NUM, one loop]
+-------------------------------------------------------------------------------------
+RGEs: 16 pi^2 dy/dt = y[(sum_i d_i + 1) y^2 - 3 sum_G g^2 (C2(psi)+C2(chi))], sum d_i = 60 (58 Dirac components +
+2 singlet pairs, universal y_s); 16 pi^2 dlambda/dt = 20 lambda^2 + 4 lambda 60 y^2 - 120 y^4 (+U(1)_X terms
+above <Phi17>), V = (lambda_S/2)|S|^4.  Gauge environment from the rescue numbers (v_R = 2.6e13, M_U = 2.13e16,
+alpha_U^-1 = 25.9; K1 owns these): SM one loop (PDG 2024) + F17 complete multiplets (Delta b = 28/3) above M_s,
+G3221 with T2 + F17 (b = 65/6, 12, 47/3, 49/3 for SU3, SU2L, SU2R, B-L) run down from M_U, SO(10) above M_U with
+b1 = 8 and the exact MV b2 = 7267/2 = 3633.5 (my formula reproduces Route F's v20 value 25013/6), U(1)_X with
+b_X = 12865/3 (integer X): alpha_X^-1(M_U) >= 3235 (g_X <= 0.062 in the X(F) = 1 normalisation) keeps the X pole
+above M_Pl,red - a constraint K1 should carry.  SO(10) two-loop alpha^-1(M_Pl,red) = 5.2 (pole above M_Pl,red).
+Caps y_s(M_s) for y(mu) <= sqrt(4 pi) up to M_Pl,red:  M_s = 1e13: 0.322 (no gauge), 0.374 (least-gauged
+component, nu^c-like), 0.398 (dimension-averaged Casimir);  M_s = 3e12: 0.307 / 0.352 / 0.380.
+The cap is set by gamma_S = 60 y^2 (pure-Yukawa Landau pole at ln(Lambda/M_s) = 16 pi^2/(122 y^2)), the gauge terms
+only widen it; y(M_Pl) from y(M_s) = 0.35 is 0.36 (least-gauged) / 0.20 (averaged); y_s = 0.39 hits a Landau pole
+below M_Pl,red in the least-gauged run.  lambda_S(M_s) window (positivity to M_Pl vs lambda_S < 4 pi), M_s = 1e13:
+[0.075, 0.47] at y_s = 0.30, [0.14, 0.29] at 0.35, [0.208, 0.217] at 0.39 (closes just above).
+Window at M_s = 1e13: declared quality 0.304 <= y_s <= 0.374 (least-gauged cap) -> m_a = 2.08-2.56 ueV, below the
+ADMX DFSZ-excluded 2.66-3.31 ueV band (y_s = 0.388-0.483) [LIT ADMX 1804.05750, 1910.08638 as read in FINAL].
+Z17-EFT convention: y_s >= 0.645 > every cap: no window.  NDA/multi-operator (section 3c): no window at any y_s.
+
+-------------------------------------------------------------------------------------
+6. CONFIGURATION REFINEMENTS FOR THE OTHER GATES
+-------------------------------------------------------------------------------------
+- Model file and charges fixed as in models\SO10Z17AxionV21.m (names TenA, TenB, Vec1..3(+bar), PhiV(+bar),
+  SingN, SingM); the 12 couplings above are the complete renormalizable fermion sector.
+- y_s window (declared convention): [0.304, 0.374] at M_s = 1e13; lambda_S(M_s) in [0.14, 0.29] at y_s = 0.35.
+- g_X <= 0.06 (X(F) = 1 normalisation) for the U(1)_X Landau pole above M_Pl,red; U(1)_X active only above 1e17.
+- Two long-lived relics for K5: the exactly stable lightest R-odd tensor fermion (neutral 10_F doublet member or a
+  singlet, ~1e13) and the f2-charged Vec3 pair (nu^c-like component, tau ~ 1e15-1e16 s).
+- Quality: the declared-operator estimate is superseded; any K1/K5 statement using dtheta_declared must be flagged.
+
+-------------------------------------------------------------------------------------
+7. FILES
+-------------------------------------------------------------------------------------
+models\SO10Z17AxionV21.m (draft), k0_couplings.py/.json/.log, k0_anomalies_pq.py/.json/.log,
+k0_quality_relics.py/.json/.log, k0_vacuum_diagram.py/.json/.log, tools\so10_singlets.wls, susyno\cand_in.txt,
+susyno\cand_out.txt, susyno\test_in.txt, susyno\test_out.txt, k0_ys_cap.py/.json/.log,
+tools\validate-exact-x-model-v21.wls, sarah_run\sarah_v21.log.

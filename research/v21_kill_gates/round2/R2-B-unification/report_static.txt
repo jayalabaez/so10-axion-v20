@@ -1,0 +1,125 @@
+1. METHOD, CONVENTIONS, VALIDATION
+----------------------------------
+Code (all in this folder; K1's library copied, not imported from round 1):
+  r2b_lib.py       = K1 k1_lib.py (exact Machacek-Vaughn b_i, b_ij for product groups; PGJ single-group three-loop
+                     table; DOP853 integrator with an optional single-coupling Landau event).
+  r2b_model.py     generalised K1 model: any set of light G3221 multiplets taken from the complete G3221 table of
+                     210 (real) + 126bar + 10 (complex) (Goldstones removed; completeness re-checked EXACT in every
+                     factor), B63 S-sector 3 x (16+16bar) + 2 x 10 Weyl at M_s, Phi pair 16(-35)+16bar(18) at M_Phi,
+                     SM-language light thresholds at v_R (SM Higgs and the Delta_R^+ Goldstone removed), heavy
+                     G3221 thresholds at M_U, (3,1,1)_{4/3} vector at the Am45 ratio, MS-bar heavy-vector constant
+                     (switchable sign), Planck operator with exact Am45 Clebsches, SO(10) x U(1)_X running with the
+                     exact B63 U(1)_X coefficients and U(1)_X shooting to a prescribed alpha_X^-1(M_Pl,red).
+  r2b_validate.py  reproduces K1 and the K1 feasibility skeptic EXACTLY (see below).
+  r2b_coeffs.py    exact coefficient tables + cross-checks against the repository (read-only imports).
+  r2b_nominal.py   nominal 1/2/3-loop solutions of C0, C1, C2, C1' for the three S_V conventions.
+  r2b_scan.py      grid (M_s, y_s, S_V, M_Phi, U(1)_X), threshold Monte Carlo + coherent extremes, Planck c scan.
+  r2b_rescue.py    minimal-addition search (one or two extra light G3221 multiplets).
+  r2b_p831.py      GUT thresholds of the explicit K3 vacuum points P831 / P831b (realisable-spectrum sample).
+  r2b_analytic.py  one-loop analytic structure (A, B) and the axion band.
+Running: t = ln(mu/GeV); d alpha_i^-1/dt = -b_i/(2 pi) - sum_j b_ij alpha_j/(8 pi^2) + Y_i/(32 pi^3)
+  - b3_i alpha_i^2/(32 pi^3).  Segments: SM (1 Higgs doublet) [M_Z, min(M_s, v_R)]; SM + B63 S-sector [M_s, v_R]
+  if M_s < v_R; G3221 (+ S-sector above M_s) [v_R, M_U]; SO(10) x U(1)_X [M_U, M_Phi], + Phi pair above M_Phi.
+  Inputs alpha_1^-1 = 59.02, alpha_2^-1 = 29.57, alpha_3 = 0.1179 at M_Z (repository inputs).  Two-loop Yukawa
+  terms as in K1 (y_t, 14 y_s^2 for the B63 S-sector since T_S = 14, 4 y_phi^2, 10 Tr Y10^2 + 63/4 Tr Y126^2 in the
+  SO(10) phase; Tr Y126^2 = 0.5).  Three loops: PGJ gauge+matter b3 in the SO(10) phase (exact); per-factor pure
+  three-loop terms in the SM/G3221 phases ('sm3L' runs; mixed alpha_i^2 alpha_j terms and three-loop Yukawa terms
+  omitted, EST); two-loop threshold matching is NOT included (needed for a consistent three-loop treatment).
+Unification solver: unknowns (ln v_R, ln M_U, alpha_2R^-1(v_R)); conditions alpha_i^-1(M_U) (after thresholds) equal
+  to alpha_U^-1 (1 + eps_i); M_U := mass of the (3,2,2)_{-2/3} vectors (the proton-decay mediators).
+Validation (r2b_validate.json): with K1's settings (S_V off, (3,1,1) at M_U, y_s = 0.345) T2: 1L 1.4060e13 /
+  4.6310e16 / 26.578; 2L 2.4965e13 / 2.0448e16 / 27.102, tau_p = 8.64e36 yr (K1: identical to all quoted digits);
+  T3: 2.9583e13 / 2.9140e16 / 26.129 (identical); Lambda_2L/M_Pl = 2.431 (K1 2.417, skeptic 2.43), Lambda_3L = 1.055
+  (K1 1.051, skeptic 1.056).  Skeptic K3-contents (gauge-only 2L): bid+Delta_R 2.8627e9 / 1.7883e16 / 33.917, tau =
+  7.91e36; T2 minus (8,2,2) 8.0172e12 / 2.2967e15 / 33.267, tau = 2.07e33 (identical to the skeptic's json).
+
+3. HEAVY-VECTOR MS-bar MATCHING CONSTANT (item b)
+-------------------------------------------------
+Result used (sign fixed by derivation; labels below):  at mu = M_V,
+     alpha_i^-1(low, MS-bar) = alpha_G^-1(high, MS-bar) - [C2(G) - C2(H_i)]/(12 pi) = alpha_G^-1 - S_V,i/(12 pi),
+with S_V,i = sum over the heavy (eaten) vectors of the factor-i Dynkin index = (5, 6, 6, 8) for (SU3, SU2L, SU2R, B-L)
+at M_U [EXACT from the (3,2,2)_{-2/3} + (3,1,1)_{4/3} vectors and their conjugates], and 6/5 for U(1)_Y (GUT norm.)
+from W_R^+- at v_R [EXACT].  In the code's convention alpha_high = alpha_low + (1/2pi) sum b^k ln(M_k/mu) + S_V/(12 pi).
+Derivation [EXACT given two literature facts]: (i) in DR-bar the one-loop matching has no constant for any spin
+(Langacker-Polonsky hep-ph/9210235, LIT-abstract/snippet; Antoniadis-Kounnas-Tamvakis 1982, LIT-abstract);
+(ii) for an unbroken group 1/alpha_DR = 1/alpha_MS - C2(G)/(12 pi) (alpha_s^DR = alpha_s^MS (1 + alpha_s/4pi) for SU(3);
+Martin-Vaughn hep-ph/9308222 computes this scheme difference, LIT-abstract; coefficient quoted from standard knowledge,
+NOT re-read in this session).  Then alpha_i,MS^-1 = alpha_i,DR^-1 + C_i/(12pi) = alpha_G,DR^-1 + C_i/(12pi) =
+alpha_G,MS^-1 - (C_G - C_i)/(12pi).  This is the Weinberg-Hall structure lambda_i ~ (C_G - C_i) - 21 Tr(t_V^2 ln(M_V/mu))
+in which the constant and the vector log enter with opposite relative signs (the round-1 feasibility skeptic's form
+-(2/21)(b_V+b_GB) + 2(b_V+b_GB) ln(M_V/mu) has the same structure: its "+1" sign).  The round-1 physics skeptic's claim
+"MS-bar has no constant, a DR-bar-like constant would be the ambiguity" is the reverse of (i)+(ii) and is not adopted.
+Primary papers (Weinberg PLB 91 (1980) 51, Hall NPB 178 (1981) 75, Bertolini-Di Luzio-Malinsky 0912.1796) could not
+be read (no WebFetch; the searches returned no text of them): the sign is therefore EXACT-conditional on (i), (ii).
+Size: shifts (0.133, 0.159, 0.159, 0.212) in alpha^-1 at M_U and 0.032 in alpha_1^-1 at v_R; effect on the solutions
+(two loops): M_U +4.5-4.6% (all four contents); tau_p +20.2-20.4%; v_R +4.8-5.0%; Lambda_2L +8.3-8.5%.  All main
+numbers below use the derived sign; the opposite sign and 'off' are tabulated as systematics.
+
+9. PROTON DECAY NORMALISATION (item d)
+--------------------------------------
+Repository normalisation (instructed; proton_decay_falsification_gate_v20.gauge_lifetime_years):
+  tau = (4/pi)(f_pi^2/m_p) M_X^4 alpha_U^-2 / (alpha_H^2 A_R^2 F_q), f_pi = 0.139, alpha_H = 0.012 GeV^3, A_R = 2.726,
+  F_q = 7.6 = 2(1+|V_ud|^2)^2, M_X = M_U = M(3,2,2).  The literature form behind it, Gamma = (pi m_p/4 f_pi^2) alpha_U^2
+  F_q A_R^2 alpha_H^2 / M_X^4, is confirmed at snippet level (LIT-abstract: e.g. 2306.02401, 1003.2625 where the width
+  is m_p/(64 pi f_pi^2) (1+D+F)^2 alpha_bar_H^2 (g^2 A_R/M_X^2)^2, i.e. alpha_H = (1+D+F) alpha_bar_H).
+Second normalisation (EST, derived here; r2b_model.proton_lifetime_direct_years): direct lattice form factor
+  W0 = <pi0|(ud)_R u_L|p> ~ 0.131 GeV^2 (Aoki-Izubuchi-Shintani-Soni 1705.01338; the abstract read says the direct form
+  factors are 1.4x smaller than the indirect BChPT ones; the value 0.131 is quoted from memory, LIT-unverified),
+  SO(10) X,Y,X',Y' exchange with k^2 = g_U^2/(2 M_X^2), Weyl Fierz (factor 2): C^{LR} = 2k^2(1+|V_ud|^2), C^{RL} = 4k^2,
+  Gamma = (m_p/32pi)(1 - m_pi^2/m_p^2)^2 A_R^2 W0^2 (|C^{LR}|^2 + |C^{RL}|^2).
+  => tau_direct = tau_repo / 4.53 for every (M_X, alpha_U) [NUM].  The repository formula corresponds to an effective
+  W_eff = alpha_H/(sqrt2 f_pi) = 0.061 GeV^2, i.e. BChPT WITHOUT the (1+D+F) = 2.27 factor; with it, W = 0.139 GeV^2,
+  consistent with the direct lattice value.  Independent literature check: the MEMPHYS study (hep-ex/0607026,
+  LIT-snippet) quotes tau(p -> e+ pi0) ~ 1e35 yr (M_X/1e16 GeV)^4 (alpha_U^-1/25)^2 with newer lattice input; at
+  (1e16 GeV, 25) the direct normalisation gives 9.3e34 yr and the repository one 4.2e35 yr.  Hence the repository
+  normalisation is probably optimistic by a factor ~4-5 (EST); both are reported and the criterion is evaluated in both.
+  Super-K 90% CL bound tau > 2.4e34 yr (2010.16098, repository citation) requires M_X > 4.16e15 GeV (repo) /
+  6.07e15 GeV (direct) at alpha_U^-1 = 34.5.  Hyper-K 90% CL sensitivity 7.8e34 yr (1805.04163 via 2002.04890,
+  LIT-snippet; ~1-2e35 for longer exposure, LIT-snippet).
+
+13. WHY THE REALISABLE CONTENTS FAIL: ONE-LOOP ANALYTIC STRUCTURE [EXACT arithmetic, r2b_analytic.json]
+---------------------------------------------------------------------------------------------------------
+With L1 = ln(v_R/M_Z), L2 = ln(M_U/v_R) and tree matching,
+   2 pi (alpha_1^-1 - alpha_2^-1)(M_Z) = 185.0 = (109/15) L1 + A L2,   A = 3/5 b_2R + 2/5 b_BL - b_2L,
+   2 pi (alpha_2^-1 - alpha_3^-1)(M_Z) = 132.5 = (23/6) L1 + B L2,     B = b_2L - b_3      (G3221 segment),
+so L2 = 34.90/(B - 0.5275 A), ln(M_U/M_Z) = 25.46 + L2 (1 - 0.1376 A).  The two-loop M_U is 0.43-0.49 x the
+one-loop M_U for these contents, so tau_p > 2.4e34 (repo normalisation) needs M_U(1L) >~ 9e15, and v_R(2L) >= 1e11
+needs A L2 <~ 40.  Together: B <~ 5.16 - 0.18 A with A <~ 3.3.
+   content   A       B      1L v_R    1L M_U      verdict of the inequality
+   C0        17/15   31/6   3.2e12    6.6e15      B too large by ~0.21
+   C1        1       11/2   4.0e12    4.4e15      B too large by ~0.52
+   C2        11/3    13/3   6.8e9     1.41e16     tau fine, A L2 = 53 > 40 (v_R too low)
+   C1'       10/3    14/3   4.3e10    6.9e15      marginal on both
+   T2        -4/15   25/6   1.4e13    4.6e16      (round 1; not realisable)
+Per-multiplet (dA, dB): (8,3,1)_0 (-8/3, +7/6) is what drives C0/C1 to large B (low M_U); a bidoublet adds (-2/15,
++1/3); (1,3,1)_0 (-1/3, +1/3); (8,1,3)_0 (+8/5, -3/2); (6,2,2)_{2/3} (-4/15, -4/3); (8,2,2)_0 (-16/15, -4/3);
+(8,1,1)_0 (0, -1/2); colour triplets (3,1,1) (+1/15, -1/6).  Hence a light (8,3,1)_0 without an SU(3)-heavy partner
+lowers M_U below the Super-K limit, and removing it (C2) drives v_R to ~1e10: this is the structural reason.
+
+8b. U(1)_X OF B63 [EXACT coefficients, NUM running]
+-----------------------------------------------------
+Integer-X normalisation (X(16_F) = 1): below M_Phi b_X = 254041/3, b_{10,X} = 27044, b_{X,10} = 1216980,
+b_XX = 388484332; full content (above M_Phi) b_X = 101203 (= K0b), b_{10,X} = 33240, b_{X,10} = 1495800,
+b_XX = 439863564.  With the two-loop self term included, alpha_X(M_Pl,red) <= 1 requires alpha_X^-1(M_U) >= 9.5e4-1.06e5
+(g_X(M_U) <= 0.0109-0.0115; K0b's one-loop 0.013); the stricter EST criterion alpha_X X_max^2 <= 1 at M_Pl,red
+(X_max = 63) requires alpha_X^-1(M_Pl) >= 3969 and gives practically the same g_X(M_U) bound (0.0107-0.0113), because
+b_X ~ 1e5 makes alpha_X^-1 fall by ~1.6e4 per e-fold: in every admissible case the U(1)_X reaches alpha_X = 1 within
+~0.2-0.3 e-folds above M_Pl,red (1.2-1.3 M_Pl,red at alpha_X^-1(M_Pl) = 3969).  Feedback on SO(10): with the worst
+admissible g_X (alpha_X(M_Pl) = 1) alpha_10^-1(M_Pl,red) drops by only 0.16-0.20 (e.g. C2 2L: 17.96 -> 17.80; C0 3L:
+9.49 -> 9.28), i.e. U(1)_X is not the binding constraint for B63 (unlike K1's F17 estimate, where the feedback was
+larger because b_{10,X}/b_X was larger and alpha_10^-1(M_Pl) smaller).  g_X is a free parameter; the bound is a
+contract constraint (g_X(M_U) <~ 0.011), not a kill.
+
+11. AXION MASS BAND (item f)
+---------------------------------------------------------------------------------------------------------
+[NUM; conventions of K0b/K1: f_a = sqrt2 <S>/17, m_a = 5.70 ueV (1e12 GeV/f_a), Gorghetto-Villadoro 1812.01008
+LIT-abstract; <S>_max = 3.29e13 from the B63 quality bound]
+Unification does not fix <S>: the B63 window enters the running only through M_s = y_s <S> (S-sector threshold,
+complete SO(10) multiplets -> two-loop only) and the 14 y_s^2 Yukawa term.  Over the scanned M_s with y_s in the
+B63 window (lower edge from quality, upper edge from the K0b RG cap):
+   M_s = 3e12: m_a = 2.08-7.90 ueV;  5e12: 2.08-4.87;  7e12: 2.08-3.54;  8.2e12: 2.08-3.04;  1e13: 2.08-2.52;
+   1.21e13: 2.08 (window closes).  The B63 nominal band (M_s = 1e13) 2.09-2.52 ueV lies below the first ADMX
+   DFSZ-excluded band (Run 1A, 645-680 MHz = 2.66-2.81 ueV, 1804.05750, LIT-abstract); no DFSZ-sensitivity result
+   covering 505-610 MHz was found (LIT-search negative, not a proof of absence).  For M_s < 1e13 the upper part of the
+   band (> 2.66 ueV) overlaps the ADMX DFSZ exclusions 2.66-3.31 and 3.27-3.34 ueV (K1's list, LIT-abstract).
+The axion band is the same for every content C0-C2 (it does not depend on v_R or M_U).

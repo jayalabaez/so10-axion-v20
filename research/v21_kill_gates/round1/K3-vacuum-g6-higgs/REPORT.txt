@@ -1,0 +1,255 @@
+GATE K3 (v21-F17-G3221): vacuum, G6 and the Higgs quartic with the v20 51-parameter potential kept verbatim
+==========================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21\K3-vacuum-g6-higgs\
+This report continues the cut-off previous run (its partial report is kept as REPORT_prev_run_partial.txt; its block
+analyses A20_*/A45_*/A70_*/Am45_*/W45_* were reused, not recomputed).  Repository checkouts were imported read-only
+(sys.path); no writer was run; `git -C _g6_nogo status --short` is empty and `_record` changed only through the other
+job's own commit (its earlier uncommitted files are now committed), i.e. nothing was changed by this gate.
+Labels: EXACT (proved), NUM (computed, float64 on the repo's exact-X compiler rows, stated precision), LIT (read), EST, CONJ.
+No literature was read in this session (no WebSearch call was made); nothing below is labelled LIT.
+
+0. VERDICT
+----------
+FAIL for the declared light content T2/T3 (NUM, converged convex programmes at five 210 orientations): at a one-step
+G3221 vacuum of the v20 potential (8,2,2)_0 cannot be the lightest 126bar multiplet, (8,3,1)_0 and (1,3,1)_0 cannot both
+be tuned light, and once the G3221 point is also required to be the lowest point of the SM-singlet subspace the
+(1,3,1)_0-light variant collapses as well.  The maximal realisable "T2-like" light content is
+     complex bidoublet (1,2,2)  +  (8,3,1)_0  +  the vev-light Delta_R (1,1,3)_{B-L=2} (radial + doubly charged)
+and this is the configuration refinement for the unification re-solve.  For that content a fully explicit coupling
+point P831 was constructed: exact stationarity, Hessian with exactly the 35 Goldstone zero modes, 36 light real modes,
+heavy floor m >= 0.042 |Phi| (~3e15 GeV), singlet-channel |a0| <= 0.49, tree lambda_eff = -0.00700 (dialled by a convex
+bisection), no lower point in the exact SM-singlet subspace, BFB on a 554-ray bank.  Its remaining failure is the full-
+chart global screen: a random-start Newton descent of the full 486-chart potential leaves V* behind within three steps
+(V = -176.07 -> -206.8 and falling), i.e. P831 is not bounded from below outside the ray bank (section 7); the feedback
+cycle (descent direction -> BFB/competitor cut -> re-solve) is set up and its first round is reported in section 7b.
+So even the refined content is UNDECIDED as a global minimum (missing: a BFB-complete coupling point; the full-chart
+descents must come back to V*), while the declared T2/T3 content is FAIL.  Details and every number follow.
+
+1. METHOD (common to both runs)
+-------------------------------
+* Chart: the repo's 486-real chart (210 real Phi components; H10, Sigma126bar (-i Hodge), S, Phi17 as (x+iy)/sqrt2 pairs).
+  G3221 point: Phi = p P + a A + omega W (unit-norm (1,1,1), (15,1,1), (15,1,3) four-forms from direct.singlet_basis),
+  Sigma = r sigma_std (the Y = 0 SM singlet of (10bar,1,3)), H = 0, S = s, Phi17 = x.  Main orientation "Am45":
+  (p, a, omega) = (0.70711, -0.70711, 0), r = 1.2e-3, s = 1.6e-3, x = 4.0 (|Phi| = 1 units).  Other orientations of the
+  previous run: A20, A45, A70 (p, a) = (cos th, sin th), W45 (omega = 0.5, G3211).
+* V = sum_i c_i D_i(q) is linear in the 51 exact-X couplings; target.parameter_rows gives (value, gradient, Hessian) of
+  every D_i at a state (~75 s).  Stationarity J c = 0 has rank 6 (EXACT structure: 9 singlet directions minus 3 phases);
+  c = N y, N the 45(46)-dim null space, so every solution is exactly stationary (|grad| <= 1e-14 at P831).
+  Symmetry tangents: rank 33/34/35 (so(10) / +U(1)_X / +PQ) at every G3221 point -> the Hessian kernel is exactly the
+  35 Goldstones; all reported "zero" counts are 35.
+* SM-isotypic block reduction of the 51 Hessians (26 blocks, multiplicities checked D = ctype*m*dR): e.g. (1,2)_{1/2}:
+  m = 5 (Phi, H_u, H_d*, Sigma_u, Sigma_d*); (8,2)_{1/2}: m = 2 (both from Sigma (15,2,2)); (8,3)_0 and (1,3)_0: m = 1
+  (both from the 210's (15,3,1)); (1,1)_0: m = 9; (1,1)_2: m = 1.
+* Convex programme (k3_lp3.py of the previous run; k3_lp4.py here): maximise the heavy gap t subject to
+  lambda_min(block | Goldstone complement) >= t (heavy blocks), eps_lo <= lambda <= eps_hi for light blocks (eps =
+  [0.5e-6, 3e-6] ~ r^2), invariant light subspaces for mixed blocks, boxes |quartic| <= 1, |cubic| <= 2, |mass^2| <= 40,
+  singlet-channel |a0| <= 1/2 (exact trace lemma, 5 G-irreducible blocks; necessary, not sufficient).  All constraints
+  are linear or convex in c, so a converged cutting-plane optimum is the true maximum (NUM, LP tolerances 1e-10).
+  New in k3_lp4.py: (i) competitor-energy cuts V_c(z*) <= V_c(z_k) - mu t min(1,(d_k/0.5)^4) for a bank of SM-singlet-
+  subspace points (330 stored points plus every point the exact subspace polynomial search finds strictly lower, added
+  dynamically); (ii) BFB cuts V4_c(u_k) >= 1e-4 on 554 unit rays (300 random 486-rays, 200 pure/pair field-block rays,
+  30 rays inside the Delta_R triplet, the 330 subspace bank rays, the neutral doublet ray); (iii) light-cubic
+  constraints |v . b(c)| <= 1e-5 for every v_R-scale neutral non-doublet eigen-direction v (b_i = d^3 D_i/du du dphi
+  along the neutral up-type H10 direction u, from exact finite differences of the rows at q +- 0.1 u, cubic_rows.npz);
+  (iv) stage B: Kelley cutting planes on the convex heavy-mode response R(c) = b^T M^-1 b (M = heavy-mode Hessian,
+  min eigenvalue >= t_min) to maximise/minimise lambda_eff = V4(u)/6 - R/2 at fixed light subspaces.
+* Exact subspace screen: the restriction of V_c to the full SM-singlet subspace (p, a, omega, r, s, x; the 210 has
+  exactly three SM singlets, the 126bar one, S/Phi17 phases drop out at H = 0) and to its extension by the Y = -1 member
+  of the Delta_R triplet is a polynomial that is fitted EXACTLY (rank 71/71 and 85/85 monomials, residual <= 1e-11)
+  from stored compiler values and minimised from 30000 samples + 30 BFGS polishes per coupling vector.
+* Correction of the previous run's screen: k3_subspace_fit.py hard-coded the A45 reference point while screening Am45
+  solutions; re-evaluated at the true point (k3_fit_fix.py): for the old vertex Am45_bid_th0, V(z*) = -272.27324
+  (polynomial and exact rows agree to 1e-11) while the subspace global minimum is -272.30269 at the generic orientation
+  (p, a, omega) = (-0.276, -0.479, 0.677), Sigma = 0, i.e. a LOWER vacuum existed at that coupling point (1713 of 3000
+  random starts).  This is why competitor cuts were added to the LP.
+
+2. THE DECLARED T2/T3 CONTENT IS NOT REALISABLE (NUM, converged LPs; structure EXACT by counting)
+------------------------------------------------------------------------------------------------
+2a. 210 sector (previous run, exact rows, residual <= 7e-14): at every G3221 point the 11 non-Goldstone 210-irrep mass
+   forms span a rank-3 space (6 self-couplings O07, O17, O48 x4 minus 2 stationarity conditions minus one flat
+   combination); the Sigma/H/S/Phi17 portals add only universal shifts + O(r^2) = O(1e-6) to the 210 masses (EXACT:
+   the vevs other than Phi are SM singlets with |Sigma|^2 ~ 1e-6, and |S|^2, |Phi17|^2 enter the 210 masses only through
+   |Phi|^2-type invariants).  Homogeneous LP "min m^2(X) s.t. all other 210 irreps >= 1":
+      A45 : (8,3,1)_0 >= 5.73, (1,3,1)_0 >= 1.93;  A20: 8.52, 5.17;  A70: (8,3,1)_0 >= 5.60, (1,3,1)_0 free;
+      Am45: both individually free, both together: max min(others)/max(targets) = 1.007 (the rest collapses);
+      W45 (omega = 0.5): rank 2, every (15,3,1) member locked (>= 9.6).
+   (8,3,1)_0 and (1,3,1)_0 sit in the same (15,3,1); their splitting from each other needs the d-symbol structure of the
+   (15,1,1) vev, which the same four parameters must also use for the other nine irreps.
+2b. 126bar sector (Sigma-only couplings O05, O14, O25, O26, O27x4, O44x6; 12 masses, rank 6): (8,2,2)_0 >= 3.16 x
+   min(others) at A45, >= 18.6 at Am45, >= 1.0 at A70 -> never the lightest Sigma multiplet except marginally at A70.
+2c. Full 51-parameter LPs (heavy gap t; L = light real modes on the full Hessian; clean = expected count):
+      content                         A20            A45            A70            Am45
+      bidoublet (pure H10 start)      4.0e-6 (267L)  8.0e-6 (183L)  6.6e-6 (273L)  0.0425 (12L)  clean
+      (8,2,2)_0                       1.2e-5 (174L)  4.6e-5 (68L)   8.7e-4 (68L) clean  1.7e-6 (239L)
+      (8,3,1)_0                       6.2e-8 (183L)  5.2e-7 (184L)  1.7e-7 (183L)  3.4e-3 (28L)  clean
+      (1,3,1)_0                       5.3e-7 (183L)  1.3e-6 (292L)  2.3e-6 (155L)  3.4e-3 (7L)   clean
+      bidoublet + (8,3,1)_0 (Am45): 0.0550 (36L) clean;  bidoublet + (1,3,1)_0 (Am45): 0.0513 (15L) clean;
+      bidoublet + (8,2,2)_0: 1.7e-6 (244L) collapse;  (8,3,1)_0 + (1,3,1)_0: 3.9e-6 (188L) collapse;
+      full T2: 1.7e-6 (424L, Am45) and 5.2e-7 (418L, A45) collapse;  T2 minus any one member (A45): t <= 1.6e-6.
+      T3 contains T2 (plus a second bidoublet and (8,1,1)): excluded a fortiori.
+2d. NEW (this run, k3_lp4 with competitor + BFB + light-cubic + unitarity constraints, Am45):
+      bidoublet + (8,3,1)_0 : t = 0.003420 (36 L = 8 + 24 + 4; 35 zero; 0 negative)                 -> survives
+      bidoublet + (1,3,1)_0 : t = 2.75e-6 (203 L) with competitor cuts; t = 0.003420 (15 L) WITHOUT them
+      => the (1,3,1)_0-light G3221 vacuum cannot be made the lowest point of its own SM-singlet subspace (the generic
+         (p, a, omega) orientation, e.g. (-0.29, -0.51, -0.72), stays lower by >= 3.3e-4 in box units); with (8,3,1)_0
+         it can.  Active constraints at the collapsed optimum: competitor 4, bfb 2, lightb 4, unitarity 3, box 5.
+   Robustness: the orientations sampled are (p:a) = 20, 45, 70, -45 degrees and one omega != 0 point; a dense scan of
+   the orientation angle was not done (the angle is fixed by the couplings through stationarity and is itself free).
+   The rank-3 structure of 2a makes a T2 window at an intermediate angle unlikely (CONJ), but it is not excluded.
+   Refinement for the unification re-solve: light content at v_R = complex bidoublet + (8,3,1)_0 + Delta_R (1,1,3)
+   [radial (1,1)_0 and doubly charged (1,1)_2; the (1,1)_1 is eaten], the PS-partners (6bar,1,3), (3bar,1,3) of
+   Delta_R at M_U (forcing the whole (10bar,1,3) light is incompatible with a heavy remainder: previous run, joint gap
+   4e-6), no (8,2,2)_0, no (1,3,1)_0, no second bidoublet, no (8,1,1).
+
+3. THE EXPLICIT POINT P831 (bidoublet + (8,3,1)_0 + Delta_R, Am45; files L4A_831.*, L4B_831_minR.*, P831.*)  [NUM]
+--------------------------------------------------------------------------------------------------------------------
+Construction: stage A (max t): t_A = 0.0034203 (active: box 8, bfb 3, unitarity 10, lightb 2, light 56, heavy 36);
+stage B at t >= 0.0017 with fixed light subspaces: min R gives R = 7.9e-4 and lambda_eff = +4e-6; max lambda_eff
+reached 0.996 (R = 0.007, Kelley gap not fully closed; the upper bound is lambda_direct <= 1 from the box).  Bisection
+along the segment stage-A -> stage-B (feasible set convex at fixed subspaces; verified a posteriori): tau = 0.9544.
+   lambda_direct = 0.035882,  R_heavy = 0.085578,  R_light = 1.86e-4  ->  lambda_eff(tree) = -0.0070000 (up- and
+   down-type neutral directions agree to 2e-9; max |b . Goldstone| = 2.5e-5).
+   Full Hessian: zero 35, negative 0, light 36 (levels 5.000e-7 [x25: 24 (8,3,1)_0 + 1], 5.013e-7 [x2], 5.461e-7,
+   2.871e-6 [x4], 2.988e-6 [x4]), heavy 415, smallest heavy eigenvalue 0.0017784 -> m_heavy >= 0.04217 |Phi|.
+   Singlet-channel a0 eigenvalues (0.0042, 0.019, 0.055, 0.313, 0.491): |a0| <= 1/2 (necessary only).
+   Boxes: max |quartic| = 1.0, max |cubic| = 0.0247 (the light-cubic constraints drive every cubic small), max |mass^2| = 22.
+   BFB bank: min V4 over 554 rays = 0.00357 > 0.  Competitor bank (330 + dynamically added): min V(z_k) - V* = 0.0469.
+   Exact subspace screens: smsinglet V* = -176.0672631, V_min = V* (argmin = z*), n_lower = 0; deltar: identical;
+   the lowest non-orbit points are the flat bottom of the Sigma/S valley around z* (V - V* = +1.5e-8 at |Sigma| = 0.02),
+   not distinct vacua; a point at (-p, a, |Sigma_null| = 0.32) reported by the fit as degenerate is an artefact of the
+   unused r2 coordinate of the 6-d fit (exact compiler value there: V - V* = +9.06e-3; k3_probe_point.py).
+   Scale: gauge masses from the chart tangents M_X/(g|Phi|) = 0.5774 and 0.6455, M_WR = g r |Phi|, M_ZR = sqrt5 g r |Phi|;
+   for M_X = 2.5e16 GeV, g = 0.58: |Phi| = 7.5e16 GeV, heavy scalar floor 3.2e15 GeV, the runs' r = 1.2e-3 corresponds
+   to v_R = 9e13 (physical v_R = 3e13 <-> r = 4e-4; the light window scales as r^2, structure unchanged).
+   Composition: light doublets are pure H10 to 1 - 1e-7 (theta0 = 0 target; a 75 % Sigma (15,2,2) admixture was also
+   clean in the previous run, t = 0.0023).  K2's request (|c_u/c_d| ~ 70, a 1e-2 down-type 126bar admixture) concerns
+   the O(v_R^2) 2x2 light-doublet mass matrix and is a sub-leading mixing, realisable with one more O(1e-2) off-diagonal
+   entry (not tested explicitly at P831).
+
+4. TUNINGS AND BARBIERI-GIUDICE SENSITIVITIES AT P831 (bg2_P831.json)  [NUM]
+-----------------------------------------------------------------------------
+   level                 m^2        BG_max   driver
+   (8,3,1)_0 x24         5.0e-7     4.0e6    O48 (210 self-quartics)
+   bidoublet x4 + x4     2.9e-6     2.5e5    O33 (|H|^2 |Phi17|^2 portal, x^2 = 16) vs O06
+   Delta_R radial (1,1)  5.0e-7     5.8e4    O44 (Phi^2 Sigma projectors) vs O14   [vev condition]
+   (1,1)_2 doubly ch.    5.5e-7     1.4e3    O04/O22                                [vev condition]
+   lambda_eff = -0.007   --         6.4e3    O48 (through the heavy response M^-1)
+Tuning count: 3 independent mass cancellations of relative size ~r^2 = 1e-6 (4e-7 at the physical v_R): two light
+doublets (the complex bidoublet) + one (8,3,1)_0; the Delta_R/S vev-light states follow from stationarity (no extra
+tuning); plus the suppression of the cubic couplings h h {Delta_R radial, S radial} to |b| <= 1e-5 (two to four linear
+conditions on dimensionful cubics, relative size ~1e-5, no symmetry protects them: the X-neutral S H^dag H^dag is
+allowed); plus the quartic tuning lambda_eff = -0.007 +- 0.003 (one condition at relative precision ~1/6000 of O48);
+plus the usual electroweak tuning.  With (1,3,1)_0 instead of (8,3,1)_0 one more cubic (h h T^0) would need suppression;
+this is moot since that variant fails the global constraint (2d).
+
+5. ONE-LOOP STABILITY OF THE TUNED STATES  [NUM, Landau gauge, scalars + gauge bosons; fermions not included]
+-------------------------------------------------------------------------------------------------------------
+Previous run (vev-fixed Coleman-Weinberg curvature along the light directions, mu = |Phi|, g = 0.58): light doublet
+m^2_tree = 5.0e-7 vs d^2V1/dv^2 = -5.36 (ratio -1.1e7); Delta_R (1,1)_2: 1.4e-6 vs -0.40; radial: 3.0e-6 vs -0.20.
+The one-loop corrections are 1e5-1e7 times the tuned tree masses: the tuned states do NOT stay at their tree values;
+the same three tunings must be redone at one loop (count and BG order unchanged).  "No tachyon at one loop" is then
+satisfiable by construction (counterterm choice), not a prediction.  Not computed: the one-loop running of the light
+multiplets' masses in the G3221 EFT between M_U and v_R (G6-type; the repo's g6_sm_pati_salam_remnant_rg_nogo_v20
+machinery is for the PS-EFT content and was not adapted) and the fermion loops.
+
+6. THE HIGGS QUARTIC  [NUM]
+---------------------------
+Tree level: lambda_eff = lambda_direct - (R_heavy + R_light)/2 with lambda_direct = V4(u)/6 and R = sum_s b_s^2/m_s^2
+(b_s = d^3V/du du dphi_s, exact for the quartic V).  BFB along the neutral H ray forces lambda_direct >= 0, so a
+negative lambda_eff can only come from the response of the heavy (and v_R-scale) states; at P831: lambda_direct =
+0.0359, R_heavy = 0.0856 (top terms: 0.064 from a mode with m^2 = 0.0067, 0.020 from m^2 = 0.133, 0.0015 from the Phi17
+radial m^2 = 44), R_light = 1.9e-4 -> lambda_eff = -0.00700 exactly on target.  The accessible range on the convex
+feasible set is [-107 (stage A), ~+1.0 (box)], so any target in between, including the one-loop-shifted one, is
+reachable by the same bisection.
+One-loop threshold (k3_cw_lambda.py at P831: CW with the field-dependent masses from second-order degenerate
+perturbation theory on the exact dH, d2H; 443 scalar modes, 34 massive gauge modes; Goldstones, the light doublet,
+massless SM gauge bosons and fermions excluded; rho = d^4 m^2/dh^4 terms dropped):
+   light (v_R-scale) scalars at mu = v_R : -1.8e-6  (their portal curvatures kappa = -0.0064 are tiny at P831)
+   heavy scalars  : -0.0260 at mu = |Phi|, -0.0091 at mu = 0.3|Phi|  (kappa_rms = 0.10; sum kappa^2/64pi^2 = 0.0070)
+   heavy gauge    : +0.0600 at mu = |Phi|;   light gauge (W_R, Z_R): -2.8e-4 at mu = v_R
+   => one-loop threshold ~ +0.034 at mu = |Phi| with a +-0.02 scale dependence (which is the M_U -> v_R running of the
+      light EFT, not computed), i.e. 5x the target: the tree value must be retuned to lambda_eff(tree) ~ -0.04, which
+      the range allows.  The free Yukawa 16bar(10).16bar(-8).H10 (allowed, undeclared in v20) adds -O(y^4 N/16pi^2) (EST).
+Conclusion for item (6): matching lambda_SM(v_R) = -0.007 +- 0.003 is possible at tree + one-loop-threshold level by
+one additional O(1e-2 .. 1e-4) tuning; no new metastability beyond the SM's own is introduced provided the full
+potential is bounded from below and the G3221 point is its global minimum (section 7 says this is not yet shown).
+Missing: the G3221-EFT running of lambda between M_U and v_R with the realised light content, the fermion thresholds.
+
+7. GLOBAL-MINIMUM SCREENING  [NUM]
+----------------------------------
+7a. SM-singlet subspace (exact polynomial, 6-d and 7-d): P831 is the lowest point (section 3).  The old vertices were
+   not (section 1); with (1,3,1)_0 light no coupling point in the boxes makes the G3221 point lowest (section 2d).
+7b. Full 486-chart Newton descents (k3_descend.py: exact rows per step, 75 s; value-only line search):
+   * random start seed 1 (|q| blocks 1.0/0.6/0.6/1.0/5.66, V(start) = -176.0183): V = -176.1488 (step 1), -178.4480
+     (step 2), -206.7677 (step 3) with the trust radius doubling each step and the smallest Hessian eigenvalue
+     -0.15 -> -0.78 -> -4.5: the potential at P831 runs away along a direction outside the 554-ray BFB bank, i.e. the
+     quartic form of P831 is NOT bounded from below in the full chart (the ray bank is a necessary condition only).
+     => at P831 no global minimum exists; the point is killed as a vacuum unless the BFB defect can be cut away.
+   * witness start (the repo's SM-Pati-Salam point (p, 0.2 sigma_std, 0, 0.2, x = 1)): rolls from V = -21.5 down the
+     Phi17 direction (x -> 4) as expected; stopped (uninformative for the question).
+   * feedback cycle (descent trajectory -> competitor/BFB bank -> re-solve stage A/B/bisection -> re-descend): the
+     instrumented short descents (8 steps, seeds 1 and 2) and the first re-solve are reported below in 7c as far as
+     they completed before this report was closed.
+7c. FEEDBACK ROUND RESULTS: (appended at the end of the run; see section 10)
+
+8. WHAT IS EXACT, WHAT IS NUMERICAL
+-----------------------------------
+EXACT: anomaly/charge facts quoted from the rescue study (not re-derived here); stationarity rank 6 and the 35-dim
+Goldstone kernel (structure); the counting bound "<= 4 free mass combinations for the 11 non-Goldstone 210 irreps";
+the X-charge statement that S H^dag H^dag is allowed (so the cubic suppression is a tuning).
+NUM: every LP optimum (converged to 1e-9 in the heavy gap; the convex formulation makes it the true optimum within the
+boxes); the rank-3 210 mass space (residual 7e-14); P831's spectrum, a0, lambda_eff, CW threshold, BG numbers; the
+exact-polynomial subspace screens (fit residual <= 1e-11); the descent values (compiler values, double precision).
+EST/CONJ: GeV translations (g = 0.58, M_X = 2.5e16); "no T2 window at other orientation angles"; fermion thresholds.
+
+9. MISSING COMPUTATIONS
+-----------------------
+1. A BFB-complete coupling point for the bidoublet + (8,3,1)_0 content: the full-chart descents must return to V*
+   (feedback cycle beyond the first round; ultimately the G3/K4 certificate question).
+2. A dense scan of the 210 orientation angle (p:a) for the T2 sum rules (only five orientations were used).
+3. One-loop running of the light multiplet masses and of lambda_eff in the G3221 EFT between M_U and v_R with the
+   realised light content (bidoublet + (8,3,1)_0 + Delta_R + the F17 fermions).
+4. Fermion-loop thresholds (16bar(10).16bar(-8).H10 Yukawa, 16_F Yukawas) and the non-singlet two-particle channels of
+   the unitarity bound.
+5. The explicit K2 composition (|c_u/c_d| ~ 70, 1e-2 Sigma_d admixture) as an LP target.
+6. Re-run of everything at the physical r = 4e-4 and x = <Phi17>/|Phi| ~ 1.4 (the runs used r = 1.2e-3, x = 4).
+
+10. FEEDBACK ROUND (appended)
+-----------------------------
+10a. Round 1 (files L4A_831b.*, L4B_831b_minR.*, P831b.*): the 32 trajectory points of the two P831 descents were added as
+   competitor points and BFB rays, plus 150 new H(+)Sigma(+Phi,S) rays (hsrays_pts.npz; BFB bank now 680 rays + 32).
+   Stage A: t = 0.0034203 unchanged (active: competitor 1, bfb 1); stage B (min R): R = 7.9e-4, lambda_eff = +0.368;
+   bisection tau = 0.8566 -> P831b: lambda_direct = 0.4307, R_heavy = 0.8752, R_light = 1.1e-4, lambda_eff = -0.0070000;
+   Hessian 35 zero / 0 negative / 36 light (5.00e-7 x25, 5.04e-7 x2, 2.63e-6 x4, 2.65e-6, 2.99e-6 x4) / 415 heavy,
+   min heavy m^2 = 0.001947; a0 = (0.021, 0.074, 0.246, 0.288, 0.478); BFB bank min V4 = 0.0040; competitor gap
+   >= 1.9e-4; exact subspace screens: n_lower = 0, V_min = V* = -240.6901428.  BG: (8,3,1)_0 3.6e6, doublets 8.7e5,
+   lambda_eff 7.5e4 (O48).  Masses/cubics at P831b: O03 (Phi17 mass) = -30.1, O06 (H) = -2.29, O05 (Sigma) = +0.010,
+   O07 (Phi) = +0.097, cubics |O12|,|O15| = 0, O14 = 0.019, O17 = 0.022.
+   Re-descents from P831b (seeds 1, 2; V(start) = -240.571/-240.567): V -> -240.694 -> -242.219 -> -267.329 and
+   -240.695 -> -242.199 -> -266.863 after three steps (trust radius 0.5 -> 0.75 -> 1.125, smallest Hessian eigenvalue
+   -0.14 -> -0.41 -> -3.96): the SAME deep region reappears.  Its lowest sampled point has block norms |Phi| = 0.625,
+   |H| = 1.82, |Sigma| = 4.06, |S| = 0.37, |Phi17| = 5.64 (vacuum: 1, 0, 1.2e-3, 1.6e-3, 5.66) and V - V* = -26.64.
+   The degree-4 part of V along that unit ray is POSITIVE, V4/|q|^4 = +0.0791 (min over the trajectory +0.079), so this
+   is NOT an unbounded direction: it is a deeper vacuum region at |Sigma| ~ 4|Phi|, |H| ~ 1.8|Phi| (the earlier wording
+   "not bounded from below" in section 7b is superseded by this: at P831 the trajectory minimum of V4/|q|^4 is +0.081).
+   Per-operator energy budget of V(q_low) - V* = -26.64 at P831b: O27_B02 (126bar self-projector, c = -1.000, at the
+   box edge) -19.21; Im O31 (H^dag^2 Sigma^2, c = 0.008) -10.36; O06 (H mass, -2.29) -3.79; O20 (singlet quartic, 0.94)
+   -3.63; O27_B01 (c = -1.000) -1.93; compensations O27_B03 +4.01, O33 +3.78, O03 +3.64, O36_B02 +1.62.
+   => the deep region is driven by a negative 126bar self-projector channel weight (box-saturated) together with the
+   H^dag^2 Sigma^2 coupling.
+10b. Attribution LPs (stage A, same banks): requiring the 126bar self-projector weights O27 >= 0 is INFEASIBLE, also
+   with O25, O26 >= 0 added, and even with NO tuned light multiplet (vev-light Delta_R only): a negative channel weight
+   is forced by the G3221 vacuum constraints themselves (consistent with the triplet structure: m^2 of the doubly
+   charged (1,1)_2 is -2 beta2 r^2 > 0 needs the |Delta.Delta|^2 weight beta2 < 0; this is compatible with BFB of the
+   Sigma^4 form if beta1 + beta2 >= 0, so O27 >= 0 is sufficient, not necessary, and its infeasibility is not a kill).
+   Bounding |O31|, |O28| <= 0.05 alone is feasible (t = 0.0034203, same light content); whether it removes the deep
+   region was NOT tested by descents (time).  Net result of the feedback cycle: one round of trajectory/ray cuts did not
+   remove the deeper H-Sigma region; the problem is the global shape of the 126bar-H quartic sector, i.e. the K4
+   certificate question, not a missing ray.
+10c. Consequence for the verdict: for the declared T2/T3 content: FAIL (section 2).  For the refined content (bidoublet
+   + (8,3,1)_0 + Delta_R): all LOCAL criteria are met at explicit points (P831, P831b: local minimum with exactly the
+   Goldstone zero modes, |a0| <= 0.49, lambda_eff = -0.007 dialled, lowest point of the SM-singlet subspace, one-loop
+   threshold quantified), but both explicit points have a deeper vacuum region at |Sigma| ~ 4|Phi|, |H| ~ 1.8|Phi|
+   (NUM, exact compiler values), so "no lower point found" FAILS at those points; whether some coupling point of the
+   feasible family avoids it is UNDECIDED (missing: a global-shape constraint on the 126bar-H quartic sector, e.g. a
+   certificate-driven or sign-structured choice of O27/O31/O28, followed by descents that return to V*).

@@ -1,0 +1,41 @@
+1. LITERATURE (searched this session with WebSearch; only abstracts / search snippets were available -> LIT-abstract or
+   LIT-snippet; no full text was read)
+------------------------------------------------------------------------------------------------------------------------
+* Joshipura-Patel, arXiv:1102.5148 (PRD 83, 095002) [LIT-abstract]: SUSY and non-SUSY, minimal (10+126bar) and
+  non-minimal (+120); "the minimal non-supersymmetric model with type-I seesaw dominance gives excellent fits"; type-II
+  failures tied to the absence of b-tau unification.  Snippet: charged-fermion masses RUN TO THE GUT SCALE are used as
+  inputs (no intermediate-scale top-down RG).  Old data.
+* Dueck-Rodejohann, arXiv:1306.4468 (JHEP 09 (2013) 024) [LIT-snippet]: 10/120/126 combinations, SUSY and non-SUSY;
+  only normal ordering accommodates the data; "the observable that provides the most tension is theta23"; type I
+  favoured over type II.  (Round-1 K2 quoted "chi2 = 1.1 without RGE, full RG worsens the fit considerably" -- NOT
+  re-read here.)
+* Babu-Bajc-Saad, arXiv:1612.04329 [LIT-abstract]: the realistic minimal Yukawa sector there is REAL 10 + REAL 120 +
+  complex 126bar -- a different Yukawa structure (needs 120_H); not a fit of our 10+126bar(PQ) model.
+* Meloni-Ohlsson-Riad, arXiv:1612.07973 (JHEP 03 (2017) 045) [LIT-abstract]: 10+120+126bar with a Pati-Salam intermediate
+  scale; "the minimal variant (10_H and 126_H) shows an equally good potential"; GUT-scale Yukawas run with SM-like
+  evolution miss the data by up to ~80 %, i.e. intermediate-scale running matters.
+* Ohlsson-Pernow, arXiv:1804.04560 (JHEP 11 (2018) 028) [LIT-snippet]: with full RG and an intermediate scale the
+  MINIMAL-Yukawa model FAILS to reproduce the EW-scale observables, the extended one fits for normal ordering;
+  difficulties attributed to the intermediate breaking and to the tension in theta23 ("contrary to previous works").
+* Ohlsson-Pernow, arXiv:1903.08241 (JHEP 06 (2019) 085) [LIT-snippet]: top-down RG fits, non-SUSY 10+126bar:
+  type I chi2 ~ 14.8 (NO), type I + II 14.7 (type-I dominated), pure type II 119, inverted ordering O(1000);
+  "the largest contribution to chi2 comes from sin^2 theta23, favoured below 0.5 (lower octant), against the latest
+  neutrino data" (2018 data).
+* Boucenna-Ohlsson-Pernow, arXiv:1812.10548 (PLB 792 (2019) 251; erratum PLB 797 (2019) 134902, content not seen)
+  [LIT-snippet]: minimal non-SUSY SO(10) with PQ, H/F/r/s parametrisation, 19 observables: chi2 ~ 21.0 (NO), ~918 (IO),
+  ~413 with N1 leptogenesis imposed; best-fit sin^2 theta23 ~ 0.445 vs the then 1-sigma range (0.517, 0.577).
+* Mummidi-Patel, arXiv:2109.04050 (JHEP 12 (2021) 042) [LIT-abstract]: complex 10_H + 126bar_H with a PQ-like symmetry
+  (= our Yukawa structure), fermion fit + leptogenesis; predicts m_nu1 = 2-8 meV, m_bb = 4-10 meV; the chi2 and the
+  theta23 value were NOT visible in any snippet.
+* Fong-Patel, arXiv:2505.06391 (JHEP 09 (2025) 148) [LIT-abstract]: same 10+126bar(PQ) framework; "quark-lepton
+  unification and the flavour structure of the Yukawa couplings enforce type-I dominance".
+* Babu-Khan, arXiv:1507.06712 (PRD 92 075018): non-SUSY SO(10) with PQ and 10+126bar; fit numbers not retrieved.
+  Bertolini-Schwetz-Malinsky hep-ph/0605006 (SUSY, 10+126bar fails, needs 120): not re-searched (title only).
+* Data history [LIT-snippet]: NuFIT 3.2 (2018) normal ordering sin^2 theta23 = 0.538 +0.033 -0.069 (3 sigma
+  0.418-0.613).  The 2018-2019 fits above were therefore evaluated against a theta23 likelihood whose LOWER error was
+  0.069; NuFIT 6.0 (used here, as committed in the repository inputs) gives 0.470 +- 0.015 (with SK) or 0.561 +- 0.014
+  (without SK).
+Summary of the literature: every top-down non-SUSY 10+126bar fit that reports numbers has chi2 ~ 15-21 for one d.o.f.
+or fewer, NO only, type-I (dominated), and its chi2 is DOMINATED BY sin^2 theta23 being too small; the one paper that
+states the minimal model fails (1804.04560) blames theta23 and the intermediate scale.  No paper (that I could see)
+claims a good fit with NuFIT-5/6 precision on theta23 and lattice-precision light-quark masses.

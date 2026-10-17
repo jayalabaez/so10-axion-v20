@@ -1,0 +1,206 @@
+ADVERSARIAL SKEPTIC -- gate R2-C (two light bidoublets, renormalisable 10_H + 126bar_H, no Ytilde10), v21-F17-B63-G3221
+=====================================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-C-flavour-two-bidoublets\skeptic\
+The researcher's files were COPIED into skeptic\theirs\ (read-only use); nothing in ..\v2\ or ..\src\ was edited.  Their
+code was imported ONLY to rebuild their best-fit parameter points (their proxy layout needs their targets).  Every chi2
+labelled "mine" comes from my own code (skchain.py, skopt.py, skproxy.py, refit.py), written from scratch.
+Checkouts _g6_nogo (54a2cd1) and _record (8707fda) were not imported or run; `git status --short` gave 0 lines in both,
+before and after.  _rescope was not touched.
+Labels: EXACT / NUM (with uncertainty) / LIT-snippet (search snippets only) / EST / CONJ.
+
+0. BOTTOM LINE
+--------------
+refuted = false.  Corrected verdict: FAIL, upheld for the gate as specified (renormalisable model, current PDG-2024 /
+FLAG / NuFIT 6.0 data, theory floor <= 5 %).  The researcher's diagnosis of WHY it fails needs a material correction.
+
+* Decisive number reproduced with independent code: my minimum over the type-I window is chi2 = 108.8 at v_R = 2e12
+  (researcher 109.7).  Every polished v_R agrees to |d chi2| <= 6.  An independent GUT-scale global search finds the same
+  unique basin, and its proxy minimum matches theirs to 1e-4 (186.315 vs 186.327).
+* FAIL survives:
+  - a uniform theory floor of 3 % (min 60.2) and 5 % (min 43.8);
+  - 1 %-prior flavour-universal threshold nuisances (105.7);
+  - the corrected Weinberg-operator RGE (108.8);
+  - a one-loop SM Yukawa variant (113.9 at 3e12);
+  - the omitted B63 coupling lam23 H10.Vb2.Vb3 (it makes the fit worse: 142.9 at 3e12).
+* Correction of the physics story (NUM).  theta23 precision is NOT the cause.  With NuFIT 6.0 + SK, the theta23 error
+  0.015, and only literature-era errors on the light quarks u, c, d, s (CKM, heavy fermions and leptons at today's
+  precision), my chain fits at chi2 = 6.00 (1e13) with sin^2 th23 = 0.467 and every pull < 1.8.  The full
+  literature-era error set gives 6.15 at 3e12.
+  - That basin predicts m_s/m_d = 34.6 against the lattice 19.9, which is 531 with today's errors (m_d -15 sigma,
+    m_s +15.6 sigma).
+  - The other basin (lattice m_s/m_d) is forced to sin^2 th23 = 0.32-0.38.
+  - So the decisive conflict is the GUT-scale prediction of m_s/m_d against lattice QCD.  theta23 is only the form it
+    takes in the lattice-compatible basin.
+* Fragility (NUM): raising the floor on m_d and m_s ONLY (1 % on everything else) gives chi2_min:
+
+     extra m_d, m_s floor:   5 %     7 %     10 %                  20 %
+     chi2_min:               63.4    40.7    22.6 (1e13, 3e12)     6.9 (3e12), 7.8 (2e12, 1e13)
+
+  - The FAIL therefore requires the m_d, m_s theory error to stay below about 8-9 %.
+  - In the renormalisable one-loop chain the flavour-non-universal error on m_s/m_d should be a few % (EST), so the
+    FAIL stands.
+  - But the X-allowed d=5 operators (scope caveat (a) of the researcher) act exactly on these tiny entries, with
+    y_d(M_U) ~ 5e-6 and y_s(M_U) ~ 1e-4.  A ~30 % shift needs only c ~ 1e-4 to 3e-3 (EST).  The theory taken as an EFT
+    is therefore NOT excluded by this gate.
+
+1. INDEPENDENT REPRODUCTION OF THE DECISIVE NUMBERS [NUM]
+--------------------------------------------------------
+1.1 My chain (skchain.py), written from scratch:
+  * G3221 one-loop RGEs (two bidoublets, no tilde couplings, Delta_R Majorana coupling), derived independently:
+    - gauge anomalous dimensions Gq = 8g3^2 + 9/4(gL^2+gR^2) + gq^2/6, Gl = 9/4(gL^2+gR^2) + 3/2 gq^2,
+      Gf = 9/2 gR^2 + 3/2 gq^2;
+    - fermion wave-function terms Yq Yq^+ Yq and Yq Yq^+ Yq (coefficient 1, from the two SU(2) components);
+    - scalar mixing Y_c T_ca with T_ca = 3Tr(Yq_c^+ Yq_a) + Tr(Yl_c^+ Yl_a), in the index order that is covariant under
+      field rotations (checked);
+    - (3/4) f^+ f on L^c, from the three Delta_R components;
+    - no vertex terms, because every scalar couples holomorphically.
+  * One-loop analytic gauge couplings.  My own Fraction b's for C2, C1, R813 and R622 match the researcher's and
+    R2-B's EXACTLY.
+  * SM sector: two-loop gauge and two-loop Yukawa (Arason et al. form), one-loop nu^c / M_R / Weinberg operator.
+  * Batched RK4 with per-point sequential nu^c decoupling.  Step halving changes chi2 by <= 0.3 (std vs fine steps).
+  * My own observables (CKM = E_u^T E_d^*, PMNS = E_e^T N) and log-pulls.
+1.2 Component checks at their 3e12 best point (diag_nu.py):
+  * G3221 Yukawas at v_R from identical GUT inputs: relative difference 2-9e-9.
+  * Gauge couplings at M_U and v_R: identical to 1e-8.
+  * SM part with THEIR kappa convention (3.1): reproduces their scalar DOP853 chain (sin^2 th12 0.30385 vs 0.30396,
+    dm21 7.711e-5 vs 7.706e-5, CKM to 1e-5).
+1.3 Their 16 best points evaluated in my chain (eval_theirs.json):
+  * All 9 mass pulls and all 4 CKM pulls agree to 0.01-0.02 sigma.
+  * chi2 agrees to within +0.5 to +6.  Mine is higher only through the neutrino pulls, i.e. the convention of 3.1.
+    Examples: 3e12 125.7 vs 121.3; 2e12 114.0 vs 109.7; 1e13 142.9 vs 138.9; C2 at 2e10 9687 vs 9667; 1e14 1629 vs 1576.
+1.4 Re-polished minima in my chain (polish_K2.json):
+  * Setup: corrected kappa convention; starts = all 16 of their points; lc scan, TRF on the 6 best, 8 hops, fine-step
+    re-evaluation.
+
+     v_R    content   mine    researcher   sin^2 th23   max|f|
+     1e12   R813      199.3   200.3        0.454        3.55 (at bound)
+     2e12   R813      108.8   109.7        0.383        3.55 (at bound)
+     3e12   R622      118.7   121.3        0.345        2.99
+     5e12   R622      135.3   135.4        0.339        0.88
+     1e13   R622      138.5   138.9        0.336        0.42
+     3e13   R622      151.2   145.1        0.316        0.19
+
+1.5 Independent global search (skproxy.py):
+  * Method: my own GUT-scale proxy (data run with my SM RGEs, my gauge-only G3221 factors).  scipy
+    differential_evolution, popsize 30, <= 3000 generations; 16 / 12 / 12 seeds at 3e12 / 2e12 / 1e13.
+  * At 3e12 the proxy minimum is 186.315 at r = 64.6, |s| = 0.449, arg s = 0.01.  Researcher: 186.327.
+  * Distinct proxy minima at 3e12: 186, 264, 274, 420, 1757, 1843, 2751, 3891, 3938.  All have r = 51-68; the only other
+    structure is an |s| ~ 1 basin.
+  * Mapped into the exact chain (direct map, lc scan, TRF, 4 hops): 143-2600 at 3e12.  The proxy basins with
+    sin^2 th23 = 0.44-0.51 give exact chi2 760-2600.  Best: 206 at 2e12, 155 at 1e13.
+  * No new basin below the polished values of 1.4.
+1.6 Random-start CMA-ES directly on the exact chain (global_cma.py, global2.py) does not converge in 19 dimensions
+  (11818 -> 5145).  This confirms the researcher's remark.  Globality therefore rests on the proxy searches (theirs and
+  mine agree) plus exact polishing and hopping [NUM, search-limited].
+
+2. ROBUSTNESS AND DATA TESTS THE RESEARCHER DID NOT RUN (refit.py; TRF + 4-6 hops, several starts) [NUM]
+-------------------------------------------------------------------------------------------------------
+  variant                                                             2e12     3e12     1e13     sin^2 th23
+  baseline (1 % floor, PDG-2024, NuFIT 6.0 + SK)                      108.8    118.7    138.5    0.34-0.38
+  uniform theory floor 3 %                                            60.2     85.0     91.3     0.36-0.39
+  uniform theory floor 5 % (main basin)                               43.8     59.7     73.8     0.36-0.40
+  uniform theory floor 5 %, theta23-compatible basin start            --       --       59.9     0.46
+  universal threshold nuisances (1+eps) on Yu, Yd, Ye at v_R,
+    Gaussian prior 1 % (total incl. prior; |eps| <= 0.9 %)            105.7    117.6    --
+  researcher's kappa convention (KAPPA_LAM = 1) in my chain           108.6    117.3    --
+  SM Yukawa running at one loop                                       --       113.9    --
+  lam23 H10.Vb2.Vb3 term above M_s (xT = 8, lam23 ~ 1, EST norm.)     --       142.9    --
+  Majorana bound 2 sqrt(4 pi)                                         106.95   --       --       (1e12: 196.8)
+     (researcher, deeper search: 102.2 at 2e12, 176.3 at 1e12)
+  theta23 dropped (sigma = 10): chi2 of the other 17                  63.4     40.6     --
+     (researcher: 64.1; and 25.5 at 3e12 with a deeper campaign -- theirs is the better search there)
+  --- quark-mass precision (CKM, heavy quarks, leptons at today's precision unless stated) ---
+  literature-era errors on everything + NuFIT 3.2 (their 'litera')     --       --       7.03 (researcher 7.1)
+  literature-era errors on everything + NuFIT 6.0 + SK                 8.47     6.15     6.02     0.45-0.47
+  literature-era errors on m_u, m_c, m_d, m_s only + NuFIT 6.0 + SK    --       --       6.00     0.467
+  extra floor on m_d, m_s only: 20 %                                   7.80     6.87     7.80     0.46-0.47
+                               10 %                                    --       22.65    22.64    0.46
+                                7 %                                    --       --       40.67    0.45
+                                5 %                                    --       --       63.35    0.44
+  (at 3e13 the 10 % run stays in the low-theta23 basin: 123.2)
+  * The theta23-compatible point under today's data: chi2 = 531.  Pulls m_d -15.0, m_s +15.6, m_c +7.8; everything
+    else <= 1.5.  m_s/m_d = 34.6 against 19.9; m_c 16 % high.
+  * With 20 % on m_d and m_s the m_c pull falls to +0.2..+0.6.  Only m_s/m_d is really needed.
+
+3. ERRORS AND OMISSIONS IN THE RESEARCHER'S CHAIN (none decisive)
+------------------------------------------------------------------
+3.1 Weinberg-operator RGE convention [algebra EXACT; the factor relies on recollection, EST].
+  * lib_r2c.py and bexact.py use 16pi^2 dkappa = ... + (2T + lam - 3g2^2) kappa, with V = (lam/2)(H^+H)^2.  The
+    normalisation is checked: their beta_lam = 12 lam^2 + ... and lam(M_Z) = 0.26.
+  * Antusch et al. (hep-ph/0108005) use V = (lam_A/4)(H^+H)^2, so in this normalisation the coefficient is 2 lam.  The
+    search snippet did not show the convention text, hence EST.
+  * Their SM two-loop Yukawa block also omits the -2 lam Dd term in beta_u and the -2 lam Uu term in beta_d (<~ 5e-4,
+    negligible).
+  * The term is not harmless at fixed parameters.  Between v_R and M_R1 the decoupled kappa runs differently from the
+    still-active nu^c pieces, and the best fits sit on a strongly cancelling seesaw (finetune_diag.json): at 3e12 the
+    single-nu^c contributions are 0.99 / 0.29 / 1.19 eV against a total of 0.074 eV, a factor 16-26 at every v_R.
+  * At fixed parameters: sin^2 th12 +0.011, sin^2 th23 -0.007, dm21 -7 %.  Changing lam(M_Z) from 0.26 to 0.27 moves
+    sin^2 th12 by -0.0075.
+  * After refitting the effect is absorbed: d chi2_min = -0.9 (2e12), -2.6 (3e12), -0.4 (1e13).
+  * Consequence: the neutrino predictions they quote (m_nu1, m_bb, delta_PMNS) carry an RG uncertainty larger than
+    stated.
+3.2 Omitted renormalisable B63 coupling [the coupling's existence is EXACT, from the K0b dossier].
+  * lam23 H10.Vb2.Vb3 = 16bar(32).16bar(-30).H10 is X-neutral and SO(10)-invariant.  Above M_s it adds a
+    wave-function term to the H10 bidoublet that R2-C's RGEs lack.  Their statement "no F-vector-like mixing" is
+    correct, but it does not cover this term.
+  * Test at lam23 ~ 1: the fit gets worse (118.7 -> 142.9 at 3e12).  Since lam23 is free and can be small, this does
+    not affect the FAIL.
+3.3 m_t input [EST].  y_t(M_t) = 0.93690 is Buttazzo's value at M_t = 173.1, but the pole input is 172.57 (-0.3 %,
+  i.e. -0.3 sigma; |d chi2| <~ 2).
+
+4. OVERCLAIMS / UNDERCLAIMS
+---------------------------
+4.1 "The dominant problem is theta23 ... the discrepancy with the literature is DATA PRECISION (theta23 error 0.069 ->
+  0.015, plus lattice light-quark masses)" is incomplete in a way that matters.
+  * The theta23 precision change since 2018 is irrelevant.  NuFIT 6.0's central value moved toward the model, and the
+    model fits NuFIT 6.0 + SK at chi2 = 6.0 once m_d and m_s are allowed 20 % or literature-era errors.
+  * The whole tension is the GUT-scale m_s/m_d prediction (about 35, vs the lattice 19.9).  The researcher's own
+    section 8 notes the 35 vs 19.9, but the summary, the robustness section and the configuration refinements all
+    present theta23 as the obstruction.
+  * Calling sin^2 th23 = 0.31-0.38 a "prediction" holds only once lattice m_s/m_d is imposed.
+4.2 "chi2_17 >= 25.5 even without theta23, so no theta23 value brings the full fit below ~25".  This is logically
+  valid, but 25.5 against a threshold of 25 is marginal, search-limited and floor-dependent.  The decisive evidence is
+  the full-fit minimum (~109), which I reproduce.
+4.3 "chi2 >= 4x the FAIL threshold" holds for the 1 % floor only.  It is 1.75x at a uniform 5 % floor.  The FAIL
+  disappears if m_d and m_s carry a >~ 9 % error.  This fragility is not stated.
+4.4 Underclaim: the symmetric sigma(sin^2 th23) = 0.015 is conservative.  NuFIT 6.0 with SK gives theta23 = 43.3
+  (+1.0 -0.8) deg [LIT-snippet, secondary citation of arXiv:2410.05380], i.e. +0.018 / -0.014, with a 3-sigma lower edge
+  near 0.435.  The true penalty in the low-theta23 basin is therefore larger.
+4.5 "C2 (v_R = 2.1e10), the only content that robustly passes unification and Super-K" overstates R2-B.  R2-B's verdict
+  is UNDECIDED: "no flavour-capable content passes ROBUSTLY; C2 passes nominally".  Irrelevant to R2-C, because C2 is
+  flavour-dead (chi2 ~ 1e4).
+4.6 "RG/threshold approximations are O(10) in chi2" [EST].  This is consistent with my refitted minima: the kappa
+  convention, 1 % nuisances and the one-loop SM variant move chi2_min by <= 5.  At fixed parameters, however, the
+  neutrino observables move by about 1 sigma (3.1).
+4.7 Type II "would very probably rescue the fit" rests on the proxy alone (the exact value 35.1 is under-converged).
+  It is not used for the verdict, since type II is not realisable (EST, v_L ~ beta x 1e-5 eV); R2-B also finds that
+  C2 + Delta_L fails Super-K.  Not re-checked.
+
+5. CROSS-GATE CONSISTENCY
+-------------------------
+* Round-1 K2 (chi2 ~ 218-223, r ~ 64-66, s ~ 0.39-0.48): same basin.  The proxy -> exact gap (186 -> ~119) accounts for
+  the improvement.
+* R2-A (FAIL, NUM): the required composition is locally realisable but globally excluded.  R813 (used here for
+  v_R <= 2e12) is not realisable at any of 27 orientations.  R622 (used for v_R >= 3e12) fails three-loop Landau.  The
+  contents inside the type-I window are therefore excluded independently of R2-C.
+* R2-B: the type-I window [2e12, 3e13] overlaps only the rescue contents, never C2.  Consistent.
+* Round-1 facts (v) (B63 K >= 17 not verified) and (vi) (no G3 certificate) are untouched by this gate.
+
+6. WHAT WOULD CHANGE THE VERDICT (none of it is inside the specified configuration)
+-----------------------------------------------------------------------------------
+(a) X-allowed d=5 operators F F H10 Phi210/Lambda, F F Delta Phi210/Lambda, F F H10* S*/Lambda.  These are not part of
+    the specified renormalisable model.
+    * The fit needs m_d about 26 % lower and m_s about 28 % higher at M_U: delta y_d ~ 1.4e-6, delta y_s ~ 3e-5.
+    * With <Phi>/M_Pl,red ~ 0.7-2e-2, c ~ 1e-4 to 3e-3 suffices (EST).
+    * This is now the most important open computation for the theory, more than type II.
+(b) A light Delta_L (type II): needs new R2-A / R2-B work.
+(c) A >~ 9 % theory error on m_d and m_s within the renormalisable chain.  Not motivated (EST): the flavour-universal
+    parts cancel in m_s/m_d, and non-universal threshold and two-loop effects are about a few %.
+
+7. FILES (skeptic folder)
+-------------------------
+skchain.py, skopt.py, skproxy.py, refit.py, polish_runs.py, map_theirs.py, map_extra.py, eval_theirs.py, diag_nu.py,
+finetune_diag.py; results their_points.json, their_extra.json, eval_theirs.json, polish_K2.json/.log,
+refit_<variant>.json/.log (floor3, floor5, floor5L, th23free, nuis1, K1, xT8, loop1, ffac2, litNF32, litNF6, litNF6b,
+xflA, xflA3, xflB, xflB3, xflC, xfl07, xfl05), proxy_p3e12/p2e12/p1e13.json/.log, finetune_diag.json, SUMMARY.json;
+failed exact random-start searches global_cma.py / global2.py (+ logs); queue*.sh.

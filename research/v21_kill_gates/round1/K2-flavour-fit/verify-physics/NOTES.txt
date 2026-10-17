@@ -1,0 +1,49 @@
+K2 physics verification - working notes (2026-10-16)
+
+1. T2 structural obstruction (EXACT, EFT theorem):
+   Above v_R the T2 content has ONE light complex bidoublet Phi_L = alpha Phi_10 + beta Phi_126 (the orthogonal
+   combination sits at M_U).  X forbids the tilde couplings (F.F.H10* has X = 4), so the quark Yukawa term is
+   Q_L Y_L Phi_L Q_R with a single matrix Y_L = alpha* Y10 + beta* Y126 that multiplies BOTH <H_u^L> and <H_d^L>
+   (they are components of the same multiplet Phi_L; the S.H10.H10 term mixes H_u^10 with (H_d^10)^c and sets v_d/v_u,
+   but cannot change the matrix).  Hence Yu = (v_u/v_d) Yd exactly at tree level, up to the heavy-bidoublet admixture
+   O(v_R^2/M_U^2) ~ 1e-6 and the F.16(-3).H10* mixing O(v^2/M^2).  Consequences: V_CKM = 1, m_u:m_c:m_t = m_d:m_s:m_b.
+   Numerical lower bound on the charged-sector chi2 (my targets at M_U, 1% floor): s12 pull -331, s23 -52, s13 -35,
+   up-mass pulls (+124, +60, -70) at the best common r = 34.8  ->  chi2 >= 1.4e5.  Same conclusion as the sibling
+   verifier (s = 1 forced: proxy chi2 3.3e9).  The researcher's free-composition fit is therefore the T3 fit, and the
+   statement "T3 is not required" is wrong: a free (c_u10, c_u126, c_d10, c_d126) needs two light bidoublets.
+   The researcher's G3221 RGE with four independent matrices Yu, Yd, Ye, Yn above v_R is inconsistent with either
+   content (one or two bidoublet Yukawas run there); numerically a ~1% effect over ln(M_U/v_R) = 6.7.
+
+2. RGE convention bug in rge.py/fit.py: the Yukawas are built and diagonalised in the (f_L)_i (f^c)_j convention
+   (left rotation from Y Y^dag, Yd = V D) but the beta functions are the LWX/Antusch form Y (Y'^dag Y') whose cross
+   terms must act on the doublet index, i.e. the (f^c, f_L) convention.  Test (res/ckm_run_test.py): with the
+   researcher's feed s23 = 0.04182 at every scale up to 2e16; with transposed feed s23 -> 0.04724 at 2e16 (+13%),
+   the known SM behaviour (top-Yukawa term -3/2 Yu^dag Yu on the Q_L leg; opposite sign to the MSSM).  Their
+   GUT-scale CKM targets and the top-down CKM at M_Z are therefore wrong by ~11-13% in s23 and s13; the kappa
+   RGE cross term is likewise on the wrong index (negligible for hierarchical NO).  My code calls rge.py with
+   transposed Yukawas only.
+
+3. Parameter count: Y10 real diagonal (3) + Y126 complex symmetric (12) + r (1, phase unphysical) + s (2) +
+   seesaw scale (1) = 19 real parameters for 18 observables (type I, free composition); dof = -1, not +1.
+   The researcher's 17 proxy parameters contain one redundant phase (arg r: r -> e^{ia} r, F -> e^{-ia} F leaves all
+   observables invariant) and pin the three up masses.
+
+4. Composition normalisation (found by the sibling verifier, confirmed): fit.py uses c_d10 = sqrt(1 - c_d126^2(1+|rs|^2))
+   instead of sqrt((1 - c_d126^2(1+|rs|^2))/(1+r^2)); at the reported point sum|c|^2 = 1782 and max|Y10_act| = 0.23
+   (not 0.0035).  Still perturbative.
+
+5. G3221 b-coefficients: the (8,2,2) scalar is counted with 8 SU(2)_L and 8 SU(2)_R doublets (index 4) but with 4
+   colour octets (index 12), i.e. as complex for SU(3) and 'half' for SU(2).  A complex (8,2,2) has 16 doublets of
+   each SU(2) (index 8): b_L, b_R = 15.0, 9.67 (T2) instead of 13.67, 8.33; a real one would halve the SU(3) count
+   instead.  Effect on K2: < 1% in Yukawa running (alpha^-1(M_U) 26.6 vs 28.0 for SU(2)).
+
+6. X-charge EXACT claim "no renormalisable F-F17 mixing" is false: F(1).16(-3).H10*(+2) is X-neutral and 16.16.10 is
+   SO(10)-invariant.  Physically negligible for the light Yukawas (O(v^2/M^2) with M ~ y v_S ~ 1e13), but it is an
+   X-allowed renormalisable coupling that the v21 contract must declare.  The other claims (F.F.H10 allowed,
+   F.F.H10* forbidden, no F-16bar mixing, 10_F(-1).10_F(5).S*) are confirmed.
+
+7. Proxy neutrino targets: the researcher compares the model m_nu(v_R) with the M_Z values of Delta m^2 (no kappa
+   running factor 1.65); harmless for chi2 (free scale) but shifts the quoted c_d126 / M_R by ~1.3.
+
+8. Cross-check of my chi2 machinery on the researcher's best matrices (res/): identical PMNS pulls (-4.02, -10.31,
+   -6.58) and delta pull (5.03); mass pulls agree to 0.2 sigma; CKM pulls differ exactly by the CKM-running effect.

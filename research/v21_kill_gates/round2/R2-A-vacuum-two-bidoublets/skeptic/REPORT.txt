@@ -1,0 +1,139 @@
+SKEPTIC REPORT: R2-A (two light bidoublets, vacuum realisability), configuration v21-F17-B63-G3221
+=================================================================================================
+Folder: ...\wfV21R2\R2-A-vacuum-two-bidoublets\skeptic\  (all files written here; the researcher's files were only read;
+the researcher's k3_common.py / r2_compose.py were imported read-only for the repo loader and the composition map).
+_g6_nogo (54a2cd1) and _record (8707fda): `git status --short` = 0 lines before and after; no writer was run; _rescope not touched.
+Labels: EXACT, NUM, EST, CONJ, LIT-abstract (only arXiv:1307.3536 abstract was read, via web search).
+
+VERDICT OF THE SKEPTIC: the FAIL is UPHELD (refuted = false), NUMERICAL and not certified.  One of its two legs is
+wrong, though, and has to be withdrawn.
+
+* The leg that holds: "every feasible point has a deeper vacuum".  I recomputed the decisive descent values with an
+  independent code path and they agree to 1e-12.  A new feasible point that the gate's procedure could not reach (see B)
+  also has deeper vacua: 8 of 8 fresh descents ended lower, by -0.69 to -49.1.
+* The leg that is wrong: "after the feedback cuts the flavour-composition cells are EMPTY at all 8 orientations".  This
+  is an artefact of the EW target.  The gate's targets set the Phi210-doublet admixture beta of the SM Higgs to zero
+  (r2a_ew_targets.py: "slot 0 = Phi210 ... set to 0").  The 210 has no Yukawa coupling, so beta is physically free.
+  With |beta|^2 ~ 1e-6, the K2f09 cell (|r| = 66, s = 0.43, f_Sigma = 0.9) is FEASIBLE after all round-1..3 cuts, at
+  Am45 and at D400.
+
+A. DECISIVE NUMBERS REPRODUCED  [NUM; sk_eval_points.py -> sk_eval_points.json]
+The 51 operator values were re-evaluated with potential.evaluate_directions + coefficient_jacobian.  The banks were built
+with parameter_rows/adapters, so this is a different path.  q* was rebuilt from the point meta (max deviation 0).
+
+  endpoint (coupling point)            V* (indep.)    Vmin - V* indep. | reported
+  R1_bankA (G7_D470_C1622_K2)          -257.090638    -73.781573       | -73.781573
+  R1_hs2   (G7_D470_C1622_K2)          -257.090638    -54.167761       | -54.167761
+  R3_rnd41 (G14_Am45_C2_K2f09_R12)     -254.563380     -5.192346       |  -5.192346
+  X3_rnd71 (G15_Am45x_C1622_K2_X12)      -3.851329    -23.994778       | -23.994778
+  N1_rnd61 (G13_Am45_C2noew_R12)       -255.996302     -3.549417       |  -3.549417
+
+Checks:
+* Gauge invariance of the evaluator at each q_min: |dV/ds| along all 46-47 symmetry tangents (SO(10) + U(1)_X + PQ) is
+  <= 2.3e-9.  Along random directions it is 0.002-7.6.
+* Stationarity at q*: finite-difference directional derivatives are <= 2e-9.
+=> The lower points are genuine, gauge-inequivalent points of the same potential.
+
+B. THE "EMPTY CELLS" CLAIM: MY OWN LP (sk_phase1.py)
+sk_phase1.py is a phase-1 cutting-plane LP written independently of r2_lp6.py; it only reads the gate's data files.  It
+imposes the same constraints as the gate:
+* stationarity null space, boxes (40 / 2 / 1), the exact EW eigen-equation;
+* interlacing light / heavy constraints, (1,1)_|Y|=2 sandwich, |a0| <= 1/2;
+* BFB on 1165 rays, all 485 banked competitors (R1 + R2 + R3 banks + SM-singlet / Delta_R banks);
+* a dynamic subspace screen.
+Phase 1 minimises s = max_k (V* - V(q_k) + margin) in energy units.  s <= 0 means the cell is non-empty.  The new
+element is U-iteration plus restarts: the gate's infeasible runs never updated U.
+
+Validation:
+* No-cut D400 C2 K2: t = 0.01048 (gate: 0.01044).
+* beta = 0 reproduces the gate's infeasibility:
+  - D400 C2 K2: s* = +7.25, +7.22, +7.20, +7.17, +7.23, +7.18, +7.16, +7.23 over 8 U-iterations (23 competitors
+    stay below V*).  The beta = 0 infeasibility is U-robust; this supports caveat (b) of the gate.
+  - Am45 C2 K2f09, warm-started from the gate's own round-3 feasible no-EW point: s* = +4.07.
+
+The loophole:
+* A no-EW two-bidoublet point survives all R1..R3 cuts at Am45 (the gate's G15_Am45_C2noew_R123, t = 0.0119; never
+  descended by the gate) and at D400 (mine, s* = -0.113).
+* At such points the heavy doublet is 99.9998% the Phi210 doublet.  A target with the gate's H/Sigma composition plus
+  beta = -<v_h,x>/v_h0 lies exactly in the light doublet space:
+  - Am45: |beta|^2 = 1.93e-6;
+  - D400: |beta|^2 = 9.0e-7;
+  - r, s and f_Sigma are unchanged to 1e-14 (sk_beta.py).
+
+  cell (R1+R2+R3 cuts)          beta = 0 (gate)         with beta (sk_phase1)
+  Am45 C2 K2f09                 infeasible / +4.07      FEASIBLE, s* = -0.0967
+  D400 C2 K2f09                 infeasible (G16)        FEASIBLE, s* = -0.0946
+  Am45 C2 K2  (f_Sigma = 0.5)   infeasible              still infeasible, s* = +5.26
+  D400 C2 K2                    infeasible / +7.2       still infeasible, s* = +2.77
+
+Both feasible points have:
+* 35 zero / 0 negative / 20 light / 431 heavy (the gate's clean C2 count), min heavy 1e-4;
+* all competitors lifted (min gap +0.097 at Am45, +0.095 at D400);
+* BFB min 0.005 / 0.0035, a0 max 0.500, EW residual <= 3e-9;
+* clean SM-singlet and Delta_R screens (exact polynomial fits, residual ~1e-12, no lower point, no runaway).
+
+So the statements "after the feedback cuts the flavour-composition cells are empty at all 8 orientations" and "at x = 4
+no flavour-composition point survives" are OVERCLAIMS.  They come from the beta = 0 restriction; flavour only fixes the
+H10 / 126bar ratios, and f_Sigma only sets |Y126|/|Y10|.  EST caveat: f_Sigma = 0.9 needs Y10_33 ~ 1 (perturbative but
+largish; not computed).
+
+C. WHY THE FAIL STILL STANDS: FRESH DESCENTS AT THE NEW POINTS  [NUM; sk_descend.py, my own trust-region Newton]
+* Am45 beta point, 6/6 lower: -11.47 (hsray), -6.53 (R3 endpoint), -0.69 (random), -16.18 (hsray), -49.10 (R1_bankA
+  endpoint, which had been lifted by the cut), -1.08 (random).
+* D400 beta point, 2/2 lower: -26.40 (hsray), -7.39 (R1_hs2 endpoint).
+* The lower regions are the same "H-Sigma" type: |Phi| 0.65-3.2, |H| 1.0-3.1, |Sigma| 0.7-5.0.
+* The -11.47 endpoint was re-evaluated with the independent J path (-11.471077); gauge-tangent derivative <= 2.3e-9.
+  Its displacement has a large (1,2)_{1/2} component (1.15).
+=> Gate: 52/52 descents lower.  Skeptic: 8/8, at points the gate's procedure could not produce.  The FAIL by the gate's
+   criterion ("every feasible point still has a lower vacuum") holds.  I agree with the researcher's CONJ that the
+   defect is global (H-Sigma vacua of the v20 potential with two light bidoublets).
+
+D. MISSING TERMS / CRITERION ISSUES
+1. Tree lambda_eff < 0 already guarantees a lower point.
+   * My lambda code (sk_lambda.py; every finite difference is exact for a quartic) reproduces the gate at G7_D470:
+     lambda_direct 0.000400, R_heavy 0.08254, lambda_eff_all -0.04088.
+   * The explicit heavy-relaxed Higgs valley is lower than V* already at h = 0.01 M_U: dV = -9.73e-11 (h = 0.01),
+     -1.62e-9 (0.02), -6.37e-8 (0.05), -1.02e-6 (0.1), matching m^2 h^2/2 + lambda_eff h^4/4.
+   * So the R1 point fails "no lower value" trivially.  Matching a negative lambda_SM(v_R) at tree level (K3 needed
+     tree ~ -0.04 at P831) makes strict tree-level global minimality unattainable.
+   * The SM itself sits near the metastability boundary (LIT-abstract arXiv:1307.3536).  The physically relevant test
+     would be metastability plus the one-loop potential.  The report's "i.e. physically fatal" for the H-Sigma vacua is
+     an OVERCLAIM: no bounce action was computed.  This does not change FAIL under the program's G3 (global-minimum)
+     standard.
+2. Underclaim: the gate's own round-2/3/X LP points have tree lambda_eff_all of about -4:
+   * -4.21 (G14_Am45_C2_K2f09_R12, the R3 point);
+   * -4.05 (G15_Am45x X3 point, along its EW direction);
+   * -4.15 (G13 noew).
+   My beta point has lambda_eff_heavy = -0.0011 but lambda_eff_all = -1.70 (light-singlet exchange, R_light = 3.39).
+   None of these points is physical (lambda_SM(v_R) must be ~ -0.01..+0.05).  The feedback LP never imposed the convex
+   constraint lambda_eff >= lambda_min.  Adding it can only shrink the feasible set, so it reinforces the FAIL.
+3. Methodological warning for any future PASS claim.  A max-t re-solve of my beta cell (MT/MTs, t = 0.0037) passed an
+   in-LP screen with 12-30 polishes.  A 40000-sample, 30-polish screen (sk_screen.py) then found an SM-singlet-subspace
+   runaway, plus an exact lower point at V - V* = -645 (z ~ (-8.5, -7.1, -12, 16.6, 0, 7.2, -2.7)).  The gate's in-LP
+   screen (12 polishes) could miss such runaways.  This point was discarded; it does not affect the FAIL.
+4. Cross-gate consistency:
+   * consistent with K3 (single-bidoublet P831 also non-global, same H-Sigma region);
+   * consistent with K2 (the flavour basin |r| ~ 66, s ~ 0.43 is the one used);
+   * consistent with R2-B, where C1 and C1' are dead by proton decay and C1+(6,2,2) fails three-loop Landau.
+   * C2 is the only content not killed elsewhere; R2-B lists it as marginal (v_R = 8.3e10 vs >= 1e11).  So R2-A's
+     global verdict is pivotal for C2, and it is upheld here.
+
+E. WHAT REMAINS UNPROVEN (the FAIL is numerical)
+* An exact G3 certificate for G3221 vacua (K4).
+* A bounce or lifetime computation for the H-Sigma vacua (the metastability alternative).
+* lambda_eff dial plus one-loop threshold on the beta cells.
+* beta-optimised targets for f_Sigma = 0.1 / 0.5 (only one beta value was tried; K2 stays infeasible).
+* The other 6 orientations with beta.
+* Round 4 at x = 1.4.
+
+FILES (skeptic/):
+* sk_eval_points.py/.json/.log
+* sk_phase1.py (+ _patch_screen*.py); P1_D400_C2_K2_R123.*, P1b0_Am45_C2_K2f09_R123.*, P1beta_Am45_C2_K2f09_R123.*,
+  P1beta_Am45_C2_K2_R123.*, P1_D400_C2noew_R123.*, P1beta_D400_C2_K2f09_R123.*, P1beta_D400_C2_K2_R123.*,
+  MT*/MTs* (discarded point)
+* sk_beta.py, sk_beta_Am45.json, sk_beta_D400.json, ew_beta_*.npz
+* sk_screen.py, screen_*.json
+* sk_descend.py, desc_jobs.sh, DPB_a_*/DPB_b_* (Am45), DPD_a_1/DPD_b_1 (D400), check_DPB_a_1.json
+* sk_lambda.py, lambda_*.json
+* sk_valley_bounce.py (prepared; not run, superseded by sk_lambda.py's valley check)
+* skeptic_summary.json

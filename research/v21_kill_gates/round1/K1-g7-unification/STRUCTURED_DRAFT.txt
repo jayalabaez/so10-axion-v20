@@ -1,0 +1,51 @@
+LABELS
+EXACT: all one- and two-loop gauge coefficients (SM, SM+S, G3221 T2/T3 with/without S, SO(10) below/above M_Phi:
+(16/3, 20891/6, 142437589/864) and (8, 7267/2, 5041501/32)); the PGJ three-loop gauge+matter b3 for the v21 content
+(validated on QCD general Casimirs, n_f = 5, 6, MSS SM pure three-loop values and the repository pins 132706057/864,
+109873879/864); the G3221 decomposition/Goldstone bookkeeping (sum rules 64/3 and T(45) = 8); the Planck-operator
+Clebsches K = (-2a, +-2p, -+2p, 4a) and the heavy vector masses M^2(3,2,2) = g^2(p^2/2 + a^2 + 3w^2/2), M^2(3,1,1) =
+g^2(2a^2 + 4w^2); the SO(10) Yukawa norms (16.16.10: 80 y_t^2 -> 10 Tr Y10^2; 16.16.126bar: 126 Y126^2 -> 63/4 Tr Y126^2);
+the U(1)_X coefficients b_X = 12865/3, b_10X = 2060 and the bound g_X(1e17) <= 0.076; the one-loop universality of
+the S-sector (v_R, M_U independent of M_s at one loop).
+NUM: every unification solution, Lambda_2L, Lambda_3L, the Planck c-scan, the threshold Monte Carlo and coherent
+extremes, tau_p (repository normalisation), the quality bound <S>_max = 2.9e13 (convention A; 3.4e13 convention B),
+the axion masses, the critic-table reproduction (3-4 digits) and the repository two-loop PS chain reproduction (1e-10).
+LIT-abstract: ADMX 1804.05750 (2.66-2.81), 1910.08638 (2.81-3.31), 2408.15227 (3.27-3.34 DFSZ), 2110.06096 (3.3-4.2
+KSVZ; 3.9-4.1 DFSZ from a talk abstract), CAPP 2210.10961 (4.51-4.59 DFSZ), CAPP 2402.12892 (4.24-4.91, DFSZ not
+confirmed); Gorghetto-Villadoro 1812.01008 (m_a = 5.70 ueV x 1e12 GeV/f_a); Chakrabortty-Raychaudhuri 1006.1252 and
+0805.0145 (Planck dimension-5 gauge-kinetic operators, c ~ O(1)); PGJ hep-ph/0104247 and MSS 1201.5868 coefficient
+tables via the repository module (not re-read).
+EST: the G3221 Yukawa coefficients (4,4,4,4) y_t^2; the frozen y_t above v_R; the product-group pure three-loop terms
+(cross terms omitted); the unitarity normalisation a0 = N y^2/(16 pi) and lambda_max = 8 pi/(n+2); the two-loop
+threshold-correction sizes (<= 0.05 units differential, <= 0.3 coherent); the three-loop Yukawa (< 0.5% of b3) and
+quartic (few % under a0 <= 1/2) terms; the four-loop proxy (b3 x0.75 / x1.25); the SO(10) X'Y' factor <= 2 in tau_p;
+the scalar-mediated proton decay suppression ~1e-9 in amplitude; dtheta prefactor (n = 17 vs 1) and Wilson coefficient.
+CONJ: that |c| <= 0.1 for the Planck operator; that the a0 <= 1/2 self-quartic bound applies to the actual (unknown)
+vacuum's heavy spectrum.
+
+CONFIGURATION REFINEMENTS
+- Three-loop-viable sub-window (c = 0, nominal thresholds): M_s in [~9e12, 1e13] (crossing M_s = [MS_CROSS]), y_s in
+  [0.31-0.35, 0.39] (quality min at 1e13 is 0.345 in convention A, 0.29 in B; DFSZ-free up to 0.388), the Phi pair at
+  M_Phi in [1e17, 1.25e17] (y_phi in [1, 1.25]; y_phi = 3.5 would give 1.25 M_Pl but a0 = 2), Planck coefficient
+  c in [-0.3, +0.1] (T2) / [-0.2, 0] (T3).
+- Fixed outputs there: T2 v_R = 2.50e13, M_U = 2.05e16, alpha_U^-1 = 27.10, Lambda_2L = 5.9e18 (2.4 M_Pl), Lambda_3L =
+  2.56e18 (1.05 M_Pl), tau_p = 8.6e36 yr; T3 v_R = 2.96e13, M_U = 2.91e16, alpha_U^-1 = 26.13, Lambda_2L = 5.7e18,
+  Lambda_3L = 2.55e18 (1.05), tau_p = 3.3e37 yr; m_a = 2.37-2.66 ueV (f_a = 2.1-2.4e12 GeV), DFSZ-I-like, E/N = 8/3.
+- Two-loop-viable window: M_s in [5e12, 1e13] robust (100% of thresholds, all c, Phi pair >= 1e17); M_s = 3e12 only
+  91-97% (Phi at 1e17) / 53-56% (Phi at M_U).
+- Thresholds: GUT-scale scalars preferably x1/2..x1 (unitarity); the sign of the GUT-threshold effect on Lambda_3L:
+  [SIGN_GUT]; light tuned states x1/3..x3 change Lambda_3L by [LIGHT_RANGE].
+- U(1)_X: g_X(1e17) <= 0.076 for alpha_X <= 1 at M_Pl,red (an SO(10)-like g_X poles at 1.04e17).
+- For K2 (flavour): v_R = 2.5-3.0e13 at c = 0 but x(0.9-1.2) per 0.1 of c; M_U = 2.0-2.9e16 (x0.8-1.3 per 0.1 c).
+- For K3: the Y126 two-loop term is +0.4-2.2% on Lambda_3L for Y126_33 = 0-1; the vacuum's heavy spectrum must be
+  delivered with a0 <= 1/2 (x1/2..x1 favoured).
+
+MISSING COMPUTATIONS (would decide the three-loop sign)
+1. Four-loop SO(10) gauge term (or a declared two-loop convention): the three-loop term is [R32] of the two-loop term at
+   M_Pl,red and the b3 x0.75/x1.25 proxy moves Lambda_3L to [B3_075]/[B3_125] M_Pl (margin +5%).
+2. The GUT-scale spectrum from an actual G3221 vacuum (K3/K4): x1/2..x2 gives pass fraction [P3_GUT]% (median
+   [MED3_GUT] M_Pl), x1/2..x1 [P3_GUTU]%.
+3. The Planck gauge-kinetic coefficient c (UV input): need |c| <= 0.1 (T3) / c in [-0.3, 0.1] (T2).
+4. Two-loop threshold matching at M_U and v_R (EST <= 1-7% on Lambda).
+5. Three-loop quartic terms with the actual quartics (EST few %, critic: up to 20% for O(1) quartics).
+6. Exact partial-wave a0 of the thresholds used (K3 machinery) instead of the EST normalisation.

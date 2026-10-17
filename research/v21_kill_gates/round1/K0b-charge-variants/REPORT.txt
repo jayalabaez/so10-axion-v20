@@ -1,0 +1,176 @@
+GATE K0b - U(1)_X charge variants of the F17-type fermion sector                              2026-10-16
+=====================================================================================================
+Working folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21\K0b-charge-variants\
+Labels: EXACT (proved / exact integer or rational computation), NUM (computed, uncertainty stated), LIT (read),
+EST (order of magnitude), CONJ (argued).  Repository checkouts only read (no writer run; git status of _g6_nogo and
+_record unchanged).  Tools: K0's conventions, closure integer program and NDA estimate rebuilt in k0b_engine.py;
+K0's y_s-cap RG code copied and parametrised (ys_cap_k0b.py); SO(10) invariance decided by the verifier's
+independent Klimyk/Racah-Speiser singlet counter so10_singlets_klimyk.py (pure Python; it agreed with SARAH's Susyno
+on all 99 K0 rep multisets and 12 test products; no Wolfram kernel was used, so the shared SARAH licence was not touched).
+
+VERDICT: PASS.  Certified variants exist.  Best (no family-exotic Yukawa, K2 structure unchanged):
+  v21-F17-B63:  3 x 16_F(1) | conj[S]-masses: 16(-35)+16bar(39), 16(-28)+16bar(32), 16(34)+16bar(-30), 2 x 10(+2)
+                | Phi17-mass: 16(-35)+16bar(18) | singlets 1(-63)+1(59), 1(-58)+1(54) [S], 1(-57)+1(61) [conj S],
+                2 x 1(-2) [S Majorana].  T_S = 14, T_Phi = 4, anomalies 0, N = 34, E/N = 8/3, N_DW = 1 mod gauge,
+                minimal Planck power of every PQ-violating closed vacuum diagram K_min = 17 (EXACT lower bound,
+                attained by an explicit UV-dominated 4-loop closure whose NDA value is 10^-11.8 of the tree operator),
+                dtheta = dtheta_tree = 2.1e-11 at <S> = 3.0e13 (1.0e-10 at 3.29e13), y_s window [0.304, 0.368] at
+                M_s = 1e13 (m_a = 2.09-2.52 ueV, below the ADMX band), exactly stable lightest R-odd state
+                (singlet or neutral 10_F doublet member), one long-lived colour-neutral 16-sector relic.
+  Alternative v21-F17-A48 (smaller charges |X| <= 48, prompt 16-sector decays, but a fourth 16(1) that mixes
+  with the families: K2 changes): see section 6.
+
+0. CONVENTIONS (EXACT)
+Scalars fixed: Phi210 (210, X=0, real), Delta (126bar, -2), H10 (10, -2), S (1, +4), Phi17 (1, +17); Z17 = X mod 17.
+Fermions: 3 x 16_F (X=1) + exotics of the F17 type (vectorlike 16+16bar pairs, 10_F, singlets), every mass
+renormalizable from <S> or <Phi17>: charge sum of a mass partnership +4 (conj[S] psi chi), -4 (S psi chi), -17
+(Phi17 psi chi), +17 (conj[Phi17] psi chi); a single 10_F or singlet of charge +-2 has a Majorana mass from conj[S]/S.
+Rules: (R1) no X-neutral bare fermion mass; (R2) no X-neutral Phi210 Yukawa (M_U masses: a different structure);
+(R3) every X-allowed renormalizable coupling is declared (the engine enumerates all of them); (R4) no family-exotic
+Yukawa with Phi17 or conj[Phi17] (it would give one family a 1e17 mass).  T(16)=2, T(10)=1.
+Vacuum diagram = product of Planck operators O_i (SO(10) singlet, X-neutral, d_i >= 5, 1/M_Pl^(d_i-4)) and
+renormalizable vertices with all fermion lines closed; K = sum (d_i - 4).  PQ violation <=> the vev monomial carries
+Phi17 number G2 != 0; the scalar centre lemma (X = z + G2 mod 4 on every scalar) gives |G2| >= 4, vev monomial
+Phi17^4 S*^17 (x neutral factors); the pure scalar operator has K = 17, hence the criterion K_min >= 17.  The lowest
+PQ-violating scalar operator is unchanged (dimension 21) because the scalar sector is fixed.
+
+1. LEMMA A - anomalies fix the sectors, N, E/N, N_DW (EXACT; lemma_structure.py, lemma_structure.json)
+With partnerships p of index T_p and charge sum s_p in {+4,-4,-17,+17}:
+  [SO(10)]^2 X = 6 + sum_p (T_p/2) s_p = 6 + 2 (T_S* - T_S) + (17/2)(T_Phi* - T_Phi)
+(T_S*: index with conj[S] masses, T_S: with S masses, T_Phi*/T_Phi: with conj[Phi17]/Phi17 masses).  The accidental
+PQ = X - 17 G2 (G2 = Phi17 number extended to fermions by the Phi17 Yukawas) has N = sum T_SU3 PQ =
+(17/2)(T_Phi - T_Phi*) = 6 + 2 (T_S* - T_S) (the X part vanishes by the gauge anomaly since T_SU3/T_SO10 = 1 for 16
+and 10; fermion-only accidental U(1)s are vectorlike on every partnership, so N is unambiguous).  With T_S*+T_S <= 16:
+  T_S* - T_S = -3, Phi net 0  -> N = 0 (no axion: excluded);   (14, 0, Phi net 4) -> N = 34;
+  (15, 1, 4) -> needs a Majorana 10(-2) and an odd number of Majorana 10(+2): bare mass 10(2).10(-2), excluded (R1).
+Hence every admissible variant has T_S = 14 (all S-scale masses from conj[S]), a Phi17-mass sector of net index 4,
+N = 34, 2N = 68, E/N = 8/3, N_DW = 1 modulo gauge (K0's argument uses only the scalar charges 4, 17 and 2N = 68).
+There are 20 multiplet structures (14 = 4 n16 + 2 n10 + m Majorana 10(+2)); the F17 structure is n16 = 3, n10 = 1
+(or 2 Majorana 10(+2), which is the degenerate 10-pair c = 2 used below).
+
+2. LEMMA B - rigorous lower bound on K (EXACT; k0b_engine.Model.dual_bound)
+q(O) = (G2(O), f_1(O), ..., f_n(O)) = charges of O under the accidental U(1)s (kernel of all Yukawas and the four
+phase-sensitive scalar couplings kappa H H S, Phi210 H* Delta, O38, Delta^2 H*^2).  In a closed vacuum diagram vertices
+and propagators are neutral, so sum_i q(O_i) = q(vev) = (+-4, 0, ..., 0).  If mu . q(O) <= d(O) - 4 for every singlet
+X-neutral operator with 5 <= d(O) <= 20, then every diagram with K <= 16 (all its operators have d <= 20) obeys
+K >= 4 mu_0, so mu_0 >= 17/4 proves K >= 17 (the G2 = -4 diagrams are covered by -mu).  mu is found by a cutting-plane
+LP; the separation oracle is an integer program (HiGHS, zero MIP gap) over ALL monomials of the fields and their
+conjugates with 5 <= dim <= 20 obeying the necessary conditions X = 0, centre z = 0 mod 4, Lorentz parity (even/even,
+or odd/odd with one derivative, +1).  Using necessary conditions only can weaken, never invalidate, the bound.  The LP
+is bounded by the scalar operator (mu_0 <= 17/4).  Termination: oracle finds no violated monomial (certificate), or
+the LP optimum drops below 17 (cannot be certified; K0's explicit closure program is then run).  Subsumes K0's mod-4
+lemma (a Z4 character of the same kernel) and the manuscript's P counting.  Test: on F17 the LP drops below 17 after
+10 cuts and K0's closures (K = 9 all / 12 variant E, NDA 10^1.1) are reproduced by the rebuilt program.
+Monotonicity (EXACT): adding fields adds operators and vertices and can only shrink the kernel, so the true K_min
+and the LP bound of a content are <= those of any sub-content containing F and the scalars.  A charge, or a pair of
+charges, whose sub-theory bound is < 17 therefore never occurs in a passing candidate: this is the pruning of the
+scans (single-multiplet map, two-multiplet maps); every surviving candidate is certified on its complete content.
+Remark on K = 17 closures: with the vev monomial Phi17^4 S*^17 (dimension 21) the loop-integral dimension is
+D = K - 17, so a K = 17 closure is UV-dominated (M_Pl^-17 like the tree operator, times loop factors and couplings);
+extra neutral vev factors (Delta Delta*, kappa lock) only bring (v_R/M_s)^2 ~ O(10) factors.  Hence K_min >= 17 <=>
+the fermion-assisted diagrams do not exceed the declared tree estimate (EXACT structure, NUM/EST magnitude).
+
+3. SINGLE- AND TWO-MULTIPLET MAPS (EXACT bounds; scan_single.py, scan_pairs.py; |X| <= 100 and box 45)
+Sub-theory {3 x 16_F, one partnership, scalars}:
+  16(a)+16bar(4-a) [conj S]:  bound < 17 for a in {-29,-25,-21,-17,-13,-12,-11,-9,-8,-7,-5,-4,-3,-1,0,4,6,8,9,10,12,13,
+     14,16,17,21,25,29,33}; a = 5 excluded (bare F.Vb mass + Phi210 Yukawa); a = -12 and 22 excluded by R4
+     (F.Vb.conj[Phi17], F.Vb.Phi17); all other a in [-100,100] certified at 17 (the costs of every G2- or f-charged
+     operator grow like |charge difference from the resonant values|/4).
+  16(p)+16bar(-17-p) [Phi17]:  bound < 17 for p in {-33,-29,-25,-21,-17,-15,-13,-12,-11,-9,-8,-7,-5,-4,-3,-1,0,4,8,12,16};
+     p = -16 bare; p = 1, -33 excluded by R4 (F.Pb.Phi17 / F.Pb.conj[Phi17]); all others certified.
+  10(c)+10(4-c), 10(c)+10(-17-c), singlet pairs of every mass type and Majorana singlets: all certified alone
+     (c = 0, d = 0, -4, -17 excluded: bare masses).
+Two-multiplet maps in box 45 (pairs of allowed charges): 16-16: 1830 pairs, 570 fail (52 bare/210, 518 LP < 17);
+16-Phi16: 1586 pairs, 486 fail (42 bare/210, 444 LP < 17).  The failing mechanisms are cross-sector operators
+V_i Vb_j S^k (sigma.D), Vb_i V_j Phi17 S^k, Vb_i^2 Vb_j^2 (b_i + b_j = 0), renormalizable cross Yukawas
+(V_i.Vb_j.S, Vb_i.V_j.conj[Phi17], V_i.V_j.conj[H10]) - i.e. charge differences = 0 mod 4 or near +-13, +-21, and sums
+near -7, -15 (files scan_pairs_*_45.json list every pair with its cheapest cuts).  12721 pairwise-compatible 16-triples
+remain in box 45 (triples_ok_box45.json).
+
+4. FULL-MODEL SEARCH (EXACT bounds per model; scan_full2.py, try_candidates.py, refine_singlets.py)
+Structure scanned: the F17 structure (3 x 16-pairs + 10-pair c + Phi 16-pair p + singlets).  The Phi-pair charge is the
+cubic-anomaly knob (X^3 = R0(a,c) - 16(4913 + 867 p + 51 p^2) + sum d^3), the singlets are completed exactly
+(anomaly_singlets.py: pairs (d, +-4-d), (d, +-17-d), Majorana +-2; reproduces F17's 2 x [1(-3)+1(-1)]).  About 300
+complete anomaly-free models were tested (scan_full2 rand45: 90, directed gen2 on 30 pairwise-compatible triples: 150,
+singlet refinements of the first passing triple: ~60).  Certified passes: 9 in gen2 (3 of them violate R4 and are
+discarded) + 1 in the refinement; distinct passing cores: a = (-16, 1, 18) with p = 5 or -22 (fourth 16(1), one
+F.Vb.conj[S] Yukawa) and a = (-35, -28, 34) with p = -35 (no family-exotic Yukawa).  Small-charge singlet completions
+(|d| <~ 40) fail systematically through singlet operators N N Phi17^k S^j and N N' S^k (resonances at 2d near 0, +-8,
++-34, +-68); the passing completions have |d| ~ 45-80.  The LP-failing full models were re-examined with K0's explicit
+program (kill_check.py, 12 cases, operators dim <= 8): no closure with K <= 16 was found (explicit K = 18-26 or none),
+so an LP bound below 17 is 'not certified', not a proven kill; F17 itself (K = 12 explicit) remains the proven kill.
+Coverage: the charge space is infinite; the scan is exhaustive only in the sense of the maps above (all single charges
+|X| <= 100, all pairs in box 45) and a directed sample of complete models.  Since the criterion is existential, PASS
+does not need exhaustiveness; the negative statements about other assignments are LP-level only.
+
+5. BEST VARIANT v21-F17-B63 (dossier candB63_dossier.json, relics_B63.json, ys_cap_B63.json)
+Fields (left-handed Weyl; X; Z17 = X mod 17):
+  F 3 x 16 (1; 1) | V1 2 x 16 (-35; 16), Vb1 16bar (39; 5), Pb 16bar (18; 1) | V2 16 (-28; 6), Vb2 16bar (32; 15)
+  | V3 16 (34; 0), Vb3 16bar (-30; 4) | T 2 x 10 (2; 2) | N1 1 (-63; 5), N1b 1 (59; 8) | N2 1 (-58; 10), N2b 1 (54; 3)
+  | N3 1 (-57; 11), N3b 1 (61; 10) | NMm 2 x 1 (-2; 15).
+  (The two 16(-35) are one species with two generations: the mass matrix [y1 <S>*, yP <Phi17>] gives one state at
+  yP <Phi17> ~ 1e17 (the Phi-sector, T_Phi = 4) and one at ~y1 <S> (S-sector).)  T_S = 14 (3 x 4 + 2), T_Phi = 4.
+Complete renormalizable fermion Lagrangian (12 structures, EXACT enumeration, no bare mass, no Phi210 Yukawa, no
+family-exotic Yukawa):  Y10 F.F.H10, Y126 F.F.Delta (3x3 sym) | y1 conj[S].V1.Vb1 (2-vector) | yP Phi17.V1.Pb (2-vector)
+  | y2 conj[S].V2.Vb2 | lam23 H10.Vb2.Vb3 | y3 conj[S].V3.Vb3 | yT conj[S].T.T (2x2 sym) | yN1 S.N1.N1b | yN2 S.N2.N2b
+  | yN3 conj[S].N3.N3b | yM S.NMm.NMm (2x2 sym).
+Anomalies (EXACT, Fractions): [SO(10)]^2 X = 0, grav-X = 0, X^3 = 0; b_X = 101203 (integer-X normalisation; F17: 12865/3)
+  -> alpha_X^-1(M_U) >= 7.6e4 (g_X <= 0.013 in the X(F) = 1 normalisation) keeps the U(1)_X pole above M_Pl,red (K1 input).
+Accidental symmetries (EXACT): rank 13 on 20 charges, kernel dim 7 = X, G2, f1 (V1, Vb1, Pb), f2 (V2, Vb2, V3, Vb3),
+  f3 (N1, N1b), f4 (N2, N2b), f5 (N3, N3b); all f_k QCD-anomaly free.  PQ = X - 17 G2: N = 34, 2N = 68, E = 272/3,
+  E/N = 8/3, N_DW = 1 modulo gauge (17 relative to the S phase alone, as in K0); f_a = v_S/17 (v_Phi >> v_S).
+Quality (EXACT bound + NUM): dual LP certified mu_0 = 17/4 with mu = (4.25, -3.5, -7.0, -14.25, -12.0, -12.75) after 25
+  cuts over all monomials with 5 <= dim <= 20; the same mu stays feasible against all monomials up to dim 24 and 28
+  (minimum cost - mu.q = 0, attained by the scalar operator).  K0's explicit program (3617 verified singlet operators of
+  dim <= 8, Phi210 included; 4346 centre-consistent) finds the cheapest closure at exactly K = 17:
+  4 x [N1 N2b S*^2 Phi17] (dim 6) + [N1*^2 N3b*^2 S*] (dim 7) + 2 x [N1b N2^2 N3b S*] (dim 7), vertices (yN1*)^2 (yN2*)^4,
+  vev monomial S*^17 Phi17^4, 4 loops, loop-integral dimension D = 0 (UV-dominated, M_Pl^-17): NDA log10 dtheta = -22.5
+  at <S> = 3e13 (ratio to the tree operator 10^-11.8).  The leading PQ violation is therefore the tree operator
+  Phi17^4 S*^17/M_Pl^17: dtheta = 2.1e-11 at <S> = 3.0e13, 1.0e-10 at 3.29e13, 4.7e-10 at 3.6e13 (coefficient 2, chi = (75.5 MeV)^4).
+  Criterion dtheta_NDA <= 1e-10 at <S> ~ 3e13: PASS (margin x5; it is the same number FINAL/K0 call 'declared').
+y_s window (NUM, one loop, K0's RG code with sum d_i = 62 S-coupled components: 3 x 16 + 10 + 3 + 1): caps y_s(M_s)
+  for y <= sqrt(4 pi) up to M_Pl,red at M_s = 1e13: 0.317 (no gauge), 0.368 (least-gauged component), 0.391 (averaged);
+  quality needs y_s >= 0.304 (declared operator, <S>_max = 3.29e13).  Window 0.304 <= y_s <= 0.368 -> <S> = 2.72e13-3.29e13,
+  f_a = 2.26e12-2.73e12, m_a = 2.09-2.52 ueV (below the ADMX-excluded 2.66-3.31 ueV band; 2.66 ueV at y_s = 0.389).
+  lambda_S(M_s) in [0.143, 0.268] at y_s = 0.35.  At M_s = 3e12: window [0.091, 0.346], m_a = 7.0-7.9 ueV.
+R-parity and relics (EXACT parity, EST lifetimes): R = z^2 (-1)^(2s) exact; R-odd: T (two 10_F), N1, N1b, N2, N2b, N3,
+  N3b, NMm.  The lightest R-odd state is absolutely stable: an S-scale singlet Dirac/Majorana state or the neutral
+  SU(2) doublet member of the 10_F (the colour triplet is heavier by RG, EST), whichever Yukawa is smallest -> no
+  stable coloured state (EST on the mass ordering).  R-odd sectors decay into each other through dim 8-13 operators
+  (e.g. N3 NMm S^2 Phi17^3 dim 8: prompt; N1 NMm S*^5 Phi17^5 dim 13: tau ~ 1e16 s EST).  R-even exotics: sector f2
+  (V2, Vb2, V3, Vb3 at ~1e13) decays into families via F* Vb3* S*^3 Phi17* (dim 7, mixing ~1e2 GeV, tau ~ 1e-15 s)
+  and F* Vb2* S^4 Phi17 (dim 8): prompt, before BBN.  Sector f1: the S-scale 16(-35)-16bar(39) state's lowest
+  decay operators are F* Vb1* S^10 (dim 13, tau ~ 1e55 s) and F T* Pb* NMm S Phi17 (dim 8 through its ~1e-4 Pb
+  admixture, tau >~ 1e8 s EST): a long-lived colour-neutral relic (its lightest component is the nu^c-like singlet,
+  EST) whose abundance must be negligible: T_RH << 1e13 GeV, the same requirement as for the stable R-odd state.
+  The 1e17 Phi-sector state decays promptly via yP mixing.
+
+6. ALTERNATIVE v21-F17-A48 (candA48_dossier.json, relics_A48.json, ys_cap_A48.json) - smaller charges, prompt 16 decays
+  4 x 16(1) [three families + one exotic 16 with family charge] + 16bar(3) (conj[S] mass of one combination),
+  16(-16)+16bar(20), 16(18)+16bar(-14), 2 x 10(2); Phi: 16(-22)+16bar(5); singlets 2 x 1(-25) + 1(8) [Phi17] + 1(21) [S],
+  1(-19)+1(15) [S], 1(-31)+1(48) [conj Phi17].  13 structures incl. F.Vb2.conj[S] (4x1) and V1.V3.H10, V1.V3.Delta.
+  Anomalies 0, b_X = 66557/3; kernel dim 7; N = 34, E/N = 8/3, N_DW = 1; LP certified 17 (21 cuts; feasible to dim 28);
+  no explicit closure among dim <= 8 operators (7377 verified); dtheta = tree = 2.1e-11 at 3e13; y_s window [0.304, 0.374]
+  (sum d = 60, identical to K0's); decays: F V1 Delta Phi17 and F* Vb3* S Phi17* (dim 5, mixing masses ~1e12 GeV: the
+  light families carry ~10 % admixtures of the exotic 16s - K2 must include it), Phi sector dim 12 (never produced),
+  singlet sectors dim 7-14.  Kept as the fallback if K2 prefers the extra family-like 16.
+
+7. CHANGES THE OTHER GATES WOULD SEE (B63 unless stated)
+  K1: same SM-multiplet content as F17 below M_Pl (T_S = 14: three 16-pairs + two 10_F; T_Phi = 4: one 16-pair at
+      1e17) -> unification, Landau and tau_p numbers carry over multiplet by multiplet; S-coupled Dirac components 62
+      (F17: 60) -> cap 0.368 (0.374); U(1)_X: b_X = 101203 -> g_X(M_U) <= 0.013 (0.062) for the X pole above M_Pl,red.
+  K2: unchanged flavour structure (3 x 3 Y10, Y126; no family-exotic Yukawa; family-exotic mixings only through
+      dim >= 7 operators with angles <~ 1e-11).  (A48 instead adds a fourth 16(1) with O(0.1) dim-5 mixings.)
+  K5: exactly stable lightest R-odd state (singlet or neutral 10_F doublet; mass ~ y <S> ~ 1e13); long-lived
+      colour-neutral 16-sector relic (f1) and the stable-until-1e17-decay Phi sector; sector f2 and all 10_F/singlet
+      transitions prompt or << 1e16 s; T_RH << 1e12-1e13 GeV as before; axion m_a = 2.09-2.52 ueV, DFSZ-type E/N = 8/3,
+      N_DW = 1 modulo gauge; the quality statement now holds at NDA (K_min = 17), removing K0's 10^11 violation.
+
+8. FILES
+k0b_engine.py (model, anomalies, couplings, kernel, PQ, dual LP bound, explicit operators + closure ILP + NDA, decays),
+so10_singlets_klimyk.py (copied verifier counter), lemma_structure.py/.json, anomaly_singlets.py, scan_single.py/.json/
+_summary.json/.log, scan_pairs.py + scan_pairs_S16_S16_45.json, scan_pairs_S16_P16_45.json (+logs), triples_ok_box45.json,
+scan_full.py, scan_full2.py (+ scan_full2_rand45.json/.log, scan_full_small45.json), try_candidates.py + try_gen2.json/.log,
+refine_singlets.py + refine_tri1*.json/.log, kill_check.py + kill_check_gen2fails.json/.log, verify_candidate.py +
+candB63.json, candB63_dossier.json, candA48.json, candA48_dossier.json (+ dossier logs), relic_sectors.py + relics_B63.json,
+relics_A48.json, make_ys_cap.py, ys_cap_k0b.py + ys_cap_B63.json, ys_cap_A48.json (+logs), slack_single.py (unused), rank_passes.py.

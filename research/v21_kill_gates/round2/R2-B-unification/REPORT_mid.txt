@@ -1,0 +1,138 @@
+2. EXACT COEFFICIENTS (r2b_coeffs.json) [EXACT]
+-----------------------------------------------
+Contents (light at v_R, besides 3 x 16_F and the B63 S-sector): C0 = 126bar/10 bidoublet (one combination) +
+(8,3,1)_0 [210, real] + Delta_R (1,1,3)_2 [126bar]; C1 = both (1,2,2)_0 (the 10's and the 126bar's) + (8,3,1)_0 +
+Delta_R; C2 = both bidoublets + Delta_R; C1' = both bidoublets + (1,3,1)_0 [210, real] + Delta_R.  (With a complex
+H10 and one 126bar there are exactly two (1,2,2)_0 multiplets, so 'two light bidoublets' = all of them.)
+One loop, G3221 = (SU3, SU2L, SU2R, B-L), GUT-normalised B-L, with the S-sector (without):
+  C0  (23/6, 9, 7, 89/6)       (-11/2, -1/3, -7/3, 11/2)
+  C1  (23/6, 28/3, 22/3, 89/6) (-11/2, 0, -2, 11/2)
+  C2  (7/3, 20/3, 22/3, 89/6)  (-7, -8/3, -2, 11/2)
+  C1' (7/3, 7, 22/3, 89/6)     (-7, -7/3, -2, 11/2)
+  SM (41/10, -19/6, -7); SM + B63 S-sector (403/30, 37/6, 7/3) (universal shift (2/3) T_S = 28/3, T_S = 14).
+Two loop rows (with S), e.g. C2: SU3 (454/3, 27/2, 27/2, 13/6), SU2L (36, 380/3, 9, 9/2), SU2R (36, 9, 436/3, 33/2),
+B-L (52/3, 27/2, 99/2, 229/6); C1: (643/3, 99/2, 27/2, 13/6), (132, 604/3, 9, 9/2), (36, 9, 436/3, 33/2),
+(52/3, 27/2, 99/2, 229/6); all tables in r2b_coeffs.json.
+Per-factor pure three-loop (EST input, single-group PGJ): C2 (94841/54, 173543/432, 177839/432, -415949/864).
+SO(10) phase (identical to K1's v21 content multiplet by multiplet, since B63 has T_S = 14, T_Phi = 4):
+  below M_Phi (b1, b2, b3) = (16/3, 20891/6, 142437589/864); above (8, 7267/2, 5041501/32).
+Cross-checks (all True): every G3221 and SM table equals the repository's two_loop_thresholds_v20.mv_gauge_coefficients
+(real scalars as complex x 1/2); SM b, b_ij equal the literature (41/10, -19/6, -7; 199/50 ... -26); SM pure
+three-loop equals Mihaila-Salomon-Steinhauser 1201.5868 (-388613/24000, 324953/1728, 65/2) through this gate's
+per-factor PGJ routine; QCD b3 for n_f = 5, 6: -9769/54, 65/2; SO(10) B63 b1, b2, b3 equal the repository's
+g7 pgj_b/content_invariants/mv_single_group; the repository pins 132706057/864 and 109873879/864 are reproduced;
+the PGJ table is identical to the repository's (_record/g7_decoupled_singlet_benchmark_evidence_v20.py); scalar
+completeness (heavy + light + 30 Goldstones = full 210 + 126bar + 10 in every factor) for all four contents.
+One-loop light thresholds at v_R: W_R^+- (vector), Delta_R^{++}, the three extra doublets of the two bidoublets (one
+for C0), (8,3)_0 / (1,3)_0 where present; the Delta_R^+ Goldstone and the SM Higgs are removed.
+
+4. UNIFICATION SOLUTIONS: 1L / 2L / 3L, nominal B63 point (r2b_nominal.json) [NUM, solver residual < 1e-13]
+-----------------------------------------------------------------------------------------------------------
+M_s = 1e13, y_s = 0.336, Phi pair 1e17, Tr Y126^2 = 0.5, c = 0, (3,1,1) at 0.894 M_X.  'sm3L' = per-factor pure
+three-loop terms also below M_U.  tau_dir = direct-lattice normalisation (section 9).
+  content S_V    loops   v_R        M_U        aU^-1   tau [yr]   tau_dir    Lambda/MPl (2L or 3L)
+  C0  MS-bar     1L      3.71e12    6.56e15    32.80   1.34e35    2.96e34    -
+  C0  MS-bar     2L      6.63e12    3.02e15    33.26   6.20e33    1.37e33    4.62
+  C0  MS-bar     3L      6.63e12    3.02e15    33.26   6.20e33    1.37e33    1.72
+  C0  MS-bar     3L+sm3L 6.65e12    3.06e15    33.23   6.50e33    1.44e33    1.72
+  C0  off        2L      6.32e12    2.89e15    33.14   5.15e33    1.14e33    4.26
+  C0  opposite   2L      6.03e12    2.76e15    33.03   4.28e33    9.45e32    3.93
+  C1  MS-bar     1L      4.63e12    4.46e15    33.09   2.91e34    6.42e33    -
+  C1  MS-bar     2L      7.78e12    2.18e15    33.53   1.70e33    3.76e32    3.91
+  C1  MS-bar     3L+sm3L 7.80e12    2.20e15    33.51   1.78e33    3.93e32    1.44
+  C1  off/opp.   2L      7.42e12/7.08e12  2.08e15/1.99e15         1.42e33/1.18e33
+  C2  MS-bar     1L      9.04e9     1.38e16    34.31   2.87e36    6.32e35    -
+  C2  MS-bar     2L      2.13e10    6.05e15    34.64   1.08e35    2.38e34    14.17
+  C2  MS-bar     3L+sm3L 2.13e10    6.10e15    34.62   1.11e35    2.46e34    5.20
+  C2  off        2L      2.03e10    5.78e15    34.52   8.97e34    1.98e34    13.06
+  C2  opposite   2L      1.94e10    5.53e15    34.41   7.46e34    1.65e34    12.04
+  C1' MS-bar     1L      5.45e10    6.88e15    34.57   1.80e35    3.96e34    -
+  C1' MS-bar     2L      1.14e11    3.20e15    34.91   8.58e33    1.89e33    9.30
+  C1' MS-bar     3L+sm3L 1.14e11    3.22e15    34.90   8.80e33    1.94e33    3.36
+  C1' off/opp.   2L      1.09e11/1.04e11  3.06e15/2.93e15         7.13e33/5.93e33
+The two-loop M_U is 0.44-0.49 x the one-loop M_U (two-loop terms of the realisable contents plus the B63 S-sector);
+this halving is what moves C0/C1/C1' below the Super-K line (their one-loop tau would pass for C0, C1' and, marginally, C1).
+The S-sector itself is universal at one loop (EXACT) and changes the two-loop M_U by ~4-5% between M_s = 3e12 and
+1.21e13 (C0: 3.14e15 -> 3.01e15; C2: 6.30e15 -> 6.01e15; C1': 3.32e15 -> 3.18e15; y_s inside the window: <0.1%);
+v_R is essentially M_s-independent (C2 2.11e10-2.14e10).
+
+5. THRESHOLD SCAN (r2b_scan_mc_C0_C1_C2_C1p.json, tables_mc.txt) [NUM; MC statistical error ~ +-2.5% on fractions]
+------------------------------------------------------------------------------------------------------------------
+3L-capable runs (Landau at 2L and 3L), M_s = 1e13 (y_s = 0.336) unless stated, Phi pair 1e17, MS-bar S_V.
+f_SK = fraction with tau > 2.4e34 (repo), f_dir = same in the direct normalisation, f_all = tau > SK & L2 > 1 &
+v_R in [1e11, 1e14].
+  content scenario              n    tau min / median / max        f_SK   f_dir  M_U range           v_R range          L2min  L3min  f_all
+  C0  light x1/3..x3            100  1.8e33 / 7.1e33 / 2.2e34      0.00   0.00   2.2e15-4.2e15       2.3e12-2.1e13      3.49   1.29   0.00
+  C0  GUT x1/2..x2              100  3.0e32 / 7.3e33 / 6.7e34      0.06   0.00   1.4e15-5.6e15       2.2e12-1.5e13      3.31   1.25   0.06
+  C0  both                      200  2.2e32 / 6.3e33 / 2.4e35      0.09   0.015  1.3e15-7.7e15       1.6e12-4.7e13      2.83   1.03   0.09
+  C0  both, M_s = 3e12          100  3.7e32 / 6.7e33 / 9.0e34      0.20   0.00   1.5e15-6.1e15       1.7e12-2.5e13      1.47   0.57   0.20
+  C0  GUT x1/2..x1 (unitarity)  100  2.5e33 / 7.9e33 / 2.5e34      0.01   0.00   2.4e15-4.4e15       3.7e12-9.4e12      2.78   1.06   0.01
+  C1  light                     100  6.3e32 / 1.6e33 / 5.0e33      0.00   0.00   1.7e15-2.9e15       3.1e12-2.3e13      3.17   1.16   0.00
+  C1  GUT                       100  1.7e32 / 1.3e33 / 1.7e34      0.00   0.00   1.2e15-3.9e15       3.6e12-2.2e13      2.93   1.09   0.00
+  C1  both                      200  1.3e32 / 1.7e33 / 3.0e34      0.005  0.00   1.1e15-4.6e15       2.6e12-3.5e13      2.26   0.83   0.005
+  C1  both, M_s = 3e12          100  1.7e32 / 1.9e33 / 2.3e34      0.00   0.00   1.2e15-4.3e15       2.3e12-3.3e13      1.23   0.47   0.00
+  C1  GUT x1/2..x1              100  7.6e32 / 2.3e33 / 6.1e33      0.00   0.00   1.8e15-3.1e15       4.4e12-1.1e13      2.31   0.87   0.00
+  C2  light                     100  5.6e34 / 1.0e35 / 2.3e35      1.00   0.46   5.1e15-7.3e15       6.2e9-7.4e10       12.7   4.65   0.00
+  C2  GUT                       100  3.7e33 / 1.4e35 / 2.8e36      0.86   0.54   2.6e15-1.4e16       1.9e9-3.2e11       8.31   3.05   0.01
+  C2  both                      200  5.2e33 / 1.1e35 / 4.6e36      0.865  0.49   2.8e15-1.6e16       1.1e9-3.6e11       8.38   3.06   0.05
+  C2  both, M_s = 3e12          100  7.7e33 / 1.3e35 / 4.4e36      0.91   0.56   3.2e15-1.6e16       9.3e8-3.4e11       3.52   1.33   0.02
+  C2  GUT x1/2..x1              100  1.9e34 / 1.3e35 / 6.3e35      0.99   0.62   3.9e15-9.6e15       6.9e9-7.4e10       7.80   2.92   0.00
+  C1' light                     100  3.7e33 / 8.0e33 / 2.0e34      0.00   0.00   2.6e15-4.0e15       3.3e10-3.5e11      8.07   2.90   0.00
+  C1' GUT                       100  3.6e32 / 6.9e33 / 9.9e34      0.14   0.00   1.4e15-5.9e15       2.3e10-7.5e11      6.06   2.16   0.03
+  C1' both                      200  3.7e32 / 7.7e33 / 1.3e35      0.20   0.005  1.4e15-6.3e15       6.1e9-1.2e12       5.52   1.96   0.105
+  C1' both, M_s = 3e12          100  6.6e32 / 1.1e34 / 1.4e35      0.27   0.01   1.7e15-6.6e15       1.3e10-1.2e12      3.02   1.14   0.06
+  C1' GUT x1/2..x1              100  3.2e33 / 1.2e34 / 3.3e34      0.05   0.00   2.5e15-4.6e15       5.6e10-2.9e11      5.05   1.86   0.00
+Coherent extremes (all GUT scalars x f_g, all light states x f_l, f_g in {1/2, 1, 2}, f_l in {1/3, 1, 3}):
+  C2: tau = 6.9e34 (f_g = 2) ... 1.66e35 (f_g = 1/2), v_R = 6.8e9-6.7e10, L2 = 6.4-32, L3 = 2.5-11: all pass SK (repo),
+      none reaches v_R = 1e11; in the direct normalisation 1.5e34-3.7e34 (fails for f_g >= 1).
+  C1': tau = 4.9e33-1.5e34 (all fail);  C1: 8.9e32-3.3e33 (all fail);  C0: 3.5e33-1.1e34 (all fail).
+  (For these contents raising the GUT scalars lowers M_U; the independent scan, which splits the 126bar multiplets
+  from each other, produces the large spread.)
+Hyper-K (7.8e34 yr, 90% CL): C2 above it in 59% (repo) of the combined scan; in the direct normalisation the whole
+C2 window lies within Hyper-K reach (max tau_dir = 1.0e36 only in the far tail; median 2.3e34).
+
+6. A REALISABLE GUT SPECTRUM: THE EXPLICIT K3 VACUUM POINTS P831 / P831b (r2b_p831.json) [NUM for C0; EST transplant]
+----------------------------------------------------------------------------------------------------------------------
+K3's P831 and P831b are explicit coupling points of the v20 potential at the Am45 G3221 vacuum with exactly the C0
+light content (local minima with the 35 Goldstone zero modes; NOT global minima, see K3).  From K3's SM-isotypic
+reduced Hessians (Am45_blocks.npz) and the coupling vectors I computed all 451 non-Goldstone modes and assigned every
+heavy eigenvalue to its G3221 multiplet by the degeneracy pattern across SM blocks (all 22 heavy multiplets assigned,
+no leftovers except three gauge-singlet (1,1)_0 modes).  m/M_X with M_X = 0.6455 g_U |Phi|:
+  P831: 126bar (6,3,1) and (3,2,2)_{4/3} 0.104; 10-bidoublet 0.12; (3b,2,2)_{-4/3} 0.135; colour triplets 0.14-0.32;
+  (3,3,1)_{-2/3} 0.29; (3b,1,3) 0.38; (8,2,2) 0.43; 210 (8,1,1) 0.60, Delta_L 0.64, (3,2,2) 0.64, (6b,1,3) 0.74,
+  (1,1,3) 0.75, (6,2,2) 0.76, (3,3,1)_{4/3} 0.85, (3,1,3) 0.96, (1,3,1) 1.19, (1,2,2)_{-2} 1.19, (8,1,3) 1.52;
+  geometric mean 0.41 (P831b: same pattern, 0.11-1.45).  K3's stage-A LP MAXIMISED the lightest heavy mass for the C0
+  content at Am45 under its constraints (boxes |quartic| <= 1, singlet-channel a0 <= 1/2, BFB/competitor/light-cubic
+  cuts): optimum m^2 = 0.00342 |Phi|^2, i.e. m = 0.0585 |Phi| = 0.14 M_X.  Hence EVERY coupling point of that family has
+  at least one heavy multiplet at <= 0.14 M_X, outside the declared x1/2..x2 window (NUM for C0 at Am45; CONJ that the
+  same holds for C1/C2/C1' vacua).
+Results (two loops, MS-bar S_V):
+  C0 (exact content of the point): v_R = 2.14e13, M_U = 1.76e15, aU^-1 = 31.5, tau = 6.4e32 yr (tau_dir 1.4e32),
+      Lambda_2L = 1.48, Lambda_3L = 0.56 M_Pl  -> fails tau by x38 and the three-loop Landau test (P831b: 7.3e32, 0.59).
+  Transplant (EST: same 210/126bar/10 masses, the multiplets light in the target content removed; (8,3,1)_0, light at
+      P831, put at f M_X):
+      C1:  M_U = 1.55e15, tau = 3.8e32 (FAIL);
+      C2:  f = 0.3 / 1 / 2: v_R = 8.2e11 / 2.7e11 / 1.4e11, M_U = 2.7e15 / 3.3e15 / 3.7e15, tau = 3.8e33 / 8.3e33 / 1.3e34
+           (sv +1); 2.7e33 / 5.8e33 / 9.1e33 (opposite sign) -> FAILS Super-K by 1.7-9 (P831b up to 1.4e34; direct 6e32-3e33);
+           note that v_R moves INTO the seesaw window with this spectrum;
+      C1': f = 0.1-1: tau = 4.5e32-1.2e33 (FAIL);
+      whole spectrum scaled x2, x3, x5 (C2): tau = 5.3e33, 4.0e33, 2.9e33 (worse: raising the heavy scalars lowers M_U).
+  Rescue contents with the P831 spectrum: C1 + (8,1,3)_0: tau = 6.9e35 (direct 1.5e35), Lambda_2L = 1.19, Lambda_3L =
+      0.52 (three-loop Landau FAILS); C1 + (6,2,2)_{2/3}: tau = 1.3e35 (direct 2.8e34), Lambda_2L = 0.95 (two-loop
+      Landau FAILS); C1 + (8,2,2)_0: tau = 6.8e34, Lambda_2L = 1.006.
+  Caveats: P831 is at r = 1.2e-3, x = <Phi17>/|Phi| = 4 (not the physical r = 4e-4, x ~ 1.4; the 126bar masses get
+  O(x^2) portal shifts), it is one point of a family chosen by an LP for the C0 content, and it is not a global minimum.
+  It is the only realisable spectrum available and it moves every content in the adverse direction.
+
+7. PLANCK GAUGE-KINETIC OPERATOR, c in [-1, 1], exact Am45 Clebsches (r2b_scan_planck_*.json, tables_planck.txt) [NUM]
+---------------------------------------------------------------------------------------------------------------------
+K = (-2a, 2sp, -2sp, 4a) |Phi| with (p, a) = (0.7071, -0.4082) (K1 normalisation of the K3 point (p, a_K3) =
+(0.7071, -0.7071)), |Phi| = M_U/(0.6455 g_U), alpha_i^-1(M_U) = alpha_U^-1 (1 + c K_i/M_Pl,red); s = +-1 is the L/R
+labelling (D-parity sign) not fixed by the label 'Am45', so both are shown.  Because M_U ~ 3-6e15 here, |Phi|/M_Pl is
+only ~3e-3 and the effect is mild (K1's T2 had M_U ~ 2e16):
+  C0: tau in [2.9e33, 1.9e34] over c, s (never passes).   C1: [1.0e33, 3.3e33] (never).
+  C1': [3.7e33, 3.6e34]; passes only for s = -1, c >= +0.8 (3 of the 42 (s, c) points).
+  C2:  s = +1: [8.8e34, 1.3e35] (all pass), v_R 6e9-6.7e10; s = -1: [2.3e34, 1.2e36], fails at c = -1.0 (2.26e34),
+       no perturbative solution for c >= 0.7.  Lambda_2L >= 11.7, Lambda_3L >= 4.2 M_Pl over the whole scan.
+  C1 + (8,1,3)_0: tau >= 4.4e35 wherever a solution exists (none for s = -1, c >= 0.2; s = +1, c = -1), Lambda_3L >= 1.39;
+  C1 + (6,2,2)_{2/3}: tau >= 2.9e35, Lambda_2L >= 2.05 but Lambda_3L >= 0.91 (three-loop fails for some c).

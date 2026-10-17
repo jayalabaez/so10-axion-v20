@@ -1,0 +1,39 @@
+{
+ "args": {
+  "tag": "D400",
+  "content": "C2e",
+  "ew": "ew_D400_K2.npz",
+  "banks": "none",
+  "out": "T_D400_noc_maxt",
+  "U": "S5_D400_C2.npz",
+  "tmin": 0.0,
+  "uiter": 6,
+  "restarts": 0,
+  "cubic": null,
+  "seed": 1,
+  "eps_lo": 5e-07,
+  "eps_hi": 3e-06,
+  "ew_lambda": 1e-07,
+  "mu": 0.1,
+  "d0": 0.5,
+  "eps_bfb": 0.0001,
+  "box_scale": 1.0,
+  "no_comp": true,
+  "perturb": 0.3,
+  "maxt": true
+ },
+ "ny": 45,
+ "n_comp": 0,
+ "n_bfb": 1010,
+ "runs": [
+  {
+   "start": "warm",
+   "history": [
+    {
+     "uiter": 0,
+     "status": 4
+    }
+   ]
+  }
+ ]
+}

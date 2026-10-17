@@ -1,0 +1,209 @@
+GATE R2-A (v21-F17-B63-G3221): vacuum realisability of a FLAVOUR-CAPABLE light content (two light bidoublets)
+===============================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-A-vacuum-two-bidoublets\
+(resumed run; every file of the cut-off attempt was reused: rows/blocks npz, S5 scan, G1_D575_C1, r2_*.py, K3 copies.)
+Repository checkouts _g6_nogo (54a2cd1) and _record (8707fda) were only imported read-only; `git status --short` is 0
+lines in both at the start and at the end; no writer was run; _rescope was not touched.  No literature was read in this
+gate (no claim is labelled LIT).  Labels: EXACT (proved / exact counting), NUM (computed with the repo's exact-X compiler
+rows in float64; precision stated), EST (order of magnitude / convention), CONJ (argued, not computed).
+
+0. VERDICT: FAIL  (NUM; global minimality, not certified - no exact G3 method exists for G3221 vacua, K4)
+---------------------------------------------------------------------------------------------------------
+Every LOCAL criterion can be met by a flavour-capable content: two light complex bidoublets are realisable at one-step
+G3221 points of the v20 potential (C2 over theta = atan(a/p) in [-85.5, -8.5] deg; C1 in [-71.5, -22.5]; C1' in
+[-85.5, -8.5]; C1 + (6,2,2)_{2/3} in the narrow window [-50.5, -44.5]), with exact stationarity (|grad| <= 1e-13), exactly
+the 35 Goldstone zero modes, no tachyon, singlet-channel |a0| <= 1/2, and ANY required EW-doublet composition (20/20
+targets incl. the K2/Ohlsson-Pernow basin |r| = 66, s = 0.43, realised to <= 2% in |r| and 0.01 in s).
+But the criterion "no lower value found by the global search" fails: 52 of 52 full-486-chart Newton descents, at six
+explicit feasible points produced by three feedback rounds (two Phi17 vevs x = 4 and x = 1.4), ended below V*.  After the
+feedback cuts, the EW-composition cells are EMPTY: the coupling LP with all banked competitor points is infeasible for
+C1+(6,2,2) and C2 with the flavour-basin compositions at Am45 (rounds 2 and 3), at D470, and at six more orientations
+(D190, D295, D400, D575, D680, D785; 12/12 cells infeasible, while the same cells without the cuts are feasible).  The
+lower regions are SU(2)_L x U(1)_Y-breaking "H-Sigma" configurations (|H|, |Sigma| ~ 1-4 |Phi|), i.e. physically fatal.
+=> "every feasible point has a lower vacuum after the feedback rounds" holds for every point the procedure produced, and
+   at x = 4 no flavour-composition point survives the cuts at any of the 8 orientations tested -> FAIL by the criterion.
+Further independent failures at the best points: (i) lambda_eff is NOT dialable once the competitor cuts are imposed: the
+tree-level maximum (exact convex stage B) is lambda_eff = -0.089, and the one-loop CW threshold at that point is about
+-1.3 (heavy-scalar portal curvatures kappa_rms = 0.67), so lambda_SM(v_R) ~ -0.007 would need a tree value ~ +1.3;
+(ii) C1 + (8,1,3)_0 (the best R2-B rescue) is NOT realisable at any of 27 orientations; (iii) C1 + (6,2,2)_{2/3}, the only
+realisable seesaw-compatible rescue, fails the three-loop Landau test at every realisable spectrum (Lambda_3L = 0.31-0.67
+M_Pl,red) and the two-loop one in 10/16 random realisable spectra; C2 never has tau_dir > 2.4e34 together with v_R >= 1e11.
+Robustness of the FAIL: box sizes x1 and x4 (|quartic| <= 4) give the same infeasibility; the light-cubic suppression of K3
+was RELAXED (removed) in rounds 2-3, which can only enlarge the feasible set; x = 4 and x = 1.4 behave alike; the
+infeasibility is specific to "two light bidoublets + a fixed EW composition": the same cuts are harmless for one light
+bidoublet (C0: t = 0.033) or none (V0: t = 0.031).  What it is NOT: a certificate.  Caveats in section 7.
+
+1. METHOD (what was added to the round-1 K3 machinery)
+-------------------------------------------------------
+* Chart, compiler rows, SM-isotypic blocks, stationarity null space (c = N y, rank 6, every c exactly stationary) and the
+  Goldstone kernel (rank 35) as in K3 (k3_point_rows.py, k3_blocks.py; reproduced at every new tag: "Goldstone real
+  dimension from blocks = 35").  Vacuum: Phi = p P + a A + omega W, Sigma = r sigma_std, S = s, Phi17 = x; r = 1.2e-3,
+  s = 1.6e-3, x = 4 (round-1 convention) and x = 1.4 (physical-like, tag Am45x).  Light window eps = [5e-7, 3e-6] ~ r^2.
+* r2_lp6.py (built by _make_lp6.py from the previous attempt's r2_lp5.py; interlacing LMIs for light subspaces):
+  --ew_target: EXACT eigen-equation A_(1,2)(c) a* = 1e-7 a* (10 real linear equalities, rank 9) fixes the composition of the
+  SM Higgs; --obj_point: maximise V_c(q_k) - V_c(q*) for a banked competitor point (how far can it be lifted?);
+  --random_obj: random linear objective at t >= tmin (realisable-spectrum sampling); --vev_light g3211; --leff_light:
+  stage-B maximisation of the EXACT tree lambda_eff = V4(u)/6 - b^T P (P^T H P)^-1 P^T b /2 (matrix-fractional, convex;
+  P = complement of Goldstones and light doublets).  Three bugs found and fixed on the way (documented in _make_lp6.py):
+  competitor margin did not recognise the D-parity image (p, a, r=0) ~ (-p, a, r=0) (G6_* runs, superseded by G7_*); the
+  'pure doublet ray' BFB row read 0 >= 1e-4 when no cubic file was given (spurious infeasibility; L7/L8 runs discarded);
+  unscaled deep-competitor rows confused HiGHS (rows are now normalised).
+* r2a_210pairs.py: 210-sector structural LP (heavy/light ratio inside the 210 alone, a necessary condition).
+* r2a_ew_targets.py / r2a_cubic_for_a.py: EW-target vectors for prescribed (|r|, s, f_Sigma) and the cubic/quartic rows
+  along exactly that direction (light-cubic constraints, tree lambda_eff).
+* r2a_thresholds.py: R2-B's two/three-loop unification code (r2b_lib.py, r2b_model.py copied unchanged) fed with the
+  EXACT heavy spectrum of a coupling point (block spectra, G3221 multiplet assignment by degeneracy, rtol 3e-3) and the
+  vector masses of THAT orientation from the chart tangents (gauge_ratios.json; Am45 reproduces 0.5774/0.6455; R2-B had
+  used the Am45 values for all).  Validation: K3's P831 reproduces R2-B exactly (v_R 2.14e13, M_U 1.76e15, tau 6.4e32,
+  L2 1.48, L3 0.56).
+* r2_descend.py (trust-region Newton, one exact rows call per trial point, every point banked with its 51 values J) and
+  r2a_descent_summary.py; r2a_lift_lp.py (a weaker convex relaxation, used only diagnostically).
+
+2. ITEM (1): LOCAL REALISABILITY - DENSE ORIENTATION SCAN, OMEGA != 0, TUNINGS  [NUM unless stated]
+--------------------------------------------------------------------------------------------------
+Full 51-coupling LPs (max heavy gap t; boxes |quartic| <= 1, |cubic| <= 2, |mass^2| <= 40; |a0| <= 1/2), 27 + 9 fine
+D-odd orientations (p a < 0), x = 4 (r2a_scan_table.json; clean = 35 zero, 0 negative, exact light count):
+  content (light at v_R besides Delta_R)       clean/scanned  clean theta window [deg]      best t (theta)
+  C2   = 2 bidoublets                           32/36          -85.5 .. -8.5 (not -82)        0.0225 (-57.5)
+  C1   = 2 bid + (8,3,1)_0                      15/26          -71.5 .. -22.5                 0.0271 (-57.5)
+  C1'  = 2 bid + (1,3,1)_0                      24/27          -85.5 .. -8.5                  0.0175 (-54)
+  C1 + (8,1,3)_0                                 0/27          none (t <= 2.6e-6 everywhere)  -
+  C1 + (6,2,2)_{2/3}                             9/36          -50.5 .. -44.5                 0.0198 (-49)
+     (t: -50.5: 1.8e-4, -50: 0.019, -49: 0.020, -48: 0.019, -47: 0.017, -46: 0.014, -45.5: 0.013, -45: 0.010, -44.5: 0.005;
+      -44 and -51: collapse)
+  x = 1.4 (Am45x): C1+(6,2,2) t = 0.0103, C2 t = 0.0128 (identical to x = 4: the local problem is x-independent).
+Structural explanation (r2a_210pairs.json; the 210 G3221-irrep masses span a rank-3 space at every D-odd point): best
+heavy/light ratio inside the 210 alone for (8,3,1)_0 + (8,1,3)_0 light: <= 0.58 at ALL 27 orientations -> C1 + (8,1,3)_0
+is impossible (a necessary condition fails); for (8,3,1)_0 + (6,2,2)_{2/3}: 18685 (-47), 906 (-45), 186 (-50.5), <= 0.72
+elsewhere -> exactly the narrow window found by the full LPs.
+omega != 0 (G3211; 9 orientations incl. p a > 0, omega = 0.1 ... 0.71): V0 (bare vacuum), D1 (one light doublet), D2 (two)
+with --vev_light g3211: all 27 LPs collapse (t <= 8.5e-8); 210-only LP: a 210 mass is forced <= 0 at every p a <= 0 point.
+K3's "G3211 is not a local minimum" is confirmed (NUM).
+Tunings (EXACT counting of G3221-invariant conditions): the two complex bidoublets are 4 real (1,2,2)_0 irreps (H10, H10*,
+Sigma, Sigma*; mixed by the allowed S H10 H10 and the Delta_R vevs); making all of them light requires their whole 4x4
+real-symmetric mass matrix to be O(v_R^2): 10 real conditions (one light complex bidoublet, C0: 3).  Totals: C2 10,
+C1 11, C1' 11, C1 + (6,2,2) 12 [+1 each for (8,3,1)_0, (6,2,2)_{2/3}, (1,3,1)_0], plus the two scale hierarchies
+v_R/M_U and <S>/M_U, the EW tuning, and the lambda_eff placement; the EW composition costs 9 linear choices among the
+O(v_R^2) residual couplings (not hierarchy tunings).
+
+3. ITEM (2): DOUBLET COMPOSITION - EXACT MAP AND REALISABLE RANGE
+-----------------------------------------------------------------
+Map (EXACT, r2_compose.py / r2a_ew_targets.py; SO(4) covariance; the 10 and the colour-singlet 126bar (15,2,2) doublets have
+u/d-symmetric Clebsches, the SU(4) factor 1 / -3 is common to u and d; X forbids F.F.H10^*): with v_{u,d} = H10 and
+w_{u,d} = 126bar (15,2,2) neutral components of the light SM Higgs,
+    M_d = H + F, M_u = r (H + s F), M_e = H - 3F, M_nuD = r (H - 3 s F),   r = v_u/v_d,  s = (w_u/w_d)/(v_u/v_d),
+    H = Y10 v_d, F = Y126 w_d; zeta = w_d/v_d is absorbed into F (sets |Y126|/|Y10| only); arg r unphysical.
+Lemma (EXACT): any state inside one real G3221 bidoublet, or one complex bidoublet alpha Phi10 + beta Phi126, has s = 1.
+The real-linear map a -> (v_u, v_d, w_u, w_d) has rank 8 (cond 1.73) at every tag: every composition is a direction in
+the 4 light doublets.  Realised as the EXACT EW eigenvector (LP with equalities; E5_*.json): C1+(6,2,2) at D470 and C2 at
+Am45, 10 targets each: (|r|, s, f_Sigma) = (66, 0.43, 0.5), (66, 0.43, 0.1), (66, 0.43, 0.9), (66, 0.43+0.3i, 0.5),
+(10, 0.43), (300, 0.43), (66, 2.0), (66, -1.0), (66, 0.1), (1, 1): 20/20 feasible and clean, t = 0.0106-0.0167 (D470) and
+0.0074-0.0123 (Am45) vs 0.0169 / 0.0128 without a target; eigen-residual <= 3.2e-9, realised |r| within 2 %, s within
+0.01 (e.g. K2 target: |r| = 66.6, s = 0.425 - 0.005i).  So |1 - s| = O(1) is NOT a local obstruction: the flavour gate may
+use any (r, s); the obstruction appears only globally (section 5).
+
+4. PRIORITY (b): UNIFICATION WITH THE EXPLICIT REALISABLE SPECTRA  [NUM; R2-B code, 2L, MS-bar S_V, M_s = 1e13, y_s = 0.336,
+   M_Phi = 1e17; tau in the repository normalisation and tau_dir = tau/4.53 (R2-B's direct-lattice normalisation)]
+--------------------------------------------------------------------------------------------------------------------
+  C1 + (6,2,2) (7 scan angles, 10 composition points, the global points, 16 random spectra with t >= 0.003):
+     v_R 3.6e12-1.1e13 (in the seesaw window), M_U 0.9-3.6e16, tau 2.8e35-5.8e37 / tau_dir 6e34-1.3e37 (always > Super-K),
+     Lambda_2L/M_Pl = 1.08-1.34 at the LP-optimum points but 0.69-1.09 for random realisable spectra (10/16 fail),
+     Lambda_3L/M_Pl = 0.31-0.60 everywhere (0.54-0.67 even at the favourable corner M_s = 1.21e13, y_s = 0.368,
+     M_Phi = 1.25e17).  Example G7_D470: v_R 8.8e12, M_U 1.36e16, tau 1.5e36 / 3.4e35, L2 1.08, L3 0.48.
+  C2: LP-optimum scan: tau > 2.4e34 (repo) only near theta = -40 .. -50 and -19 .. -22.5 deg; tau_dir > 2.4e34 only at Am45
+     (3.6e34 with v_R = 3.0e10); global point G7_Am45_C2: v_R 8.3e10, M_U 7.9e15, tau 2.4e35 / 5.4e34, L2 3.6, L3 1.43
+     (everything passes except v_R >= 1e11, by a factor 1.2); 20 random spectra (Am45, D400, D435): v_R <= 3.8e11 and no
+     sample with tau_dir > 2.4e34 AND v_R >= 1e11.  So C2's seesaw-window problem persists with realisable spectra.
+  C1: tau <= 5.2e33 at all 10 clean angles and 8.8e31 at G1_D575_C1 (dead, as R2-B).  C1': tau <= 5.2e33 at 11 angles (dead).
+  C1 + (8,1,3)_0: not realisable (section 2) - R2-B's best rescue is closed.
+  Files: thr_S5_C2.json, thr_S5_C1622.json, thr_fine_C1622.json, thr_E5_D470.json, thr_G7_D470*.json, thr_S5_C1_C1p.json,
+  thr_R5.json (+ thr_R5.log), thr_*bestcorner.json.
+
+5. ITEM (3): GLOBAL SEARCH WITH FEEDBACK ROUNDS  [NUM; exact compiler values at every point]
+------------------------------------------------------------------------------------------
+Starting point (round 1), G7_D470_C1622_K2 (C1+(6,2,2), theta = -47, EW target K2): all local constraints + competitor bank
+(330 SM-singlet/Delta_R points + exact subspace polynomial search + 64 K3 descent points) + BFB bank (1075 rays) + K3
+light-cubic suppression |b| <= 1e-5: t = 0.00948, 35/0/92/359 modes, |a0| <= 0.5, BFB min V4 = 1e-4, both subspace screens
+n_lower = 0, EW |r| = 66.5, s = 0.427.  (G6_D470 with the uncorrected D-parity margin had t = 5e-5; superseded.)
+  round  point (content, tag, EW, cuts)                        descents below V* / run   V_min - V*        V*
+  R1     G7_D470_C1622_K2                                       16/16                     -73.8 .. -0.69    -257.09
+  R2     G8i_Am45_C1622 (R1 cuts, no light-cubic)               12/12                     -33.7 .. -0.83    -256.07
+  R3     G14_Am45_C2_K2f09 (R1+R2 cuts; only surviving cell)     4/4                      -10.9 .. -5.0     -254.56
+  X1     G7_Am45x_C1622_K2 (x = 1.4)                             8/8                      -1.39 .. -0.72    -3.853
+  X2     G8x_Am45x_C1622 (X1 cuts)                               4/4                      -14.5 .. -0.92    -3.851
+  X3     G15_Am45x_C1622_K2_X12 (X1+X2 cuts)                     5/5                      -29.4 .. -14.5    -3.851
+  N1     G13_Am45_C2 without EW target (R1+R2 cuts)              3/3                      -3.55 .. -2.80    -256.00
+  total 52/52 (descent_summary.json).  Starts: K3's deep points, the round-1 H-Sigma ray (|Sigma| ~ 4|Phi|, |H| ~ 1.8|Phi|),
+  previous-round endpoints, random block-scaled starts; every descent was stopped once V - V* < -0.5 (still descending).
+Character of the lower regions: |Phi| 0.6-2.7, |H| 1-3.4, |Sigma| 1-4.8 (x = 4); |H| ~ 1-2.6, |Sigma| ~ 1.1-3.4 (x = 1.4);
+positive quartic along the rays (V4/|q|^4 = 0.03-0.19), i.e. bounded deeper vacua with GUT-scale doublet vevs.  Energy
+budget of the deepest R1 point: Im O31 (H^dag^2 Sigma^2, c = -0.018) -74.8, O35_B02 -19.0, O27_B02 -18.5, Im O28 -12.1;
+compensated by O36_B02 +19.0, Re O31 +18.8 (r2a_budget.py).
+Feedback LPs (rows = cells; 'infeasible' = LP status 2/4 at a warm-started U, resulting point invalid):
+  * round 1, |b| <= 1e-5 (K3): the deepest R1 point cannot be lifted - max over the feasible family of V(q) - V* = -46.8
+    (L6, D470, U-iterated); infeasible at Am45 also for |b| <= 1e-4, 3e-4 (G8, G8d4, G8d3).  |b| <= 1e-3 (G8d1, t = 0.0084)
+    or no light-cubic constraint (G8i, t = 0.0090) lift all R1 points.  Without light content requirements the same point is
+    liftable by +1341 (V0) and +803 (C0, one bidoublet).
+  * round 2 (R1+R2 cuts): infeasible for C1+(6,2,2) and C2 with the K2 composition at Am45 for |b| <= 1e-3, 3e-3 and none
+    (G10, G10d3, G10n, G11_Am45_C2_R12), also with boxes x4 (G13_*_box4), and for C1+(6,2,2) at D470 (G14_D470).  U-iterated
+    max-lift of the R2_rnd28 endpoint keeping the R1 cuts: -4.54 (L10).  Composition scan (C2, Am45, 10 targets): 9/10
+    infeasible including the s = 1 control; only f_Sigma = 0.9 (126bar-dominated Higgs) survives (t = 0.0074) -> round 3.
+  * round 3 (R1+R2+R3 cuts): every EW-composition cell infeasible at Am45 (C2: f_Sigma = 0.1, 0.5, 0.9; C1+(6,2,2): 0.9)
+    and at D190, D295, D400, D575, D680, D785 (C2, f_Sigma 0.5 and 0.9: 12/12 infeasible; the same cells without the cuts:
+    feasible, t = 0.0011 / 0.0104 / 0.0224 at D190 / D400 / D575).
+  * x = 1.4: the X1 and X1+X2 cuts were liftable at no cost (G8x, G15_Am45x: t = 0.0090 / 0.0113 unchanged), and the
+    next descent round again found lower points (X2, X3; the depth grows from -1.4 to -29 while V* = -3.85); the third
+    round's points were not fed back (the 3-round limit of the task).
+  * contrast (Am45, R1+R2 cuts): V0 t = 0.031, C0 (one bidoublet + (8,3,1)) t = 0.033, C2 without EW target t = 0.0127 (but
+    its own descents N1: 3/3 lower); C1' collapses (t = 2.8e-6).
+Answer to item (3): no feasible point has V* as the lowest value found; at x = 4 no flavour-composition point remains
+after the feedback rounds at any of the 8 orientations tested.
+
+6. ITEM (4): TREE-LEVEL a0 AND lambda_eff  [NUM]
+------------------------------------------------
+|a0| <= 1/2 (singlet channel, exact trace lemma, necessary only) holds at every point by construction (e.g. G7_D470:
+0.022, 0.084, 0.179, 0.5, 0.5).  lambda_eff: G7_D470 (K3 light-cubic): lambda_eff_all = -0.041 (lambda_direct 0.0004,
+R_heavy 0.083) and dialable in principle as in K3; but that point fails item (3).  On the feedback family that lifts the R1
+points (|b| <= 1e-3): lambda_eff_all = -0.93 at G8d1 and at most -0.089 (exact stage B with the total response, B13;
+lambda_direct 0.325, R_heavy 0.053, R_light 0.775 from the Delta_R-radial exchange b^2/m^2 = alpha^2/(2 rho)).  One-loop CW
+threshold at B13 (r2a_cw_lambda.py = K3's code on the K2 EW direction; Landau gauge, scalars + gauge, rho terms dropped):
+heavy scalars -1.36 (mu = |Phi|) / -0.74 (mu = 0.3|Phi|), heavy gauge +0.054, light -0.0024: delta lambda ~ -1.3, 15x the
+tree value; matching lambda_SM(v_R) ~ -0.007 would need lambda_tree ~ +1.3 > -0.089.  NOT dialable where the competitor cuts
+hold (and the loop expansion of lambda is not under control there: sum kappa^2/64pi^2 = 0.26).
+
+7. CAVEATS, ROBUSTNESS, LABELS
+------------------------------
+EXACT: the composition map and lemma; the tuning counts; the stationarity/Goldstone structure; the rank-8 composition map.
+NUM: every LP optimum/infeasibility (HiGHS, tolerances 1e-9..1e-10, cutting planes to worst violation <= 1e-8); every
+descent value (exact compiler rows); every threshold number (R2-B integrator, residual < 1e-13).
+Not certified / limits of the FAIL:
+ (a) global minimality is screened numerically (52 descents, banks, exact subspace polynomial searches); no exact G3
+     certificate exists for G3221 vacua (K4) - the FAIL is "a lower point was found at every feasible point produced, and
+     the flavour cells are empty after the cuts", not a proof that no coupling point anywhere is globally minimal;
+ (b) LP infeasibility at fixed light subspaces U (warm starts from feasible points); the outer U-iteration is a local
+     method (the U-iterated max-lift L10 = -4.54 supports it);
+ (c) boxes |quartic| <= 1 (x4 tested in round 2: still infeasible); vacuum r = 1.2e-3, s = 1.6e-3 (the physical
+     r = 4e-4 only rescales the light window); x = 4 and 1.4 tested;
+ (d) orientations: feedback rounds at Am45 (+ D470, round 1/2 test), final cut test at 8 orientations for C2; C1 and
+     C1' were not descended (both are dead by proton decay, section 4; C1' also collapses under the round-2 cuts);
+ (e) the composition targets cover the flavour basin and |1-s| = O(1) generally (10 targets); a composition outside
+     them was not fed back;
+ (f) CW threshold: Landau gauge, rho terms dropped, fermions omitted (EST at the factor-2 level; the conclusion needs
+     only |delta lambda| >> 0.1).
+
+8. MISSING COMPUTATIONS (what could still overturn the FAIL)
+------------------------------------------------------------
+1. A coupling point (any orientation, composition, box size) that survives the full competitor bank (all 52 descent banks,
+   files descend_*_bank.npz) AND a fresh descent round: none was found; a systematic search would need an exact
+   certificate method (K4) or a much larger potential (new operators / fields) - outside the v20 potential.
+2. Feedback round 4 at x = 1.4 (the X3 points were not fed back).
+3. A dial of lambda_eff including the one-loop threshold at a point that passes item (3) (none exists).
+
+9. FILES (all in this folder)
+-----------------------------
+Scripts: r2_lp6.py (+ _make_lp6.py, patches documented), lp6_jobs.sh, lp_scan2.sh, desc_jobs.sh, rows_phys.sh, scan_rows.sh,
+r2a_210pairs.py, r2a_ew_targets.py, r2a_cubic_for_a.py, r2a_thresholds.py (+ r2b_lib.py, r2b_model.py copies), r2a_gauge.py,
+r2a_scan_table.py, r2a_descent_summary.py, r2a_budget.py, r2a_lift_lp.py, r2a_cw_lambda.py, r2_compose.py, r2_descend.py.
+Results: r2a_scan_table.json, r2a_210pairs.json, gauge_ratios.json, ew_targets_<tag>.json, E5_*.json (compositions),
+G7_*/G8*/G10*/G11*/G13*/G14*/G15*/G16* (feedback LPs), L6/L10 (max-lift), B9-B13 (stage B), CW_B13.log, G5_* (G3211),
+S5_* (scan), R5_* (random spectra), thr_*.json, descend_*.json/_bank.npz, descent_summary.json, r2a_summary.json.

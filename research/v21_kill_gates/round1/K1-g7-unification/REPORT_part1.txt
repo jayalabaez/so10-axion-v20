@@ -1,0 +1,131 @@
+GATE K1 (decisive G7) for v21-F17-G3221 -- REPORT (2026-10-16)
+================================================================
+
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21\K1-g7-unification\
+Labels: EXACT (proved / exact arithmetic), NUM (computed, with stated uncertainty), LIT (read: here only abstracts
+and search snippets, i.e. LIT-abstract, plus the PGJ/MSS coefficient tables carried in the repository module
+g7_decoupled_singlet_benchmark_evidence_v20.py, which the repository records as transcribed from the papers), EST
+(order-of-magnitude), CONJ (argued).
+
+Repository checkouts _g6_nogo and _record were only read (imports of two_loop_thresholds_v20 are read-only; -B and
+PYTHONDONTWRITEBYTECODE=1).  'git status --short' of _g6_nogo: 0 lines before and after.  _record: 37 lines at start,
+38 at the end; the extra line is the untracked EXACT_PHISIGMA_ALL_COMPONENT_PROJECTORS_V20.npz written at 14:40 by the
+other job's test run in that checkout (nothing of mine executed there; I only used sed to read files).
+
+0. Files
+--------
+k1_lib.py            generic exact Machacek-Vaughn (b_i, b_ij) for product groups (Weyl / complex / real scalars),
+                     PGJ single-group three-loop gauge+matter b3, DOP853 + independent RK4 integrators, thresholds.
+k1_model.py          v21 content for every segment (SM, SM + S-sector, G3221 T2/T3 with/without S-sector, SO(10) below/
+                     above M_Phi), heavy/light threshold multiplets, 3-unknown unification solver, Landau scale, U(1)_X.
+k1_test_coeffs.py    coefficient cross-checks (-> k1_test_coeffs.json).
+k1_first_run.py      reproduction of the critic's C4 table (-> k1_first_run.json, .log).
+k1_planck_clebsch.py exact Clebsches of c Phi210 F F / M_Pl for the G3221 orientation (-> k1_planck_clebsch.json).
+k1_so10_yukawa_norm.py, k1_yukawa10_check.py  exact 16.16.10 and 16.16.126bar Yukawa norms (gamma matrices).
+k1_axion_quality.py  quality bound, y_s windows, axion mass band vs DFSZ exclusions, unitarity EST (-> .json).
+k1_u1x.py            U(1)_X one-loop perturbativity bound and feedback (-> k1_u1x.json).
+k1_scan.py           main scan (-> k1_scan.json, k1_scan.log); k1_summarise.py -> k1_summary.json.
+
+1. Method and conventions
+-------------------------
+t = ln(mu/GeV);  d alpha_i^-1/dt = -b_i/(2 pi) - sum_j b_ij alpha_j/(8 pi^2) + Y_i/(32 pi^3) - b3_i alpha_i^2/(32 pi^3).
+b_i, b_ij: Machacek-Vaughn with Weyl fermions, complex scalars (eta = 1) and real scalars (eta = 1/2), U(1)s GUT-
+normalised (U(1)_Y: 3/5 Y^2; U(1)_{B-L}: 3/8 (B-L)^2, matching alpha_Y^-1 = 3/5 alpha_2R^-1 + 2/5 alpha_BL^-1 at v_R).
+Y_i = (1/d(G_i)) sum_{A,j,k} C2_i(j) |Y_{A,jk}|^2 (MV Y_4(F)/d(G)): SM (17/10, 3/2, 2) y_t^2 [checked against the
+literature SM values], G3221 (4,4,4,4) y_t^2 (bidoublet quark + Dirac-neutrino Yukawa, EST), S-sector Dirac pairs
+2 T(R) y^2 per pair -> 14 y_s^2 in every phase (complete SO(10) multiplets), Phi pair 4 y_phi^2, SO(10) phase
+10 Tr(Y10^2) + (63/4) Tr(Y126^2) [EXACT norms, section 4].  y_t run at one loop (0.95 at M_Z) and frozen above v_R.
+b3: Pickering-Gracey-Jones hep-ph/0104247 eqs (28)-(33) gauge + matter terms (the 22 coefficients as transcribed in
+the repository; re-validated here: symbolic general-Casimir QCD beta_2, n_f = 5, 6 values -9769/54 and 65/2, and the
+MSS arXiv:1201.5868 SM pure three-loop coefficients (-388613/24000, 324953/1728, 65/2) all reproduced [EXACT]).
+Thresholds: one-loop MS-bar matching alpha_i^-1(mu)_low = alpha_i^-1(mu)_high - (1/2 pi) sum_k b_i^k ln(M_k/mu) with
+b^k = 2/3 S (Weyl), 1/3 S (complex), 1/6 S (real), -7/2 S (vector + eaten Goldstone, the usual "-21/12 pi").
+Inputs: alpha_1^-1 = 59.02, alpha_2^-1 = 29.57, alpha_3 = 0.1179 at M_Z (the repository's inputs).
+Unification solver: unknowns (ln v_R, ln M_U, alpha_2R^-1(v_R)); three residuals alpha_i^-1(M_U)/(1+eps_i) equal, with
+eps_i = c K_i/M_Pl,red the Planck gauge-kinetic shift (section 3); M_U = mass of the (3,2,2)_{-2/3} gauge bosons.
+SO(10) x U(1)_X phase: from M_U with alpha_U; Phi pair (16(-9)+16bar(-8)) enters at M_Phi = y_phi <Phi17>; Lambda =
+scale where alpha_10 = 1; criterion Lambda > M_Pl,red = 2.435e18 GeV.  Integrator DOP853 (rtol 1e-10) cross-checked
+against fixed-step RK4 (h = 0.002): alpha^-1(M_Pl,red) agrees to 1.3e-8 [NUM].
+
+2. Content and exact coefficients [EXACT]
+-----------------------------------------
+Segments: [M_Z, M_s] SM (1 Higgs doublet); [M_s, v_R] SM + S-sector (3 x (16 + 16bar) + 2 x 10 Weyl, in SM reps);
+[v_R, M_U] G3221 = SU(3) x SU(2)_L x SU(2)_R x U(1)_{B-L} with 3 x 16 + S-sector + light scalars
+  T2: complex bidoublet (1,2,2)_0, Delta_R (1,1,3)_2 complex, (8,2,2)_0 complex [126bar], (8,3,1)_0 real [210],
+      (1,3,1)_0 real [210];  T3 = T2 + second (1,2,2)_0 complex + (8,1,1)_0 real [210];
+[M_U, M_Phi] SO(10): 3 x 16 + 6 x 16-type + 2 x 10 Weyl + 210 real + 126bar + 10 complex; [M_Phi, ..): + 16 + 16bar.
+One-loop b: SM (41/10, -19/6, -7); SM + S (403/30, 37/6, 7/3) [shift 28/3 = (2/3) T_S universal, T_S = 14];
+G3221 T2 with S (47/6, 12, 29/3, 89/6), without S (-3/2, 8/3, 1/3, 11/2); T3 with S (25/3, 37/3, 10, 89/6).
+Two-loop b_ij: in k1_test_coeffs.json (e.g. G3221 T2 with S rows (204, 131, 30, 3/2), (108, 30, 197/3, 27/2),
+(4, 9/2, 81/2, 61/2) plus the SU(3) row).
+SO(10): below M_Phi (b1, b2, b3) = (16/3, 20891/6, 142437589/864) = (5.333, 3481.8, 164858.3);
+        above M_Phi (8, 7267/2, 5041501/32) = (8, 3633.5, 157546.9).
+Cross-checks: SM 1HDM = literature; 2HDM and PS anchor = repository pins (my MV routine on the repository field
+tables and the repository's coefficient_provenance() checks); SO(10) v20 content reproduces the repository pins
+(28/3, 22283/6, 132706057/864) and (52/3, 25013/6, 109873879/864); MV b1, b2 of SO(10) equal the PGJ b1, b2;
+SO(10) rep table equals the Weyl-formula re-derivation; the G3221 decomposition of 210 + 126bar + 10 (heavy + light +
+30 Goldstones) sums to the SO(10) scalar b = 64/3 in every factor and the heavy vectors' S_i plus the unbroken
+adjoint equal T(45) = 8 in every factor [all True in k1_test_coeffs.json].
+U(1)_X (g_X normalised to the integer X): b_X = 12865/3 (full content; 8225/3 below M_Phi); cross terms
+b_{10,X} = 2060, b_{X,10} = 92700.
+
+3. Planck gauge-kinetic operator: exact Clebsches [EXACT, k1_planck_clebsch.json]
+-------------------------------------------------------------------------------
+210 as a real 4-form with canonical kinetic term; vev p = Phi_{7 8 9 10} ((1,1,1)), a = Phi_{1234} = Phi_{1256} =
+Phi_{3456} ((15,1,1), B-L direction), omega = Phi_{1278} = ... ((15,1,3)); |Phi|^2 = p^2 + 3 a^2 + 6 omega^2.
+Stabiliser dimensions (numerical, exact zeros): p only -> 21 (Pati-Salam), a only or (p, a) -> 15 (G3221), omega ->
+13 (G3211), i.e. the G3221 chain needs omega = 0 and a != 0; omega != 0 would be the G3211 chain (not the K1 chain).
+Heavy gauge-boson masses: M^2(3,2,2)_{-2/3} = g^2 (p^2/2 + a^2 + 3 omega^2/2) = M_U^2;  M^2(3,1,1)_{4/3} = g^2 (2 a^2 +
+4 omega^2) (p alone leaves the (3,1,1) massless: PS).  With (p, a) = rho (cos th, sin th): M_(311)/M_U = sqrt(2) sin th /
+sqrt(cos^2 th/2 + sin^2 th) in [0, sqrt2]; the x1/2..x2 vector-mass scan covers th in [~20 deg, 90 deg].
+Operator L = -(1/4) F^A F^A - (c/(4 M_Pl,red)) Phi_{abcd} F^{ab} F^{cd} (canonical fields, generators normalised to
+T(10) = 1, sum over all index values): alpha_i^-1(M_U) = alpha_U^-1 (1 + c K_i/M_Pl,red) with
+   K_SU(3) = -2 a,  K_SU(2)_1 = +2 p,  K_SU(2)_2 = -2 p,  K_{B-L} = +4 a,  (omega does not enter any K_i),
+the same for every generator within a factor (checked).  Which SU(2) is L/R is the D-parity choice (sign s = +-1).
+Magnitude: rho = M_U/(g sqrt(cos^2 th/2 + sin^2 th)) = 1.4-2.0 M_U, so per unit c the shifts are
+Delta alpha_i^-1 = alpha_U^-1 K_i/M_Pl = (0.5-1.9) c units, 3-8 times the "0.23 c" estimate of FINAL J1f (which
+omitted group factors).  Chakrabortty-Raychaudhuri arXiv:1006.1252 compute the same class of corrections for all
+SO(10)/E6 breakings [LIT-abstract; their tables could not be read: WebFetch unavailable].
+
+4. SO(10) Yukawa norms [EXACT, k1_so10_yukawa_norm.json, k1_yukawa10_check.json]
+--------------------------------------------------------------------------------
+Explicit 32 x 32 Clifford algebra, 16 = positive chirality, B with B Gamma_a B^-1 = Gamma_a^T.  16.16.10: ten symmetric
+16 x 16 bilinears, sum_A M^A M^A+ = 10 x 1 (Schur), raw entries in {0, 1}; the nu^c nu H_u^0 entry of the complex
+combination (M^9 - i M^10)/sqrt2 is 2 (the other sign 0), so with y_t = Y10 (unit coefficient of nu^c L H_u = Q u^c H_u)
+Sum_{A,j,k}|Y|^2 = 80 Y10^2 (doublets 32 + colour triplets 48) and Y_4/45 = 10 Tr(Y10 Y10+).  16.16.126bar: 126
+independent symmetric bilinears (self-duality on the 16 halves the 252 five-forms), Schur constant 126 x 16, the
+nu^c nu^c diagonal carries 16 of the nu^c row's 126, so with M_R = Y126 v_R (unit nu^c nu^c Delta_R^0 coefficient)
+Sum|Y|^2 = 126 Y126^2 and Y_4/45 = (63/4) Tr(Y126 Y126+).  Both terms are < 0.5% of b2 (3482-3634): at the three-loop
+point they raise Lambda_3L by +0.4% (Y126_33 = 0) .. +2.2% (Y126_33 = 1) relative to Yukawa-free running [NUM].
+
+5. Quality, axion band, unitarity assumptions [NUM / EST / LIT-abstract; k1_axion_quality.json]
+----------------------------------------------------------------------------------------------
+Declared operator Phi17^4 S^dag^17 / M_Pl,red^17 with <Phi17> = 1e17: dtheta = n |DeltaV| / chi, DeltaV = <Phi17>^4
+<S>^17 / M_Pl,red^17, chi = (75.5 MeV)^4, dtheta < 1e-10:
+  convention A (n = 17, field moduli):  <S>_max = 2.90e13  -> y_s,min = M_s/<S>_max = 0.104 (3e12), 0.173 (5e12),
+      0.242 (7e12), 0.345 (1e13), 0.69 (2e13), 1.24 (3.6e13);
+  convention B (n = 1): <S>_max = 3.42e13 (y_s,min(1e13) = 0.292; FINAL's 0.305 used 3.3e13);
+  <Phi17> = 1e17/sqrt2: <S>_max = 3.14e13.   An O(1) Wilson coefficient c21 rescales <S>_max by c21^(-1/17).
+Axion: f_a = v_S/17 = sqrt2 <S>/17 (repository v_a = F_PQ/68 -> v_S/17 for v_Phi >> v_S; N_DW = 1 mod gauge, |N| =
+34, E/N = 8/3 [EXACT, FINAL J1a]); m_a = 5.70 ueV (1e12 GeV/f_a) [LIT-abstract Gorghetto-Villadoro 1812.01008].
+  m_a,min = 2.37 ueV (A) / 2.00 ueV (B) at <S>_max; m_a rises with y_s: at M_s = 1e13, y_s in [0.345, 1.25] gives
+  m_a in [2.37, 8.6] ueV; for M_s = 3e12 up to 28.6 ueV at the unitarity edge.
+  DFSZ-coupling exclusions (100% axion DM; LIT-abstract): ADMX 1804.05750 2.66-2.81 ueV; ADMX 1910.08638 2.81-3.31;
+  ADMX 2408.15227 (PRL 134, 111002) 3.27-3.34; ADMX 2110.06096 covers 3.3-4.2 at KSVZ sensitivity only (a DFSZ
+  sub-band 3.9-4.1 is quoted in an APS talk abstract, LIT-weak); CAPP 2210.10961 4.51-4.59 at DFSZ sensitivity;
+  CAPP 2402.12892 (4.24-4.91) "most stringent", DFSZ not confirmed from the abstract.
+  Open DFSZ windows at M_s = 1e13 (convention A): y_s in [0.345, 0.388] (m_a 2.37-2.66), [0.49, 0.57] (3.34-3.9),
+  [0.60, 0.66] (4.1-4.51), [0.67, 1.25] (4.59-8.6 ueV).  The three-loop point (M_s = 1e13, y_s = 0.345, <S> = 2.9e13,
+  f_a = 2.41e12 GeV) sits at m_a = 2.37 ueV, just below the ADMX band; g_agg ~ 3.4e-16 GeV^-1 [EST].
+Unitarity (what K1 assumes, EST, K3-style a0 <= 1/2): tree s-wave singlet-channel amplitude of a Yukawa coupling a Dirac
+pair of SO(10) 16s to S, a0 = N y^2/(16 pi) with N = 16 -> y_s, y_phi <= 1.253 (10-pair: 1.585).  Hence
+M_Phi = y_phi <Phi17> <= 1.25e17 (3.5e17 would need y_phi = sqrt(4 pi), a0 = 2).  M_s <= 1.25 x 2.9e13 = 3.6e13.
+GUT-scale scalars: for a |Phi|^4-type self-quartic on an n-component multiplet a0 ~ lambda (n+2)/(16 pi)
+(calibrated on the complex doublet 3 lambda/8 pi), so a0 <= 1/2 gives lambda <= 8 pi/(n+2) = 0.119 (210), 0.099
+(126bar), 1.14 (10); masses generated by the self-quartic are then <= 0.5-1.0 M_U (210, 126bar, th = 30-90 deg),
+i.e. the lower half (x1/2..x1) of the declared x1/2..x2 window (the S2u Monte Carlo); cross-quartics and the unknown
+vacuum (G3 BLOCKED) can move single states, so the full x1/2..x2 window is kept as the declared one.
+U(1)_X [EXACT one-loop]: b_X = 12865/3 -> alpha_X(M_Pl,red) <= 1 requires alpha_X^-1(1e17) >= 2180, g_X(1e17) <=
+0.076 (g_X(M_U) <= 0.062); an SO(10)-like g_X (alpha_X^-1 = 26 at 1e17) would hit alpha_X = 1 at 1.04e17.  Not a
+kill (g_X is free), but a constraint on the v21 contract.  Maximal two-loop feedback on the SO(10) running at the
+bound: 0.9% of the one-loop term (section 7 gives the Lambda shift).

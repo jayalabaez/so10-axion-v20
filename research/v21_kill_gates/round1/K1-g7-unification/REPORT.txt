@@ -1,0 +1,510 @@
+EXECUTIVE SUMMARY (GATE K1, v21-F17-G3221): VERDICT UNDECIDED
+==============================================================
+Own exact-Fraction Machacek-Vaughn two-loop RG for every segment (SM, SM + S-sector, G3221 T2/T3, SO(10) below/above
+the Phi pair) plus the Pickering-Gracey-Jones three-loop gauge+matter term for SO(10), one-loop thresholds, the
+two-loop Yukawa terms (y_t, y_s, y_phi, Y10, Y126 with exact SO(10) norms), the exact Planck-operator Clebsches for the
+210's G3221 orientation, U(1)_X, quality, axion band, proton decay.  Coefficients cross-checked against the SM/QCD/MSS
+literature values and every repository pin; the critic's C4 table is reproduced to 3-4 digits and the repository's
+pinned two-loop PS chain to 1e-10.
+- Two loops: unification exists for T2 and T3 across the window; Lambda_2L = 1.3-2.4 M_Pl,red (Phi pair >= 1e17),
+  100% of thresholds pass for M_s >= 5e12, all Planck coefficients c in [-1, 1]; marginal only at M_s = 3e12.
+- Three loops: nominal Lambda_3L = 1.05 M_Pl,red (both contents) only for M_s >= 9.0e12 (crossing), Phi pair >= 1e17;
+  the +5% margin flips sign under (i) the Planck coefficient (pass for all orientations only if c in [-0.3, 0.1] T2 /
+  [-0.2, 0] T3; -4 to -6% per 0.1 of c), (ii) the GUT spectrum (pass fraction 66-75% for x1/2..x2, 0% for the
+  unitarity-favoured x1/2..x1), (iii) the light thresholds (58-61% combined), (iv) the four-loop term (the loop
+  expansion is two-loop dominated from M_U and 3L/2L = 1 at M_Pl,red; b3 x0.75/x1.25 -> 1.25/0.90).
+- A perturbativity-based cut fails (3L/2L = 0.5 at 2.0e18); a declared two-loop convention passes for M_s >= 5e12.
+- tau_p = 8.6e36 (T2) / 3.3e37 yr (T3), robust except an adverse-threshold corner; axion m_a = 2.37-2.66 ueV at the
+  three-loop point (DFSZ-I-like, just below the ADMX band), 2.4-28.6 ueV over the window with DFSZ-excluded islands;
+  g_X(1e17) <= 0.076 required for U(1)_X perturbativity.
+
+GATE K1 (decisive G7) for v21-F17-G3221 -- REPORT (2026-10-16)
+================================================================
+
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21\K1-g7-unification\
+Labels: EXACT (proved / exact arithmetic), NUM (computed, with stated uncertainty), LIT (read: here only abstracts
+and search snippets, i.e. LIT-abstract, plus the PGJ/MSS coefficient tables carried in the repository module
+g7_decoupled_singlet_benchmark_evidence_v20.py, which the repository records as transcribed from the papers), EST
+(order-of-magnitude), CONJ (argued).
+
+Repository checkouts _g6_nogo and _record were only read (imports of two_loop_thresholds_v20 are read-only; -B and
+PYTHONDONTWRITEBYTECODE=1).  'git status --short' of _g6_nogo: 0 lines before and after.  _record: 37 lines at start,
+38 at the end; the extra line is the untracked EXACT_PHISIGMA_ALL_COMPONENT_PROJECTORS_V20.npz written at 14:40 by the
+other job's test run in that checkout (nothing of mine executed there; I only used sed to read files).
+
+0. Files
+--------
+k1_lib.py            generic exact Machacek-Vaughn (b_i, b_ij) for product groups (Weyl / complex / real scalars),
+                     PGJ single-group three-loop gauge+matter b3, DOP853 + independent RK4 integrators, thresholds.
+k1_model.py          v21 content for every segment (SM, SM + S-sector, G3221 T2/T3 with/without S-sector, SO(10) below/
+                     above M_Phi), heavy/light threshold multiplets, 3-unknown unification solver, Landau scale, U(1)_X.
+k1_test_coeffs.py    coefficient cross-checks (-> k1_test_coeffs.json).
+k1_first_run.py      reproduction of the critic's C4 table (-> k1_first_run.json, .log).
+k1_planck_clebsch.py exact Clebsches of c Phi210 F F / M_Pl for the G3221 orientation (-> k1_planck_clebsch.json).
+k1_so10_yukawa_norm.py, k1_yukawa10_check.py  exact 16.16.10 and 16.16.126bar Yukawa norms (gamma matrices).
+k1_axion_quality.py  quality bound, y_s windows, axion mass band vs DFSZ exclusions, unitarity EST (-> .json).
+k1_u1x.py            U(1)_X one-loop perturbativity bound and feedback (-> k1_u1x.json).
+k1_scan.py           main scan (-> k1_scan.json, k1_scan.log); k1_summarise.py -> k1_summary.json.
+
+1. Method and conventions
+-------------------------
+t = ln(mu/GeV);  d alpha_i^-1/dt = -b_i/(2 pi) - sum_j b_ij alpha_j/(8 pi^2) + Y_i/(32 pi^3) - b3_i alpha_i^2/(32 pi^3).
+b_i, b_ij: Machacek-Vaughn with Weyl fermions, complex scalars (eta = 1) and real scalars (eta = 1/2), U(1)s GUT-
+normalised (U(1)_Y: 3/5 Y^2; U(1)_{B-L}: 3/8 (B-L)^2, matching alpha_Y^-1 = 3/5 alpha_2R^-1 + 2/5 alpha_BL^-1 at v_R).
+Y_i = (1/d(G_i)) sum_{A,j,k} C2_i(j) |Y_{A,jk}|^2 (MV Y_4(F)/d(G)): SM (17/10, 3/2, 2) y_t^2 [checked against the
+literature SM values], G3221 (4,4,4,4) y_t^2 (bidoublet quark + Dirac-neutrino Yukawa, EST), S-sector Dirac pairs
+2 T(R) y^2 per pair -> 14 y_s^2 in every phase (complete SO(10) multiplets), Phi pair 4 y_phi^2, SO(10) phase
+10 Tr(Y10^2) + (63/4) Tr(Y126^2) [EXACT norms, section 4].  y_t run at one loop (0.95 at M_Z) and frozen above v_R.
+b3: Pickering-Gracey-Jones hep-ph/0104247 eqs (28)-(33) gauge + matter terms (the 22 coefficients as transcribed in
+the repository; re-validated here: symbolic general-Casimir QCD beta_2, n_f = 5, 6 values -9769/54 and 65/2, and the
+MSS arXiv:1201.5868 SM pure three-loop coefficients (-388613/24000, 324953/1728, 65/2) all reproduced [EXACT]).
+Thresholds: one-loop MS-bar matching alpha_i^-1(mu)_low = alpha_i^-1(mu)_high - (1/2 pi) sum_k b_i^k ln(M_k/mu) with
+b^k = 2/3 S (Weyl), 1/3 S (complex), 1/6 S (real), -7/2 S (vector + eaten Goldstone, the usual "-21/12 pi").
+Inputs: alpha_1^-1 = 59.02, alpha_2^-1 = 29.57, alpha_3 = 0.1179 at M_Z (the repository's inputs).
+Unification solver: unknowns (ln v_R, ln M_U, alpha_2R^-1(v_R)); three residuals alpha_i^-1(M_U)/(1+eps_i) equal, with
+eps_i = c K_i/M_Pl,red the Planck gauge-kinetic shift (section 3); M_U = mass of the (3,2,2)_{-2/3} gauge bosons.
+SO(10) x U(1)_X phase: from M_U with alpha_U; Phi pair (16(-9)+16bar(-8)) enters at M_Phi = y_phi <Phi17>; Lambda =
+scale where alpha_10 = 1; criterion Lambda > M_Pl,red = 2.435e18 GeV.  Integrator DOP853 (rtol 1e-10) cross-checked
+against fixed-step RK4 (h = 0.002): alpha^-1(M_Pl,red) agrees to 1.3e-8 [NUM].
+
+2. Content and exact coefficients [EXACT]
+-----------------------------------------
+Segments: [M_Z, M_s] SM (1 Higgs doublet); [M_s, v_R] SM + S-sector (3 x (16 + 16bar) + 2 x 10 Weyl, in SM reps);
+[v_R, M_U] G3221 = SU(3) x SU(2)_L x SU(2)_R x U(1)_{B-L} with 3 x 16 + S-sector + light scalars
+  T2: complex bidoublet (1,2,2)_0, Delta_R (1,1,3)_2 complex, (8,2,2)_0 complex [126bar], (8,3,1)_0 real [210],
+      (1,3,1)_0 real [210];  T3 = T2 + second (1,2,2)_0 complex + (8,1,1)_0 real [210];
+[M_U, M_Phi] SO(10): 3 x 16 + 6 x 16-type + 2 x 10 Weyl + 210 real + 126bar + 10 complex; [M_Phi, ..): + 16 + 16bar.
+One-loop b: SM (41/10, -19/6, -7); SM + S (403/30, 37/6, 7/3) [shift 28/3 = (2/3) T_S universal, T_S = 14];
+G3221 T2 with S (47/6, 12, 29/3, 89/6), without S (-3/2, 8/3, 1/3, 11/2); T3 with S (25/3, 37/3, 10, 89/6).
+Two-loop b_ij: in k1_test_coeffs.json (e.g. G3221 T2 with S rows (204, 131, 30, 3/2), (108, 30, 197/3, 27/2),
+(4, 9/2, 81/2, 61/2) plus the SU(3) row).
+SO(10): below M_Phi (b1, b2, b3) = (16/3, 20891/6, 142437589/864) = (5.333, 3481.8, 164858.3);
+        above M_Phi (8, 7267/2, 5041501/32) = (8, 3633.5, 157546.9).
+Cross-checks: SM 1HDM = literature; 2HDM and PS anchor = repository pins (my MV routine on the repository field
+tables and the repository's coefficient_provenance() checks); SO(10) v20 content reproduces the repository pins
+(28/3, 22283/6, 132706057/864) and (52/3, 25013/6, 109873879/864); MV b1, b2 of SO(10) equal the PGJ b1, b2;
+SO(10) rep table equals the Weyl-formula re-derivation; the G3221 decomposition of 210 + 126bar + 10 (heavy + light +
+30 Goldstones) sums to the SO(10) scalar b = 64/3 in every factor and the heavy vectors' S_i plus the unbroken
+adjoint equal T(45) = 8 in every factor [all True in k1_test_coeffs.json].
+U(1)_X (g_X normalised to the integer X): b_X = 12865/3 (full content; 8225/3 below M_Phi); cross terms
+b_{10,X} = 2060, b_{X,10} = 92700.
+
+3. Planck gauge-kinetic operator: exact Clebsches [EXACT, k1_planck_clebsch.json]
+-------------------------------------------------------------------------------
+210 as a real 4-form with canonical kinetic term; vev p = Phi_{7 8 9 10} ((1,1,1)), a = Phi_{1234} = Phi_{1256} =
+Phi_{3456} ((15,1,1), B-L direction), omega = Phi_{1278} = ... ((15,1,3)); |Phi|^2 = p^2 + 3 a^2 + 6 omega^2.
+Stabiliser dimensions (numerical, exact zeros): p only -> 21 (Pati-Salam), a only or (p, a) -> 15 (G3221), omega ->
+13 (G3211), i.e. the G3221 chain needs omega = 0 and a != 0; omega != 0 would be the G3211 chain (not the K1 chain).
+Heavy gauge-boson masses: M^2(3,2,2)_{-2/3} = g^2 (p^2/2 + a^2 + 3 omega^2/2) = M_U^2;  M^2(3,1,1)_{4/3} = g^2 (2 a^2 +
+4 omega^2) (p alone leaves the (3,1,1) massless: PS).  With (p, a) = rho (cos th, sin th): M_(311)/M_U = sqrt(2) sin th /
+sqrt(cos^2 th/2 + sin^2 th) in [0, sqrt2]; the x1/2..x2 vector-mass scan covers th in [~20 deg, 90 deg].
+Operator L = -(1/4) F^A F^A - (c/(4 M_Pl,red)) Phi_{abcd} F^{ab} F^{cd} (canonical fields, generators normalised to
+T(10) = 1, sum over all index values): alpha_i^-1(M_U) = alpha_U^-1 (1 + c K_i/M_Pl,red) with
+   K_SU(3) = -2 a,  K_SU(2)_1 = +2 p,  K_SU(2)_2 = -2 p,  K_{B-L} = +4 a,  (omega does not enter any K_i),
+the same for every generator within a factor (checked).  Which SU(2) is L/R is the D-parity choice (sign s = +-1).
+Magnitude: rho = M_U/(g sqrt(cos^2 th/2 + sin^2 th)) = 1.4-2.0 M_U, so per unit c the shifts are
+Delta alpha_i^-1 = alpha_U^-1 K_i/M_Pl = (0.5-1.9) c units, 3-8 times the "0.23 c" estimate of FINAL J1f (which
+omitted group factors).  Chakrabortty-Raychaudhuri arXiv:1006.1252 compute the same class of corrections for all
+SO(10)/E6 breakings [LIT-abstract; their tables could not be read: WebFetch unavailable].
+
+4. SO(10) Yukawa norms [EXACT, k1_so10_yukawa_norm.json, k1_yukawa10_check.json]
+--------------------------------------------------------------------------------
+Explicit 32 x 32 Clifford algebra, 16 = positive chirality, B with B Gamma_a B^-1 = Gamma_a^T.  16.16.10: ten symmetric
+16 x 16 bilinears, sum_A M^A M^A+ = 10 x 1 (Schur), raw entries in {0, 1}; the nu^c nu H_u^0 entry of the complex
+combination (M^9 - i M^10)/sqrt2 is 2 (the other sign 0), so with y_t = Y10 (unit coefficient of nu^c L H_u = Q u^c H_u)
+Sum_{A,j,k}|Y|^2 = 80 Y10^2 (doublets 32 + colour triplets 48) and Y_4/45 = 10 Tr(Y10 Y10+).  16.16.126bar: 126
+independent symmetric bilinears (self-duality on the 16 halves the 252 five-forms), Schur constant 126 x 16, the
+nu^c nu^c diagonal carries 16 of the nu^c row's 126, so with M_R = Y126 v_R (unit nu^c nu^c Delta_R^0 coefficient)
+Sum|Y|^2 = 126 Y126^2 and Y_4/45 = (63/4) Tr(Y126 Y126+).  Both terms are < 0.5% of b2 (3482-3634): at the three-loop
+point they raise Lambda_3L by +0.4% (Y126_33 = 0) .. +2.2% (Y126_33 = 1) relative to Yukawa-free running [NUM].
+
+5. Quality, axion band, unitarity assumptions [NUM / EST / LIT-abstract; k1_axion_quality.json]
+----------------------------------------------------------------------------------------------
+Declared operator Phi17^4 S^dag^17 / M_Pl,red^17 with <Phi17> = 1e17: dtheta = n |DeltaV| / chi, DeltaV = <Phi17>^4
+<S>^17 / M_Pl,red^17, chi = (75.5 MeV)^4, dtheta < 1e-10:
+  convention A (n = 17, field moduli):  <S>_max = 2.90e13  -> y_s,min = M_s/<S>_max = 0.104 (3e12), 0.173 (5e12),
+      0.242 (7e12), 0.345 (1e13), 0.69 (2e13), 1.24 (3.6e13);
+  convention B (n = 1): <S>_max = 3.42e13 (y_s,min(1e13) = 0.292; FINAL's 0.305 used 3.3e13);
+  <Phi17> = 1e17/sqrt2: <S>_max = 3.14e13.   An O(1) Wilson coefficient c21 rescales <S>_max by c21^(-1/17).
+Axion: f_a = v_S/17 = sqrt2 <S>/17 (repository v_a = F_PQ/68 -> v_S/17 for v_Phi >> v_S; N_DW = 1 mod gauge, |N| =
+34, E/N = 8/3 [EXACT, FINAL J1a]); m_a = 5.70 ueV (1e12 GeV/f_a) [LIT-abstract Gorghetto-Villadoro 1812.01008].
+  m_a,min = 2.37 ueV (A) / 2.00 ueV (B) at <S>_max; m_a rises with y_s: at M_s = 1e13, y_s in [0.345, 1.25] gives
+  m_a in [2.37, 8.6] ueV; for M_s = 3e12 up to 28.6 ueV at the unitarity edge.
+  DFSZ-coupling exclusions (100% axion DM; LIT-abstract): ADMX 1804.05750 2.66-2.81 ueV; ADMX 1910.08638 2.81-3.31;
+  ADMX 2408.15227 (PRL 134, 111002) 3.27-3.34; ADMX 2110.06096 covers 3.3-4.2 at KSVZ sensitivity only (a DFSZ
+  sub-band 3.9-4.1 is quoted in an APS talk abstract, LIT-weak); CAPP 2210.10961 4.51-4.59 at DFSZ sensitivity;
+  CAPP 2402.12892 (4.24-4.91) "most stringent", DFSZ not confirmed from the abstract.
+  Open DFSZ windows at M_s = 1e13 (convention A): y_s in [0.345, 0.388] (m_a 2.37-2.66), [0.49, 0.57] (3.34-3.9),
+  [0.60, 0.66] (4.1-4.51), [0.67, 1.25] (4.59-8.6 ueV).  The three-loop point (M_s = 1e13, y_s = 0.345, <S> = 2.9e13,
+  f_a = 2.41e12 GeV) sits at m_a = 2.37 ueV, just below the ADMX band; g_agg ~ 3.4e-16 GeV^-1 [EST].
+Unitarity (what K1 assumes, EST, K3-style a0 <= 1/2): tree s-wave singlet-channel amplitude of a Yukawa coupling a Dirac
+pair of SO(10) 16s to S, a0 = N y^2/(16 pi) with N = 16 -> y_s, y_phi <= 1.253 (10-pair: 1.585).  Hence
+M_Phi = y_phi <Phi17> <= 1.25e17 (3.5e17 would need y_phi = sqrt(4 pi), a0 = 2).  M_s <= 1.25 x 2.9e13 = 3.6e13.
+GUT-scale scalars: for a |Phi|^4-type self-quartic on an n-component multiplet a0 ~ lambda (n+2)/(16 pi)
+(calibrated on the complex doublet 3 lambda/8 pi), so a0 <= 1/2 gives lambda <= 8 pi/(n+2) = 0.119 (210), 0.099
+(126bar), 1.14 (10); masses generated by the self-quartic are then <= 0.5-1.0 M_U (210, 126bar, th = 30-90 deg),
+i.e. the lower half (x1/2..x1) of the declared x1/2..x2 window (the S2u Monte Carlo); cross-quartics and the unknown
+vacuum (G3 BLOCKED) can move single states, so the full x1/2..x2 window is kept as the declared one.
+U(1)_X [EXACT one-loop]: b_X = 12865/3 -> alpha_X(M_Pl,red) <= 1 requires alpha_X^-1(1e17) >= 2180, g_X(1e17) <=
+0.076 (g_X(M_U) <= 0.062); an SO(10)-like g_X (alpha_X^-1 = 26 at 1e17) would hit alpha_X = 1 at 1.04e17.  Not a
+kill (g_X is free), but a constraint on the v21 contract.  Maximal two-loop feedback on the SO(10) running at the
+bound: 0.9% of the one-loop term (section 7 gives the Lambda shift).
+6. Unification solutions and Landau scales, nominal thresholds, c = 0 [NUM]
+------------------------------------------------------------------------------
+(all tuned multiplets at v_R, all heavy scalars and vectors at M_U, Y126_33 = 0.5, Y10_33 = y_t(M_U), y_s = M_s/<S>_max,
+ y_phi = M_phi/1e17; 'M_U' in the M_phi column = Phi pair at M_U)
+cont       M_s    y_s    M_phi        v_R        M_U   aU^-1  L2/MPl  L3/MPl  tau_p[yr]
+T2     3.0e+12  0.103      M_U  2.679e+13  2.161e+16  25.122   1.027   0.480   9.25e+36
+T2     3.0e+12  0.103    1e+17  2.679e+13  2.161e+16  25.122   1.301   0.592   9.25e+36
+T2     3.0e+12  0.103 1.25e+17  2.679e+13  2.161e+16  25.122   1.347   0.610   9.25e+36
+T2     3.0e+12  0.103  3.5e+17  2.679e+13  2.161e+16  25.122   1.584   0.693   9.25e+36
+T2     5.0e+12  0.172      M_U  2.598e+13  2.109e+16  25.962   1.319   0.605   8.97e+36
+T2     5.0e+12  0.172    1e+17  2.598e+13  2.109e+16  25.962   1.684   0.752   8.97e+36
+T2     5.0e+12  0.172 1.25e+17  2.598e+13  2.109e+16  25.962   1.744   0.774   8.97e+36
+T2     5.0e+12  0.172  3.5e+17  2.598e+13  2.109e+16  25.962   2.064   0.886   8.97e+36
+T2     7.0e+12  0.241      M_U  2.547e+13  2.077e+16  26.515   1.561   0.706   8.80e+36
+T2     7.0e+12  0.241    1e+17  2.547e+13  2.077e+16  26.515   2.003   0.883   8.80e+36
+T2     7.0e+12  0.241 1.25e+17  2.547e+13  2.077e+16  26.515   2.076   0.910   8.80e+36
+T2     7.0e+12  0.241  3.5e+17  2.547e+13  2.077e+16  26.515   2.467   1.046   8.80e+36
+T2     1.0e+13  0.345      M_U  2.496e+13  2.045e+16  27.102   1.874   0.836   8.64e+36
+T2     1.0e+13  0.345    1e+17  2.496e+13  2.045e+16  27.102   2.417   1.051   8.64e+36
+T2     1.0e+13  0.345 1.25e+17  2.496e+13  2.045e+16  27.102   2.506   1.084   8.64e+36
+T2     1.0e+13  0.345  3.5e+17  2.496e+13  2.045e+16  27.102   2.992   1.252   8.64e+36
+T2     2.0e+13  0.690      M_U  2.404e+13  1.986e+16  28.260   2.725   1.182   8.35e+36
+T2     2.0e+13  0.690    1e+17  2.404e+13  1.986e+16  28.260   3.552   1.502   8.35e+36
+T2     2.0e+13  0.690 1.25e+17  2.404e+13  1.986e+16  28.260   3.686   1.552   8.35e+36
+T2     2.0e+13  0.690  3.5e+17  2.404e+13  1.986e+16  28.260   4.442   1.811   8.35e+36
+T2     3.6e+13  1.241      M_U  2.347e+13  1.939e+16  29.310   3.936   1.660   8.17e+36
+T2     3.6e+13  1.241    1e+17  2.347e+13  1.939e+16  29.310   5.182   2.132   8.17e+36
+T2     3.6e+13  1.241 1.25e+17  2.347e+13  1.939e+16  29.310   5.385   2.206   8.17e+36
+T2     3.6e+13  1.241  3.5e+17  2.347e+13  1.939e+16  29.310   6.552   2.599   8.17e+36
+T3     3.0e+12  0.103      M_U  3.185e+13  3.092e+16  24.136   1.073   0.514   3.58e+37
+T3     3.0e+12  0.103    1e+17  3.185e+13  3.092e+16  24.136   1.283   0.602   3.58e+37
+T3     3.0e+12  0.103 1.25e+17  3.185e+13  3.092e+16  24.136   1.328   0.620   3.58e+37
+T3     3.0e+12  0.103  3.5e+17  3.185e+13  3.092e+16  24.136   1.561   0.705   3.58e+37
+T3     5.0e+12  0.172      M_U  3.084e+13  3.013e+16  24.981   1.369   0.642   3.46e+37
+T3     5.0e+12  0.172    1e+17  3.084e+13  3.013e+16  24.981   1.649   0.758   3.46e+37
+T3     5.0e+12  0.172 1.25e+17  3.084e+13  3.013e+16  24.981   1.708   0.781   3.46e+37
+T3     5.0e+12  0.172  3.5e+17  3.084e+13  3.013e+16  24.981   2.021   0.894   3.46e+37
+T3     7.0e+12  0.241      M_U  3.021e+13  2.964e+16  25.538   1.613   0.747   3.38e+37
+T3     7.0e+12  0.241    1e+17  3.021e+13  2.964e+16  25.538   1.953   0.886   3.38e+37
+T3     7.0e+12  0.241 1.25e+17  3.021e+13  2.964e+16  25.538   2.024   0.913   3.38e+37
+T3     7.0e+12  0.241  3.5e+17  3.021e+13  2.964e+16  25.538   2.404   1.050   3.38e+37
+T3     1.0e+13  0.345      M_U  2.958e+13  2.914e+16  26.129   1.928   0.880   3.31e+37
+T3     1.0e+13  0.345    1e+17  2.958e+13  2.914e+16  26.129   2.346   1.049   3.31e+37
+T3     1.0e+13  0.345 1.25e+17  2.958e+13  2.914e+16  26.129   2.432   1.082   3.31e+37
+T3     1.0e+13  0.345  3.5e+17  2.958e+13  2.914e+16  26.129   2.901   1.250   3.31e+37
+T3     2.0e+13  0.690      M_U  2.844e+13  2.824e+16  27.295   2.782   1.234   3.19e+37
+T3     2.0e+13  0.690    1e+17  2.844e+13  2.824e+16  27.295   3.416   1.485   3.19e+37
+T3     2.0e+13  0.690 1.25e+17  2.844e+13  2.824e+16  27.295   3.546   1.534   3.19e+37
+T3     2.0e+13  0.690  3.5e+17  2.844e+13  2.824e+16  27.295   4.269   1.789   3.19e+37
+T3     3.6e+13  1.241      M_U  2.765e+13  2.752e+16  28.353   3.987   1.718   3.10e+37
+T3     3.6e+13  1.241    1e+17  2.765e+13  2.752e+16  28.353   4.940   2.087   3.10e+37
+T3     3.6e+13  1.241 1.25e+17  2.765e+13  2.752e+16  28.353   5.134   2.159   3.10e+37
+T3     3.6e+13  1.241  3.5e+17  2.765e+13  2.752e+16  28.353   6.238   2.542   3.10e+37
+
+One-loop solutions (independent of the S-sector mass, EXACT universality): T2 v_R = 1.406e13, M_U = 4.631e16,
+alpha_U^-1 = 26.58 (M_s = 1e13); T3 v_R = 1.648e13, M_U = 6.533e16, alpha_U^-1 = 25.63.  Two-loop (gauge-only,
+Yukawa terms off) reproduces the critic's C4 table to 3-4 digits (k1_first_run.log): T2 at M_s = 5e12: v_R 2.597e13,
+M_U 2.131e16, alpha_U^-1 25.908, Lambda_2L 3.147e18 / 4.016e18 (Phi at M_U / 1e17), Lambda_3L 1.449e18; T3: 3.084e13,
+3.047e16, 24.924, 3.271e18 / 3.937e18, 1.541e18; the three-loop point M_s = 1e13, Phi at 1e17: 2.501e18 (+2.7%).
+Yukawa two-loop terms (y_t, y_s, y_phi, Y10, Y126): +1.5% (Y126_33 = 0) to +3.7% (Y126_33 = 1) on Lambda_3L.
+   T2_Y126=0.0: Lambda_2L = 5.8527e+18, Lambda_3L = 2.5471e+18 (Y_SO10 above M_phi = 7.88)
+   T2_Y126=0.5: Lambda_2L = 5.8857e+18, Lambda_3L = 2.5583e+18 (Y_SO10 above M_phi = 11.81)
+   T2_Y126=1.0: Lambda_2L = 5.9861e+18, Lambda_3L = 2.5922e+18 (Y_SO10 above M_phi = 23.63)
+   T3_Y126=0.0: Lambda_2L = 5.6828e+18, Lambda_3L = 2.5438e+18 (Y_SO10 above M_phi = 7.86)
+   T3_Y126=0.5: Lambda_2L = 5.7118e+18, Lambda_3L = 2.5538e+18 (Y_SO10 above M_phi = 11.80)
+   T3_Y126=1.0: Lambda_2L = 5.8003e+18, Lambda_3L = 2.5843e+18 (Y_SO10 above M_phi = 23.61)
+
+M_s scan (y_s at the quality minimum, c = 0): Lambda_3L crosses M_Pl,red at
+   S7_Ms_crossing_T2_Mphi=1e+17: M_s = 9.035e+12
+   S7_Ms_crossing_T2_Mphi=1.25e+17: M_s = 8.465e+12
+   S7_Ms_crossing_T3_Mphi=1e+17: M_s = 9.040e+12
+   S7_Ms_crossing_T3_Mphi=1.25e+17: M_s = 8.453e+12
+
+7. Planck gauge-kinetic operator scan [NUM; exact Clebsches of section 3], M_s = 1e13, Phi at 1e17
+------------------------------------------------------------------------------
+Self-consistent re-solve of (v_R, M_U, alpha_2R^-1) with alpha_i^-1(M_U) = alpha_U^-1 (1 + c K_i/M_Pl,red),
+K = (-2a, s 2p, -s 2p, 4a) for (SU3, SU2L, SU2R, B-L), (p, a) = rho (cos th, sin th), rho from M_U; th in 15..165 deg,
+s = +-1, c in [-1, 1] by continuation from c = 0 (the continuation stops where no perturbative solution exists).
+'physical' = v_R in [8e12, 1e14] and M_U <= 1e17 (outside this the 'solutions' have M_U up to 6e19 or v_R ~ 1e10).
+T2: three-loop pass for ALL (th, s) at c in [-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1]; pass for SOME at [-1.0, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+T2: physical solutions for ALL directions at c in [-0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]; three-loop pass AND physical for ALL directions: [-0.3, -0.2, -0.1, 0.0, 0.1]; three-loop FAIL (physical) for SOME direction: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+T2: two-loop: min Lambda_2L/M_Pl over all solved points = 2.005; two-loop failures: []; v_R range 2.05e+10-4.02e+16, M_U range 1.22e+16-5.89e+19, alpha_U^-1 range 10.54-28.35; solved 408/420
+   T2_theta15_s+1  : pass c [-0.5]..[0.2] (n=8); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.327, 1.162, 1.091, 1.051, 1.022, 1.001, 0.985]; no-solution c: [-0.6]
+   T2_theta15_s-1  : pass c [-1.0]..[1.0] (n=21); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.04, 1.043, 1.046, 1.051, 1.056, 1.064, 1.074]; no-solution c: []
+   T2_theta30_s+1  : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.43, 1.193, 1.102, 1.051, 1.016, 0.99, 0.97]; no-solution c: [-0.6]
+   T2_theta30_s-1  : pass c [-1.0]..[0.4] (n=15); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.078, 1.069, 1.06, 1.051, 1.041, 1.031, 1.02]; no-solution c: []
+   T2_theta45_s+1  : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.43, 1.2, 1.105, 1.051, 1.013, 0.984, 0.962]; no-solution c: [-0.6]
+   T2_theta45_s-1  : pass c [-1.0]..[0.2] (n=13); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.117, 1.094, 1.072, 1.051, 1.03, 1.011, 0.992]; no-solution c: []
+   T2_theta60_s+1  : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.374, 1.192, 1.104, 1.051, 1.012, 0.982, 0.959]; no-solution c: [-0.6]
+   T2_theta60_s-1  : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.158, 1.117, 1.082, 1.051, 1.023, 0.998, 0.976]; no-solution c: []
+   T2_theta75_s+1  : pass c [-0.6]..[0.1] (n=8); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.31, 1.176, 1.101, 1.051, 1.013, 0.983, 0.959]; no-solution c: [-0.7]
+   T2_theta75_s-1  : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.202, 1.138, 1.09, 1.051, 1.018, 0.99, 0.966]; no-solution c: []
+   T2_theta90_s+1  : pass c [-0.7]..[0.1] (n=9); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.252, 1.158, 1.096, 1.051, 1.015, 0.986, 0.961]; no-solution c: [-0.8]
+   T2_theta90_s-1  : pass c [-0.7]..[0.1] (n=9); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.252, 1.158, 1.096, 1.051, 1.015, 0.986, 0.961]; no-solution c: [-0.8]
+   T2_theta105_s+1 : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.202, 1.138, 1.09, 1.051, 1.018, 0.99, 0.966]; no-solution c: []
+   T2_theta105_s-1 : pass c [-0.6]..[0.1] (n=8); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.31, 1.176, 1.101, 1.051, 1.013, 0.983, 0.959]; no-solution c: [-0.7]
+   T2_theta120_s+1 : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.158, 1.117, 1.082, 1.051, 1.023, 0.998, 0.976]; no-solution c: []
+   T2_theta120_s-1 : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.374, 1.192, 1.104, 1.051, 1.012, 0.982, 0.959]; no-solution c: [-0.6]
+   T2_theta135_s+1 : pass c [-1.0]..[0.2] (n=13); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.117, 1.094, 1.072, 1.051, 1.03, 1.011, 0.992]; no-solution c: []
+   T2_theta135_s-1 : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.43, 1.2, 1.105, 1.051, 1.013, 0.984, 0.962]; no-solution c: [-0.6]
+   T2_theta150_s+1 : pass c [-1.0]..[0.4] (n=15); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.078, 1.069, 1.06, 1.051, 1.041, 1.031, 1.02]; no-solution c: []
+   T2_theta150_s-1 : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.43, 1.193, 1.102, 1.051, 1.016, 0.99, 0.97]; no-solution c: [-0.6]
+   T2_theta165_s+1 : pass c [-1.0]..[1.0] (n=21); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.04, 1.043, 1.046, 1.051, 1.056, 1.064, 1.074]; no-solution c: []
+   T2_theta165_s-1 : pass c [-0.5]..[0.2] (n=8); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.327, 1.162, 1.091, 1.051, 1.022, 1.001, 0.985]; no-solution c: [-0.6]
+T3: three-loop pass for ALL (th, s) at c in [-0.3, -0.2, -0.1, 0.0]; pass for SOME at [-1.0, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1.0]
+T3: physical solutions for ALL directions at c in [-0.2, -0.1, 0.0, 0.1, 0.2, 0.3]; three-loop pass AND physical for ALL directions: [-0.2, -0.1, 0.0]; three-loop FAIL (physical) for SOME direction: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+T3: two-loop: min Lambda_2L/M_Pl over all solved points = 1.815; two-loop failures: []; v_R range 5.66e+10-6.43e+15, M_U range 1.74e+16-1.70e+20, alpha_U^-1 range 6.27-27.53; solved 376/392
+   T3_theta15_s+1  : pass c [-0.4]..[1.0] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [3.453, 1.304, 1.117, 1.049, 1.01, 0.983, 0.966]; no-solution c: [-0.5]
+   T3_theta15_s-1  : pass c [-1.0]..[0.7] (n=18); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.031, 1.035, 1.041, 1.049, 1.06, 1.079, 1.115]; no-solution c: [0.8]
+   T3_theta30_s+1  : pass c [-0.3]..[1.0] (n=6); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [5.258, 1.382, 1.133, 1.049, 1.002, 0.97, 0.95]; no-solution c: [-0.4]
+   T3_theta30_s-1  : pass c [-1.0]..[0.3] (n=14); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.08, 1.07, 1.06, 1.049, 1.037, 1.025, 1.012]; no-solution c: []
+   T3_theta45_s+1  : pass c [-0.3]..[0.0] (n=4); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [4.148, 1.376, 1.137, 1.049, 0.998, 0.963, 0.94]; no-solution c: [-0.4]
+   T3_theta45_s-1  : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.137, 1.106, 1.077, 1.049, 1.022, 0.996, 0.971]; no-solution c: []
+   T3_theta60_s+1  : pass c [-0.4]..[0.0] (n=5); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [2.608, 1.328, 1.133, 1.049, 0.997, 0.96, 0.934]; no-solution c: [-0.5]
+   T3_theta60_s-1  : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.206, 1.143, 1.092, 1.049, 1.012, 0.98, 0.951]; no-solution c: []
+   T3_theta75_s+1  : pass c [-0.4]..[0.0] (n=5); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.783, 1.274, 1.126, 1.049, 0.998, 0.961, 0.933]; no-solution c: [-0.5]
+   T3_theta75_s-1  : pass c [-0.7]..[0.1] (n=9); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.302, 1.182, 1.105, 1.049, 1.005, 0.97, 0.94]; no-solution c: [-0.8]
+   T3_theta90_s+1  : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.454, 1.225, 1.116, 1.049, 1.001, 0.964, 0.934]; no-solution c: [-0.6]
+   T3_theta90_s-1  : pass c [-0.5]..[0.1] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.454, 1.225, 1.116, 1.049, 1.001, 0.964, 0.934]; no-solution c: [-0.6]
+   T3_theta105_s+1 : pass c [-0.7]..[0.1] (n=9); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.302, 1.182, 1.105, 1.049, 1.005, 0.97, 0.94]; no-solution c: [-0.8]
+   T3_theta105_s-1 : pass c [-0.4]..[0.0] (n=5); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.783, 1.274, 1.126, 1.049, 0.998, 0.961, 0.933]; no-solution c: [-0.5]
+   T3_theta120_s+1 : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.206, 1.143, 1.092, 1.049, 1.012, 0.98, 0.951]; no-solution c: []
+   T3_theta120_s-1 : pass c [-0.4]..[0.0] (n=5); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [2.608, 1.328, 1.133, 1.049, 0.997, 0.96, 0.934]; no-solution c: [-0.5]
+   T3_theta135_s+1 : pass c [-1.0]..[0.1] (n=12); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.137, 1.106, 1.077, 1.049, 1.022, 0.996, 0.971]; no-solution c: []
+   T3_theta135_s-1 : pass c [-0.3]..[0.0] (n=4); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [4.148, 1.376, 1.137, 1.049, 0.998, 0.963, 0.94]; no-solution c: [-0.4]
+   T3_theta150_s+1 : pass c [-1.0]..[0.3] (n=14); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.08, 1.07, 1.06, 1.049, 1.037, 1.025, 1.012]; no-solution c: []
+   T3_theta150_s-1 : pass c [-0.3]..[1.0] (n=6); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [5.258, 1.382, 1.133, 1.049, 1.002, 0.97, 0.95]; no-solution c: [-0.4]
+   T3_theta165_s+1 : pass c [-1.0]..[0.7] (n=18); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [1.031, 1.035, 1.041, 1.049, 1.06, 1.079, 1.115]; no-solution c: [0.8]
+   T3_theta165_s-1 : pass c [-0.4]..[1.0] (n=7); L3/MPl(c=-0.3,-0.2,-0.1,0,0.1,0.2,0.3) = [3.453, 1.304, 1.117, 1.049, 1.01, 0.983, 0.966]; no-solution c: [-0.5]
+Small-c derivative (th = 45 deg, s = +1):
+   T2 c = -0.10: v_R = 2.456e+13, M_U = 2.490e+16, alpha_U^-1 = 26.727, L2/MPl = 2.512, L3/MPl = 1.105, eps_i per unit c = [-0.0243, 0.0243, -0.0243, 0.0487]
+   T2 c = -0.05: v_R = 2.478e+13, M_U = 2.236e+16, alpha_U^-1 = 26.932, L2/MPl = 2.460, L3/MPl = 1.075, eps_i per unit c = [-0.022, 0.022, -0.022, 0.0439]
+   T2 c = +0.00: v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102, L2/MPl = 2.417, L3/MPl = 1.051, eps_i per unit c = [0.0, 0.0, 0.0, 0.0]
+   T2 c = +0.05: v_R = 2.513e+13, M_U = 1.893e+16, alpha_U^-1 = 27.249, L2/MPl = 2.381, L3/MPl = 1.030, eps_i per unit c = [-0.0187, 0.0187, -0.0187, 0.0374]
+   T2 c = +0.10: v_R = 2.527e+13, M_U = 1.768e+16, alpha_U^-1 = 27.378, L2/MPl = 2.351, L3/MPl = 1.013, eps_i per unit c = [-0.0175, 0.0175, -0.0175, 0.035]
+   T3 c = -0.10: v_R = 2.914e+13, M_U = 3.971e+16, alpha_U^-1 = 25.524, L2/MPl = 2.493, L3/MPl = 1.137, eps_i per unit c = [-0.0378, 0.0378, -0.0378, 0.0756]
+   T3 c = -0.05: v_R = 2.939e+13, M_U = 3.328e+16, alpha_U^-1 = 25.869, L2/MPl = 2.407, L3/MPl = 1.085, eps_i per unit c = [-0.032, 0.032, -0.032, 0.064]
+   T3 c = +0.00: v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129, L2/MPl = 2.346, L3/MPl = 1.049, eps_i per unit c = [0.0, 0.0, 0.0, 0.0]
+   T3 c = +0.05: v_R = 2.974e+13, M_U = 2.617e+16, alpha_U^-1 = 26.339, L2/MPl = 2.298, L3/MPl = 1.021, eps_i per unit c = [-0.0254, 0.0254, -0.0254, 0.0508]
+   T3 c = +0.10: v_R = 2.988e+13, M_U = 2.391e+16, alpha_U^-1 = 26.515, L2/MPl = 2.259, L3/MPl = 0.998, eps_i per unit c = [-0.0232, 0.0232, -0.0232, 0.0465]
+
+8. Threshold Monte Carlo [NUM], M_s = 1e13, Phi at 1e17, c = 0 (log-uniform ratios, every multiplet independent)
+------------------------------------------------------------------------------
+GUT scalars x1/2..x2 (+ (3,1,1) vector):
+   T2: n = 300/300; pass fraction 3L = 0.75, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.782/0.893/1.079/1.278/1.464; L2/MPl min/med/max = 1.796/2.467/3.427
+        v_R min/med/max = 1.01e+13/2.49e+13/5.39e+13; M_U = 6.97e+15/2.08e+16/1.05e+17; alpha_U^-1 = 23.26/27.11/30.06; tau_p min/med = 1.41e+35/9.35e+36 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('126b:(6,3,1)_2/3', 0.45), ('210:(3,3,1)_4/3', 0.4), ('126b:(3,3,1)_-2/3', 0.36), ('126b:(3b,2,2)_-4/3', 0.35), ('126b:(3,2,2)_4/3', 0.3), ('126b:(1,3,1)_-2 Delta_L', 0.28)]
+   T3: n = 300/300; pass fraction 3L = 0.66, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.765/0.848/1.046/1.257/1.724; L2/MPl min/med/max = 1.715/2.359/3.388
+        v_R min/med/max = 1.06e+13/3.14e+13/5.99e+13; M_U = 7.02e+15/2.70e+16/2.00e+17; alpha_U^-1 = 21.79/26.27/29.44; tau_p min/med = 1.40e+35/2.49e+37 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('210:(3,3,1)_4/3', 0.48), ('126b:(6,3,1)_2/3', 0.44), ('126b:(3,2,2)_4/3', 0.4), ('126b:(3,3,1)_-2/3', 0.37), ('126b:(3b,2,2)_-4/3', 0.31), ('210:(3,1,3)_4/3', 0.26)]
+GUT scalars x1/2..x1 (unitarity-favoured half):
+   T2: n = 200/200; pass fraction 3L = 0.00, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.665/0.729/0.814/0.897/0.967; L2/MPl min/med/max = 1.554/1.876/2.204
+        v_R min/med/max = 1.83e+13/2.73e+13/4.45e+13; M_U = 8.64e+15/1.60e+16/2.78e+16; alpha_U^-1 = 25.48/26.94/28.50; tau_p min/med = 3.00e+35/3.25e+36 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('126b:(6,3,1)_2/3', 0.53), ('126b:(3,3,1)_-2/3', 0.43), ('210:(3,3,1)_4/3', 0.4), ('126b:(3,2,2)_4/3', 0.35), ('210:(3,2,2)_-2/3 phys', 0.31), ('126b:(1,3,1)_-2 Delta_L', 0.3)]
+   T3: n = 200/200; pass fraction 3L = 0.00, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.685/0.720/0.805/0.889/0.937; L2/MPl min/med/max = 1.532/1.809/2.091
+        v_R min/med/max = 1.99e+13/3.21e+13/5.81e+13; M_U = 1.13e+16/2.13e+16/4.74e+16; alpha_U^-1 = 23.85/26.20/27.95; tau_p min/med = 8.37e+35/9.53e+36 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('126b:(6,3,1)_2/3', 0.49), ('210:(3,3,1)_4/3', 0.45), ('126b:(3,2,2)_4/3', 0.38), ('126b:(3,3,1)_-2/3', 0.36), ('126b:(1,3,1)_-2 Delta_L', 0.34), ('126b:(3b,2,2)_-4/3', 0.32)]
+light multiplets at v_R x1/3..x3 (incl. W_R):
+   T2: n = 300/300; pass fraction 3L = 0.63, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.773/0.854/1.044/1.335/1.431; L2/MPl min/med/max = 1.798/2.422/3.297
+        v_R min/med/max = 1.02e+13/2.49e+13/5.95e+13; M_U = 1.13e+16/2.08e+16/3.63e+16; alpha_U^-1 = 25.37/27.10/28.82; tau_p min/med = 8.62e+35/9.13e+36 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('W_R+-', -0.91), ('(8,3)_0', 0.43), ('Delta_R++', 0.19), ('(1,3)_0', 0.14), ('second doublet', 0.05), ('(8,2)_-1/2', 0.03)]
+   T3: n = 300/300; pass fraction 3L = 0.62, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.796/0.856/1.058/1.292/1.406; L2/MPl min/med/max = 1.745/2.375/3.126
+        v_R min/med/max = 1.12e+13/3.14e+13/7.77e+13; M_U = 1.64e+16/2.90e+16/5.44e+16; alpha_U^-1 = 24.12/26.15/27.79; tau_p min/med = 3.60e+36/3.22e+37 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('W_R+-', -0.88), ('(8,3)_0', 0.34), ('Delta_R++', 0.24), ('(8,1)_0', -0.2), ('(8,2)_-1/2', -0.05), ('(8,2)_1/2', -0.02)]
+both combined:
+   T2: n = 400/400; pass fraction 3L = 0.61, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.652/0.781/1.046/1.425/1.612; L2/MPl min/med/max = 1.532/2.398/3.883
+        v_R min/med/max = 6.43e+12/2.57e+13/1.13e+14; M_U = 3.77e+15/2.06e+16/9.48e+16; alpha_U^-1 = 23.39/27.01/31.40; tau_p min/med = 1.33e+34/8.93e+36 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('W_R+-', -0.69), ('126b:(6,3,1)_2/3', 0.28), ('126b:(3,2,2)_4/3', 0.26), ('126b:(3,3,1)_-2/3', 0.23), ('(8,3)_0', 0.23), ('210:(3,3,1)_4/3', 0.2)]
+   T3: n = 400/400; pass fraction 3L = 0.58, 2L = 1.00; L3/MPl min/p05/med/p95/max = 0.636/0.782/1.048/1.462/1.778; L2/MPl min/med/max = 1.380/2.347/4.145
+        v_R min/med/max = 8.46e+12/2.85e+13/1.17e+14; M_U = 3.72e+15/2.99e+16/1.49e+17; alpha_U^-1 = 22.04/26.06/31.01; tau_p min/med = 1.23e+34/3.39e+37 yr
+        strongest correlations of ln Lambda_3L with ln(M_k/scale): [('W_R+-', -0.68), ('126b:(6,3,1)_2/3', 0.36), ('210:(3,3,1)_4/3', 0.36), ('(8,3)_0', 0.3), ('126b:(3,3,1)_-2/3', 0.29), ('126b:(3b,2,2)_-4/3', 0.28)]
+Coherent extremes (all heavy scalars x f_GUT, all light states x f_light):
+   T2 GUT x0.5  light x0.333: v_R = 8.469e+13, M_U = 1.269e+16, alpha_U^-1 = 26.806, L2/MPl = 1.458, L3/MPl = 0.632, tau_p = 1.25e+36
+   T2 GUT x0.5  light x1.000: v_R = 2.946e+13, M_U = 1.283e+16, alpha_U^-1 = 26.698, L2/MPl = 1.417, L3/MPl = 0.616, tau_p = 1.30e+36
+   T2 GUT x0.5  light x3.000: v_R = 1.023e+13, M_U = 1.296e+16, alpha_U^-1 = 26.594, L2/MPl = 1.380, L3/MPl = 0.601, tau_p = 1.34e+36
+   T2 GUT x1.0  light x0.333: v_R = 7.176e+13, M_U = 2.023e+16, alpha_U^-1 = 27.211, L2/MPl = 2.487, L3/MPl = 1.078, tau_p = 8.34e+36
+   T2 GUT x1.0  light x1.000: v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102, L2/MPl = 2.417, L3/MPl = 1.051, tau_p = 8.64e+36
+   T2 GUT x1.0  light x3.000: v_R = 8.685e+12, M_U = 2.066e+16, alpha_U^-1 = 27.000, L2/MPl = 2.355, L3/MPl = 1.026, tau_p = 8.93e+36
+   T2 GUT x2.0  light x0.333: v_R = 6.090e+13, M_U = 3.225e+16, alpha_U^-1 = 27.613, L2/MPl = 4.229, L3/MPl = 1.832, tau_p = 5.54e+37
+   T2 GUT x2.0  light x1.000: v_R = 2.118e+13, M_U = 3.260e+16, alpha_U^-1 = 27.502, L2/MPl = 4.109, L3/MPl = 1.785, tau_p = 5.75e+37
+   T2 GUT x2.0  light x3.000: v_R = 7.391e+12, M_U = 3.294e+16, alpha_U^-1 = 27.403, L2/MPl = 4.007, L3/MPl = 1.745, tau_p = 5.95e+37
+   T3 GUT x0.5  light x0.333: v_R = 9.696e+13, M_U = 1.684e+16, alpha_U^-1 = 26.030, L2/MPl = 1.425, L3/MPl = 0.632, tau_p = 3.66e+36
+   T3 GUT x0.5  light x1.000: v_R = 3.378e+13, M_U = 1.714e+16, alpha_U^-1 = 25.905, L2/MPl = 1.388, L3/MPl = 0.617, tau_p = 3.90e+36
+   T3 GUT x0.5  light x3.000: v_R = 1.174e+13, M_U = 1.744e+16, alpha_U^-1 = 25.786, L2/MPl = 1.353, L3/MPl = 0.604, tau_p = 4.14e+36
+   T3 GUT x1.0  light x0.333: v_R = 8.490e+13, M_U = 2.861e+16, alpha_U^-1 = 26.255, L2/MPl = 2.409, L3/MPl = 1.074, tau_p = 3.11e+37
+   T3 GUT x1.0  light x1.000: v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129, L2/MPl = 2.346, L3/MPl = 1.049, tau_p = 3.31e+37
+   T3 GUT x1.0  light x3.000: v_R = 1.028e+13, M_U = 2.966e+16, alpha_U^-1 = 26.008, L2/MPl = 2.287, L3/MPl = 1.026, tau_p = 3.52e+37
+   T3 GUT x2.0  light x0.333: v_R = 7.450e+13, M_U = 4.863e+16, alpha_U^-1 = 26.474, L2/MPl = 4.056, L3/MPl = 1.815, tau_p = 2.64e+38
+   T3 GUT x2.0  light x1.000: v_R = 2.596e+13, M_U = 4.954e+16, alpha_U^-1 = 26.347, L2/MPl = 3.948, L3/MPl = 1.773, tau_p = 2.81e+38
+   T3 GUT x2.0  light x3.000: v_R = 9.037e+12, M_U = 5.043e+16, alpha_U^-1 = 26.227, L2/MPl = 3.850, L3/MPl = 1.734, tau_p = 2.99e+38
+Bottom and middle of the window (combined GUT x1/2..x2 and light x1/3..x3 thresholds; 150 / 100 samples):
+   T2_Ms=3e12_Mphi=MU: pass2 = 0.53, pass3 = 0.00; L2/MPl min/p05/med/p95/max = [0.568, 0.713, 1.007, 1.408, 1.657]; L3/MPl min/med/max = [0.263, 0.481, 0.782]; v_R min/med/max = ['6.35e+12', '2.58e+13', '8.85e+13']; tau_p min/med = ['2.25e+34', '1.14e+37']
+   T2_Ms=3e12_Mphi=1e17: pass2 = 0.91, pass3 = 0.00; L2/MPl min/p05/med/p95/max = [0.907, 0.971, 1.25, 1.666, 2.055]; L3/MPl min/med/max = [0.414, 0.572, 0.966]; v_R min/med/max = ['5.93e+12', '2.28e+13', '1.04e+14']; tau_p min/med = ['4.74e+34', '7.75e+36']
+   T3_Ms=3e12_Mphi=MU: pass2 = 0.56, pass3 = 0.01; L2/MPl min/p05/med/p95/max = [0.622, 0.754, 1.051, 1.558, 2.18]; L3/MPl min/med/max = [0.294, 0.503, 1.085]; v_R min/med/max = ['1.10e+13', '3.05e+13', '1.04e+14']; tau_p min/med = ['1.19e+35', '3.15e+37']
+   T3_Ms=3e12_Mphi=1e17: pass2 = 0.97, pass3 = 0.01; L2/MPl min/p05/med/p95/max = [0.957, 1.024, 1.333, 1.744, 2.092]; L3/MPl min/med/max = [0.414, 0.618, 1.006]; v_R min/med/max = ['8.94e+12', '3.36e+13', '1.17e+14']; tau_p min/med = ['9.70e+34', '2.94e+37']
+   T2_Ms=5e+12_Mphi=1e17: pass2 = 1.00, pass3 = 0.07; L2/MPl min/p05/med/p95/max = [1.163, 1.231, 1.681, 2.423, 2.649]; L3/MPl min/med/max = [0.49, 0.756, 1.247]; v_R min/med/max = ['6.65e+12', '2.56e+13', '9.44e+13']; tau_p min/med = ['2.51e+34', '1.22e+37']
+   T2_Ms=7e+12_Mphi=1e17: pass2 = 1.00, pass3 = 0.29; L2/MPl min/p05/med/p95/max = [1.393, 1.523, 2.014, 2.677, 2.84]; L3/MPl min/med/max = [0.629, 0.903, 1.28]; v_R min/med/max = ['7.83e+12', '2.58e+13', '9.10e+13']; tau_p min/med = ['1.24e+34', '9.48e+36']
+   T3_Ms=5e+12_Mphi=1e17: pass2 = 1.00, pass3 = 0.03; L2/MPl min/p05/med/p95/max = [1.197, 1.302, 1.668, 2.044, 2.195]; L3/MPl min/med/max = [0.543, 0.767, 1.034]; v_R min/med/max = ['9.45e+12', '2.96e+13', '1.28e+14']; tau_p min/med = ['1.21e+35', '2.37e+37']
+   T3_Ms=7e+12_Mphi=1e17: pass2 = 1.00, pass3 = 0.22; L2/MPl min/p05/med/p95/max = [1.403, 1.563, 1.873, 2.951, 3.39]; L3/MPl min/med/max = [0.601, 0.85, 1.494]; v_R min/med/max = ['1.28e+13', '2.95e+13', '1.06e+14']; tau_p min/med = ['9.59e+34', '3.99e+37']
+
+9. Systematics at M_s = 1e13, Phi at 1e17, c = 0 [NUM / EST]
+------------------------------------------------------------------------------
+T2:
+   nominal                                   : L3/MPl = 1.0506, L2/MPl = 2.4171; v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102
+   u1x_feedback_alphaX_inv_MPl=1             : L3/MPl = 1.0304, L2/MPl = 1.1368; v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102
+   u1x_feedback_alphaX_inv_MPl=12.6          : L3/MPl = 1.0310, L2/MPl = 1.1530; v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102
+   u1x_feedback_alphaX_inv_MPl=10            : L3/MPl = 1.0309, L2/MPl = 1.1494; v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102
+   b3_x0.5                                   : L3/MPl = 1.5107
+   b3_x0.75                                  : L3/MPl = 1.2479
+   b3_x1.25                                  : L3/MPl = 0.8981
+   b3_x1.5                                   : L3/MPl = 0.7774
+   dlnLambda_dalphaUinv_2L                   : 0.34262516147353494
+   dlnLambda_dalphaUinv_3L                   : 0.32077810524260997
+   term_ratio_3L_over_2L_at_MPl              : 0.9799230160923385
+   term_ratio_2L_over_1L_at_MPl              : 10.264609241289836
+   alpha_inv_MPl_3L                          : 3.5211367533006466
+   sm_g3221_pure_3loop                       : L3/MPl = 1.0592, L2/MPl = 2.4315; v_R = 2.510e+13, M_U = 2.118e+16, alpha_U^-1 = 27.032
+   2HDM_below_vR                             : L3/MPl = 0.7137, L2/MPl = 1.7402; v_R = 2.773e+13, M_U = 6.749e+15, alpha_U^-1 = 28.845
+   Mphi=1.25e+17                             : L3/MPl = 1.0840, L2/MPl = 2.5061; v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102
+   Mphi=3.5e+17                              : L3/MPl = 1.2524, L2/MPl = 2.9920; v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102
+   Mphi=1e+10                                : L3/MPl = 0.8359, L2/MPl = 1.8737; v_R = 2.496e+13, M_U = 2.045e+16, alpha_U^-1 = 27.102
+   alpha_s+1sig                              : L3/MPl = 1.0728, L2/MPl = 2.4530; v_R = 2.528e+13, M_U = 2.252e+16, alpha_U^-1 = 26.906
+   alpha_s-1sig                              : L3/MPl = 1.0289, L2/MPl = 2.3819; v_R = 2.465e+13, M_U = 1.854e+16, alpha_U^-1 = 27.301
+T3:
+   nominal                                   : L3/MPl = 1.0488, L2/MPl = 2.3457; v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129
+   u1x_feedback_alphaX_inv_MPl=1             : L3/MPl = 0.9697, L2/MPl = 1.0320; v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129
+   u1x_feedback_alphaX_inv_MPl=12.6          : L3/MPl = 0.9809, L2/MPl = 1.0469; v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129
+   u1x_feedback_alphaX_inv_MPl=10            : L3/MPl = 0.9784, L2/MPl = 1.0436; v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129
+   b3_x0.5                                   : L3/MPl = 1.4877
+   b3_x0.75                                  : L3/MPl = 1.2374
+   b3_x1.25                                  : L3/MPl = 0.9024
+   b3_x1.5                                   : L3/MPl = 0.7861
+   dlnLambda_dalphaUinv_2L                   : 0.3345279387666693
+   dlnLambda_dalphaUinv_3L                   : 0.3117848598988644
+   term_ratio_3L_over_2L_at_MPl              : 0.9932532689127359
+   term_ratio_2L_over_1L_at_MPl              : 10.404242492108477
+   alpha_inv_MPl_3L                          : 3.4738802834698737
+   sm_g3221_pure_3loop                       : L3/MPl = 1.0588, L2/MPl = 2.3621; v_R = 2.977e+13, M_U = 3.032e+16, alpha_U^-1 = 26.049
+   2HDM_below_vR                             : L3/MPl = 0.7024, L2/MPl = 1.6762; v_R = 3.180e+13, M_U = 8.942e+15, alpha_U^-1 = 28.066
+   Mphi=1.25e+17                             : L3/MPl = 1.0821, L2/MPl = 2.4319; v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129
+   Mphi=3.5e+17                              : L3/MPl = 1.2502, L2/MPl = 2.9013; v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129
+   Mphi=1e+10                                : L3/MPl = 0.8800, L2/MPl = 1.9283; v_R = 2.958e+13, M_U = 2.914e+16, alpha_U^-1 = 26.129
+   alpha_s+1sig                              : L3/MPl = 1.0728, L2/MPl = 2.3835; v_R = 3.003e+13, M_U = 3.225e+16, alpha_U^-1 = 25.919
+   alpha_s-1sig                              : L3/MPl = 1.0254, L2/MPl = 2.3088; v_R = 2.914e+13, M_U = 2.629e+16, alpha_U^-1 = 26.341
+
+10. Proton decay [NUM / EST]
+----------------------------
+Gauge d = 6, repository normalisation tau = (4/pi)(f_pi^2/m_p) M_X^4 alpha_U^-2 /(alpha_H^2 A_R^2 F_q) with f_pi = 0.139,
+alpha_H = 0.012, A_R = 2.726, F_q = 7.6, M_X = M_U ((3,2,2) vectors): nominal T2 8.6e36 yr, T3 3.3e37 yr (M_s = 1e13;
+8.2e36-9.3e36 and 3.1e37-3.6e37 over the M_s window).  Super-K p -> e+ pi0 limit 2.4e34 yr: margins x360 / x1400.
+The SO(10) (3,2,2) contains both X,Y and X',Y'; the repository formula is SU(5)-like, so the true rate can be up to ~2x
+larger (EST), still > 1e36 yr.  Threshold Monte Carlo at M_s = 1e13: tau_p median 8.9e36 (T2) / 3.4e37 (T3); fraction
+below Super-K 0.5% / 0.25% (combined GUT x1/2..x2 and light x1/3..x3; those samples have M_U -> 3.7e15), 0% in the
+GUT-only and light-only scans; below the Hyper-K reach (1e35 yr) 1.5% / 0.25%.  At M_s = 3e12 with the Phi pair at
+M_U the worst sampled point reaches 2.2e34 yr (M_U ~ 1.2e16).  Proton decay therefore PASSES except in an adverse-
+threshold corner (NUM).
+Scalar-mediated channels: none of the tuned light multiplets ((1,2,2), Delta_R, (8,2,2)_0, (8,3,1)_0, (1,3,1)_0, (8,1,1)_0)
+has a B-violating renormalisable coupling ((8,2,2) couples Q_L Q_R-bar, B-conserving; the 210 pieces have no 16.16
+couplings; Delta_R is Delta L = 2 only).  The colour triplets of 10_H and 126bar sit at M_U x (1/2..2); their d = 6
+amplitude relative to the gauge one is ~ (Y_u1 Y_d1/g^2)(M_X/M_T)^2 ~ 1e-9, i.e. a negligible rate (EST).
+
+11. What decides the gate, and the verdict
+-----------------------------------------
+TWO LOOPS (MV gauge + two-loop Yukawa terms, one-loop thresholds).  Unification exists for T2 and T3 everywhere in the
+window; Lambda_2L = 1.03-2.4 M_Pl,red at nominal thresholds (1.03 only for M_s = 3e12 with the Phi pair at M_U;
+1.3-2.4 for M_Phi >= 1e17).  The Planck operator never breaks it (min 2.0 (T2) / 1.8 (T3) M_Pl,red over the whole
+c-scan at M_s = 1e13).  Combined threshold Monte Carlo (GUT x1/2..x2, light x1/3..x3): two-loop pass fraction 100% at
+M_s = 1e13 (min 1.53 / 1.38 M_Pl), 100% at 7e12 (min 1.39 / 1.40) and 5e12 (min 1.16 / 1.20), 91-97% at 3e12 with
+Phi at 1e17 (min 0.91 / 0.96) and 53-56% at 3e12 with Phi at M_U (min 0.57 / 0.62).  Under a declared TWO-LOOP
+convention the gate would be PASSED robustly for M_s >= 5e12 (all c, all thresholds, Phi pair >= 1e17) and
+marginally at the bottom of the window.
+THREE LOOPS (gauge + matter b3; two-loop Yukawa terms included; three-loop Yukawa/quartic terms unavailable).
+Nominal (c = 0, all thresholds at scale): Lambda_3L/M_Pl,red = 1.051 (T2) / 1.049 (T3) at M_s = 1e13 with M_Phi = 1e17;
+1.084 / 1.082 at M_Phi = 1.25e17 (the a0 <= 1/2 limit of y_phi); 0.836 / 0.880 with the Phi pair at M_U; the crossing
+Lambda_3L = M_Pl,red lies at M_s = 9.0e12 (M_Phi = 1e17) / 8.5e12 (1.25e17) for both contents, i.e. only the top
+10-15% of the declared window [3e12, 1e13] passes nominally; M_s = 2e13 would give 1.5 and 3.6e13 (the quality x
+unitarity cap) 2.1, outside the declared window.  The sign of Lambda_3L - M_Pl,red is set by:
+  (i)  the Planck gauge-kinetic coefficient c.  With physical solutions (v_R in [8e12, 1e14], M_U <= 1e17) the three-
+       loop test passes for EVERY 210 orientation (th, s) only for c in [-0.3, +0.1] (T2) and [-0.2, 0.0] (T3); c = +0.2
+       (T2) / +0.1 (T3) already fails for some orientations.  Sensitivities at c = 0 over the orientations:
+       d ln Lambda_3L/dc in [-0.44, +0.05] (T2), [-0.65, +0.09] (T3); d ln v_R/dc in [-1.2, +0.8] / [-1.5, +1.0];
+       d ln M_U/dc in [-1.8, +0.9] / [-2.7, +1.4]; d alpha_U^-1/dc in [-2.3, +3.6] / [-3.6, +5.6]; per unit c the
+       largest |Delta alpha_i^-1| is 0.7-1.2 (T2) / 0.9-1.6 (T3) units.  So c = 0.1 moves Lambda_3L by up to -4.4% /
+       -6.5%, v_R by x1.1-1.2 and M_U by up to x1.3: comparable to or larger than the +5% margin.  Beyond |c| ~ 0.3-0.5
+       the continuation leaves the physical region (M_U up to 6e19, v_R 1e10-1e16) or finds no perturbative solution.
+       c is a UV input (|c| ~ 1 is the naive expectation, LIT-abstract 0805.0145, 1006.1252): the three-loop result is
+       undecidable without the assumption |c| <~ 0.1.
+  (ii) the GUT-scale scalar spectrum (not computable: G3 BLOCKED).  x1/2..x2: three-loop pass fraction 75% (T2) / 66%
+       (T3), Lambda_3L/M_Pl 5-95% = 0.89-1.28 / 0.85-1.26; the sign is set mostly by the universal part (coherent x2:
+       1.79 / 1.77; coherent x1/2: 0.62 / 0.62), the strongest single states being 126bar (6,3,1), (3,3,1), (3,2,2) and
+       210 (3,3,1) (correlations 0.3-0.5).  In the unitarity-favoured half x1/2..x1 (masses from self-quartics with
+       a0 <= 1/2, section 5) the pass fraction is 0% for both contents (max 0.97 / 0.94, median 0.81 / 0.81): a three-
+       loop pass needs GUT scalars heavier than the gauge bosons, i.e. quartics lambda >~ g^2 ~ 0.5 on the 210/126bar,
+       for which the EST singlet-channel a0 ~ lambda (n+2)/(16 pi) ~ 2 (NUM for the running, EST for the unitarity
+       normalisation; K3 must settle it with the exact partial-wave machinery).
+  (iii) the light thresholds (x1/3..x3): pass fraction 63% / 62% (5-95%: 0.85-1.34 / 0.86-1.29), dominated by the W_R
+       mass (correlation -0.9: a heavier W_R lowers Lambda); combined with (ii): 61% / 58% at M_s = 1e13 (5-95%:
+       0.78-1.43 / 0.78-1.46), 29% / 22% at 7e12, 7% / 3% at 5e12, 0-1% at 3e12 (Phi at 1e17).
+  (iv) the uncomputed four-loop gauge term.  On the three-loop trajectory 2L/1L = 1.33 already at M_U (alpha_U^-1 = 27:
+       b2/b1 = 454) and 10.3 at M_Pl,red; 3L/2L = 0.13 at M_U, 0.35 at 1.39e18 (alpha_10^-1 = 10), 0.50 at 1.97e18
+       (alpha_10^-1 = 6.9) and 0.98-0.99 at M_Pl,red (alpha_10^-1 = 3.5): the loop expansion of the scalar-heavy SO(10)
+       phase is two-loop dominated from M_U up and has broken down (equal successive terms) at M_Pl,red, so the
+       three-loop Lambda is not a controlled quantity.  The b3 x0.75 / x1.25 proxy for a four-loop term of +-25% of the
+       three-loop one moves Lambda_3L/M_Pl to 1.25 / 0.90 (T2) and 1.24 / 0.90 (T3); x0.5 / x1.5: 1.51 / 0.78.
+  (v)  the two-loop GUT/v_R threshold corrections (not computed): differential <= 0.05 units, coherent <= 0.3 units of
+       alpha_i^-1 for a x2 spectrum -> <= 1-7% on Lambda (EST, k1_twoloop_threshold_est.json; d ln Lambda/d alpha_U^-1 =
+       0.32-0.34).
+  (vi) three-loop Yukawa terms (EST < 0.5% of b3) and three-loop quartic terms (EST a few % of b3 under a0 <= 1/2;
+       up to 20% for O(1) quartics, the critic's estimate): below (iv).
+  (vii) U(1)_X feedback (two-loop cross term b_10X = 2060 with U(1)_X at alpha_X(M_Pl,red) = 1, 0.1 or 1/4pi; the
+       result is insensitive to which because b_X/(2 pi) ln(M_Pl/mu) dominates alpha_X^-1): Lambda_3L -> 1.030 (T2,
+       -2%) / 0.970-0.981 (T3, -7%); negligible if g_X is well below its bound.  Product-group pure three-loop terms in
+       the SM/G3221 phases: +0.8% on Lambda_3L, +3.6-4% on M_U (EST).  alpha_s +-1 sigma: +-2%.  A light second doublet
+       (2HDM below v_R, NOT the declared configuration): 0.71 / 0.70.
+VERDICT: UNDECIDED.
+  Not FAIL: the window has two-loop passes with margins up to x2.4 that survive every scanned threshold and every c,
+  and the three-loop test passes (nominal thresholds) for the non-empty c-range [-0.3, +0.1] (T2) / [-0.2, 0] (T3) at
+  M_s in [9e12, 1e13] with the Phi pair at >= 1e17 (margin +5-8%).
+  Not PASS: the three-loop margin is +5% and flips sign under each of (i)-(iv) separately, all of which are uncomputed
+  or unknowable terms larger than the margin; in particular (ii) with the unitarity-favoured spectrum gives 0% and (iv)
+  shows the expansion is out of control at M_Pl,red.  "Robust" cannot be claimed at three loops; a three-loop pass
+  requires simultaneously M_s >= 9e12 (y_s >= 0.31-0.35), M_Phi >= 1e17, c in [-0.2, 0] and a GUT spectrum heavier
+  than the gauge bosons (coherent x1.0-x2).
+  Perturbativity-based cut (user option U2b): FAILS: 2L/1L > 1 from M_U upward and 3L/2L = 0.5 at 1.97e18 < M_Pl,red.
+  Two-loop convention (U2b): PASS for M_s >= 5e12 and M_Phi >= 1e17 (100% of thresholds, all c), marginal at 3e12.
+Named missing computations that would decide the three-loop sign: (1) the GUT-scale spectrum from an actual G3221
+vacuum with the exact a0 (K3/K4); (2) the four-loop SO(10) gauge term, or a declared loop-order convention; (3) the
+two-loop threshold matching at M_U and v_R; (4) an assumption on the Planck coefficient (|c| <= 0.1); (5) the three-
+loop quartic terms with the actual quartics; (6) the actual g_X (U(1)_X feedback).
+
+12. Axion band implied (section 5) and consistency of the window
+----------------------------------------------------------------
+At the three-loop point (M_s = 1e13, <S> = <S>_max = 2.9e13, y_s = 0.345): f_a = 2.41e12 GeV, m_a = 2.37 ueV (2.0 ueV in
+convention B, 2.18 with <Phi17> = 1e17/sqrt2), DFSZ-I-like coupling (E/N = 8/3), g_agg ~ 3.4e-16 GeV^-1 (EST).  It sits
+just below the ADMX DFSZ band 2.66-3.34 ueV because <S> is at its quality maximum; y_s = 0.388 (m_a = 2.66 ueV) enters
+the band; the next open DFSZ windows at M_s = 1e13 are y_s in [0.49, 0.57] (3.34-3.9 ueV), [0.60, 0.66] (4.1-4.51) and
+[0.67, 1.25] (4.59-8.6 ueV), where larger y_s is also what the quality bound prefers.  Across the M_s window the implied
+band is 2.37-28.6 ueV (unit Wilson coefficient; an O(1) coefficient c21 rescales the lower edge by c21^(1/17)).  The RG
+results depend on y_s only through the 14 y_s^2 Yukawa term (< 0.1%), so the axion-mass choice is free within the
+window.  Pre-inflation PQ breaking is required (FINAL), and T_RH << M_s because of the stable R-odd tensor fermion.
+
+13. Configuration refinements fixed by K1 for the other gates
+------------------------------------------------------------
+- Three-loop-viable sub-window (c = 0, nominal thresholds): M_s in [9.0e12, 1e13] (y_s in [0.31-0.35, 0.39]; quality
+  minimum 0.345 (A) / 0.29 (B); DFSZ-free up to 0.388 or in [0.49, 0.57], [0.60, 0.66], [0.67, 1.25]), the Phi pair at
+  M_Phi in [1e17, 1.25e17] (y_phi in [1, 1.25]), Planck coefficient c in [-0.3, +0.1] (T2) / [-0.2, 0] (T3), GUT
+  scalars at or above M_U.  Outputs there: T2 v_R = 2.50e13, M_U = 2.05e16, alpha_U^-1 = 27.10, Lambda_2L = 5.9e18
+  (2.42 M_Pl), Lambda_3L = 2.56e18 (1.05), tau_p = 8.6e36 yr; T3 v_R = 2.96e13, M_U = 2.91e16, alpha_U^-1 = 26.13,
+  Lambda_2L = 5.7e18 (2.35), Lambda_3L = 2.55e18 (1.05), tau_p = 3.3e37 yr; m_a = 2.37-2.66 ueV.
+- Two-loop-viable window: M_s in [5e12, 1e13] robust (100% of thresholds, all c, M_Phi >= 1e17); 3e12: 91-97% /
+  53-56% (M_Phi = 1e17 / M_U).
+- Thresholds for K3: heavier GUT scalars raise Lambda (coherent x2: 1.8 M_Pl; x1/2: 0.62); the unitarity-favoured
+  x1/2..x1 spectrum never passes at three loops; a heavier W_R lowers Lambda (light-threshold correlation -0.9).
+- U(1)_X: g_X(1e17) <= 0.076 (alpha_X <= 1 at M_Pl,red); an SO(10)-like g_X poles at 1.04e17; the feedback on the
+  SO(10) Landau scale at the bound is -2% (T2) / -7% (T3).
+- For K2 (flavour): v_R = 2.5-3.0e13 and M_U = 2.0-2.9e16 at c = 0, but x(0.9-1.2) and x(0.8-1.3) per 0.1 of c, and v_R
+  spans 0.6-1.2e14 .. 6e12 over the light-threshold scan (W_R mass); any G8 fit at M_U inherits these.
+- The Y126 two-loop term is +0.4-2.2% on Lambda_3L for Y126_33 = 0-1 (exact norm 63/4 Tr Y126^2); Y10: 10 Tr Y10^2.
+- The light second doublet must NOT be below v_R (2HDM below v_R gives Lambda_3L = 0.71 M_Pl and M_U = 7-9e15).

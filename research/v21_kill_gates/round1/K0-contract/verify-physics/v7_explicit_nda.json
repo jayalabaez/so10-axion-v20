@@ -1,0 +1,269 @@
+{
+ "anomalies": {
+  "SO10^2 X": "0",
+  "grav X": "0",
+  "X^3": "0"
+ },
+ "E_operators": [
+  {
+   "mult": 2,
+   "fields": [
+    "Vec1*",
+    "Vec3*",
+    "H10",
+    "S*"
+   ],
+   "X_sum": "0",
+   "centre_mod4": "0",
+   "dim": "5",
+   "so10_singlets": "1",
+   "lorentz_scalar_no_derivative": "True"
+  },
+  {
+   "mult": 2,
+   "fields": [
+    "Vec1bar*",
+    "Vec2bar*",
+    "H10",
+    "S*",
+    "Phi17"
+   ],
+   "X_sum": "0",
+   "centre_mod4": "0",
+   "dim": "6",
+   "so10_singlets": "1",
+   "lorentz_scalar_no_derivative": "True"
+  },
+  {
+   "mult": 2,
+   "fields": [
+    "Vec2*",
+    "Vec2*",
+    "H10",
+    "S*"
+   ],
+   "X_sum": "0",
+   "centre_mod4": "0",
+   "dim": "5",
+   "so10_singlets": "1",
+   "lorentz_scalar_no_derivative": "True"
+  },
+  {
+   "mult": 1,
+   "fields": [
+    "Vec2bar*",
+    "Vec2bar*",
+    "Vec3bar*",
+    "Vec3bar*",
+    "Phi17",
+    "Phi17"
+   ],
+   "X_sum": "0",
+   "centre_mod4": "0",
+   "dim": "8",
+   "so10_singlets": "2",
+   "lorentz_scalar_no_derivative": "True"
+  }
+ ],
+ "E_closure": {
+  "chirality_balance": {
+   "Vec1": 0,
+   "Vec3": 0,
+   "Vec1bar": 0,
+   "Vec2bar": 0,
+   "Vec2": 0,
+   "Vec3bar": 0
+  },
+  "vev_monomial": {
+   "S": -17,
+   "Phi17": 4
+  },
+  "K": 12,
+  "fermion_fields": 32,
+  "H10_propagators": 6,
+  "vertices": 18,
+  "loops": 5
+ },
+ "C_operators": [
+  {
+   "mult": 1,
+   "fields": [
+    "Vec1bar*",
+    "Vec2*",
+    "S*",
+    "S*",
+    "S*",
+    "S*",
+    "Phi17"
+   ],
+   "X_sum": "0",
+   "centre_mod4": "0",
+   "dim": "8",
+   "so10_singlets": "1",
+   "lorentz_scalar_no_derivative": "True"
+  },
+  {
+   "mult": 2,
+   "fields": [
+    "Vec2bar*",
+    "Vec3*",
+    "S*",
+    "S*",
+    "S*",
+    "S*",
+    "Phi17"
+   ],
+   "X_sum": "0",
+   "centre_mod4": "0",
+   "dim": "8",
+   "so10_singlets": "1",
+   "lorentz_scalar_no_derivative": "True"
+  },
+  {
+   "mult": 1,
+   "fields": [
+    "Vec1*",
+    "Vec2*",
+    "Vec3bar*",
+    "Vec3bar*",
+    "Phi17"
+   ],
+   "X_sum": "0",
+   "centre_mod4": "0",
+   "dim": "7",
+   "so10_singlets": "3",
+   "lorentz_scalar_no_derivative": "True"
+  }
+ ],
+ "C_closure": {
+  "chirality_balance": {
+   "Vec1bar": 0,
+   "Vec2": 0,
+   "Vec2bar": 0,
+   "Vec3": 0,
+   "Vec1": 0,
+   "Vec3bar": 0
+  },
+  "vev_monomial": {
+   "S": -17,
+   "Phi17": 4
+  },
+  "K": 15,
+  "fermion_fields": 20,
+  "H10_propagators": 0,
+  "vertices": 9,
+  "loops": 2
+ },
+ "kappa_from_repository_convention": {
+  "v_R=2.5e+13": {
+   "kappa_GeV": 6250000000000.0,
+   "M_H^2=4|kappa|<S> at <S>=3.3e13": 8.25e+26,
+   "M_H_GeV": 28722813232690.14
+  },
+  "v_R=3.4e+13": {
+   "kappa_GeV": 8500000000000.0,
+   "M_H^2=4|kappa|<S> at <S>=3.3e13": 1.122e+27,
+   "M_H_GeV": 33496268448888.453
+  }
+ },
+ "nda_table": {
+  "Ms=1e+13 ys=0.304": {
+   "closure_E": {
+    "<S>": 32894736842105.266,
+    "log10_V_GeV4": -5.430417715473254,
+    "log10_dtheta": -0.9422055219900072,
+    "log10_dtheta_researcher_accounting": 0.6091737271837419
+   },
+   "closure_C": {
+    "<S>": 32894736842105.266,
+    "mu_mixing_GeV": 0.0033305028019320186,
+    "log10_V_GeV4": -10.988806942653227,
+    "log10_dtheta": -6.50059474916998,
+    "log10_dtheta_with_log_enhancement_ln(MPl^2/Ms^2)": -5.106042484028788
+   },
+   "log10_dtheta_declared_tree": -9.990091146562708
+  },
+  "Ms=1e+13 ys=0.350": {
+   "closure_E": {
+    "<S>": 28571428571428.574,
+    "log10_V_GeV4": -5.797584479922392,
+    "log10_dtheta": -1.309372286439145,
+    "log10_dtheta_researcher_accounting": 0.05842358050999241
+   },
+   "closure_C": {
+    "<S>": 28571428571428.574,
+    "mu_mixing_GeV": 0.0018955356658403389,
+    "log10_V_GeV4": -11.723140471551488,
+    "log10_dtheta": -7.234928278068242,
+    "log10_dtheta_with_log_enhancement_ln(MPl^2/Ms^2)": -5.8403760129270506
+   },
+   "log10_dtheta_declared_tree": -11.030396979168547
+  },
+  "Ms=1e+13 ys=0.374": {
+   "closure_E": {
+    "<S>": 26737967914438.504,
+    "log10_V_GeV4": -5.970405827023626,
+    "log10_dtheta": -1.482193633540379,
+    "log10_dtheta_researcher_accounting": -0.20080844014178734
+   },
+   "closure_C": {
+    "<S>": 26737967914438.504,
+    "mu_mixing_GeV": 0.0014538437339621678,
+    "log10_V_GeV4": -12.068783165753944,
+    "log10_dtheta": -7.580570972270697,
+    "log10_dtheta_with_log_enhancement_ln(MPl^2/Ms^2)": -6.186018707129506
+   },
+   "log10_dtheta_declared_tree": -11.520057462622066
+  },
+  "Ms=3e+12 ys=0.091": {
+   "closure_E": {
+    "<S>": 32967032967032.97,
+    "log10_V_GeV4": -8.561969511111329,
+    "log10_dtheta": -4.073757317628082,
+    "log10_dtheta_researcher_accounting": 0.6177547412495814
+   },
+   "closure_C": {
+    "<S>": 32967032967032.97,
+    "mu_mixing_GeV": 0.003359878613604815,
+    "log10_V_GeV4": -12.546001826406368,
+    "log10_dtheta": -8.057789632923122,
+    "log10_dtheta_with_log_enhancement_ln(MPl^2/Ms^2)": -6.623002198808962
+   },
+   "log10_dtheta_declared_tree": -9.973882564438231
+  },
+  "Ms=3e+12 ys=0.200": {
+   "closure_E": {
+    "<S>": 15000000000000.0,
+    "log10_V_GeV4": -10.613901131168689,
+    "log10_dtheta": -6.1256889376854415,
+    "log10_dtheta_researcher_accounting": -2.460142688836373
+   },
+   "closure_C": {
+    "<S>": 15000000000000.0,
+    "mu_mixing_GeV": 0.00014400221555792764,
+    "log10_V_GeV4": -16.64986506652102,
+    "log10_dtheta": -12.161652873037772,
+    "log10_dtheta_with_log_enhancement_ln(MPl^2/Ms^2)": -10.726865438923614
+   },
+   "log10_dtheta_declared_tree": -15.787688821267256
+  },
+  "Ms=3e+12 ys=0.350": {
+   "closure_E": {
+    "<S>": 8571428571428.572,
+    "log10_V_GeV4": -12.072129423286441,
+    "log10_dtheta": -7.583917229803194,
+    "log10_dtheta_researcher_accounting": -4.647485127013016
+   },
+   "closure_C": {
+    "<S>": 8571428571428.572,
+    "mu_mixing_GeV": 1.5353838893306746e-05,
+    "log10_V_GeV4": -19.566321650756553,
+    "log10_dtheta": -15.078109457273305,
+    "log10_dtheta_with_log_enhancement_ln(MPl^2/Ms^2)": -13.643322023159145
+   },
+   "log10_dtheta_declared_tree": -19.91933564893431
+  }
+ },
+ "closure_C_orders_above_1e-10_at_1e13_0.374": 2.4194290277293033,
+ "closure_E_orders_above_1e-10_at_1e13_0.374": 8.51780636645962
+}

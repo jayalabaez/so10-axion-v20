@@ -1,0 +1,248 @@
+{
+ "label": "K0b_A48_a-16_1_18_c2_p-22",
+ "R_parity": {
+  "R_odd_fermions": [
+   "T",
+   "N1",
+   "N1b",
+   "N2b",
+   "N3",
+   "N3b",
+   "N4",
+   "N4b"
+  ],
+  "R_even_fermions": [
+   "F",
+   "V1",
+   "Vb1",
+   "Vb2",
+   "V3",
+   "Vb3",
+   "P",
+   "Pb"
+  ]
+ },
+ "sectors": [
+  {
+   "generator": "f1",
+   "members": [
+    "V1",
+    "Vb1",
+    "V3",
+    "Vb3"
+   ],
+   "charges": {
+    "V1": 1,
+    "Vb1": -1,
+    "V3": -1,
+    "Vb3": 1
+   },
+   "mass_scale_GeV": 10000000000000.0,
+   "R_odd": false,
+   "operators": {
+    "f=+1,nf=2": {
+     "dimension": "5",
+     "operator": "F V1 Delta Phi17",
+     "singlets": 1,
+     "Gamma_GeV": 4560461105.793757,
+     "tau_s": 1.4432751090976336e-34,
+     "tau_over_age": 3.3178738140175486e-52,
+     "heuristic_forbids": []
+    },
+    "f=+1,nf=4": {
+     "dimension": "7",
+     "operator": "F V3^ N1 N1^ Phi17",
+     "singlets": 1,
+     "Gamma_GeV": 8.058521332444174e-16,
+     "tau_s": 8.167751537121835e-10,
+     "tau_over_age": 1.877644031522261e-27,
+     "heuristic_forbids": []
+    },
+    "f=-1,nf=2": {
+     "dimension": "5",
+     "operator": "F^ Vb3^ S Phi17^",
+     "singlets": 1,
+     "Gamma_GeV": 6071619815.405892,
+     "tau_s": 1.0840599708333333e-34,
+     "tau_over_age": 2.49209188697318e-52,
+     "heuristic_forbids": []
+    },
+    "f=-1,nf=4": {
+     "dimension": "7",
+     "operator": "Vb2 Vb3^ N3 N3^ Phi17^",
+     "singlets": 1,
+     "Gamma_GeV": 8.058521332444174e-16,
+     "tau_s": 8.167751537121835e-10,
+     "tau_over_age": 1.877644031522261e-27,
+     "heuristic_forbids": []
+    }
+   }
+  },
+  {
+   "generator": "f2",
+   "members": [
+    "P",
+    "Pb"
+   ],
+   "charges": {
+    "P": 1,
+    "Pb": -1
+   },
+   "mass_scale_GeV": 1e+17,
+   "R_odd": false,
+   "operators": {
+    "f=+1,nf=2": {
+     "dimension": "12",
+     "operator": "F^ Pb^ S^^7 Phi17^2",
+     "singlets": 1,
+     "Gamma_GeV": 1.2524895428580876e-56,
+     "tau_s": 5.255133695551954e+31,
+     "tau_over_age": 120807671162113.89,
+     "heuristic_forbids": []
+    },
+    "f=+1,nf=4": {
+     "dimension": "13",
+     "operator": "Vb2^^3 Pb^ S^^5 Phi17^2",
+     "singlets": 2,
+     "Gamma_GeV": 1.0951669281484253e-47,
+     "tau_s": 6.0100426983565355e+22,
+     "tau_over_age": 138161.9011116445,
+     "heuristic_forbids": []
+    },
+    "f=-1,nf=2": {
+     "dimension": "12",
+     "operator": "F Pb S^7 Phi17^^2",
+     "singlets": 1,
+     "Gamma_GeV": 1.2524895428580876e-56,
+     "tau_s": 5.255133695551954e+31,
+     "tau_over_age": 120807671162113.89,
+     "heuristic_forbids": []
+    },
+    "f=-1,nf=4": {
+     "dimension": "13",
+     "operator": "Vb1 Vb2 Vb3 Pb S^5 Phi17^^2",
+     "singlets": 2,
+     "Gamma_GeV": 1.0951669281484253e-47,
+     "tau_s": 6.0100426983565355e+22,
+     "tau_over_age": 138161.9011116445,
+     "heuristic_forbids": []
+    }
+   }
+  },
+  {
+   "generator": "f3",
+   "members": [
+    "N1",
+    "N1b",
+    "N2b"
+   ],
+   "charges": {
+    "N1": 1,
+    "N1b": -1,
+    "N2b": -1
+   },
+   "mass_scale_GeV": 1e+17,
+   "R_odd": true,
+   "operators": {
+    "f=+1,nf=2": null,
+    "f=+1,nf=4": {
+     "dimension": "7",
+     "operator": "F^ Vb2 T N1b^ S",
+     "singlets": 1,
+     "Gamma_GeV": 0.007252669199199758,
+     "tau_s": 9.075279485690925e-23,
+     "tau_over_age": 2.086271146135845e-40,
+     "heuristic_forbids": []
+    },
+    "f=-1,nf=2": null,
+    "f=-1,nf=4": {
+     "dimension": "7",
+     "operator": "F Vb2^ T^ N1b S^",
+     "singlets": 1,
+     "Gamma_GeV": 0.007252669199199758,
+     "tau_s": 9.075279485690925e-23,
+     "tau_over_age": 2.086271146135845e-40,
+     "heuristic_forbids": []
+    }
+   }
+  },
+  {
+   "generator": "f4",
+   "members": [
+    "N3",
+    "N3b"
+   ],
+   "charges": {
+    "N3": 1,
+    "N3b": -1
+   },
+   "mass_scale_GeV": 10000000000000.0,
+   "R_odd": true,
+   "operators": {
+    "f=+1,nf=2": null,
+    "f=+1,nf=4": {
+     "dimension": "14",
+     "operator": "Vb2^2 T^ N3b^ S^7 Phi17^",
+     "singlets": 1,
+     "Gamma_GeV": 1.4961233749777154e-84,
+     "tau_s": 4.399369804711485e+59,
+     "tau_over_age": 1.0113493803934447e+42,
+     "heuristic_forbids": [
+      "T"
+     ]
+    },
+    "f=-1,nf=2": null,
+    "f=-1,nf=4": {
+     "dimension": "14",
+     "operator": "Vb2^^2 T N3b S^^7 Phi17",
+     "singlets": 1,
+     "Gamma_GeV": 1.4961233749777154e-84,
+     "tau_s": 4.399369804711485e+59,
+     "tau_over_age": 1.0113493803934447e+42,
+     "heuristic_forbids": [
+      "T^"
+     ]
+    }
+   }
+  },
+  {
+   "generator": "f5",
+   "members": [
+    "N4",
+    "N4b"
+   ],
+   "charges": {
+    "N4": 1,
+    "N4b": -1
+   },
+   "mass_scale_GeV": 1e+17,
+   "R_odd": true,
+   "operators": {
+    "f=+1,nf=2": null,
+    "f=+1,nf=4": {
+     "dimension": "13",
+     "operator": "Vb2^^2 T N4 S^^4 Phi17^3",
+     "singlets": 1,
+     "Gamma_GeV": 1.2168521423871387e-40,
+     "tau_s": 5409038428520884.0,
+     "tau_over_age": 0.01243457110004801,
+     "heuristic_forbids": [
+      "T^"
+     ]
+    },
+    "f=-1,nf=2": null,
+    "f=-1,nf=4": {
+     "dimension": "13",
+     "operator": "Vb2^2 T^ N4^ S^4 Phi17^^3",
+     "singlets": 1,
+     "Gamma_GeV": 1.2168521423871387e-40,
+     "tau_s": 5409038428520884.0,
+     "tau_over_age": 0.01243457110004801,
+     "heuristic_forbids": [
+      "T"
+     ]
+    }
+   }
+  }
+ ]
+}

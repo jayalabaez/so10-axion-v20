@@ -1,0 +1,65 @@
+GATE R2-B (unification, Landau, proton decay for the REALISABLE light contents with the B63 fermions)
+v21-F17-B63-G3221 -- REPORT (2026-10-16)
+======================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-B-unification\
+Labels: EXACT (exact arithmetic / proved), NUM (computed; uncertainty stated), LIT (read; here only abstracts and
+search snippets = LIT-abstract / LIT-snippet), EST (order of magnitude / convention-dependent), CONJ (argued).
+Repository checkouts _g6_nogo (54a2cd1) and _record (8707fda) were only imported read-only (r2b_coeffs.py); git status
+--short: 0 lines in both before and after (checked inside r2b_coeffs.py and at the end).  _rescope was not touched.
+
+0. VERDICT: UNDECIDED  (no flavour-capable content passes ROBUSTLY; one passes nominally; not FAIL)
+--------------------------------------------------------------------------------------------------
+Criterion: PASS if a flavour-capable content (C1, C2 or C1') has a two-loop solution with tau_p > 2.4e34 yr and
+Lambda_2L > M_Pl,red robust under the threshold scan, with the three-loop statement quantified; FAIL if no
+flavour-capable content has any two-loop solution passing tau_p and Landau; else UNDECIDED.
+
+Decisive numbers (two loops, B63 S-sector at M_s = 1e13 with y_s = 0.336, Phi pair at 1e17, MS-bar heavy-vector
+constant included, Am45 (3,1,1)_{4/3} at 0.894 M_X, c = 0; tau in the repository normalisation, tau_dir = tau/4.53
+in the direct-lattice normalisation derived in section 9):
+  content                         v_R        M_U        aU^-1   tau [yr]   tau_dir    L2/MPl  L3/MPl
+  C0  bid + (8,3,1) + Delta_R     6.63e12    3.02e15    33.26   6.2e33     1.4e33     4.6     1.72    FAIL tau
+  C1  2 bid + (8,3,1) + Delta_R   7.78e12    2.18e15    33.53   1.7e33     3.8e32     3.9     1.44    FAIL tau
+  C2  2 bid + Delta_R             2.13e10    6.05e15    34.64   1.08e35    2.38e34    14.2    5.20    pass (repo) /
+                                                                                                      knife-edge (dir)
+  C1' 2 bid + (1,3,1) + Delta_R   1.14e11    3.20e15    34.91   8.6e33     1.9e33     9.3     3.36    FAIL tau
+Threshold scan (independent log-uniform: light states x1/3..x3 of v_R per SM multiplet incl. W_R; GUT scalars
+x1/2..x2 per G3221 multiplet; 200 combined samples per content): fraction with tau > 2.4e34 AND Lambda_2L > M_Pl:
+  C0 9.0% (direct normalisation 1.5%), C1 0.5% (0%), C2 86.5% (49%), C1' 20% (0.5%).
+Landau: Lambda_2L > M_Pl,red in 100% of all samples of all four contents (min 2.3 M_Pl for C1, 8.4 for C2);
+Lambda_3L > M_Pl,red in 99-100% (C2 min 3.06 M_Pl) at M_s = 1e13; at M_s = 3e12 C0/C1 fail three loops.
+Hence:
+* C1 is dead at two loops (nominal tau = 1.7e33, a factor 14 short; 1 of 200 scan points passes; max over the
+  Planck-operator scan 3.3e33).  C1' fails nominally by a factor 2.8 (passes only in a 20% threshold tail, and at
+  Planck coefficient c >= +0.8 with s = -1).  C0 (flavour-dead reference) fails by a factor 3.9.
+* C2 passes nominally (tau = 1.08e35 yr, repo normalisation, margin x4.5; Lambda_2L = 14 M_Pl, Lambda_3L = 5.2 M_Pl)
+  but NOT robustly: 13.5% of the declared threshold scan fails Super-K (min 5.2e33 yr); in the direct-lattice
+  normalisation its nominal tau = 2.38e34 yr is 0.99 x the bound (knife edge) and only 49% of the scan passes; with
+  the only REALISABLE GUT spectrum available (the explicit K3 vacuum points P831/P831b, transplanted, section 6) it
+  fails by a factor 1.7-9 (tau = 2.7e33-1.4e34 yr).  So "not FAIL" rests on C2's nominal point in the repository
+  normalisation and on the declared x1/2..x2 window.
+* Item (e): C2's v_R = 2.1e10 GeV (scan range 1e9-3.6e11) lies BELOW the type-I seesaw window 1e11-1e14 (only 5% of
+  scan points, 1% in the direct normalisation, satisfy tau, Landau AND v_R >= 1e11).  C0/C1/C1' have v_R in the window
+  but fail tau.  No realisable flavour-capable content satisfies tau + Landau + seesaw window at its nominal point.
+* Minimal rescues (section 12; all need R2-A realisability, none is in the K3-realisable list): adding ONE more light
+  210 multiplet to C1 -- (8,1,3)_0 [from (15,1,3)] or (6,2,2)_{2/3} [from (10,2,2)] -- gives v_R = 2.7e11 / 9.5e12,
+  M_U = 2.4e16 / 1.9e16, tau = 1.7e37 / 6.2e36 yr, Lambda_2L = 3.4 / 2.4 M_Pl (C1 + (8,2,2)_0 also works but K3 excludes
+  a light (8,2,2)_0 at Am45).  [[MCRESCUE]]
+* The binding constraint is proton decay, not Landau: alpha_U^-1 = 33-35 for the realisable contents (fewer light
+  states than T2), so the SO(10) x U(1)_X alpha = 1 scale is far above M_Pl,red at two loops; the B63 U(1)_X feedback
+  is negligible (alpha_10^-1(M_Pl) shifts by <= 0.2) once g_X(M_U) <~ 0.011 (required for the U(1)_X itself).
+* Three-loop statement (quantified): including the per-factor pure three-loop terms in the G3221/SM phases moves M_U
+  by +0.7-1.2% and tau by +3-5% (EST; mixed three-loop terms and two-loop matching omitted); the SO(10)-phase PGJ term
+  lowers the alpha = 1 scale by a factor 2.7-2.8 (C2: 14.2 -> 5.2 M_Pl) but it stays above M_Pl,red for C2 and C1' at
+  every M_s in [3e12, 1.21e13] and Phi-pair mass >= 3e16 (C2: min 1.70 M_Pl even with the Phi pair at M_U;
+  C1': min 1.41 for M_Phi >= 3e16, 0.99 with the Phi pair at M_U and M_s = 3e12; C0/C1 fail 3L at M_s = 3e12); the loop expansion of the SO(10) phase is not
+  controlled (2L/1L term ratio at M_U = b2 alpha_U/(4 pi b1) = 1.50 for C2), so Lambda itself is convention-defined.
+Exact missing computations (to turn UNDECIDED into PASS or FAIL):
+  (M1) an explicit C2 (or C1', or rescue-content) vacuum point of the v20 potential and its heavy spectrum, run through
+       the threshold code (r2b_p831.py does this in 2 s per point): the declared x1/2..x2 window vs the P831-type
+       spectrum (states at 0.10-0.3 M_X) decides C2;
+  (M2) the hadronic normalisation of p -> e+ pi0 fixed from the primary literature (repository formula vs direct
+       lattice W0; factor 4.53), which decides C2's nominal point (margin x4.5 vs x0.99);
+  (M3) realisability (R2-A) of C2 and of the rescue contents C1 + (8,1,3)_0 / C1 + (6,2,2)_{2/3}.
+The flavour issue (K2: two-bidoublet fits chi2 ~ 220) and the seesaw scale for C2 (v_R ~ 2e10) are outside this
+gate's criterion but are listed in section 10 as cross-gate conflicts.
+

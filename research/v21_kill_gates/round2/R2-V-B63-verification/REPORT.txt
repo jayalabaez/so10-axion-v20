@@ -1,0 +1,275 @@
+GATE R2-V - independent verification of round-1 K0b (v21-F17-B63)                    2026-10-16, continued 2026-10-17
+=====================================================================================================================
+Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21R2\R2-V-B63-verification\
+Labels: EXACT (exact integer/rational computation or proof), NUM (numerical, uncertainty stated), EST (order of
+magnitude), CONJ (argued, not proved), LIT (read; here only search abstracts/snippets = LIT-abstract).
+
+Independence and hygiene. All code in this folder is mine. Round-1 code (Klimyk counter, k0b_engine, MILP oracle) was
+read, not imported or copied. SO(10) singlets come from so10_chars.py: characters of 10, 16, 16bar, 45, 54, 120, 126,
+126bar, 144 and 210 are built from exterior and symmetric powers, and irreps are counted with the Weyl-denominator
+identity over all 1920 elements of W(D5). The quality certificate is checked by an exact integer dynamic programme
+(dual_dp.py), not by an LP or MILP solver. The repository was only read: models/SO10Z17AxionV20.m and
+GAUGED_U1X_SCALAR_CONTRACT_V20.json in _record; no repository code was imported or run. 'git status --short' of
+_g6_nogo (54a2cd1) and _record (8707fda) is empty before and after both sessions. _rescope was not touched. No Wolfram
+kernel was used. The content I typed from the task statement equals round-1 candB63.json (EXACT, checked).
+
+History. Session 1 (2026-10-16) wrote sections 1-6. An adversarial skeptic then reviewed them (skeptic\REPORT.txt), and
+that run ended before its structured result was recorded. Session 2 (2026-10-17, this continuation) did four things:
+  (a) re-ran all six session-1 scripts. Every JSON and log is byte-identical to session 1 (prev_run_2026-10-16\ holds
+      the old outputs; rerun\ holds the new logs and status.txt).
+  (b) re-audited the decisive code (dual_dp.py, dual_dp_dressed.py, b63_verify.py) line by line; no defect found.
+  (c) added new checks: section 7 (v20 scalar contract), 8 (all K = 17 one-loop closures, enumerated), 9 (SO(10) small
+      instantons), 10 (global anomalies).
+  (d) folded in the skeptic's corrections (section 11).
+
+VERDICT: PASS. Every decisive (EXACT/NUM) claim of round-1 K0b reproduces with concrete numbers: anomalies, T_S/T_Phi,
+the 12 structures, no bare mass / Phi210 / family-exotic Yukawa, every exotic massive, kernel dimension 7, PQ, N = 34,
+E/N = 8/3, N_DW = 1 mod gauge, K_min >= 17 (EXACT, also on a strictly larger operator set), the explicit K = 17
+closure, dtheta, the y_s window [0.304, 0.368] at M_s = 1e13, exact R-parity and an exactly stable R-odd state. No
+anomaly, no missing PQ- or quality-breaking coupling, and no K <= 16 closure was found, so no FAIL trigger fires.
+Not every round-1 statement reproduced. The ones that did not are EST, NUM-detail or bookkeeping, and each is corrected
+here with the computation done (section 11). Under a strictly literal reading of 'every claim', the right label is
+"PASS on all decisive claims, with EST corrections". No computation is missing, so UNDECIDED does not apply.
+
+---------------------------------------------------------------------------------------------------------------------
+1. ANOMALIES AND INDICES (EXACT; b63_verify.py -> b63_verify.json)
+---------------------------------------------------------------------------------------------------------------------
+Species (Weyl, X, generations): F 16(1)x3 | V1 16(-35)x2 | Vb1 16bar(39) | V2 16(-28) | Vb2 16bar(32) | V3 16(34) |
+Vb3 16bar(-30) | T 10(2)x2 | Pb 16bar(18) | N1 1(-63) | N1b 1(59) | N2 1(-58) | N2b 1(54) | N3 1(-57) | N3b 1(61) | NMm 1(-2)x2.
+  [SO(10)]^2 X = 0, grav-X = 0, X^3 = 0 (Fractions). SO(10)^3 vanishes identically (SO(10) has no cubic Casimir).
+  Net 16 - 16bar = 3. b_X = 101203 (integer-X normalisation); with alpha_X(M_Pl,red) = 1 this gives alpha_X^-1(M_U) =
+  7.63e4, so g_X(M_U) <= 0.0128.
+  Partnerships: V1'+Vb1, V2+Vb2 and V3+Vb3 each have charge sum +4 and T_p = 4; T1+T2 (Majorana) has sum +4 and T_p = 2,
+  so T_S = 14 (all conj[S]). V1''+Pb has sum -17 and T_p = 4, so T_Phi = 4. Lemma A: 6 + 2 T_S - (17/2) T_Phi = 0.
+  S-coupled Dirac-equivalent components: 16+16+16+10+1+1+1+1 = 62.
+  Bookkeeping: the round-1 dossier JSON field reads T_S = 16, T_Phi = 2, because it labels both V1 copies "S". The
+  REPORT values 14/4 are the correct ones: the 2x2 mass matrix [y1<S>*, yP<Phi17>] gives one V1 combination to each
+  sector. Lemma A holds only with 14/4.
+
+---------------------------------------------------------------------------------------------------------------------
+2. RENORMALIZABLE FERMION COUPLINGS (EXACT; b63_verify.py, rep_table.py)
+---------------------------------------------------------------------------------------------------------------------
+Own tensor products: 16x16 = 10+120+126 (10 and 126 symmetric, 120 antisymmetric), 16x16bar = 1+45+210,
+16barx16bar = 10+120+126bar, 10x10 = 1+45+54 (45 antisymmetric), 16x10 = 16bar+144, 16barx10 = 16+144bar. None of
+16x10, 16barx10, 1x16 or 1x16bar has a singlet with any available scalar (1, 10, 126, 126bar, 210).
+I enumerated every species pair, same-species pairs included (Sym^2/Lambda^2 split, flavour symmetry of Weyl bilinears),
+against every insertion: none, Phi210, Delta, Delta*, H10, H10*, S, S*, Phi17, Phi17*. Result: exactly 12 structures,
+identical to the K0b list:
+  F.F.H10 (3x3 sym), F.F.Delta (3x3 sym), V1.Vb1.S* (2x1), V1.Pb.Phi17 (2x1), V2.Vb2.S*, Vb2.Vb3.H10, V3.Vb3.S*,
+  T.T.S* (2x2 sym), N1.N1b.S, N2.N2b.S, N3.N3b.S*, NMm.NMm.S (2x2 sym).
+  There is no bare mass, no Phi210 Yukawa, no family-exotic Yukawa and no kinetic mixing between distinct species.
+  F.F.H10* (X = 4) is absent, which is the round-1 flavour-lemma input. X-allowed but SO(10)-forbidden (correctly
+  absent): Vb2.Vb3.Delta, T.NMm (bare), T.NMm.Phi210, N1.N3b.Delta*, N1.N3b.H10*, N1b.N3.Delta, N1b.N3.H10.
+Mass matrices. NUM (random O(0.3) complex Yukawas, <S> = 3e13, <Phi17> = 1e17): the 7x4 16 x 16bar matrix has rank 4,
+with singular values 2.5e12, 5.5e12, 7.1e12 GeV and 5.2e16 GeV; the 3 massless 16s are pure F (weight 1.000). EXACT:
+det(exotic 4x4) = y2 y3 (y1a yPb - y1b yPa) <S>*^3 <Phi17>, nonzero unless y1 || yP. T (2x2) and the 8x8 singlet
+Majorana matrix have full rank. Every exotic is massive.
+
+---------------------------------------------------------------------------------------------------------------------
+3. ACCIDENTAL KERNEL, PQ, N, E/N, N_DW (EXACT; b63_verify.py)
+---------------------------------------------------------------------------------------------------------------------
+Constraints: the 12 Yukawas plus the phase-sensitive scalar terms kappaH H10.H10.S, Phi210.H10*.Delta,
+Phi210.H10*.Delta*.S* (O38) and Delta^2.H10*^2, each an SO(10) singlet (1 each). Section 7 confirms they are in the
+v20 contract. On 20 charges the constraint rank is 13, so the kernel has dimension 7, the scalar projection has rank 2
+and X lies in the kernel. The round-1 basis X, G2 (V1 -1, Vb1 +1, Phi17 +1), f1 (V1 +1, Vb1 -1, Pb -1),
+f2 (V2 +1, Vb2 -1, V3 -1, Vb3 +1), f3 (N1/N1b), f4 (N2/N2b), f5 (N3/N3b) lies in the kernel and has rank 7, so it spans
+it. Two-generation species (F, V1, T, NMm) share one charge for generic Yukawa vectors and matrices; for V1 this holds
+whenever y1 and yP are not parallel, which is also the full-rank condition.
+Phi17 (X = 17) cannot enter any renormalizable scalar term phase-sensitively: three other scalars give |X| <= 12. So G2
+and every f_k are exact symmetries of the whole renormalizable Lagrangian.
+PQ = X - 17 G2: N = 34, E = 272/3, E/N = 8/3; N(X) = 0, N(G2) = -2, N(f_k) = 0 for all five, so N is unambiguous.
+theta_eff = theta_0 + (17 theta_S - 4 theta_Phi), which is X-gauge invariant. Since gcd(4,17) = 1, each fibre of the
+map is one gauge orbit, so N_DW = 1 modulo gauge (17 for the S phase alone).
+
+---------------------------------------------------------------------------------------------------------------------
+4. QUALITY CERTIFICATE K_min >= 17, EXPLICIT CLOSURE, dtheta (EXACT + NUM; dual_dp.py, dual_dp_dressed.py)
+---------------------------------------------------------------------------------------------------------------------
+4a. Logic, re-derived (EXACT). Work in the symmetric phase, so every vev is an external scalar leg and every propagator
+is q-neutral. A closed vacuum diagram is built from Planck operators O_i (gauge singlets, Lorentz scalars, d_i >= 5,
+coefficient M_Pl^-(d_i-4)) and renormalizable vertices, which have q = 0. Then sum_i q(O_i) = q(external legs) =
+(G2_vev, 0,0,0,0,0), because only Phi17 carries q. Centre lemma: X = z + G2 (mod 4) for all five scalars. With
+X_vev = 0 and z_vev = 0 (mod 4) this gives G2_vev = 0 (mod 4); PQ violation means G2_vev != 0. A monomial S^a Phi17^b
+with 4a + 17b = 0 has b = 4k and phase -k theta_eff, so it depends on the axion iff k != 0.
+If |mu.q(O)| <= d - 4 for every admissible O with 5 <= d <= 20, then any diagram with K <= 16 (all d_i <= 20) obeys
+K = sum (d_i - 4) >= |mu . sum q_i| = 4 mu_0 = 17, a contradiction. The argument is linear in multiplicities, so
+repeated operators are covered; conjugation covers G2 = -4. Equality K = 17 requires every operator in the closure to
+be mu-tight (used in section 8).
+4b. Exact check of the round-1 mu = (17/4, -7/2, -7, -57/4, -12, -51/4) on (G2, f1..f5). The integer DP runs over ALL
+monomials in the 32 fermion and 9 scalar items and imposes X = 0, centre z = 0 mod 4 and Lorentz parity (one derivative,
+costing +1, for odd/odd). It is exact by an ordering lemma: an X = 0 multiset can be ordered with every partial sum in
+|X| <= 63. Validated against brute-force enumeration up to d = 7 (agree).
+Result: max over monomials of 4[mu.q - (d-4)] is 0 for every 5 <= d <= 20, and also for every d <= 40. The certificate
+HOLDS EXACTLY. It is tight at d = 6, 7, 9-17, 19, 21; d = 21 is S*^17 Phi17^4, and d = 6 is V1* V2* T* N3b*, a genuine
+16bar.16bar.10 singlet. My own cutting-plane LP (DP oracle) reaches 4 mu_0 = 17.000. Session-2 code audit: knapsack
+recursion, X window, z roll and parity flips are all correct, and the outputs reproduce byte for byte.
+4c. Is the monomial set a valid superset?
+  - Derivatives and field strengths: dual_dp_dressed.py adds a derivative item D (dimension 1, flips both parities). That
+    covers any number of derivatives and field strengths (F_{mu nu} is neutral, costs 2 and fixes no parity). Max excess
+    is still 0 for 5 <= d <= 24. Every X- and centre-neutral monomial with d <= 4 has mu.q = 0, which covers dipoles of
+    low-dimension bilinears. So the certificate holds on this strictly larger set (EXACT).
+  - Only necessary conditions (X, centre, parity) are imposed. That enlarges the set, which can weaken but never
+    invalidate the bound. The centre condition is genuinely needed: without it the bound fails at d = 6 with
+    Vb1* V2* Delta S* Phi17, which is not an SO(10) singlet.
+  - Cost model: one M_Pl power per dimension above 4 (O(1) coefficients) is the standard ansatz (CONJ). With the
+    dimension-21 vev monomial the loop dimension is D = K - 17 - (dimensionful couplings). K <= 16 would be
+    IR-enhanced by (M_Pl/m)^(17-K); the certificate excludes that. K >= 17 closures are UV/log-dominated
+    renormalizations of the tree coefficient; section 8 counts them at one loop.
+  - Remaining caveat (EST): dimensionful cubic scalar couplings among light lines could give (mu3/m)^n at fixed K.
+    K3's tuned light-light-light cubics are ~5e12 GeV < M_s, so mu3/m <~ 0.5 and there is no enhancement. Heavy-vev
+    insertions (yP<Phi17>, Phi210) resum into masses. Status: 'K_min >= 17' EXACT; 'dtheta <= dtheta_tree x O(1)' EST.
+4d. Explicit K = 17 closure from round 1 (EXACT structure): 4 x [N1 N2b S*^2 Phi17] + [N1*^2 N3b*^2 S*] +
+  2 x [N1b N2^2 N3b S*], vertices (yN1*)^2 (yN2*)^4. Every operator is X-neutral, Lorentz-even and Grassmann-nonzero.
+  Totals: K = 17, sum q = (4,0,...), vev monomial S*^17 Phi17^4; 32 fermion fields, 13 vertices, 4 loops, D = 0.
+  NDA 10^-11.8 x tree. It is valid but not representative: the cheapest closures are one-loop (section 8).
+4e. dtheta_tree = 2 <Phi17>^4 <S>^17 / (M_Pl,red^17 chi), chi^(1/4) = 75.5 MeV, m_a = 5.70 ueV x 1e12/f_a
+  (LIT-abstract: arXiv:1511.02867, arXiv:1812.01008), <Phi17> = 1e17. NUM:
+    <S> = 2.72e13: 4.04e-12 | 3.0e13: 2.137e-11 | 3.29e13: 1.026e-10 | 3.6e13: 4.74e-10 ; <S>_max = 3.285e13.
+  These reproduce round 1; the margin is x4.7 at 3e13. Tolerances (NUM): the suppression scale can be at most 9% below
+  M_Pl,red (4.7^(-1/17) = 0.913); <S>_max = 2.79e13 if <Phi17> = 2e17.
+
+---------------------------------------------------------------------------------------------------------------------
+5. y_s WINDOW (NUM; ys_rg.py -> ys_rg.json; own component-resolved one-loop RG)
+---------------------------------------------------------------------------------------------------------------------
+Quality lower bound: y_s >= 1e13/<S>_max = 0.3044 (reproduced).
+Perturbativity cap (y <= sqrt(4 pi) up to M_Pl,red, 62 components universal at M_s = 1e13):
+  no gauge: 0.3166, from the analytic 1/y^2 = 1/(4pi) + 2*63 ln(MPl/M_s)/(16pi^2); reproduces round-1 0.317.
+  gauge-resolved, singlets ungauged (binding coupling N1): 0.3797 with RMS matching, 0.3731 with max matching; 0.3803
+  with maximal U(1)_X. Round-1's 0.368 gave the SO(10)-singlet N's a nu^c-like Casimir they do not have, so it is
+  slightly conservative. Window [0.304, 0.368] REPRODUCED (0.304-0.373 resolved).
+  The gauge environment is round 1's T2+F17 G3221 running (alpha_U^-1 = 25.9 at M_U = 2.13e16; SO(10) b1 = 8,
+  b2 = 7267/2, recomputed). Only the 0.37 end depends on it.
+  lambda_S(M_s) window at y_s = 0.35: [0.154, 0.248], against round-1 [0.143, 0.268] (NUM difference from component
+  resolution). At 0.304: [0.090, 0.410]; at 0.33: [0.123, 0.311].
+  Robustness (NUM): the window survives for a Planck coefficient |g| <= 25 (cap 0.368; about 2 for the no-gauge floor)
+  and for <Phi17> <= 2.2e17 GeV (cap 0.368). m_a = 2.08-2.52 ueV, f_a = 2.26e12-2.74e12 GeV (reproduced).
+  The K = 17 one-loop closures (section 8) can shift the lower end to 0.306 (random phases) or 0.310 (coherent worst
+  case) (EST). The window stays non-empty.
+
+---------------------------------------------------------------------------------------------------------------------
+6. R-PARITY AND RELICS (EXACT parity; EST lifetimes; relics.py -> relics.json)
+---------------------------------------------------------------------------------------------------------------------
+Elements of the Spin(10) centre (Z4) x U(1)_X that fix all five vevs: only 1 and (-1)^z. So R = (-1)^z (-1)^(2s) is exact.
+R-odd: T, N1, N1b, N2, N2b, N3, N3b, NMm (all fermions in tensor reps); every scalar is R-even. The lightest R-odd state
+is absolutely stable (EXACT, reproduced). Which state that is depends on the Yukawas (EST).
+Decay operators (direct enumeration, exact singlet check, no heuristic exclusions):
+  f2 (V2, Vb2, V3, Vb3): dim 7 (V2 F H10* S^2 Phi17; Vb3 F S^3 Phi17), tau ~ 1e-14 s: prompt (reproduced).
+  f1 (V1', Vb1, the S-scale state): CORRECTED. The lowest operator with SM-only final states is dim 12, V1 F H10* S^8
+    (a 16.16.10 singlet), tau ~ 1e43 s (round 1 had dim 13 / 1e55 s). There is also a direct dim-8 operator
+    V1 F T NMm Phi17^2, tau ~ 1e-6 s, but it is open only if m(V1') > m_T + m_NMm. With universal Yukawas,
+    m_T + m_NMm ~ 2 M_s > m(V1'), so the generic branch is a cosmologically stable (1e43 s) colour-neutral 16-sector
+    relic. That needs T_RH << M_s (Boltzmann suppression), the requirement K5 already imposes.
+  f3: dim 9 (N1 T H10* S^2 Phi17^3), round 1 said dim 13. f4: dim 9. f5: dim 8 (reproduced). These are R-odd -> R-odd
+    transitions that depend on the mass ordering (EST).
+  The ~1e17 Phi-sector state decays promptly into the light f1 state through renormalizable yP/y1 mixing.
+
+---------------------------------------------------------------------------------------------------------------------
+7. NEW (session 2): THE PHASE-SENSITIVE SCALAR TERMS ARE IN THE v20 CONTRACT (EXACT, read-only)
+---------------------------------------------------------------------------------------------------------------------
+_record\GAUGED_U1X_SCALAR_CONTRACT_V20.json has 44 directions and 51 real parameters (counts.real_parameters = 51). Its
+non-self-conjugate (phase-sensitive) directions are exactly:
+  O12 H10*^2 S* (= conj of kappaH H10.H10.S), O15 Phi210 H10* Delta, O28 H10* Delta^2 Delta*, O31 H10*^2 Delta^2,
+  O38 Phi210 H10* Delta* S*, O45 (two channels) Phi210^2 H10* Delta.
+These impose h = d (O15, O28, O45, O31) and 2h + s = 0 (O12; O38 is consistent with both). That is exactly the
+constraint set used in section 3. No direction is phase-sensitive in Phi17, and none in S alone. The kernel dimension
+7 and the PQ structure therefore hold for the v20 potential verbatim. (The SARAH file models/SO10Z17AxionV20.m lists
+only representative terms, including kappaH; the multi-invariant basis is in the tensor contract.)
+
+---------------------------------------------------------------------------------------------------------------------
+8. NEW (session 2): EVERY K = 17 ONE-LOOP CLOSURE ENUMERATED (EXACT count; EST size)
+    (k17_oneloop.py, k17_rings_n.py, k17_check_vev.py -> .json/.log)
+---------------------------------------------------------------------------------------------------------------------
+Why: the skeptic found one-loop K = 17 bubbles at ~1.5-2e-2 x tree. If there were hundreds, their sum could eat the
+x4.7 margin.
+Method (EXACT): a K = 17 closure uses only mu-tight operators (4a). Pure-scalar tight operators: p = 0 (mod 4) by the
+centre lemma, so p = 4 and d >= 21, which leaves only the tree operator. Hence every other K = 17 closure is
+fermionic, and one-loop closures are rings of tight two-fermion operators. I enumerated every tight two-fermion
+operator with 5 <= d <= 20: X = 0, centre, parity (one derivative for opposite chirality), at most 3 H10/Delta legs,
+and an exact SO(10) singlet check (symmetric powers for identical fields via Adams operations). Rings were built on the
+high-scale mass graph of the 12 Yukawas (EW-vev edges F.F.H10 and Vb2.Vb3.H10 excluded, F.F.Delta kept), with
+chirality-correct fermion lines.
+Result: exactly 15 tight two-fermion operators. Examples: N1 N2b Phi17 S*^2 (d 6), N2 NMm Phi17^4 S*^2 (d 9),
+V1* Vb2* Phi17 S*^5 (d 9), N2b NMm S*^13 (d 16), Vb1* V2* Phi17^3 S*^10 (d 16), N1b N2 Phi17^3 S*^13 (d 19).
+Rings with sum q = (4,0,...,0): n = 2: 4; n = 3: 10; n = 4: 0; n = 5: 0. All 14 have been rebuilt with explicit line
+orientation. Each has a vev monomial with X = 0 and G2 = +4: S*^17 Phi17^4 for 12 of them, and two with an extra
+neutral pair (n_vev = 23). Every one has loop dimension [I] <= 0, so none is UV-power-enhanced. Both of the skeptic's
+bubbles are among the 4.
+Size (EST; O(1) operator coefficients, one Yukawa per mass insertion, L = ln(M_Pl^2/M_s^2) = 24.8):
+  sum over all 14 rings relative to tree: coherent 0.26 / 0.33 / 0.35, random-phase RMS 0.09 / 0.11 / 0.12, largest
+  single ring 0.048 / 0.055 / 0.058, at y = 0.304 / 0.35 / 0.368.
+  So the one-loop K = 17 sum renormalizes the tree coefficient by at most about 35%. That moves <S>_max by at most
+  1.35^(-1/17) = 0.982 and y_s,min from 0.304 to <= 0.310.
+Two or more loops (EST, not enumerated): each extra loop costs about y^2 L/(16 pi^2) ~ 0.02. Matching the one-loop sum
+would take >~ 10^2-10^3 two-loop closures; round 1's 4-loop example is 1e-12 x tree. 'dtheta ~ dtheta_tree x
+(1 +- 0.35)' is EST.
+
+---------------------------------------------------------------------------------------------------------------------
+9. NEW (session 2): SO(10) SMALL INSTANTONS (skeptic item 4c) (EXACT structure; EST size; small_instantons.py)
+---------------------------------------------------------------------------------------------------------------------
+EXACT structure: a Weyl fermion has 2T(R) zero modes (T(10) = 1, T(16) = 2). The SO(10) 't Hooft vertex therefore has
+X = 2 sum T X = 0 and q = 2 sum T q = (-4, 0, 0, 0, 0, 0) (G2: V1 2x4x(-1) + Vb1 4x(+1) = -4; f1 = 8-4-4 = 0;
+f2 = 4-4-4+4 = 0). Closing it with renormalizable couplings needs external vevs with G2 = +-4 and X = 0, i.e. the
+dimension-21 monomial S^17 Phi17*^4 or its conjugate. Small instantons thus produce exactly the phase structure of the
+Planck operator, with a possibly misaligned phase from Yukawa and O38 phases.
+EST size: V_SI(mu) ~ C (2pi/alpha)^16 e^{-2pi/alpha} mu^4 (y<S>/mu)^14 min(1, yP<Phi17>/mu)^4
+[lam38 <Phi210><S>/(16pi^2 mu^2)]^3 Pi_fam. Inputs: alpha_10^-1 from 25.9 (M_U) to 5.16 (M_Pl,red, ys_rg two-loop);
+conservative y = yP = sqrt(4pi) at all mu; Pi_fam (six family Yukawa elements closing 12 zero modes) = 1e-10.
+Maximum near mu ~ 1e18 GeV: R = V_SI/V_tree <= 8e-3 C and dtheta_SI <= 1.7e-13 C, with C = C_SO(10) the
+one-instanton measure constant (unknown; for comparison C_SU(5) = 7e-7). With realistic y(mu) ~ 1 it is another
+~5e7 smaller. Negligible.
+Caveats (EST): the estimate is exponentially sensitive to alpha_10(M_Pl). With alpha^-1(M_Pl) = 3 it becomes
+dtheta_SI <= 3e-10 C (Pi_fam = 1e-10). alpha_10(M_Pl) comes from the round-1 T2+F17 running, which K3 found is not a
+realisable content. Below M_U, G3221/SU(3) instantons (alpha^-1 >~ 35) give e^{-220} or less: negligible. Below the
+exotic masses the exotics decouple with aligned arg-det phases. Literature on the issue (LIT-abstract only):
+arXiv:2103.08598, arXiv:2206.07053, arXiv:2207.01068.
+
+---------------------------------------------------------------------------------------------------------------------
+10. NEW (session 2): GLOBAL ANOMALIES (LIT-abstract inputs + EXACT topology)
+---------------------------------------------------------------------------------------------------------------------
+Structure group: Spin x Spin(10) x U(1)_X. There is no (Spin x Spin(10))/Z2 twist, because the 10_F and singlet
+fermions are not spinorial; X charges are integers.
+Omega_5^Spin(BSpin(10) x BU(1)) = Omega_5^Spin(pt) + Omega~_5(BSpin(10)) + Omega~_5(BU(1)) + Omega~_5(BSpin(10) ^ BU(1)).
+  Omega_5^Spin = 0.
+  Omega~_5(BSpin(10)) = 0: Spin(10) GUT free of Dai-Freed anomalies, arXiv:1808.00009 abstract (LIT-abstract). This is
+  consistent with the AHSS: H_5(BSpin(10)) = 0, and Sq^2 w4 = w6 != 0 kills H_4(Z2).
+  Omega~_5(BU(1)) = 0: snippet citing it in arXiv:2001.07731 (LIT-abstract).
+  The smash product is 5-connected (BSpin(10) is 3-connected, BU(1) 1-connected), so its reduced bordism vanishes in
+  degree 5 (EXACT).
+Hence no global anomaly. The perturbative anomalies are zero (section 1).
+
+---------------------------------------------------------------------------------------------------------------------
+11. SKEPTIC FINDINGS (skeptic\REPORT.txt) - verdict there: "NOT REFUTED; PASS for the decisive claims"
+---------------------------------------------------------------------------------------------------------------------
+The skeptic used independent methods: Slansky tables, sympy kernel, HiGHS MILP oracle, LP column generation and a
+mu-free primal search (J = 2, 3 optimal at K = 17). It reproduced everything decisive; K_min = 17 EXACTLY. It made
+these corrections, adopted here:
+  - The cheapest K = 17 closures are one-loop (~1.5-2e-2 x tree each), not 4-loop. Section 8 now counts them all.
+  - The no-gauge 'floor' window [0.304, 0.317] depends on the perturbativity criterion: with y(M_Pl) <= 1 the floor
+    cap is 0.3029 < 0.3044. With gauge running and y <= 1 the cap is 0.356-0.362, so the window survives only through
+    the gauge environment.
+  - Cross-gate: the window needs M_s <= cap x <S>_max, i.e. <= 1.04e13 (floor), 1.21e13 (cap 0.368), 1.25e13 (0.380).
+    M_s = 1e13 comes from K1's T2 unification, a content K3 found not realisable. A lower M_s is harmless; M_s > 1.2e13
+    kills the window.
+  - f1 relic: the stable branch is the generic one (section 6).
+  - Round-1 statements that did NOT reproduce (EST/NUM/bookkeeping, corrected): f1 dim 13 / 1e55 s -> dim 12 / 1e43 s;
+    f1 'tau >~ 1e8 s' -> 1e43 s (generic) or 1e-6 s (if the R-odd channel is open); f3 dim 13 -> dim 9; lambda_S window
+    [0.143, 0.268] -> [0.154, 0.248]; dossier field T_S = 16 / T_Phi = 2 -> 14 / 4.
+
+---------------------------------------------------------------------------------------------------------------------
+12. STILL NOT VERIFIED (outside R2-V scope, or EST/CONJ)
+---------------------------------------------------------------------------------------------------------------------
+- The O(1)-coefficient Planck cost model (CONJ, standard). Two-loop and higher K = 17 closures (EST, not enumerated).
+  The no-light-cubic-enhancement argument (EST).
+- The gauge environment and M_s behind the 0.37 end of the cap. They come from a non-realisable content; unification
+  for a realisable content with B63 fermions has not been computed (open in R2-B). The small-instanton bound depends on
+  the same alpha_10(M_Pl).
+- Component-level relic mass ordering and abundances (K5). There is no SARAH attestation of a B63 model file.
+- Lemma A for all admissible variants, and the round-1 charge scans, were not re-verified; only B63 was.
+- This gate does not touch the open kills: the one-bidoublet flavour lemma, the second light bidoublet, global
+  minimality and G3 certification. The theory as a whole is not rescued by this PASS.
+
+FILES (all in this folder): so10_chars.py (own characters and singlet counter, self-test); b63_verify.py/.json/.log
+(items 1-3, closure, dtheta); rep_table.py/.json/.log; dual_dp.py/.json/.log (exact certificate, brute-force check, own
+LP); dual_dp_dressed.py/.json/.log (derivative/field-strength dressing); ys_rg.py/.json/.log; relics.py/.json/.log;
+k17_oneloop.py/.json/.log, k17_rings_n.py/.json/.log, k17_check_vev.py/.json/.log (section 8);
+small_instantons.py/.json/.log (section 9); rerun\ (session-2 re-run logs, status.txt, run_all.sh);
+prev_run_2026-10-16\ (session-1 outputs for the reproducibility diff); skeptic\ (adversarial review).

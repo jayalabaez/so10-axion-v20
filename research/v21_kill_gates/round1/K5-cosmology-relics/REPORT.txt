@@ -1,0 +1,303 @@
+GATE K5 - cosmology, relics, dark matter and defects of v21-F17-G3221
+=====================================================================
+Date 2026-10-16.  Folder: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\wfV21\K5-cosmology-relics\
+(REPORT.md was refused by the harness; this is the REPORT.txt fallback the task allows.)
+Labels: EXACT (proved), NUM (computed, with uncertainty), LIT (read), LIT-abstract (search snippet/abstract only), EST (order of magnitude), CONJ (argued).
+Repository use: _g6_nogo (54a2cd1) read only; git status --short empty before and after. _record not touched (its pre-existing modifications belong to the other job).
+
+0. VERDICT: PASS (K5 criterion: a consistent history exists with explicit (H_I, T_RH, theta_i) ranges satisfying every bound) - with the
+   requirements it imposes on the EXTERNAL inflaton sector stated explicitly.  Nothing in K5 kills the configuration; the window is NUM.
+   Master conditions:  T_max ~ 0.45 (T_RH^2 H_I M_P)^(1/4)  <  M_lightest-R-odd / (20-25)   and   H_I < 2.86e-5 f_a theta_i.
+   Three-loop point (M_s = 1e13, y_s = 0.305-0.389): H_I in [H(T_RH) ~ 1e3-1e5, 3.2-3.5e7] GeV (1.6-1.7e7 conservative);
+       T_RH <= 1.08e11 at H_I = 3e7 (1.6e11 at 1e7, 4.1e11 at 1e6, instant-reheating cap ~ M/27 = 3.7e11); thermal-leptogenesis
+       window T_RH in [1e9 (1e10 conservative), 1.08e11]; theta_i = 0.44-0.52.
+   Two-loop low end (M_s = 3e12, y_s = 0.31-0.39): H_I <= 1.9-2.1e7; T_RH <= 1.38e10 at H_I = 3e7 (2.0e10 at 1e7, 4.7e10 at 1e6,
+       cap ~ 1.1e11); leptogenesis window [1e9, 1.4e10] (marginal at the conservative 1e10); theta_i = 0.91-1.04.
+   Key correction to the task premise: the stable R-odd state is NOT coloured and NOT charged (one-loop ordering, NUM): it is the
+   neutral member of the (1,2,2)_0 bidoublet of the 10_F (Higgsino-like Dirac, |Y| = 1/2), or the SM-singlet Dirac N if y_1 < y_10.
+
+1. INPUTS.  Configuration as in FINAL section 3 (SO(10) x U(1)_X; scalars Phi210(0), Delta126bar(-2), H10(-2), S(4), Phi17(17);
+   fermions 3x16(1), 10(-1)+10(5), 16(0)+16bar(4), 16(-3)+16bar(7), 16(-6)+16bar(10), 2x[1(-3)+1(-1)], 16(-9)+16bar(-8));
+   M_U = 2.1-3.1e16, v_R = 2.5-3.4e13, M_s = 3e12-1e13, <Phi17> ~ 1e17, M_P,red = 2.435e18.
+   Reproduced [EXACT, k5_rodd_sector.py]: [SU(3)]^2 X = grav-X = X^3 = 0; T_S = 14, T_Phi = 4; N = 34 (S-charge-4 rotation; 17/2 for
+   charge 1); three fermion-only U(1)s all QCD-anomaly-free; E/N = 8/3.
+
+2. (1) THE EXACTLY STABLE R-ODD SECTOR
+2.1 R-parity [EXACT].  z^2 (centre of Spin(10)) = -1 on 16/16bar, +1 on 1,10,45,54,126,210.  R = z^2 (-1)^{2s} is +1 on every scalar
+   (all tensor) and every 16-type fermion, -1 on T1 = 10(-1), T2 = 10(5), N3a,b = 1(-3), N1a,b = 1(-1).  All 13 X-allowed renormalizable
+   Yukawa structures are R-even (checked): F.F.H, F.F.Delta, F.B.H*, A.Abar.S*, B.Bbar.S*, C.Cbar.S*, Cbar.Pbar.H, P.Pbar.Phi17,
+   T1.T2.S*, T1.N1.H*, T2.N3.H, N1.N3.S (12 distinct; N1.N3.S listed twice for the two flavour copies).
+   NEW for K0: F.B.H* (16_F(1).16(-3).H10^dag) and Cbar.Pbar.H (16bar(10).16bar(-8).H10) are X-allowed and must be declared; F.B.H* lets the
+   16(-3)+16bar(7) pair decay at tree level through <H10> (supersedes FINAL's Planck-operator decay estimate for this pair) and mixes the
+   SM 16 with B at angle ~ y v_EW/M ~ 1e-11 [EST].
+2.2 Masses [EXACT structure].  T1.T2.S*: one common Dirac mass M_10 = y_10 <S> for all ten components (10x10 = 1+45+54: no 210/126, so
+   Phi210 and Delta cannot split the 10 at tree level).  N1.N3.S: 2x2 Dirac M_N = y_1 <S>; bare and Majorana masses forbidden (Z17 / no X = +-2, +-6
+   singlets).  T1.N1.H*, T2.N3.H: EW mixing y' v_EW between the neutral bidoublet components and the singlets.  Lightest R-odd state =
+   lightest 10 component (y_10 < y_1) or singlet Dirac N (y_1 < y_10); both exactly stable.
+2.3 Quantum numbers of the stable state [NUM, k5_splitting.py].  10 -> (1,2,2)_0 + (3,1,1)_{-2/3} + (3bar,1,1)_{+2/3} -> SM
+   (1,2)_{+1/2} + (1,2)_{-1/2} + (3,1)_{-1/3} + (3bar,1)_{+1/3}.  Radiative splitting from M_U to M_10: d ln y_c/d ln mu = -(6/16 pi^2)
+   sum_i g_i^2 C_i(c), C(triplet) = (4/3) g_3^2 + (1/6) g_BL^2, C(bidoublet) = (3/4)(g_L^2 + g_R^2) (equal at the SO(10) point).  One-loop
+   G3221 running with T2 + Delta_R + F17 S-sector (b = (7.83, 12.0, 9.67, 14.83) for T2 + minimal Delta_R) gives g_3 largest in the IR:
+   (M_triplet - M_bidoublet)/M = +3.1e-3 ... +5.4e-3 over {T2,T3} x {Delta_R minimal (1,1,3)_2, full (10bar,1,3)} x {M_10 = 3e12, 1e13;
+   M_U = 2.1-3.1e16; alpha_U^-1 = 30-42}: colour triplets HEAVIER by dM = 4.2e10 GeV (M_10 = 1e13), 1.6e10 (3e12); sign identical in every
+   variant.  Lightest = neutral member of the (1,2,2)_0 bidoublet (Dirac, SU(2)_L doublet, |Y| = 1/2, colour- and EM-neutral); charged
+   partners heavier by ~ alpha_2 m_Z/2 ~ 0.3 GeV [EST], decaying in ~ns.  Caveats: Planck operator 10_F 10_F Phi210^2 S*/M_P^2 shifts the
+   splitting by c x v_S M_U^2/M_P^2 = 3.0-6.5e9 GeV per unit c (ordering stands for |c| < 6-13) [EST]; the T1.N1.H*/T2.N3.H Yukawas push the
+   bidoublet further down (same sign).  Coloured components decay to the bidoublet via M_U leptoquark gauge bosons: tau = 1.7e-8 s (M_U =
+   2.5e16) - 4.0e-8 s (3.1e16) at M_10 = 1e13; 2.1e-6 - 5.0e-6 s at 3e12 (before BBN) [EST].  In the y_1 < y_10 branch the 10 decays
+   promptly to N + H and the stable state is an SM singlet.
+   => heavy-isotope / strongly-interacting-relic bounds do not apply; the binding constraint is Omega_X <= Omega_DM (and << Omega_DM for the
+   axion to be the DM).  The n_X/n_B < 1e-10 line is tabulated anyway; it is never the strongest.
+2.4 Thermal production during and after reheating [NUM, k5_relic_reheating.py].  Boltzmann system (rho_phi, rho_R, n_X a^3) for
+   perturbative reheating, Gamma = sqrt(pi^2 g_*/90) T_RH^2/M_P, g_X = 40 (all ten Dirac components, each ends as the lightest), <sigma v> =
+   k pi alpha^2/M^2 with alpha = 0.03, k = 1; initial n_X = 0.  Production is dominated at T_max ~ 0.45 (T_RH^2 H_I M_P)^(1/4), never by
+   T_RH alone; Omega_X h^2 falls by e^-2 per unit of M/T_max; the overclosure line is at M/T_max ~ 20-25 (CKR hep-ph/9809453 regime
+   [LIT-abstract]: T_max >> T_RH, power-law suppression in T_RH/M).  Instant-reheating cross-check (Y = int <sv> n_eq^2/(s H T) dT):
+   M = 3e12: Omega h^2 = 0.011 at T_RH = 1e11 (M/30), 1e15 at 3e11; M = 1e13: 1.6e-5 at 3e11 (M/33), 1e15 at 1e12 -> cap at ~ M/27.
+   Largest T_RH [GeV] with  Omega_X h^2 <= 0.12 | <= 1.2e-4 (1e-3 Omega_DM) | n_X/n_B <= 1e-10   (bisection, 2% in log T_RH):
+     M = 3e12:  H_I = 1e5 : 1.17e11 | 9.3e10 | 1.34e11   (H(T_RH) <= H_I cap at 1.3e11)
+                H_I = 1e6 : 4.70e10 | 3.67e10 | 5.42e10
+                H_I = 1e7 : 2.02e10 | 1.55e10 | 2.40e10
+                H_I = 3e7 : 1.38e10 | 1.03e10 | 1.66e10
+                H_I = 1e9 : 4.42e9  | 3.06e9  | 5.64e9
+                H_I = 1e11: 1.36e9  | 7.5e8   | 1.99e9
+                H_I = 1e13: < 1e8   | < 1e8   | 5.5e8
+     M = 1e13:  H_I = 1e5 : >= 2.67e11 (cap; Omega < 1e-4 there)
+                H_I = 1e6 : 4.05e11 | 3.22e11 | 4.92e11
+                H_I = 1e7 : 1.62e11 | 1.28e11 | 1.98e11
+                H_I = 3e7 : 1.08e11 | 8.36e10 | 1.33e11
+                H_I = 1e9 : 3.15e10 | 2.32e10 | 4.12e10
+                H_I = 1e11: 7.97e9  | 5.11e9  | 1.18e10
+                H_I = 1e13: 1.52e9  | < 1e8   | 5.69e9
+   Scaling: T_RH,max ~ M^2 H_I^(-1/2) below the instant-reheating cap (~ M/27).  Robustness (Omega_DM line, H_I = 3e7): k = 0.1 / 1 / 10 /
+   1e-2 / 1e-4 -> 1.53e10 / 1.38e10 / 1.24e10 / 1.70e10 / 2.14e10 (M = 3e12) and 1.18e11 / 1.08e11 / 0.99e11 / 1.30e11 / 1.59e11 (M = 1e13):
+   logarithmic; the k <= 1e-2 rows cover the singlet-N-lightest branch (Yukawa-suppressed production).  g_X or alpha changes are equivalent
+   to k changes < 3.  Main systematic: perturbative reheating with constant Gamma (non-perturbative preheating into the 10_F/H10 is not
+   covered: the inflaton is not part of the model).  A WIMPzilla alternative (Omega_X = Omega_DM) requires T_RH tuned to ~3% on the
+   Omega_DM line and the axion subdominant; not pursued.
+   Other channels: inflationary gravitational production: M/H_I >= 3e12/3.5e7 = 8.6e4 >> 1 -> exponentially suppressed; the CCKR formula
+   Omega h^2 ~ (M/1e11)^2 (T_RH/1e9) [LIT-abstract hep-ph/0104100] needs M_X < H_I and does not apply [EST].  Graviton-mediated thermal
+   production (Mambrini-Olive 2102.06214, ~ T_max^4/(T_RH M_P^3) [LIT-abstract]) needs T_max >~ M: excluded in the window; inflaton-condensate
+   production needs m_phi > M [EST].  Direct inflaton decay: Y_X = (3/2) Br T_RH/m_phi < 0.12/(2.74e8 M) = 4.4e-23 (M = 1e13), 1.5e-22 (3e12)
+   -> Br (T_RH/m_phi) < 3e-23 (1e-22); kinematically closed if m_phi < 2 M_lightest = 6e12-2e13, i.e. m_phi/H_I < 2e5-7e5 [EST].
+
+3. (2) THE AXION
+3.1 f_a, N_DW, mass, coupling [EXACT + LIT].  Gauge-invariant phase vartheta = 17 theta_S - 4 theta_Phi.  Phi17 rotation (Phi-sector
+   fermions compensating): N = -2, shifts vartheta by -4 beta and theta_QCD by +4 beta; S rotation (charge 1): N = 17/2, shifts vartheta by
+   17 gamma and theta_QCD by 17 gamma -> theta_QCD = +-vartheta + const with coefficient exactly 1: N_DW = 1, f_a = v_a = v_S v_Phi /
+   sqrt((4 v_S)^2 + (17 v_Phi)^2) = v_S/17 [1 + O((4v_S/17v_Phi)^2)], v_S = sqrt2 <S>  (same as the repository's F_PQ/68, S-phase cover 17).
+     M_s=1e13, y_s=0.305: v_S=4.64e13, f_a=2.73e12, m_a=2.09 ueV, g_agg=3.2e-16 GeV^-1
+     M_s=1e13, y_s=0.35 : v_S=4.04e13, f_a=2.38e12, m_a=2.40 ueV, g_agg=3.6e-16
+     M_s=1e13, y_s=0.389: v_S=3.64e13, f_a=2.14e12, m_a=2.67 ueV, g_agg=4.1e-16
+     M_s=1e13, y_s=0.40 : v_S=3.54e13, f_a=2.08e12, m_a=2.74 ueV (inside ADMX DFSZ band)
+     M_s=3e12, y_s=0.31 : v_S=1.37e13, f_a=8.05e11, m_a=7.08 ueV, g_agg=1.1e-15
+     M_s=3e12, y_s=0.39 : v_S=1.09e13, f_a=6.40e11, m_a=8.91 ueV, g_agg=1.4e-15
+   (m_a = 5.70 ueV x 1e12/f_a, 1511.02867 - standard value, not re-read this session; E/N = 8/3 -> |E/N - 1.92| = 0.747.)
+   ADMX [LIT-abstract]: DFSZ exclusion 2.66-2.81 ueV (1804.05750) and 2.81-3.31 ueV (1910.08638); 3.3-4.2 ueV is KSVZ-only (2110.06096,
+   snippet confirmed); no DFSZ exclusion found at 4.5-5.4 ueV (Run 1D preliminary, KSVZ).  y_s = 0.389 (2.67 ueV) sits at the edge, y_s = 0.40
+   inside; the escape band 2.09-2.66 ueV (y_s = 0.305-0.389) stands; the M_s = 3e12 end (7-9 ueV) is not excluded by any DFSZ-sensitive
+   haloscope found.
+3.2 Misalignment [NUM, k5_axion.py].  theta'' + 3H theta' + (chi(T)/f_a^2) sin theta = 0 through the QCD transition, chi(T) = chi_0 (T_c/T)^n
+   above T_c (chi_0^(1/4) = 75.5 MeV, T_c = 150 MeV, n = 8.16; n = 7 variant; the lattice exponent was NOT re-read this session), g_*(T) table.
+   Benchmark Omega_a h^2 (f_a = 1e12, theta_i = 1) = 0.19, Omega ~ f_a^1.22 (standard).  For Omega_a = Omega_DM:
+     M_s=1e13, y_s=0.305: theta_i = 0.443 (n=8.16) / 0.514 (n=7); T_osc ~ 0.95 GeV; H_I,max = 3.46e7 (1.73e7 conservative)
+     M_s=1e13, y_s=0.35 : theta_i = 0.482 / 0.558; H_I,max = 3.28e7 (1.64e7)
+     M_s=1e13, y_s=0.389: theta_i = 0.516 / 0.595; H_I,max = 3.15e7 (1.58e7)
+     M_s=3e12, y_s=0.31 : theta_i = 0.913 / 1.055; H_I,max = 2.10e7 (1.05e7)
+     M_s=3e12, y_s=0.39 : theta_i = 1.040 / 1.202; H_I,max = 1.90e7 (0.95e7)
+   FINAL's theta_i ~ 0.4 is confirmed as 0.44-0.52 (+-20% from chi(T), g_*).  Isocurvature: P_S = (Omega_a/Omega_DM)^2 H_I^2/(pi^2 f_a^2
+   theta_i^2); Planck 2018 beta_iso < 0.038 at k = 0.05/Mpc [LIT-abstract 1807.06211 via 2506.03348, 2203.08833] -> H_I < 2.86e-5 f_a theta_i;
+   the conservative column halves it (gamma = 2 convention seen in one snippet).  At H_I = 3.3e7: V^(1/4) = 1.2e13 GeV, r = 1.7e-14: low-scale
+   inflation is required (requirement on the external inflaton sector, not a kill).  Instant-reheating ceiling at this H_I: T_RH <= 4.8e12
+   (never binding).
+3.3 Strings and walls [EXACT winding algebra, EST cosmology].  Windings (n_S, n_Phi): pure-gauge local string (4,17) (no axion winding);
+   axion winding w = 17 n_S - 4 n_Phi: S-only (1,0) has w = 17 (17 walls: N_DW = 1 only modulo gauge), (1,4) has w = 1, the repository's
+   (13,-3) is the unit-X-charge combination 4*13 - 17*3 = 1.  All moot in the required history: Phi17 (1e17) and S (3.6-4.6e13) break before
+   inflation and are never restored (T_max <= few x 1e11 << v_S/50, H_I <= 3.5e7 << v_S): no PQ strings or walls.  The pre-inflation
+   scenario is forced by the relic bound (2.4) independently of the axion.
+
+4. (3) MONOPOLES AND DEFECTS [EXACT homotopy, k5_history.py]
+   SO(10) -> G3221: pi_2 = pi_1(G3221) = Z (one U(1)): GUT monopoles, M ~ M_U/alpha_U ~ 1e18 (Lazarides-Shafi 1904.06880 [LIT-abstract]);
+   formed at M_U >> T_max, inflated away (H_I <= 3.5e7 << M_U: no restoration).
+   G3221 -> SM at v_R: the U(1)_Y loop exp(i phi Y) closes at phi = 2 pi x 6 (Y in units of 1/6) and projects to exp(i (phi/2)(B-L)),
+   i.e. to exactly one minimal U(1)_{B-L} loop (period 2 pi x 3 for B-L in Z/3): degree d = 6/(2 x 3) = 1 -> pi_2(G3221/H) =
+   ker(Z -> Z) = 0: NO monopoles (the SU(2)xU(1) -> U(1) result).
+   Unbroken H = G_SM x Z_2 with Z_2 = z^2 = (-1)^{3(B-L)} (not in the connected G_SM: it is -1 on the SM-singlet nu^c): pi_0(H) = Z_2 ->
+   Z_2 strings (Kibble-Lazarides-Shafi; hep-ph/9211206 [LIT-abstract]) would form at v_R only if the transition happened after inflation;
+   here T_max << v_R, none form.  This Z_2 is the gauge part of the R-parity stabilising the 10_F/N.
+   U(1)_X -> Z_17 by Phi17: local strings (pi_1(U(1)/Z_17) = Z), no walls (gauged Z_17); inflated away.
+
+5. (4) BARYOGENESIS [NUM + LIT-abstract]
+   Thermal leptogenesis (hierarchical, M_i = f_i v_R): Davidson-Ibarra hep-ph/0202239: T_RH > M_1 > 1e8; with washout M_1 > 1e9, T_RH >~
+   1e9-1e10 [LIT-abstract].  Windows [T_lep, T_RH,max(Omega_DM)] at the isocurvature-allowed H_I:
+     M_lightest = 1e13: H_I = 3e7: [1e9, 1.08e11] (conservative [1e10, 1.08e11]); H_I = 1e7: [1e9, 1.62e11]; H_I = 1e6: [1e9, 4.05e11]
+     M_lightest = 3e12: H_I = 3e7: [1e9, 1.38e10] (conservative [1e10, 1.38e10], marginal); H_I = 1e7: [1e9, 2.02e10]; H_I = 1e6: [1e9, 4.7e10]
+     (outside the isocurvature range, for reference: H_I = 1e9 -> [1e9, 3.2e10] / [1e9, 4.4e9]; H_I = 1e11 -> [1e9, 8.0e9] / empty-marginal
+     (1.36e9); H_I = 1e13 -> [1e9, 1.5e9] / empty.)
+   M_1 <= T_RH ~ 1e10-1e11 needs f_1 = M_1/v_R ~ 3e-5-3e-3 (v_R = 3e13): plausible but a demand on the unresolved G8 fit.  Non-thermal
+   (inflaton -> N_1 with m_phi > M_1 >= 1e9) or resonant leptogenesis are not excluded by K5 [CONJ].  No conflict between (1) and (4).
+
+6. (5) HISTORY AND WINDOW
+   1. <Phi17> ~ 1e17: U(1)_X -> Z_17 (local strings).
+   2. <Phi210> at M_U = 2.1-3.1e16: SO(10) -> G3221 (GUT monopoles).
+   3. <Delta_R> at v_R = 2.5-3.4e13 and <S> = 2.6-3.3e13: G3221 -> SM x Z_2 (Z_2 strings) and Z_17 x U(1)_PQ -> axion (order immaterial).
+   4. Inflation with H(T_RH) <= H_I <= 3.2-3.5e7 (3-loop point; 1.9-2.1e7 at M_s = 3e12; halve for the conservative convention): all defects
+      of 1-3 inflated away; homogeneous theta_i = 0.44-0.52 (0.91-1.04 at M_s = 3e12).
+   5. Perturbative reheating with T_max <~ M_lightest/20: T_RH <= 1.08e11 (M = 1e13, H_I = 3e7) ... 4.1e11 (H_I = 1e6), or <= 1.4e10 ... 4.7e10
+      (M = 3e12): the R-odd sector, S-sector 16s, T2/T3 states, Delta_R and Phi17 are never produced; PQ, B-L, X never restored.
+   6. Thermal leptogenesis at T ~ M_1 <= T_RH (if the flavour sector gives M_1 >= 1e9), EW breaking, QCD: axion oscillations at T_osc ~ 1 GeV
+      give Omega_a = Omega_DM (ADMX-open band 2.09-2.66 ueV at the three-loop point).
+   Window summary (three-loop point): H_I in [~1e3-1e5, 3.2e7] GeV, T_RH in [1e9, 1.1e11] GeV (up to 4e11 for H_I <= 1e6), theta_i in [0.44,
+   0.52]; all five bounds (relic, isocurvature, ADMX, monopoles/defects, leptogenesis) satisfied simultaneously.
+
+7. MISSING COMPUTATIONS / CAVEATS
+   1. Non-perturbative preheating into the 10_F or H10 (inflaton unspecified) could violate the T_max bound; needs an inflaton model.
+   2. Lattice chi(T) exponent and g_*(T) not re-read (theta_i +-20%).
+   3. 10_F ordering is one-loop RG; two-loop/threshold terms and the Planck coefficient c are open (sign robust for |c| <~ 6).
+   4. Thermal-leptogenesis viability (M_1, CP asymmetry) needs the G8 fit; K5 shows only that the T_RH window is non-empty.
+   5. No heavy-isotope / SIMP bound at 1e13 GeV found (PDG water searches reach 1e4 m_p; lead-based Y_X <= 1.5e-13 Y_B for neutral coloured
+      relics up to 100 TeV [LIT-abstract 2010.14581]); not needed (stable state neutral, abundance < 1e-3 Omega_DM in the window).
+
+8. FILES: k5_rodd_sector.py/.json/.log; k5_splitting.py/.json/.log; k5_axion.py/.json/.log; k5_relic_reheating.py/.json/.log;
+   k5_k_sensitivity.json/.log; k5_history.py/.json/.log (all in the folder above).
+
+9. LITERATURE (snippets/abstracts read this session unless noted): ADMX 1804.05750, 1910.08638, 2110.06096; APS 2025 Run 1D abstract;
+   Planck 2018 X 1807.06211 (via 2506.03348, 2203.08833); 1511.02867 (standard value, not re-read); CKR hep-ph/9809453; CCKR hep-ph/0104100;
+   Mambrini-Olive 2102.06214; Davidson-Ibarra hep-ph/0202239; GKR hep-ph/0005123; hep-ph/9211206; Lazarides-Shafi 1904.06880; PDG 2025
+   other-particle searches; 2010.14581; Mohapatra-Nussinov hep-ph/9708497.
+
+=====================================================================================================================
+10. CONTINUATION (second pass, 2026-10-16 19:20-19:40): verifier reconciliation, the Vec3 "second relic", cross-gate
+    inputs (K0, K2, K3), literature update, final window.  New files: k5_second_relic.py/.json/.log, rerun_*.log,
+    _record_status_before_cont.txt / _record_status_after_cont.txt.  Repository checkouts untouched (git status --short of
+    _g6_nogo empty before and after; _record unchanged by this job).
+=====================================================================================================================
+
+10.0 VERDICT (unchanged): PASS.  A consistent history exists with explicit ranges (section 10.6); the two external
+   conditions (inflaton sector; M_1 of the flavour fit) are stated as refinements, not hidden in the PASS.
+
+10.1 Reproducibility and verifier reconciliation [NUM]
+   - k5_rodd_sector.py, k5_splitting.py, k5_axion.py, k5_history.py re-run this pass: logs identical to the originals
+     (diff --strip-trailing-cr: 0 differing lines each).
+   - Feasibility verifier (verify-feasibility/): independent Boltzmann code reproduces Omega h^2 = 0.134 at the claimed
+     threshold (M = 1e13, T_RH = 1.08e11, H_I = 3e7) and 0.144 at (3e12, 1.38e10, 3e7); T_max agrees with the analytic
+     0.45 (T_RH^2 H_I M_P)^(1/4) to 0.1-0.4 %.  Its independent misalignment code gives theta_i = 0.505 / 0.582 (y_s =
+     0.305 / 0.389) against my 0.443 / 0.516: a 12-14 % spread from the chi(T), g_*(T) inputs (both inside the +-20 %
+     quoted); H_I,max 3.9e7 / 3.6e7 against 3.5e7 / 3.2e7.  I keep the lower (more conservative) H_I,max.
+   - Physics verifier (verify-physics/): homotopy (Y-loop period 6, B-L period 3, degree 1 -> pi_2 = 0; z^2 = -1 on all
+     16 components and +1 on every scalar component: 15 checks), the 12 renormalizable structures, R-oddness, N_DW = 1
+     all reproduced; relic thresholds reproduced to < 1 % (e.g. 1.0755e11 at M = 1e13, H_I = 3e7); its extra rows
+     n_X/n_B <= 1e-20 / 1e-25 give T_RH,max = 6.0e10 / 4.4e10 (M = 1e13) and 6.7e9 / 4.8e9 (3e12) at H_I = 3e7.
+   - NEW CAVEAT from the physics verifier (verify_splitting / verify_gauge_masses_210) [NUM]: the one-loop triplet-vs-
+     bidoublet ordering of the 10_F (triplet heavier by 3.2-5.4e-3) can be reversed by the M_U threshold term if the
+     SO(10)/G3221 gauge-boson mass ratio M(3,1,1)/M(6,2,2) exceeds 1.33-1.49 (content/scale dependent).  In the 210
+     vacuum Phi = pP + aA that ratio is 1.414 (p/a = 0), 1.35 (0.25), 1.21 (0.5), 1.04 (0.75), 0.89 (1).  So the flip needs a
+     nearly pure-(15,1,1) orientation p/a <~ 0.2.  K3's orientations are A70 (p/a = 0.36), A45 (1.0), A20 (2.75): ratio
+     <= 1.17, no flip.  => the stable R-odd state is the NEUTRAL bidoublet member for p/a >~ 0.3 (refinement for K3);
+     for p/a <~ 0.2 the colour triplet (3,1)_{-1/3} could be the lightest and the relic would be an exotic charged hadron.
+     That branch is NOT excluded by any located search (sea-water heavy-isotope limits reach ~1.6 TeV [LIT-abstract
+     0807.0211]; no 1e13 GeV bound found) and still has a T_RH window even at n_X/n_B <= 1e-25 (above), but it is the
+     less clean branch and should be avoided by the vacuum choice.
+
+10.2 The Vec3 = 16(-6)+16bar(10) ("C") sector: K0's "second long-lived relic" re-examined [EST; k5_second_relic.py]
+   K0 reports the lowest f2-changing (Vec3-number) operators at dimension 10 and tau ~ 1e15-1e16 s; the feasibility
+   verifier listed X-only candidates ("C.A Delta^ S" dim 5, "C.B D D S* F17" dim 7, "Cbar.Bbar D D* F17*" dim 6) that
+   are NOT SO(10) singlets (16.16.126, 16.16.126bar^2 and 16bar.16bar.126bar.126 contain no singlet).  Hand-checked
+   invariant operators (16x16 = 10+120+126 pairs with 10/120/126bar; 16x16bar = 1+45+210; 16barx16bar pairs with
+   10/120/126; X sums listed in the json):
+     C A H10^dag S / M_P          dim 5   X: -6+0+2+4 = 0   16.16.10 ok    -> C-A-h Yukawa vertex y_eff = <S>/M_P = 1.6e-5
+                                                                               and an EW mass mixing 2.9e-3 GeV
+     C A Delta S^2 / M_P^2        dim 6   X: -6+0-2+8 = 0   16.16.126bar ok -> nu^c-nu^c mixing v_R <S>^2/M_P^2 = 8.1e3 GeV
+     Cbar Abar H10 S*^3 / M_P^4   dim 7, Cbar Abar Delta^dag S*^4 / M_P^5 dim 8, C Bbar S^4 Phi17^dag / M_P^5 dim 8,
+     Cbar P S^4 Phi17^dag / M_P^5 dim 8, C F H10^dag S^5 Phi17^dag / M_P^6 dim 10: all negligible (mixing <= 3e-21 GeV).
+   These dim-5/6 operators change Vec3-number and Vec1-number together (they preserve f1+f2, which K0's census breaks at
+   dim 7 through F Abar S^3 Phi17^dag/M_P^3: mixing 4.4e2 GeV, theta_AF = 4.4e-11, tau_A = 7e-15 s).  Hence:
+     branch m_C > m_A + m_h : C -> A h at tree level through y_eff: tau_C = 1.2e-26 s (prompt).
+     branch m_C < m_A       : C is the lightest of the (A,C) complex.  Decay channels: (i) three-body C -> h + A* -> h h' F
+        through the dim-5 vertex and A's F-admixture: tau = 3e-7 s (dM = 1e11) ... 3e-4 s (dM = 3e12); (ii) two-step mass
+        mixing (dim-6 nu^c mixing x theta_AF): tau = 1 ... 900 s; (iii) direct dim 10: tau = 2e37 s (irrelevant).
+        => tau_C <= 1e-3 s for O(1) Planck coefficients, at most ~1e3 s if the dim-5 coefficient were absent.
+   Consequence: K0's tau ~ 1e15-1e16 s is superseded; Vec3 is NOT a cosmological relic.  Its abundance must only respect
+   BBN for tau <~ 1e3 s, which Omega_C <= Omega_DM (M Y <= 4.4e-10 GeV) already satisfies for tau <~ 1e2 s [EST from the
+   located KKM/KKMT bounds, curves not read]; at tau ~ 1e3 s a ~1e-2 fraction would be required.  Worst-case brackets
+   (if some coefficient vanished and tau reached 1e13-1e17 s, where CMB bounds on EM-decaying fractions apply
+   [LIT-abstract 1610.06933; curve not read]) are the thresholds below.
+   T_RH,max for the Vec3 sector (vector-like 16 production: g_X = 64, k = 10; bisection 2 % in log T_RH) [NUM]:
+     M_C = 3e12: H_I = 1e6: 4.16e10 (Omega_DM) | 3.08e10 (1e-4) | 2.72e10 (1e-6) | 2.40e10 (1e-8)
+                 H_I = 1e7: 1.78e10 | 1.27e10 | 1.09e10 | 9.5e9
+                 H_I = 3e7: 1.19e10 | 8.3e9  | 7.1e9  | 6.1e9
+     M_C = 1e13: H_I = 1e6: 3.65e11 | 2.75e11 | 2.43e11 | 2.19e11
+                 H_I = 1e7: 1.45e11 | 1.08e11 | 9.5e10 | 8.3e10
+                 H_I = 3e7: 9.58e10 | 7.00e10 | 6.10e10 | 5.33e10
+   Even an (unneeded) 1e-8 suppression costs < x2 in T_RH,max: the window never closes because of this sector.
+   The B = 16(-3)+16bar(7) pair mixes with F at tree level (F.B.H^dag) and through Bbar F S*^2/M_P (mixing 6.7e8 GeV,
+   K0): prompt.  The Phi-sector pair (1e17) decays through Cbar.Pbar.H: prompt.  So the ONLY cosmologically stable
+   exotic is the R-odd lightest state (exact), as assumed in sections 2-6.
+
+10.3 R-odd thresholds at M = 6e12 (added for the leptogenesis cross-link; k = 1, g_X = 40) [NUM]
+     H_I = 1e5: >= 2.67e11 (H(T_RH) <= H_I cap, Omega < target); 1e6: 1.59e11 (Omega_DM) / 1.26e11 (1e-3 Omega_DM);
+     1e7: 6.68e10 / 5.21e10; 3e7: 4.46e10 / 3.43e10.  Scaling T_RH,max ~ M^2 H_I^(-1/2) confirmed between 3e12 and 1e13.
+
+10.4 Baryogenesis cross-link with K2 [NUM, conditional on K2's provisional point]
+   K2's best (non-converged, chi2 = 218) top-down point has M_R = (5.9e12, 7.4e11, 6.4e10) GeV, i.e. M_1 = 6.4e10 with
+   f_1 = M_1/v_R ~ 2.5e-3 (inside the 3e-5-3e-3 range anticipated in section 5).  Davidson-Ibarra maximum
+   eps_1 = 3 M_1 m_atm/(16 pi v^2) = 6.3e-6 -> eta_B = 6.1e-10 needs an efficiency kappa >= 0.0097 (achievable for
+   m~_1 ~ 1e-3-1e-1 eV) [EST].  Thermal production needs T_RH >~ M_1 (zero initial abundance; GNRRS hep-ph/0310123 give
+   T_RH >~ 2e9 as the absolute floor [LIT-abstract]) or T_RH >~ M_1/5 (strong washout, review 0802.2962 [LIT-abstract]):
+     T_RH,max >= M_1 = 6.4e10:  M_LRP = 1e13: all H_I <= 3e7;  6e12: H_I <= 1e7;  3e12: only H_I <= ~1e5 (1.17e11 cap).
+     T_RH,max >= M_1/5 = 1.3e10: every row of the table (3e12 at H_I = 3e7 marginal: 1.38e10).
+   => with K2's M_1 the window is comfortable for M_LRP >~ 6e12 and H_I <= 1e7 (T_RH in [6.4e10, 6.7e10-1.6e11]) and for
+   M_LRP = 1e13 up to H_I = 3e7 (T_RH in [6.4e10, 1.08e11]).  M_LRP = y_10 <S>: this is a refinement y_10 >~ 0.6 y_s
+   (M_s = 1e13) if K2's M_1 stands; it disappears for M_1 <~ 1e10.  Non-thermal (inflaton -> N_1) or resonant
+   leptogenesis remain open alternatives [CONJ].
+
+10.5 Literature update (search snippets/abstracts only = LIT-abstract)
+   - ADMX: no DFSZ-sensitive result below 645 MHz exists (Run 1A starts at 645 MHz = 2.66 ueV [2312.16668]; the 2025
+     result is 1.10-1.31 GHz at KSVZ [2504.07279]).  The escape band 2.09-2.66 ueV (505-643 MHz; y_s = 0.305-0.389 at
+     M_s = 1e13; K0's narrower declared-quality window y_s <= 0.374 gives 2.09-2.56 ueV) is therefore open today.
+     Planned low-frequency coverage: GrAHal-CAPP projects DFSZ sensitivity over 300-600 MHz (1.24-2.48 ueV) with < 2 yr
+     integration [Frontiers in Physics 2024, 10.3389/fphy.2024.1358810]; ORGAN-Low has a 450-460 MHz pathfinder.  The
+     lower part of the predicted band (m_a <= 2.48 ueV, y_s <= 0.36) is inside GrAHal-CAPP's planned range: a genuine
+     near-term test of the configuration.
+   - Isocurvature: beta_iso < 0.038 (95 %, k = 0.05/Mpc) is the Planck-2015 "axion I" number and is the value 2025 papers
+     still use for the uncorrelated case [2506.03348, 1502.02114]; the derived form H_I <~ pi f_a theta_i sqrt(beta/(1-beta)
+     A_s) ~ 2.8e-5 f_a theta_i matches section 3.2 (2.86e-5).  The Planck-2018 table value was not seen; a change of
+     0.038 -> 0.035 would move H_I,max by -4 %.
+   - Reheating-era production: CKR hep-ph/9809453 / GKR hep-ph/0005123 regimes confirmed (T ~ a^-3/8; power-law
+     suppression only when T_max > M; exponential suppression for M >~ a few T_max, which is our regime M/T_max ~ 20-25);
+     Bernal-Mukherjee-Unwin 2510.01311 ("Boltzmann suppressed UV freeze-in") treats exactly this M > T_max case.
+   - Late decays: Poulin-Serpico-Lesgourgues 1606.02073 (<= 3.8 % of DM may have decayed invisibly since recombination),
+     Slatyer-Wu 1610.06933 (EM-decay CMB limits apply for tau > 1e13 s, weaken drastically below), KKM astro-ph/0402490 /
+     KKMT 1709.01211 (BBN, tau >~ 0.1 s): located, bound curves not read; the thresholds of 10.2 bracket any value.
+   - Leptogenesis floors: T_RH >~ 2e9 GeV (GNRRS hep-ph/0310123), T_RH >~ M_1/5 (0802.2962).
+   - Charged/strongly-interacting superheavy relics: sea-water searches reach ~1.6 TeV [0807.0211]; Earth/meteorite/
+     neutron-star capture bounds exist [2607.09845]; no 1e13 GeV bound located (relevant only to the p/a <~ 0.2 branch).
+
+10.6 FINAL WINDOW (three-loop point M_s = 1e13, y_s = 0.305-0.389; LRP = neutral 10_F bidoublet member at M_LRP ~ 1e13)
+   theta_i = 0.44-0.58 (two independent misalignment codes; +-20 % from chi(T), g_*),  m_a = 2.09-2.66 ueV (DFSZ-I, open),
+   H_I in [H(T_RH) ~ 1e3-1e5, 3.2e7] GeV (3.5-3.9e7 with the verifier's theta_i; 1.6e7 under the halved convention),
+   T_RH in [2e9 (GNRRS floor), 1.08e11] at H_I = 3e7, up to [2e9, 4.0e11] at H_I <= 1e6; with K2's provisional M_1 = 6.4e10
+   the lower edge rises to 6.4e10 (zero initial N_1 abundance) or 1.3e10 (strong washout): still non-empty.
+   T_max <= M_LRP/(20-25) is the master relic condition (perturbative reheating, constant Gamma).
+   Two-loop low end (M_s = 3e12): theta_i = 0.91-1.15, m_a = 7.1-8.9 ueV (no DFSZ-sensitive exclusion located),
+   H_I <= 1.9-2.3e7, T_RH <= 1.38e10 (H_I = 3e7) ... 4.7e10 (1e6) ... 1.17e11 (1e5): compatible with the 2e9 floor and with
+   M_1/5 = 1.3e10 everywhere; incompatible with T_RH >= M_1 = 6.4e10 unless H_I <= 1e5 -> prefer M_s >~ 6e12.
+   Every bound checked (relic overclosure and late-decay fractions, isocurvature, ADMX, monopoles/strings/walls, BBN,
+   N_eff, leptogenesis floor) is satisfied inside this window.  No K5 computation kills the configuration.
+
+10.7 CONDITIONS AND REFINEMENTS HANDED TO THE OTHER GATES
+   - K3 (vacuum): keep the 210 orientation at p/a >~ 0.3 (A70/A45/A20 all do) so that the exactly stable R-odd state is
+     the neutral bidoublet member; at p/a <~ 0.2 the colour triplet may be lightest (threshold-dependent; verify with the
+     actual GUT spectrum).  Mass ordering of the Vec1/Vec3 pairs is free (both orderings decay before BBN).
+   - K2 (flavour): M_1 <= T_RH,max is the cosmological demand: M_1 <~ 1e11 (M_LRP = 1e13, H_I = 3e7) or <~ 4e11
+     (H_I <= 1e6); K2's provisional 6.4e10 satisfies it.  y_10 >~ 0.6 y_s if M_1 ~ 6e10 is confirmed.
+   - K1/K0 (axion band): K5 uses FINAL's declared-operator y_s window; K0 states that convention under-estimates
+     d(theta) (multi-operator closures).  K5's numbers are functions of (M_s, y_s) and stand under any convention; only
+     the existence of the 2.09-2.66 ueV band depends on the K0/K1 quality verdict.
+   - Inflaton sector (outside the declared model): low scale (V^1/4 <= 1.2e13 GeV, r <= 2e-14), perturbative reheating
+     with T_max <= M_LRP/20, no direct or preheating production of the R-odd/H10 sector (Br x T_RH/m_phi < 3e-23 at
+     M_LRP = 1e13), m_phi < 2 M_LRP closes the channel kinematically.
+   Missing computations (named): (1) non-perturbative preheating into the 10_F/H10 sector for a specified inflaton model;
+   (2) the M_U threshold ordering of the 10_F with the actual GUT spectrum (p/a from K3); (3) the Planck-2018 beta_iso
+   table value and the lattice chi(T) exponent (theta_i to +-20 %); (4) a converged K2 fit for M_1 and eps_1 (window lower
+   edge); (5) reading the KKMT/Slatyer-Wu bound curves (only needed if a Vec3 Planck coefficient vanished).
