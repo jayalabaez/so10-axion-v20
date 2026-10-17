@@ -7,7 +7,10 @@ committed exact G4 certificate (at the G3 witness, tree level).  With G3, G4
 and G5 CLOSED, G6 is OPEN (never CLOSED here: the G6 tree spectrum at
 mu = M_GUT, the G6 remnant RG no-go on the SOS witness family and the G8 Route C
 flavour no-go are evidence only) and G7/G8 stay BLOCKED.  Any missing, forged or
-mismatched G4 certificate reopens G4 fail-closed.
+mismatched G4 certificate reopens G4 fail-closed.  The G1 truncation scope
+(decision U5), the G7 BM-DA1 benchmark evidence, the G8 structural obstruction
+and the separate program verdict (decision U1) are bound fail-closed to their
+committed JSONs and never change a gate, a check or the ledger status.
 """
 from __future__ import annotations
 
@@ -115,7 +118,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report["audit_failures"])
         self.assertEqual(self.report["status"], CLOSED_G4_STATUS)
         self.assertEqual(self.report["overall_state"], mod.STATUS_OPEN)
-        self.assertEqual(self.report["n_checks"], 44)
+        self.assertEqual(self.report["n_checks"], 45)
+        self.assertIs(
+            self.report["checks"]["program_verdict_and_scope_records_never_change_a_gate"], True
+        )
         self.assertTrue(self.report["contract_consistent"])
         self.assertTrue(self.report["contract_evidence_complete"])
         self.assertNotIn(mod.CONTRACT_BLOCKER, self.report["scientific_blockers"])
@@ -913,7 +919,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(
             {name: row["authoritative_closed_scope"] for name, row in gates.items()},
             {
-                "G1": ["promoted exact-X scalar census"],
+                "G1": ["promoted exact-X scalar census", mod.G1_TRUNCATION_CLOSED_SCOPE],
                 "G2": ["promoted exact-X dense derivative and Ward audit"],
                 "G3": [sm_track.G3_LEDGER_CLOSED_SCOPE],
                 "G4": [g4_closure.G4_LEDGER_CLOSED_SCOPE],
@@ -952,7 +958,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
         }
         evidence_items = {
             "G6": [mod.G6_EVIDENCE_RECORDED_ITEM, mod.G6_REMNANT_RG_RECORDED_ITEM],
-            "G8": [mod.G8_EVIDENCE_RECORDED_ITEM],
+            "G7": [mod.G7_COUPLED_SINGLET_PROBE_RECORDED_ITEM, mod.G7_BENCHMARK_RECORDED_ITEM],
+            "G8": [mod.G8_EVIDENCE_RECORDED_ITEM, mod.G8_STRUCTURAL_RECORDED_ITEM],
         }
         caveats = track["downstream_caveats"]
         self.assertEqual(len(caveats), 10)
@@ -1018,7 +1025,15 @@ class G1G8GateLedgerTests(unittest.TestCase):
             ),
         )
         self.assertIn("records Route C", mod.G8_EVIDENCE_RECORDED_ITEM)
-        self.assertIn("need a user decision", mod.G8_EVIDENCE_RECORDED_ITEM)
+        # Decision U1: routes A and B are not pursued (no user decision pending).
+        self.assertIn("are not pursued (user decision U1", mod.G8_EVIDENCE_RECORDED_ITEM)
+        self.assertTrue(
+            mod.G8_EVIDENCE_RECORDED_ITEM.endswith(
+                "are not pursued (user decision U1: the no-go is accepted and the program "
+                "claim re-scoped; see program_verdict)"
+            )
+        )
+        self.assertNotIn("need a user decision", mod.G8_EVIDENCE_RECORDED_ITEM)
         # Rescue-study correction of the Route B parenthesis (text only; the companion module is not wired in).
         for text in (
             "on the certified witness orientation, among the analysed extensions only a 120_H can split d from e",
@@ -1075,6 +1090,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
             "disjointness_robust_to_one_loop_threshold", mod.G6_REMNANT_RG_NEVER_TRUE_FLAGS
         )
         flavour = gates["G8"]["flavour_evidence"]
+        g8_data = mod._load_json_artifact(mod.G8_FLAVOUR_NOGO_JSON)["data"]
         self.assertEqual(
             flavour,
             {
@@ -1087,10 +1103,168 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 "closes_gate": False,
                 "role": "evidence only: cited in the G8 open scope, never changes the G8 status",
                 "route_recorded": "C",
-                "routes_needing_user_decision": ["A", "B"],
+                "routes_not_pursued_user_decision_U1": ["A", "B"],
+                "pull_fields": [
+                    "data.minimum_load_bearing_pull_raw_sigma",
+                    "data.minimum_load_bearing_pull_conservative_sigma",
+                ],
+                "minimum_load_bearing_pull_raw_sigma": g8_data["minimum_load_bearing_pull_raw_sigma"],
+                "minimum_load_bearing_pull_conservative_sigma": g8_data[
+                    "minimum_load_bearing_pull_conservative_sigma"
+                ],
+                "threshold_sigma": g8_data["threshold_sigma"],
+                "scale_band_GeV": [1e9, 2e16],
             },
         )
+        self.assertNotIn("routes_needing_user_decision", flavour)
+        self.assertEqual(f"{flavour['minimum_load_bearing_pull_raw_sigma']:.1f}", "13.2")
+        self.assertEqual(f"{flavour['minimum_load_bearing_pull_conservative_sigma']:.1f}", "8.9")
+        self.assertEqual(flavour["threshold_sigma"], 5.0)
         self.assertEqual(gates["G8"]["status"], mod.STATUS_BLOCKED)
+        # G7 and G8 cite the PR #206 records as evidence only; G1 carries its
+        # truncation scope (decision U5).  None of them changes a status.
+        self.assertEqual(
+            gates["G7"]["benchmark_evidence"],
+            {
+                "source": "g7_decoupled_singlet_benchmark_evidence_v20",
+                "report": "G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json",
+                "required_status": mod.G7_BENCHMARK_STATUS,
+                "status": mod.G7_BENCHMARK_STATUS,
+                "n_failed": 0,
+                "recorded": True,
+                "closes_gate": False,
+                "role": "evidence only: cited in the G7 open scope, never changes the G7 status",
+            },
+        )
+        self.assertEqual(
+            gates["G7"]["coupled_singlet_two_loop_probe"],
+            {
+                "source": "two_loop_thresholds_v20",
+                "report": "two_loop_thresholds_v20.json",
+                "field": "spectator_two_loop_probe",
+                "status": "two-loop threshold RG report",
+                "recorded": True,
+                "closes_gate": False,
+                "role": (
+                    "evidence only: reproduces the decision-D-E coupled-singlet two-loop "
+                    "non-unification; never changes the G7 status"
+                ),
+                "label": (
+                    "NUM (gauge-only two-loop Machacek-Vaughn running; Yukawa terms and "
+                    "threshold matching omitted)"
+                ),
+                "content": "anchor content + 5 x (16+16bar) at M_s = M_I",
+                "scan_log10_M_I": [8.0, 14.5],
+                "perturbative_root_exists": False,
+            },
+        )
+        self.assertEqual(
+            gates["G8"]["structural_obstruction_evidence"],
+            {
+                "source": "g8_sm_pati_salam_structural_obstruction_v20",
+                "report": "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json",
+                "required_status": mod.G8_STRUCTURAL_STATUS,
+                "status": mod.G8_STRUCTURAL_STATUS,
+                "n_failed": 0,
+                "recorded": True,
+                "closes_gate": False,
+                "role": "evidence only: cited in the G8 open scope, never changes the G8 status",
+                "label": (
+                    "EXACT at the dimension-4 level on the degree-2-SOS-certified witness family; "
+                    "off-orientation splitters research-recorded"
+                ),
+            },
+        )
+        self.assertEqual(
+            gates["G1"]["model_contract_truncation_scope"],
+            {
+                "source": "g1_contract_truncation_scope_v20",
+                "report": "G1_CONTRACT_TRUNCATION_SCOPE_V20.json",
+                "required_status": mod.G1_TRUNCATION_STATUS,
+                "status": mod.G1_TRUNCATION_STATUS,
+                "n_failed": 0,
+                "recorded": True,
+                "changes_gate": False,
+                "role": (
+                    "scope only: states that G1 and the attested model contract attest a "
+                    "truncation; never changes the G1 status"
+                ),
+                "allowed_count": 26,
+                "declared_count": 10,
+                "undeclared": list(mod.G1_TRUNCATION_UNDECLARED),
+                "F_16bar_mass_mixings": ["Phi17.F.Rbar", "conj[Phi17].F.Pbar"],
+                "scope_text": mod.G1_TRUNCATION_SCOPE_TEXT,
+            },
+        )
+        self.assertEqual(
+            self.report["model_contract_scope"], gates["G1"]["model_contract_truncation_scope"]
+        )
+        self.assertEqual(len(mod.G1_TRUNCATION_UNDECLARED), 16)
+        self.assertEqual(
+            mod.G1_TRUNCATION_UNDECLARED,
+            tuple(
+                mod._load_json_artifact(mod.G8_FLAVOUR_NOGO_JSON)["contract"][
+                    "allowed_but_undeclared"
+                ]
+            ),
+        )
+        for label in mod.G1_TRUNCATION_UNDECLARED:
+            self.assertIn(label, mod.G1_TRUNCATION_SCOPE_TEXT)
+        self.assertIn("ARGUMENT, not computed", mod.G1_TRUNCATION_SCOPE_TEXT)
+        self.assertIn("The couplings are not added", mod.G1_TRUNCATION_SCOPE_TEXT)
+        # The 16 labels refer to the model file's field basis; the truncation
+        # itself is basis independent (exact dimension count 48 > 25).
+        for text in (mod.G1_TRUNCATION_SCOPE_TEXT, mod.G1_TRUNCATION_CLOSED_SCOPE):
+            self.assertIn("model file's field basis", text)
+        self.assertIn("no field basis removes the truncation", mod.G1_TRUNCATION_SCOPE_TEXT)
+        self.assertIn("more than the 25 of U(5)", mod.G1_TRUNCATION_SCOPE_TEXT)
+        self.assertEqual(
+            mod.G1_TRUNCATION_REDEFINITION_DIMENSIONS,
+            {
+                "undeclared_real_dimension": 48,
+                "mixing_redefinition_real_dimension": 25,
+                "declared_orbit_real_dimension_bound": 125,
+                "all_couplings_real_dimension": 148,
+            },
+        )
+        for text in (
+            "BM-DA1 (v_S decoupled from v_R)",
+            "so G7 stays BLOCKED",
+            "with the U1 root held fixed",
+            "a 120_H, a second 126bar and vectorlike pairs (also with a 45_H) fail the criterion "
+            "already at two loops",
+            "(10_F, a real or complex 45_H) pass at two loops and fail at three loops, as does the "
+            "contract content itself on that root",
+            "convention- and threshold-limited",
+            "not conservative for a fail statement",
+        ):
+            self.assertIn(text, mod.G7_BENCHMARK_RECORDED_ITEM)
+        self.assertNotIn("every analysed flavour-capable", mod.G7_BENCHMARK_RECORDED_ITEM)
+        for text in (
+            "three independent two-loop RG codes",
+            "research runs recorded with decision D-E",
+            "two_loop_thresholds_v20.json, spectator_two_loop_probe",
+            "no perturbative root for log10(M_I/GeV) in [8, 14.5]",
+        ):
+            self.assertIn(text, mod.G7_COUPLED_SINGLET_PROBE_RECORDED_ITEM)
+        self.assertIn(
+            "research runs recorded with decision D-E, not a committed certificate",
+            mod.G7_COUPLED_SINGLET_PROBE_UNAVAILABLE_ITEM,
+        )
+        for text in (
+            "degree-2-SOS-certified witness family",
+            "flavour-dead at the dimension-4 level",
+            "the in-contract H-linear-portal down-type sources require leaving the certified "
+            "orientation (exact, dimension 4)",
+            "a tuned-light (15,2,2)_120 extension is excluded only numerically (research)",
+            "the unanalysed extensions remain open",
+            "no certification method has been demonstrated for the flavour-capable orientations",
+            "research-recorded, not proved",
+            "the SO(10) contract and the G3-G5 certificates are not falsified",
+        ):
+            self.assertIn(text, mod.G8_STRUCTURAL_RECORDED_ITEM)
+        for stale in ("flavour-capable sources require leaving", "no certification method is available"):
+            self.assertNotIn(stale, mod.G8_STRUCTURAL_RECORDED_ITEM)
         self.assertTrue(
             any(
                 item.startswith(
@@ -1505,6 +1679,21 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         for name in (RENAMED_G3_G5_CHECK, *NEW_G4_CHECKS):
             self.assertIs(report["checks"][name], True, name)
+        # Forged frontier: a blocked contract never carries a recorded program
+        # verdict, even though every bound certificate is still recorded.
+        verdict = report["program_verdict"]
+        self.assertIs(verdict["recorded"], False)
+        self.assertEqual(verdict["code"], mod.PROGRAM_VERDICT_CODE_UNAVAILABLE)
+        self.assertEqual(verdict["text"], mod.PROGRAM_VERDICT_UNAVAILABLE_TEXT)
+        self.assertIsNone(verdict["headline"])
+        self.assertEqual(
+            verdict["gate_statuses"], {f"G{i}": mod.STATUS_BLOCKED for i in range(1, 9)}
+        )
+        self.assertIs(
+            report["checks"]["program_verdict_and_scope_records_never_change_a_gate"], True
+        )
+        self.assertEqual(report["gates"]["G1"]["authoritative_closed_scope"], [])
+        self.assertIs(report["gates"]["G1"]["model_contract_truncation_scope"]["recorded"], True)
 
     def test_blocked_contract_keeps_g4_blocked_even_with_a_certified_binding(self):
         inputs = self.report["model_contract_reports"]
@@ -1648,7 +1837,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
             report["gates"]["G6"]["open_scope"][-1], mod.G6_REMNANT_RG_UNAVAILABLE_ITEM
         )
         self.assertEqual(
-            report["gates"]["G8"]["open_scope"][-1], mod.G8_EVIDENCE_UNAVAILABLE_ITEM
+            report["gates"]["G8"]["open_scope"][-2], mod.G8_EVIDENCE_UNAVAILABLE_ITEM
+        )
+        self.assertEqual(
+            report["gates"]["G8"]["open_scope"][-1], mod.G8_STRUCTURAL_RECORDED_ITEM
         )
         self.assertEqual(
             {name: row["status"] for name, row in report["gates"].items()},
@@ -1657,6 +1849,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(report["status"], self.report["status"])
         self.assertEqual(report["checks"], self.report["checks"])
         self.assertEqual(report["n_failed"], 0, report["audit_failures"])
+        # Without the G8 flavour JSON the ledger-side truncation cross-check
+        # and two program-verdict components fail closed.
+        self.assertIs(report["gates"]["G1"]["model_contract_truncation_scope"]["recorded"], False)
+        self.assertIs(report["program_verdict"]["recorded"], False)
+        self.assertEqual(report["program_verdict"]["code"], mod.PROGRAM_VERDICT_CODE_UNAVAILABLE)
         # Replacing only the remnant RG report flips only that record and item.
         only_rg = self._build_with(g6_rg_report={})
         self.assertIs(only_rg["gates"]["G6"]["remnant_rg_evidence"]["recorded"], False)
@@ -1747,6 +1944,459 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.assertIs(record["recorded"], False)
             self.assertIs(record["closes_gate"], False)
 
+    # ------------------------------------------------------------------
+    # Decisions U1/U3/U5: scope and evidence records bound to committed
+    # JSONs, and the separate program verdict.  None changes a gate.
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _forged(report, *path, value=None, delete=False):
+        copied = copy.deepcopy(report)
+        target = copied
+        for key in path[:-1]:
+            target = target[key]
+        if delete:
+            del target[path[-1]]
+        else:
+            target[path[-1]] = value
+        return copied
+
+    def test_program_verdict_records_decision_u1_without_changing_a_gate(self):
+        verdict = self.report["program_verdict"]
+        self.assertIs(verdict["recorded"], True)
+        self.assertEqual(
+            verdict["code"], "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8"
+        )
+        self.assertEqual(verdict["code"], mod.PROGRAM_VERDICT_CODE)
+        self.assertEqual(verdict["headline"], mod.PROGRAM_VERDICT_HEADLINE)
+        self.assertEqual(
+            verdict["headline"],
+            "NOT VIABLE as a complete description of nature under the declared standards; "
+            "the no-go is method-limited at G3 x G8",
+        )
+        self.assertEqual(verdict["text"], mod.PROGRAM_VERDICT_TEXT)
+        self.assertEqual(verdict["decision"], mod.PROGRAM_VERDICT_DECISION)
+        self.assertEqual(verdict["role"], mod.PROGRAM_VERDICT_ROLE)
+        self.assertEqual(verdict["gate_statuses"], mod.PROGRAM_VERDICT_EXPECTED_STATUSES)
+        self.assertEqual(verdict["gate_statuses"], SM_TRACK_CLOSED_STATUSES)
+        self.assertEqual(verdict["expected_gate_statuses"], SM_TRACK_CLOSED_STATUSES)
+        self.assertIs(verdict["gate_statuses_changed"], False)
+        self.assertIs(verdict["proof_grade_whole_model_exclusion"], False)
+        self.assertEqual(verdict["method_limited_at"], ["G3", "G8"])
+        expected_components = [
+            ("certified_tree_level_vacuum", "EXACT (tree level)",
+             ["FINAL_G3_ACCEPTANCE_GATE_V20.json", "G4_SM_PATI_SALAM_PHYSICAL_QUOTIENT_V20.json"]),
+            ("certified_family_flavour_dead", "EXACT (dimension 4; SOS-certified witness family)",
+             ["G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json"]),
+            ("witness_branch_flavour_excluded", "EXACT relations, NUM data comparison",
+             ["G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json"]),
+            ("flavour_capable_orientations_uncertified", "RESEARCH_RECORDED (not a committed certificate)",
+             ["G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json"]),
+            ("g6_not_closable_on_certified_family", "EXACT tree-matching map, NUM region",
+             ["G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json"]),
+            ("flavour_capable_additions_fail_landau", "NUM (gauge + matter running, U1 root held fixed)",
+             ["G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json"]),
+            ("contract_truncation",
+             "EXACT census and symmetry statement; radiative generation argued, not computed",
+             ["G1_CONTRACT_TRUNCATION_SCOPE_V20.json"]),
+        ]
+        components = verdict["components"]
+        self.assertEqual(
+            [(c["id"], c["label"], c["sources"]) for c in components], expected_components
+        )
+        for component in components:
+            self.assertIs(component["recorded"], True, component["id"])
+            self.assertEqual(
+                set(component), {"id", "label", "text", "sources", "recorded"}, component["id"]
+            )
+        g8_data = mod._load_json_artifact(mod.G8_FLAVOUR_NOGO_JSON)["data"]
+        raw = f"{g8_data['minimum_load_bearing_pull_raw_sigma']:.2f}"
+        cons = f"{g8_data['minimum_load_bearing_pull_conservative_sigma']:.2f}"
+        self.assertEqual((raw, cons), ("13.24", "8.86"))
+        flavour_text = components[2]["text"]
+        # Two-decimal minimum pulls, never preceded by ">=" or "at least".
+        self.assertIn(f"minimum load-bearing pulls of {raw} sigma", flavour_text)
+        self.assertIn(f"and {cons} sigma (with a 10% theory term)", flavour_text)
+        self.assertIn("13.24 sigma (experimental errors alone)", flavour_text)
+        self.assertIn("1e9-2e16 GeV", flavour_text)
+        for stale in ("at least", ">=", "rounded"):
+            self.assertNotIn(stale, flavour_text)
+        # Scoped negative statements only; the research claim is labelled.
+        self.assertIn("research, not proved", components[3]["text"])
+        self.assertIn(
+            "no certification method has been demonstrated for the flavour-capable vacuum orientations",
+            components[3]["text"],
+        )
+        self.assertNotIn("no other exact", components[3]["text"])
+        self.assertIn("not a proof that G6 is impossible in the contract", components[4]["text"])
+        self.assertIn("at one loop with tree-level matching", components[4]["text"])
+        for fragment in (
+            "U1 root held fixed; gauge + matter running",
+            "fail the reduced-Planck Landau criterion already at two loops",
+            "as does the contract content itself on that root",
+            "omitted Yukawa terms not conservative for a fail statement",
+        ):
+            self.assertIn(fragment, components[5]["text"])
+        self.assertIn("model file's field basis", components[6]["text"])
+        for fragment in (
+            "under the declared standards (exact G3 vacuum certification and the G1-G8 gate criteria of "
+            "G1_G8_GATE_LEDGER_V20)",
+            "method-limited at G3 x G8",
+            "Research-recorded, not a committed certificate",
+            "no certification method has been demonstrated for the flavour-capable vacuum orientations",
+            "EXACT relations, NUM data comparison: on the witness branch",
+            "G6 is not closable on the SOS-certified witness family at one loop with tree-level matching",
+            "(U1 root held fixed; gauge + matter running)",
+            "fail the reduced-Planck Landau criterion already at two loops",
+            "as does the contract content itself on that root",
+            "three-loop verdict convention- and threshold-limited",
+            "Gate statuses are unchanged (G1-G5 CLOSED, G6 OPEN, G7 BLOCKED, G8 BLOCKED)",
+            "not a proof-grade exclusion of the SO(10) x U(1)_X contract",
+        ):
+            self.assertIn(fragment, mod.PROGRAM_VERDICT_TEXT)
+        for stale in ("every analysed flavour-capable", "no other exact", "has a certification method"):
+            self.assertNotIn(stale, mod.PROGRAM_VERDICT_TEXT)
+        # The program verdict never feeds the ledger status or verdict.
+        self.assertEqual(self.report["status"], CLOSED_G4_STATUS)
+        self.assertNotIn("NOT VIABLE", self.report["verdict"])
+
+    def test_scope_and_evidence_records_never_change_a_gate(self):
+        report = self._build_with(g1_truncation_report={}, g7_report={}, g8_structural_report={})
+        gates = report["gates"]
+        truncation = gates["G1"]["model_contract_truncation_scope"]
+        g7 = gates["G7"]["benchmark_evidence"]
+        structural = gates["G8"]["structural_obstruction_evidence"]
+        self.assertIs(truncation["recorded"], False)
+        self.assertIs(truncation["changes_gate"], False)
+        self.assertEqual(truncation["scope_text"], mod.G1_TRUNCATION_UNAVAILABLE_SCOPE)
+        for key in ("allowed_count", "declared_count", "undeclared", "F_16bar_mass_mixings"):
+            self.assertIsNone(truncation[key], key)
+        self.assertIs(g7["recorded"], False)
+        self.assertIs(g7["closes_gate"], False)
+        self.assertIs(structural["recorded"], False)
+        self.assertIs(structural["closes_gate"], False)
+        self.assertEqual(
+            gates["G1"]["authoritative_closed_scope"],
+            ["promoted exact-X scalar census", mod.G1_TRUNCATION_UNAVAILABLE_SCOPE],
+        )
+        self.assertEqual(gates["G7"]["open_scope"][-1], mod.G7_BENCHMARK_UNAVAILABLE_ITEM)
+        self.assertEqual(gates["G7"]["open_scope"][-2], mod.G7_COUPLED_SINGLET_PROBE_RECORDED_ITEM)
+        self.assertEqual(gates["G8"]["open_scope"][-1], mod.G8_STRUCTURAL_UNAVAILABLE_ITEM)
+        self.assertEqual(gates["G8"]["open_scope"][-2], mod.G8_EVIDENCE_RECORDED_ITEM)
+        verdict = report["program_verdict"]
+        self.assertIs(verdict["recorded"], False)
+        self.assertEqual(verdict["code"], mod.PROGRAM_VERDICT_CODE_UNAVAILABLE)
+        self.assertEqual(verdict["text"], mod.PROGRAM_VERDICT_UNAVAILABLE_TEXT)
+        self.assertIsNone(verdict["headline"])
+        self.assertEqual(
+            {c["id"]: c["recorded"] for c in verdict["components"]},
+            {
+                "certified_tree_level_vacuum": True,
+                "certified_family_flavour_dead": False,
+                "witness_branch_flavour_excluded": True,
+                "flavour_capable_orientations_uncertified": False,
+                "g6_not_closable_on_certified_family": True,
+                "flavour_capable_additions_fail_landau": False,
+                "contract_truncation": False,
+            },
+        )
+        self.assertEqual(
+            {name: row["status"] for name, row in gates.items()},
+            {name: row["status"] for name, row in self.report["gates"].items()},
+        )
+        self.assertEqual(report["status"], self.report["status"])
+        self.assertEqual(report["checks"], self.report["checks"])
+        self.assertEqual(report["verdict"], self.report["verdict"])
+        self.assertEqual(report["n_failed"], 0, report["audit_failures"])
+        # Each missing certificate alone makes the program verdict unavailable.
+        for label, kwargs in (
+            ("truncation", {"g1_truncation_report": {}}),
+            ("g7", {"g7_report": {}}),
+            ("structural", {"g8_structural_report": {}}),
+            ("g6_rg", {"g6_rg_report": {}}),
+            ("g8_flavour", {"g8_report": {}}),
+        ):
+            with self.subTest(missing=label):
+                single = self._build_with(**kwargs)
+                self.assertIs(single["program_verdict"]["recorded"], False)
+                self.assertEqual(
+                    single["program_verdict"]["code"], mod.PROGRAM_VERDICT_CODE_UNAVAILABLE
+                )
+                self.assertEqual(
+                    {name: row["status"] for name, row in single["gates"].items()},
+                    SM_TRACK_CLOSED_STATUSES,
+                )
+                self.assertEqual(single["checks"], self.report["checks"])
+        # The coupled-singlet two-loop probe is G7 evidence only: without it the
+        # G7 item says so, and nothing else changes (not a program-verdict input).
+        no_probe = self._build_with(two_loop_probe_report={})
+        probe = no_probe["gates"]["G7"]["coupled_singlet_two_loop_probe"]
+        self.assertIs(probe["recorded"], False)
+        self.assertIs(probe["closes_gate"], False)
+        for key in ("content", "scan_log10_M_I", "perturbative_root_exists", "status"):
+            self.assertIsNone(probe[key], key)
+        self.assertEqual(
+            no_probe["gates"]["G7"]["open_scope"][-2], mod.G7_COUPLED_SINGLET_PROBE_UNAVAILABLE_ITEM
+        )
+        self.assertEqual(
+            no_probe["gates"]["G7"]["open_scope"][-1], mod.G7_BENCHMARK_RECORDED_ITEM
+        )
+        self.assertEqual(no_probe["program_verdict"], self.report["program_verdict"])
+        self.assertEqual(
+            {name: row["status"] for name, row in no_probe["gates"].items()},
+            SM_TRACK_CLOSED_STATUSES,
+        )
+        self.assertEqual(no_probe["checks"], self.report["checks"])
+        self.assertEqual(no_probe["n_failed"], 0, no_probe["audit_failures"])
+        # A reopened G4 changes the frontier: no recorded program verdict.
+        reopened = self._build_with(g4_report={})
+        self.assertEqual(reopened["status"], G4_OPEN_STATUS)
+        self.assertIs(reopened["program_verdict"]["recorded"], False)
+        self.assertIs(reopened["program_verdict"]["components"][0]["recorded"], False)
+
+    def test_program_verdict_is_unavailable_after_an_audit_failure(self):
+        record = mod.program_verdict_record(
+            contract_consistent=True,
+            statuses=dict(SM_TRACK_CLOSED_STATUSES),
+            track=self.report["g3_sm_target_track"],
+            g4_binding=self.report["gates"]["G4"]["closure_evidence"],
+            g1_truncation=self.report["gates"]["G1"]["model_contract_truncation_scope"],
+            g6_rg_evidence=self.report["gates"]["G6"]["remnant_rg_evidence"],
+            g7_evidence=self.report["gates"]["G7"]["benchmark_evidence"],
+            g8_evidence=self.report["gates"]["G8"]["flavour_evidence"],
+            g8_structural=self.report["gates"]["G8"]["structural_obstruction_evidence"],
+        )
+        self.assertEqual(record, self.report["program_verdict"])
+        failed = mod.program_verdict_record(
+            contract_consistent=True,
+            statuses=dict(SM_TRACK_CLOSED_STATUSES),
+            track=self.report["g3_sm_target_track"],
+            g4_binding=self.report["gates"]["G4"]["closure_evidence"],
+            g1_truncation=self.report["gates"]["G1"]["model_contract_truncation_scope"],
+            g6_rg_evidence=self.report["gates"]["G6"]["remnant_rg_evidence"],
+            g7_evidence=self.report["gates"]["G7"]["benchmark_evidence"],
+            g8_evidence=self.report["gates"]["G8"]["flavour_evidence"],
+            g8_structural=self.report["gates"]["G8"]["structural_obstruction_evidence"],
+            audit_failed=True,
+        )
+        self.assertIs(failed["recorded"], False)
+        self.assertEqual(failed["code"], mod.PROGRAM_VERDICT_CODE_UNAVAILABLE)
+        for statuses in (
+            dict(SM_TRACK_CLOSED_STATUSES, G6="CLOSED"),
+            dict(SM_TRACK_CLOSED_STATUSES, G8="CLOSED"),
+            dict(SM_TRACK_CLOSED_STATUSES, G7="OPEN"),
+        ):
+            forged = mod.program_verdict_record(
+                contract_consistent=True,
+                statuses=statuses,
+                track=self.report["g3_sm_target_track"],
+                g4_binding=self.report["gates"]["G4"]["closure_evidence"],
+                g1_truncation=self.report["gates"]["G1"]["model_contract_truncation_scope"],
+                g6_rg_evidence=self.report["gates"]["G6"]["remnant_rg_evidence"],
+                g7_evidence=self.report["gates"]["G7"]["benchmark_evidence"],
+                g8_evidence=self.report["gates"]["G8"]["flavour_evidence"],
+                g8_structural=self.report["gates"]["G8"]["structural_obstruction_evidence"],
+            )
+            self.assertIs(forged["recorded"], False, statuses)
+
+    def test_record_constants_are_pinned_to_the_record_modules(self):
+        # Imported here only: the ledger itself never imports these modules.
+        import g1_contract_truncation_scope_v20 as g1_truncation
+        import g7_decoupled_singlet_benchmark_evidence_v20 as g7
+        import g8_sm_pati_salam_structural_obstruction_v20 as structural
+
+        self.assertEqual(mod.G1_TRUNCATION_NEVER_TRUE_FLAGS, g1_truncation.NEVER_TRUE_FLAGS)
+        self.assertEqual(mod.G1_TRUNCATION_TRUE_FLAGS, g1_truncation.TRUE_FLAGS)
+        self.assertEqual(mod.G1_TRUNCATION_N_CHECKS, g1_truncation.EXPECTED_N_CHECKS)
+        self.assertEqual(mod.G1_TRUNCATION_STATUS, g1_truncation.STATUS_RECORDED)
+        self.assertEqual(mod.G1_TRUNCATION_UNDECLARED, g1_truncation.EXPECTED_UNDECLARED_LABELS)
+        self.assertEqual(mod.G1_TRUNCATION_F_MASS_MIXINGS, g1_truncation.EXPECTED_F_MASS_MIXINGS)
+        self.assertEqual(
+            mod.G1_TRUNCATION_KERNEL_DIMENSIONS, g1_truncation.EXPECTED_KERNEL_DIMENSIONS
+        )
+        self.assertEqual(mod.G1_TRUNCATION_SOURCE, g1_truncation.MODULE_NAME)
+        self.assertEqual(mod.G1_TRUNCATION_JSON.name, g1_truncation.OUT_JSON.name)
+        self.assertEqual(mod.G7_BENCHMARK_NEVER_TRUE_FLAGS, g7.NEVER_TRUE_FLAGS)
+        self.assertEqual(set(mod.G7_BENCHMARK_TRUE_FLAGS), set(g7.DERIVED_FLAGS))
+        self.assertEqual(mod.G8_STRUCTURAL_NEVER_TRUE_FLAGS, structural.NEVER_TRUE_FLAGS)
+        source = Path(mod.__file__).read_text(encoding="utf-8")
+        for module_name in (
+            "g1_contract_truncation_scope_v20",
+            "g7_decoupled_singlet_benchmark_evidence_v20",
+            "g8_sm_pati_salam_structural_obstruction_v20",
+            "g8_sm_pati_salam_flavour_nogo_v20",
+            "g6_sm_pati_salam_remnant_rg_nogo_v20",
+        ):
+            self.assertNotIn(f"import {module_name}", source, module_name)
+
+    def test_u1_u5_evidence_records_are_fail_closed(self):
+        g1t = mod._load_json_artifact(mod.G1_TRUNCATION_JSON)
+        g7 = mod._load_json_artifact(mod.G7_BENCHMARK_JSON)
+        structural = mod._load_json_artifact(mod.G8_STRUCTURAL_JSON)
+        g8 = mod._load_json_artifact(mod.G8_FLAVOUR_NOGO_JSON)
+        forged = self._forged
+        self.assertIs(mod.g1_truncation_evidence(g1t, g8)["recorded"], True)
+        self.assertIs(mod.g7_benchmark_evidence(g7)["recorded"], True)
+        self.assertIs(mod.g8_structural_evidence(structural)["recorded"], True)
+        self.assertIs(mod.g8_flavour_evidence(g8)["recorded"], True)
+        # The ledger-side cross-check needs the G8 flavour JSON.
+        self.assertIs(mod.g1_truncation_evidence(g1t)["recorded"], False)
+
+        undeclared = list(mod.G1_TRUNCATION_UNDECLARED)
+        g1_cases = [
+            None, [], {},
+            forged(g1t, "status", value="G1_REOPENED"),
+            forged(g1t, "module", value="other_module"),
+            forged(g1t, "gate", value="G8"),
+            forged(g1t, "model_contract_id", value="historical_option_c_no_x_v20"),
+            forged(g1t, "n_checks", value=35),
+            forged(g1t, "n_failed", value=False),
+            forged(g1t, "failures", value=["x"]),
+            forged(g1t, "census", "undeclared", value=undeclared[1:]),
+            forged(g1t, "census", "undeclared", value=list(reversed(undeclared))),
+            forged(g1t, "census", "undeclared_count", value=15),
+            forged(g1t, "census", "allowed_count", value=True),
+            forged(g1t, "kernel", "dimensions", "declared_LagHC", value=4),
+            forged(g1t, "pq", "anomaly", "N_PQ", value=-33),
+            forged(g1t, "sector", "F_16bar_mass_mixings",
+                   value=list(reversed(mod.G1_TRUNCATION_F_MASS_MIXINGS))),
+            forged(g1t, "flags", value=None),
+            forged(g1t, "census", "field_redefinitions", "undeclared_real_dimension", value=24),
+            forged(g1t, "census", "field_redefinitions", "mixing_redefinition_real_dimension", value=50),
+            forged(g1t, "census", "field_redefinitions", "declared_orbit_real_dimension_bound",
+                   value=148),
+            forged(g1t, "census", "field_redefinitions", "all_couplings_real_dimension", value=True),
+            forged(g1t, "census", "field_redefinitions", delete=True),
+        ]
+        g1_cases += [forged(g1t, "flags", name, value=True) for name in mod.G1_TRUNCATION_NEVER_TRUE_FLAGS]
+        g1_cases += [forged(g1t, "flags", name, value=False) for name in mod.G1_TRUNCATION_TRUE_FLAGS]
+        for case in g1_cases:
+            record = mod.g1_truncation_evidence(case, g8)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["changes_gate"], False)
+            self.assertEqual(record["scope_text"], mod.G1_TRUNCATION_UNAVAILABLE_SCOPE)
+            self.assertIsNone(record["undeclared"])
+        for g8_case in (
+            forged(g8, "contract", "allowed_but_undeclared", value=undeclared[1:]),
+            forged(g8, "contract", value=None),
+            {}, None,
+        ):
+            record = mod.g1_truncation_evidence(g1t, g8_case)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["changes_gate"], False)
+
+        g7_cases = [
+            None, [], {},
+            forged(g7, "status", value="G7_CLOSED"),
+            forged(g7, "G7_status", value="CLOSED"),
+            forged(g7, "gate", value="G8"),
+            forged(g7, "n_checks", value=45),
+            forged(g7, "n_failed", value=False),
+            forged(g7, "failures", value=["x"]),
+            forged(g7, "checks", "landau_cost.every_option_fails_three_loop", value=False),
+            forged(g7, "checks", value=None),
+        ]
+        g7_cases += [forged(g7, "flags", name, value=False) for name in mod.G7_BENCHMARK_TRUE_FLAGS]
+        g7_cases += [forged(g7, "flags", name, value=True) for name in mod.G7_BENCHMARK_NEVER_TRUE_FLAGS]
+        for case in g7_cases:
+            record = mod.g7_benchmark_evidence(case)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["closes_gate"], False)
+
+        not_claimed = [
+            line for line in structural["scope"]["not_claimed"]
+            if line != mod.G8_STRUCTURAL_PHI_SECTOR_NOT_CLAIMED
+        ]
+        structural_cases = [
+            None, [], {},
+            forged(structural, "status", value="G8_CLOSED"),
+            forged(structural, "overall_state", value="ANY"),
+            forged(structural, "gate", value="G7"),
+            forged(structural, "n_checks", value=77),
+            forged(structural, "n_failed", value=False),
+            forged(structural, "failures", value=["x"]),
+            forged(
+                structural, "headline", "checks",
+                "flavour_capable_sources_require_leaving_the_certified_orientation", value=False,
+            ),
+            forged(structural, "scope", "not_claimed", value=not_claimed),
+        ]
+        structural_cases += [
+            forged(structural, "flags", name, value=False) for name in mod.G8_STRUCTURAL_TRUE_FLAGS
+        ]
+        structural_cases += [
+            forged(structural, "flags", name, value=True) for name in mod.G8_STRUCTURAL_NEVER_TRUE_FLAGS
+        ]
+        for case in structural_cases:
+            record = mod.g8_structural_evidence(case)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["closes_gate"], False)
+
+        probe_json = mod._load_json_artifact(mod.TWO_LOOP_PROBE_JSON)
+        self.assertIs(mod.g7_coupled_singlet_probe_evidence(probe_json)["recorded"], True)
+        first_finite = next(
+            index for index, row in enumerate(probe_json["spectator_two_loop_probe"]["rows"])
+            if row["delta_RL"] is not None
+        )
+        probe_cases = [
+            None, [], {},
+            forged(probe_json, "status", value="other"),
+            forged(probe_json, "spectator_two_loop_probe", value=None),
+            forged(probe_json, "spectator_two_loop_probe", "available", value="true"),
+            forged(probe_json, "spectator_two_loop_probe", "perturbative_root_exists", value=True),
+            forged(probe_json, "spectator_two_loop_probe", "perturbative_root_exists", value=0),
+            forged(probe_json, "spectator_two_loop_probe", "sign_change", value=True),
+            forged(probe_json, "spectator_two_loop_probe", "content", value="anchor content"),
+            forged(probe_json, "spectator_two_loop_probe", "scan_log10_M_I", value=[8.0, 13.0]),
+            forged(probe_json, "spectator_two_loop_probe", "n_rows", value=26),
+            forged(probe_json, "spectator_two_loop_probe", "n_finite", value=True),
+            forged(probe_json, "spectator_two_loop_probe", "rows", value=[]),
+            forged(probe_json, "spectator_two_loop_probe", "rows", first_finite, "delta_RL", value=0.5),
+            forged(probe_json, "spectator_two_loop_probe", "rows", first_finite, "delta_RL",
+                   value=float("nan")),
+            forged(probe_json, "spectator_two_loop_probe", "rows", 0, "reason", value=None),
+            forged(probe_json, "spectator_two_loop_probe", "available", delete=True),
+        ]
+        for case in probe_cases:
+            record = mod.g7_coupled_singlet_probe_evidence(case)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["closes_gate"], False)
+            self.assertIsNone(record["perturbative_root_exists"])
+
+        pull = "minimum_load_bearing_pull_conservative_sigma"
+        raw = "minimum_load_bearing_pull_raw_sigma"
+        flavour_cases = [
+            forged(g8, "data", pull, value=4.0),
+            forged(g8, "data", pull, value=True),
+            forged(g8, "data", pull, value="8.9"),
+            forged(g8, "data", pull, value=float("nan")),
+            forged(g8, "data", pull, delete=True),
+            forged(g8, "data", raw, value=8.0),
+            forged(g8, "data", raw, value=float("inf")),
+            forged(g8, "data", "threshold_sigma", value=3.0),
+            forged(g8, "data", "scale_band", "2e+16 GeV", value=1e16),
+            forged(g8, "data", "scale_band", value={}),
+            forged(g8, "verdict", value=g8["verdict"].replace("1e9-2e16 GeV", "1e9-1e16 GeV")),
+            forged(g8, "verdict", value=g8["verdict"].replace("tan-beta-independent tests", "tests")),
+            forged(g8, "data", "checks", "every_load_bearing_test_excluded_conservative_at_threshold",
+                   value=False),
+            forged(g8, "data", "checks", "every_load_bearing_test_excluded_raw_at_threshold",
+                   value=False),
+            forged(g8, "data", value=None),
+        ]
+        for case in flavour_cases:
+            record = mod.g8_flavour_evidence(case)
+            self.assertIs(record["recorded"], False)
+            self.assertIs(record["closes_gate"], False)
+            self.assertIsNone(record["route_recorded"])
+            for key in (raw, pull, "threshold_sigma", "scale_band_GeV"):
+                self.assertIsNone(record[key], key)
+            self.assertEqual(
+                record["pull_fields"],
+                ["data.minimum_load_bearing_pull_raw_sigma",
+                 "data.minimum_load_bearing_pull_conservative_sigma"],
+            )
+
     def test_committed_ledger_json_records_the_g4_closure(self):
         # Regenerated by the integrator (g1_g8_gate_ledger_v20.py --write).
         committed = json.loads(mod.OUT_JSON.read_text(encoding="utf-8"))
@@ -1764,6 +2414,22 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertIs(committed["gates"]["G6"]["remnant_rg_evidence"]["recorded"], True)
         self.assertIs(committed["gates"]["G6"]["remnant_rg_evidence"]["closes_gate"], False)
         self.assertIs(committed["gates"]["G8"]["flavour_evidence"]["recorded"], True)
+        # Decision U1 (regenerated by the integrator's chain).
+        self.assertIs(committed["program_verdict"]["recorded"], True)
+        self.assertEqual(committed["program_verdict"]["code"], mod.PROGRAM_VERDICT_CODE)
+        self.assertEqual(committed["program_verdict"], self.report["program_verdict"])
+        self.assertEqual(committed["n_checks"], 45)
+        self.assertIs(committed["gates"]["G7"]["benchmark_evidence"]["recorded"], True)
+        self.assertIs(committed["gates"]["G7"]["coupled_singlet_two_loop_probe"]["recorded"], True)
+        self.assertIs(
+            committed["gates"]["G7"]["coupled_singlet_two_loop_probe"]["closes_gate"], False
+        )
+        self.assertIs(
+            committed["gates"]["G8"]["structural_obstruction_evidence"]["recorded"], True
+        )
+        self.assertIs(
+            committed["gates"]["G1"]["model_contract_truncation_scope"]["recorded"], True
+        )
 
     def test_markdown_states_the_g4_closure_and_the_evidence_only_citations(self):
         text = mod.write_markdown(json.loads(json.dumps(self.report)))
@@ -1778,6 +2444,36 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertIn(
             "remnant RG no-go `g6_sm_pati_salam_remnant_rg_nogo_v20` recorded `True`, "
             "closes gate `False`",
+            text,
+        )
+        self.assertIn("## Program verdict (decision U1)", text)
+        self.assertIn(f"**Code:** `{mod.PROGRAM_VERDICT_CODE}`", text)
+        self.assertIn(mod.PROGRAM_VERDICT_TEXT, text)
+        for component in self.report["program_verdict"]["components"]:
+            self.assertIn(
+                f"- [{component['label']}] {component['text']} "
+                f"({', '.join(component['sources'])}; recorded `True`)",
+                text,
+            )
+        self.assertIn("## Model-contract scope (G1)", text)
+        self.assertIn(mod.G1_TRUNCATION_SCOPE_TEXT, text)
+        self.assertIn(
+            "- G7 (`BLOCKED`): decoupled-singlet benchmark evidence "
+            "`g7_decoupled_singlet_benchmark_evidence_v20` recorded `True`, closes gate `False`",
+            text,
+        )
+        self.assertIn(
+            "- G7 (`BLOCKED`): coupled-singlet two-loop probe `two_loop_thresholds_v20` recorded "
+            "`True`, closes gate `False`",
+            text,
+        )
+        self.assertIn(
+            "- G8 (`BLOCKED`): structural obstruction "
+            "`g8_sm_pati_salam_structural_obstruction_v20` recorded `True`, closes gate `False`",
+            text,
+        )
+        self.assertIn(
+            "- `G1`: `CLOSED` - promoted exact-X scalar census, " + mod.G1_TRUNCATION_CLOSED_SCOPE,
             text,
         )
 

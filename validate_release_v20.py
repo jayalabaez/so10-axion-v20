@@ -192,6 +192,11 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_g3_sm_pati_salam_witness_unitarity_v20.py",
     "G3_SM_PATI_SALAM_WITNESS_UNITARITY_V20.json",
     "G3_SM_PATI_SALAM_WITNESS_UNITARITY_V20.md",
+    # G1 truncation scope of the model contract (decision U5): status-neutral, no gate change.
+    "g1_contract_truncation_scope_v20.py",
+    "test_g1_contract_truncation_scope_v20.py",
+    "G1_CONTRACT_TRUNCATION_SCOPE_V20.json",
+    "G1_CONTRACT_TRUNCATION_SCOPE_V20.md",
 )
 
 
@@ -1800,18 +1805,58 @@ def main() -> int:
         and not matrix["full_theory_validated"],
         "validation matrix promoted the open theory past its gates",
     )
+    # Decision U3: the label's pulls are read from the committed G8 flavour
+    # no-go (minimum load-bearing pulls with a 10% theory term and on
+    # experimental errors alone; fail closed).  The label's leading value is
+    # the conservative pull rounded to 0.1 sigma, never preceded by ">=".
+    g8_flavour = json.loads(
+        (ROOT / "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json").read_text(encoding="utf-8")
+    )
+    g8_pull = g8_flavour.get("data", {}).get(
+        "minimum_load_bearing_pull_conservative_sigma"
+    )
+    g8_raw = g8_flavour.get("data", {}).get(
+        "minimum_load_bearing_pull_raw_sigma"
+    )
+    require(
+        isinstance(g8_pull, (int, float))
+        and not isinstance(g8_pull, bool)
+        and 5.0 <= g8_pull < float("inf")
+        and isinstance(g8_raw, (int, float))
+        and not isinstance(g8_raw, bool)
+        and g8_pull <= g8_raw < float("inf"),
+        "G8 flavour no-go minimum load-bearing pull is missing, malformed or below 5 sigma",
+    )
+    g8_release_label = (
+        f"certified tree-level vacuum, excluded by G8 flavour at {g8_pull:.1f} sigma (minimum "
+        f"load-bearing pull {g8_pull:.2f} sigma with a 10% theory term, {g8_raw:.2f} sigma on "
+        "experimental errors alone; witness-branch renormalizable Yukawas, tan-beta-independent "
+        "tests, 1e9-2e16 GeV), not approved"
+    )
     # Decision D-E: G4 CLOSED meets decision D3, but the internal candidate is
-    # held (not approved) until G7 is CLOSED.
+    # held (not approved) until G7 is CLOSED; decision U3 releases it and
+    # never approves it (no approval branch exists).
     require(
         ultimate["overall_state"] == "OPEN"
         and not ultimate["internal_candidate_approved"]
         and ultimate["internal_candidate_gate"]["G4_closed"] is True
         and ultimate["internal_candidate_gate"]["G7_closed"] is False
         and ultimate["internal_candidate_gate"]["approval_held_pending_G7"] is True
+        and ultimate["internal_candidate_gate"]["approval_disabled_by_U3"] is True
         and not ultimate["conditional_benchmark_approved"]
         and not ultimate["full_phenomenology_approved"]
-        and not ultimate["whole_model_excluded"],
-        "ultimate gate approved the internal candidate before G7 (decision D-E) or approved or excluded the open model",
+        and not ultimate["whole_model_excluded"]
+        and ultimate["tiers"]["INTERNAL_CANDIDATE"] == "RELEASED_NOT_APPROVED"
+        and ultimate["internal_candidate_release_label"] == g8_release_label,
+        "ultimate gate approved the internal candidate before G7 (decision D-E), lost the U3 release, or approved or excluded the open model",
+    )
+    # Decision U1: the ledger records the program verdict separately from the
+    # gate statuses.
+    require(
+        ledger_report["program_verdict"]["recorded"] is True
+        and ledger_report["program_verdict"]["code"]
+        == "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8",
+        "ledger program verdict missing or changed",
     )
 
     suite = unittest.defaultTestLoader.discover(str(ROOT))
@@ -2101,7 +2146,8 @@ def main() -> int:
     print(
         f"RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
         f"tests {n_tests}/{n_tests}; clean 14-page PDF; scientific state OPEN; "
-        f"G4 CLOSED; internal candidate held pending G7 (decision D-E)"
+        f"G4 CLOSED; internal candidate released, not approved (decision U3); "
+        f"program verdict NOT VIABLE under the declared standards (decision U1)"
     )
     return 0
 

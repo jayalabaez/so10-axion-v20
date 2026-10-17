@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Canonical repository-level full-model gate for SO(10) axion v20.
 
-The historical ``ultimate_theory_gate_v20`` checks an older artifact stack and
-may approve an internal candidate.  That approval is not full-model validation.
+The historical ``ultimate_theory_gate_v20`` checks an older artifact stack; by
+decision U3 it may release, never approve, an internal candidate, and neither
+is full-model validation.
 This gate makes the corrected G1–G8 ledger and proton-decay falsification gate
 the authoritative prerequisites for any whole-model claim.
 """
@@ -39,6 +40,11 @@ def _legacy_snapshot() -> dict[str, Any]:
         "status": report.get("status"),
         "decision": report.get("decision"),
         "internal_candidate_approved": report.get("internal_candidate_approved"),
+        "internal_candidate_tier": (
+            report.get("tiers", {}).get("INTERNAL_CANDIDATE")
+            if isinstance(report.get("tiers"), dict)
+            else None
+        ),
         "full_phenomenology_approved": report.get("full_phenomenology_approved"),
         "empirical_realization_approved": report.get("empirical_realization_approved"),
         "authoritative_for_full_model": False,
@@ -105,6 +111,13 @@ def build_report() -> dict[str, Any]:
         declared_contract_consistent and contract_evidence_complete
     )
 
+    # Decision U1: the ledger's program verdict is a separate, non-gate field.
+    # It is reported here but never promoted to a whole-model exclusion.
+    program_verdict = ledger.get("program_verdict")
+    if not isinstance(program_verdict, dict):
+        program_verdict = {}
+    program_verdict_recorded = program_verdict.get("recorded") is True
+
     hard_theory_failures: list[str] = []
     # Conditional benchmark failures are deliberately not promoted here.
     all_gates_closed = not gates_not_closed
@@ -156,6 +169,10 @@ def build_report() -> dict[str, Any]:
         ),
         "conditional_proton_points_not_promoted_to_model_exclusion": not proton_excludes_model,
         "no_discovery_claim": not proton_observed,
+        "program_verdict_is_not_a_proof_grade_exclusion": (
+            program_verdict.get("proof_grade_whole_model_exclusion", False) is False
+            and (not whole_model_excluded or proton_excludes_model)
+        ),
     }
     failed_checks = [name for name, ok in checks.items() if not ok]
     if failed_checks and not execution_failures:
@@ -190,7 +207,15 @@ def build_report() -> dict[str, Any]:
         + " and the unique proton-lifetime derivation are not closed. "
         "The internal-candidate tier (decisions D3 and D-E) is not "
         "full-model validation. "
-        "Historical Option-C calculations remain context only and cannot "
+        + (
+            "The ledger's program verdict (decision U1) is NOT VIABLE as a "
+            "complete description of nature under the declared standards "
+            "(method-limited at G3 x G8); it is not a proof-grade whole-model "
+            "exclusion. "
+            if program_verdict_recorded
+            else ""
+        )
+        + "Historical Option-C calculations remain context only and cannot "
         "validate or exclude the gauged model."
         if contract_consistent
         else "The repository remains BLOCKED at full-model scope. The manuscript's "
@@ -244,6 +269,8 @@ def build_report() -> dict[str, Any]:
             "g4_closure_scope": ledger.get("gates", {})
             .get("G4", {})
             .get("closure_scope"),
+            "program_verdict_code": program_verdict.get("code"),
+            "program_verdict_recorded": program_verdict_recorded,
         },
         "flag": {
             "authoritative_full_model_gate": True,

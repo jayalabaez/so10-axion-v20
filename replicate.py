@@ -455,7 +455,11 @@ def main() -> int:
             "--check",
         ]
     )
-    print("=== REPLICATION PASS (SCIENTIFIC STATE: OPEN; G4 CLOSED; INTERNAL CANDIDATE HELD PENDING G7 (DECISION D-E)) ===", flush=True)
+    print(
+        "=== REPLICATION PASS (SCIENTIFIC STATE: OPEN; G4 CLOSED; INTERNAL CANDIDATE RELEASED, NOT APPROVED "
+        "(DECISIONS D-E, U3); PROGRAM VERDICT NOT VIABLE UNDER THE DECLARED STANDARDS (U1)) ===",
+        flush=True,
+    )
     print(
         "Passing replication means the fail-closed snapshot is reproducible. "
         "It does not validate the manuscript model or claim a discovery.",

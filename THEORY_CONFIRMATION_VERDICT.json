@@ -31,6 +31,8 @@
     "exact_unique_proton_lifetime": false,
     "g3_closing_track": "sm_pati_salam",
     "g4_closure_scope": "G4 gauge quotient and physical Hessian at the G3 witness benchmark (g4_sm_pati_salam_physical_quotient_v20 via g4_sm_closure_binding_v20; exact over Q at r0 = 1/5, x0 = 1, kappa = -r0/4 for every 0 < eps < 599/50; tree level): orbit ranks 33/34/35 (integer minors 1, 4, -68; 12 null vectors spanning the SM algebra), gauge quotient 452 and massive/transverse quotient 451, PQ global and not eaten; Hessian on the gauge quotient 451/1/0 with the physical axion (S phase 7225/7241, Phi17 phase 16/7241; period 2 pi/68 modulo the gauge group, v_a^2 = 2/7241 M_GUT^2) as its only zero mode; 35 zero modes = 34 eaten Goldstones + the axion, no negative mode; eps -> 0 adds only one SM doublet (1,2)_{1/2} of mass^2 eps, lifted at quartic order by lambda_eff = 127/64; vector-boson Gram rank 34; axion massless only for the renormalizable PQ-neutral benchmark potential; compiler binding float64",
+    "program_verdict_code": "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8",
+    "program_verdict_recorded": true,
     "proton_decay_observed": false,
     "tool_native_bound_model_evidence_complete": true,
     "whole_model_excluded": false,
@@ -40,7 +42,7 @@
     "commit_sha": "ba2c66364cd68d733a2dff51416f28d92100eff5",
     "conclusion": "success",
     "current_tree_covered": false,
-    "current_tree_test_count": 1501,
+    "current_tree_test_count": 1542,
     "note": "This run covers only its named historical commit and cannot approve the current gauged-U(1)_X model.",
     "run_id": 30790747879,
     "run_url": "https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879",
@@ -51,14 +53,14 @@
   },
   "classification": "AUTHORITATIVE_GATES_OPEN",
   "conditional_benchmark_approved": false,
-  "correct_public_claim": "The authoritative gauged-U(1)_X model contract is attested by a manifest/log-bound external SARAH 4.15.3 execution, and G1, G2, G3, G4 and G5 are closed. G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither validated nor excluded. G4 is CLOSED at the G3 witness benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, every 0 < eps < 599/50), tree level (g4_sm_pati_salam_physical_quotient_v20 through g4_sm_closure_binding_v20): SO(10)xU(1)_X rank 34 (gauge quotient 452) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451); on the gauge quotient the Hessian is 451/1/0 with the physical axion as its only zero mode, the 35 zero modes of the full Hessian are 34 eaten Goldstones and the axion, and no mode is negative; as eps -> 0 the only extra zero modes are one SM doublet (1,2)_{1/2}, lifted at quartic order by lambda_eff = 127/64. The axion is massless only for the renormalizable PQ-neutral benchmark potential: the QCD anomaly and PQ-violating operators such as Phi17^4 conj(S)^17/M_Pl^17 give it a mass. The internal candidate is WITHHELD, held pending G7 (decision D-E): G4 is CLOSED at the G3 witness benchmark (tree level), which meets decision D3's G4 condition, but the internal-candidate tier is held until G7 is CLOSED because of a G7 no-go for the declared benchmark: with the anomaly-mandated 5 x (16 + 16bar) spectators at M_s ~ M_I and v_S = M_I, three independent two-loop RG codes find no perturbative two-loop gauge unification (research runs recorded with decision D-E, not a committed repository certificate); decoupling v_S from v_R is being researched. G6 is open and G7-G8 remain blocked. G1-G8 approval is withheld. Historical Option-C calculations are scoped subtheorems and neither validate nor exclude the gauged model.",
-  "current_tree_unit_tests": 1501,
+  "correct_public_claim": "The authoritative gauged-U(1)_X model contract is attested by a manifest/log-bound external SARAH 4.15.3 execution, and G1, G2, G3, G4 and G5 are closed. G1 and the model contract attest a truncation: 10 of the 26 renormalizable fermion bilinears allowed by SO(10) x U(1)_X x Z17 are declared (labels in the model file's field basis; no field redefinition removes the truncation), and the 16 omitted ones are not protected by any U(1) or multiplet-diagonal phase symmetry of the declared Lagrangian (g1_contract_truncation_scope_v20). G3 closed on the SM Pati-Salam benchmark family: the exact SM-preserving global vacuum of the declared exact-X potential's 27-parameter benchmark with the light-doublet deformation eps > 0, unique modulo SO(10) x U(1)_X x accidental U(1)_PQ; tuned DT/M_I relations; caveats routed downstream; whole model neither validated nor excluded. G4 is CLOSED at the G3 witness benchmark (r0 = 1/5, x0 = 1, kappa = -r0/4, every 0 < eps < 599/50), tree level (g4_sm_pati_salam_physical_quotient_v20 through g4_sm_closure_binding_v20): SO(10)xU(1)_X rank 34 (gauge quotient 452) and SO(10)xU(1)_XxPQ rank 35 (massive/transverse quotient 451); on the gauge quotient the Hessian is 451/1/0 with the physical axion as its only zero mode, the 35 zero modes of the full Hessian are 34 eaten Goldstones and the axion, and no mode is negative; as eps -> 0 the only extra zero modes are one SM doublet (1,2)_{1/2}, lifted at quartic order by lambda_eff = 127/64. The axion is massless only for the renormalizable PQ-neutral benchmark potential: the QCD anomaly and PQ-violating operators such as Phi17^4 conj(S)^17/M_Pl^17 give it a mass. The internal candidate is RELEASED (decision U3): certified tree-level vacuum, excluded by G8 flavour at 8.9 sigma (minimum load-bearing pull 8.86 sigma with a 10% theory term, 13.24 sigma on experimental errors alone; witness-branch renormalizable Yukawas, tan-beta-independent tests, 1e9-2e16 GeV), not approved. The G3 witness vacuum is certified at tree level (G1-G5 CLOSED; G4 at the witness benchmark r0 = 1/5, x0 = 1, kappa = -r0/4); on this witness branch the renormalizable Yukawas give CKM = 1, m_t = m_b and m_d = m_e, and across 1e9-2e16 GeV the minimum load-bearing pulls of the tan-beta-independent tests are 13.24 sigma (experimental errors alone) and 8.86 sigma (with a 10% theory term) (G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json, fields data.minimum_load_bearing_pull_raw_sigma and data.minimum_load_bearing_pull_conservative_sigma; the label's 8.9 sigma is the conservative pull rounded to 0.1 sigma). The structural obstruction (g8_sm_pati_salam_structural_obstruction_v20) extends the flavour-dead relations M_e = phase x M_d^T and CKM = 1 (tan beta = 1) to every vacuum of the degree-2-SOS-certified witness family at the dimension-4 level. The internal-candidate tier is not approved (decision U3 keeps internal_candidate_approved False on every path); the release is neither phenomenological validation nor a proof-grade exclusion of the SO(10) x U(1)_X contract. G6 is open and G7-G8 remain blocked. G1-G8 approval is withheld. Program verdict (decision U1, G1_G8_GATE_LEDGER_V20.json): NOT VIABLE as a complete description of nature under the declared standards; the no-go is method-limited at G3 x G8; this is not a proof-grade exclusion of the SO(10) x U(1)_X contract. Historical Option-C calculations are scoped subtheorems and neither validate nor exclude the gauged model.",
+  "current_tree_unit_tests": 1542,
   "decision": "WITHHOLD_APPROVAL",
   "empirical_realization_approved": false,
   "failures": [],
   "full_phenomenology_approved": false,
   "full_theory_validated": false,
-  "generated_utc": "2026-10-16T18:32:53.180638+00:00",
+  "generated_utc": "2026-10-17T09:14:18.468994+00:00",
   "historical_option_c_subtheorems": {
     "G1": {
       "base_tensor_families": 18,
@@ -99,31 +101,79 @@
       "G3_search": "historical_option_c_no_x_v20"
     }
   },
-  "incorrect_claim_do_not_use": "G3 or G4 is closed for a physically realistic or natural vacuum (the doublet-triplet splitting, O05 and M_I are tuned; G4 is certified at the r0 = 1/5, x0 = 1 benchmark at tree level only); the axion stays massless once the QCD anomaly or PQ-violating operators are included; the tuned eps = 0 point is the G3 witness; an internal candidate is approved (decision D-E holds it until G7 is CLOSED); G6, G7 or G8 is closed; the certified SU(5)+Delta point is a Standard-Model vacuum; the current repository validates the full theory; or the historical saddle excludes the gauged-U(1)_X model.",
+  "incorrect_claim_do_not_use": "G3 or G4 is closed for a physically realistic or natural vacuum (the doublet-triplet splitting, O05 and M_I are tuned; G4 is certified at the r0 = 1/5, x0 = 1 benchmark at tree level only); the axion stays massless once the QCD anomaly or PQ-violating operators are included; the tuned eps = 0 point is the G3 witness; the released internal candidate is approved, viable or a prediction (decision U3 releases it and never approves it); the G8 exclusion is a proof-grade exclusion of the SO(10) x U(1)_X contract or of SO(10) axion models in general; the attested contract contains every allowed renormalizable coupling; G6, G7 or G8 is closed; the certified SU(5)+Delta point is a Standard-Model vacuum; the current repository validates the full theory; or the historical saddle excludes the gauged-U(1)_X model.",
   "integrity_pass": true,
   "internal_candidate_approved": false,
   "internal_candidate_gate": {
+    "D3_met_with_G7_closed_not_approved": false,
     "D3_satisfied": true,
-    "D_E_evidence": "a G7 no-go for the declared benchmark: with the anomaly-mandated 5 x (16 + 16bar) spectators at M_s ~ M_I and v_S = M_I, three independent two-loop RG codes find no perturbative two-loop gauge unification (research runs recorded with decision D-E, not a committed repository certificate); decoupling v_S from v_R is being researched",
-    "D_E_rule": "D-E (user decision, 2026-09-26): closing G4 does not approve the internal-candidate tier; approval is held until G7 resolves. The ledger has no FAILED status and the two-loop no-go is not yet a committed certificate, so this gate implements the conservative reading: approval is held until G7 is CLOSED, in addition to decision D3 (G1-G3 CLOSED and the closing G3 track's downstream caveats resolved, or G4 CLOSED)",
+    "D_E_evidence": "a G7 no-go for the declared coupled-singlet benchmark: with the anomaly-mandated 5 x (16 + 16bar) spectators at M_s ~ M_I and v_S = M_I, three independent two-loop RG codes find no perturbative two-loop gauge unification (research runs recorded with decision D-E), reproduced by the committed gauge-only spectator probe of two_loop_thresholds_v20 (no perturbative root for M_I between 1e8 and 10^14.5 GeV; Yukawa terms and threshold matching omitted); for the decoupled-singlet benchmark BM-DA1 the committed evidence g7_decoupled_singlet_benchmark_evidence_v20 records a two-loop pass of the reduced-Planck Landau criterion on both two-code roots, a three-loop (gauge-only) outcome within the two-code root uncertainty and a conditional RG-improved axion-quality failure, so G7 stays BLOCKED",
+    "D_E_rule": "D-E (user decision, 2026-09-26): closing G4 does not approve the internal-candidate tier; approval is held until G7 resolves. The ledger has no FAILED status, so this gate implements the conservative reading: approval is held until G7 is CLOSED, in addition to decision D3 (G1-G3 CLOSED and the closing G3 track's downstream caveats resolved, or G4 CLOSED); decision U3 releases the candidate without approving it and keeps the tier unapproved on every path, also once G7 is CLOSED",
     "G1_G2_G3_closed": true,
     "G3_closed": true,
     "G4_closed": true,
     "G4_closure_decision": "User instruction (2026-09-25, 'continue ... complete theory close all needed'): close G4 once its exact certificate passes; gates that are not proven stay OPEN or BLOCKED. User decision D-E (2026-09-26) overrides the decision-D3 cascade: a CLOSED G4 meets D3's G4 condition but does not approve the internal-candidate tier, which is held until G7 is CLOSED (theory_confirmation_verdict_v20).",
     "G4_closure_evidence_certified": true,
+    "G5_G8_frontier": {
+      "G5": "CLOSED",
+      "G6": "OPEN",
+      "G7": "BLOCKED",
+      "G8": "BLOCKED"
+    },
+    "G5_G8_frontier_expected": true,
+    "G5_closed": true,
+    "G7_benchmark_evidence_recorded": true,
     "G7_closed": false,
+    "G7_coupled_singlet_probe_recorded": true,
+    "G8_closed": false,
+    "G8_flavour_pulls_bound": true,
+    "U3_rule": "U3 (user decision after the 2026-09-27 rescue study): the internal candidate is released, not approved, as a certified tree-level vacuum excluded by G8 flavour; internal_candidate_approved stays False on every path (also with G6 and G7 CLOSED or on a forged ledger) and --require-internal-approval always fails; the release needs decision D3 met, G5 CLOSED, G8 not CLOSED and the committed G8 flavour evidence (with its minimum load-bearing pulls) and G8 structural evidence recorded in the ledger; otherwise the tier is WITHHELD (fail closed)",
+    "approval_disabled_by_U3": true,
     "approval_held_pending_G7": true,
     "caveats_cleared": false,
     "closing_track": "sm_pati_salam",
     "closing_track_downstream_caveats_resolved": false,
+    "released_not_approved": true,
     "rule": "D3: G1-G3 CLOSED does not approve an internal candidate; the closing track's downstream caveats must also be resolved, or G4 must be CLOSED"
   },
-  "internal_candidate_hold": "WITHHELD, held pending G7 (decision D-E): G4 is CLOSED at the G3 witness benchmark (tree level), which meets decision D3's G4 condition, but the internal-candidate tier is held until G7 is CLOSED because of a G7 no-go for the declared benchmark: with the anomaly-mandated 5 x (16 + 16bar) spectators at M_s ~ M_I and v_S = M_I, three independent two-loop RG codes find no perturbative two-loop gauge unification (research runs recorded with decision D-E, not a committed repository certificate); decoupling v_S from v_R is being researched.",
+  "internal_candidate_hold": null,
+  "internal_candidate_release": "RELEASED (decision U3): certified tree-level vacuum, excluded by G8 flavour at 8.9 sigma (minimum load-bearing pull 8.86 sigma with a 10% theory term, 13.24 sigma on experimental errors alone; witness-branch renormalizable Yukawas, tan-beta-independent tests, 1e9-2e16 GeV), not approved. The G3 witness vacuum is certified at tree level (G1-G5 CLOSED; G4 at the witness benchmark r0 = 1/5, x0 = 1, kappa = -r0/4); on this witness branch the renormalizable Yukawas give CKM = 1, m_t = m_b and m_d = m_e, and across 1e9-2e16 GeV the minimum load-bearing pulls of the tan-beta-independent tests are 13.24 sigma (experimental errors alone) and 8.86 sigma (with a 10% theory term) (G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json, fields data.minimum_load_bearing_pull_raw_sigma and data.minimum_load_bearing_pull_conservative_sigma; the label's 8.9 sigma is the conservative pull rounded to 0.1 sigma). The structural obstruction (g8_sm_pati_salam_structural_obstruction_v20) extends the flavour-dead relations M_e = phase x M_d^T and CKM = 1 (tan beta = 1) to every vacuum of the degree-2-SOS-certified witness family at the dimension-4 level. The internal-candidate tier is not approved (decision U3 keeps internal_candidate_approved False on every path); the release is neither phenomenological validation nor a proof-grade exclusion of the SO(10) x U(1)_X contract.",
+  "internal_candidate_release_binding": {
+    "conservative_sigma_text": "8.9",
+    "conservative_sigma_text_2dp": "8.86",
+    "label_rounding": "the label's leading value is the conservative minimum load-bearing pull rounded to 0.1 sigma and is never preceded by '>='; the parenthesis gives both minimum pulls to 0.01 sigma; the 5-sigma threshold is compared with the unrounded values",
+    "minimum_load_bearing_pull_conservative_sigma": 8.85922304274,
+    "minimum_load_bearing_pull_raw_sigma": 13.2425443295,
+    "pull_fields": [
+      "data.minimum_load_bearing_pull_raw_sigma",
+      "data.minimum_load_bearing_pull_conservative_sigma"
+    ],
+    "raw_sigma_text": "13.2",
+    "raw_sigma_text_2dp": "13.24",
+    "recorded": true,
+    "scale_band_GeV": [
+      1000000000.0,
+      2e+16
+    ],
+    "source": "ledger gates.G8.flavour_evidence (G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json)",
+    "structural_obstruction_recorded": true
+  },
+  "internal_candidate_release_label": "certified tree-level vacuum, excluded by G8 flavour at 8.9 sigma (minimum load-bearing pull 8.86 sigma with a 10% theory term, 13.24 sigma on experimental errors alone; witness-branch renormalizable Yukawas, tan-beta-independent tests, 1e9-2e16 GeV), not approved",
   "internal_candidate_scope": null,
   "model_contract_id": "gauged_u1x_phi17_v20",
   "model_contract_ready": true,
+  "model_contract_scope": {
+    "recorded": true,
+    "scope_text": "G1 and the SARAH-attested model contract attest a truncation (g1_contract_truncation_scope_v20, G1_CONTRACT_TRUNCATION_SCOPE_V20.json): the declared Lagrangian keeps 10 of the 26 renormalizable fermion bilinears allowed by SO(10) x U(1)_X x Z17 (Z17 = X mod 17 for every field, so Z17 adds no condition). The 16 omitted couplings in the model file's field basis (Delta126bar.F.P, Delta126bar.F.R, Delta126bar.P.P, Delta126bar.P.R, Delta126bar.R.R, H10.P.P, H10.P.R, H10.R.R, Phi17.F.Rbar, Phi17.P.Rbar, conj[Delta126bar].Pbar.Rbar, conj[H10].Pbar.Rbar, conj[Phi17].F.Pbar, conj[Phi17].R.Pbar, conj[S].P.Qbar, conj[S].R.Qbar) each involve P, R, Pbar, Rbar or Qbar of the vectorlike sector (Phi17.F.Rbar and conj[Phi17].F.Pbar are F-Rbar and F-Pbar mass mixings) and are PQ neutral. EXACT: the declared terms and all 26 couplings plus the scalar links have the same 3-dimensional U(1) kernel (X, PQ, spectator number), F, P and R carry identical charges, and each omitted charge vector is an integer combination of declared ones, so no U(1) and no multiplet-diagonal phase symmetry of the declared Lagrangian protects the truncation. EXACT: the 16-label list depends on the field basis because F, P and R are charge-degenerate, but no field basis removes the truncation: the omitted couplings span 48 real generation-expanded dimensions, more than the 25 of U(5) on the five X = 1 sixteens, the only linear, kinetic-term-preserving field redefinition that mixes distinct multiplets. ARGUMENT, not computed: the truncation is therefore not expected to be stable under renormalisation. At the dimension-4 level the committed G8 analysis already includes all 26 couplings. The couplings are not added (that would be a new contract)."
+  },
   "n_failed": 0,
   "overall_state": "OPEN",
+  "program_verdict": {
+    "code": "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8",
+    "headline": "NOT VIABLE as a complete description of nature under the declared standards; the no-go is method-limited at G3 x G8",
+    "recorded": true,
+    "text": "Program verdict (user decision U1): SO10Z17AxionV20 is a certified tree-level vacuum with exact no-go lemmas and numerical no-go evidence, and it is NOT VIABLE as a complete description of nature under the declared standards (exact G3 vacuum certification and the G1-G8 gate criteria of G1_G8_GATE_LEDGER_V20); the no-go is method-limited at G3 x G8. EXACT: every vacuum of the degree-2-SOS-certified witness family is flavour-dead at the dimension-4 level (M_e = phase x M_d^T, CKM = 1 at tan beta = 1; g8_sm_pati_salam_structural_obstruction_v20). EXACT relations, NUM data comparison: on the witness branch the renormalizable Yukawas give CKM = 1, m_t = m_b and m_d = m_e, which the tan-beta-independent tests exclude (G8 Route C; g8_sm_pati_salam_flavour_nogo_v20). Research-recorded, not a committed certificate: no certification method has been demonstrated for the flavour-capable vacuum orientations (degree-2 SOS leaves flat Phi-sector directions at the G3221/G3211 orientations; rescue-study NUM, Phi sector only). NUM: G6 is not closable on the SOS-certified witness family at one loop with tree-level matching (sampled region; only the tree-matching statement is robust; g6_sm_pati_salam_remnant_rg_nogo_v20); on the decoupled-singlet benchmark BM-DA1 (U1 root held fixed; gauge + matter running) a 120_H, a second 126bar and vectorlike pairs (also with a 45_H) fail the reduced-Planck Landau criterion already at two loops, and the other analysed additions (10_F, a real or complex 45_H) pass at two loops and fail at three loops, as does the contract content itself on that root (three-loop verdict convention- and threshold-limited; omitted Yukawa terms not conservative for a fail statement; g7_decoupled_singlet_benchmark_evidence_v20). The attested contract is a truncation (g1_contract_truncation_scope_v20). Gate statuses are unchanged (G1-G5 CLOSED, G6 OPEN, G7 BLOCKED, G8 BLOCKED); this is not a proof-grade exclusion of the SO(10) x U(1)_X contract, and the whole model is neither validated nor excluded by any gate."
+  },
   "scientific_blockers": [
     "G6_NOT_CLOSED",
     "G6_SUB_M_I_COLOURED_STATES_AND_POSITIVITY_WITHOUT_EWSB",
@@ -145,6 +195,8 @@
     "authoritative_current_model": "gauged_u1x_phi17_v20",
     "historical_option_c_is_authoritative": false,
     "historical_results_may_close_current_gates": false,
+    "program_verdict_changes_gate_statuses": false,
+    "release_is_approval": false,
     "software_pass_implies_scientific_approval": false
   },
   "source_reports": {
@@ -156,13 +208,15 @@
         "exact_unique_proton_lifetime": false,
         "g3_closing_track": "sm_pati_salam",
         "g4_closure_scope": "G4 gauge quotient and physical Hessian at the G3 witness benchmark (g4_sm_pati_salam_physical_quotient_v20 via g4_sm_closure_binding_v20; exact over Q at r0 = 1/5, x0 = 1, kappa = -r0/4 for every 0 < eps < 599/50; tree level): orbit ranks 33/34/35 (integer minors 1, 4, -68; 12 null vectors spanning the SM algebra), gauge quotient 452 and massive/transverse quotient 451, PQ global and not eaten; Hessian on the gauge quotient 451/1/0 with the physical axion (S phase 7225/7241, Phi17 phase 16/7241; period 2 pi/68 modulo the gauge group, v_a^2 = 2/7241 M_GUT^2) as its only zero mode; 35 zero modes = 34 eaten Goldstones + the axion, no negative mode; eps -> 0 adds only one SM doublet (1,2)_{1/2} of mass^2 eps, lifted at quartic order by lambda_eff = 127/64; vector-boson Gram rank 34; axion massless only for the renormalizable PQ-neutral benchmark potential; compiler binding float64",
+        "program_verdict_code": "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8",
+        "program_verdict_recorded": true,
         "proton_decay_observed": false,
         "tool_native_bound_model_evidence_complete": true,
         "whole_model_excluded": false,
         "whole_model_validated": false
       },
       "model_contract_id": "gauged_u1x_phi17_v20",
-      "n_checks": 10,
+      "n_checks": 11,
       "n_failed": 0,
       "overall_state": "BLOCKED",
       "status": "AUTHORITATIVE_FULL_MODEL_GATE_EXECUTED"
@@ -170,7 +224,7 @@
     "g1_g8": {
       "contract_consistent": true,
       "model_contract_id": "gauged_u1x_phi17_v20",
-      "n_checks": 44,
+      "n_checks": 45,
       "n_failed": 0,
       "overall_state": "OPEN",
       "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__G1_G2_G3_G4_G5_CLOSED__G6_OPEN"
@@ -200,14 +254,20 @@
     "CONDITIONAL_BENCHMARK": "a numerically safe benchmark region under extra portal assumptions on the current contract; withheld because the aligned benchmarks were computed under the superseded no-X contract",
     "EMPIRICAL_REALIZATION": "full phenomenology plus a real empirical discovery",
     "FULL_PHENOMENOLOGY": "every G1-G8 gate CLOSED and the authoritative full-model gate validated",
-    "INTERNAL_CANDIDATE": "internal consistency of the attested model contract: G1, G2 and G3 CLOSED, decision D3 satisfied (the closing G3 track's downstream caveats resolved, or G4 CLOSED) and, by decision D-E, G7 CLOSED; not phenomenology",
+    "INTERNAL_CANDIDATE": "internal consistency of the attested model contract: G1, G2 and G3 CLOSED, decision D3 satisfied (the closing G3 track's downstream caveats resolved, or G4 CLOSED) and, by decision D-E, G7 CLOSED; not phenomenology; by decision U3 never approved (a candidate that meets D3 may be released, RELEASED_NOT_APPROVED)",
     "WHOLE_MODEL_EXCLUSION": "a proof-grade exclusion by the authoritative full-model gate"
+  },
+  "tier_state_definitions": {
+    "APPROVED": "the tier's conditions hold (never for tier 1: decision U3 keeps internal_candidate_approved False on every path)",
+    "NOT_ESTABLISHED": "no evidence establishes the tier",
+    "RELEASED_NOT_APPROVED": "decision U3: a candidate that meets decision D3, with G5 CLOSED, G8 not CLOSED and its committed G8 flavour and structural evidence recorded, is released as a certified tree-level vacuum excluded by G8 flavour; it is never approved (internal_candidate_approved = False; --require-internal-approval fails)",
+    "WITHHELD": "the tier's conditions do not hold"
   },
   "tiers": {
     "CONDITIONAL_BENCHMARK": "WITHHELD",
     "EMPIRICAL_REALIZATION": "NOT_ESTABLISHED",
     "FULL_PHENOMENOLOGY": "WITHHELD",
-    "INTERNAL_CANDIDATE": "WITHHELD",
+    "INTERNAL_CANDIDATE": "RELEASED_NOT_APPROVED",
     "WHOLE_MODEL_EXCLUSION": "NOT_ESTABLISHED"
   },
   "title": "SO(10) x Z17 axion candidate v20 - confirmation verdict",
@@ -231,7 +291,7 @@
     "state": "PASS",
     "summary": "The manuscript gauges U(1)_X. The scalar census and every tool-native executable model must implement that same contract, with manifest/log-bound external evidence, before any G1-G8 result can validate the manuscript."
   },
-  "verdict": "WITHHOLD APPROVAL. The audit succeeds and the gauged-U(1)_X model contract is attested by bound external SARAH execution evidence. G1, G2, G3 (SM Pati-Salam benchmark family, scoped), G4 (at the G3 witness benchmark, tree level) and G5 are closed, which meets decision D3, but decision D-E holds the internal-candidate tier until G7 is CLOSED: for the declared benchmark (5 x (16 + 16bar) spectators at M_s ~ M_I, v_S = M_I) three independent two-loop RG codes find no perturbative gauge unification. G6 is open and G7-G8 remain blocked (sub-M_I coloured states and positivity beyond tree level, electroweak symmetry breaking, RG-anchor content, the Higgs quartic, Yukawas (flavour excluded on this witness branch at renormalizable tree level, Route C) and proton decay), so no internal, conditional-benchmark, full-phenomenology, empirical, or exclusion claim is approved; the whole model is neither validated nor excluded.",
+  "verdict": "WITHHOLD APPROVAL. The audit succeeds and the gauged-U(1)_X model contract is attested by bound external SARAH execution evidence. G1, G2, G3 (SM Pati-Salam benchmark family, scoped), G4 (at the G3 witness benchmark, tree level) and G5 are closed, which meets decision D3, but decision D-E holds approval of the internal-candidate tier until G7 is CLOSED, and decision U3 never approves it. By decision U3 the internal candidate is released: certified tree-level vacuum, excluded by G8 flavour at 8.9 sigma (minimum load-bearing pull 8.86 sigma with a 10% theory term, 13.24 sigma on experimental errors alone; witness-branch renormalizable Yukawas, tan-beta-independent tests, 1e9-2e16 GeV), not approved (CKM = 1, m_t = m_b, m_d = m_e; G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json). G6 is open and G7-G8 remain blocked (sub-M_I coloured states and positivity beyond tree level, electroweak symmetry breaking, RG-anchor content, the Higgs quartic, Yukawas and proton decay), so no internal, conditional-benchmark, full-phenomenology, empirical, or exclusion claim is approved; the whole model is neither validated nor excluded by a proof-grade certificate. Program verdict (decision U1): NOT VIABLE as a complete description of nature under the declared standards; the no-go is method-limited at G3 x G8.",
   "verdict_code": "AUTHORITATIVE_GATES_OPEN",
   "whole_model_excluded": false
 }

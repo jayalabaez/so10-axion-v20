@@ -415,7 +415,8 @@
   "gates": {
     "G1": {
       "authoritative_closed_scope": [
-        "promoted exact-X scalar census"
+        "promoted exact-X scalar census",
+        "attestation of a truncation: the declared Lagrangian keeps 10 of the 26 renormalizable fermion bilinears allowed by SO(10) x U(1)_X x Z17 (labels in the model file's field basis; no field redefinition removes the truncation); the 16 omitted couplings are PQ neutral and unprotected by any U(1) or multiplet-diagonal phase symmetry of the declared Lagrangian (g1_contract_truncation_scope_v20)"
       ],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
       "blocking_root": null,
@@ -425,6 +426,41 @@
         "MODEL_CONTRACT"
       ],
       "historical_option_c_evidence_retained": true,
+      "model_contract_truncation_scope": {
+        "F_16bar_mass_mixings": [
+          "Phi17.F.Rbar",
+          "conj[Phi17].F.Pbar"
+        ],
+        "allowed_count": 26,
+        "changes_gate": false,
+        "declared_count": 10,
+        "n_failed": 0,
+        "recorded": true,
+        "report": "G1_CONTRACT_TRUNCATION_SCOPE_V20.json",
+        "required_status": "G1_CONTRACT_TRUNCATION_SCOPE__26_ALLOWED_10_DECLARED_16_UNDECLARED__EXACT__NO_GATE_CHANGE",
+        "role": "scope only: states that G1 and the attested model contract attest a truncation; never changes the G1 status",
+        "scope_text": "G1 and the SARAH-attested model contract attest a truncation (g1_contract_truncation_scope_v20, G1_CONTRACT_TRUNCATION_SCOPE_V20.json): the declared Lagrangian keeps 10 of the 26 renormalizable fermion bilinears allowed by SO(10) x U(1)_X x Z17 (Z17 = X mod 17 for every field, so Z17 adds no condition). The 16 omitted couplings in the model file's field basis (Delta126bar.F.P, Delta126bar.F.R, Delta126bar.P.P, Delta126bar.P.R, Delta126bar.R.R, H10.P.P, H10.P.R, H10.R.R, Phi17.F.Rbar, Phi17.P.Rbar, conj[Delta126bar].Pbar.Rbar, conj[H10].Pbar.Rbar, conj[Phi17].F.Pbar, conj[Phi17].R.Pbar, conj[S].P.Qbar, conj[S].R.Qbar) each involve P, R, Pbar, Rbar or Qbar of the vectorlike sector (Phi17.F.Rbar and conj[Phi17].F.Pbar are F-Rbar and F-Pbar mass mixings) and are PQ neutral. EXACT: the declared terms and all 26 couplings plus the scalar links have the same 3-dimensional U(1) kernel (X, PQ, spectator number), F, P and R carry identical charges, and each omitted charge vector is an integer combination of declared ones, so no U(1) and no multiplet-diagonal phase symmetry of the declared Lagrangian protects the truncation. EXACT: the 16-label list depends on the field basis because F, P and R are charge-degenerate, but no field basis removes the truncation: the omitted couplings span 48 real generation-expanded dimensions, more than the 25 of U(5) on the five X = 1 sixteens, the only linear, kinetic-term-preserving field redefinition that mixes distinct multiplets. ARGUMENT, not computed: the truncation is therefore not expected to be stable under renormalisation. At the dimension-4 level the committed G8 analysis already includes all 26 couplings. The couplings are not added (that would be a new contract).",
+        "source": "g1_contract_truncation_scope_v20",
+        "status": "G1_CONTRACT_TRUNCATION_SCOPE__26_ALLOWED_10_DECLARED_16_UNDECLARED__EXACT__NO_GATE_CHANGE",
+        "undeclared": [
+          "Delta126bar.F.P",
+          "Delta126bar.F.R",
+          "Delta126bar.P.P",
+          "Delta126bar.P.R",
+          "Delta126bar.R.R",
+          "H10.P.P",
+          "H10.P.R",
+          "H10.R.R",
+          "Phi17.F.Rbar",
+          "Phi17.P.Rbar",
+          "conj[Delta126bar].Pbar.Rbar",
+          "conj[H10].Pbar.Rbar",
+          "conj[Phi17].F.Pbar",
+          "conj[Phi17].R.Pbar",
+          "conj[S].P.Qbar",
+          "conj[S].R.Qbar"
+        ]
+      },
       "open_scope": [
         "bind the recertified 44-direction/51-parameter scalar census to the repaired executable gauge scaffold"
       ],
@@ -1152,9 +1188,35 @@
     "G7": {
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
+      "benchmark_evidence": {
+        "closes_gate": false,
+        "n_failed": 0,
+        "recorded": true,
+        "report": "G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json",
+        "required_status": "G7_DECOUPLED_SINGLET_BENCHMARK_BM_DA1__TWO_LOOP_PASS__THREE_LOOP_WITHIN_TWO_CODE_ROOT_UNCERTAINTY__RG_IMPROVED_QUALITY_FAIL_CONDITIONAL__G7_BLOCKED",
+        "role": "evidence only: cited in the G7 open scope, never changes the G7 status",
+        "source": "g7_decoupled_singlet_benchmark_evidence_v20",
+        "status": "G7_DECOUPLED_SINGLET_BENCHMARK_BM_DA1__TWO_LOOP_PASS__THREE_LOOP_WITHIN_TWO_CODE_ROOT_UNCERTAINTY__RG_IMPROVED_QUALITY_FAIL_CONDITIONAL__G7_BLOCKED"
+      },
       "blocking_root": "DEPENDENCY_NOT_CLOSED",
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
+      "coupled_singlet_two_loop_probe": {
+        "closes_gate": false,
+        "content": "anchor content + 5 x (16+16bar) at M_s = M_I",
+        "field": "spectator_two_loop_probe",
+        "label": "NUM (gauge-only two-loop Machacek-Vaughn running; Yukawa terms and threshold matching omitted)",
+        "perturbative_root_exists": false,
+        "recorded": true,
+        "report": "two_loop_thresholds_v20.json",
+        "role": "evidence only: reproduces the decision-D-E coupled-singlet two-loop non-unification; never changes the G7 status",
+        "scan_log10_M_I": [
+          8.0,
+          14.5
+        ],
+        "source": "two_loop_thresholds_v20",
+        "status": "two-loop threshold RG report"
+      },
       "dependencies": [
         "G6"
       ],
@@ -1162,7 +1224,9 @@
       "open_scope": [
         "await G6 and independently validate the full beta system",
         "routed from G3 by decision D5 (rg_anchor_field_content): The RG anchor assumes a light (15,2,2) above M_I and a 2HDM below, while the witness has the (15,2,2) near 0.7 M_GUT and one light doublet, so re-solving the RG chain with the witness's field content is a G7 task.",
-        "routed from G3 by decision D5 (higgs_quartic_matching): The benchmark's tree-level light-doublet quartic 127/64 at M_I is too large for the measured Higgs mass and tree-level global minimality forbids the slightly negative SM value, so Higgs-quartic matching is a G7 task."
+        "routed from G3 by decision D5 (higgs_quartic_matching): The benchmark's tree-level light-doublet quartic 127/64 at M_I is too large for the measured Higgs mass and tree-level global minimality forbids the slightly negative SM value, so Higgs-quartic matching is a G7 task.",
+        "coupled-singlet two-loop evidence (does not close G7): for the declared benchmark (5 x (16 + 16bar) spectators at M_s = M_I, v_S = M_I) three independent two-loop RG codes find no perturbative gauge unification (research runs recorded with decision D-E); the committed gauge-only Machacek-Vaughn spectator probe of two_loop_thresholds_v20 (two_loop_thresholds_v20.json, spectator_two_loop_probe) reproduces it: no perturbative root for log10(M_I/GeV) in [8, 14.5] (Yukawa terms and threshold matching omitted)",
+        "decoupled-singlet benchmark evidence (does not close G7): g7_decoupled_singlet_benchmark_evidence_v20 (G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json) records that BM-DA1 (v_S decoupled from v_R) passes the reduced-Planck Landau criterion at two loops on both two-code roots, that its three-loop (gauge-only) outcome lies within the two-code root uncertainty (fail on the U1 root, marginal pass on the U2 root), and that the RG-improved remnant masses give a conditional axion-quality failure; with the U1 root held fixed, a 120_H, a second 126bar and vectorlike pairs (also with a 45_H) fail the criterion already at two loops, while the other analysed flavour-capable additions (10_F, a real or complex 45_H) pass at two loops and fail at three loops, as does the contract content itself on that root (the three-loop verdict is convention- and threshold-limited, and the omitted Yukawa terms are not conservative for a fail statement); the running is gauge + matter only, the GUT thresholds are uncontrolled and G6 is not closed, so G7 stays BLOCKED"
       ],
       "status": "BLOCKED",
       "title": "Validated two-loop RGE and threshold matching",
@@ -1183,18 +1247,29 @@
       ],
       "flavour_evidence": {
         "closes_gate": false,
+        "minimum_load_bearing_pull_conservative_sigma": 8.85922304274,
+        "minimum_load_bearing_pull_raw_sigma": 13.2425443295,
         "n_failed": 0,
+        "pull_fields": [
+          "data.minimum_load_bearing_pull_raw_sigma",
+          "data.minimum_load_bearing_pull_conservative_sigma"
+        ],
         "recorded": true,
         "report": "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json",
         "required_status": "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN",
         "role": "evidence only: cited in the G8 open scope, never changes the G8 status",
         "route_recorded": "C",
-        "routes_needing_user_decision": [
+        "routes_not_pursued_user_decision_U1": [
           "A",
           "B"
         ],
+        "scale_band_GeV": [
+          1000000000.0,
+          2e+16
+        ],
         "source": "g8_sm_pati_salam_flavour_nogo_v20",
-        "status": "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN"
+        "status": "G8_SM_PATI_SALAM_WITNESS_FLAVOUR_NOGO__ROUTE_C_RECORDED__G8_OPEN",
+        "threshold_sigma": 5.0
       },
       "historical_option_c_evidence_retained": false,
       "open_scope": [
@@ -1202,9 +1277,21 @@
         "routed from G3 by decision D5 (tan_beta_one_light_doublet): The light doublet is an equal 5/5bar mixture (a tan beta = 1 structure), so with 10_H-only Yukawas m_t = m_b at matching and the flavour structure is a G8 task.",
         "routed from G3 by decision D5 (realistic_yukawa_sector): The H-linear portals O15, O38, O45 and O28 vanish at the benchmark, so the witness has no realistic Yukawa sector; building one is a G8 (and flavour-gate) task.",
         "routed from G3 by decision D5 (proton_decay_mediators): The sub-M_I (3,1)_1/3 state has proton-decay mediator quantum numbers and couples to 16.16 through the 126bar Yukawa that Majorana neutrino masses need, so its proton-decay consequences are a G8 task.",
-        "flavour evidence (does not close G8): g8_sm_pati_salam_flavour_nogo_v20 (G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json) records Route C: on the witness branch (renormalizable benchmark, H-linear portals zero) the light doublet is pure 10_H, so CKM = 1, m_t = m_b, m_d = m_e and m_s = m_mu, which data exclude, and no H-linear portal repair survives at q0; the G3-G5 certificates and the SO(10) contract are not falsified; route A (a new in-contract G3 branch with a down-type (15,2,2) admixture, needing new G3/G4/G5 certificates) and route B (a contract extension: on the certified witness orientation, among the analysed extensions only a 120_H can split d from e, and only through a (15,2,2)_120 admixture of O((v_R/M15)^2), i.e. O(r0^2) for a GUT-scale (15,2,2)_120, while a tuned-light (15,2,2)_120, which SOS squares allow, gives O(1) splitting and is excluded only numerically (no perturbative two-loop root, research); the 45 scalar portal, vectorlike matter with a reoriented 210 and the off-witness ERT channel also split d from e but sit off the certified orientation (research-recorded in g8_sm_pati_salam_structural_obstruction_v20)) need a user decision"
+        "flavour evidence (does not close G8): g8_sm_pati_salam_flavour_nogo_v20 (G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json) records Route C: on the witness branch (renormalizable benchmark, H-linear portals zero) the light doublet is pure 10_H, so CKM = 1, m_t = m_b, m_d = m_e and m_s = m_mu, which data exclude, and no H-linear portal repair survives at q0; the G3-G5 certificates and the SO(10) contract are not falsified; route A (a new in-contract G3 branch with a down-type (15,2,2) admixture, needing new G3/G4/G5 certificates) and route B (a contract extension: on the certified witness orientation, among the analysed extensions only a 120_H can split d from e, and only through a (15,2,2)_120 admixture of O((v_R/M15)^2), i.e. O(r0^2) for a GUT-scale (15,2,2)_120, while a tuned-light (15,2,2)_120, which SOS squares allow, gives O(1) splitting and is excluded only numerically (no perturbative two-loop root, research); the 45 scalar portal, vectorlike matter with a reoriented 210 and the off-witness ERT channel also split d from e but sit off the certified orientation (research-recorded in g8_sm_pati_salam_structural_obstruction_v20)) are not pursued (user decision U1: the no-go is accepted and the program claim re-scoped; see program_verdict)",
+        "structural evidence (does not close G8): g8_sm_pati_salam_structural_obstruction_v20 (G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json) proves exactly that every vacuum of the degree-2-SOS-certified witness family (the committed witness, the r_S family and the O36 lambda_H member) is flavour-dead at the dimension-4 level (M_e = phase x M_d^T, CKM = 1 at tan beta = 1), for any H-linear portal, vectorlike 16s on contract scalars, P/Q/R promotion and a 120_H added as SOS squares with a GUT-scale (15,2,2)_120, up to an O((v_R/M15)^2) = O(r0^2) (15,2,2)_120 admixture; the in-contract H-linear-portal down-type sources require leaving the certified orientation (exact, dimension 4); a tuned-light (15,2,2)_120 extension is excluded only numerically (research) and the unanalysed extensions remain open; no certification method has been demonstrated for the flavour-capable orientations (the degree-2 SOS Phi-sector no-go at the G3221/G3211 orientations is research-recorded, not proved); the SO(10) contract and the G3-G5 certificates are not falsified"
       ],
       "status": "BLOCKED",
+      "structural_obstruction_evidence": {
+        "closes_gate": false,
+        "label": "EXACT at the dimension-4 level on the degree-2-SOS-certified witness family; off-orientation splitters research-recorded",
+        "n_failed": 0,
+        "recorded": true,
+        "report": "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json",
+        "required_status": "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION__SOS_CERTIFIED_FAMILY_FLAVOUR_DEAD__RECORDED__NO_GATE_CHANGE",
+        "role": "evidence only: cited in the G8 open scope, never changes the G8 status",
+        "source": "g8_sm_pati_salam_structural_obstruction_v20",
+        "status": "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION__SOS_CERTIFIED_FAMILY_FLAVOUR_DEAD__RECORDED__NO_GATE_CHANGE"
+      },
       "title": "Proton-decay prediction and falsification",
       "unsatisfied_dependencies": [
         "G6",

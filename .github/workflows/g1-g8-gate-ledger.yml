@@ -82,6 +82,10 @@ on:
       - "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json"
       - "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json"
       - "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json"
+      - "G1_CONTRACT_TRUNCATION_SCOPE_V20.json"
+      - "G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json"
+      - "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json"
+      - "two_loop_thresholds_v20.json"
       - "g3_sm_pati_salam_candidate_v20.py"
       - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
       - "g3_sm_pati_salam_exact_hessian_v20.py"
@@ -175,6 +179,10 @@ on:
       - "G6_SM_PATI_SALAM_TREE_SPECTRUM_V20.json"
       - "G6_SM_PATI_SALAM_REMNANT_RG_NOGO_V20.json"
       - "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json"
+      - "G1_CONTRACT_TRUNCATION_SCOPE_V20.json"
+      - "G7_DECOUPLED_SINGLET_BENCHMARK_EVIDENCE_V20.json"
+      - "G8_SM_PATI_SALAM_STRUCTURAL_OBSTRUCTION_V20.json"
+      - "two_loop_thresholds_v20.json"
       - "g3_sm_pati_salam_candidate_v20.py"
       - "G3_SM_PATI_SALAM_CANDIDATE_V20.json"
       - "g3_sm_pati_salam_exact_hessian_v20.py"
@@ -409,6 +417,12 @@ jobs:
           assert ledger['gates']['G6']['tree_level_evidence']['recorded'] is True and ledger['gates']['G6']['tree_level_evidence']['closes_gate'] is False
           assert ledger['gates']['G6']['remnant_rg_evidence']['recorded'] is True and ledger['gates']['G6']['remnant_rg_evidence']['closes_gate'] is False
           assert ledger['gates']['G8']['flavour_evidence']['recorded'] is True and ledger['gates']['G8']['flavour_evidence']['closes_gate'] is False
+          assert ledger['gates']['G7']['benchmark_evidence']['recorded'] is True and ledger['gates']['G7']['benchmark_evidence']['closes_gate'] is False
+          assert ledger['gates']['G7']['coupled_singlet_two_loop_probe']['recorded'] is True and ledger['gates']['G7']['coupled_singlet_two_loop_probe']['closes_gate'] is False
+          assert ledger['gates']['G8']['structural_obstruction_evidence']['recorded'] is True and ledger['gates']['G8']['structural_obstruction_evidence']['closes_gate'] is False
+          assert ledger['gates']['G1']['model_contract_truncation_scope']['recorded'] is True and ledger['gates']['G1']['model_contract_truncation_scope']['changes_gate'] is False
+          assert ledger['program_verdict']['recorded'] is True and ledger['program_verdict']['code']=='NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8'
+          assert ledger['program_verdict']['gate_statuses_changed'] is False and ledger['program_verdict']['proof_grade_whole_model_exclusion'] is False
           assert ledger['historical_option_c_subtheorems']['G1']['invariant_directions']==64
           assert ledger['historical_option_c_subtheorems']['G1']['real_potential_parameters']==91
           assert ledger['historical_option_c_subtheorems']['G3']['massive_physical_quotient_dimension']==449

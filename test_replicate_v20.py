@@ -268,9 +268,11 @@ def test_confirmation_and_ultimate_runs_stay_open_without_internal_approval() ->
         assert "--require-internal-approval" not in literals
     assert "test_g4_sm_closure_binding_v20.py" in source
     assert (
-        "=== REPLICATION PASS (SCIENTIFIC STATE: OPEN; G4 CLOSED; INTERNAL CANDIDATE "
-        "HELD PENDING G7 (DECISION D-E)) ===" in source
+        '"=== REPLICATION PASS (SCIENTIFIC STATE: OPEN; G4 CLOSED; INTERNAL CANDIDATE RELEASED, NOT APPROVED "\n'
+        '        "(DECISIONS D-E, U3); PROGRAM VERDICT NOT VIABLE UNDER THE DECLARED STANDARDS (U1)) ==="'
+        in source.replace("\r\n", "\n")
     )
+    assert "HELD PENDING G7 (DECISION D-E)) ===" not in source
     assert "SCIENTIFIC STATE: BLOCKED" not in source
     assert "--require-internal-approval" not in source
     assert "INTERNAL CANDIDATE APPROVED" not in source

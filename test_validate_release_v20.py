@@ -205,6 +205,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_g3_sm_pati_salam_witness_unitarity_v20.py",
             "G3_SM_PATI_SALAM_WITNESS_UNITARITY_V20.json",
             "G3_SM_PATI_SALAM_WITNESS_UNITARITY_V20.md",
+            "g1_contract_truncation_scope_v20.py",
+            "test_g1_contract_truncation_scope_v20.py",
+            "G1_CONTRACT_TRUNCATION_SCOPE_V20.json",
+            "G1_CONTRACT_TRUNCATION_SCOPE_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -301,11 +305,12 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         self.assertIn("import g4_sm_closure_binding_v20 as g4_closure", source)
         self.assertNotIn('final_g3["overall_state"] == "OPEN"', source)
         # G4 CLOSED meets decision D3, but decision D-E holds the internal
-        # candidate until G7 is CLOSED; the release pins the hold and forbids
-        # every approval or exclusion.
+        # candidate until G7 is CLOSED; decision U3 releases it without
+        # approving it. The release pins the hold and the U3 release and
+        # forbids every approval or exclusion.
         end = source.index(
-            '"ultimate gate approved the internal candidate before G7 (decision D-E) '
-            'or approved or excluded the open model"'
+            '"ultimate gate approved the internal candidate before G7 (decision D-E), '
+            'lost the U3 release, or approved or excluded the open model"'
         )
         start = source.rindex("require(", 0, end)
         ultimate_predicate = source[start:end]
@@ -315,13 +320,59 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             'and ultimate["internal_candidate_gate"]["G4_closed"] is True',
             'and ultimate["internal_candidate_gate"]["G7_closed"] is False',
             'and ultimate["internal_candidate_gate"]["approval_held_pending_G7"] is True',
+            'and ultimate["internal_candidate_gate"]["approval_disabled_by_U3"] is True',
             'and not ultimate["conditional_benchmark_approved"]',
             'and not ultimate["full_phenomenology_approved"]',
             'and not ultimate["whole_model_excluded"]',
+            'and ultimate["tiers"]["INTERNAL_CANDIDATE"] == "RELEASED_NOT_APPROVED"',
+            'and ultimate["internal_candidate_release_label"] == g8_release_label',
         ):
             self.assertIn(required, ultimate_predicate)
         self.assertIn('and not ultimate["internal_candidate_approved"]', source)
         self.assertNotIn('and ultimate["internal_candidate_approved"] is True', source)
+        # The U3 label's pull is bound fail-closed to the committed G8 JSON field.
+        pull_end = source.index(
+            '"G8 flavour no-go minimum load-bearing pull is missing, malformed or below 5 sigma"'
+        )
+        pull_start = source.rindex("g8_flavour = json.loads(", 0, pull_end)
+        pull_block = source[pull_start:pull_end]
+        for required in (
+            '(ROOT / "G8_SM_PATI_SALAM_FLAVOUR_NOGO_V20.json")',
+            '"minimum_load_bearing_pull_conservative_sigma"',
+            "and not isinstance(g8_pull, bool)",
+            '5.0 <= g8_pull < float("inf")',
+            '"minimum_load_bearing_pull_raw_sigma"',
+            "and not isinstance(g8_raw, bool)",
+            'g8_pull <= g8_raw < float("inf")',
+        ):
+            self.assertIn(required, pull_block)
+        # The pinned label: the conservative pull rounded to 0.1 sigma with both
+        # minimum pulls to 0.01 sigma and the U3 scope; never a ">=" bound.
+        label_start = source.index("g8_release_label = (")
+        label_block = source[label_start: source.index(")\n", label_start)]
+        for required in (
+            'f"certified tree-level vacuum, excluded by G8 flavour at {g8_pull:.1f} sigma (minimum "',
+            'f"load-bearing pull {g8_pull:.2f} sigma with a 10% theory term, {g8_raw:.2f} sigma on "',
+            '"experimental errors alone; witness-branch renormalizable Yukawas, tan-beta-independent "',
+            '"tests, 1e9-2e16 GeV), not approved"',
+        ):
+            self.assertIn(required, label_block)
+        self.assertNotIn(">=", label_block)
+        # Decision U1: the ledger's program verdict is pinned separately from
+        # the gate statuses.
+        program_end = source.index('"ledger program verdict missing or changed"')
+        program_start = source.rindex("require(", 0, program_end)
+        program_predicate = source[program_start:program_end]
+        for required in (
+            'ledger_report["program_verdict"]["recorded"] is True',
+            'and ledger_report["program_verdict"]["code"]',
+            '== "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8"',
+        ):
+            self.assertIn(required, program_predicate)
+        self.assertEqual(
+            release.gate_ledger.PROGRAM_VERDICT_CODE,
+            "NOT_VIABLE_UNDER_DECLARED_STANDARDS__NO_GO_METHOD_LIMITED_AT_G3_X_G8",
+        )
 
     def test_confirmation_and_ultimate_runs_never_require_the_internal_approval(self):
         # Decision D-E holds the internal candidate until G7 is CLOSED.
@@ -359,10 +410,12 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             self.assertIn("--expect-open", literals)
             self.assertIn("--no-write", literals)
             self.assertNotIn("--require-internal-approval", literals)
-        self.assertIn(
-            "G4 CLOSED; internal candidate held pending G7 (decision D-E)",
-            source,
-        )
+        for required in (
+            "G4 CLOSED; internal candidate released, not approved (decision U3); ",
+            "program verdict NOT VIABLE under the declared standards (decision U1)",
+        ):
+            self.assertIn(required, source)
+        self.assertNotIn("internal candidate held pending G7 (decision D-E)", source)
         self.assertNotIn("--require-internal-approval", source)
         self.assertNotIn("internal candidate approved", source)
 
