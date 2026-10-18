@@ -1,0 +1,152 @@
+ADVERSARIAL SKEPTIC - design D-B-symmetry (V1a / V1b 'two-10 split', V2 'texture Z_n')              2026-10-17
+Labels: EXACT / NUM (uncertainty) / EST / CONJ / LIT.  Own code in this folder; the designer's files were only read
+(LP/descent code r2_lp6.py, r2_descend.py, k3_common.py copied UNEDITED - byte-identical to the R2-A originals - and run
+on a PRIVATE copy of the inputs in scratchpad\v22_DB_skeptic\lp, so the designer's scratch outputs were not touched).
+
+0. VERDICT: KILLED (agrees with the designer's NO-SURVIVOR verdict; the kill is reproduced, not only quoted)
+---------------------------------------------------------------------------------------------------------------------
+  variant   D1                     D2                               D3                               D4 (info)
+  V1a (C2)  PASS EXACT (reprod.)   PASS proxy NUM (reprod.), needs  FAIL NUM (reprod.)               FAIL: tau_LA 0.68-0.81 x SK
+                                   6e-4..3e-3 seesaw cancellation                                    (two independent codes)
+  V1b       PASS EXACT (reprod.)   PASS proxy NUM (reprod.)         FAIL NUM (reprod.)               nominal PASS (2L only)
+  V2        PASS EST (designer)    FAIL (EXACT inclusion in R2-C)   (not needed)                     -
+  First failed criterion: D3 for V1a and V1b; D2 for V2.  V1a additionally fails D4 (proton, lattice normalisation).
+  I found NO error that would rescue the design, and no error that invalidates the designer's PASS claims for D1/D2.
+
+=====================================================================================================================
+1. D1 CONTRACT (sk_d1.py -> sk_d1.json; own code, nothing imported from R2-V/designer)
+=====================================================================================================================
+- Anomalies (EXACT Fractions, T(10)=1, T(16)=2): [SO(10)]^2 X = 0, grav-X = 0, X^3 = 0.
+- Own renormalizable census from SO(10) bilinear rules + X: exactly 14 structures, identical to the designer's list
+  (F.F.Delta, F.F.H1, F.F.H2, Vb2.Vb3.H1, Vb2.Vb3.H2, 7 S/S*/Phi17 masses, N/NMm masses).  No F.F.H_a*, no T-H coupling,
+  no Phi210 Yukawa (X sums checked: only F+F = 2 among 16 pairs, only Vb2+Vb3 = 2 among 16bar pairs).
+- Accidental kernel (sympy nullspace; 21 rephasing charges; census + 13 phase-sensitive scalar rows incl. kappa_ab, m12^2,
+  O15', O38', O31', O31'', O28'): rank 14, dim 7, X in kernel, H2 = H1 on the whole kernel; the round-1 basis
+  (G2, f1..f5) + X spans exactly the computed kernel (EXACT).  Analytic cross-check: Phi17 cannot enter any
+  renormalizable phase-sensitive scalar term (17 is odd, all other X are even and |X| sum <= 12), so the scalar kernel
+  is {X, G2} and H2 is locked to H1 by m12^2 H1*H2 / O15' (EXACT).  => PQ = X - 17 G2, N_DW = 1 mod gauge unchanged.
+- Quality: own dict-based integer DP (different algorithm from R2-V's array DP), H2 and H2* as SEPARATE items, round-1 mu:
+  max_O [4 mu.q - 4(d-4)] = 0 for every 5 <= d <= 30 (row values -4,0,0,-4,0,...; tight at d = 6,7,9-17,19,21 - the same
+  set as the designer), brute-force enumeration d <= 8 agrees.  => K_min >= 17 with H2 (EXACT); = 17 via the unchanged
+  tree operator.  Structural reason (EXACT): H2 carries exactly H1's (X, centre, accidental q, Lorentz) labels and the
+  DP admissible set depends only on these labels, so no closure with K <= 16 can be created by H2.  dtheta unchanged.
+- D1: PASS confirmed.  No missed coupling or new closure found.
+
+=====================================================================================================================
+2. D2 FLAVOUR (sk_d2_fit.py -> sk_d2_*.json; own parameterisation and fitter)
+=====================================================================================================================
+Exact-obstruction search on the intended Am45 G3221 orientation (EXACT/CONJ reasoning):
+- One-bidoublet lemma: not applicable - G = sum_a Y_a v_ua and H = sum_a Y_a v_da are independent when
+  det[[v_u1,v_u2],[v_d1,v_d2]] != 0 (EXACT).
+- M_e = phase x M_d^T lemma: needs w_d = 0 structurally.  On Am45 (omega = 0, a != 0) the 10-(15,2,2) mixing comes from the
+  (15,1,1) vev, which is SU(2)_R-symmetric, so up and down Sigma admixtures of each light bidoublet are equal; with light
+  states orthogonal to the heavy direction n = (n1, n2, n3) in (H1, H2, Sigma): w_u = -(n1* v_u1 + n2* v_u2)/n3*,
+  w_d = -(n1 v_d1 + n2 v_d2)/n3 (up to conjugation), so s' = w_u/w_d ~ (v_u/v_d)-type ratio is free and w_d != 0
+  generically.  NUM support: the designer's slice LP points have a nonzero Sigma weight in the light H10 modes
+  (2.2e-5 round 1, 3.4e-5 box-4 round 2; my Hessian census, sk_d3_eval.json).  No exact obstruction found.
+Proxy fit (own code; NuFIT 6.0 NO+SK, chi2 = 5 neutrino pulls, charged sector exact by construction, scale analytic):
+  input set        v_R      M_R3 cap   chi2      M_R3 [GeV]  m_D3 [GeV]  |s'|   |w_u|   |w_d|    window  seesaw cancel*
+  lit (own GUT)    1e13     none       1.2e-21   2.6e13      52.2        44.1   0.30    0.0069   yes     0.47
+  designer GUT     1e13     3.54e13    1.5e-21   5.8e12      47.6        33.5   0.42    0.0125   yes     0.13
+  designer GUT     8e10     2.8e11     2.3e-14   2.8e11      69.5        8.6    0.014   0.0016   yes     3.0e-3
+  lit (own GUT)    8e10     2.8e11     7.8e-14   2.8e11      81.5        11.3   0.018   0.0016   yes     2.1e-3
+  designer GUT     1.5e10   5.3e10     2.7e-12   5.3e10      66.5        5.1    0.008   0.0016   yes     6.1e-4
+  (* m_nu3 / (m_D3^2 / M_R3): a hidden cancellation in the seesaw formula; file sk_d2_designer_2e+10_* is v_R = 1.5e10.)
+  The designer's chi2 ~ 0 claims are REPRODUCED with independent code and an independent GUT input set (NUM).
+  Weak points (not kills under the literal D2): (i) at C2-type v_R the fit lives at f = sqrt(4 pi) and needs a
+  6e-4..3e-3 seesaw cancellation (largest Dirac eigenvalue ~ y_t v is not reduced; m_D3 = 66-82 GeV), which the
+  universal-gauge proxy cannot validate (Yukawa-dependent running of Ynu ~ y_t between M_R and M_U is omitted) - EST;
+  (ii) dof < 0, so chi2 ~ 0 is existence, not prediction; (iii) realising the required composition inside a V1 vacuum is
+  CONJ (the H2 directions were never built).  D2 PASS (proxy) for V1 stands; V2's D2 FAIL by EXACT inclusion in the
+  R2-C parameter space (chi2 >= 109.7) is accepted.
+
+=====================================================================================================================
+3. D3 VACUUM (sk_d3_eval.py -> sk_d3_eval.json/.log; sk_lp_jobs*.sh; sk_desc_jobs.sh)
+=====================================================================================================================
+(a) Reduction check (EXACT): V1 restricted to H2 = 0 is literally the v20 51-parameter potential (every term containing
+    H2 vanishes); slice-slice second derivatives at an H2 = 0 vacuum receive no H2 contribution; a principal submatrix of
+    a PSD rank-deficient bidoublet matrix leaves >= 1 light complex bidoublet in the slice.  So a deeper slice point is a
+    deeper V1 point, and slice-LP infeasibility is a necessary-condition failure for V1 (at the tested U, box, x = 4).
+    Coverage note: the LP fixes the slice light direction near H1 (the design intent, heavy direction mostly Sigma);
+    the opposite extreme (heavy direction mostly H2) puts two light bidoublets (H1, Sigma) in the slice, i.e. R2-A's
+    60/60-descent case.  Intermediate compositions (slice heavy gap below t) are not covered by either (limitation).
+(b) Independent re-evaluation of the designer's decisive lower points (repo evaluator evaluate_directions +
+    coefficient_jacobian, q* rebuilt from the point meta, NOT the parameter_rows path that produced the banks):
+      case        V*            V(q_min)-V* indep   reported        gauge |dV/ds| max   q.C2L.q (q* = 0)   blocks |H|,|Sigma|
+      V1A_bankA   -258.739029   -47.825221          -47.825221      1.1e-9              31.45              3.09, 5.05
+      V1A_hs32    -258.739029    -8.365629           -8.365629      1.1e-9              12.42              1.52, 4.01
+      V1A_rnd33   -258.739029    -1.395021           -1.395021      1.1e-9               5.75              0.73, 2.05
+      V1B_p831    -1024.886298   -8.235237           -8.235237      2.3e-9              24.87              1.43, 4.70
+      V1B_hs41    -1024.886298   -7.398612           -7.398612      2.3e-9              14.21              2.04, 4.47
+    All agree to < 1e-12; V is gauge invariant at q_min along 47 symmetry tangents; every lower point breaks SU(2)_L
+    (q.C2L.q > 0) at the GUT scale.  Budgets reproduce the designer's driver attribution: O27_B02, Im O31, Re O28, O25,
+    O03 (round 1); O27_B02, O35_B02, O25, O03 (box 4, round 2).  (NUM)
+(c) The two LP points themselves (own Hessian census from the stored exact rows): |grad| = 4.2e-15 / 1.2e-13, 0 negative
+    modes, 42 zero (35 tangent rank), 12 light = 8 H10 (one complex bidoublet split at v_R^2: m^2 = 5e-7 and 2.5-3e-6)
+    + 3 Sigma (Delta_R) + 1 S; heavy gap at t; ~270 / ~205 eigenvalues inside [1e-5, 2e-3] (states pinned near t, which
+    is what spoils the round-1 point's unification).  The claimed light content is confirmed (NUM).
+(d) Round-3 LP re-run (private inputs, r2_lp6 unedited, all 52 banks, box 4): INFEASIBLE at both outer iterations
+    (HiGHS status 8), saved iterate invalid (5 negative modes) - reproduces 'V1s_D2_lb_box4_R3 INFEASIBLE'.  I checked the
+    code path: stage A maximises t with t >= 0 (the printed tmin = 0.01 is used only in stage B), so the infeasibility
+    is genuine at fixed U (cutting planes are valid necessary conditions; interlacing fixes the light count).
+(e) Robustness extension the designer did not run (box 8: |quartic| <= 8, |cubic| <= 16, |mass^2| <= 320, same banks,
+    unitarity a0 <= 0.5): outer 0 FEASIBLE (t = 7.07e-4, 0 negative, 12 light, competitor gap 1.2e-5, BFB min 4.8e-3,
+    lambda_eff 0.377; subspace screens find no lower point), then outers 1-3 INFEASIBLE after the SM-singlet polynomial
+    search finds a competitor 856 box units lower near the outer-0 couplings.  The outer-0 point sits at the edges:
+    lambda(O27_B01) = +8, lambda(O36_B01) = -8 (box), three unitarity channels at a0 = 0.497-0.500.
+    Fresh descents from that point (r2_descend unedited, 4 starts, stop at -0.5): 4/4 end BELOW V* = -1562.48:
+      SK8_bankA -44.958, SK8_p831 -31.761, SK8_hs51 -1.556, SK8_hs52 -0.958 (box units).  The two deepest were re-evaluated
+      on my independent path (sk_d3_box8_eval.json): -44.95805 / -31.76140 (agree to 1e-12), gauge |dV/ds| <= 3.4e-9,
+      q.C2L.q = 61.0 / 53.8 (SU(2)_L broken), |Sigma| = 7.4 / 7.0, drivers O27_B02 (-253 / -194), O35_B02 (-14.8 / -11.0),
+      O25 (-6.1 / -5.4), O03, O36_B01 (the -8 H self-quartic), Im O28.  The box-8 point's own light content checks out
+      (0 negative, 8 H10 light modes with Sigma weight 9.2e-5, 3 Sigma, 1 S).  So enlarging the box to 8 does not
+      rescue V1: the same self-conjugate 126bar driver opens a deeper SU(2)_L-breaking vacuum (NUM).
+(f) D3 verdict: FAIL reproduced (NUM, not certified, same limits as R2-A: fixed-U outer iteration, Am45, x = 4).  The
+    surviving drivers are the self-conjugate 126bar invariants (O27_B02, O35_B02) and the O25 |Sigma|^2|Phi17|^2 portal;
+    no charge argument reaches them (EXACT: self-conjugate), so the D3 mechanism requirement ('forbidden by an exact charge
+    argument, sign-definite new quartics, or changed breaking pattern') is not met by V1 even where an LP point survives.
+
+=====================================================================================================================
+4. D4 UNIFICATION / PROTON / LANDAU (sk_d4_unif.py -> sk_d4_unif.json; own MV two-loop code)
+=====================================================================================================================
+Own Machacek-Vaughn coefficients from multiplet lists (asserted against the textbook SM b_i, b_ij); G3221 one-loop
+coefficients reproduce R2-B exactly (C2: 7/3, 20/3, 22/3, 89/6 above M_s; C1622: 43/6, 34/3, 28/3, 97/6); SO(10) with H2:
+b = 17/3, b2 = 21031/6 (= designer).  Approximate Yukawa feedback (EST), MS-bar, all heavy states at M_U, M_s = 1e13.
+Proton: Gamma = m_p/(32 pi)(1-m_pi^2/m_p^2)^2 A_R^2 (4 pi alpha_U)^2/M_U^4 x 2(1+|V_ud|^2)^2 W0^2, W0 = 0.131 GeV^2,
+A_R = 3.28 (EST); calibration at the R2-B C2 nominal (6.05e15, 34.64) gives 1.69e34 yr vs the adopted 1.67e34.
+  content    v_R (own / designer)    M_U (own / designer)     aU^-1 (own / des.)  tau_LA [yr] (own / des.)   L2L/M_Pl,red (own / des.)
+  V1-C2      1.51e10 / 2.13e10       6.28e15 / 6.05e15        34.40 / 34.64       1.94e34 / 1.64e34 FAIL     11.1 / 12.0
+  V1-C1622   8.15e12 / 9.52e12       2.02e16 / 1.87e16        26.85 / 27.32       1.27e36 / 9.4e35           1.99 / 2.20
+  (NUM +-30% on v_R from the Yukawa/scheme treatment.)  V1-C2 fails tau > 2.4e34 in the lattice normalisation with both
+  codes (0.81 / 0.68 x Super-K), and at its own v_R ~ 1.5-2e10 the flavour fit needs a ~6e-4 seesaw cancellation
+  (section 2).  V1-C1622 passes D4 nominally (two loops; the designer's three-loop 0.98 and the explicit LP-point
+  L2L = 1.07 are marginal).
+
+=====================================================================================================================
+5. D5 COST - recount of new real parameters (EST, by invariant counting with Gram matrices G_ab = H_a^dag.H_b,
+   K_ab = H_a.H_b): O06-type +3, x|S|^2 +3, x|Phi17|^2 +3, Phi^2 H^dag H channels +6..9, H^dag H Sigma^dag Sigma (2 ch.) +6,
+   kappa_ab +4, O15' +2, O38' +2, O45' +4, O28' +2, O31'/O31'' +4, two-10 quartics 10 + 9 = 19 (+17)  => ~56-59 new
+   real couplings, consistent with the designer's ~60 (51 -> ~110).  Engineering estimate (506-real chart) accepted.
+
+=====================================================================================================================
+6. ISSUES FOUND (none rescues the design)
+=====================================================================================================================
+ 1. The D3 FAIL rests on LP infeasibility at fixed light subspace U and boxes <= 4; at box 8 an LP point survives all
+    banked cuts at outer 0 before the U update makes the LP infeasible (section 3e).  Closed by my 4/4 fresh descents
+    (deepest -44.96, independently re-evaluated): the kill extends to box 8 (NUM).  Boxes > 8 / other x / other
+    orientations remain unscreened (same limits as R2-A).
+ 2. The slice LP covers only the 'heavy direction mostly Sigma' composition; intermediate (H1, H2, Sigma) heavy
+    directions are untested (the H2 = 0 slice cannot see them, the 506 chart does not exist).  Limitation, not a rescue.
+ 3. D2 at C2-type v_R (V1a and the designer's 3e10-1e11 claims) depends on a 6e-4..3e-3 seesaw cancellation that the
+    proxy cannot validate; D2 'PASS at every v_R in [3e10, 1e13]' should read 'existence of exact proxy fits; tuned
+    below ~1e11'.
+ 4. D4 numbers reproduced within +-30% (v_R) / 8% (M_U); the V1a proton FAIL is robust to the code change.
+ 5. Recommendation 'keep H2 as a DP-neutral flavour add-on' is correct for D1 (EXACT) and for the proxy fit (NUM), but
+    the needed |w_u| ranges over 0.008-0.42 depending on v_R and branch; its realisability with the vacuum is CONJ.
+
+Files: sk_d1.py/.json, sk_d2_fit.py + sk_d2_*.json, sk_d3_eval.py/.json(reconstructed from .log)/.log,
+sk_d3_box8_eval.py/.json/.log, sk_d4_unif.py/.json, r2_lp6.py,
+r2_descend.py, k3_common.py (copied unedited), sk_lp_jobs.sh, sk_lp_jobs_o1.sh, sk_desc_jobs.sh, sk_desc*.txt,
+sk_lp_R3_box4.log, sk_lp_R3_box8.log, sk_lp_R3_box8_o0.log, sk_descA.log, sk_descB.log.
+Scratch (private copies + LP/descent outputs): ...\scratchpad\v22_DB_skeptic\lp.  Nothing outside this folder of the
+worktree was written; git status shows only '?? research/v22_scalar_redesign/'.

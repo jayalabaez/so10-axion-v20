@@ -1,0 +1,173 @@
+ADVERSARIAL SKEPTIC REPORT - design D-C-flavour, V1 "A1-EFT" (+ variants V2/V3)                 2026-10-17
+Folder: research\v22_scalar_redesign\stage1\D-C-flavour\skeptic\  (own scripts + small JSON; designer files untouched;
+designer modules only imported read-only; no file outside this folder written).
+Labels: EXACT / NUM (uncertainty) / EST / CONJ / LIT.
+
+=====================================================================================================================
+0. VERDICT: KILLED.  FIRST FAILED CRITERION = D2 (not D3 as the designer states); D3 FAIL independently reproduced.
+=====================================================================================================================
+- D1  PASS for the stated plan (anomalies 0/0/0 EXACT, own arithmetic; K_min = 17 inherited EXACTLY because V1 adds no
+      field: identical DP item set to R2-V; dtheta = 2.14e-11 at <S> = 3e13, <Phi17> = 1e17 reproduced).  ISSUE: every
+      vacuum/flavour-realisation LP point of the designer sits at s = 0.0016, x = 4 chart units = <S> 9.35e13 GeV,
+      <Phi17> 2.34e17 GeV in chain-b units -> dtheta = 0.16 (chain a units: 2.1e-8); the quality-allowed s is <= 5.6e-4.
+- D2  FAIL (EXACT Clebsch + NUM fits).  The O5 Clebsch at the intended Am45, omega = 0 orientation, in the designer's
+      OWN stated convention (unit-norm/isometric CG projection of Delta x Phi), is
+          k'_R = 0.05176,  k'_u = k'_d = 0.08165   =>   tau = 2 sqrt6 (k'_R - k'_d) = -(sqrt3 - 1)/5 = -0.1464   (EXACT)
+      instead of the |tau| = 3 ('typical'), 5 (top-down point) and 9.8 ('optimistic') used for every D2 number.  No unit
+      orientation reaches |tau| = 3: max over the whole (p, a, omega) sphere = 2 sqrt(0.72) = 1.70 (omega-dominated).
+      Consequence (designer's own model re-run with the exact tau): required O5 coefficient max|S| = 10.8-11.1 (chain b,
+      |rho| = 30 basin; 38.5-38.9 in the |rho| = 83.5 basin), versus the designer's realisability condition |S| <= 1
+      (|K_ij| <= eps) and the claimed |S| = 0.16-0.54.  Joint 18-observable fits: chi2 = 1.62e4 at cap |S| <= 1
+      (v_R = 1e16 and 3e16), still 1.63e4 at caps 2 and 4; chi2 <= 25 only at |S| ~ 11.5 (cap 4 pi: chi2 7.7 / 8.8).
+      The designer's top-down 'verification' (chain a, chi2 = 4.80, |S| = 0.73 at |tau| = 5) needs |S| = 25 > 4 pi with
+      the exact Clebsch.  => the stated coefficient sizes are falsified by x20-x70; with the design's own |S| <= 1 bound
+      the proxy chi2 is ~1.6e4 >> 25.
+- D3  FAIL reproduced (NUM; independent values-only evaluation of the exact v20 polynomial): 11/11 descent endpoints are
+      below V* by exactly the designer's amounts (-0.19 to -20.47), the SM point is stationary (|grad V| <= 5e-12) and
+      locally stable (no negative Hessian mode), every endpoint has |H10| = 0.71-2.63 (H10 has no SM singlet: EXACT
+      SU(2)_L breaking) and setting H10 -> 0 at the endpoint raises V ABOVE V* (+0.14 ... +8.6): the gain is carried
+      by the SU(2)_L-breaking direction.
+- D4  PASS reproduced (NUM; own two-loop MV code validated against the SM b_ij): chain b M_U = 2.18e16, m(8,3,0) =
+      2.73e11, aU^-1 = 25.66, chain A_R = 3.23, tau(p->e+pi0, lattice W0 = 0.131) = 1.6e36 yr (x67 Super-K; 4.0e35 with
+      a x4 more pessimistic rate), Lambda_2L(alpha_10 = 1) = 1.55 M_Pl,red; M_s = 3.9e12 gives Lambda = 0.99 (the
+      designer's M_s >~ 3.9e12 constraint reproduced).  V3 (+120_H) Landau 0.22 / 0.16 M_Pl,red reproduced (D4 kill).
+- D5  moot.
+
+=====================================================================================================================
+1. D1 (contract)
+=====================================================================================================================
+sk_d1_anom.py -> sk_d1_anom.json.
+- [SO(10)]^2 X = 0, X^3 = 0, grav-X = 0 (EXACT, own Fractions; T(16) = 2, T(10) = 1).  SO(10) has no cubic/global anomaly.
+- Quality: V1 = B63 content verbatim (no new field, same 51-term potential, same 12 Yukawas).  The R2-V DP enumerates
+  ALL monomials in these fields, so O1-O6 are already inside it; in the R2-V kernel F and every scalar except Phi17 carry
+  q = 0, so O1-O6 are PQ-neutral (EXACT).  No K <= 16 closure can be created without a new field/vertex: K_min = 17
+  inherited (EXACT).  I did not re-run the DP (identical input = identical output; the designer's re-run agrees).
+- dtheta_tree = 2 <Phi17>^4 <S>^17 /(M_Pl,red^17 chi) (R2-V 4e normalisation): 2.14e-11 at the plan (3e13, 1e17) - PASS.
+- ISSUE (EST, chart-to-GeV map |Phi| = eps M_Pl,red as used by the designer): the LP points used for D2's 'realisable
+  flavour Higgs' and for D3 are at s = 0.0016, x = 4:
+      chain b: <S> = 9.35e13, <Phi17> = 2.34e17 -> dtheta = 0.16 ;  chain a: 4.4e13, 1.1e17 -> 2.1e-8 ;
+      even at <S> = 3e13 the chain-b x = 4 gives dtheta = 6.4e-10 > 1e-10.
+  The quality-allowed s (chain b, <Phi17> = 1e17) is <= 5.6e-4, 2.8x below the LP value.  Because the designer's own
+  EXACT selection rule makes up-down doublet mixing ~ kappaH <S> (kappaH already at its box edge |2| at every clean
+  point), the r = 65 / c_d126 ~ 0.03 composition is NOT demonstrated at a quality-compatible <S> (CONJ that it can be
+  re-tuned with a lighter down-type doublet).  Not a D1 kill (the plan point passes), but the D2/D3 vacuum evidence
+  was produced at field values that violate D1.
+
+=====================================================================================================================
+2. D2 (flavour) - FIRST FAILURE
+=====================================================================================================================
+2a. Exact O5 Clebsch (o5_clebsch.py, o5_clebsch_check.py -> o5_clebsch.json, o5_clebsch_check.json).
+  The 126bar component of Delta x Phi210 is the unique SO(10)-equivariant map M_Phi: 126bar -> 126bar (210 occurs once in
+  126 x 126bar).  Two independent constructions (own code; repo used only for the (p,a,omega) unit forms and the integer
+  SM generator bases):  (i) K_Phi = sum Phi_abcd (L_ab L_cd - L_ac L_bd + L_ad L_bc) with L the so(10) lift to Lambda^5;
+  (ii) the explicit two-index contraction Phi_abcd Delta_cdefg.  Both restricted to the -i Hodge eigenspace, both
+  normalised by the isometric-CG condition c^2 sum_A M_A M_A^dag = 1 (the designer's stated 'orthogonal (unit-norm)
+  projection' convention, d2_joint.py docstring).  Checks: Hodge commutator 0; Casimir sum proportional to 1 to 5e-13;
+  Tr(M M^dag) = 126/210 = 0.6000 for unit Phi; block leakage < 1e-14; (i) and (ii) agree to 1e-12 (overall sign only).
+  Results (unit-norm Phi = p P + a A + omega W, repo basis; k' = eigenvalue of M on the SM singlet Delta_R and on the
+  Y = +-1/2 doublets of 126bar):
+        orientation             k'_R      k'_u      k'_d      tau = 2 sqrt6 (k'_R - k'_d)
+        P                      -0.1000    0         0         -0.490
+        A                      -0.1732   -0.1155   -0.1155    -0.283
+        W (omega)              -0.2449   -0.0816   +0.0816    -1.600
+        Am45 (1,-1,0)/sqrt2     0.0518    0.0816    0.0816    -0.1464 = -(sqrt3-1)/5     <- the design (SMd/SMf)
+        Ap45 (1,1,0)/sqrt2     -0.1932   -0.0816   -0.0816    -0.546
+  Closed form at omega = 0: k'_R - k'_d = -(p + a/sqrt3)/10, zero on the line p = -a/sqrt3.  Over the full unit sphere
+  max|tau| = 2 sqrt6 x sqrt(0.12) = 1.70.  Since sum_A M_A M_A^dag = 1 spreads the CG over 210 directions, |k'| ~ 0.05-0.25
+  for any single unit vev: the designer's 'typical' |k'_R - k'_d| = 0.61 (tau = 3) is unattainable anywhere.  Even with a
+  non-stated, maximally generous normalisation (rescale so max|eigenvalue| = 1) |tau(Am45)| = 0.758.
+  The C_R factor cancels in the requirement (needed shift of the light M_R block ~ C_R F/c_d126 vs C_R eps dk S), so
+  the conclusion does not depend on the value of C_R.
+2b. Consequence, with the designer's own model and seeds (sk_d2_exact_tau.py -> sk_d2_exact_tau.json; decoupled Q
+  scales exactly as 1/TAU, verified: Q x TAU = 1.582-1.630 const.):
+    decoupled inversion, chain b, eps = 0.024:   v_R = 1e16 / 3e16 / 6e16
+       |rho| = 30 basin (chi2_13 = 7.24):    required max|S| = 10.81 / 10.98 / 11.14
+       |rho| = 83.5 basin (chi2_13 = 0):     required max|S| = 38.5 / 38.9 / 38.9
+    joint 18-observable forward fits (|tau| <= 0.1464, |sigma| <= 1.5 generous):
+       v_R = 1e16:  cap 1: chi2 = 16225 (6 pulls > 3) | cap 2: 16305 | cap 4: 16267 | cap 4pi: 7.72 at max|S| = 11.52
+       v_R = 3e16:  cap 1: chi2 = 16195              | cap 2: 16298 | cap 4: 16276 | cap 4pi: 8.84 at max|S| = 11.46
+    CONTINUATION (chi2 vs cap, seeded downward from the 4 pi optimum, sk_d2_continuation.py):  see 2c.
+    chain a (designer's top-down point, |S| = 0.733 at |tau| = 5): required |S| = 0.733 x 5/0.1464 = 25 > 4 pi.
+2c. Continuation downward from the cap-4pi optimum (v_R = 1e16; sk_d2_continuation_1e+16.json): cap 12.57: chi2 = 7.72
+  (max|S| = 11.52) -> cap 11: 23652 -> 10: 19010 -> 9: 18512 -> 8: 18501 -> 7: 17449 -> 6 ... 1: 17071 (13 pulls > 3).
+  Clipping |S| by only 5 % below the optimum destroys the fit: the light nu^c masses (8.6e8, 1.5e12 GeV at v_R = 1e16)
+  require the d = 5 term to cancel the renormalizable C_R F/c_d126 block to ~1e-4 (designer's own 'cancellation ratio').
+  NUM caveat: the logistic parametrisation saturates when K is clipped, so the intermediate-cap values are upper bounds
+  of local optima; the robust statements are the decoupled Q (2b) and the basin scan (2e).
+2e. Basin scan (sk_d2_basins.py -> sk_d2_basins.json): 10 fresh chain-b charged-sector fits (|rho| caps 20-300, two DE
+  seeds each), decoupled required |S| at the exact tau, neutrino pulls <= 1 and <= 2:
+     chi2_13 <= 25 basins (|rho| = 30-82.6):  required max|S| = 11.9, 14.1, 14.9, 22.2, 31.9, 84.6 (pull <= 2: same or 66.9)
+     failing basins (|rho| = 20, chi2_13 = 110-118):  9.9 ;  designer's two basins: 10.8 / 38.5.
+  Minimum over everything seen: |S| ~ 10 (and only with chi2_13 > 100); for any chi2_total <= 25: |S| >= 10.8 (NUM;
+  structural reason: chi2_13 needs |rho| >~ 30 -> c_d126 <= 0.032 -> the light C_R F/c_d126 block ~ 3e-2 must be cancelled
+  by tau eps S = 3.5e-3 S).
+2d. Assessment.  There is no EXACT lemma (tau != 0), so the failure is quantitative but decisive under the design's own
+  statement: D2 requires the fit 'with stated coefficient sizes'; the stated sizes (|S| = 0.16-0.54, realisable iff
+  |S| <= 1) give chi2 ~ 1.6e4.  A chi2 <= 25 needs |S| ~ 11.5 ~ 0.92 x 4 pi, i.e. an O5 cutoff Lambda_eff = M_Pl,red/11.5
+  = 2.1e17 GeV with |Phi|/Lambda_eff ~ 0.27 (d >= 6 terms no longer negligible) - a new, strongly-coupled UV assumption the
+  design did not make (CONJ that it is acceptable).  Possible rescues not tested by anyone (CONJ): the 120-type O1/O4
+  (antisymmetric, need refits), or an omega-dominated orientation (|tau| up to 1.70 -> |S| ~ 0.93), but the designer
+  found the omega != 0 points invalid already at V0 and D3 was not tested there.
+  Other D2 statements checked: no M_e = phase x M_d^T lemma and no one-bidoublet lemma on Am45 (agree: SU(2)_R broken
+  by Delta_R, both down-type doublets present); omega = 0 gives k'_u = k'_d EXACTLY (SU(2)_R-invariant vev), so
+  sigma = c_phi lam' v_R/|Phi| only (consistent with the designer's 'Delta_R phi channel is up-only').
+
+=====================================================================================================================
+3. D3 (vacuum) - FAIL reproduced
+=====================================================================================================================
+sk_d3_check.py -> sk_d3_check.json.  Independent path: live_g2_arbitrary_component_potential_values_v20.evaluate_directions
+-> coefficient_jacobian (values only; the designer's descents used the derivative adapters via target.parameter_rows),
+with the designer's LP coupling vectors c and endpoints (read-only .npz in the designer scratchpad).
+    descent (LP)             V*            dV(values-only)  dV(designer)  |H10|   dV(endpoint, H10->0)
+    A rnd41 (EW09)        -261.5462          -1.5019          -1.5019     1.260      +0.299
+    B hsray1 (EW09)       -261.5462         -13.3706         -13.3706     2.258      +6.599
+    B rnd43 (EW09)        -261.5462          -0.9963          -0.9963     1.079      +0.213
+    F1 hsray1 (fb1)       -260.4350         -20.4665         -20.4665     2.633      +8.605
+    F1 rnd41 (fb1)        -260.4350          -1.0637          -1.0637     1.235      +0.264
+    G hsray1 (D1)           -4.3558          -3.2751          -3.2751     2.305      +2.922
+    G rnd41 (D1)            -4.3558          -1.6899          -1.6899     1.343      +0.193
+    K hsray1 (k05)        -259.9773         -11.2164         -11.2164     1.937      +5.214
+    K rnd41 (k05)         -259.9773          -0.2264          -0.2264     0.736      +0.153
+    M hsray1 (m4)          -33.0620         -13.0557         -13.0557     2.004      +4.998
+    M rnd41 (m4)           -33.0620          -0.1870          -0.1870     0.708      +0.140
+  At q*: |grad V| = 1e-12 - 5e-12, Hessian min eigenvalue -5e-12 ... -6e-16 (Goldstone zeros; no negative mode).
+  => each LP coupling set has an explicit field configuration with lower energy that breaks SU(2)_L at the GUT scale:
+  the global-minimum requirement fails for every tested point (NUM; float64 evaluation of an exact quartic polynomial,
+  margins 0.19-20.5 vs |V*| <= 262, far above rounding).  Caveat kept from the designer: specific LP points (max-t
+  objective, 2 orientations); no mechanism removing the new driver set was offered, so D3 fails as a mechanism test.
+
+=====================================================================================================================
+4. D4 (unification / proton / Landau) - PASS reproduced
+=====================================================================================================================
+sk_d4_unif.py -> sk_d4_unif.json (own code: MV coefficients from SM reps, validated against the SM b_i and b_ij exactly;
+PDG-2024 M_Z inputs alpha^-1 = 127.930, sin^2 = 0.23129, alpha_s = 0.1180; one-loop y_t with y_t(M_Z) = 0.97 EST;
+MS-bar heavy-vector constant S_V = (8,6,5); lattice W0 = 0.131 GeV^2; chain A_R = 1.25 A_SD, gamma = (23/20,9/4,2)/(11/20,9/4,2)).
+  run              M_U        m(8,3,0)   aU^-1    A_R     tau [yr]   (x4 rate)   Lambda_2L/M_Pl,red (alpha_10 = 1)
+  nominal 2L      2.181e16   2.73e11    25.66    3.23    1.62e36    4.0e35      1.55
+  one loop        2.120e16   7.9e9      26.08    3.25    1.48e36    3.7e35      1.74
+  S_V off         2.063e16   2.58e11    25.57    3.23    1.29e36    3.2e35      1.43
+  S_V opposite    1.950e16   2.43e11    25.48    3.22    1.03e36    2.6e35      1.33
+  M_s = 3.9e12    2.339e16   3.08e11    24.09    3.27    1.84e36    4.6e35      0.99   <- boundary
+  M_s = 1.21e13   2.152e16   2.67e11    25.98    3.22    1.58e36    3.9e35      1.70
+  Designer: M_U 2.16e16, m8 2.95e11, aU^-1 25.71, tau 1.55e36, Lambda 1.59 - agreement within 1-8 %.  Lambda_2L > M_Pl,red
+  only for M_s >~ 3.9e12 and with the alpha_10 = 1 definition (EST convention); not a kill.  V3: b = (44/3, 28843/6)
+  EXACT, Lambda_2L = 0.22 (chain b) / 0.16 (chain a) M_Pl,red - reproduced (V3 killed at D4).
+
+=====================================================================================================================
+5. VARIANTS
+=====================================================================================================================
+- V3 (+120_H): D4 FAIL confirmed (above).
+- V2 (+45_H, G3211 at M_U): undecided at D3/D4 (agree).  Its O5 (Phi210) part obeys the same exact bound |tau| <= 1.70,
+  so the designer's V2 proxy numbers (|S| = 0.28-0.95 at |tau| = 9.8/3) are also overstated.  BUT a 45_H brings its own
+  X-allowed d = 5 operator (F F)_126 (Delta H45)_126bar whose Clebsch is large (o5_45_clebsch.py -> o5_45_clebsch.json,
+  same unit-norm CG convention, EXACT): 45 vev along T3R: k'_R = -0.4, k'_d = +0.2, k'_u = -0.2 -> |tau| = 2.94;
+  along B-L: k'_R = -0.490, k'_u = k'_d = 0 -> |tau| = 2.40.  With eps_45 = |<45>|/M_Pl,red ~ 0.02 this gives required
+  |S_45| ~ 0.55-0.7 (EST, chain-b-like scaling Q x tau ~ 1.6).  => the flavour mechanism is portable only through a field
+  whose vev acts on Delta as a large charge (45-type), not through O5 at Am45.  This is the most useful Stage-2 lesson.
+
+=====================================================================================================================
+6. FILES (this folder)
+=====================================================================================================================
+o5_clebsch.py / .json, o5_clebsch_check.py / .json (exact Clebsch, two methods); sk_d2_exact_tau.py / .json / .log;
+sk_d2_continuation.py / sk_d2_continuation_1e+16.json / .log; sk_d3_check.py / .json / .log; sk_d4_unif.py / .json;
+sk_d1_anom.py / .json; sk_d2_basins.py / .json / .log; o5_45_clebsch.py / .json (V2 note).

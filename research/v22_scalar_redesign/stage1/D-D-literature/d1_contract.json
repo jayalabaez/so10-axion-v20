@@ -1,0 +1,627 @@
+{
+ "anomalies": {
+  "SO10^2_X": "0",
+  "X^3": "0",
+  "grav_X": "0",
+  "anomaly_free": true,
+  "species": [
+   [
+    "F",
+    16,
+    1,
+    3
+   ],
+   [
+    "V1",
+    16,
+    -35,
+    2
+   ],
+   [
+    "Vb1",
+    -16,
+    39,
+    1
+   ],
+   [
+    "V2",
+    16,
+    -28,
+    1
+   ],
+   [
+    "Vb2",
+    -16,
+    32,
+    1
+   ],
+   [
+    "V3",
+    16,
+    34,
+    1
+   ],
+   [
+    "Vb3",
+    -16,
+    -30,
+    1
+   ],
+   [
+    "T",
+    10,
+    2,
+    2
+   ],
+   [
+    "Pb",
+    -16,
+    18,
+    1
+   ],
+   [
+    "N1",
+    1,
+    -63,
+    1
+   ],
+   [
+    "N1b",
+    1,
+    59,
+    1
+   ],
+   [
+    "N2",
+    1,
+    -58,
+    1
+   ],
+   [
+    "N2b",
+    1,
+    54,
+    1
+   ],
+   [
+    "N3",
+    1,
+    -57,
+    1
+   ],
+   [
+    "N3b",
+    1,
+    61,
+    1
+   ],
+   [
+    "NMm",
+    1,
+    -2,
+    2
+   ]
+  ]
+ },
+ "pq": {
+  "N(X)": "0",
+  "N(G2)_per_unit(R2-V def)": "-2",
+  "N(PQ = X - 17 G2)": "34",
+  "E/N (fermions unchanged; R2-V exact)": "8/3"
+ },
+ "designs": {
+  "L1_v20_onestep": {
+   "scalars": [
+    [
+     "Phi210",
+     210,
+     0,
+     true
+    ],
+    [
+     "Delta",
+     -126,
+     -2,
+     false
+    ],
+    [
+     "H10",
+     10,
+     -2,
+     false
+    ],
+    [
+     "S",
+     1,
+     4,
+     false
+    ],
+    [
+     "Phi17",
+     1,
+     17,
+     false
+    ]
+   ],
+   "kernel": {
+    "n_species": 20,
+    "rank_contract_terms": 13,
+    "kernel_dim_contract": 7,
+    "rank_all_phase_sensitive_monomials_deg<=4": 13,
+    "kernel_dim_all": 7,
+    "n_extra_monomials": 18,
+    "X_in_kernel": true,
+    "G2_in_kernel": true,
+    "extra_examples": [
+     [
+      "Delta",
+      "H10*"
+     ],
+     [
+      "Delta*",
+      "H10"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "S"
+     ],
+     [
+      "Delta",
+      "H10",
+      "S"
+     ],
+     [
+      "Delta*",
+      "Delta*",
+      "S*"
+     ],
+     [
+      "Delta*",
+      "H10*",
+      "S*"
+     ],
+     [
+      "H10",
+      "H10",
+      "S"
+     ],
+     [
+      "H10*",
+      "H10*",
+      "S*"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "Delta*",
+      "H10*"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "H10*",
+      "H10*"
+     ],
+     [
+      "Delta",
+      "Delta*",
+      "Delta*",
+      "H10"
+     ],
+     [
+      "Delta",
+      "H10",
+      "H10*",
+      "H10*"
+     ]
+    ]
+   },
+   "dp_certificate": {
+    "max_excess_x4_5<=d<=20": 0,
+    "at_d": 6,
+    "monomial": {
+     "V1^": 1,
+     "V2^": 1,
+     "T^": 1,
+     "N3b^": 1
+    },
+    "holds_d<=20": true,
+    "max_excess_x4_d<=40": 0,
+    "tight_d": [
+     6,
+     7,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     19,
+     21
+    ]
+   },
+   "dp_lp_optimum": {
+    "4mu0_LP_optimum": 17.0,
+    "mu": [
+     4.25,
+     -3.5,
+     -7.0,
+     -14.25,
+     -12.0,
+     -12.75
+    ],
+    "iterations": 20,
+    "cuts": 42
+   },
+   "milp_certificate_dressed_d<=24": {
+    "worst_excess_x4": 0,
+    "at_d": 6,
+    "mono": {
+     "V2*": 2,
+     "T": 1,
+     "N2": 1
+    },
+    "exact_ok": "True",
+    "holds": true
+   },
+   "milp_colgen_4mu0": {
+    "4mu0": 17.0,
+    "iterations": 31,
+    "cuts": 31
+   },
+   "seconds": 207.63549327850342
+  },
+  "L2_plus45": {
+   "scalars": [
+    [
+     "Phi210",
+     210,
+     0,
+     true
+    ],
+    [
+     "Delta",
+     -126,
+     -2,
+     false
+    ],
+    [
+     "H10",
+     10,
+     -2,
+     false
+    ],
+    [
+     "S",
+     1,
+     4,
+     false
+    ],
+    [
+     "Phi17",
+     1,
+     17,
+     false
+    ],
+    [
+     "A45",
+     45,
+     0,
+     true
+    ]
+   ],
+   "kernel": {
+    "n_species": 20,
+    "rank_contract_terms": 13,
+    "kernel_dim_contract": 7,
+    "rank_all_phase_sensitive_monomials_deg<=4": 13,
+    "kernel_dim_all": 7,
+    "n_extra_monomials": 18,
+    "X_in_kernel": true,
+    "G2_in_kernel": true,
+    "extra_examples": [
+     [
+      "Delta",
+      "H10*"
+     ],
+     [
+      "Delta*",
+      "H10"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "S"
+     ],
+     [
+      "Delta",
+      "H10",
+      "S"
+     ],
+     [
+      "Delta*",
+      "Delta*",
+      "S*"
+     ],
+     [
+      "Delta*",
+      "H10*",
+      "S*"
+     ],
+     [
+      "H10",
+      "H10",
+      "S"
+     ],
+     [
+      "H10*",
+      "H10*",
+      "S*"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "Delta*",
+      "H10*"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "H10*",
+      "H10*"
+     ],
+     [
+      "Delta",
+      "Delta*",
+      "Delta*",
+      "H10"
+     ],
+     [
+      "Delta",
+      "H10",
+      "H10*",
+      "H10*"
+     ]
+    ]
+   },
+   "dp_certificate": {
+    "max_excess_x4_5<=d<=20": 0,
+    "at_d": 6,
+    "monomial": {
+     "V1^": 1,
+     "V2^": 1,
+     "T^": 1,
+     "N3b^": 1
+    },
+    "holds_d<=20": true,
+    "max_excess_x4_d<=40": 0,
+    "tight_d": [
+     6,
+     7,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     19,
+     21
+    ]
+   },
+   "dp_lp_optimum": {
+    "4mu0_LP_optimum": 17.0,
+    "mu": [
+     4.25,
+     -3.5,
+     -7.0,
+     -14.25,
+     -12.0,
+     -12.75
+    ],
+    "iterations": 20,
+    "cuts": 42
+   },
+   "milp_certificate_dressed_d<=24": {
+    "worst_excess_x4": 0,
+    "at_d": 6,
+    "mono": {
+     "V2*": 2,
+     "T": 1,
+     "N2": 1
+    },
+    "exact_ok": "True",
+    "holds": true
+   },
+   "milp_colgen_4mu0": {
+    "4mu0": 17.0,
+    "iterations": 31,
+    "cuts": 31
+   },
+   "seconds": 203.74818897247314
+  },
+  "L3_plus45_54": {
+   "scalars": [
+    [
+     "Phi210",
+     210,
+     0,
+     true
+    ],
+    [
+     "Delta",
+     -126,
+     -2,
+     false
+    ],
+    [
+     "H10",
+     10,
+     -2,
+     false
+    ],
+    [
+     "S",
+     1,
+     4,
+     false
+    ],
+    [
+     "Phi17",
+     1,
+     17,
+     false
+    ],
+    [
+     "A45",
+     45,
+     0,
+     true
+    ],
+    [
+     "E54",
+     54,
+     0,
+     true
+    ]
+   ],
+   "kernel": {
+    "n_species": 20,
+    "rank_contract_terms": 13,
+    "kernel_dim_contract": 7,
+    "rank_all_phase_sensitive_monomials_deg<=4": 13,
+    "kernel_dim_all": 7,
+    "n_extra_monomials": 18,
+    "X_in_kernel": true,
+    "G2_in_kernel": true,
+    "extra_examples": [
+     [
+      "Delta",
+      "H10*"
+     ],
+     [
+      "Delta*",
+      "H10"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "S"
+     ],
+     [
+      "Delta",
+      "H10",
+      "S"
+     ],
+     [
+      "Delta*",
+      "Delta*",
+      "S*"
+     ],
+     [
+      "Delta*",
+      "H10*",
+      "S*"
+     ],
+     [
+      "H10",
+      "H10",
+      "S"
+     ],
+     [
+      "H10*",
+      "H10*",
+      "S*"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "Delta*",
+      "H10*"
+     ],
+     [
+      "Delta",
+      "Delta",
+      "H10*",
+      "H10*"
+     ],
+     [
+      "Delta",
+      "Delta*",
+      "Delta*",
+      "H10"
+     ],
+     [
+      "Delta",
+      "H10",
+      "H10*",
+      "H10*"
+     ]
+    ]
+   },
+   "dp_certificate": {
+    "max_excess_x4_5<=d<=20": 0,
+    "at_d": 6,
+    "monomial": {
+     "V1^": 1,
+     "V2^": 1,
+     "T^": 1,
+     "N3b^": 1
+    },
+    "holds_d<=20": true,
+    "max_excess_x4_d<=40": 0,
+    "tight_d": [
+     6,
+     7,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     19,
+     21
+    ]
+   },
+   "dp_lp_optimum": {
+    "4mu0_LP_optimum": 17.0,
+    "mu": [
+     4.25,
+     -3.5,
+     -7.0,
+     -14.25,
+     -12.0,
+     -12.75
+    ],
+    "iterations": 20,
+    "cuts": 42
+   },
+   "milp_certificate_dressed_d<=24": {
+    "worst_excess_x4": 0,
+    "at_d": 6,
+    "mono": {
+     "V2*": 2,
+     "T": 1,
+     "N2": 1
+    },
+    "exact_ok": "True",
+    "holds": true
+   },
+   "milp_colgen_4mu0": {
+    "4mu0": 17.0,
+    "iterations": 31,
+    "cuts": 31
+   },
+   "seconds": 209.87524366378784
+  }
+ }
+}

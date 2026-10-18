@@ -1,0 +1,112 @@
+ADVERSARIAL SKEPTIC - design D-D-literature, recommended variant L2 (v20 scalars + one real 45_H, X = 0)   2026-10-17
+=====================================================================================================================
+Folder: research\v22_scalar_redesign\stage1\D-D-literature\skeptic\  (only files here were written; the designer's
+files were read, never edited; no repository module was run; _rescope / other worktrees untouched).
+Labels: EXACT / NUM (uncertainty stated) / EST / CONJ / LIT-abstract / LIT-snippet.
+Own code: sk_d1_anom.py, sk_dual_dp_L2.py (copy of R2-V dual_dp.py with A45 added; nothing else changed),
+sk_d2_eval.py (independent diagonalisation / angles / chi2), sk_d3_octet.py (explicit so(10) tensors + O(4) bounce),
+sk_d4.py + sk_d4_extra.py (from-scratch MV two-loop running, matching, Landau, lattice tau).
+
+VERDICT: NOT KILLED (no decisive failure found). The design does NOT pass Stage 1 cleanly:
+  D1 PASS (reproduced, EXACT); D2 PASS (reproduced, NUM proxy, -8 dof);
+  D3 NOT MET as specified (UNDECIDED, and a new explicit counter-direction requires two uncounted fine-tunings);
+  D4 downgraded from "nominal PASS" to UNDECIDED (knife-edge: Lambda_2L = 0.965-1.11 M_Pl,red with design-consistent
+  inputs; the SO(10) phase is not perturbatively controlled); D5 tuning count understated by >= 2.
+
+---------------------------------------------------------------------------------------------------------------------
+D1 contract - PASS, reproduced
+---------------------------------------------------------------------------------------------------------------------
+* Anomalies (EXACT, Fractions, sk_d1_anom.json): [SO(10)]^2 X = 0, X^3 = 0, grav-X = 0 (fermions unchanged).
+* A45 Yukawa: exhaustive scan of fermion bilinears with X = 0 containing a 45 (16(x) x 16bar(-x); antisymmetric 10x10):
+  NONE (EXACT). A45 is real => charge 0 under every accidental U(1) => it adds no kernel constraint beyond h = d
+  (already implied by O15) (EXACT).
+* Quality DP with A45 included (sk_dual_dp_L2.log/json): DP = brute force for d <= 7; max 4[mu.q - (d-4)] = 0 for every
+  5 <= d <= 40 (same tight set as R2-V, A45 never in an argmax); own cutting-plane LP 4 mu_0 = 17.000 (20 iterations,
+  42 cuts). K_min = 17 (EXACT; structurally forced: A45 is the same DP item type as Phi210, duplicates cannot raise a max).
+  No closure with K <= 16 is created by the new scalar.
+* dtheta, N_DW, E/N = 8/3: unchanged (EXACT argument accepted).
+
+---------------------------------------------------------------------------------------------------------------------
+D2 flavour - PASS (proxy), reproduced; caveats
+---------------------------------------------------------------------------------------------------------------------
+* Independent re-evaluation (SVD/eigh, PDG angles with Jarlskog delta, own Delta m^2 scale fit) of the stored points
+  (sk_d2_eval.log): L2 c5<=0.1 chi2 = 2.469e-6 (designer 2.469e-6), L2 c5<=0.3 3.53e-8, L2 c5<=0.03 50.34 (sin^2 th23
+  -6.3 sigma), L3' 1.26e-13 - all agree to <1e-9 relative. (The 'MdagM' rows are a non-self-consistent convention probe:
+  m_nu was not transposed; disregard.) NUM.
+* No exact obstruction on the intended orientation: one-bidoublet lemma needs SU(2)_R unbroken (broken by omega_R);
+  M_e = phase x M_d^T lemma needs a purely up-type (15,2,2) admixture (a, omega_BL feed the down type). Agreed (EXACT).
+* NEW structural constraint (EXACT, X + SO(10) group theory): every mixing between the X = -2 doublets {h_u^10, Sigma_u}
+  and the X = +2 doublets {h_d^10*, Sigma_d*} needs one S insertion at the renormalisable level: kappaH <S> (h_u h_d)
+  and lambda' <Phi><S> (H10.Delta.Phi.S: h_u Sigma_d, Sigma_u h_d); Sigma_u-Sigma_d* = 0 (Sym^2 126bar has no 1, 45,
+  210; H10.H10.S.A = 0; H10.Delta.S.A = 0 since 45 not in 10 x 126bar). The fit's down admixture
+  |c_d| = |(0.0138, 0.0144)| = 0.020 then needs m_D (lightest X = +2 doublet) <~ (|C|/0.02)^(1/2) with
+  |C| <= max(kappaH, lambda'|Phi|) x <S>_max (3.285e13): m_D ~ 3-8e15 GeV = 0.25-0.6 M_U (EST). This contradicts the
+  designer's "(M1) all other doublet directions keep O(M_U^2) masses (EXACT counting)" and adds an intermediate
+  threshold that D4 did not include (effect quantified below). Not an obstruction.
+* EFT dominance (NUM): A = 1.9 m_d (c5<=0.1 point), 16 m_d = 0.8 m_s (c5<=0.3 point) in the down sector; with -8 dof
+  the D2 pass shows capability only (as the designer states).
+
+---------------------------------------------------------------------------------------------------------------------
+D3 vacuum - NOT MET as specified; new explicit counter-direction (sk_d3_octet.json)
+---------------------------------------------------------------------------------------------------------------------
+* The criterion requires a cheap numerical sanity check IN THE MODIFIED POTENTIAL. None was run (designer: "no lift LP or
+  descent was run with the 45"). The reused R2-A evidence is not evidence for L2: C0 (one light bidoublet, SU(2)_R
+  unbroken) is exactly the flavour-dead content killed by the EXACT lemma, in the v20 potential without the 45; V0 has
+  no light doublet; K3's one-bidoublet point P831 had a deeper H-Sigma point (-26.6) and no post-cut C0 descent exists.
+* Skeptic check on an explicit ray of the modified potential: the light REAL octets the design needs.
+  (a) 45 sector (EXACT): with <A> = w_R T3R + w_BL T_BL, Tr(A^4) contains 4 Tr(<A> O^3), and
+      Tr(T_BL O^3) = 2 Tr_C(H^3) != 0 (identity verified; unit-normalised lambda_8 direction -0.4714, max 0.4707;
+      Tr(T3R O^3) = 0; finite-difference check of the cubic agrees to 1e-11). SU(3) charge conjugation maps
+      T_BL -> -T_BL, so w_BL != 0 removes the only symmetry that could forbid it (EXACT).
+  (b) 210 sector (EXACT): the cubic invariant Phi_abcd Phi_cdef Phi_efab is nonzero on (8,1,0) c (15,1,1) and on
+      (8,3,0) c (15,3,1) (the f_abc eps_ijk invariant; vanishes on a single SU(2) component as it must), so the v20
+      Phi^3 coupling (~M_U) feeds both light octets.
+  (c) Bounce (NUM): O(4) shooting for V = t^2/2 - t^3/3 gives S0 = 204.4 (literature ~205). With natural cubics:
+      TeV octet S = 1e-24 - 1e-21; (8,3,0) at 1.7e9 S = 6e-12 - 6e-10 -> the intended vacuum is not even metastable.
+      Survival (S >= 400) needs the light-mode cubic A <= 0.71 m: A/M_U <= 7e-14 (TeV octet) and 1.2e-7 ((8,3,0)).
+      LIT-snippet 1605.05313: real colour-octet trilinears must be below ~m for colour-preserving stability.
+  => two additional real fine-tunings (to be redone at one loop: CW cubic corrections ~ M_U/16pi^2), absent from the
+     design's tuning list; a colour-breaking deep direction CREATED by the modification's light content (EST/EXACT).
+  Not a kill (tunable), but D3 cannot be counted as met.
+* Noted, not decisive (EST): the M2 cubics (Delta* T_A Delta, i H^+ T_A H) at kappa ~ M_U induce tree-level sigma-quartic
+  and H-sigma portal shifts via exchange of the neutral 45 mode, ~ (kappa w_R)(zeta w_R)/(2 m_A^2 w_R^2) = O(0.1-1)/lambda_A
+  if zeta ~ kappa: the same class of heavy-exchange effects that drove lambda_eff negative in R2-A (designer M4: "not
+  checked numerically"). SM lambda(v_R ~ 1e13) ~ 0 +- 0.01 with the octets (EST) -> R2-A caveat (a) applies again.
+
+---------------------------------------------------------------------------------------------------------------------
+D4 unification / proton / Landau - reproduced at designer inputs, downgraded to UNDECIDED (sk_d4.log, sk_d4_extra.log)
+---------------------------------------------------------------------------------------------------------------------
+From-scratch code (asserts SM b, b_ij; S_V = (8,6,5); b_SO10(L2) = 20/3, 21787/6, identical to designer):
+  designer inputs, M8 = 1e3: M_U 1.285e16, aU^-1 27.029, (8,3,0) 1.73e9, A_R 3.14, tau 2.23e35 yr, L2L 1.039
+                             (designer 1.283e16 / 27.040 / 1.74e9 / 3.14 / 2.21e35 / 1.042)            REPRODUCED (NUM)
+  M8 = 1e4: L2L 0.996 (FAIL; designer 0.999).  L1: 1.598 (designer 1.602).
+Proton decay: PASS with margin everywhere (tau >= 1.4e35 yr in every variant; x6 above 2.4e34). NUM.
+Landau sensitivity (all NUM, same code):
+  - Yukawa traces consistent with the designer's OWN D2 fit (Y126_tr2 ~ 0.006 not 0.5; c_u10 = 0.91): 1.030
+  - octet mass (collider-stable coloured state, EST bound ~1.5-2 TeV): 1.031 (1.5 TeV), 1.026 (2 TeV), 1.018 (3 TeV)
+  - PDG-2024 alpha_s 0.1180 +- 0.0009: 1.024 / 1.036 / 1.048 (M8 = 1e3)
+  - X = +2 doublets at 3e15 / 5e15 / 7e15 / 1e16 (required by the D2 composition, EST): 1.012 / 1.022 / 1.028 / 1.034
+  - M_s: 1.21e13 (y_s 0.368) 1.136; 8e12 0.938 (FAIL); 5e12 0.758 (FAIL)  -> pass needs every B63 exotic Yukawa in
+    [~0.28, 0.37] at <S> <= 3.285e13 (EXACT bound from D1).
+  - combined design-consistent nominal (PDG24, own-fit Yukawas, M8 = 2 TeV): 1.013; + doublets 7e15: 1.003;
+    + doublets 5e15: 0.997 (FAIL); + doublets 3e15: 0.988 (FAIL); alpha_s +-1 sigma: 1.002 / 1.025; M_s 9e12: 0.965 (FAIL).
+  - three loops: designer's Lambda_3L = 0.45-0.51 (FAIL, not re-derived here) - the same failure mode the round-2 FINAL
+    listed against C1 + (6,2,2). At M_U the two-loop term is 1.6 x the one-loop term (b2 alpha/8pi^2 = 1.70 vs
+    b1/2pi = 1.06): the SO(10)-phase expansion is not controlled, so Lambda_2L itself is convention-limited.
+  => D4 = UNDECIDED (knife-edge), not "PASS". Seesaw window: not fixed by unification (agreed).
+Minor: the "EXACT, Tr(T3R(B-L)) = 0" reason for the G3211 = SM alpha_Y equivalence is wrong as stated (the light sigma
+has T3R(B-L) != 0, so kinetic mixing IS generated); the conclusion survives because 1/g_Y^2 = n^T K n runs with
+sum Y_norm^2 = b_Y exactly (EXACT).
+
+---------------------------------------------------------------------------------------------------------------------
+D5 cost - understated
+---------------------------------------------------------------------------------------------------------------------
+Add: two octet-cubic fine-tunings (7e-14, 1.2e-7 of M_U, one-loop retuning), the X = +2 doublet hierarchy (mild),
+and a Landau knife-edge that forces four independent B63 Yukawas into [~0.28, 0.37].
+Stage-2 risk (EST/LIT-abstract): the TeV real octet has no renormalisable decay; gg via GUT loops gives tau ~ 1e3-1e5 s
+(EST; designer 1e2-1e4 s); BBN bounds TeV gluino-like relics to tau <~ 100 s (hep-ph/0504210, LIT-abstract; the relic
+abundance relies on non-perturbative annihilation). A collider-stable octet faces R-hadron limits (EST ~1.5-2 TeV),
+which pushes Lambda_2L further down (see D4).
+
+FILES: sk_d1_anom.py/.json, sk_dual_dp_L2.py/.json/.log, sk_d2_eval.py/.json/.log, sk_d3_octet.py/.json/.log,
+sk_d4.py/.json/.log, sk_d4_extra.py/.json/.log, REPORT.txt.

@@ -1,0 +1,349 @@
+STAGE 1 DESIGNER REPORT - angle D-C-flavour (flavour-sector extension with minimal vacuum impact)       2026-10-17
+Folder: research\v22_scalar_redesign\stage1\D-C-flavour\  (scripts + small JSON; large binaries - compiler rows, LP
+iterates - in the session scratchpad ...\scratchpad\v22_DCflav_d3\).  Labels: EXACT / NUM (uncertainty stated) / EST /
+CONJ / LIT-abstract.  No file outside this folder was modified; repository modules were imported read-only.
+
+=====================================================================================================================
+0. BOTTOM LINE
+=====================================================================================================================
+Design V1 "A1-EFT" (the minimal flavour-capable design; NO new field): one-step SO(10) x U(1)_X -> SM at M_U with the
+existing scalars (Phi210 at Am45, Delta_R at r = 0.5-1), ONE tuned SM doublet, light (6,2,-1/6)_210 + (8,3,0)_210, and
+flavour from Y10 + Y126 plus the X-allowed Planck operator O5 = S (F F)_126 (Delta Phi210)_126bar / M_Pl,red.
+VERDICT: DISCARDED AT D3 (NUM).  D1 PASS (EXACT), D2 PASS (NUM, top-down verified), D3 FAIL (NUM), D4 PASS (NUM).
+  D1  anomalies 0/0/0 and the exact DP K_min = 17 reproduced (also with +45_H or +120_H); E/N 8/3, N_DW 1; y_s window
+      [0.304, 0.363-0.367] in the one-step gauge environments.
+  D2  The renormalizable 10 + 126bar truncation of a one-step vacuum is flavour-dead (R6: the charged sector needs
+      |c_u126/c_d126| >~ 30, which caps c_d126 <= 0.032 and locks M_R ~ F at >= 150 v_R |F|).  O5 breaks M_R ~ F:
+      chi2 = 4.8 at M_Z (top-down SM two-loop + nu^c decoupling; 18 observables, PDG-2024 + NuFIT 6.0, all |pull| <
+      1.2, m_s/m_d = 20.4) with |S_ij| = 0.73 (chain a, |tau| = 5); for the realisable chain b |S_ij| = 0.16-0.54.
+      No structural obstruction; the required light Higgs (|r| = 65.3, s = 0.459, 90 % 126bar) is an exact LP eigen-
+      vector.  NEW EXACT selection rules of the SM vacuum: up-down doublet mixing only through <S> (kappaH H10.H10.S;
+      O31 cannot contribute, B-L), and the (Delta_R phi) channel is up-type only.  Price: O(1) Planck coefficients,
+      ~30 parameters for 18 observables (no flavour prediction).
+  D3  The R2-A drivers are removed (O31 out of the doublet sector by B-L, O27 >= 0, all 52 R2-A endpoints lifted with
+      small H-Sigma portals, SM-singlet screen clean at SMf) - but 11/11 fresh full-chart descents (flavour point,
+      after one feedback round, generic doublet, kappaH capped, mass box 4) find deeper GUT-scale SU(2)_L-breaking
+      configurations (-0.2 to -20.5 box units), driven by the bare H10/126bar masses and Phi-H / Phi^2-H-Sigma portals.
+      The single-doublet breaking pattern does not by itself give a global minimum in the v20 potential.
+  D4  chain b: M_U = 2.16e16, aU^-1 = 25.7, tau(lattice W0 x chain A_R = 3.23) = 1.55e36 yr (x65 Super-K), Lambda_2L =
+      1.59 M_Pl,red; 99 % of a x1/2..x2 heavy-threshold Monte Carlo passes; needs M_s >~ 3.9e12.  (Three loops expected
+      to fail, aU^-1 < 28.9 - not a D4 item.)
+  D5  0 new fields, 0 new renormalizable couplings, 3 hierarchy tunings, 486-chart reused (cost ~3-5 days) - moot after D3.
+Variants: V3 (+ renormalizable 120_H, X = -2) - D1 PASS, DISCARDED at D4 (Lambda_2L = 0.16-0.22 M_Pl,red, EXACT b's).
+  V2 (A2-EFT: + 45_H, X = 0, G3211 at M_U, B-L at 3e12-1e14) - D1 PASS (EXACT, DP identical), D2 proxy PASS (|S| =
+  0.17-1.4, EST chain), D3/D4 UNDECIDED here (needs a 531-real chart; the A2 designer's family).
+Portable results for Stage 2 whatever vacuum survives: (1) O5 with |c| ~ 0.2-1 decouples M_R from F and removes the
+m_s/m_d = 34.6 tension at ANY v_R (1e12-6e16) - the flavour sector needs no new field; (2) in any SM vacuum of these
+charges c_d/c_u ~ kappaH <S> / m_D^2, linking flavour to the quality-limited <S> <= 3.3e13 (a light-ish down-type
+doublet at m_D^2 ~ 0.03 kappaH |Phi|^2 is required, EST); (3) a 120_H is excluded by Landau in any chain with the B63
+S-sector.
+
+=====================================================================================================================
+1. DESIGN V1 "A1-EFT" (the minimal flavour-capable design; no new field)
+=====================================================================================================================
+Idea.  Do not add Yukawa fields.  Remove the cause of the flavour lemma and of the two-bidoublet vacua at once by the
+breaking pattern (one-step SO(10) x U(1)_X -> SM at M_U, a single tuned SM doublet), and let the X-allowed d = 5
+operator O5 = S_ij (F_i F_j)_126 (Delta Phi210)_126bar / M_Pl,red do the one job the renormalizable 10 + 126bar cannot
+do in a one-step vacuum: decouple M_R from the charged-fermion matrix F (this also removes the m_s/m_d = 34.6 basin).
+
+1a. Content (EXACT; identical to v20/B63; Z17 phase = exp(2 pi i (X mod 17)/17), listed as X mod 17)
+  Gauge: SO(10) x U(1)_X.
+  Scalars:  Phi210 (X 0, real; Z17 0) | Delta 126bar (X -2; 15) | H10 complex (X -2; 15) | S (X 4; 4) | Phi17 (X 17; 0).
+  Fermions (Weyl): F 3x16 (1; 1) | V1 2x16 (-35; 16) | Vb1 16bar (39; 5) | V2 16 (-28; 6) | Vb2 16bar (32; 15) |
+    V3 16 (34; 0) | Vb3 16bar (-30; 4) | T 2x10 (2; 2) | Pb 16bar (18; 1) | N1 (-63; 5) N1b (59; 8) | N2 (-58; 10)
+    N2b (54; 3) | N3 (-57; 11) N3b (61; 10) | NMm 2x1 (-2; 15).
+  Renormalizable scalar potential: the v20 51-parameter exact-X potential (models\SO10Z17AxionV20.m) VERBATIM - no term
+    is new or forbidden (same fields, same charges => same invariant list, EXACT).  The kappaH H10.H10.S row is
+    ESSENTIAL here (section 3b: it is the only up-down doublet mixing in an SM vacuum).
+  Renormalizable Yukawas: the 12 B63 structures (F.F.H10 = Y10, F.F.Delta = Y126, + the 10 vector-like/singlet ones).
+  d = 5 Yukawa operators (all X- and PQ-neutral, SO(10) singlets; coefficient c/M_Pl,red):
+    O1 (FF)_120 (H10 Phi)_120   O2 (FF)_126 (H10 Phi)_126bar   O3 (FF)_10 (Delta Phi)_10   O4 (FF)_120 (Delta Phi)_120
+    O5 (FF)_126 (Delta Phi)_126bar   O6 (FF)_10 H10* S*  [10 x 210 = 120+126+126bar+1728; 126bar x 210 contains 10, 120,
+    126bar].  V1 USES O5 with |S_ij| = 0.16-0.54 (chain b; 0.3-1 chain a; section 3); O1-O4, O6 are present but must have light-family entries
+    <~ 1e-2 (technically natural, like the Yukawas themselves; EST).
+1b. Vacuum orientation and chain (scales):
+  M_U = 2.2e16 (chain b; 1.0e16 for chain a): Phi210 = p P + a A with p = -a (Am45; omega = 0 is allowed - SU(2)_R is
+  broken by Delta_R) and Delta_R = r |Phi| with r = 0.5-1 (the LP points SMd/SMf; v_R = v_BL ~ 1e16-6e16), so
+  SU(4) x SU(2)_R x U(1)_X -> SU(3) x U(1)_Y at M_U; <S> = 3e13 (U(1)_X -> accidental PQ, quality certificate),
+  <Phi17> ~ 1e17 (x = 4 chart units).  One-step SO(10) x U(1)_X -> SM x U(1)_PQ(global).
+1c. Light content (tuned):  SM Higgs doublet (one combination of the 5 complex |Y| = 1/2 doublets; composition below)
+  + two colour multiplets of the 210:
+    chain b (ADOPTED): (6,2,-1/6)_210 (complex) at 1e9 GeV + (8,3,0)_210 (real) at 2.95e11 GeV - locally realisable
+      (LP, section 4);
+    chain a (rejected): (8,1,0)_210 at ~1e4 GeV + (8,3,0)_210 at 2.25e9 GeV unifies too (section 5) but is NOT locally
+      realisable at SMd (LP collapses, t = 8e-5, 10 negative modes; cf. R2-A's 210-internal (8,3)+(8,1) obstruction).
+  + B63 vector-like fermions at M_s ~ 1e13 (unchanged), nu^c at M_R = (9e8, 1.6e12, 2e15-1e16) GeV (fit, section 3).
+  Required light-Higgs composition (fit): r = c_u10/c_d10 = 65, |rho| = |c_u126/c_d126| = 30-42, c_d126 = 0.022-0.032,
+  i.e. the light Higgs is mostly the 126bar (15,2,2) up-type doublet (|c_u126| ~ 0.7-0.95) with |c_u10| ~ 0.3.
+
+=====================================================================================================================
+2. D1 CONTRACT: PASS (EXACT; y_s window EST)
+=====================================================================================================================
+- Anomalies (d1_contract.py, Fractions): [SO(10)]^2 X = 0, X^3 = 0, grav-X = 0 (fermions unchanged; scalars do not
+  contribute); SO(10) has no cubic or global anomaly.  EXACT.
+- Quality: the exact integer DP (dp_core.py = verbatim R2-V dual_dp.py) re-run for the V1 content: max 4[mu.q - (d-4)]
+  = 0 for 5 <= d <= 20 and for d <= 30 (tight at d = 6, 7, 9-17, 19, 21), brute force agrees for d <= 7, own cutting-
+  plane LP optimum 4 mu_0 = 17.000 => K_min >= 17; the explicit K = 17 closure of R2-V uses only unchanged fields =>
+  K_min = 17 (EXACT).  dtheta = 2.1e-11 at <S> = 3e13 (unchanged; EST cost model).  The same DP run with +45_H (X 0)
+  and +120_H (X -2; its Yukawas F.F.120, Vb2.Vb3.120 duplicate the H10 structures) gives identical numbers (EXACT).
+- PQ: no new field and no new renormalizable phase-sensitive term => kernel, N = 34, E/N = 8/3, N_DW = 1 (mod gauge)
+  unchanged (EXACT, R2-V).  O5 and O1-O6 are PQ-neutral (X = 0, G2 = 0).
+- y_s window recomputed in the one-step gauge environments (ys_window_1s.py; R2-V ys_rg.py with the G3221 segment
+  removed): cap 0.367-0.381 (chain a), 0.363-0.376 (chain b), binding coupling the gauge-singlet N1 => window
+  [0.304, 0.367] / [0.304, 0.363], non-empty (EST, one loop).
+
+=====================================================================================================================
+3. D2 FLAVOUR CAPABILITY: PASS (structural NUM + EXACT selection rules; proxy fit NUM, verified top-down)
+=====================================================================================================================
+3a. Why the renormalizable one-step truncation fails (the R6 issue, NUM).  With one light doublet the Yukawa structure
+  is Yd = H + F, Ye = H - 3F, Yu = r H + rho F, Ynu = r H - 3 rho F, M_R = C_R v_R F / c_d126 (C_R = 2 sqrt6).
+  Stage-1 charged-sector fit (13 observables, d2_decoupled.py, GUT-scale targets of the one-step chain): chi2_13 = 0.000
+  when |rho| is free, but chi2_13 = 4.9-6.6 at |rho| <= 30, 216-227 at <= 15, 386-401 at <= 10, 572-587 at <= 6, 743 at
+  <= 3, 885 at <= 1: the charged sector needs |rho| = |c_u126/c_d126| >~ 30.  The normalisation |c|^2 = 1 then caps
+  c_d126 <= (0.9/(1+|rho|^2))^1/2 = 0.032, so M_R = C_R v_R F / c_d126 >= 150 v_R F is locked to F's hierarchy
+  (F/c_d126 singular values 2.3e-4 : 6.8e-3 : 3.6e-2 at the best point -> M_R = 1.1e13, 3.3e14, 1.8e15 GeV at v_R =
+  1e16).  The type-I inversion of the data at the same point needs M_R = (6.6e8, 1.1e12, 1.9e15): the heaviest state
+  matches, the two lighter ones must be 1e2-1e4 lighter than F-locked (R2-C's window [2e12, 3e13] is where the F-locked
+  spectrum fits the scale, and even there chi2 >= 110; at v_R = 1e14 R2-C found 1576 from the same normalisation
+  bound).  Brute-force DE of the coupled renormalizable model (d2_eft_fit.py 'ren', 3 runs each, under-converged): chi2
+  = 4.8e3 (1e15), 4.6e3 (3e15), 1.6e4 (1e16), with Delta m^2 and the PMNS angles off by 30-120 sigma.  => The
+  renormalizable 10 + 126bar truncation of A1 is flavour-dead (R6), independently of m_s/m_d.  (DIAGNOSIS R6 confirmed.)
+3b. Structural check on the SM orientation (d3\doublet_map.py on the exact v20 compiler rows at three one-step points
+  SMa (p = -a = 0.5, omega = 0.707, r = 0.5, x = 1.4), SMb (Am45, omega = 0, r = 0.5, x = 1.4), SMe (p = -a = 0.693,
+  omega = 0.2, r = 0.7, x = 4); results identical in structure):
+  - the (1,2)_|Y|=1/2 block has m = 5 complex doublets {H10_u, H10_d*, Delta_u, Delta_d*, phi(210 (10,2,2), B-L = 2)};
+  - in the exact X-diagonal basis the coupling-induced entries are: H10_u-Delta_u, H10_d*-Delta_d*, phi-H10_u,
+    phi-Delta_u = O(1) (free); H10_u-H10_d* = 0.0032 = 2s, H10_u-Delta_d* = 0.0016 = s (SMa; 0.0011 SMb), phi-H10_d* =
+    0.0011 (prop. to s); phi-Delta_d* = 3e-16, Delta_u-Delta_d* = 7e-16 (zero), H10_d*-Delta_u = 1e-12 (SMa) / 0.0009 = O(s) (SMe).
+  EXACT selection rules behind this (charge arithmetic): (i) an up-type (X = -2) / down-type (X = +2) doublet mass
+    mixing needs a spurion with X = 4, B-L = 0: only <S> (kappaH H10.H10.S, O38 Phi.H10*.Delta*.S*, ...); <Delta_R>^2
+    has B-L = -4, so O31 =
+    H10*^2 Delta^2 does NOT mix doublets in an SM vacuum; (ii) phi (X 0, B-L 2) mixes with the up sector through
+    <Delta_R*> but with the down sector only through <S*> as well; (iii) the d=5 channel (Delta_R phi) feeds up-type
+    (and Dirac-nu) Yukawas only.  Consequence: c_d/c_u ~ kappaH <S> / m_D^2 - the large r = 65 is natural (no extra
+    tuning) for a lightest down-sector state at m_D^2 ~ 0.1-0.2 |Phi|^2 (EST) - but kappaH != 0 is required.
+  - EW-target test (exact linear eigen-equation A(y) u = lambda u, R2-A method): rank 9 of 9 (full) for the fit-basin
+    composition, with phi admixture, pure H10_u and c_d126 = 0.7 targets (3 random phase sets each, all three points); rank 5
+    only for a pure Delta_d* doublet (irrelevant).  => no one-bidoublet lemma (SU(2)_R broken at M_U, s != 1 free), no
+    'down-type 126 admixture = 0' / M_e = phase x M_d^T lemma (H10_d*-Delta_d* = O(1) at a != 0).  NUM (float64 rows).
+3c. Proxy fit with O5 (the decoupled construction, EXACT given the model).  O5 components (B-L/Y bookkeeping):
+  (Delta_d <Phi>) -> 126bar (15,2,2) down [lepton Clebsch -3], (Delta_u <Phi>) -> up, (Delta_R phi) -> up only,
+  (Delta_R <Phi>) -> nu^c nu^c.  With F := c_d126 (Y126 + eps kd' S), K := eps S, eps = |Phi|/M_Pl,red = 0.0113 (chain a,
+  |Phi| = 2.7 M_U; 0.024 chain b):  Yd = H + F, Ye = H - 3F (unchanged), Yu = r H + rho F + sigma K,
+  M_R = v_R (C_R F/c_d126 + tau K), tau = C_R (kR' - kd'), sigma = c_u126 (ku' - kd') + c_phi lam' v_R/|Phi|, with
+  projector matrix elements |k'|, |lam'| <= 1 (unit-norm projection convention, stated; the Clebsch values themselves
+  are a Stage-2 item): |tau| <= 9.8 ('optimistic'), 3 ('typical').  Since Ynu is fixed by the charged fit (sigma = 0),
+  every m_nu consistent with the data follows from M_R = -v^2 Ynu^T m_nu^-1 Ynu; realisable iff |K_ij| <= eps.
+  Error model: PDG-2024 masses/CKM at M_Z (R2-C inputs), each mass with its M_Z relative error (+) a 1 % theory floor,
+  CKM relative errors (s23, s13 rescaled by their running), NuFIT 6.0 NO with SK (sin^2 th23 = 0.470 +- 0.015), run to
+  M_U with SM two-loop RGEs + the light colour states + the B63 S-sector; Delta m^2 compared with eta^2 = 0.616 (Weinberg
+  operator, lambda coefficient corrected to +2 lam); delta_PMNS free unless stated.
+  Results (chi2 over 18 observables, max|S| = required O5 coefficient in units of 1/M_Pl,red):
+    stage-2 decoupled (|rho| = 30 seed, chi2_13 = 4.87): required max|S| (|tau| = 5) = 0.59 (v_R 1e15), 0.75 (1e16);
+      (|rho| = 41.6 seed, chi2_13 = 0): 1.08 (1e15), 1.23 (3e15), 2.66 (1e16); scale as 5/|tau|.
+    joint 18-observable fits (d2_joint.py, forward model, cap on |S|): optimistic Clebsch: chi2 = 5.21/0.005 (1e15, cap
+      0.5/1, max|S| 0.31/0.55), 5.42/0.48 (3e15, max|S| 0.36/0.63), 5.12/0.03 (1e16, max|S| 0.39/1.36); typical
+      Clebsch: chi2 = 5.10 at v_R = 1e15 with max|S| = 0.999; at 3e15 / 1e16 needs max|S| = 1.19 / 1.26 (chi2 5.4/5.1);
+      with cap 0.5 the typical-Clebsch fits fail (chi2 2.3e3-3.8e3).
+    TOP-DOWN verification (d2_verify.py + d2_topdown_polish.py: GUT matrices run to M_Z with SM two-loop RGEs, sequential
+      nu^c decoupling, colour-state and S-sector thresholds; only K re-polished): v_R = 1e16, |tau| = 5:
+      chi2(M_Z, 18 obs) = 4.80, all |pull| < 1.2 (m_d -0.84, m_s +0.66, m_b +1.10, s23 +1.16, sin^2 th23 -0.24),
+      max|S| = 0.733; M_R = (7.4e8, 1.1e12, 1.9e15) GeV; m_nu = (0.19, 8.66, 50.1) meV, sum 59.0 meV, m_bb = 3.8 meV.
+      [proxy chi2 5.88 at M_U; the unpolished proxy point gave 246 at M_Z (eta / nu^c-threshold approximation, a 6 %
+      shift of the nu scale) - the proxy alone is NOT a substitute for the top-down check.]
+    Sensitivity (d2_sens.py, |tau| = 5): delta_PMNS fixed to NuFIT 212 deg (177/247): max|S| 0.71 (0.74/0.66) at 1e15,
+      0.88 at 1e16; light-Higgs 126bar fraction: c_d126 = 0.5 c_max -> 1.3-1.5, 0.2 c_max -> 3.6-4.3.
+    Low-v_R reference (V2 structure, G3211 chain approximated by SM running, EST): required max|S| (|tau| = 3 / 9.8) =
+      0.90-0.95 / 0.28-0.29 at v_R = 3e12-3e13 (|rho| 41.6 seed), 0.56-1.38 / 0.17-0.42 (|rho| 30 seed).
+  m_s/m_d: the top-down point gives m_s/m_d = 20.4 (target 19.9, pulls m_s +0.66, m_d -0.84); the
+    34.6 prediction of R2-C was a property of the theta23-compatible basin of the M_R ~ F model, which O5 removes.
+  CKM: generic (s != 1), fitted to < 1.2 sigma.
+    Realisable chain b (d2_chainb.py: fresh chain-b targets, eps = 0.024, v_R = 1e16 / 3e16 / 6e16 as implied by the LP
+      points): |rho| = 30 solution (chi2_13 = 7.2): required max|S| = 0.53 / 0.54 / 0.54 (|tau| = 3), 0.32 (|tau| = 5),
+      0.16 (|tau| = 9.8), chi2_nu = 0.7-2.2 => total chi2 = 8-9.4; |rho| = 83.5 solution (chi2_13 = 0): 1.9 / 1.1 / 0.58.
+  Vacuum realisability of the required composition (section 4): the exact EW eigenvector with |r| = 65.3, s = 0.459
+    and 90 % (or 50 %) 126bar is realised cleanly at SMd (t = 0.0149 / 0.0347) and, with the full global screen and the
+    52 R2-A endpoints, at SMf (t = 0.0202).
+  => D2 PASS with stated sizes: O5 coefficient |S_ij| = 0.16-0.54 for chain b (0.3-1 for chain a), largest in the
+     23/33 entries (K/eps: (1,1) 0.03, (2,2) 0.39, (2,3),(3,3) 0.73), and a light Higgs >~ 50-90 % 126bar.  The coefficient
+     sits at the |c| <= 1 edge: it is an O(1) Planck operator, not a small correction (EST).  The fit has ~30 parameters
+     for 18 observables: flavour is NOT predicted (CONJ: no testable flavour prediction survives except the normal
+     ordering and m_bb ~ 4 meV at the best point, both fit-dependent).
+
+=====================================================================================================================
+4. D3 VACUUM ROOT CAUSE
+=====================================================================================================================
+4a. Mechanism: changed breaking pattern (no charge argument can forbid the drivers, diagnosis 1c-ii).
+  (i) One tuned SM doublet: in the SM vacuum the |Y| = 1/2 sector is ONE 5x5 Hermitian block (3b); a light Higgs costs
+      one real condition (vs 10 for two G3221 bidoublets), the other four doublets keep O(t |Phi|^2) masses and the
+      whole H-Sigma plane is massive at M_U.
+  (ii) Im O31 = H10*^2 Delta^2 cannot feed the doublet mass matrix in an SM vacuum (EXACT: <Delta_R>^2 has B-L = -4);
+      numerically H10_u-H10_d* = 2s only (3b).  O31 survives only as a small sign-indefinite quartic.
+  (iii) Delta_R^{++} trap removed: with v_R = r |Phi|, r = 0.5-1, the K3 argument (O27 < 0 forced when the 126bar
+      alone breaks B-L at v_R << M_U) does not apply; at every clean LP point below all O27 couplings are >= 0
+      (e.g. SMf flavour point O27_B01..B04 = 1.0, 0.067, 0.068, 0.083; SMd flavour point O27_B02 = +0.15, vs -1 in
+      264/332 R2-A solutions).
+4b. Cheap numerical sanity checks (d3\lp_sm.py = R2-A r2_lp6.py on the exact v20 compiler rows; boxes |quartic| <= 1,
+  |cubic| <= 2, |mass^2| <= 40, singlet unitarity |a0| <= 1/2, R2-A BFB ray banks; light S radial mode declared;
+  'deep' = the 52 R2-A descent endpoints (lowest point of every gate descent, d3\build_deep_bank.py) added as
+  competitor cuts AND BFB rays; 'screen' = the R2-A SM-singlet-subspace competitor/BFB search, on unless 'nocomp').
+  Points: SMd = (p, a, omega) = (0.707, -0.707, 0), r = 0.5, x = 4;  SMf = same orientation, r = 1.0;  SMa/SMb/SMc/SMe:
+  omega != 0 or x = 1.4 variants.
+    point  light content (+ S radial)              cuts               t        clean?   remarks
+    SMd    none (V0)                               screen             0.0343   yes      screen 0/0 lower
+    SMd    1 doublet                               screen             7.3e-6   NO       10 negative modes: deeper SM-singlet
+                                                                                        configurations (<S> ~ 0.3-0.9|Phi|)
+    SMd    1 doublet                               nocomp             0.0152   yes      locally realisable
+    SMd    1 doublet                               nocomp + deep      0.0152   yes      all 52 R2-A endpoints lifted
+    SMd    1 doublet + (8,1,0) + (8,3,0) [chain a] nocomp             8.0e-5   NO       10 negative: chain a NOT realisable
+    SMd    1 doublet + (6,2,-1/6) + (8,3,0) [b]    nocomp             0.0152   yes      chain b realisable (53 light)
+    SMd    flavour Higgs EW09 (r 65.3, s 0.459,    nocomp             0.0149   yes      exact eigenvector, rank 9/9
+           90 % 126bar) / EW05 (50 % 126bar)                          0.0347   yes
+    SMe    none (V0)                               screen             0.0574   NO       ends unbounded below in the singlet
+                                                                                        subspace (invalid orientation)
+    SMf    none (V0)                               screen             0.0498   yes      screen 0/0
+    SMf    1 doublet                               screen + deep      0.0152   yes      screen 0/0, competitor gap 1.5e-3
+    SMf    flavour Higgs EW09                      screen + deep      0.0202   yes      screen 0/0 (lowest non-orbit points
+                                                                                        +6e-10/+4e-8 = orbit copies),
+                                                                                        competitor gap 2.0e-3, a0 <= 0.5
+  [SMa/SMb/SMc runs without the S-radial light mode, and the first SMd/SMb runs before the initial-subspace fix, were
+  degenerate (t forced to ~1e-5 by the light S radial mode, or the Delta_R radial mode forced light): superseded.]
+  H-Sigma portal sizes at the clean points: generic light doublet (SMf D1, SMd D1+deep): |O15|, |O28|, |O31|, |O38|,
+  |O45| <= 0.04, O35_B01 = 0.21-0.31; flavour Higgs (SMf EW09): O38 = -1.0 (cubic Phi.H10*.Delta*, half its box),
+  O35_B02 = -0.73, O15 = -0.17, others <= 0.13; kappaH (O12) sits at its box edge |2| at every uncapped clean point
+  (max-t objective; it is the up-down mixing, 3b), but capping it at |0.5| keeps the flavour point clean (t = 0.0171).  The bare H10 mass^2 O06 ranges from -15.6 (SMd EW09) to +17 (SMf EW09).
+  Tree lambda_eff of the flavour Higgs (exact cubic/quartic rows along the EW eigenvector, d3\r2a_cubic_for_a.py; convex
+  stage B of R2-A, light-cubic suppression |h h s_radial| <= 1e-5 imposed): SMf EW09 (screen + deep): stage A +0.0035,
+  stage-B maximum +0.032 (t >= 5e-4); SMd EW09 (nocomp): stage A -0.21, maximum +0.105.  The tree value needed for SM
+  matching (~ -0.04, R2-A) is inside or at the edge of the reachable interval at tree level - unlike R2-A (max -0.089).
+  NOT computed: the one-loop CW shift; with O38 = -1, O35_B02 = -0.73, O33 = -1 and |m^2| up to 32 at the flavour
+  point, an O(-1) shift like R2-A's -1.3 is expected (EST) -> R5 is at risk, not demonstrated.
+  FRESH DESCENTS (R2-A trust-region Newton in the full 486-real chart, d3\r2_descend.py, stop once 0.01 below V*):
+    from the SMf flavour point (V* = -261.546):        hsray:1  -> V - V* = -13.37  (|Phi| 2.20, |H10| 2.26, |Sigma| 3.62, |S| 1.80)
+                                                        random:41 -> -1.50  (|H10| 1.26, |S| 1.15)
+                                                        random:43 -> -1.00  (|H10| 1.08, |S| 1.08)
+    feedback round 1 (these endpoints + 52 old as cuts; LP still clean, t = 0.0194, screen 0/0):
+                                                        hsray:1  -> -20.47  (|Phi| 2.09, |H10| 2.63, |Sigma| 4.25, |S| 1.02)
+                                                        random:41 -> -1.06  (|H10| 1.23)
+    => 5/5 fresh descents end below V* in GUT-scale SU(2)_L-breaking configurations (H10 has no SM singlet).
+  Energy budget of the endpoints (d3\deep_budget_v22.py): the drivers are NOT the R2-A ones (O31, O28, O27_B02 contribute
+  <1 unit): they are the large bare mass^2 terms and singlet polynomials (O06 = H10 mass^2, O05 = 126bar mass^2,
+  O03/O04, O20/O22 = Phi/S/Phi17 singlet terms) against the H-Phi portal O33 and the quartics at their box edges - the
+  diagnosis' 'H-mass' class generalised: a light, 126bar-dominated doublet needs m^2(H10), m^2(Delta) ~ -(5-16)|Phi|^2
+  cancelled by portals at |Phi| = 1, and moving (Phi, H, Sigma, S) together releases them.
+    from the generic one-doublet SMf point (pure H10, |r| = 1.6): hsray:1 -> -3.28, random:41 -> -1.69;
+    flavour point with |kappaH| <= 0.5 (t = 0.0171, clean): hsray:1 -> -11.22, random:41 -> -0.23;
+    flavour point with |kappaH| <= 0.5 and |mass^2| <= 4 (t = 0.0171, clean): hsray:1 -> -13.06, random:41 -> -0.19.
+4c. D3 verdict: FAIL (NUM, not certified).  What passes: the mechanism - the R2-A drivers are gone (O31 cannot enter
+  the doublet sector, all O27 >= 0, O28/O31 contribute < 1 unit to every new endpoint), one tuned doublet plus the
+  chain-b colour states and the flavour composition are locally realisable, the 52 R2-A endpoints are lifted with H-Sigma
+  portals |c| <= 0.3 (generic doublet; the flavour Higgs needs O38 = -1, O35_B02 = -0.73), and the SM-singlet global
+  screen is clean at SMf.  What fails: the global-minimum sanity check by fresh descents - 11 of 11 descents end below
+  V* in GUT-scale SU(2)_L-breaking configurations: 5/5 from the flavour point (incl. one feedback round, -1.0 to -20.5),
+  2/2 from the generic one-doublet point (-1.7, -3.3, driven by kappaH S H10 H10 and m^2(H10)), 2/2 with |kappaH| <= 0.5
+  (-0.23, -11.2) and 2/2 with |kappaH| <= 0.5 AND the mass^2 box reduced 40 -> 4 (-0.19, -13.1; driven by the 126bar
+  mass^2 that holds <Delta_R> = O(M_U) and the Phi^2 H Sigma / H-Sigma portals O45, O35, O46).  The single-doublet
+  breaking pattern therefore does NOT by itself remove the deep H-Sigma vacua of the v20 potential: the new driver set
+  is generic (bare H10/126bar masses, Phi-H, Phi-Sigma-H portals at |quartic| <= 1), not a removable operator.
+  Caveats: 2 orientations (SMd, SMf; SMe/SMa-type omega != 0 points were invalid already at V0), LP objective max t
+  (biases couplings to box edges; R2-A's random-objective experience suggests the same outcome, CONJ), boxes of R2-A,
+  no bounce (metastability not assessed).  Under the programme's GLOBAL-MINIMUM requirement V1 is DISCARDED at D3.
+
+=====================================================================================================================
+5. D4 UNIFICATION / PROTON / LANDAU
+=====================================================================================================================
+Code: unif1s.py (one-step chain on top of unif_core.py = verbatim R2-B skeptic sk2_lib.py: exact Machacek-Vaughn
+one/two-loop coefficients, MS-bar heavy-vector constant S_V = (8, 6, 5) for (U1_Y, SU2, SU3) - EXACT: C2(SO10) - C2(H_i)
+of the 33 heavy vectors), d4_unif.py (nominal + systematics + threshold Monte Carlo), d4_ms_scan.py.  tau(p -> e+ pi0) in
+the lattice normalisation W0 = 0.131 GeV^2 (LIT-unverified, as in R2-B) with the CHAIN A_R = 1.25 A_SD (A_SD integrated
+along the actual two-loop chain): A_R = 3.18 (a), 3.23 (b).  M_U := mass of the (3,2,-5/6) and (3,2,1/6) vectors.
+Light content is the one V1 needs (section 1c); B63 S-sector at M_s = 1e13, y_s = 0.336, Phi pair 1e17.
+  chain   light (GeV)                        M_U       aU^-1   tau_lat x chainAR   tau_repo    Lambda_2L/M_Pl,red
+  a       (8,1,0) 1e4, (8,3,0) 2.25e9        1.02e16   27.53   9.1e34 (x3.8 SK)    5.5e35      1.56
+  b       (6,2,-1/6) 1e9, (8,3,0) 2.95e11    2.16e16   25.71   1.55e36 (x65 SK)    9.6e36      1.59
+  systematics (a / b): S_V off 7.4e34 / 1.2e36; S_V opposite 6.0e34 / 9.8e35; one loop 1.4e35 / 1.4e36; M_s = 1.21e13,
+  y_s = 0.368: 9.0e34 / 1.5e36 (Lambda_2L 1.72 / 1.75).
+  M_s dependence: Lambda_2L > M_Pl,red needs M_s >~ 4.2e12 (a) / 3.9e12 (b) (Lambda_2L = 0.85 / 0.89 at M_s = 3e12):
+  a new, mild constraint on the S-sector (EST; compatible with the quality window M_s <= 1.21e13).
+  Light-mass family (chain a): tau > 2.4e34 requires m(8,1,0) <~ 4e5 GeV ((8,1,0) at 1e5: 3.9e34; 1e7: 7.5e33).
+  Threshold Monte Carlo (200 samples; every heavy SM multiplet of 210 + 126bar + 10 and the non-mediator vectors at
+  x1/2..x2 of M_U, log-uniform): fraction with tau_lat x chainAR > 2.4e34 AND Lambda_2L > M_Pl,red = 92.5 % (a)
+  [tau 1.0e34 / 9.1e34 / 5.7e35 min/median/max; Lambda_2L 0.93-2.68] and 99 % (b) [tau >= 1.3e35; Lambda_2L 0.93-2.46].
+  Three loops: not required by D4; aU^-1 = 25.7-27.5 is below the diagnosis' 3L threshold 28.9-30.2 => Lambda_3L <
+  M_Pl,red is EXPECTED (EST) - a Stage-2/3 risk, not a Stage-1 kill.
+  Seesaw consistency: one-step => v_BL = v_R ~ M_U by construction; the flavour fit's M_R = (7e8, 1e12, 1.9e15) GeV is
+  realised by C_R v_R Y126 + O5 (section 3) and does not enter the gauge running above M_Z except through nu^c thresholds
+  in the Yukawa RGEs (included in the top-down check).  LIT-abstract 1812.10548 (Boucenna-Ohlsson-Pernow): direct
+  SO(10) -> SM breaking with complex 10_H + 126bar_H and PQ unifies 'due to two colour-octet scalars, one accessible at the
+  LHC', tau_p < 4.5e34 yr - the same mechanism as chain a (their tau in their normalisation).
+  => D4 PASS (NUM; nominal two-loop, both chains; robust in 92.5-99 % of the threshold scan).  Only chain b is
+     realisable in the vacuum (section 4), and it is also the more robust one (99 %, tau >= 1.3e35 in every sample).
+
+=====================================================================================================================
+6. D5 MINIMALITY AND COST
+=====================================================================================================================
+- New fields: 0 (EXACT).  New renormalizable couplings: 0; forbidden terms: none (EXACT).
+- Relied-upon non-renormalizable couplings: O5 (one complex symmetric 3x3, 12 real) with |S_ij| = 0.16-0.54 (chain b) at
+  M_Pl,red; O1-O4, O6 must keep light-family entries <~ 1e-2 (EST).  Unknown Clebsch magnitudes of O5 (Stage 2).
+- Tunings (hierarchy conditions): EW doublet 1 + (6,2,-1/6) 1 + (8,3,0) 1 = 3 (chain b; chain a also 3), versus 10-12 for
+  the v21 two-bidoublet contents.  No extra tuning for r = 65 (it is set by kappaH <S> / m_D^2, section 3b; the EW-target LP
+  points realise it).  The light-Higgs composition (126bar-dominated) costs 8 real linear choices (EW target,
+  rank 9 of 9), not hierarchy tunings.  Every tuned multiplet must be redone at one loop (CW 1e5-1e7 x tree, K3).
+  lambda_eff placement: see D3.
+- Engineering cost for Stage 2 (EST): the 486-real chart is reused WITHOUT a new representation; the R2-A LP needs a
+  one-function patch (orbit test for r = O(1), done: d3\lp_sm.py) and the S-radial light declaration; new code: exact
+  O5 Clebsches (126bar component of Delta x Phi210 in chart coordinates; the repo already contracts Phi.H10*.Delta),
+  1-2 days; d=5 top-down flavour fit (d2_* exist), 0.5 day; one-loop CW of 3 tuned states (k3_cw_lambda.py exists),
+  1 day; unification with the explicit spectrum, 0.5 day.  Total ~3-5 days: the cheapest family (A2 needs a 531-real
+  chart and ~25-35 new couplings; E a spinor in the chart and a new quality DP).
+
+=====================================================================================================================
+7. VARIANTS (next-minimal)
+=====================================================================================================================
+V3  A1 + renormalizable 120_H (X = -2 complex; Z17 15) - the 'third Yukawa structure' answer to R7.
+  D1 PASS (EXACT: the DP with the 120_H item gives max excess 0, 4 mu_0 = 17; its only renormalizable fermion couplings
+     F.F.120 and Vb2.Vb3.120 duplicate the H10 structures, so the accidental kernel is unchanged).
+  D2 not run to completion: a renormalizable 120 does not break M_R ~ F (only the 126bar gives M_R), so the one-step R6
+     failure of section 3a is not addressed by it (EST); it could only help via a different charged-fermion basin.
+  D4 FAIL (EXACT coefficients, NUM): with the 120_H in the SO(10) phase b = (44/3, 28843/6) [base (16/3, 20891/6)]
+     and the V1 chains' alpha_U: Lambda_2L = 0.16 M_Pl,red (chain a) / 0.22 (chain b) < 1.  Discarded (the diagnosis'
+     R8 threshold aU^-1 >= 36.2 is not met by any one-step chain with the B63 S-sector: aU^-1 = 25.7-27.8).
+V2  A2-EFT: V1's flavour mechanism on a G3211 (or 421) vacuum made by an added 45_H (X = 0, real; Z17 0).
+  D1 PASS (EXACT: identical DP; the 45 has no renormalizable fermion coupling - scan of all species pairs: none).
+  D2 PASS-level proxy (EST, G3211 segment approximated by SM-like running): same single-doublet structure (SU(2)_R
+     broken at M_U by the 45's (1,1,3) vev; the up-down mixing is again only kappaH <S>, EXACT charge argument), B-L at
+     v_R = 3e12-1e14 inside the type-I window, required O5 size |S| = 0.28-0.95 (|tau| = 9.8 / 3; d2_lowvR.py).
+  D3/D4 not run here: needs the 531-real chart (no cheap test with the repo machinery) and a G3211 two-loop chain; it is
+     the A2 designer's family.  It is the fallback now that V1 fails D3; whether a 45_H cures the generic driver set
+     of section 4c (bare H10/126bar masses + portals) is open (CONJ: it adds O(M_U^2) doublet/Sigma masses through 45
+     portals, but also new portal directions).
+Light Delta_L / type II (not built): in a one-step vacuum type I is suppressed by v_R ~ M_U and type II with the
+  renormalizable 126bar is ~ F (type-II dominance), the structure the literature finds failing in non-SUSY SO(10)
+  (Ohlsson-Pernow 1903.08241, pure type II chi2 = 119, LIT-snippet via R2-C); with O5 it inherits the same |S| ~ 1
+  requirement as V1 at the cost of one more tuned light multiplet.  Strictly worse than V1 (EST).
+Planck d=5 Ytilde10 (O6 = F F H10* S*/Lambda ~ 1.2e-5 c): irrelevant in V1 (the s != 1 freedom comes from the
+  breaking pattern); it cannot rescue the G3221 one-bidoublet content (needs c ~ 10-20, diagnosis).
+
+=====================================================================================================================
+8. FILES
+=====================================================================================================================
+(all in research\v22_scalar_redesign\stage1\D-C-flavour\; binaries in ...\scratchpad\v22_DCflav_d3\)
+D1: d1_contract.py (+dp_core.py = verbatim R2-V dual_dp.py) -> d1_contract.json, d1_contract.log; ys_window_1s.py
+    (+ys_core.py = R2-V ys_rg.py with a one-step segment option) -> ys_window_1s.json; b63_verify_copy.py, so10_chars.py
+    (copies, not run).
+D2: d2_targets.py (GUT targets of the one-step chains; lib_flav.py = R2-C lib_r2c.py with the Weinberg-operator lambda
+    coefficient fixed to +2 lam) -> d2_targets.log; d2_eft_fit.py (model + brute-force DE, fits\ren_*.json, o5_*.json -
+    superseded for O5 by:) d2_decoupled.py -> fits\decoupled_a.json/.log; d2_joint.py -> fits\joint_a.json/.log;
+    d2_verify.py -> fits\verify_a_rho30_1e16_tau5.json; d2_topdown_polish.py -> fits\topdown_a_rho30_1e16_tau5_cap1.json;
+    d2_sens.py -> fits\d2_sens.json; d2_lowvR.py -> fits\d2_lowvR.json; queue_fitA.sh / queue_fitB.sh.
+    d2_chainb.py -> fits\d2_chainb.json.  Structural: d3\doublet_map.py -> d3\SMa/SMb/SMe_doublet_map.json (+logs).
+D3: d3\k3_common.py / k3_point_rows.py / k3_blocks.py (R2-A copies; repo path -> _v22research; binaries -> scratchpad),
+    d3\lp_sm.py (R2-A r2_lp6.py with three documented patches: orbit test for r = O(1), sub1 initial subspace of the
+    (1,1)_|Y|=0 block, stage-B with an EW target), d3\build_deep_bank.py (52 R2-A endpoints -> deep_endpoints.npz),
+    d3\build_feedback_bank.py (feedback round -> deep_endpoints_fb1.npz), d3\make_ew_target.py (flavour EW vectors),
+    d3\post_lp.py -> d3\post_L_*.json (composition, portals, screen), d3\r2_compose.py / r2a_cubic_for_a.py /
+    r2_descend.py (R2-A copies), d3\deep_budget_v22.py -> d3\deep_budget_*.json, d3\descents\descend_*.json,
+    d3\L_*.out, d3\desc_*.out (logs); queues queue_lp3..7.sh, queue_fb1.sh, queue_k.sh, queue_m.sh,
+    queue_d3fin_A/B.sh (queue_d3d4.sh / queue_lp2.sh runs were degenerate - superseded, kept for the record).
+D4: unif1s.py (+unif_core.py = verbatim R2-B skeptic sk2_lib.py), d4_unif.py -> d4_unif.json/.log, d4_ms_scan.py ->
+    d4_ms_scan.json; r2b_lib_copy.py (reference copy, not used).

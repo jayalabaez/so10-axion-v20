@@ -1,0 +1,151 @@
+STAGE 1 DIAGNOSIS - v22 scalar redesign (B63 fermions, SO(10) x U(1)_X, Z17)                            2026-10-17
+Labels EXACT/NUM/EST/CONJ/LIT-abstract. Inputs: v21 REPORTs+skeptics, FINAL.txt, R2-A banks (read-only). New: budgets of
+all 52 R2-A descent endpoints (deep_*.py), SO(10)-phase Landau scan (landau_*.py; r2b_lib.py copied unedited).
+
+0. BOTTOM LINE
+One structural fact causes most of the failures. The chain keeps SU(2)_R unbroken down to v_R, so every light Higgs
+state is a full bidoublet. On top of that, X forbids the conjugate Yukawa F.F.H10*. Together these force two light
+bidoublets, i.e. 10 real tunings of the H-Sigma (1,2,2) mass matrix. That removes the O(M_U^2) mass that would
+otherwise lift the H-Sigma plane. No symmetry compatible with the two Yukawas can remove the deep-vacuum drivers
+(EXACT, section 1c). The minimal cure is to change the breaking pattern: SU(2)_R and SU(4) should break at M_U, so that
+ONE tuned SM doublet can be flavour-capable. New Yukawa fields or charges do not touch the cause.
+
+1. ROOT CAUSES
+(a) v20 Pati-Salam witness, flavour-dead. The 210 vev is pure p (a = w = 0) and Sigma = r0 << 1, so SU(4) x SU(2)_R
+survives down to v_R.
+ - The doublet->Sigma responses of O15/O38/O45 vanish at a = w = 0 (EXACT, G8 structural module (E)).
+ - O28 feeds the up type only, so no (15,2,2) admixture reaches the down/lepton sector.
+ - The Weyl element S_de gives spec(M_d) = spec(M_e).
+ - The light doublet is Re H, so tan(beta) = 1 and CKM = 1.
+ - CONJ (K4: no degree-2 SOS at D-odd G3221, 179 flat modes): the residual symmetry that made degree-2 SOS work is the
+   one that kills flavour.
+(b) G3221 one-bidoublet lemma (EXACT). X(F) = 1 and X(H10) = X(Delta) = -2 are fixed by the Yukawas, so
+X(F.F.H10*) = 4. Every scalar that can carry a d=4 Yukawa (10, 126bar, 120) must have X = -2, and its Yukawa is
+holomorphic. Hence any single light complex bidoublet, whatever mixture of 10/126bar/120 it is, has
+M_u/k_u = M_d/k_d up to Clebsches, i.e. s = 1.
+ - A second 10_H or a 120_H does not escape the lemma (EXACT, same argument).
+ - The only d=5 conjugate term, F.F.H10*.S*/Lambda, is about 1.2e-5 c. Since M_d - M_u/r ~ Ytilde k_u ~ 2c MeV, it
+   reaches V_us and V_cb only for c ~ 10-20 (EST).
+(c) Two-bidoublet deep H-Sigma vacua (all 52 R2-A endpoints decomposed per operator, NUM).
+ - Class = operators supplying >= 60% of the depth:
+   - 42/52 H-Sigma-mixed. Mean normalised contributions: O31 (H+^2 Sigma^2) -0.87|dV|, O28 -0.41, H-singlet portals
+     -0.40, Phi^2 H+H (54) -0.30.
+   - 7/52 H-mass. m10^2 ~ -16 is cancelled at the vacuum by O33 (lambda33 x^2 ~ 16). Phi210 moves to |Phi| ~ 2.5,
+     |H| ~ 2.
+   - 2/52 Sigma-self (O27_B02); 1/52 mixed.
+ - |c_O31| is only 0.008-0.05. The depth is |H|^2|Sigma|^2 ~ 1e2 times a tiny sign-indefinite holomorphic coupling,
+   with the H self-quartics mostly at the +1 box edge.
+ Why nothing is left to lift it:
+  (i) Two light bidoublets require the whole 4x4 (1,2,2) mass matrix to be O(v_R^2) (10 conditions, EXACT count). The
+      bare masses are then fixed by cancellation against the Phi and Phi17 portals, which leaves no positive O(M_U^2)
+      mass on the H-Sigma plane.
+      Contrast (R2-A, NUM): the same feedback cuts are liftable with one bidoublet (C0, t = 0.033) or none
+      (V0, t = 0.031). With two, every cell is infeasible.
+  (ii) Symmetry route closed (EXACT). Let Z_n charges be f_i, h, d, q (Phi210 real, so 2q = 0). F_i F_j H and
+       F_i F_j Delta on a shared entry give h = d. Then O31 ~ 2(d-h), O28 ~ d-h and O35 are invariant under EVERY
+       abelian symmetry that keeps both Yukawas. O15 and O45 survive iff Phi is even.
+       Correction to FINAL section 4: making Phi odd forbids O15 and leaves O28 allowed.
+       CP does not help: the quartic aligns the field phases, so the depth scales with |lambda31|.
+  (iii) The 126bar self-coupling is forced negative.
+       - c(O27_B02) sits at the lower box edge -1 in 264/332 R2-A LP solutions (NUM).
+       - K3: O27 >= 0 is infeasible even with no tuned light state. The reason is that m^2(Delta_R^{++}) ~ -beta2 r^2
+         > 0 requires a negative |Delta.Delta|^2 weight when the 126bar alone breaks B-L at v_R << M_U.
+       - |Sigma|^4 invariants are self-conjugate, so no symmetry forbids them (EXACT).
+ Root: the 126bar is B-L breaker, Yukawa carrier and H's doublet partner at once; G3221 puts all three at v_R.
+(d) lambda_eff and CW.
+ - Lifting needs O(1) H-Delta portals (alpha). The light doublet then has an h h Delta_R^0 trilinear, giving a tree
+   matching lambda_eff = lambda - alpha^2/(2 rho) that reaches <= -0.089.
+ - The heavy-scalar CW shift is ~ -1.3 (kappa_rms 0.67).
+ - Separately, every tuned light multiplet with m^2 ~ v_R^2 receives kappa M_U^2/16pi^2 corrections of 1e5-1e7 x tree
+   (K3, NUM). This is the non-SUSY hierarchy problem, counted once per tuned multiplet: C0 3, C2 10, C1+(6,2,2) 12.
+(e) Flavour m_s/m_d. M_d = H + F and M_e = H - 3F with two 3x3 symmetric matrices. The theta23-compatible basin
+predicts m_s/m_d(M_U) = 34.6, against the lattice 19.9 (skeptic, NUM). The fit passes with a 10-20% m_d, m_s floor
+(22.6 / 6.9).
+ - Default c ~ O(1) d=5 operators (F F H10 Phi210/Lambda, F F Delta Phi210/Lambda ~ 1e-2 c) exceed y_d ~ 5e-6 and
+   y_s ~ 1e-4 at M_U. So the renormalisable fit is not a self-consistent truncation (EST); a ~30% shift needs only
+   c ~ 1e-4 to 3e-3.
+ - In C2 the cause is different: the perturbativity cap M_R <= f v_R ~ 1e11-1e12, against the M_R3 ~ 3-6e12 the fit
+   needs.
+(f) Unification, proton decay and Landau.
+ - This is a three-way squeeze in G3221: v_R >= 2e12 (seesaw), M_U high enough for tau, and a weak enough alpha_U.
+ - Light coloured states that raise v_R either lower M_U (C1: 2.2e15) or strengthen alpha_U. C1+(6,2,2) has
+   alpha_U^-1 = 25.7, which gives Lambda_3L = 0.48.
+ - The SO(10) phase is heavy with B63 + 210 + 126bar: b = (5.33, 3482, 1.6e5) (my screen reproduces R2-B's
+   Lambda_2L/3L to 3%).
+ - Landau needs alpha_U^-1(M_U) >= 26.3 (2L) / 28.9 (3L) at M_U = 1e16, and 27.6 / 30.2 at 6e15 (NUM, +-1).
+ - Proton (lattice x A_R normalisation, from C2's numbers): M_U >= 6.6e15 x sqrt(34.6/alpha_U^-1) GeV (EST +-25% in
+   tau).
+
+2. REQUIREMENTS (failure each prevents)
+R1 Contract. Re-run the K_min DP for any new field.
+   - Shortcut (EXACT, by the DP's construction): a scalar whose (X, centre class) is already present, i.e.
+     (0,z0) 210-like, (-2,z2) 10/126bar/120-like or (+-4,z0), whose accidental charge is 0, that adds no renormalizable
+     fermion coupling and does not touch Phi17 linearly, duplicates an existing DP item. K_min = 17, N_DW = 1 and
+     E/N = 8/3 then stay unchanged.
+   - 45_H, 54_H, 120_H(X=-2), 2nd 10_H(X=-2) qualify (pair scan: only H10-duplicate structures F F T, Vb2 Vb3 T).
+   - A 16_H (z1) or any new X value requires a fresh DP. [prevents the F17-type quality loss]
+R2 Flavour structure. The light doublet must be complex (tan beta != 1), with |1-s| = O(1) and an O(1) SU(4)-breaking
+   (15,2,2) admixture. Under X this needs SU(2)_R AND SU(4) breaking in the H-Sigma mixing at the selection scale:
+   (a != 0 or a (15,1,1)) and (w != 0, a 45 (1,1,3) vev, or v_BL ~ M_U). [(a), (b)]
+R3 Vacuum. At most ONE tuned SM-doublet direction in the H-Sigma sector, so that an O(M_U^2) positive mass covers the
+   rest. It must not rely on symmetries against O31/O28/O27 (impossible, 1c). Test: lift every R2-A bank endpoint
+   (52 + 8) in the new potential, then run fresh descents. Necessary only: C0 had pre-cut deep points too
+   (P831, -26.6). [(c)]
+R4 Avoid the Delta_R^{++} trap. Either B-L is not broken by the doublet-partner 126bar at v_R << M_U, or Delta^{++}
+   gets O(M_U^2) mass from another source, so that O27_B02 < 0 is not forced. [(c)(iii)]
+R5 Higgs quartic. Lift with couplings that do not enter the light doublet's trilinears to heavy radial modes:
+   alpha^2/(2 rho) << lambda_SM and sum kappa^2/(64 pi^2) <~ 0.05. [(d)]
+R6 Seesaw consistency. M_R3 = f3 v_BL must match what the fit needs (G3221: v_R in [2e12, 3e13]). If v_BL ~ M_U then
+   f3 ~ 1e-4-1e-2, and F = Y126 w_d must still fit the charged fermions.
+   - EST/CONJ: this is the tension that killed minimal SUSY SO(10) (hep-ph/0605006, LIT-abstract: "not consistent
+     with data").
+   - Boucenna-Ohlsson-Pernow 1812.10548 (LIT-abstract) claim a reasonable fit with direct breaking to the SM + PQ.
+[(e)]
+R7 m_s/m_d. The Yukawa structure must free m_s/m_d from 34.6. Use d=5 terms with stated c, or a third structure; any
+   Yukawa field must still satisfy R8. [(e)]
+R8 Landau / minimality: alpha_U^-1 >= 27-30 at M_U ~ 6e15-1e16.
+   - Minimum alpha_U^-1 for 2L / 3L at 1e16 (NUM): +45_H 27.7 / 30.0, +16_H 26.9 / 29.4, +45+54 29.8 / 31.9,
+     +120_H (complex, forced by X = -2) 36.2 / 37.8 (excluded for any realistic running).
+   - Replacing 210 by 45 + 54 gives 19.0 / 21.9 (b1 = -0.67).
+   - A second 126bar is excluded (Lambda_2L 0.1-0.6).
+[(f)]
+R9 Proton: tau(lattice x A_R) > 2.4e34, i.e. the M_U bound in 1(f). Tuned light states for unification <= 2-3. [(f)]
+R10 Cost. Few tuned multiplets, all redone at one loop. State the certification route: U2a at best (K4).
+   [(d), K4]
+
+3. MODIFICATION FAMILIES (first assessment; marks give the first R that fails or is at risk)
+A1 One-step SO(10) -> SM at M_U with the existing fields (210 with p, a, w + 126bar at r ~ O(1)); no new field.
+   - R1 EXACT pass (nothing added). R2/R4 not obstructed (SU(2)_R, SU(4) broken at M_U; Delta^{++} heavy; CONJ until a
+     point exists). R3 plausible (one doublet tuning; CONJ, testable on the R2-A banks).
+   - Risks:
+     - R6: neutrino scale with v_BL ~ M_U (EST, decisive);
+     - R9: needs light coloured states (e.g. two octets, 1812.10548: tau <= 4.5e34, LIT-abstract; marginal in the
+       lattice normalisation);
+     - existence: G3211 (w != 0) collapsed in v20 (27/27 LPs). An SM point with w != 0 and r ~ O(1) is untested.
+   - Cost: lowest (486 chart reused).
+   - FIRST SCREEN: the LP for a clean SM point plus the R6 proxy fit.
+A2 G3211 or 421 at M_U via an added 45_H (X=0); B-L broken by the 126bar at v_R (keeps the type-I window).
+   - R1 EXACT pass (DP-duplicate). R2 not obstructed (45 (1,1,3) splits u/d at M_U). R4 likely (Delta^{++} gets M_U^2
+     from 45 portals, CONJ). R8 threshold 27.7/30.0.
+   - Cost: a 531-real chart; ~25-35 new couplings (EST).
+   - LIT-abstract 2304.14227: 45+126bar+10 needs one loop (tree tachyons), no perturbative SM-like Higgs, low M_GUT.
+     With the 210 kept, tree-level viability is CONJ.
+A3 (variant) Replace 210 by 45 + 54. Best R8 (asymptotically free). Same LIT trouble; the whole chart is rebuilt;
+   v20 assets are lost.
+B  Charge or symmetry changes against O31/O28/O27: EXCLUDED (EXACT, 1c-ii/iii). X(H10) and X(Delta) are fixed by the
+   Yukawas.
+C  Flavour additions on G3221: none fixes R2/R3.
+   - 120_H: the lemma persists and R8 fails.
+   - Second 10_H: the lemma persists.
+   - Light Delta_L (type II, v_L ~ 0.9 eV): a 1e-5 tuning, plus (1,3,1) content proton-dead (C1').
+   - d=5 EFT: needed for R7 in any family; cannot supply s != 1 (c ~ 10-20 needed, EST).
+   - Use C only as an R7 add-on to A1/A2.
+D  Spectrum fixes inside G3221: exhausted (C0/C1/C1' proton, C2 seesaw, C1+(6,2,2) Landau with alpha_U^-1 = 25.7 <
+   27; C1+(8,1,3) unrealisable). In A1/A2 each light state costs one tuning and must respect R8/R9.
+E  16_H for B-L (16bar_H 16bar_H F F/Lambda gives M_R ~ v_BL^2/M_Pl ~ 4e13 at v_BL = 1e16; no Delta^{++}).
+   - Needs X(16_H) = +1, z1, so a NEW DP (R1 open). Also 16_H.16_H.H10 (X-allowed) gives H_d-type mixing.
+   - R8 threshold 26.9/29.4. CONJ: promising for R4/R6, but the most new machinery (spinor rep in the chart).
+
+Stage-1 ranking: A1 (no new field), A2 (one DP-neutral 45), E (new quality DP). Kill A1 if no clean SM point exists
+or the proxy chi2 > 25 at v_BL ~ M_U with d=5 terms |c| <= 1. Kill A2 if the 531-chart LP has no clean G3211
+point, or if the R2-A-bank lift fails with |quartic| <= 1.

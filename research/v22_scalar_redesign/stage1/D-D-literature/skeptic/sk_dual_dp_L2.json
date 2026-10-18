@@ -1,0 +1,734 @@
+{
+ "mu_round1": [
+  "17/4",
+  "-7/2",
+  "-7",
+  "-57/4",
+  "-12",
+  "-51/4"
+ ],
+ "dp_vs_bruteforce_d<=7": {
+  "dp": {
+   "5": -4,
+   "6": 0,
+   "7": 0
+  },
+  "brute": {
+   "5": "-4",
+   "6": "0",
+   "7": "0"
+  },
+  "agree": true
+ },
+ "certificate_oracle_set": {
+  "label": "round-1 oracle set (X=0, centre, Lorentz)",
+  "use_centre": true,
+  "dmax": 40,
+  "seconds": 0.10669398307800293,
+  "rows": [
+   {
+    "d": 5,
+    "max_excess_x4": -4,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "F": 1,
+     "F^": 1,
+     "Phi210": 1
+    }
+   },
+   {
+    "d": 6,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V1^": 1,
+     "V2^": 1,
+     "T^": 1,
+     "N3b^": 1
+    }
+   },
+   {
+    "d": 7,
+    "max_excess_x4": 0,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "T^": 1,
+     "Pb^": 1,
+     "N1b": 1
+    }
+   },
+   {
+    "d": 8,
+    "max_excess_x4": -4,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "T^": 1,
+     "Pb^": 1,
+     "N1b": 1,
+     "Phi210": 1
+    }
+   },
+   {
+    "d": 9,
+    "max_excess_x4": 0,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "V2^": 1,
+     "N1b": 1,
+     "N3b^": 1,
+     "S^": 1,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 10,
+    "max_excess_x4": 0,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 3,
+     "N2": 2,
+     "N3b^": 1
+    }
+   },
+   {
+    "d": 11,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 2,
+     "V2^": 2,
+     "S^": 3,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 12,
+    "max_excess_x4": 0,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 2,
+     "N2": 1,
+     "N3b^": 1,
+     "S^": 4,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 13,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 4,
+     "N2": 4,
+     "S^": 1
+    }
+   },
+   {
+    "d": 14,
+    "max_excess_x4": 0,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 1,
+     "N3b^": 1,
+     "S^": 8,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 15,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 3,
+     "N2": 3,
+     "S^": 5,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 16,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "V2^": 1,
+     "S^": 10,
+     "Phi17": 3
+    }
+   },
+   {
+    "d": 17,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 2,
+     "N2": 2,
+     "S^": 9,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 18,
+    "max_excess_x4": -4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 2,
+     "N2": 2,
+     "Phi210": 1,
+     "S^": 9,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 19,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 1,
+     "N2": 1,
+     "S^": 13,
+     "Phi17": 3
+    }
+   },
+   {
+    "d": 20,
+    "max_excess_x4": -4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 1,
+     "N2": 1,
+     "Phi210": 1,
+     "S^": 13,
+     "Phi17": 3
+    }
+   },
+   {
+    "d": 21,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "S^": 17,
+     "Phi17": 4
+    }
+   },
+   {
+    "d": 22,
+    "max_excess_x4": -4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Phi210": 1,
+     "S^": 17,
+     "Phi17": 4
+    }
+   },
+   {
+    "d": 23,
+    "max_excess_x4": -6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "V2^": 3,
+     "Delta": 1,
+     "S^": 15,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 24,
+    "max_excess_x4": -6,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "T^": 1,
+     "N1b": 1,
+     "Delta": 1,
+     "S^": 18,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 25,
+    "max_excess_x4": -6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "Pb^": 1,
+     "N1b": 3,
+     "N2": 1,
+     "Delta": 1,
+     "S^": 15
+    }
+   },
+   {
+    "d": 26,
+    "max_excess_x4": -6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 2,
+     "N2": 1,
+     "N1b": 1,
+     "Delta": 1,
+     "S^": 18,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 27,
+    "max_excess_x4": -6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "Pb^": 1,
+     "N1b": 2,
+     "Delta": 1,
+     "S^": 19,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 28,
+    "max_excess_x4": -6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 2,
+     "Delta": 1,
+     "S^": 22,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 29,
+    "max_excess_x4": -8,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 3,
+     "N2": 2,
+     "NMm": 1,
+     "S^": 19,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 30,
+    "max_excess_x4": -8,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N2b": 2,
+     "S^": 27
+    }
+   },
+   {
+    "d": 31,
+    "max_excess_x4": -8,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 2,
+     "N2": 1,
+     "NMm": 1,
+     "S^": 23,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 32,
+    "max_excess_x4": -8,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 4,
+     "N1b": 4,
+     "S^": 20
+    }
+   },
+   {
+    "d": 33,
+    "max_excess_x4": -8,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 1,
+     "S^": 29,
+     "N3^": 1
+    }
+   },
+   {
+    "d": 34,
+    "max_excess_x4": -8,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 4,
+     "S^": 28
+    }
+   },
+   {
+    "d": 35,
+    "max_excess_x4": -12,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 4,
+     "Phi210": 1,
+     "S^": 28
+    }
+   },
+   {
+    "d": 36,
+    "max_excess_x4": -8,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 3,
+     "N3b^": 1,
+     "S^": 29
+    }
+   },
+   {
+    "d": 37,
+    "max_excess_x4": -12,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 3,
+     "N3b^": 1,
+     "Phi210": 1,
+     "S^": 29
+    }
+   },
+   {
+    "d": 38,
+    "max_excess_x4": -8,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "V2^": 1,
+     "N1b": 2,
+     "S^": 31,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 39,
+    "max_excess_x4": -8,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 4,
+     "N2": 2,
+     "S^": 30
+    }
+   },
+   {
+    "d": 40,
+    "max_excess_x4": -12,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 4,
+     "N2": 2,
+     "Phi210": 1,
+     "S^": 30
+    }
+   }
+  ],
+  "max_excess_x4_over_5<=d<=20": 0,
+  "at_d": 6,
+  "monomial": {
+   "V1^": 1,
+   "V2^": 1,
+   "T^": 1,
+   "N3b^": 1
+  },
+  "certificate_holds_d<=20": true,
+  "max_excess_x4_over_all_d<=40": 0
+ },
+ "certificate_no_centre": {
+  "label": "superset without the centre condition",
+  "use_centre": false,
+  "dmax": 28,
+  "seconds": 0.06617093086242676,
+  "rows": [
+   {
+    "d": 5,
+    "max_excess_x4": 2,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 1,
+     "N3b^": 1,
+     "Delta^": 1
+    }
+   },
+   {
+    "d": 6,
+    "max_excess_x4": 6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "V2^": 1,
+     "Delta": 1,
+     "S^": 1,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 7,
+    "max_excess_x4": 6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 2,
+     "N2": 2,
+     "Delta": 1
+    }
+   },
+   {
+    "d": 8,
+    "max_excess_x4": 4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "N3^": 1,
+     "Delta": 1,
+     "S^": 4
+    }
+   },
+   {
+    "d": 9,
+    "max_excess_x4": 6,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "N1b": 1,
+     "S^": 5
+    }
+   },
+   {
+    "d": 10,
+    "max_excess_x4": 4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 1,
+     "T^": 1,
+     "Delta": 1,
+     "S^": 6
+    }
+   },
+   {
+    "d": 11,
+    "max_excess_x4": 6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Delta": 1,
+     "S^": 8,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 12,
+    "max_excess_x4": 2,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 1,
+     "V3^": 1,
+     "S^": 7,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 13,
+    "max_excess_x4": 1,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "F^": 1,
+     "V2^": 1,
+     "N2": 1,
+     "N1b": 1,
+     "S^": 7
+    }
+   },
+   {
+    "d": 14,
+    "max_excess_x4": 0,
+    "parity_derivative": 1,
+    "argmax_monomial": {
+     "N1b": 1,
+     "N3b^": 1,
+     "S^": 8,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 15,
+    "max_excess_x4": 1,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "F^": 1,
+     "V2^": 1,
+     "S^": 11,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 16,
+    "max_excess_x4": 4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 2,
+     "N1b": 2,
+     "S^": 10
+    }
+   },
+   {
+    "d": 17,
+    "max_excess_x4": 4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 2,
+     "S^": 14
+    }
+   },
+   {
+    "d": 18,
+    "max_excess_x4": 1,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "F": 1,
+     "N1b": 1,
+     "S^": 15
+    }
+   },
+   {
+    "d": 19,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 1,
+     "N2": 1,
+     "S^": 13,
+     "Phi17": 3
+    }
+   },
+   {
+    "d": 20,
+    "max_excess_x4": -1,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "F^": 1,
+     "N1b": 2,
+     "N3b^": 1,
+     "S^": 14
+    }
+   },
+   {
+    "d": 21,
+    "max_excess_x4": 0,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "S^": 17,
+     "Phi17": 4
+    }
+   },
+   {
+    "d": 22,
+    "max_excess_x4": -4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V1^": 1,
+     "V2^": 1,
+     "N2": 1,
+     "S^": 16,
+     "N1b": 1
+    }
+   },
+   {
+    "d": 23,
+    "max_excess_x4": -2,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "N1b": 1,
+     "NMm": 1,
+     "Delta": 1,
+     "S^": 18,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 24,
+    "max_excess_x4": -4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V1^": 1,
+     "V2^": 1,
+     "S^": 20,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 25,
+    "max_excess_x4": -4,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "T^": 1,
+     "N1b": 2,
+     "N3b^": 1,
+     "S^": 18,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 26,
+    "max_excess_x4": -5,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "F^": 1,
+     "Vb1^": 1,
+     "N1b": 2,
+     "Delta": 1,
+     "S^": 19
+    }
+   },
+   {
+    "d": 27,
+    "max_excess_x4": -6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "Vb1^": 1,
+     "Pb^": 1,
+     "N1b": 2,
+     "Delta": 1,
+     "S^": 19,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 28,
+    "max_excess_x4": -6,
+    "parity_derivative": 0,
+    "argmax_monomial": {
+     "V2^": 2,
+     "Delta": 1,
+     "S^": 22,
+     "Phi17": 2
+    }
+   }
+  ],
+  "max_excess_x4_over_5<=d<=20": 6,
+  "at_d": 6,
+  "monomial": {
+   "Vb1^": 1,
+   "V2^": 1,
+   "Delta": 1,
+   "S^": 1,
+   "Phi17": 1
+  },
+  "certificate_holds_d<=20": false,
+  "max_excess_x4_over_all_d<=28": 6
+ },
+ "own_lp": {
+  "mu_0_max": 4.25,
+  "4mu0": 17.0,
+  "mu": [
+   4.25,
+   -3.5,
+   -7.0,
+   -14.25,
+   -12.0,
+   -12.75
+  ],
+  "iterations": 20,
+  "cuts": 42
+ }
+}

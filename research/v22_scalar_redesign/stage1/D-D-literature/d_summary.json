@@ -1,0 +1,41 @@
+{
+ "designer": "D-D-literature",
+ "date": "2026-10-17",
+ "variants": {
+  "L1_BOP_onestep": {
+   "change": "none",
+   "D1": "PASS EXACT",
+   "D2": "FAIL NUM (chi2 4367.6 renorm; 376.7 with d=5 c5<=1; sigma>=1e15)",
+   "D4": "PASS nominal (L2L 1.53-1.60; MC 83-93%)",
+   "survives": false,
+   "first_failed": "D2"
+  },
+  "L1b_typeII": {
+   "change": "none + tuned light Delta_L(1,3,1)",
+   "D1": "PASS EXACT",
+   "D2": "proxy PASS (chi2 4e-11 c5<=1; 1.6 c5<=0.3; 190 c5<=0.1)",
+   "D4": "FAIL (M_DL<=5e12 for R5 -> tau<=1.45e34)",
+   "survives": false,
+   "first_failed": "D4/R5"
+  },
+  "L2_plus45": {
+   "change": "+ real 45_H (X=0, Z17 0, centre 0)",
+   "D1": "PASS EXACT (K_min=17, kernel 7, E/N 8/3, N_DW 1)",
+   "D2": "PASS NUM proxy (chi2 2.5e-6 at c5<=0.1; 3.5e-8 at 0.3; 50.4 at 0.03), v_R window [1.1e12,2.4e13]",
+   "D3": "UNDECIDED (mechanism EXACT pieces; no lift test)",
+   "D4": "marginal PASS (nominal L2L 1.04, tau 2.2e35; MC 38-45%)",
+   "survives": true,
+   "first_failed": null
+  },
+  "L3p_45_54_no210": {
+   "change": "210 -> 45 + 54",
+   "D1": "PASS EXACT",
+   "D2": "PASS NUM proxy (chi2 1.3e-13, c5 0.6-0.75)",
+   "D3": "UNDECIDED",
+   "D4": "PASS robust (L2L 77-114, MC 98-100%)",
+   "survives": true,
+   "first_failed": null
+  }
+ },
+ "recommended": "L2 (switch to L3' if explicit L2 spectrum gives Lambda_2L < M_Pl,red)"
+}

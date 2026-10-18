@@ -1,0 +1,530 @@
+{
+ "note": "reconstructed from sk_d3_eval.log (the original JSON was truncated by a later wrapper run; values identical to the log)",
+ "qstar_rebuilt_vs_stored_maxdiff": 0.0,
+ "V1A_bankA": {
+  "solution": "V1s_D2_lb.npz",
+  "descent": "descend_V1A_bankA",
+  "start": "npz:descend_R1_bankA_bank.npz:1",
+  "V_star_indep": -258.7390294762471,
+  "V_star_reported": -258.7390294762471,
+  "V_min_indep": -306.56425018899546,
+  "dV_indep": -47.825220712748376,
+  "dV_reported": -47.82522071274843,
+  "top_negative_budget": [
+   [
+    "lambda::O27_B02_126bar_self_projectors",
+    -42.178
+   ],
+   [
+    "im::O31_B01_unique_Hdag2_Sigma2",
+    -41.804
+   ],
+   [
+    "re::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    -40.245
+   ],
+   [
+    "lambda::O25_B01_126bar_norm",
+    -29.994
+   ],
+   [
+    "lambda::O03_B01_singlet_polynomial",
+    -17.675
+   ],
+   [
+    "im::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    -5.464
+   ],
+   [
+    "lambda::O42_B01_Phi_norm",
+    -1.598
+   ]
+  ],
+  "gauge_tangent_max_|dV/ds|": 1.1368683772161603e-09,
+  "n_tangents": 47,
+  "qmin_blocks": {
+   "Phi210": 0.630048049898029,
+   "H10": 3.0901698148558507,
+   "Sigma126bar": 5.046648151087037,
+   "S": 0.6274219036396387,
+   "Phi17": 5.753159978158361
+  },
+  "qmin_C2L_measure": 31.45360856336153,
+  "qstar_C2L_measure": 0.0,
+  "seconds": 256.78237104415894
+ },
+ "V1A_hs32": {
+  "solution": "V1s_D2_lb.npz",
+  "descent": "descend_V1A_hs32",
+  "start": "hsray:32:1.0",
+  "V_star_indep": -258.7390294762471,
+  "V_star_reported": -258.7390294762471,
+  "V_min_indep": -267.1046581275517,
+  "dV_indep": -8.365628651304633,
+  "dV_reported": -8.365628651304405,
+  "top_negative_budget": [
+   [
+    "lambda::O25_B01_126bar_norm",
+    -18.888
+   ],
+   [
+    "lambda::O03_B01_singlet_polynomial",
+    -15.209
+   ],
+   [
+    "lambda::O27_B02_126bar_self_projectors",
+    -13.591
+   ],
+   [
+    "re::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    -4.506
+   ],
+   [
+    "im::O31_B01_unique_Hdag2_Sigma2",
+    -3.184
+   ],
+   [
+    "lambda::O42_B01_Phi_norm",
+    -0.79
+   ],
+   [
+    "im::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    -0.709
+   ]
+  ],
+  "gauge_tangent_max_|dV/ds|": 1.1368683772161603e-09,
+  "n_tangents": 47,
+  "qmin_blocks": {
+   "Phi210": 0.8295900103316385,
+   "H10": 1.5231315339322087,
+   "Sigma126bar": 4.014030431253294,
+   "S": 0.22262520836308244,
+   "Phi17": 5.739820189432316
+  },
+  "qmin_C2L_measure": 12.4168423801582,
+  "qstar_C2L_measure": 0.0,
+  "seconds": 485.3526978492737
+ },
+ "V1A_rnd33": {
+  "solution": "V1s_D2_lb.npz",
+  "descent": "descend_V1A_rnd33",
+  "start": "random:33:1.0",
+  "V_star_indep": -258.7390294762471,
+  "V_star_reported": -258.7390294762471,
+  "V_min_indep": -260.1340500765554,
+  "dV_indep": -1.395020600308328,
+  "dV_reported": -1.3950206003081576,
+  "top_negative_budget": [
+   [
+    "lambda::O25_B01_126bar_norm",
+    -4.774
+   ],
+   [
+    "lambda::O07_B01_Phi_norm",
+    -4.464
+   ],
+   [
+    "lambda::O27_B02_126bar_self_projectors",
+    -1.183
+   ],
+   [
+    "lambda::O22_B01_singlet_polynomial",
+    -0.844
+   ],
+   [
+    "re::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    -0.443
+   ],
+   [
+    "lambda::O20_B01_singlet_polynomial",
+    -0.202
+   ],
+   [
+    "lambda::O44_B03_Phi2_Sigma_projectors",
+    -0.201
+   ]
+  ],
+  "gauge_tangent_max_|dV/ds|": 1.1368683772161603e-09,
+  "n_tangents": 47,
+  "qmin_blocks": {
+   "Phi210": 1.6166930839273632,
+   "H10": 0.7316717604916875,
+   "Sigma126bar": 2.048055097665561,
+   "S": 0.532319352206761,
+   "Phi17": 5.6557362038169465
+  },
+  "qmin_C2L_measure": 5.75232045332209,
+  "qstar_C2L_measure": 0.0,
+  "seconds": 735.0789415836334
+ },
+ "V1B_p831": {
+  "solution": "V1s_D2_lb_box4_R2.npz",
+  "descent": "descend_V1B_p831",
+  "start": "npz:descend_V1A_p831_bank.npz:0",
+  "V_star_indep": -1024.8862977995927,
+  "V_star_reported": -1024.8862977995927,
+  "V_min_indep": -1033.1215350840905,
+  "dV_indep": -8.23523728449777,
+  "dV_reported": -8.235237284497998,
+  "top_negative_budget": [
+   [
+    "lambda::O27_B02_126bar_self_projectors",
+    -36.424
+   ],
+   [
+    "lambda::O25_B01_126bar_norm",
+    -7.955
+   ],
+   [
+    "lambda::O03_B01_singlet_polynomial",
+    -4.733
+   ],
+   [
+    "im::O31_B01_unique_Hdag2_Sigma2",
+    -4.124
+   ],
+   [
+    "im::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    -2.944
+   ],
+   [
+    "lambda::O04_B01_singlet_polynomial",
+    -2.787
+   ],
+   [
+    "re::O31_B01_unique_Hdag2_Sigma2",
+    -1.146
+   ]
+  ],
+  "gauge_tangent_max_|dV/ds|": 2.2737367544323206e-09,
+  "n_tangents": 47,
+  "qmin_blocks": {
+   "Phi210": 0.635273789694246,
+   "H10": 1.4288746585248666,
+   "Sigma126bar": 4.696131874857771,
+   "S": 0.5301631071726135,
+   "Phi17": 5.663384124295285
+  },
+  "qmin_C2L_measure": 24.866776862111017,
+  "qstar_C2L_measure": 0.0,
+  "seconds": 976.3311305046082
+ },
+ "V1B_hs41": {
+  "solution": "V1s_D2_lb_box4_R2.npz",
+  "descent": "descend_V1B_hs41",
+  "start": "hsray:41:1.0",
+  "V_star_indep": -1024.8862977995927,
+  "V_star_reported": -1024.8862977995927,
+  "V_min_indep": -1032.2849100880892,
+  "dV_indep": -7.398612288496452,
+  "dV_reported": -7.398612288495997,
+  "top_negative_budget": [
+   [
+    "lambda::O27_B02_126bar_self_projectors",
+    -17.434
+   ],
+   [
+    "lambda::O35_B02_H_Sigma_hermitian",
+    -12.602
+   ],
+   [
+    "lambda::O25_B01_126bar_norm",
+    -7.206
+   ],
+   [
+    "lambda::O03_B01_singlet_polynomial",
+    -5.453
+   ],
+   [
+    "lambda::O04_B01_singlet_polynomial",
+    -0.596
+   ],
+   [
+    "lambda::O42_B01_Phi_norm",
+    -0.522
+   ],
+   [
+    "lambda::O48_B02_Phi_self_quartics",
+    -0.449
+   ]
+  ],
+  "gauge_tangent_max_|dV/ds|": 2.2737367544323206e-09,
+  "n_tangents": 47,
+  "qmin_blocks": {
+   "Phi210": 0.6369234205955049,
+   "H10": 2.042169828875151,
+   "Sigma126bar": 4.468864897263077,
+   "S": 0.24514296805743954,
+   "Phi17": 5.664377461095272
+  },
+  "qmin_C2L_measure": 14.208671397037463,
+  "qstar_C2L_measure": 0.0,
+  "seconds": 1195.0303702354431
+ },
+ "solutions": {
+  "V1s_D2_lb.npz": {
+   "raw": "V1s_D2_lb.npz V* -258.7390294762471 fd [2.842170943040401e-10, 0.0, 2.842170943040401e-10] J diff 1.7763568394002505e-15",
+   "hessian": {
+    "|grad|": 4.171765365616353e-15,
+    "rank_tangents": 35,
+    "n_zero(<1e-9)": 42,
+    "n_neg": 0,
+    "min_eig": -5.273177252301487e-15,
+    "smallest_positive_eigs": [
+     4.96943879250655e-07,
+     4.997866364067167e-07,
+     4.997866364372984e-07,
+     4.99786636440005e-07,
+     4.997866364406573e-07,
+     4.99999999294012e-07,
+     4.999999993033692e-07,
+     2.540111494361568e-06,
+     2.540111494364728e-06,
+     2.5401114943647493e-06,
+     2.5401114943652707e-06,
+     2.8562317778900498e-06,
+     0.00040820716117370004,
+     0.0009243566519077411,
+     0.0009243566519077419,
+     0.0009243566519077517,
+     0.0009243566519077524,
+     0.0009243566519077558,
+     0.0009243566519078201,
+     0.0009243587929475542
+    ],
+    "n_light(1e-9..1e-5)": 12,
+    "n_in_[1e-5,2e-3]": 269
+   },
+   "light_modes": [
+    {
+     "m2": 0.0,
+     "Phi210": 1e-06,
+     "H10": 0.0,
+     "Sigma126bar": 0.999155,
+     "S": 0.000844,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 0.0,
+     "Phi210": 0.0,
+     "H10": 0.999978,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 0.0,
+     "Phi210": 0.0,
+     "H10": 0.999978,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 0.0,
+     "Phi210": 0.0,
+     "H10": 0.999978,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 0.0,
+     "Phi210": 0.0,
+     "H10": 0.999978,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 0.0,
+     "Phi210": 0.0,
+     "H10": 0.0,
+     "Sigma126bar": 1.0,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 0.0,
+     "Phi210": 0.0,
+     "H10": 0.0,
+     "Sigma126bar": 1.0,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 2e-06,
+     "H10": 0.999976,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 2e-06,
+     "H10": 0.999976,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 2e-06,
+     "H10": 0.999976,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 2e-06,
+     "H10": 0.999976,
+     "Sigma126bar": 2.2e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 3.7e-05,
+     "H10": 0.0,
+     "Sigma126bar": 0.000845,
+     "S": 0.999118,
+     "Phi17": 0.0
+    }
+   ]
+  },
+  "V1s_D2_lb_box4_R2.npz": {
+   "raw": "V1s_D2_lb_box4_R2.npz V* -1024.8862977995927 fd [-1.1368683772161603e-09, 2.2737367544323206e-09, 1.1368683772161603e-09] J diff 1.7763568394002505e-15",
+   "hessian": {
+    "|grad|": 1.236960452741901e-13,
+    "rank_tangents": 35,
+    "n_zero(<1e-9)": 42,
+    "n_neg": 0,
+    "min_eig": -6.506125138415269e-14,
+    "smallest_positive_eigs": [
+     4.941260547661718e-07,
+     5.000000071356618e-07,
+     5.000000072778945e-07,
+     5.002364390459793e-07,
+     5.002364391010133e-07,
+     5.002364391139412e-07,
+     5.002364391228593e-07,
+     2.210434884097691e-06,
+     2.971921977013127e-06,
+     2.971921977105498e-06,
+     2.971921977113276e-06,
+     2.9719219771290475e-06,
+     0.00038516329795451935,
+     0.0013524847369840059,
+     0.0013524847369840098,
+     0.001352484736984011,
+     0.001352484736984013,
+     0.0013524847369840178,
+     0.001352484736984126,
+     0.0013524850463031343
+    ],
+    "n_light(1e-9..1e-5)": 12,
+    "n_in_[1e-5,2e-3]": 205
+   },
+   "light_modes": [
+    {
+     "m2": 0.0,
+     "Phi210": 0.0,
+     "H10": 0.0,
+     "Sigma126bar": 0.998374,
+     "S": 0.001626,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 1e-06,
+     "Phi210": 0.0,
+     "H10": 0.0,
+     "Sigma126bar": 1.0,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 1e-06,
+     "Phi210": 0.0,
+     "H10": 0.0,
+     "Sigma126bar": 1.0,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 1e-06,
+     "Phi210": 0.0,
+     "H10": 0.999966,
+     "Sigma126bar": 3.4e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 1e-06,
+     "Phi210": 0.0,
+     "H10": 0.999966,
+     "Sigma126bar": 3.4e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 1e-06,
+     "Phi210": 0.0,
+     "H10": 0.999966,
+     "Sigma126bar": 3.4e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 1e-06,
+     "Phi210": 0.0,
+     "H10": 0.999966,
+     "Sigma126bar": 3.4e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 2e-06,
+     "Phi210": 6.1e-05,
+     "H10": 0.0,
+     "Sigma126bar": 0.001626,
+     "S": 0.998313,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 0.0,
+     "H10": 0.999967,
+     "Sigma126bar": 3.3e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 0.0,
+     "H10": 0.999967,
+     "Sigma126bar": 3.3e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 0.0,
+     "H10": 0.999967,
+     "Sigma126bar": 3.3e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    },
+    {
+     "m2": 3e-06,
+     "Phi210": 0.0,
+     "H10": 0.999967,
+     "Sigma126bar": 3.3e-05,
+     "S": 0.0,
+     "Phi17": 0.0
+    }
+   ]
+  }
+ }
+}

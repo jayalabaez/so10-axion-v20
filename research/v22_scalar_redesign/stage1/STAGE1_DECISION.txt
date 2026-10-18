@@ -1,0 +1,580 @@
+STAGE 1 DECISION - v22 scalar-sector redesign (B63 fermions, SO(10) x U(1)_X, Z17)                    2026-10-17
+=====================================================================================================================
+Selector report.  Inputs read in full: stage1\diagnosis\REPORT.txt; the designer REPORT.txt and skeptic REPORT.txt of
+D-A-chain, D-B-symmetry, D-C-flavour and D-D-literature; v21 round-2 FINAL.txt (context).  Labels: EXACT / NUM
+(uncertainty stated) / EST / CONJ / LIT-abstract.  Every number is quoted from those reports with its label unless it
+is marked [SEL], which means the selector computed it for this decision (section 4; scripts in stage1\selector\).
+Hygiene: only stage1\STAGE1_DECISION.txt and stage1\selector\ were written.  'git status --short' of the worktree shows
+only '?? research/v22_scalar_redesign/'.  No repo module was modified, nothing was committed, _rescope was not touched.
+
+=====================================================================================================================
+0. DECISION
+=====================================================================================================================
+STAGE-1 PASSES (D1-D5 all met): NONE.
+
+KILLED. In each case the skeptic upheld the kill and reproduced it on an independent evaluation path; no kill was
+shown to be invalid.
+  D-A A1  'SM-direct', no new field ............ D2 FAIL (exact Clebsch); D3 FAIL (unbounded below; deeper vacua)
+  D-B V1a / V1b  two-10 split .................. D3 FAIL (11/11 + 4/4 deeper descents; LP infeasible)
+  D-B V2  texture Z3 ........................... D2 FAIL (exact inclusion in R2-C, chi2 >= 109.7)
+  D-C V1  'A1-EFT' with O5 ..................... D2 FAIL (exact O5 Clebsch, |S| >= 10.8); D3 FAIL (11/11)
+  D-C V3  + 120_H .............................. D4 FAIL (Lambda_2L = 0.16-0.22 M_Pl,red)
+  D-D L1  BOP one-step ......................... D2 FAIL (chi2 4368 renormalisable, 377 with d=5)
+  D-D L1b + light Delta_L ...................... D4 / R5 FAIL (tau <= 1.0-1.45e34 yr)
+
+NOT KILLED, NOT PASSED:
+  L2 = v20 scalars + ONE real 45_H (X = 0).  The vacuum is G3211 at M_U, and the 126bar breaks B-L at v_R.  This is
+    D-D L2, the same family as D-C V2 and diagnosis family A2.  Its skeptic did not kill it.
+    D1 PASS (EXACT).  D2 PASS at proxy level: the designer's fit structure was not realisable, and [SEL] restored the
+    pass with the exact structures (section 4).
+    D3 UNDECIDED: the 45 is not in the chart, so no numerical test in the modified potential exists.  D3 is the
+    criterion that killed every design tested at it.
+    D4 UNDECIDED: Lambda_2L sits on a knife-edge, 0.965-1.136 M_Pl,red.
+  L3' = 210 replaced by real 45_H + 54_H (D-D fallback).  Only the designer has assessed it; no skeptic reviewed it.
+    D1 PASS, D2 proxy PASS, D3 UNDECIDED (never tested), D4 PASS (robust, including three loops).
+  Untested variants: D-A V2 (A1 + 45_H, SM-direct) and V3 (A1 + 54_H).  Only D1 has been checked (PASS); they are
+    dominated by L2 (section 5).
+
+SELECTION.
+  The rule is: never harden an undecided into a pass.  So NO design enters Stage 2 as a Stage-1 survivor in the full
+  sense.
+  ONE design, L2, is selected as a CONDITIONAL Stage-2 candidate.  Its first Stage-2 step is GATE 0: the D3 test that
+  Stage 1 could not run.  Gate 0 consists of:
+    - a 531-real chart;
+    - an LP against every banked deep point of all rounds;
+    - a global boundedness-from-below test;
+    - three or more feedback rounds of fresh descents.
+  If Gate 0 kills L2, Stage 2 ends for L2.
+  L3' is the documented fallback (rank 2).  It opens only after it gets its own Stage-1 skeptic review.
+  Whether to fund Gate 0 (1-2 weeks of engineering) is the user's decision.
+
+HONEST OUTLOOK (EST).
+  P(L2 passes every Stage-2 kill) ~ 0.2-1 %.
+  P(L3' passes every Stage-2 kill) ~ 0.2-1 %.
+  Family E (B-L from a 16_H) was not designed in Stage 1, and its D1 is open: ~0.5-1 % (CONJ).
+  Cumulative evidence: 94 of 94 completed fresh descents, started from tuned-light-doublet points of the v20 potential
+  across three breaking patterns, ended in deeper GUT-scale SU(2)_L-breaking configurations (F1).  On present evidence
+  the most likely final outcome is a NO_GO for the v20-type scalar sector with a light tuned doublet (NUM, U2a
+  standard; not a theorem).
+
+=====================================================================================================================
+1. HOW THE RULES WERE APPLIED
+=====================================================================================================================
+(a) Discard at the first failure, in the order D1 -> D5.  Two skeptics found a failing criterion earlier than the
+    designer: D2 before D3 in D-A and in D-C.  The earlier criterion is recorded as the first failure; the later one is
+    recorded as an independent failure.
+(b) Survival requires that no skeptic kill is upheld.  For each kill I checked how it was reproduced:
+      - D-A: independent J-path re-evaluation agreed to <= 1e-11, plus explicit quartic interpolation;
+      - D-B: agreement < 1e-12, plus a private-input LP re-run;
+      - D-C: independent values-only evaluation, plus two independent Clebsch constructions agreeing to 1e-12.
+    No designer result invalidates any kill.
+(c) A required test that was never run is UNDECIDED.  It is not a pass, because a pass cannot be hardened out of an
+    undecided.  It is not a failure, because no kill is issued without evidence.  An undecided design is not a Stage-1
+    pass.  It may enter Stage 2 only behind a gate that runs the missing test first.
+(d) Ranking: by (i) probability of passing Stage 2, then (ii) minimality, then (iii) Stage-2 engineering cost.  The
+    probabilities are EST.  A tie in (i) within EST uncertainty is broken by (ii) and then (iii).
+
+=====================================================================================================================
+2. LEDGER
+=====================================================================================================================
+D-A-chain / A1 'SM-direct'
+  Design: no new field.  Phi210 at Am45, Delta_R = 1 x |Phi|.  One tuned doublet, plus (8,3,0) at 2.5e11 and
+  (6,2,-1/6) at 2e9.
+  D1  PASS (EXACT, reproduced).  Anomalies 0, kernel dimension 7, N = 34, E/N = 8/3, N_DW = 1.  DP max excess 0 up to
+      d = 40.  LP 4 mu_0 = 17.
+  D2  FAIL (skeptic, EXACT + NUM).
+      - Explicit 32x32 spinor computation at omega = 0: the 120 channel of F.F.(H10 Phi210) has c_e = c_u = c_D = 1,
+        and the A form contributes zero.  The designer's fitted (c_e, c_u, c_D) = (-3.6, -0.12, 52.6) cannot be
+        produced by that operator.
+      - Exact-structure refits: the 120 channel alone gives chi2 >= 98.8 (free R).  The 120+126 channels with the
+        SM-direct seesaw link R >= 5e15 give chi2 = 3868 / 3861 (pulls: sin2th23 -31, sin2th13 -37, dm21 -39).
+  D3  FAIL (designer and skeptic, NUM).
+      - Designer: 5/5 descents end lower (-0.025 to -12.73).
+      - Skeptic: the final flavour point L6 is UNBOUNDED BELOW.  Along an explicit Phi+H10+Sigma+S ray,
+        V = -1.526 l^2 - 0.0760 l^3 - 0.005521 l^4, and a4 < 0 by 1e11 x the numerical error.  The same holds for
+        L1_S2_D1, L3_S2_D1e and L3_S2_D1e_f01.
+      - Skeptic's own descents: -1.35e3, -2.30e4, -1.91e4, still falling.
+      - lambda_eff = -2.757 from heavy modes, and -4524 including the light S mode (kappaH = -2, at its box edge).
+  D4  (information only) PASS only if every heavy state sits at M_U: M_U = 1.87e16, tau = 9.2e35 yr,
+      Lambda_2L = 1.55.  With L6's real spectrum (M_X'/M_X = 1.84, scalars at 0.44-18 M_X), Lambda_2L ~ 0.79-0.83:
+      FAIL.
+  VERDICT: KILLED.  First failure D2; D3 fails independently.
+
+D-B-symmetry
+  EXACT pre-analysis: no charge or abelian-symmetry change compatible with B63 removes O31/O28/O35.  O27 and O35 are
+  self-conjugate.
+  V1a / V1b: one added complex 10_H (X = -2).  V1a has light H1 + H2 bidoublets + Delta_R (C2-type).  V1b adds
+  (8,3,1) + (6,2,2) (C1622-type).
+    D1  PASS (EXACT; DP, MILP and LP, reproduced).
+    D2  PASS at proxy level (reproduced).  Below v_R ~ 1e11 it needs a seesaw cancellation of 6e-4 to 3e-3.
+    D3  FAIL (NUM).
+        - Designer: 11/11 descents end lower (-1.1 to -47.8).  The LP is infeasible after one round at box 1 and after
+          two rounds at box 4.
+        - Skeptic: reproduced to < 1e-12, then extended to box 8, where 4/4 descents end lower (-44.96, -31.76, -1.56,
+          -0.96).
+        - Drivers: O27_B02 and O35_B02 (self-conjugate) and O25.
+    D4  (information only) V1a: tau_LA = 1.64e34 / 1.94e34 yr (two codes), below 2.4e34.
+  V2 (texture Z_n): D2 FAIL by exact inclusion in R2-C (chi2 >= 109.7).
+  VERDICT: all KILLED (V1a and V1b at D3, V2 at D2).
+
+D-C-flavour
+  V1 'A1-EFT': no new field, SM-direct.  M_R is decoupled from F by O5 = S (FF)_126 (Delta Phi)_126bar / M_Pl,red.
+    D1  PASS (EXACT), with a caveat.  The LP/vacuum points sit at s = 0.0016, x = 4, which in chain-b GeV is
+        <S> = 9.35e13 and <Phi17> = 2.34e17, giving dtheta = 0.16.  So the vacuum evidence was produced at field values
+        that violate D1 (EST).
+    D2  FAIL (skeptic, EXACT + NUM; first failure).
+        - Exact O5 Clebsch at Am45: tau = -(sqrt3 - 1)/5 = -0.1464, versus the 3-9.8 used.  The maximum over the unit
+          sphere is 1.70.
+        - Required |S| >= 10.8 (chain b; 38.5 in the other basin).
+        - chi2 = 1.62e4 at |S| <= 1; chi2 <= 25 is reached only at |S| ~ 11.5.
+    D3  FAIL (NUM, reproduced).  11/11 descents end lower (-0.19 to -20.47).  Each endpoint breaks SU(2)_L: setting
+        H10 -> 0 raises V above V*.
+    D4  PASS (reproduced): M_U = 2.18e16, aU^-1 = 25.66, tau = 1.6e36 yr, Lambda_2L = 1.55.
+  V3 (+120_H): D4 FAIL (Lambda_2L = 0.16 / 0.22; exact b = (44/3, 28843/6)).
+  V2 (+45_H, G3211): same family as L2.
+  VERDICT: V1 KILLED (first failure D2; D3 fails independently).  V3 KILLED (D4).
+
+D-D-literature
+  L1  (BOP one-step, no new field): D2 FAIL.  chi2 = 4368 renormalisable, 377 with the d=5 term at sigma >= 1e15.
+      KILLED.
+  L1b (+ tuned light Delta_L): D4/R5 FAIL.  R5 requires Delta_L <= 5e12, which gives tau <= 1.0-1.45e34.  KILLED.
+  L2  (+ real 45_H.  G3211 at M_U; B-L at v_R in the type-I window.  Light content: doublet + (8,1,0) at a TeV +
+      (8,3,0) at ~2e9.)
+      D1  PASS (EXACT, reproduced).  The 45 duplicates the Phi210 DP item: max excess 0 up to d = 40,
+          LP 4 mu_0 = 17.000, and no closure with K <= 16.
+      D2  PASS at proxy level (NUM, dof = -8).
+          - The designer's L2 fits used eta1 = +1 with free real eps (0.409 and -1.10).  That structure cannot be
+            reached from the H10 channels (EXACT, [SEL] section 4).
+          - Restored by [SEL] with the two exact structures: chi2 ~ 1e-12 to 5e-10 at |c| = 0.10-1.44 in the
+            Gamma-tensor convention.
+      D3  UNDECIDED.  The mechanism has two parts:
+            M1  one tuned doublet, with SU(2)_R broken at M_U by <45>_(1,1,3);
+            M2  the Delta^dag T_A Delta cubic splits Delta_R^{++} from sigma by O(M_U^2) (EXACT group theory), and the
+                |T_A X|^2 portals are sign-definite.
+          No numerical check was run in the modified potential.
+          Skeptic: the intended vacuum is not even metastable (bounce S = 1e-24 to 1e-10) unless both light-octet
+          cubics are tuned to <= 0.71 m, i.e. A/M_U <= 7e-14 and <= 1.2e-7.  These are two extra tunings.
+          Cross-design evidence says M1 alone is insufficient (F1).
+      D4  UNDECIDED (knife-edge).  Reproduced: M_U = 1.285e16, aU^-1 = 27.03, tau = 2.2e35, Lambda_2L = 1.04.
+          With design-consistent inputs Lambda_2L = 0.965-1.136:
+            - combined nominal: 1.013;
+            - with the S-mixing-required X = +2 doublets at 3-5e15: 0.988-0.997 (FAIL);
+            - with M_s = 9e12: 0.965 (FAIL).
+          The threshold Monte Carlo passes in 45 % of samples.  tau >= 1.4e35 in every variant.  Lambda_3L = 0.45-0.51
+          (not a D4 item).
+      D5  1 new real field, ~25-30 couplings (EST), and a 531-real chart.  The skeptic finds the tuning count
+          understated by >= 2 (the octet cubics).
+      VERDICT: NOT KILLED.  NOT PASSED (D3 and D4 undecided).
+  L3' (210 -> 45 + 54):
+      D1  PASS (EXACT, including MILP).
+      D2  proxy PASS (exact 45-channel signs).  c5 = 0.61-0.75, i.e. |c| ~ 1.1 in the Gamma-tensor convention [SEL].
+      D3  UNDECIDED.  No tree vacuum was computed.  LIT-abstract 1010.4649 and 2304.14227 warn of tree-level tachyons
+          when a 45 drives the breaking without a 54.
+      D4  PASS, robust: Lambda_2L = 77-114, Lambda_3L = 11.7-15.7, 98-100 % of the Monte Carlo passes.
+      No skeptic review.  VERDICT: NOT KILLED, NOT PASSED, UNREVIEWED.
+
+=====================================================================================================================
+3. WHAT STAGE 1 ESTABLISHED (cross-design facts that bind any further design)
+=====================================================================================================================
+F1 (NUM, U2a, not certified)  Every tuned-doublet point found so far has a deeper vacuum.
+    Tally: 94 of 94 completed fresh descents, started from tuned-doublet coupling points that the LP feedback
+    machinery produced in the v20 51-parameter potential, ended below V* in GUT-scale SU(2)_L-breaking configurations:
+      - two light bidoublets (R2-A): 60/60;
+      - one-bidoublet G3221 slice (D-B): 11, plus 4 at box 8;
+      - SM-direct with one doublet (D-A): 5, plus 3 runaways;
+      - SM-direct flavour Higgs (D-C): 11.
+    Changing the breaking pattern does remove the R2-A drivers: O31 cannot enter the doublet sector, by B-L (EXACT), and
+    O27 >= 0 at every clean SM-direct point.  But a generic driver set takes over:
+      - bare H10/126bar masses ~ -(5-16)|Phi|^2, cancelled by the portals O33, O45, O35, O46;
+      - kappaH and O38 at their box edges;
+      - singlet masses.
+    In the SM-direct family every flavour-capable point is unbounded below.
+    So the deep-vacuum problem comes from tuning a light doublet in the v20 potential with |quartic| <= 1, not from the
+    breaking chain.  A surviving design has to ADD sign-definite structure.  The 45 generator portals are the only
+    candidate offered (CONJ), and there is no Stage-1 evidence that they suffice.
+F2 (EXACT)  The symmetry route is closed.  No abelian symmetry or charge change compatible with B63 removes O31, O28 or
+    O35.  |Sigma|^4 and |H|^2|Sigma|^2 are self-conjugate (diagnosis 1c, D-B).
+F3 (EXACT)  S-mixing selection rule.
+    - With these charges, the only renormalisable-level spurion that mixes the X = -2 doublets (h_u^10, Sigma_u) with
+      the X = +2 doublets (h_d^10*, Sigma_d*) is <S> (X = 4, B-L = 0).  <Delta_R>^2 has B-L != 0.
+    - Hence c_d/c_u ~ kappa <S>/m_D^2, with <S> <= 3.285e13 from quality.
+    - Every flavour-capable vacuum therefore needs a down-type doublet at m_D ~ 0.25-0.6 M_U (EST).  That intermediate
+      threshold must be included in D4.
+F4 (EXACT)  d=5 Clebsch guesses must not be trusted.  They were falsified twice when computed: D-A (free c's vs the
+    exact 1, 1, 1) and D-C (tau = 3-9.8 vs the exact 0.146).  They were found unrealisable once more here (section 4).
+    Stage 2 computes every Clebsch before fitting.
+F5 (NUM)  One-step breaking with v_BL ~ M_U is flavour-dead in every form tried:
+      - renormalisable 10+126bar: chi2 = 4.4e3 to 1.6e4;
+      - 120-channel d=5 term: chi2 = 377, or ~3.9e3 with the seesaw link;
+      - the O5 escape: needs |S| >= 10.8.
+    So B-L must break at v_R ~ 1e12-3e13 (G3211-type), unless a 45-type operator with a large Clebsch carries M_R
+    (|tau| = 2.4-2.9, |S_45| ~ 0.55-0.7, EST, D-C skeptic).
+F6 (NUM)  Landau is the binding constraint on extra scalars.
+    - SO(10) phase with B63 + 210 + 126bar + 10: b = (16/3, 3482).
+    - One-step 210 chains: Lambda_2L ~ 1.5-1.6 with everything heavy at M_U, but ~0.8 with a real LP spectrum (D-A
+      skeptic).
+    - +45: ~1.0 (knife-edge).  +120_H: 0.16-0.22.
+    - Three loops fail for every 210-based chain (0.45-0.69).  Only L3' (no 210; one-loop b = -2/3) passes three loops.
+F7 (EXACT / NUM / EST)  Light colour states.
+    - A light REAL colour octet carries a cubic self-coupling ~M_U (Tr(T_BL O^3) != 0; the 210 cubic on (8,1,0) and
+      (8,3,0)).  Each one needs its cubic tuned to <= 0.71 m (bounce).
+    - A complex (6,2,-1/6) has no gauge-invariant cubic.
+    - A TeV real octet with no renormalisable fermion coupling lives tau ~ 1e2-1e5 s (EST).  The BBN bound on TeV
+      coloured relics is ~100 s (hep-ph/0504210, LIT-abstract via the D-D skeptic).
+F8 (EST)  Vacuum evidence counts only if it is produced at field values that satisfy D1 in GeV (dtheta < 1e-10): the
+    chart values s and x must map to <S> <= 3.285e13 and <Phi17> ~ 1e17 under the point's own |Phi| <-> GeV map
+    (D-C skeptic).
+F9 (NUM)  One-loop CW corrections to tuned light masses are 1e5-1e7 x tree (K3).  This holds for every design.  Every
+    tuning is redone at one loop.
+
+=====================================================================================================================
+4. SELECTOR CROSS-CHECK [SEL]: exact d=5 channel patterns and exact-structure refits for L2
+=====================================================================================================================
+Why this was done: F4 says d=5 Clebsch guesses fail when computed, and L2's D2 claim rested on an unchecked structure.
+
+(a) EXACT sector patterns (selector\sel_clebsch.py -> sel_clebsch.json)
+    Method: an explicit 32x32 Clifford algebra.  The repo's unit forms p, a, omega are used, together with unit 2-forms
+    T3R = (e67+e89)/sqrt2 and BL = j6/sqrt3.  T3R is fixed by the repo convention that omega = j6^(e67+e89) is an SM
+    singlet.  Neutral Higgs components are n = (e8 +- i e9)/sqrt2.
+    Each entry is the ratio to the renormalisable 10 coupling with the same Higgs component, for the sectors
+    (d, e, u, nu).  Residuals are <= 1.6e-16, and there are no off-sector entries (charge conservation verified).
+
+      channel              d        e        u        nu       flavour   pattern
+      10 (renormalisable)  1        1        1        1        sym       reference
+      (FF)120(H Phi)120 P  -1       -1       -1       -1       antisym   = 10 pattern  (agrees with the D-A skeptic)
+      (FF)120(H Phi)120 A  0        0        0        0        -         vanishes      (agrees with the D-A skeptic)
+      (FF)120(H Phi)120 W  +0.408   -1.225   -0.408   +1.225   antisym   (1,-3,-1,3): eps = -1
+      (FF)120(H A45) T3R   +0.707i  +0.707i  -0.707i  -0.707i  antisym   (1,1,-1,-1): eta1 = -1
+      (FF)120(H A45) B-L   -0.577i  +1.732i  -0.577i  +1.732i  antisym   (1,-3,1,-3): eps = +1
+      (FF)10 (H A45) T3R   -0.707i  -0.707i  +0.707i  +0.707i  sym       NEW: a symmetric u/d-odd structure,
+                                                                         not used by any design
+      (FF)10 (H A45) B-L   0        0        0        0        -         vanishes
+      (FF)126(H Phi) P     0        0        0        0        -         vanishes
+      (FF)126(H Phi) A     +0.577   -1.732   +0.577   -1.732   sym       (1,-3,1,-3)
+      (FF)126(H Phi) W     +0.408   -1.225   -0.408   +1.225   sym       (1,-3,-1,3)
+
+    Under a u <-> d relabelling every +-1 / -3 pattern and every eta1 / eps sign is invariant.
+
+(b) Consequence (EXACT linear algebra).
+    D-D's L2 ansatz is a single antisymmetric matrix A with sector weights
+        (1 + rho, 1 - 3 rho, eta1 + eps rho, eta1 - 3 eps rho),  with eta1 = +1.
+    From the H10 120-channels this ansatz can be reached only for eps = -1, i.e. the 210 channel alone.  The reason:
+    at the G3211 vacuum omega_R != 0, so any admixture of the 45 channel brings in the T3R pattern, which the ansatz
+    excludes.  This holds even with proportional coefficient matrices.
+    So the designer's L2 fit points (eps = +0.409 at c5 <= 0.1, eps = -1.10 at c5 <= 0.3) are not points of the model.
+    Caveat: the 126bar-doublet channels (Delta Phi)_120 were not computed (CONJ: they could add other patterns).
+    L3's structure (eta1 = -1, eps = +1) is exact.
+
+(c) Refits with the exact structures (NUM).
+    Code: D-D's code copied unedited into selector\flav\, run with its --eta1 / --eps_fixed options.
+    Inputs: L2 targets (BOP pair, M_U = 1.28e16); the renormalisable candidate bank reused.
+    Error model, identical to D-D:
+      - PDG-2024 at M_Z with a 1 % mass floor;
+      - NuFIT 6.0 normal ordering with SK;
+      - SM two-loop running + B63 + octet shifts;
+      - 18 observables, 26 parameters (dof = -8).
+
+      structure                  c5 cap  chi2      max|pull|  rho     c5 used  |c| Gamma-conv.  v_R window [GeV]
+      210 exact (eta1 +1, eps -1)  1     4.8e-12   0.000      -2.26   0.58     1.44             [1.1e12, 1.7e13]
+      210 exact                    0.3   1.7e-12   0.000      +0.47   0.30     0.46             [1.1e12, 2.0e12] edge
+      210 exact                    0.1   4.8e-10   0.000      +0.10   0.10     0.10             1.66e13 (point)
+      45 exact  (eta1 -1, eps +1)  1     2.2e-12   0.000      -0.73   0.67     1.28             [1.9e12, 1.4e13]
+      45 exact                     0.3   2.2e-12   0.000      +0.08   0.30     0.43             1.46e13 (point)
+      45 exact                     0.1   2.2e-11   0.000      +0.58   0.10     0.17             [1.8e12, 2.0e12] edge
+
+    m_s/m_d(M_U) = 19.89 in every fit, so the 34.6 obstruction is gone.
+    Conversion to the Gamma-tensor convention: |c| >= (c5 / max(1,|rho|)) x sqrt(1/C_1^2 + rho^2/C_15^2), with
+    (C_1, C_15) = (0.707, 0.577) for the 45 and (1, 0.408) for the 210, at kappa = |vev|/M_Pl,red = 0.01 (EST).
+    Reading of the table:
+      - At c5 <= 1 the fits are interior, with |c| ~ 1.3-1.4: slightly above 1.
+      - Fits with |c| <= 1 exist (0.10-0.46), but they saturate the composition bound and collapse the v_R window to
+        its edge.
+      - In the isometric-CG convention the required c would be several times larger (EST).
+    VERDICT: L2's D2 proxy PASS is re-established on exact patterns, with EST magnitudes, as existence only (dof < 0).
+    It stays a Stage-2 gate (G3).
+
+=====================================================================================================================
+5. RANKING OF THE NOT-KILLED DESIGNS
+=====================================================================================================================
+(i) Probability of passing Stage 2 (EST; products of rough factors, each EST)
+  L2
+    P(Gate 0 / D3)                                        0.10-0.15
+    x P(D4 with the real spectrum, given the knife-edge)  ~0.3
+    x P(light-state cosmology/LHC)                        ~0.3-0.5
+        (the TeV octet must have tau < 100 s at m8 <= 3 TeV; otherwise the L2-b content, which sits at the
+        proton/Landau knife-edge)
+    x P(exact flavour with |c| <= 1 and chi2 <= 15)       ~0.5
+    x P(one-loop retuning and lambda)                     ~0.4
+    = ~0.2-1 %
+  L3'
+    P(a tree G3211 vacuum exists)                         ~0.4
+    x P(D3)                                               0.10-0.15
+    x P(D4)                                               ~0.8
+    x P(cosmology; the octet can sit at 1e4-1e5 GeV, tau >= 5.7e34 at 1e5)  ~0.8
+    x P(flavour; |c| ~ 1.1 is borderline)                 ~0.4
+    x P(one loop)                                         ~0.4
+    = ~0.2-1 %
+  The two are equal within the EST uncertainty.
+(ii) Minimality
+  L2: +1 real field, ~25-30 couplings, keeps the v20 potential.
+  L3': +2 / -1 fields, every coupling new.
+  L2 wins.
+(iii) Engineering cost
+  L2: 486 -> 531-real chart.  The doublet block is unchanged, and the compiler, Hessian, contract, LP and descent code
+      are reused.  1-2 weeks.
+  L3': a new 375-real chart.  The v20 SOS/Hessian/G-gate modules are unusable.  2-3+ weeks.
+  L2 wins.
+In addition, L2's D1/D2 claims have been reviewed by a skeptic; L3's have not.
+
+RANK 1: L2 (conditional on Gate 0).
+RANK 2: L3' (fallback; conditional on its own Stage-1 skeptic review).
+NOT SELECTED: D-A V2 / V3 (A1 + 45_H or + 54_H, SM-direct).  They inherit three problems:
+  - F5 (v_BL ~ M_U), unless the 45-type O5 works (EST);
+  - the A1 orientation, where every flavour-capable point was unbounded below;
+  - with +45, the chain-b family falls below the Landau threshold (D-A: it needs m8 <~ 1.6e11, where tau ~ 1e35;
+    marginal).
+They are dominated by L2 in (i) and equal to it in (ii) and (iii).
+
+=====================================================================================================================
+6. STAGE-2 SPECIFICATION - CANDIDATE 1: L2 (CONDITIONAL; Gate 0 first)
+=====================================================================================================================
+6.1 FIELD CONTENT (X ; Z17 phase = X mod 17 ; Spin(10) centre class)
+  Fermions (Weyl, B63 verbatim):
+    F    3x16    (1 ; 1)       V1   2x16    (-35 ; 16)    Vb1  16bar (39 ; 5)
+    V2   16      (-28 ; 6)     Vb2  16bar   (32 ; 15)
+    V3   16      (34 ; 0)      Vb3  16bar   (-30 ; 4)
+    T    2x10    (2 ; 2)       Pb   16bar   (18 ; 1)
+    N1   1       (-63 ; 5)     N1b  1       (59 ; 8)
+    N2   1       (-58 ; 10)    N2b  1       (54 ; 3)
+    N3   1       (-57 ; 11)    N3b  1       (61 ; 10)
+    NMm  2x1     (-2 ; 15)
+    One V1 combination pairs with Vb1 through S*, the other with Pb through Phi17 (the 'Phi17 pair').
+  Scalars:
+    Phi210 real (0 ; 0 ; z0)    Delta 126bar (-2 ; 15 ; z2)    H10 complex (-2 ; 15 ; z2)
+    S (4 ; 4 ; z0)              Phi17 (17 ; 0 ; z0)
+    NEW: A45 real (0 ; 0 ; z0)
+  Renormalisable Yukawas (the 12 of B63):
+    F.F.H10, F.F.Delta, V1.Vb1.S*, V1.Pb.Phi17, V2.Vb2.S*, Vb2.Vb3.H10, V3.Vb3.S*, T.T.S*, N1.N1b.S, N2.N2b.S,
+    N3.N3b.S*, NMm.NMm.S.
+    A45 has no renormalisable fermion coupling (EXACT).
+  Contract (EXACT):
+    - anomalies 0;
+    - PQ = X - 17 G2, N = 34, E/N = 8/3, N_DW = 1 mod gauge;
+    - K_min = 17 (A45 duplicates a DP item; re-run anyway, G6);
+    - dtheta = 2.1e-11 at <S> = 3e13, <Phi17> = 1e17.
+  d=5 flavour operators (X- and PQ-neutral; Lambda = M_Pl,red; exact patterns in 4(a)):
+    (FF)_120 (H10 Phi210)_120,  (FF)_120 (H10 A45)_120,  (FF)_10 (H10 A45)_10,  (FF)_126 (H10 Phi210)_126bar.
+    Also, if used, (FF)_{10,120,126} (Delta Phi210) and (FF)_126 (Delta A45)_126bar.  Each needs its exact Clebsch
+    before it enters a fit.
+
+6.2 POTENTIAL
+  - The v20 51-parameter exact-X potential (models\SO10Z17AxionV20.m, including kappaH H10.H10.S), verbatim.
+  - PLUS every renormalisable SO(10) x U(1)_X invariant containing A45.  Since X(A) = 0, every SO(10)-allowed A term is
+    X-allowed:
+      - pure 45:  m_A^2 Tr A^2;  (Tr A^2)^2;  Tr A^4;
+      - with Phi:  (AA)_210 Phi (cubic);  (AA)_{1,54,210,770}(Phi Phi) (4 quartics);  A^3 Phi and A Phi^3 where
+        singlets exist;
+      - with H10:  A^2|H|^2 (2 channels);  i H^dag A H (cubic, real coupling);
+      - with Delta:  Delta^dag A Delta (cubic);  (AA)_{1,210,770}(Delta^dag Delta) (3);  the (A Phi)(Delta^dag Delta)
+        channels;
+      - phase-sensitive:  (AA)_210 H10* Delta and (A Phi)_210 H10* Delta.  These obey h = d, so there is no new kernel
+        constraint;
+      - singlet portals:  A^2|S|^2,  A^2|Phi17|^2.
+  - EXACT absences:
+      - F F A;
+      - A H10* Delta (the 45 is not in 10 x 126bar);
+      - A H H S (the 45 is antisymmetric);
+      - A Phi Phi (the 45 lies in Lambda^2(210) and Phi is real).
+  - Count: EST 25-30 real, taking the potential from 51 to ~76-81.
+  - First step (S2-A): an exact census extending g1_contract_truncation_scope_v20.py fixes the list.  A missed invariant
+    is a failure of the census, not of the design.
+
+6.3 INTENDED VACUUM AND SCALES
+  - <Phi17> ~ 1e17 GeV breaks U(1)_X -> Z17 above M_U.
+  - M_U ~ 1.0-1.3e16 GeV.
+      <Phi210> = p P + a A + omega W  and  <A45> = omega_R T3R + omega_BL T_BL, all O(M_U).
+      This gives G3211 = SU(3) x SU(2)_L x U(1)_R x U(1)_{B-L} (x Z17).
+      omega_R != 0 is required: it makes one doublet tunable and splits off Delta_R^{++}.
+      omega_BL != 0 is required by the 45-channel flavour structure (rho = -0.816 omega_BL/omega_R in the d sector).
+  - v_R = <Delta_R^0> in [2e12, 1.4e13] GeV.  This is the overlap of the exact-structure fit windows (section 4c) with
+    the type-I window.  It breaks to the SM; the Z' and the sigma radial mode sit at v_R.
+  - <S> in [2.7e13, 3.285e13] (quality).  M_s = y_s <S> with y_s in [0.304, 0.368].  Landau prefers
+    M_s >= 1.0-1.2e13 (D-D skeptic).
+  - Light states below M_U (each one is a tuning):
+      - the SM Higgs doublet with the fitted composition (r ~ 65-74, s ~ 0.42-0.45; 50-90 % up-type 126bar), realised
+        as an EXACT eigenvector;
+      - (8,1,0) [210 or 45, (15,1,1)] at 1.5-3 TeV;
+      - (8,3,0) [210 (15,3,1)] at ~1.7-2.3e9;
+      - the X = +2 doublet at 0.25-0.6 M_U (F3);
+      - the B63 exotics at M_s;
+      - nu^c at M_R ~ (2e10, 7e11, 4e12) GeV.
+  - Allowed alternative content L2-b, if the TeV octet fails G5: (8,3,0) at ~1.3-1.6e11 + (6,2,-1/6) [210 (10,2,2)].
+    It is a knife-edge on both tau and Lambda_2L (alpha_U^-1 must reach ~27.7) (EST).
+  - Every LP point must use chart ratios s = <S>/|Phi| and x = <Phi17>/|Phi| that map to the GeV values above under the
+    point's own |Phi| (F8).
+
+6.4 CONCRETE-POINT SEARCH METHOD AND MACHINERY
+  S2-A  Exact census and contract.
+        - Extend g1_contract_truncation_scope_v20.py and the exact-X tensor contract to the A45 rows.
+        - Write a SARAH model with A45 and attest it G1-style.
+        - Re-run dual_dp.py / sk_milp.py on the final scalar list.
+  S2-B  531-real chart.
+        - Add a 45-real A slice to live_g2_canonical_486_field_chart_v20.
+        - Add exact value / gradient / Hessian compiler rows for every new invariant (direct tensor forms; 2-forms via
+          generator_action).
+        - Generator tangents must include the A45 adjoint action.
+        - SM-isotypic blocks: the |Y| = 1/2 doublet block is UNCHANGED, since the 45 has no colour-singlet doublet.  The
+          octet, (1,3,0), (1,1,0) and (3,2) blocks gain A components.
+        - Goldstone test: exactly 35 zero modes (33 broken SO(10) generators + U(1)_X + the accidental direction).
+  S2-C  LP (R2-A r2_lp6 lineage, with the D-A/D-C patches).
+        - Orbit test for G3211 + v_R.
+        - Declared light set.  EW target = the flavour composition as an exact eigenvector.
+        - Light-cubic suppression ON: |h h X_light| <= 1e-5 for every light radial mode, and each octet self-cubic
+          <= 0.71 m.
+        - Tree unitarity |a0| <= 1/2 in ALL scalar 2 -> 2 channels.
+        - Box |quartic| <= 1 (box 4 only as a robustness check).
+        - Competitor cuts and BFB rays: every banked deep endpoint (R2-A 52 + 8 skeptic; D-A 5 + 3 runaway + its UBB
+          rays; D-B 11 + 4; D-C 11), each embedded at A45 = 0 and at A45 = <A45>.
+        - Two objectives: max-t, and an independent random-direction objective.
+  S2-D  Global boundedness from below (NEW; required by the D-A UBB finding).
+        - Minimise the exact quartic V4 on the unit sphere of the 531 chart: >= 1e4 multi-start projected-gradient
+          runs, plus every banked ray.
+        - Any V4 < 0 is a kill.
+  S2-E  Global search (G3 standard, U2a).
+        - >= 3 feedback rounds.  Each round runs >= 12 fresh full-chart descents (4 hs-rays, 4 random, 4 bank seeds)
+          and 3 skeptic-type probes: q* + 0.05 along the tuned doublet, along each light colour state, and along a
+          random H-Sigma-S-A ray.
+        - Every endpoint is re-valued on the independent evaluate_directions / coefficient_jacobian path.
+        - Lower endpoints become cuts for the next round.
+        - Metastable alternatives are reported separately, with an O(4) bounce, and never as the result.
+  S2-F  After Gate 0.
+        - One-loop CW potential with the explicit 531 spectrum (MS-bar); re-tune at one loop (k3_cw_lambda lineage).
+        - Extend sel_clebsch.py to the 126bar-doublet and Delta_R x phi channels.
+        - Top-down flavour fit (d2_* lineage, plus G3211 running and nu^c thresholds).
+        - Real-spectrum two-loop thresholds, proton decay and Landau (sk_thresh / unif_sm lineage).
+        - Light-state cosmology.
+
+6.5 STAGE-2 GATES AND EXPLICIT KILL CRITERIA
+    Gates run in order; kill at the first failure; every number carries a label.
+  G0  GATE 0 = completion of Stage-1 D3.  KILL L2 if any of the following holds.
+      G0.1  No clean point exists.  A clean point requires ALL of:
+              - exact stationarity, |grad V| <= 1e-10 x |V*|;
+              - exactly 35 zero modes (tangent rank);
+              - 0 negative modes;
+              - only the declared light states: the doublet as an exact eigenvector, (8,1,0) and (8,3,0) [or the
+                L2-b content], and the sigma and S radial modes;
+              - (1,3,0) lifted;
+              - |quartic| <= 1 and |a0| <= 1/2;
+              - S and Phi17 chart values compatible with D1.
+            Kill only if box 4 also fails.
+      G0.2  Any V4 < 0 is found (S2-D).
+      G0.3  Any banked endpoint lies below V* at the LP point.
+      G0.4  Any round-3 fresh descent ends below V*, beyond 1e-9 |V*| and confirmed on the independent path.  Or the LP
+            becomes infeasible at box 4 in any round.
+      G0.5  The tree lambda_eff (stage B) cannot be placed in [-0.06, +0.02] with the light-cubic suppression on, i.e.
+            without O(1) H-Delta_R or H-singlet portals.
+  G1  LOCAL STABILITY AT ONE LOOP.  KILL if, after one-loop CW retuning of every tuned quantity, any of the following
+      holds:
+        - any tree+one-loop mass^2 is negative;
+        - the Goldstone count is not 35;
+        - a retuned coupling leaves the box or the perturbative range.
+      The tuned quantities are: the EW doublet mass; the two octet masses and their two cubics; v_R/M_U; the placement
+      of the X = +2 doublet.
+  G2  PERTURBATIVITY.  KILL if tree unitarity a0 > 1/2 in any channel, or if the two-loop
+      Lambda_2L <= M_Pl,red = 2.435e18 GeV with the point's real spectrum.  Report three loops.
+  G3  FLAVOUR.  KILL if any of the following holds:
+        - chi2 > 15, or any |pull| >= 3;
+        - any d=5 coefficient needs |c| > 1 in the Gamma-tensor convention (unit-norm vev forms,
+          Lambda = M_Pl,red; report the isometric-CG value alongside);
+        - M_R3 > sqrt(4 pi) v_R.
+      The fit setup:
+        - the vacuum's own doublet composition, taken from the exact eigenvector;
+        - exact Clebsches for every operator used;
+        - G3211 running v_R -> M_U with nu^c thresholds;
+        - data: PDG 2024 masses at M_Z (4-loop QCD / 1-loop QED; FLAG lattice m_s/m_d), PDG CKM, NuFIT 6.0 normal
+          ordering with SK;
+        - error model: experimental 1 sigma (+) a 1 % theory floor on masses, and the quoted 1 sigma on mixings and
+          Delta m^2;
+        - 18 observables; delta_PMNS reported, not fitted; dof stated.
+  G4  TWO-LOOP UNIFICATION AND PROTON DECAY.  KILL if either of the following holds:
+        - two-loop running (exact MV coefficients) with one-loop matching on the point's real spectrum (heavy vectors
+          and scalars at their computed masses; alpha_s(M_Z) = 0.1180 +- 0.0009) does not close all three matching
+          conditions inside the alpha_s 1-sigma band;
+        - tau(p -> e+ pi0) <= 2.4e34 yr, computed with W0 = 0.131 GeV^2, the chain A_R = 1.25 A_SD along the point's
+          chain, and the point's own X and X' masses.
+  G5  LIGHT-STATE PHENOMENOLOGY.  KILL if the TeV (8,1,0) is excluded by LHC sgluon/R-hadron limits (LIT to be read),
+      or has tau > 100 s without a computed BBN-safe relic abundance.
+  G6  FINAL CONTRACT.  KILL if any of the following holds:
+        - K_min < 17 for the final scalar list (DP + MILP + LP);
+        - dtheta >= 1e-10 at the point's actual <S> and <Phi17> in GeV;
+        - an empty y_s window;
+        - N_DW != 1.
+  Certification: U2a at best (the K4 gap remains).  A pass is NUM-level.
+
+6.6 COST (EST)
+  - S2-A / S2-B: 1-2 weeks (25-30 invariants, chart, SARAH, attestation).
+  - Gate-0 compute: 3-5 days at 2 processes.
+  - G1-G6: ~1 week.  The code largely exists: k3_cw_lambda, sk_thresh / unif_sm, d2_*, sel_clebsch, dual_dp.
+
+=====================================================================================================================
+7. CANDIDATE 2 (FALLBACK): L3' - opened only if L2 dies at Gate 0 or G2/G4, and only after a Stage-1 skeptic review
+=====================================================================================================================
+Fields
+  - Fermions as in 6.1.
+  - Scalars: Delta 126bar (-2 ; 15), H10 (-2 ; 15), S (4 ; 4), Phi17 (17 ; 0), A45 real (0 ; 0), E54 real (0 ; 0).
+    Phi210 is removed.
+Contract
+  The DP item-type set is identical to L1's, so K_min = 17 (EXACT, D-D including MILP).  PQ, N, E/N and N_DW are
+  unchanged.
+Potential
+  A full rebuild: every SO(10) x U(1)_X invariant of {45, 54, 126bar, 10, S, Phi17} up to quartic order (EST 40-50
+  real).  This includes kappaH H10.H10.S, the phase-sensitive H10*^2 Delta^2 and H10* Delta^2 Delta* terms, and the
+  (AA)_210 H10* Delta and (AE)-type channels.  An exact census comes first.
+Vacuum
+  - G3211 at M_U ~ 1-1.5e16, from <45> = omega_R T3R + omega_BL T_BL and <54>.
+  - B-L at v_R in [0.9e12, 1.7e13].
+  - Light content: the SM doublet; (8,1,0) [45 or 54] at 1e3-1e5 GeV (the heavier end evades BBN and LHC, with
+    tau >= 5.7e34 at 1e5); (6,3,1/3) [126bar (10,3,1)] at ~1.1-1.4e11.
+Prerequisites
+  - An adversarial skeptic review of L3's D1-D4.
+  - A tree-level existence check of the G3211 vacuum (the LIT warnings).
+Machinery
+  A new 375-real chart (45 + 54 + 252 + 20 + 2 + 2).  Every compiler row is new, and the v20 SOS/Hessian/G-gate modules
+  are unusable.  EST 2-3 weeks before Gate 0.
+Gates and kills
+  Identical to 6.5.  In G3 the exact 45-channel structure needs |c| ~ 1.1 (Gamma-tensor convention) at the D-D point,
+  which is at risk.
+
+=====================================================================================================================
+8. IF GATE 0 KILLS L2: what remains (honest, EST)
+=====================================================================================================================
+- The evidence for a NO_GO would then be:
+    - F1, extended to the +45 potential;
+    - F2 (EXACT);
+    - F5 (one-step B-L ~ M_U is flavour-dead);
+    - F6 (Landau leaves no room for any extra 210-phase scalar beyond the 45).
+- L3': ~0.2-1 % (EST).  It is the only design that passes three-loop Landau and that can move its octet out of the BBN
+  window.  Its vacuum is completely untested, and it needs a full rebuild.
+- Family E (B-L from a 16_H with X = +1, centre class z1):
+    - not designed in Stage 1;
+    - needs a fresh quality DP, because it is a new DP item (D1 genuinely open);
+    - needs a spinor rep in the chart (the largest engineering cost);
+    - M_R from 16bar_H 16bar_H F F / Lambda.
+  ~0.5-1 % (CONJ).
+- Relaxing the boxes or the objective: the D-B skeptic's box-8 extension still failed, so there is no evidence of a
+  rescue.
+- Metastable vacua: admissible only as a separately reported alternative, never as the main result.
+- Overall chance that any remaining direction yields a Stage-2 point: ~1-2 % (EST).
+
+=====================================================================================================================
+9. FILES (selector)
+=====================================================================================================================
+stage1\STAGE1_DECISION.txt                    this decision
+stage1\selector\sel_clebsch.py / .json        exact d=5 sector patterns (EXACT; read-only import of
+                                              direct_phi_h_sigmabar_tensor_v20)
+stage1\selector\flav\                         D-D flavour code copied UNEDITED (d2_batch.py, d2_cont.py, d2_proxy.py,
+                                              lib_r2c.py, model_r2c.py, inputs_mz.json, d2c_L2_A_k01_R.npz; the four
+                                              .py files are byte-identical to the originals by cmp);
+                                              run_exact.sh / run_exact2.sh; c_L2x*.log; d2c_L2x*.json;
+                                              summarize.py -> exact_refits_summary.json (NUM refits and the
+                                              Gamma-convention translation, EST)

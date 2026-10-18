@@ -1,0 +1,290 @@
+STAGE 1 - DESIGNER D-B-symmetry (symmetry / charge change, G3221-type intermediate stage)                2026-10-17
+Base: B63 fermions (3x16_F(1), conj[S]/Phi17 pairs, singlets; K_min = 17), v20 51-parameter potential, one-step G3221
+'Am45' orientation.  Labels: EXACT / NUM (uncertainty) / EST / CONJ / LIT-abstract.  All code and small JSON in this
+folder; large LP/descent outputs in the session scratchpad (v22_DB\lp, copies of the R2-A inputs, read-only originals
+untouched).  Hygiene: only this folder was written in the worktree (git status at the end: section 9).
+
+0. VERDICT: NO SURVIVOR.  Every variant of this angle is discarded at D2 or D3.
+---------------------------------------------------------------------------------------------------------------------
+  variant                                        D1          D2                     D3                 first failure
+  V1a two-10 split, light H1+H2 bidoublets       PASS EXACT  PASS NUM (proxy)       FAIL NUM           D3
+      + Delta_R (C2-type, v_R ~ 3e10-1e11)
+  V1b same fields, + (8,3,1)_0 + (6,2,2)_{2/3}    PASS EXACT  PASS NUM (proxy)       FAIL NUM           D3
+      (C1622-type, v_R ~ 1e13)
+  V2  texture Z3 (family-dependent, h != d)       PASS EST    FAIL (EXACT inclusion  (R2-A noO3128 LP   D2
+      on the v20 content                                      in R2-C, NUM 109.7)    infeasible)
+  Main facts:
+  - EXACT: no X-charge assignment or abelian symmetry compatible with B63 removes the deep-vacuum drivers; the only
+    loophole (non-shared Yukawa entries) leaves 3 texture classes, forbids O15/O28/O45 together with O31, and is a
+    special case of the failed R2-C fit.  "A second 10 with different X" is EXACTLY a second 10 with X = -2.
+  - V1 (one new complex 10_H, X = -2): K_min = 17 re-derived (DP, MILP, LP: EXACT), anomalies 0, N_DW = 1, E/N = 8/3.
+    Flavour: the second 10 decouples Yu from Yd; the GUT proxy reaches chi2 ~ 0 at v_R = 3e10, 8e10 and 1e13 (NUM),
+    removing R2-C's m_s/m_d and C2 seesaw-window failures.
+  - V1 vacuum: the H2 = 0 slice (an EXACT necessary condition) passes the cheap sanity check (all R2-A deep rays lifted,
+    lambda_eff = 0.995 at tree level, no O(1) H-Delta_R portals), but 11/11 fresh descents over two feedback rounds
+    end deeper (-1.1 to -47.8 box units) and the coupling LP is INFEASIBLE after one round (|quartic| <= 1, with or
+    without the lambda_eff condition) and after two rounds (|quartic| <= 4).  Surviving drivers: O27_B02, O35_B02
+    (self-conjugate - no symmetry can act) and the |Sigma|^2|Phi17|^2 portal that tunes Delta_R light.
+  - So this angle removes diagnosis cause 1c-(i) but not 1c-(iii)/R4; the remaining cause sits in the 126bar's role as
+    the v_R-scale B-L breaker, outside the reach of symmetries.  D4 numbers are reported (section 6) for completeness.
+
+=====================================================================================================================
+1. WHAT A SYMMETRY / CHARGE CHANGE CAN AND CANNOT DO (EXACT, before any design)
+=====================================================================================================================
+(a) X charges.  X(F) = 1 for all three families (B63, fixed).  A d=4 Yukawa needs a scalar 10, 126bar or 120 with
+    X = -2.  The 10 is a REAL representation, so a "10_H with X = +2" is the complex conjugate of a 10_H with X = -2:
+    F.F.H2* with X(H2) = +2 is the same structure as F.F.H2' with H2' = H2*, X = -2.  Any other X(H2) gives no d=4
+    Yukawa.  So "two 10_H with different X" is, up to relabelling, "two 10_H with X = -2" (EXACT).  It does not create
+    a conjugate (F.F.H*) Yukawa: X(F.F.H*) = 4 for every Yukawa-carrying scalar (diagnosis 1b, extended to N 10s).
+(b) Abelian discrete symmetries with generic Yukawas.  If F_iF_jH_a and F_iF_jDelta share an entry (i,j) for every
+    Yukawa scalar, all their Z_n charges coincide: h_1 = h_2 = ... = d.  Then O31 (H*^2 Delta^2, charge 2(d-h)),
+    O28 (d-h), O35 and every H_a <-> H_b, H_a <-> Sigma copy are invariant (diagnosis 1c-ii, holds for any number of
+    10s; EXACT).  |Sigma|^4 (O27_B0x) and |H|^2|Sigma|^2 (O35) are self-conjugate: no symmetry acts on them.
+(c) The only loophole of (b) is a family-dependent Z_n with NO shared entry ("texture"); it is variant V2 below
+    (v2_textures.py, exact enumeration n = 3..8): it exists, but forbidding O31 forbids O15, O28 and O45 as well,
+    and its Yukawa sector is a special case of R2-C's failed fit.
+(d) Consequence.  No symmetry or charge assignment compatible with B63 removes the deep-vacuum drivers.  The one lever
+    of this angle that touches the ROOT cause (diagnosis 1c-(i): with only two (1,2,2)_0 multiplets in the theory,
+    "two light bidoublets" makes the whole bidoublet mass matrix O(v_R^2), so nothing in the H-Sigma plane keeps an
+    O(M_U^2) mass) is the SPLIT of the Yukawa carriers: put the second light bidoublet into a second 10_H (X = -2,
+    the only admissible "different" 10) so that the 126bar bidoublet can stay heavy.  This is design V1.
+
+=====================================================================================================================
+2. DESIGN V1 ("two-10 split"; the concrete minimal design)
+=====================================================================================================================
+Fermions: B63 unchanged (X; Z17 = X mod 17):  F 3x16(1;1) | V1 2x16(-35;16) | Vb1 16bar(39;5) | V2 16(-28;6) |
+  Vb2 16bar(32;15) | V3 16(34;0) | Vb3 16bar(-30;4) | T 2x10(2;2) | Pb 16bar(18;1) | N1 1(-63;5) | N1b 1(59;8) |
+  N2 1(-58;10) | N2b 1(54;3) | N3 1(-57;11) | N3b 1(61;10) | NMm 2x1(-2;15).
+Scalars (X; Z17; centre class z):  Phi210 (0;0;0, real) | Delta 126bar (-2;15;2) | H1 = H10 (-2;15;2) |
+  H2 = 10_H NEW (-2;15;2, complex) | S (4;4;0) | Phi17 (17;0;0).   No other new field, no new discrete symmetry.
+Renormalizable fermion couplings: the 12 B63 structures + F.F.H2 (3x3 symmetric) + Vb2.Vb3.H2 (14, EXACT, d1).
+Forbidden by X (EXACT): F.F.H_a* (X=4), F.F.Delta* (4), any Phi210 Yukawa, H_a.H_b without S (X=-4).
+New renormalizable scalar terms (every v20 H10 direction copied to H2 and to H1-H2 mixed forms; each SO(10) singlet
+  checked, d1_contract.json): m12^2 H1*.H2; kappa_ab H_a.H_b.S (ab = 11,12,22); Phi.H2*.Delta (O15'); Phi.H2*.
+  Delta*.S* (O38'); Phi^2.H2*.Delta (O45', 2 channels); H2*.Delta^2.Delta* (O28'); Delta^2.H_a*.H_b* (O31', O31'');
+  H_a*H_b x {1, S*S, Phi17*Phi17, Sigma*Sigma (2 ch.), Phi^2 (3 ch.)}; the two-10 self quartics (19 real vs 2).
+  Count (EST): ~60 new real parameters (51 -> ~110).
+Vacuum orientation and chain: SO(10) x U(1)_X --[<Phi17> ~ 1e17 > M_U: U(1)_X -> Z17]--> --[M_U ~ 0.6-2e16: Phi210 with
+  p, a != 0, omega = 0, D-odd, theta = atan(a/p) = -45 deg (Am45)]--> G3221 (no D-parity) --[<S> ~ 2.7-3.3e13:
+  Z17 and PQ broken, f_a ~ 2.3-2.7e12]--> --[v_R: Delta_R (1,1,3)_2]--> SM --[EW]-->.
+Light content (the vacuum's intended spectrum):
+  at M_U all of 210 + 126bar + both 10s heavy EXCEPT: the H1 and H2 bidoublets (two complex (1,2,2)_0), Delta_R, and
+  for the unifying variant also (8,3,1)_0 + (6,2,2)_{2/3} from the 210.  The 126bar (15,2,2) colour-singlet
+  bidoublet is HEAVY (O(M_U^2)); the light SM doublet is a combination of the four 10-doublets with a small
+  126bar up-type admixture |w_u| ~ 0.01-0.24 (fit, section 4).  Two content options:
+    V1-C2    = H1, H2 bidoublets + Delta_R          (v_R ~ 3e10-1e11)
+    V1-C1622 = V1-C2 + (8,3,1)_0 + (6,2,2)_{2/3}     (v_R ~ 4e12-1e13)
+Mechanism claimed for D3: the bidoublet mass matrix now lives on 6 real (2,2) irreps (H1, H1*, H2, H2*, Sigma, Sigma*);
+  two light complex bidoublets = rank-2 condition, still 10 real tunings (EXACT count (6-2)(6-2+1)/2), but the
+  orthogonal complex direction (mostly Sigma) keeps an O(M_U^2) mass.  EXACT reduction used in D3: V1 restricted to
+  H2 = 0 is a v20 potential in which the (H1, Sigma) block is a principal 2x2 submatrix of a rank-1 PSD matrix, i.e.
+  it has >= 1 light complex bidoublet ("C0-type without (8,3,1)").  Every deeper point of that slice is a deeper point
+  of V1, and every V1 coupling point restricts to a feasible point of the slice LP.
+
+=====================================================================================================================
+3. V1 - D1 CONTRACT (d1_contract.py -> d1_contract.json; R2-V's dual_dp.py, b63_verify.py, so10_chars.py and the
+   skeptic's sk_milp.py copied UNEDITED and re-run with the H2 item added)
+=====================================================================================================================
+- Anomalies: [SO(10)]^2 X = 0, grav-X = 0, X^3 = 0 (EXACT Fractions; the fermions are unchanged, H2 is a scalar).
+- Renormalizable fermion structures: 14 = the 12 of B63 + F.F.H2 + Vb2.Vb3.H2; no bare mass, no Phi210 Yukawa, no
+  family-exotic Yukawa (EXACT, SO(10) singlet counting over all species pairs x all insertions incl. H2, H2*).
+- Accidental kernel (12 Yukawas + every phase-sensitive renormalizable scalar term with H1 and/or H2): 21 charges, rank
+  14, kernel dimension 7 (unchanged), X in the kernel, and H2 carries exactly H1's accidental charges on the whole
+  kernel (EXACT).  Hence PQ = X - 17 G2, N = 34, E/N = 8/3, N_DW = 1 mod gauge (gcd(4,17) = 1) are unchanged (EXACT).
+- Quality: integer DP with H2: max_d [4 mu.q - 4(d-4)] = 0 for every 5 <= d <= 30 (tight at d = 6, 7, 9-17, 19, 21;
+  d = 21 is the tree operator S*^17 Phi17^4); own LP 4 mu_0 = 17.000.  HiGHS MILP (oracle and fully dressed sets,
+  d <= 22, every optimum re-verified in integers): certificate holds; independent column-generation LP: 4 mu_0 = 17.000.
+  => K_min = 17 (EXACT, three methods).  This also follows from R2-V's construction (H2 has the (X, z, q) of H10:
+  a duplicate DP item), but it was recomputed.
+- dtheta: same tree operator -> dtheta = 2.1e-11 at <S> = 3e13, <S>_max = 3.285e13 (unchanged, R2-V numbers).
+- y_s window: lower end 1e13/<S>_max = 0.304 unchanged; upper end >= the no-gauge floor 0.3166 > 0.304, so the
+  window is non-empty whatever the gauge environment (NUM, R2-V ys_rg); the extra 10 only weakens alpha_U slightly.
+D1: PASS (EXACT).
+
+=====================================================================================================================
+4. V1 - D2 FLAVOUR (v1_flavour.py, v1_flavour_eval.py -> out/*.json, v1_flavour_eval.log)
+=====================================================================================================================
+Structure (EXACT).  Light SM doublet components (v_u1, v_d1) [H1], (v_u2, v_d2) [H2], (w_u, w_d) [Sigma (15,2,2)]:
+    Yd = H + F,  Ye = H - 3F,  Yu = G + s'F,  Ynu = G - 3s'F,  M_R = C_R (v_R/c_d126) F,  C_R = 2 sqrt6,
+    H = Y1 v_d1 + Y2 v_d2,  G = Y1 v_u1 + Y2 v_u2,  F = Y126 w_d,  s' = w_u/w_d,  c_d126 = |w_d|.
+  H and G are independent symmetric matrices iff det[[v_d1, v_d2], [v_u1, v_u2]] != 0, so Yu is free: the
+  one-bidoublet lemma (s = 1) does not apply (two light bidoublets with independent Yukawas), and Ye != phase x Yd^T
+  because F (the 126bar (15,2,2) admixture) enters with the -3 Clebsch.  No structural obstruction on the Am45 G3221
+  orientation (R2-A's composition map has full rank there; realising the specific composition inside a V1 vacuum is
+  CONJ until Stage 2).  R2-C's failed 10+126 structure is the special case G = r H.
+Proxy fit (cheap, GUT scale): R2-C's code (lib_r2c.py, model_r2c.py copied unedited): data PDG-2024 masses at M_Z
+  (R2-C inputs) with a 1 % theory floor on all nine masses, PDG CKM, NuFIT 6.0 normal ordering with SK
+  (sin^2 th23 = 0.470(15)); bottom-up SM two-loop to v_R (+ B63 shift above M_s) and universal one-loop G3221 gauge
+  factors to M_U.  Quark and charged-lepton masses and the CKM are reproduced EXACTLY by construction (Yd diagonal,
+  Ye = W diag W^T, Yu = E_u diag E_u^T with CKM = E_u^T up to 6 free phases); fitted: 3 PMNS angles and both Delta m^2
+  (overall scale analytic) with 17 real parameters (W, 6 Yu phases, s').  Error model: chi2 = sum of squared pulls of
+  the 5 neutrino observables (quark/lepton pulls are identically 0).  The perturbativity window of v_R is
+  [M_R3/sqrt(4 pi) (f = C_R F/c_d126 <= sqrt(4 pi)), (v_R/c_d126) min(1, 1/|s'|) (|w_u|, |w_d| <= 1)].
+  NUM results (best of 20-30 multistarts; trust-region LS):
+    v_R     content  M_R3 cap   chi2      M_R [GeV]                 |s'|   v_R window          f(M_U)  |w_u|  m_D [GeV]          seesaw tuning*
+    1e13    R622     none       1.7e-13   5.1e11, 2.3e12, 2.3e13    76.7   [6.5e12, 4.2e13]    2.31    0.24   18.8, 10.4, 1.7    4.2 (none)
+    8e10    C2       2.8e11     5.0e-16   1.2e10, 5.1e10, 2.8e11    11.9   [7.9e10, 4.2e12]    3.50    0.019  69.5, 0.90, 0.011  3.7e-3
+    3e10    C2       1.06e11    1.8e-14   5.9e8, 3.7e10, 1.06e11    5.4    [3.0e10, 3.8e12]    3.53    0.008  67.5, 0.31, 0.008  1.5e-3
+    (* m_nu3 / (sigma_max(Ynu) v)^2 / M_R3; << 1 means the large Dirac eigenvalue is hidden by an isotropic direction
+       of the complex-symmetric M_R^-1: a cancellation in the seesaw formula.)
+  With the seesaw-cancellation measure constrained (--tunemin):
+    1e13    R622     3.5e13     9e-20     1.6e10, 4.0e12, 8.5e12    1.04   [2.4e12, 9.6e14]    -       -      -                  0.126 (>= 0.1)
+    8e10    C2       2.8e11     6e-8      2.9e8, 1.2e10, 2.8e11     12.5   [7.9e10, 1.7e12]    ~3.5    -      -                  0.010 (>= 0.01)
+    8e10    C2       2.8e11     2.39*     1.5e6, 1.1e10, 3.8e11     20.4   [1.1e11, 1.1e12]    -       -      -                  0.082 (asked 0.1)
+    (* 2.39 = 0.004 from the 5 neutrino pulls + 2.38 penalty: tuning >= 0.1 is NOT reached at v_R = 8e10.)
+  Assessment: chi2 <= 25 is reached (chi2 ~ 0, dof < 0: "exact fits exist", not a predictive success) at every v_R
+  tried in [3e10, 1e13].  The second 10 removes BOTH R2-C failure modes: the m_s/m_d = 34.6 prediction (it came from
+  Yu = r(H + sF), now absent) and the C2 seesaw-window problem (M_D can be reduced by the s'F term).  Caveats (EST):
+  (i) for v_R <~ 1e11 the fit sits at the Majorana perturbativity edge (f ~ 3.5) and needs a seesaw cancellation
+  (tuning measure 1e-2 reachable, 0.1 not reached at 8e10); Yukawa-dependent G3221 running is not in the proxy (R2-C: exact chain 40-80 below its proxy for the
+  constrained model; V1 has >= 11 more real parameters, so the exact fit is expected to stay ~0 at v_R ~ 1e13 - CONJ);
+  (ii) X-allowed d=5 terms (F F H_a Phi210/Lambda, F F Delta Phi210/Lambda ~ c (0.7-2)e-2, F F H_a* S*/Lambda ~ c 1.2e-5)
+  are not needed; with c ~ O(1) they are additional free (antisymmetric / 126-like) structures of the EFT fit.
+D2: PASS (NUM, proxy level) at v_R ~ 1e13 without tuning (tuning measure 0.13); at v_R ~ 3e10-1e11 PASS only with
+  f at its edge and a ~1e-2 seesaw cancellation.
+
+=====================================================================================================================
+5. V1 - D3 VACUUM (vac\: R2-A's r2_lp6.py, r2_descend.py copied UNEDITED; k3_common.py with only the two paths changed
+   to this worktree's identical v20 modules and to the scratch data folder; db_budget.py; job files jobs_*.txt)
+=====================================================================================================================
+Mechanism to be tested: with the second light bidoublet in H2, the (H1, Sigma) block keeps one O(M_U^2) direction
+  (mostly Sigma), as in R2-A's C0/V0 contrast where the round-1/2 cuts were liftable.  EXACT reduction (section 2):
+  the H2 = 0 slice of any V1 vacuum is a v20 point with >= 1 light complex bidoublet; so the slice LP below is a
+  NECESSARY condition for V1, and a deeper point of the slice is a deeper point of V1.  (The H2 directions themselves
+  are not covered: Stage 2, 506-real chart.)
+Setup: Am45 (x = 4) G3221 point; light content of the slice = one complex bidoublet (H1-dominated, 'D2') + Delta_R
+  (and, for V1-C1622, + (8,3,1)_0 + (6,2,2)_{2/3}); boxes |quartic| <= 1, |cubic| <= 2, |mass^2| <= 40; singlet-channel
+  |a0| <= 1/2; light-cubic suppression |b| <= 1e-5 along the H10 up-doublet (K3) - this is the condition that keeps
+  the light-doublet trilinears to light radial modes (alpha^2/2rho) negligible, i.e. NO O(1) H-Delta_R portals;
+  BFB bank 1155 rays incl. all R2-A deep rays; competitor cuts = ALL 40 R2-A descent banks at x = 4 (P831 x4, R1 x19,
+  R2 x12, R3 x4, N1 x3 = 474 points + subspace screens).
+Round 1 (V1s_D2_lb): FEASIBLE.  t = 9.24e-4 (heavy gap, |Phi| = 1 units), Hessian 35 zero / 0 negative / 12 light /
+  439 heavy, |grad| 3.9e-15, BFB min V4 = 0.0041 > 0 on every deep ray, every banked R2-A point lifted, a0 <= 0.5,
+  tree lambda_eff = 0.995 (lambda_direct 1.0, R_heavy 0.010, R_light 5e-5: no trilinear destruction; dialable down;
+  the one-loop CW shift was NOT computed because the point fails the descents below).
+  => the cheap sanity check named in D3 (quartic positive along the round-1/2 deep rays, small LP) PASSES (NUM).
+  Contrast: R2-A two-bidoublet cells were infeasible already with the R1+R2 cuts; the C1622-type slice (V1s_C1622_lb,
+  R2-A banks) is also feasible, t = 0.0125, lambda_eff 0.79.
+Fresh descents from the round-1 point (8 starts: 2 hs-rays, 3 random, 2 bank seeds; trust-region Newton on the full
+  486-chart with exact rows; stop at V - V* < -0.5): 7/7 completed runs end BELOW V* = -258.74 (1 run stopped above):
+    run        V - V*     |Phi| |H|  |Sigma|   leading negative contributions (box units)
+    bankA      -47.8      0.63  3.09  5.05    O27_B02 -42.2, Im O31 -41.8, Re O28 -40.2, O25 -30.0, O03 -17.7
+    p831       -18.0      0.63  2.81  4.36    Re O28 -25.5, O27_B02 -22.9, O25 -22.2, Im O31 -18.5, O03 -13.7
+    hs32        -8.37     0.83  1.52  4.01    O25 -18.9, O03 -15.2, O27_B02 -13.6, Re O28 -4.5, Im O31 -3.2
+    hs31        -7.83     0.82  1.77  4.05    O25 -19.2, O03 -15.9, O27_B02 -13.2, O35_B02 -3.9, Re O28 -2.7
+    rnd33/32/31 -1.4/-1.3/-1.1  1.6 0.7 2.0   O25 -4.8, O07 -4.5, O27_B02 -1.2, O22 -0.8
+  (O25 = |Sigma|^2 |Phi17|^2, O03 = |Phi17|^2, O27_B02 = 126bar 1050 self-projector; vac_round1_budget.json.)
+  So the deep H-Sigma class (O31/O28/O27) is NOT removed by keeping the Sigma bidoublet heavy: these points sit at
+  |Sigma| ~ 4-5 |Phi|, where the Sigma mass term is subleading to the quartics; and a Sigma/Phi17-portal class appears
+  (O25 < 0 is what tunes Delta_R light at v_R << M_U - the R4 'Delta_R trap' in another guise).
+Round 2 (all R2-A banks + the 8 round-1 V1 banks):
+    V1s_D2_lb_R2      (|b| <= 1e-5, box 1)        INFEASIBLE at all 4 outer U-iterations
+    V1s_C1622_lb_R2   (C1622 content, box 1)      INFEASIBLE
+    V1s_D2_nolb_R2    (NO light-cubic, box 1)     INFEASIBLE (so not even O(1) portals help inside |quartic| <= 1)
+    V1s_D2_b1e3_R2    (|b| <= 1e-3, box 1)        INFEASIBLE
+    V1s_D2_lb_box4_R2 (|b| <= 1e-5, |quartic| <= 4, |cubic| <= 8)  FEASIBLE: t = 1.35e-3, lambda_eff 1.025, 35/0/12/439
+    V1s_D2_lb_nobank  (control: no banks)          feasible, t = 6.2e-4
+  Fresh descents from the box-4 round-2 point (V* = -1024.9 in that box): 4/4 completed runs end BELOW V*
+  (2 random runs stopped early to save time):
+    bankA -7.50 (|H| 1.33, |Sigma| 4.97): O27_B02 -45.3, O25 -8.9, O03 -5.7      p831 -8.24: O27_B02 -36.4, O25 -8.0, Im O31 -4.1
+    hs41  -7.40 (|H| 2.04, |Sigma| 4.47): O27_B02 -17.4, O35_B02 -12.6, O25 -7.2  hs42 -6.85: O27_B02 -13.7, O35_B02 -9.5, O25 -6.2
+  The phase-sensitive drivers (O31, O28) are tamed in this round; what remains are O27_B02 and O35_B02 (|Sigma|^4 and
+  |H|^2|Sigma|^2 in the 45 channel: self-conjugate, untouchable by ANY symmetry - EXACT) plus the |Sigma|^2|Phi17|^2
+  portal O25 < 0 that the light Delta_R needs.
+Round 3 (box 4; all R2-A banks + 8 round-1 + 4 round-2 V1 banks):
+    V1s_D2_lb_box4_R3     INFEASIBLE          V1s_C1622_lb_box4_R3     INFEASIBLE
+  (evidence compiled in vac_summary.json; budgets vac_round1_budget.json, vac_round2_box4_budget.json.)
+D3 VERDICT: FAIL (NUM, not certified).  The cheap sanity check passes, but the mechanism is not "controllable": every
+  fresh descent finds a deeper GUT-scale doublet-breaking vacuum (11/11 completed runs over two rounds), the coupling
+  LP becomes infeasible after one feedback round with |quartic| <= 1 (also without the light-cubic condition, and with
+  it relaxed to 1e-3) and after two rounds with |quartic| <= 4, for both light contents.  The drivers that survive are
+  the self-conjugate 126bar invariants and the Delta_R-tuning portal - diagnosis root cause 1c-(iii)/R4, which no
+  symmetry or charge change can reach.  Limits of the FAIL (as in R2-A): LP infeasibility at fixed light subspaces U
+  with a local outer U-iteration; one orientation (Am45) and x = 4; boxes 1 and 4; the H2 directions (Stage-2 chart)
+  were never needed because the H2 = 0 slice already fails.
+
+=====================================================================================================================
+6. V1 - D4 UNIFICATION / PROTON / LANDAU and D5 COST   (reported for completeness; V1 is discarded at D3)
+=====================================================================================================================
+D4 (d4_unif.py, d4_thresholds_v1.py; R2-B's r2b_lib/r2b_model and R2-A's r2a_thresholds copied UNEDITED, the extra
+  10 added to the SO(10) phase by monkey-patching; two loops, MS-bar S_V, M_s = 1e13, y_s = 0.336, M_Phi = 1e17;
+  tau_LA = lattice W0 = 0.131 GeV^2 with chain A_R = 3.28, i.e. repository / 6.5):
+  Nominal (all heavy states at M_U; the light lists are gauge-identical to R2-B's, so only Lambda moves):
+    V1-C2:     v_R 2.13e10, M_U 6.05e15, alpha_U^-1 34.64, tau_LA 1.64e34 (FAIL, 0.68 x Super-K), L2 12.0 (R2-B 14.2), L3 4.6
+    V1-C1622:  v_R 9.5e12,  M_U 1.87e16, alpha_U^-1 27.32, tau_LA 9.4e35, L2 2.20 (2.43), L3 0.98 (1.05)
+    (y_s = 0.304 / 0.368 variants change L2 by <= 12 %, nothing else.)
+  Explicit spectra (block spectra of the LP points, G3221 assignment; H2's own triplets at M_U, EST):
+    V1s_D2_lb (round-1 V1-C2 point)        v_R 9.9e10, M_U 6.2e15, aU^-1 26.9, tau_LA 1.13e34 FAIL, L2 0.75 FAIL
+                                            (13 multiplets pinned at m^2 = t = 9.2e-4: (8,3,1),(8,1,1),(6,3,1),Delta_L, triplets)
+    V1s_D2_lb_box4_R2 (round-2, box 4)     v_R 1.24e11, M_U 1.08e16, aU^-1 28.2, tau_LA 1.09e35, L2 1.85, L3 0.80
+    V1s_C1622_lb (round-1 C1622 point)     v_R 1.1e13,  M_U 2.16e16, aU^-1 24.7, tau_LA 1.38e36, L2 1.07, L3 0.50
+    transplanted R2-A C2 spectra (+H2):    G7_Am45_C2 v_R 8.3e10 tau_LA 3.7e34 L2 3.15; S5_Am45_C2 v_R 3.05e10 tau_LA 2.49e34
+  Seesaw consistency: V1 flavour needs v_R >= M_R3/sqrt(4 pi) with M_R3 adjustable down to ~1e11 (C2, f at its edge,
+  seesaw cancellation 1e-2) or no tuning at v_R ~ 1e13.  The box-4 round-2 point (v_R 1.24e11) and the C1622 point
+  (1.1e13) are inside the flavour windows.
+  D4 verdict (were D3 passed): spectrum-dependent - FAIL at the round-1 box-1 point (tau and Landau), PASS at the
+  box-4 round-2 point (two loops; three-loop Landau 0.80 fails) and marginal (L2 = 1.07) at the C1622 point.
+  The C2 seesaw-window problem of R2-B/R2-C is removed by the second 10 (EXACT reason: Yu is decoupled from Yd).
+D5 (cost):
+  New fields: 1 (complex 10_H, 20 real d.o.f.; X = -2, Z17 = 15, z2).  New couplings: ~60 real (EST: 5 complex
+  H-linear copies +10, 8 real H*H-type structures x 3 = +24, kappa_ab +4, O31-type +4..6, two-10 self quartics +17);
+  51 -> ~110 real parameters.  Tunings: 10 real conditions for the two light bidoublets (EXACT, same as R2-A),
+  +2 for V1-C1622, + v_R/M_U, <S>/M_U, EW, lambda placement; flavour at v_R ~ 1e11: a ~1e-2 seesaw cancellation.
+  Each tuned multiplet again needs the one-loop redo (K3: CW 1e5-1e7 x tree).  Certification: U2a at best (K4).
+  Engineering for Stage 2: 486 -> 506-real chart (second 10), ~60 new compiler rows incl. H1 x H2 channels that
+  vanish for one 10 (45-type contractions), SM-isotypic blocks with 3 bidoublet families, LP/descent code (logic
+  unchanged), SARAH model + G1 attestation; the quality DP is unchanged (EXACT).  EST 1-2 weeks incl. validation.
+
+=====================================================================================================================
+7. VARIANT V2 ("texture Z_n": the literal symmetry route; v2_textures.py -> v2_textures.json)
+=====================================================================================================================
+Design: B63 + v20 field content unchanged (one H10, one 126bar); add a family-dependent Z_n with h != d and no shared
+Yukawa entry, chosen so that O31 (and hence the H-Sigma drivers) is forbidden.
+Exact enumeration (n = 3..8, all family charges, h, d, Phi parity q in {0, n/2}, generic non-singular M_R and charged
+mass matrices): 240 admissible charge assignments, only 3 texture classes up to family permutations:
+  (a) A_H = {11, 23}, A_D = {13, 22}  (e.g. Z3, f = (0,1,2), h = 0, d = 1)      - 4 Yukawa entries in total
+  (b) A_H = {11}, A_D = {12, 33}   (c) A_H = {12}, A_D = {11, 23}             - 3 entries
+EXACT facts verified on every case: O31 forbidden => O15, O28 and O45 forbidden (the H-Sigma bidoublet mixing can only
+  come from O38 ~ lambda38 <S><Phi>); kappaH (H H S) and O38 are never both allowed; in 216/240 cases (classes b, c)
+  the textures leave an extra continuous accidental U(1) (h != d continuously) - an extra Goldstone/axion direction.
+D1: class (a): no new field and no extra continuous symmetry (EXACT); a global Z3 leaves the DP untouched (K_min = 17,
+  EXACT), but Planck d=5 terms regenerate O31 at ~ c |Phi|/M_Pl,red ~ 4e-3 c, comparable to the driver sizes
+  |c_O31| = 0.008-0.05 (EST), so only a gauged Z3 protects it (Z3-SO(10)^2, Z3-grav, Z3^3 with F only: sum f = 3,
+  sum f^3 = 9 -> 0 mod 3; exotic charges not assigned - EST).  D1 PASS (conditional on gauging; EST).
+D2: FAIL.  The V2 Yukawa sector (one H10 + one 126bar, two light bidoublets, textured entries) is a SUBSET of R2-C's
+  parameter space (EXACT inclusion), so chi2_V2 >= chi2_R2-C,min = 109.7 (exact chain) / 182.6 (proxy) > 25 (NUM,
+  R2-C's 4-optimizer global search).  Additionally (supporting, NUM, R2-A L6_D470_C1622_bankA1_noO3128): with O31 = O28
+  = 0 the two-bidoublet LP is already INFEASIBLE (local constraints + P831 banks) - the tuned bidoublet matrix needs
+  O31/O28 (with O15, O45 also forbidden in V2 it can only be worse).
+V2 discarded at D2.
+
+=====================================================================================================================
+8. WHAT THIS MEANS FOR THE PROGRAMME (recommendations; CONJ unless labelled)
+=====================================================================================================================
+- The two-10 split is the right fix for the FLAVOUR side of the G3221 problem (NUM): it keeps one heavy H-Sigma
+  direction and frees Yu.  If a later design solves the vacuum through another route, adding H2 (DP-neutral, EXACT)
+  is a cheap way to obtain realistic Yukawas with v_R anywhere in ~[3e10, 4e13].
+- The vacuum obstruction that survives is the 126bar sector at v_R << M_U: the light Delta_R needs a negative
+  |Sigma|^2|Phi17|^2 (and Phi) portal and O27_B02 < 0 (K3), and those self-conjugate invariants open deep Sigma
+  (and H-Sigma via O35_B02) directions.  No symmetry reaches them.  Only a changed breaking pattern can: B-L broken at
+  M_U (A1), Delta_R^{++} given an O(M_U^2) mass by a new portal (45_H/54_H, A2/A3), or B-L broken by a 16_H (E).
+  These are other designers' angles; none was screened here.
+- If one wanted to push V1 further anyway (NOT recommended): a 506-real-chart global search including the H2
+  directions and a third feedback round at box 1 would be needed; the round-2/3 infeasibility makes success unlikely
+  (EST < 5 %).
+
+=====================================================================================================================
+9. FILES AND HYGIENE
+=====================================================================================================================
+This folder: REPORT.txt; d1_contract.py/.json/.log (+ copied b63_verify.py, so10_chars.py, dual_dp.py, sk_milp.py);
+  v1_flavour.py, v1_flavour_eval.py/.log, out/*.json (+ copied lib_r2c.py, model_r2c.py, inputs_mz.json);
+  d4_unif.py/.json, d4_thresholds_v1.py/.json/b.json (+ copied r2b_lib.py, r2b_model.py, r2a_thresholds.py,
+  gauge_ratios.json); v2_textures.py/.json; vac\ (k3_common.py [paths only], r2_lp6.py, r2_descend.py, r2_verify.py,
+  r2a_cw_lambda.py copied unedited; db_budget.py, db_vac_summary.py, db_lp_jobs.sh, db_desc_jobs.sh, jobs_*.txt);
+  vac_summary.json, vac_round1_budget.json, vac_round2_box4_budget.json; run_after_A.sh, run_R2b.sh.
+Scratch (not committed): ...\scratchpad\v22_DB\lp (copies of the R2-A inputs + all LP/descent outputs).
+The R2-A/R2-C/R2-V originals and the scratch folders wfV21, wfV21R2 were only read.  'git status --short' of the
+worktree at the end: only '?? research/v22_scalar_redesign/' (no file outside stage1\D-B-symmetry was written by
+this designer; no __pycache__ created: python -B, PYTHONDONTWRITEBYTECODE=1).  _rescope and other worktrees untouched.
+Literature: one search (arXiv 1903.08241, 1102.5148, hep-ph/0510139, hep-ph/0605006 seen as search snippets only,
+  LIT-snippet); no claim of this report rests on them.

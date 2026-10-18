@@ -1,0 +1,221 @@
+{
+ "design": "V1 two-10 split: + H2 = 10_H(X=-2)",
+ "anomalies": {
+  "SO10^2_X": "0",
+  "grav_X": "0",
+  "X^3": "0",
+  "net_16_minus_16bar": 3,
+  "SO10^3": "0 identically (SO(10) has no cubic Casimir); net chirality 3 = families",
+  "b_X_integer_X": "101203",
+  "partnerships": {
+   "V1'+Vb1 [conj S]": {
+    "charge_sum": 4,
+    "T_p": "4"
+   },
+   "V2+Vb2 [conj S]": {
+    "charge_sum": 4,
+    "T_p": "4"
+   },
+   "V3+Vb3 [conj S]": {
+    "charge_sum": 4,
+    "T_p": "4"
+   },
+   "T1+T2 Majorana [conj S]": {
+    "charge_sum": 4,
+    "T_p": "2"
+   },
+   "V1''+Pb [Phi17]": {
+    "charge_sum": -17,
+    "T_p": "4"
+   }
+  },
+  "T_S": "14",
+  "T_Phi": "4",
+  "lemmaA_6+2T_S-17/2T_Phi": "0",
+  "S_coupled_Dirac_equivalent_components": 62,
+  "all_zero": true
+ },
+ "n_structures": 14,
+ "structures": [
+  "F.F.Delta",
+  "F.F.H10",
+  "F.F.H2",
+  "V1.Vb1.conj[S]",
+  "V1.Pb.Phi17",
+  "V2.Vb2.conj[S]",
+  "Vb2.Vb3.H10",
+  "Vb2.Vb3.H2",
+  "V3.Vb3.conj[S]",
+  "T.T.conj[S]",
+  "N1.N1b.S",
+  "N2.N2b.S",
+  "N3.N3b.conj[S]",
+  "NMm.NMm.S"
+ ],
+ "kernel": {
+  "n_charges": 21,
+  "constraint_rank": 14,
+  "kernel_dim": 7,
+  "X_in_kernel": true,
+  "H2_charge_equals_H1_charge_on_kernel": true,
+  "scalar_projection_rank": 2,
+  "new_scalar_terms_SO10_singlets": {
+   "kappa11 H1.H1.S": 1,
+   "kappa12 H1.H2.S": 1,
+   "kappa22 H2.H2.S": 1,
+   "m12^2 conj[H1].H2": 1,
+   "Phi210.conj[H1].Delta (O15)": 1,
+   "Phi210.conj[H2].Delta (O15')": 1,
+   "Phi210.conj[H2].conj[Delta].conj[S] (O38')": 1,
+   "Delta^2.conj[H1].conj[H2] (O31')": 1,
+   "Delta^2.conj[H2]^2 (O31'')": 1,
+   "conj[H2].Delta^2.conj[Delta] (O28')": 1,
+   "conj[H1]H2 Phi210^2 (portal mixing)": 4
+  }
+ },
+ "dp": {
+  "certificate": {
+   "label": "V1 oracle set (X=0, centre, Lorentz) with H2",
+   "use_centre": true,
+   "dmax": 30,
+   "seconds": 0.12172603607177734,
+   "max_excess_x4_over_5<=d<=20": 0,
+   "at_d": 6,
+   "monomial": {
+    "V1^": 1,
+    "V2^": 1,
+    "T^": 1,
+    "N3b^": 1
+   },
+   "certificate_holds_d<=20": true,
+   "max_excess_x4_over_all_d<=30": 0
+  },
+  "rows_excess": {
+   "5": -4,
+   "6": 0,
+   "7": 0,
+   "8": -4,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": -4,
+   "19": 0,
+   "20": -4,
+   "21": 0,
+   "22": -4,
+   "23": -6,
+   "24": -6,
+   "25": -6,
+   "26": -6,
+   "27": -6,
+   "28": -6,
+   "29": -8,
+   "30": -8
+  },
+  "no_centre": {
+   "label": "V1 superset without centre",
+   "use_centre": false,
+   "dmax": 24,
+   "seconds": 0.08567523956298828,
+   "max_excess_x4_over_5<=d<=20": 6,
+   "at_d": 6,
+   "monomial": {
+    "Vb1^": 1,
+    "V2^": 1,
+    "Delta": 1,
+    "S^": 1,
+    "Phi17": 1
+   },
+   "certificate_holds_d<=20": false,
+   "max_excess_x4_over_all_d<=24": 6
+  },
+  "own_lp_4mu0": {
+   "mu_0_max": 4.25,
+   "4mu0": 17.0,
+   "mu": [
+    4.25,
+    -3.5,
+    -7.0,
+    -14.25,
+    -12.0,
+    -12.75
+   ],
+   "iterations": 20,
+   "cuts": 42
+  },
+  "seconds": 1.9449951648712158
+ },
+ "milp": {
+  "oracle": {
+   "worst_d_ge_5": {
+    "val": 8,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     -2,
+     0,
+     1,
+     0
+    ],
+    "mono": {
+     "V2*": 2,
+     "T": 1,
+     "N2": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 6,
+    "sign": 1
+   },
+   "holds": true,
+   "all_exact_ok": true
+  },
+  "dressed": {
+   "worst_d_ge_5": {
+    "val": 8,
+    "excess4": 0,
+    "q": [
+     0,
+     0,
+     -2,
+     0,
+     1,
+     0
+    ],
+    "mono": {
+     "V2*": 2,
+     "T": 1,
+     "N2": 1
+    },
+    "exact_ok": true,
+    "status": 0,
+    "msg": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "d": 6,
+    "sign": 1
+   },
+   "holds": true,
+   "all_exact_ok": true
+  },
+  "lp_colgen_dressed_4mu0": {
+   "mu": [
+    4.25,
+    -3.5,
+    -7.0,
+    -14.25,
+    -12.0,
+    -12.75
+   ],
+   "four_mu0": 17.0,
+   "iterations": 31,
+   "cuts": 31
+  }
+ }
+}

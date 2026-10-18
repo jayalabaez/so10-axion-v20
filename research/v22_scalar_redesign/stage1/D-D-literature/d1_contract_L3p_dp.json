@@ -1,0 +1,53 @@
+{
+ "kernel": {
+  "n_species": 20,
+  "rank_contract_terms": 13,
+  "kernel_dim_contract": 7,
+  "rank_all_phase_sensitive_monomials_deg<=4": 13,
+  "kernel_dim_all": 7,
+  "n_extra_monomials": 18,
+  "X_in_kernel": true,
+  "G2_in_kernel": true
+ },
+ "dp": {
+  "max_excess_x4_5<=d<=20": 0,
+  "at_d": 6,
+  "monomial": {
+   "V1^": 1,
+   "V2^": 1,
+   "T^": 1,
+   "N3b^": 1
+  },
+  "holds_d<=20": true,
+  "max_excess_x4_d<=40": 0,
+  "tight_d": [
+   6,
+   7,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   19,
+   21
+  ]
+ },
+ "dp_lp": {
+  "4mu0_LP_optimum": 17.0,
+  "mu": [
+   4.25,
+   -3.5,
+   -7.0,
+   -14.25,
+   -12.0,
+   -12.75
+  ],
+  "iterations": 20,
+  "cuts": 42
+ },
+ "item_types_identical_to_L1": true
+}

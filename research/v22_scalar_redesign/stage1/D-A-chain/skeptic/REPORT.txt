@@ -1,0 +1,176 @@
+ADVERSARIAL SKEPTIC REPORT - Stage 1, design D-A-chain / A1 'SM-direct'                                   2026-10-17
+=====================================================================================================================
+Folder: research\v22_scalar_redesign\stage1\D-A-chain\skeptic\  (all code here is mine; the designer's files and the repo
+were only read; lib_r2c.py / inputs_mz.json are unedited copies of the R2-C library the designer also copied).
+Repo modules imported read-only: the v20 486-real chart, potential evaluator (evaluate_directions/coefficient_jacobian),
+parameter_rows, gauge_orbit_matrix, direct tensor forms.  'git status --short' of the worktree: only
+'?? research/v22_scalar_redesign/' before and after.  At most two heavy processes at a time.
+Labels: EXACT / NUM (uncertainty) / EST / CONJ / LIT-abstract.
+
+VERDICT: KILLED (killed = true).
+  * D3 FAIL, decisively and more strongly than the designer reports: the designer's final flavour-capable design point
+    L6 (and the K2 flavour points L3_S2_D1e, L3_S2_D1e_f01 and L1_S2_D1) is UNBOUNDED FROM BELOW at tree level (explicit
+    ray, exact quartic interpolation, a4 = -0.0055), so it has no global minimum at all; 3/3 of my own descents run
+    away; all 5 designer lower points reproduced on an independent evaluation path; lambda_eff(heavy) = -2.76 and
+    -4524 including the light S mode.
+  * D2 (first in the D1-D5 order) NOT REPRODUCED: the fitted Clebsch structure is not that of the operator named (EXACT);
+    with the exact structure the fit fails (chi2 >= 98.8 for the 120 channel; ~3.9e3 with 120+126 channels and the
+    SM-direct seesaw link) [section 3].
+  * D1 reproduced (EXACT).
+  * D4 reproduced under the designer's assumption (all heavy states at M_U); with the designer's own L6 spectrum the
+    nominal point fails two-loop Landau (Lambda_2L ~ 0.8 M_Pl,red) [section 4].
+
+---------------------------------------------------------------------------------------------------------------------
+1. D1 CONTRACT - REPRODUCED (EXACT)
+---------------------------------------------------------------------------------------------------------------------
+sk_d1.py (own code, Fractions + sympy):
+  [SO(10)]^2 X = 0, X^3 = 0, grav-X = 0; net 16 - 16bar = 3.
+  Accidental kernel: 18 renormalisable constraints (12 Yukawas + kappaH, O15, O38, O31, O28, O45), rank 13 on 20
+  charges -> kernel dim 7; X and G2 (V1 -1, Vb1 +1, Phi17 +1) in the kernel; PQ = X - 17 G2: N = 34, E = 272/3,
+  E/N = 8/3; theta_eff = 17 theta_S - 4 theta_Phi17, gcd(17,4) = 1 -> N_DW = 1 mod gauge (R2-V centre argument).
+  The d=5 Yukawa operators the design relies on (F.F.H10.Phi210, F.F.Delta.Phi210, F.F.H10*.S*) carry zero charge
+  under all 7 kernel generators -> they cannot alter PQ, N, E/N or N_DW.
+  K_min: the field content is literally B63 + v20 scalars (no new scalar), the designer's dual_dp.py is byte-identical
+  to R2-V's (diff = 0); I re-ran an unedited copy in dp_rerun\ (13 s): max_O 4[mu.q - (d-4)] = 0 for every d <= 20
+  and <= 0 up to d = 40, DP = brute force for d <= 7, own LP 4 mu_0 = 17.000, no-centre superset fails at d = 6 (as R2-V); R2-V's certificate is a symmetric-phase statement over all
+  gauge-invariant monomials (every vev an external leg), so it depends only on charges, not on the vacuum orientation.
+  The set of vev-carrying fields (Phi210, Delta_R, S, Phi17, EW doublet) is the same as in G3221.  Delta enters vev
+  monomials only as |Delta|^2 (B-L), which I confirm.  No missed coupling, no K <= 16 closure: none can arise because
+  no field was added.  dtheta = 2.1e-11 at <S> = 3e13 holds only if <Phi17> stays ~1e17 GeV (see 4c).
+  => D1 PASS (EXACT), with the caveat in 4c.
+
+---------------------------------------------------------------------------------------------------------------------
+2. D3 VACUUM - FAIL, REPRODUCED AND STRENGTHENED (NUM; exact polynomial checks)
+---------------------------------------------------------------------------------------------------------------------
+2a. Independent re-evaluation of every designer descent value (sk_vac_eval.py; J path = evaluate_directions +
+    coefficient_jacobian, NOT the parameter_rows path used by the LP/descents; q* rebuilt from the point meta, max dev 0):
+      case            V* (indep)        Vmin-V* indep     designer          stationarity  gauge-tangent |dV|
+      L2/DA_hs11      -0.828419771      -10.257910734     -10.257910734     2e-10         5e-9
+      L2/DA_R2hs2end  -0.828419771       -1.012578864      -1.012578864     2e-10         1e-9
+      L4/DB_hs21      -253.659935800    -12.733548979     -12.733548979     6e-10         1e-9
+      L6/DC_hs31      -253.951014489     -0.024669579      -0.024669579     9e-10         6e-10
+      L6/DC_rnd32     -253.951014489     -0.809556088      -0.809556088     9e-10         3e-10
+    All five lower points are genuine, gauge-inequivalent points of the same potential (agreement <= 1e-11).
+2b. Local spectrum at L6 re-derived from the stored exact Hessian (sk_lambda.py): |grad| = 2e-13, 35 zero / 0 negative /
+    53 light / 398 heavy, min heavy 0.0392; the tuned doublet is a 4-real cluster at 2.230e-7 with C2L = 3/4, Y^2 = 1/4,
+    C3 = 0 and 50.0% H10 / 50.0% Sigma.  The designer's local claims hold.
+2c. MY OWN DESCENTS at L6 (sk_descend.py: regularised Newton on exact rows, every accepted point re-valued on the J
+    path; 3 starts of my choice, none of them the designer's seeds):
+      H05   (q* + 0.05 x tuned-doublet direction, i.e. along the SM Higgs) : V-V* = -1.35e3 after 8 rows, still falling
+      CONT  (continuation of the designer's unconverged DC_hs31)           : V-V* = -2.30e4 after 7 rows, still falling
+      R4242 (random H-Sigma-S ray, own seed)                               : V-V* = -1.91e4 after 7 rows, still falling
+    3/3 run away with |Phi|, |H10|, |Sigma|, |S| ~ 10-23 |Phi*|, gradient growing (2.9e2 - 2.7e3).
+2d. UNBOUNDED FROM BELOW (sk_bfb.py, sk_bfb_sub.py, sk_bfb_all.py).  V_c(lambda d) is an exact quartic in lambda; five
+    J-path values fix a0..a4 (checked on a sixth point, rel. err 4e-15).  Along d = H05 endpoint direction:
+      V(lambda d) = -1.526 lambda^2 - 0.0760 lambda^3 - 0.005521 lambda^4      (a4 < 0 by 1e11 x the numerical error)
+    Without the Phi17 block: a4 = -0.00973.  Every 1-, 2- and 3-block sub-direction has a4 > 0; the runaway needs
+    Phi210 + H10 + Sigma + S together.  Budget of a4 (sk_bfb_budget.py): im O38 = Phi210.H10*.Delta*.S* at its box edge
+    c = +1.000 (-0.028), Phi210 self-quartics O48_B01 (c = -0.436) and O48_B03 (-0.018 together -0.034), the 126bar norm
+    O26 (c = -0.499, -0.011), O45_B02, O44_B06.  The LP's "BFB bank" only enforced V4 >= 1e-4 on banked rays.
+    The same runaway rays are ALSO unbounded for the designer's other flavour-capable points (couplings from their npz):
+      L1_S2_D1 a4 = -0.020/-0.026;  L3_S2_D1e (the D2 'clean K2 point') -0.008/-0.020;  L3_S2_D1e_f01 +0.003/-0.007;
+      L6 -0.0055/-0.0145   (H05 / CONT directions; the non-flavour points L2, L4, L5 are bounded along these rays but
+      have the deeper finite vacua of 2a).
+    => Every flavour-capable SM-direct point the designer produced is unbounded from below at tree level.  This is not
+    'metastable vs global': there is no global minimum to compare with.  (NUM; the interpolation is exact up to fp.)
+2e. lambda_eff at L6 reproduced (sk_lambda.py, own u from the Hessian eigenspace, eta = 0.07 vs the designer's 0.1;
+    agreement to 1e-13 because the central differences are exact for a quartic):
+      V4/6 = +0.2156, sum_heavy b^2/m^2 = 5.945 -> lambda_eff(heavy) = -2.757 (largest single term 4.87 from a heavy
+      (1,1)_0 mode, m^2 = 0.160: the O(1) H-singlet portal of the diagnosis R5);
+      light-mode term from the S radial mode (m^2 = 5.0e-7): b^2/m^2 = 9043 -> lambda_eff(all light) = -4524.
+    The S-mode term comes from re kappaH = -2.000 (O12 at its box edge).  So at L6 the tree Higgs quartic cannot be
+    matched to lambda_SM(M_U) ~ -0.04..0 by any one-loop dial (|CW| ~ 1.3).  This violates D3's "WITHOUT the O(1)
+    portals that destroy lambda_eff" clause independently of the vacuum depth.
+D3 verdict: FAIL (NUM, U2a standard; a FAIL needs no certificate).  The designer's FAIL is correct but understated:
+'deeper vacua at -0.03 to -12.7' should read 'unbounded below at L6/L3/L1_S2_D1 and deeper finite vacua at L2/L4'.
+
+---------------------------------------------------------------------------------------------------------------------
+3. D2 FLAVOUR - AS CLAIMED NOT REPRODUCED; EXACT CLEBSCH DEFECT
+---------------------------------------------------------------------------------------------------------------------
+3a. EXACT (sk_clebsch.py; explicit 32x32 SO(10) Clifford algebra, 16 by chirality, SM states by Cartan weights, the
+    repo's own p, a, omega four-forms).  At the design orientation omega = 0:
+      120 channel (H10 x Phi210)_120 = interior(H, Phi): the A (15,1,1) form contributes ZERO for a doublet H (it has no
+        SO(4) index); the P form gives an antisymmetric coupling exactly proportional to the 10-channel pattern on every
+        quark and lepton (doublet, singlet) entry (ratio 1, residual 0): c_e = c_u = c_D = 1 EXACTLY in the proxy
+        normalisation M_d = H+F+G, M_e = H-3F+c_e G, M_u = r(H+sF+c_u G), M_D = r(H-3sF+c_D G).
+      126 channel (H ^ A): symmetric, lepton/quark = -3, uniform in u/d -> pattern (1, -3, r, -3r).
+      omega pieces (S3/S4 orientations only) are not proportional to the 10 pattern (residual 1).
+    The designer fitted c_e, c_u, c_D as free reals and found (-0.33, 0.12, 13.0) [free R] and (-3.6, -0.12, 52.6)
+    [R >= 5e15]; these are NOT attainable by the operator they name (F.F.H10.Phi210/Lambda, 120 channel, 'no
+    F.F.Delta.Phi210 terms') at their orientation.  Also: 10 x 210 = 120 + 126 + 126bar + 1728 has no '10 channel'
+    (the design text says '120 and 10 channels').
+3b. Coefficient-size translation (EST): G (down units) = c p |Phi|/Lambda v_d^10 N with v_d^10 = v_u^10/r ~ 1.9 GeV, not
+    v = 174 GeV.  The designer's |G| = 0.013-0.037 GeV therefore means c ~ 0.5-1.5, not 'c ~ 0.01-0.02'.
+3c. Refits with the exact structure (sk_flavour.py, the designer's own GUT targets and error model, PDG-2024/NuFIT 6.0,
+    18 observables; size bound |rG|, |rF'| <= umax in the up sector; umax = 33 GeV is the designer's |G| <= 0.5 GeV
+    bound (c <~ 20), umax = 5 GeV is c <~ 3):
+      mode (exact Clebsch)              umax  R        chi2_min   notes
+      free c's (designer, reproduction)  33   free     7.5e-13    reproduces their 0.000 (and 0.060 at R >= 5e15)
+      120 channel only (c = 1,1,1)       33   free     1340.8     seed 11; m_s/m_d 18.2; pulls m_s -18, m_b +18,
+                                                                  m_c +15, s23 +14, m_d -10, m_t -9, delta -8
+      120 channel only, 2nd seed         33   free     98.8       seed 23; m_s -7.5, m_c +3.6, m_d -3.5, m_mu +2.7
+      120 + 126 channels                 33   free     0.070      needs rF' = 17.9 GeV (c ~ 11), R = 1.2e13
+      120 + 126 channels                  5   free     0.21       rF' at the bound 5 GeV, R = 3.3e13
+      120 + 126 channels                 33   >= 5e15  3868       pulls sin2_th23 -31, sin2_th13 -37, dm21 -39
+      120 + 126 channels                  5   >= 5e15  3861       (+ size penalty 210); same neutrino pulls
+    (local optimiser, multi-start + polish + hops, 16 min each; values are upper bounds on chi2_min.)
+    R = M_R/F is NOT a free parameter in the SM-direct vacuum with renormalisable M_R: M_R = c_R f v_BL and F = f v_d^126
+    share the Yukawa f, so R = c_R v_BL / v_d^126 ~ 1e16 (v_d^126 = |w_d| v ~ 5 GeV at L6; the designer's own link is
+    R >= 5e15).  The free-R fits (R ~ 1e13) are therefore not the candidate's structure.  The designer's R >= 5e15 fit
+    (chi2 0.060) worked only through c_D = 52.6, which the named operator cannot supply (c_D = 1 exactly).
+D2 verdict: NOT REPRODUCED.  The designer's PASS rests on (c_e, c_u, c_D) values the named operator cannot produce
+(EXACT).  With the exact Clebsch structure of F.F.H10.Phi210/Lambda: the 120 channel alone fails (best 98.8 over two
+seeds, even with free R); adding its 126 channel fits only if R = M_R/F is freed to ~1e13, which contradicts the
+SM-direct relation R ~ c_R v_BL/v_d^126 ~ 1e16; with the designer's own seesaw link R >= 5e15 the exact structure gives
+chi2 ~ 3.9e3 at c <~ 3 and at c <~ 20 (NUM, search-limited).  The only untested escape is F.F.Delta.Phi210/Lambda (an
+independent d=5 M_R ~ c Y_b v_BL |Phi|/Lambda plus Sigma / Delta_R x Phi-doublet charged-fermion pieces), whose SO(10)
+Clebsches the design never computed.  Under the literal rule this is a D2 failure of the claim (UNDECIDED at best for
+the physics), and it precedes D3 in the order.  The D4 sub-claim 'seesaw scale compatible with the flavour fit' falls
+with it.
+
+---------------------------------------------------------------------------------------------------------------------
+4. D4 UNIFICATION / PROTON / LANDAU
+---------------------------------------------------------------------------------------------------------------------
+4a. Reproduced with own code (sk_unif.py: own MV b_i, b_ij implementation [SM check (4.1,-3.167,-7) and the standard
+    b_ij], own S_V = (8,6,5), lattice W0 = 0.131, A_R = 1.25 A_SD, own SO(10) two-loop b = (16/3, 3481.8)):
+      nominal m8 = 2.51e11, m6 = 1.99e9: M_U = 1.873e16, aU^-1 = 26.03, A_R = 3.21, tau = 9.2e35 yr, Lambda_2L = 1.55
+      (designer: 1.87e16, 26.0, 3.21, 9.1e35, 1.54).  Variations: no y_s term / y_t 0.94: < 0.5%; M_s 5e12: L2 1.13;
+      M_s 1.21e13, y_s 0.368: L2 1.70.  The family m8 -> m6 reproduces the designer's table to 3 digits.
+4b. WITH THE DESIGNER'S OWN L6 SPECTRUM (sk_thresh.py; one-loop matching with the real heavy spectrum instead of 'all at
+    M_U'): heavy vectors from the repo gauge_orbit_matrix at the S2 vacuum (canonical chart, T(10) = 1):
+      M^2/g^2 = 5/12 (3,2,5/6) X, 1 (1,1,1), 4/3 (3,1,2/3), 17/12 (3,2,1/6) X', 5 (1,1,0)   -> M_X'/M_X = 1.84
+    and the 42 heavy scalar multiplets of L6 (m^2 = 0.039..64, i.e. 0.44..18 M_X).  Thresholds at M_ref = M_X:
+    D = (1.66, 1.79, 1.94) vs the designer's (-0.21, -0.16, -0.13).  The (8,3,0)+(6,2,-1/6) family then gives
+      m8       m6       M_X       aU^-1  tau(yr)   L2/M_Pl
+      1.0e11   5.7e11   6.3e15    26.6   1.8e34    0.75
+      1.8e11   1.3e10   1.5e16    24.6   4.4e35    0.79
+      3.2e11   3.4e8    3.4e16    22.6   9.5e36    0.86
+      5.6e11   1.1e7    7.5e16    20.7   1.9e38    0.97
+      1.0e12   4.4e5    1.7e17    18.8   3.3e39    1.20
+    => at the designer's nominal m8 ~ 2.5e11 the real-spectrum point FAILS two-loop Landau (L2 ~ 0.83); the joint
+    window (tau > 2.4e34 and L2 > 1) moves to m8 >~ 6.5e11 with M_X >~ 9e16, <Phi> >~ 1.8e17 GeV, m6 <~ 5e6 GeV, a region
+    where the S and Phi17 chart ratios of the tested vacua no longer apply (NUM, one-loop thresholds; the uncontrolled
+    SO(10)-phase two-loop running is the same convention as the designer's).
+4c. EST remarks: the designer's window top (m8 = 2.5e12) has M_U = 3.7e17 > <Phi17> ~ 1e17 and m6 ~ 1e4 GeV (a coloured
+    sextet whose M_U-suppressed decay is then far slower than BBN allows), so the stated window [1.3e11, 2.5e12]
+    overstates the viable range.  If <Phi17> were tied to 4|Phi| at |Phi| ~ 2e17 GeV, dtheta would grow by ~8^4.
+D4 verdict: designer's numbers reproduced under their assumption (PASS under 'degenerate at M_U'); with the actual L6
+spectrum the nominal point fails Lambda_2L > M_Pl,red, so the D4 PASS is not robust (UNDECIDED, information only since
+D3 fails first).
+
+---------------------------------------------------------------------------------------------------------------------
+5. D5 COST
+---------------------------------------------------------------------------------------------------------------------
+The '3 tunings' count omits what the L6 point needs to be a vacuum at all: global boundedness from below (the runaway of
+2d) and a tree Higgs quartic matched to ~ -0.04 (currently -2.76 heavy / -4524 with the light S mode, driven by
+kappaH = -2 and the H-singlet portal).  Both are new constraints whose satisfiability is unknown; the LP machinery has no
+global BFB (copositivity) test, which is the K4 gap again.  The +45_H / +54_H variants inherit the D2 Clebsch defect
+(their extra vevs change the 120/126 channel structure; the fit must be redone) and the D4 real-spectrum issue.
+
+---------------------------------------------------------------------------------------------------------------------
+6. FILES
+---------------------------------------------------------------------------------------------------------------------
+sk_loader.py (repo loader), sk_vac_eval.py/.json/.log (2a), sk_lambda.py/.json/.log (2b, 2e), sk_descend.py +
+sk_descend_{H05,CONT,R4242}.{log,json,npz,out} (2c), sk_bfb.py + sk_bfb_*.json, sk_bfb_sub.py/.json,
+sk_bfb_budget.py/.json, sk_bfb_all.py/.json (2d), sk_clebsch.py/.json (3a), sk_flavour.py + sk_fit_*.{log,json} (3c),
+sk_d1.py/.json and dp_rerun/ (1), sk_unif.py/.json (4a), sk_thresh.py/.json/.log (4b); run_d3_chain.sh, run_flav_queue.sh.
