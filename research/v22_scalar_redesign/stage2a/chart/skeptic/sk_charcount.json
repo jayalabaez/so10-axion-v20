@@ -1,0 +1,894 @@
+{
+ "method": "SKEPTIC count of renormalizable SO(10) x U(1)_X invariants of the v22-L2 scalar set (method: Weyl INTEGRATION on a\ndiscrete maximal-torus grid with the weights READ OFF THE CHART'S OWN Cartan generators).\n\nDifferent from the model builder's three methods (Brauer-Klimyk alternation over W(D5) on first-principles weight\nmultisets; explicit contraction graphs; Susyno plethysms):\n  1. weights: simultaneous diagonalisation of the five Cartan generators J01, J23, J45, J67, J89 acting on each block of\n     the ACTUAL 531 chart (repo 486 blocks; A block derived by me from the repo H10 block action, see sk_common);\n  2. characters of Sym^n(V) from power sums p_j(t) = chi_V(t^j) (Newton), evaluated pointwise on an N^5 torus grid via\n     FFT of the weight-multiplicity array;\n  3. dim Inv = (1/|W|) (1/N^5) sum_t chi(t) prod_{alpha in Phi} (1 - t^alpha)   (Weyl integration formula).\n     Exact for Laurent polynomials whose exponents satisfy |m_i| < N: degree <= 4 gives |m_i| <= 4 + 8 = 12, so any\n     N >= 13 is exact; I run N = 13, 16 and 17 and require identical integers.\n",
+ "weights_info": {
+  "P": {
+   "dim": 210,
+   "rounding_residual": 2.220446049250313e-15,
+   "offdiag": 1.3280153659035334e-13,
+   "matches_first_principles": true
+  },
+  "H": {
+   "dim": 10,
+   "rounding_residual": 2.220446049250313e-16,
+   "offdiag": 2.2371143170757382e-17,
+   "matches_first_principles": true
+  },
+  "D": {
+   "dim": 126,
+   "rounding_residual": 2.220446049250313e-15,
+   "offdiag": 2.89201285886787e-14,
+   "D_plus_Dbar_equals_Lambda5": true,
+   "contains_(1,1,1,1,1)": true,
+   "contains_(1,1,1,1,-1)": false
+  },
+  "A": {
+   "dim": 45,
+   "rounding_residual": 1.887379141862766e-15,
+   "offdiag": 1.7877181819192837e-15,
+   "matches_first_principles": true
+  }
+ },
+ "grid_sizes": [
+  13,
+  16,
+  17
+ ],
+ "grid_independent": true,
+ "sanity": {
+  "Sym2(45)->1": {
+   "value": 1,
+   "expected": 1,
+   "ok": true
+  },
+  "Sym4(45)->2": {
+   "value": 2,
+   "expected": 2,
+   "ok": true
+  },
+  "Sym3(45)->0": {
+   "value": 0,
+   "expected": 0,
+   "ok": true
+  },
+  "Sym2(210)->1": {
+   "value": 1,
+   "expected": 1,
+   "ok": true
+  },
+  "Sym3(210)->1": {
+   "value": 1,
+   "expected": 1,
+   "ok": true
+  },
+  "Sym4(210)->4": {
+   "value": 4,
+   "expected": 4,
+   "ok": true
+  },
+  "10x10bar->1": {
+   "value": 1,
+   "expected": 1,
+   "ok": true
+  },
+  "126x126bar->1": {
+   "value": 1,
+   "expected": 1,
+   "ok": true
+  },
+  "Sym2(126)->0": {
+   "value": 0,
+   "expected": 0,
+   "ok": true
+  },
+  "Sym5(45)->? (Pf)": {
+   "value": 1,
+   "expected": null,
+   "ok": true
+  }
+ },
+ "counts": {
+  "P": 0,
+  "A": 0,
+  "P^2": 1,
+  "P A": 0,
+  "A^2": 1,
+  "H Hb": 1,
+  "H Db": 0,
+  "Hb D": 0,
+  "D Db": 1,
+  "S Sb": 1,
+  "T Tb": 1,
+  "P^3": 1,
+  "P^2 A": 1,
+  "P A^2": 1,
+  "P H Hb": 0,
+  "P H Db": 1,
+  "P Hb D": 1,
+  "P D Db": 1,
+  "P S Sb": 0,
+  "P T Tb": 0,
+  "A^3": 0,
+  "A H Hb": 1,
+  "A H Db": 0,
+  "A Hb D": 0,
+  "A D Db": 1,
+  "A S Sb": 0,
+  "A T Tb": 0,
+  "H^2 S": 1,
+  "H D S": 0,
+  "Hb^2 Sb": 1,
+  "Hb Db Sb": 0,
+  "D^2 S": 0,
+  "Db^2 Sb": 0,
+  "P^4": 4,
+  "P^3 A": 2,
+  "P^2 A^2": 4,
+  "P^2 H Hb": 3,
+  "P^2 H Db": 2,
+  "P^2 Hb D": 2,
+  "P^2 D Db": 6,
+  "P^2 S Sb": 1,
+  "P^2 T Tb": 1,
+  "P A^3": 1,
+  "P A H Hb": 1,
+  "P A H Db": 3,
+  "P A Hb D": 3,
+  "P A D Db": 4,
+  "P A S Sb": 0,
+  "P A T Tb": 0,
+  "P H^2 S": 0,
+  "P H D S": 1,
+  "P Hb^2 Sb": 0,
+  "P Hb Db Sb": 1,
+  "P D^2 S": 0,
+  "P Db^2 Sb": 0,
+  "A^4": 2,
+  "A^2 H Hb": 2,
+  "A^2 H Db": 1,
+  "A^2 Hb D": 1,
+  "A^2 D Db": 3,
+  "A^2 S Sb": 1,
+  "A^2 T Tb": 1,
+  "A H^2 S": 0,
+  "A H D S": 0,
+  "A Hb^2 Sb": 0,
+  "A Hb Db Sb": 0,
+  "A D^2 S": 0,
+  "A Db^2 Sb": 0,
+  "H^2 Hb^2": 2,
+  "H^2 Hb Db": 0,
+  "H^2 Db^2": 1,
+  "H Hb^2 D": 0,
+  "H Hb D Db": 2,
+  "H Hb S Sb": 1,
+  "H Hb T Tb": 1,
+  "H D Db^2": 1,
+  "H Db S Sb": 0,
+  "H Db T Tb": 0,
+  "Hb^2 D^2": 1,
+  "Hb D^2 Db": 1,
+  "Hb D S Sb": 0,
+  "Hb D T Tb": 0,
+  "D^2 Db^2": 4,
+  "D Db S Sb": 1,
+  "D Db T Tb": 1,
+  "S^2 Sb^2": 1,
+  "S Sb T Tb": 1,
+  "T^2 Tb^2": 1
+ },
+ "orbits": [
+  {
+   "rep": "P",
+   "conj": "P",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A",
+   "conj": "A",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^2",
+   "conj": "P^2",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P A",
+   "conj": "P A",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A^2",
+   "conj": "A^2",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "H Hb",
+   "conj": "H Hb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "H Db",
+   "conj": "Hb D",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "D Db",
+   "conj": "D Db",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "S Sb",
+   "conj": "S Sb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "T Tb",
+   "conj": "T Tb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^3",
+   "conj": "P^3",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^2 A",
+   "conj": "P^2 A",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P A^2",
+   "conj": "P A^2",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P H Hb",
+   "conj": "P H Hb",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P H Db",
+   "conj": "P Hb D",
+   "self_conjugate": false,
+   "n_invariants": 1,
+   "real_parameters": 2,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "P D Db",
+   "conj": "P D Db",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P S Sb",
+   "conj": "P S Sb",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P T Tb",
+   "conj": "P T Tb",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A^3",
+   "conj": "A^3",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A H Hb",
+   "conj": "A H Hb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A H Db",
+   "conj": "A Hb D",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 2
+  },
+  {
+   "rep": "A D Db",
+   "conj": "A D Db",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A S Sb",
+   "conj": "A S Sb",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A T Tb",
+   "conj": "A T Tb",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "H^2 S",
+   "conj": "Hb^2 Sb",
+   "self_conjugate": false,
+   "n_invariants": 1,
+   "real_parameters": 2,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "H D S",
+   "conj": "Hb Db Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "D^2 S",
+   "conj": "Db^2 Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "P^4",
+   "conj": "P^4",
+   "self_conjugate": true,
+   "n_invariants": 4,
+   "real_parameters": 4,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^3 A",
+   "conj": "P^3 A",
+   "self_conjugate": true,
+   "n_invariants": 2,
+   "real_parameters": 2,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^2 A^2",
+   "conj": "P^2 A^2",
+   "self_conjugate": true,
+   "n_invariants": 4,
+   "real_parameters": 4,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^2 H Hb",
+   "conj": "P^2 H Hb",
+   "self_conjugate": true,
+   "n_invariants": 3,
+   "real_parameters": 3,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^2 H Db",
+   "conj": "P^2 Hb D",
+   "self_conjugate": false,
+   "n_invariants": 2,
+   "real_parameters": 4,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "P^2 D Db",
+   "conj": "P^2 D Db",
+   "self_conjugate": true,
+   "n_invariants": 6,
+   "real_parameters": 6,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^2 S Sb",
+   "conj": "P^2 S Sb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P^2 T Tb",
+   "conj": "P^2 T Tb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P A^3",
+   "conj": "P A^3",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P A H Hb",
+   "conj": "P A H Hb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P A H Db",
+   "conj": "P A Hb D",
+   "self_conjugate": false,
+   "n_invariants": 3,
+   "real_parameters": 6,
+   "contains_A": true,
+   "multidegrees": 2
+  },
+  {
+   "rep": "P A D Db",
+   "conj": "P A D Db",
+   "self_conjugate": true,
+   "n_invariants": 4,
+   "real_parameters": 4,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P A S Sb",
+   "conj": "P A S Sb",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P A T Tb",
+   "conj": "P A T Tb",
+   "self_conjugate": true,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "P H^2 S",
+   "conj": "P Hb^2 Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "P H D S",
+   "conj": "P Hb Db Sb",
+   "self_conjugate": false,
+   "n_invariants": 1,
+   "real_parameters": 2,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "P D^2 S",
+   "conj": "P Db^2 Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "A^4",
+   "conj": "A^4",
+   "self_conjugate": true,
+   "n_invariants": 2,
+   "real_parameters": 2,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A^2 H Hb",
+   "conj": "A^2 H Hb",
+   "self_conjugate": true,
+   "n_invariants": 2,
+   "real_parameters": 2,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A^2 H Db",
+   "conj": "A^2 Hb D",
+   "self_conjugate": false,
+   "n_invariants": 1,
+   "real_parameters": 2,
+   "contains_A": true,
+   "multidegrees": 2
+  },
+  {
+   "rep": "A^2 D Db",
+   "conj": "A^2 D Db",
+   "self_conjugate": true,
+   "n_invariants": 3,
+   "real_parameters": 3,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A^2 S Sb",
+   "conj": "A^2 S Sb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A^2 T Tb",
+   "conj": "A^2 T Tb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": true,
+   "multidegrees": 1
+  },
+  {
+   "rep": "A H^2 S",
+   "conj": "A Hb^2 Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 2
+  },
+  {
+   "rep": "A H D S",
+   "conj": "A Hb Db Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 2
+  },
+  {
+   "rep": "A D^2 S",
+   "conj": "A Db^2 Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": true,
+   "multidegrees": 2
+  },
+  {
+   "rep": "H^2 Hb^2",
+   "conj": "H^2 Hb^2",
+   "self_conjugate": true,
+   "n_invariants": 2,
+   "real_parameters": 2,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "H^2 Hb Db",
+   "conj": "H Hb^2 D",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "H^2 Db^2",
+   "conj": "Hb^2 D^2",
+   "self_conjugate": false,
+   "n_invariants": 1,
+   "real_parameters": 2,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "H Hb D Db",
+   "conj": "H Hb D Db",
+   "self_conjugate": true,
+   "n_invariants": 2,
+   "real_parameters": 2,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "H Hb S Sb",
+   "conj": "H Hb S Sb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "H Hb T Tb",
+   "conj": "H Hb T Tb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "H D Db^2",
+   "conj": "Hb D^2 Db",
+   "self_conjugate": false,
+   "n_invariants": 1,
+   "real_parameters": 2,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "H Db S Sb",
+   "conj": "Hb D S Sb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "H Db T Tb",
+   "conj": "Hb D T Tb",
+   "self_conjugate": false,
+   "n_invariants": 0,
+   "real_parameters": 0,
+   "contains_A": false,
+   "multidegrees": 2
+  },
+  {
+   "rep": "D^2 Db^2",
+   "conj": "D^2 Db^2",
+   "self_conjugate": true,
+   "n_invariants": 4,
+   "real_parameters": 4,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "D Db S Sb",
+   "conj": "D Db S Sb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "D Db T Tb",
+   "conj": "D Db T Tb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "S^2 Sb^2",
+   "conj": "S^2 Sb^2",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "S Sb T Tb",
+   "conj": "S Sb T Tb",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  },
+  {
+   "rep": "T^2 Tb^2",
+   "conj": "T^2 Tb^2",
+   "self_conjugate": true,
+   "n_invariants": 1,
+   "real_parameters": 1,
+   "contains_A": false,
+   "multidegrees": 1
+  }
+ ],
+ "tally_v20": {
+  "multidegrees_nonzero": 34,
+  "orbits": 28,
+  "directions": 44,
+  "real_parameters": 51,
+  "vanishing_multidegrees": 20,
+  "vanishing_list": [
+   "P",
+   "H Db (+conj)",
+   "P H Hb",
+   "P S Sb",
+   "P T Tb",
+   "H D S (+conj)",
+   "D^2 S (+conj)",
+   "P H^2 S (+conj)",
+   "P D^2 S (+conj)",
+   "H^2 Hb Db (+conj)",
+   "H Db S Sb (+conj)",
+   "H Db T Tb (+conj)"
+  ]
+ },
+ "tally_A": {
+  "multidegrees_nonzero": 19,
+  "orbits": 17,
+  "directions": 30,
+  "real_parameters": 34,
+  "vanishing_multidegrees": 15,
+  "vanishing_list": [
+   "A",
+   "P A",
+   "A^3",
+   "A H Db (+conj)",
+   "A S Sb",
+   "A T Tb",
+   "P A S Sb",
+   "P A T Tb",
+   "A H^2 S (+conj)",
+   "A H D S (+conj)",
+   "A D^2 S (+conj)"
+  ]
+ },
+ "tally_total": {
+  "multidegrees_nonzero": 53,
+  "orbits": 45,
+  "directions": 74,
+  "real_parameters": 85,
+  "vanishing_multidegrees": 35,
+  "vanishing_list": [
+   "P",
+   "A",
+   "P A",
+   "H Db (+conj)",
+   "P H Hb",
+   "P S Sb",
+   "P T Tb",
+   "A^3",
+   "A H Db (+conj)",
+   "A S Sb",
+   "A T Tb",
+   "H D S (+conj)",
+   "D^2 S (+conj)",
+   "P A S Sb",
+   "P A T Tb",
+   "P H^2 S (+conj)",
+   "P D^2 S (+conj)",
+   "A H^2 S (+conj)",
+   "A H D S (+conj)",
+   "A D^2 S (+conj)",
+   "H^2 Hb Db (+conj)",
+   "H Db S Sb (+conj)",
+   "H Db T Tb (+conj)"
+  ]
+ },
+ "builder": {
+  "v20": [
+   34,
+   28,
+   44,
+   51
+  ],
+  "A": [
+   19,
+   17,
+   30,
+   34
+  ],
+  "total": [
+   53,
+   45,
+   74,
+   85
+  ],
+  "A_vanishing": 15
+ },
+ "agreement": {
+  "v20": true,
+  "A": true,
+  "total": true,
+  "A_vanishing": true
+ },
+ "runtime_s": 20.71643042564392
+}

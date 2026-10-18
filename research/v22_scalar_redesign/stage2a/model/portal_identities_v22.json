@@ -1,0 +1,48 @@
+{
+ "|A.H|^2": {
+  "portal": "H",
+  "basis": [
+   "A14_AAHH_1",
+   "A15_AAHH_2"
+  ],
+  "coefficients": [
+   "0",
+   "1"
+  ],
+  "max_rel_residual_with_rational_coefficients": 0.0,
+  "exact_identity": true
+ },
+ "|A.D|^2": {
+  "portal": "D",
+  "basis": [
+   "A18_AADD_1",
+   "A19_AADD_2",
+   "A20_AADD_3"
+  ],
+  "coefficients": [
+   "1/240",
+   "0",
+   "-1/6"
+  ],
+  "max_rel_residual_with_rational_coefficients": 4.354279943321995e-15,
+  "exact_identity": true
+ },
+ "|A.P|^2": {
+  "portal": "P",
+  "basis": [
+   "A08_PPAA_1",
+   "A09_PPAA_2",
+   "A10_PPAA_3",
+   "A11_PPAA_4"
+  ],
+  "coefficients": [
+   "0",
+   "0",
+   "1/6",
+   "-1/2"
+  ],
+  "max_rel_residual_with_rational_coefficients": 6.619199408614966e-16,
+  "exact_identity": true
+ },
+ "note": "A15 itself equals |A.H|^2 = sum_a |A_ab H_b|^2 >= 0 and A14 = (A.A)(H^dag H) >= 0; the D and P portals are the fitted combinations.  A real 45 vev A = w_R T3R + w_BL T_BL gives |A.X|^2 = sum over components |(w_R T3R + w_BL (B-L)) charge|^2 |X_comp|^2 (zero exactly on the T3R = B-L = 0 components)."
+}

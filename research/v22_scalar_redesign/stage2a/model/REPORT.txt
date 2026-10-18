@@ -1,0 +1,203 @@
+STAGE 2a - MODEL BUILDER for candidate "v22-L2" (v20 scalars + one real 45_H, B63 fermions)          2026-10-17
+=====================================================================================================================
+Folder: research\v22_scalar_redesign\stage2a\model\ (worktree _v22research, branch research/v22-scalar-redesign).
+Labels: EXACT (exact integer/rational arithmetic or proof) / NUM (floating point, accuracy stated) / EST / CONJ / LIT.
+Hygiene: only files in this folder were written (plus a staging copy of the model under the scratchpad
+v22_stage2a_big\model\sarah_stage\ for the SARAH run); `git status --short` shows only research/v22_scalar_redesign/;
+no repository module was edited or run (GAUGED_U1X_SCALAR_CONTRACT_V20.json and models/SO10Z17AxionV20.m were only
+READ); Stage-1 files were only read; _rescope and the other worktrees were not touched; no commit/push/stash.
+Copied unedited: dual_dp_orig.py (= R2-V dual_dp.py, byte-identical, cmp-checked).  The SARAH driver
+tools\validate-exact-x-model-v22.wls is a copy of the K0 driver with exactly two edits (model name; Dynkin label of
+the 45).  Re-run order: census_v22.py -> explicit_basis_v22.py -> susyno_count_v22.wls -> build_invariants_v22.py ->
+d1_contract_v22.py -> vev_structure_v22.py, portal_identities_v22.py.
+
+0. SUMMARY (counts)
+-------------------
+Gauge SO(10) x U(1)_X, Z17 = X mod 17.  Scalars: Phi210 (real, X 0), Delta126bar (X -2), H10 (complex, X -2), S (X 4),
+Phi17 (X 17)  +  NEW A45 = real 45_H (X 0, Z17 phase 1, centre class 0).  Fermions: B63 verbatim.
+Renormalizable scalar potential (X-exact, degree <= 4)                                         [EXACT, 3 methods]
+                          multidegrees  conj. orbits  invariant directions  real parameters
+   v20 part (verbatim)         34            28               44                  51        (reproduced exactly)
+   new, containing A45         19            17               30                  34        (26 real + 4 complex couplings)
+   total v22-L2                53            45               74                  85
+   X-allowed multidegrees containing A45 that have NO SO(10) singlet (identically zero): 15 (listed in sec. 2c).
+Fermion sector: exhaustive catalogue -> exactly the 12 B63 Yukawa structures; no bare mass; NO A45 Yukawa.  [EXACT]
+D1 for the final content: anomaly-free; accidental kernel rank 13 / dimension 7 unchanged by every new term;
+PQ = X - 17 G2 with N = 34, E = 272/3, E/N = 8/3, N_DW = 1 (mod gauge); quality K_min >= 17 by DP (d <= 40, brute-force
+validated for d <= 7), DP-oracle LP (4 mu_0 = 17.000), HiGHS MILP certificate (dressed, d <= 24, both signs: worst
+excess 0) and MILP column generation (4 mu_0 = 17.0).                                                       [EXACT]
+CORRECTION to Stage 1 (EXACT): the Stage-1 list said "A Phi Phi absent (45 in the antisymmetric part of 210 x 210)".
+This is wrong for SO(10): Sym^2(210) = 1+45+54+210+770+1050+1050bar+4125+5940+8910 contains the 45 (via eps:
+Lambda^8 ~ Lambda^2).  There is exactly ONE cubic A Phi Phi (kappaPPA, an eps-contraction; the delta contraction
+A_ab P_acde P_bcde vanishes), and also A^3 Phi (1, eps) and A Phi^3 (2, both eps).  Consequence (NUM, exact pattern):
+these terms are LINEAR in A, so any Phi210 vev with (p a), omega^2 or (a omega) components gives A a tadpole lying
+exactly in span(T_BL, T3R): <A> is induced, A = 0 is never stationary at a G3211/SM-type Phi orientation (sec. 2e).
+
+1. FIELD CONTENT AND CONVENTIONS
+--------------------------------
+A_ab real antisymmetric 10x10; canonical components A_ab (a < b), kinetic (1/4) dA_ab dA_ab, K45 = (1/2) A_ab A_ab
+(= SARAH A45.A45).  Phi210 = P_abcd real 4-form (K_210 = P.P/4!, v20).  H_a complex (H10, X = -2), Hb = H*.
+Delta126bar = D_abcde complex 5-form in the v20 "-i Hodge eigenspace" (*D = -i D), Db = D*; with this convention
+F.F.Delta126bar is the invariant Yukawa (126 has highest weight (1,1,1,1,1) and lies in 16 x 16).  eps_{a1..a10}
+Levi-Civita, eps_{0..9} = +1.  V = sum c_k I_k (real couplings) + sum (c_k I_k + c.c.) (complex couplings).
+Z17 phases (X mod 17): Phi210 0, Delta 15, H10 15, S 4, Phi17 0, A45 0; F 1, Vec1 16, Vec1bar 5, Vec2 6, Vec2bar 15,
+Vec3 0, Vec3bar 4, TenF 2, Pbar 1, SingN1 5, SingN1bar 8, SingN2 10, SingN2bar 3, SingN3 11, SingN3bar 10, SingM 15.
+
+2. INVARIANT ENUMERATION
+------------------------
+(a) Method (a): own Weyl-character engine [EXACT] - so10_weyl_chars.py, census_v22.py -> census_v22.json/.log.
+    Weight multisets built from first principles (10 = +-e_i; Lambda^k by Newton/Adams; 126/126bar = halves of
+    Lambda^5; spinors), Sym^n by h_n = (1/n) sum psi^i h_{n-i}; irrep multiplicities by the Brauer-Klimyk/Weyl
+    alternation over all 1920 elements of W(D5); dimensions by the Weyl formula; all integer arithmetic.
+    Sanity decompositions reproduce the standard tables: 10x10 = 1+45+54, 16x16 = 10+120+126, 16x16bar = 1+45+210,
+    126x126bar = 1+45+210+770+5940+8910, Sym^2(45) = 1+54+210+770, Sym^2(126bar) = 54+1050bar+2772bar+4125,
+    45x210 = 45+2x210+945+1050+1050bar+5940, 10x126bar = 210+1050bar, Sym^3(45) = 2x45+210+945+1386+5940+7644.
+    CALIBRATION: applied to the v20 field set it gives 34 multidegrees / 28 orbits / 44 directions / 51 real
+    parameters and the attested count of EVERY one of the 28 v20 orbits (O03..O48, incl. O27 = 4, O44 = 6, O46 = 3,
+    O48 = 4), with no extra orbit - i.e. it reproduces GAUGED_U1X_SCALAR_CONTRACT_V20.json exactly.
+(b) Method (b): explicit tensor-contraction basis [NUM] - explicit_basis_v22.py -> explicit_basis_v22.json/.log.
+    All complete contractions (multigraphs between the antisymmetric tensors, canonical under permutations of
+    identical fields; delta contractions plus every single-eps contraction for D-free structures - by the first
+    fundamental theorem for SO(10) this candidate set spans all invariants; an eps next to D/Db reduces to deltas via
+    *D = -i D) are evaluated on 12-16 random physical configurations (Hb = H*, Db = D*, *D = -i D enforced); the
+    numerical rank of the value matrix equals the EXACT character count for all 21 A-structures (17 nonzero + 4
+    identically zero SO(10) structures) and for 12 v20 calibration structures (P^2, P^3, P^4 = 4, P^2 H Hb = 3,
+    P Hb D, P D Db, P^2 Hb D = 2, H^2 Hb^2 = 2, H Hb D Db = 2, Hb^2 D^2, Hb D^2 Db, P^2 D Db = 6).  Separation:
+    vanishing graphs <= 1.1e-15 (mostly 1e-17..1e-23) relative to prod ||field||, non-vanishing >= 2e-7; where a
+    family has more graphs than its rank, the first rejected singular value is <= 1e-15 of the largest while the
+    last kept one is >= 2e-3 (NUM, double precision).  Every basis element is unchanged (<= 1e-14 relative) under a
+    random finite SO(10) rotation; eps contractions flip sign under a det = -1 reflection (pseudo-scalars, allowed).
+(c) Method (c): Susyno [EXACT, independent implementation] - susyno_count_v22.wls -> susyno_counts_v22.txt/.log.
+    R. Fonseca's plethysm code (Adams operations + S_n characters + ReduceRepProduct), which ships COMMENTED OUT in
+    SARAH 4.15.3's LieGroups_SARAH.m, was located programmatically and evaluated unmodified from the file text
+    (the external file was not edited).  36 queries (all 21 A-structures + 15 v20 structures incl. P^4 = 4,
+    D^2 Db^2 = 4, Hb^2 S^dag = 1) agree with method (a) one by one.  Wolfram Engine 15.0, one kernel, ~6 s.
+(d) The 17 new orbits (coupling names as in SO10Z17AxionV22.m / invariants.json):
+      orbit (field content)            n  type     couplings                                    SO(10) structure
+      A^2                              1  real     m45Sq                                        K45
+      A^4                              2  real     lambdaA1, lambdaA2                           (A.A)^2, Tr A^4
+      Phi A^2                          1  real     kappaPAA                                     (AA)_210 . P
+      Phi^2 A                          1  real     kappaPPA                                     eps P P A  [pseudo-scalar]
+      Phi^3 A                          2  real     lambdaPPPA1, lambdaPPPA2                     eps P^3 A  [pseudo-scalars]
+      Phi^2 A^2                        4  real     lambdaPPAA1..4                               (AA)_{1,54,210,770}(PP)
+      Phi A^3                          1  real     lambdaPAAA                                   eps P A A A [pseudo-scalar]
+      A H10 H10^dag                    1  real     kappaHA                                      i Hb.A.H (generator current)
+      A^2 H10 H10^dag                  2  real     lambdaAAH1, lambdaAAH2                       (A.A)|H|^2, |A.H|^2
+      Phi A H10 H10^dag                1  real     lambdaPAH                                    i (AP)_45 . (Hb H)_45
+      A Delta Delta^dag                1  real     kappaDA                                      i Db.A.D
+      A^2 Delta Delta^dag              3  real     lambdaAAD1..3                                (AA)_{1,210,770}(Db D)
+      Phi A Delta Delta^dag            4  real     lambdaPAD1..4                                (AP)_{45,2x210,5940}(Db D)
+      A^2 H10^dag Delta (+h.c.)        1  complex  lambdaAAHD                                   (AA)_210 . (Hb D)_210
+      Phi A H10^dag Delta (+h.c.)      3  complex  lambdaPAHD1..3                               (AP)_{2x210,1050}(Hb D)
+      A^2 |S|^2                        1  real     lambdaAS                                     K45 |S|^2
+      A^2 |Phi17|^2                    1  real     lambdaA17                                    K45 |Phi17|^2
+    Explicit index contractions, prefactors, real parts and normalisations: invariants.json (A01..A30).  Each
+    definition was re-evaluated (build_invariants_v22.py): X = 0, hermitian ones real to <= 2e-16, family rank =
+    exact count, SO(10) invariance <= 1e-14, parity as stated.  Phase-sensitive (non-self-conjugate) new orbits:
+    only A^2 Hb D and Phi A Hb D, both with the accidental-charge content of H10^dag Delta (already in v20 via O15).
+(e) Identically vanishing although X-allowed [EXACT, all three methods]: A (tadpole), A Phi (no 45-210 mass mixing),
+    A^3 (Tr A^3 = 0), A Hb D and A H Db (45 not in 10 x 126bar = 210+1050bar), A|S|^2, A|Phi17|^2, A Phi|S|^2,
+    A Phi|Phi17|^2, A H H S (45 not in Sym^2 10), A H D S (45 not in 10 x 126bar), A D D S (45 not in Sym^2 126bar =
+    54+1050bar+2772bar+4125), and their conjugates.  No A45 fermion bilinear exists: of the 20 X-neutral fermion
+    bilinear x scalar combinations exactly 12 are SO(10)-invariant (the B63 list) and none involves A45 (A45 would
+    need a 16(x) 16bar(-x) or 10(x) 10(-x) pair; none exists in B63).
+    Structural consequences of the corrected list (vev_structure_v22.py, NUM; pattern EXACT by SM invariance):
+      A-tadpole dV/dA|_{A=0} from kappaPPA (normalisation of invariants.json, p, a, omega unit 210 directions):
+        p a -> T_BL;  omega^2 -> T_BL;  a omega -> T3R;  p alone, a alone: 0; never T3L, no other component
+        (|remainder| = 0).  lambdaPPPA1/2 give further T_BL/T3R tadpoles (e.g. omega^3 -> T3R).  At the D-A "A1"
+        orientation (p, a, omega) = (0.7071, -0.7071, 0): kappaPPA tadpole along T_BL.  Hence with kappaPPA != 0
+        the 45 vev is induced (w_BL ~ kappaPPA p a M_U^2 / m_A^2 even for m_A^2 > 0); it cannot be set to zero, and a
+        T3R vev needs a omega != 0 (or omega^3 via lambdaPPPA).
+      Phi-tadpole from kappaPAA at <A> = w_BL T_BL + w_R T3R: w_BL^2 -> a, w_R^2 -> p, w_BL w_R -> omega.
+      Sign-definite 45 portals (portal_identities_v22.py, exact rational identities, residual <= 5e-15):
+        |A.H|^2 = A15 (lambdaAAH2 graph);  |A.D|^2 = A18/240 - A20/6;  |A.P|^2 = A10/6 - A11/2;  plus
+        (A.A)|H|^2 = A14, (A.A)|D|^2 = A18, (A.A)(P.P) = A08 >= 0.  These are the "45^2|H|^2, |T_A X|^2" portals of
+        the Stage-2 risk (iii); whether they lift the deep H-Sigma(-S) vacua is NOT tested here (needs the 531 chart).
+      CONJ (not evaluated): kappaPPA, kappaPAA, lambdaPAAA, lambdaPPPA add further trilinear sources for the light
+      (8,1,0)/(8,3,0) octets beyond the two identified by the Stage-1 skeptic; the octet-cubic tuning (risk (i))
+      must be computed with the full A-sector.
+
+3. MODEL FILE  SO10Z17AxionV22.m
+--------------------------------
+Format: that of models/SO10Z17AxionV20.m.  Kept verbatim: header conventions, Gauge rows, Global Z[17], the five v20
+ScalarFields rows, every LagNoHC row, kappaH H10.H10.S, Y10 F.F.H10, Y126 F.F.Delta126bar.  Added: ScalarFields[[6]] =
+{A45, 1, a45, 45, 0, 1}; RealScalars = {phi210, a45}.  Replaced (as in the v21 K0 draft): the v20 fermion catalogue by
+B63 (16 FermionFields rows, names free of Mathematica built-ins: F, Vec1(x2), Vec1bar, Vec2, Vec2bar, Vec3, Vec3bar,
+TenF(x2), Pbar, SingN1, SingN1bar, SingN2, SingN2bar, SingN3, SingN3bar, SingM(x2)) with its 12 Yukawa rows
+(Y10, Y126, y1 conj[S].Vec1.Vec1bar, yP Vec1.Pbar.Phi17, y2 conj[S].Vec2.Vec2bar, lam23 Vec2bar.Vec3bar.H10,
+y3 conj[S].Vec3.Vec3bar, yT conj[S].TenF.TenF, yN1 S.SingN1.SingN1bar, yN2 S.SingN2.SingN2bar,
+yN3 conj[S].SingN3.SingN3bar, yM S.SingM.SingM); the eight v20 fermion rows (yP, yQ, yR, ys, lambdaP, lambdaR,
+lambdaQB, lambdaQR) refer to v20 fields that no longer exist and are dropped.
+A45 rows registered in the SARAH Lagrangian: terms whose NON-symmetrised SO(10) product has exactly one invariant
+(so the Susyno Dot is unambiguous; counted with the own engine) AND that are small enough for SARAH's explicit
+Clebsch step: LagNoHC m45Sq/2 A45.A45, lambdaAS conj[S].S.A45.A45, lambdaA17 conj[Phi17].Phi17.A45.A45; LagHC
+kappaHA A45.conj[H10].H10 (antisymmetric Clebsch; SARAH's h.c. keeps 2 i Im(kappaHA) x the real invariant i Hb.A.H).
+Four further UNIQUE invariants - kappaPAA Phi210.A45.A45, kappaDA A45.conj[Delta126bar].Delta126bar, lambdaPAH
+Phi210.A45.conj[H10].H10, lambdaAAHD conj[H10].Delta126bar.A45.A45 (products of 4.3e5, 7.1e5, 9.5e5, 2.6e6 components
+vs. at most 32256 for every v20/v21 row) - are written as SARAH-ready rows in the closing comment block only: with
+them SARAH 4.15.3 Start[] did not return within 900 s (sarah_v22_full_TIMEOUT900s.log; killed, no kernel left
+running, temp directory removed).  The other 22 A-directions (multi-invariant families or repeated-field ambiguity,
+e.g. Phi210.Phi210.A45 has 2 invariants before Bose symmetrisation) are listed in the same comment block.  All 30 are
+defined value-level in invariants.json.  This is the v20 convention: "a single SARAH Dot contraction must not be
+interpreted as a multi-invariant basis"; v20 registers none of its Phi210-containing unique rows either.
+
+3b. SARAH 4.15.3 ATTESTATION OF THE DELIVERED DRAFT  (tools\validate-exact-x-model-v22.wls -> sarah_v22.log)  [EXACT]
+-------------------------------------------------------------------------------------------------------------
+Driver = the v21 K0 copy of the repository driver (six exact SO(10) compatibility replacements; per-term re-audit)
+with two edits (model name; expected Dynkin label 45 -> {0,1,0,0,0}).  Run on a byte-identical staged copy (cmp OK;
+sha256 feb611d1ec4cd7af3b6693765f3d27df7d044c53c4715d9e4298ad096f62d24e), Wolfram Engine 15.0, one kernel, 55 s, exit 0:
+  model_parse PASS | model_initialization PASS (Susyno labels: A45 {0,1,0,0,0}, T(45) = 8; 210 {0,0,0,1,1}, T = 56;
+  126bar {0,0,0,2,0}, T = 35; 16 T = 2; 10 T = 1; Z17 phases as declared) | lagrangian_construction PASS (25 registered
+  = 25 expected terms) | gauge_invariance PASS (every term: X_sum 0, Z17 phase 1, Susyno invariant count 1, SARAH local
+  and global charge checks True) | anomaly_check PASS (X^3 = 0, X grav^2 = 0, SO10^2 X = 0, no WARNING).
+A first run with the four large unique A rows registered was killed by the 900 s timeout inside Start[] (parse PASS;
+no verdict) - recorded, not counted.
+
+4. D1 CONTRACT FOR THE FINAL CONTENT  (d1_contract_v22.py -> d1_contract_v22.json/.log, 195 s)
+--------------------------------------------------------------------------------------------
+(a) Anomalies [EXACT, Fractions]: [SO(10)]^2 X = 0, X^3 = 0, grav-X = 0 (B63 fermions; scalars, incl. A45, do not
+    contribute); [SO(10)]^3 = 0 identically, no Witten anomaly; net 16 - 16bar = 3.
+(b) Accidental kernel [EXACT, sympy]: 20 charges (16 fermion species + Delta, H10, S, Phi17; real Phi210, A45 carry 0).
+    Rows: the 12 Yukawas found by the catalogue (rank 12) + the 6 v20 phase-sensitive orbits O12, O15, O28, O31, O38,
+    O45 (rank 13) + the 2 new phase-sensitive A orbits taken from the census, A^2 Hb D and Phi A Hb D (rank 13, they
+    add no constraint) + the superset of all 18 X/centre-neutral phase-sensitive monomials of degree <= 4 (rank 13).
+    Kernel dimension 7, spanned exactly by X and the round-1 basis (G2, f1..f5); X and G2 in the kernel.
+    PQ = X - 17 G2 (PQ charges: Phi210 0, A45 0, Delta -2, H10 -2, S 4, Phi17 0).  Recomputed from SU(3) indices and
+    Q^2 sums of complete SO(10) multiplets: N(X) = 0, N(G2) = -2, N(f_i) = 0, N(PQ) = 34; E(X) = 0, E(G2) = -16/3,
+    E(PQ) = 272/3, E/N = 8/3.  N_DW = 1 mod gauge: the PQ-violating vev monomial is S*^17 Phi17^4, gcd(17, 4) = 1;
+    A45 is real, X = 0, PQ = 0, centre class 0 and adds no vev phase (EXACT argument, unchanged from R2-V).
+(c) Quality [EXACT]: the DP item of A45 is IDENTICAL to that of Phi210 (X 0, centre 0, q = 0, weight 2) - checked.
+    DP = brute force for d = 5, 6, 7 with A45 present ({-4, 0, 0}); max_O 4[mu.q - (d-4)] = 0 for every 5 <= d <= 40
+    (tight at d = 6, 7, 9-17, 19, 21; d = 21 is S*^17 Phi17^4; A45 never in an argmax); own cutting-plane LP with
+    the DP oracle: 4 mu_0 = 17.000 (20 iterations, 42 cuts); HiGHS MILP certificate (any number of derivatives /
+    field strengths, d <= 24, both signs): worst excess 0 (at d = 6, exact re-verification OK); MILP column
+    generation: 4 mu_0 = 17.0 (31 iterations).  => K_min >= 17 for the final scalar list, with every new
+    phase-sensitive scalar monomial included (they conserve every accidental charge, as shown in (b)).
+    Control: without the centre condition the DP already fails at d = 5 (excess 6) - the centre lemma is used.
+    Inherited, unchanged by A45 (EXACT arguments of R2-V/D-D, not re-derived numerically here): dtheta_tree =
+    2.1e-11 at <S> = 3e13 (an X = 0 vev monomial cannot contain an unpaired Delta_R vev; A45 enters only as
+    (vev/M_Pl)^n suppressions), <S>_max = 3.285e13; y_s window non-empty (one-loop no-gauge cap 0.3166 > 0.304).
+
+5. FILES
+--------
+so10_weyl_chars.py            own D5 Weyl-character engine (EXACT)
+census_v22.py/.json/.log      method (a): v20 reproduction + full v22 census + fermion catalogue
+explicit_basis_v22.py/.json/.log   method (b): explicit contraction bases, ranks, invariance/parity checks
+susyno_count_v22.wls, susyno_queries_v22.txt, susyno_counts_v22.txt, susyno_count_v22.log   method (c)
+build_invariants_v22.py/.log, invariants.json   the complete 74-direction / 85-parameter basis (v20 rows copied
+                              read-only from the attested contract; 30 explicit A rows, re-verified)
+SO10Z17AxionV22.m             SARAH model draft
+tools\validate-exact-x-model-v22.wls, sarah_v22.log   SARAH 4.15.3 attestation of the delivered draft (sec. 3b)
+sarah_v22_full_TIMEOUT900s.log   first run with the 4 large unique A rows registered (timeout, no verdict)
+d1_contract_v22.py/.json/.log, dual_dp_orig.py (copied unedited)   D1 re-check
+vev_structure_v22.py/.json/.log   tadpole structure of the linear-in-A invariants
+portal_identities_v22.py/.json/.log   exact sign-definite portal identities
+
+6. WHAT THIS STEP DOES NOT DECIDE (for the Stage-2 agents)
+-----------------------------------------------------------
+- No vacuum was computed: risks (i) octet cubics (now with additional trilinear sources, CONJ), (ii) the Landau knife
+  edge (b_SO(10) one-loop 20/3 with the 45; unchanged by this step), (iii) the deep H-Sigma(-S) vacua remain open.
+  The explicit A45 contractions of invariants.json (value-level definitions) are what a 531-real chart extension
+  needs; the induced A tadpole (sec. 2e) means the G3211 point must be searched with A free, not frozen.
+- The invariant basis is a graph basis, not an orthogonal projector basis; channel labels in sec. 2d are the SO(10)
+  channel content of each family (exact), not a one-to-one map to the graph elements.

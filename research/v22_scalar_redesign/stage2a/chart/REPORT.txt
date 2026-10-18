@@ -1,0 +1,223 @@
+STAGE 2a - CHART ENGINEER for candidate "v22-L2": the 531-real chart (486 repo chart + real 45_H)        2026-10-17
+=====================================================================================================================
+Folder: research\v22_scalar_redesign\stage2a\chart\ (worktree _v22research, branch research/v22-scalar-redesign).
+Labels: EXACT (integer / rational polynomial identities, exact arithmetic) / NUM (float64, residual stated) / EST /
+CONJ / LIT.
+Hygiene: only this folder was written (code, logs, two JSON files of 50-63 kB, this report); large data went to the
+scratchpad ...\scratchpad\v22_stage2a_big\chart\ (31 MB: polynomial caches, two 85-row npz files, repo samples, and
+scratch test scripts t_*.py).  No repository file was modified; repo modules (and stage2a/model's explicit_basis_v22,
+build_invariants_v22) were imported read-only, with -B / PYTHONDONTWRITEBYTECODE (no __pycache__ anywhere).
+`git status --short` shows only `?? research/v22_scalar_redesign/`.  No commit/push/stash.  Stage-1 files and other
+worktrees were not touched.  One stray run of mine (a section-(c) bug calling the repo value layer 51x per point)
+was killed by PID; the other python process on the machine (sk_flavour.py, another workflow) was left alone.
+
+0. SUMMARY
+----------
+Deliverable: chart531.py (self-contained, imports the repo compiler read-only) + validate_chart531.py + the OPTIONAL
+fast backend v20poly.py.  Every requested check passes:
+  (a) A = 0 reduction to the 486 chart ......... bitwise identical (all diffs 0.0); new rows exactly 0 off the A block   [EXACT]
+  (b) gauge invariance ......................... NUM max |g.T_k|/(|g||T_k|) = 3.2e-16 (45 so(10)), 1.6e-16 (X, PQ);
+                                                  EXACT: every new row annihilated by J_{a,a+1} (a=0..8), U(1)_X, PQ  [EXACT]
+  (c) independent new rows = enumerated count .. rank 34/34 (sv_min/sv_max 4.4e-3); all 17 families = exact counts;
+                                                  all 85 rows rank 85/85 (6.5e-5)                                      [NUM]
+  (d) finite differences ....................... worst 7.2e-12 relative (target <= 1e-7)                               [NUM]
+  (e) X-charge selection ....................... EXACT per-monomial charges as declared; NUM rotations <= 5.7e-14     [EXACT]
+  (f) runtime .................................. new 34 rows: value 0.12 s, +gradient 0.52 s, +Hessian 1.7 s;
+                                                  repo 51 rows 30-95 s (fast backend: 3 s)                             [NUM]
+  G3211 parametrisation and Goldstones ......... ranks 34 (sigma = 0) / 35 (sigma != 0) exactly as predicted;
+                                                  Hessian decomposition leakage <= 2.3e-14, Goldstone sum 34 / 35        [NUM]
+Findings for other agents (details in sec. 2c, 4c):
+  F1 invariants.json is internally inconsistent for 6 of the 30 A rows: its declared formulas (which chart531
+     implements) differ from its own reference values by eps-block factors 1152 (A04, A06), 192 (A07, A12) and a
+     sign (A13, A17).  The model builder's numerical evaluator also samples Delta in the repo's +i Hodge space.
+     Spans and counts are unaffected; coupling NORMALISATIONS are not (eps rows are ~1e3 x larger per unit coupling).  [EXACT]
+  F2 The induced 45 tadpole of the Phi-only eps rows at A = 0 is, exactly:  A04 -> T_BL (2304 p a + 1330.2 omega^2),
+     T3R (2304 a omega)  [declared normalisation; = (2 p a + (2/sqrt3) omega^2, 2 a omega) in the wedge normalisation];
+     never outside span(T3R, T_BL) (residual 1.7e-12).  Confirms the model builder's sec. 2e pattern.                  [NUM; pattern EXACT]
+  F3 The repo FieldState drops Phi/Sigma components <= 1e-14 (chart units) - relevant for EW-scale Sigma-doublet
+     vevs; the new rows and the optional fast backend have no threshold.                                             [EXACT, code reading]
+
+1. THE CHART AND CONVENTIONS
+----------------------------
+q[0:486] = the repo chart live_g2_canonical_486_field_chart_v20 VERBATIM (Phi210 210 | H10 20 | Sigma126bar 252 |
+S 2 | Phi17 2; complex z = (x+iy)/sqrt2 interleaved); q[486:531] = A_ab, a<b in itertools.combinations(range(10),2)
+order (= the repo's generator order, hypercharge.GENERATORS).  Kinetic (1/4) dA_ab dA_ab = (1/2) sum_{a<b} dA_ab^2,
+so K = 1/2 q.q on all 531 coordinates (identity metric); K45 = (1/2) A_ab A_ab = sum_{a<b} A_ab^2 (invariants.json).
+pack(state, A) / unpack(q) / split / join / a_matrix / a_coordinates / coordinate_names.
+Sigma = the repo's physical 126bar (-i Hodge space of the repo's hodge_star), X = -2; H10 X = -2, S X = 4, Phi17
+X = 17, A45 X = PQ = 0 (U1X_CHARGES, PQ_CHARGES extend the repo dicts).  Charges: Q = -i G for a real generator G
+(repo convention T3R = (1/2)(-i)T3R_INTEGER, B-L = -(2/3)(-i)BL_INTEGER, Y = (1/6)(-i)Y_STANDARD_INTEGER).
+"3" = colour triplet with 3(B-L) = 1 mod 3 (triality is fixed by B-L, resp. 6Y, in all SO(10) reps), so Q_L = (3,2)_{1/6}.
+
+2. POTENTIAL ROWS (V = sum_k c_k I_k; 85 real parameters = 51 + 34)
+------------------------------------------------------------------
+(a) 51 v20 rows: g3_candidate_physical_target_audit_v20.parameter_rows at the 486 sub-state (cached on q[:486]),
+    embedded with zero A blocks (they do not depend on A).  Parameter ids unchanged ('lambda::O06_...', 're::', 'im::').
+(b) 34 new rows ('lambda::A01_A2' ... 're::A25_AAHbD', 'im::A25_AAHbD', ...; repo conventions: hermitian I ->
+    lambda:: = I; complex coupling (c I + c.c.) -> re:: = 2 Re I, im:: = -2 Im I).  Each of the 30 machine_specs of
+    invariants.json is compiled into an EXACT sparse polynomial in the complex chart variables w (w = q on Phi and A,
+    w = z, zbar on the complex blocks): letters grouped by signature are enumerated as sorted subsets x k!, eps
+    signs and permutation signs exact, the 126bar coefficients of the repo basis (1, +-i) exact; numerators are
+    Gaussian integers (max |numerator| recorded in validation_chart531.json), denominators 1 or 2.  The only irrational
+    number anywhere is the chart's 1/sqrt2.  1,845,990 terms in total; build 3.9 s, cached load 0.09 s.
+    Every declared hermitian invariant is checked EXACTLY self-conjugate at build time (the build raises otherwise);
+    every row polynomial (incl. 2Re/-2Im and Re/Im parts) is exactly self-conjugate (real-valued).          [EXACT]
+    Value / gradient (531) / Hessian (531x531) are exact polynomial derivatives (bincount accumulation), converted to
+    q by the exact chart map (g_q = M^T g_w, H_q = M^T H_w M).
+(c) Normalisation cross-check vs the model builder's independent evaluator (explicit_basis_v22.evaluate) [NUM]:
+    with that evaluator's own canonical index order and 1/prod(k!) eps normalisation, chart531 reproduces all 30
+    invariants on 6 of its seed-424242 samples to <= 3.2e-12 relative (D-rows evaluated on the reflected sample
+    e9 -> -e9, see below).  Relation between the DECLARED formulas (implemented here) and the invariants.json
+    reference values:   declared / reference = 1152 (A04_PPA_eps, A06_PPPA_eps1), 192 (A07_PPPA_eps2, A12_PAAA_eps),
+    -1 (A13_AHH, A17_ADD), +1 for the other 24.  Causes: the evaluator sums eps contractions over SORTED blocks
+    (the A12 note "= 4!2!2!2! (P^A^A^A)" states the declared normalisation correctly), and it works on multigraphs,
+    re-assigning index order inside antisymmetric tensors (A13: A_ab H_b Hb_a -> A_ab H_a Hb_b; A17 likewise).
+    Its hodge5 is MINUS the repo hodge_star, so its Delta samples lie in the repo's +i space (residual of
+    *D = +iD: 0.0); every Delta-containing invariant is a pure delta contraction (O(10)-invariant), so its values are
+    reproduced on the reflected sample and the family counts/ranks are unaffected.                          [EXACT]
+    Consequence: when comparing couplings with numbers derived from invariants.json reference values (or from the
+    model builder's tadpole/portal estimates), divide chart531's eps-row couplings by the factors above / flip A13,
+    A17.  LP coupling boxes (|c| <= 1) mean different things for the eps rows (natural size ~1e-3 here).
+
+3. SYMMETRY, LABELS, PROJECTORS
+-------------------------------
+so10_generators(): 45 sparse 531x531 real generators = the repo's 486 blocks (g2_audit, identical bit for bit) + the
+adjoint block delta A = [L_ab, A] (L_ab e_b = e_a, the repo's vector convention); A-block action identical (0 diff) to
+direct.generator_action on 2-forms; no 486xA cross blocks.  gauge_tangents(q), u1x_generator(), pq_generator(),
+symmetry_matrix(q) -> (531 x 47 tangents, ranks).  generator_w(k), phase_generator_w(Q): the same action on the w
+variables as exact Gaussian-integer matrices; poly_derivation(P, G_w): exact invariance test of any polynomial.
+label_operators(): C3, C2L, Y2 (constructed exactly as the repo's sm_label_operators: 486 blocks identical, Y2 to
+1.1e-16), T3R_op, BL_op, T3L_op, Y_op, su(3) Cartan pair H1 = J01-J23, H2 = J23-J45.
+isotypic_components(kind='G3211'|'SM', subspace='full'|block): complex isotypic decomposition by successive joint
+diagonalisation of (C3, C2L, -iT3R, -iB-L) resp. (C3, C2L, -iY), colour names by triality, highest-weight slices
+(top weight of a generic Cartan element; asserted dimension = multiplicity), conjugate pairing; real_components(),
+real_basis() (projector W W^T), a_block_projectors(kind), singlet_basis(kind), label_vectors(V).
+G3211 content of the 531 chart: 32 canonical real components; SM: 26 (lists in validation_chart531.json).
+A45 block (45 real):
+   G3211: (8,1)_{0,0} [8] + (1,3)_{0,0} [3] + 2 x (1,1)_{0,0} [T3R, T_BL directions] + (1,1)_{T3R=+-1,0} [2]
+          + (3,1)_{0,+4/3}+c.c. [6] + (3,2)_{+1/2,-2/3}+c.c. [12] + (3bar,2)_{+1/2,+2/3}+c.c. [12]            = 45
+   SM:    (8,1)_0 [8] + (1,3)_0 [3] + 2 x (1,1)_0 [2] + (1,1)_{+-1} [2] + (3,1)_{2/3}+c.c. [6] + (3,2)_{1/6}+c.c. [12]
+          + (3bar,2)_{5/6}+c.c. [12]                                                                            = 45
+sigma_std (z1^z2^z3^z4^z5) lies in (1,1)_{T3R=+1,B-L=-2} (Y = 0).                                                [NUM, exact pattern]
+decompose_hessian(H, kind, tangents=T): per canonical component the real block spectrum, the reduced m x m Hermitian
+matrix on the highest-weight slice and its eigenvalues (real multiplicity irrep_dim x (1 or 2)), the Goldstone
+real dimension (rank of the projected orthonormal tangents, cosine threshold 1e-6) and the leakage
+||H W - W W^T H W|| (zero at symmetric points).  reduce_rows(rows, kind): the per-parameter reduced Hessians
+(n_par x m x m per component) for LP use (k3_blocks analogue).
+
+4. G3211 VACUUM PARAMETRISATION AND GOLDSTONE COUNT
+---------------------------------------------------
+g3211_point(p, a, omega, omega_R, omega_BL, sigma=0, s=0, x=0, h=None, sigma_extra=None) -> q531:
+   Phi210 = p P + a A + omega W   (direct.singlet_basis(): unit chart norm; P = e6789, A = *_6 J6, W = J6 ^ J_R)
+   A45    = omega_R T3R + omega_BL T_BL,  T3R: A_67 = A_89 = 1/sqrt2,  T_BL: A_01 = A_23 = A_45 = 1/sqrt3 (unit norm)
+   Sigma  = sigma * sigma_std (+ optional 126 complex extra coordinates), S = s, Phi17 = x (kinetic-normalised complex),
+   H10    = h (optional, 10 complex).          g3211_coordinates(q) inverts it (residual 0.0 on round trips).
+EXPECTED Goldstone count (stated, EXACT group theory; module constant EXPECTED_GOLDSTONES):
+   SO(10) x U(1)_X -> G3211 x Z17 (sigma = 0, <S>, <Phi17> != 0):  45 - 13 = 32 broken so(10) + 1 (X -> Z17)
+   = 33 gauge Goldstones, + 1 global (accidental U(1)_PQ broken by <S>, the axion) = 34 symmetry zero modes.
+   With sigma != 0 (G3211 -> SM): 45 - 12 = 33 + 1 (X) = 34 gauge Goldstones + 1 PQ = 35 (as the v20 SM candidate).
+Measured [NUM] (generic p, a, omega, omega_R, omega_BL = 0.6, -0.5, 0.4, 0.3, 0.2; s = 0.01, x = 2):
+   sigma = 0:     so(10) rank 32, +X 33, +PQ 34, stabilizer 13 (G3211)      sigma = 0.05: 33 / 34 / 35, stabilizer 12 (SM)
+   A45 alone (omega_R, omega_BL generic): stabilizer 13 = G3211 (the 45 alone already breaks to G3211)
+   Phi alone (p, a, omega): 13;  (p, a) only: 15 (G3221).
+   Singlet subspaces: G3211 9 real (p, a, omega, T3R, T_BL, S, Phi17), SM 11 (+ sigma_std).
+   At both points every row gradient (34 new + 51 repo) lies in the singlet subspace to <= 1.4e-13 (rows whose gradient
+   vanishes analytically there - e.g. O27 54/4125 at sigma_std, which lies purely in the 2772bar channel - excluded by a
+   1e-12 floor; they are exactly 0).  Hessian of a random 85-coupling potential: G3211 leakage 2.3e-14 (sigma = 0),
+   SM leakage 4.6e-15 (sigma != 0); Goldstone dims summed over components 34 resp. 35; reduced (highest-weight)
+   spectra reproduce every block spectrum with the predicted multiplicities; Ward identity
+   H (G q) + G^T g = 0 holds to 1.4e-13 / 5.0e-12 for all 47 generators (these points are NOT stationary).
+(c) Tadpoles at A = 0 (Phi only): A04, A06, A07 give A-gradients in span(T3R, T_BL) only (residual <= 1.7e-12); A04
+    exact quadratic form (declared normalisation): T_BL: 2304 p a + 1330.215 omega^2 (= 2304/sqrt3), T3R: 2304 a omega,
+    zero for p^2, a^2, p omega.  With H, Sigma != 0 further A tadpoles come from A13, A16, A17, A21-A24, A26-A28.
+    => A cannot be frozen at 0 in any G3211 search (as the model builder stated).
+
+5. VALIDATION DETAILS (validate_chart531.py -> validation_chart531.json; logs validate_chart531*.log)
+--------------------------------------------------------------------------------------------------
+(a) [EXACT/bitwise] state = potential.deterministic_state(5310), A = 0: pack/unpack round trip 0.0; the 51 rows from
+    chart531 vs a direct repo call: value, gradient, Hessian differences 0.0 (bitwise), A blocks 0.0; new rows: value,
+    non-A gradient, non-A Hessian all exactly 0.0 (every monomial carries an A); assembled V, g[:486], H[:486,:486] with
+    85 random couplings: bitwise equal to the repo assemble; generators 0.0, gauge tangents vs repo gauge_orbit_matrix
+    0.0, U(1)_X and PQ tangents 0.0, label operators C3/C2L 0.0, Y2 1.1e-16.  Nonzero at A = 0: the A tadpoles of the
+    16 linear-in-A rows and the A-A / A-X Hessian blocks of 31 rows (listed in the JSON).
+(b) NUM at 3 random points (incl. a repo state + random A): so(10) 3.2e-16, X/PQ 1.6e-16 (new rows); repo rows in the
+    531 chart 7.2e-14.  EXACT: for all 34 rows the polynomial derivations by J_01, J_12, ..., J_89, U(1)_X and PQ are
+    the zero polynomial (8 s); the J_{a,a+1} generate so(10) as a Lie algebra, so this proves full so(10) x U(1)_X x
+    U(1)_PQ invariance.  Negative control (a single monomial) gives a nonzero derivation.  generator_w entries are
+    Gaussian integers (checked).
+(c) NUM: 80 random points: rank 34 = 34 enumerated real parameters; per family (17 orbits) rank = real parameter count
+    (A^4 2, Phi^3A 2, Phi^2A^2 4, AAHH 2, AADD 3, PADD 4, AAHbD 2, PAHbD 6, others 1).  95 points incl. repo values:
+    all 85 rows rank 85.
+(d) NUM (5-point central stencils, exact for quartics up to rounding; normalised per row): random point / G3211-like
+    point: gradient on 95 coordinates (all 45 A + 50 random) 7.2e-12 / 7.9e-13; 40 Hessian columns 8.7e-13 / 2.3e-14;
+    directional first / second / mixed (Richardson) <= 3.4e-13.  Full 85-row potential (repo + new, random couplings)
+    along 2 random directions with repo values: first 7.2e-16, second 2.8e-13.
+(e) EXACT: for every raw contraction and field F in (H10, Sigma, S, Phi17) every monomial has holomorphic degree
+    n_F = #F - #Fbar equal to the declared one; every row monomial has X = 0 and PQ = 0.  NUM: phase rotations
+    P0 -> e^{i n_F theta} P0 to 3.0e-15, (re, im) rows rotate as declared to 5.7e-14, full X and PQ rotations leave all
+    rows invariant to 1.8e-15; repo directions under per-field phases with their declared counts 1.5e-15, X 9.9e-16.
+(f) NUM wall clock (OMP/OPENBLAS 2 threads): new 34 rows value 0.117 s (0.075 s/point batched), value+gradient
+    0.52 s, value+gradient+Hessian 1.70 s; repo 51 rows (value+gradient+Hessian) 58.7 s here (30-95 s observed, first
+    call in a process 50-65 s), repo values only 1.77 s; symmetry_matrix 0.004 s; assemble 85 rows 0.05 s;
+    decompose_hessian 0.2-0.3 s; eigvalsh(531) 0.017 s; label operators 0.1 s; generators 3.4 s (once).
+    Full 85-row Hessian: ~50-75 s with the repo backend, ~5 s with v20_backend="poly".
+
+6. OPTIONAL FAST BACKEND FOR THE 51 v20 ROWS (v20poly.py; parameter_rows(q, v20_backend="poly"))
+-------------------------------------------------------------------------------------------------
+The default stays the repo compiler (authoritative).  v20poly identifies each of the 44 live repo directions with an
+explicit linear combination of contraction graphs (all multigraphs of the family, eps graphs for Sigma-free families,
+compiled by chart531's exact engine; dressing by S, Phi17 monomials), fitted to the repo value layer at 70 random
+states (cached under BIG) and checked at 25 fresh ones; coefficients rationalised (denominators <= 2^22, e.g. O44:
+1/1008, 1/1120, 1/20160, -1/1260, 1/720, -1/240).  44/44 directions accepted as exact rational identities -> 51 rows.
+Acceptance: rational residual <= 1e-11 of the term scale sum_g |c_g G_g| at the fresh points (40 directions are at
+<= 2e-13; O44_B02..B05, the heavily cancelling 45/210/770/5940 Phi^2 Sigma^dag Sigma projector channels with
+cancellation factors 200-1600, sit at 4e-14..2.8e-12 - the repo's own float evaluation of these projections is only
+that accurate; a wrong rational would show up at >= 1e-6).  Label: NUM identity, exact rational polynomial afterwards.
+Checks: EXACT so(10) x U(1)_X x PQ invariance of all 51 fast rows (derivations zero) and X = PQ = 0 per monomial;
+NUM vs repo parameter_rows (value, gradient, Hessian, per-row relative with a 1e-12 global floor): random state
+<= 5.5e-11 (worst O44_B02 value), SM-type G3211 point <= 7.7e-12; speed 3.0-3.3 s vs 46-73 s.  It also avoids the
+repo's 1e-14 component threshold (F3).  Use it for descents/LP banks; confirm final points with the repo backend.
+
+7. API (chart531.py)
+--------------------
+rows = parameter_rows(q [, v20_backend="repo"|"poly", hessian=True])   -> {pid: Row(value, gradient, hessian)} (85)
+new_rows(q), new_row_values(Q[n,531]), v20_rows(q), v20_row_values(q), assemble(rows, coeffs) -> (V, g, H)
+full_hessian(q, coeffs), hessian_and_decomposition(q, coeffs, kinds=("G3211","SM")) -> V, g, H, eigenvalues,
+   symmetry ranks, decompositions (the requested "full 531x531 Hessian and its G3211 / SM multiplets")
+g3211_point(...), g3211_coordinates(q), EXPECTED_GOLDSTONES, symmetry_matrix(q), gauge_tangents(q)
+isotypic_components / real_components / a_block_projectors / singlet_basis / decompose_hessian / reduce_rows
+rowdefs() (exact polynomials, metadata incl. holomorphic charges), raw_contraction(name), build_contraction(spec),
+poly_derivation, generator_w, monomial_charges, save_rows_npz.   Coefficient vector: V = sum_k c_k I_k over the
+parameter ids; the SARAH coupling map is in invariants.json (e.g. c(lambda::A01_A2) = m45Sq/2).
+Example 85-row data (q, ids, values, grads, hess, tangents) at the two test points:
+   ...\scratchpad\v22_stage2a_big\chart\rows85_G3211_sigma0.npz, rows85_SM_sigma.npz (random couplings NOT stored).
+
+8. CAVEATS / NOT DONE (scope of this step)
+------------------------------------------
+- No vacuum, no LP, no descent was run: risks (i) octet cubics, (ii) Landau, (iii) the deep H-Sigma(-S) vacua are
+  untouched; this step only provides the machinery (531 chart, 85 exact rows, tangents, projectors).
+- Hessian decompositions are exact multiplets only at G3211 / SM-symmetric points; elsewhere decompose_hessian is a
+  projection and reports the leakage (e.g. once the EW doublet gets a vev).
+- The repo's FieldState threshold (F3) applies to the "repo" backend: Phi/Sigma components <= 1e-14 in chart units
+  are dropped (H, S, Phi17 are not thresholded).  Work in units where the smallest relevant Sigma component exceeds
+  ~1e-12, or use the poly backend and confirm with the repo backend.
+- The eps-row normalisation (F1) makes those couplings ~1e3 smaller at equal effect; any naturalness box must use
+  the declared normalisation stated here (or the conversion factors).
+- v20poly coefficients are identified numerically (rationalised, verified on fresh points and against the repo
+  derivatives) - not derived symbolically from the repo's projector definitions.
+
+9. FILES
+--------
+chart531.py                 the module (chart, exact rows, symmetry, labels, decomposition, G3211 parametrisation)
+validate_chart531.py        checks 0, 1 (model-evaluator cross-check), (a)-(f), (g) G3211; -> validation_chart531.json
+validation_chart531.json    all numbers quoted above (63 kB)
+validate_chart531.log       first run, sections a, b (killed afterwards at section c, see hygiene)
+validate_chart531_cg.log    sections c-g (the g numbers in it used a relative-rank Goldstone count, since fixed)
+validate_chart531_g.log     section g re-run with the absolute (cosine) Goldstone threshold and the zero-gradient floor
+v20poly.py, v20poly_build.log, v20poly_validate.log, v20poly_validation.json   optional fast v20 backend (sec. 6)
+BIG (scratchpad\v22_stage2a_big\chart): poly_cache_chart531-v1_*.npz (34 rows), v20poly_cache_v1.npz (51 rows),
+   v20poly_repo_samples_seed4860_95.npz, rows85_*.npz, scratch tests t_*.py, patch_v20poly.py.
+Re-run: python -B chart531.py (build/load rows); python -B validate_chart531.py [--sections 0,1,a,b,c,d,e,f,g]
+(~15 min, dominated by repo calls); python -B v20poly.py build|validate|exact.
+Environment: C:\Users\jayal\AppData\Local\Programs\Python\Python312\python.exe -B, PYTHONIOENCODING=utf-8,
+PYTHONDONTWRITEBYTECODE=1, SO10_PUBLISHED_API_ROOT=<worktree>, OMP_NUM_THREADS=2, OPENBLAS_NUM_THREADS=2.

@@ -1,0 +1,734 @@
+{
+ "engine": "so10_weyl_chars.py (own D5 Weyl characters, exact integers)",
+ "sanity": {
+  "Sym2(45)": "1 + 54 + 210 + 770",
+  "Sym2(210)": "1 + 45 + 54 + 210 + 770 + 1050bar + 1050 + 4125 + 5940 + 8910",
+  "Lambda2(210)": "45 + 210 + 2x945 + 5940 + 6930bar + 6930",
+  "Sym3(45)": "2x45 + 210 + 945 + 1386 + 5940 + 7644",
+  "45x210": "45 + 2x210 + 945 + 1050bar + 1050 + 5940",
+  "10x10": "1 + 45 + 54",
+  "10x126bar": "210 + 1050bar",
+  "126x126bar": "1 + 45 + 210 + 770 + 5940 + 8910",
+  "Sym2(126bar)": "54 + 1050bar + 2772bar + 4125",
+  "16x16": "10 + 120 + 126",
+  "16x16bar": "1 + 45 + 210"
+ },
+ "v20_reproduction": {
+  "multidegrees_nonzero": 34,
+  "orbits": 28,
+  "directions": 44,
+  "real_parameters": 51,
+  "matches_attested_34_28_44_51": true,
+  "per_orbit_agree_with_v20_direction_list": true,
+  "per_orbit": [
+   {
+    "v20_id": "O03",
+    "md": "Phi17 Phi17^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O04",
+    "md": "S S^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O05",
+    "md": "Delta126bar Delta126bar^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O06",
+    "md": "H10 H10^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O07",
+    "md": "Phi210^2",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O12",
+    "md": "H10^dag^2 S^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O14",
+    "md": "Phi210 Delta126bar Delta126bar^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O15",
+    "md": "Phi210 H10^dag Delta126bar",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O17",
+    "md": "Phi210^3",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O20",
+    "md": "Phi17^2 Phi17^dag^2",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O22",
+    "md": "S S^dag Phi17 Phi17^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O23",
+    "md": "S^2 S^dag^2",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O25",
+    "md": "Delta126bar Delta126bar^dag Phi17 Phi17^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O26",
+    "md": "Delta126bar Delta126bar^dag S S^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O27",
+    "md": "Delta126bar^2 Delta126bar^dag^2",
+    "attested": 4,
+    "own": 4,
+    "agree": true
+   },
+   {
+    "v20_id": "O28",
+    "md": "H10^dag Delta126bar^2 Delta126bar^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O31",
+    "md": "H10^dag^2 Delta126bar^2",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O33",
+    "md": "H10 H10^dag Phi17 Phi17^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O34",
+    "md": "H10 H10^dag S S^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O35",
+    "md": "H10 H10^dag Delta126bar Delta126bar^dag",
+    "attested": 2,
+    "own": 2,
+    "agree": true
+   },
+   {
+    "v20_id": "O36",
+    "md": "H10^2 H10^dag^2",
+    "attested": 2,
+    "own": 2,
+    "agree": true
+   },
+   {
+    "v20_id": "O38",
+    "md": "Phi210 H10^dag Delta126bar^dag S^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O42",
+    "md": "Phi210^2 Phi17 Phi17^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O43",
+    "md": "Phi210^2 S S^dag",
+    "attested": 1,
+    "own": 1,
+    "agree": true
+   },
+   {
+    "v20_id": "O44",
+    "md": "Phi210^2 Delta126bar Delta126bar^dag",
+    "attested": 6,
+    "own": 6,
+    "agree": true
+   },
+   {
+    "v20_id": "O45",
+    "md": "Phi210^2 H10^dag Delta126bar",
+    "attested": 2,
+    "own": 2,
+    "agree": true
+   },
+   {
+    "v20_id": "O46",
+    "md": "Phi210^2 H10 H10^dag",
+    "attested": 3,
+    "own": 3,
+    "agree": true
+   },
+   {
+    "v20_id": "O48",
+    "md": "Phi210^4",
+    "attested": 4,
+    "own": 4,
+    "agree": true
+   }
+  ],
+  "orbits_not_in_v20_list": []
+ },
+ "v22_total": {
+  "multidegrees_nonzero": 53,
+  "n_orbits": 45,
+  "n_directions": 74,
+  "n_real_parameters": 85
+ },
+ "v22_new_A_orbits": [
+  {
+   "multidegree": "A45^2",
+   "md": {
+    "A": 2
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "Phi210^2 A45",
+   "md": {
+    "P": 2,
+    "A": 1
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "Phi210 A45^2",
+   "md": {
+    "P": 1,
+    "A": 2
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "H10 H10^dag A45",
+   "md": {
+    "H": 1,
+    "Hb": 1,
+    "A": 1
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "Delta126bar Delta126bar^dag A45",
+   "md": {
+    "D": 1,
+    "Db": 1,
+    "A": 1
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "Phi210^3 A45",
+   "md": {
+    "P": 3,
+    "A": 1
+   },
+   "n_invariants": 2,
+   "self_conjugate": true,
+   "real_parameters": 2
+  },
+  {
+   "multidegree": "Phi210^2 A45^2",
+   "md": {
+    "P": 2,
+    "A": 2
+   },
+   "n_invariants": 4,
+   "self_conjugate": true,
+   "real_parameters": 4
+  },
+  {
+   "multidegree": "Phi210 H10 H10^dag A45",
+   "md": {
+    "P": 1,
+    "H": 1,
+    "Hb": 1,
+    "A": 1
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "Phi210 H10 Delta126bar^dag A45",
+   "md": {
+    "P": 1,
+    "H": 1,
+    "Db": 1,
+    "A": 1
+   },
+   "n_invariants": 3,
+   "self_conjugate": false,
+   "real_parameters": 6
+  },
+  {
+   "multidegree": "Phi210 Delta126bar Delta126bar^dag A45",
+   "md": {
+    "P": 1,
+    "D": 1,
+    "Db": 1,
+    "A": 1
+   },
+   "n_invariants": 4,
+   "self_conjugate": true,
+   "real_parameters": 4
+  },
+  {
+   "multidegree": "Phi210 A45^3",
+   "md": {
+    "P": 1,
+    "A": 3
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "H10 H10^dag A45^2",
+   "md": {
+    "H": 1,
+    "Hb": 1,
+    "A": 2
+   },
+   "n_invariants": 2,
+   "self_conjugate": true,
+   "real_parameters": 2
+  },
+  {
+   "multidegree": "H10 Delta126bar^dag A45^2",
+   "md": {
+    "H": 1,
+    "Db": 1,
+    "A": 2
+   },
+   "n_invariants": 1,
+   "self_conjugate": false,
+   "real_parameters": 2
+  },
+  {
+   "multidegree": "Delta126bar Delta126bar^dag A45^2",
+   "md": {
+    "D": 1,
+    "Db": 1,
+    "A": 2
+   },
+   "n_invariants": 3,
+   "self_conjugate": true,
+   "real_parameters": 3
+  },
+  {
+   "multidegree": "S S^dag A45^2",
+   "md": {
+    "S": 1,
+    "Sb": 1,
+    "A": 2
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "Phi17 Phi17^dag A45^2",
+   "md": {
+    "T": 1,
+    "Tb": 1,
+    "A": 2
+   },
+   "n_invariants": 1,
+   "self_conjugate": true,
+   "real_parameters": 1
+  },
+  {
+   "multidegree": "A45^4",
+   "md": {
+    "A": 4
+   },
+   "n_invariants": 2,
+   "self_conjugate": true,
+   "real_parameters": 2
+  }
+ ],
+ "v22_new_A_counts": {
+  "multidegrees_nonzero": 19,
+  "n_orbits": 17,
+  "n_directions": 30,
+  "n_real_parameters": 34
+ },
+ "v22_A_multidegrees_vanishing": [
+  "A45",
+  "Phi210 A45",
+  "H10 Delta126bar^dag A45",
+  "H10^dag Delta126bar A45",
+  "S S^dag A45",
+  "Phi17 Phi17^dag A45",
+  "A45^3",
+  "Phi210 S S^dag A45",
+  "Phi210 Phi17 Phi17^dag A45",
+  "H10^2 S A45",
+  "H10 Delta126bar S A45",
+  "H10^dag^2 S^dag A45",
+  "H10^dag Delta126bar^dag S^dag A45",
+  "Delta126bar^2 S A45",
+  "Delta126bar^dag^2 S^dag A45"
+ ],
+ "consistency_v22_equals_v20_plus_A": true,
+ "fermion_catalogue": {
+  "x_neutral_combinations": [
+   {
+    "pair": [
+     "F",
+     "F"
+    ],
+    "scalar": "H10",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "F",
+     "F"
+    ],
+    "scalar": "Delta126bar",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "V1",
+     "Vb1"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "V1",
+     "Pb"
+    ],
+    "scalar": "Phi17",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "V2",
+     "Vb2"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "Vb2",
+     "Vb3"
+    ],
+    "scalar": "H10",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "Vb2",
+     "Vb3"
+    ],
+    "scalar": "Delta126bar",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "V3",
+     "Vb3"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "T10",
+     "T10"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "T10",
+     "NMm"
+    ],
+    "scalar": "none",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "T10",
+     "NMm"
+    ],
+    "scalar": "Phi210",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "T10",
+     "NMm"
+    ],
+    "scalar": "A45",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "N1",
+     "N1b"
+    ],
+    "scalar": "S",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "N1",
+     "N3b"
+    ],
+    "scalar": "H10^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "N1",
+     "N3b"
+    ],
+    "scalar": "Delta126bar^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "N1b",
+     "N3"
+    ],
+    "scalar": "H10",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "N1b",
+     "N3"
+    ],
+    "scalar": "Delta126bar",
+    "X_sum": 0,
+    "n_SO10_singlets": 0
+   },
+   {
+    "pair": [
+     "N2",
+     "N2b"
+    ],
+    "scalar": "S",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "N3",
+     "N3b"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "NMm",
+     "NMm"
+    ],
+    "scalar": "S",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   }
+  ],
+  "invariant": [
+   {
+    "pair": [
+     "F",
+     "F"
+    ],
+    "scalar": "H10",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "F",
+     "F"
+    ],
+    "scalar": "Delta126bar",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "V1",
+     "Vb1"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "V1",
+     "Pb"
+    ],
+    "scalar": "Phi17",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "V2",
+     "Vb2"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "Vb2",
+     "Vb3"
+    ],
+    "scalar": "H10",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "V3",
+     "Vb3"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "T10",
+     "T10"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "N1",
+     "N1b"
+    ],
+    "scalar": "S",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "N2",
+     "N2b"
+    ],
+    "scalar": "S",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "N3",
+     "N3b"
+    ],
+    "scalar": "S^dag",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   },
+   {
+    "pair": [
+     "NMm",
+     "NMm"
+    ],
+    "scalar": "S",
+    "X_sum": 0,
+    "n_SO10_singlets": 1
+   }
+  ],
+  "n_invariant_structures": 12,
+  "any_A45_yukawa": false,
+  "any_bare_mass": false
+ },
+ "seconds": 4.759084224700928
+}

@@ -1,0 +1,117 @@
+{
+ "selftest": {
+  "basis_err": 0.0,
+  "pack_roundtrip": 4.440892098500626e-16,
+  "phi_vs_repo_unpack": 0.0,
+  "sigma_vs_repo_unpack": 0.0,
+  "anti_self_dual": 0.0,
+  "H_vs_repo": 0.0
+ },
+ "row_compare_random": [
+  {
+   "worst_A_rel": [
+    1.5334990930183402e-14,
+    "lambda::A24_PADD_4"
+   ],
+   "worst_v20_rel": [
+    1.2055190179438569e-11,
+    "lambda::O44_B02_Phi2_Sigma_projectors"
+   ],
+   "n_rows": 85
+  },
+  {
+   "worst_A_rel": [
+    2.186381626944294e-14,
+    "lambda::A04_PPA_eps"
+   ],
+   "worst_v20_rel": [
+    2.449819176205773e-11,
+    "lambda::O44_B02_Phi2_Sigma_projectors"
+   ],
+   "n_rows": 85
+  },
+  {
+   "worst_A_rel": [
+    1.856392098954895e-14,
+    "lambda::A24_PADD_4"
+   ],
+   "worst_v20_rel": [
+    2.615161252228794e-10,
+    "lambda::O44_B02_Phi2_Sigma_projectors"
+   ],
+   "n_rows": 85
+  }
+ ],
+ "Vstar_R3_Lb": {
+  "mine": -248.05748390764748,
+  "FastV": -248.05748390764757,
+  "diff": 8.526512829121202e-14
+ },
+ "invariance": [
+  {
+   "point": "qstar",
+   "op": "SO10 rot 0",
+   "dV": -2.842170943040401e-14,
+   "|q2-q|": 2.080516546248594
+  },
+  {
+   "point": "qstar",
+   "op": "SO10 rot 1",
+   "dV": 2.842170943040401e-14,
+   "|q2-q|": 2.03239493626954
+  },
+  {
+   "point": "qstar",
+   "op": "U(1)_X 0.731",
+   "dV": 0.0,
+   "|q3-q|": 0.7877774280856865
+  },
+  {
+   "point": "qstar",
+   "op": "PQ 1.234",
+   "dV": 0.0,
+   "|q4-q|": 0.004269799866630087
+  },
+  {
+   "point": "qstar",
+   "op": "NEG CONTROL: rotate A only",
+   "dV": 0.005121286729604435
+  },
+  {
+   "point": "random",
+   "op": "SO10 rot 0",
+   "dV": 4.3428372009657323e-10,
+   "|q2-q|": 31.42517924932644
+  },
+  {
+   "point": "random",
+   "op": "SO10 rot 1",
+   "dV": -3.456079866737127e-11,
+   "|q2-q|": 30.679766864477347
+  },
+  {
+   "point": "random",
+   "op": "U(1)_X 0.731",
+   "dV": -4.547473508864641e-13,
+   "|q3-q|": 21.460032564217137
+  },
+  {
+   "point": "random",
+   "op": "PQ 1.234",
+   "dV": 0.0,
+   "|q4-q|": 30.197098458148787
+  },
+  {
+   "point": "random",
+   "op": "NEG CONTROL: rotate A only",
+   "dV": 2.1864989984196654
+  }
+ ],
+ "pq_charges": {
+  "H": -2,
+  "D": -2,
+  "S": 4,
+  "T": 0
+ },
+ "seconds": 36.750585079193115
+}

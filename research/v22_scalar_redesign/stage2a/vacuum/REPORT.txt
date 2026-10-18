@@ -1,0 +1,302 @@
+STAGE 2a - VACUUM TESTER (THE DECISIVE D3 TEST) for candidate "v22-L2" = v20 scalars + one real 45_H, B63 fermions
+=====================================================================================================================
+Folder: research\v22_scalar_redesign\stage2a\vacuum\ (worktree _v22research, branch research/v22-scalar-redesign).
+Big data (LP iterates, row/point npz, descent banks, competitor pools): scratchpad ...\v22_stage2a_big\vacuum\.
+Labels: EXACT (exact arithmetic / group theory) / NUM (float64, residual or count stated) / EST / CONJ / LIT.
+Hygiene: only this folder and the BIG folder were written.  chart531.py / v20poly.py / invariants.json (stage2a/chart,
+stage2a/model) and the repository modules were imported read-only; the R2-A, K3 and Stage-1 D-A banks were only read.
+No commit / push / stash; _rescope and the other worktrees untouched; `git status --short` at the end shows only
+`?? research/v22_scalar_redesign/stage2a/` (Stage 1 was committed meanwhile by its own workflow).  At most two heavy processes at a time (one short overlap of a third ~2 min
+diagnostic, and one early batched row evaluation that transiently allocated ~3 GB before the RowBank chunk was cut to
+3 points: both noted, no effect on results).  I killed only my own processes, by PID (one early `Stop-Process python*`
+call stopped exactly my two processes; it was checked beforehand that no other python process existed).
+
+=====================================================================================================================
+0. VERDICT:  D3-FAIL   (NUM, not certified - the same numerical standard as R2-A / Stage-1 D-A)
+=====================================================================================================================
+Every feasible coupling point produced for a flavour-capable light content has a deeper vacuum, after three formal
+feedback rounds (plus some 60 in-loop feedback rounds before them).  The new sign-definite 45_H portals do NOT
+remove the deep H-Sigma(-S) vacua.  Each round lifts the basins it was shown, and new lower basins appear right
+next to the vacuum (depths shrink from O(10-100) to O(1e-4 to 1e-2) in units where V* ~ -250, but never vanish).
+  content (all with ONE tuned SM doublet |r| = 66, s = 0.43+0.09i, f_Sigma = 0.17, Phi210-admixture beta free)
+     Lb  = doublet + (8,3,0) + (6bar,2)_{1/6} (D-A family), orientation O11:
+           R1  t = 1.102e-3 -> G1:  61/75 descents lower, deepest dV = -3.78e-4, no runaway
+           R2  t = 1.118e-3 -> G2:  69/75 lower, deepest -1.05e-2
+           R3  t = 1.119e-3 -> G3:  75/81 lower, deepest -1.86e-3
+     La  = doublet + (8,1,0) + (8,3,0) (D-D content; the light (8,1,0) is an exact eigenvector), orientation O11:
+           R1  t = 1.326e-3 -> G1:  95/104 lower, deepest -4.89e-5, no runaway
+           R2  t = 1.305e-3 -> G2:  96/104 lower, deepest -2.75e-3
+           R3  t = 1.322e-3 -> G3:  95/104 lower, deepest -3.97e-5
+     L0  = doublet alone (control), O1/O3/O11 in-loop rounds: lower vacua at every point (sec. 6)
+  Every R_k point satisfies ALL local criteria (sec. 5): exact stationarity (|grad| <= 3e-14), exactly 35 symmetry
+  zero modes (34 gauge Goldstones + PQ axion), no tachyon, exactly the intended light modes, heavy gap t >= 1.1e-3,
+  |a0| <= 1/2, a sufficient BFB certificate (no runaway in any of the ~230 descents), lambda_eff_all >= 0 at tree, the
+  (8,3,0) f-eps cubic |T| <= 1.2e-7, and a clean 40000-sample / 30-polish SM-singlet subspace screen.  So the
+  failure is purely global.
+  The competing vacua (sec. 7c) are:
+   (a) EW-breaking H10-Sigma vacua with PQ restored (S = 0), |H| ~ 0.2, |Sigma| ~ 0.26 |Phi*|;
+   (b) "126bar + 45" vacua with Phi210 switched off (|Phi| <~ 0.09, |Sigma| ~ 0.9-1.1, |A| ~ 1.5) and S = 0;
+   (c) at L0/O1, the A = 0 vacuum with GUT-scale H, Sigma, S (|H| 1.08, |Sigma| 0.84, |S| 0.88);
+   (d) at weaker cut levels, large-field Sigma-A(-S) vacua with Phi17 = 0 (dV down to -182);
+   (e) for La, SU(2)_L-breaking reorientations of Phi210/A45 with the light sector collapsed (sigma = 0, S ~ 0),
+       nearly degenerate with the vacuum (dV -4e-5).
+   Classes (a) and (c) are exactly the H-Sigma(-S) family that killed every 486-chart design.
+What it is NOT:
+  * a certificate - no exact G3 method exists for G3211/SM vacua (K4 gap);
+  * an emptiness proof.  A phase-1 LP with only NECESSARY conditions (t >= 1e-3, sampled BFB rays,
+    lambda_eff_all >= 0, octet cubic, all 1573 pooled competitor points, strict lifting) is FEASIBLE at O11
+    (s* = -7.8e-7).  The competitor points found so far CAN be lifted together.  What fails is every point the
+    procedure produces: new basins keep appearing.
+Consequences for the programme:
+  * No point exists to export: candidate_point.json is NOT written.
+  * For audit only, the last Lb point is in round3_Lb_O11_point_NOT_GLOBAL.json.  It is marked as not a candidate.
+
+=====================================================================================================================
+1. OWN VALIDATION OF THE CHART PIECES USED (vcheck.py -> vcheck.json; vprep unit; vpost --repo)        [NUM]
+=====================================================================================================================
+  A = 0 reduction (repo state 777): v20 rows, fast poly backend vs REPOSITORY compiler: values 1.4e-14, gradients
+    5.8e-14, Hessians 5.1e-13 (relative); the 34 new rows vanish identically at A = 0 (value, non-A gradient, non-A
+    Hessian: 0.0); v20 rows have zero A-block entries (0.0).
+  Gauge invariance (3 random points, random couplings): |grad V . T_k| / (|grad||T_k|) <= 3.9e-17 for all 45 so(10)
+    generators + U(1)_X + PQ; Ward identity H (G q) + G^T g = 0 to <= 4.4e-9 absolute at |grad| ~ 1e6-1e7 (<= 5e-16 rel).
+  Fast combined polynomial (FastV, pair representation) vs per-row assembly: value 5.5e-16, gradient 2.7e-16,
+    Hessian 6.3e-16, Hessian-vector 2.5e-15, batched row values 3.2e-15.
+  Vacuum family: at a G3211/SM point every row gradient lies in the 11-dim SM-singlet subspace (residual 1.1e-12).
+  Singlet-channel unitarity traces: the v20 part reproduces R2-A/K3 unit_rows_traces.json to 5.1e-12.
+  Final points re-evaluated with the REPOSITORY backend (vpost --repo): R1 and R3 points: values / gradients /
+    Hessians agree to 6e-16; |grad| 1.8e-14 / 2.6e-14; spectrum 35 zero / 0 negative / 54 light, min heavy identical
+    (eigenvalue differences <= 4.3e-14).
+  The chart build itself (chart531 + invariants.json F1 normalisation) was taken as delivered; if its skeptic finds
+  defects these results must be re-judged (the eps-row boxes use the F1 factors 1152 / 192).
+
+=====================================================================================================================
+2. THE G3211 -> SM VACUUM FAMILY (vpoint.py; 13 orientations)                                      [EXACT / NUM]
+=====================================================================================================================
+q* = (Phi210 = p P + a A + omega W, A45 = omega_R T3R + omega_BL T_BL, Sigma = r sigma_std, S = s, Phi17 = x), with
+r = 1.2e-3 (v_R/|Phi| ~ 1e-3), s = 1.6e-3 (<S> ~ 1.6e13 for |Phi*| ~ 1e16, inside the quality window <= 3.285e13),
+x = 4.  Orientations (p, a, omega | omega_R, omega_BL):
+  O1 (0.7071,-0.7071,0 | 0.6,0.8)  O2 (0.7071,-0.7071,0 | 0.8,0.4)  O3 (0.6,-0.6,0.529 | 0.6,0.6)
+  O5 (0.7071,0.7071,0 | 0.6,0.8)   O6 (1,0,0 | 0.7,0.7)              O7 (0.7071,-0.7071,0 | 0.3,0.3)
+  O8 (0.5,-0.5,0.7071 | 0.6,0.8)   O9 (0.7071,-0.7071,0 | 1.0,1.2)   O10 (0.7071,-0.7071,0 | 0.5,1.0)
+  O11 (0.6,-0.6,0.529 | 0.9,0.5)   O12 (0.6,0.6,0.529 | 0.6,0.8)     test1 (0.6,-0.5,0.4 | 0.5,0.4)
+* Stationarity (EXACT structure, NUM rank): the 85 row gradients at q* span 8 dimensions: the 11 SM-singlet directions
+  minus the 3 phase directions (sigma phase, S phase, Phi17 phase).  So "exact stationarity" = 8 linear equations in
+  the 85 couplings.  They are imposed exactly through the null-space parametrisation c = D N y, with D the boxes and
+  N orthonormal.  This holds at every orientation.  The A45 directions T3R, T_BL are among the singlets.  Stationarity
+  w.r.t. A is therefore always imposed, never frozen: the eps tadpoles of chart F2 are included automatically.
+* Goldstones: symmetry ranks so(10) 33, +X 34, +PQ 35 (stabiliser dim 12 = SM) at every point.  The isotypic
+  decomposition gives 26 canonical SM components covering 531 real dimensions.  The per-component Goldstone dims sum
+  to 35 (EXACT count 33 + 1 + 1); the Ward residual is 0.0.  The (1,2)_{1/2} block has m = 5 copies (Phi210 1,
+  H10 2, Sigma 2).  Other blocks: (8,1)_0 m = 3 (Phi 2, A 1), (8,3)_0 m = 1 (Phi), (6bar,2)_{1/6} m = 1 (Phi).
+* Mass blocks are reported per SM multiplet (exact at the SM-symmetric vacuum, leakage <= 1e-15).  The G3211
+  projection is also reported (leakage ~ r).  For the round-3 Lb point see sec. 8.
+
+=====================================================================================================================
+3. METHOD (own code; R2-A r2_lp6 / sk_phase1 / sk_screen / r2_descend only read)
+=====================================================================================================================
+vc.py      85 rows as exact polynomials (v20 rows: v20poly backend, cross-checked with the repo at every final point;
+           new rows: chart531).  FastV = ONE combined polynomial per coupling vector in a pair representation:
+           value + gradient in 16 ms, exact Hessian-vector products, exact Hessian in 1 s.  RowBank = row values J(q)
+           at many points (about 50 ms per point).
+vpoint.py  point data: rows, stationarity row space, tangents, SM decomposition, field-block adapted highest-weight
+           slices, Goldstones per component, neutral doublet components for the EW composition map.
+vprep.py   unit traces (a0), the 214 banked deep configurations (R2-A all descent banks and endpoints, R2-A skeptic
+           DPB/DPD endpoints, Stage-1 D-A banks + skeptic_endpoints_bank + D-A skeptic runaway endpoints), BFB ray
+           bank (2350 rays incl. all old 486 ray banks, H-Sigma(-S) rays, every 1-/2-/3-block combination), exact
+           SM-singlet subspace polynomial (189 monomials, fit residual 1.3e-15 on fresh points).
+vbound.py  block-norm ranges [l_k, u_k] of the 66 quartic rows on products of unit spheres (multistart, NUM).
+vlp.py     the local programme at fixed light subspaces U, solved as an SDP (cvxpy/Clarabel; LP cutting-plane polish
+           available), with:
+             U-iteration and beta iteration (Phi210-doublet admixture free);
+             an exact EW eigen-equation, imposed by min-norm projection onto the equalities;
+             interlacing light/heavy conditions;
+             a0 as a 6x6 LMI;
+             boxes 40 / 2 / 1 (mass / cubic / quartic; eps rows divided by the F1 factors);
+             competitor cuts V* <= V(q_k) - mu t mf_k;
+             BFB.  Either sampled rays (necessary) or the sufficient block-norm certificate --bfb_dom: V4 >= x^T N x
+             with x_B = |q_B|^2, N - eps I = PSD + entrywise-nonnegative, eps = 1e-3;
+             light trilinears;
+             lambda_eff_all >= lambda_min by Kelley cuts of the convex response
+             R = b^T M^-1 b (Goldstones and the EW doublet excluded; light singlets integrated out);
+             octet cubics.  (8,3)_0: f-eps invariant along its maximiser v83.  Light (8,1)_0: d-symbol on two
+             orthogonal zero-weight vectors, with the light octet an EXACT eigenvector (content Lae);
+             in-loop screens: SM-singlet subspace (20000 samples), full-chart quartic search, and quick full-chart
+             descents with basin tracking.
+           Bug fixes built in.  The three R2-A ones: (1) gauge copies are recognised by the exact row-value vector
+           J(q) and only strictly lower points are cut; (2) no spurious BFB row; (3) all rows are normalised.
+           One NEW fix (sec. 6b): the competitor margin factor must be gauge invariant.
+vdesc.py / vdcore.py  full 531-chart descents.  L-BFGS on the exact polynomial; dense exact Hessian at every end
+           point with saddle escapes along the most negative eigenvector; runaway detection (V < V* - 1e7, or
+           |q| > 2e3 with V < V*, then refinement of the ray); end-point classification by block norms, so(10)
+           stabiliser and SU(2)_L breaking; exact gauge-copy test by J.
+vpost.py   spectrum by SM / G3211 multiplet, repo confirmation, tree lambda_eff, one-loop CW estimate (R2-A method),
+           light cubics.
+vexport.py point export.  vmerge.py  global-search summaries.
+vcheck.py  validation (sec. 1).
+Global search per round: 16 random (block-scaled) + 16 H-Sigma(-S) rays (|Sigma| 1-5 |Phi|, |H| 1-2 |Phi|, A in
+[0,1.5]|A*|) + 6 starts along the tuned doublet + 4 perturbations + the banked deep end points, embedded with
+A = A* x |Phi_k|/|Phi*| (and A = 0 / random A in G1).  Then the 40000-sample / 30-polish SM-singlet screen at the
+LP point.
+
+=====================================================================================================================
+4. STAGE A - ORIENTATION SCAN (local + SM-singlet global screen + sufficient BFB + lambda_eff_all..)         [NUM]
+=====================================================================================================================
+Each entry is max t after U-iteration, with: exact Goldstones, no tachyon, the light content, a0 <= 1/2,
+dominance BFB eps 1e-3, lambda_eff_heavy >= 0, light trilinears <= 1e-4, the 428 deep-bank competitors (A = 0 and
+A = A* embeddings), and singlet-subspace screens until clean (40000/30 final screen clean in every case).
+  Lb: O1 9.19e-3  O2 9.65e-3  O3 1.09e-2  O5 8.7e-4  O7 4.37e-3  O8 1.28e-3  O9 6.13e-3  O10 1.05e-2  O11 1.27e-2
+      O12 5.8e-4  test1 1.04e-2   (O6 = pure PS-singlet Phi aborted: memory, see hygiene)
+  L0: O1 1.13e-2  O2 1.05e-2  O3 1.23e-2  O5 6.7e-3   (scan stopped: L0 is the control)
+  (tree lambda_eff_all at these points: -0.73 .. -0.04 - the light-singlet exchange; fixed later by --leff_all)
+Local-only light-content feasibility (no global constraints, no BFB / with the dominance certificate):
+  L0 O1: t ~ 0.1 / 0.02;   Lb O1: 0.19 / 0.012;
+  La (TeV (8,1,0) + (8,3,0)):
+     O1 2.9e-4 / 2.2e-5     O2 1.5e-4 / 1.8e-4     O3 1.2e-3 / 4.7e-4    O9 7.7e-5 / 3.5e-5
+     O10 3.5e-3 / 9.5e-7    O11 8.5e-3 / 1.41e-3   test1 1.8e-3 / 4.4e-4
+  => La is locally realisable with t >= 1e-3 and a BFB certificate only at O11 (of 7 orientations tested).
+     Making both 210 octets light squeezes the 210 spectrum (cf. R2-A's 210 rank argument).
+
+=====================================================================================================================
+5. LOCAL LP RESULTS AT THE FORMAL-ROUND POINTS (orientation O11)                                             [NUM]
+=====================================================================================================================
+                 t          zero neg light  a0 max  BFB      lambda_eff (tree) direct/heavy/all  octet cubic(s)
+  Lb R1        1.102e-3     35   0   54     0.500   dom      0.663 / 0.141 / 0.014              (8,3) -1.18e-7
+  Lb R2        1.118e-3     35   0   54     0.500   dom      0.689 / 0.491 / 0.477              (8,3) -1.20e-7
+  Lb R3        1.119e-3     35   0   54     0.500   dom      0.656 / 0.223 / 0.205              (8,3) -1.20e-7
+  Lae R1       1.326e-3     35   0   38     0.500   dom      0.642 / 0.297 / 0.268              (8,1) -2.3e-10, -6.2e-11;
+                                                                                                (8,3) -8.1e-8
+  L0 and the earlier contents: sec. 6.
+  EW doublet in every round: the exact eigenvector of the 5x5 (1,2)_{1/2} block, eigen-residual <= 5e-15, m^2 = 1e-7,
+    next doublet >= 1.8e-3.  |r| = 66.000, s = 0.4300 + 0.0900 i, f_Sigma = 0.1700; beta converges to |beta|^2 ~ 1e-33.
+    So the Phi doublet does not mix at these orientations.
+  Light content: Lb gives 2 singlets (sigma radial, S radial) at 5e-7 .. 1.3e-6, the doublet x4, (8,3)_0 x24 and
+    (6bar,2)_{1/6} x24 at 3e-6; 54 = expected 54.  La gives 38 = expected 38.
+  Octet cubic tunings (counted as tunings):
+    (8,3)_0 f-eps coefficient: |T(v,v,v)| <= 1.2e-7 M_U, met.
+    TeV (8,1)_0 d-symbol: imposed at 7e-14 M_U, achieved 2e-10 M_U.  That is the float64/SDP floor.  It is a single
+      linear condition in c that can be met exactly by a 1e-10 correction, far below every other margin (EST).
+  NEW finding (EST): the MIXED light cubic (8,3)(6bar,2)(6,2) of Lb is NOT small at the R3 point: max entry
+    4.2e-4 M_U, Frobenius 1.1e-2.  Integrating out the heavier (8,3) (m8 <~ 1.6e11 for Landau) gives a negative
+    (6,2) quartic ~ kappa^2/(2 m8^2) unless kappa <~ 1e-5 M_U.  That is a third light-cubic tuning, not counted by
+    Stage 1.  It was not imposed; imposing it can only shrink the feasible set, so it can only strengthen the FAIL.
+
+=====================================================================================================================
+6. GLOBAL SEARCH HISTORY BEFORE THE FORMAL ROUNDS (in-loop feedback; all NUM)
+=====================================================================================================================
+(a) Max-t points without a BFB certificate are generically UNBOUNDED BELOW: 12/12 descents ran away at the first L0
+    point.  Sampled-ray BFB plus an in-loop quartic search did not converge.  After ~60 rounds and ~2400 added rays,
+    negative quartic directions persisted at about -1e-3 per unit |q|^4.  The maximal uniform BFB margin on the ray
+    bank was only ~1.5e-3.  The sufficient block-norm certificate (eps = 1e-3) IS compatible with the local
+    constraints: L0 O1 t = 0.021, Lb O11 t = 0.020 (eps = 0.01: t = 0.020; eps >= 0.05: infeasible).  After it, no
+    descent ever ran away again.
+(b) Gauge-invariant margin fix (new bug of the R2-A-1 class).  With a Euclidean margin factor mf = (|q_k - q*|/0.5)^4,
+    gauge-rotated near-copies of the vacuum got the full margin mu t.  This squeezed t artificially (Lb O3 to 4e-5,
+    O11 to 3e-4) and made an earlier phase-1 test look infeasible.  The binding rows were near-copies with
+    gap +8.9e-5 against a required 1e-4.  Fixed with mf = min(1, (|J(q_k) - J*| / dJ_ref)^4), which vanishes on the
+    gauge orbit.  All results below sec. 6(b) use it.  The earlier pre-fix runs remain valid as a record of lower
+    points found (the lower points themselves are genuine).
+(c) In-loop rounds (16-22 descents per round incl. tracked basins and deep-bank starts):
+    L0 O1 (pre-fix, ~30 rounds): every round 16/16 or 6-16/16 lower; dominant basin = A = 0, |H| 1.08, |Sigma| 0.84,
+      |S| 0.88, |Phi| 1.45 (dV -0.12 at a snapshot; 10/10 snapshot descents fell into it).
+    Lb O3 / O11 (pre-fix C runs, ~25 rounds): up to 50 distinct lower basins; large-field Sigma-A(-S) vacua with
+      Phi17 = 0 (dV -182, -103, -60, -41 ...).
+    Lb O3 / O11 (post-fix D runs, ~15 rounds): pooled competitors (1735) brought t from 1.3e-2 to 2-3e-3.  Every round
+      still found new lower basins (-21 .. -1e-5); t fell below 1e-3 again (9e-4) with the dominance certificate.
+    A snapshot point at Lb O11 with t = 1.19e-3: 40/46 descents lower (dV -4.5e-3).
+(d) Phase-1 emptiness tests, NECESSARY conditions only (t >= 1e-3, sampled BFB rays + 4000 SM-singlet-subspace rays,
+    lambda_eff_all >= 0, octet cubic, deep bank + 1573 pooled competitor points, strict lifting mu = 0):
+    Lb O11 s* = -7.8e-7 after 12 U-iterations, i.e. FEASIBLE.  The found competitor set is liftable together, so
+    there is no emptiness certificate.  (Lb O3 with mu = 0.1 and the old margin: s* -> +1.1e-5, an artefact of 6b.)
+
+=====================================================================================================================
+7. THE THREE FORMAL FEEDBACK ROUNDS (dominance-BFB track, orientation O11)                                     [NUM]
+=====================================================================================================================
+Protocol.  LP R_k (max t; all local constraints; deep bank + pool + all lower points of G_1..G_{k-1} as competitor
+cuts; final 40000/30 singlet screen clean).  Then global search G_k (>= 32 descents incl. the banked deep starts).
+Then the lower end points are fed back.
+(a) Lb (flavour- and unification-capable D-A family):
+    round  competitors  t(R_k)     G_k: descents  lower  runaway  deepest dV     by start kind (lower/n)
+      1      2001       1.102e-3        75         61      0     -3.78e-4      random 16/16, hsray 16/16, ew 0/6,
+                                                                                pert 0/4, deep(A*) 29/33
+      2      2051       1.118e-3        75         69      0     -1.054e-2     random 16/16, hsray 16/16, ew 0/6,
+                                                                                pert 4/4, deep 33/33
+      3      2131       1.119e-3        81         75      0     -1.857e-3     random 16/16, hsray 16/16, ew 0/6,
+                                                                                pert 4/4, deep 39/39
+    (G1 also included A = 0 and random-A embeddings of the deep starts in its job list; the search was stopped after
+    75 descents, all start types had been sampled.)  The 6 "ew" starts (tuned-doublet direction) return to the
+    vacuum in every round: tree lambda_eff_all >= 0, so the Higgs valley is fine.  The lower vacua are elsewhere.
+(b) La / Lae (TeV octet, D-D content; light (8,1)_0 an exact eigenvector so its cubic is imposed exactly):
+    round  competitors  t(R_k)     G_k: descents  lower  runaway  deepest dV     by start kind (lower/n)
+      1      2206       1.326e-3       104         95      0     -4.89e-5      random 12/12, hsray 12/12, ew 0/6,
+                                                                                pert 0/2, deep(A*) 71/72
+      2      2301       1.305e-3       104         96      0     -2.754e-3     random 11/12, hsray 12/12, ew 2/6,
+                                                                                pert 0/2, deep 71/72
+      3      2397       1.322e-3       104         95      0     -3.97e-5      random 12/12, hsray 12/12, ew 0/6,
+                                                                                pert 0/2, deep 71/72
+    (8,1)_0 d-symbol cubic along the exact light octet: -2.3e-10 / 3.6e-12 / 2.7e-10 M_U (R1/R2/R3; float floor,
+    see sec. 5); (8,3)_0 f-eps <= 1.2e-7; tree lambda_eff_all 0.268 / 0.044 / 0.363; final 40000/30 screens clean.
+    (Competitor counts include deep bank 428 + pool4 1778 and the G_k banks: lower and runaway end points.)
+(c) Character of the lower vacua (all SU(2)_L-breaking: unbroken so(10) stabiliser 0):
+    G1: |Phi| 1.03, |H| 0.199, |Sigma| 0.257, S = 0, |A| 1.02, Phi17 5.66    (EW-breaking H-Sigma, PQ restored)
+    G2: |Phi| 0.064, H = 0, |Sigma| 1.08, S = 0, |A| 1.54, Phi17 5.75       (126bar + 45 vacuum, 210 off)
+    G3: |Phi| 0.088, H = 0, |Sigma| 0.89, S = 0, |A| 1.46, Phi17 5.73       (same family as G2)
+       and a second G3 family |Phi| 1.48, |H| 0.34, |Sigma| 0.011, |S| 0.043 (EW-breaking, dV -1.7e-3)
+    La G1: |Phi| 1.012, H = Sigma = 0, |S| 0.108, |A| 1.015    (SU(2)_L-breaking reorientation of Phi210/A45, sigma = 0)
+    La G2: |Phi| 0.40, |H| 0.39, |Sigma| 0.70, |S| 0.009, |A| 1.65 (EW-breaking H-Sigma(-A))
+    La G3: |Phi| 1.004, H = Sigma = S = 0, |A| 1.029           (same reorientation class as La G1: sigma = S = 0)
+    Units: |Phi*| = 1, |A*| = 1.03, |q_S*| = 2.3e-3, |q_Sigma*| = 1.7e-3.
+
+=====================================================================================================================
+8. THE ROUND-3 Lb POINT IN DETAIL (round3_Lb_O11_point_NOT_GLOBAL.json; vpost --repo)                       [NUM]
+=====================================================================================================================
+Spectrum by SM multiplet (m^2 in |Phi*| = 1 units; real multiplicity), repo-confirmed:
+  (1,1)_0: 3 Goldstones, 5.0e-7 x2 (sigma, S radial), then 1.12e-3 ...  (1,1)_{+1}: 2 Goldstones, 4.2e-3 ...
+  (1,1)_{+2} 1.66e-3   (1,2)_{1/2}: 1e-7 x4 (the SM Higgs), 1.81e-3 x4, 5.59e-3 x4, 5.97e-3 x4 ...
+  (1,2)_{3/2} 3.32e-3   (1,3)_0 6.83e-3, 1.75e-2   (1,3)_{+1} 1.12e-3   (3bar,1)_{1/3} 1.119e-3 (lowest heavy) ...
+  (3,1)_{2/3}: 6 Goldstones, 1.93e-3 ...   (3,2)_{1/6}: 12 Goldstones, 1.29e-3 ...   (3bar,2)_{5/6}: 12 Goldstones, 7.4e-3
+  (3,2)_{7/6} 2.4e-3   (3bar,3)_{1/3} 2.6e-3   (3,3)_{2/3} 1.119e-3   (8,1)_0 2.08e-3, 9.9e-3, 1.89e-2   (8,1)_{+1} 2.4e-3
+  (8,2)_{1/2} 2.86e-3, 3.49e-3   (8,3)_0 3e-6 x24 (light)   (6,1)_{1/3} 4.9e-3   (6bar,1)_{2/3} 1.13e-3
+  (6,1)_{4/3} 2.5e-3   (6bar,2)_{1/6} 3e-6 x24 (light)   (6,2)_{5/6} 1.9e-3   (6,3)_{1/3} 2.7e-3
+  heavy vectors: m^2/g^2 = 0.901, 1.187, 1.556, 2.18 (GUT), 1e-5 (Z' at v_R).
+  So the heavy scalars sit at m^2 ~ 1e-3 .. 2.5e-2, i.e. 5-25 x below the vector masses in m.  EST: this matters
+  for thresholds; it is moot after the FAIL.
+lambda_eff (tree): direct 0.656, heavy 0.223, all 0.205 (light-singlet exchange 0.036).
+  Dial: at this constraint set tree lambda_eff_all ranges over [-2.6 (no lambda cut), >= +0.40]; >= 0.9 is
+  infeasible (O11 runs L_nolam / L_min0.4 / L_min0.9).  So -0.04 at tree is inside the range (convexity at fixed U).
+  One-loop CW threshold (EST, Landau gauge, R2-A method): heavy scalars -0.42 (mu = |Phi|) / -0.21 (mu = 0.3|Phi|),
+  heavy gauge +0.06, light scalars -8e-4 => lambda(1-loop) ~ -0.15 .. +0.06; sum kappa^2/(64 pi^2) = 0.086.
+  (At R1: CW -0.91 / -0.48.)  So the SM value lambda(v_R) ~ -0.04 .. 0 is reachable within the mu-dependence.
+  NB: strict tree-level global minimality requires lambda_eff_tree >= 0 (a negative tree value already gives a lower
+  point along the Higgs valley; R2-A skeptic).  That is why the D3 test is done at lambda_eff_all >= 0.
+a0 eigenvalues: -0.003, 0.036, 0.374, 0.5, 0.5, 0.5 (three channels at the bound).
+Coupling boxes at the edge: O20 / O23 singlet quartics, O34 |H|^2|S|^2, O36_B02 H self-quartic (all ~1.0).
+
+=====================================================================================================================
+9. CAVEATS AND WHAT COULD STILL OVERTURN THE FAIL
+=====================================================================================================================
+* Numerical global search, not a certificate (K4).  The FAIL is: every point the procedure produced (dozens of LP
+  points, 3 formal rounds per content, >= 230 formal descents) has a lower vacuum.  The competitor set found so far
+  is liftable (phase-1 feasible).  An untested coupling point, orientation or composition could be global.
+* The formal rounds used the SUFFICIENT block-norm BFB certificate (eps 1e-3), which restricts the coupling space.
+  Without a certificate the LP points are unbounded below, and sampled BFB did not converge.
+* Orientations: 12 in stage A; global rounds at O11 (Lb, La) plus in-loop rounds at O1, O3 (L0, Lb).  Composition
+  fixed at the Stage-1 proxy (|r| 66, s 0.43+0.09i, f_Sigma 0.17).  Vev ratios fixed (r 1.2e-3, s 1.6e-3, x 4).
+  Boxes 40/2/1 (F1-scaled for eps rows).
+* The depths are small relative to the vacuum energy: 1e-4 .. 1e-2, against |V*| ~ 250 dominated by the Phi17
+  sector and GUT-sector energies O(0.1-1).  The alternatives are nearly degenerate.  A metastability (bounce)
+  analysis was NOT done.  Under the programme's G3 global-minimum standard that does not matter.
+* The TeV-octet cubic reached 2e-10 M_U, not 7e-14 (solver floor; exact projection possible).  The mixed
+  (8,3)(6,2)(6,2) cubic is unconstrained (sec. 5).  Both only add constraints.
+* lambda_eff and CW are tree / one-loop EST.  No bounce, fermion loops or two-loop terms.
+
+=====================================================================================================================
+10. FILES (this folder; big data in scratchpad\v22_stage2a_big\vacuum)
+=====================================================================================================================
+vc.py vpoint.py vprep.py vbound.py vlp.py vdcore.py vdesc.py vmerge.py vpost.py vexport.py vcheck.py
+run_global.sh run_scanA.sh run_rounds.sh run_p1.sh run_dial.sh run_La.sh;  REPORT.txt;  vcheck.json;  quartic_bounds.json;
+round3_Lb_O11_point_NOT_GLOBAL.json (audit only);  vacuum_summary.json (all numbers of secs 4-8);  logs\ (prep, vcheck,
+vbound).  BIG: pt_*.npz/json (points), A_* / B_* / C_* / D_* / E_* / R*d_* / L_* (LP runs: log, json, npz, comp),
+G*d_* (global searches: log, json, bank npz), pool1-4.npz (pooled competitor configurations), deep486.npz, rays.npz,
+subfit.npz, unit_traces.npz, quartic_bounds.npz, tests\ (scratch tests and patch scripts).
+Re-run order: vprep.py banks|rays|subfit|unit -> vbound.py -> vpoint.py <tag> ... -> vlp.py (stage A: run_scanA.sh;
+formal rounds: vlp.py + run_global.sh, or run_rounds.sh) -> vpost.py / vexport.py; vcheck.py.

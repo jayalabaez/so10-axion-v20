@@ -1,0 +1,2248 @@
+{
+ "model": "SO10Z17AxionV22 (v22-L2): SO(10) x U(1)_X, Z17 = X mod 17; B63 fermions; Phi210 (real, X 0), Delta126bar (X -2), H10 (complex, X -2), S (X 4), Phi17 (X 17), A45 (real 45_H, X 0)",
+ "conventions": "V = sum_k c_k I_k for real couplings; V = sum_k (c_k I_k + c.c.) for complex couplings.\nA_ab real antisymmetric (canonical components A_ab, a < b: kinetic (1/4) dA_ab dA_ab), P_abcd = Phi210 real 4-form\n(K_210 = (1/4!) P.P, v20), H_a = H10, Hb = conj(H), D = Delta126bar 5-form with *D = -i D, Db = conj(D),\neps_{a1..a10} the Levi-Civita symbol (eps_{0123456789} = +1); repeated indices summed over 0..9.\nIndex strings: lower-case letters are contracted between two tensors, upper-case letters are contracted with eps.",
+ "counts": {
+  "v20_directions": 44,
+  "v20_real_parameters": 51,
+  "A45_directions": 30,
+  "A45_real_parameters": 34,
+  "A45_orbits": 17,
+  "A45_real_couplings": 26,
+  "A45_complex_couplings": 4,
+  "total_directions": 74,
+  "total_real_parameters": 85,
+  "census_exact": {
+   "multidegrees_nonzero": 53,
+   "n_orbits": 45,
+   "n_directions": 74,
+   "n_real_parameters": 85
+  },
+  "census_A_exact": {
+   "multidegrees_nonzero": 19,
+   "n_orbits": 17,
+   "n_directions": 30,
+   "n_real_parameters": 34
+  }
+ },
+ "A45_families_checks": {
+  "A^2": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "A^4": {
+   "n_defined": 2,
+   "numerical_rank": 2,
+   "exact_count": 2,
+   "smallest_singular_value_ratio": 0.11069801452593402,
+   "ok": true
+  },
+  "Phi210^2 A45": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "Phi210 A45^2": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "Phi210^3 A45": {
+   "n_defined": 2,
+   "numerical_rank": 2,
+   "exact_count": 2,
+   "smallest_singular_value_ratio": 0.8967129349141661,
+   "ok": true
+  },
+  "Phi210^2 A45^2": {
+   "n_defined": 4,
+   "numerical_rank": 4,
+   "exact_count": 4,
+   "smallest_singular_value_ratio": 0.008532600824599158,
+   "ok": true
+  },
+  "Phi210 A45^3": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "H10 H10^dag A45": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "H10 H10^dag A45^2": {
+   "n_defined": 2,
+   "numerical_rank": 2,
+   "exact_count": 2,
+   "smallest_singular_value_ratio": 0.14424459023602573,
+   "ok": true
+  },
+  "Phi210 H10 H10^dag A45": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "Delta126bar Delta126bar^dag A45": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "Delta126bar Delta126bar^dag A45^2": {
+   "n_defined": 3,
+   "numerical_rank": 3,
+   "exact_count": 3,
+   "smallest_singular_value_ratio": 0.0406034699326005,
+   "ok": true
+  },
+  "Phi210 Delta126bar Delta126bar^dag A45": {
+   "n_defined": 4,
+   "numerical_rank": 4,
+   "exact_count": 4,
+   "smallest_singular_value_ratio": 0.44678682989908347,
+   "ok": true
+  },
+  "H10^dag Delta126bar A45^2": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "Phi210 H10^dag Delta126bar A45": {
+   "n_defined": 3,
+   "numerical_rank": 3,
+   "exact_count": 3,
+   "smallest_singular_value_ratio": 0.46726762456164933,
+   "ok": true
+  },
+  "S S^dag A45^2": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  },
+  "Phi17 Phi17^dag A45^2": {
+   "n_defined": 1,
+   "numerical_rank": 1,
+   "exact_count": 1,
+   "smallest_singular_value_ratio": 1.0,
+   "ok": true
+  }
+ },
+ "A45_invariants": [
+  {
+   "name": "A01_A2",
+   "coupling": "m45Sq",
+   "family": "A^2",
+   "field_content": {
+    "A45": 2
+   },
+   "contraction": "(1/2) A_ab A_ab",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "ab",
+     "ab"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1/2",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "K45 = (1/2) A_ab A_ab = sum_{a<b} A_ab^2; enters as (m45Sq/2) K45 (SARAH: m45Sq/2 A45.A45)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": "LagNoHC: m45Sq/2 A45.A45",
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.7600340280783897e-16,
+    "reflection_rel_err": 0.0
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 80.74193162456896,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": null
+  },
+  {
+   "name": "A02_A4_trace2sq",
+   "coupling": "lambdaA1",
+   "family": "A^4",
+   "field_content": {
+    "A45": 4
+   },
+   "contraction": "A_ab A_ab A_cd A_cd",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "ab",
+     "ab",
+     "cd",
+     "cd"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "(A_ab A_ab)^2 = (Tr A^T A)^2",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 2.7901779293756966e-16,
+    "reflection_rel_err": 0.0
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 26077.038089866277,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": null
+  },
+  {
+   "name": "A03_A4_trace4",
+   "coupling": "lambdaA2",
+   "family": "A^4",
+   "field_content": {
+    "A45": 4
+   },
+   "contraction": "A_ab A_bc A_cd A_da",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "ab",
+     "bc",
+     "cd",
+     "da"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "A_ab A_bc A_cd A_da = Tr(A^4)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 0.0,
+    "reflection_rel_err": 2.012214003980176e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 4519.870649811303,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": null
+  },
+  {
+   "name": "A04_PPA_eps",
+   "coupling": "kappaPPA",
+   "family": "Phi210^2 A45",
+   "field_content": {
+    "Phi210": 2,
+    "A45": 1
+   },
+   "contraction": "eps_{ABCDEFGHIJ} P_ABCD P_EFGH A_IJ",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "Phi210",
+     "A45"
+    ],
+    "indices": [
+     "ABCD",
+     "EFGH",
+     "IJ"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "eps_{ABCDEFGHIJ} P_ABCD P_EFGH A_IJ: the unique A P P cubic (45 in Sym^2(210)); pseudo-scalar",
+   "O10_parity": "pseudo-scalar (eps; odd under det = -1 reflections)",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.7420225463972162e-15,
+    "reflection_rel_err": 2.8307866378954767e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -32.63070215616289,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A] x [P P] channels: 45"
+  },
+  {
+   "name": "A05_PAA",
+   "coupling": "kappaPAA",
+   "family": "Phi210 A45^2",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 2
+   },
+   "contraction": "P_abcd A_ab A_cd",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "abcd",
+     "ab",
+     "cd"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "P_abcd A_ab A_cd = (A A)_210 . P",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": "LagNoHC: kappaPAA Phi210.A45.A45",
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 3.802774368206777e-16,
+    "reflection_rel_err": 5.704161552310166e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -298.9576207100233,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [P] channels: 210"
+  },
+  {
+   "name": "A06_PPPA_eps1",
+   "coupling": "lambdaPPPA1",
+   "family": "Phi210^3 A45",
+   "field_content": {
+    "Phi210": 3,
+    "A45": 1
+   },
+   "contraction": "eps_{ABCDEFGHIJ} P_ABCD P_EFGH P_abIJ A_ab",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "Phi210",
+     "Phi210",
+     "A45"
+    ],
+    "indices": [
+     "ABCD",
+     "EFGH",
+     "abIJ",
+     "ab"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "eps_{ABCDEFGHIJ} P_ABCD P_EFGH P_abIJ A_ab; pseudo-scalar",
+   "O10_parity": "pseudo-scalar (eps; odd under det = -1 reflections)",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 7.908776394247048e-15,
+    "reflection_rel_err": 1.7974491805106926e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -158.12246453793375,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A] x [P P P] channels: 2x45"
+  },
+  {
+   "name": "A07_PPPA_eps2",
+   "coupling": "lambdaPPPA2",
+   "family": "Phi210^3 A45",
+   "field_content": {
+    "Phi210": 3,
+    "A45": 1
+   },
+   "contraction": "eps_{ABCDEFGHIJ} P_ABCD P_abEF P_abGH A_IJ",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "Phi210",
+     "Phi210",
+     "A45"
+    ],
+    "indices": [
+     "ABCD",
+     "abEF",
+     "abGH",
+     "IJ"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "eps_{ABCDEFGHIJ} P_ABCD P_abEF P_abGH A_IJ; pseudo-scalar",
+   "O10_parity": "pseudo-scalar (eps; odd under det = -1 reflections)",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.3557233012633354e-15,
+    "reflection_rel_err": 3.6974271852636417e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 1844.8531699240432,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A] x [P P P] channels: 2x45"
+  },
+  {
+   "name": "A08_PPAA_1",
+   "coupling": "lambdaPPAA1",
+   "family": "Phi210^2 A45^2",
+   "field_content": {
+    "Phi210": 2,
+    "A45": 2
+   },
+   "contraction": "P_abcd P_abcd A_ef A_ef",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "Phi210",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "abcd",
+     "abcd",
+     "ef",
+     "ef"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "(P_abcd P_abcd)(A_ef A_ef)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 0.0,
+    "reflection_rel_err": 1.7942129226720133e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 648837.8294230792,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [P P] channels: 1 + 54 + 210 + 770"
+  },
+  {
+   "name": "A09_PPAA_2",
+   "coupling": "lambdaPPAA2",
+   "family": "Phi210^2 A45^2",
+   "field_content": {
+    "Phi210": 2,
+    "A45": 2
+   },
+   "contraction": "P_abcd P_abef A_ef A_cd",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "Phi210",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "abcd",
+     "abef",
+     "ef",
+     "cd"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "P_abcd P_abef A_ef A_cd",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 4.705079443306297e-16,
+    "reflection_rel_err": 1.1762698608265743e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 15464.048379745427,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [P P] channels: 1 + 54 + 210 + 770"
+  },
+  {
+   "name": "A10_PPAA_3",
+   "coupling": "lambdaPPAA3",
+   "family": "Phi210^2 A45^2",
+   "field_content": {
+    "Phi210": 2,
+    "A45": 2
+   },
+   "contraction": "P_abcd P_abce A_ef A_df",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "Phi210",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "abcd",
+     "abce",
+     "ef",
+     "df"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "P_abcd P_abce A_ef A_df",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 4.3346889652400893e-16,
+    "reflection_rel_err": 2.1673444826200447e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 67141.68119124022,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [P P] channels: 1 + 54 + 210 + 770"
+  },
+  {
+   "name": "A11_PPAA_4",
+   "coupling": "lambdaPPAA4",
+   "family": "Phi210^2 A45^2",
+   "field_content": {
+    "Phi210": 2,
+    "A45": 2
+   },
+   "contraction": "P_abcd P_abef A_ce A_df",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "Phi210",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "abcd",
+     "abef",
+     "ce",
+     "df"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "P_abcd P_abef A_ce A_df",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 9.10278085131939e-16,
+    "reflection_rel_err": 1.517130141886565e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 5994.836412926075,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [P P] channels: 1 + 54 + 210 + 770"
+  },
+  {
+   "name": "A12_PAAA_eps",
+   "coupling": "lambdaPAAA",
+   "family": "Phi210 A45^3",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 3
+   },
+   "contraction": "eps_{ABCDEFGHIJ} P_ABCD A_EF A_GH A_IJ",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "ABCD",
+     "EF",
+     "GH",
+     "IJ"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "eps_{ABCDEFGHIJ} P_ABCD A_EF A_GH A_IJ (= 4!2!2!2! (P^A^A^A)_{0..9}); pseudo-scalar",
+   "O10_parity": "pseudo-scalar (eps; odd under det = -1 reflections)",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 9.750690776585463e-15,
+    "reflection_rel_err": 3.441420274088987e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -99.10458066768194,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A A] x [P] channels: 210"
+  },
+  {
+   "name": "A13_AHH",
+   "coupling": "kappaHA",
+   "family": "H10 H10^dag A45",
+   "field_content": {
+    "A45": 1,
+    "H10": 1,
+    "H10^dag": 1
+   },
+   "contraction": "i A_ab H_b Hb_a",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "H10",
+     "H10^dag"
+    ],
+    "indices": [
+     "ab",
+     "b",
+     "a"
+    ],
+    "singlet_factors": [],
+    "prefactor": "i",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "i Hb_a A_ab H_b (real; the T_A generator current of the 10; SARAH: kappaHA A45.conj[H10].H10 in LagHC)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": "LagHC: kappaHA A45.conj[H10].H10",
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 1.8651311051503425e-16,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 5.078212009941226e-16,
+    "reflection_rel_err": 4.2914800719990207e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -33.35408089399796,
+    "im": 5.7231599406747574e-15
+   },
+   "SO10_channels_of_family": "[A] x [H Hb] channels: 45"
+  },
+  {
+   "name": "A14_AAHH_1",
+   "coupling": "lambdaAAH1",
+   "family": "H10 H10^dag A45^2",
+   "field_content": {
+    "A45": 2,
+    "H10": 1,
+    "H10^dag": 1
+   },
+   "contraction": "A_ab A_ab H_c Hb_c",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "H10",
+     "H10^dag"
+    ],
+    "indices": [
+     "ab",
+     "ab",
+     "c",
+     "c"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "(A_ab A_ab)(Hb_c H_c): singlet channel",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 0.0,
+    "reflection_rel_err": 0.0
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 3617.9288887481057,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [H Hb] channels: 1 + 54"
+  },
+  {
+   "name": "A15_AAHH_2",
+   "coupling": "lambdaAAH2",
+   "family": "H10 H10^dag A45^2",
+   "field_content": {
+    "A45": 2,
+    "H10": 1,
+    "H10^dag": 1
+   },
+   "contraction": "A_ab A_ac H_c Hb_b",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "H10",
+     "H10^dag"
+    ],
+    "indices": [
+     "ab",
+     "ac",
+     "c",
+     "b"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "A_ab A_ac H_c Hb_b = -Hb.A.A.H (= |A H|^2-type; 1 + 54 channels)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.7821626088256639e-16,
+    "reflection_rel_err": 1.7821626088256639e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 318.95753271506663,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [H Hb] channels: 1 + 54"
+  },
+  {
+   "name": "A16_PAHH",
+   "coupling": "lambdaPAH",
+   "family": "Phi210 H10 H10^dag A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "H10": 1,
+    "H10^dag": 1
+   },
+   "contraction": "i P_abcd A_ab H_c Hb_d",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "H10",
+     "H10^dag"
+    ],
+    "indices": [
+     "abcd",
+     "ab",
+     "c",
+     "d"
+    ],
+    "singlet_factors": [],
+    "prefactor": "i",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "i P_abcd A_ab H_c Hb_d: (A P)_45 . (Hb H)_45 (unique)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": "LagHC: lambdaPAH Phi210.A45.conj[H10].H10",
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 1.5291691507675635e-16,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 8.325689436987661e-16,
+    "reflection_rel_err": 6.636175203884383e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -278.36397824129455,
+    "im": -1.0522396449262041e-14
+   },
+   "SO10_channels_of_family": "[P A] x [H Hb] channels: 45"
+  },
+  {
+   "name": "A17_ADD",
+   "coupling": "kappaDA",
+   "family": "Delta126bar Delta126bar^dag A45",
+   "field_content": {
+    "A45": 1,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "i A_ab D_bcdef Db_acdef",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "ab",
+     "bcdef",
+     "acdef"
+    ],
+    "singlet_factors": [],
+    "prefactor": "i",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "i Db_acdef A_ab D_bcdef (real; T_A current of the 126bar)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": "LagHC: kappaDA A45.conj[Delta126bar].Delta126bar",
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 3.500140936331916e-17,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.5386862220097707e-15,
+    "reflection_rel_err": 5.546268281643955e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -3447.059950206648,
+    "im": -8.444260007882521e-13
+   },
+   "SO10_channels_of_family": "[A] x [D Db] channels: 45"
+  },
+  {
+   "name": "A18_AADD_1",
+   "coupling": "lambdaAAD1",
+   "family": "Delta126bar Delta126bar^dag A45^2",
+   "field_content": {
+    "A45": 2,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "A_ab A_ab D_cdefg Db_cdefg",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "ab",
+     "ab",
+     "cdefg",
+     "cdefg"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "(A_ab A_ab)(Db_cdefg D_cdefg)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 3.1906225097462452e-15,
+    "reflection_rel_err": 1.5014694163511744e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 19848770.85283563,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[A A] x [D Db] channels: 1 + 210 + 770"
+  },
+  {
+   "name": "A19_AADD_2",
+   "coupling": "lambdaAAD2",
+   "family": "Delta126bar Delta126bar^dag A45^2",
+   "field_content": {
+    "A45": 2,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "A_ab A_cd D_cdefg Db_abefg",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "ab",
+     "cd",
+     "cdefg",
+     "abefg"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "A_ab A_cd D_cdefg Db_abefg",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 2.058942677094896e-17,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.1980693806851263e-16,
+    "reflection_rel_err": 2.3963753143450435e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 486031.6114377133,
+    "im": -3.1747044366077957e-13
+   },
+   "SO10_channels_of_family": "[A A] x [D Db] channels: 1 + 210 + 770"
+  },
+  {
+   "name": "A20_AADD_3",
+   "coupling": "lambdaAAD3",
+   "family": "Delta126bar Delta126bar^dag A45^2",
+   "field_content": {
+    "A45": 2,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "A_ab A_cd D_acefg Db_bdefg",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "ab",
+     "cd",
+     "acefg",
+     "bdefg"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "A_ab A_cd D_acefg Db_bdefg",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 1.0046487994423888e-17,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.3994686122846029e-16,
+    "reflection_rel_err": 1.400855284647868e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 208064.24981003447,
+    "im": -1.5706551850389726e-12
+   },
+   "SO10_channels_of_family": "[A A] x [D Db] channels: 1 + 210 + 770"
+  },
+  {
+   "name": "A21_PADD_1",
+   "coupling": "lambdaPAD1",
+   "family": "Phi210 Delta126bar Delta126bar^dag A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "i P_abcd A_ab D_cefgh Db_defgh",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "abcd",
+     "ab",
+     "cefgh",
+     "defgh"
+    ],
+    "singlet_factors": [],
+    "prefactor": "i",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "i P_abcd A_ab D_cefgh Db_defgh",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 4.128134514642245e-17,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 5.883812568578977e-16,
+    "reflection_rel_err": 4.710192661957825e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 248002.4797582643,
+    "im": 1.0727178927991144e-11
+   },
+   "SO10_channels_of_family": "[P A] x [D Db] channels: 45 + 2x210 + 5940"
+  },
+  {
+   "name": "A22_PADD_2",
+   "coupling": "lambdaPAD2",
+   "family": "Phi210 Delta126bar Delta126bar^dag A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "Re[P_abcd A_ef D_abcgh Db_defgh]",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "abcd",
+     "ef",
+     "abcgh",
+     "defgh"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "Re",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "Re[P_abcd A_ef D_abcgh Db_defgh]",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 3.664027222739711e-16,
+    "reflection_rel_err": 2.9312217781917687e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 19857.81538146695,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[P A] x [D Db] channels: 45 + 2x210 + 5940"
+  },
+  {
+   "name": "A23_PADD_3",
+   "coupling": "lambdaPAD3",
+   "family": "Phi210 Delta126bar Delta126bar^dag A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "Im[P_abcd A_ef D_abcgh Db_defgh]",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "abcd",
+     "ef",
+     "abcgh",
+     "defgh"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "Im",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "Im[P_abcd A_ef D_abcgh Db_defgh] (its conjugate graph is P_abcd A_ef Db_abcgh D_defgh)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.951221150350808e-15,
+    "reflection_rel_err": 7.095349637639302e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 20509.088306476224,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": "[P A] x [D Db] channels: 45 + 2x210 + 5940"
+  },
+  {
+   "name": "A24_PADD_4",
+   "coupling": "lambdaPAD4",
+   "family": "Phi210 Delta126bar Delta126bar^dag A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "Delta126bar": 1,
+    "Delta126bar^dag": 1
+   },
+   "contraction": "i P_abcd A_ef D_abegh Db_cdfgh",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "Delta126bar",
+     "Delta126bar^dag"
+    ],
+    "indices": [
+     "abcd",
+     "ef",
+     "abegh",
+     "cdfgh"
+    ],
+    "singlet_factors": [],
+    "prefactor": "i",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "i P_abcd A_ef D_abegh Db_cdfgh",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 8.45973568216801e-17,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.6866563114073416e-15,
+    "reflection_rel_err": 8.436317622680218e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 43418.63486547992,
+    "im": 3.982061822886805e-12
+   },
+   "SO10_channels_of_family": "[P A] x [D Db] channels: 45 + 2x210 + 5940"
+  },
+  {
+   "name": "A25_AAHbD",
+   "coupling": "lambdaAAHD",
+   "family": "H10^dag Delta126bar A45^2",
+   "field_content": {
+    "A45": 2,
+    "H10^dag": 1,
+    "Delta126bar": 1
+   },
+   "contraction": "A_ab A_cd Hb_e D_abcde",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45",
+     "H10^dag",
+     "Delta126bar"
+    ],
+    "indices": [
+     "ab",
+     "cd",
+     "e",
+     "abcde"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "complex (V contains c I + c.c.)",
+   "real_parameters": 2,
+   "normalisation": "A_ab A_cd Hb_e D_abcde = (A A)_210 . (Hb D)_210 (unique; complex coupling + h.c.)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": "LagHC: lambdaAAHD conj[H10].Delta126bar.A45.A45",
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.8905535021425232,
+    "hermitian_ok": null,
+    "SO10_rotation_rel_change": 6.696160227268647e-16,
+    "reflection_rel_err": 1.0283546322872128e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 2292.6075340354796,
+    "im": 924.5766663511913
+   },
+   "SO10_channels_of_family": "[A A] x [Hb D] channels: 210"
+  },
+  {
+   "name": "A26_PAHbD_1",
+   "coupling": "lambdaPAHD1",
+   "family": "Phi210 H10^dag Delta126bar A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "H10^dag": 1,
+    "Delta126bar": 1
+   },
+   "contraction": "P_abcd A_ef Hb_a D_bcdef",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "H10^dag",
+     "Delta126bar"
+    ],
+    "indices": [
+     "abcd",
+     "ef",
+     "a",
+     "bcdef"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "complex (V contains c I + c.c.)",
+   "real_parameters": 2,
+   "normalisation": "P_abcd A_ef Hb_a D_bcdef (complex coupling + h.c.)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.6986281377349486,
+    "hermitian_ok": null,
+    "SO10_rotation_rel_change": 7.275952625673948e-16,
+    "reflection_rel_err": 5.956082077039961e-16
+   },
+   "reference_value_seed424242_sample0": {
+    "re": -3446.6337245829895,
+    "im": -5100.136559487588
+   },
+   "SO10_channels_of_family": "[P A] x [Hb D] channels: 2x210 + 1050"
+  },
+  {
+   "name": "A27_PAHbD_2",
+   "coupling": "lambdaPAHD2",
+   "family": "Phi210 H10^dag Delta126bar A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "H10^dag": 1,
+    "Delta126bar": 1
+   },
+   "contraction": "P_abcd A_ef Hb_e D_abcdf",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "H10^dag",
+     "Delta126bar"
+    ],
+    "indices": [
+     "abcd",
+     "ef",
+     "e",
+     "abcdf"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "complex (V contains c I + c.c.)",
+   "real_parameters": 2,
+   "normalisation": "P_abcd A_ef Hb_e D_abcdf (complex coupling + h.c.)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.9984438473700502,
+    "hermitian_ok": null,
+    "SO10_rotation_rel_change": 4.360700799364019e-15,
+    "reflection_rel_err": 4.2959078447470956e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 7217.910685930174,
+    "im": 9990.157382592733
+   },
+   "SO10_channels_of_family": "[P A] x [Hb D] channels: 2x210 + 1050"
+  },
+  {
+   "name": "A28_PAHbD_3",
+   "coupling": "lambdaPAHD3",
+   "family": "Phi210 H10^dag Delta126bar A45",
+   "field_content": {
+    "Phi210": 1,
+    "A45": 1,
+    "H10^dag": 1,
+    "Delta126bar": 1
+   },
+   "contraction": "P_abcd A_ae Hb_f D_bcdef",
+   "machine_spec": {
+    "tensors": [
+     "Phi210",
+     "A45",
+     "H10^dag",
+     "Delta126bar"
+    ],
+    "indices": [
+     "abcd",
+     "ae",
+     "f",
+     "bcdef"
+    ],
+    "singlet_factors": [],
+    "prefactor": "1",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "complex (V contains c I + c.c.)",
+   "real_parameters": 2,
+   "normalisation": "P_abcd A_ae Hb_f D_bcdef (complex coupling + h.c.)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": null,
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.9372180769987816,
+    "hermitian_ok": null,
+    "SO10_rotation_rel_change": 4.2298616061691457e-16,
+    "reflection_rel_err": 1.0574654015422864e-15
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 492.0528301108735,
+    "im": 2642.2950220687608
+   },
+   "SO10_channels_of_family": "[P A] x [Hb D] channels: 2x210 + 1050"
+  },
+  {
+   "name": "A29_AA_SS",
+   "coupling": "lambdaAS",
+   "family": "S S^dag A45^2",
+   "field_content": {
+    "A45": 2,
+    "S": 1,
+    "S^dag": 1
+   },
+   "contraction": "(1/2) A_ab A_ab S S^*",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "ab",
+     "ab"
+    ],
+    "singlet_factors": [
+     "S",
+     "Sb"
+    ],
+    "prefactor": "1/2",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "K45 |S|^2 (same normalisation as v20 O43 = K_210 |S|^2)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": "LagNoHC: lambdaAS conj[S].S.A45.A45",
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 1.4779745495421572e-16,
+    "reflection_rel_err": 0.0
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 24.037718916750297,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": null
+  },
+  {
+   "name": "A30_AA_TT",
+   "coupling": "lambdaA17",
+   "family": "Phi17 Phi17^dag A45^2",
+   "field_content": {
+    "A45": 2,
+    "Phi17": 1,
+    "Phi17^dag": 1
+   },
+   "contraction": "(1/2) A_ab A_ab Phi17 Phi17^*",
+   "machine_spec": {
+    "tensors": [
+     "A45",
+     "A45"
+    ],
+    "indices": [
+     "ab",
+     "ab"
+    ],
+    "singlet_factors": [
+     "T",
+     "Tb"
+    ],
+    "prefactor": "1/2",
+    "part": "full",
+    "rule": "lower-case letters contracted between two tensors, upper-case letters with eps_{a1..a10} in the order written (eps_{0123456789}=+1), sum over 0..9"
+   },
+   "X_charge": 0,
+   "Z17_phase_exponent": 0,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "normalisation": "K45 |Phi17|^2 (same normalisation as v20 O42 = K_210 |Phi17|^2)",
+   "O10_parity": "scalar",
+   "registered_in_SARAH_draft": "LagNoHC: lambdaA17 conj[Phi17].Phi17.A45.A45",
+   "SARAH_ready_row_in_comment_block_only": null,
+   "checks": {
+    "X_zero": true,
+    "max_rel_imag_on_physical_configs": 0.0,
+    "hermitian_ok": true,
+    "SO10_rotation_rel_change": 2.377151560958407e-16,
+    "reflection_rel_err": 0.0
+   },
+   "reference_value_seed424242_sample0": {
+    "re": 14.945255225409932,
+    "im": 0.0
+   },
+   "SO10_channels_of_family": null
+  }
+ ],
+ "identically_vanishing_X_allowed_A_structures": [
+  "A45",
+  "Phi210 A45",
+  "H10 Delta126bar^dag A45",
+  "H10^dag Delta126bar A45",
+  "S S^dag A45",
+  "Phi17 Phi17^dag A45",
+  "A45^3",
+  "Phi210 S S^dag A45",
+  "Phi210 Phi17 Phi17^dag A45",
+  "H10^2 S A45",
+  "H10 Delta126bar S A45",
+  "H10^dag^2 S^dag A45",
+  "H10^dag Delta126bar^dag S^dag A45",
+  "Delta126bar^2 S A45",
+  "Delta126bar^dag^2 S^dag A45"
+ ],
+ "no_A45_fermion_bilinear": true,
+ "v20_invariants": [
+  {
+   "name": "O03_B01_singlet_polynomial",
+   "representative": "Phi17 Phi17^dag",
+   "basis_label": "the recorded scalar monomial itself",
+   "normalisation": "unit monomial coefficient in canonical scalar fields",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "live_g1_tensor_closure_ledger_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O04_B01_singlet_polynomial",
+   "representative": "S S^dag",
+   "basis_label": "the recorded scalar monomial itself",
+   "normalisation": "unit monomial coefficient in canonical scalar fields",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "live_g1_tensor_closure_ledger_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O05_B01_126bar_norm",
+   "representative": "126bar_H 126bar_H^dag",
+   "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+   "normalisation": "K_126=(1/(2*5!)) Sigma^* Sigma",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "direct_phi_h_sigmabar_tensor_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O06_B01_Hdag_H_norm",
+   "representative": "10_H 10_H^dag",
+   "basis_label": "Hdag_i H_i",
+   "normalisation": "unit delta_ij contraction",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_h10_self_quartic_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O07_B01_Phi_norm",
+   "representative": "210_H^2",
+   "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+   "normalisation": "K_210=(1/4!) Phi Phi",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O12_B01_Hdag_Hdag_pair",
+   "representative": "10_H^dag^2 S^dag",
+   "basis_label": "Hdag_i Hdag_i",
+   "normalisation": "unit delta_ij contraction",
+   "self_conjugate": false,
+   "coupling_type": "complex (re::, im::)",
+   "real_parameters": 2,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_h10_self_quartic_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O14_B01_Phi_Sigma_Sigmadag_cubic",
+   "representative": "210_H 126bar_H 126bar_H^dag",
+   "basis_label": "Phi_{abcd} Sigmadag_{abefg} Sigma_{cdefg}",
+   "normalisation": "recorded full-index contraction; coupling absorbs no hidden factor",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_p_delta_second_stage_hessian_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O15_B01_Phi_Hdag_Sigma",
+   "representative": "210_H 10_H^dag 126bar_H",
+   "basis_label": "Hdag_e Phi_{abcd} Sigma_{abcde}",
+   "normalisation": "factorial-reduced direct contraction in canonical kinetic bases",
+   "self_conjugate": false,
+   "coupling_type": "complex (re::, im::)",
+   "real_parameters": 2,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi_hdag_sigmabar_cubic_audit_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O17_B01_Phi_cubic",
+   "representative": "210_H^3",
+   "basis_label": "Tr(A_Phi^3)",
+   "normalisation": "the exact arbitrary-component evaluator convention",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O20_B01_singlet_polynomial",
+   "representative": "Phi17^2 Phi17^dag^2",
+   "basis_label": "the recorded scalar monomial itself",
+   "normalisation": "unit monomial coefficient in canonical scalar fields",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "live_g1_tensor_closure_ledger_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O22_B01_singlet_polynomial",
+   "representative": "S S^dag Phi17 Phi17^dag",
+   "basis_label": "the recorded scalar monomial itself",
+   "normalisation": "unit monomial coefficient in canonical scalar fields",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "live_g1_tensor_closure_ledger_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O23_B01_singlet_polynomial",
+   "representative": "S^2 S^dag^2",
+   "basis_label": "the recorded scalar monomial itself",
+   "normalisation": "unit monomial coefficient in canonical scalar fields",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "live_g1_tensor_closure_ledger_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O25_B01_126bar_norm",
+   "representative": "126bar_H 126bar_H^dag Phi17 Phi17^dag",
+   "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+   "normalisation": "K_126=(1/(2*5!)) Sigma^* Sigma",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "direct_phi_h_sigmabar_tensor_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O26_B01_126bar_norm",
+   "representative": "126bar_H 126bar_H^dag S S^dag",
+   "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+   "normalisation": "K_126=(1/(2*5!)) Sigma^* Sigma",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "direct_phi_h_sigmabar_tensor_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O27_B01_126bar_self_projectors",
+   "representative": "126bar_H^2 126bar_H^dag^2",
+   "basis_label": "54",
+   "normalisation": "orthogonal projector norms in the canonical chiral basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_126bar_self_quartic_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O27_B02_126bar_self_projectors",
+   "representative": "126bar_H^2 126bar_H^dag^2",
+   "basis_label": "1050bar",
+   "normalisation": "orthogonal projector norms in the canonical chiral basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_126bar_self_quartic_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O27_B03_126bar_self_projectors",
+   "representative": "126bar_H^2 126bar_H^dag^2",
+   "basis_label": "2772bar",
+   "normalisation": "orthogonal projector norms in the canonical chiral basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_126bar_self_quartic_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O27_B04_126bar_self_projectors",
+   "representative": "126bar_H^2 126bar_H^dag^2",
+   "basis_label": "4125",
+   "normalisation": "orthogonal projector norms in the canonical chiral basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_126bar_self_quartic_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O28_B01_unique_Hdag_Sigma2_Sigmadag",
+   "representative": "10_H^dag 126bar_H^2 126bar_H^dag",
+   "basis_label": "graph (0,1,0,2,3,2) on degrees (1,5,5,5)",
+   "normalisation": "recorded einsum with no hidden coefficient",
+   "self_conjugate": false,
+   "coupling_type": "complex (re::, im::)",
+   "real_parameters": 2,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_unique_hsigma_chiral_quartics_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O31_B01_unique_Hdag2_Sigma2",
+   "representative": "10_H^dag^2 126bar_H^2",
+   "basis_label": "graph (0,0,1,1,0,4) on degrees (1,1,5,5)",
+   "normalisation": "recorded einsum with no hidden coefficient",
+   "self_conjugate": false,
+   "coupling_type": "complex (re::, im::)",
+   "real_parameters": 2,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_unique_hsigma_chiral_quartics_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O33_B01_Hdag_H_norm",
+   "representative": "10_H 10_H^dag Phi17 Phi17^dag",
+   "basis_label": "Hdag_i H_i",
+   "normalisation": "unit delta_ij contraction",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_h10_self_quartic_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O34_B01_Hdag_H_norm",
+   "representative": "10_H 10_H^dag S S^dag",
+   "basis_label": "Hdag_i H_i",
+   "normalisation": "unit delta_ij contraction",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_h10_self_quartic_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O35_B01_H_Sigma_hermitian",
+   "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+   "basis_label": "channel_1",
+   "normalisation": "singlet norm plus canonical adjoint-current contraction",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_hsigma_hermitian_family_closure_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O35_B02_H_Sigma_hermitian",
+   "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+   "basis_label": "channel_45",
+   "normalisation": "singlet norm plus canonical adjoint-current contraction",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_hsigma_hermitian_family_closure_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O36_B01_H_self_quartics",
+   "representative": "10_H^2 10_H^dag^2",
+   "basis_label": "I_1",
+   "normalisation": "I1=|H.H|^2/10 and I54=(HdagH)^2-I1",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_h10_self_quartic_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O36_B02_H_self_quartics",
+   "representative": "10_H^2 10_H^dag^2",
+   "basis_label": "I_54",
+   "normalisation": "I1=|H.H|^2/10 and I54=(HdagH)^2-I1",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_h10_self_quartic_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O38_B01_Phi_Hdag_Sigmadag",
+   "representative": "210_H 10_H^dag 126bar_H^dag S^dag",
+   "basis_label": "Hdag_e Phi_{abcd} Sigmadag_{abcde}",
+   "normalisation": "factorial-reduced direct contraction in canonical kinetic bases",
+   "self_conjugate": false,
+   "coupling_type": "complex (re::, im::)",
+   "real_parameters": 2,
+   "X_charge": 0,
+   "source_modules": [
+    "direct_phi_h_sigmabar_tensor_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O42_B01_Phi_norm",
+   "representative": "210_H^2 Phi17 Phi17^dag",
+   "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+   "normalisation": "K_210=(1/4!) Phi Phi",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O43_B01_Phi_norm",
+   "representative": "210_H^2 S S^dag",
+   "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+   "normalisation": "K_210=(1/4!) Phi Phi",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O44_B01_Phi2_Sigma_projectors",
+   "representative": "210_H^2 126bar_H 126bar_H^dag",
+   "basis_label": "1",
+   "normalisation": "explicit graph basis and canonical pair-Casimir projector basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_126dag126_six_contractions_v20.py",
+    "exact_phisigma_126bar_minus_projectors_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O44_B02_Phi2_Sigma_projectors",
+   "representative": "210_H^2 126bar_H 126bar_H^dag",
+   "basis_label": "45",
+   "normalisation": "explicit graph basis and canonical pair-Casimir projector basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_126dag126_six_contractions_v20.py",
+    "exact_phisigma_126bar_minus_projectors_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O44_B03_Phi2_Sigma_projectors",
+   "representative": "210_H^2 126bar_H 126bar_H^dag",
+   "basis_label": "210",
+   "normalisation": "explicit graph basis and canonical pair-Casimir projector basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_126dag126_six_contractions_v20.py",
+    "exact_phisigma_126bar_minus_projectors_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O44_B04_Phi2_Sigma_projectors",
+   "representative": "210_H^2 126bar_H 126bar_H^dag",
+   "basis_label": "770",
+   "normalisation": "explicit graph basis and canonical pair-Casimir projector basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_126dag126_six_contractions_v20.py",
+    "exact_phisigma_126bar_minus_projectors_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O44_B05_Phi2_Sigma_projectors",
+   "representative": "210_H^2 126bar_H 126bar_H^dag",
+   "basis_label": "5940",
+   "normalisation": "explicit graph basis and canonical pair-Casimir projector basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_126dag126_six_contractions_v20.py",
+    "exact_phisigma_126bar_minus_projectors_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O44_B06_Phi2_Sigma_projectors",
+   "representative": "210_H^2 126bar_H 126bar_H^dag",
+   "basis_label": "8910",
+   "normalisation": "explicit graph basis and canonical pair-Casimir projector basis",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_126dag126_six_contractions_v20.py",
+    "exact_phisigma_126bar_minus_projectors_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O45_B01_Phi2_Hdag_Sigma_210_1050",
+   "representative": "210_H^2 10_H^dag 126bar_H",
+   "basis_label": "210",
+   "normalisation": "J(A)_a=P_+(e_a wedge A), JdagJ=3I",
+   "self_conjugate": false,
+   "coupling_type": "complex (re::, im::)",
+   "real_parameters": 2,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_h_126dag_210_1050_channels_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O45_B02_Phi2_Hdag_Sigma_210_1050",
+   "representative": "210_H^2 10_H^dag 126bar_H",
+   "basis_label": "1050",
+   "normalisation": "J(A)_a=P_+(e_a wedge A), JdagJ=3I",
+   "self_conjugate": false,
+   "coupling_type": "complex (re::, im::)",
+   "real_parameters": 2,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_h_126dag_210_1050_channels_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O46_B01_Phi2_HdagH_channels",
+   "representative": "210_H^2 10_H 10_H^dag",
+   "basis_label": "1",
+   "normalisation": "canonical M1, M45=iA, and traceless M54 operators",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_hdagh_channel_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O46_B02_Phi2_HdagH_channels",
+   "representative": "210_H^2 10_H 10_H^dag",
+   "basis_label": "45",
+   "normalisation": "canonical M1, M45=iA, and traceless M54 operators",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_hdagh_channel_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O46_B03_Phi2_HdagH_channels",
+   "representative": "210_H^2 10_H 10_H^dag",
+   "basis_label": "54",
+   "normalisation": "canonical M1, M45=iA, and traceless M54 operators",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_phi2_hdagh_channel_family_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O48_B01_Phi_self_quartics",
+   "representative": "210_H^4",
+   "basis_label": "J0",
+   "normalisation": "exact arbitrary-component evaluator convention",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O48_B02_Phi_self_quartics",
+   "representative": "210_H^4",
+   "basis_label": "J2",
+   "normalisation": "exact arbitrary-component evaluator convention",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O48_B03_Phi_self_quartics",
+   "representative": "210_H^4",
+   "basis_label": "J3",
+   "normalisation": "exact arbitrary-component evaluator convention",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  },
+  {
+   "name": "O48_B04_Phi_self_quartics",
+   "representative": "210_H^4",
+   "basis_label": "J4",
+   "normalisation": "exact arbitrary-component evaluator convention",
+   "self_conjugate": true,
+   "coupling_type": "real (hermitian invariant)",
+   "real_parameters": 1,
+   "X_charge": 0,
+   "source_modules": [
+    "exact_210_self_invariant_basis_v20.py"
+   ],
+   "origin": "v20 verbatim (GAUGED_U1X_SCALAR_CONTRACT_V20.json, read-only)"
+  }
+ ],
+ "corrections_to_stage1_DD_list": [
+  "A Phi Phi is NOT absent: 45 lies in Sym^2(210) (Sym^2(210) = 1+45+54+210+770+1050+1050bar+4125+5940+8910); the unique invariant is the eps contraction kappaPPA (the delta contraction A_ab P_acde P_bcde vanishes).",
+  "A^3 Phi exists (1, eps-type) and A Phi^3 exists (2, both eps-type; their delta contractions vanish).",
+  "Families not counted in the Stage-1 list, now exact: Phi A H Hb (1 real), Phi A Delta Delta^dag (4 real), Phi A Hb Delta (3 complex), A^2 Hb Delta (1 complex); (AA)_{1,54,210,770}(Phi Phi) = 4 invariants and (AA)_{1,210,770}(Delta^dag Delta) = 3 invariants as stated in Stage 1.",
+  "Stage-1 estimate '25-30 real couplings' -> exact: 30 directions, 34 real parameters."
+ ],
+ "all_checks_pass": true
+}

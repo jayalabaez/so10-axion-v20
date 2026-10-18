@@ -1,0 +1,255 @@
+STAGE 2a - BUILD SKEPTIC of the 531-real chart (chart531.py) for candidate "v22-L2"                       2026-10-17
+=====================================================================================================================
+Folder: research\v22_scalar_redesign\stage2a\chart\skeptic\ (worktree _v22research, branch research/v22-scalar-redesign).
+Labels: EXACT (exact integer/rational arithmetic, or an exact argument) / NUM (float64, residual stated) / EST / CONJ / LIT.
+Hygiene: only this folder was written (code, logs, JSON <= 58 kB). The scratch folder
+...\scratchpad\v22_stage2a_big\chart_skeptic\ was created but holds no files. No repository, chart, model or Stage-1
+file was modified. Builder modules (chart531, v20poly, and for two cross-checks the model builder's
+explicit_basis_v22.random_fields and d1_contract_v22.dp_table) were imported read-only with -B /
+PYTHONDONTWRITEBYTECODE. `git status --short` shows only `?? research/v22_scalar_redesign/stage2a/`.
+No commit, push or stash.
+
+VERDICT: NOT REFUTED. The chart is usable for the vacuum test.
+Every builder claim I re-derived with my own method holds. I found no defect in chart531 itself.
+Three minor defects sit outside the chart or are inherited:
+  (m1) invariants.json reference values (the model builder's F1);
+  (m2) the SARAH <-> chart coupling map for kappaHA has never been computed;
+  (m3) the repo-backend 1e-14 threshold (the builder's F3).
+They are listed in section 9 with fixes. None of them blocks the vacuum test.
+
+---------------------------------------------------------------------------------------------------------------------
+1. INVARIANT RECOUNT BY A DIFFERENT METHOD (sk_charcount.py -> sk_charcount.json)                         [EXACT]
+---------------------------------------------------------------------------------------------------------------------
+Method. This is the Weyl INTEGRATION formula on a discrete maximal-torus grid:
+    dim Inv = (1/|W|) (1/N^5) sum_t chi(t) prod_{alpha in Phi(D5)} (1 - t^alpha).
+  - Characters of Sym^n come from Newton power sums p_j(t) = chi(t^j), evaluated pointwise on the grid via an FFT
+    of the weight multiplicities.
+  - The weights are READ OFF THE CHART: the five Cartan generators J01..J89 are simultaneously diagonalised on each
+    block of the 531 chart. The 486 blocks are the repo's. The A block is derived by me from the repo H10 block action.
+  - Why this is exact: the exponents satisfy |m_i| <= 4 + 8 = 12. I ran N = 13, 16 and 17 and got identical integers
+    in every multidegree, with rounding residuals below 1e-7.
+  - How it differs from the builder's three methods: those were Brauer-Klimyk alternation on first-principles weights,
+    explicit graphs, and Susyno plethysms. None of them integrates over the torus, and none uses chart-derived weights.
+
+Weights from the chart:
+  - 10, 45 and 210 equal the first-principles multisets exactly.
+  - 126 (+) its conjugate is Lambda^5 exactly. The Sigma block contains (1,1,1,1,1).
+  - The off-diagonal residual of the joint diagonalisation is <= 1.3e-13.
+
+Sanity counts:
+  Sym2(45) = 1, Sym3(45) = 0, Sym4(45) = 2, Sym5(45) = 1 (the Pfaffian), Sym2(210) = 1, Sym3(210) = 1,
+  Sym4(210) = 4, 10x10bar = 1, 126x126bar = 1, Sym2(126) = 0.
+
+Results. There are 88 X-allowed multidegrees of degree 1-4.
+                         multidegrees  orbits  directions  real params  X-allowed but vanishing
+   v20 part                   34         28        44           51              20
+   A part                     19         17        30           34              15
+   total                      53         45        74           85              35
+Builder: 34/28/44/51, 19/17/30/34, 53/45/74/85, 15 vanishing. Agreement is exact in every entry and in every one of
+the 17 A orbits:
+  A^2 1;  P^2 A 1;  P A^2 1;  A H Hb 1;  A D Db 1;  P^3 A 2;  P^2 A^2 4;  P A^3 1;  P A H Hb 1;
+  P A H Db 3 complex;  P A D Db 4;  A^4 2;  A^2 H Hb 2;  A^2 H Db 1 complex;  A^2 D Db 3;
+  A^2 |S|^2 1;  A^2 |Phi17|^2 1.
+The 15 vanishing A multidegrees match the model builder's list one by one. The model builder's correction to Stage 1
+(that A Phi Phi exists, i.e. 45 is in Sym^2(210)) is confirmed.
+
+---------------------------------------------------------------------------------------------------------------------
+2. ROW-LEVEL TESTS OF THE 34 NEW ROWS (sk_rows.py -> sk_rows.json)
+---------------------------------------------------------------------------------------------------------------------
+S1 generators                                                                                              [EXACT/NUM]
+  - My A block, delta A = [L_k, A] with L_k read off the repo's H10 block (L_ab = E_ab - E_ba, checked), equals
+    chart531's adjoint block with difference 0.0. All 531x531 generators also differ by 0.0.
+  - The so(10) structure constants hold on all 531 coordinates to 2.2e-16.
+  - Control: a sign-flipped A block violates them at 2.0.
+
+S2 multidegree of every row                                                                                      [NUM]
+  - Determined by block scaling (t = 2) and by Fourier analysis of block phases. No chart531 metadata was used.
+  - All 34 rows are homogeneous with integer degrees, and each falls into exactly one of my 17 orbits.
+
+S3 invariance under FINITE transformations                                                                       [NUM]
+  - SO(10): three random exp(theta.G) built with my generators (orthogonality residual <= 3.6e-15). Worst relative
+    change over the 34 rows is 7.2e-14.
+  - Finite U(1)_X and PQ phases: 5.2e-15.
+  - Negative controls:
+      - Rotating only the 486 block changes every non-factorised mixed row by >= 0.106 (26 rows).
+      - An inverse (sign-flipped) adjoint on A changes them by >= 0.081.
+      - Rows that factorise into separately invariant pieces (A08, A14, A18, and the pure-A rows) stay invariant under
+        both controls, as they must. So the test detects convention errors between the A block and the 486 block.
+
+S4 independence and completeness (rank)                                                                          [NUM]
+  - Two random sets of 160 and 200 points: total rank 34/34, sv_min/sv_max = 6.6e-3 and 4.4e-3.
+  - In every one of the 17 orbits, rank = number of rows = my real count.
+  - The worst-conditioned orbit is P^2 A^2 (sv ratio 1.2e-2).
+  - No orbit of my count lacks rows.
+  - Rows (independent, invariant) = dimension of the invariant space (EXACT count), so the 34 rows SPAN all
+    renormalizable X-invariant A terms.
+  - The 85 rows together are independent: the new rows vanish at A = 0 and the v20 rows do not depend on A
+    (EXACT argument, given the attested independence of the 51 v20 rows).
+
+S5 chart531 rows = the DECLARED formulas                                                                         [NUM]
+  - My evaluator maps the chart to dense tensors through the repo's chart.unpack. Lower-case indices are contracted
+    with einsum. Epsilon is evaluated as the literal sum over all 10! permutations, with no sorted-block shortcut.
+  - Over all 30 machine_specs at 3 points, the worst relative difference from the chart531 rows is 2.7e-14
+    (ratios 1.000 for all 30).
+  - F1 confirmed. On the model builder's own seed-424242 sample, declared/reference =
+      1152 for A04_PPA_eps and A06_PPPA_eps1;  192 for A07_PPPA_eps2 and A12_PAAA_eps;  -1 for A13_AHH and A17_ADD;
+      1 for the other 24.
+
+S6 completeness against MY OWN contraction patterns                                                              [NUM]
+  - 31 extra contractions were tested, 96 Re/Im parts in total: every delta pattern I could write for each orbit,
+    and 9 epsilon graphs that are NOT in the basis.
+  - 51 parts lie in the span of the chart rows (worst residual 2.2e-14). 45 are identically zero
+    (|value|/prod|field| <= 4.2e-17). None lies outside the span.
+  - Structural confirmations:
+      - Phi^2 A, Phi A^3 and Phi^3 A contain only pseudo-scalars: all their delta graphs vanish identically.
+      - Phi^2 A^2 contains NO pseudo-scalar: both epsilon graphs vanish, consistent with a count of 4 that is all
+        delta-type.
+      - The 4th Phi^3 A epsilon graph vanishes.
+
+S7 A = 0                                                                                                       [EXACT]
+  - New-row values, non-A gradients and non-A Hessians at A = 0 are all exactly 0.0.
+  - 16 rows have an A tadpole at a generic A = 0 point, as the builder lists: A04, A06, A07, A13, A16, A17, A21-A24,
+    and re/im of A26-A28.
+
+S8 G3211 parametrisation                                                                                         [NUM]
+  - T3R_UNIT and TBL_UNIT equal the repo's T3R_INTEGER/sqrt2 and BL_INTEGER/sqrt3 (difference 0.0).
+  - All 12 repo standard-SM generators annihilate both A directions (0.0), so <A> preserves SU(2)_L, not SU(2)_R.
+  - Stabilisers computed with MY generators:
+      A only (omega_R, omega_BL) 13;  A only T3R 19 (SO(6) x SU(2)_L x U(1));  Phi + A 13;  + sigma 12.
+  - F2 with my literal evaluator: the A04 tadpole at A = 0 lies in span(T3R, T_BL) to 4.6e-16. At (p, a, omega) =
+    (0.6, -0.5, 0.4) it is T3R -460.80 and T_BL -478.37, equal to the builder's 2304 a omega and
+    2304 p a + (2304/sqrt3) omega^2. The cases (1,1,0) and (0,0,1) also reproduce exactly.
+
+S9 derivatives                                                                                                   [NUM]
+  - Gradient: 5-point stencil, worst relative error 3.6e-12.
+  - Mixed Hessian u^T H v: O(h^2) stencil with h = 1e-3, worst relative error 6.1e-10 (truncation-limited).
+
+---------------------------------------------------------------------------------------------------------------------
+3. A = 0 REDUCTION AGAINST DIRECT REPO CALLS AT FRESH POINTS (sk_a0_repo.py -> sk_a0_repo.json)            [EXACT/NUM]
+---------------------------------------------------------------------------------------------------------------------
+Points: deterministic_state(777) + random A, and my own Gaussian q486 (seed 99) + random A. Neither seed is one the
+builder used. Results:
+  - The 51 chart531 v20 rows equal target.parameter_rows called directly. Values, gradients and Hessians differ by
+    0.0 (bitwise), and the A blocks are 0.0.
+  - The v20 rows at A != 0 equal those at A = 0 (0.0).
+  - All 34 new rows are exactly 0.0 at A = 0.
+  - The optional v20poly backend agrees with the repo to <= 3.1e-11 relative (worst row: O44_B02 projector channel)
+    at both fresh points. Cost: 4-5 s, against 50-84 s for the repo.
+
+---------------------------------------------------------------------------------------------------------------------
+4. SIGN-DEFINITE PORTALS IN CHART NORMALISATION (sk_extra.py -> sk_extra.json)                                 [NUM]
+---------------------------------------------------------------------------------------------------------------------
+Here ||G_X(A) q_X||^2 is the real chart norm, with G(A) = sum A_ab G_ab built from MY generators. The rational fit
+residuals are <= 7e-15:
+   ||G_H(A) q_H||^2   = 2 * lambda::A15_AAHH_2              (= 2 |A.H|^2)
+   ||G_D(A) q_D||^2   = lambda::A18/240 - lambda::A20/6
+   ||G_P(A) q_P||^2   = lambda::A10/6 - lambda::A11/2
+These agree with the model builder's portal identities (its |A.H|^2 is in tensor normalisation, hence the factor 2
+for H). These are the non-negative 45 portals the decisive risk-(iii) test needs. The test itself is NOT run here.
+
+---------------------------------------------------------------------------------------------------------------------
+5. MULTIPLET MACHINERY AT SYMMETRIC POINTS (sk_extra.py)                                                       [NUM]
+---------------------------------------------------------------------------------------------------------------------
+Hessian: random new-row couplings at g3211_point(0.6, -0.5, 0.4, 0.3, 0.2, s = 0.01, x = 2), with sigma = 0 and with
+sigma = 0.05.
+  - The full eigvalsh spectrum equals the union of the decompose_hessian block spectra, and also equals the reduced
+    spectra times their multiplicities, to 2.3e-15 relative.
+  - Leakage <= 1.9e-14.
+  - The Goldstone sum over components is 34 (G3211) and 35 (SM), equal to the rank of MY symmetry tangents (34 / 35).
+  - Octet multiplicities agree with group theory: (8,1)_{0,0}, i.e. (8,1)_Y=0, has m = 3 (two from the 210, one
+    from the 45); (8,3)_{0,0} has m = 1 (from the (15,3,1) of the 210); (8,1)_{T3R=+-1} has m = 1;
+    (8,2)_{+-1/2} has m = 2.
+
+---------------------------------------------------------------------------------------------------------------------
+6. D1 RE-CHECK (sk_d1.py -> sk_d1.json)
+---------------------------------------------------------------------------------------------------------------------
+(a) Anomalies [EXACT, Fractions]. Computed from the B63 list as written in the task: SO(10)^2 X = 0, X^3 = 0,
+    grav-X = 0, net 16 - 16bar = 3.
+(b) Accidental kernel [EXACT, sympy].
+    - Inputs: the 12 Yukawas (each X-neutral, checked), plus every phase-sensitive scalar orbit taken from MY count.
+      The v20 ones are P H Db, H^2 S, P^2 H Db, P H D S, H^2 Db^2, H D Db^2 (6, matching the six O12..O45). The new
+      ones are P A H Db and A^2 H Db.
+    - Rank: 12 from the Yukawas alone, 13 with the v20 orbits, and still 13 with the A orbits, so the A terms add no
+      constraint.
+    - Kernel dimension 7. X, G2 and f1..f5 all lie in it and span it (rank 7).
+(c) PQ = X - 17 G2 [EXACT]. Scalar PQ charges: Delta -2, H -2, S 4, Phi17 0. N = 34, E = 272/3, E/N = 8/3.
+(d) Quality [EXACT argument; premises verified].
+    - Premises:
+        - A45 is real, so it carries charge 0 under every kernel U(1), and X = PQ = 0.
+        - Its centre class is 0, derived from the chart weights (2 sum(lambda) mod 4: P 0, A 0, H 2, D 2).
+        - Its mass dimension is 1 > 0.
+    - Consequence: adding A to any monomial leaves (X, centre, q) unchanged and lowers the excess 4[mu.q - (d-4)]
+      by 4 per A. The DP and MILP maxima are therefore attained without A and are identical to the A-free ones.
+      K_min >= 17 is unchanged.
+    - Corroboration [NUM]: the model builder's dp_table run with and without the A45 item gives identical maxima
+      for d = 5..24 (max excess 0).
+    - My own exact search of scalar-only PQ-violating monomials gives minimal d = 21 (S^17 Phi17*^4), with and
+      without A.
+    - N_DW is unchanged: A adds no vev phase.
+
+---------------------------------------------------------------------------------------------------------------------
+7. WHAT IS NOT DECIDED HERE
+---------------------------------------------------------------------------------------------------------------------
+No vacuum, LP or descent was run. Risks (i) octet cubics, (ii) the Landau knife edge and (iii) the deep H-Sigma(-S)
+vacua remain open. This report certifies only the machinery: completeness, independence, invariance, the A = 0
+reduction, the declared normalisation, the portals and the multiplet decomposition.
+
+---------------------------------------------------------------------------------------------------------------------
+8. NUMBERS SUMMARY
+---------------------------------------------------------------------------------------------------------------------
+  - Counts (torus integration, chart weights, N = 13/16/17):
+      v20 34/28/44/51;  A 19/17/30/34;  total 53/45/74/85;  15 A-vanishing.                                  EXACT
+  - Rank of the new rows: 34/34 (sv ratio >= 4.4e-3); per orbit = count, 17/17.                              NUM
+  - Finite SO(10) invariance <= 7.2e-14; X, PQ <= 5.2e-15; controls >= 0.08.                                 NUM
+  - Rows vs literal declared formulas <= 2.7e-14; F1 factors 1152, 1152, 192, 192, -1, -1 reproduced.        NUM
+  - Extra contractions: 51 in span (<= 2.2e-14), 45 identically zero, 0 outside.                             NUM
+  - A = 0 against direct repo calls: 0.0 (bitwise) at 2 fresh points; poly backend <= 3.1e-11.               EXACT/NUM
+  - Portals: 2 A15;  A18/240 - A20/6;  A10/6 - A11/2  (real chart norm).                                     NUM
+  - Decomposition: spectrum union 2.3e-15; Goldstones 34 / 35; octet multiplicities 3 / 1.                   NUM
+  - D1: anomalies 0/0/0; kernel 7 (rank 13 with or without A); N 34, E 272/3; K_min >= 17 unchanged.        EXACT
+
+---------------------------------------------------------------------------------------------------------------------
+9. DEFECTS AND FIXES
+---------------------------------------------------------------------------------------------------------------------
+(m1) [model deliverable; confirms the builder's F1; NUM] The invariants.json field reference_value_seed424242_sample0
+     disagrees with the declared machine_spec formulas for A04 and A06 (x1152), A07 and A12 (x192), and A13 and A17
+     (x-1).
+     Impact: any number the model builder derived with its own evaluator is in sorted-block normalisation for the
+     epsilon rows, and has the opposite sign convention for A13 and A17. This includes the vev_structure_v22 tadpole
+     coefficients for kappaPPA and lambdaPPPA, and any kappaHA/kappaDA sign statement.
+     chart531 is NOT affected: it implements the declared formulas (2.7e-14).
+     FIX: regenerate the reference values and vev_structure_v22.json with a literal full-sum evaluator
+     (sk_eval.evaluate_spec does this), or state "sum over sorted antisymmetric blocks" in the conventions. Size
+     naturalness boxes on the eps rows with the factors above.
+(m2) [coupling map; NOT VERIFIED anywhere] The only map between chart couplings and SARAH couplings is prose in
+     invariants.json. For kappaHA, the one registered A row with a non-trivial Clebsch, neither the normalisation nor
+     the sign of c(lambda::A13_AHH) in terms of kappaHA has been computed. The model builder's evaluator also had the
+     A13 sign flipped. The four comment-block rows (kappaPAA, kappaDA, lambdaPAH, lambdaAAHD) are in the same state.
+     Impact on the vacuum test: none, because chart couplings are primary. It matters for RGE and threshold matching.
+     FIX: evaluate SARAH's explicit A45.conj[H10].H10 Clebsch (or Susyno's basis) on one configuration. Then record
+     c(lambda::A13_AHH) = +-N kappaHA, and do the same for each row before it is registered.
+(m3) [inherited; the builder's F3; EXACT, code reading] The repo backend drops Phi/Sigma components:
+     FieldState.validated() at <= 1e-14, and sigma_from_coordinates at |z| <= 1e-15 (it routes through add_forms,
+     threshold 1e-13). So the 51 v20 rows cannot see EW-scale Sigma-doublet vevs in GUT units.
+     FIX: use v20_backend="poly" for any EW-scale component (validated here at fresh points, <= 3.1e-11), or work in
+     units where the smallest relevant component is >= 1e-12. Use the repo backend only for GUT-scale confirmations.
+(note) The fast backend depends on BIG\chart\v20poly_cache_v1.npz in the session scratchpad. If that file is
+     deleted, rowpolys() raises FileNotFoundError. There is no automatic rebuild; the fix is
+     `python -B v20poly.py build`, about 2-5 min. chart531's own row cache rebuilds automatically in about 4 s.
+No defect was found in chart531.py itself.
+
+---------------------------------------------------------------------------------------------------------------------
+10. FILES (all in this folder)
+---------------------------------------------------------------------------------------------------------------------
+sk_common.py                    paths; generators (A block derived from the repo H10 block); chart -> tensors via the repo unpack
+sk_charcount.py/.json/.log      torus-integration count with chart-derived weights (section 1)
+sk_eval.py                      literal contraction evaluator (einsum, epsilon as the full 10! sum)
+sk_rows.py/.json/.log           S1-S9 (section 2)
+sk_a0_repo.py/.json/.log        A = 0 and embedding against direct repo calls; poly backend at fresh points (section 3)
+sk_extra.py/.json/.log          portals; decomposition and Goldstones; octet multiplicities (sections 4-5)
+sk_d1.py/.json/.log             anomalies, kernel, PQ numbers, quality premises and corroboration (section 6)
+*.stdout                        raw console copies
+Re-run (about 6 min in total): python -B sk_charcount.py; sk_rows.py; sk_a0_repo.py (about 3 min, repo calls);
+sk_extra.py; sk_d1.py.
+Environment: C:\Users\jayal\AppData\Local\Programs\Python\Python312\python.exe -B, PYTHONIOENCODING=utf-8,
+PYTHONDONTWRITEBYTECODE=1, SO10_PUBLISHED_API_ROOT=<worktree>, OMP_NUM_THREADS=2, OPENBLAS_NUM_THREADS=2.

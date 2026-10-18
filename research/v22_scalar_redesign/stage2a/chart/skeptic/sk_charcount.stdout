@@ -1,0 +1,28 @@
+[21:00:32] weights read off the chart: {'P': {'dim': 210, 'rounding_residual': 2.220446049250313e-15, 'offdiag': 1.3280153659035334e-13, 'matches_first_principles': True}, 'H': {'dim': 10, 'rounding_residual': 2.220446049250313e-16, 'offdiag': 2.2371143170757382e-17, 'matches_first_principles': True}, 'D': {'dim': 126, 'rounding_residual': 2.220446049250313e-15, 'offdiag': 2.89201285886787e-14, 'D_plus_Dbar_equals_Lambda5': True, 'contains_(1,1,1,1,1)': True, 'contains_(1,1,1,1,-1)': False}, 'A': {'dim': 45, 'rounding_residual': 1.887379141862766e-15, 'offdiag': 1.7877181819192837e-15, 'matches_first_principles': True}}
+[21:00:32] X-allowed multidegrees of degree 1..4: 88
+[21:00:34] N=13: done (5.2s)
+[21:00:39] N=16: done (9.9s)
+[21:00:46] N=17: done (17.3s)
+[21:00:50] sanity: {'Sym2(45)->1': {'value': 1, 'expected': 1, 'ok': True}, 'Sym4(45)->2': {'value': 2, 'expected': 2, 'ok': True}, 'Sym3(45)->0': {'value': 0, 'expected': 0, 'ok': True}, 'Sym2(210)->1': {'value': 1, 'expected': 1, 'ok': True}, 'Sym3(210)->1': {'value': 1, 'expected': 1, 'ok': True}, 'Sym4(210)->4': {'value': 4, 'expected': 4, 'ok': True}, '10x10bar->1': {'value': 1, 'expected': 1, 'ok': True}, '126x126bar->1': {'value': 1, 'expected': 1, 'ok': True}, 'Sym2(126)->0': {'value': 0, 'expected': 0, 'ok': True}, 'Sym5(45)->? (Pf)': {'value': 1, 'expected': None, 'ok': True}}
+[21:00:50] v20 part: {'multidegrees_nonzero': 34, 'orbits': 28, 'directions': 44, 'real_parameters': 51, 'vanishing_multidegrees': 20, 'vanishing_list': ['P', 'H Db (+conj)', 'P H Hb', 'P S Sb', 'P T Tb', 'H D S (+conj)', 'D^2 S (+conj)', 'P H^2 S (+conj)', 'P D^2 S (+conj)', 'H^2 Hb Db (+conj)', 'H Db S Sb (+conj)', 'H Db T Tb (+conj)']}
+[21:00:50] A part:   {'multidegrees_nonzero': 19, 'orbits': 17, 'directions': 30, 'real_parameters': 34, 'vanishing_multidegrees': 15, 'vanishing_list': ['A', 'P A', 'A^3', 'A H Db (+conj)', 'A S Sb', 'A T Tb', 'P A S Sb', 'P A T Tb', 'A H^2 S (+conj)', 'A H D S (+conj)', 'A D^2 S (+conj)']}
+[21:00:50] total:    {'multidegrees_nonzero': 53, 'orbits': 45, 'directions': 74, 'real_parameters': 85, 'vanishing_multidegrees': 35, 'vanishing_list': ['P', 'A', 'P A', 'H Db (+conj)', 'P H Hb', 'P S Sb', 'P T Tb', 'A^3', 'A H Db (+conj)', 'A S Sb', 'A T Tb', 'H D S (+conj)', 'D^2 S (+conj)', 'P A S Sb', 'P A T Tb', 'P H^2 S (+conj)', 'P D^2 S (+conj)', 'A H^2 S (+conj)', 'A H D S (+conj)', 'A D^2 S (+conj)', 'H^2 Hb Db (+conj)', 'H Db S Sb (+conj)', 'H Db T Tb (+conj)']}
+[21:00:50] agreement with builder counts: {'v20': True, 'A': True, 'total': True, 'A_vanishing': True}
+[21:00:50]   A-orbit A^2                    n=1  real=1  self-conj=True
+[21:00:50]   A-orbit P^2 A                  n=1  real=1  self-conj=True
+[21:00:50]   A-orbit P A^2                  n=1  real=1  self-conj=True
+[21:00:50]   A-orbit A H Hb                 n=1  real=1  self-conj=True
+[21:00:50]   A-orbit A D Db                 n=1  real=1  self-conj=True
+[21:00:50]   A-orbit P^3 A                  n=2  real=2  self-conj=True
+[21:00:50]   A-orbit P^2 A^2                n=4  real=4  self-conj=True
+[21:00:50]   A-orbit P A^3                  n=1  real=1  self-conj=True
+[21:00:50]   A-orbit P A H Hb               n=1  real=1  self-conj=True
+[21:00:50]   A-orbit P A H Db               n=3  real=6  self-conj=False
+[21:00:50]   A-orbit P A D Db               n=4  real=4  self-conj=True
+[21:00:50]   A-orbit A^4                    n=2  real=2  self-conj=True
+[21:00:50]   A-orbit A^2 H Hb               n=2  real=2  self-conj=True
+[21:00:50]   A-orbit A^2 H Db               n=1  real=2  self-conj=False
+[21:00:50]   A-orbit A^2 D Db               n=3  real=3  self-conj=True
+[21:00:50]   A-orbit A^2 S Sb               n=1  real=1  self-conj=True
+[21:00:50]   A-orbit A^2 T Tb               n=1  real=1  self-conj=True
+[21:00:50] wrote C:\Users\jayal\Downloads\So10Theory2\So10Theory\_v22research\research\v22_scalar_redesign\stage2a\chart\skeptic\sk_charcount.json (20.7s)

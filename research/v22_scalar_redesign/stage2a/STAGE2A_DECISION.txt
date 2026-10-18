@@ -1,0 +1,557 @@
+STAGE 2a DECISION - candidate "v22-L2" = v20 scalars + ONE real 45_H (B63 fermions, SO(10) x U(1)_X, Z17)      2026-10-18
+=====================================================================================================================
+Stage judge.  File: C:\Users\jayal\Downloads\So10Theory2\So10Theory\_v22research\research\v22_scalar_redesign\stage2a\
+STAGE2A_DECISION.txt (worktree _v22research, branch research/v22-scalar-redesign).
+Inputs read in full:
+  - stage2a\model\REPORT.txt;
+  - stage2a\chart\REPORT.txt and chart\skeptic\REPORT.txt;
+  - stage2a\vacuum\REPORT.txt and vacuum\skeptic\REPORT.txt;
+  - stage1\STAGE1_DECISION.txt;
+  - stage1\D-D-literature\REPORT.txt and its skeptic\REPORT.txt;
+  - stage1\D-A-chain\REPORT.txt;
+  - stage1\diagnosis\REPORT.txt.
+Spot checks: the skeptic's end-point logs (vsk_endpoints_Lb.log, vsk_endpoints_Lae.log) and
+vsk_light_R3d_Lb_O11.json reproduce every number quoted from them below.
+Labels: EXACT / NUM (uncertainty stated) / EST / CONJ / LIT-abstract.  Numbers come from the reports with their labels.
+[JDG] marks the judge's own work: arithmetic, tallies, read-only counts from invariants.json, and standard SO(10)
+tensor-product facts (section 6).  No physics code was run.
+Hygiene:
+  - Only this file was written.
+  - `git status --short` shows only `?? research/v22_scalar_redesign/stage2a/`.  Stage 1 was committed as 40177b3 by
+    its own workflow.
+  - No repository module or other agent's file was modified.  Nothing was committed, pushed or stashed.  _rescope and
+    the other worktrees were not touched.
+
+=====================================================================================================================
+0. DECISION
+=====================================================================================================================
+MODEL: BUILT AND VALIDATED for the vacuum test.  Neither of the two skeptics refuted it.
+  - Invariant census: EXACT, by four independent methods (three by the builder, one by the skeptic).  It gives
+    53 multidegrees / 45 orbits / 74 directions / 85 real parameters: the v20 51 verbatim plus 34 new ones with A45.
+  - 531-real chart: no defect was found in chart531.py.  The A = 0 reduction is bitwise; gauge invariance is EXACT.
+  - D1 contract for the final content (EXACT):
+      - anomalies 0;
+      - accidental kernel of dimension 7;
+      - PQ = X - 17 G2, N = 34, E/N = 8/3, N_DW = 1;
+      - K_min >= 17 by DP, LP and MILP.
+  - Limits:
+      - SARAH 4.15.3 attests only a PARTIAL Lagrangian: 25 registered terms, including 4 of the 30 A-directions.
+      - The chart <-> SARAH coupling map is unverified (defect m2).
+      - Six reference values in invariants.json are inconsistent with its own formulas (defect m1).
+      - None of these affects the vacuum test.  All of them block RGE work.
+
+D3 (global minimum, the decisive test): FAIL.
+  - Standard: NUM, not certified, procedural.  It is the same standard under which R2-A, D-A, D-B and D-C were killed.
+  - The vacuum skeptic reproduced the FAIL on an independent evaluation path and upheld it.  It also found two further
+    failure modes, both of which strengthen the FAIL.
+  - The Gate-0 kill criterion G0.4, pre-registered in STAGE1_DECISION section 6.5, is met.
+  Decisive numbers (after both skeptics):
+    - All 6 formal-round coupling points (Lb R1-R3 and La R1-R3, orientation O11) have genuine lower vacua.  491 of
+      543 formal descents end lower [JDG tally].
+        round   lower/descents   deepest dV     V*
+        Lb R1       61/75        -3.782e-4     -251.62
+        Lb R2       69/75        -1.054e-2     -248.16
+        Lb R3       75/81        -1.857e-3     -248.06
+        La R1       95/104       -4.893e-5     -100.98
+        La R2       96/104       -2.754e-3     -265.63
+        La R3       95/104       -3.966e-5     -102.40
+    - Every lower point lies >= 1.5e-5 below V*.  That is >= 60 x the G0.4 threshold of 1e-9 |V*| ~ 2.5e-7 [JDG], and
+      >= 4e7 x the largest disagreement between the two evaluators (3.4e-13).  The lower/not-lower flags agree for
+      543 of 543 end points on the independent path.
+    - The lower points are genuine:
+        - they break SU(2)_L (the unbroken so(10) has dimension 0, against 12 at q*);
+        - they are not gauge copies (|J - J*| >= 197);
+        - they are distinct, distant vacua (distance modulo gauge 1.47-5.50; barriers on the straight line 1.2e-3 to 4.5).
+    - The skeptic's own descents at Lb R3 (a different algorithm, new start families): 44 of 48 end lower.
+    - The 3 phase-1 coupling points also have lower vacua: the tester's E_Lb_O11 at -0.292, and the skeptic's N and D
+      (run with all 2206 competitors) at -5.928 and -4.78e-3.  So 9 of the 9 coupling points produced fail [JDG tally].
+    - Light sector (skeptic, NUM/EST):
+        - At Lb R3 the light (8,3)_0 has a NEGATIVE tree effective quartic: lambda_min = -0.0764 (4 lambda = -0.306).
+          A valley with a barrier of only 5.5e-10 leads from q* into the lower A ~ 0 H-Sigma-S basin (dV -1.682e-3).
+        - At La R3 the mixed (8,1)(8,3)(8,3) light cubic is untuned (2.8e-4).
+
+STAGE 2b: NOT OPENED.
+  - No point exists to export; candidate_point.json was correctly not written.
+  - vacuum\round3_Lb_O11_point_NOT_GLOBAL.json is an audit record only, not a candidate.
+  - The Stage-1 rule applies: "If Gate 0 kills L2, Stage 2 ends for L2."  STAGE 2 ENDS FOR v22-L2.
+
+BASIC-PHYSICS CHECKLIST (section 4):
+  - Quality and anomalies: PASS (EXACT).
+  - Global minimum: FAIL (NUM).
+  - Local stability: FAIL in the light sector at the produced points (tree level, NUM/EST).  Never tested at one loop.
+  - Perturbativity: UNDECIDED.  Tree unitarity is met by construction.  Two-loop Landau sits on a knife-edge
+    (0.965-1.136 M_Pl,red); three-loop Landau is 0.45-0.51.
+  - Flavour: UNDECIDED (capability only, dof = -8).
+  - Two-loop unification and proton decay with the real spectrum: NOT COMPUTED.  There is no point; only the Stage-1
+    nominal numbers exist.
+
+WHAT REMAINS (section 6):
+  - L3' (the 210 replaced by a real 45 + a real 54): OPEN, but unreviewed, and its vacuum is untested.
+      - P(passes Gate 0) ~ 1-3 % (EST).
+      - P(passes every Stage-2 kill) ~ 0.05-0.3 % (EST), down from Stage 1's 0.2-1 %.
+      - Cost to a Gate-0 verdict: ~1-3 days of workflow wall-clock (EST).  Stage 2a took ~13 h for the same steps,
+        far less than Stage 1's "2-3 weeks".  The first cheap kills come within hours.
+  - Family E (B-L broken by a 16_H with X = +1): ~0.1-0.5 % (CONJ).  It has not been designed, and its D1 is open.
+  - Not recommended:
+      - re-opening L2;
+      - changing the D3 standard to a metastable or one-loop global minimum.  This would need an explicit user decision.
+  - Chance that any remaining direction yields a point that passes Stage 2: ~0.3-1 % (EST).
+  - On present evidence the most likely final outcome is a NO_GO for the 210-based scalar family (v20 and v20 + 45)
+    with one tuned light doublet, under the tree-level global-minimum standard (NUM; not a theorem).
+  - Whether to fund L3' and/or E is the user's decision.  If funded, the order and the kill criteria are in section 6.5.
+
+=====================================================================================================================
+1. HOW THE RULES WERE APPLIED
+=====================================================================================================================
+(a) The Gate-0 criteria pre-registered in STAGE1_DECISION section 6.5 (G0.1-G0.5) are checked one by one in section
+    3.1.  A kill needs one criterion met and reproduced on an independent path.  G0.4 meets both conditions.
+(b) Never soften a kill:
+    - Nearly degenerate lower vacua (depths 4e-5 to 1e-2) are still lower.  The user's standard is the global minimum.
+    - Metastability is not admissible as the result (user instruction; STAGE1 section 8).  At Lb R3 even tree-level
+      metastability fails along a light direction (section 3.4).
+    - The missing emptiness proof does not turn a pre-registered, reproduced kill into an UNDECIDED.  The D3 standard
+      is to produce one concrete point that is the global minimum, and no such point was produced.
+(c) Never harden an undecided.  Three positive results are reported as what they are, not as passes:
+    - the local feasibility of the heavy sector;
+    - the realisation of the flavour composition as an exact eigenvector;
+    - the Stage-1 nominal D4 numbers.
+(d) Corrections made by skeptics are adopted wherever the skeptic reproduced them (sections 2.2-2.3 and 3.4).
+
+=====================================================================================================================
+2. MODEL AND MACHINERY
+=====================================================================================================================
+2.1 What was built (stage2a\model, stage2a\chart)
+  Item              Result                                                                      Label    Skeptic
+  ----------------  --------------------------------------------------------------------------  -------  -----------
+  Census            v20 part 34/28/44/51 (reproduces the attested contract orbit by orbit);     EXACT    torus-
+                    A part 19/17/30/34; total 53/45/74/85; 15 X-allowed A multidegrees          (3       integration
+                    vanish.  Methods: own Weyl characters, explicit contractions, Susyno.       methods) count agrees
+  Fermion sector    exactly the 12 B63 Yukawas; no bare mass; no A45 Yukawa                     EXACT    agrees
+  Model file        SO10Z17AxionV22.m: v20 rows verbatim (incl. kappaH H10.H10.S), A45 added,   EXACT    -
+                    B63 fermions with their 12 Yukawas.  SARAH 4.15.3: parse / init /           (partial)
+                    Lagrangian (25/25) / gauge invariance / anomalies all PASS, but only for
+                    the registered rows: 4 of the 30 A-directions.
+  531 chart         chart531.py: 85 exact rows, values/gradients/Hessians exact, generators,    EXACT/   no defect
+                    G3211/SM projectors.  Checks: A = 0 bitwise; invariance exact; rank 85/85;  NUM      in chart531
+                    finite differences 7.2e-12; Goldstones 34 (G3211) / 35 (SM).
+  D1 contract       anomalies 0; kernel rank 13, dim 7; N = 34, E = 272/3, E/N = 8/3,           EXACT    reproduced
+                    N_DW = 1; DP max excess 0 for d <= 40, LP 4 mu_0 = 17.000, MILP d <= 24
+                    worst excess 0, column generation 17.0.  A45 is a DP duplicate of Phi210.
+
+2.2 Corrections to Stage 1 (EXACT; confirmed by the chart skeptic)
+  - A Phi Phi EXISTS.  Sym^2(210) contains a 45, giving one epsilon contraction (kappaPPA).  Phi^3 A (2) and Phi A^3 (1)
+    also exist.  Stage 1 had listed A Phi Phi as absent.
+  - Consequence: the rows linear in A give A a tadpole lying in span(T_BL, T3R) at any G3211-type Phi orientation.  The
+    45 vev is therefore induced, and A cannot be frozen.  The vacuum search left A free: stationarity was imposed in all
+    8 SM-singlet directions, including T3R and T_BL.
+  - The exact count is 30 directions / 34 real parameters (Stage 1 estimated 25-30), for 85 in total.
+  - Exact sign-definite portals in the chart norm:
+      ||G_H(A) q_H||^2 = 2 A15,   ||G_D(A) q_D||^2 = A18/240 - A20/6,   ||G_P(A) q_P||^2 = A10/6 - A11/2.
+
+2.3 Open defects (none of them blocks the vacuum verdict; vacuum skeptic section F)
+  m1 invariants.json: its reference values differ from its own declared formulas by factors of 1152 (A04, A06), 192
+     (A07, A12) and -1 (A13, A17).  vev_structure_v22.json inherits the error.
+     - chart531 implements the declared formulas (agreement 2.7e-14).
+     - The tester divided only the BOXES of the eps rows by these factors.  Whether a point lies lower at given
+       couplings does not depend on the boxes.
+     - Fix before any reuse: regenerate both files with a literal full-sum evaluator.
+  m2 The chart <-> SARAH coupling map has not been computed (the kappaHA sign and normalisation, and the 4 comment-block
+     rows).  It is needed only for RGE and threshold matching.
+  m3 The repo backend drops Phi/Sigma components <= 1e-14 (chart units).  This does not matter here, because every
+     relevant component is >= 1e-3.  Use the poly backend for EW-scale components.
+  SARAH registration:
+     - The 4 large unique A rows time out at 900 s inside Start[].
+     - The 22 multi-invariant A-directions cannot be registered under the v20 single-Dot convention.  v20 itself
+       registers none of its 210-containing unique rows either.
+
+=====================================================================================================================
+3. D3 VERDICT IN DETAIL
+=====================================================================================================================
+3.1 Gate 0 against the pre-registered criteria (STAGE1_DECISION section 6.5)
+  G0.1 A clean point exists ............... MET (so not a kill).
+       - 6 formal points satisfy every listed condition:
+           - exact stationarity, |grad| <= 3e-14;
+           - 35 zero modes and 0 negative modes;
+           - exactly the declared light content (54 states for Lb, 38 for La);
+           - t >= 1.1e-3;
+           - |a0| <= 1/2;
+           - |quartic| <= 1, with the eps rows scaled by the F1 factors;
+           - chart values s = 1.6e-3 and x = 4 for S and Phi17.
+       - The repo backend confirms these points to 6e-16.
+       - BUT the skeptic found a negative light (8,3) effective quartic at Lb R3 (section 3.4).  Stage 1's G0.1 list
+         did not include light-space quartics, so this is recorded as a new failure mode, not as a G0.1 kill.
+  G0.2 Any V4 < 0 is found ................ NOT TRIGGERED at the formal points.
+       - The formal points carry a sufficient block-norm certificate (eps = 1e-3), and no formal descent ran away.
+       - Without the certificate, the max-t points were unbounded below (12/12 runaways at the first L0 point).
+       - Sampled-ray BFB did not converge after ~2400 rays.  BFB was therefore met only by restricting the coupling
+         space; eps >= 0.05 is infeasible.
+  G0.3 A banked endpoint lies below V* .... NOT TRIGGERED.  The 428 deep-bank configurations and 1573-2397 pooled
+       competitors were imposed as cuts, each embedded at A = 0 and at A = A*.
+  G0.4 A round-3 fresh descent ends lower . MET -> KILL.
+       - Lb R3: 75/81 lower, deepest -1.857e-3.
+       - La R3: 95/104 lower, deepest -3.966e-5.
+       - The smallest depth is >= 1.5e-5, far above 1e-9 |V*| ~ 2.5e-7 [JDG].
+       - Confirmed on the independent path: repo evaluate_directions, the skeptic's own tensors, and exact partition
+         sums for the eps rows.  Flags agree 543/543.
+       - The LP never became infeasible, so the box-4 fallback was not needed.
+  G0.5 lambda_eff can be placed ........... MET at tree level.
+       - The rounds imposed lambda_eff_all >= 0 (Lb R3: 0.205).
+       - The dial at the Lb O11 constraint set spans [-2.62, >= +0.40], which contains the target -0.04 to 0.
+       - The one-loop CW shift, -0.42 to +0.06 (EST), is not small.
+  Probe set.  Stage 1 asked for probes along the tuned doublet, along every light colour state, and along a random
+  H-Sigma-S-A ray:
+       - Doublet-direction starts returned to the vacuum in 5 of 6 rounds.  In La R2, 2/6 went lower; one of them, from
+         amplitude -0.5, reached that round's deepest point.
+       - The skeptic ran the light-colour probes: 14/14 went lower, even from amplitude 0.036.
+       - H-Sigma(-S) rays: 16/16 or 12/12 went lower in every round.
+
+3.2 What was searched [NUM]
+  - Stage A orientation scan (max t with every local constraint, the deep-bank cuts, the sufficient BFB certificate and
+    a singlet-subspace screen):
+      - Lb, 11 of 12 orientations (O6 aborted): t = 5.8e-4 to 1.27e-2 (best O11).
+      - L0 (doublet only), 4 orientations: t = 6.7e-3 to 1.23e-2.
+      - La: locally realisable with the certificate only at O11 (t = 1.41e-3), out of 7 orientations.
+  - Formal feedback rounds: 3 per content, both at O11.  The t values (1.10-1.33e-3) sit just above the floor of 1e-3,
+    and the phase-1 points sit at t = 1.019e-3 and 1.0004e-3.  So the competitor cuts squeeze t onto the floor
+    [JDG reading].
+  - In-loop rounds before the formal ones: ~60, at O1, O3 and O11 (L0 and Lb), with up to 50 distinct lower basins.
+  - Held fixed throughout:
+      - one flavour composition (|r| = 66, s = 0.43 + 0.09i, f_Sigma = 0.17);
+      - one set of vev ratios (r = 1.2e-3, s = 1.6e-3, x = 4);
+      - boxes 40/2/1 (mass / cubic / quartic).
+
+3.3 Competing vacua (all break SU(2)_L)
+  (a) H10-Sigma vacua with PQ restored (S = 0): |H| ~ 0.2-0.4, |Sigma| ~ 0.26-0.7 (units with |Phi*| = 1).
+  (b) "126bar + 45" vacua with the 210 switched off: |Phi| 0.06-0.09, |Sigma| 0.9-1.1, |A| ~ 1.5.
+  (c) The A ~ 0 H-Sigma-S family.  At L0/O1 it sits at GUT-scale H, Sigma and S; at Lb R3 it is the family at -1.68e-3.
+  (d) Under weaker cuts: large-field Sigma-A(-S) vacua with Phi17 = 0, down to dV = -182.
+  (e) La: SU(2)_L-breaking reorientations of Phi210/A45 with sigma = S = 0.  The skeptic confirmed these are genuinely
+      distinct, distant vacua (distance 2.4-5.5, barriers 0.04-4.5).
+  Classes (a) and (c) are the H-Sigma(-S) family that killed every design on the 486 chart.
+
+3.4 New failure modes found by the vacuum skeptic (both strengthen the FAIL)
+  (i) Lb R3, (8,3) direction.  Tree effective quartic on the light space: lambda_min = -0.0764, along a pure (8,3)
+      direction (C3 = 3, C2L = 2).  The tester imposed lambda_eff >= 0 only along the doublet.
+      - Valley with the other 530 directions relaxed: +5.5e-10 at its maximum (phi = 0.04), then negative from
+        phi ~ 0.07, falling into the A ~ 0 H-Sigma-S basin (-1.682343e-3) at phi = 0.2.
+      - With the physical m(8,3) the barrier essentially disappears (EST).  The point is then not even metastable.
+  (ii) Untuned mixed light cubics, which are extra tunings Stage 1 did not count:
+      - La R3: |C| = 2.8e-4 along 1/3 (8,1) + 2/3 (8,3).  Even at the placeholder masses b^2 = 7.9e-8 > 4ac ~ 7e-9, so
+        a lower minimum sits next to q*.
+      - Lb: (8,3)(6bar,2)(6,2), 1.7e-4 per unit direction (4.2e-4 M_U max entry in the tester's normalisation).  It needs
+        <~ 1e-5 M_U.
+  The tester's statement "the failure is purely global" is therefore overstated.  The produced points also fail
+  locally in the light sector, at physical light masses.
+
+3.5 Why the 45 is not enough (structural reading)
+  - The 45 helped by orders of magnitude, but it did not close the gap.  The competitors went from deep (-0.7 to -74
+    box units in R2-A and D-A) to nearly degenerate (4e-5 to 1e-2).
+  - The dominant Lb competitor has the 45 switched OFF (|A| <= 0.02).
+      - Every sign-definite 45 portal is quadratic in A, and the A-linear eps terms vanish there, so no 45 portal can
+        act on this competitor.
+      - It can only be lifted by deepening V* through the A sector.  That route is capped by a0 <= 1/2, with three a0
+        channels at 0.500, and by the boxes, with O20, O23, O34 and O36_B02 at their box edges.
+  - The other dominant class has the 210 switched off (|Phi| 0.06-0.09).
+  - Reading (CONJ): the light masses come from cancelling large bare masses against GUT-vev portals.  Any configuration
+    that switches a GUT breaker off un-cancels them, and a portal quadratic in that breaker cannot lift it.
+
+3.6 What the FAIL is NOT, and what could still overturn it
+  - It is not a certificate (the K4 gap remains).
+  - It is not an emptiness proof.  Phase-1 reads "not shown infeasible":
+      - s* = -6.4e-6 and -2.9e-7;
+      - every SDP solve ended optimal_inaccurate;
+      - the magnitude of s* is bounded by near-copy rows, so only its sign carries information.
+  - At fixed (q*, U) the feasible set is convex and the feedback rounds are Kelley cuts.  They had not converged after
+    3 formal plus ~60 in-loop rounds, and there is no convergence trend [JDG reading]:
+      - the formal-round depths are non-monotonic (Lb -3.8e-4 -> -1.05e-2 -> -1.9e-3);
+      - the lower fraction rose (61/75 -> 69/75 -> 75/81).
+  - Untested (CONJ):
+      - other orientations in formal rounds;
+      - other flavour compositions;
+      - other vev ratios.
+    Imposing the skeptic's light-sector conditions (section 3.4) can only shrink the feasible set.
+
+3.7 [JDG, EST] Is the tree-level ordering stable at one loop?
+  The competitor depths (4e-5 to 1.05e-2, in |Phi*|^4 units) are 8-2000 x smaller than the one-loop coefficient scale at
+  these points (sum kappa^2/(64 pi^2) = 0.086).  So the tree-level ordering of these nearly degenerate vacua is not
+  stable at one loop, in either direction.
+  This does not change the verdict.  The programme's D3 standard is tree level, and changing the standard after a
+  failure is the user's decision.  It does bind any future tree-level PASS with margins this small (lesson F17).
+
+=====================================================================================================================
+4. BASIC-PHYSICS CHECKLIST - honest status of v22-L2
+=====================================================================================================================
+  Item                       Status            Label      Evidence
+  -------------------------  ----------------  ---------  -----------------------------------------------------------
+  Axion quality              PASS              EXACT      K_min >= 17 with A45 present:
+                                                            - DP for d <= 40, brute force for d <= 7;
+                                                            - LP 4 mu_0 = 17.000;
+                                                            - MILP for d <= 24, worst excess 0;
+                                                            - column generation 17.0.
+                                                          A45 duplicates a DP item (exact argument, skeptic).
+                                                          dtheta_tree = 2.1e-11 at <S> = 3e13 (inherited EXACT
+                                                          argument).  N_DW = 1; E/N = 8/3.
+                                                          The vacuum points used s = 1.6e-3 and x = 4, i.e.
+                                                          <S> ~ 1.6e13 and <Phi17> ~ 4e16 for |Phi*| ~ 1e16.  This is
+                                                          inside <S> <= 3.285e13, but the map to GeV is EST (F8 was not
+                                                          re-checked formally).
+  Anomalies                  PASS              EXACT      SO(10)^2 X = X^3 = grav-X = 0; no Witten anomaly.
+  Global minimum (D3)        FAIL              NUM        Section 3.
+  Local stability, tree,     PASS at 6 points  NUM        35 zero modes, 0 negative, t >= 1.1e-3, BFB certified.
+    heavy sector
+  Local stability, tree,     FAIL (Lb R3);     NUM/EST    Lb R3: (8,3) lambda_min = -0.0764, with a barrier of 5.5e-10
+    light sector             AT RISK (La R3)              to a lower vacuum.  La R3: lambda_min = +0.0021, but the
+                                                          mixed cubic is untuned (2.8e-4), giving an adjacent lower
+                                                          minimum at physical masses (EST).
+  Local stability, one loop  NOT DONE          -          CW corrections to the tuned masses are 1e5-1e7 x tree (F9).
+                                                          The lambda_eff CW shift is -0.42 to +0.06 (EST).
+  Perturbativity: tree       MET by            NUM        |a0| <= 1/2 was imposed; three channels sit at 0.500.
+    unitarity, boxes         construction                 |quartic| <= 1, with several couplings at the box edge.
+  Perturbativity: Landau     UNDECIDED         NUM        Lambda_2L/M_Pl,red = 0.965-1.136 with design-consistent
+                             (knife-edge)                 inputs (Stage 1, nominal spectrum); 45 % of the threshold
+                                                          Monte Carlo passes.  Lambda_3L = 0.45-0.51 (fails; not a
+                                                          criterion).  At M_U the two-loop term is 1.6 x the one-loop
+                                                          term.  Not recomputed with a real spectrum.
+  Flavour                    UNDECIDED         NUM        Capability only: exact-structure refits give chi2 ~ 1e-12 to
+                             (capability)                 5e-10 at |c| = 0.10-1.44 (Gamma convention), dof = -8, proxy
+                                                          running ([SEL], Stage 1).
+                                                          Positive: the composition |r| = 66, s = 0.43 + 0.09i is an
+                                                          EXACT eigenvector at every round point (residual <= 5e-15).
+                                                          Missing: a top-down fit; the 126bar-doublet d=5 channels; the
+                                                          X = +2 doublet threshold (F3).
+  Two-loop unification       NOT COMPUTED      NUM (nom.) Stage-1 nominal only, with every heavy state at M_U:
+    (real spectrum)                                       M_U = 1.285e16, alpha_U^-1 = 27.03 (La content).
+                                                          At the round-3 Lb point the heavy scalars lie 5-25 x below
+                                                          the heavy vectors in mass, and the heavy-vector m^2/g^2 are
+                                                          0.90, 1.19, 1.56, 2.18.  So the nominal assumption fails;
+                                                          the size of the effect is EST and its sign is not computed.
+  Proton decay               NOT COMPUTED      NUM (nom.) Stage-1 nominal: tau(p -> e+ pi0) >= 1.4e35 yr in every La
+    (real spectrum)                                       variant (lattice W0 = 0.131 GeV^2, chain A_R).  The Lb content
+                                                          needs m8 <~ 1.6e11 for Landau, where tau ~ 1e35 (EST,
+                                                          marginal).
+  Light-state cosmology      AT RISK           EST/LIT    La: the TeV real octet lives tau ~ 1e2-1e5 s, against the
+                                                          BBN bound of ~100 s (hep-ph/0504210, LIT-abstract).  Lb has
+                                                          no TeV state.
+  Tunings                    >= 6, plus 2      EST        Lb: the EW doublet; the (8,3) and (6bar,2) masses; the (8,3)
+                             hierarchies                  f-eps cubic <= 1.2e-7 M_U; the mixed cubic <~ 1e-5 M_U; the
+                                                          X = +2 doublet placement.
+                                                          La: the EW doublet; the (8,1) and (8,3) masses; two octet
+                                                          cubics (<= 7e-14 and <= 1.2e-7); the mixed cubic; the X = +2
+                                                          doublet.
+                                                          Both: plus v_R/M_U and <S>/M_U.  Every tuning must be redone
+                                                          at one loop.
+
+=====================================================================================================================
+5. STAGE 2b - NOT OPENED
+=====================================================================================================================
+D3 failed, so there is no exported point, and this decision authorises no Stage-2b computation for L2.  The Stage-2b
+gates of STAGE1_DECISION section 6.5 (G1-G6) remain the template for any successor, with the amendments in section 6.5.
+
+=====================================================================================================================
+6. WHAT REMAINS
+=====================================================================================================================
+6.1 Binding lessons from Stage 2a (continuing STAGE1 F1-F9)
+F10 (NUM) The sign-definite 45 portals reduce the competitor depth but do not remove it: from -0.7 to -74 (486-chart
+    designs) down to -4e-5 to -1e-2.  Every coupling point produced (9 of 9) still has lower vacua.  The cumulative
+    tally of F1 is now 94/94 (Stage 1) plus 491/543 formal and 44/48 skeptic descents ending lower.
+F11 (EXACT + NUM) Portals quadratic in a field vanish on competitors in which that field is switched off.  The dominant
+    Lb competitor has |A| <= 0.02, and another class has the 210 off.  Any successor whose lifting relies on terms
+    quadratic in a GUT breaker must lift each "breaker switched off" class separately.
+F12 (NUM) BFB:
+    - sampled rays do not converge (~2400 rays; residual negative quartics ~ -1e-3);
+    - max-t points without a certificate are unbounded below (12/12 runaways);
+    - the sufficient block-norm certificate works at eps = 1e-3; eps >= 0.05 is infeasible.
+F13 (NUM/EST) Light-sector necessary conditions:
+    - the tree effective quartic must be >= 0 on the ENTIRE light space, not only on the doublet;
+    - every light self-cubic and mixed cubic must be tuned.
+    Each mixed cubic is an extra tuning.  Lb needs (8,3)(6bar,2)(6,2) at <~ 1e-5 M_U; La needs (8,1)(8,3)(8,3).  The
+    placeholder light masses must not hide instabilities along light directions.
+F14 (EXACT) Invariants linear in a real X = 0 field (kappaPPA, Phi^3 A, Phi A^3) induce its vev.  Every such field must
+    be left free in a vacuum search.
+F15 (NUM, machinery) Competitor margins must be gauge invariant (a distance in row values J, not a Euclidean distance).
+    The repo backend drops components <= 1e-14, so use the poly backend for small components.
+F16 (EST) At the produced points the heavy scalars lie 5-25 x below the heavy vectors in mass, so "everything heavy at
+    M_U" overstates D4 margins.  The tree lambda_eff_all can be dialled over [-2.62, >= 0.40], but the one-loop CW shift
+    (-0.42 to +0.06) is not small.
+F17 [JDG, EST] Competitor depths <~ 1e-2 lie below the one-loop CW scale (0.086).  Any future tree-level PASS with a
+    margin below that scale needs a one-loop comparison with its nearest competitors before Stage 2b (section 6.5).
+
+6.2 L3' (the 210 replaced by a real 45_H + a real 54_H, both X = 0; the Stage-1 D-D fallback)
+  Status (Stage-1 designer only; no skeptic review):
+    - D1 PASS (EXACT, including the MILP).
+    - D2 proxy PASS.  The exact 45-channel signs are used, with |c| ~ 1.1 in the Gamma convention: borderline.
+    - D3 never tested.
+    - D4 robust PASS: Lambda_2L = 77-114, Lambda_3L = 11.7-15.7, 98-100 % of the Monte Carlo passes, tau >= 5.7e34 at
+      m8 = 1e5.
+  What Stage 2a changes for L3':
+    (+) Part of L2's failure involves the 210: one dominant class has the 210 switched off.  The sign-indefinite 210
+        portals (22 of the 44 v20 directions, 26 real parameters [JDG count]) are absent in L3'.  L3' adds 54 portals
+        (54^2|H|^2, 54^2|Sigma|^2, H^dag 54 H, Delta^dag 54 Delta): more sign-definite structure in the H-Sigma sector.
+        That this helps is CONJ.
+    (+) Machinery.  35 of L3's directions (39 real parameters) already exist and are validated [JDG, read-only count
+        from invariants.json]:
+          - the 22 210-free v20 directions (25 real parameters), in the repo compiler and v20poly;
+          - the 13 210-free A directions (14 real parameters), in chart531.
+        The Stage-2a vacuum tooling (vc/vlp/vdesc/vpost, the skeptic's independent evaluator, the census engine and the
+        Susyno plethysm route) does not depend on the v20 SOS/G-gate modules.  Stage 1's assessment ("v20 machinery
+        unusable, 2-3 weeks") is superseded.
+    (-) L3' keeps the whole 126bar-10-S sector, and with it the self-conjugate drivers O27/O28/O31/O35 (F2, EXACT) and
+        the switched-off loophole (F11).  With the 45 and the 54 as the only GUT breakers, switching both off leaves
+        the H-Sigma-S sector with bare masses alone.
+    (-) [JDG; standard tensor-product tables; the census must confirm] H-Sigma doublet mixing at the GUT scale.
+        10 x 126bar = 210 + 1050bar, 45 x 54 = 45 + 945 + 1440, and Sym^2(54) = 1 + 54 + 660 + 770.  So in L3' the ONLY
+        renormalisable GUT-scale H10^dag-Delta mixing is (AA)_210 (H^dag Delta)_210: row A25, a single complex
+        coupling.  L2 had 8 further real H-Sigma mixing directions (O15, O45 x 2, and A26-A28, which are complex).
+        Whether one complex coupling can deliver independent up/down compositions (r ~ 66, s ~ 0.45 + 0.06i) at a clean
+        vacuum is a specific D2/D3 risk.
+    (+/-) [JDG; EXACT from Sym^2(10) and Sym^2(126bar) each containing a 54] Two new X-allowed phase-sensitive quartics:
+        54.H10.H10.S and 54.Delta.Delta.S (X = -4 + 4 = 0).
+          - Their accidental-charge content (2h + s, 2d + s) is already fixed by kappaH and h = d.  So the kernel is
+            unchanged (EXACT given h = d; D1 must still be re-run).
+          - They supply the Sigma_u-Sigma_d* mixing that L2 lacks, which helps F3.
+          - But they are new sign-indefinite holomorphic terms of the O31 type.
+    (-) Tree-level existence of the G3211 vacuum has not been computed.  LIT-abstract (1010.4649, 1202.0807, 2304.14227):
+        breaking driven by a 45 is tachyonic at tree level without a 54; with the 54 it is consistent (1010.4649,
+        snippet).
+    (-) [JDG, EXACT group theory] Light states:
+          - The light (8,1,0), from the 45 or the 54, still has an O(M_U) self-cubic (F7): one tuning.
+          - (6,3,1/3) has no self-cubic, because 3 x Y = 1 != 0.
+          - But the mixed cubic (8,1,0)(6,3,1/3)(6bar,3,-1/3) is allowed (8 x 6 x 6bar and 1 x 3 x 3 both contain a
+            singlet, and Y = 0).  That is a further light-cubic tuning (F13).
+  Probability (EST; products of rough factors):
+    P(survives its own Stage-1 skeptic review)                                       ~0.7
+    x P(a clean tree G3211 -> SM point exists with the light content and the F13 conditions)  ~0.3-0.4
+    x P(Gate 0 | a clean point)                                                      ~0.05-0.10
+        Stage 1 gave 0.10-0.15.  It is lowered because L2, which was rated the same, failed, and because L3' shares
+        the 126bar-10-S drivers and the F11 loophole.
+    = P(Gate 0 passes)                                                               ~1-3 %
+    x P(D4 with the real spectrum)                                                   ~0.8
+    x P(cosmology and LHC; the octet can sit at 1e4-1e5 GeV)                         ~0.8
+    x P(top-down flavour with |c| <= 1)                                              ~0.3-0.4
+        |c| ~ 1.1 is borderline, and only one complex H-Sigma mixing coupling is available.
+    x P(one-loop retuning, lambda, and loop-stable ordering (F17))                   ~0.3-0.4
+    = P(passes every Stage-2 kill)                                                   ~0.05-0.3 %
+  Cost (EST).  Calibration: Stage 2a took ~13 h of workflow wall-clock from the first model file (18:49) to the vacuum
+  skeptic's report (07:00) [JDG, file timestamps].
+    S0 skeptic review of L3's Stage-1 D1-D4 ................................................ 1-3 h
+    S1 census (54 weights in so10_weyl_chars, Susyno, explicit basis) + model + D1 ............. 2-4 h
+    S2 chart375 (new 54 block and 54 rows; 35 directions reused) + validation + build skeptic .. 4-8 h
+    S3 tree existence: local SDP at >= 6 orientations with the F13 conditions .................. 2-6 h
+    S4 switched-off phase-1 screen (section 6.5) ............................................... 2-4 h
+    S5 Gate 0: >= 3 formal rounds at >= 2 orientations, plus the vacuum skeptic ................ 12-24 h
+    Total to a Gate-0 verdict: ~1-3 days.  Kill opportunities come within hours (S0, S1, S3).  A Stage 2b would take a
+    further ~1-2 days.
+
+6.3 Family E (B-L broken by a 16_H with X = +1 and centre class z1; M_R from 16bar_H 16bar_H F F / M_Pl)
+  - Removes the Delta_R^{++} trap (R4), because Sigma needs no vev at v_R.
+  - Keeps the 126bar as the Yukawa carrier, and with it the F2 drivers and the F11 loophole.
+  - Not designed.  D1 is genuinely open: the 16_H is a new DP item, and it may bring new fermion couplings.
+  - Needs a spinor block in the chart.
+  - Landau threshold: alpha_U^-1 >= 26.9 at two loops and >= 29.4 at three loops.
+  P ~ 0.1-0.5 % (CONJ).  The D1 DP takes hours and is the natural first kill.  Cost to a Gate-0 verdict ~2-4 days (EST).
+
+6.4 Directions not recommended
+  - Re-open L2 (more orientations, compositions or vev ratios).
+      - This would override the pre-registered Stage-1 rule.
+      - There is no convergence trend (section 3.6), and t is pinned at the floor.
+      - The F13 conditions shrink the feasible set further.
+      - P(all kills) <~ 0.2 % (EST).
+  - Change the D3 standard to a metastable vacuum or a one-loop V_eff global minimum.
+      - This changes the criterion after a failure, and the user required the global minimum.
+      - At Lb R3, tree metastability fails anyway (section 3.4).
+      - It is admissible only as an explicit user decision, never as a rescue chosen by the programme.
+  - v20 + 45 + 54 (keeping the 210): the Landau threshold rises to alpha_U^-1 >= 29.8 at two loops, outside every pass
+    window (diagnosis R8, EST fail).
+  - Relaxing the boxes: no evidence of a rescue.  The Stage-1 D-B extension to box 8 still failed, and here the binding
+    constraints include a0 <= 1/2.
+
+6.5 If the user funds a successor (L3', or E with the obvious substitutions): order, gates and kill criteria
+  The gates run in order, and a design is killed at the first failure.  Every number carries a label.
+  S0  Skeptic review of the Stage-1 claims.  KILL on any upheld D1-D4 failure.
+  S1  Census + D1 on the final scalar list.
+        - KILL if: K_min < 17 (DP + LP + MILP), any anomaly is nonzero, the kernel changes PQ, or N_DW != 1.
+        - Regenerate every reference value with a literal full-sum evaluator (lesson m1).
+  S2  Chart + validation.
+        - Reductions to the already validated pieces must be bitwise.
+        - Invariance must be EXACT.
+        - Finite differences must agree to <= 1e-7.
+        - The Goldstone count must be exactly 33 + 1 + 1 = 35 at the SM point.
+  S3  Tree existence (the amended G0.1).  A clean G3211 -> SM point needs ALL of:
+        - exact stationarity, with every field that has a linear invariant left free (F14);
+        - 35 zero modes and 0 negative modes;
+        - exactly the declared light content, with the doublet as an exact eigenvector of the flavour composition;
+        - t >= 1e-3, |a0| <= 1/2, and |quartic| <= 1 (with the normalisation factors stated);
+        - a sufficient BFB certificate (F12);
+        - tree lambda_eff_all >= 0;
+        - NEW (F13): the light-space effective quartic >= 0 on the whole light space;
+        - NEW (F13): every light self-cubic <= 0.71 m;
+        - NEW (F13): every mixed light cubic below the margin that keeps the light-space quartic >= 0 after the heavier
+          light state is integrated out;
+        - S and Phi17 chart values compatible with D1 in GeV (F8).
+        KILL if there is no clean point at box 1 and box 4 at >= 6 orientations.
+  S4  Switched-off phase-1 screen (NEW, cheap and decisive).
+        - Competitors: the Stage-2a banks (428 deep + pools + the Lb/La G1-G3 lower points), embedded with the new
+          fields at 0 and at their vevs, plus the switched-off classes (each GUT breaker at 0, and all of them at 0).
+        - Run the phase-1 SDP with the necessary conditions only.
+        - KILL if it is infeasible at solver accuracy (status optimal, not inaccurate, with s* > 0 by more than 10 x the
+          tolerance).
+  S5  Gate 0 (STAGE1 G0.2-G0.5, unchanged).
+        - At least 3 formal rounds at >= 2 orientations.
+        - Probes along every light direction in every round.
+        - Lower-point thresholds scaled to the physical light masses.
+        - Gauge-invariant margins (F15).
+        - Confirmation on an independent evaluator.
+        - KILL (G0.4) if every round point has a confirmed lower vacuum beyond 1e-9 |V*|.
+        - Information item: the minimum competitor margin against the one-loop CW scale (F17).
+  Stage 2b, only if S5 passes.  STAGE1 G1-G6, with these amendments:
+    G1  KILL if any of the following holds:
+          - after one-loop retuning of every tuning, any mass^2 is negative or the Goldstone count is not 35;
+          - a retuned coupling leaves its box;
+          - a competitor within the F17 margin lies below V* in the one-loop V_eff (Landau gauge, MS-bar) for both
+            mu = |Phi| and mu = 0.3 |Phi| (NEW).
+    G2  KILL if a0 > 1/2, or if Lambda_2L <= M_Pl,red = 2.435e18 GeV with the point's REAL spectrum (heavy scalars and
+        vectors at their computed masses).  Report three loops.
+    G3  Flavour, with the chart <-> SARAH map computed first (lesson m2).  The fit:
+          - top-down, with the vacuum's own doublet composition;
+          - exact Clebsches for every operator, including the 126bar-doublet channels;
+          - G3211 running with nu^c thresholds;
+          - PDG 2024 masses at M_Z with a 1 % theory floor, PDG CKM, NuFIT 6.0 NO with SK;
+          - 18 observables; dof stated.
+        KILL if chi2 > 15, any |pull| >= 3, any d=5 |c| > 1 (Gamma convention), or M_R3 > sqrt(4 pi) v_R.
+    G4  Two-loop running with one-loop matching on the real spectrum, alpha_s(M_Z) = 0.1180 +- 0.0009.
+        KILL if the three matching conditions do not close, or if tau(p -> e+ pi0) <= 2.4e34 yr (W0 = 0.131 GeV^2, the
+        chain A_R, the point's own X and X' masses).
+    G5  KILL if a TeV coloured state is excluded by LHC limits, or lives longer than 100 s without a computed BBN-safe
+        relic abundance.
+    G6  KILL if K_min < 17 on the final list, dtheta >= 1e-10 at the point's actual <S> and <Phi17> in GeV, the y_s
+        window is empty, or N_DW != 1.
+  Certification: U2a at best (the K4 gap remains).  A pass is NUM-level.
+
+6.6 Outlook and recommendation (the decision is the user's)
+  - Evidence for a NO_GO of the 210-based family with one tuned light doublet (tree-level global-minimum standard; NUM,
+    not a theorem):
+      - F1 extended by F10-F11;
+      - F2 (EXACT);
+      - F5 (one-step B-L breaking near M_U is flavour-dead);
+      - F6 (Landau leaves no room beyond the 45, and L2 already sits on the knife-edge).
+  - Remaining chance that any direction yields a point passing Stage 2: ~0.3-1 % (EST).  Of that, L3' ~0.05-0.3 % and
+    E ~0.1-0.5 % (CONJ).
+  - Judge's recommendation:
+      - Record the L2 Gate-0 kill and the extended F1 evidence.
+      - Do not fund open-ended design work in the expectation of a pass.
+      - If the user wants the question closed rather than left open, run only the cheap first steps: L3' S0 + S1 and
+        E's D1 DP.  They take hours and stay within the 2-process limit.
+      - Decide on L3' S2-S5 from their outcome.  L3' goes first if both survive: it is the only candidate with robust
+        Landau, and it reuses 35 validated directions.
+
+=====================================================================================================================
+7. FILES
+=====================================================================================================================
+stage2a\STAGE2A_DECISION.txt     this decision (the only file written by the judge)
+stage2a\model\                   census, model draft SO10Z17AxionV22.m, invariants.json (defect m1), D1 contract, SARAH log
+stage2a\chart\                   chart531.py, v20poly.py, validation; chart\skeptic\ (verdict: not refuted)
+stage2a\vacuum\                  vc/vpoint/vprep/vbound/vlp/vdesc/vdcore/vpost/vexport/vcheck, vacuum_summary.json,
+                                 round3_Lb_O11_point_NOT_GLOBAL.json (audit only, NOT a candidate)
+stage2a\vacuum\skeptic\          vsk_*.py and JSON/logs (verdict: D3-FAIL upheld)
+Big data: C:\Users\jayal\AppData\Local\Temp\claude\c--Users-jayal-Downloads-So10Theory2-So10Theory\
+          d4b271a0-faef-4f94-bc1d-6399a3649e86\scratchpad\v22_stage2a_big\ (chart, vacuum, vacuum_skeptic, chart_skeptic)

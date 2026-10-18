@@ -1,0 +1,957 @@
+{
+ "content": "B63 fermions + Phi210, Delta126bar, H10, S, Phi17 + A45 (real 45_H, X=0)",
+ "anomalies": {
+  "SO10^2_X": "0",
+  "X^3": "0",
+  "grav_X": "0",
+  "SO10^3": "0 (no cubic Casimir of SO(10))",
+  "Witten": "none (pi_4(Spin(10)) = 0)",
+  "anomaly_free": true,
+  "net_16_minus_16bar": 3,
+  "species": [
+   {
+    "field": "F",
+    "rep": 16,
+    "X": 1,
+    "copies": 3
+   },
+   {
+    "field": "V1",
+    "rep": 16,
+    "X": -35,
+    "copies": 2
+   },
+   {
+    "field": "Vb1",
+    "rep": -16,
+    "X": 39,
+    "copies": 1
+   },
+   {
+    "field": "V2",
+    "rep": 16,
+    "X": -28,
+    "copies": 1
+   },
+   {
+    "field": "Vb2",
+    "rep": -16,
+    "X": 32,
+    "copies": 1
+   },
+   {
+    "field": "V3",
+    "rep": 16,
+    "X": 34,
+    "copies": 1
+   },
+   {
+    "field": "Vb3",
+    "rep": -16,
+    "X": -30,
+    "copies": 1
+   },
+   {
+    "field": "T",
+    "rep": 10,
+    "X": 2,
+    "copies": 2
+   },
+   {
+    "field": "Pb",
+    "rep": -16,
+    "X": 18,
+    "copies": 1
+   },
+   {
+    "field": "N1",
+    "rep": 1,
+    "X": -63,
+    "copies": 1
+   },
+   {
+    "field": "N1b",
+    "rep": 1,
+    "X": 59,
+    "copies": 1
+   },
+   {
+    "field": "N2",
+    "rep": 1,
+    "X": -58,
+    "copies": 1
+   },
+   {
+    "field": "N2b",
+    "rep": 1,
+    "X": 54,
+    "copies": 1
+   },
+   {
+    "field": "N3",
+    "rep": 1,
+    "X": -57,
+    "copies": 1
+   },
+   {
+    "field": "N3b",
+    "rep": 1,
+    "X": 61,
+    "copies": 1
+   },
+   {
+    "field": "NMm",
+    "rep": 1,
+    "X": -2,
+    "copies": 2
+   }
+  ],
+  "note": "scalars (incl. the new real 45_H) do not contribute to gauge anomalies"
+ },
+ "kernel": {
+  "species": [
+   "F",
+   "V1",
+   "Vb1",
+   "V2",
+   "Vb2",
+   "V3",
+   "Vb3",
+   "T",
+   "Pb",
+   "N1",
+   "N1b",
+   "N2",
+   "N2b",
+   "N3",
+   "N3b",
+   "NMm",
+   "Delta",
+   "H10",
+   "S",
+   "Phi17"
+  ],
+  "n_species": 20,
+  "yukawa_structures": [
+   "F.F.H10",
+   "F.F.Delta126bar",
+   "V1.Vb1.S^dag",
+   "V1.Pb.Phi17",
+   "V2.Vb2.S^dag",
+   "Vb2.Vb3.H10",
+   "V3.Vb3.S^dag",
+   "T.T.S^dag",
+   "N1.N1b.S",
+   "N2.N2b.S",
+   "N3.N3b.S^dag",
+   "NMm.NMm.S"
+  ],
+  "n_yukawa_structures": 12,
+  "rank_yukawas_only": 12,
+  "v20_phase_sensitive_orbits": [
+   "O12",
+   "O15",
+   "O28",
+   "O31",
+   "O38",
+   "O45"
+  ],
+  "rank_yukawas_plus_v20": 13,
+  "new_A_phase_sensitive_orbits": [
+   "Phi210 H10 Delta126bar^dag A45",
+   "H10 Delta126bar^dag A45^2"
+  ],
+  "rank_yukawas_plus_v20_plus_A": 13,
+  "kernel_dim_final": 7,
+  "new_A_rows_add_no_constraint": true,
+  "rank_with_superset_of_all_X_centre_neutral_phase_monomials_deg<=4": 13,
+  "n_superset_monomials": 18,
+  "X_in_kernel": true,
+  "G2_in_kernel": true,
+  "kernel_spanned_by_X_G2_f1..f5_(round-1_basis)": true
+ },
+ "pq": {
+  "N(X)": "0",
+  "N(G2)": "-2",
+  "N(f1..f5)": [
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ],
+  "N(PQ=X-17G2)": "34",
+  "E(X)": "0",
+  "E(G2)": "-16/3",
+  "E(PQ)": "272/3",
+  "E/N": "8/3",
+  "PQ_charges_scalars": {
+   "Phi210": 0,
+   "A45": 0,
+   "Delta": -2,
+   "H10": -2,
+   "S": 4,
+   "Phi17": 0
+  },
+  "N_DW_mod_gauge": "1 (gcd(17,4) = 1; A45 is real, X = 0, PQ = 0, centre class 0: adds no vev phase)"
+ },
+ "A45_item_type_equals_Phi210": true,
+ "dp_vs_bruteforce_d<=7": {
+  "dp": {
+   "5": -4,
+   "6": 0,
+   "7": 0
+  },
+  "brute": {
+   "5": -4,
+   "6": 0,
+   "7": 0
+  },
+  "agree": true
+ },
+ "dp_rows": [
+  {
+   "d": 5,
+   "max_excess_x4": -4,
+   "derivative": 1,
+   "argmax": {
+    "F": 1,
+    "F^": 1,
+    "Phi210": 1
+   }
+  },
+  {
+   "d": 6,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "V1^": 1,
+    "V2^": 1,
+    "T^": 1,
+    "N3b^": 1
+   }
+  },
+  {
+   "d": 7,
+   "max_excess_x4": 0,
+   "derivative": 1,
+   "argmax": {
+    "Vb1^": 1,
+    "T^": 1,
+    "Pb^": 1,
+    "N1b": 1
+   }
+  },
+  {
+   "d": 8,
+   "max_excess_x4": -4,
+   "derivative": 1,
+   "argmax": {
+    "Vb1^": 1,
+    "T^": 1,
+    "Pb^": 1,
+    "N1b": 1,
+    "Phi210": 1
+   }
+  },
+  {
+   "d": 9,
+   "max_excess_x4": 0,
+   "derivative": 1,
+   "argmax": {
+    "Vb1^": 1,
+    "V2^": 1,
+    "N1b": 1,
+    "N3b^": 1,
+    "S^": 1,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 10,
+   "max_excess_x4": 0,
+   "derivative": 1,
+   "argmax": {
+    "N1b": 3,
+    "N2": 2,
+    "N3b^": 1
+   }
+  },
+  {
+   "d": 11,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "Vb1^": 2,
+    "V2^": 2,
+    "S^": 3,
+    "Phi17": 2
+   }
+  },
+  {
+   "d": 12,
+   "max_excess_x4": 0,
+   "derivative": 1,
+   "argmax": {
+    "N1b": 2,
+    "N2": 1,
+    "N3b^": 1,
+    "S^": 4,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 13,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 4,
+    "N2": 4,
+    "S^": 1
+   }
+  },
+  {
+   "d": 14,
+   "max_excess_x4": 0,
+   "derivative": 1,
+   "argmax": {
+    "N1b": 1,
+    "N3b^": 1,
+    "S^": 8,
+    "Phi17": 2
+   }
+  },
+  {
+   "d": 15,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 3,
+    "N2": 3,
+    "S^": 5,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 16,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "Vb1^": 1,
+    "V2^": 1,
+    "S^": 10,
+    "Phi17": 3
+   }
+  },
+  {
+   "d": 17,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 2,
+    "N2": 2,
+    "S^": 9,
+    "Phi17": 2
+   }
+  },
+  {
+   "d": 18,
+   "max_excess_x4": -4,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 2,
+    "N2": 2,
+    "Phi210": 1,
+    "S^": 9,
+    "Phi17": 2
+   }
+  },
+  {
+   "d": 19,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 1,
+    "N2": 1,
+    "S^": 13,
+    "Phi17": 3
+   }
+  },
+  {
+   "d": 20,
+   "max_excess_x4": -4,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 1,
+    "N2": 1,
+    "Phi210": 1,
+    "S^": 13,
+    "Phi17": 3
+   }
+  },
+  {
+   "d": 21,
+   "max_excess_x4": 0,
+   "derivative": 0,
+   "argmax": {
+    "S^": 17,
+    "Phi17": 4
+   }
+  },
+  {
+   "d": 22,
+   "max_excess_x4": -4,
+   "derivative": 0,
+   "argmax": {
+    "Phi210": 1,
+    "S^": 17,
+    "Phi17": 4
+   }
+  },
+  {
+   "d": 23,
+   "max_excess_x4": -6,
+   "derivative": 0,
+   "argmax": {
+    "Vb1^": 1,
+    "V2^": 3,
+    "Delta": 1,
+    "S^": 15,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 24,
+   "max_excess_x4": -6,
+   "derivative": 1,
+   "argmax": {
+    "T^": 1,
+    "N1b": 1,
+    "Delta": 1,
+    "S^": 18,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 25,
+   "max_excess_x4": -6,
+   "derivative": 0,
+   "argmax": {
+    "Vb1^": 1,
+    "Pb^": 1,
+    "N1b": 3,
+    "N2": 1,
+    "Delta": 1,
+    "S^": 15
+   }
+  },
+  {
+   "d": 26,
+   "max_excess_x4": -6,
+   "derivative": 0,
+   "argmax": {
+    "V2^": 2,
+    "N2": 1,
+    "N1b": 1,
+    "Delta": 1,
+    "S^": 18,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 27,
+   "max_excess_x4": -6,
+   "derivative": 0,
+   "argmax": {
+    "Vb1^": 1,
+    "Pb^": 1,
+    "N1b": 2,
+    "Delta": 1,
+    "S^": 19,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 28,
+   "max_excess_x4": -6,
+   "derivative": 0,
+   "argmax": {
+    "V2^": 2,
+    "Delta": 1,
+    "S^": 22,
+    "Phi17": 2
+   }
+  },
+  {
+   "d": 29,
+   "max_excess_x4": -8,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 3,
+    "N2": 2,
+    "NMm": 1,
+    "S^": 19,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 30,
+   "max_excess_x4": -8,
+   "derivative": 0,
+   "argmax": {
+    "N2b": 2,
+    "S^": 27
+   }
+  },
+  {
+   "d": 31,
+   "max_excess_x4": -8,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 2,
+    "N2": 1,
+    "NMm": 1,
+    "S^": 23,
+    "Phi17": 2
+   }
+  },
+  {
+   "d": 32,
+   "max_excess_x4": -8,
+   "derivative": 0,
+   "argmax": {
+    "Vb1^": 4,
+    "N1b": 4,
+    "S^": 20
+   }
+  },
+  {
+   "d": 33,
+   "max_excess_x4": -8,
+   "derivative": 1,
+   "argmax": {
+    "N1b": 1,
+    "S^": 29,
+    "N3^": 1
+   }
+  },
+  {
+   "d": 34,
+   "max_excess_x4": -8,
+   "derivative": 0,
+   "argmax": {
+    "V2^": 4,
+    "S^": 28
+   }
+  },
+  {
+   "d": 35,
+   "max_excess_x4": -12,
+   "derivative": 0,
+   "argmax": {
+    "V2^": 4,
+    "Phi210": 1,
+    "S^": 28
+   }
+  },
+  {
+   "d": 36,
+   "max_excess_x4": -8,
+   "derivative": 1,
+   "argmax": {
+    "N1b": 3,
+    "N3b^": 1,
+    "S^": 29
+   }
+  },
+  {
+   "d": 37,
+   "max_excess_x4": -12,
+   "derivative": 1,
+   "argmax": {
+    "N1b": 3,
+    "N3b^": 1,
+    "Phi210": 1,
+    "S^": 29
+   }
+  },
+  {
+   "d": 38,
+   "max_excess_x4": -8,
+   "derivative": 0,
+   "argmax": {
+    "Vb1^": 1,
+    "V2^": 1,
+    "N1b": 2,
+    "S^": 31,
+    "Phi17": 1
+   }
+  },
+  {
+   "d": 39,
+   "max_excess_x4": -8,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 4,
+    "N2": 2,
+    "S^": 30
+   }
+  },
+  {
+   "d": 40,
+   "max_excess_x4": -12,
+   "derivative": 0,
+   "argmax": {
+    "N1b": 4,
+    "N2": 2,
+    "Phi210": 1,
+    "S^": 30
+   }
+  }
+ ],
+ "dp_certificate": {
+  "max_excess_x4_5<=d<=20": 0,
+  "holds_d<=20": true,
+  "max_excess_x4_d<=40": 0,
+  "tight_d": [
+   6,
+   7,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   19,
+   21
+  ],
+  "A45_in_any_argmax": false
+ },
+ "no_centre_superset_d<=12": {
+  "max_excess_x4": 6,
+  "first_violation_d": 5,
+  "rows": [
+   {
+    "d": 5,
+    "max_excess_x4": 2,
+    "derivative": 1,
+    "argmax": {
+     "N1b": 1,
+     "N3b^": 1,
+     "Delta^": 1
+    }
+   },
+   {
+    "d": 6,
+    "max_excess_x4": 6,
+    "derivative": 0,
+    "argmax": {
+     "Vb1^": 1,
+     "V2^": 1,
+     "Delta": 1,
+     "S^": 1,
+     "Phi17": 1
+    }
+   },
+   {
+    "d": 7,
+    "max_excess_x4": 6,
+    "derivative": 0,
+    "argmax": {
+     "N1b": 2,
+     "N2": 2,
+     "Delta": 1
+    }
+   },
+   {
+    "d": 8,
+    "max_excess_x4": 4,
+    "derivative": 0,
+    "argmax": {
+     "Vb1^": 1,
+     "N3^": 1,
+     "Delta": 1,
+     "S^": 4
+    }
+   },
+   {
+    "d": 9,
+    "max_excess_x4": 6,
+    "derivative": 1,
+    "argmax": {
+     "Vb1^": 1,
+     "N1b": 1,
+     "S^": 5
+    }
+   },
+   {
+    "d": 10,
+    "max_excess_x4": 4,
+    "derivative": 0,
+    "argmax": {
+     "V2^": 1,
+     "T^": 1,
+     "Delta": 1,
+     "S^": 6
+    }
+   },
+   {
+    "d": 11,
+    "max_excess_x4": 6,
+    "derivative": 0,
+    "argmax": {
+     "Delta": 1,
+     "S^": 8,
+     "Phi17": 2
+    }
+   },
+   {
+    "d": 12,
+    "max_excess_x4": 2,
+    "derivative": 0,
+    "argmax": {
+     "V2^": 1,
+     "V3^": 1,
+     "S^": 7,
+     "Phi17": 2
+    }
+   }
+  ]
+ },
+ "dp_lp_optimum": {
+  "4mu0_LP_optimum": 17.0,
+  "mu": [
+   4.25,
+   -3.5,
+   -7.0,
+   -14.25,
+   -12.0,
+   -12.75
+  ],
+  "iterations": 20,
+  "cuts": 42
+ },
+ "milp_certificate_dressed_d<=24": {
+  "worst_excess_x4": 0,
+  "at_d": 6,
+  "mono": {
+   "V2*": 2,
+   "T": 1,
+   "N2": 1
+  },
+  "exact_ok": true,
+  "holds": true,
+  "per_d_sign_excess": [
+   [
+    5,
+    1,
+    -4
+   ],
+   [
+    5,
+    -1,
+    -4
+   ],
+   [
+    6,
+    1,
+    0
+   ],
+   [
+    6,
+    -1,
+    0
+   ],
+   [
+    7,
+    1,
+    0
+   ],
+   [
+    7,
+    -1,
+    0
+   ],
+   [
+    8,
+    1,
+    -4
+   ],
+   [
+    8,
+    -1,
+    -4
+   ],
+   [
+    9,
+    1,
+    0
+   ],
+   [
+    9,
+    -1,
+    0
+   ],
+   [
+    10,
+    1,
+    0
+   ],
+   [
+    10,
+    -1,
+    0
+   ],
+   [
+    11,
+    1,
+    0
+   ],
+   [
+    11,
+    -1,
+    0
+   ],
+   [
+    12,
+    1,
+    0
+   ],
+   [
+    12,
+    -1,
+    0
+   ],
+   [
+    13,
+    1,
+    0
+   ],
+   [
+    13,
+    -1,
+    0
+   ],
+   [
+    14,
+    1,
+    0
+   ],
+   [
+    14,
+    -1,
+    0
+   ],
+   [
+    15,
+    1,
+    0
+   ],
+   [
+    15,
+    -1,
+    0
+   ],
+   [
+    16,
+    1,
+    0
+   ],
+   [
+    16,
+    -1,
+    0
+   ],
+   [
+    17,
+    1,
+    0
+   ],
+   [
+    17,
+    -1,
+    0
+   ],
+   [
+    18,
+    1,
+    -4
+   ],
+   [
+    18,
+    -1,
+    -4
+   ],
+   [
+    19,
+    1,
+    0
+   ],
+   [
+    19,
+    -1,
+    0
+   ],
+   [
+    20,
+    1,
+    -4
+   ],
+   [
+    20,
+    -1,
+    -4
+   ],
+   [
+    21,
+    1,
+    0
+   ],
+   [
+    21,
+    -1,
+    0
+   ],
+   [
+    22,
+    1,
+    -4
+   ],
+   [
+    22,
+    -1,
+    -4
+   ],
+   [
+    23,
+    1,
+    -6
+   ],
+   [
+    23,
+    -1,
+    -6
+   ],
+   [
+    24,
+    1,
+    -6
+   ],
+   [
+    24,
+    -1,
+    -6
+   ]
+  ]
+ },
+ "milp_colgen": {
+  "4mu0": 17.0,
+  "iterations": 31,
+  "cuts": 31
+ },
+ "K_min_ge_17": true,
+ "seconds": 194.99039101600647
+}

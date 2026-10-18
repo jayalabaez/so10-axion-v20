@@ -1,0 +1,197 @@
+VACUUM SKEPTIC - stage 2a, candidate "v22-L2" (v20 scalars + one real 45_H, B63 fermions)            2026-10-18
+=====================================================================================================================
+Folder: research\v22_scalar_redesign\stage2a\vacuum\skeptic\ (worktree _v22research, branch research/v22-scalar-redesign).
+Big data: scratchpad\v22_stage2a_big\vacuum_skeptic\ (end-point banks, light-sector npz, descent banks, and lpdir\ =
+COPIES of the tester's LP inputs plus my phase-1 outputs).
+Labels: EXACT / NUM (float64, residual or count stated) / EST / CONJ / LIT.
+Hygiene: only this folder and the big folder above were written.  The tester's files (vacuum\*.py, BIG\vacuum\*), chart531,
+v20poly, invariants.json and the repository modules were only read or imported read-only (-B, PYTHONDONTWRITEBYTECODE).
+For the phase-1 reruns the tester's vlp.py was run read-only from its folder with V22_VACUUM_BIG pointed at my own copy of
+its inputs (scratchpad\...\vacuum_skeptic\lpdir); nothing was written in the tester's BIG folder.  No commit, push or
+stash.  _rescope and the other worktrees were not touched.  At most two heavy processes at a time.  I stopped only my own
+process (one slow alignment job, by PID, after checking the command line).  `git status --short` before and after:
+`?? research/v22_scalar_redesign/stage2a/`.
+
+VERDICT OF THE SKEPTIC: NOT REFUTED.  The D3-FAIL is UPHELD (NUM, not certified; the same procedural standard as R2-A and
+Stage-1 D-A).  The decisive claim reproduces exactly with an independent code path: every formal-round point has lower
+vacua, and they are genuine.  I found two further failure modes the tester did not list, and both make the FAIL
+stronger (secs. D and E).  Three statements in the report need correcting (sec. G).  None of them turns the FAIL into a
+pass or an undecided.
+
+---------------------------------------------------------------------------------------------------------------------
+A. MY INDEPENDENT EVALUATOR (vsk_eval.py, vsk_validate.py -> vsk_validate.json)                                 [NUM]
+---------------------------------------------------------------------------------------------------------------------
+What it does NOT use: vc.FastV, v20poly, chart531's compiled polynomials or its tables.
+* 51 v20 rows: the REPOSITORY direction evaluator potential.evaluate_directions at the repo FieldState, with the repo
+  conventions (lambda:: = I, re:: = 2 Re I, im:: = -2 Im I).  This is the authoritative path.  It differs from v20poly,
+  which the descents used, and from parameter_rows, which vpost --repo used.
+* 34 A45 rows: my own tensors P_abcd, H_a, D_abcde, A_ab, built straight from the chart coordinates.
+  - The repo's 126 anti-self-dual basis {first: 1, second: i sign} is written out by hand, so there are no add_forms
+    thresholds.
+  - Each invariants.json machine_spec is evaluated literally.  Rows without eps use one einsum.
+  - Rows with eps: block tensors are antisymmetrised, and the 10!-term sum is done EXACTLY as a sum over ordered set
+    partitions of {0..9}: 3150 terms for 4+4+2, 18900 for 4+2+2+2.  This is a third method; the chart uses compiled
+    polynomials and the chart skeptic uses literal 10! permutations.
+* Gauge maps: finite SO(10) rotations applied to the TENSORS (P -> R^4 P, D -> R^5 D, A -> R A R^T, H -> R H), then
+  re-packed by my own packer.  U(1)_X and PQ phases use the repo charge tables.
+Checks:
+  - Self-test vs the repo: basis 0.0, pack round trip 4e-16, P/D/H vs rchart.unpack 0.0, anti-self-duality 0.0.
+  - A rows vs chart531 at 3 random points: <= 2.2e-14 relative.
+  - v20 rows (repo evaluate_directions) vs v20poly: <= 2.6e-10 relative at large random points (|q| ~ 20-30).
+  - V*(R3 Lb): mine -248.05748390764748, FastV -248.05748390764757 (difference 8.5e-14).
+  - Invariance at q*: finite SO(10) rotations 2.8e-14, U(1)_X 0.0, PQ 0.0.  At a random point: 4e-10 on |V| ~ 1e5.
+  - Negative control (rotate A only): dV = 5.1e-3 at q*, 2.19 at the random point.
+
+---------------------------------------------------------------------------------------------------------------------
+B. THE DECISIVE NUMBERS, REPRODUCED (vsk_endpoints.py -> vsk_endpoints_{Lb,Lae}.json/.log)                       [NUM]
+---------------------------------------------------------------------------------------------------------------------
+All 543 formal-round descent end points (G1d..G3d, Lb and Lae) were re-evaluated with my evaluator at their round's
+couplings (R{k}d_*.npz).
+  round      V* (mine)          lower mine / reported   deepest dV mine (= reported)    max|dV mine - dV rep.|
+  Lb  R1   -251.620840082        61/75  = 61              -3.782221e-4                       2.0e-13
+  Lb  R2   -248.163788443        69/75  = 69              -1.054291e-2                       3.1e-13
+  Lb  R3   -248.057483908        75/81  = 75              -1.857030e-3                       2.3e-13
+  Lae R1   -100.976962433        95/104 = 95              -4.893165e-5                       1.1e-13
+  Lae R2   -265.627110722        96/104 = 96              -2.753812e-3                       3.4e-13
+  Lae R3   -102.401551959        95/104 = 95              -3.966156e-5                       9.9e-14
+  The lower/not-lower flags agree for 543 of 543 end points.  Every lower point is below V* by >= 1.5e-5.  That is
+  >= 4e7 times the largest evaluation difference (3.4e-13).
+Genuineness:
+  * Gauge invariance: each round's 5 deepest points were re-evaluated after a random finite SO(10) x U(1)_X x PQ
+    transformation (my tensor rotation, re-packed).  The energies are unchanged to <= 3.1e-13.
+  * Not gauge copies: |J - J*|_max >= 197 for every lower point (J = the 85 invariant row values).  The block norms
+    also differ: S = 0 vs 2.3e-3, A ~ 0, or Phi ~ 0.06-0.09.
+  * Unbroken so(10) (my own tensor generator action): q* has dimension 12 (the SM), the lower points have 0.  The lower
+    points break SU(2)_L.
+  * Distinct vacua, not chart artefacts (vsk_align.py -> vsk_align_{Lb,Lae}.json).  The deepest point of every class
+    was gauge-aligned to q* (Gauss-Newton on SO(10) x U(1)_X x PQ, 8 starts):
+      - distance modulo gauge 1.47-5.50 (upper bounds);
+      - the straight line q* -> point crosses a barrier of 1.2e-3 to 4.5;
+      - the displacement is mostly heavy-direction (|heavy part| 0.7-2.9 vs |light part| 0.2-0.8).
+    The chart is the full 531-real field space (210 + 45 + 20 + 252 + 2 + 2), so no truncation artefact is possible.
+    The R2-A beta = 0 artefact class does not apply either: beta is free here and converges to |beta|^2 ~ 1e-31.
+
+---------------------------------------------------------------------------------------------------------------------
+C. FRESH DESCENTS WITH MY OWN DRIVER AND STARTS at the round-3 Lb point (vsk_descend.py -> vsk_descend_R3Lb_j*.json)
+---------------------------------------------------------------------------------------------------------------------
+Driver: trust-krylov with exact Hessian-vector products, an L-BFGS pre-phase, a dense-Hessian saddle check and
+escapes.  This is a different algorithm from the tester's.  New seeds and new start families:
+  rnd 16 (wider scales), hsa 12 (CONSTRAINED H-Sigma-A(-S) descents with Phi210 frozen at 0, 0.5 Phi* or Phi*, then
+  released), light 14 (q* + a u, u a random unit vector in the 52-dim light subspace, a = 0.036-0.49), and orbit 6
+  (random gauge images of the tester's end points, perturbed by 0.05).
+Result [NUM]: 44 of 48 end lower.  Every one was verified with my evaluator; the deepest is -1.857030e-3, exactly the
+tester's deepest.
+  - hsa 12/12 lower; orbit 6/6 lower; rnd 12/16 lower.  The other 4 rnd starts reach a higher local minimum, +4.41e-5,
+    at |Phi| 0.85, S 0.20, A 1.15.
+  - light 14/14 lower, even from a = 0.036.  They all fall into the A ~ 0 H-Sigma-S family: dV -1.68e-3, |Phi| 1.48,
+    |H| 0.34, |Sigma| 0.011, |S| 0.043, |A| 0.000-0.022.
+  - No new class, and no runaway (the dominance certificate holds).
+Structural observation [EXACT by inspection of the invariants + NUM]:
+  - The dominant Lb competitor at R2 and R3 has the 45 switched OFF (|A| <= 0.02).  Every sign-definite 45 portal is
+    proportional to A^2 (and the A-linear eps terms vanish at that Phi orientation), so the new portals cannot act on
+    it.  It can only be lifted by deepening V* through the A sector, which the boxes and a0 <= 1/2 limit.
+  - The other dominant class has the 210 switched off (|Phi| 0.07-0.09, |Sigma| 0.89, |A| 1.46).
+  - This supports the tester's statement that the 45 portals do not remove the H-Sigma(-S) family.
+
+---------------------------------------------------------------------------------------------------------------------
+D. NEW: LIGHT-SECTOR INSTABILITY AT THE ROUND POINTS (vsk_light.py, vsk_valley.py)                     [NUM / EST]
+---------------------------------------------------------------------------------------------------------------------
+The tester gives the light multiplets placeholder masses (m^2 ~ 1e-7-3e-6 |Phi*|^2) and calls an end point lower only
+below -2.5e-6.  Near-vacuum instabilities along light directions are therefore invisible to its descents.  The physical
+masses are ~2e9 GeV for the (8,3) and the TeV scale for the (8,1).
+Method: tree-level effective quartic of the light space L (doublet + octets + sextet; the light singlets sigma and S
+are integrated out with the heavy modes):
+  lambda(u) = V4(u) - (1/8) T*(u,u,.)^T K T*(u,u,.)
+T* is computed from exact symmetric Hessian-vector differences of the quartic polynomial.  Cross-check: on the doublet
+space, 4 lambda = 0.2049 (Lb R3) and 0.3625 (Lae R3), against the tester's lambda_eff_all of 0.2047 and 0.363.
+  Lb R3:
+    - min lambda on L = -0.0764 (4 lambda = -0.306), along a PURE (8,3)_0 direction (C3 = 3.000, C2L = 2.000).  The
+      light (8,3) has a NEGATIVE tree effective quartic.  The tester imposed lambda_eff >= 0 only along the doublet.
+    - Untuned light cubic up to |C(u)| = 1.7e-4 per unit direction (the (8,3)(6bar,2)(6,2) mixing the tester flagged).
+  Valley along that (8,3) direction, all other 530 directions relaxed (vsk_valley_R3d_Lb_O11.json):
+    - V_valley - V* = +1.5e-12 (phi 1e-3), +1.5e-10 (0.01), +5.5e-10 (0.04, the maximum), -6.3e-9 (0.07),
+      -3.7e-8 (0.10), -2.0e-7 (0.15);
+    - at phi = 0.2 the path falls into the A ~ 0 H-Sigma-S basin: -1.682343e-3, mine -1.6823434e-3.  A free descent from
+      there stays at -1.682343e-3.
+    - So the only thing separating q* from the lower vacuum along a light direction is a ~5e-10 barrier.  Subtracting
+      the placeholder mass term (1/2) m^2 phi^2 (m^2 = 3e-6) leaves a remainder that is negative from phi ~ 0.02.
+    - EST: with the physical m(8,3) the barrier essentially disappears, and the R3 Lb point is not even metastable at
+      tree level.  The quadratic light-EFT value of lambda holds only for phi <~ v_R, where the light-singlet response
+      saturates.
+  Lae R3:
+    - min lambda on L = +0.0021 (4 lambda = +0.0086): marginally positive.
+    - BUT the light cubic is untuned: |C(u)| = 2.8e-4 per unit direction, along a direction that is exactly 1/3 (8,1)
+      + 2/3 (8,3).  That is the (8,1)(8,3)(8,3) d-delta invariant.  The formal rounds ran without --mixed.
+    - EST: with m(8,1) at the TeV scale, b^2 >> 4ac, so a lower minimum exists next to q*.  Even at the placeholder
+      masses b^2 = 7.9e-8 > 4ac ~ 7e-9.  The resulting depth (~1e-10 to 1e-7) is below the tester's threshold.
+    - This is an unlisted tuning for La, the analogue of the mixed Lb cubic the tester did flag.
+  So the report's "every R_k point satisfies ALL local criteria ... the failure is purely global" is OVERSTATED.  With
+  the physical light masses, the light sector of the round points is unstable or untuned as well.  This only strengthens
+  the FAIL.
+
+---------------------------------------------------------------------------------------------------------------------
+E. IS THERE A MISSED FEASIBLE REGION?  Phase-1 reruns with the COMPLETE Lb competitor set (run_sk_phase1.sh)
+---------------------------------------------------------------------------------------------------------------------
+Setup: the tester's vlp.py, read-only, run with my input copies.
+  - Competitors: deep bank 428 + pool3 1573 + G1/G2 lower 130 + G3 lower 75 = 2206.  The tester's own phase-1 had 2006
+    (no G3).
+  - O11, warm start from R3; mu = 0, t >= 1e-3, lambda_eff_all >= 0, octet cubic, 12 U-iterations.
+  N (necessary conditions only):
+    - s* = -6.4e-6 (every SDP "optimal_inaccurate"), t = 1.019e-3: still feasible.
+    - The final singlet screen at that point finds a lower vacuum at dV = -5.928034 (mine -5.928034): Phi17 = 0
+      (U(1)_X restored), |Phi| 7.42, |A| 2.46.
+  D (with the formal-round dominance BFB certificate, eps 1e-3):
+    - s* = -2.9e-7, t = 1.0004e-3: feasible, but at solver tolerance.
+    - The final singlet screen finds dV = -4.7815e-3 (mine -4.7815e-3): |Phi| 2.28, |A| 0.47, S = Sigma = H = 0.
+  The tester's own phase-1 point (E_Lb_O11) also has a screen-found lower point at -0.292.
+Reading:
+  - I confirm the tester's caveat: the competitor set found so far is still jointly liftable (no emptiness proof).
+  - But the point produced by the alternative, "central" phase-1 objective also has lower vacua, in all three runs.
+  - |s*| is at the SDP tolerance (optimal_inaccurate).  It is also bounded by near-copy competitor rows, which have
+    tiny gaps when mu = 0, so its magnitude carries no information; only its sign does.
+  - At fixed (q*, U) the set {c : q* global, local constraints} is CONVEX, and the feedback rounds are Kelley cutting
+    planes.  Non-convergence after 3 formal rounds plus about 60 in-loop rounds is not an emptiness proof.  It is,
+    however, the programme's stated D3 standard (one concrete passing point must be produced), and no such point exists.
+  - The extra necessary conditions found in sec. D (light-sector lambda >= 0, mixed light cubics = 0) can only shrink
+    the feasible set.
+No missed feasible region was found.  CONJ: one may exist at other orientations, compositions or vev ratios, none of
+which I tested.
+
+---------------------------------------------------------------------------------------------------------------------
+F. THE BUILD SKEPTIC'S DEFECTS - do they invalidate the FAIL?  No.
+---------------------------------------------------------------------------------------------------------------------
+* m1 (F1 factors 1152 / 192 / -1 in the reference values): chart531 implements the declared formulas, and so does my
+  evaluator (A rows agree to 2e-14).  The tester divided only the BOXES of the 4 eps rows by 1152 / 192, as the build
+  skeptic recommends.  A lower point at a given coupling vector does not depend on boxes.  A sign flip (A13 / A17) only
+  relabels a symmetric box.
+* m2 (SARAH <-> chart map): irrelevant to the vacuum test, where chart couplings are primary.  Relevant later for RGEs.
+* m3 (repo thresholds 1e-14 / 1e-13): every relevant component here is >= 1e-3.  My evaluator builds Sigma without
+  thresholds for the A rows, and the repo v20 values agree with v20poly.
+* The missing v20poly cache was never an issue (the cache exists).
+
+---------------------------------------------------------------------------------------------------------------------
+G. CORRECTIONS TO THE TESTER'S REPORT (none changes the verdict)
+---------------------------------------------------------------------------------------------------------------------
+1. "the failure is purely global": overstated.  At R3 Lb the light (8,3) effective quartic is negative (-0.306 in
+   lambda_SM normalisation; NUM).  The mixed light cubics are untuned for both contents: Lb 1.7e-4, La 2.8e-4 (NUM).  A
+   ~5e-10 valley barrier connects q* to a lower vacuum along the (8,3) (NUM).  The light-sector conditions are necessary
+   at physical light masses (EST).
+2. "phase-1 FEASIBLE (s* = -7.8e-7)": it rests on optimal_inaccurate SDP solves, with |s*| at tolerance and bounded by
+   near-copy rows.  It is better read as "not shown infeasible".  The phase-1 points themselves have lower vacua:
+   -0.292 (tester), -5.928 and -4.78e-3 (mine, with the complete competitor set).
+3. "the new portals do NOT remove the DEEP H-Sigma(-S) vacua": correct at every produced point.  But the competitors are
+   now nearly degenerate (4e-5 to 1e-2, against -0.7 to -74 in R2-A / D-A), not deep.  The dominant Lb competitor has
+   the 45 switched off, where no A-portal acts, and the other has the 210 off.
+4. The La/Lae "reorientation" class (e) is a genuinely distinct far vacuum: distance modulo gauge 2.4-5.5, line barriers
+   0.04-4.5, PQ and B-L restored.  It is not a light-direction artefact.
+
+---------------------------------------------------------------------------------------------------------------------
+H. WHAT REMAINS OPEN
+---------------------------------------------------------------------------------------------------------------------
+- No exact certificate (K4 gap).  The FAIL is numerical and procedural.
+- Not tested by either side: orientations other than O11 in formal rounds, other flavour compositions, other vev ratios.
+- My light-sector analysis is tree level.  The physical-mass statements are EST.
+- The Lae valley was not computed; its depth is an EST from b^2 > 4ac.
+Files: vsk_eval.py vsk_validate.py vsk_endpoints.py vsk_align.py vsk_descend.py vsk_light.py vsk_valley.py
+run_sk_phase1.sh; JSON/log: vsk_validate.json vsk_endpoints_{Lb,Lae}.json/.log vsk_align_{Lb,Lae}.json
+vsk_descend_R3Lb_j{0,1}.json vsk_light_R3d_{Lb,Lae}_O11.json vsk_valley_R3d_Lb_O11.json vsk_phase1{N,D}_Lb.json/.log.
